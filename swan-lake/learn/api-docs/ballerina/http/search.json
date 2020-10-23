@@ -201,6 +201,11 @@
       "moduleId": "http"
     },
     {
+      "id": "Detail",
+      "description": "\u003cp\u003eHolds the details of an HTTP error\u003c/p\u003e\n",
+      "moduleId": "http"
+    },
+    {
       "id": "FailoverClientConfiguration",
       "description": "\u003cp\u003eProvides a set of HTTP related configurations and failover related configurations.\u003c/p\u003e",
       "moduleId": "http"
@@ -1020,6 +1025,11 @@
       "moduleId": "http"
     },
     {
+      "id": "ClientRequestError",
+      "description": "\u003cp\u003eRepresents an error, which occurred due to bad syntax or incomplete info in the client request(4xx HTTP response)\u003c/p\u003e\n",
+      "moduleId": "http"
+    },
+    {
       "id": "CookieHandlingError",
       "description": "\u003cp\u003eRepresents a cookie error that occurred when using the cookies\u003c/p\u003e\n",
       "moduleId": "http"
@@ -1052,6 +1062,11 @@
     {
       "id": "IdleTimeoutError",
       "description": "\u003cp\u003eRepresents the error that triggered upon a request/response idle timeout\u003c/p\u003e\n",
+      "moduleId": "http"
+    },
+    {
+      "id": "IllegalDataBindingStateError",
+      "description": "\u003cp\u003eRepresents an illegal data-binding  state error\u003c/p\u003e\n",
       "moduleId": "http"
     },
     {
@@ -1112,6 +1127,11 @@
     {
       "id": "ReadingInboundResponseHeadersError",
       "description": "\u003cp\u003eRepresents a client error that occurred while reading inbound response headers\u003c/p\u003e\n",
+      "moduleId": "http"
+    },
+    {
+      "id": "RemoteServerError",
+      "description": "\u003cp\u003eRepresents an error, which occurred due to a failure of the remote server(5xx HTTP response)\u003c/p\u003e\n",
       "moduleId": "http"
     },
     {
@@ -1282,6 +1302,11 @@
       "moduleId": "http"
     },
     {
+      "id": "Payload",
+      "description": "\u003cp\u003eThe types of the response payload that are returned by the HTTP \u003ccode\u003eclient\u003c/code\u003e after the data binding operation\u003c/p\u003e\n",
+      "moduleId": "http"
+    },
+    {
       "id": "RedirectCode",
       "description": "\u003cp\u003eDefines the HTTP redirect codes as a type.\u003c/p\u003e",
       "moduleId": "http"
@@ -1416,32 +1441,32 @@
   "abstractObjects": [
     {
       "id": "InboundAuthHandler",
-      "description": "\u003cp\u003eThe representation of an inbound authentication handler for HTTP traffic.\u003c/p\u003e",
+      "description": "\u003cp\u003eThe representation of an inbound authentication handler object type for HTTP traffic.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
       "id": "LoadBalancerRule",
-      "description": "\u003cp\u003eLoadBalancerRule provides a required interfaces to implement different algorithms.\u003c/p\u003e",
+      "description": "\u003cp\u003eLoadBalancerRule object type provides a required abstraction to implement different algorithms.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
       "id": "OutboundAuthHandler",
-      "description": "\u003cp\u003eThe representation of an outbound authentication handler for HTTP traffic.\u003c/p\u003e",
+      "description": "\u003cp\u003eThe representation of an outbound authentication handler object type for HTTP traffic.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
       "id": "PersistentCookieHandler",
-      "description": "\u003cp\u003eThe representation of a persistent cookie handler for managing persistent cookies.\u003c/p\u003e",
+      "description": "\u003cp\u003eThe representation of a persistent cookie handler object type for managing persistent cookies.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
       "id": "RequestFilter",
-      "description": "\u003cp\u003eAbstract Representation of a HTTP Request Filter.\u003c/p\u003e",
+      "description": "\u003cp\u003eThe representation of a HTTP Request Filter Object type.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
       "id": "ResponseFilter",
-      "description": "\u003cp\u003eAbstract Representation of a HTTP Response Filter.\u003c/p\u003e",
+      "description": "\u003cp\u003eThe representation of a HTTP Response Filter Object type.\u003c/p\u003e",
       "moduleId": "http"
     }
   ]

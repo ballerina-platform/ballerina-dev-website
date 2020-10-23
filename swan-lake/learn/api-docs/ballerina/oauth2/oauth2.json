@@ -3,7 +3,7 @@
   "summary": "\u003cp\u003eThis module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For examples on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/secured-service-with-oauth2.html\"\u003eSecured Service with OAuth2 Example\u003c/a\u003e and \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/secured-client-with-oauth2.html\"\u003eSecured Client with OAuth2 Example\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "records": [
     {
       "fields": [
@@ -2228,46 +2228,34 @@
   "annotations": [],
   "errors": [
     {
+      "detailType": {
+        "orgName": "ballerina",
+        "moduleName": "oauth2",
+        "name": "OAuth2Error",
+        "category": "errors",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "name": "Error",
+      "description": "\u003cp\u003eRepresents the OAuth2 error.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
       "name": "OAuth2Error",
       "description": "\u003cp\u003eRepresents the OAuth2 distinct error.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
   "finiteTypes": [],
-  "unionTypes": [
-    {
-      "name": "Error",
-      "description": "\u003cp\u003eRepresents the OAuth2 error.\u003c/p\u003e\n",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isRestParam": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [
-        {
-          "orgName": "ballerina",
-          "moduleName": "oauth2",
-          "name": "OAuth2Error",
-          "category": "errors",
-          "isAnonymousUnionType": false,
-          "isArrayType": false,
-          "isNullable": false,
-          "isTuple": false,
-          "isRestParam": false,
-          "isLambda": false,
-          "isDeprecated": false,
-          "generateUserDefinedTypeLink": true,
-          "memberTypes": [],
-          "paramTypes": [],
-          "arrayDimensions": 0
-        }
-      ],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    }
-  ],
+  "unionTypes": [],
   "resources": []
 }

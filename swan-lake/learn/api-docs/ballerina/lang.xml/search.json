@@ -33,6 +33,11 @@
       "moduleId": "lang.xml"
     },
     {
+      "id": "createText",
+      "description": "\u003cp\u003eConstructs an xml sequence representing zero of more parsed characters.\u003c/p\u003e",
+      "moduleId": "lang.xml"
+    },
+    {
       "id": "elementChildren",
       "description": "\u003cp\u003eSelects element children of an xml value\u003c/p\u003e\n",
       "moduleId": "lang.xml"

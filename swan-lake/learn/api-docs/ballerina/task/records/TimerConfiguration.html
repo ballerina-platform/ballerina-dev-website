@@ -120,6 +120,10 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
         
         
         
+            <li>
+                <a data="constants" href="../../task/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
         
         
             <li>
@@ -230,6 +234,73 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
                 <p>
                     
                     <p>Number of times to trigger the task after which the task stops running</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >thresholdInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 5000)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The number of milliseconds the scheduler will tolerate a trigger to pass its
+next-fire-time by being considered <code>misfired</code> before.</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >misfirePolicy</span>
+                <span class="type">  <a href="../../task/types.html#TimerMisfirePolicy">TimerMisfirePolicy</a></span>
+                 <span class="default">(default smartPolicy)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The policy, which is used to inform what it should do when a misfire occurs. The following are the
+scenarios in which the policy can be used:
+One-time task (the task will be run once):
+smartPolicy - This is the default policy, which will act as <code>firenow</code>
+fireNow - fireNow - Instructs the scheduler if the Trigger misfires. Then, the trigger wants
+to be fired now by the scheduler.
+ignorePolicy - If the Trigger misfires, this instructs the scheduler that the trigger will
+never be evaluated for a misfire situation and that the scheduler will
+simply try to fire it as soon as it can and then update the trigger as
+if it had fired at the proper time.
+Recurrinng task(the task will be run repeatedly):
+smartPolicy - This is the default policy. If the repeat count is indefinite, this will act
+as the <code>rescheduleNextWithRemainigCount</code>. Else, it will act as the
+<code>rescheduleNowWithExistingRepeatCount</code>.
+fireNextWithExistingCount - Instructs the scheduler if the trigger misfires. Then,
+the trigger wants to be re-scheduled to the next
+scheduled time after 'now' and with the repeat count
+left unchanged.
+fireNextWithRemainingCount - Instructs the scheduler if the trigger misfires. Then,
+the trigger wants to be re-scheduled to the next scheduled time
+after 'now' and with the repeat count set to what it would be
+if it had not missed any firings.
+fireNowWithExistingCount - Instructs the scheduler if the trigger misfires. Then,
+the trigger wants to be re-scheduled to 'now' with the
+repeat count left as it is. If 'now' is after the end-time
+the Trigger will not fire again as this does obey
+the Trigger end-time.
+fireNowWithRemainingCount - Instructs the scheduler if the trigger misfires. Then,
+the trigger wants to be re-scheduled to
+'now' with the repeat count set to what it
+would be if it had not missed any firings.
+ignorePolicy - If the trigger misfires, this instructs the scheduler that the trigger will
+never be evaluated for a misfire situation and that the scheduler will
+simply try to fire it as soon as it can and then update the Trigger
+as if it had fired at the proper time.</p>
 
                 </p>
             </li>

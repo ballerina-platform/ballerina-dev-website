@@ -246,6 +246,262 @@
           "defaultValue": "",
           "type": {
             "orgName": "ballerina",
+            "moduleName": "lang.value",
+            "category": "types",
+            "isAnonymousUnionType": true,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "any",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "error",
+                "category": "errors",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "v",
+          "description": "",
+          "isDeprecated": false
+        },
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "typedesc",
+            "category": "UNKNOWN",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0,
+            "constraint": {
+              "orgName": "ballerina",
+              "moduleName": "lang.annotations",
+              "name": "any",
+              "category": "builtin",
+              "isAnonymousUnionType": false,
+              "isArrayType": false,
+              "isNullable": false,
+              "isTuple": false,
+              "isRestParam": false,
+              "isLambda": false,
+              "isDeprecated": false,
+              "generateUserDefinedTypeLink": true,
+              "memberTypes": [],
+              "paramTypes": [],
+              "arrayDimensions": 0
+            }
+          },
+          "name": "t",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.value",
+            "category": "types",
+            "isAnonymousUnionType": true,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "any",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "error",
+                "category": "errors",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
+      "name": "ensureType",
+      "description": "",
+      "isDeprecated": false
+    },
+    {
+      "isIsolated": true,
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "s",
+          "description": "\u003cp\u003ethe string to be parsed and evaluated\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.value",
+            "category": "types",
+            "isAnonymousUnionType": true,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "anydata",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "error",
+                "category": "errors",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "\u003cp\u003ethe result of evaluating the parsed expression, or\nan error if the string cannot be parsed\nThe subset of Ballerina expression syntax supported is that produced\nby toBalString when applied to an anydata value.\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "name": "fromBalString",
+      "description": "\u003cp\u003eParses and evaluates a subset of Ballerina expression syntax.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "isIsolated": true,
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
             "moduleName": "lang.annotations",
             "name": "string",
             "category": "builtin",
@@ -952,6 +1208,97 @@
           "defaultValue": "",
           "type": {
             "orgName": "ballerina",
+            "moduleName": "lang.value",
+            "category": "types",
+            "isAnonymousUnionType": true,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "any",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "error",
+                "category": "errors",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "v",
+          "description": "\u003cp\u003ethe value to be converted to a string\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "\u003cp\u003ea string resulting from the conversion\u003c/p\u003e\n\u003cp\u003eIf \u003ccode\u003ev\u003c/code\u003e is anydata and does not have cycles, then the result will\nconform to the grammar for a Ballerina expression and when evaluated\nwill result in a value that is \u003d\u003d to v.\u003c/p\u003e\n\u003cp\u003eThe details of the conversion are specified by the ToString abstract operation\ndefined in the Ballerina Language Specification, using the expression style.\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "name": "toBalString",
+      "description": "\u003cp\u003eConverts a value to a string that describes the value in Ballerina syntax.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "isIsolated": true,
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
             "moduleName": "lang.annotations",
             "name": "anydata",
             "category": "builtin",
@@ -1140,12 +1487,12 @@
             "arrayDimensions": 0
           },
           "name": "",
-          "description": "\u003cp\u003ea string resulting from the conversion\u003c/p\u003e\n\u003cp\u003eThe result of \u003ccode\u003etoString(v)\u003c/code\u003e is as follows:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is a string, then returns \u003ccode\u003ev\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is \u003ccode\u003e()\u003c/code\u003e, then returns an empty string\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is boolean, then the string \u003ccode\u003etrue\u003c/code\u003e or \u003ccode\u003efalse\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is an int, then return \u003ccode\u003ev\u003c/code\u003e represented as a decimal string\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is a float or decimal, then return \u003ccode\u003ev\u003c/code\u003e represented as a decimal string,\nwith a decimal point only if necessary, but without any suffix indicating the type of \u003ccode\u003ev\u003c/code\u003e;\nreturn \u003ccode\u003eNaN\u003c/code\u003e, \u003ccode\u003eInfinity\u003c/code\u003e for positive infinity, and \u003ccode\u003e-Infinity\u003c/code\u003e for negative infinity\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is a list, then returns the results toString on each member of the list\nseparated by a space character\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is a map, then returns key\u003dvalue for each member separated by a space character\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is xml, then returns \u003ccode\u003ev\u003c/code\u003e in XML format (as if it occurred within an XML element)\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is table, TBD\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is an error, then a string consisting of the following in order\n\u003col\u003e\n\u003cli\u003ethe string \u003ccode\u003eerror\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003ea space character\u003c/li\u003e\n\u003cli\u003ethe reason string\u003c/li\u003e\n\u003cli\u003eif the detail record is non-empty\n\u003col\u003e\n\u003cli\u003ea space character\u003c/li\u003e\n\u003cli\u003ethe result of calling toString on the detail record\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is an object, then\n\u003cul\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e provides a \u003ccode\u003etoString\u003c/code\u003e method with a string return type and no required methods,\nthen the result of calling that method on \u003ccode\u003ev\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003eotherwise, \u003ccode\u003eobject\u003c/code\u003e followed by some implementation-dependent string\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eif \u003ccode\u003ev\u003c/code\u003e is any other behavioral type, then the identifier for the behavioral type\n(\u003ccode\u003efunction\u003c/code\u003e, \u003ccode\u003efuture\u003c/code\u003e, \u003ccode\u003eservice\u003c/code\u003e, \u003ccode\u003etypedesc\u003c/code\u003e or \u003ccode\u003ehandle\u003c/code\u003e)\nfollowed by some implementation-dependent string\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eNote that \u003ccode\u003etoString\u003c/code\u003e may produce the same string for two Ballerina values\nthat are not equal (in the sense of the \u003ccode\u003e\u003d\u003d\u003c/code\u003e operator).\u003c/p\u003e\n",
+          "description": "\u003cp\u003ea string resulting from the conversion\u003c/p\u003e\n\u003cp\u003eThe details of the conversion are specified by the ToString abstract operation\ndefined in the Ballerina Language Specification, using the direct style.\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
       "name": "toString",
-      "description": "\u003cp\u003ePerforms a minimal conversion of a value to a string.\nThe conversion is minimal in particular in the sense\nthat the conversion applied to a value that is already\na string does nothing.\u003c/p\u003e\n",
+      "description": "\u003cp\u003ePerforms a direct conversion of a value to a string.\nThe conversion is direct in the sense that when applied to a value that is already\na string it leaves the value unchanged.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],

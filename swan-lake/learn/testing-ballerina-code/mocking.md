@@ -84,30 +84,37 @@ http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.
 function getRandomJoke(string name, string category = "food") returns string|error {
-    http:Response response = checkpanic clientEndpoint->get("/categories");
+    string replacedText = "";
+    var response = clientEndpoint->get("/categories");
 
     // Check if the provided category is available
-    if (response.statusCode == http:STATUS_OK) {
-        json[] categories = <json[]>response.getJsonPayload();
-        if (!isCategoryAvailable(categories, category)) {
-            error err = error("'" + category + "' is not a valid category.");
-            io:println(err.message());
-            return err;
+    if (response is http:Response) {
+        if (response.statusCode == http:STATUS_OK) {
+            json[] categories = <json[]> response.getJsonPayload();
+            if (!isCategoryAvailable(categories, category)) {
+                error err = error("'" + category + "' is not a valid category.");
+                io:println(err.message());
+                return err;
+            }
+        } else {
+            return createError(response);
         }
-    } else {
-    	return createError(response);
     }
 
     // Get a random joke from the provided category
-    response = checkpanic clientEndpoint->get("/random?category=" + category);
-    if (response.statusCode == http:STATUS_OK) {
-        json payload = <json>response.getJsonPayload();
-        json joke = <json>payload.value;
-        string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
-        return replacedText;
-    } else {
-    	return createError(response);
+    response = clientEndpoint->get("/random?category=" + category);
+    if (response is http:Response) {
+        if (response.statusCode == http:STATUS_OK) {
+            json payload = <json>response.getJsonPayload();
+            json joke = <json>payload.value;
+            replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+            return replacedText;
+        } else {
+            return createError(response);
+        }
     }
+
+    return replacedText;
 }
 ```
 

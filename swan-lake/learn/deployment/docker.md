@@ -92,23 +92,29 @@ service hello on new http:Listener(9090){
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
+   
+    WORKDIR /home/ballerina
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY hello_world_docker.jar /home/ballerina/jars/ 
+    ...
 
     RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
-    WORKDIR /home/ballerina
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
 
     COPY hello_world_docker.jar /home/ballerina
 
     USER ballerina
 
-    CMD java -jar hello_world_docker.jar
+    CMD java -Xdiag -cp "hello_world_docker.jar:jars/*" '$_init'
 
     ```
 
@@ -325,25 +331,30 @@ service hello on helloWorldEP {
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
-    RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
     WORKDIR /home/ballerina
-
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY https_service_in_docker.jar /home/ballerina/jars/ 
+    ...
     COPY https_service_in_docker.jar /home/ballerina
     COPY ballerinaKeystore.p12 ./ballerinaKeystore.p12
 
+    RUN addgroup troupe \
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
+
     EXPOSE  9095
     USER ballerina
-
-    CMD java -jar https_service_in_docker.jar
+    
+    CMD java -Xdiag -cp "https_service_in_docker.jar:jars/*" '$_init'
 
     ```
 
@@ -517,25 +528,30 @@ target = "java8"
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
-    RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
     WORKDIR /home/ballerina
-
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY copy_file.jar /home/ballerina/jars/ 
+    ...
     COPY copy_file.jar /home/ballerina
     COPY name.txt /home/ballerina/name.txt
 
+    RUN addgroup troupe \
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
+
     EXPOSE  9090
     USER ballerina
-
-    CMD java -jar copy_file.jar
+   
+    CMD java -Xdiag -cp "copy_file.jar:jars/*" '$_init'
     ```
 
 3. Verify that the Docker image is created.
@@ -582,7 +598,7 @@ target = "java8"
 
 ### Using a Custom Base Image to Build Ballerina Docker Images
 
-Ballerina ships a base image (e.g., `ballerina/jre8:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
+Ballerina ships a base image (e.g., `ballerina/jre11:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
 
 #### Setting Up the Prerequisites
 
@@ -598,7 +614,7 @@ import ballerina/docker;
  
 @docker:Config {
    name: "helloworld_custom_baseimage",
-   baseImage: "openjdk:8-jre-alpine"
+   baseImage: "openjdk:11-jre-slim"
 }
 service hello on new http:Listener(9090){
  
@@ -608,7 +624,7 @@ service hello on new http:Listener(9090){
 }
 ```
 
-> **Note:** This sample uses `openjdk:8-jre-alpine` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
+> **Note:** This sample uses `openjdk:11-jre-slim` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
 
 #### Steps to Run
 
@@ -648,16 +664,21 @@ service hello on new http:Listener(9090){
 
     ```
     # Auto Generated Dockerfile
-    FROM openjdk:8-jre-alpine
+    FROM openjdk:11-jre-slim
 
     LABEL maintainer="dev@ballerina.io"
-
+     
     WORKDIR /home/ballerina
-
+    
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY base_image.jar /home/ballerina/jars/ 
+    ...
     COPY base_image.jar /home/ballerina
 
     EXPOSE  9090
-    CMD java -jar base_image.jar
+    CMD java -Xdiag -cp "base_image.jar:jars/*" '$_init'
     ```
 
 2. Verify that the Docker image is created.
@@ -724,7 +745,7 @@ import ballerina/docker;
  
 @docker:Config {
    name: "custome_cmd",
-   cmd: "CMD java -jar ${APP} --b7a.http.accesslog.console=true"
+   cmd:    cmd: "CMD java -Xdiag -cp \"${APP}:jars/*\" '$_init' --b7a.http.accesslog.console=true"
 }
 service hello on new http:Listener(9090){
  
@@ -774,24 +795,31 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
-    RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
     WORKDIR /home/ballerina
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY docker_cmd.jar /home/ballerina/jars/ 
+    ...
+    COPY docker_cmd.jar /home/ballerina 
+   
+    RUN addgroup troupe \
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
 
     COPY docker_cmd.jar /home/ballerina
 
     EXPOSE  9090
     USER ballerina
-
-    CMD java -jar docker_cmd.jar --b7a.http.accesslog.console=true
+    
+    CMD java -Xdiag -cp "docker_cmd.jar:jars/*" '$_init' --b7a.http.accesslog.console=true
     ```
 
 2. Verify that the Docker image is created.

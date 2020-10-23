@@ -180,13 +180,13 @@ target = "java8"
 > ballerina bindgen -cp ./javalibs/snakeyaml-1.25.jar -o src/yamlparser
  org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
-Generating bindings for: 
+Generating bindings for:
 	java.util.Map
 	java.io.FileInputStream
 	org.yaml.snakeyaml.Yaml
 	java.io.InputStream
 
-Generating dependency bindings for: 
+Generating dependency bindings for:
 	org.yaml.snakeyaml.introspector.BeanAccess
 	java.util.function.BiFunction
 	org.yaml.snakeyaml.constructor.BaseConstructor
@@ -194,13 +194,13 @@ Generating dependency bindings for:
 	... 
 	... 
 ```
-- The `-cp` option specifies the list of Java libraries required to generate bindings. 
+- The `-cp` option specifies the list of Java libraries required to generate bindings.
 - The `-o` option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the `yamlparser` module. 
 - The argument list specifies the Java class names. 
 
-The `bindgen` tool generate bindings for 
-- The specified Java classes 
-- The Java classes exposed in the public APIs of all the specified classes. 
+The `bindgen` tool generate bindings for:
+- the specified Java classes
+- the Java classes exposed in the public APIs of all the specified classes
 
 
 Before we move onto the next step, let’s verify the generated code. 

@@ -12,21 +12,17 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
-<span class="nd">@test:Config {</span>
-    <span class="nx">groups</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;g1&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="nx">groups</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;g1&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test belonging to group g1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span>
-    <span class="nx">groups</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;g1&quot;</span><span class="p">,</span> <span class="s">&quot;g2&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="nx">groups</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;g1&quot;</span><span class="p">,</span> <span class="s">&quot;g2&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test belonging to groups g1 and g2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the ungrouped test&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
@@ -131,9 +127,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
-    groups: [&quot;g1&quot;]
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { groups: [&quot;g1&quot;] }
 function testFunction1() {
     io:println(&quot;I&#39;m in test belonging to group g1!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -156,9 +150,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
-    groups: [&quot;g1&quot;, &quot;g2&quot;]
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { groups: [&quot;g1&quot;, &quot;g2&quot;] }
 function testFunction2() {
     io:println(&quot;I&#39;m in test belonging to groups g1 and g2!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -181,7 +173,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testFunction3() {
     io:println(&quot;I&#39;m the ungrouped test&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -204,6 +196,18 @@ function testFunction3() {
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -269,10 +273,21 @@ Compiling tests
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
     testerina_group_tests.bal
-I&#39;m in test belonging to groups g1 and g2!
 I&#39;m in test belonging to group g1!
+I&#39;m in test belonging to groups g1 and g2!
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction1
         [pass] testFunction2
-        [pass] testFunction1
 </code></pre></div>
 
                                 </td>
@@ -314,10 +329,21 @@ Compiling tests
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
     testerina_group_tests.bal
-I&#39;m in test belonging to groups g1 and g2!
 I&#39;m in test belonging to group g1!
+I&#39;m in test belonging to groups g1 and g2!
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction1
         [pass] testFunction2
-        [pass] testFunction1
 </code></pre></div>
 
                                 </td>
@@ -359,10 +385,21 @@ Compiling tests
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
     testerina_group_tests.bal
-I&#39;m the ungrouped test
 I&#39;m in test belonging to group g1!
+I&#39;m the ungrouped test
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction1
         [pass] testFunction3
-        [pass] testFunction1
 </code></pre></div>
 
                                 </td>

@@ -36,8 +36,8 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending data to the client &quot;</span><span class="p">,</span>
-                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">);</span>
-            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">clientResponse</span><span class="p">);</span>
+                            <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
+            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -332,8 +332,8 @@ service HTTPStreamingService on new http:Listener(9090) {
             }
         } else {
             log:printError(&quot;Error occurred while sending data to the client &quot;,
-                            err = clientResponse);
-            setError(res, clientResponse);
+                            &lt;error&gt;clientResponse);
+            setError(res, &lt;error&gt;clientResponse);
         }
         var result = caller-&gt;respond(res);
         if (result is error) {

@@ -35,10 +35,11 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w3] Messages from w1: &quot;</span><span class="p">,</span> <span class="nx">w1val</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">w2val</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">wait</span> <span class="nx">w1</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">string</span> <span class="nx">expr</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">string</span> <span class="nx">expr</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted int|error {</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="kt">string</span> <span class="s">`/v4/?expr=${expr}`</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">check</span> <span class="p">&#39;int:fromString(check &lt;@untainted&gt; response.getTextPayload());</span>
+    <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span>
+        <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="kt">string</span> <span class="s">`/v4/?expr=${expr}`</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">check</span> <span class="p">&#39;int:fromString(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -346,10 +347,11 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function calculate(string expr) returns int|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function calculate(string expr) returns @tainted int|error {
     http:Client httpClient = new (&quot;https://api.mathjs.org&quot;);
-    var response = check httpClient-&gt;get(string `/v4/?expr=${expr}`);
-    return check &#39;int:fromString(check &lt;@untainted&gt; response.getTextPayload());
+    string response = &lt;string&gt; check
+        httpClient-&gt;get(string `/v4/?expr=${expr}`, targetType = string);
+    return check &#39;int:fromString(response);
 }
 </code></pre></div>
 

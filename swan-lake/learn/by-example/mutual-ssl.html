@@ -68,16 +68,11 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9095&quot;</span><span class="p">,</span> <span class="nx">clientEPConfig</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">resp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">((&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -432,14 +427,6 @@ ballerina run mutual_ssl_service.bal --b7a.home=&lt;ballerina_home_path&gt;
                         
                             
                                 
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -544,8 +531,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var resp = clientEP-&gt;get(&quot;/hello&quot;);
-    if (resp is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    var payload = clientEP-&gt;get(&quot;/hello&quot;, targetType = string);
+    if (payload is string) {
 </code></pre></div>
 
                                 </td>
@@ -553,7 +540,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send a GET request to the listener.</p>
+                                            <p>Send a GET request to the listener and bind the payload to a string value.</p>
 
                                         </div>
                                     </div>
@@ -564,29 +551,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = resp.getTextPayload();
-        if (payload is string) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the request is successful, retrieve the text payload from the
- response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(payload);
-        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(payload);
+    } else {
 </code></pre></div>
 
                                 </td>
@@ -604,30 +570,8 @@ import ballerina/log;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            log:printError(payload.message());
-        }
-    } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If an error occurs while retrieving the text payload, log
- the error.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:printError(resp.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printError((&lt;error&gt;payload).message());
     }
 }
 </code></pre></div>
@@ -637,7 +581,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If an error occurs while getting the response, log the error.</p>
+                                            <p>If an error occurs when getting the response or binding payload, log the error.</p>
 
                                         </div>
                                     </div>

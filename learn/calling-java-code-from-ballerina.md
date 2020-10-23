@@ -155,7 +155,7 @@ Great! You are all set for the next step.
 In this step, we'll use the `bindgen` tool to generate Ballerina bindings for those four classes that we talked about in Step 1. If you want more information about the tool, you can refer [The `bindgen` tool](#the-bindgen-tool).
 
 #### Copying the SnakeYAML Library to Your Project
-Download the latest version of the SnakeYAML library and copy it to the project. We need to copy only the SnakeYAML library but for most cases, you may need to copy more than one JAR file. Make sure that you add all the direct and transitive dependencies of them. 
+Download the latest version of the SnakeYAML library and copy it to the project. You need to copy only the SnakeYAML library but for most cases, you may need to copy more than one JAR file. Make sure that you add all the direct and transitive dependencies of them. 
 
 Create a directory in your project root to store all the Java libraries. 
 ```sh

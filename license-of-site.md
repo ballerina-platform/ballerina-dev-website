@@ -4,8 +4,6 @@ title: Ballerina Website License
 permalink: /license-of-site/
 ---
 
-# Ballerina Website License
-
 Except as detailed below, the content on this website is licensed under the [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/us/).
 
 ## What is not licensed?

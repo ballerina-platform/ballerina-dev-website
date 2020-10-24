@@ -238,5 +238,8 @@ let redirections = {
     "/1.0/learn/by-example/readonly-objects.html":"/1.0/page-not-available.html",
     "/swan-lake/learn/api-docs/ballerina/*/objects/*":"/swan-lake/learn/api-docs/ballerina/*/classes/*",
     "/swan-lake/learn/observing-ballerina-code/":"/swan-lake/page-not-available.html",
-    "/swan-lake/learn/extending-with-compiler-extensions/":"/swan-lake/page-not-available.html"
+    "/swan-lake/learn/extending-with-compiler-extensions/":"/swan-lake/page-not-available.html",
+    "/learn/by-example/websocket-cookie.html":"/page-not-available.html",
+    "/1.1/learn/by-example/websocket-cookie.html":"/1.1/page-not-available.html",
+    "/1.0/learn/by-example/websocket-cookie.html":"/1.0/page-not-available.html",
 };

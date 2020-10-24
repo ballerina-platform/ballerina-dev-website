@@ -242,4 +242,7 @@ let redirections = {
     "/learn/by-example/websocket-cookie.html":"/page-not-available.html",
     "/1.1/learn/by-example/websocket-cookie.html":"/1.1/page-not-available.html",
     "/1.0/learn/by-example/websocket-cookie.html":"/1.0/page-not-available.html",
+    "/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
+    "/1.1/learn/api-docs/ballerina/ftp/index.html":"/1.1/page-not-available.html",
+    "/1.0/learn/api-docs/ballerina/ftp/index.html":"/1.0/page-not-available.html"
 };

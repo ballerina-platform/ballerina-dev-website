@@ -49,18 +49,17 @@
   "constants": [],
   "errors": [
     {
+      "id": "Error",
+      "description": "\u003cp\u003eRepresents LDAP module related errors.\u003c/p\u003e",
+      "moduleId": "ldap"
+    },
+    {
       "id": "LdapError",
       "description": "\u003cp\u003eRepresents the LDAP error type with the message and the cause.\u003c/p\u003e",
       "moduleId": "ldap"
     }
   ],
-  "types": [
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents LDAP module related errors.\u003c/p\u003e",
-      "moduleId": "ldap"
-    }
-  ],
+  "types": [],
   "clients": [],
   "listeners": [],
   "annotations": [],

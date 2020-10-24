@@ -17,6 +17,11 @@
       "moduleId": "websub"
     },
     {
+      "id": "Bridge",
+      "description": "",
+      "moduleId": "websub"
+    },
+    {
       "id": "Hub",
       "description": "\u003cp\u003eRepresents the Ballerina WebSub Hub.\u003c/p\u003e",
       "moduleId": "websub"

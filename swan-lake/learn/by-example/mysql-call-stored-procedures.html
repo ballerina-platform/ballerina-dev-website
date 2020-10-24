@@ -63,7 +63,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">getCount</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">sqlClient</span><span class="p">)</span> <span class="p">{</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nInvoke `GetCount` procedure with INOUT &amp; OUT params&quot;</span><span class="p">);</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">InOutParameter</span> <span class="nx">id</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">OutParameter</span> <span class="nx">totalCount</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">IntegerOutParameter</span> <span class="nx">totalCount</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedCallQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span> 
                         <span class="s">`{CALL GetCount(${id}, ${totalCount})}`</span><span class="p">;</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
@@ -657,7 +657,7 @@ returns sql:Error? {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:InOutParameter id = new (1);
-    sql:OutParameter totalCount = new;
+    sql:IntegerOutParameter totalCount = new;
     sql:ParameterizedCallQuery sqlQuery = 
                         `{CALL GetCount(${id}, ${totalCount})}`;
 </code></pre></div>

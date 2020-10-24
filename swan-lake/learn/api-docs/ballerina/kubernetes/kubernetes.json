@@ -1,7 +1,7 @@
 {
   "id": "kubernetes",
   "summary": "\u003cp\u003eThis module offers an annotation based Kubernetes extension implementation for Ballerina.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based Kubernetes extension implementation for Ballerina.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/kubernetes/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor more information on the deployment, see the \u003ca href\u003d\"/swan-lake/learn/deployment/kubernetes/\"\u003eKubernetes Deployment Guide\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor examples on the usage of the operations, see the \u003ca href\u003d\"/swan-lake/learn/by-example/kubernetes-deployment.html\"\u003eAWS Lambda Deployment Example\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/log;\nimport ballerinax/kubernetes;\n\n@kubernetes:Ingress{\n    hostname: \u0026quot;abc.com\u0026quot;\n}\n@kubernetes:Service {\n    name:\u0026quot;hello\u0026quot;\n}\nlistener http:Listener helloEP \u003d new(9090);\n\n@kubernetes:Deployment {\n    livenessProbe: true\n}\n@http:ServiceConfig {\n    basePath: \u0026quot;/helloWorld\u0026quot;\n}\nservice helloWorld on helloEP {\n    resource function sayHello(http:Caller caller, http:Request request) {\n        http:Response response \u003d new;\n        response.setTextPayload(\u0026quot;Hello, World from service helloWorld ! \u0026quot;);\n        var responseResult \u003d caller-\u0026gt;respond(response);\n        if (responseResult is error) {\n            log:printError(\u0026quot;error responding back to client.\u0026quot;, err \u003d responseResult);\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based Kubernetes extension implementation for Ballerina.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFor more information on the deployment, see the \u003ca href\u003d\"/swan-lake/learn/deployment/kubernetes/\"\u003eKubernetes Deployment Guide\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor examples on the usage of the operations, see the \u003ca href\u003d\"/swan-lake/learn/by-example/kubernetes-deployment.html\"\u003eAWS Lambda Deployment Example\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/log;\nimport ballerinax/kubernetes;\n\n@kubernetes:Ingress{\n    hostname: \u0026quot;abc.com\u0026quot;\n}\n@kubernetes:Service {\n    name:\u0026quot;hello\u0026quot;\n}\nlistener http:Listener helloEP \u003d new(9090);\n\n@kubernetes:Deployment {\n    livenessProbe: true\n}\n@http:ServiceConfig {\n    basePath: \u0026quot;/helloWorld\u0026quot;\n}\nservice helloWorld on helloEP {\n    resource function sayHello(http:Caller caller, http:Request request) {\n        http:Response response \u003d new;\n        response.setTextPayload(\u0026quot;Hello, World from service helloWorld ! \u0026quot;);\n        var responseResult \u003d caller-\u0026gt;respond(response);\n        if (responseResult is error) {\n            log:printError(\u0026quot;error responding back to client.\u0026quot;, err \u003d responseResult);\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n",
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [
@@ -4183,7 +4183,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "function, service",
+      "attachmentPoints": "service, function",
       "name": "ConfigMap",
       "description": "\u003cp\u003e@kubernetes:ConfigMap annotation to configure config maps.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -4206,7 +4206,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "function, listener, service",
+      "attachmentPoints": "service, function, listener",
       "name": "Deployment",
       "description": "\u003cp\u003e@kubernetes:Deployment annotation to configure deplyoment yaml.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -4229,7 +4229,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "service, function",
+      "attachmentPoints": "function, service",
       "name": "HPA",
       "description": "\u003cp\u003e@kubernetes:HPA annotation to configure horizontal pod autoscaler yaml.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -4321,7 +4321,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "service, function",
+      "attachmentPoints": "function, service",
       "name": "ResourceQuota",
       "description": "\u003cp\u003e@kubernetes:ResourcesQuotas annotation to configure Resource Quotas.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -4344,7 +4344,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "service, function",
+      "attachmentPoints": "function, service",
       "name": "Secret",
       "description": "\u003cp\u003e@kubernetes:Secret annotation to configure secrets.\u003c/p\u003e\n",
       "isDeprecated": false

@@ -98,10 +98,6 @@
         
         
         
-            <li>
-                <a data="types" href="../auth/index.html#types" onclick="menuLinkClick()">Types</a>
-            </li>
-        
         
             <li>
                 <a data="errors" href="../auth/index.html#errors" onclick="menuLinkClick()">Errors</a>
@@ -141,7 +137,7 @@
             </h1>
             
     
-    <div>Version : 1.0.0</div>
+    <div>Version : 1.0.1</div>
     
     <h2>Module Overview</h2>
 <p>This module provides the default authentication provider configurations, which can be extended to create new authentication providers and functions to interact with the <code>auth:InvocationContext</code>.</p>
@@ -291,9 +287,6 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Checks whether the scopes of the user match the scopes of the resource.</p> 
                 </td>
             </tr>
@@ -303,9 +296,6 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                     <a class="functions " href="functions.html#extractUsernameAndPassword">extractUsernameAndPassword</a>
                 </td>
                 <td class="module-desc">
-                    
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
                     
                     <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.</p>   
                 </td>
@@ -317,9 +307,6 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Returns the <code>auth:InvocationContext</code> instance.</p>   
                 </td>
             </tr>
@@ -329,9 +316,6 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                     <a class="functions " href="functions.html#setInvocationContext">setInvocationContext</a>
                 </td>
                 <td class="module-desc">
-                    
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
                     
                     <p>Sets the authentication-related values to the invocation context.</p>   
                 </td>
@@ -430,28 +414,6 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
     
 
     
-    <section class="method-content" id="types">
-        <div class="main-method-title here">
-            <a class="url-link" href="#types">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> Types </h2>
-        </div>
-        <table>
-            
-            <tr>
-                <td class="module-title truncate types" id="Error" title="Error">
-                    <a class="types " href="types.html#Error">Error</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Represents the Auth module related error.</p> 
-                </td>
-            </tr>
-            
-        </table>
-    </section>
-    
 
     
     <section class="method-content" id="errors">
@@ -470,6 +432,16 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 <td class="module-desc">
                     
                     <p>Represents the Auth error.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="Error" title="Error">
+                    <a class="errors " href="errors.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the Auth module related error.</p> 
                 </td>
             </tr>
             

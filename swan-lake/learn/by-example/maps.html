@@ -10,7 +10,11 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="nx">type</span> <span class="nx">Humanities</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">int</span> <span class="nx">history</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">geography</span><span class="p">;</span>
+<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">;</span>    <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">codeLiteral</span> <span class="p">=</span> <span class="s">&quot;code&quot;</span><span class="p">;</span>
@@ -48,7 +52,8 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">modifiedMarks</span><span class="p">);</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">allMarks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">jane</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="o">...</span><span class="nx">modifiedMarks</span><span class="p">,</span> <span class="nx">amy</span><span class="p">:</span> <span class="mi">75</span><span class="p">};</span>
+    <span class="nx">Humanities</span> <span class="nx">humanitiesMarks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">history</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="nx">geography</span><span class="p">:</span> <span class="mi">75</span><span class="p">};</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">allMarks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">physics</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="o">...</span><span class="nx">humanitiesMarks</span><span class="p">,</span> <span class="nx">chemistry</span><span class="p">:</span> <span class="mi">75</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">allMarks</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -161,6 +166,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -174,6 +183,28 @@ redirect_from:
 
                                 </td>
                                 <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Humanities record {|
+    int history;
+    int geography;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A record representing marks received for humanities subjects.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -553,8 +584,27 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Humanities humanitiesMarks = {history: 80, geography: 75};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a record value of type <code>Humanities</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; allMarks = {jane: 100, ...modifiedMarks, amy: 75};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; allMarks = {physics: 100, ...humanitiesMarks, chemistry: 75};
     io:println(allMarks);
 }
 </code></pre></div>
@@ -568,8 +618,8 @@ redirect_from:
  referring to another mapping value. When a spread field is specified,
  all the fields of the relevant mapping value are added to the new
  mapping value being created.
- A spread field is used with <code>modifiedMarks</code> to include all the entries
- in <code>modifiedMarks</code> when creating <code>allMarks</code>.</p>
+ A spread field is used with <code>humanitiesMarks</code> to include all the entries
+ in <code>humanitiesMarks</code> when creating <code>allMarks</code>.</p>
 
                                         </div>
                                     </div>
@@ -612,7 +662,7 @@ Sri Lanka
 sam scored: 50
 jon scored: 60
 {&quot;sam&quot;:60,&quot;jon&quot;:70}
-{&quot;jane&quot;:100,&quot;sam&quot;:60,&quot;jon&quot;:70,&quot;amy&quot;:75}
+{&quot;physics&quot;:100,&quot;history&quot;:80,&quot;geography&quot;:75,&quot;chemistry&quot;:75}
 </code></pre></div>
 
                                 </td>

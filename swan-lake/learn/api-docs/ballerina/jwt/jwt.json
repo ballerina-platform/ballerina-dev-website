@@ -3,7 +3,7 @@
   "summary": "\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For examples on the usage of the operations, see the following.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/jwt-issue-validate.html\"\u003eJWT Issue/Validate Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/secured-client-with-jwt-auth.html\"\u003eSecured Client with JWT Auth Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/secured-service-with-jwt-auth.html\"\u003eSecured Service with JWT Auth Example\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n",
   "orgName": "ballerina",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "records": [
     {
       "fields": [
@@ -2177,6 +2177,28 @@
   "annotations": [],
   "errors": [
     {
+      "detailType": {
+        "orgName": "ballerina",
+        "moduleName": "jwt",
+        "name": "JWTError",
+        "category": "errors",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "name": "Error",
+      "description": "\u003cp\u003eRepresents the JWT error type with details. This will be returned if an error occurred while issuing/validating a\nJWT or any operation related to JWT.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
       "name": "JWTError",
       "description": "\u003cp\u003eRepresents the JWT distinct error\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2184,39 +2206,6 @@
   ],
   "finiteTypes": [],
   "unionTypes": [
-    {
-      "name": "Error",
-      "description": "\u003cp\u003eRepresents the JWT error type with details. This will be returned if an error occurred while issuing/validating a\nJWT or any operation related to JWT.\u003c/p\u003e\n",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isRestParam": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [
-        {
-          "orgName": "ballerina",
-          "moduleName": "jwt",
-          "name": "JWTError",
-          "category": "errors",
-          "isAnonymousUnionType": false,
-          "isArrayType": false,
-          "isNullable": false,
-          "isTuple": false,
-          "isRestParam": false,
-          "isLambda": false,
-          "isDeprecated": false,
-          "generateUserDefinedTypeLink": true,
-          "memberTypes": [],
-          "paramTypes": [],
-          "arrayDimensions": 0
-        }
-      ],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
     {
       "name": "JwtSigningAlgorithm",
       "description": "\u003cp\u003eThe key algorithms supported by crypto module.\u003c/p\u003e\n",

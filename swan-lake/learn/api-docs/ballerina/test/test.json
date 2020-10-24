@@ -360,7 +360,7 @@
       "fields": [],
       "methods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -417,7 +417,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -476,7 +476,7 @@
       ],
       "otherMethods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -533,7 +533,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -598,7 +598,7 @@
       "fields": [],
       "methods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -703,7 +703,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -771,7 +771,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -853,7 +853,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -865,7 +865,7 @@
       ],
       "otherMethods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -970,7 +970,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1038,7 +1038,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1120,7 +1120,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1138,7 +1138,7 @@
       "fields": [],
       "methods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1208,7 +1208,7 @@
       ],
       "otherMethods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1292,7 +1292,7 @@
       "fields": [],
       "methods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1360,7 +1360,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1465,7 +1465,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1475,7 +1475,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1509,7 +1509,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1521,7 +1521,7 @@
       ],
       "otherMethods": [
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1589,7 +1589,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1694,7 +1694,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1704,7 +1704,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1738,7 +1738,7 @@
           "isDeprecated": false
         },
         {
-          "isIsolated": false,
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1758,7 +1758,7 @@
   "listeners": [],
   "functions": [
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -1906,7 +1906,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2054,7 +2054,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2088,7 +2088,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2145,7 +2145,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2293,7 +2293,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2441,7 +2441,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2498,7 +2498,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2578,7 +2578,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2675,7 +2675,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2837,7 +2837,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2894,7 +2894,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [

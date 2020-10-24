@@ -10,42 +10,30 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">stringlib</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span><span class="kd">const</span> <span class="nx">EXEC_MAGIC_NUMBER</span> <span class="p">=</span> <span class="s">&quot;MZ&quot;</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nd">@untainted string secureParameter) {}type Student record {</span>
-    <span class="kt">string</span> <span class="nx">firstname</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">favQuote</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
                                        <span class="s">&quot;testdb&quot;</span><span class="p">,</span> <span class="mi">3306</span><span class="p">);</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span>
-            <span class="s">`SELECT firstName from student WHERE registration_id = ${args[0]}`</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">,</span> <span class="p">());</span>
-    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">isInteger</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="nx">userDefinedSecureOperation</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;SELECT name, favQuote from Student &quot;</span> <span class="o">+</span>
+                                 <span class="s">&quot;WHERE registrationId = &quot;</span> <span class="o">+</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">());</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>    <span class="k">if</span> <span class="p">!</span><span class="nx">stringlib</span><span class="p">:</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">EXEC_MAGIC_NUMBER</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">userDefinedSecureOperation</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Validation error: ID should be an integer&quot;</span><span class="p">);</span>
-        <span class="nx">panic</span> <span class="nx">err</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">data</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">result</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>        <span class="nx">Student</span> <span class="nx">jsonData</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">data</span><span class="err">?</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-        <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>        <span class="kt">string</span> <span class="nx">sanitizedData1</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>
-        <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData1</span><span class="p">);</span>        <span class="kt">string</span> <span class="nx">sanitizedData2</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>
-        <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData2</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">checkpanic</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="k">return</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Invalid input: executable code detected!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="k">var</span> <span class="nx">entry</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">result</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="nx">Student</span> <span class="nx">student</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">entry</span><span class="err">?</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">sanitizedData1</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData1</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">sanitizedData2</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData2</span><span class="p">);</span>    <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="kt">string</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="kt">string</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@untainted string {</span>
     <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">isInteger</span><span class="p">(</span><span class="kt">string</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">intVal</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">input</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">intVal</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -169,9 +157,20 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;int;
-import ballerina/sql;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;string as stringlib;
 import ballerinax/mysql;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const EXEC_MAGIC_NUMBER = &quot;MZ&quot;;
 </code></pre></div>
 
                                 </td>
@@ -216,7 +215,8 @@ import ballerinax/mysql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Student record {
-    string firstname;
+    string name;
+    string favQuote;
 };
 </code></pre></div>
 
@@ -243,9 +243,8 @@ import ballerinax/mysql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery sqlQuery =
-            `SELECT firstName from student WHERE registration_id = ${args[0]}`;
-    var result = dbClient-&gt;query(sqlQuery, ());
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = dbClient-&gt;query(&quot;SELECT name, favQuote from Student &quot; +
+                                 &quot;WHERE registrationId = &quot; + args[0], ());
 </code></pre></div>
 
                                 </td>
@@ -257,12 +256,14 @@ import ballerinax/mysql;
  are decorated with the <code>@untainted</code> annotation. This ensures that
  tainted data cannot pass into the security sensitive parameter.</p>
 
-<p>For example, the taint checking mechanism of Ballerina completely
- prevents SQL injection vulnerabilities by disallowing tainted data
- in the SQL query.</p>
+<p>For example, the taint-checking mechanism of Ballerina warns the user to prevent
+ SQL injection vulnerabilities by disallowing tainted data in the SQL query.</p>
 
-<p>Call to <code>query</code> action result in a compile time error because untainted
- data from <code>args[0]</code> is passed to it via <code>sqlQuery</code> value.</p>
+<p>The call to <code>query</code> action results in a compile time error because untainted
+ data from <code>args[0]</code> is directly used in the SQL query string.
+ Users should rather use raw templates when providing SQL query parameters
+ to make sure SQL injection attacks are not possible. For more information, see <a href="https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html">Parameterized Query</a>
+ support.</p>
 
                                         </div>
                                     </div>
@@ -273,7 +274,7 @@ import ballerinax/mysql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    userDefinedSecureOperation(args[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    userDefinedSecureOperation(args[1]);
 </code></pre></div>
 
                                 </td>
@@ -292,7 +293,7 @@ import ballerinax/mysql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (isInteger(args[0])) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if !stringlib:startsWith(args[1], EXEC_MAGIC_NUMBER) {
 </code></pre></div>
 
                                 </td>
@@ -304,10 +305,9 @@ import ballerinax/mysql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(&lt;@untainted&gt;args[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(&lt;@untainted&gt; args[1]);
     } else {
-        error err = error(&quot;Validation error: ID should be an integer&quot;);
-        panic err;
+        return error(&quot;Invalid input: executable code detected!&quot;);
     }
 </code></pre></div>
 
@@ -316,8 +316,8 @@ import ballerinax/mysql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>After performing necessary validations and/or escaping,
- we can use type cast expression with @untainted annotation
+                                            <p>After performing the necessary validations and/or escaping,
+ use the type-cast expression with the @untainted annotation
  to mark the proceeding value as <code>trusted</code> and pass it to a sensitive parameter.</p>
 
                                         </div>
@@ -329,20 +329,8 @@ import ballerinax/mysql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    while (true) {
-        var data = check result.next();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        Student jsonData = &lt;Student&gt; data?.value;
+                                    <div class="highlight"><pre><code class=language-ballerina>    var entry = check result.next();
+    Student student = &lt;Student&gt; entry?.value;
 </code></pre></div>
 
                                 </td>
@@ -354,7 +342,7 @@ import ballerinax/mysql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>    userDefinedSecureOperation(student.favQuote);
 </code></pre></div>
 
                                 </td>
@@ -362,7 +350,7 @@ import ballerinax/mysql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The return values of certain functions built-in to Ballerina are decorated with the <code>@tainted</code> annotation to
+                                            <p>The return values of certain functions in the Ballerina standard library are decorated with the <code>@tainted</code> annotation to
  denote that the return value should be untrusted (tainted). One such example is the data read from a
  database.</p>
 
@@ -378,7 +366,7 @@ import ballerinax/mysql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string sanitizedData1 = sanitizeAndReturnTainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string sanitizedData1 = sanitizeAndReturnTainted(student.favQuote);
 </code></pre></div>
 
                                 </td>
@@ -390,7 +378,7 @@ import ballerinax/mysql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(sanitizedData1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    userDefinedSecureOperation(sanitizedData1);
 </code></pre></div>
 
                                 </td>
@@ -399,7 +387,7 @@ import ballerinax/mysql;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This line results in a compile error because the <code>sanitize</code> function returns a value derived from the tainted
- data. Therefore, the return of the <code>sanitize</code> function is also tainted.</p>
+ data. Therefore, the return value of the <code>sanitize</code> function is also tainted.</p>
 
                                         </div>
                                     </div>
@@ -410,7 +398,7 @@ import ballerinax/mysql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string sanitizedData2 = sanitizeAndReturnUntainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string sanitizedData2 = sanitizeAndReturnUntainted(student.favQuote);
 </code></pre></div>
 
                                 </td>
@@ -422,11 +410,7 @@ import ballerinax/mysql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(sanitizedData2);
-    }
-    checkpanic dbClient.close();
-    return;
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>    userDefinedSecureOperation(sanitizedData2);
 </code></pre></div>
 
                                 </td>
@@ -434,12 +418,25 @@ import ballerinax/mysql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This line successfully compiles. Although the <code>sanitize</code> function returns a value derived from tainted data,
+                                            <p>This line compiles successfully. Although the <code>sanitize</code> function returns a value derived from tainted data,
  the return value is annotated with the <code>@untainted</code> annotation. This means that the return value is safe and can be
  trusted.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check dbClient.close();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -498,7 +495,7 @@ import ballerinax/mysql;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    return input;
 }
 </code></pre></div>
@@ -512,25 +509,6 @@ import ballerinax/mysql;
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function isInteger(string input) returns boolean {
-    var intVal = &#39;int:fromString(input);
-    if (intVal is error) {
-        return false;
-    } else {
-        return true;
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -554,10 +532,10 @@ import ballerinax/mysql;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run taint_checking.bal
-error: .::taint_checking.bal:29:0: tainted value passed to untainted parameter &#39;sqlQuery&#39;
-error: .::taint_checking.bal:32:0: tainted value passed to untainted parameter &#39;secureParameter&#39;
-error: .::taint_checking.bal:54:0: tainted value passed to untainted parameter &#39;secureParameter&#39;
-error: .::taint_checking.bal:59:0: tainted value passed to untainted parameter &#39;secureParameter&#39;
+error: .::taint_checking.bal:33:34: tainted value passed to untainted parameter &#39;sqlQuery&#39;
+error: .::taint_checking.bal:37:32: tainted value passed to untainted parameter &#39;secureParameter&#39;
+error: .::taint_checking.bal:56:32: tainted value passed to untainted parameter &#39;secureParameter&#39;
+error: .::taint_checking.bal:61:32: tainted value passed to untainted parameter &#39;secureParameter&#39;
 </code></pre></div>
 
                                 </td>

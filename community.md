@@ -6,8 +6,6 @@ keywords: ballerina, community, ballerina community
 permalink: /community/
 ---
 
-# The Ballerina Community
-
 The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
 We warmly welcome all contributors to the community to help establish Ballerina as a truly community-owned resource!

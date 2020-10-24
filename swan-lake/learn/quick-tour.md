@@ -180,4 +180,4 @@ Now, that you have taken Ballerina around for a quick tour, you can explore Ball
 * Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues.
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 
-<style> #tree-expand-all , #tree-collapse-all {display:none;} </style>
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} </style>

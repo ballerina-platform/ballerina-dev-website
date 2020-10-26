@@ -45,7 +45,7 @@ Generating executables
 
 	Run the following commands to deploy each Ballerina AWS Lambda function:
 	aws lambda create-function --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.<FUNCTION_NAME> --runtime provided --role <LAMBDA_ROLE_ARN> --timeout 10 --memory-size 1024
-	aws lambda update-function-configuration --function-name <FUNCTION_NAME> --layers arn:aws:lambda:<REGION_ID>:141896495686:layer:ballerina-jre11:1
+	aws lambda update-function-configuration --function-name <FUNCTION_NAME> --layers arn:aws:lambda:<REGION_ID>:134633749276:layer:ballerina-jre11:1
 
 	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
 	aws lambda update-function-code --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip
@@ -58,7 +58,7 @@ Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer
 A sample execution to deploy the hash function as an AWS Lambda is shown below. 
 
 ```bash
-$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina-jre11:1
+$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1
 {
     "FunctionName": "hash",
     "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:function:hash",
@@ -78,7 +78,7 @@ $ aws lambda create-function --function-name hash --zip-file fileb://aws-balleri
     "RevisionId": "d5400f01-f3b8-478b-9269-73c44f4537aa",
     "Layers": [
         {
-            "Arn": "arn:aws:lambda:us-west-1:141896495686:layer:ballerina-jre11:1",
+            "Arn": "arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1",
             "CodeSize": 697
         }
     ]

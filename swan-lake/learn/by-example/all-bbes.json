@@ -798,8 +798,8 @@
                 "url": "http-redirects"
             },
             {
-                "name": "Client data binding",
-                "url": "http-data-binding"
+                "name": "Client Data Binding",
+                "url": "http-client-data-binding"
             },
             {
                 "name": "Base Path and Path",

@@ -23,6 +23,7 @@ This release is the fifth preview version of Ballerina Swan Lake. This release i
         - [Misfire policy support for tasks](#misfire-policy-support-for-tasks)
     - [Developer Tools](#developer-tools)
         - [Code formatting](#code-formatting)
+- [Known Issues](#known-issues)
 
 ### Updating Ballerina
 
@@ -268,3 +269,7 @@ Improved formatting support for all the language features. The new formatter als
 
 - Range formatting
 - Line wrapping
+
+#### Known Issues
+
+The WebSub standard library module (ballerina/websub) is not working with Swan Lake Preview 5.

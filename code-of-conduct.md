@@ -109,8 +109,10 @@ Project/Community leaders will follow the below Community Impact Guidelines in d
 
 This code of conduct is adapted from the [Contributor Covenant, version 2.0](https://www.contributor-covenant.org/version/2/0/code_of_conduct).
 
-<style>
+<!--<style>
 .nav > li.cVersionItem {
     display: none !important;
 }
-</style>
+</style>-->
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

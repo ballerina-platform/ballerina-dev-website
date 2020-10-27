@@ -10,7 +10,6 @@ redirect_from:
 ---
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
-<h1>Events</h1>
 <!-- <h2>No upcoming events</h2> -->
 <h2>Upcoming Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">

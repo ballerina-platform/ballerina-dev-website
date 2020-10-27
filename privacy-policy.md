@@ -145,4 +145,9 @@ For further information about our Privacy Policy or if you have any questions, c
 .nav > li.cVersionItem  , .cBallerinaTocContainer {
     display: none !important;
 }
+
+.cBallerinaTocContainer  {
+    display:none;
+}
+
 </style>

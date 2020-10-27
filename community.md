@@ -172,6 +172,8 @@ display: inline-block;
 position: absolute;
 margin: -150px 0px 0px;
 }
-
+.cBallerinaTocContainer  {
+    display:none;
+}
 
 </style>

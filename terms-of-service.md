@@ -2,6 +2,7 @@
 layout: ballerina-inner-page
 title: Terms of Service
 permalink: /terms-of-service/
+intro: The content below include the terms of service for Ballerina.
 ---
 
 <style>

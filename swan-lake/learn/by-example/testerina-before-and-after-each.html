@@ -6,8 +6,6 @@ permalink: /swan-lake/learn/by-example/testerina-before-and-after-each
 redirect_from:
   - /vswan-lake/learn/by-example/testerina-before-and-after-each
   - /vswan-lake/learn/by-example/testerina-before-and-after-each.html
-  - /swan-lake/learn/by-example/testerina-before-each-test
-  - /swan-lake/learn/by-example/testerina-before-each-test.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -22,17 +20,17 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">afterEachFunc</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the after each function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 3!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
@@ -183,7 +181,7 @@ function afterEachFunc() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testFunction1() {
     io:println(&quot;I&#39;m in test function 1!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -206,7 +204,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testFunction2() {
     io:println(&quot;I&#39;m in test function 2!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -229,7 +227,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testFunction3() {
     io:println(&quot;I&#39;m in test function 3!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -330,9 +328,9 @@ I&#39;m the after each function!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction3
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction1
         [pass] testFunction2
-        [pass] testFunction1
+        [pass] testFunction3
 </code></pre></div>
 
                                 </td>

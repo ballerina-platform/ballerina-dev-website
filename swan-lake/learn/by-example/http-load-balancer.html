@@ -29,14 +29,14 @@ redirect_from:
         <span class="kt">json</span> <span class="nx">requestPayload</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">lbBackendEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">requestPayload</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">outResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">outResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">outResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
@@ -330,14 +330,14 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (response is http:Response) {
-            var responseToCaller = caller-&gt;respond(response);
+            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;response);
             if (responseToCaller is http:ListenerError) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
             }
         } else {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
-            outResponse.setPayload(&lt;string&gt;response.message());
+            outResponse.setPayload((&lt;@untainted error&gt;response).message());
             var responseToCaller = caller-&gt;respond(outResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);

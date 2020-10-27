@@ -308,9 +308,9 @@ the RFC 2045 standard.
             </a>
             <h2 > base64Decode </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeDecoded, <span class="builtin-type">string</span> charset)</p>
+            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeDecoded, <span class="builtin-type">string</span> charset)</p>
             
-                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
             
         </span>
     </div>
@@ -330,7 +330,7 @@ the RFC 2045 standard.
                 <ul>
                     <li>
                         <span >contentToBeDecoded</span>
-                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
@@ -367,7 +367,7 @@ the RFC 2045 standard.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a></span>)</li>
                 <li><p>A decoded <code>string</code> if the given input is of type string, a decoded <code>byte[]</code> if the given input is of
 type byte[], a decoded <code>io:ReadableByteChannel</code> if the given input is of type io:ReadableByteChannel
 or else a <code>mime:DecodeError</code> in case of errors</p>
@@ -443,9 +443,9 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
             </a>
             <h2 > base64Encode </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeEncoded, <span class="builtin-type">string</span> charset)</p>
+            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeEncoded, <span class="builtin-type">string</span> charset)</p>
             
-                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
             
         </span>
     </div>
@@ -465,7 +465,7 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
                 <ul>
                     <li>
                         <span >contentToBeEncoded</span>
-                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
@@ -502,7 +502,7 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a></span>)</li>
                 <li><p>An encoded <code>string</code> if the given input is of type string, an encoded <code>byte[]</code> if the given input is of
 type byte[], an encoded <code>io:ReadableByteChannel</code> if the given input is of type <code>io:ReadableByteChannel</code>,
 or else a <code>mime:EncodeError</code> record in case of errors</p>

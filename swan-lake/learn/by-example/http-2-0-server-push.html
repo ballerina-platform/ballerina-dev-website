@@ -103,7 +103,7 @@ redirect_from:
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while fetching response&quot;</span><span class="p">,</span>
-            <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>    <span class="k">var</span> <span class="nx">responsePayload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">responsePayload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
@@ -976,7 +976,7 @@ import ballerina/log;
         response = result;
     } else {
         log:printError(&quot;Error occurred while fetching response&quot;,
-            err = result);
+                &lt;error&gt;result);
         return;
     }
 </code></pre></div>

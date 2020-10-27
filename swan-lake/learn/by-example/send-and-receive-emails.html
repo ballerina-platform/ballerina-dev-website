@@ -11,7 +11,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;smtp.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;sender@email.com&quot;</span>
         <span class="p">,</span> <span class="s">&quot;pass123&quot;</span><span class="p">);</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">email</span> <span class="p">=</span> <span class="p">{</span>
@@ -24,37 +24,20 @@ redirect_from:
         <span class="nx">sender</span><span class="p">:</span> <span class="s">&quot;sender@email.com&quot;</span><span class="p">,</span>
         <span class="nx">replyTo</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;replyTo1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;replyTo2@email.com&quot;</span><span class="p">]</span>
     <span class="p">};</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while sending the email: &quot;</span>
-            <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">popClient</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while getting getting response: &quot;</span>
-                <span class="o">+</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while creating client: &quot;</span>
-            <span class="o">+</span> <span class="nx">popClient</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">imapClient</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while getting getting response: &quot;</span>
-                <span class="o">+</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while creating client: &quot;</span>
-            <span class="o">+</span> <span class="nx">imapClient</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
+    <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
     <span class="p">}}</span>
 <span class="nx">email</span><span class="p">:</span><span class="nx">PopConfig</span> <span class="nx">popConfig</span> <span class="p">=</span> <span class="p">{</span>
      <span class="nx">port</span><span class="p">:</span> <span class="mi">995</span><span class="p">,</span>
@@ -196,12 +179,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -223,7 +200,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -400,7 +377,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:Error? response = smtpClient-&gt;send(email);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check smtpClient-&gt;send(email);
 </code></pre></div>
 
                                 </td>
@@ -416,26 +393,11 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (response is email:Error) {
-        io:println(&quot;Error while sending the email: &quot;
-            + response.message());
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;,
-        &quot;reader@email.com&quot;, &quot;pass456&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:PopClient popClient = new (&quot;pop.email.com&quot;, &quot;reader@email.com&quot;,
+        &quot;pass456&quot;);
 </code></pre></div>
 
                                 </td>
@@ -444,8 +406,8 @@ import ballerina/io;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Create the client with the connection parameters, host, username, and
- password. An error is received in a failure. The default port number <code>995</code> is
- used over SSL with these configurations.</p>
+ password. An error is received in a failure. The default port number
+ <code>995</code> is used over SSL with these configurations.</p>
 
                                         </div>
                                     </div>
@@ -453,22 +415,10 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (popClient is email:PopClient) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        email:Email|email:Error? emailResponse = popClient-&gt;read();
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Email? emailResponse = check popClient-&gt;read();
 </code></pre></div>
 
                                 </td>
@@ -489,9 +439,9 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (emailResponse is email:Email) {
-            io:println(&quot;Email Subject: &quot;, emailResponse.subject);
-            io:println(&quot;Email Body: &quot;, emailResponse.body);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (emailResponse is email:Email) {
+        io:println(&quot;Email Subject: &quot;, emailResponse.subject);
+        io:println(&quot;Email Body: &quot;, emailResponse.body);
 </code></pre></div>
 
                                 </td>
@@ -503,7 +453,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        } else if (emailResponse is ()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
 </code></pre></div>
 
                                 </td>
@@ -522,14 +472,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;There are no emails in the INBOX.&quot;);
-        } else {
-            io:println(&quot;Error while getting getting response: &quot;
-                + emailResponse.message());
-        }
-    } else {
-        io:println(&quot;Error while creating client: &quot;
-            + popClient.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;There are no emails in the INBOX.&quot;);
     }
 </code></pre></div>
 
@@ -542,8 +485,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;,
-        &quot;reader@email.com&quot;, &quot;pass456&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:ImapClient imapClient = new (&quot;imap.email.com&quot;, &quot;reader@email.com&quot;,
+        &quot;pass456&quot;);
 </code></pre></div>
 
                                 </td>
@@ -552,8 +495,8 @@ import ballerina/io;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Create the client with the connection parameters, host, username, and
- password. An error is received in a failure. The default port number <code>993</code> is
- used over SSL with these configurations.</p>
+ password. An error is received in a failure. The default port number
+ <code>993</code> is used over SSL with these configurations.</p>
 
                                         </div>
                                     </div>
@@ -561,22 +504,10 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (imapClient is email:ImapClient) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        email:Email|email:Error? emailResponse = imapClient-&gt;read();
+                                    <div class="highlight"><pre><code class=language-ballerina>    emailResponse = check imapClient-&gt;read();
 </code></pre></div>
 
                                 </td>
@@ -597,9 +528,9 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (emailResponse is email:Email) {
-            io:println(&quot;Email Subject: &quot;, emailResponse.subject);
-            io:println(&quot;Email Body: &quot;, emailResponse.body);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (emailResponse is email:Email) {
+        io:println(&quot;Email Subject: &quot;, emailResponse.subject);
+        io:println(&quot;Email Body: &quot;, emailResponse.body);
 </code></pre></div>
 
                                 </td>
@@ -611,7 +542,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        } else if (emailResponse is ()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
 </code></pre></div>
 
                                 </td>
@@ -630,14 +561,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;There are no emails in the INBOX.&quot;);
-        } else {
-            io:println(&quot;Error while getting getting response: &quot;
-                + emailResponse.message());
-        }
-    } else {
-        io:println(&quot;Error while creating client: &quot;
-            + imapClient.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;There are no emails in the INBOX.&quot;);
     }
 </code></pre></div>
 

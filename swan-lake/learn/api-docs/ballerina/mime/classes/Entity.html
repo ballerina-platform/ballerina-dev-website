@@ -928,7 +928,7 @@ and an entity(body part) inside of a multipart entity.</p>
             </a>
             <h2 > setBody </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> entityBody)</p>
+            <p>(<span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> entityBody)</p>
             
         </span>
     </div>
@@ -951,7 +951,7 @@ JSON-compatible string, set the content-type header to <code>application/json</c
                 <ul>
                     <li>
                         <span >entityBody</span>
-                        <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> </span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> </span>
                         
                     </li>
                     <li>
@@ -1460,7 +1460,7 @@ errors</p>
             </a>
             <h2 > setByteChannel </h2>
         <span class="method-types">
-            <p>(<a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> byteChannel, <span class="builtin-type">string</span> contentType)</p>
+            <p>(<a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> byteChannel, <span class="builtin-type">string</span> contentType)</p>
             
         </span>
     </div>
@@ -1482,7 +1482,7 @@ can be overridden by passing the content-type as an optional parameter.</p>
                 <ul>
                     <li>
                         <span >byteChannel</span>
-                        <span class="type">  <a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span class="type">  <a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
@@ -1528,7 +1528,7 @@ The <code>application/octet-stream</code> is the default value</p>
         <span class="method-types">
             <p>()</p>
             
-                <b> returns </b><a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+                <b> returns </b><a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
             
         </span>
     </div>
@@ -1546,7 +1546,7 @@ The <code>application/octet-stream</code> is the default value</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
                 <li><p>An <code>io:ReadableByteChannel</code> or else a <code>mime:ParserError</code> record will be returned in case of errors</p>
 </li>
             </ul>
@@ -1601,7 +1601,7 @@ entity body is not a set of the body parts</p>
         <span class="method-types">
             <p>()</p>
             
-                <b> returns </b><a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+                <b> returns </b><a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
             
         </span>
     </div>
@@ -1619,7 +1619,7 @@ entity body is not a set of the body parts</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
                 <li><p>Body parts as a byte channel</p>
 </li>
             </ul>

@@ -3,7 +3,7 @@
   "summary": "\u003cp\u003eThis module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.\u003c/p\u003e\n\u003cp\u003eFor information on the operation, which you can perform with this module, see the below Function. For examples on the usage of the operation, see \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/math-functions.html\"\u003eMath Api\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "records": [],
   "classes": [],
   "abstractObjects": [],
@@ -2744,43 +2744,31 @@
       "name": "ArithmeticError",
       "description": "\u003cp\u003eRepresents an error occurred in the \u003ccode\u003emath\u003c/code\u003e operation.\u003c/p\u003e\n",
       "isDeprecated": false
+    },
+    {
+      "detailType": {
+        "orgName": "ballerina",
+        "moduleName": "math",
+        "name": "ArithmeticError",
+        "category": "errors",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "name": "Error",
+      "description": "\u003cp\u003eThe union of all the Math related errors\u003c/p\u003e\n",
+      "isDeprecated": false
     }
   ],
   "finiteTypes": [],
-  "unionTypes": [
-    {
-      "name": "Error",
-      "description": "\u003cp\u003eThe union of all the Math related errors\u003c/p\u003e\n",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isRestParam": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [
-        {
-          "orgName": "ballerina",
-          "moduleName": "math",
-          "name": "ArithmeticError",
-          "category": "errors",
-          "isAnonymousUnionType": false,
-          "isArrayType": false,
-          "isNullable": false,
-          "isTuple": false,
-          "isRestParam": false,
-          "isLambda": false,
-          "isDeprecated": false,
-          "generateUserDefinedTypeLink": true,
-          "memberTypes": [],
-          "paramTypes": [],
-          "arrayDimensions": 0
-        }
-      ],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    }
-  ],
+  "unionTypes": [],
   "resources": []
 }

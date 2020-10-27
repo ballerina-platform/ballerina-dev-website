@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Run and Debug
 permalink: /swan-lake/learn/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug
+intro: The VS Code Ballerina extension gives you the  same debugging experience as the conventional VS Code Debugger. Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
 redirect_from:
   - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug
   - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug/
@@ -14,15 +15,6 @@ redirect_from:
   - /swan-lake/learn/run-and-debug
   - /swan-lake/learn/run-and-debug/
 ---
-
-# Run and Debug
-
-The VS Code Ballerina extension gives you the  same debugging experience as the conventional VS Code Debugger.
-
-Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
-
-- [Starting a Debug Session](#starting-a-debug-session)
-- [Troubleshooting](#troubleshooting)
 
 ## Starting a Debug Session
 
@@ -47,7 +39,7 @@ For more information on debugging your code using VS Code, go to [VS Code Docume
 - There are some cases where stepping over gives unexpected behavior
     - Eg: When there are multiple workers and a wait expression waiting for them, even though step over hit and pass wait line in source, workers are not yet finished execution.
 
-## What's next?
+## What's Next?
 
  - For information on the next capability of the VS Code Ballerina extension, see [Graphical View](/swan-lake/learn/vscode-plugin/graphical-editor).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/swan-lake/learn/vscode-plugin).

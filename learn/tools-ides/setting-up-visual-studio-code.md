@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Setting Up Visual Studio Code
 permalink: /learn/setting-up-visual-studio-code/
 active: setting-up-visual-studio-code
+intro: The VS Code Ballerina extension provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code extension.
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin
   - /v1-2/learn/tools-ides/vscode-plugin/
@@ -16,16 +17,6 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/
   - /learn/setting-up-visual-studio-code
 ---
-
-# Setting Up Visual Studio Code 
-
-The VS Code Ballerina extension provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code extension.
-
-- [Downloading VS Code](#downloading-vs-code)
-- [Installing the extension](#installing-the-extension)
-  - [Installing via the VS Code Editor](#installing-via-the-vs-code-editor)
-  - [Installing via the Command Line](#installing-via-the-command-line)
-- [Using the extension](#using-the-extension)
 
 ## Downloading VS Code 
 
@@ -76,13 +67,14 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 > **Tip:** Ballerina Language Specification supports a set of experimental features such as transactions syntax. In order to be compatible with the experimental features and for supporting language intelligence in VS Code Extension, enable the Allow Experimental option in user settings.
 
-> **Troubleshooting**: If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. Herein, If you are using Mac OS, press 'Command+Q' keys to quit the app and reopen it.
+## Troubleshooting
 
-The below sections include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
+ If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using Mac OS, press 'Command+Q' keys to quit the app and reopen it.
+
+The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 
 - [Language Intelligence](/learn/vscode-plugin/language-intelligence)
 - [Run and Debug](/learn/vscode-plugin/run-and-debug)
 - [Graphical View](/learn/vscode-plugin/graphical-editor)
 - [Documentation Viewer](/learn/vscode-plugin/documentation-viewer)
 - [Run All Tests](/learn/vscode-plugin/run-all-tests)
-

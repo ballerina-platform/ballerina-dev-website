@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Setting up IntelliJ IDEA
 permalink: /learn/setting-up-intellij-idea/
 active: setting-up-intellij-idea
+intro: The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. The below sections include instructions on how to download, install, and use the features of the IntelliJ plugin.
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/
@@ -17,22 +18,7 @@ redirect_from:
   - /learn/setting-up-intellij-idea
 ---
 
-# Setting up IntelliJ IDEA
-
-The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. The below sections include instructions on how to download, install, and use the features of the IntelliJ plugin.
-
-- [Prerequisites](#prerequisites)
-- [Installing the plugin](#installing-the-plugin)
-  - [Installing via the IntelliJ IDE](#installing-via-the-intellij-ide)
-  - [Installing Using the ZIP File](#installing-using-the-zip-file)
-    - [Obtaining the ZIP File](#obtaining-the-zip-file)
-    - [Downloading from the JetBrains Plugin Repository](#downloading-from-the-jetbrains-plugin-repository)
-    - [Building from the Source](#building-from-the-source)
-    - [Installing the ZIP File via the IDE](#installing-the-zip-file-via-the-ide)
-- [Using the Plugin](#using-the-plugin)
-- [Using the Features of the Plugin](#using-the-features-of-the-plugin)
-
-## Prerequisites
+## Setting Up the Prerequisites
 
 You need [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) installed.
 

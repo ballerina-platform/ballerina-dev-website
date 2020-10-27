@@ -5,6 +5,7 @@ description: Learn how to write unstructured documents with a bit of structure t
 keywords: ballerina, programming language, api documentation, api docs
 permalink: /learn/documenting-ballerina-code/
 active: documenting-ballerina-code
+intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
 redirect_from:
   - /learn/how-to-document-ballerina-code
   - /learn/how-to-document-ballerina-code/
@@ -12,16 +13,6 @@ redirect_from:
   - /v1-2/learn/how-to-document-ballerina-code/
   - /learn/documenting-ballerina-code
 ---
-
-# Documenting Ballerina Code
-
-Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
-
-- [Generating Documentation for Modules](#generating-documentation-for-modules)
-- [Writing Ballerina Documentation](#writing-ballerina-documentation)
-  - [Sample Usage](#sample-usage)
-- [Documenting a Module](#documenting-a-module)
-- [Generating Ballerina Documentation](#generating-ballerina-documentation)
 
 ## Generating Documentation for Modules
 
@@ -102,7 +93,7 @@ public function foo(int i, string s) returns boolean {
 public function submit(@sensitive string httpVerb, string path, Request request) returns HttpFuture|error;
 ```
 
-## Documenting A Module
+## Documenting a Module
 
 A Ballerina module can have a `Module.md` file, which describes the module and its usage.
 

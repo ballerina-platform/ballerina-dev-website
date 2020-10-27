@@ -128,7 +128,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -267,7 +267,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -989,7 +989,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1284,7 +1284,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

@@ -89,6 +89,10 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
         
         
         
+            <li>
+                <a data="constants" href="../task/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
         
         
             <li>
@@ -134,7 +138,7 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
             </h1>
             
     
-    <div>Version : 1.1.0</div>
+    <div>Version : 1.1.1</div>
     
     <h2>Module Overview</h2>
 <p>This module provides the functionality to configure and manage Task Listeners and Task Schedulers.
@@ -317,6 +321,108 @@ task:Scheduler appointment = new(appointmentConfiguration);
 
 
     
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SMART_POLICY" title="SMART_POLICY">
+                    <a class="constant " href="constants.html#SMART_POLICY">SMART_POLICY</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>smartPolicy</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="DO_NOTHING" title="DO_NOTHING">
+                    <a class="constant " href="constants.html#DO_NOTHING">DO_NOTHING</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>doNothing</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="FIRE_AND_PROCEED" title="FIRE_AND_PROCEED">
+                    <a class="constant " href="constants.html#FIRE_AND_PROCEED">FIRE_AND_PROCEED</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>fireAndProceed</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="FIRE_NEXT_WITH_EXISTING_COUNT" title="FIRE_NEXT_WITH_EXISTING_COUNT">
+                    <a class="constant " href="constants.html#FIRE_NEXT_WITH_EXISTING_COUNT">FIRE_NEXT_WITH_EXISTING_COUNT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>fireNextWithExistingCount</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="FIRE_NEXT_WITH_REMAINING_COUNT" title="FIRE_NEXT_WITH_REMAINING_COUNT">
+                    <a class="constant " href="constants.html#FIRE_NEXT_WITH_REMAINING_COUNT">FIRE_NEXT_WITH_REMAINING_COUNT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>fireNextWithRemainingCount</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="FIRE_NOW_WITH_EXISTING_COUNT" title="FIRE_NOW_WITH_EXISTING_COUNT">
+                    <a class="constant " href="constants.html#FIRE_NOW_WITH_EXISTING_COUNT">FIRE_NOW_WITH_EXISTING_COUNT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>fireNowWithExistingCount</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="FIRE_NOW_WITH_REMAINING_COUNT" title="FIRE_NOW_WITH_REMAINING_COUNT">
+                    <a class="constant " href="constants.html#FIRE_NOW_WITH_REMAINING_COUNT">FIRE_NOW_WITH_REMAINING_COUNT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>fireNowWithRemainingCount</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="FIRE_NOW" title="FIRE_NOW">
+                    <a class="constant " href="constants.html#FIRE_NOW">FIRE_NOW</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>fireNow</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="IGNORE_POLICY" title="IGNORE_POLICY">
+                    <a class="constant " href="constants.html#IGNORE_POLICY">IGNORE_POLICY</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The value of this constant is <code>ignorePolicy</code>.</p> 
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
     
@@ -332,12 +438,52 @@ task:Scheduler appointment = new(appointmentConfiguration);
         <table>
             
             <tr>
+                <td class="module-title truncate types" id="AppointmentMisfirePolicy" title="AppointmentMisfirePolicy">
+                    <a class="types " href="types.html#AppointmentMisfirePolicy">AppointmentMisfirePolicy</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Possible types of parameters that can be passed into the <code>AppointmentTaskPolicy</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
                 <td class="module-title truncate types" id="Error" title="Error">
                     <a class="types " href="types.html#Error">Error</a>
                 </td>
                 <td class="module-desc">
                     
                     <p>Represents the Union error type of the ballerina/task module.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="OneTimeTaskPolicy" title="OneTimeTaskPolicy">
+                    <a class="types " href="types.html#OneTimeTaskPolicy">OneTimeTaskPolicy</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Possible types of parameters that can be passed into the <code>OneTimeTaskPolicy</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="RecurringTaskPolicy" title="RecurringTaskPolicy">
+                    <a class="types " href="types.html#RecurringTaskPolicy">RecurringTaskPolicy</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Possible types of parameters that can be passed into the <code>RecurringTaskPolicy</code>.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="TimerMisfirePolicy" title="TimerMisfirePolicy">
+                    <a class="types " href="types.html#TimerMisfirePolicy">TimerMisfirePolicy</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Possible types of parameters that can be passed into the <code>TimerTaskPolicy</code>.</p> 
                 </td>
             </tr>
             

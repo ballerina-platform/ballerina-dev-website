@@ -5,6 +5,7 @@ description: Learn all the command line interface (CLI) commands need to get sta
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/using-the-cli-tools/
 active: using-the-cli-tools
+intro: The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /v1-2/learn/cli-commands
   - /v1-2/learn/cli-commands/
@@ -13,27 +14,21 @@ redirect_from:
   - /learn/using-the-cli-tools
 ---
 
-# Using the CLI Tools
+## Using the 'ballerina' Command
 
-The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. You can use it in the below format.
-
-> `ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
-
-In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below:
+In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below.
 
 ![CLI commands](/learn/images/cli-commands.png)
 
-- [Core commands](#core-commands)
-- [Module commands](#module-commands)
-- [Project commands](#project-commands)
-- [Other commands](#other-commands)
-- [Update commands](#update-commands)
+ You can use the `ballerina` command in the below format.
+
+> `ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
 
 > **Tip:** You can view details of any of the commands below by executing `ballerina help <COMMAND>`. For example, the below is the output of the `ballerina help pull` command.
 
 ![Ballerina help output](/learn/images/ballerina-help-output.png)
 
-## Core commands
+## Core Commands
 
 These everyday commands are your best friends! They address the very basics of programming in Ballerina such as compiling, running, testing programs, and generating their documentation.
 
@@ -91,7 +86,7 @@ These commands allow you to work with the Ballerina Central to share Ballerina m
 </tr>
 </table>
 
-## Project commands
+## Project Commands
 
 Ballerina projects are the way to organize real world Ballerina development tasks. 
 
@@ -108,7 +103,7 @@ Ballerina projects are the way to organize real world Ballerina development task
 </tr>
 </table>
 
-## Other commands
+## Other Commands
 
 These powerful supporting tools extend Ballerina to various ecosystem technologies that are inherently cloud-native. This functionality will grow over time and will even be developer extensible in the future.
 
@@ -141,7 +136,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 </table>
 
-## Update commands
+## Update Commands
 
 <table class="cComandTable">
 <tr>

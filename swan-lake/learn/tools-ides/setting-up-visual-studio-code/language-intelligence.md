@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Language Intelligence
 permalink: /swan-lake/learn/setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence
+intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency. Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 redirect_from:
   - /swan-lake/learn/tools-ides/vscode-plugin/language-intelligence
   - /swan-lake/learn/tools-ides/vscode-plugin/language-intelligence/
@@ -15,19 +16,7 @@ redirect_from:
   - /swan-lake/learn/language-intelligence/
 ---
 
-# Language Intelligence
-
-The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency.
-
-Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
-
-- [Semantic and syntactic diagnostics](#semantic-and-syntactic-diagnostics)
-- [Suggestions and auto completion](#suggestions-and-auto-completion)
-- [Code actions](#code-actions)
-- [Hover support](#hover-support)
-- [Go to definition](#go-to-definition)
-
-## Semantic and syntactic diagnostics
+## Semantic and Syntactic Diagnostics
 
 When there are syntax or semantic errors in your code, you will be notified with appropriate diagnostics during the development time. 
 
@@ -35,7 +24,7 @@ When there are syntax or semantic errors in your code, you will be notified with
 
 ![Semantic and syntactic diagnostics](/swan-lake/learn/images/semantic-and-syntactic.gif)
 
-## Suggestions and auto completion
+## Suggestions and Auto Completion
 
 The extension provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs etc.).
 
@@ -43,7 +32,7 @@ The extension provides you with suggestions on keywords, variables, and code sni
 
 > **Tip**: You can use these suggestions to access the contents of the modules available in your Ballerina home repo as well as in the Ballerina distribution.
 
-## Code actions
+## Code Actions
 
 These allow you to perform the below tasks easily based on the diagnostics and the current scope where the cursor resides. 
 
@@ -63,7 +52,7 @@ For another example, you can add documentation for a function as shown below.
 
  ![Code actions](/swan-lake/learn/images/code-actions.gif)
 
-## Hover support
+## Hover Support
 
  Hover support provides you quick access to information about a certain entity. 
  
@@ -73,13 +62,13 @@ For another example, you can add documentation for a function as shown below.
  
  > **Tip**: Likewise, if you hover over an entity name of an object or a record, you can view the description of the object/record as well as descriptions of its fields.
 
-## Go to definition
+## Go to Definition
 
 This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
 
 ![Go to definition](/swan-lake/learn/images/go-to-definition-vscode.gif)
 
-## What's next?
+## What's Next?
 
  - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/swan-lake/learn/vscode-plugin/run-and-debug).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/swan-lake/learn/vscode-plugin).

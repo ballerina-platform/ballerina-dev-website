@@ -105,17 +105,17 @@
   ],
   "errors": [
     {
+      "id": "Error",
+      "description": "\u003cp\u003eRepresents the JWT error type with details.\u003c/p\u003e",
+      "moduleId": "jwt"
+    },
+    {
       "id": "JWTError",
       "description": "\u003cp\u003eRepresents the JWT distinct error\u003c/p\u003e\n",
       "moduleId": "jwt"
     }
   ],
   "types": [
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents the JWT error type with details.\u003c/p\u003e",
-      "moduleId": "jwt"
-    },
     {
       "id": "JwtSigningAlgorithm",
       "description": "\u003cp\u003eThe key algorithms supported by crypto module.\u003c/p\u003e",

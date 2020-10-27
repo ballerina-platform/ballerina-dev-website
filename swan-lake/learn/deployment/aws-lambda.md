@@ -1,22 +1,16 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: AWS Lambda
 description: See how the Ballerina deployment in AWS Lambda works
 keywords: ballerina, programming language, serverless, cloud, AWS, Lambda
 permalink: /swan-lake/learn/deployment/aws-lambda/
 active: aws-lambda
+intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
 redirect_from:
   - /swan-lake/learn/deployment/aws-lambda
 ---
 
-# AWS Lambda
-
-The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 
-
-- [Writing a Function](#writing-a-function)
-- [Building the Function](#building-the-function)
-- [Deploying the Function](#deploying-the-function)
-- [Invoking the Function](#invoking-the-function)
+Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 
 
 ## Writing a Function
 
@@ -51,7 +45,7 @@ Generating executables
 
 	Run the following commands to deploy each Ballerina AWS Lambda function:
 	aws lambda create-function --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.<FUNCTION_NAME> --runtime provided --role <LAMBDA_ROLE_ARN> --timeout 10 --memory-size 1024
-	aws lambda update-function-configuration --function-name <FUNCTION_NAME> --layers arn:aws:lambda:<REGION_ID>:141896495686:layer:ballerina:2
+	aws lambda update-function-configuration --function-name <FUNCTION_NAME> --layers arn:aws:lambda:<REGION_ID>:134633749276:layer:ballerina-jre11:1
 
 	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
 	aws lambda update-function-code --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip
@@ -64,7 +58,7 @@ Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer
 A sample execution to deploy the hash function as an AWS Lambda is shown below. 
 
 ```bash
-$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2
+$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1
 {
     "FunctionName": "hash",
     "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:function:hash",
@@ -84,7 +78,7 @@ $ aws lambda create-function --function-name hash --zip-file fileb://aws-balleri
     "RevisionId": "d5400f01-f3b8-478b-9269-73c44f4537aa",
     "Layers": [
         {
-            "Arn": "arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2",
+            "Arn": "arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1",
             "CodeSize": 697
         }
     ]

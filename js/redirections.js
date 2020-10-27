@@ -89,7 +89,6 @@ let redirections = {
     "/1.1/learn/keeping-ballerina-up-to-date":"/1.1/learn/how-to-keep-ballerina-up-to-date",
     "/1.0/learn/keeping-ballerina-up-to-date":"/1.0/page-not-available.html",
     "/0.991/learn/keeping-ballerina-up-to-date":"/0.991/page-not-available.html",
-    "/swan-lake/learn/using-the-openapi-tools":"/swan-lake/learn/how-to-use-openapi-tools",
     "/1.1/learn/using-the-openapi-tools":"/1.1/learn/how-to-use-openapi-tools",
     "/1.0/learn/using-the-openapi-tools":"/1.0/learn/how-to-use-openapi-tools/",
     "/0.991/learn/using-the-openapi-tools":"/0.991/page-not-available.html",
@@ -237,5 +236,16 @@ let redirections = {
     "/learn/by-example/readonly-objects.html":"/page-not-available.html",
     "/1.1/learn/by-example/readonly-objects.html":"/1.1/page-not-available.html",
     "/1.0/learn/by-example/readonly-objects.html":"/1.0/page-not-available.html",
-    "/swan-lake/learn/api-docs/ballerina/*/objects/*":"/swan-lake/learn/api-docs/ballerina/*/classes/*"
+    "/swan-lake/learn/api-docs/ballerina/*/objects/*":"/swan-lake/learn/api-docs/ballerina/*/classes/*",
+    "/swan-lake/learn/observing-ballerina-code/":"/swan-lake/page-not-available.html",
+    "/swan-lake/learn/extending-with-compiler-extensions/":"/swan-lake/page-not-available.html",
+    "/learn/by-example/websocket-cookie.html":"/page-not-available.html",
+    "/1.1/learn/by-example/websocket-cookie.html":"/1.1/page-not-available.html",
+    "/1.0/learn/by-example/websocket-cookie.html":"/1.0/page-not-available.html",
+    "/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
+    "/1.1/learn/api-docs/ballerina/ftp/index.html":"/1.1/page-not-available.html",
+    "/1.0/learn/api-docs/ballerina/ftp/index.html":"/1.0/page-not-available.html",
+    "/swan-lake/learn/by-example/tracing.html":"/swan-lake/page-not-available.html",
+    "/swan-lake/learn/by-example/counter-metrics.html":"/swan-lake/page-not-available.html",
+    "/swan-lake/learn/by-example/gauge-metrics.html":"/swan-lake/page-not-available.html"
 };

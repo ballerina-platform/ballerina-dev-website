@@ -4,19 +4,13 @@ title: AWS Lambda
 description: See how the Ballerina deployment in AWS Lambda works
 keywords: ballerina, programming language, serverless, cloud, AWS, Lambda
 permalink: /learn/deployment/aws-lambda/
+intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
 active: aws-lambda
 redirect_from:
   - /learn/deployment/aws-lambda
 ---
 
-# AWS Lambda
-
-The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. 
-
-- [Writing a Function](#writing-a-function)
-- [Building the Function](#building-the-function)
-- [Deploying the Function](#deploying-the-function)
-- [Invoking the Function](#invoking-the-function)
+Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. 
 
 ## Writing a Function
 

@@ -399,6 +399,63 @@
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "chars",
+          "description": "\u003cp\u003ethe characters\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.xml",
+            "name": "Text",
+            "category": "UNKNOWN",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "\u003cp\u003ean xml sequence that is either empty or consists of one text item\nThe constructed sequence will be empty when the length of \u003ccode\u003echars\u003c/code\u003e is zero.\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "name": "createText",
+      "description": "\u003cp\u003eConstructs an xml sequence representing zero of more parsed characters.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "isIsolated": true,
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
             "name": "xml",
             "category": "builtin",
             "isAnonymousUnionType": false,
@@ -584,7 +641,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -712,7 +769,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1489,7 +1546,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

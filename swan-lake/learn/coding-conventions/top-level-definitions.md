@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Top-Level Definitions
 active: definitions
 permalink: /swan-lake/learn/coding-conventions/top-level-definitions/
+intro: The sections below include the coding conventions with respect to top-level definitions.
 redirect_from:
   - /swan-lake/learn/style-guide/definitions/
   - /swan-lake/learn/style-guide/definitions
@@ -10,7 +11,7 @@ redirect_from:
   - /swan-lake/learn/coding-conventions/top-level-definitions
 ---
 
-# Top-Level Definitions
+## General Practices
 
 * Do not indent the top level definitions. 
   

@@ -3,21 +3,12 @@ layout: ballerina-left-nav-pages-swanlake
 title: Expressions
 active: expressions
 permalink: /swan-lake/learn/coding-conventions/expressions/
+intro: The sections below include the coding conventions with respect to expressions.
 redirect_from:
   - /swan-lake/learn/style-guide/expressions/
   - /swan-lake/learn/style-guide/expressions
   - /swan-lake/learn/coding-conventions/expressions
 ---
-
-# Expressions
-
-- [Function Invocation](#function-invocation)
-- [Record Literal](#record-literal)
-- [Map Literal](#map-literal)
-- [Tuple](#tuple)
-- [Array Literal](#array-literal)
-- [Type Casting](#type-casting)
-- [Table Literal](#table-literal)
 
 ## Function Invocation
 

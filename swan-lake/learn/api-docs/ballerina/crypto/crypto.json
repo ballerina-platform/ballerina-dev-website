@@ -3,7 +3,7 @@
   "summary": "\u003cp\u003eThis module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For an example on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/crypto.html\"\u003eCryptographic Operations Example\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "records": [
     {
       "fields": [
@@ -5170,29 +5170,6 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "value": "RSA",
-      "name": "RSA",
-      "description": "\u003cp\u003eThe \u003ccode\u003eRSA\u003c/code\u003e algorithm.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "type": {
-        "orgName": "ballerina",
-        "moduleName": "lang.annotations",
-        "name": "string",
-        "category": "builtin",
-        "isAnonymousUnionType": false,
-        "isArrayType": false,
-        "isNullable": false,
-        "isTuple": false,
-        "isRestParam": false,
-        "isLambda": false,
-        "isDeprecated": false,
-        "generateUserDefinedTypeLink": true,
-        "memberTypes": [],
-        "paramTypes": [],
-        "arrayDimensions": 0
-      },
       "value": "NONE",
       "name": "NONE",
       "description": "\u003cp\u003eNo padding.\u003c/p\u003e\n",
@@ -5358,6 +5335,29 @@
       "name": "OAEPwithSHA512andMGF1",
       "description": "\u003cp\u003eThe \u003ccode\u003eOAEPwithSHA512andMGF1\u003c/code\u003e padding mode.\u003c/p\u003e\n",
       "isDeprecated": false
+    },
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "RSA",
+      "name": "RSA",
+      "description": "\u003cp\u003eThe \u003ccode\u003eRSA\u003c/code\u003e algorithm.\u003c/p\u003e\n",
+      "isDeprecated": false
     }
   ],
   "annotations": [],
@@ -5365,6 +5365,28 @@
     {
       "name": "CryptoError",
       "description": "\u003cp\u003eRepresents the Crypto error.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "detailType": {
+        "orgName": "ballerina",
+        "moduleName": "crypto",
+        "name": "CryptoError",
+        "category": "errors",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "name": "Error",
+      "description": "\u003cp\u003eThe union of all the Crypto related errors\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
@@ -5404,39 +5426,6 @@
           "moduleName": "crypto",
           "name": "PKCS5",
           "category": "constants",
-          "isAnonymousUnionType": false,
-          "isArrayType": false,
-          "isNullable": false,
-          "isTuple": false,
-          "isRestParam": false,
-          "isLambda": false,
-          "isDeprecated": false,
-          "generateUserDefinedTypeLink": true,
-          "memberTypes": [],
-          "paramTypes": [],
-          "arrayDimensions": 0
-        }
-      ],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "name": "Error",
-      "description": "\u003cp\u003eThe union of all the Crypto related errors\u003c/p\u003e\n",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isRestParam": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [
-        {
-          "orgName": "ballerina",
-          "moduleName": "crypto",
-          "name": "CryptoError",
-          "category": "errors",
           "isAnonymousUnionType": false,
           "isArrayType": false,
           "isNullable": false,

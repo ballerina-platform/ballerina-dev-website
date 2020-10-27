@@ -21,14 +21,14 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">cacheableResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">cachingEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -262,7 +262,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(&lt;@untainted&gt;response);
             if (result is error) {
                 log:printError(&quot;Failed to respond to the caller&quot;, result);
             }
@@ -289,7 +289,7 @@ service cachingProxy on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt;response.message());
+            res.setPayload((&lt;@untainted error&gt;response).message());
             var result = caller-&gt;respond(res);
             if (result is error) {
                 log:printError(&quot;Failed to respond to the caller&quot;, result);

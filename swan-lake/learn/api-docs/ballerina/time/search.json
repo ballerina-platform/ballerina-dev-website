@@ -124,17 +124,17 @@
   ],
   "errors": [
     {
+      "id": "Error",
+      "description": "\u003cp\u003eRepresents the Time module related error.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
       "id": "TimeError",
       "description": "\u003cp\u003eSpecifies the time error, which occurs in the module.\u003c/p\u003e",
       "moduleId": "time"
     }
   ],
   "types": [
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents the Time module related error.\u003c/p\u003e",
-      "moduleId": "time"
-    },
     {
       "id": "TimeFormat",
       "description": "\u003cp\u003eThe time format defined by the RFC-1123.\u003c/p\u003e",

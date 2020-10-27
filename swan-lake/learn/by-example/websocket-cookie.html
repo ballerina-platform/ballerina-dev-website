@@ -121,7 +121,7 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">loginResp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">((&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">loginResp</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
@@ -1021,7 +1021,7 @@ import ballerina/log;
             }
         }
     } else {
-        log:printError(loginResp.message());
+        log:printError((&lt;error&gt;loginResp).message());
     }
 }
 </code></pre></div>

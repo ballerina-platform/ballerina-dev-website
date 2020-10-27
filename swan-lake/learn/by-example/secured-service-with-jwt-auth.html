@@ -10,24 +10,24 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
     <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">jwtAuthHandler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">jwtAuthProvider</span><span class="p">);</span>
-<span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwkAuthProvider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">jwtAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">jwtAuthProvider</span><span class="p">);</span>
+<span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwkAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
     <span class="nx">jwksConfig</span><span class="p">:</span> <span class="p">{</span>
@@ -36,22 +36,22 @@ redirect_from:
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
                     <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                          <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">jwkAuthHandler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">jwkAuthProvider</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">jwkAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">jwkAuthProvider</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">jwtAuthHandler</span><span class="p">,</span> <span class="nx">jwkAuthHandler</span><span class="p">]</span>
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+                <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -179,8 +179,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
+import ballerina/http;
 import ballerina/jwt;
 import ballerina/log;
 </code></pre></div>
@@ -194,14 +194,14 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider jwtAuthProvider = new({
     issuer: &quot;ballerina&quot;,
     audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
     trustStoreConfig: {
         certificateAlias: &quot;ballerina&quot;,
         trustStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                &quot;/bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -225,7 +225,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler jwtAuthHandler = new (jwtAuthProvider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler jwtAuthHandler = new(jwtAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -244,7 +244,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider jwkAuthProvider = new({
     issuer: &quot;ballerina&quot;,
     audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
     jwksConfig: {
@@ -253,7 +253,7 @@ import ballerina/log;
             secureSocket: {
                 trustStore: {
                     path: config:getAsString(&quot;b7a.home&quot;) +
-                          &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                        &quot;/bre/security/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
@@ -279,7 +279,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler jwkAuthHandler = new (jwkAuthProvider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler jwkAuthHandler = new(jwkAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -299,7 +299,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, config = {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new(9090, config = {
     auth: {
         authHandlers: [jwtAuthHandler, jwkAuthHandler]
     },
@@ -327,7 +327,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
+                &quot;/bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }

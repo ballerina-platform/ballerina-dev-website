@@ -23,14 +23,14 @@ redirect_from:
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">backendResponse</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="nx">errorMessage</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">();</span>
+            <span class="kt">string</span> <span class="nx">errorMessage</span> <span class="p">=</span> <span class="p">(&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">).</span><span class="kt">message</span><span class="p">();</span>
             <span class="kt">string</span> <span class="nx">expectedMessage</span> <span class="p">=</span> <span class="s">&quot;Idle timeout triggered before &quot;</span> <span class="o">+</span>
                 <span class="s">&quot;initiating inbound response&quot;</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">errorMessage</span> <span class="o">==</span> <span class="nx">expectedMessage</span><span class="p">)</span> <span class="p">{</span>
@@ -38,7 +38,7 @@ redirect_from:
                     <span class="s">&quot;Request timed out. Please try again in sometime.&quot;</span>
                 <span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errorMessage</span><span class="p">);</span>
+                <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">errorMessage</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -268,14 +268,14 @@ service timeoutService on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
-            var responseToCaller = caller-&gt;respond(backendResponse);
+            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;backendResponse);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
             }
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errorMessage = &lt;string&gt;backendResponse.message();
+            string errorMessage = (&lt;error&gt;backendResponse).message();
             string expectedMessage = &quot;Idle timeout triggered before &quot; +
                 &quot;initiating inbound response&quot;;
             if (errorMessage == expectedMessage) {
@@ -283,7 +283,7 @@ service timeoutService on new http:Listener(9090) {
                     &quot;Request timed out. Please try again in sometime.&quot;
                 );
             } else {
-                response.setPayload(errorMessage);
+                response.setPayload(&lt;@untainted&gt;errorMessage);
             }
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {

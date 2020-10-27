@@ -5,6 +5,7 @@ description: Learn how to develop a Ballerina project, structure code, and use t
 keywords: ballerina, programming language, ballerina modules, structure code
 permalink: /learn/structuring-ballerina-code/
 active: structuring-ballerina-code
+intro: This document demonstrates the development of a Ballerina project and shows how to use the `Ballerina Tool` to fetch, build, and install Ballerina modules. 
 redirect_from:
   - /learn/how-to-structure-ballerina-code
   - /learn/how-to-structure-ballerina-code/
@@ -13,42 +14,11 @@ redirect_from:
   - /learn/structuring-ballerina-code
 ---
 
-# Structuring Ballerina Code
-This document demonstrates the development of a Ballerina project and shows how to use the `Ballerina Tool` to fetch, 
-build, and install Ballerina modules. These commands work with repositories that are both local and remote.
+## Organizing Your Code
+
+> These commands work with repositories that are both local and remote.
 
 Ballerina Central is a globally hosted module management system that is used to discover, download, and publish modules.
-
-- [Organizing Your Code](#organizing-your-code)
-- [Programs](#programs)
-    - [Building and Running Programs](#building-and-running-programs)
-- [Modules](#modules)
-    - [Importing Modules](#importing-modules)
-    - [Module Version Dependency](#module-version-dependency)
-    - [ Compiled Modules](#compiled-modules)
-    - [Running Compiled Modules](#running-compiled-modules)
-- [Projects](#projects)
-    - [Creating a Project](#creating-a-project)
-    - [Adding a Module](#adding-a-module)
-    - [Project Structure](#project-structure)
-    - [Building a Project](#building-a-project)
-    - [Building a Module](#building-a-module)
-    - [Compiling a Project](#compiling-a-project)
-    - [Compiling a Module](#compiling-a-module)
-    - [Versioning a Module](#versioning-a-module)
-    - [Assigning an Organization Name to a Module](#assigning-an-organization-name-to-a-module)
-- [Module Caches](#module-caches)
-    - [Caches](#caches)
-        - [BALO Cache](#balo-cache)
-        - [BIR Cache](#bir-cache)
-        - [JAR Cache](#jar-cache)
-    - [Module Repository - Ballerina Central](#module-repository---ballerina-central)
-        - [Organizations](#organizations)
-        - [Pulling Remote Modules](#pulling-remote-modules)
-        - [Pushing Modules](#pushing-modules)
-        - [Configuring Ballerina Central Access](#configuring-ballerina-central-access)
-
-## Organizing Your Code
 
 The `Ballerina Tool` requires you to organize your code in a specific way. This document explains the simplest way to get it up and running with a Ballerina installation.
 

@@ -5,6 +5,7 @@ description: Learn how to use Ballerina's built-in test framework to write testa
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/
 active: testing-ballerina-code
+intro: Ballerina has a built-in test framework named Testerina. Testerina enables developers to write testable code. The test framework provides a set of building blocks to help write tests and a set of tools to help test. 
 redirect_from:
   - /learn/how-to-test-ballerina-code
   - /learn/how-to-test-ballerina-code/
@@ -13,9 +14,7 @@ redirect_from:
   - /learn/testing-ballerina-code
 ---
 
-# Testing Ballerina Code
-
-Ballerina has a built-in test framework named Testerina. Testerina enables developers to write testable code. The test framework provides a set of building blocks to help write tests and a set of tools to help test. 
+## Writing and Running Tests 
 
 Developers and testers can cover multiple levels of the test pyramid including unit testing, integration testing and end to end testing with the building blocks the framework provides. It provides the flexibility to programmers and testers to build intelligent tests that suit the domain and application needs.
 
@@ -26,14 +25,6 @@ Testerina design and usage is aligned with project and module semantics of Balle
 * Test **assertions** can be used to verify the set of program behaviour expectations 
 * Data providers can be used to feed in the test data sets 
 * Function mocks can be used to mock a function in a module that you are testing or a function of an imported module
-
-- [Writing and Running Tests](#writing-and-running-tests)
-    - [Project Structure](#project-structure)
-- [Annotations](#annotations)
-- [Assertions](#assertions)
-- [Function Mocks](#function-mocks)
-
-## Writing and Running Tests 
 
 To write tests, you need to import the `test` module in all Ballerina test source files. 
 

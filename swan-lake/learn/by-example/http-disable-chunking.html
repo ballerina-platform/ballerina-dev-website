@@ -23,7 +23,7 @@ redirect_from:
         <span class="nx">newReq</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
         <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo/&quot;</span><span class="p">,</span> <span class="nx">newReq</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">clientResponse</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
@@ -247,7 +247,7 @@ import ballerina/log;
         newReq.setPayload({&quot;name&quot;: &quot;Ballerina&quot;});
         var clientResponse = clientEndpoint-&gt;post(&quot;/echo/&quot;, newReq);
         if (clientResponse is http:Response) {
-            var result = caller-&gt;respond(clientResponse);
+            var result = caller-&gt;respond(&lt;@untainted&gt;clientResponse);
             if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
             }

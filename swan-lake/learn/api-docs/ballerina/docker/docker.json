@@ -684,7 +684,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "service, function, listener",
+      "attachmentPoints": "service, listener, function",
       "name": "CopyFiles",
       "description": "\u003cp\u003e@docker:CopyFile annotation to copy external files to docker image.\u003c/p\u003e\n",
       "isDeprecated": false

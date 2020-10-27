@@ -5,25 +5,16 @@ description: Learn how to write unstructured documents with a bit of structure t
 keywords: ballerina, programming language, api documentation, api docs
 permalink: /swan-lake/learn/documenting-ballerina-code/
 active: documenting-ballerina-code
+intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
 redirect_from:
   - /swan-lake/learn/how-to-document-ballerina-code
   - /swan-lake/learn/how-to-document-ballerina-code/
   - /swan-lake/learn/documenting-ballerina-code
 ---
 
-# Documenting Ballerina Code
-
-Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
+## Generating Documentation for Modules
 
 Developers can write the documentation inline with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `ballerina doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
-
-- [Generating Documentation for Modules](#generating-documentation-for-modules)
-- [Writing Ballerina Documentation](#writing-ballerina-documentation)
-  - [Sample Usage](#sample-usage)
-- [Documenting a Module](#documenting-a-module)
-- [Generating Ballerina Documentation](#generating-ballerina-documentation)
-
-## Generating Documentation for Modules
 
 Ballerina documentation design and usage is aligned with project and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
 
@@ -148,12 +139,63 @@ Next, move into the project directory and execute `ballerina add <module-name>` 
 
 ```bash
 $ cd myproject/
-$ ballerina add math -t service
+$ ballerina add math
 Added new ballerina module at 'src/math'
-$ ballerina add time -t service
-Added new ballerina module at 'src/time'
+$ ballerina add world
+Added new ballerina module at 'src/world'
 ```
+Now, let's add a function to the `math` module to be documented. Copy and paste the following code in to the `myproject/src/math/main.bal` file.
 
+```ballerina
+# Calculates the value of the 'a' raised to the power of 'b'.
+# ```ballerina
+# float aPowerB = math:pow(3.2, 2.4);
+# ```
+# 
+# + a - Base value
+# + b - Exponential value
+# + return - Calculated exponential value
+public isolated function pow(float a, float b) returns float {
+    return 0;
+}
+```
+Add the follwoing class definition to the `world` module. Copy and paste the following code in to the `myproject/src/world/main.bal/` file.
+
+```ballerina
+# Represents a person object.
+#
+# + name - Name of the person
+# + age - Age of the person in years
+# + address - Address of the person
+# + wealth - Account balance of the person
+public class Person {
+    public string name = "";
+    public int age;
+    public string address;
+    public float wealth = 0;
+
+    # Gets invoked to initialize the `Person` object.
+    #
+    # + name - Name of the person for the constructor
+    # + age - Age of the person for the constructor
+    public function init(string name, int age) {
+    }
+
+    # Get the address of the person.
+    #
+    # + return - New address of the person
+    public function getAddress() returns string {
+        return self.address ;
+    }
+
+    # Add wealth of the person.
+    #
+    # + amt - Amount to be added
+    # + rate - Interest rate
+    public function addWealth(int[] amt, float rate=1.5) {
+    }
+}
+```
 Now, let's generate documentation of the project:
 ```bash
 $ ballerina doc -a
@@ -161,22 +203,22 @@ $ ballerina doc -a
 Output:
 ```bash
 Compiling source
-        foo/time:0.1.0
         foo/math:0.1.0
+        foo/world:0.1.0
 
 Generating API Documentation
         target/apidocs
 ```
 
-The `target/apidocs/` folder would contain following;
+`target/apidocs/` folder would contain following;
 ```bash
 $ ls target/apidocs/
-index.html  math  time  ...
+index.html  math  world  ...
 ```
 
 * `index.html`  - contains an index page of all the modules in the Ballerina project 
 * `math` - contains the documentation of the module named `math`
-* `time` - contains the documentation of the module named `time`
+* `world` - contains the documentation of the module named `world`
 
 If you want to generate documentation for a selected Ballerina module, then you can execute the following command from the Ballerina project root directory:
 

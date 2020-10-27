@@ -153,7 +153,7 @@
             </h1>
             
     
-    <div>Version : 1.0.0</div>
+    <div>Version : 1.0.1</div>
     
     <h2>Module Overview</h2>
 <p>This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of network entry points as ‘Client’ and ‘Listener’.</p>
@@ -419,6 +419,16 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                         <td class="module-desc">
                             
                             <p>Configurations for CORS support.</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate records" id="Detail" title="Detail">
+                            <a class="records " href="records/Detail.html">Detail</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Holds the details of an HTTP error</p> 
                         </td>
                     </tr>
                 
@@ -966,7 +976,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     </td>
                     <td class="module-desc">
                         
-                        <p>The representation of an inbound authentication handler for HTTP traffic.</p> 
+                        <p>The representation of an inbound authentication handler object type for HTTP traffic.</p> 
                     </td>
                 </tr>
                 
@@ -976,7 +986,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     </td>
                     <td class="module-desc">
                         
-                        <p>LoadBalancerRule provides a required interfaces to implement different algorithms.</p> 
+                        <p>LoadBalancerRule object type provides a required abstraction to implement different algorithms.</p> 
                     </td>
                 </tr>
                 
@@ -986,7 +996,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     </td>
                     <td class="module-desc">
                         
-                        <p>The representation of an outbound authentication handler for HTTP traffic.</p> 
+                        <p>The representation of an outbound authentication handler object type for HTTP traffic.</p> 
                     </td>
                 </tr>
                 
@@ -996,7 +1006,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     </td>
                     <td class="module-desc">
                         
-                        <p>The representation of a persistent cookie handler for managing persistent cookies.</p> 
+                        <p>The representation of a persistent cookie handler object type for managing persistent cookies.</p> 
                     </td>
                 </tr>
                 
@@ -1006,7 +1016,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     </td>
                     <td class="module-desc">
                         
-                        <p>Abstract Representation of a HTTP Request Filter.
+                        <p>The representation of a HTTP Request Filter Object type.
                     </td>
                 </tr>
                 
@@ -1016,7 +1026,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     </td>
                     <td class="module-desc">
                         
-                        <p>Abstract Representation of a HTTP Response Filter.
+                        <p>The representation of a HTTP Response Filter Object type.
                     </td>
                 </tr>
                 
@@ -1229,9 +1239,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Adds cookies to the custom header.</p> 
                 </td>
             </tr>
@@ -1241,7 +1248,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     <a class="functions " href="functions.html#createHttpCachingClient">createHttpCachingClient</a>
                 </td>
                 <td class="module-desc">
-                    
                     
                     <p>Creates an HTTP client capable of caching HTTP responses.</p> 
                 </td>
@@ -1253,7 +1259,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 </td>
                 <td class="module-desc">
                     
-                    
                     <p>Creates an HTTP client capable of securing HTTP requests with authentication.</p> 
                 </td>
             </tr>
@@ -1263,9 +1268,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     <a class="functions " href="functions.html#extractAuthorizationHeaderValue">extractAuthorizationHeaderValue</a>
                 </td>
                 <td class="module-desc">
-                    
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
                     
                     <p>Extracts the Authorization header value from the request.</p> 
                 </td>
@@ -1277,7 +1279,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 </td>
                 <td class="module-desc">
                     
-                    
                     <p>The HEAD remote function implementation of the Circuit Breaker.
                 </td>
             </tr>
@@ -1288,9 +1289,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Checks whether the calling resource is secured by evaluating the authentication hierarchy.</p> 
                 </td>
             </tr>
@@ -1300,9 +1298,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                     <a class="functions " href="functions.html#parseHeader">parseHeader</a>
                 </td>
                 <td class="module-desc">
-                    
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
                     
                     <p>Parses the given header value to extract its value and parameter map.</p> 
                 </td>
@@ -2803,6 +2798,16 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
             </tr>
             
             <tr>
+                <td class="module-title truncate types" id="Payload" title="Payload">
+                    <a class="types " href="types.html#Payload">Payload</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The types of the response payload that are returned by the HTTP <code>client</code> after the data binding operation</p> 
+                </td>
+            </tr>
+            
+            <tr>
                 <td class="module-title truncate types" id="RedirectCode" title="RedirectCode">
                     <a class="types " href="types.html#RedirectCode">RedirectCode</a>
                 </td>
@@ -2927,6 +2932,16 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
             </tr>
             
             <tr>
+                <td class="module-title truncate errors" id="ClientRequestError" title="ClientRequestError">
+                    <a class="errors " href="errors.html#ClientRequestError">ClientRequestError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents an error, which occurred due to bad syntax or incomplete info in the client request(4xx HTTP response)</p> 
+                </td>
+            </tr>
+            
+            <tr>
                 <td class="module-title truncate errors" id="CookieHandlingError" title="CookieHandlingError">
                     <a class="errors " href="errors.html#CookieHandlingError">CookieHandlingError</a>
                 </td>
@@ -2993,6 +3008,16 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 <td class="module-desc">
                     
                     <p>Represents the error that triggered upon a request/response idle timeout</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="IllegalDataBindingStateError" title="IllegalDataBindingStateError">
+                    <a class="errors " href="errors.html#IllegalDataBindingStateError">IllegalDataBindingStateError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents an illegal data-binding  state error</p> 
                 </td>
             </tr>
             
@@ -3113,6 +3138,16 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 <td class="module-desc">
                     
                     <p>Represents a client error that occurred while reading inbound response headers</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="RemoteServerError" title="RemoteServerError">
+                    <a class="errors " href="errors.html#RemoteServerError">RemoteServerError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents an error, which occurred due to a failure of the remote server(5xx HTTP response)</p> 
                 </td>
             </tr>
             

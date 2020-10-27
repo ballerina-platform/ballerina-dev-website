@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Using the IntelliJ Ballerina Plugin
 permalink: /learn/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
+intro: The sections below include information to start using the IntelliJ Ballerina plugin after installing it.
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
@@ -20,18 +21,6 @@ redirect_from:
   - /learn/using-the-intellij-plugin
   - /learn/using-the-intellij-plugin/
 ---
-
-# Using the IntelliJ Ballerina Plugin
-
-The below sections include information to start using the IntelliJ Ballerina plugin after [installing it](/learn/intellij-plugin).
-
-- [Creating a New Ballerina Project](#creating-a-new-ballerina-project)
-- [Setting Up Ballerina SDK for an Existing Project](#setting-up-ballerina-sdk-for-an-existing-project)
-- [Creating a New Ballerina File](#creating-a-new-ballerina-file)
-- [Configuring the Plugin Settings](#configuring-the-plugin-settings)
-    - [Ballerina Home Auto Detection](#ballerina-home-auto-detection)
-    - [Experimental Features](#experimental-features)
-    - [Language Server Debug Logs](#language-server-debug-logs)
 
 ## Creating a New Ballerina Project
 

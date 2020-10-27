@@ -74,6 +74,11 @@
   ],
   "errors": [
     {
+      "id": "Error",
+      "description": "\u003cp\u003eThe union of the RabbitMQ module related errors.\u003c/p\u003e",
+      "moduleId": "rabbitmq"
+    },
+    {
       "id": "RabbitMqError",
       "description": "\u003cp\u003eRepresents the RabbitMQ module related errors.\u003c/p\u003e",
       "moduleId": "rabbitmq"
@@ -83,11 +88,6 @@
     {
       "id": "AcknowledgementMode",
       "description": "\u003cp\u003eTypes of acknowledgement modes supported by the Ballerina RabbitMQ Connector.\u003c/p\u003e",
-      "moduleId": "rabbitmq"
-    },
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eThe union of the RabbitMQ module related errors.\u003c/p\u003e",
       "moduleId": "rabbitmq"
     },
     {

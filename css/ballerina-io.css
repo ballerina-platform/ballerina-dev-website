@@ -1783,3 +1783,50 @@ ul, #toc {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.cCookie-Policy {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 99999;
+    background-color: #20b6b0;
+    padding: 20px 0;
+}
+
+.cCookie-Policy h4  {
+    margin-top: 0;
+}
+
+.cCookie-Policy h4 , .cCookie-Policy p {
+    color: #fff;
+}
+
+.cCookie-Policy p {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.cIUnderstand {
+background-color: #57595d;
+color: #fff;
+padding: 10px 20px;
+display: inline-block;
+}
+
+.cBlallerina-io-docs-content-container ul li {
+    list-style: square;
+}
+
+.cBlallerina-io-docs-content-container ul.abix-tree-list li {
+    list-style: none !important;
+}
+
+.closebuttoon {
+    display: inline-block !important;
+float: right;
+}
+
+.closebuttoon img {
+    width: 20px;
+}

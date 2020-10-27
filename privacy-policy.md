@@ -12,12 +12,6 @@ display:none;
 }
 </style>
 
-- [Privacy Policy](#privacy-policy)
-- [Cookie Policy](#cookie-policy)
-- [Contact us](#contact-us)
-
-# Privacy Policy
-
 At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io](https://ballerina.io/) and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 Inc.
 
 ## What information do we collect?
@@ -148,7 +142,7 @@ For further information about our Privacy Policy or if you have any questions, c
 **Effective April 12, 2018**
 
 <style>
-.nav > li.cVersionItem {
+.nav > li.cVersionItem  , .cBallerinaTocContainer {
     display: none !important;
 }
 </style>

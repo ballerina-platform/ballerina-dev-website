@@ -23,12 +23,12 @@ redirect_from:
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://httpstat.us&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/200&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">resp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">resp</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to fulfill request&quot;</span><span class="p">,</span> <span class="nx">resp</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to fulfill request&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">resp</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -191,7 +191,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(resp);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(&lt;@untainted&gt;resp);
 </code></pre></div>
 
                                 </td>
@@ -214,7 +214,7 @@ service helloWorld on new http:Listener(9090) {
                 log:printError(&quot;Failed to respond to caller&quot;, result);
             }
         } else {
-            log:printError(&quot;Failed to fulfill request&quot;, resp);
+            log:printError(&quot;Failed to fulfill request&quot;, &lt;error&gt;resp);
         }
     }
 }

@@ -90,10 +90,6 @@
         
         
         
-            <li>
-                <a data="types" href="../cache/index.html#types" onclick="menuLinkClick()">Types</a>
-            </li>
-        
         
             <li>
                 <a data="errors" href="../cache/index.html#errors" onclick="menuLinkClick()">Errors</a>
@@ -133,7 +129,7 @@
             </h1>
             
     
-    <div>Version : 2.0.0</div>
+    <div>Version : 2.0.1</div>
     
     <h2>Module Overview</h2>
 <p>This module provides APIs for handle caching in Ballerina. It consists of a default implementation based on the map data structure. It also provides a default cache eviction policy object, which is based on the LRU eviction algorithm.</p>
@@ -159,7 +155,7 @@
     public function evict() returns Node?;
 };
 </code></pre>
-<p>The Ballerina Cache module provides the <code>cache:Cache</code> object, which is a <code>map</code> data structure based implementation of the <code>cache:AbstractCache</code> object. It is not recommended to insert <code>()</code> as the value of the cache since it doesn't make sense to cache a nil. Also, it provides the <code>cache:LruEvictionPolicy</code> class, which is based on the LRU eviction algorithm.</p>
+<p>The Ballerina Cache module provides the <code>cache:Cache</code> class, which is a <code>map</code> data structure based implementation of the <code>cache:AbstractCache</code> object. It is not recommended to insert <code>()</code> as the value of the cache since it doesn't make sense to cache a nil. Also, it provides the <code>cache:LruEvictionPolicy</code> class, which is based on the LRU eviction algorithm.</p>
 <p>While initializing the <code>cache:Cache</code>, you need to pass the following parameters as the cache configurations.</p>
 <ul>
 <li><code>capacity</code> - Maximum number of entries allowed for the cache</li>
@@ -186,7 +182,7 @@ This is an optional parameter.</li>
 <li>If <code>cleanupIntervalInSeconds</code> (optional property) is configured, the timer task will remove the expired cache entries based on the configured interval.</li>
 </ol>
 <p>The main benefit of using the <code>cleanupIntervalInSeconds</code> (optional) property is that the developer can optimize the memory usage while adding some additional CPU costs and vice versa. The default behaviour is the CPU-optimized method.</p>
-<p>The concept of the default <code>cache:Cache</code> object is based on the Ballerina <code>map</code> data structure and the <code>cache:LinkedList</code> class. The key of the map entry would be a string and the value of the map entry would be a node of the linked list.</p>
+<p>The concept of the default <code>cache:Cache</code> class is based on the Ballerina <code>map</code> data structure and the <code>cache:LinkedList</code> class. The key of the map entry would be a string and the value of the map entry would be a node of the linked list.</p>
 <pre><code class="language-ballerina">public type Node record {|
     any value;
     Node? prev = ();
@@ -256,7 +252,7 @@ This is an optional parameter.</li>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The <code>cache:Cache</code> class, which is used for all the cache-related operations.
+                            <p>The <code>cache:Cache</code> object, which is used for all the cache-related operations.
                         </td>
                     </tr>
                 
@@ -266,7 +262,7 @@ This is an optional parameter.</li>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The <code>cache:LinkedList</code> class consists operations of <code>LinkedList</code> data structure which are related to LRU eviction algorithm</p>
+                            <p>The <code>cache:LinkedList</code> object consists operations of <code>LinkedList</code> data structure which are related to LRU eviction algorithm</p> 
                         </td>
                     </tr>
                 
@@ -276,7 +272,7 @@ This is an optional parameter.</li>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The <code>cache:LruEvictionPolicy</code> class consists of the LRU eviction algorithm related operations based on a linked list data structure.</p>
+                            <p>The <code>cache:LruEvictionPolicy</code> object consists of the LRU eviction algorithm related operations based on a linked list data structure.</p> 
                         </td>
                     </tr>
                 
@@ -332,28 +328,6 @@ This is an optional parameter.</li>
     
 
     
-    <section class="method-content" id="types">
-        <div class="main-method-title here">
-            <a class="url-link" href="#types">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> Types </h2>
-        </div>
-        <table>
-            
-            <tr>
-                <td class="module-title truncate types" id="Error" title="Error">
-                    <a class="types " href="types.html#Error">Error</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Represents Cache related errors.</p> 
-                </td>
-            </tr>
-            
-        </table>
-    </section>
-    
 
     
     <section class="method-content" id="errors">
@@ -372,6 +346,16 @@ This is an optional parameter.</li>
                 <td class="module-desc">
                     
                     <p>Represents the Cache error type with details.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="Error" title="Error">
+                    <a class="errors " href="errors.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents Cache related errors.</p> 
                 </td>
             </tr>
             

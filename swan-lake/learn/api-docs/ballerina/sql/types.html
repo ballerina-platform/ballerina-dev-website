@@ -82,6 +82,10 @@ module JDBC.
         </li>
     
         <li >
+            <a href="#OutParameter" onclick="menuLinkClick()">OutParameter</a>
+        </li>
+    
+        <li >
             <a href="#Parameter" onclick="menuLinkClick()">Parameter</a>
         </li>
     
@@ -192,14 +196,29 @@ module JDBC.
             
                 <div class="params-listing">
                     <ul>
-                        <li id="Parameter">
-                            <b >Parameter</b>
+                        <li id="OutParameter">
+                            <b >OutParameter</b>
                             
-                                <span class="type">  <a href="../sql/types.html#Value">Value</a> | <a href="../sql/classes/OutParameter.html">OutParameter</a> | <a href="../sql/classes/InOutParameter.html">InOutParameter</a></span></li>
+                                <span class="type">  <a href="../sql/classes/CharOutParameter.html">CharOutParameter</a> | <a href="../sql/classes/VarcharOutParameter.html">VarcharOutParameter</a> | <a href="../sql/classes/NCharOutParameter.html">NCharOutParameter</a> | <a href="../sql/classes/NVarcharOutParameter.html">NVarcharOutParameter</a> | <a href="../sql/classes/BinaryOutParameter.html">BinaryOutParameter</a> | <a href="../sql/classes/VarBinaryOutParameter.html">VarBinaryOutParameter</a> | <a href="../sql/classes/TextOutParameter.html">TextOutParameter</a> | <a href="../sql/classes/BlobOutParameter.html">BlobOutParameter</a> | <a href="../sql/classes/ClobOutParameter.html">ClobOutParameter</a> | <a href="../sql/classes/NClobOutParameter.html">NClobOutParameter</a> | <a href="../sql/classes/DateOutParameter.html">DateOutParameter</a> | <a href="../sql/classes/TimeOutParameter.html">TimeOutParameter</a> | <a href="../sql/classes/DateTimeOutParameter.html">DateTimeOutParameter</a> | <a href="../sql/classes/TimestampOutParameter.html">TimestampOutParameter</a> | <a href="../sql/classes/ArrayOutParameter.html">ArrayOutParameter</a> | <a href="../sql/classes/RowOutParameter.html">RowOutParameter</a> | <a href="../sql/classes/SmallIntOutParameter.html">SmallIntOutParameter</a> | <a href="../sql/classes/IntegerOutParameter.html">IntegerOutParameter</a> | <a href="../sql/classes/BigIntOutParameter.html">BigIntOutParameter</a> | <a href="../sql/classes/RealOutParameter.html">RealOutParameter</a> | <a href="../sql/classes/FloatOutParameter.html">FloatOutParameter</a> | <a href="../sql/classes/DoubleOutParameter.html">DoubleOutParameter</a> | <a href="../sql/classes/NumericOutParameter.html">NumericOutParameter</a> | <a href="../sql/classes/DecimalOutParameter.html">DecimalOutParameter</a> | <a href="../sql/classes/BitOutParameter.html">BitOutParameter</a> | <a href="../sql/classes/BooleanOutParameter.html">BooleanOutParameter</a> | <a href="../sql/classes/RefOutParameter.html">RefOutParameter</a> | <a href="../sql/classes/StructOutParameter.html">StructOutParameter</a> | <a href="../sql/classes/XMLOutParameter.html">XMLOutParameter</a></span></li>
                             
                         <li>
                             
-                            <p>Represents all the parameters used in SQL stored procedure call.</p>
+                            <p>Represents all OUT parameters used in SQL stored procedure call.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Parameter">
+                            <b >Parameter</b>
+                            
+                                <span class="type">  <a href="../sql/types.html#Value">Value</a> | <a href="../sql/classes/InOutParameter.html">InOutParameter</a> | <a href="../sql/types.html#OutParameter">OutParameter</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents all parameters used in SQL stored procedure call.</p>
 
                         </li>
                     </ul>

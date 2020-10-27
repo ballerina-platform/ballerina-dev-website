@@ -12,19 +12,19 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">encoding</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">str</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">encodingValue</span> <span class="p">=</span> <span class="s">&quot;abc123!?$*&amp;()&#39;-=@~&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">urlEncodedValue</span> <span class="p">=</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">encodeBase64Url</span><span class="p">(</span><span class="nx">encodingValue</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 URL encoded value: &quot;</span> <span class="o">+</span> <span class="nx">urlEncodedValue</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">decodingValue</span> <span class="p">=</span> <span class="s">&quot;YWJjMTIzIT8kKiYoKSctPUB-&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 URL encoded value: &quot;</span><span class="p">,</span> <span class="nx">urlEncodedValue</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">decodingValue</span> <span class="p">=</span> <span class="s">&quot;YWJjMTIzIT8kKiYoKSctPUB-&quot;</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">urlDecodedValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">decodeBase64Url</span><span class="p">(</span><span class="nx">decodingValue</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 URL decoded value: &quot;</span> <span class="o">+</span>
-                <span class="nx">check</span> <span class="nx">str</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">urlDecodedValue</span><span class="p">));</span>    <span class="kt">string</span> <span class="nx">encodingUriComp</span> <span class="p">=</span> <span class="s">&quot;data=value&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 URL decoded value: &quot;</span><span class="p">,</span>
+        <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">urlDecodedValue</span><span class="p">));</span>    <span class="kt">string</span> <span class="nx">encodingUriComp</span> <span class="p">=</span> <span class="s">&quot;data=value&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">encodedUriComponent</span> <span class="p">=</span>
-            <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">encodeUriComponent</span><span class="p">(</span><span class="nx">encodingUriComp</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URI encoded value: &quot;</span> <span class="o">+</span> <span class="nx">encodedUriComponent</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">data</span> <span class="p">=</span> <span class="s">&quot;data%3Dvalue&quot;</span><span class="p">;</span>
+        <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">encodeUriComponent</span><span class="p">(</span><span class="nx">encodingUriComp</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URI encoded value: &quot;</span><span class="p">,</span> <span class="nx">encodedUriComponent</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">data</span> <span class="p">=</span> <span class="s">&quot;data%3Dvalue&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">decodedUriComponent</span> <span class="p">=</span>
-                            <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">decodeUriComponent</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URI decoded value: &quot;</span> <span class="o">+</span> <span class="nx">decodedUriComponent</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">decodeUriComponent</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URI decoded value: &quot;</span><span class="p">,</span> <span class="nx">decodedUriComponent</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -121,7 +121,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/encoding;
 import ballerina/io;
-import ballerina/lang.&#39;string as str;
+import ballerina/lang.&#39;string;
 </code></pre></div>
 
                                 </td>
@@ -147,7 +147,7 @@ import ballerina/lang.&#39;string as str;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string urlEncodedValue = encoding:encodeBase64Url(encodingValue.toBytes());
-    io:println(&quot;Base64 URL encoded value: &quot; + urlEncodedValue);
+    io:println(&quot;Base64 URL encoded value: &quot;, urlEncodedValue);
 </code></pre></div>
 
                                 </td>
@@ -179,8 +179,8 @@ import ballerina/lang.&#39;string as str;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    byte[] urlDecodedValue = check encoding:decodeBase64Url(decodingValue);
-    io:println(&quot;Base64 URL decoded value: &quot; +
-                check str:fromBytes(urlDecodedValue));
+    io:println(&quot;Base64 URL decoded value: &quot;,
+        check &#39;string:fromBytes(urlDecodedValue));
 </code></pre></div>
 
                                 </td>
@@ -212,8 +212,8 @@ import ballerina/lang.&#39;string as str;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string encodedUriComponent =
-            check encoding:encodeUriComponent(encodingUriComp, &quot;UTF-8&quot;);
-    io:println(&quot;URI encoded value: &quot; + encodedUriComponent);
+        check encoding:encodeUriComponent(encodingUriComp, &quot;UTF-8&quot;);
+    io:println(&quot;URI encoded value: &quot;, encodedUriComponent);
 </code></pre></div>
 
                                 </td>
@@ -245,8 +245,8 @@ import ballerina/lang.&#39;string as str;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    string decodedUriComponent =
-                            check encoding:decodeUriComponent(data, &quot;UTF-8&quot;);
-    io:println(&quot;URI decoded value: &quot; + decodedUriComponent);
+        check encoding:decodeUriComponent(data, &quot;UTF-8&quot;);
+    io:println(&quot;URI decoded value: &quot;, decodedUriComponent);
 }
 </code></pre></div>
 

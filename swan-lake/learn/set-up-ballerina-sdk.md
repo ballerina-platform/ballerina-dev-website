@@ -3,20 +3,12 @@ layout: ballerina-left-nav-pages-swanlake
 title: Setting up Ballerina SDK
 permalink: /swan-lake/learn/set-up-ballerina-sdk/
 active: set-up-ballerina-sdk
+intro: After installing the IntelliJ Ballerina plugin, you need to set up Ballerina SDK for your Ballerina projects to activate all the capabilities of the plugin. Click on the below links for instructions on how to set up Ballerina SDK.
 redirect_from:
   - /swan-lake/learn/set-up-ballerina-sdk
 ---
 
-# Setting up Ballerina SDK
-
-After [installing the IntelliJ Ballerina plugin](intellij-plugin-doc.md), you need to set up Ballerina SDK for your Ballerina projects to activate all the capabilities of the plugin. 
-
-Click on the below links for instructions on how to set up Ballerina SDK.
-
-- [Setting up for a new project](#setting-up-for-a-new-project)
-- [Setting up for an existing project](#setting-up-for-an-existing-project)
-
-## Setting up for a new project
+## Setting Up for a New Project
 
 Follow the steps below to set up Ballerina SDK when creating a new Ballerina project.
 
@@ -42,7 +34,7 @@ Now, you have successfully added the Ballerina SDK. Click **Next** and continue 
 
 ![The new Ballerina SDK](images/new-ballerina-sdk.png)
 
-## Setting up for an existing project
+## Setting Up for an Existing Project
 
 Follow the steps below to set up Ballerina SDK for an exisitng Ballerina project.
 

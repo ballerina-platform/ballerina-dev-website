@@ -197,11 +197,6 @@
   ],
   "constants": [
     {
-      "id": "RSA",
-      "description": "\u003cp\u003eThe \u003ccode\u003eRSA\u003c/code\u003e algorithm.\u003c/p\u003e",
-      "moduleId": "crypto"
-    },
-    {
       "id": "NONE",
       "description": "\u003cp\u003eNo padding.\u003c/p\u003e",
       "moduleId": "crypto"
@@ -240,6 +235,11 @@
       "id": "OAEPwithSHA512andMGF1",
       "description": "\u003cp\u003eThe \u003ccode\u003eOAEPwithSHA512andMGF1\u003c/code\u003e padding mode.\u003c/p\u003e",
       "moduleId": "crypto"
+    },
+    {
+      "id": "RSA",
+      "description": "\u003cp\u003eThe \u003ccode\u003eRSA\u003c/code\u003e algorithm.\u003c/p\u003e",
+      "moduleId": "crypto"
     }
   ],
   "errors": [
@@ -247,17 +247,17 @@
       "id": "CryptoError",
       "description": "\u003cp\u003eRepresents the Crypto error.\u003c/p\u003e",
       "moduleId": "crypto"
+    },
+    {
+      "id": "Error",
+      "description": "\u003cp\u003eThe union of all the Crypto related errors\u003c/p\u003e\n",
+      "moduleId": "crypto"
     }
   ],
   "types": [
     {
       "id": "AesPadding",
       "description": "\u003cp\u003ePadding algorithms supported by AES encryption and decryption.\u003c/p\u003e",
-      "moduleId": "crypto"
-    },
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eThe union of all the Crypto related errors\u003c/p\u003e\n",
       "moduleId": "crypto"
     },
     {

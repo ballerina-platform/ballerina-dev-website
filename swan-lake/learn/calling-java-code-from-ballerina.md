@@ -5,6 +5,7 @@ description: See how Ballerina offers a straightforward way to call existing Jav
 keywords: ballerina, programming language, java api, interoperability
 permalink: /swan-lake/learn/calling-java-code-from-ballerina/
 active: calling-java-code-from-ballerina/
+intro: Ballerina offers a straightforward way to call the existing Java code from Ballerina and also provides a Java API to call Ballerina code from Java.  Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
 redirect_from:
   - /swan-lake/learn/how-to-use-java-interoperability
   - /swan-lake/learn/how-to-use-java-interoperability/
@@ -13,79 +14,21 @@ redirect_from:
   - /swan-lake/learn/calling-java-code-from-ballerina
 ---
 
-# Calling Java Code from Ballerina
-
-Ballerina offers a straightforward way to call the existing Java code from Ballerina and also provides a Java API to call Ballerina code from Java.  Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics. 
-
-- [Ballerina Bindings to Java Code](#ballerina-bindings-to-java-code)
-- [The Need to Call Java from Ballerina](#the-need-to-call-java-from-ballerina)
-- [Writing Ballerina Bindings](#writing-ballerina-bindings)
-- [Using the SnakeYAML Java Library in Ballerina](#using-the-snakeyaml-java-library-in-ballerina)
-    - [Step 1 - Writing the Java Code](#step-1---writing-the-java-code)
-    - [Step 2 - Setting Up the Ballerina Project](#step-2---setting-up-the-ballerina-project)
-        - [Creating a Ballerina Project](#creating-a-ballerina-project)
-        - [Adding a Ballerina Module to Your Project](#adding-a-ballerina-module-to-your-project)
-        - [Adding a Sample YAML File](#adding-a-sample-yaml-file)
-        - [Verifying the Project](#verifying-the-project)
-    - [Step 3 - Generating the Ballerina Bindings](#step-3---generating-the-ballerina-bindings)
-      - [Copying the SnakeYAML Library to Your Project](#copying-the-snakeyaml-library-to-your-project)
-      - [Adding the SnakeYAML Library to the Ballerina TOML File](#adding-the-snakeyaml-library-to-the-ballerina-toml-file)
-      - [Generating the Ballerina Bindings](#generating-the-ballerina-bindings)
-    - [Step 4 - Writing the Ballerina Code](#step-4---writing-the-ballerina-code)
-        - [Creating the `FileInputStream`](#creating-the-fileinputstream)
-        - [Creating the SnakeYAML Entry Point](#creating-the-snakeyaml-entry-point)
-        - [Loading the YAML Document](#loading-the-yaml-document)
-        - [Printing the Returned Map Instance](#printing-the-returned-map-instance)
-        - [Completing the Code](#completing-the-code)
-- [The Bindgen Tool](#the-bindgen-tool)
-- [The `bindgen` Command](#the-bindgen-command)
-    - [Generated Bridge Code](#generated-bridge-code)
-    - [Mapping Java Code with Ballerina](#mapping-java-code-with-ballerina)
-        - [Java Classes](#java-classes)
-        - [Constructors](#constructors)
-        - [Methods](#methods)
-        - [Fields](#fields)
-        - [External Interop Functions](#external-interop-functions)
-        - [Dependency Objects](#dependency-objects)
-        - [Ballerina Object](#ballerina-object)
-    - [Type Mappings between Java and Ballerina](#type-mappings-between-java-and-ballerina)
-- [Packaging Java Libraries with Ballerina Programs](#packaging-java-libraries-with-ballerina-programs)
-    - [Ballerina FFI](#ballerina-ffi)
-        - [The External Function Body](#the-external-function-body)
-        - [The Handle Type](#the-handle-type)
-- [Calling Java Programs from Ballerina](#calling-java-programs-from-ballerina)
-    - [Instantiating Java Classes](#instantiating-java-classes)
-        - [Dealing with Overloaded Constructors](#dealing-with-overloaded-constructors)
-        - [The `paramTypes` Field](#the-paramtypes-field)
-    - [Calling Java Methods](#calling-java-methods)
-        - [Calling Static Methods](#calling-static-methods)
-        - [Calling Instance Methods](#calling-instance-methods)
-        - [Mapping Java Classes into Ballerina Objects](#mapping-java-classes-into-ballerina-objects)
-        - [Calling Overloaded Java Methods](#calling-overloaded-java-methods)
-    - [Java Exceptions as Ballerina Errors](#java-exceptions-as-ballerina-errors)
-        - [Java Checked Exceptions](#java-checked-exceptions)
-        - [Mapping a Java Exception to a Ballerina Error Value](#mapping-a-java-exception-to-a-ballerina-error-value)
-    - [Null Safety](#null-safety)
-    - [Mapping Java Types to Ballerina Types and Vice Versa](#mapping-java-types-to-ballerina-types-and-vice-versa)
-        - [Mapping Java Types to Ballerina Types](#mapping-java-types-to-ballerina-types)
-        - [Mapping Ballerina Types to Java Types](#mapping-ballerina-types-to-java-types)
-        - [Access or Mutate Java Fields](#access-or-mutate-java-fields)
-
-### Ballerina Bindings to Java Code
+## Ballerina Bindings to Java Code
 Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram. 
 
 <img src="/swan-lake/learn/images/interoperability-diagram.png" alt="Ballerina bindings to Java code" width="300" height="350">
 
 This guide teaches you how to write those bindings manually as well as how to generate those bindings automatically but first, let's look at why you want to call Java from Ballerina. 
 
-### The Need to Call Java from Ballerina 
+## The Need to Call Java from Ballerina 
 - Ballerina is a relatively new language. Therefore, you may experience a shortage of libraries in [Ballerina Central](https://central.ballerina.io/). In such situations, as a workaround, you can use an existing Java library.
 - You are already familiar with a stable Java API that you would like to use in your Ballerina project. 
 - You want to take advantage of the strengths of Ballerina but you don’t want to reinvest in the libraries that you or your company have written already. 
 
 There may be other reasons but these are great motivations to use Ballerina bindings. 
 
-### Writing Ballerina Bindings
+## Writing Ballerina Bindings
 Writing Ballerina bindings manually is a tedious task. You’ll soon see why. Therefore, we’ve developed a tool called `bindgen` that can generate Ballerina bindings for given Java APIs. The [first section](#how-to-use-the-snakeyaml-java-library-in-ballerina) of this guide shows you how to use it. The [second section](#the-bindgen-tool) is a reference guide to the tool. 
 
 The [third section](#packaging-java-libraries-with-ballerina-programs) explains how to package Java libraries (JAR files) with Ballerina programs. This section is useful because whenever you generate bindings for a Java library, you need to package this Java library and its transitive dependencies to produce a self-contained executable program. 
@@ -291,7 +234,7 @@ public class SnakeYamlSample {
 }
 ```
 
-### Creating the `FileInputStream`
+#### Creating the 'FileInputStream'
 Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job. 
 
 ```ballerina
@@ -312,12 +255,12 @@ if fileInputStream is error {
 	// The type of fileInputStream is FileInputStream within this block
 }
 ```
-### Creating the SnakeYAML Entry Point
+#### Creating the SnakeYAML Entry Point
 The `org.yaml.snakeyaml.Yaml` Class is the entry point to the SnakeYAML API.  The corresponding generated Ballerina object is `Yaml`. The `newYaml5()`  function is mapped to the default constructor of the Java class.   
 ```ballerina
 Yaml yaml = newYaml5();
 ```
-###  Loading the YAML Document
+####  Loading the YAML Document
 We'll be using the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a Java Map instance from the given InputStream. 
 ```ballerina
 
@@ -328,12 +271,12 @@ The generated code does not handle Java subtyping at the moment. Therefore, `Inp
 
 The `org.yaml.snakeyaml.Yaml.load(InputStream is)` is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.  
 
-###  Printing the Returned Map Instance
+####  Printing the Returned Map Instance
 You can print the content of the Map instance in the the standard out as follows. 
 ```ballerina
 io:println(mapObj);
 ```
-### Completing the Code 
+#### Completing the Code 
 Here, is the complete code. You can replace the contents in `src/yamlparser/main.bal` with the following code.
 ```ballerina
 import ballerina/io;
@@ -381,7 +324,7 @@ In this section, we explained how to use the `bindgen` tool to generate Ballerin
 The next sections provide more details on various aspects related to Java interoperability in Ballerina. 
 
 
-## The `bindgen` Tool
+## The 'bindgen' Tool
 
 The following subsections explain how the `bindgen` tool works.
 
@@ -405,7 +348,7 @@ The following subsections explain how the `bindgen` tool works.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
-### The `bindgen` Command
+### The 'bindgen' Command
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
@@ -549,7 +492,7 @@ public function __init(handle obj) {
 
 ```
 
-#### Type Mappings between Java and Ballerina
+### Type Mappings between Java and Ballerina
 When using the Ballerina bindings, you could use the Ballerina primitive types, Ballerina string type, and the generated Ballerina objects. They will be mapped internally onto the respective Java primitives, Java String object, and the respective handle references of the objects.
 
 ## Packaging Java Libraries with Ballerina Programs
@@ -761,7 +704,7 @@ function newArrayDequeWithCollection(handle c) returns handle = @java:Constructo
 } external;
 ```
 
-##### The `paramTypes` Field
+##### The 'paramTypes' Field
 You can use the `paramTypes` field to resolve the exact overloaded method. This field is defined as follows.
 
 ```ballerina
@@ -1151,7 +1094,7 @@ int | byte, char, short, int, long | Narrowing conversion when int -> byte, char
 float | byte, char, short, int, long, float, double | Narrowing conversion when float -> byte, char, short, int, long, float
 
 
-### Access/ or Mutate Java Fields
+### Access or Mutate Java Fields
 The `@java:FieldGet` and `@java:FieldSet` annotations allow you to read and update the value of a Java static or instance field respectively. The most common use case is to read a value of a Java static constant. 
 
 ```ballerina

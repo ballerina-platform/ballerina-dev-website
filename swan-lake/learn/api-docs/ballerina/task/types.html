@@ -77,7 +77,23 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
                         
     
         <li >
+            <a href="#AppointmentMisfirePolicy" onclick="menuLinkClick()">AppointmentMisfirePolicy</a>
+        </li>
+    
+        <li >
             <a href="#Error" onclick="menuLinkClick()">Error</a>
+        </li>
+    
+        <li >
+            <a href="#OneTimeTaskPolicy" onclick="menuLinkClick()">OneTimeTaskPolicy</a>
+        </li>
+    
+        <li >
+            <a href="#RecurringTaskPolicy" onclick="menuLinkClick()">RecurringTaskPolicy</a>
+        </li>
+    
+        <li >
+            <a href="#TimerMisfirePolicy" onclick="menuLinkClick()">TimerMisfirePolicy</a>
         </li>
     
 
@@ -110,6 +126,10 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
             </li>
         
         
+        
+            <li>
+                <a data="constants" href="../task/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
         
         
         
@@ -160,6 +180,21 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
             
                 <div class="params-listing">
                     <ul>
+                        <li id="AppointmentMisfirePolicy">
+                            <b >AppointmentMisfirePolicy</b>
+                            
+                                <span class="type">  <a href="../task/constants.html#SMART_POLICY">SMART_POLICY</a> | <a href="../task/constants.html#DO_NOTHING">DO_NOTHING</a> | <a href="../task/constants.html#FIRE_AND_PROCEED">FIRE_AND_PROCEED</a> | <a href="../task/constants.html#IGNORE_POLICY">IGNORE_POLICY</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Possible types of parameters that can be passed into the <code>AppointmentTaskPolicy</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
                         <li id="Error">
                             <b >Error</b>
                             
@@ -169,6 +204,51 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
                             
                             <p>Represents the Union error type of the ballerina/task module. This error type represents any error that can occur during the
 execution of task APIs.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OneTimeTaskPolicy">
+                            <b >OneTimeTaskPolicy</b>
+                            
+                                <span class="type">  <a href="../task/constants.html#SMART_POLICY">SMART_POLICY</a> | <a href="../task/constants.html#IGNORE_POLICY">IGNORE_POLICY</a> | <a href="../task/constants.html#FIRE_NOW">FIRE_NOW</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Possible types of parameters that can be passed into the <code>OneTimeTaskPolicy</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="RecurringTaskPolicy">
+                            <b >RecurringTaskPolicy</b>
+                            
+                                <span class="type">  <a href="../task/constants.html#SMART_POLICY">SMART_POLICY</a> | <a href="../task/constants.html#IGNORE_POLICY">IGNORE_POLICY</a> | <a href="../task/constants.html#FIRE_NEXT_WITH_EXISTING_COUNT">FIRE_NEXT_WITH_EXISTING_COUNT</a> | <a href="../task/constants.html#FIRE_NEXT_WITH_REMAINING_COUNT">FIRE_NEXT_WITH_REMAINING_COUNT</a> | <a href="../task/constants.html#FIRE_NOW_WITH_EXISTING_COUNT">FIRE_NOW_WITH_EXISTING_COUNT</a> | <a href="../task/constants.html#FIRE_NOW_WITH_REMAINING_COUNT">FIRE_NOW_WITH_REMAINING_COUNT</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Possible types of parameters that can be passed into the <code>RecurringTaskPolicy</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TimerMisfirePolicy">
+                            <b >TimerMisfirePolicy</b>
+                            
+                                <span class="type">  <a href="../task/types.html#RecurringTaskPolicy">RecurringTaskPolicy</a> | <a href="../task/types.html#OneTimeTaskPolicy">OneTimeTaskPolicy</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Possible types of parameters that can be passed into the <code>TimerTaskPolicy</code>.</p>
 
                         </li>
                     </ul>

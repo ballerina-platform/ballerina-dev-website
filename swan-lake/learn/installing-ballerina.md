@@ -5,6 +5,7 @@ description: Get started with the Ballerina programming language by following th
 keywords: ballerina, installing ballerina, programming language, ballerina installation
 permalink: /swan-lake/learn/installing-ballerina/
 active: installing-ballerina
+intro: The sections below include information about installing Ballerina.
 redirect_from:
   - /swan-lake/learn/getting-started
   - /swan-lake/learn/getting-started/
@@ -12,20 +13,6 @@ redirect_from:
   - /swan-lake/learn/installing-ballerina/#installing-from-source
   - /swan-lake/learn/installing-ballerina/#installing-from-source/
 ---
-
-# Installing Ballerina
-
-- [Installing Ballerina via Installers](#installing-ballerina-via-installers)
-    - [Installing on macOS](#installing-on-macos)
-    - [Installing on Windows](#installing-on-windows)
-    - [Installing on Linux](#installing-on-linux)
-- [Installing via the Ballerina Language ZIP File](#installing-via-the-ballerina-language-zip-file)
-- [Updating Ballerina](#updating-ballerina)
-- [Building from Source](#building-from-source)
-    - [Setting Up the Prerequisites](#setting-up-the-prerequisites)
-    - [Obtaining the Source Code](#obtaining-the-source-code)
-    - [Building the Source](#building-the-source)
-- [Uninstalling Ballerina](#uninstalling-ballerina)
 
 ## Installing Ballerina via Installers
 

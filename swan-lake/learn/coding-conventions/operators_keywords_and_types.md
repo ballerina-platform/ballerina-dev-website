@@ -3,16 +3,12 @@ layout: ballerina-left-nav-pages-swanlake
 title: Operators, Keywords, and Types
 active: operators_keywords_and_types
 permalink: /swan-lake/learn/coding-conventions/operators_keywords_and_types/
+intro: The sections below include the coding conventions with respect to operators, keywords, and types.
 redirect_from:
   - /swan-lake/learn/style-guide/operators_keywords_and_types/
   - /swan-lake/learn/style-guide/operators_keywords_and_types
   - /swan-lake/learn/coding-conventions/operators_keywords_and_types
 ---
-
-# Operators, Keywords, and Types
-
-- [Keywords and types](#keywords-and-types)
-- [Operators](#operators)
 
 ## Keywords and Types
 * Do not keep spaces between the type and the pipe operator when it is in an union type (e.g., `string|int`).

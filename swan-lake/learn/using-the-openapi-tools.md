@@ -3,22 +3,18 @@ layout: ballerina-left-nav-pages
 title: Using the OpenAPI Tools
 description: Check out how the Ballerina OpenAPI tooling makes it easy for users to start developing a service documented in the OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /learn/using-the-openapi-tools/
+permalink: /swan-lake/learn/using-the-openapi-tools/
 active: using-the-openapi-tools
+intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
 redirect_from:
-  - /v1-2/learn/how-to-use-openapi-tools
-  - /v1-2/learn/how-to-use-openapi-tools/
-  - /learn/how-to-use-openapi-tools/
-  - /learn/how-to-use-openapi-tools
-  - /learn/using-the-openapi-tools
+  - /swan-lake/learn/how-to-use-openapi-tools/
+  - /swan-lake/learn/how-to-use-openapi-tools
+  - /swan-lake/learn/using-the-openapi-tools
 ---
 
-# Ballerina OpenAPI Tools
+## Using the Capabilities of the OpenAPI Tools
 
-The OpenAPI Specification is a specification, which creates a RESTFUL contract for APIs detailing all of its resources 
-and operations in a human and machine readable format for easy development, discovery, and integration. Ballerina
- OpenAPI tooling will make it easy for users to start development of a service documented in the OpenAPI contract 
-  by generating the Ballerina service and client skeletons. The OpenAPI tools provide the following capabilities.
+The OpenAPI tools provide the following capabilities.
  
  1. Generate the Ballerina service or client code for a given OpenAPI definition. 
  2. Export the OpenAPI definition of a Ballerina service.
@@ -28,21 +24,10 @@ The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerin
 Code generation from OpenAPI to Ballerina can produce `ballerina service stubs` and `ballerina client stubs`.
 The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during
  compile time. 
-This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.
-
-- [OpenAPI to Ballerina](#openAPI-to-ballerina)
-    - [Generate Service and Client Stub from OpenAPI Contract](#generate-service-and-client-stub-from-openapi-contract)
-        - [Modes](#modes)
-- [Ballerina to OpenAPI](#ballerina-to-openAPI)    
-    - [Service to OpenAPI Export](#service-to-openapi-export)
-- [Samples](#samples)
-    - [Generate Service and Client Stub from OpenAPI](#generate-service-and-client-stub-from-openAPI)
-    - [Generate OpenAPI contract from Service](#generate-openAPI-contract-from-service)
-- [OpenAPI Validator Compiler Plugin](#openAPI-validator-compiler-plugin)
-     
+This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.   
 
 ### OpenAPI to Ballerina
-#### Generate Service and Client stub from OpenAPI Contract
+#### Generate Service and Client Stub from an OpenAPI Contract
 
 ```bash
 ballerina openapi   -i <openapi-contract> 
@@ -111,7 +96,7 @@ The service generation process is complete. The following files were created.
 -- hello-client.bal
 -- schema.bal
 ```
-#### Generate OpenAPI contract from Service
+#### Generate an OpenAPI Contract from a Service
 
  ```bash
     ballerina openapi -i src/helloworld/helloService.bal
@@ -130,7 +115,7 @@ The Compiler Plugin is activated if a service has the `openapi:ServiceInfo` anno
 the service and the OpenAPI Contract and validates both against a pre-defined set of validation rules. 
 If any of the rules fail, the plugin will give the result as one or more compilation errors.
 
-### Annotation for validator Plugin 
+### Annotation for Validator Plugin 
 The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI Contract. You need to add 
 this annotation to the service file with the required values for enabling the validations.  
 The following is an example of the annotation usage.
@@ -147,7 +132,7 @@ service greet on new http:Listener(9090) {
     ...
 }
 ```
-#### Annotation support the following attributes:
+#### Annotation Support for the Following Attributes:
 - **Contract** (Required) : **string**  :
 Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`
 This is a required attribute.

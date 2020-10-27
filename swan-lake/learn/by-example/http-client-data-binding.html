@@ -1,0 +1,831 @@
+---
+layout: ballerina-example-page
+title: Client Data Binding
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/http-client-data-binding
+redirect_from:
+  - /vswan-lake/learn/by-example/http-client-data-binding
+  - /vswan-lake/learn/by-example/http-client-data-binding.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">type</span> <span class="nx">MapJson</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;;</span>
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">|};</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9092&quot;</span><span class="p">);</span><span class="kd">service</span> <span class="nx">call</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/all&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindCheck</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
+                                                    <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                        <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/getString&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;String payload: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">);</span>
+        <span class="kt">json</span> <span class="nx">jsonPayload</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                                    <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/getJson&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Json payload: &quot;</span> <span class="o">+</span> <span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">value</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                                <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/getJson&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">MapJson</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">check</span> <span class="nx">value</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                            <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/getPerson&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Person name: &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span>  <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                                            <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/getResponse&quot;</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/5xx&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">handle500</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/get5XX&quot;</span><span class="p">,</span> <span class="s">&quot;want 500&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">RemoteServerError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+            <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="nx">statusCode</span> <span class="err">?</span><span class="p">:</span> <span class="mi">500</span><span class="p">;</span>
+            <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">resp</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">json</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/4xx&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">handle404</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/err&quot;</span><span class="p">,</span> <span class="s">&quot;want 400&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientRequestError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+            <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="nx">statusCode</span> <span class="err">?</span><span class="p">:</span> <span class="mi">400</span><span class="p">;</span>
+            <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">resp</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">json</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="nd">@http:ServiceConfig {</span>
+    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/backend&quot;</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">mockService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getString</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Hello ballerina!!!!&quot;</span><span class="p">);</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">({</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="nx">values</span><span class="p">:</span> <span class="p">{</span><span class="nx">a</span><span class="p">:</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">}}});</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getPerson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">({</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">15</span><span class="p">});</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">({</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;data-binding-done&quot;</span><span class="p">});</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s">&quot;x-fact&quot;</span><span class="p">,</span> <span class="s">&quot;backend-payload&quot;</span><span class="p">);</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get5XX</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">501</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;data-binding-failed-with-501&quot;</span><span class="p">);</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Client Data Binding</h2>
+                            <p><p>Client data binding helps to access the response payload directly as a return value. The <code>targetType</code> dafaultable
+ parameter in the client remote function signature expects a <code>typedesc</code> of a possible payload type out of
+ <code>string</code>|<code>xml</code>|<code>json</code>|<code>map&lt;json&gt;</code>|<code>byte[]</code>|<code>record</code>|<code>record[]</code> and <code>http:Response</code>.
+ A successful data binding process will return the payload in the given <code>targetType</code>. When the user expects client
+ data binding to happen, the HTTP error responses (4XX, 5XX)  will be categorized as an <code>http:ClientError</code> of the
+ client remote operation. Since the default <code>targetType</code> is <code>http:Response</code>, the user still has the option to access
+ the complete response to explore more.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="http-redirects.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Redirects</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="base-path-and-path.html">
+                                        <span>NEXT ></span>
+                                        <p>Base Path and Path</p>
+                                    </a>
+                                </div>  
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="http-client-data-binding">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-client-data-binding/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type MapJson map&lt;json&gt;;
+type Person record {|
+    string name;
+    int age;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClient = new(&quot;http://localhost:9092&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service call on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
+        path: &quot;/all&quot;
+    }
+    resource function bindCheck(http:Caller caller, http:Request request)
+                                                    returns @tainted error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = backendClient-&gt;
+                        get(&quot;/backend/getString&quot;, targetType = string);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>string</code> typedesc is being passed to the <code>get</code> <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#get">client remote function</a>
+ as the <code>targetType</code> expecting the payload to be bound to a string value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
+            log:printError(&quot;Error: &quot; + result.message());
+            return result;
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The return type of the client remote action is the union of <code>string</code>|<code>xml</code>|<code>json</code>|<code>map&lt;json&gt;</code>|<code>byte[]</code>|
+ <code>record</code>|<code>record[]</code>|<code>http:Response</code> or <code>http:ClientError</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot;String payload: &quot; + &lt;string&gt;result);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the type test of the error becomes false, it implies that the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Payload">payload type</a>
+ is string.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        json jsonPayload = &lt;json&gt; check backendClient-&gt;
+                                    post(&quot;/backend/getJson&quot;, &quot;foo&quot;, json);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot;Json payload: &quot; + jsonPayload.toJsonString());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;json&gt; value = &lt;map&lt;json&gt;&gt; check backendClient-&gt;
+                                post(&quot;/backend/getJson&quot;, &quot;foo&quot;, MapJson);
+        log:printInfo(check value.id);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since only the <code>named types</code> or <code>built-in types</code> can be passed as function parameters,  <code>Map</code> or <code>Array</code>
+ types have to be defined beforehand. Here, the type <code>MapJson</code> is passed instead of <code>map&lt;json&gt;</code>.
+ Same can be done for <code>byte[]</code> or <code>Person[]</code> as well.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        Person person = &lt;Person&gt; check backendClient-&gt;
+                            get(&quot;/backend/getPerson&quot;, targetType = Person);
+        log:printInfo(&quot;Person name: &quot; + person.name);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>record</code> and <code>record[]</code> are also possible types for data binding.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res =  &lt;http:Response&gt; check backendClient-&gt;
+                                            get(&quot;/backend/getResponse&quot;);
+        check caller-&gt;respond(&lt;@untainted&gt;res);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>When the complete response is expected, the default value of the <code>targetType</code> will be applied.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
+        path: &quot;/5xx&quot;
+    }
+    resource function handle500(http:Caller caller, http:Request request) {
+        var res = backendClient-&gt;post(&quot;/backend/get5XX&quot;, &quot;want 500&quot;, json);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (res is http:RemoteServerError) {
+            http:Response resp = new;
+            resp.statusCode = res.detail()?.statusCode ?: 500;
+            resp.setPayload(&lt;@untainted&gt;res.message());
+            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;resp);
+        } else {
+            var responseToCaller = caller-&gt;respond(&lt;@untainted json&gt;res);
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>When the data binding is expected to happen and if the <code>post</code> remote function gets a 5XX response from the
+ backend, the response will be returned as an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#RemoteServerError">http:RemoteServerError</a>
+ including the error message and status code.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
+        path: &quot;/4xx&quot;
+    }
+    resource function handle404(http:Caller caller, http:Request request) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var res = backendClient-&gt;post(&quot;/backend/err&quot;, &quot;want 400&quot;, json);
+        if (res is http:ClientRequestError) {
+            http:Response resp = new;
+            resp.statusCode = res.detail()?.statusCode ?: 400;
+            resp.setPayload(&lt;@untainted&gt;res.message());
+            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;resp);
+        } else {
+            var responseToCaller = caller-&gt;respond(&lt;@untainted json&gt;res);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>When the data binding is expected to happen and if the client remote function gets a 4XX response from the
+ backend, the response will be returned as an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#ClientRequestError">http:ClientRequestError</a>
+ including the error message and status code.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
+    basePath: &quot;/backend&quot;
+}
+service mockService on new http:Listener(9092) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getString(http:Caller caller, http:Request req) {
+        http:Response response = new;
+        response.setTextPayload(&quot;Hello ballerina!!!!&quot;);
+        checkpanic caller-&gt;respond(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getJson(http:Caller caller, http:Request req) {
+        http:Response response = new;
+        response.setJsonPayload({id: &quot;Ballerina&quot;, values: {a: {x: &quot;b&quot;}}});
+        checkpanic caller-&gt;respond(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getPerson(http:Caller caller, http:Request req) {
+        http:Response response = new;
+        response.setJsonPayload({name: &quot;Smith&quot;, age: 15});
+        checkpanic caller-&gt;respond(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getResponse(http:Caller caller, http:Request req) {
+        http:Response response = new;
+        response.setJsonPayload({id: &quot;data-binding-done&quot;});
+        response.setHeader(&quot;x-fact&quot;, &quot;backend-payload&quot;);
+        checkpanic caller-&gt;respond(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get5XX(http:Caller caller, http:Request req) {
+        http:Response response = new;
+        response.statusCode = 501;
+        response.setTextPayload(&quot;data-binding-failed-with-501&quot;);
+        checkpanic caller-&gt;respond(response);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run http_client_data_binding.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
+2020-10-21 19:45:28,828 INFO  [] - String payload: Hello ballerina!!!!
+2020-10-21 19:45:28,873 INFO  [] - Json payload: {&quot;id&quot;:&quot;Ballerina&quot;, &quot;values&quot;:{&quot;a&quot;:{&quot;x&quot;:&quot;b&quot;}}}
+2020-10-21 19:45:28,885 INFO  [] - Ballerina
+2020-10-21 19:45:28,902 INFO  [] - Person name: Smith
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindCheck` resource, use the cURL command below.
+curl -v &quot;http://localhost:9090/call/all&quot;
+&gt; GET /call/all HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; content-type: application/json
+&lt; x-fact: backend-payload
+&lt; date: Wed, 21 Oct 2020 19:45:28 +0530
+&lt; server: ballerina
+&lt; content-length: 26
+&lt;
+* Connection #0 to host localhost left intact
+{&quot;id&quot;:&quot;data-binding-done&quot;}* Closing connection 0
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `handle500` resource, use the cURL command below.
+curl -v &quot;http://localhost:9090/call/5xx&quot;
+&gt; GET /call/5xx HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 501 Not Implemented
+&lt; content-type: text/plain
+&lt; content-length: 28
+&lt; server: ballerina
+&lt; date: Wed, 21 Oct 2020 19:46:42 +0530
+&lt;
+* Connection #0 to host localhost left intact
+data-binding-failed-with-501* Closing connection 0
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `handle404` resource, use the cURL command below.
+curl -v &quot;http://localhost:9090/call/4xx&quot;
+&gt; GET /call/4xx HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 404 Not Found
+&lt; content-type: text/plain
+&lt; content-length: 66
+&lt; server: ballerina
+&lt; date: Wed, 21 Oct 2020 19:48:37 +0530
+&lt;
+* Connection #0 to host localhost left intact
+no matching resource found for path : /backend/err , method : POST* Closing connection 0
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

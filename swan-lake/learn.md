@@ -47,11 +47,11 @@ redirect_from:
    <li><a href="/swan-lake/learn/using-the-cli-tools/" class="cGreenLinkArrow">Ballerina CLI Tools</a></li>
    <li><a href="/swan-lake/learn/structuring-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
     <li><a href="/swan-lake/learn/deployment/docker/" class="cGreenLinkArrow">Deployment</a></li>
-    <li><a href="/swan-lake/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
+    <!--<li><a href="/swan-lake/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>-->
     <li><a href="/swan-lake/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
     <li><a href="/swan-lake/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
     <li><a href="/swan-lake/learn/testing-ballerina-code/testing-quick-start" class="cGreenLinkArrow">Testing Ballerina Code</a></li>
-    <li><a href="/swan-lake/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
+    <!--<li><a href="/swan-lake/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>-->
    </ul>
 
 </div>

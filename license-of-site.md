@@ -4,8 +4,6 @@ title: Ballerina Website License
 permalink: /license-of-site/
 ---
 
-# Ballerina Website License
-
 Except as detailed below, the content on this website is licensed under the [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/us/).
 
 ## What is not licensed?
@@ -50,7 +48,7 @@ In the creation of this website, we used the following Creative Commons Attribut
 If you have any comments regarding Ballerina.io license policies, please send feedback to [legal@wso2.com](mailto:legal@wso2.com).
 
 <style>
-.nav > li.cVersionItem {
+.nav > li.cVersionItem , .cBallerinaTocContainer {
     display: none !important;
 }
 </style>

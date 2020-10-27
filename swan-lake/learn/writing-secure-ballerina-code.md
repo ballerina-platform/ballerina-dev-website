@@ -5,45 +5,12 @@ description: Check out the different security features and controls available wi
 keywords: ballerina, programming language, security, secure ballerina code
 permalink: /swan-lake/learn/writing-secure-ballerina-code/
 active: writing-secure-ballerina-code
+intro: The sections below include information on the different security features and controls available within Ballerina. Also, they provide guidelines on writing secure Ballerina programs.
 redirect_from:
   - /swan-lake/learn/how-to-write-secure-ballerina-code
   - /swan-lake/learn/how-to-write-secure-ballerina-code/
   - /swan-lake/learn/writing-secure-ballerina-code
 ---
-
-# Writing Secure Ballerina Code
-
-This document demonstrates different security features and controls available within Ballerina, and serves the purpose of providing guidelines on writing secure Ballerina programs.
-
-*   [Secure by Design](#secure-by-design)
-    *   [Ensuring Security of Ballerina Standard Libraries](#ensuring-security-of-ballerina-standard-libraries)
-    *   [Securely Using Tainted Data with Security-Sensitive Parameters](#securely-using-tainted-data-with-security-sensitive-parameters)
-*   [Securing Passwords and Secrets](#securing-passwords-and-secrets)
-*   [Authentication and Authorization](#authentication-and-authorization)
-    *   [Inbound Authentication and Authorization](#inbound-authentication-and-authorization)
-        *   [Inbound Advanced Use Cases](#inbound-advanced-use-cases)
-            *   [Using Multiple Auth Handlers](#using-multiple-auth-handlers)
-            *   [Using Multiple Scopes](#using-multiple-scopes)
-            *   [Per-Resource and Per-Service Customization](#per-resource-and-per-service-customization)
-            *   [Implementing Inbound Custom Authentication Mechanism](#implementing-inbound-custom-authentication-mechanism)
-            *   [Disable HTTPS Enforcement](#disable-https-enforcement)
-            *   [Modify Authentication or Authorization Filter Index](#modify-authorization-or-authentication-filter-index)
-        *   [JWT Inbound Authentication and Authorization](#jwt-inbound-authentication-and-authorization)
-        *   [OAuth2 Inbound Authentication and Authorization](#oauth2-inbound-authentication-and-authorization)
-        *   [LDAP Inbound Authentication and Authorization](#ldap-inbound-authentication-and-authorization)
-        *   [Basic Auth Inbound Authentication and Authorization](#basic-auth-inbound-authentication-and-authorization)
-    *   [Outbound Authentication and Authorization](#outbound-authentication-and-authorization)
-        *   [Outbound Advanced Use Cases](#outbound-advanced-use-cases)
-            *   [Implementing Outbound Custom Authentication Mechanism](#implementing-outbound-custom-authentication-mechanism)
-        *   [JWT Outbound Authentication](#jwt-outbound-authentication)
-        *   [OAuth2 Outbound Authentication](#oauth2-outbound-authentication)
-            *   [Client Credentials Grant Type](#client-credentials-grant-type)
-            *   [Password Grant Type](#password-grant-type)
-            *   [Direct Token Mode](#direct-token-mode)
-        *   [Basic Auth Outbound Authentication](#basic-auth-outbound-authentication)
-        *   [Token Propagation for Outbound Authentication](#token-propagation-for-outbound-authentication)
-            *   [Example One](#example-one)
-            *   [Example Two](#example-two)
 
 ## Secure by Design
 

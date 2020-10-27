@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Using the IntelliJ Ballerina Plugin
 permalink: /swan-lake/learn/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
+intro: The sections below include information to start using the IntelliJ Ballerina plugin after installing it.
 redirect_from:
   - /swan-lake/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
   - /swan-lake/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
@@ -16,18 +17,6 @@ redirect_from:
   - /swan-lake/learn/using-the-intellij-plugin
   - /swan-lake/learn/using-the-intellij-plugin/
 ---
-
-# Using the IntelliJ Ballerina Plugin
-
-The below sections include information to start using the IntelliJ Ballerina plugin after [installing it](/swan-lake/learn/intellij-plugin).
-
-- [Creating a New Ballerina Project](#creating-a-new-ballerina-project)
-- [Setting Up Ballerina SDK for an Existing Project](#setting-up-ballerina-sdk-for-an-existing-project)
-- [Creating a New Ballerina File](#creating-a-new-ballerina-file)
-- [Configuring the Plugin Settings](#configuring-the-plugin-settings)
-    - [Ballerina Home Auto Detection](#ballerina-home-auto-detection)
-    - [Experimental Features](#experimental-features)
-    - [Language Server Debug Logs](#language-server-debug-logs)
 
 ## Creating a New Ballerina Project
 
@@ -96,7 +85,7 @@ Now, you have successfully created a new Ballerina file with a **main** function
 
 ## Configuring the Plugin Settings
 
-### Ballerina Home Auto Detection
+### 'Ballerina Home' Auto Detection
 
 In order to automatically detect the Ballerina Home that is being used (without setting up a Ballerina SDK), enable the **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Ballerina Home Auto Detection** option.
 

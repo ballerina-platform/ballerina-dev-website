@@ -12,21 +12,18 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
-<span class="nd">@test:Config {</span>
-    <span class="nx">dependsOn</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;testFunction3&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="nd">@test:Config {</span> 
+    <span class="nx">dependsOn</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;testFunction3&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span>
-    <span class="nx">dependsOn</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;testFunction1&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="nx">dependsOn</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;testFunction1&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 3!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
@@ -40,7 +37,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Guarantee Test Execution Order</h2>
-                            <p><p>The <code>dependsOn</code>attribute can be used to define a list of function names that the test
+                            <p><p>The <code>dependsOn</code> attribute can be used to define a list of functions that the test
  function depends on. These functions will be executed before the test execution.
  This allows you to ensure that the tests are being executed in the expected order.<br/><br/>
  For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
@@ -131,7 +128,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { 
 </code></pre></div>
 
                                 </td>
@@ -150,8 +147,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    dependsOn: [&quot;testFunction3&quot;]
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>    dependsOn: [&quot;testFunction3&quot;] }
 function testFunction1() {
     io:println(&quot;I&#39;m in test function 1!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -174,9 +170,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
-    dependsOn: [&quot;testFunction1&quot;]
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { dependsOn: [&quot;testFunction1&quot;] }
 function testFunction2() {
     io:println(&quot;I&#39;m in test function 2!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -199,7 +193,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testFunction3() {
     io:println(&quot;I&#39;m in test function 3!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -211,8 +205,8 @@ function testFunction3() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is a random test function. This will randomly execute without depending on other functions.
- However,the other function does depend on this.</p>
+                                            <p>This will be executed without depending on other functions.
+ However, since other functions depend on this function, it will be executed first.</p>
 
                                         </div>
                                     </div>

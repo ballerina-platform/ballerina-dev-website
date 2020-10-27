@@ -5,6 +5,7 @@ description: Learn how to run Ballerina programs and services using the CLI tool
 keywords: ballerina, programming language, services
 permalink: /swan-lake/learn/running-ballerina-code/
 active: running-ballerina-code
+intro: The sections below include information on running Ballerina programs.
 redirect_from:
   - /swan-lake/learn/how-to-deploy-and-run-ballerina-programs
   - /swan-lake/learn/how-to-run-ballerina-programs/
@@ -12,7 +13,7 @@ redirect_from:
   - /swan-lake/learn/running-ballerina-code
 ---
 
-# Running Ballerina Code
+## Understanding the Structure
 
 A Ballerina application can have:
 
@@ -85,7 +86,7 @@ A Ballerina runtime can be configured using configuration parameters, which are 
 
 The configuration APIs accept a key and an optional default value. If a mapping does not exist for the specified key, the default value is returned as the configuration value. The default values of these optional configurations are the default values of the return types of the functions.
 
-### Sourcing Parameters Into Ballerina Programs
+### Sourcing Parameters into Ballerina Programs
 Configuration parameters for your programs and apps can be defined on the CLI, as an environment variable, or from a configuration file, with loading and override precedence in the same order.
 
 #### Sourcing CLI Parameters
@@ -166,17 +167,26 @@ Hello, Ballerina !
 
 #### Decrypting the Value
 If a configuration contains an encrypted value, Ballerina looks for a `secret.txt` file in the directory where the source files are located. The `secret.txt` should contain the secret used to encrypt the value. The `secret.txt` file will be deleted after it is read.
+
 ```bash
 $ echo 12345 > secret.txt
 $ ballerina run main.bal --b7a.config.file=ballerina.conf
 Hello, Ballerina !
 ```
 
+Alternatively, you can pass the path to this `secret.txt` file as a flag via the CLI as follows:
+
+```bash
+ ballerina run main.bal --b7a.config.secret=<PATH_TO_SECRET_FILE>
+ ```
 
 If the `secret.txt` file is not present, then CLI prompts the user for the secret. Enter secret `12345` when prompted.
+
 ```bash
 $ ballerina run main.bal --b7a.config.file=ballerina.conf
 ballerina: enter secret for config value decryption:
 
 Hello, Ballerina !
 ```
+
+

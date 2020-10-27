@@ -16,14 +16,14 @@ redirect_from:
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
     <span class="k">fork</span> <span class="p">{</span>
         <span class="kd">worker</span> <span class="nx">w1</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=2*3&quot;</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">checkpanic</span> <span class="p">&#39;int:fromString(</span>
-                <span class="nx">checkpanic</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
+            <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">checkpanic</span>
+                <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=2*3&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">checkpanic</span> <span class="p">&#39;int:fromString(</span><span class="nx">response</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="kd">worker</span> <span class="nx">w2</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=9*4&quot;</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">checkpanic</span> <span class="p">&#39;int:fromString(</span>
-                <span class="nx">checkpanic</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
+            <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">checkpanic</span>
+                <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=9*4&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">checkpanic</span> <span class="p">&#39;int:fromString(</span><span class="nx">response</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nx">record</span> <span class="p">{</span><span class="kt">int</span> <span class="nx">w1</span><span class="p">;</span> <span class="kt">int</span> <span class="nx">w2</span><span class="p">;}</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
@@ -164,14 +164,14 @@ import ballerina/lang.&#39;int;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    fork {
         worker w1 returns int {
-            var response = checkpanic httpClient-&gt;get(&quot;/v4/?expr=2*3&quot;);
-            return checkpanic &#39;int:fromString(
-                checkpanic response.getTextPayload());
+            string response = &lt;string&gt; checkpanic
+                httpClient-&gt;get(&quot;/v4/?expr=2*3&quot;, targetType = string);
+            return checkpanic &#39;int:fromString(response);
         }
         worker w2 returns int {
-            var response = checkpanic httpClient-&gt;get(&quot;/v4/?expr=9*4&quot;);
-            return checkpanic &#39;int:fromString(
-                checkpanic response.getTextPayload());
+            string response = &lt;string&gt; checkpanic
+                httpClient-&gt;get(&quot;/v4/?expr=9*4&quot;, targetType = string);
+            return checkpanic &#39;int:fromString(response);
         }
     }
 </code></pre></div>

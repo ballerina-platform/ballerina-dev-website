@@ -5,7 +5,6 @@ permalink: /community/slack/
 
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.32.min.js"></script>
 <link rel="stylesheet" href="/css/slack-page.css">
-# Slack
 
 Ballerina is an open-source project under [Apache 2.0 license](https://opensource.org/licenses/Apache-2.0) and the work of the Ballerina community.
 

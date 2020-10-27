@@ -5,23 +5,12 @@ description: See how the Ballerina deployment in Kubernetes works
 keywords: ballerina, programming language, services, cloud, kubernetes
 permalink: /swan-lake/learn/deployment/kubernetes/
 active: kubernetes
+intro: The Kubernetes builder extension offers native support for running Ballerina programs on Kubernetes with the use of annotations that you can include as part of your service code.
 redirect_from:
   - /swan-lake/learn/deployment/kubernetes
 ---
 
-# Kubernetes
-
-The Kubernetes builder extension offers native support for running Ballerina programs on Kubernetes with the use of annotations that you can include as part of your service code. Also, it will take care of the creation of the Docker images, so you don't need to explicitly create Docker images prior to deployment on Kubernetes.
-
-- [Supported Configurations](#supported-configurations)
-- [Using Kubernetes Annotations](#using-kubernetes-annotations)
-- [Building the Deployed Service](#building-the-deployed-service)
-- [Creating the Kubernetes Deployment](#creating-the-kubernetes-deployment)
-    - [Accessing via Node Port](#accessing-via-node-port)
-    - [Accessing via Ingress](#accessing-via-ingress)
-    - [Accessing the Service](#accessing-the-service)
-- [Supported Kubernetes Annotations](#supported-kubernetes-annotations)
-- [Extending Ballerina Deployment and Annotations](#extending-ballerina-deployment-and-annotations)
+The Kubernetes builder extension takes care of the creation of the Docker images, so you don't need to explicitly create Docker images prior to deployment on Kubernetes.
 
 ## Supported Configurations
 
@@ -281,7 +270,7 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |registry|Docker registry URL|null|
 |username|Username for the Docker registry|null|
 |password|Password for the Docker registry|null|
-|baseImage|Base image to create the Docker image|ballerina/jre8:v1|
+|baseImage|Base image to create the Docker image|ballerina/jre11:v1|
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set ,then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
 |buildImage|Building the Docker image|true|
 |push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|
@@ -393,7 +382,7 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |registry|Docker registry URL|null|
 |username|Username for the Docker registry|null|
 |password|Password for the Docker registry|null|
-|baseImage|Base image to create the Docker image|ballerina/jre8:v1|
+|baseImage|Base image to create the Docker image|ballerina/jre11:v1|
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set, then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
 |buildImage|Building the Docker image|true|
 |push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|

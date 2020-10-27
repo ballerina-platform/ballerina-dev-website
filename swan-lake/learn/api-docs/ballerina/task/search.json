@@ -30,7 +30,53 @@
       "moduleId": "task"
     }
   ],
-  "constants": [],
+  "constants": [
+    {
+      "id": "SMART_POLICY",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003esmartPolicy\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "DO_NOTHING",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003edoNothing\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "FIRE_AND_PROCEED",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003efireAndProceed\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "FIRE_NEXT_WITH_EXISTING_COUNT",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003efireNextWithExistingCount\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "FIRE_NEXT_WITH_REMAINING_COUNT",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003efireNextWithRemainingCount\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "FIRE_NOW_WITH_EXISTING_COUNT",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003efireNowWithExistingCount\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "FIRE_NOW_WITH_REMAINING_COUNT",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003efireNowWithRemainingCount\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "FIRE_NOW",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003efireNow\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "IGNORE_POLICY",
+      "description": "\u003cp\u003eThe value of this constant is \u003ccode\u003eignorePolicy\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    }
+  ],
   "errors": [
     {
       "id": "ListenerError",
@@ -45,8 +91,28 @@
   ],
   "types": [
     {
+      "id": "AppointmentMisfirePolicy",
+      "description": "\u003cp\u003ePossible types of parameters that can be passed into the \u003ccode\u003eAppointmentTaskPolicy\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
       "id": "Error",
       "description": "\u003cp\u003eRepresents the Union error type of the ballerina/task module.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "OneTimeTaskPolicy",
+      "description": "\u003cp\u003ePossible types of parameters that can be passed into the \u003ccode\u003eOneTimeTaskPolicy\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "RecurringTaskPolicy",
+      "description": "\u003cp\u003ePossible types of parameters that can be passed into the \u003ccode\u003eRecurringTaskPolicy\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "task"
+    },
+    {
+      "id": "TimerMisfirePolicy",
+      "description": "\u003cp\u003ePossible types of parameters that can be passed into the \u003ccode\u003eTimerTaskPolicy\u003c/code\u003e.\u003c/p\u003e",
       "moduleId": "task"
     }
   ],

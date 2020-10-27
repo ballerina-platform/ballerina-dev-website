@@ -1,15 +1,9 @@
 ---
 layout: ballerina-inner-page
-title: Reporting a Security Vulnerability
+title: Security Policy
+intro: Ballerina project maintainers take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
 permalink: /security/
 ---
-
-# Security Policy
-
-Ballerina project maintainers take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
-
-- [Reporting a vulnerability](#reporting-a-vulnerability)
-- [Handling a vulnerability](#handling-a-vulnerability)
 
 ## Reporting a vulnerability
 
@@ -48,3 +42,4 @@ The below is an overview of the vulnerability handling process.
     display: none !important;
 }
 </style>
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

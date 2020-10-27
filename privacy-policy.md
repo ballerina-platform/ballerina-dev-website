@@ -1,7 +1,6 @@
 ---
 layout: ballerina-inner-page
 title: Privacy Policy
-intro: The content below include details about the privacy policy with regard to Ballerina.
 permalink: /privacy-policy/
 
 ---

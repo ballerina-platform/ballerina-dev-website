@@ -1,7 +1,6 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Website License
-intro: The content below include details about the license of the Ballerina website.
 permalink: /license-of-site/
 ---
 

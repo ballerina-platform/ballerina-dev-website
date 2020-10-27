@@ -142,7 +142,7 @@ For further information about our Privacy Policy or if you have any questions, c
 **Effective April 12, 2018**
 
 <style>
-.nav > li.cVersionItem {
+.nav > li.cVersionItem  , .cBallerinaTocContainer {
     display: none !important;
 }
 </style>

@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-23</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-27</h1>
 <p>
 Primary contributors:
 </p>
@@ -2338,7 +2338,7 @@ a non-empty set of type-ids.
 <section>
 <h4 id="functions">5.5.2 Functions</h4>
 
-<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
+<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> [<a href="#function-signature"><span class="ntref">function-signature</span></a>]
 <span class="ntdfn" id="isolated-qual">isolated-qual</span> := <code>isolated</code>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
 </pre>
@@ -2470,6 +2470,11 @@ If a function-type-descriptor includes an <code>isolated-qual</code>, then a
 function value belongs to the type only if the value's isolated bit is set; if
 the function type does not include an <code>isolated-qual</code>, then whether a
 function value belongs to the type is not affected by the value's isolated bit.
+</p>
+<p>
+All function values belongs to a function-type-descriptor <code>function</code>;
+a function value belongs to the function-type-descriptor <code>isolated
+function</code> if an only if it is an isolated function.
 </p>
 
 </section>

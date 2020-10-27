@@ -272,4 +272,5 @@ Improved formatting support for all the language features. The new formatter als
 
 #### Known Issues
 
-The [WebSub](/learn/api-docs/ballerina/websub/index.html) standard library module (ballerina/websub) is not working with Swan Lake Preview 5.
+- The [WebSub](/learn/api-docs/ballerina/websub/index.html) standard library module (ballerina/websub) is not working with Swan Lake Preview 5.
+- The [Socket](/learn/api-docs/ballerina/socket/index.html) standard library module (ballerina/socket) can only be built offline (i.e., with the `--offline` parameter) with Swan Lake Preview 5.

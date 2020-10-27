@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-23</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-27</h1>
 <p>
 Primary contributors:
 </p>
@@ -2338,7 +2338,7 @@ a non-empty set of type-ids.
 <section>
 <h4 id="functions">5.5.2 Functions</h4>
 
-<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
+<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> [<a href="#function-signature"><span class="ntref">function-signature</span></a>]
 <span class="ntdfn" id="isolated-qual">isolated-qual</span> := <code>isolated</code>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
 </pre>
@@ -2470,6 +2470,11 @@ If a function-type-descriptor includes an <code>isolated-qual</code>, then a
 function value belongs to the type only if the value's isolated bit is set; if
 the function type does not include an <code>isolated-qual</code>, then whether a
 function value belongs to the type is not affected by the value's isolated bit.
+</p>
+<p>
+All function values belongs to a function-type-descriptor <code>function</code>;
+a function value belongs to the function-type-descriptor <code>isolated
+function</code> if an only if it is an isolated function.
 </p>
 
 </section>
@@ -2615,7 +2620,7 @@ interaction; a remote method of a service object is for inbound network
 interaction. A remote method cannot be called using the normal method call
 syntax. A remote method of a client object can only be invoked by a
 <code>client-remote-method-call-action</code>. A remote method of a service
-object is invoked by a Listener object provided by a library module; Ballerina
+object is invoked by a listener object provided by a library module; Ballerina
 does not yet define a mechanism to allow such a library module to be implemented
 completely in Ballerina.
 </p>
@@ -3198,25 +3203,28 @@ immediately returns <code>()</code>.
 <section>
 <h4 id="section_5.7.4">5.7.4 Listener</h4>
 <p>
-The Listener type is defined in <code>lang.object</code> as follows.
+The abstract object type Listener&lt;T&gt;, where T is a a subtype of
+<code>service object {}</code>, is described by the following object type
+descriptor:
 </p>
 
-<pre>distinct object {
-   public function attach(service object {} s, string? name = ()) returns error?;
-   public function detach(service object {} s) returns error?;
+<pre>object {
+   public function attach(T svc, string? name = ()) returns error?;
+   public function detach(T svc) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 }
 </pre>
-<!-- Fix in #615
 <p>
-Note that if an implementation does precise service typing using annotations on
-type definitions, it will need to treat Listener as being parameterized in the
-precise service type that is used to the first argument to
-<code>attach</code>.
+The above methods all return an error value if an error occurred, and
+return nil otherwise.
 </p>
--->
+<p>
+A type is a <em>listener object type</em> if it is a subtype of the abstract
+object type Listener&lt;T&gt;, for some type T that is a subtype of
+<code>service object {}</code>.
+</p>
 </section>
 <section>
 <h4 id="section_5.7.5">5.7.5 RawTemplate</h4>
@@ -5499,8 +5507,9 @@ the value of the expression in a variable.
 <pre class="grammar"><span class="ntdfn" id="method-call-expr">method-call-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
 <p>
-A <code>method-call-expr</code> either calls a method or calls a function in the
-lang library. The evaluation of the method-call-expr starts by evaluating
+A <code>method-call-expr</code> either calls an object's method, calls an
+object's field where the type of the field is a function or calls a function in
+the lang library. The evaluation of the method-call-expr starts by evaluating
 <code>expression</code> resulting in some value <var>v</var>. There is no
 contextually expected type for <code>expression</code>.
 </p>
@@ -5512,10 +5521,20 @@ object type includes a method named <code>method-name</code>, then the
 that is passed to the method in the same way as with a
 <code>function-call-expr</code>. A <code>method-call-expr</code> cannot be used
 to call a remote method. A remote method of a client object can be called by a
-<code>client-remote-method-call-action</code>. A method-call-expr is isolated if
-the expression preceding <code>.</code> is isolated, the expression for each
-argument in the arg-list is isolated and the type of the method being called is
-isolated.
+<code>client-remote-method-call-action</code>. In this case, a method-call-expr
+is isolated if the expression preceding <code>.</code> is isolated, the
+expression for each argument in the arg-list is isolated and the type of the
+method being called is isolated.
+</p>
+<p>
+Otherwise, if the static type of <code>expression</code> is a subtype of object,
+and the object type includes a field named <code>method-name</code> with a
+function type, then the <code>method-call-expr</code> is executed by calling the
+value of that field. The <code>arg-list</code> is used to construct an argument
+list that is passed to the method in the same way as with a
+<code>function-call-expr</code>. In this case, a method-call-expr is isolated if
+the type of the function is isolated and the expression for each argument in the
+arg-list is isolated.
 </p>
 <p>
 Otherwise, the <code>method-call-expr</code> will be turned into a call to a
@@ -8702,7 +8721,7 @@ this case, the service object's remote method should return nil if it does not
 return an error.
 </p>
 <p>
-The methods defined by the Listener object type allow for the
+The methods defined by the Listener&lt;T&gt; object type allow for the
 management of the lifecycle of a listener object and its attached services. A
 listener declaration registers a listener object with a module, so that it can
 be managed by the module. The runtime state of each module includes a list of
@@ -8745,7 +8764,7 @@ be assigned to. A module may have multiple multiple listeners.
 If the type-descriptor is present it specifies the static type of the variable;
 if it is not present, the the static type is the static type of
 <code>expression</code>. In both cases, the static type is constrained to be a
-subtype of the Listener object type.
+listener object type.
 </p>
 <p>
 When a listener-decl is initialized as part of module initialization, its
@@ -8774,13 +8793,13 @@ referenced by a variable-reference, but cannot be assigned to.
 The static type S for the constructed service object is specified by the
 type-descriptor if present, and otherwise is the union of a type inferred from
 each expression in the expression list as follows. Each expression in the
-expression-list must have a type L|E where L is a listener and E is a subtype of
-error; the inferred type is the type of the first parameter to the
-<code>attach</code> method of L. The object-constructor-block has the same
-semantics as in an object-constructor-expr with a <code>service</code> qualifier
-and a type-reference that refers to S. The type S is also used as the type of
-the variable declared. If the service-decl includes <code>isolated</code>, then
-it is equivalent to an object-constructor-expr with an <code>isolated</code>
+expression-list must have a type Listener&lt;T&gt;|E where T is a subtype of
+<code>service object {}</code> and E is a subtype of <code>error</code>; the
+inferred type is T. The object-constructor-block has the same semantics as in an
+object-constructor-expr with a <code>service</code> qualifier and a
+type-reference that refers to S. The type S is also used as the type of the
+variable declared. If the service-decl includes <code>isolated</code>, then it
+is equivalent to an object-constructor-expr with an <code>isolated</code>
 qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
@@ -8792,7 +8811,7 @@ expression in expression-list:
 </p>
 <ol>
 <li>the expression is evaluated resulting in a value which is either an error or
-an object <code><var>obj</var></code> that is a subtype of Listener;</li>
+an object <code><var>obj</var></code> belonging to a listener object type;</li>
 <li>if it is an error, module initialization fails;</li>
 <li>otherwise, <code><var>obj</var></code> is registered as a module listener
 (registering the same object multiple times is the same as registering it

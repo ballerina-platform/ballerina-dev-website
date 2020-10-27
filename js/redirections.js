@@ -247,5 +247,8 @@ let redirections = {
     "/1.0/learn/api-docs/ballerina/ftp/index.html":"/1.0/page-not-available.html",
     "/swan-lake/learn/by-example/tracing.html":"/swan-lake/page-not-available.html",
     "/swan-lake/learn/by-example/counter-metrics.html":"/swan-lake/page-not-available.html",
-    "/swan-lake/learn/by-example/gauge-metrics.html":"/swan-lake/page-not-available.html"
+    "/swan-lake/learn/by-example/gauge-metrics.html":"/swan-lake/page-not-available.html",
+    "learn/by-example/http-client-data-binding.html":"/page-not-available.html",
+    "/1.1/learn/by-example/http-client-data-binding.html":"/1.1/page-not-available.html",
+    "/1.0/learn/by-example/http-client-data-binding.html":"/1.0/page-not-available.html",
 };

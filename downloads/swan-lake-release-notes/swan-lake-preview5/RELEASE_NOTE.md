@@ -272,4 +272,4 @@ Improved formatting support for all the language features. The new formatter als
 
 #### Known Issues
 
-The WebSub standard library module (ballerina/websub) is not working with Swan Lake Preview 5.
+The [WebSub](https://ballerina.io/learn/api-docs/ballerina/websub/index.html standard library module (ballerina/websub) is not working with Swan Lake Preview 5.

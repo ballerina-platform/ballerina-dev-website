@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-27</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-28</h1>
 <p>
 Primary contributors:
 </p>
@@ -2773,11 +2773,11 @@ belonging to the following type.
 
 <pre
 >    object {
-       public next() returns record {| T value; |}|C;
+       public function next() returns record {| T value; |}|C;
     }
     | object {
-       public next() returns record {| T value; |}|C;
-       public close() returns C?;
+       public function next() returns record {| T value; |}|C;
+       public function close() returns C?;
     }
 </pre>
 

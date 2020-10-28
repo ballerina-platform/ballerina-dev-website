@@ -467,4 +467,7 @@ redirect_from:
    .cGitButtonContainer {
    padding-left: 40px;
    }
+   .cBallerinaTocContainer {
+      display:none;
+   }
 </style>

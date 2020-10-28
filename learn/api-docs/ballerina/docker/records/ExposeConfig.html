@@ -9,7 +9,7 @@
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,docker">
 
-    <title>API Docs - Record : FileConfig</title>
+    <title>API Docs - Record : ExposeConfig</title>
     <script src="../../html-template-resources/jquery.min.js"></script>
 
     <!-- BIO THEME START -->
@@ -66,11 +66,11 @@
                             <a href="DockerConfiguration.html" onclick="menuLinkClick()">DockerConfiguration</a>
                         </li>
                     
-                        <li >
+                        <li class="active">
                             <a href="ExposeConfig.html" onclick="menuLinkClick()">ExposeConfig</a>
                         </li>
                     
-                        <li class="active">
+                        <li >
                             <a href="FileConfig.html" onclick="menuLinkClick()">FileConfig</a>
                         </li>
                     
@@ -145,11 +145,11 @@
                 
                     <a href="../../docker/index.html">docker</a>
                 
-                 : <span class="records ">FileConfig</span>
+                 : <span class="records ">ExposeConfig</span>
             </h1>
             <p>
                 
-                <p>External file type for docker.</p>
+                <p>Expose ports for docker.</p>
 
             </p>
             
@@ -157,134 +157,8 @@
             
             <div class="constants">
                 
+                    <p>This record doesn't contain any fields.</p>
                 
-                    
-                        <h2>Fields</h2>
-                            <div class="data-wrapper">
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >sourceFile</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    <p>Source path of the file (in your machine).</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >target</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    <p>Target path (inside container).</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >isBallerinaConf</span>
-                <span class="type">  <span class="builtin-type">boolean</span></span>
-                 <span class="default">(default false)</span> 
-            </li>
-            <li>
-                <p>
-                    
-                    <p>Flag to specify ballerina config file. When true, the config is passed as a command argument to the Dockerfile CMD.</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-    
-</div>
-
-<script>
-let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
-let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
-
-let lastId;
-let cur = [];
-
-let contentWrapper = document.querySelector(".content-wrapper");
-contentWrapper.addEventListener("scroll", event => {
-  let fromTop = contentWrapper.scrollTop;
-
-  mainNavLinks.forEach(link => {
-    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
-
-    if (
-      section.offsetTop <= fromTop &&
-      section.offsetTop + section.offsetHeight > fromTop
-    ) {
-      link.classList.add("current");
-    } else {
-      link.classList.remove("current");
-    }
-  });
-});
-
-</script>
-<script>
-function menuLinkClick() {
-  if(window.matchMedia("(max-width: 600px)").matches) {
-    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
-  }
-}
-function displayMenu() {
-  var nav = document.getElementsByClassName("navi-wrapper")[0];
-  var content = document.getElementsByClassName("content-wrapper")[0];
-  if (nav.style.display === "none" || nav.style.display === "") {
-    nav.style.display = "block";
-    content.style.marginLeft = "210px";
-  } else {
-    nav.style.display = "none";
-    content.style.marginLeft = "0px";
-  }
-}
-</script>
-<script>
-function menuLinkClick() {
-  if(window.matchMedia("(max-width: 600px)").matches) {
-    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
-  }
-}
-function displayMenu() {
-  var nav = document.getElementsByClassName("navi-wrapper")[0];
-  var content = document.getElementsByClassName("content-wrapper")[0];
-  if (nav.style.display === "none" || nav.style.display === "") {
-    nav.style.display = "block";
-    content.style.marginLeft = "210px";
-  } else {
-    nav.style.display = "none";
-    content.style.marginLeft = "0px";
-  }
-}
-</script>
-
-<script>
-    window.onload = (event) => {
-        ballerinaHighlighter.highlightSnippets();
-    };
-</script>
-
-                    
                 
             </div>
         </div>

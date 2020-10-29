@@ -5,12 +5,12 @@ permalink: /privacy-policy/
 
 ---
 
-<style>
+<!--<style>
 .cBlallerina-io-docs-left-nav-container {
 display:none;
 
 }
-</style>
+</style>-->
 
 At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io](https://ballerina.io/) and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 Inc.
 
@@ -141,8 +141,61 @@ For further information about our Privacy Policy or if you have any questions, c
 
 **Effective April 12, 2018**
 
-<style>
+<!--<style>
 .nav > li.cVersionItem  , .cBallerinaTocContainer {
     display: none !important;
 }
+</style>-->
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+.cFormSection {
+   background:#f3f3f3;
+   padding:30px;
+}
+label {
+	display: inline-block;
+	max-width: 95%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-check-input {
+   float:left;
+   margin-right:10px !important;
+}
+.cSignUp, button#subscribeUserButton {
+	background: #56b3af;
+	border: none;
+	color: #fff;
+	/* padding: 10px 20px; */
+	margin-top: 15px;
+	display: inline-block;
+	width: auto;
+	padding: 18px;
+	line-height: 0px;
+	font-family: "roboto";
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+.cSignUp:hover , button#subscribeUserButton:hover {
+background:#464646;
+}
+
+#form-status , #form-error {
+display:none;
+}
+
+#form-status.cShowBlock , #form-error.cShowBlock  {
+display:block;
+}
+a.cBookmark {
+display: inline-block;
+position: absolute;
+margin: -150px 0px 0px;
+}
+
+
 </style>

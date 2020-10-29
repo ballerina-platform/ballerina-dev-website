@@ -1,29 +1,16 @@
 ---
 layout: ballerina-inner-page
 title: The Ballerina Community
-description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
+intro: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 keywords: ballerina, community, ballerina community
 permalink: /community/
 ---
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
-We warmly welcome all contributors to the community to help establish Ballerina as a truly community-owned resource!
-
-<ul class="cInlinelinklist">
-   <li><a href="#try-out-ballerina" class="cGreenLinkArrow">Try out Ballerina</a></li>
-   <li><a href="#newsletter" class="cGreenLinkArrow">Subscribe to the newsletter</a></li>
-   <li><a href="#seek-help" class="cGreenLinkArrow">Seek help</a></li>
-   <li><a href="#report-issues" class="cGreenLinkArrow">Report issues</a></li>
-   <li><a href="#help-us-grow" class="cGreenLinkArrow">Help us grow</a></li>
-   <li><a href="#contribute-to-ballerina" class="cGreenLinkArrow">Contribute to Ballerina</a></li>
-</ul>
-
-
 ## Try out Ballerina
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
-
 
 
 ## Subscribe to the newsletter
@@ -123,7 +110,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contribution Guide</a>. Happy contributing! 
 
-<style>
+<!--<style>
 .nav > li.cVersionItem {
     display: none !important;
 }
@@ -174,4 +161,6 @@ margin: -150px 0px 0px;
 }
 
 
-</style>
+</style>-->
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

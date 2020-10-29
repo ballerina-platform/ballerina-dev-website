@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Ballerina Events
+title: Events
 description: Check out the events that we will be presenting at and covering the Ballerina programming language.
 keywords: ballerina, events, programming language, ballerina events
 permalink: /events/
@@ -10,7 +10,6 @@ redirect_from:
 ---
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
-<h1>Events</h1>
 <!-- <h2>No upcoming events</h2> -->
 <h2>Upcoming Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
@@ -465,5 +464,10 @@ redirect_from:
    .nav > li.cVersionItem {
    display: none !important;
    }
+   .cGitButtonContainer {
+   padding-left: 40px;
+   }
+   .cBallerinaTocContainer {
+      display:none;
+   }
 </style>
-

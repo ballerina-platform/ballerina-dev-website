@@ -8561,17 +8561,11 @@ not constrained.
 <section>
 <h3 id="section_8.1">8.1 Import declaration</h3>
 
-<pre class="grammar"><span class="ntdfn" id="import-decl">import-decl</span> := 
-   <code>import</code> [<a href="#org-name"><span class="ntref">org-name</span></a> <code>/</code>] <a href="#module-name"><span class="ntref">module-name</span></a> [<code>version</code> <a href="#sem-ver"><span class="ntref">sem-ver</span></a>] 
-   [<code>as</code> <a href="#import-prefix"><span class="ntref">import-prefix</span></a>] <code>;</code>
+<pre class="grammar"><span class="ntdfn" id="import-decl">import-decl</span> := <code>import</code> [<a href="#org-name"><span class="ntref">org-name</span></a> <code>/</code>] <a href="#module-name"><span class="ntref">module-name</span></a> [<code>as</code> <a href="#import-prefix"><span class="ntref">import-prefix</span></a>] <code>;</code>
 <span class="ntdfn" id="import-prefix">import-prefix</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> | <code>_</code>
 <span class="ntdfn" id="module-prefix">module-prefix</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="org-name">org-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="module-name">module-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a> (<code>.</code> <a href="#identifier"><span class="ntref">identifier</span></a>)*
-<span class="ntdfn" id="sem-ver">sem-ver</span> := <a href="#major-num"><span class="ntref">major-num</span></a> [<code>.</code> <a href="#minor-num"><span class="ntref">minor-num</span></a> [<code>.</code> <a href="#patch-num"><span class="ntref">patch-num</span></a>]]
-<span class="ntdfn" id="major-num">major-num</span> := <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a>
-<span class="ntdfn" id="minor-num">minor-num</span> := <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a>
-<span class="ntdfn" id="patch-num">patch-num</span> := <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a>
 
 <span class="ntdfn" id="qualified-identifier">qualified-identifier</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>

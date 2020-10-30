@@ -8180,17 +8180,11 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
 <h3>Import declaration</h3>
 
 <pre
-class="grammar"><dfn>import-decl</dfn> := 
-   <code>import</code> [<abbr>org-name</abbr> <code>/</code>] <abbr>module-name</abbr> [<code>version</code> <abbr>sem-ver</abbr>] 
-   [<code>as</code> <abbr>import-prefix</abbr>] <code>;</code>
+class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</abbr> <code>/</code>] <abbr>module-name</abbr> [<code>as</code> <abbr>import-prefix</abbr>] <code>;</code>
 <dfn>import-prefix</dfn> := <abbr>module-prefix</abbr> | <code>_</code>
 <dfn>module-prefix</dfn> := <abbr>identifier</abbr>
 <dfn>org-name</dfn> := <abbr>identifier</abbr>
 <dfn>module-name</dfn> := <abbr>identifier</abbr> (<code>.</code> <abbr>identifier</abbr>)*
-<dfn>sem-ver</dfn> := <abbr>major-num</abbr> [<code>.</code> <abbr>minor-num</abbr> [<code>.</code> <abbr>patch-num</abbr>]]
-<dfn>major-num</dfn> := <abbr>DecimalNumber</abbr>
-<dfn>minor-num</dfn> := <abbr>DecimalNumber</abbr>
-<dfn>patch-num</dfn> := <abbr>DecimalNumber</abbr>
 
 <dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
 </pre>

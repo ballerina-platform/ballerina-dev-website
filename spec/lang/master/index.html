@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-29</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-30</h1>
 <p>
 Primary contributors:
 </p>
@@ -8686,6 +8686,19 @@ functions. The generated module, which imports the specified root module,
 becomes the new root module.
 </p>
 <p>
+A configuration is supplied as input to program execution. A
+<em>configuration</em> consists of mapping from names of configurable
+module-level variables to values. The values in a configuration always belong to
+the type <code>anydata&amp;readonly</code>. The value for a variable in the
+configuration is used during module initialization to initialize the variable
+instead of the value specified in the module. A configurable module-level
+variable may require that a configuration include a value for it. Except for
+this requirement, a configuration may be empty. Before initializing any module,
+the initialization phase must check that there is a value of the correct type
+supplied for every configurable module-level variable that requires
+configuration. If not, the module initialization phase terminates unsuccessfull.
+</p>
+<p>
 If the initialization phase of program execution completes successfully, then
 execution proceeds to the listening phase, which is described in the next
 section. The termination of the listening phase, which may be successful or
@@ -8985,29 +8998,49 @@ The parameter list of an <code>init</code> method within an
 <h3 id="section_8.7">8.7 Module variable declaration</h3>
 
 <pre class="grammar"><span class="ntdfn" id="module-var-decl">module-var-decl</span> := <a href="#module-init-var-decl"><span class="ntref">module-init-var-decl</span></a> | <a href="#module-no-init-var-decl"><span class="ntref">module-no-init-var-decl</span></a>
-<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#isolated-final-quals"><span class="ntref">isolated-final-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
-<span class="ntdfn" id="isolated-final-quals">isolated-final-quals</span> :=
-  <code>final</code> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-  | [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<code>final</code>]]
 </pre>
 <p>
-The scope of variables declared in a module-var-decl is the entire module. Note
-that module variables are not allowed to be public. If final is specified, then
-it is not allowed to assign to the variable. If the typed-binding-pattern uses
-<code>var</code>, then the type of the variable is inferred from the static type
-of <code>expression</code>; if the module-var-decl includes <code>final</code>,
-the precise type is used, and otherwise the broad type is used. If the
-typed-binding-pattern specifies a type-descriptor, then that type-descriptor
-provides the contextually expected type for action-or-expr.
+A module-var-decl declares a variable. The scope of variables declared in a
+module-var-decl is the entire module. Module variables are not allowed to be
+public. The variable may be initialized in the declaration or within the
+module's <code>init</code> function. If <code>final</code> is specified, then it
+is not allowed to assign to the variable after it is initialized.
+</p>
+<pre class="grammar">
+<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#module-init-var-quals"><span class="ntref">module-init-var-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#module-var-init"><span class="ntref">module-var-init</span></a> <code>;</code>
+<span class="ntdfn" id="module-init-var-quals">module-init-var-quals</span> := (<code>final</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> | <code>configurable</code>)*
+<span class="ntdfn" id="module-var-init">module-var-init</span> := <a href="#expression"><span class="ntref">expression</span></a> | <code>?</code>
+</pre>
+<p>
+A module-init-var-decl declares and initializes a variable. It is an error for a
+keyword to appear more than once in <code>module-init-var-quals</code>. If the
+typed-binding-pattern uses <code>var</code>, then the type of the variable is
+inferred from the static type of <code>expression</code>; if the module-var-decl
+includes <code>final</code>, the precise type is used, and otherwise the broad
+type is used. If the typed-binding-pattern specifies a type-descriptor, then
+that type-descriptor provides the contextually expected type for action-or-expr.
 </p>
 <p>
 If a module-init-var-decl includes an isolated-qual, then the variable declared
 is isolated. In this case, the binding-pattern in the typed-binding-pattern must
 be just a variable-name, and the expression must be an isolated expression. A
 variable declared as an isolated variable can be accessed only within a
-lock-stmt. The keyword <code>isolated</code> occurring immediately before
-the typed-binding-pattern is parsed as part of isolated-final-quals
-rather than as part of typed-binding-pattern.
+lock-stmt. When an isolated-qual occurs in a position where the grammar would
+allow it to be parsed as part of module-init-var-quals or typed-binding-pattern,
+the former parse is used.
+</p>
+<p>
+If <code>configurable</code> is specified, then the initializer specified in the
+module-var-init may be overridden at the time of module initialization by a
+value supplied when the program is run. If such a value is supplied, then the
+expression in the module-var-init is not evaluated and the variable is
+initialized with the supplied value instead. A module-var-init of <code>?</code>
+is allowed only when <code>configurable</code> is specified and means that a
+configurable value must be supplied for this variable. If
+<code>configurable</code> is specified, then the typed-binding-pattern must use
+an explicit type-descriptor rather than <code>var</code> and the binding-pattern
+must be just a variable-name. The type specified by the type-descriptor must be
+a subtype of <code>anydata</code>.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="module-no-init-var-decl">module-no-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>final</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>;</code>
@@ -9717,6 +9750,9 @@ cannot be declared as <code>public</code>.</li>
 fail</code> clause for compound statements. If a <code>check</code> expression
 or action fails, it behaves like a <code>fail</code> statement rather than a
 <code>return</code> statement.</li>
+<li>The language has a concept of configurability: module level variables can be
+specified to be <code>configurable</code>, which allows their initial values to
+be specified at runtime.</li>
 </ol>
 </section>
 <section>

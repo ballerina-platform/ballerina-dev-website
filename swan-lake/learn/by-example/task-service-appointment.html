@@ -10,17 +10,17 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
 <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentConfiguration</span> <span class="nx">appointmentConfiguration</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">appointmentDetails</span><span class="p">:</span> <span class="s">&quot;* * * * * ?&quot;</span><span class="p">,</span>
-    <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">10</span><span class="p">};</span>
-<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">};</span>
+<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">service</span> <span class="nx">appointmentService</span> <span class="nx">on</span> <span class="nx">appointment</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">reminderCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span><span class="p">,</span> <span class="nx">reminderCount</span><span class="p">);</span>
     <span class="p">}}</span>
 </pre></div>
 
@@ -31,11 +31,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Task Service Appointment</h2>
-                            <p><p>Task Appointment Services are used to schedule and execute tasks.
- An appointment should have an <code>appointmentData</code> field. It can be either a
- <code>string</code> representing a CRON expression or an <a href="https://ballerina.io/learn/api-docs/ballerina/task/records/AppointmentData.html"><code>task:AppointmentData</code></a> record.
- An optional <code>noOfRecurrences</code> field can be used to provide the maximum
- number of times the appointment should run before shutting down.<br/><br/>
+                            <p><p>A task appointment service can be used to schedule an appointment. The task listener can be provided with an
+ appointment configuration that should have an <code>appointmentDetails</code> field. This can be either a <code>string</code> representing a
+ CRON expression or a <code>task:AppointmentData</code> record. There is an optional
+ <code>noOfRecurrences</code> field that can be used to provide the maximum number of times
+ the appointment should run before shutting down.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/index.html">Task module</a>.</p>
 </p>
@@ -111,8 +111,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -121,7 +119,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/task;
 </code></pre></div>
 
@@ -142,10 +140,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html"><code>task:AppointmentConfiguration</code></a> record of the Task Listener.
- Task Appointment can either have a CRON expression (<code>string</code>) or an
- <code>AppointmentData</code> record for the <code>appointmentData</code> field. Optionally, a
- <code>noOfRecurrences</code> can be provided to limit the number of executions.</p>
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html"><code>task:AppointmentConfiguration</code></a> record of the task listener.</p>
 
                                         </div>
                                     </div>
@@ -164,7 +159,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This cron expression will schedule the appointment every second.</p>
+                                            <p>This CRON expression will schedule the appointment every second.</p>
 
                                         </div>
                                     </div>
@@ -175,7 +170,8 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    noOfRecurrences: 10
+                                    <div class="highlight"><pre><code class=language-ballerina>    noOfRecurrences: 5
+};
 </code></pre></div>
 
                                 </td>
@@ -191,18 +187,6 @@ import ballerina/task;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
@@ -214,7 +198,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the listener using pre defined configurations.</p>
+                                            <p>Initialize the listener using the pre-defined configurations.</p>
 
                                         </div>
                                     </div>
@@ -225,7 +209,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int reminderCount = 0;
 </code></pre></div>
 
                                 </td>
@@ -245,7 +229,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creating a service on the task Listener.</p>
+                                            <p>Creating a service bound to the task listener.</p>
 
                                         </div>
                                     </div>
@@ -257,9 +241,8 @@ import ballerina/task;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
-        log:printInfo(&quot;Cleaning up...&quot;);
-        log:printInfo(count.toString());
-        count = count + 1;
+        reminderCount += 1;
+        io:println(&quot;Schedule is due - Reminder: &quot;, reminderCount);
     }
 </code></pre></div>
 
@@ -307,26 +290,11 @@ import ballerina/task;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run task_service_appointment.bal
-2019-09-06 13:35:28,259 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:28,260 INFO  [ballerina/log] - 0
-2019-09-06 13:35:29,004 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:29,004 INFO  [ballerina/log] - 1
-2019-09-06 13:35:30,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:30,003 INFO  [ballerina/log] - 2
-2019-09-06 13:35:31,005 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:31,006 INFO  [ballerina/log] - 3
-2019-09-06 13:35:32,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:32,003 INFO  [ballerina/log] - 4
-2019-09-06 13:35:33,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:33,003 INFO  [ballerina/log] - 5
-2019-09-06 13:35:34,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:34,003 INFO  [ballerina/log] - 6
-2019-09-06 13:35:35,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:35,003 INFO  [ballerina/log] - 7
-2019-09-06 13:35:36,006 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:36,006 INFO  [ballerina/log] - 8
-2019-09-06 13:35:37,006 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:37,007 INFO  [ballerina/log] - 9
+Schedule is due - Reminder: 1
+Schedule is due - Reminder: 2
+Schedule is due - Reminder: 3
+Schedule is due - Reminder: 4
+Schedule is due - Reminder: 5
 </code></pre></div>
 
                                 </td>
@@ -334,8 +302,7 @@ ballerina run task_service_appointment.bal
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>onTrigger()</code> function is triggered every two seconds starting from the
- 0th second of a minute. The sample will print logs once every two seconds.</p>
+                                            <p>The <code>onTrigger()</code> function is triggered every second.</p>
 
                                         </div>
                                     </div>

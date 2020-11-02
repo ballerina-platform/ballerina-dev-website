@@ -3,7 +3,7 @@
   "summary": "\u003cp\u003eThis module provides functions to retrieve information about the system and the current users of the system. The \u003ccode\u003esystem:exec\u003c/code\u003e method creates the \u003ccode\u003esystem:Process\u003c/code\u003e object, which can control and obtain information about a Ballerina process.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule overview\u003c/h2\u003e\n\u003cp\u003eThis module provides functions to retrieve information about the system and the current users of the system. The \u003ccode\u003esystem:exec\u003c/code\u003e method creates the \u003ccode\u003esystem:Process\u003c/code\u003e object, which can control and obtain information about a Ballerina process.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with the system module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "records": [],
   "classes": [
     {

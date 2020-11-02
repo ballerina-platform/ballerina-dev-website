@@ -148,6 +148,10 @@
         </li>
     
         <li >
+            <a href="#Payload" onclick="menuLinkClick()">Payload</a>
+        </li>
+    
+        <li >
             <a href="#RedirectCode" onclick="menuLinkClick()">RedirectCode</a>
         </li>
     
@@ -342,7 +346,7 @@ in the <code>HALF_OPEN</code> state succeeds, the circuit goes back to the <code
                         <li id="ClientError">
                             <b >ClientError</b>
                             
-                                <span class="type">  <a href="../http/types.html#ResiliencyError">ResiliencyError</a> | <a href="../http/types.html#ClientAuthError">ClientAuthError</a> | <a href="../http/types.html#OutboundRequestError">OutboundRequestError</a> | <a href="../http/types.html#InboundResponseError">InboundResponseError</a> | <a href="../http/errors.html#UnsupportedActionError">UnsupportedActionError</a> | <a href="../http/errors.html#Http2ClientError">Http2ClientError</a> | <a href="../http/errors.html#MaximumWaitTimeExceededError">MaximumWaitTimeExceededError</a> | <a href="../http/errors.html#SslError">SslError</a> | <a href="../http/errors.html#GenericClientError">GenericClientError</a> | <a href="../http/errors.html#CookieHandlingError">CookieHandlingError</a></span></li>
+                                <span class="type">  <a href="../http/types.html#ResiliencyError">ResiliencyError</a> | <a href="../http/types.html#ClientAuthError">ClientAuthError</a> | <a href="../http/types.html#OutboundRequestError">OutboundRequestError</a> | <a href="../http/types.html#InboundResponseError">InboundResponseError</a> | <a href="../http/errors.html#UnsupportedActionError">UnsupportedActionError</a> | <a href="../http/errors.html#Http2ClientError">Http2ClientError</a> | <a href="../http/errors.html#MaximumWaitTimeExceededError">MaximumWaitTimeExceededError</a> | <a href="../http/errors.html#SslError">SslError</a> | <a href="../http/errors.html#GenericClientError">GenericClientError</a> | <a href="../http/errors.html#CookieHandlingError">CookieHandlingError</a> | <a href="../http/errors.html#RemoteServerError">RemoteServerError</a> | <a href="../http/errors.html#ClientRequestError">ClientRequestError</a> | <a href="../http/errors.html#IllegalDataBindingStateError">IllegalDataBindingStateError</a></span></li>
                             
                         <li>
                             
@@ -570,6 +574,21 @@ outbound request/response accept-encoding/content-encoding option
             
                 <div class="params-listing">
                     <ul>
+                        <li id="Payload">
+                            <b >Payload</b>
+                            
+                                <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="builtin-type">map</span><<span class="builtin-type">json</span>> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <span class="builtin-type">CustomRecordType</span> | <span class="array-type"><span class="builtin-type">CustomRecordType</span>[]</span></span></li>
+                            
+                        <li>
+                            
+                            <p>The types of the response payload that are returned by the HTTP <code>client</code> after the data binding operation</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
                         <li id="RedirectCode">
                             <b >RedirectCode</b>
                             
@@ -588,7 +607,7 @@ outbound request/response accept-encoding/content-encoding option
                         <li id="RequestMessage">
                             <b >RequestMessage</b>
                             
-                                <span class="type">  <a href="../http/classes/Request.html">Request</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/classes/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
+                                <span class="type">  <a href="../http/classes/Request.html">Request</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/abstractobjects/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
                             
                         <li>
                             
@@ -618,7 +637,7 @@ outbound request/response accept-encoding/content-encoding option
                         <li id="ResponseMessage">
                             <b >ResponseMessage</b>
                             
-                                <span class="type">  <a href="../http/classes/Response.html">Response</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/classes/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
+                                <span class="type">  <a href="../http/classes/Response.html">Response</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/abstractobjects/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
                             
                         <li>
                             

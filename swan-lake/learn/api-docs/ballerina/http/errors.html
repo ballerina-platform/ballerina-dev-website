@@ -96,6 +96,10 @@
         </li>
     
         <li  onclick="menuLinkClick()">
+            <a href="#ClientRequestError">ClientRequestError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
             <a href="#CookieHandlingError">CookieHandlingError</a>
         </li>
     
@@ -121,6 +125,10 @@
     
         <li  onclick="menuLinkClick()">
             <a href="#IdleTimeoutError">IdleTimeoutError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#IllegalDataBindingStateError">IllegalDataBindingStateError</a>
         </li>
     
         <li  onclick="menuLinkClick()">
@@ -169,6 +177,10 @@
     
         <li  onclick="menuLinkClick()">
             <a href="#ReadingInboundResponseHeadersError">ReadingInboundResponseHeadersError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#RemoteServerError">RemoteServerError</a>
         </li>
     
         <li  onclick="menuLinkClick()">
@@ -408,6 +420,21 @@
             
                 <div class="params-listing">
                     <ul>
+                        <li id="ClientRequestError">
+                            <b >ClientRequestError </b>
+                            <span class="type"><a href="../http/records/Detail.html">Detail</a></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an error, which occurred due to bad syntax or incomplete info in the client request(4xx HTTP response)</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
                         <li id="CookieHandlingError">
                             <b >CookieHandlingError </b>
                             <span class="type"></span>
@@ -506,6 +533,21 @@
                         <li>
                             
                             <p>Represents the error that triggered upon a request/response idle timeout</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="IllegalDataBindingStateError">
+                            <b >IllegalDataBindingStateError </b>
+                            <span class="type"><a href="../http/records/Detail.html">Detail</a></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an illegal data-binding  state error</p>
 
                         </li>
                     </ul>
@@ -686,6 +728,21 @@
                         <li>
                             
                             <p>Represents a client error that occurred while reading inbound response headers</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="RemoteServerError">
+                            <b >RemoteServerError </b>
+                            <span class="type"><a href="../http/records/Detail.html">Detail</a></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an error, which occurred due to a failure of the remote server(5xx HTTP response)</p>
 
                         </li>
                     </ul>

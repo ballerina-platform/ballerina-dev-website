@@ -41,15 +41,14 @@
       "id": "CacheError",
       "description": "\u003cp\u003eRepresents the Cache error type with details.\u003c/p\u003e",
       "moduleId": "cache"
-    }
-  ],
-  "types": [
+    },
     {
       "id": "Error",
       "description": "\u003cp\u003eRepresents Cache related errors.\u003c/p\u003e",
       "moduleId": "cache"
     }
   ],
+  "types": [],
   "clients": [],
   "listeners": [],
   "annotations": [],

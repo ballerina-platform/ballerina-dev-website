@@ -28,7 +28,7 @@ Ballerina yet does not have a release channel for nightly builds that give you a
 
 #### Versioning of the releases
 
-Both the above channels of Ballerina distribution releases will strictly follow [SemVer](https://semver.org/) with `major.minor.patch` version numbers.
+Currently, the 1.x channel of the Ballerina distribution releases strictly follows [SemVer](https://semver.org/) with `major.minor.patch` version numbers.
 
 #### Patch Releases
 

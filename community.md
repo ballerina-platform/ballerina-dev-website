@@ -165,4 +165,4 @@ margin: -150px 0px 0px;
 
 </style>
 
-<style> .cBallerinaTocContainer , .cTopLink {  display:none; }</style>
+<style> .cBallerinaTocContainer , .cTopLink {  display:none; }.cGitButtonContainer {padding-left: 40px;}</style>

@@ -16,52 +16,9 @@ redirect_from:
 1. [Install](/swan-lake/learn/installing-ballerina) Ballerina. 
 1. Set up [Visual Studio Code](/swan-lake/learn/tools-ides/vscode-plugin) for Ballerina.
 
-## Creating a Client to Invoke a Service 
-
-A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
-
-You can use a Ballerina HTTP client to interact with any HTTP service.
-
-### Creating the 'sunriseApi' Client
-
-Create a client with the below content to write a simple HTTP client. This will retrieve sunrise/sunset time details for Colombo by interacting with the service API.
-
-***sunrise_client.bal***
-```ballerina
-import ballerina/http;
-import ballerina/io;
-
-public function main() returns @tainted error? {
-
-    // Add the relevant endpoint URL to perform the invocation.
-    http:Client sunriseApi = new("http://api.sunrise-sunset.org");
-
-    // Perform a `GET` request to the sunrise-sunset backend.
-    http:Response sunriseResp = check sunriseApi->get("/json?lat=6.9349969&lng=79.8538463");
-
-    // Retrieve the payload and print it.
-    json sunrisePayload = check sunriseResp.getJsonPayload();
-    io:println(sunrisePayload);
-}
-```
-
-### Invoking the Sunrise/Sunset Service Using the 'sunriseApi' Client
-
-In the CLI, navigate to the location in which you have the `sunrise_client.bal` file and execute the command below to invoke the service using this client.
-
-```bash
-ballerina run sunrise_client.bal
-```
-
-This should print out the sunrise/sunset details as follows.
-
-```bash
-{"results":{"sunrise":"12:27:04 AM","sunset":"12:22:49 PM","solar_noon":"6:24:56 AM","day_length":"11:55:45","civil_twilight_begin":"12:05:55 AM","civil_twilight_end":"12:43:57 PM","nautical_twilight_begin":"11:41:20 PM","nautical_twilight_end":"1:08:33 PM","astronomical_twilight_begin":"11:16:47 PM","astronomical_twilight_end":"1:33:06 PM"},"status":"OK"}
-```
-
 ## Creating a Service and a Client to Invoke It
 
-Now, let's create a custom Ballerina HTTP service and also an HTTP client to invoke it.
+You can use a Ballerina HTTP client to interact with any HTTP service. Let's create a custom Ballerina HTTP service and also an HTTP client to invoke it.
 
 ### Writing a simple 'hello' Service
 
@@ -117,6 +74,8 @@ curl http://localhost:9090/hello/sayHello
 Alternatively, you can create a Ballerina HTTP client and use that to invoke the service as follows.
 
 ### Creating a 'helloClient' to Invoke the 'hello' Service
+
+A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
 There are two kinds of clients in Ballerina, inbound (or ingress) and outbound (or egress) clients. An outbound client object can be used to send messages to a network service.
 

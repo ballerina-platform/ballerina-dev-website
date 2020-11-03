@@ -16,17 +16,17 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">beforeSuit</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the before suite function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:AfterSuite {</span><span class="p">}</span>
+<span class="nd">@test:AfterSuite {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">afterSuite</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the after suite function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -40,7 +40,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Before and After Suite</h2>
                             <p><p>The <code>BeforeSuite</code> feature allows you to execute a function before executing a test suite.
- A module is considered as a suite in testerina. This capability can be used for
+ A module is considered as a suite in Testerina. This capability can be used for
  setting up prerequisites before executing a test suite.
  Similarly, the <code>AfterSuite</code> annotation can be used to execute a function after a test suite.<br/><br/>
  For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
@@ -153,7 +153,7 @@ function beforeSuit() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testFunction1() {
     io:println(&quot;I&#39;m in test function 1!&quot;);
     test:assertTrue(true, msg = &quot;Failed&quot;);
@@ -176,7 +176,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testFunction2() {
     io:println(&quot;I&#39;m in test function 2!&quot;);
     test:assertTrue(true, msg = &quot;Failed&quot;);
@@ -199,7 +199,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:AfterSuite {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:AfterSuite { }
 function afterSuite() {
     io:println(&quot;I&#39;m the after suite function!&quot;);
 }
@@ -294,8 +294,8 @@ I&#39;m the after suite function!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction2
-        [pass] testFunction1
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction1
+        [pass] testFunction2
 </code></pre></div>
 
                                 </td>

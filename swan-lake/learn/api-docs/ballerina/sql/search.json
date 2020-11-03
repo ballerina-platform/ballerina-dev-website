@@ -147,8 +147,148 @@
       "moduleId": "sql"
     },
     {
-      "id": "OutParameter",
-      "description": "\u003cp\u003eRepresents SQL OutParameter used in procedure calls.\u003c/p\u003e",
+      "id": "CharOutParameter",
+      "description": "\u003cp\u003eRepresents Char Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "VarcharOutParameter",
+      "description": "\u003cp\u003eRepresents Varchar Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "NCharOutParameter",
+      "description": "\u003cp\u003eRepresents NChar Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "NVarcharOutParameter",
+      "description": "\u003cp\u003eRepresents NVarchar Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BinaryOutParameter",
+      "description": "\u003cp\u003eRepresents Binary Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "VarBinaryOutParameter",
+      "description": "\u003cp\u003eRepresents VarBinary Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "TextOutParameter",
+      "description": "\u003cp\u003eRepresents Text Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BlobOutParameter",
+      "description": "\u003cp\u003eRepresents Blob Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ClobOutParameter",
+      "description": "\u003cp\u003eRepresents Clob Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "NClobOutParameter",
+      "description": "\u003cp\u003eRepresents NClob Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DateOutParameter",
+      "description": "\u003cp\u003eRepresents Date Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "TimeOutParameter",
+      "description": "\u003cp\u003eRepresents Time Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DateTimeOutParameter",
+      "description": "\u003cp\u003eRepresents DateTime Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "TimestampOutParameter",
+      "description": "\u003cp\u003eRepresents Timestamp Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ArrayOutParameter",
+      "description": "\u003cp\u003eRepresents Array Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "RowOutParameter",
+      "description": "\u003cp\u003eRepresents Row Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "SmallIntOutParameter",
+      "description": "\u003cp\u003eRepresents SmallInt Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "IntegerOutParameter",
+      "description": "\u003cp\u003eRepresents Integer Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BigIntOutParameter",
+      "description": "\u003cp\u003eRepresents BigInt Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "RealOutParameter",
+      "description": "\u003cp\u003eRepresents Real Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "FloatOutParameter",
+      "description": "\u003cp\u003eRepresents Float Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DoubleOutParameter",
+      "description": "\u003cp\u003eRepresents Double Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "NumericOutParameter",
+      "description": "\u003cp\u003eRepresents Numeric Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DecimalOutParameter",
+      "description": "\u003cp\u003eRepresents Decimal Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BitOutParameter",
+      "description": "\u003cp\u003eRepresents Bit Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BooleanOutParameter",
+      "description": "\u003cp\u003eRepresents Boolean Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "RefOutParameter",
+      "description": "\u003cp\u003eRepresents Ref Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "StructOutParameter",
+      "description": "\u003cp\u003eRepresents Struct Out Parameter used in procedure calls\u003c/p\u003e\n",
+      "moduleId": "sql"
+    },
+    {
+      "id": "XMLOutParameter",
+      "description": "\u003cp\u003eRepresents XML Out Parameter used in procedure calls\u003c/p\u003e\n",
       "moduleId": "sql"
     },
     {
@@ -232,8 +372,13 @@
       "moduleId": "sql"
     },
     {
+      "id": "OutParameter",
+      "description": "\u003cp\u003eRepresents all OUT parameters used in SQL stored procedure call.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
       "id": "Parameter",
-      "description": "\u003cp\u003eRepresents all the parameters used in SQL stored procedure call.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents all parameters used in SQL stored procedure call.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {

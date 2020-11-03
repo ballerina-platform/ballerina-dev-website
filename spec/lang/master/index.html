@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-22</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-03</h1>
 <p>
 Primary contributors:
 </p>
@@ -952,7 +952,7 @@ deep. A final variable can hold a mutable value.
 <p>
 There are three possible operations on storage: read, write and execute. The
 concept of immutability relates to reading and writing storage, and provides
-limited information about execution: execution cannot lead to mutation of how
+limited information about execution: execution cannot lead to mutation of an
 immutable value. For functions and objects, it is useful to have more
 information about how execution may lead to mutation. Ballerina has a concept of
 <em>isolation</em> that provides this.
@@ -960,7 +960,7 @@ information about how execution may lead to mutation. Ballerina has a concept of
 <p>
 In addition to defining when a value is reachable from a value, we can define
 when a value is reachable from a variable: a value is reachable from a variable
-variable if the value is reachable from the value that the variable holds. We
+if the value is reachable from the value that the variable holds. We
 can also define when mutable state is reachable from a value or variable: the
 mutable state of a value v is reachable from a value or variable, if v is
 reachable from the value or variable; the mutable state of a variable v is
@@ -2307,26 +2307,29 @@ information:
 the error</li>
 <li>a cause, which is either nil or another error value that was the cause of
 this error</li>
-<li>a detail, which is an immutable mapping providing additional information about
-the error</li>
+<li>a detail, which is an immutable mapping providing additional information
+about the error; the members of the mapping must belong to type Cloneable, and
+so the detail mapping belongs to type <code>map&lt;Cloneable&gt;</code>;</li>
 <li>a stack trace, which is an immutable snapshot of the state of the execution
 stack</li>
 </ul>
 <p>
-The detail mapping must be a subtype of <code>map&lt;Cloneable&gt;</code>.
-</p>
-<p>
 The shapes of the message, cause and detail record are part of the shape of the
-error; the stack trace is not part of the shape. A type descriptor
-<code>error&lt;<var>T</var>&gt;</code> contains an error shape if
-<code><var>T</var></code> contains the shape of its detail. The type
-<code>error</code> contains a shape if its basic type is error.
+error; the stack trace is not part of the shape.
 </p>
 <p>
-A type of <code>error&lt;*&gt;</code> means that the type is a subtype of error,
-where the precise subtype is to be inferred from the context. This is allowed
+A detail-type-descriptor in the error-type-param must refer to an inclusive
+record type descriptor or a union of such type descriptors. These inclusive
+record type descriptors are interpreted as being open to fields of type
+Cloneable, rather than in the usual way as being open to fields of type anydata.
+An error shape belongs to the type <code>error&lt;<var>T</var>&gt;</code>, where
+<code><var>T</var></code> is a detail-type-descriptor, if and only if the shape
+of its detail mapping belongs to T with this special interpretation. A type of
+<code>error&lt;*&gt;</code> means that the type is a subtype of error, where the
+type of the detail record is to be inferred from the context. This is allowed
 only within type descriptors occurring in a context that is specified to be
-inferable.
+inferable. A value belongs to the type <code>error</code> (with no type
+parameter) if and only if its basic type is error.
 </p>
 <p>
 An error-type-descriptor is always definite and induces an empty set of
@@ -2338,7 +2341,7 @@ a non-empty set of type-ids.
 <section>
 <h4 id="functions">5.5.2 Functions</h4>
 
-<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
+<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> [<a href="#function-signature"><span class="ntref">function-signature</span></a>]
 <span class="ntdfn" id="isolated-qual">isolated-qual</span> := <code>isolated</code>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
 </pre>
@@ -2471,6 +2474,11 @@ function value belongs to the type only if the value's isolated bit is set; if
 the function type does not include an <code>isolated-qual</code>, then whether a
 function value belongs to the type is not affected by the value's isolated bit.
 </p>
+<p>
+All function values belongs to a function-type-descriptor <code>function</code>;
+a function value belongs to the function-type-descriptor <code>isolated
+function</code> if and only if it is an isolated function.
+</p>
 
 </section>
 <section>
@@ -2570,7 +2578,7 @@ The <code>method-name</code> in a <code>method-decl</code> must not be
    | (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
 </pre>
 <p>
-Neither <code>remote-qual</code> not <code>isolated-qual</code> can occur more
+Neither <code>remote-qual</code> nor <code>isolated-qual</code> can occur more
 than once in <code>method-decl-quals</code>. The <code>isolated-qual</code>
 together with the <code>function-signature</code> give the function type of the
 method. An isolated method has the same access to the object on which the method
@@ -2615,7 +2623,7 @@ interaction; a remote method of a service object is for inbound network
 interaction. A remote method cannot be called using the normal method call
 syntax. A remote method of a client object can only be invoked by a
 <code>client-remote-method-call-action</code>. A remote method of a service
-object is invoked by a Listener object provided by a library module; Ballerina
+object is invoked by a listener object provided by a library module; Ballerina
 does not yet define a mechanism to allow such a library module to be implemented
 completely in Ballerina.
 </p>
@@ -3178,11 +3186,11 @@ belonging to the following type.
 </p>
 
 <pre>    object {
-       public next() returns record {| T value; |}|C;
+       public isolated function next() returns record {| T value; |}|C;
     }
     | object {
-       public next() returns record {| T value; |}|C;
-       public close() returns C?;
+       public isolated function next() returns record {| T value; |}|C;
+       public isolated function close() returns C?;
     }
 </pre>
 
@@ -3198,25 +3206,28 @@ immediately returns <code>()</code>.
 <section>
 <h4 id="section_5.7.4">5.7.4 Listener</h4>
 <p>
-The Listener type is defined in <code>lang.object</code> as follows.
+The abstract object type Listener&lt;T&gt;, where T is a a subtype of
+<code>service object {}</code>, is described by the following object type
+descriptor:
 </p>
 
-<pre>distinct object {
-   public function attach(service object {} s, string? name = ()) returns error?;
-   public function detach(service object {} s) returns error?;
+<pre>object {
+   public function attach(T svc, string? name = ()) returns error?;
+   public function detach(T svc) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 }
 </pre>
-<!-- Fix in #615
 <p>
-Note that if an implementation does precise service typing using annotations on
-type definitions, it will need to treat Listener as being parameterized in the
-precise service type that is used to the first argument to
-<code>attach</code>.
+The above methods all return an error value if an error occurred, and
+return nil otherwise.
 </p>
--->
+<p>
+A type is a <em>listener object type</em> if it is a subtype of the abstract
+object type Listener&lt;T&gt;, for some type T that is a subtype of
+<code>service object {}</code>.
+</p>
 </section>
 <section>
 <h4 id="section_5.7.5">5.7.5 RawTemplate</h4>
@@ -4944,8 +4955,8 @@ An <code>object-field</code> declares and initializes a field of the object.
 <p>
 If a field does not specify a field-initializer, then there must be an
 <code>init</code> method and the <code>init</code> method must initialize the
-field. The field-initializer must be the requirements for an isolated function
-unless there the <code>init</code> method is present and not declared as
+field. The field-initializer must meet the requirements for an isolated function
+unless the <code>init</code> method is present and not declared as
 <code>isolated</code>. If the <code>object-constructor-expr</code> is implicitly
 read-only, then the contextually expected type for a field-initializer will be
 the intersection of readonly and the type specified in the type-descriptor of
@@ -4989,11 +5000,11 @@ private.
 
 <p>
 A <code>method-defn</code> defines a method of an object. Neither
-<code>remote-qual</code> not <code>isolated-qual</code> can occur more than once
+<code>remote-qual</code> nor <code>isolated-qual</code> can occur more than once
 in <code>method-defn-quals</code>. If <code>isolated</code> is present, then the
 method has its isolated bit set and its <code>method-defn-body</code> must
 satisfy the requirements for an <a href="#isolated_functions">isolated
-function</a>. If the <code>remote</code> is present, then the method is a remote
+function</a>. If <code>remote-qual</code> is present, then the method is a remote
 method; this is allowed only when an <code>object-network-qual</code> is present
 in the <code>object-constructor-expr</code>.
 </p>
@@ -5499,8 +5510,9 @@ the value of the expression in a variable.
 <pre class="grammar"><span class="ntdfn" id="method-call-expr">method-call-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
 <p>
-A <code>method-call-expr</code> either calls a method or calls a function in the
-lang library. The evaluation of the method-call-expr starts by evaluating
+A <code>method-call-expr</code> either calls an object's method, calls an
+object's field where the type of the field is a function or calls a function in
+the lang library. The evaluation of the method-call-expr starts by evaluating
 <code>expression</code> resulting in some value <var>v</var>. There is no
 contextually expected type for <code>expression</code>.
 </p>
@@ -5512,10 +5524,20 @@ object type includes a method named <code>method-name</code>, then the
 that is passed to the method in the same way as with a
 <code>function-call-expr</code>. A <code>method-call-expr</code> cannot be used
 to call a remote method. A remote method of a client object can be called by a
-<code>client-remote-method-call-action</code>. A method-call-expr is isolated if
-the expression preceding <code>.</code> is isolated, the expression for each
-argument in the arg-list is isolated and the type of the method being called is
-isolated.
+<code>client-remote-method-call-action</code>. In this case, a method-call-expr
+is isolated if the expression preceding <code>.</code> is isolated, the
+expression for each argument in the arg-list is isolated and the type of the
+method being called is isolated.
+</p>
+<p>
+Otherwise, if the static type of <code>expression</code> is a subtype of object,
+and the object type includes a field named <code>method-name</code> with a
+function type, then the <code>method-call-expr</code> is executed by calling the
+value of that field. The <code>arg-list</code> is used to construct an argument
+list that is passed to the method in the same way as with a
+<code>function-call-expr</code>. In this case, a method-call-expr is isolated if
+the type of the function is isolated and the expression for each argument in the
+arg-list is isolated.
 </p>
 <p>
 Otherwise, the <code>method-call-expr</code> will be turned into a call to a
@@ -8156,7 +8178,7 @@ A match-stmt is executed as follows:
 <li>the expression is evaluated resulting in some value v;</li>
 <li>for each match-clause in order:
 <ol>
-<li>a match of match-pattern against v is attempted</li>
+<li>a match of match-pattern-list against v is attempted</li>
 <li>if the attempted match fails, the execution of the match-stmt continues to
 the next match-clause</li>
 <li>if the attempted match succeeds, then the variables in match-pattern are
@@ -8539,17 +8561,11 @@ not constrained.
 <section>
 <h3 id="section_8.1">8.1 Import declaration</h3>
 
-<pre class="grammar"><span class="ntdfn" id="import-decl">import-decl</span> := 
-   <code>import</code> [<a href="#org-name"><span class="ntref">org-name</span></a> <code>/</code>] <a href="#module-name"><span class="ntref">module-name</span></a> [<code>version</code> <a href="#sem-ver"><span class="ntref">sem-ver</span></a>] 
-   [<code>as</code> <a href="#import-prefix"><span class="ntref">import-prefix</span></a>] <code>;</code>
+<pre class="grammar"><span class="ntdfn" id="import-decl">import-decl</span> := <code>import</code> [<a href="#org-name"><span class="ntref">org-name</span></a> <code>/</code>] <a href="#module-name"><span class="ntref">module-name</span></a> [<code>as</code> <a href="#import-prefix"><span class="ntref">import-prefix</span></a>] <code>;</code>
 <span class="ntdfn" id="import-prefix">import-prefix</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> | <code>_</code>
 <span class="ntdfn" id="module-prefix">module-prefix</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="org-name">org-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="module-name">module-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a> (<code>.</code> <a href="#identifier"><span class="ntref">identifier</span></a>)*
-<span class="ntdfn" id="sem-ver">sem-ver</span> := <a href="#major-num"><span class="ntref">major-num</span></a> [<code>.</code> <a href="#minor-num"><span class="ntref">minor-num</span></a> [<code>.</code> <a href="#patch-num"><span class="ntref">patch-num</span></a>]]
-<span class="ntdfn" id="major-num">major-num</span> := <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a>
-<span class="ntdfn" id="minor-num">minor-num</span> := <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a>
-<span class="ntdfn" id="patch-num">patch-num</span> := <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a>
 
 <span class="ntdfn" id="qualified-identifier">qualified-identifier</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
@@ -8664,6 +8680,19 @@ functions. The generated module, which imports the specified root module,
 becomes the new root module.
 </p>
 <p>
+A configuration is supplied as input to program execution. A
+<em>configuration</em> consists of mapping from names of configurable
+module-level variables to values. The values in a configuration always belong to
+the type <code>anydata&amp;readonly</code>. The value for a variable in the
+configuration is used during module initialization to initialize the variable
+instead of the value specified in the module. A configurable module-level
+variable may require that a configuration include a value for it. Except for
+this requirement, a configuration may be empty. Before initializing any module,
+the initialization phase must check that there is a value of the correct type
+supplied for every configurable module-level variable that requires
+configuration. If not, the module initialization phase terminates unsuccessfull.
+</p>
+<p>
 If the initialization phase of program execution completes successfully, then
 execution proceeds to the listening phase, which is described in the next
 section. The termination of the listening phase, which may be successful or
@@ -8702,7 +8731,7 @@ this case, the service object's remote method should return nil if it does not
 return an error.
 </p>
 <p>
-The methods defined by the Listener object type allow for the
+The methods defined by the Listener&lt;T&gt; object type allow for the
 management of the lifecycle of a listener object and its attached services. A
 listener declaration registers a listener object with a module, so that it can
 be managed by the module. The runtime state of each module includes a list of
@@ -8745,7 +8774,7 @@ be assigned to. A module may have multiple multiple listeners.
 If the type-descriptor is present it specifies the static type of the variable;
 if it is not present, the the static type is the static type of
 <code>expression</code>. In both cases, the static type is constrained to be a
-subtype of the Listener object type.
+listener object type.
 </p>
 <p>
 When a listener-decl is initialized as part of module initialization, its
@@ -8774,13 +8803,13 @@ referenced by a variable-reference, but cannot be assigned to.
 The static type S for the constructed service object is specified by the
 type-descriptor if present, and otherwise is the union of a type inferred from
 each expression in the expression list as follows. Each expression in the
-expression-list must have a type L|E where L is a listener and E is a subtype of
-error; the inferred type is the type of the first parameter to the
-<code>attach</code> method of L. The object-constructor-block has the same
-semantics as in an object-constructor-expr with a <code>service</code> qualifier
-and a type-reference that refers to S. The type S is also used as the type of
-the variable declared. If the service-decl includes <code>isolated</code>, then
-it is equivalent to an object-constructor-expr with an <code>isolated</code>
+expression-list must have a type Listener&lt;T&gt;|E where T is a subtype of
+<code>service object {}</code> and E is a subtype of <code>error</code>; the
+inferred type is T. The object-constructor-block has the same semantics as in an
+object-constructor-expr with a <code>service</code> qualifier and a
+type-reference that refers to S. The type S is also used as the type of the
+variable declared. If the service-decl includes <code>isolated</code>, then it
+is equivalent to an object-constructor-expr with an <code>isolated</code>
 qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
@@ -8792,7 +8821,7 @@ expression in expression-list:
 </p>
 <ol>
 <li>the expression is evaluated resulting in a value which is either an error or
-an object <code><var>obj</var></code> that is a subtype of Listener;</li>
+an object <code><var>obj</var></code> belonging to a listener object type;</li>
 <li>if it is an error, module initialization fails;</li>
 <li>otherwise, <code><var>obj</var></code> is registered as a module listener
 (registering the same object multiple times is the same as registering it
@@ -8809,24 +8838,30 @@ fails.</li>
 <h4 id="section_8.3.3">8.3.3 Isolated inference</h4>
 
 <p>
-A listener object can use the isolated bit of a service object's remote method to determine
-whether it is safe to make concurrent calls to the remote method.
+A listener object can use the isolated bit of a service object and of a service
+object's remote method to determine whether it is safe to make concurrent calls
+to the remote object or the remote method.
 </p>
 <p>
-The compiler may infer that a service object's remote method is isolated even it
-is not explicitly declared as such. In doing so, it analyzes a module to
-determine whether there is a set of definitions, where each definition is a
-<code>function-defn</code> or <code>method-defn</code>, and no definition is
-explicitly declared as isolated, such that if all the definitions were declared
-as isolated, then they all would meet the requirements for <a href="#isolated_functions">isolated functions</a>. If so, the isolated bit of
-the function value associated with each definition is set.
+The compiler may infer that a service object or a service object's remote method
+is isolated even it is not explicitly declared as such. In doing so, it analyzes
+a module to determine whether there is a set of declarations and definitions in
+the module, where each of them is a <code>service-decl</code>,
+<code>module-var-decl</code>, <code>module-class-defn</code>
+<code>function-defn</code> or <code>method-defn</code>, and none of them
+explicitly specified an <code>isolated</code> qualifier, such that if all them
+explicitly specified an <code>isolated</code> qualifier, then they all would
+meet the requirements for <a href="#isolated_functions">isolated functions</a>
+and isolated objects. If so, then the isolated bit of values resulting from them
+is set in the same way as if <code>isolated</code> qualifiers had been
+explicitly specified.
 </p>
 <p>
 This inference is purely an optimization to improve service concurrency and is
-subject to two constraints. First, any inferences do not affect the static type
-of functions visible to other modules. Second, any functions or methods
-explicitly declared as isolated must satisfy the requirements for isolated
-functions without relying on inference.
+subject to two constraints. First, any inferences do not affect the static types
+visible to other modules. Second, anything explicitly declared as
+<code>isolated</code> must satisfy the requirements of this specification
+without without relying on inference.
 </p>
 
 </section>
@@ -8957,29 +8992,49 @@ The parameter list of an <code>init</code> method within an
 <h3 id="section_8.7">8.7 Module variable declaration</h3>
 
 <pre class="grammar"><span class="ntdfn" id="module-var-decl">module-var-decl</span> := <a href="#module-init-var-decl"><span class="ntref">module-init-var-decl</span></a> | <a href="#module-no-init-var-decl"><span class="ntref">module-no-init-var-decl</span></a>
-<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#isolated-final-quals"><span class="ntref">isolated-final-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
-<span class="ntdfn" id="isolated-final-quals">isolated-final-quals</span> :=
-  <code>final</code> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-  | [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<code>final</code>]]
 </pre>
 <p>
-The scope of variables declared in a module-var-decl is the entire module. Note
-that module variables are not allowed to be public. If final is specified, then
-it is not allowed to assign to the variable. If the typed-binding-pattern uses
-<code>var</code>, then the type of the variable is inferred from the static type
-of <code>expression</code>; if the module-var-decl includes <code>final</code>,
-the precise type is used, and otherwise the broad type is used. If the
-typed-binding-pattern specifies a type-descriptor, then that type-descriptor
-provides the contextually expected type for action-or-expr.
+A module-var-decl declares a variable. The scope of variables declared in a
+module-var-decl is the entire module. Module variables are not allowed to be
+public. The variable may be initialized in the declaration or within the
+module's <code>init</code> function. If <code>final</code> is specified, then it
+is not allowed to assign to the variable after it is initialized.
+</p>
+<pre class="grammar">
+<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#module-init-var-quals"><span class="ntref">module-init-var-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#module-var-init"><span class="ntref">module-var-init</span></a> <code>;</code>
+<span class="ntdfn" id="module-init-var-quals">module-init-var-quals</span> := (<code>final</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> | <code>configurable</code>)*
+<span class="ntdfn" id="module-var-init">module-var-init</span> := <a href="#expression"><span class="ntref">expression</span></a> | <code>?</code>
+</pre>
+<p>
+A module-init-var-decl declares and initializes a variable. It is an error for a
+keyword to appear more than once in <code>module-init-var-quals</code>. If the
+typed-binding-pattern uses <code>var</code>, then the type of the variable is
+inferred from the static type of <code>expression</code>; if the module-var-decl
+includes <code>final</code>, the precise type is used, and otherwise the broad
+type is used. If the typed-binding-pattern specifies a type-descriptor, then
+that type-descriptor provides the contextually expected type for action-or-expr.
 </p>
 <p>
 If a module-init-var-decl includes an isolated-qual, then the variable declared
 is isolated. In this case, the binding-pattern in the typed-binding-pattern must
 be just a variable-name, and the expression must be an isolated expression. A
 variable declared as an isolated variable can be accessed only within a
-lock-stmt. The keyword <code>isolated</code> occurring immediately before
-the typed-binding-pattern is parsed as part of isolated-final-quals
-rather than as part of typed-binding-pattern.
+lock-stmt. When an isolated-qual occurs in a position where the grammar would
+allow it to be parsed as part of module-init-var-quals or typed-binding-pattern,
+the former parse is used.
+</p>
+<p>
+If <code>configurable</code> is specified, then the initializer specified in the
+module-var-init may be overridden at the time of module initialization by a
+value supplied when the program is run. If such a value is supplied, then the
+expression in the module-var-init is not evaluated and the variable is
+initialized with the supplied value instead. A module-var-init of <code>?</code>
+is allowed only when <code>configurable</code> is specified and means that a
+configurable value must be supplied for this variable. If
+<code>configurable</code> is specified, then the typed-binding-pattern must use
+an explicit type-descriptor rather than <code>var</code> and the binding-pattern
+must be just a variable-name. The type specified by the type-descriptor must be
+a subtype of <code>anydata</code>.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="module-no-init-var-decl">module-no-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>final</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>;</code>
@@ -9146,35 +9201,28 @@ annotation-tag-reference, and for each such identifier which module defines that
 annotation tag.
 </p>
 <p>
-If the annotation includes a mapping-constructor-expr, then the value of the
-annotation is the mapping value resulting from evaluating the
-mapping-constructor-expr; otherwise the value is the boolean value
-<code>true</code>. For every construct that has an annotation with a particular
-tag, there is an <em>effective value</em> for that annotation tag, which is
-constructed from the values of all annotations with that tag that were attached
-to that construct. The effective value must belong to the type of the annotation
-tag.
+Each annotation has a value. For every construct that has an annotation with a
+particular tag, there is also an <em>effective value</em> for that annotation
+tag, which is constructed from the values of all annotations with that tag that
+were attached to that construct. The effective value belongs to the type
+declared for the annotation tag. The type of the annotation tag determines the
+type of the annotation value and whether multiple annotations with the same tag
+on a single construct are allowed. For an annotation tag declared with type T,
+if T is M[] for some type mapping type M, then the type of the annotation value
+is M, multiple annotations are allowed, and the effective value is an array of
+the values for each annotation; otherwise the type of the annotation value is T,
+multiple annotations are not allowed, the effective value is the value of the
+single annotation.
 </p>
 <p>
-The type of the annotation tag constrains both the annotation value and the
-occurrence of multiple annotations with the same tag on a single construct as
-follows.
+If the type of the annotation value is <code>true</code>, then a
+mapping-constructor-expr is not allowed, and the annotation value is
+<code>true</code>. Otherwise the type of the annotation value must be a mapping
+type M; if a mapping-constructor-expr is not specified, then it defaults to
+<code>{ }</code>; the mapping-constructor-expr must have static type M and the
+annotation value is the result of evaluating the mapping-constructor-expr with M
+as the contextually expected type.
 </p>
-<ul>
-<li>If the type of the annotation tag is T[] for some T, then the
-mapping-constructor-expr must be specified and its static type must be a subtype
-of T; multiple annotations are allowed; the effective value is a list containing
-the value for each annotation with the tag in the order specified.</li>
-<li>Otherwise, multiple annotations with this tag are not allowed and the
-effective value for the tag is the value of the single annotation with the tag.
-<ul>
-<li>If the type of the annotation tag is true, then the mapping-constructor-expr
-must not be specified.</li>
-<li>Otherwise, the mapping-constructor-expr must be specified and its static
-type must be a subtype of the type of the annotation tag.</li>
-</ul>
-</li>
-</ul>
 <p>
 If the annotation-decl for a tag specifies <code>const</code>, then a
 mapping-constructor-expr in annotations with that tag must be a const-expr and
@@ -9441,10 +9489,10 @@ modules are called the <em>lang library</em>.
 </p>
 <p>
 The lang library comprises the following modules. With the exception of the
-<code>lang.value</code> module, each corresponds to a basic type.
+<code>lang.value</code> and <code>lang.runtime</code> modules, each corresponds
+to a basic type.
 </p>
 <ul>
-<li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 <li>
 <code><a href="./lib/array.bal" type="text/plain">lang.array</a></code> for
 basic type list</li>
@@ -9487,12 +9535,9 @@ basic type typedesc</li>
 <li>
 <code><a href="./lib/xml.bal" type="text/plain">lang.xml</a></code> for
 basic type xml</li>
+<li><code><a href="./lib/runtime.bal" type="text/plain">lang.runtime</a></code></li>
+<li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 </ul>
-<p>
-For each version of the specification, there is a separate version number for
-each module in its lang library. The module version numbers for this version of
-the specification are <a href="./lib/versions.json" type="text/plain">specified</a> in JSON format.
-</p>
 <p>
 Modules in the lang library can make use generic typing. Since generic typing
 has not yet been added to Ballerina, the source code for the modules use an
@@ -9689,6 +9734,10 @@ cannot be declared as <code>public</code>.</li>
 fail</code> clause for compound statements. If a <code>check</code> expression
 or action fails, it behaves like a <code>fail</code> statement rather than a
 <code>return</code> statement.</li>
+<li>The language has a concept of configurability: module level variables can be
+specified to be <code>configurable</code>, which allows their initial values to
+be specified at runtime.</li>
+<li>An import declaration can no longer specify a version.</li>
 </ol>
 </section>
 <section>
@@ -10051,9 +10100,6 @@ external events.</li>
 <li>
 <em>Reliable messaging</em> will allow for sending messages across the
 network with some guarantees about reliability.</li>
-<li>
-<em>Concurrency safety</em> will be able automatically to make safe use of
-multiple threads</li>
 </ul>
 
 <p>

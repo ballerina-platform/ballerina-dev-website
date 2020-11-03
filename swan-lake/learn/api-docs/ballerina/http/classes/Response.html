@@ -794,7 +794,7 @@ function displayMenu() {
         <span class="method-types">
             <p>()</p>
             
-                <b> returns </b><a href="../../mime/classes/Entity.html">Entity</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../mime/abstractobjects/Entity.html">Entity</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -812,7 +812,7 @@ function displayMenu() {
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../mime/classes/Entity.html">Entity</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../mime/abstractobjects/Entity.html">Entity</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The <code>Entity</code> of the response. An <code>http:ClientError</code> is returned, if entity construction fails</p>
 </li>
             </ul>
@@ -828,7 +828,7 @@ function displayMenu() {
             </a>
             <h2 > setEntity </h2>
         <span class="method-types">
-            <p>(<a href="../../mime/classes/Entity.html">Entity</a> e)</p>
+            <p>(<a href="../../mime/abstractobjects/Entity.html">Entity</a> e)</p>
             
         </span>
     </div>
@@ -848,7 +848,7 @@ function displayMenu() {
                 <ul>
                     <li>
                         <span >e</span>
-                        <span class="type">  <a href="../../mime/classes/Entity.html">Entity</a> </span>
+                        <span class="type">  <a href="../../mime/abstractobjects/Entity.html">Entity</a> </span>
                         
                     </li>
                     <li>
@@ -1641,7 +1641,7 @@ the entity-body of the <code>Response</code> must be accessed initially.</p>
         <span class="method-types">
             <p>()</p>
             
-                <b> returns </b><a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -1660,7 +1660,7 @@ the entity-body of the <code>Response</code> must be accessed initially.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>A byte channel from which the message payload can be read or <code>http:ClientError</code> in case of errors</p>
 </li>
             </ul>
@@ -1714,7 +1714,7 @@ the entity-body of the <code>Response</code> must be accessed initially.</p>
         <span class="method-types">
             <p>()</p>
             
-                <b> returns </b><span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><span class="array-type"><a href="../../mime/abstractobjects/Entity.html">Entity</a>[]</span> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -1732,7 +1732,7 @@ the entity-body of the <code>Response</code> must be accessed initially.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../mime/abstractobjects/Entity.html">Entity</a>[]</span> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The body parts as an array of entities or else an <code>http:ClientError</code> if there were any errors in
 constructing the body parts from the response</p>
 </li>
@@ -2075,7 +2075,7 @@ for <code>byte[]</code></p>
             </a>
             <h2 > setBodyParts </h2>
         <span class="method-types">
-            <p>(<span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> bodyParts, <span class="builtin-type">string</span> contentType)</p>
+            <p>(<span class="array-type"><a href="../../mime/abstractobjects/Entity.html">Entity</a>[]</span> bodyParts, <span class="builtin-type">string</span> contentType)</p>
             
         </span>
     </div>
@@ -2095,7 +2095,7 @@ for <code>byte[]</code></p>
                 <ul>
                     <li>
                         <span >bodyParts</span>
-                        <span class="type">  <span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> </span>
+                        <span class="type">  <span class="array-type"><a href="../../mime/abstractobjects/Entity.html">Entity</a>[]</span> </span>
                         
                     </li>
                     <li>
@@ -2201,7 +2201,7 @@ header value</p>
             </a>
             <h2 > setByteChannel </h2>
         <span class="method-types">
-            <p>(<a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> payload, <span class="builtin-type">string</span> contentType)</p>
+            <p>(<a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> payload, <span class="builtin-type">string</span> contentType)</p>
             
         </span>
     </div>
@@ -2221,7 +2221,7 @@ header value</p>
                 <ul>
                     <li>
                         <span >payload</span>
-                        <span class="type">  <a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span class="type">  <a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
@@ -2265,7 +2265,7 @@ header value</p>
             </a>
             <h2 > setPayload </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> payload)</p>
+            <p>(<span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/abstractobjects/Entity.html">Entity</a>[]</span> payload)</p>
             
         </span>
     </div>
@@ -2285,7 +2285,7 @@ header value</p>
                 <ul>
                     <li>
                         <span >payload</span>
-                        <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/classes/Entity.html">Entity</a>[]</span> </span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/abstractobjects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/abstractobjects/Entity.html">Entity</a>[]</span> </span>
                         
                     </li>
                     <li>

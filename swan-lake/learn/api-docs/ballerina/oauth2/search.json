@@ -69,18 +69,17 @@
   "constants": [],
   "errors": [
     {
+      "id": "Error",
+      "description": "\u003cp\u003eRepresents the OAuth2 error.\u003c/p\u003e",
+      "moduleId": "oauth2"
+    },
+    {
       "id": "OAuth2Error",
       "description": "\u003cp\u003eRepresents the OAuth2 distinct error.\u003c/p\u003e",
       "moduleId": "oauth2"
     }
   ],
-  "types": [
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents the OAuth2 error.\u003c/p\u003e",
-      "moduleId": "oauth2"
-    }
-  ],
+  "types": [],
   "clients": [],
   "listeners": [],
   "annotations": [],

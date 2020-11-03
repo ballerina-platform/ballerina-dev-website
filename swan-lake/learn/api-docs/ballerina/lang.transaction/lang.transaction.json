@@ -386,9 +386,6 @@
       "returnParameters": [
         {
           "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "readonly",
             "category": "UNKNOWN",
             "isAnonymousUnionType": false,
             "isArrayType": false,
@@ -624,9 +621,6 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "readonly",
             "category": "UNKNOWN",
             "isAnonymousUnionType": false,
             "isArrayType": false,

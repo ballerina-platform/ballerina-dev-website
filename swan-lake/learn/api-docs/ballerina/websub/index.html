@@ -153,7 +153,7 @@
             </h1>
             
     
-    <div>Version : 1.0.2</div>
+    <div>Version : 1.0.3</div>
     
     <h2>Module Overview</h2>
 <p>This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.</p>
@@ -648,6 +648,16 @@ service specificSubscriber on new WebhookListener(8080) {
                     </tr>
                 
                     <tr>
+                        <td class="module-title truncate classes" id="Bridge" title="Bridge">
+                            <a class="classes " href="classes/Bridge.html">Bridge</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            
+                        </td>
+                    </tr>
+                
+                    <tr>
                         <td class="module-title truncate classes" id="Hub" title="Hub">
                             <a class="classes " href="classes/Hub.html">Hub</a>
                         </td>
@@ -770,9 +780,6 @@ service specificSubscriber on new WebhookListener(8080) {
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Function to add link headers to a response to allow WebSub discovery.</p> 
                 </td>
             </tr>
@@ -783,7 +790,6 @@ service specificSubscriber on new WebhookListener(8080) {
                 </td>
                 <td class="module-desc">
                     
-                    
                     <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p> 
                 </td>
             </tr>
@@ -793,7 +799,6 @@ service specificSubscriber on new WebhookListener(8080) {
                     <a class="functions " href="functions.html#startHub">startHub</a>
                 </td>
                 <td class="module-desc">
-                    
                     
                     <p>Starts up the Ballerina Hub.</p>   
                 </td>

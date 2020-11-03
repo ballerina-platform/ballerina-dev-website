@@ -585,7 +585,7 @@
             },
             {
                 "name": "Java Arrays",
-                "url": "java.arrays"
+                "url": "java-arrays"
             },
             {
                 "name": "Java Varargs",
@@ -798,6 +798,10 @@
                 "url": "http-redirects"
             },
             {
+                "name": "Client Data Binding",
+                "url": "http-client-data-binding"
+            },
+            {
                 "name": "Base Path and Path",
                 "url": "base-path-and-path"
             },
@@ -850,7 +854,7 @@
                 "url": "http-access-logs"
             },
             {
-                "name": "Data Binding",
+                "name": "Service Data Binding",
                 "url": "http-data-binding"
             },
             {
@@ -1107,32 +1111,10 @@
         ]
     },
  	{
-        "title": "Observability",
-        "column": 2,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Distributed Tracing",
-                "url": "tracing"
-            },
-            {
-                "name": "Counter-Based Metrics",
-                "url": "counter-metrics"
-            },
-            {
-                "name": "Gauge-Based Metrics",
-                "url": "gauge-metrics"
-            }
-        ]
-    },
- 	{
         "title": "OpenAPI",
         "column": 2,
         "category": "Working over the network",
         "samples": [{
-                "name": "Client Generation",
-                "url": "client-generation"
-            },
-            {
                 "name": "Ballerina To OpenAPI",
                 "url": "ballerina-to-openapi"
             },

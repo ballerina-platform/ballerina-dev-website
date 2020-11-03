@@ -17,25 +17,6 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">httpService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/world&quot;</span><span class="p">,</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">httpResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
-            <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error in payload&quot;</span><span class="p">);</span>
-            <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-            <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;HTTP POST received: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">);</span>
-        <span class="p">}</span>        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">webSocketUpgrade</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">upgradePath</span><span class="p">:</span> <span class="s">&quot;/ws&quot;</span><span class="p">,</span>
             <span class="nx">upgradeService</span><span class="p">:</span> <span class="nx">wsService</span>
@@ -139,10 +120,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -169,55 +146,6 @@ import ballerina/log;
     basePath: &quot;/hello&quot;
 }
 service httpService on new http:Listener(9090) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        path: &quot;/world&quot;,
-        methods: [&quot;POST&quot;]
-    }
-    resource function httpResource(http:Caller caller, http:Request req) {
-        http:Response resp = new;
-        var payload = req.getTextPayload();
-        if (payload is error) {
-            log:printError(&quot;Error sending message&quot;, payload);
-            resp.setPayload(&quot;Error in payload&quot;);
-            resp.statusCode = 500;
-        } else {
-            io:println(payload);
-            resp.setPayload(&quot;HTTP POST received: &quot; + &lt;@untainted&gt; payload);
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is an HTTP resource.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var err = caller-&gt;respond(resp);
-        if (err is error) {
-            log:printError(&quot;Error in responding&quot;, err);
-        }
-    }
 </code></pre></div>
 
                                 </td>
@@ -356,10 +284,6 @@ service httpService on new http:Listener(9090) {
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -384,7 +308,6 @@ ballerina run http_to_websocket_upgrade.bal
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To check the sample, use the Chrome or Firefox JavaScript console and run the commands given below. &lt;br&gt;
 # Change &quot;xml&quot; to another sub protocol to observe the behavior of the WebSocket server.
-# This WebSocket sample is configured to have two endpoints.
 var ws = new WebSocket(&quot;ws://localhost:9090/hello/ws&quot;, &quot;xml&quot;, &quot;my-protocol&quot;);
 </code></pre></div>
 
@@ -409,22 +332,9 @@ ws.onclose = function(frame) {console.log(frame)};
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
 ws.send(&quot;hello world&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>#Use the cURL command to call the HTTP resource.
-curl -H &quot;Content-Type: text/plain&quot; -X POST -d &#39;Hello World!!&#39; &#39;http://localhost:9090/hello/world&#39;
 </code></pre></div>
 
                                 </td>

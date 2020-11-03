@@ -59,7 +59,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>AWS Lambda Deployment</h2>
                             <p><p>AWS Lambda is an event driven, serverless computing platform.
- Ballerina functions can be deployed in AWS Lambda by annotating a
+ Ballerina functions can be deployed in AWS Lambda by annotating
  a Ballerina function with &ldquo;@awslambda:Function&rdquo;, which should have
  the function signature <code>function (awslambda:Context, json|EventType) returns json|error</code>.<br/><br/>
  For more information, see the <a href="https://ballerina.io/learn/deployment/aws-lambda/">AWS Lambda Deployment Guide</a>.</p>
@@ -391,7 +391,7 @@ Compiling source
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
+	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
 </code></pre></div>
 
                                 </td>
@@ -418,11 +418,11 @@ Compiling source
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the AWS CLI commands to create and publish the functions; and set your respective AWS $LAMBDA_ROLE_ARN, $REGION_ID, and $FUNCTION_NAME values; following are some examples:-
 $ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
+ --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
 $ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
+ --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
 $ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
+ --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
 </code></pre></div>
 
                                 </td>

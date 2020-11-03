@@ -68,19 +68,12 @@ redirect_from:
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;p@ssw0rd&quot;</span>
     <span class="p">};</span>
     <span class="nx">request</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonPart</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">loginResp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">loginMessage</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">loginMessage</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">loginMessage</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">welcomeResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/welcome&quot;</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">welcomeResp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-                <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">textPayload</span> <span class="p">=</span> <span class="nx">welcomeResp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">textPayload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">textPayload</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">loginResp</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">loginResp</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">loginResp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="k">var</span> <span class="nx">welcomeResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/welcome&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">welcomeResp</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">welcomeResp</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -656,14 +649,6 @@ ballerina run cookie_server.bal
                         
                             
                                 
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -813,7 +798,9 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (loginResp is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (loginResp is error) {
+        log:printError(&quot;Login failed&quot;, loginResp);
+    } else {
 </code></pre></div>
 
                                 </td>
@@ -825,41 +812,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error loginMessage = loginResp.getTextPayload();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This response contains the cookies added by the backend server.
- Get the login response message.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (loginMessage is error) {
-            log:printError(&quot;Login failed&quot;, loginMessage);
-        } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            var welcomeResp = httpClient-&gt;get(&quot;/welcome&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var welcomeResp = httpClient-&gt;get(&quot;/welcome&quot;, targetType = string);
 </code></pre></div>
 
                                 </td>
@@ -882,9 +835,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            if (welcomeResp is http:Response) {
-                string|error textPayload = welcomeResp.getTextPayload();
-                if (textPayload is string) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (welcomeResp is string) {
 </code></pre></div>
 
                                 </td>
@@ -896,12 +847,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>                    log:printInfo(textPayload);
-                }
-            }
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(welcomeResp);
         }
-    } else {
-        log:printError(loginResp.message());
     }
 }
 </code></pre></div>

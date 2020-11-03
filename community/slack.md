@@ -29,3 +29,5 @@ Request an invite below.
 <input maxlength="90" value="" id="slackEmail" name="slackEmail" placeholder="Email" title="Email" class="cTextfieldstyle slackSubscribeEmail" type="text">
 <span id="subscribeMessage"></span>
 </form>
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

@@ -1,12 +1,9 @@
 ---
 layout: ballerina-inner-page
-title: The Ballerina Code of Conduct
+title: The Ballerina Contributor Covenant Code of Conduct
+intro: This code of conduct aims at establishing a baseline standard of behavior to provide a safe and comfortable environment for all members of the Ballerina community who are originated from different backgrounds.
 permalink: /code-of-conduct
 ---
-
-# Contributor Covenant Code of Conduct
-
-This code of conduct aims at establishing a baseline standard of behavior to provide a safe and comfortable environment for all members of the Ballerina community who are originated from different backgrounds.
 
 ## Our pledge
 
@@ -112,8 +109,10 @@ Project/Community leaders will follow the below Community Impact Guidelines in d
 
 This code of conduct is adapted from the [Contributor Covenant, version 2.0](https://www.contributor-covenant.org/version/2/0/code_of_conduct).
 
-<style>
+<!--<style>
 .nav > li.cVersionItem {
     display: none !important;
 }
-</style>
+</style>-->
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

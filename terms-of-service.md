@@ -4,30 +4,18 @@ title: Terms of Service
 permalink: /terms-of-service/
 ---
 
-<style>
+<!--<style>
 .cBlallerina-io-docs-left-nav-container {
 display:none;
 
 }
-</style>
+</style>-->
+
+## Overview
 
 The following Terms of Use (“Terms”) govern your access to and use of the [Ballerina website](https://ballerina.io/) and any other site to which a link to these terms may appear (“Sites”). These Terms are a legal agreement between you and WSO2. Your registration for, or use of the Sites and any software, repositories, other services, or projects hosted on the Sites (“Services”) shall be deemed to be your acceptance of these Terms. These Terms do not govern your access and use of the Ballerina programming language or related commercial support and services offerings, which may be made available to you under separate license terms.
 
 If you are agreeing to these Terms on behalf of a company or other legal entity, you represent that you have the authority to, and do hereby bind such entity to these Terms. You may not use the Ballerina Sites or Services if you are a person barred from using the Sites or Services under the laws of the United States or other countries, including the country in which you are resident or from which you use the Sites, or international laws or treaties. You may not use the Ballerina Sites or Services if you are or represent an entity that is listed on any U.S. Government Denied Party/Person List. You affirm that you are over the age of 13 as the Service is not intended for children under 13. IF YOU ARE 13 OR OLDER BUT UNDER THE AGE OF 18, OR THE LEGAL AGE OF MAJORITY WHERE YOU RESIDE IF THAT JURISDICTION HAS AN OLDER AGE OF MAJORITY, THEN YOU AGREE TO REVIEW THE TERMS WITH YOUR PARENT OR GUARDIAN TO MAKE SURE THAT BOTH YOU AND YOUR PARENT OR GUARDIAN UNDERSTAND AND AGREE TO THESE TERMS. YOU AGREE TO HAVE YOUR PARENT OR GUARDIAN REVIEW AND ACCEPT THESE TERMS ON YOUR BEHALF. IF YOU ARE A PARENT OR GUARDIAN AGREEING TO THE TERMS FOR THE BENEFIT OF A CHILD OVER 13, THEN YOU AGREE TO AND ACCEPT FULL RESPONSIBILITY FOR THAT CHILD'S USE OF THE SERVICE, INCLUDING ALL FINANCIAL CHARGES AND LEGAL LIABILITY THAT HE OR SHE MAY INCUR.
-
-- [Certain disclaimers](#certain-disclaimers)
-- [Your use of the Sites and Services](#your-use-of-the-sites-and-services)
-- [Privacy and restrictions on use](#privacy-and-restrictions-on-use)
-- [Our trademarks and proprietary rights](#our-trademarks-and-proprietary-rights)
-- [User content](#user-content)
-- [Copyright information](#copyright-information)
-- [User disagreements](#user-disagreements)
-- [Third party Sites and Services](#third-party-sites-and-services)
-- [Revisions to these Terms and termination](#revisions-to-these-terms-and-termination)
-- [Subscriptions and mail notifications](#subscriptions-and-mail-notifications)
-- [Limitation of liability and disclaimer of warranties](#limitation-of-liability-and-disclaimer-of-warranties)
-- [Indemnification](#indemnification)
-- [General](#General)
 
 ## Certain disclaimers
 
@@ -167,8 +155,10 @@ YOU AGREE TO HOLD HARMLESS AND INDEMNIFY WSO2 AND ITS SUBSIDIARIES, AFFILIATES, 
 
 These Terms will be governed by and construed in accordance with the laws of the State of California, without giving effect to its conflict of laws provisions. Any claims, legal proceeding or litigation arising in connection with the service will be brought solely in Santa Clara County, California, and you consent to the jurisdiction of such courts. The failure of WSO2 to exercise or enforce any right or provision of these Terms not constitute a waiver of such right or provision. If any provision of the Terms is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties’ intentions as reflected in the provision, and the other provisions of these Terms remain in full force and effect. These Terms constitute the entire agreement between you and WSO2 and govern your use of the Sites and Services superseding any prior agreements between you and WSO2 with respect to the Sites and Services.
 
-<style>
+<!--<style>
 .nav > li.cVersionItem , .cBallerinaTocContainer {
     display: none !important;
 }
-</style>
+</style>-->
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

@@ -145,6 +145,12 @@ For further information about our Privacy Policy or if you have any questions, c
 .nav > li.cVersionItem  , .cBallerinaTocContainer {
     display: none !important;
 }
+<<<<<<< HEAD
+
+.cBallerinaTocContainer  {
+    display:none;
+}
+=======
 </style>-->
 
 <style>
@@ -197,5 +203,6 @@ position: absolute;
 margin: -150px 0px 0px;
 }
 
+>>>>>>> 6c806b2ac2eb1aa9a1cef8bd80491fcf399aadd5
 
 </style>

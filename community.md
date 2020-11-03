@@ -110,7 +110,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contribution Guide</a>. Happy contributing! 
 
-<!--<style>
+<style>
 .nav > li.cVersionItem {
     display: none !important;
 }
@@ -159,8 +159,10 @@ display: inline-block;
 position: absolute;
 margin: -150px 0px 0px;
 }
+.cBallerinaTocContainer  {
+    display:none;
+}
 
-
-</style>-->
+</style>
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

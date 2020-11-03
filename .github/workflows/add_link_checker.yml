@@ -1,48 +1,28 @@
-name: Push changes of new Release-note with template
-
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - '_data/stable-latest/**'
-
+on: [push]
+name: Link Checker Example Command
 jobs:
-  add-release-note:
+  linkChecker:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the site
+        uses: shafreenAnfar/jekyll-build-action@v5
+      - name: Link Checker
+        id: lc
+        uses: peter-evans/link-checker@v1
+        with:
+          args: -r learn swan-lake 1.1 1.0 -x 0.990 https?:// -d ./_site 
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Link Checker Report
+          path:  ./link-checker/out.md
+      #- name: Fail if there were link errors
+        #run: exit ${{ steps.lc.outputs.exit_code }}
 
-    steps:    
-    - name: Install jq for json manipulation
-      run: sudo apt-get install jq
+      #- name: SendGrid
+        #uses: peter-evans/sendgrid-action@v1
+        #env:
+          #SENDGRID_API_KEY: <REPLACE_WITH_MY_API_KEY>
+          #SCRIPT_FILEPATH: ./scripts/sendgrid.js
 
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.WEBSITE_TOKEN }}
-
-    - name: Create new release note
-      run: |
-        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
-        mkdir downloads/release-notes/$VERSION
-        cp downloads/RELEASE_NOTE.md downloads/release-notes/$VERSION
-
-    - name: Commit changes for the new release note
-      run: |
-        git pull origin master
-        
-        git config --global user.email "ballerina-bot@ballerina.org"
-        git config --global user.name "ballerina-bot"
-        
-        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
-        git add downloads/release-notes/$VERSION
-        git commit --allow-empty -m '[Automated] Add releaste note template for the new release'
-        
-    - name: Push changes for the new release note
-      shell: bash
-      run: |
-        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub push
-      env:
-        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

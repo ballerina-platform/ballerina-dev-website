@@ -1,0 +1,28 @@
+on: [push]
+name: Link Checker Example Command
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the site
+        uses: shafreenAnfar/jekyll-build-action@v5
+      - name: Link Checker
+        id: lc
+        uses: peter-evans/link-checker@v1
+        with:
+          args: -r learn swan-lake 1.1 1.0 -x 0.990 https?:// -d ./_site 
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Link Checker Report
+          path:  ./link-checker/out.md
+      #- name: Fail if there were link errors
+        #run: exit ${{ steps.lc.outputs.exit_code }}
+
+      #- name: SendGrid
+        #uses: peter-evans/sendgrid-action@v1
+        #env:
+          #SENDGRID_API_KEY: <REPLACE_WITH_MY_API_KEY>
+          #SCRIPT_FILEPATH: ./scripts/sendgrid.js
+

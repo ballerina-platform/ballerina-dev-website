@@ -9,7 +9,7 @@ permalink: /learn-2/
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
 <a class="cBoxLink" href="/learn/installing-ballerina/">
 
-<h2>Ballerina User Guides</h2>
+<h2>Ballerina User Guide</h2>
 
 <p>Gear yourself up by setting up Ballerina and learn about all the features of the language and its platform capabilities.</p>
 

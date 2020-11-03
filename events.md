@@ -64,7 +64,7 @@ redirect_from:
          <a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-japan/">
             <h4>Open Source Summit Japan</h4>
          </a>
-         <h5></h5>
+         <h5>Ballerina: An Open-Source Cloud-Native Programming Language</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/open-source-summit-japan/program/schedule-at-a-glance/" target="_blank">More Info</a></td>

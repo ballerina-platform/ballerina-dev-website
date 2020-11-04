@@ -4918,7 +4918,7 @@ fields come from a separate, named class definition.
 <pre class="grammar"><span class="ntdfn" id="object-constructor-expr">object-constructor-expr</span> :=
    [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#object-type-quals"><span class="ntref">object-type-quals</span></a> <code>object</code> [<a href="#type-reference"><span class="ntref">type-reference</span></a>] <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
 <span class="ntdfn" id="object-constructor-block">object-constructor-block</span> := <code>{</code> <a href="#object-member"><span class="ntref">object-member</span></a>* <code>}</code>
-<span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a> | <a href="#remote-method-defn"><span class="ntref">remote-method-defn</span></a>
+<span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a> | <a href="#remote-method-defn"><span class="ntref">remote-method-defn</span></a> | <a href="#resource-method-defn"><span class="ntref">resource-method-defn</span></a>
 </pre>
 <p>
 The resulting of evaluating an <code>object-constructor-expr</code> is an
@@ -5028,9 +5028,29 @@ A <code>method-defn</code> defines a method of an object.
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
 </pre>
 <p>
-If <code>remote-method-defn</code> defines a remote method. This is allowed only
+A <code>remote-method-defn</code> defines a remote method. This is allowed only
 when an <code>object-network-qual</code> is present in the
 <code>object-constructor-expr</code>.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="resource-method-defn">resource-method-defn</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#resource-method-quals"><span class="ntref">resource-method-quals</span></a>
+   <code>function</code> <a href="#resource-method-name"><span class="ntref">resource-method-name</span></a> <a href="#resource-name"><span class="ntref">resource-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
+<span class="ntdfn" id="resource-method-quals">resource-method-quals</span> :=
+   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+<span class="ntdfn" id="resource-qual">resource-qual</span> := <code>resource</code>
+<span class="ntdfn" id="resource-method-name">resource-method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="resource-name">resource-name</span> :=
+   <a href="#dot-resource-name"><span class="ntref">dot-resource-name</span></a>
+   | <a href="#resource-segment-name"><span class="ntref">resource-segment-name</span></a> (<code>/</code> <a href="#resource-segment-name"><span class="ntref">resource-segment-name</span></a>)*
+<span class="ntdfn" id="dot-resource-name">dot-resource-name</span> := <code>.</code>
+<span class="ntdfn" id="resource-segment-name">resource-segment-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+</pre>
+<p>
+A <code>resource-method-defn</code> defines a resource method. This is allowed
+only when an <code>object-network-qual</code> of <code>service</code> is present
+in the <code>object-constructor-expr</code>.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
@@ -8967,6 +8987,7 @@ constructed.
    <a href="#object-field"><span class="ntref">object-field</span></a>
    | <a href="#method-defn"><span class="ntref">method-defn</span></a>
    | <a href="#remote-method-defn"><span class="ntref">remote-method-defn</span></a>
+   | <a href="#resource-method-defn"><span class="ntref">resource-method-defn</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
 </pre>
 <p>

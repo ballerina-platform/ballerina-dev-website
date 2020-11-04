@@ -4477,7 +4477,7 @@ fields come from a separate, named class definition.
 class="grammar"><dfn>object-constructor-expr</dfn> :=
    [<abbr>annots</abbr>] <abbr>object-type-quals</abbr> <code>object</code> [<abbr>type-reference</abbr>] <abbr>object-constructor-block</abbr>
 <dfn>object-constructor-block</dfn> := <code>{</code> <abbr>object-member</abbr>* <code>}</code>
-<dfn>object-member</dfn> := <abbr>object-field</abbr> | <abbr>method-defn</abbr> | <abbr>remote-method-defn</abbr>
+<dfn>object-member</dfn> := <abbr>object-field</abbr> | <abbr>method-defn</abbr> | <abbr>remote-method-defn</abbr> | <abbr>resource-method-defn</abbr>
 </pre>
 <p>
 The resulting of evaluating an <code>object-constructor-expr</code> is an
@@ -4591,9 +4591,30 @@ class="grammar"><dfn>remote-method-defn</dfn> :=
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
 </pre>
 <p>
-If <code>remote-method-defn</code> defines a remote method. This is allowed only
+A <code>remote-method-defn</code> defines a remote method. This is allowed only
 when an <code>object-network-qual</code> is present in the
 <code>object-constructor-expr</code>.
+</p>
+
+<pre
+class="grammar"><dfn>resource-method-defn</dfn> :=
+   <abbr>metadata</abbr> <abbr>resource-method-quals</abbr>
+   <code>function</code> <abbr>resource-method-name</abbr> <abbr>resource-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
+<dfn>resource-method-quals</dfn> :=
+   <abbr>resource-qual</abbr> [<abbr>isolated-qual</abbr>]
+   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr>
+<dfn>resource-qual</dfn> := <code>resource</code>
+<dfn>resource-method-name</dfn> := <abbr>identifier</abbr>
+<dfn>resource-name</dfn> :=
+   <abbr>dot-resource-name</abbr>
+   | <abbr>resource-segment-name</abbr> (<code>/</code> <abbr>resource-segment-name</abbr>)*
+<dfn>dot-resource-name</dfn> := <code>.</code>
+<dfn>resource-segment-name</dfn> := <abbr>identifier</abbr>
+</pre>
+<p>
+A <code>resource-method-defn</code> defines a resource method. This is allowed
+only when an <code>object-network-qual</code> of <code>service</code> is present
+in the <code>object-constructor-expr</code>.
 </p>
 
 <pre
@@ -8585,6 +8606,7 @@ class="grammar"><dfn>module-class-defn</dfn> :=
    <abbr>object-field</abbr>
    | <abbr>method-defn</abbr>
    | <abbr>remote-method-defn</abbr>
+   | <abbr>resource-method-defn</abbr>
    | <abbr>object-type-inclusion</abbr>
 </pre>
 <p>

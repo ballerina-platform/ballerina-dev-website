@@ -135,11 +135,11 @@ mailing list.
 <li>5.5.2 <a href="#functions">Functions</a>
 </li>
 <li>5.5.3 <a href="#section_5.5.3">Objects</a><ul>
-<li>5.5.3.1 <a href="#section_5.5.3.1">Fields</a>
+<li>5.5.3.1 <a href="#section_5.5.3.1">Network interaction</a>
 </li>
-<li>5.5.3.2 <a href="#section_5.5.3.2">Methods</a>
+<li>5.5.3.2 <a href="#section_5.5.3.2">Fields</a>
 </li>
-<li>5.5.3.3 <a href="#section_5.5.3.3">Network interaction</a>
+<li>5.5.3.3 <a href="#section_5.5.3.3">Methods</a>
 </li>
 <li>5.5.3.4 <a href="#section_5.5.3.4">Visibility</a>
 </li>
@@ -269,7 +269,14 @@ mailing list.
 </ul>
 </li>
 <li>6.8 <a href="#section_6.8">Object construction</a><ul>
-<li>6.8.1 <a href="#section_6.8.1">Object constructor</a>
+<li>6.8.1 <a href="#section_6.8.1">Object constructor</a><ul>
+<li>6.8.1.1 <a href="#section_6.8.1.1">Fields</a>
+</li>
+<li>6.8.1.2 <a href="#section_6.8.1.2">Methods</a>
+</li>
+<li>6.8.1.3 <a href="#section_6.8.1.3">Initialization</a>
+</li>
+</ul>
 </li>
 <li>6.8.2 <a href="#section_6.8.2">New expression</a>
 </li>
@@ -2524,6 +2531,7 @@ bit. Whether an object is read-only can be described separately using a
 <span class="ntdfn" id="object-member-descriptor">object-member-descriptor</span> :=
    <a href="#object-field-descriptor"><span class="ntref">object-field-descriptor</span></a>
    | <a href="#method-decl"><span class="ntref">method-decl</span></a>
+   | <a href="#remote-method-decl"><span class="ntref">remote-method-decl</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
 </pre>
 
@@ -2535,60 +2543,7 @@ described type.
 </p>
 
 <section>
-<h5 id="section_5.5.3.1">5.5.3.1 Fields</h5>
-
-<pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>;</code>
-</pre>
-<p>
-An <code>object-field-descriptor</code> describes a field of the object. The
-<code>field-name</code> of an <code>object-field-descriptor</code> must be
-distinct from the <code>field-name</code> of every other
-<code>object-field-descriptor</code> in the <code>object-type-descriptor</code>
-and from the <code>method-name</code> of every <code>method-decl</code> in the
-<code>object-type-descriptor</code>.
-</p>
-<p>
-If an object's read-only bit is set, then the read-only bit of the value of
-every field must also be set and the value of a field cannot be changed after
-the object has been constructed.
-</p>
-</section>
-<section>
-<h5 id="section_5.5.3.2">5.5.3.2 Methods</h5>
-
-<pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#method-decl-quals"><span class="ntref">method-decl-quals</span></a>
-   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
-<span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
-</pre>
-<p>
-A <code>method-decl</code> describes a method of the object. The
-<code>method-name</code> of a <code>method-decl</code> must be distinct from the
-<code>method-name</code> of every other <code>method-decl</code> in the
-<code>object-type-descriptor</code> and from the <code>field-name</code> of
-every <code>object-field-descriptor</code> in the
-<code>object-type-descriptor</code>. Note that here is no method overloading.
-The <code>method-name</code> in a <code>method-decl</code> must not be
-<code>init</code>.
-</p>
-
-<pre class="grammar"><span class="ntdfn" id="method-decl-quals">method-decl-quals</span> :=
-   <code>public</code> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
-</pre>
-<p>
-Neither <code>remote-qual</code> nor <code>isolated-qual</code> can occur more
-than once in <code>method-decl-quals</code>. The <code>isolated-qual</code>
-together with the <code>function-signature</code> give the function type of the
-method. An isolated method has the same access to the object on which the method
-is invoked that it has to parameters.
-</p>
-
-</section>
-
-<section>
-<h5 id="section_5.5.3.3">5.5.3.3 Network interaction</h5>
+<h5 id="section_5.5.3.1">5.5.3.1 Network interaction</h5>
 <p>
 Objects are the basis for Ballerina's network interaction primitives. There are
 two special kinds of object for network interaction: client objects and service
@@ -2610,34 +2565,90 @@ belongs to the type only if it is a client object. If the
 to the type only if it is a service object. If <code>object-network-qual</code>
 is not present, then an object belongs to the type regardless of whether it is a
 client object or service object or neither. A <code>object-network-qual</code>
-is not allowed in conjunction with <code>public</code>.
+is not allowed in conjunction with <code>public</code>. An object can include
+a <code>remote-method-decl</code> only if it is a network interaction object.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
+</section>
+
+<section>
+<h5 id="section_5.5.3.2">5.5.3.2 Fields</h5>
+
+<pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>;</code>
 </pre>
 <p>
-A method with a <code>remote-qual</code> is a remote method. Only a network
-interaction object can have a remote method. A remote method is a method for
-network interaction: a remote method of a client object is for outbound network
-interaction; a remote method of a service object is for inbound network
-interaction. A remote method cannot be called using the normal method call
-syntax. A remote method of a client object can only be invoked by a
+An <code>object-field-descriptor</code> describes a field of the object. The
+<code>field-name</code> of an <code>object-field-descriptor</code> must be
+distinct from the <code>field-name</code> of every other
+<code>object-field-descriptor</code> in the <code>object-type-descriptor</code>
+and from the <code>method-name</code> of every <code>method-decl</code> in the
+<code>object-type-descriptor</code>.
+</p>
+<p>
+If an object's read-only bit is set, then the read-only bit of the value of
+every field must also be set and the value of a field cannot be changed after
+the object has been constructed.
+</p>
+</section>
+
+<section>
+<h5 id="section_5.5.3.3">5.5.3.3 Methods</h5>
+
+<pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
+<span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+</pre>
+<p>
+A <code>method-decl</code> describes a method of the object. The
+<code>method-name</code> of a <code>method-decl</code> must be distinct from the
+<code>method-name</code> of every other <code>method-decl</code> in the
+<code>object-type-descriptor</code> and from the <code>field-name</code> of
+every <code>object-field-descriptor</code> in the
+<code>object-type-descriptor</code>. Note that here is no method overloading.
+The <code>method-name</code> in a <code>method-decl</code> must not be
+<code>init</code>.
+</p>
+
+<p>
+The <code>isolated-qual</code> together with the <code>function-signature</code>
+give the function type of the method. An isolated method has the same access to
+the object on which the method is invoked that it has to parameters.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="remote-method-decl">remote-method-decl</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#remote-method-quals"><span class="ntref">remote-method-quals</span></a> 
+   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
+<span class="ntdfn" id="remote-method-quals">remote-method-quals</span> :=
+   <a href="#remote-qual"><span class="ntref">remote-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+<span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
+</pre>
+<p>
+A <code>remote-method-decl</code> declares a remote method. A remote method is a
+method for network interaction: a remote method of a client object is for
+outbound network interaction; a remote method of a service object is for inbound
+network interaction. A remote method cannot be called using the normal method
+call syntax. A remote method of a client object can only be invoked by a
 <code>client-remote-method-call-action</code>. A remote method of a service
 object is invoked by a listener object provided by a library module; Ballerina
 does not yet define a mechanism to allow such a library module to be implemented
 completely in Ballerina.
 </p>
+
 </section>
+
 <section>
 <h5 id="section_5.5.3.4">5.5.3.4 Visibility</h5>
 <p>
 Each field and method of an object has a <em>visibility region</em>, which is
 the region of code within which the field or method is visible and can be
-accessed. If <code>object-field-descriptor</code> or <code>method-decl</code>
-includes <code>public</code>, or if the <code>method-decl</code> includes
-<code>remote</code>, then its visibility region consists of all the modules of
-the program. Otherwise the visibility region is the module containing this
-object type descriptor; this is called module-level visibility.
+accessed. The visibility region of a <code>remote-method-decl</code> or of
+<code>object-field-descriptor</code> or <code>method-decl</code> that includes
+<code>public</code> consists of all the modules of the program. Otherwise the
+visibility region is the module containing this object type descriptor; this is
+called module-level visibility.
 </p>
 </section>
 <section>
@@ -4907,7 +4918,7 @@ fields come from a separate, named class definition.
 <pre class="grammar"><span class="ntdfn" id="object-constructor-expr">object-constructor-expr</span> :=
    [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#object-type-quals"><span class="ntref">object-type-quals</span></a> <code>object</code> [<a href="#type-reference"><span class="ntref">type-reference</span></a>] <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
 <span class="ntdfn" id="object-constructor-block">object-constructor-block</span> := <code>{</code> <a href="#object-member"><span class="ntref">object-member</span></a>* <code>}</code>
-<span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a>
+<span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a> | <a href="#remote-method-defn"><span class="ntref">remote-method-defn</span></a>
 </pre>
 <p>
 The resulting of evaluating an <code>object-constructor-expr</code> is an
@@ -4944,6 +4955,17 @@ type-reference is present and references an isolated object type. An
 an object with its isolated bit set.
 </p>
 
+<pre class="grammar"><span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := <code>public</code>|<code>private</code>
+</pre>
+
+<p>
+A visibility qualifier of <code>private</code> can be used within an
+<code>object-constructor-expr</code> expression; this means that the visibility
+region consists of every method-defn-body in the object-constructor-expr.
+</p>
+
+<section>
+<h5 id="section_6.8.1.1">6.8.1.1 Fields</h5>
 <pre class="grammar"><span class="ntdfn" id="object-field">object-field</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>final</code>]
    <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a>] <code>;</code>
@@ -4987,27 +5009,32 @@ explicitly isolated, then every <code>field-initializer</code> must be an
 isolated expression and any field that is not isolated must be declared as
 private.
 </p>
+</section>
+
+<section>
+<h5 id="section_6.8.1.2">6.8.1.2 Methods</h5>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#method-defn-quals"><span class="ntref">method-defn-quals</span></a>
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
-<span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
-<span class="ntdfn" id="method-defn-quals">method-defn-quals</span> :=
-   <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
-<span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := <code>public</code>|<code>private</code>
 </pre>
 
 <p>
-A <code>method-defn</code> defines a method of an object. Neither
-<code>remote-qual</code> nor <code>isolated-qual</code> can occur more than once
-in <code>method-defn-quals</code>. If <code>isolated</code> is present, then the
-method has its isolated bit set and its <code>method-defn-body</code> must
-satisfy the requirements for an <a href="#isolated_functions">isolated
-function</a>. If <code>remote-qual</code> is present, then the method is a remote
-method; this is allowed only when an <code>object-network-qual</code> is present
-in the <code>object-constructor-expr</code>.
+A <code>method-defn</code> defines a method of an object. 
 </p>
+
+<pre class="grammar"><span class="ntdfn" id="remote-method-defn">remote-method-defn</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#remote-method-quals"><span class="ntref">remote-method-quals</span></a>
+   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
+</pre>
+<p>
+If <code>remote-method-defn</code> defines a remote method. This is allowed only
+when an <code>object-network-qual</code> is present in the
+<code>object-constructor-expr</code>.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
+</pre>
 <p>
 Within a <code>method-defn-body</code>, the fields and methods of the object are
 not implicitly in-scope; instead the variable <code>self</code> is bound to the
@@ -5018,6 +5045,16 @@ statement, except when <code>self</code> is part of a
 <code>field-access-expr</code> of the form <code>self.<var>f</var></code>, where
 <code><var>f</var></code> is the name of an isolated field.
 </p>
+<p>
+If <code>isolated-qual</code> is present, then the method has its isolated bit
+set and its <code>method-defn-body</code> must satisfy the requirements for an
+<a href="#isolated_functions">isolated function</a>.
+</p>
+
+</section>
+
+<section>
+<h5 id="section_6.8.1.3">6.8.1.3 Initialization</h5>
 <p>
 A <code>method-defn</code> with a <code>method-name</code> of <code>init</code>
 is used to initialize the object and is treated specially. The return type of
@@ -5065,11 +5102,7 @@ A missing <code>init</code> method is equivalent to an isolated
 <code>init</code> method with no parameters and an empty body (which will always
 return nil).
 </p>
-<p>
-A visibility qualifier of <code>private</code> can be used within an
-<code>object-constructor-expr</code> expression; this means that the visibility
-region consists of all method definitions in the object-constructor-expr.
-</p>
+</section>
 
 </section>
 <section>
@@ -8933,6 +8966,7 @@ constructed.
 <span class="ntdfn" id="class-member">class-member</span> :=
    <a href="#object-field"><span class="ntref">object-field</span></a>
    | <a href="#method-defn"><span class="ntref">method-defn</span></a>
+   | <a href="#remote-method-defn"><span class="ntref">remote-method-defn</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
 </pre>
 <p>

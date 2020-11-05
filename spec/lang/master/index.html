@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-04</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-05</h1>
 <p>
 Primary contributors:
 </p>
@@ -274,7 +274,9 @@ mailing list.
 </li>
 <li>6.8.1.2 <a href="#section_6.8.1.2">Methods</a>
 </li>
-<li>6.8.1.3 <a href="#section_6.8.1.3">Initialization</a>
+<li>6.8.1.3 <a href="#resources">Resources</a>
+</li>
+<li>6.8.1.4 <a href="#section_6.8.1.4">Initialization</a>
 </li>
 </ul>
 </li>
@@ -2565,8 +2567,16 @@ belongs to the type only if it is a client object. If the
 to the type only if it is a service object. If <code>object-network-qual</code>
 is not present, then an object belongs to the type regardless of whether it is a
 client object or service object or neither. A <code>object-network-qual</code>
-is not allowed in conjunction with <code>public</code>. An object can include
-a <code>remote-method-decl</code> only if it is a network interaction object.
+is not allowed in conjunction with <code>public</code>.
+</p>
+
+<p>
+Network interaction objects provide two additional features: remote methods and
+resources. Remote methods are supported by both client and service objects.
+Resources are supported only by service objects. Object type descriptors do not
+provide a way to describe the resources of a service object: whether a service
+object belongs to an object type is not affected by the service object's
+resources. Resources are described in detail in the <a href="#resources">section</a> on object constructors.
 </p>
 
 </section>
@@ -2626,15 +2636,16 @@ the object on which the method is invoked that it has to parameters.
 <span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
 </pre>
 <p>
-A <code>remote-method-decl</code> declares a remote method. A remote method is a
-method for network interaction: a remote method of a client object is for
-outbound network interaction; a remote method of a service object is for inbound
-network interaction. A remote method cannot be called using the normal method
-call syntax. A remote method of a client object can only be invoked by a
-<code>client-remote-method-call-action</code>. A remote method of a service
-object is invoked by a listener object provided by a library module; Ballerina
-does not yet define a mechanism to allow such a library module to be implemented
-completely in Ballerina.
+A <code>remote-method-decl</code> declares a remote method. An object can
+include a <code>remote-method-decl</code> only if it is a network interaction
+object. A remote method is a method for network interaction: a remote method of
+a client object is for outbound network interaction; a remote method of a
+service object is for inbound network interaction. A remote method cannot be
+called using the normal method call syntax. A remote method of a client object
+can only be invoked by a <code>client-remote-method-call-action</code>. A remote
+method of a service object is invoked by a listener object provided by a library
+module; Ballerina does not yet define a mechanism to allow such a library module
+to be implemented completely in Ballerina.
 </p>
 
 </section>
@@ -5033,26 +5044,6 @@ when an <code>object-network-qual</code> is present in the
 <code>object-constructor-expr</code>.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="resource-method-defn">resource-method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#resource-method-quals"><span class="ntref">resource-method-quals</span></a>
-   <code>function</code> <a href="#resource-method-name"><span class="ntref">resource-method-name</span></a> <a href="#resource-name"><span class="ntref">resource-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
-<span class="ntdfn" id="resource-method-quals">resource-method-quals</span> :=
-   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
-<span class="ntdfn" id="resource-qual">resource-qual</span> := <code>resource</code>
-<span class="ntdfn" id="resource-method-name">resource-method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
-<span class="ntdfn" id="resource-name">resource-name</span> :=
-   <a href="#dot-resource-name"><span class="ntref">dot-resource-name</span></a>
-   | <a href="#resource-segment-name"><span class="ntref">resource-segment-name</span></a> (<code>/</code> <a href="#resource-segment-name"><span class="ntref">resource-segment-name</span></a>)*
-<span class="ntdfn" id="dot-resource-name">dot-resource-name</span> := <code>.</code>
-<span class="ntdfn" id="resource-segment-name">resource-segment-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
-</pre>
-<p>
-A <code>resource-method-defn</code> defines a resource method. This is allowed
-only when an <code>object-network-qual</code> of <code>service</code> is present
-in the <code>object-constructor-expr</code>.
-</p>
-
 <pre class="grammar"><span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
 </pre>
 <p>
@@ -5074,7 +5065,54 @@ set and its <code>method-defn-body</code> must satisfy the requirements for an
 </section>
 
 <section>
-<h5 id="section_6.8.1.3">6.8.1.3 Initialization</h5>
+<h5 id="resources">6.8.1.3 Resources</h5>
+
+<p>
+In addition to remote methods, a service object can use <em>resources</em> to
+support network interaction. Resources support a more data-oriented style of
+network interaction, which complements the RPC style supported by remote
+methods. A service object's resources are organized hierarchically in a tree.
+Each edge of the tree is labelled with a string. The label from a node to a
+child node uniquely identifies the child relative to its siblings. Each node in
+the tree is associated with zero or more resource methods. Each resource method
+has an method name, which identifies an operation to be performed on the
+resource; by convention the method name <code>get</code> is used for retrieving
+the resource. The resource's method name uniquely identifies it relative to
+other resource methods on the same node. A resource method is thus uniquely
+identified relative to its service object by the combination of a path in the
+resource tree and a method name. A resource method can only be invoked by a
+listener object.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="resource-method-defn">resource-method-defn</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#resource-method-quals"><span class="ntref">resource-method-quals</span></a>
+   <code>function</code> <a href="#resource-method-name"><span class="ntref">resource-method-name</span></a> <a href="#resource-path"><span class="ntref">resource-path</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
+<span class="ntdfn" id="resource-method-quals">resource-method-quals</span> :=
+   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+<span class="ntdfn" id="resource-qual">resource-qual</span> := <code>resource</code>
+<span class="ntdfn" id="resource-method-name">resource-method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="resource-path">resource-path</span> :=
+   <a href="#dot-resource-path"><span class="ntref">dot-resource-path</span></a>
+   | <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a> (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)*
+<span class="ntdfn" id="dot-resource-path">dot-resource-path</span> := <code>.</code>
+<span class="ntdfn" id="resource-path-segment">resource-path-segment</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+</pre>
+<p>
+A <code>resource-method-defn</code> defines a resource method. This is allowed
+only when an <code>object-network-qual</code> of <code>service</code> is present
+in the <code>object-constructor-expr</code>. The
+<code>resource-method-name</code> specifies the resource's method name. The
+<code>resource-path</code> specifies the path to node in the resource tree; each
+<code>resource-path-segment</code> specifies the label of an edge from a node to
+its child. A <code>dot-resource-path</code> specifies the root of the service
+object's resource tree.
+</p>
+
+</section>
+
+<section>
+<h5 id="section_6.8.1.4">6.8.1.4 Initialization</h5>
 <p>
 A <code>method-defn</code> with a <code>method-name</code> of <code>init</code>
 is used to initialize the object and is treated specially. The return type of
@@ -9755,7 +9793,8 @@ object constructor expression, which includes method definitions, or by applying
 methods and fields of an object are not in a single symbol space. Classes and
 object constructors can declare fields as final.</li>
 <li>Services have become service objects that work in a similar way to client
-objects; resource methods on service objects have become remote methods.</li>
+objects; resource methods on service objects have become remote methods. There
+is a new concept for resource methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
 declared as <code>readonly</code>. Functions can be declared as
 <code>isolated</code>; this works in conjunction with <code>readonly</code> to

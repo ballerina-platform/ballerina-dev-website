@@ -282,6 +282,153 @@ function foo() {
 }
 ```
 
+### **Difference between expected and actual values when using 'assertEquals'**
+
+* When type of the compared values are different,
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertStringAndInt() {
+    test:assertEquals(1, "1");
+}
+```
+
+***Output:***
+
+```
+[fail] testAssertStringAndInt:
+    Assertion Failed!
+
+        expected: <string> '1'
+        actual  : <int> '1'
+```
+
+* For string typed values,
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertString() {
+    test:assertEquals("hello ballerina user\nWelcome to Ballerina", "hello user\nWelcome to Ballerina");
+}
+```
+
+***Output:***
+
+```
+[fail] testAssertString:
+    Assertion Failed!
+
+        expected: 'hello user
+        Welcome to Ballerina'
+        actual  : 'hello ballerina user
+        Welcome to Ballerina'
+
+         Diff    :
+
+         --- expected
+         +++ actual
+
+         @@ -1,2 +1,2 @@
+
+         -hello user
+         +hello ballerina user
+         Welcome to Ballerina
+
+```
+
+* For json/record/map typed values,
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertJson() {
+    json j1 = {
+        name: "Anne",
+        age: "21",
+        marks: {
+            maths: 99,
+            english: 90,
+            status: {pass: true}
+        }
+    };
+    json j2 = {
+        name2: "Amie",
+        age: 21,
+        marks: {
+            maths: 35,
+            english: 90,
+            status: {pass: false}
+        }
+    };
+    test:assertEquals(j1, j2);
+}
+```
+
+***Output:***
+
+```
+[fail] testAssertJson:
+    Assertion Failed!
+
+      expected: '{"name2":"Amie","age":21,"marks":{"maths":35,"english":90,"status":{"pass":false...'
+      actual  : '{"name":"Anne","age":"21","marks":{"maths":99,"english":90,"status":{"pass":true...'
+
+      Diff    :
+
+        expected keys   : name2
+        actual keys     : name
+
+        key: age
+        expected value  : <int> 21
+        actual value    : <string> 21
+
+        key: marks.maths
+        expected value  : 35
+        actual value    : 99
+
+        key: marks.status.pass
+        expected value  : false
+        actual value    : true
+
+```
+
+* For other anydata typed values,
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertTuples() {
+    [int, string] a = [10, "John"];
+    [int, string] b = [12, "John"];
+    test:assertEquals(a, b);
+}
+```
+
+***Output:***
+
+```
+[fail] testAssertTuples:
+    Assertion Failed!
+
+        expected: '12 John'
+        actual  : '10 John'
+```
+
+
 ## Setup and Teardown
 
 The following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions in different levels.

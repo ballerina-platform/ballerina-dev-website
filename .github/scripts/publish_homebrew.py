@@ -31,9 +31,13 @@ def getPreceedingWsCount(line):
         ws_count += 1
     return ws_count
 
+previous_line = ""
 for line in ballerina_rb_file.decoded_content.decode("utf-8").split("\n"):
+    previous_line = line
     updated_line = line
     if(line.strip().startswith('url')):
+        if(previous_line.strip().startswith('livecheck')):
+            continue
         updated_line = getPreceedingWsCount(updated_line) * " "
         updated_line += url_replacement
     elif(line.strip().startswith('sha256')):

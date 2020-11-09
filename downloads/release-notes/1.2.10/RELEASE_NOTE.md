@@ -22,7 +22,3 @@ However, you need to use the following commands instead of the above if you have
 **For new users:**
 
 If you have not installed jBallerina, then download the [installers](/downloads/) to install.
-
-
-
-

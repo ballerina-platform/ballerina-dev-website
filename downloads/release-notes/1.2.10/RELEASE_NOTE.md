@@ -23,14 +23,6 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](/downloads/) to install.
 
-#### Developer Tools
-
-Capture and return the actual exit code during program execution.
-
-##### Test Framework
-
-- Fixed the bug of function mocking being incompatible with string arguments
-- Improvements for error handling in object mocking
 
 
 

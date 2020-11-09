@@ -8,7 +8,7 @@ version = str(sys.argv[2])
 sha256 = sys.argv[3]
 url = sys.argv[4]
 sha256_replacement = '  sha256 "' + sha256 + '"'
-url_replacement = '  url "' + url + '"'
+url_replacement = 'url "' + url + '"'
 license_replacement = '  license "Apache-2.0"'
 ballerina_rb_file_contents = ""
 
@@ -23,10 +23,23 @@ homebrew_core_repo = homebrew_user.get_repo("homebrew-core")
 # Reading the current ballerina.rb Formula file and updating it.
 ballerina_rb_file = homebrew_core_repo.get_contents("Formula/ballerina.rb")
 
+
+# Count and return the number of preceeding Whitespaces
+def getPreceedingWsCount(line):
+    ws_count = 0
+    while(line[ws_count] == " " or ws_count > 120):
+        ws_count += 1
+    return ws_count
+
+previous_line = ""
 for line in ballerina_rb_file.decoded_content.decode("utf-8").split("\n"):
+    previous_line = line
     updated_line = line
     if(line.strip().startswith('url')):
-        updated_line = url_replacement
+        if(previous_line.strip().startswith('livecheck')):
+            continue
+        updated_line = getPreceedingWsCount(updated_line) * " "
+        updated_line += url_replacement
     elif(line.strip().startswith('sha256')):
         if(updated_line == sha256_replacement):
             print("metadata.json is not yet updated!")
@@ -59,13 +72,8 @@ update = repo.update_file(contents.path, commit_msg_title, ballerina_rb_file_con
 
 body = '''
 This PR is created by @ballerina-bot.
-In case any issue arises, please feel free to contact @sanjana or @shafreenAnfar. 
-Otherwise, drop us a message at ballerina-dev@googlegroups.com regarding any concerns. 
- - [x] Have you followed the [guidelines for contributing](https://github.com/Homebrew/homebrew-core/blob/master/CONTRIBUTING.md)?
- - [x] Have you checked that there aren't other open [pull requests](https://github.com/Homebrew/homebrew-core/pulls) for the same formula update/change?
- - [x] Have you built your formula locally with ```brew install --build-from-source <formula>```, where ```<formula>``` is the name of the formula you're submitting?
- - [x] Is your test running fine ```brew test <formula>```, where ```<formula>``` is the name of the formula you're submitting?
- - [x] Does your build pass ```brew audit --strict <formula>``` (after doing ```brew install <formula>```)?
+In case any issue arises, please feel free to contact @sAnjana or @shafreenAnfar. 
+Otherwise, drop us a message at ballerina-dev@googlegroups.com regarding any concerns.
 '''
 
 pr = homebrew_core_repo.create_pull(title=commit_msg_title, body=body, base="master", head='{}:{}'.format(current_user_login, 'master'))

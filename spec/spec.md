@@ -1,15 +1,13 @@
 ---
 layout: ballerina-inner-page
-title: Ballerina Platform Spec
-description: Read the Ballerina language spec and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
+title: Ballerina Platform Specifications
+intro: Read the Ballerina language spec and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
 keywords: ballerina, language specification, spec 
 permalink: /spec/
 redirect_from:
   - /learn/language-specification
   - /learn/language-specification/
 ---
-
-# Ballerina Platform Specifications
 
 As a platform designed to have multiple implementations, Ballerina semantics are defined by a series of specifications and not by the implementation. Currently, we have only one implementation (i.e., jBallerina, which compiles Ballerina to Java bytecodes). Others will follow, including a compiler which generates native binaries using LLVM.
 

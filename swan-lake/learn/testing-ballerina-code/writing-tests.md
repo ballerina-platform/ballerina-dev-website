@@ -136,7 +136,7 @@ On the other hand, symbols defined in the test files will not be visible inside 
 The Ballerina test framework supports the following assertions, which help to verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 
-### **assertTrue(boolean expression, string message)**
+### assertTrue(boolean expression, string message)
 
 Asserts that the expression is true with an optional message.
 
@@ -151,7 +151,7 @@ function testAssertTrue() {
 }
 ```
 
-### **assertFalse(boolean expression, string message)**
+### assertFalse(boolean expression, string message)
 
 Asserts that the expression is false with an optional message.
 
@@ -166,7 +166,7 @@ function testAssertFalse() {
 }
 ```
 
-### **assertEquals(Anydata actual, Anydata expected, string message)**
+### assertEquals(Anydata actual, Anydata expected, string message)
 
 Asserts that the actual value is equal to the expected value with an optional message.
 
@@ -189,7 +189,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertNotEquals(Anydata actual, Anydata expected, string message)**
+### assertNotEquals(Anydata actual, Anydata expected, string message)
 
 Asserts that the actual value is not equal to the expected value with an optional message.
 
@@ -213,7 +213,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertExactEquals(Any actual, Any expected, string message)**
+### assertExactEquals(Any actual, Any expected, string message)
 
 Asserts that the actual entity is exactly equal to the expected entity with an optional message.
 
@@ -237,7 +237,7 @@ function testAssertExactEqualsObject() {
 }
 ```
 
-### **assertNotExactEquals(Any actual, Any expected, string message)**
+### assertNotExactEquals(Any actual, Any expected, string message)
 
 Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
 
@@ -262,7 +262,7 @@ function testAssertNotExactEqualsObject() {
 }
 ```
 
-### **assertFail(string message)**
+### assertFail(string message)
 
 Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
 
@@ -282,9 +282,9 @@ function foo() {
 }
 ```
 
-### **Difference between expected and actual values when using 'assertEquals'**
+### Difference between expected and actual values when using 'assertEquals'
 
-* When type of the compared values are different,
+* When type of the compared values are different.
 
 ***Example:***
 
@@ -299,7 +299,7 @@ function testAssertStringAndInt() {
 
 ***Output:***
 
-```
+```bash
 [fail] testAssertStringAndInt:
     Assertion Failed!
 
@@ -307,7 +307,7 @@ function testAssertStringAndInt() {
         actual  : <int> '1'
 ```
 
-* For string typed values,
+* For string-typed values.
 
 ***Example:***
 
@@ -322,7 +322,7 @@ function testAssertString() {
 
 ***Output:***
 
-```
+```bash
 [fail] testAssertString:
     Assertion Failed!
 
@@ -344,7 +344,7 @@ function testAssertString() {
 
 ```
 
-* For json/record/map typed values,
+* For JSON/record/map typed values.
 
 ***Example:***
 
@@ -377,7 +377,7 @@ function testAssertJson() {
 
 ***Output:***
 
-```
+```bash
 [fail] testAssertJson:
     Assertion Failed!
 
@@ -403,7 +403,7 @@ function testAssertJson() {
 
 ```
 
-* For other anydata typed values,
+* For other anydata-typed values.
 
 ***Example:***
 
@@ -420,7 +420,7 @@ function testAssertTuples() {
 
 ***Output:***
 
-```
+```bash
 [fail] testAssertTuples:
     Assertion Failed!
 

@@ -27,7 +27,7 @@ ballerina_rb_file = homebrew_core_repo.get_contents("Formula/ballerina.rb")
 # Count and return the number of preceeding Whitespaces
 def getPreceedingWsCount(line):
     ws_count = 0
-    while(line[ws_count] == " " or ws_count > 120):
+    while(line[ws_count] == " " and ws_count <= 120):
         ws_count += 1
     return ws_count
 
@@ -76,4 +76,9 @@ In case any issue arises, please feel free to contact @sAnjana or @shafreenAnfar
 Otherwise, drop us a message at ballerina-dev@googlegroups.com regarding any concerns.
 '''
 
-pr = homebrew_core_repo.create_pull(title=commit_msg_title, body=body, base="master", head='{}:{}'.format(current_user_login, 'master'))
+# At the moment, the PR will be sent to sanjana/homebrew-core and thereby verified and merged. Then a new PR can be manually sent to 
+# Homebrew/homebrew-core repo
+intermediate_user = github_instance.get_user("sanjana")
+intermediate_user_repo = homebrew_user.get_repo("homebrew-core")
+
+pr = intermediate_user_repo.create_pull(title=commit_msg_title, body=body, base="master", head='{}:{}'.format(current_user_login, 'master'))

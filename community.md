@@ -165,4 +165,4 @@ margin: -150px 0px 0px;
 
 </style>
 
-<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+<style> .cBallerinaTocContainer , .cTopLink {  display:none; }.cGitButtonContainer {padding-left: 40px;}</style>

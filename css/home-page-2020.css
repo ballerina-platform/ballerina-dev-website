@@ -1,0 +1,223 @@
+.row.cBallerinaIntroSection {
+background-color: #494949;
+padding: 80px 0 130px 0;
+}
+#iMainNavigation {
+    background-color: #494949;
+}
+
+.row.cBallerinaFeatureSection {
+    /* padding: 80px 0; */
+}
+
+.navbar-nav > li > a {
+    color: #fff;
+}
+
+img.cHomePageLogo {
+    width: 330px;
+}
+.row.cBallerinaIntroSection h1 {
+    color: #ffffff;
+
+    font-size: 50px;
+    
+    font-weight: 100;
+    
+    line-height: 60px;
+    
+    margin: 40px 0;
+}
+
+.row.cBallerinaIntroSection p {
+    color: #c0c0c0;
+}
+
+
+.cBottomLayer ul  {
+    padding: 0;
+
+margin: 30px 0;
+
+display: inline-block;
+
+}
+
+.cBottomLayer ul li {
+    list-style: none;
+
+display: inline-block;
+
+float: left;
+
+margin-right: 30px;
+}
+
+.cTopLayer , .cBottomLayer {
+    padding: 0;
+}
+
+.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button p {
+    padding: 0;
+    margin: 0;
+    font-family: monaco, Consolas, "Lucida Console", monospace;
+    font-size: 11px;
+    color: #fff;
+    margin-left: 1px;
+    line-height: 15px;
+}
+
+a.cBallerina-io-Home-main-download-button {
+color: #fff;
+
+
+}
+
+
+a.cIconLink {
+    color: #fff;
+
+padding: 10px 0;
+
+    padding-right: 0px;
+
+padding-right: 40px;
+
+background-image: url("/img/go-bg-home.svg");
+
+background-repeat: no-repeat;
+
+background-position: right center;
+
+font-size: 20px;
+
+font-weight: 500;
+   
+}
+a.cIconLink:hover {
+    color: #20b6b0;
+    background-image: url("/img/go-bg-home-hover.svg");
+    color: #20b6b0 !important;
+}
+
+.cBallerina-io p.cQuotes {
+    padding: 30px 0;
+
+    display: inline-block;
+    
+    border-top: 1px solid #c0c0c0;
+    
+    border-bottom: 1px solid #c0c0c0;
+    
+    width: 100%;
+    
+    font-style: italic;
+    
+    margin-top: 5px;
+    
+    font-size: 20px;
+    
+    font-weight: 100;
+}
+
+.cQuotes span {
+    float: right;
+}
+.cBallerina-io p.cQuotes span a {
+    color: #fff;
+}
+
+
+body.cBallerina-io .container.cFeatureSection {
+    padding: 80px 0;
+    /* margin-bottom: 80px; */
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.cColDiagram img {
+    width: 100%;
+}
+
+.cTabPadding {
+    padding: 7rem 0;
+    min-height: 550px;
+    display: inline-block;
+}
+
+.cHomeTabs li a {
+    border: none !important;
+    outline: none !important;
+    font-size: 20px;
+    font-weight: 600;
+    color:#20b6b0;
+}
+.cHomeTabs li.active  a {
+    border-bottom: 6px solid #494949 !important;
+}
+
+.cHomeTabs li a:hover {
+color: #494949;
+}
+
+a.cBallerina-io-Home-main-download-button {
+	font-size: 25px;
+	background-color: #20b6b0;
+	color: #fff;
+	padding: 10px 70px 10px 20px;
+	display: inline-block;
+	float: right;
+	background-image: url("/img/main-download-icon.svg");
+	background-repeat: no-repeat;
+	background-position: right center;
+	/* margin-top: 30px; */
+	font-weight: 500;
+    text-decoration: none;
+    min-width: 350px;
+
+}
+
+a.cPlayButton {
+	background-color: transparent;
+	background-image: url("/img/main-play-green-btn.svg") !important;
+	/* -webkit-transform: rotate(30deg); */
+}
+
+a.cBallerina-io-Home-main-download-button {
+	margin-bottom: 10px;
+	min-width: 350px;
+	border: 1px solid #20b6b0;
+}
+a.cBallerina-io-Home-main-download-button:hover {
+	background-color: #eeeeee;
+	background-image: url("/img/download-bg-green.svg");
+}
+
+
+.navbar-toggle .icon-bar {
+    background-color: #494949;
+}
+
+button.navbar-toggle {
+    background-color: #20b6b0 !important;
+}
+
+.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button:hover p {
+    color: #494949;
+}
+
+.cWhyBallerinaLinks .cWhyBallerinaTabs a {
+    color: #20b6b0;
+}
+
+
+
+@media screen and (max-width: 991px) {
+    #navbar {
+        border: 1px solid #c0c0c0;
+    }
+    .cVersionContainer {
+        width: 100%;
+        float: left;
+        margin-left: 5px;
+    }
+}

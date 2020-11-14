@@ -59,7 +59,7 @@ The supported structure of documentation syntax is as follows:
 #            <return_parameter_description_line_2>
 ```
 
->**Tip:** Always, add a full stop at the end of all function descriptions. However, for the parameter and return type descriptions, omit the full stop if you have only one sentence. If there are multiple sentences, add the full stop at the end of the first sentence and in the succeeding ones. For example,
+>**Tip:** Always, add a full stop at the end of a function description. However, for the parameter and return type descriptions, omit the full stop if you have only one sentence. If there are multiple sentences, add the full stop at the end of each sentence. For example,
 
 ```ballerina
 # Description for the function.

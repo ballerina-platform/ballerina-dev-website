@@ -186,7 +186,7 @@ Generating dependency bindings for:
 - The `-o` option specifies the output directory in which the generated bindings are stored. In this case, the tool is instructed to store bindings inside the `yamlparser` module.
 - The argument list specifies the Java class names. 
 
-The `bindgen` tool generate bindings for:
+The `bindgen` tool generates bindings for:
 - the specified Java classes
 - the Java classes exposed in the public APIs of all the specified classes
 

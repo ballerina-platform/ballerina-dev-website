@@ -611,7 +611,7 @@ path = "<path-to-jar-file-2>"
 modules = ["<ballerina-module-1>","<ballerina-module-2>"]
 ```
 
-Alternatively, you can also specify Maven dependencies as platform specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the project. Here, is how you can specify a Maven dependency in the `Ballerina.toml`.
+Alternatively, you can also specify Maven dependencies as platform-specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the project. You can specify a Maven dependency in the `Ballerina.toml` file as shown below.
 
 ```toml
 [platform]

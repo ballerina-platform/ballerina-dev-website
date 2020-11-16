@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-03</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-16</h1>
 <p>
 Primary contributors:
 </p>
@@ -135,11 +135,11 @@ mailing list.
 <li>5.5.2 <a href="#functions">Functions</a>
 </li>
 <li>5.5.3 <a href="#section_5.5.3">Objects</a><ul>
-<li>5.5.3.1 <a href="#section_5.5.3.1">Fields</a>
+<li>5.5.3.1 <a href="#section_5.5.3.1">Network interaction</a>
 </li>
-<li>5.5.3.2 <a href="#section_5.5.3.2">Methods</a>
+<li>5.5.3.2 <a href="#section_5.5.3.2">Fields</a>
 </li>
-<li>5.5.3.3 <a href="#section_5.5.3.3">Network interaction</a>
+<li>5.5.3.3 <a href="#section_5.5.3.3">Methods</a>
 </li>
 <li>5.5.3.4 <a href="#section_5.5.3.4">Visibility</a>
 </li>
@@ -269,7 +269,16 @@ mailing list.
 </ul>
 </li>
 <li>6.8 <a href="#section_6.8">Object construction</a><ul>
-<li>6.8.1 <a href="#section_6.8.1">Object constructor</a>
+<li>6.8.1 <a href="#section_6.8.1">Object constructor</a><ul>
+<li>6.8.1.1 <a href="#section_6.8.1.1">Fields</a>
+</li>
+<li>6.8.1.2 <a href="#section_6.8.1.2">Methods</a>
+</li>
+<li>6.8.1.3 <a href="#resources">Resources</a>
+</li>
+<li>6.8.1.4 <a href="#section_6.8.1.4">Initialization</a>
+</li>
+</ul>
 </li>
 <li>6.8.2 <a href="#section_6.8.2">New expression</a>
 </li>
@@ -638,70 +647,50 @@ between the terminals and nonterminals that it references.
 <h2 id="program_structure">3. Program structure</h2>
 <p>
 A Ballerina program is divided into modules. A module has a source form and a
-binary form. The module is the unit of compilation; a Ballerina compiler
-translates the source form of a module into its binary form. A module may
-reference other modules. When a compiler translates a source module into a
-binary module, it needs access only to the binary form of other modules
-referenced from the source module.
+binary form. The source form of a module consists of an ordered collection of
+one or more source parts; each source part is a sequence of bytes that is the
+UTF-8 encoding of part of the source code for the module. The format of a source
+part is defined by this specification. The format of a binary module is
+specified by the Ballerina platform.
 </p>
 <p>
-A binary module can only be referenced if it is placed in a module store. There
-are two kinds of module store: a repository and a project. A module stored in a
-repository can be referenced from any other module. A module stored in a project
-can only be referenced from other modules stored in the same project.
+A source module can reference other modules. Each source module can be
+separately compiled into a binary module: compilation of a source module needs
+access only to the binary form of other modules referenced from the source
+module. A source module identifies each module that it references using an
+organization name and a module name, which is divided into one or more parts.
+Both the organization name and each part of the module name are Unicode strings.
+Any organization name starting with the string <code>ballerina</code> is
+reserved for use by the Ballerina platform.
 </p>
 <p>
-A repository organizes binary modules into a 3-level hierarchy:
+The Ballerina platform defines a packaging system for Ballerina modules, which
+allows one or more modules to be combined into a package. The packaging system
+treats the first part of each module's name as being a package name. All the
+modules combined into a package share the same package name. Packages have both
+a source and a binary format. The source format stores the source form of a
+package's modules in a hierarchical filesystem. The binary format stores the
+binary form of a package's module as a sequence of bytes.
+</p>
+<p>
+Binary packages can be stored in a package repository. Packages are versioned;
+versions are semantic, as described in the SemVer specification. A package
+repository can store multiple versions of the same package. Thus, within a
+repository, binary packages are organized into a three-level hierarchy:
 </p>
 <ol>
 <li>organization;</li>
-<li>module name;</li>
+<li>package name;</li>
 <li>version.</li>
 </ol>
 <p>
-Organizations are identified by Unicode strings, and are unique within a
-repository. Any organization name starting with the string
-<code>ballerina</code> is reserved for use by
-the Ballerina platform. A module name is a Unicode string and is unique within a
-repository organization. A particular module name can have one or more versions
-each associated with a separate binary module. Versions are semantic, as
-described in the SemVer specification.
+The source format of a package includes a <code>Ballerina.toml</code> file that
+allows control over the package versions used for referenced modules.
 </p>
 <p>
-A project stores modules using a simpler single-level hierarchy, in which the
-module is associated directly with the module name.
-</p>
-<p>
-A binary module is a sequence of octets. Its format is specified in the
-Ballerina platform.
-</p>
-<p>
-An abstract source module consists of:
-</p>
-<ul>
-<li>an ordered collection of one or more source parts; each source part is a
-sequence of octets that is the UTF-8 encoding of part of the source code for the
-module</li>
-<li>metadata containing the following
-<ul>
-<li>always required: module name</li>
-<li>required only if the source module is to be compiled into a binary module
-stored in a repository:
-<ul>
-<li>organization name</li>
-<li>version</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>
-An abstract source module can be stored in a variety of concrete forms. For
-example, the Ballerina platform describes a method for storing an
-abstract source module in a filesystem, where the source parts are files with a
-<code>.bal </code>extension stored in a directory, the module name comes from
-the name of that directory, and the version and organization name comes from a
-configuration file <code>Ballerina.toml</code> in that directory.
+The packaging system also allows control over which modules are exported from a
+package; modules that are not exported from a package are visible only to
+modules within the package.
 </p>
 </section>
 <section>
@@ -1250,7 +1239,9 @@ uniquely identifies it within a Ballerina program. A type-id has three parts:
 <ol>
 <li>a module id, which identifies the module within which the
 distinct-type-descriptor occurs; this consists of an organization, a module
-name, and a version number;</li>
+name, and an array of platform-specified strings, which could include
+information about, for example, the repository or version of the package the
+module comes from;</li>
 <li>a local id, which identifies the occurrence of the
 <code>distinct</code> within the module; this takes one of two forms:
 <ul>
@@ -2524,6 +2515,7 @@ bit. Whether an object is read-only can be described separately using a
 <span class="ntdfn" id="object-member-descriptor">object-member-descriptor</span> :=
    <a href="#object-field-descriptor"><span class="ntref">object-field-descriptor</span></a>
    | <a href="#method-decl"><span class="ntref">method-decl</span></a>
+   | <a href="#remote-method-decl"><span class="ntref">remote-method-decl</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
 </pre>
 
@@ -2535,60 +2527,7 @@ described type.
 </p>
 
 <section>
-<h5 id="section_5.5.3.1">5.5.3.1 Fields</h5>
-
-<pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>;</code>
-</pre>
-<p>
-An <code>object-field-descriptor</code> describes a field of the object. The
-<code>field-name</code> of an <code>object-field-descriptor</code> must be
-distinct from the <code>field-name</code> of every other
-<code>object-field-descriptor</code> in the <code>object-type-descriptor</code>
-and from the <code>method-name</code> of every <code>method-decl</code> in the
-<code>object-type-descriptor</code>.
-</p>
-<p>
-If an object's read-only bit is set, then the read-only bit of the value of
-every field must also be set and the value of a field cannot be changed after
-the object has been constructed.
-</p>
-</section>
-<section>
-<h5 id="section_5.5.3.2">5.5.3.2 Methods</h5>
-
-<pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#method-decl-quals"><span class="ntref">method-decl-quals</span></a>
-   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
-<span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
-</pre>
-<p>
-A <code>method-decl</code> describes a method of the object. The
-<code>method-name</code> of a <code>method-decl</code> must be distinct from the
-<code>method-name</code> of every other <code>method-decl</code> in the
-<code>object-type-descriptor</code> and from the <code>field-name</code> of
-every <code>object-field-descriptor</code> in the
-<code>object-type-descriptor</code>. Note that here is no method overloading.
-The <code>method-name</code> in a <code>method-decl</code> must not be
-<code>init</code>.
-</p>
-
-<pre class="grammar"><span class="ntdfn" id="method-decl-quals">method-decl-quals</span> :=
-   <code>public</code> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
-</pre>
-<p>
-Neither <code>remote-qual</code> nor <code>isolated-qual</code> can occur more
-than once in <code>method-decl-quals</code>. The <code>isolated-qual</code>
-together with the <code>function-signature</code> give the function type of the
-method. An isolated method has the same access to the object on which the method
-is invoked that it has to parameters.
-</p>
-
-</section>
-
-<section>
-<h5 id="section_5.5.3.3">5.5.3.3 Network interaction</h5>
+<h5 id="section_5.5.3.1">5.5.3.1 Network interaction</h5>
 <p>
 Objects are the basis for Ballerina's network interaction primitives. There are
 two special kinds of object for network interaction: client objects and service
@@ -2613,31 +2552,96 @@ client object or service object or neither. A <code>object-network-qual</code>
 is not allowed in conjunction with <code>public</code>.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
+<p>
+Network interaction objects provide two additional features: remote methods and
+resources. Remote methods are supported by both client and service objects.
+Resources are supported only by service objects. Object type descriptors do not
+provide a way to describe the resources of a service object: whether a service
+object belongs to an object type is not affected by the service object's
+resources. Resources are described in detail in the <a href="#resources">section</a> on object constructors.
+</p>
+
+</section>
+
+<section>
+<h5 id="section_5.5.3.2">5.5.3.2 Fields</h5>
+
+<pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>;</code>
 </pre>
 <p>
-A method with a <code>remote-qual</code> is a remote method. Only a network
-interaction object can have a remote method. A remote method is a method for
-network interaction: a remote method of a client object is for outbound network
-interaction; a remote method of a service object is for inbound network
-interaction. A remote method cannot be called using the normal method call
-syntax. A remote method of a client object can only be invoked by a
-<code>client-remote-method-call-action</code>. A remote method of a service
-object is invoked by a listener object provided by a library module; Ballerina
-does not yet define a mechanism to allow such a library module to be implemented
-completely in Ballerina.
+An <code>object-field-descriptor</code> describes a field of the object. The
+<code>field-name</code> of an <code>object-field-descriptor</code> must be
+distinct from the <code>field-name</code> of every other
+<code>object-field-descriptor</code> in the <code>object-type-descriptor</code>
+and from the <code>method-name</code> of every <code>method-decl</code> in the
+<code>object-type-descriptor</code>.
+</p>
+<p>
+If an object's read-only bit is set, then the read-only bit of the value of
+every field must also be set and the value of a field cannot be changed after
+the object has been constructed.
 </p>
 </section>
+
+<section>
+<h5 id="section_5.5.3.3">5.5.3.3 Methods</h5>
+
+<pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
+<span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+</pre>
+<p>
+A <code>method-decl</code> describes a method of the object. The
+<code>method-name</code> of a <code>method-decl</code> must be distinct from the
+<code>method-name</code> of every other <code>method-decl</code> in the
+<code>object-type-descriptor</code> and from the <code>field-name</code> of
+every <code>object-field-descriptor</code> in the
+<code>object-type-descriptor</code>. Note that here is no method overloading.
+The <code>method-name</code> in a <code>method-decl</code> must not be
+<code>init</code>.
+</p>
+
+<p>
+The <code>isolated-qual</code> together with the <code>function-signature</code>
+give the function type of the method. An isolated method has the same access to
+the object on which the method is invoked that it has to parameters.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="remote-method-decl">remote-method-decl</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#remote-method-quals"><span class="ntref">remote-method-quals</span></a> 
+   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
+<span class="ntdfn" id="remote-method-quals">remote-method-quals</span> :=
+   <a href="#remote-qual"><span class="ntref">remote-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+<span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
+</pre>
+<p>
+A <code>remote-method-decl</code> declares a remote method. An object can
+include a <code>remote-method-decl</code> only if it is a network interaction
+object. A remote method is a method for network interaction: a remote method of
+a client object is for outbound network interaction; a remote method of a
+service object is for inbound network interaction. A remote method cannot be
+called using the normal method call syntax. A remote method of a client object
+can only be invoked by a <code>client-remote-method-call-action</code>. A remote
+method of a service object is invoked by a listener object provided by a library
+module; Ballerina does not yet define a mechanism to allow such a library module
+to be implemented completely in Ballerina.
+</p>
+
+</section>
+
 <section>
 <h5 id="section_5.5.3.4">5.5.3.4 Visibility</h5>
 <p>
 Each field and method of an object has a <em>visibility region</em>, which is
 the region of code within which the field or method is visible and can be
-accessed. If <code>object-field-descriptor</code> or <code>method-decl</code>
-includes <code>public</code>, or if the <code>method-decl</code> includes
-<code>remote</code>, then its visibility region consists of all the modules of
-the program. Otherwise the visibility region is the module containing this
-object type descriptor; this is called module-level visibility.
+accessed. The visibility region of a <code>remote-method-decl</code> or of
+<code>object-field-descriptor</code> or <code>method-decl</code> that includes
+<code>public</code> consists of all the modules of the program. Otherwise the
+visibility region is the module containing this object type descriptor; this is
+called module-level visibility.
 </p>
 </section>
 <section>
@@ -3212,7 +3216,7 @@ descriptor:
 </p>
 
 <pre>object {
-   public function attach(T svc, string? name = ()) returns error?;
+   public function attach(T svc, string[]? path = ()) returns error?;
    public function detach(T svc) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
@@ -4907,7 +4911,7 @@ fields come from a separate, named class definition.
 <pre class="grammar"><span class="ntdfn" id="object-constructor-expr">object-constructor-expr</span> :=
    [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#object-type-quals"><span class="ntref">object-type-quals</span></a> <code>object</code> [<a href="#type-reference"><span class="ntref">type-reference</span></a>] <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
 <span class="ntdfn" id="object-constructor-block">object-constructor-block</span> := <code>{</code> <a href="#object-member"><span class="ntref">object-member</span></a>* <code>}</code>
-<span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a>
+<span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a> | <a href="#remote-method-defn"><span class="ntref">remote-method-defn</span></a> | <a href="#resource-method-defn"><span class="ntref">resource-method-defn</span></a>
 </pre>
 <p>
 The resulting of evaluating an <code>object-constructor-expr</code> is an
@@ -4944,6 +4948,17 @@ type-reference is present and references an isolated object type. An
 an object with its isolated bit set.
 </p>
 
+<pre class="grammar"><span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := <code>public</code>|<code>private</code>
+</pre>
+
+<p>
+A visibility qualifier of <code>private</code> can be used within an
+<code>object-constructor-expr</code> expression; this means that the visibility
+region consists of every method-defn-body in the object-constructor-expr.
+</p>
+
+<section>
+<h5 id="section_6.8.1.1">6.8.1.1 Fields</h5>
 <pre class="grammar"><span class="ntdfn" id="object-field">object-field</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>final</code>]
    <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a>] <code>;</code>
@@ -4987,27 +5002,32 @@ explicitly isolated, then every <code>field-initializer</code> must be an
 isolated expression and any field that is not isolated must be declared as
 private.
 </p>
+</section>
+
+<section>
+<h5 id="section_6.8.1.2">6.8.1.2 Methods</h5>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#method-defn-quals"><span class="ntref">method-defn-quals</span></a>
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
-<span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
-<span class="ntdfn" id="method-defn-quals">method-defn-quals</span> :=
-   <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
-<span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := <code>public</code>|<code>private</code>
 </pre>
 
 <p>
-A <code>method-defn</code> defines a method of an object. Neither
-<code>remote-qual</code> nor <code>isolated-qual</code> can occur more than once
-in <code>method-defn-quals</code>. If <code>isolated</code> is present, then the
-method has its isolated bit set and its <code>method-defn-body</code> must
-satisfy the requirements for an <a href="#isolated_functions">isolated
-function</a>. If <code>remote-qual</code> is present, then the method is a remote
-method; this is allowed only when an <code>object-network-qual</code> is present
-in the <code>object-constructor-expr</code>.
+A <code>method-defn</code> defines a method of an object. 
 </p>
+
+<pre class="grammar"><span class="ntdfn" id="remote-method-defn">remote-method-defn</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#remote-method-quals"><span class="ntref">remote-method-quals</span></a>
+   <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
+</pre>
+<p>
+A <code>remote-method-defn</code> defines a remote method. This is allowed only
+when an <code>object-network-qual</code> is present in the
+<code>object-constructor-expr</code>.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
+</pre>
 <p>
 Within a <code>method-defn-body</code>, the fields and methods of the object are
 not implicitly in-scope; instead the variable <code>self</code> is bound to the
@@ -5018,6 +5038,63 @@ statement, except when <code>self</code> is part of a
 <code>field-access-expr</code> of the form <code>self.<var>f</var></code>, where
 <code><var>f</var></code> is the name of an isolated field.
 </p>
+<p>
+If <code>isolated-qual</code> is present, then the method has its isolated bit
+set and its <code>method-defn-body</code> must satisfy the requirements for an
+<a href="#isolated_functions">isolated function</a>.
+</p>
+
+</section>
+
+<section>
+<h5 id="resources">6.8.1.3 Resources</h5>
+
+<p>
+In addition to remote methods, a service object can use <em>resources</em> to
+support network interaction. Resources support a more data-oriented style of
+network interaction, which complements the RPC style supported by remote
+methods. A service object's resources are organized hierarchically in a tree.
+Each edge of the tree is labelled with a string. The label from a node to a
+child node uniquely identifies the child relative to its siblings. Each node in
+the tree is associated with zero or more resource methods. Each resource method
+has an method name, which identifies an operation to be performed on the
+resource; by convention the method name <code>get</code> is used for retrieving
+the resource. The resource's method name uniquely identifies it relative to
+other resource methods on the same node. A resource method is thus uniquely
+identified relative to its service object by the combination of a path in the
+resource tree and a method name. A resource method can only be invoked by a
+listener object.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="resource-method-defn">resource-method-defn</span> :=
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#resource-method-quals"><span class="ntref">resource-method-quals</span></a>
+   <code>function</code> <a href="#resource-method-name"><span class="ntref">resource-method-name</span></a> <a href="#resource-path"><span class="ntref">resource-path</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
+<span class="ntdfn" id="resource-method-quals">resource-method-quals</span> :=
+   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+<span class="ntdfn" id="resource-qual">resource-qual</span> := <code>resource</code>
+<span class="ntdfn" id="resource-method-name">resource-method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="resource-path">resource-path</span> :=
+   <a href="#dot-resource-path"><span class="ntref">dot-resource-path</span></a>
+   | <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a> (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)*
+<span class="ntdfn" id="dot-resource-path">dot-resource-path</span> := <code>.</code>
+<span class="ntdfn" id="resource-path-segment">resource-path-segment</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+</pre>
+<p>
+A <code>resource-method-defn</code> defines a resource method. This is allowed
+only when an <code>object-network-qual</code> of <code>service</code> is present
+in the <code>object-constructor-expr</code>. The
+<code>resource-method-name</code> specifies the resource's method name. The
+<code>resource-path</code> specifies the path to node in the resource tree; each
+<code>resource-path-segment</code> specifies the label of an edge from a node to
+its child. A <code>dot-resource-path</code> specifies the root of the service
+object's resource tree.
+</p>
+
+</section>
+
+<section>
+<h5 id="section_6.8.1.4">6.8.1.4 Initialization</h5>
 <p>
 A <code>method-defn</code> with a <code>method-name</code> of <code>init</code>
 is used to initialize the object and is treated specially. The return type of
@@ -5065,11 +5142,7 @@ A missing <code>init</code> method is equivalent to an isolated
 <code>init</code> method with no parameters and an empty body (which will always
 return nil).
 </p>
-<p>
-A visibility qualifier of <code>private</code> can be used within an
-<code>object-constructor-expr</code> expression; this means that the visibility
-region consists of all method definitions in the object-constructor-expr.
-</p>
+</section>
 
 </section>
 <section>
@@ -5166,17 +5239,25 @@ lock-stmt.
 <pre class="grammar"><span class="ntdfn" id="field-access-expr">field-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#field-name"><span class="ntref">field-name</span></a>
 </pre>
 <p>
-A field-access-expr accesses a field of an object or a member of a mapping. The
-semantics depends on the static type T of expression. A field-access-expr where
-T is a subtype of xml is interpreted as an xml-required-attribute-access-expr.
+A field-access-expr is typically used to access a field of an object or a field
+of a record. More generally, it can be used to access a member of an object or a
+member of a mapping. The semantics depends on the static type T of expression. A
+field-access-expr where T is a subtype of xml is interpreted as an
+xml-required-attribute-access-expr.
 </p>
 <p>
-If T is a subtype of the object basic type, then T must have a field field-name
-and the static type of the field-access-expr is the type of that field. In this
-case, the field-access-expr is evaluated by first evaluating the expression to
-get a value <var>obj</var>; the result of the field-access-expr is the value of
-that field of <var>obj</var>. The rest of this subsection applies when T is not
-a subtype of the object basic type.
+If T is a subtype of the object basic type, then T must have a member with name
+field-name. The field-access-expr is evaluated by first evaluating the
+expression to get a value <var>obj</var>. If the member is a field, then the
+result of the expression if the value of that field of <var>obj</var> and the
+static type of the field-access-expr is the type of that field of T. If that
+member is a method, then the result of the expression is a new function value
+that when called will call the method with <code>self</code> bound to
+<var>obj</var>; the isolated bit of the new function value is set if and only if
+the isolated bits of both <var>obj</var> and the method are set; the type
+descriptor of the new function value will have the same annotations as the type
+descriptor of the method. The rest of this subsection applies when T is not a
+subtype of the object basic type.
 </p>
 <p>
 Let T' be the intersection of T and basic type mapping, let K be the singleton type
@@ -7030,10 +7111,10 @@ a listener-decl or a service-decl, and</li>
 variable-reference-lvexpr or in a capture-binding-pattern in a
 destructuring-assignment-stmt must not refer to a variable defined by a
 module-var-decl that does not include <code>isolated</code>.</li>
-<li>Captured variables must be immutable: if the body is part of an
+<li>Captured variables are restricted as follows: if the body is part of an
 anonymous-function-expr, then any captured variable references must refer to
 variables that are both final (either explicitly or implicitly) and have a
-static type that is a subtype of <code>readonly</code>.</li>
+static type that is a subtype of <code>readonly|isolated object {}</code>.</li>
 <li>New workers cannot be started: the following constructs are not allowed
 <ul>
 <li>named-worker-decl</li>
@@ -8016,9 +8097,9 @@ It is evaluated as follows:
 <var>k</var>.</li>
 </ol>
 <p>
-The static type of the member-access-expr is the member type for the key type K
+The static type of the member-access-lvexpr is the member type for the key type K
 in T, where T is the static type of the lvexpr and K is the static type type of
-expression; the member-access-expr is potentially undefined if K is an optional
+expression; the member-access-lvexpr is potentially undefined if K is an optional
 key type for T.
 </p>
 
@@ -8102,9 +8183,8 @@ variables occurring in it. The static type of action-or-expr must be a subtype
 of this type.
 </p>
 <p>
-A destructuring assignment with a binding pattern that refers to a variable
-declared by a module-var-decl that includes <code>isolated</code> is only
-allowed within a lock-stmt.
+A binding pattern within a destructuring assignment must not refer to a variable
+declared by a module-var-decl that includes <code>isolated</code>.
 </p>
 
 </section>
@@ -8438,7 +8518,7 @@ lock statement:
 <ul>
 <li>when the variable is an isolated module-level variable; since module-level
 variables are not allowed to be public, this restriction applies
-to all functins in the module;</li>
+to all functions in the module;</li>
 <li>when the variable is <code>self</code> within an isolated object, unless
 <code>self</code> is being used only to read an isolated field; since
 non-isolated fields are required to be private, this restriction applies only to
@@ -8790,14 +8870,17 @@ result of the evaluation.
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   <code>service</code> [[<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] <a href="#variable-name"><span class="ntref">variable-name</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#absolute-resource-path"><span class="ntref">absolute-resource-path</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+<span class="ntdfn" id="absolute-resource-path">absolute-resource-path</span> :=
+   <a href="#root-resource-path"><span class="ntref">root-resource-path</span></a>
+   (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)+
+<span class="ntdfn" id="root-resource-path">root-resource-path</span> := <code>/</code>
+
 <span class="ntdfn" id="expression-list">expression-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
 </pre>
 <p>
 A <code>service-decl</code> creates a service object and attaches it to one or more
-listeners. If a variable-name is specified, it also declares a variable; as with
-a variable declared in a final variable declaration, the variable can be
-referenced by a variable-reference, but cannot be assigned to.
+listeners. 
 </p>
 <p>
 The static type S for the constructed service object is specified by the
@@ -8807,17 +8890,30 @@ expression-list must have a type Listener&lt;T&gt;|E where T is a subtype of
 <code>service object {}</code> and E is a subtype of <code>error</code>; the
 inferred type is T. The object-constructor-block has the same semantics as in an
 object-constructor-expr with a <code>service</code> qualifier and a
-type-reference that refers to S. The type S is also used as the type of the
-variable declared. If the service-decl includes <code>isolated</code>, then it
+type-reference that refers to S. If the service-decl includes <code>isolated</code>, then it
 is equivalent to an object-constructor-expr with an <code>isolated</code>
 qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
+The <code>absolute-resource-path</code> determines the second argument passed to
+the <code>attach</code> method: if the <code>absolute-resource-path</code> is
+absent, then the argument is nil; otherwise, the argument is an array of
+strings, with one string for each <code>resource-path-segment</code>. Attaching
+service objects <var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub>
+with absolute resource paths
+<var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub> is equivalent
+to attaching a single service object with <var>n</var> <code>get</code> resource
+methods to <code>/</code>, where the <var>i</var>-th resource method has a path
+<var>p</var><sub>i</sub> (an <code>absolute-resource-path</code> is turned into
+a <code>relative-resource-path</code> with the same
+<code>resource-path-segment</code>s) and returns
+<var>s</var><sub><var>i</var></sub>.
+</p>
+<p>
 A service-decl is initialized as part of module initialization as follows. The
 object-constructor-block is evaluated as in an object-constructor-expr resulting
-in a service object <code><var>s</var></code>. If variable-name is specified,
-then the variable is initialized to <code><var>s</var></code>. Then for each
-expression in expression-list:
+in a service object <code><var>s</var></code>. Then for each expression in
+expression-list:
 </p>
 <ol>
 <li>the expression is evaluated resulting in a value which is either an error or
@@ -8925,6 +9021,8 @@ constructed.
 <span class="ntdfn" id="class-member">class-member</span> :=
    <a href="#object-field"><span class="ntref">object-field</span></a>
    | <a href="#method-defn"><span class="ntref">method-defn</span></a>
+   | <a href="#remote-method-defn"><span class="ntref">remote-method-defn</span></a>
+   | <a href="#resource-method-defn"><span class="ntref">resource-method-defn</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
 </pre>
 <p>
@@ -9692,7 +9790,8 @@ object constructor expression, which includes method definitions, or by applying
 methods and fields of an object are not in a single symbol space. Classes and
 object constructors can declare fields as final.</li>
 <li>Services have become service objects that work in a similar way to client
-objects; resource methods on service objects have become remote methods.</li>
+objects; resource methods on service objects have become remote methods. There
+is a new concept for resource methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
 declared as <code>readonly</code>. Functions can be declared as
 <code>isolated</code>; this works in conjunction with <code>readonly</code> to

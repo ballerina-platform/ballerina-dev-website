@@ -5,16 +5,20 @@ description: Learn all the command line interface (CLI) commands need to get sta
 keywords: ballerina, cli, command line interface, programming language
 permalink: /swan-lake/learn/using-the-cli-tools/
 active: using-the-cli-tools
-intro: The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. 
+intro: The `ballerina` Tool is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /swan-lake/learn/cli-commands
   - /swan-lake/learn/cli-commands/
   - /swan-lake/learn/using-the-cli-tools
 ---
 
-## Using the 'ballerina' command
+## Using the 'ballerina' Tool
 
-In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below:
+**Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
+
+It also enables you to easily install, update, and switch among Ballerina distributions. 
+
+In the CLI, execute the `ballerina help` command to view all the actions you can perform with the `ballerina` Tool as shown below:
 
 ![CLI commands](/swan-lake/learn/images/cli-commands.png)
 

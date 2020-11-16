@@ -12,7 +12,7 @@ redirect_from:
 
 ## Installing Ballerina
 
-1. [Download](/downloads) Ballerina based on the Operating System you are using. 
+1. [Download](/downloads) Ballerina based on the operating system you are using. 
 1. [Install](/swan-lake/learn/installing-ballerina) Ballerina. 
 1. Set up [Visual Studio Code](/swan-lake/learn/tools-ides/vscode-plugin) for Ballerina.
 
@@ -79,7 +79,7 @@ A Ballerina client is a component, which interacts with a network-accessible ser
 
 There are two kinds of clients in Ballerina, inbound (or ingress) and outbound (or egress) clients. An outbound client object can be used to send messages to a network service.
 
-Create an outbound Ballerina client as a Ballerina program with a `main` function with the content below to invoke the `hello` service.   
+Create an outbound Ballerina client as a Ballerina program with a `main` function as follows to invoke the `hello` service.   
 
 > **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 

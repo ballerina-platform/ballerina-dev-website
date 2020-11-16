@@ -12,7 +12,7 @@ redirect_from:
 
 ## Installing Ballerina
 
-1. [Download](/downloads) Ballerina based on the Operating System you are using. 
+1. [Download](/downloads) Ballerina based on the operating system you are using. 
 1. [Install](/swan-lake/learn/installing-ballerina) Ballerina. 
 1. Set up [Visual Studio Code](/swan-lake/learn/tools-ides/vscode-plugin) for Ballerina.
 

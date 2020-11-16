@@ -99,9 +99,10 @@ public function main() returns @tainted error? {
     // Add the relevant endpoint URL to perform the invocation.
     http:Client helloClient = new("http://localhost:9090/hello");
 
-    // Perform a `GET` request to the `hello` service. The remote call 
-    // would return an `http:Response` if successful, 
-    // or an `error` on failure.
+    // Perform a `GET` request to the `hello` service. If successful, 
+    // the remote call would return an `http:Response` or the payload 
+    // (if the `targetType` defaultable parameter is configured).
+    // Otherwise an `error` on failure.
     http:Response helloResp = <http:Response> check helloClient->get("/sayHello");
 
     // Retrieve the payload as a `string` and print it if the 

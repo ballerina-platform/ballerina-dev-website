@@ -16,9 +16,9 @@ redirect_from:
 1. [Install](/swan-lake/learn/installing-ballerina) Ballerina. 
 1. Set up [Visual Studio Code](/swan-lake/learn/tools-ides/vscode-plugin) for Ballerina.
 
-## Creating a Service and a Client to Invoke It
+## Creating a Service and a Client 
 
-You can use a Ballerina HTTP client to interact with any HTTP service. Let's create a custom Ballerina HTTP service and also an HTTP client to invoke it.
+Let's create a custom Ballerina HTTP service and also an HTTP client to invoke it.
 
 ### Writing a simple 'hello' Service
 
@@ -71,6 +71,12 @@ This means your service is up and running.
 curl http://localhost:9090/hello/sayHello
 ```
 
+You get the following response.
+
+```bash
+Hello Ballerina!
+```
+
 Alternatively, you can create a Ballerina HTTP client and use that to invoke the service as follows.
 
 ### Creating a 'helloClient' to Invoke the 'hello' Service
@@ -106,7 +112,7 @@ public function main() returns @tainted error? {
 
 ### Invoking the 'hello' Service Using the 'helloClient'  
 
-In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the 'helloClient' service.
+In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `helloClient` service.
 
 > **Tip:** Make sure the `hello` service is [up and running](#running-the-ballerina-service).
 

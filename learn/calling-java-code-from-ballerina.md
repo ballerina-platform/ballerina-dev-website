@@ -183,7 +183,7 @@ Generating dependency bindings for:
 ```
 
 - The `-mvn` option specifies the Maven dependency of the Java library required to generate bindings.
-- The `-o` option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the `yamlparser` module.
+- The `-o` option specifies the output directory in which the generated bindings are stored. In this case, the tool is instructed to store bindings inside the `yamlparser` module.
 - The argument list specifies the Java class names. 
 
 The `bindgen` tool generate bindings for:
@@ -353,7 +353,7 @@ This optional parameter could be used to specify one or more comma-delimited cla
 This optional parameter could be used to specify a Maven dependency required for the generation of Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the project. If the tool is not executed inside a project or if the output path does not point to a project, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project.
 
 `(-o|--output) <output>`
-This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module. 
+This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module.
 
 `--public`
 Set the visibility modifier of the generated binding objects to public. By default, the generated bindings will be module private.

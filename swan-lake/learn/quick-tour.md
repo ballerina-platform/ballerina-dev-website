@@ -113,7 +113,7 @@ public function main() returns @tainted error? {
 
 ### Invoking the 'hello' Service Using the 'helloClient'  
 
-In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `helloClient` service.
+In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `hello` service.
 
 > **Tip:** Make sure the `hello` service is [up and running](#running-the-ballerina-service).
 

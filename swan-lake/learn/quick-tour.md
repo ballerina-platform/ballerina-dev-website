@@ -87,7 +87,7 @@ There are two kinds of clients in Ballerina, inbound (or ingress) and outbound (
 
 Create an outbound Ballerina client as a Ballerina program with a `main` function as follows to invoke the `hello` service.   
 
-> **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
+> **Note**: Returning `error?` from the `main` function allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 
 ***hello_client.bal***
 ```ballerina

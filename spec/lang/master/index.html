@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-10</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-19</h1>
 <p>
 Primary contributors:
 </p>
@@ -1239,7 +1239,9 @@ uniquely identifies it within a Ballerina program. A type-id has three parts:
 <ol>
 <li>a module id, which identifies the module within which the
 distinct-type-descriptor occurs; this consists of an organization, a module
-name, and a version number;</li>
+name, and an array of platform-specified strings, which could include
+information about, for example, the repository or version of the package the
+module comes from;</li>
 <li>a local id, which identifies the occurrence of the
 <code>distinct</code> within the module; this takes one of two forms:
 <ul>
@@ -3214,7 +3216,7 @@ descriptor:
 </p>
 
 <pre>object {
-   public function attach(T svc, string? name = ()) returns error?;
+   public function attach(T svc, string[]? path = ()) returns error?;
    public function detach(T svc) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
@@ -5051,17 +5053,14 @@ set and its <code>method-defn-body</code> must satisfy the requirements for an
 In addition to remote methods, a service object can use <em>resources</em> to
 support network interaction. Resources support a more data-oriented style of
 network interaction, which complements the RPC style supported by remote
-methods. A service object's resources are organized hierarchically in a tree.
-Each edge of the tree is labelled with a string. The label from a node to a
-child node uniquely identifies the child relative to its siblings. Each node in
-the tree is associated with zero or more resource methods. Each resource method
-has an method name, which identifies an operation to be performed on the
-resource; by convention the method name <code>get</code> is used for retrieving
-the resource. The resource's method name uniquely identifies it relative to
-other resource methods on the same node. A resource method is thus uniquely
-identified relative to its service object by the combination of a path in the
-resource tree and a method name. A resource method can only be invoked by a
-listener object.
+methods. A service object's resources are arranged in a tree. Each resource
+exposes one or more named methods; by convention the method name
+<code>get</code> is used for retrieving the resource. A listener thus identifies
+a resource method to be called using the combination of a hierarchical path,
+which identifies the resource, and the resource method name. A resource method
+can also specify that a segment of the path provided by the listener should be
+treated as a parameter. A resource method can only be invoked by a listener
+object.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="resource-method-defn">resource-method-defn</span> :=
@@ -5074,19 +5073,123 @@ listener object.
 <span class="ntdfn" id="resource-method-name">resource-method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="resource-path">resource-path</span> :=
    <a href="#dot-resource-path"><span class="ntref">dot-resource-path</span></a>
-   | <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a> (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)*
+   | <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a> (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)* [<code>/</code> <a href="#resource-path-rest-param"><span class="ntref">resource-path-rest-param</span></a>]
+   | <a href="#resource-path-rest-param"><span class="ntref">resource-path-rest-param</span></a>
 <span class="ntdfn" id="dot-resource-path">dot-resource-path</span> := <code>.</code>
-<span class="ntdfn" id="resource-path-segment">resource-path-segment</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="resource-path-segment">resource-path-segment</span> := <a href="#resource-path-segment-name"><span class="ntref">resource-path-segment-name</span></a> | <a href="#resource-path-segment-param"><span class="ntref">resource-path-segment-param</span></a>
+<span class="ntdfn" id="resource-path-segment-name">resource-path-segment-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="resource-path-segment-param">resource-path-segment-param</span> := <code>[</code>[<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#param-name"><span class="ntref">param-name</span></a><code>]</code>
+<span class="ntdfn" id="resource-path-rest-param">resource-path-rest-param</span> := <code>[</code>[<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>...</code> <a href="#param-name"><span class="ntref">param-name</span></a><code>]</code>
 </pre>
+
 <p>
 A <code>resource-method-defn</code> defines a resource method. This is allowed
 only when an <code>object-network-qual</code> of <code>service</code> is present
-in the <code>object-constructor-expr</code>. The
-<code>resource-method-name</code> specifies the resource's method name. The
-<code>resource-path</code> specifies the path to node in the resource tree; each
-<code>resource-path-segment</code> specifies the label of an edge from a node to
-its child. A <code>dot-resource-path</code> specifies the root of the service
-object's resource tree.
+in the <code>object-constructor-expr</code>. The <code>resource-path</code>
+specifies the node in the service object's resource tree to which the method is
+attached and the <code>resource-method-name</code> specifies the method name. It
+is an error to have two <code>resource-method-defn</code>s that both have the
+same name and have a path that refers to the same node. A
+<code>dot-resource-path</code> specifies the root of the service object's
+resource tree. In a service object's resource tree, each edge from a parent node
+to a child node has a label, which uniquely identifies the child relative to its
+siblings. A label is either a string or one of two special values that indicate
+that the corresponding path segment should be treated as a parameter. It is an
+error for a parent node to have more than one edge to a child node labelled with
+one of the two special values. A <code>resource-path-segment-name</code>
+specifies a label that is a string. The two special label values come from a
+<code>resource-path-segment-param</code> and a
+<code>resource-path-rest-param</code> respectively. A parameter in a
+<code>resource-path-segment-param</code> will be bound to a value representing a
+single path segment; a parameter in a <code>resource-path-rest-param</code> will
+be bound to a list representing zero or more path segments, with each member
+representing a single path segment. The type of a path segment depends on the
+listener, but the listener must be able to convert it into a string. For
+example, in HTTP a path segment is natively a sequence of bytes, and an HTTP
+listener could convert it into a string by decoding with UTF-8. It also depends
+on the listener which types other than string it is able to convert a path
+segment to.
+</p>
+<p>
+The return type of a resource method must not allow values belonging to the
+function basic type. A resource method with a name of <code>get</code> that can
+return a service object represents a subservice. It is subject to the following
+restrictions:
+</p>
+<ul>
+<li>the return type must not allow anything other that service
+objects and errors;</li>
+<li>the resource path must not end with a <code>resource-path-rest-param</code>;</li>
+<li>the method's node must not have any child nodes.</li>
+</ul>
+<p>
+The semantics of hierarchical resources are defined by a lookup function, which
+takes four parameters:
+</p>
+<ul>
+<li>
+<var>m</var> is the name of the method;</li>
+<li>
+<var>p</var> is the resource path;</li>
+<li>
+<var>r</var> refers to a node in the resource tree of a service object;</li>
+<li>
+<var>v</var> is the list path segments bound so far.</li>
+</ul>
+<p>
+It returns an error or a tuple [<var>r</var>, <var>v</var>], where
+</p>
+<ul>
+<li>
+<var>r</var> is a node in the resource tree with an m method, which is the
+method to be called;</li>
+<li>
+<var>v</var> is a list of path segments to be bound to the method’s variable
+resource path parameters.</li>
+</ul>
+<p>
+The function lookup(<var>m</var>, <var>p</var>, <var>r</var>, <var>v</var>) is
+defined as follows:
+</p>
+<ol>
+<li>If <var>r</var> has a <code>get</code> method that can return a service
+object, then call the <code>get</code> method of <var>r</var> using <var>v</var>
+to bind the path parameters; if the result is an error, then return that error;
+otherwise, the result must be a service object. Let <var>r</var>' be the root of
+its resource tree. Return lookup(<var>m</var>, <var>p</var>, <var>r</var>',
+[]).</li>
+<li>If <var>p</var> is empty: 
+<ol>
+<li>if <var>r</var> has a method <var>m</var>, then return
+[<var>r</var>,<var>v</var>];</li>
+<li>otherwise, if <var>r</var> has a child labelled as repeated variable path
+segment and that child has a method <var>m</var>, then let <var>r</var>' be
+child with that label and return [<var>r</var>',<var>v</var>];</li>
+<li>otherwise, return an error.</li> 
+</ol>
+</li>
+<li>Let the first segment in <var>p</var> be <var>s</var> and let <var>p</var>'
+be a list of the 2nd and subsequent members of <var>p</var>.</li>
+<li>If <var>r</var> has a child labelled with the string that results from
+converting <var>s</var> to a string, then let <var>r</var>' be the child with
+that label. Return lookup(<var>m</var>, <var>p</var>', <var>r</var>',
+<var>v</var>).</li>
+<li>If <var>r</var> has an edge to a child labelled as a single path segment
+parameter, then let <var>r</var>' be that child and let <var>v</var>' be the
+result of adding <var>s</var> to the end of <var>v</var>. Return
+lookup(<var>m</var>, <var>p</var>', <var>r</var>', <var>v</var>').</li>
+<li>If <var>r</var> has an edge to a child labelled as a rest parameter and that
+child has a method <var>m</var>, then let <var>r</var>' be that child, and let
+<var>v</var>' be the result of concatenating <var>v</var> and <var>p</var>.
+Return [<var>r</var>',<var>v</var>'].</li>
+<li>Otherwise, return an error.</li>
+</ol>
+<p>
+The syntax allows only the last of a resource method's path parameters to be a
+rest parameter. When a list of path segments is bound to the path parameters of
+a resource method, one path segment is bound to each path parameter that is not
+a rest parameter and a list of the remaining path segments is bound to the rest
+parameter, if any.
 </p>
 
 </section>
@@ -8868,14 +8971,17 @@ result of the evaluation.
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   <code>service</code> [[<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] <a href="#variable-name"><span class="ntref">variable-name</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#absolute-resource-path"><span class="ntref">absolute-resource-path</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+<span class="ntdfn" id="absolute-resource-path">absolute-resource-path</span> :=
+   <a href="#root-resource-path"><span class="ntref">root-resource-path</span></a>
+   (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)+
+<span class="ntdfn" id="root-resource-path">root-resource-path</span> := <code>/</code>
+
 <span class="ntdfn" id="expression-list">expression-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
 </pre>
 <p>
 A <code>service-decl</code> creates a service object and attaches it to one or more
-listeners. If a variable-name is specified, it also declares a variable; as with
-a variable declared in a final variable declaration, the variable can be
-referenced by a variable-reference, but cannot be assigned to.
+listeners. 
 </p>
 <p>
 The static type S for the constructed service object is specified by the
@@ -8885,17 +8991,30 @@ expression-list must have a type Listener&lt;T&gt;|E where T is a subtype of
 <code>service object {}</code> and E is a subtype of <code>error</code>; the
 inferred type is T. The object-constructor-block has the same semantics as in an
 object-constructor-expr with a <code>service</code> qualifier and a
-type-reference that refers to S. The type S is also used as the type of the
-variable declared. If the service-decl includes <code>isolated</code>, then it
+type-reference that refers to S. If the service-decl includes <code>isolated</code>, then it
 is equivalent to an object-constructor-expr with an <code>isolated</code>
 qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
+The <code>absolute-resource-path</code> determines the second argument passed to
+the <code>attach</code> method: if the <code>absolute-resource-path</code> is
+absent, then the argument is nil; otherwise, the argument is an array of
+strings, with one string for each <code>resource-path-segment</code>. Attaching
+service objects <var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub>
+with absolute resource paths
+<var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub> is equivalent
+to attaching a single service object with <var>n</var> <code>get</code> resource
+methods to <code>/</code>, where the <var>i</var>-th resource method has a path
+<var>p</var><sub>i</sub> (an <code>absolute-resource-path</code> is turned into
+a <code>relative-resource-path</code> with the same
+<code>resource-path-segment</code>s) and returns
+<var>s</var><sub><var>i</var></sub>.
+</p>
+<p>
 A service-decl is initialized as part of module initialization as follows. The
 object-constructor-block is evaluated as in an object-constructor-expr resulting
-in a service object <code><var>s</var></code>. If variable-name is specified,
-then the variable is initialized to <code><var>s</var></code>. Then for each
-expression in expression-list:
+in a service object <code><var>s</var></code>. Then for each expression in
+expression-list:
 </p>
 <ol>
 <li>the expression is evaluated resulting in a value which is either an error or

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Keeping Ballerina Up to Date
-description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest patch and minor releases.
+description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest releases.
 keywords: ballerina, programming language, release, update
 permalink: /learn/keeping-ballerina-up-to-date/
 active: keeping-ballerina-up-to-date
@@ -61,7 +61,7 @@ This channel gives you access to feature releases of Ballerina distributions. Ba
 - We maintain a minor release 1.x.0 by issuing a series of patch releases 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
 - In other words, patch releases for jBallerina 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when jBallerina 1.2 is available, we stop maintaining jBallerina 1.0.0.
 
-## Keeping Ballerina Upto Date
+## Keeping Ballerina Up to Date
 
 Now that you are familiar with the terminology, let’s look at how you can keep your Ballerina distributions up to date.
 

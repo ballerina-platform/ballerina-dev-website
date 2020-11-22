@@ -9207,7 +9207,7 @@ module's <code>init</code> function. If <code>final</code> is specified, then it
 is not allowed to assign to the variable after it is initialized.
 </p>
 <pre class="grammar">
-<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#module-init-var-quals"><span class="ntref">module-init-var-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#module-var-init"><span class="ntref">module-var-init</span></a> <code>;</code>
+<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#module-init-var-quals"><span class="ntref">module-init-var-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#module-var-init"><span class="ntref">module-var-init</span></a> <code>;</code>
 <span class="ntdfn" id="module-init-var-quals">module-init-var-quals</span> := (<code>final</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> | <code>configurable</code>)*
 <span class="ntdfn" id="module-var-init">module-var-init</span> := <a href="#expression"><span class="ntref">expression</span></a> | <code>?</code>
 </pre>
@@ -9222,12 +9222,12 @@ that type-descriptor provides the contextually expected type for action-or-expr.
 </p>
 <p>
 If a module-init-var-decl includes an isolated-qual, then the variable declared
-is isolated. In this case, the binding-pattern in the typed-binding-pattern must
-be just a variable-name, and the expression must be an isolated expression. A
-variable declared as an isolated variable can be accessed only within a
-lock-stmt. When an isolated-qual occurs in a position where the grammar would
-allow it to be parsed as part of module-init-var-quals or typed-binding-pattern,
-the former parse is used.
+is isolated. In this case, <code>public</code> must not be specified, the
+binding-pattern in the typed-binding-pattern must be just a variable-name, and
+the expression must be an isolated expression. A variable declared as an
+isolated variable can be accessed only within a lock-stmt. When an isolated-qual
+occurs in a position where the grammar would allow it to be parsed as part of
+module-init-var-quals or typed-binding-pattern, the former parse is used.
 </p>
 <p>
 If <code>configurable</code> is specified, then the initializer specified in the
@@ -9243,7 +9243,7 @@ must be just a variable-name. The type specified by the type-descriptor must be
 a subtype of <code>anydata</code>.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="module-no-init-var-decl">module-no-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>final</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>;</code>
+<pre class="grammar"><span class="ntdfn" id="module-no-init-var-decl">module-no-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] [<code>final</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>;</code>
 </pre>
 <p>
 A module variable declared with <code>module-no-init-var-decl</code> must be
@@ -9901,9 +9901,11 @@ object constructors can declare fields as final.</li>
 objects; resource methods on service objects have become remote methods. There
 is a new concept for resource methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
-declared as <code>readonly</code>. Functions can be declared as
+declared as <code>readonly</code>.</li>
+<li>Functions, objects and module-level variables can be declared as
 <code>isolated</code>; this works in conjunction with <code>readonly</code> to
 support concurrency safety.</li>
+<li>Module-level variables can be public, provided they are not isolated.</li>
 <li>Intersection types have been added.</li>
 <li>Distinct types have been added; these provide the functionality of nominal
 types with the framework of a structural type system.</li>

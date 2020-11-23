@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-22</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-23</h1>
 <p>
 Primary contributors:
 </p>
@@ -733,6 +733,10 @@ together with associativity.
   <tr>
    <td><strong>Operator</strong></td>
    <td><strong>Associativity</strong></td>
+  </tr>
+  <tr>
+   <td><code>distinct T</code></td>
+   <td></td>
   </tr>
   <tr>
    <td><code>T[]</code></td>

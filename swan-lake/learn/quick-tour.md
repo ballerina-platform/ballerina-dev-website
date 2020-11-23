@@ -18,9 +18,9 @@ redirect_from:
 
 ## Creating a Service and a Client 
 
-Let's create a custom Ballerina HTTP service and also an HTTP client to invoke it.
+Let's create a Ballerina HTTP service and also an HTTP client to invoke it.
 
-### Writing a simple 'hello' Service
+### Writing a simple Service
 
 Write a simple HTTP service as shown below in a file with the `.bal` extension.
 
@@ -49,7 +49,7 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-### Running the 'hello' Service
+### Running the Service
 
 In the CLI, navigate to the location in which you have the `hello_service.bal` file and run the service by executing the command below.
 
@@ -79,13 +79,11 @@ Hello Ballerina!
 
 Alternatively, you can create a Ballerina HTTP client and use that to invoke the service as follows.
 
-### Creating a 'helloClient' to Invoke the 'hello' Service
+### Creating an HTTP Client to Invoke the Service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
-There are two kinds of clients in Ballerina, inbound (or ingress) and outbound (or egress) clients. An outbound client object can be used to send messages to a network service.
-
-Create an outbound Ballerina client as a Ballerina program with a `main` function as follows to invoke the `hello` service.   
+Create a Ballerina client as a Ballerina program with a `main` function as follows to invoke the `hello` service.   
 
 > **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 
@@ -95,7 +93,6 @@ import ballerina/http;
 import ballerina/io;
 
 public function main() returns @tainted error? {
-
     // Add the relevant endpoint URL to perform the invocation.
     http:Client helloClient = new("http://localhost:9090/hello");
 
@@ -111,7 +108,7 @@ public function main() returns @tainted error? {
 }
 ```
 
-### Invoking the 'hello' Service Using the 'helloClient'  
+### Invoking the Service Using the Client 
 
 In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `helloClient` service.
 

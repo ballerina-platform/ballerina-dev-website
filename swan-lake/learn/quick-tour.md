@@ -85,7 +85,7 @@ A Ballerina client is a component, which interacts with a network-accessible ser
 
 Create a Ballerina client as a Ballerina program with a `main` function as follows to invoke the `hello` service.   
 
-> **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
+> **Note**: Returning `error?` from the `main` function allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 
 ***hello_client.bal***
 ```ballerina
@@ -110,7 +110,7 @@ public function main() returns @tainted error? {
 
 ### Invoking the Service Using the Client 
 
-In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `helloClient` service.
+In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `hello` service.
 
 > **Tip:** Make sure the `hello` service is [up and running](#running-the-ballerina-service).
 

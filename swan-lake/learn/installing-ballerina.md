@@ -1,14 +1,12 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Installing Ballerina
 description: Get started with the Ballerina programming language by following these instructions on installing and setting up Ballerina.
 keywords: ballerina, installing ballerina, programming language, ballerina installation
-permalink: /swan-lake/learn/installing-ballerina/
+permalink: /swan-lake/learn/getting-started/installing-ballerina/
 active: installing-ballerina
 intro: The sections below include information about installing Ballerina.
 redirect_from:
-  - /swan-lake/learn/getting-started
-  - /swan-lake/learn/getting-started/
   - /swan-lake/learn/installing-ballerina
   - /swan-lake/learn/installing-ballerina/#installing-from-source
   - /swan-lake/learn/installing-ballerina/#installing-from-source/

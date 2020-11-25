@@ -418,6 +418,30 @@ function testCall() {
 }
 ```
 
+This test calls the original `intAdd` function after it has been stubbed with a user-defined mock function.
+
+```ballerina
+import ballerina/test;
+       
+@test:Config {}
+function testCallOriginal() {
+    // Stub to call another function when `intAdd` is called.
+    test:when(intAddMockFn).call("mockIntAdd");
+   
+    test:assertEquals(addValues(11, 6), 5, msg = "function mocking failed");
+    
+    // Stub to call the original `intAdd` function.
+    test:when(intAddMockFn).callOriginal();
+    test:assertEquals(addValues(11, 6), 17, msg = "function mocking failed");
+    
+}
+    
+// The mock function to be used in place of the `intAdd` function
+public function mockIntAdd(int a, int b) returns int {
+    return (a - b);
+}
+```
+
 ## What's Next?
  
 Now, that you are aware of the details on writing tests, learn the different options that can be used when [Executing

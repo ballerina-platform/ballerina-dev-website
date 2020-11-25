@@ -241,7 +241,7 @@ Follow the steps below to execute the Kubernetes service.
 2. Execute the `kubectl get pods` command to verify the Kuberentes pods.
 
       ```bash
-      NAME                                          READY   STATUS    RESTARTS   AGE
+      NAME                                        READY   STATUS    RESTARTS   AGE
       wso2-hello-0--deployment-7d4d56457b-7jlzx   1/1     Running   0          57s
       ```
 
@@ -254,7 +254,7 @@ Follow the steps below to execute the Kubernetes service.
 4. Execute the `kubectl get svc` command to get the IP address and port of the Kubernetes service.
 
       ```bash
-      NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+      NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
       wso2-hello-0--svc-local   NodePort    10.111.61.112    <none>        9090:32437/TCP   4m17s
       ```
 
@@ -274,7 +274,7 @@ Follow the steps below to execute the Kubernetes service.
 
 This sample focuses on setting up resource limits and auto scaling for the generated container. When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set. 
 
-Auto scaling policies allow the container to scale seamlessly without overloading a single container. Code to cloud generates artifacts required for the orchestrator to limit the resource taken from one container. It also generates auto scaling artifacts to smoothly scale when containers are overloaded. By default, code to cloud sets the default values for these configurations. You can find those values under the [Ballerina.cloud properties](/swan-lake/learn/deployment/code-to-cloud#properties-of-the-bBallerina-.-cloud-file). These values will be overridden in this example. 
+Auto scaling policies allow the container to scale seamlessly without overloading a single container. Code to cloud generates artifacts required for the orchestrator to limit the resource taken from one container. It also generates auto scaling artifacts to smoothly scale when containers are overloaded. By default, code to cloud sets the default values for these configurations. You can find those values under the [Ballerina.cloud properties](/swan-lake/learn/deployment/code-to-cloud#properties-of-the-ballerinacloud-file). These values will be overridden in this example. 
 
 ### Creating the Ballerina Project
 
@@ -480,7 +480,7 @@ spec:
 
 **Note:** The autoscaling and resource limits specified in the `Ballerina.cloud` file are reflected in the kubernetes artifacts above.
 
-## Executing the Kubernetes Service
+### Executing the Kubernetes Service
 
 Follow the steps below to deploy the generated Kubernetes artifacts directly. 
 

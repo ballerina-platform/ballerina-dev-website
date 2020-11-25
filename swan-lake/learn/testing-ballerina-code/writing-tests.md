@@ -136,7 +136,7 @@ On the other hand, symbols defined in the test files will not be visible inside 
 The Ballerina test framework supports the following assertions, which help to verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 
-### **assertTrue(boolean expression, string message)**
+### assertTrue(boolean expression, string message)
 
 Asserts that the expression is true with an optional message.
 
@@ -151,7 +151,7 @@ function testAssertTrue() {
 }
 ```
 
-### **assertFalse(boolean expression, string message)**
+### assertFalse(boolean expression, string message)
 
 Asserts that the expression is false with an optional message.
 
@@ -166,7 +166,7 @@ function testAssertFalse() {
 }
 ```
 
-### **assertEquals(Anydata actual, Anydata expected, string message)**
+### assertEquals(Anydata actual, Anydata expected, string message)
 
 Asserts that the actual value is equal to the expected value with an optional message.
 
@@ -189,7 +189,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertNotEquals(Anydata actual, Anydata expected, string message)**
+### assertNotEquals(Anydata actual, Anydata expected, string message)
 
 Asserts that the actual value is not equal to the expected value with an optional message.
 
@@ -213,7 +213,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertExactEquals(Any actual, Any expected, string message)**
+### assertExactEquals(Any actual, Any expected, string message)
 
 Asserts that the actual entity is exactly equal to the expected entity with an optional message.
 
@@ -237,7 +237,7 @@ function testAssertExactEqualsObject() {
 }
 ```
 
-### **assertNotExactEquals(Any actual, Any expected, string message)**
+### assertNotExactEquals(Any actual, Any expected, string message)
 
 Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
 
@@ -262,7 +262,7 @@ function testAssertNotExactEqualsObject() {
 }
 ```
 
-### **assertFail(string message)**
+### assertFail(string message)
 
 Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
 
@@ -281,6 +281,153 @@ function foo() {
     }
 }
 ```
+
+### Difference between expected and actual values when using 'assertEquals'
+
+* When type of the compared values are different.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertStringAndInt() {
+    test:assertEquals(1, "1");
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertStringAndInt:
+    Assertion Failed!
+
+        expected: <string> '1'
+        actual  : <int> '1'
+```
+
+* For string-typed values.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertString() {
+    test:assertEquals("hello ballerina user\nWelcome to Ballerina", "hello user\nWelcome to Ballerina");
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertString:
+    Assertion Failed!
+
+        expected: 'hello user
+        Welcome to Ballerina'
+        actual  : 'hello ballerina user
+        Welcome to Ballerina'
+
+         Diff    :
+
+         --- expected
+         +++ actual
+
+         @@ -1,2 +1,2 @@
+
+         -hello user
+         +hello ballerina user
+         Welcome to Ballerina
+
+```
+
+* For JSON/record/map typed values.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertJson() {
+    json j1 = {
+        name: "Anne",
+        age: "21",
+        marks: {
+            maths: 99,
+            english: 90,
+            status: {pass: true}
+        }
+    };
+    json j2 = {
+        name2: "Amie",
+        age: 21,
+        marks: {
+            maths: 35,
+            english: 90,
+            status: {pass: false}
+        }
+    };
+    test:assertEquals(j1, j2);
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertJson:
+    Assertion Failed!
+
+      expected: '{"name2":"Amie","age":21,"marks":{"maths":35,"english":90,"status":{"pass":false...'
+      actual  : '{"name":"Anne","age":"21","marks":{"maths":99,"english":90,"status":{"pass":true...'
+
+      Diff    :
+
+        expected keys   : name2
+        actual keys     : name
+
+        key: age
+        expected value  : <int> 21
+        actual value    : <string> 21
+
+        key: marks.maths
+        expected value  : 35
+        actual value    : 99
+
+        key: marks.status.pass
+        expected value  : false
+        actual value    : true
+
+```
+
+* For other anydata-typed values.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertTuples() {
+    [int, string] a = [10, "John"];
+    [int, string] b = [12, "John"];
+    test:assertEquals(a, b);
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertTuples:
+    Assertion Failed!
+
+        expected: '12 John'
+        actual  : '10 John'
+```
+
 
 ## Setup and Teardown
 

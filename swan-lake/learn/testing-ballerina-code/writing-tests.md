@@ -14,17 +14,18 @@ redirect_from:
 ## Project Structure
 
 
-```
+```bash
 project-name/
-  Ballerina.toml
-    src/
-      module1/
-        main.bal
-        Module.md 
-        [resources/]   
-        tests/       	  # Module-specific tests
-          main_test.bal   # The test file for main.bal
-          [resources]	  # Resources for the tests
+    Ballerina.toml
+    Package.md
+    Module.md
+    main.bal
+    [modules]
+    [resources]
+    tests/              # tests for default module
+        main_test.bal   # The test file for main.bal
+        [resources]     # Resources for the tests
+
 ```
 
 
@@ -227,7 +228,7 @@ class Person {
     public Person? parent = ();
     private string email = "default@abc.com";
     string address = "No 20, Palm grove";
-};
+}
 
 @test:Config {}
 function testAssertExactEqualsObject() {
@@ -252,7 +253,7 @@ class Person {
     public Person? parent = ();
     private string email = "default@abc.com";
     string address = "No 20, Palm grove";
-};
+}
 
 @test:Config {}
 function testAssertNotExactEqualsObject() {
@@ -275,10 +276,14 @@ import ballerina/test;
 function foo() {
     error? e = trap bar(); // Expecting `bar()` to panic
     if (e is error) {
-        test:assertEquals(e.reason(), "Invalid Operation", msg = "Invalid error reason"); // Some other assertions
+        test:assertEquals(e.message().toString(), "Invalid Operation", msg = "Invalid error reason"); // Some other assertions
     } else {
         test:assertFail(msg = "Expected an error");
     }
+}
+
+function bar() {
+    panic error("Invalid Operation");
 }
 ```
 
@@ -475,15 +480,15 @@ For each group specified in this annotation, the function that follows the annot
 import ballerina/io;
 import ballerina/test;
 
-// The `BeforeGroups1` function is executed before running all the test functions in this module. 
-@test:BeforeGroups1 { value:["g1"] }
-function beforeFunc() {
+// The `beforeGroups1` function is executed before running all the test functions belonging to the group `g1`. 
+@test:BeforeGroups { value:["g1"] }
+function beforeGroups1() {
     io:println("I'm the before groups function!");
 }
 
-// Another `BeforeGroups2` function is executed before running all the test functions in this module. 
-@test:BeforeGroups2 { value:["g1", "g2"] }
-function beforeFunc() {
+// Another `beforeGroups2` function is executed before running all the test functions belonging to the groups `g1` and `g2`. 
+@test:BeforeGroups { value:["g1", "g2"] }
+function beforeGroups2() {
     io:println("I'm another before groups function!");
 }
 
@@ -554,8 +559,8 @@ import ballerina/test;
 
 // This `AfterEach` function is executed before each test function.
 @test:AfterEach
-function beforeFunc() {
-    io:println("I'm the before function!");
+function afterFunc() {
+    io:println("I'm the after function!");
 }
 
 // The first test function.
@@ -605,16 +610,16 @@ function testFunction2() {
     test:assertTrue(true, msg = "Failed");
 }
 
-// The `AfterGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups1 { value:["g1"] }
-function beforeFunc1() {
-    io:println("I'm the before groups function!");
+// The `afterGroupsFunc1` function is executed before running all the test functions belonging to the group `g1`. 
+@test:AfterGroups { value:["g1"] }
+function afterGroupsFunc1() {
+    io:println("I'm the after groups function!");
 }
 
-// Another `AfterGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups2 { value:["g1", "g2"] }
-function beforeFunc2() {
-    io:println("I'm another before groups function!");
+// The `afterGroupsFunc2` function is executed before running all the test functions belonging to the groups `g1` and `g2`. 
+@test:AfterGroups { value:["g1", "g2"] }
+function afterGroupsFunc2() {
+    io:println("I'm another after groups function!");
 }
 ```
 

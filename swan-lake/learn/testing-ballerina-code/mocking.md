@@ -41,8 +41,8 @@ import ballerina/http;
  
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
-    public remote function get(@untainted string path, http:RequestMessage message = ()) 
-    	returns http:Response|http:ClientError {
+
+    public remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:Payload|http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
@@ -355,6 +355,9 @@ After the initialization, the following options can be used to stub the behaviou
 
 ```ballerina
 import ballerina/test;
+
+@test:Mock { functionName: "intAdd" }
+test:MockFunction intAddMockFn = new();
    
 @test:Config {}
 function testReturn() {
@@ -375,7 +378,10 @@ This test stubs the behavior of the `intAdd` function to substitute it with a us
 
 ```ballerina
 import ballerina/test;
-       
+
+@test:Mock { functionName: "intAdd" }
+test:MockFunction intAddMockFn = new();
+
 @test:Config {}
 function testCall() {
     // Stub to call another function when `intAdd` is called.
@@ -423,6 +429,9 @@ This test calls the original `intAdd` function after it has been stubbed with a 
 ```ballerina
 import ballerina/test;
        
+@test:Mock { functionName: "intAdd" }
+test:MockFunction intAddMockFn = new();
+
 @test:Config {}
 function testCallOriginal() {
     // Stub to call another function when `intAdd` is called.

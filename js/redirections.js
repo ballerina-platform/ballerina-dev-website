@@ -250,4 +250,8 @@ let redirections = {
     "learn/by-example/http-client-data-binding.html":"/page-not-available.html",
     "/1.1/learn/by-example/http-client-data-binding.html":"/1.1/page-not-available.html",
     "/1.0/learn/by-example/http-client-data-binding.html":"/1.0/page-not-available.html",
+    "/swan-lake/learn/deployment/kubernetes/":"/swan-lake/learn/deployment/code-to-cloud/",
+    "/learn/deployment/code-to-cloud/":"/page-not-available.html",
+    "/1.1/learn/deployment/code-to-cloud/":"/1.1/page-not-available.html",
+    "/1.0/learn/deployment/code-to-cloud/":"/1.0/page-not-available.html",
 };

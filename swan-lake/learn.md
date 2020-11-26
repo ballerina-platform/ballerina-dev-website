@@ -17,9 +17,9 @@ redirect_from:
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<a class="cBoxLink" href="/swan-lake/learn/getting-started/installing-ballerina">
+<a class="cBoxLink" href="/swan-lake/learn/quick-tour">
 
-<h2>Getting Started</h2>
+<h2>Get Started</h2>
 
 <p>Download Ballerina, install it, and set your development environment up.</p>
 

@@ -56,7 +56,7 @@ redirect_from:
 
 <div class="col-sm-6 col-md-6  cLearnPageContentCol">
 
-  <a class="cBoxLink" href="/swan-lake/learn/user-guide">
+  <a class="cBoxLink" href="/swan-lake/learn/using-the-cli-tools/">
   <h2>Ballerina User Guide</h2>
   <p>Learn about all the features of the language and its platform capabilities.</p>
   </a>

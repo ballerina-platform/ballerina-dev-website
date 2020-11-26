@@ -59,7 +59,7 @@ redirect_from:
 
 ### Generating the Artifacts
 
-Execute the `ballerina build -a` command to build the Ballerina package and you view the output below.
+Execute the `ballerina build` command to build the Ballerina package and you view the output below.
 
 ```bash
 Compiling source
@@ -333,7 +333,7 @@ Auto scaling policies allow the container to scale seamlessly without overloadin
 
 ### Generating the Artifacts
 
-Execute the `ballerina build -a` command to build the Ballerina package and you view the output below.  
+Execute the `ballerina build` command to build the Ballerina package and you view the output below.  
 
     ```bash
     Compiling source

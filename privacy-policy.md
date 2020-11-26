@@ -69,7 +69,7 @@ You may also choose to delete your data from our website at any time you choose,
 
 We only ever retain your personal data even after you have ceased using our services, requested to unsubscribe or delete your data only if reasonably necessary to comply with our legal obligations (including law enforcement requests), meet regulatory requirements, resolve disputes, maintain security, prevent fraud and abuse, or fulfill your request to "unsubscribe" from further messages from us.
 
-## Thord party offerings and services
+## Third party offerings and services
 
 At our discretion, we may include or offer third party products or services on our site. These third party sites have separate and independent privacy policies. We have no responsibility or liability for the content and activities of these linked sites. We encourage you to review the privacy statements of those websites to understand how your data is secured by them. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.
 

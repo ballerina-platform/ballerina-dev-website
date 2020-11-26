@@ -7,11 +7,24 @@ permalink: /learn-2/
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
+<a class="cBoxLink" href="/swan-lake/learn/getting-started/">
+
+<h2>Get Started</h2>
+
+<p>Download Ballerina, install it, and set your development environment up.</p>
+
+</a>
+
+  
+</div>
+
+
+<div class="col-sm-6 col-md-6 cLearnPageContentCol">
 <a class="cBoxLink" href="/learn/installing-ballerina/">
 
-<h2>Ballerina User Guide</h2>
+<h2>Ballerina by Example</h2>
 
-<p>Gear yourself up by setting up Ballerina and learn about all the features of the language and its platform capabilities.</p>
+<p>Try out the Ballerina By Examples for a hands-on experience of the language and its key features.</p>
 
 </a>
 
@@ -29,16 +42,17 @@ permalink: /learn-2/
 
 </div>
 
-<div class="clearfix"></div>
+<!--<div class="clearfix"></div>-->
 
 <div class="col-sm-6 col-md-6  cLearnPageContentCol">
 
   <a class="cBoxLink" href="/learn/by-example">
-  <h2>Ballerina By Example</h2>
-  <p>Try out the Ballerina By Examples for a hands-on experience of the language and its key features.</p>
+  <h2>Ballerina User Guide</h2>
+  <p>Learn about all the features of the language and its platform capabilities.</p>
   </a>
 
 </div>
+<div class="clearfix"></div>
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
 

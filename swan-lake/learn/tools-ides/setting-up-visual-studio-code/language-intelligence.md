@@ -1,7 +1,7 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Language Intelligence
-permalink: /swan-lake/learn/setting-up-visual-studio-code/language-intelligence/
+permalink: /swan-lake/learn/getting-started/setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence
 intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency. Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 redirect_from:

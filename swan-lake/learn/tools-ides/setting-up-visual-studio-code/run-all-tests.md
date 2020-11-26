@@ -1,7 +1,7 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Run all Tests
-permalink: /swan-lake/learn/setting-up-visual-studio-code/run-all-tests/
+permalink: /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-all-tests/
 active: run-all-tests
 intro: This option allows you to run all the tests that belong to multiple modules of your project. 
 redirect_from:

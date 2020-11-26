@@ -50,7 +50,7 @@ redirect_from:
 
     ***Kubernetes.toml***
 
-    ```bash
+    ```toml
     [container.image]
     repository="wso2inc"
     name="hello"
@@ -312,7 +312,7 @@ Auto scaling policies allow the container to scale seamlessly without overloadin
 
     ***Kubernetes.toml***
 
-    ```bash
+    ```toml
     [container.image]
     repository="wso2inc"
     name="scaling-sample"

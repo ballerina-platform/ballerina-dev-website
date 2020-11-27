@@ -20,7 +20,7 @@ Execute all the tests in the current package with the following command.
 $ ballerina test
 ```
 
-List all test groups in the package.
+List all the test groups in the package.
 
 ```
 $ ballerina test --list-groups

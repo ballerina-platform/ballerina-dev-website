@@ -79,15 +79,15 @@ You can see them in the imported class list. We encourage you to generate Baller
 
 Now, we'll create an environment for our Ballerina program. 
 
-### Step 2 - Setting Up the Ballerina Project
+### Step 2 - Setting Up the Ballerina Package
 This section assumes that you have already read [How to Structure Ballerina Code](https://ballerina.io/swan-lake//learn/how-to-structure-ballerina-code/). 
 
-#### Creating a Ballerina Project
+#### Creating a Ballerina Package
 ```sh
 > ballerina new yaml_package
 Created new Ballerina package 'yaml_package' at yaml_package.
 ```
-#### Adding a Ballerina Module to Your Project
+#### Adding a Ballerina Module to Your Package
 This scenario makes use of a user-defined Ballerina module to demonstrate the generation of Ballerina bindings into a specified output directory. However, you could ignore this step if you wish to use the default root module instead.
 
 Navigate to the package directory and execute the following command.
@@ -128,7 +128,7 @@ comments: >
    Billsmer @ 338-4338.\
 ```
 
-#### Verifying the Project
+#### Verifying the Package
 ```sh
 > ballerina build
 Compiling source

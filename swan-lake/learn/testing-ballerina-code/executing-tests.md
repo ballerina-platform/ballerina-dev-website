@@ -87,7 +87,7 @@ A sample view of the test report is shown below.
 The Ballerina test framework provides an option to analyze the code coverage of a standard Ballerina package.
 This feature provides details about the coverage of the program source code by the tests executed.
 
-You can pass the `--code-coverage`  flag in the test execution command and generate the code coverage report  at the end of the test execution. The generated file is an extended version of the test report.
+You can pass the `--code-coverage`  flag in the test execution command and generate the code coverage report at the end of the test execution. The generated file is an extended version of the test report.
 In addition to the test results, this file would contain details about the source code coverage in different levels.
 
 *   Package-level coverage as an average

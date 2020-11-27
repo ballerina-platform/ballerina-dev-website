@@ -156,7 +156,7 @@ In this step, we'll use the `bindgen` tool to generate Ballerina bindings for th
 ```sh
 > ballerina bindgen -mvn org.yaml:snakeyaml:1.25 -o modules/yamlparser org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
-Ballerina project detected at: /Users/sameera/yaml-project
+Ballerina project detected at: /Users/sameera/yaml_project
 
 Resolving maven dependencies...
 snakeyaml-1.25.jar 100% [===============================================] 297/297 KB (0:00:01 / 0:00:00)

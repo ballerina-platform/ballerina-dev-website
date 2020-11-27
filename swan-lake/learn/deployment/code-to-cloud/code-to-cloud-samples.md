@@ -278,7 +278,7 @@ Auto scaling policies allow the container to scale seamlessly without overloadin
 
 1. Execute the `ballerina new scaling` command to create a new package named `scaling`.
 
-2. Replace the content of the `/scaling/src/main.bal` file with the content below.
+2. Replace the content of the `/scaling/main.bal` file with the content below.
 
     ***main.bal***
 

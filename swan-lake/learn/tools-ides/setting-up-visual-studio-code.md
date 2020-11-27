@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/tools-ides/setting-up-visual-studio-code
   - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/
   - /swan-lake/learn/setting-up-visual-studio-code
+  - /swan-lake/learn/setting-up-visual-studio-code/
 ---
 
 ## Downloading VS Code 

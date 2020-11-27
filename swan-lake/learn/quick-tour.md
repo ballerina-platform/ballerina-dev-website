@@ -8,13 +8,12 @@ active: quick-tour
 intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
   - /swan-lake/learn/quick-tour
+  - /swan-lake/learn/quick-tour/
 ---
 
 ## Installing Ballerina
 
-1. [Download](/downloads) Ballerina based on the operating system you are using. 
-1. [Install](/swan-lake/learn/installing-ballerina) Ballerina. 
-1. Set up [Visual Studio Code](/swan-lake/learn/tools-ides/vscode-plugin) for Ballerina.
+[Download](/downloads) Ballerina based on the operating system you are using and install it. 
 
 Let's create a Ballerina HTTP service and also an HTTP client to invoke it.
 

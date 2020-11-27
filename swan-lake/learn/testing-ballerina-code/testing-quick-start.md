@@ -21,13 +21,12 @@ To get started, let's write a simple Ballerina function and test it.
 1. First, let’s create a Ballerina package. Use the `ballerina new` command to create the package.
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
-    Following is the structure of a standard project with the default package. In this example, default module has the
-     source file ***main.bal*** and the test file ***main_test.bal***.
+    The following is the structure of a standard package with the default module. In this example, default module has the
+     ***main.bal*** source file and the ***main_test.bal*** test file.
 
     ```bash
-    project-name/
+    package-directory/
         Ballerina.toml
-        Package.md
         main.bal
         [resources]
         tests/

@@ -15,9 +15,8 @@ redirect_from:
 
 
 ```bash
-project-name/
+package-directory/
     Ballerina.toml
-    Package.md
     main.bal
     [resources]
     tests/              # tests for default module
@@ -31,7 +30,7 @@ project-name/
 ## Test Source Files
 
 Unit tests bound to a module need to be placed in a sub folder called `tests/` within the module. In a standard
- Ballerina project, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are
+ Ballerina package, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are
   considered to be part of the same test suite.
 
 The test source files could have any name. The test functions are just Ballerina functions, which use a special
@@ -41,7 +40,7 @@ The test source files could have any name. The test functions are just Ballerina
 ## Test Resources
 
 The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are
- exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
+ exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the package root.
 
 ## Defining a Test
 
@@ -478,26 +477,26 @@ For each group specified in this annotation, the function that follows the annot
 import ballerina/io;
 import ballerina/test;
 
-// The `beforeGroups1` function is executed before running all the test functions belonging to the group `g1`. 
+// The `beforeGroups1` function is executed before running all the test functions belonging to the `g1` group.
 @test:BeforeGroups { value:["g1"] }
 function beforeGroups1() {
     io:println("I'm the before groups function!");
 }
 
-// Another `beforeGroups2` function is executed before running all the test functions belonging to the groups `g1` and `g2`. 
+// Another `beforeGroups2` function is executed before running all the test functions belonging to the `g1` and `g2` groups. 
 @test:BeforeGroups { value:["g1", "g2"] }
 function beforeGroups2() {
     io:println("I'm another before groups function!");
 }
 
-// A test function that belongs to the group `g1`.
+// A test function that belongs to the `g1` group.
 @test:Config { groups:["g1"] }
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// A test function that belongs to the group `g2`.
+// A test function that belongs to the `g2` group.
 @test:Config { groups:["g2"] }
 function testFunction2() {
     io:println("I belong to group g2 ");
@@ -594,27 +593,27 @@ For each group specified in this annotation, the function that follows the annot
 import ballerina/io;
 import ballerina/test;
 
-// A test function that belongs to the group `g1`.
+// A test function that belongs to the `g1` group.
 @test:Config { groups:["g1"] }
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// A test function that belongs to the group `g2`.
+// A test function that belongs to the `g2` group.
 @test:Config { groups:["g2"] }
 function testFunction2() {
     io:println("I belong to group g2 ");
     test:assertTrue(true, msg = "Failed");
 }
 
-// The `afterGroupsFunc1` function is executed before running all the test functions belonging to the group `g1`. 
+// The `afterGroupsFunc1` function is executed before running all the test functions belonging to the `g1` group.
 @test:AfterGroups { value:["g1"] }
 function afterGroupsFunc1() {
     io:println("I'm the after groups function!");
 }
 
-// The `afterGroupsFunc2` function is executed before running all the test functions belonging to the groups `g1` and `g2`. 
+// The `afterGroupsFunc2` function is executed before running all the test functions belonging to the `g1` and `g2` groups. 
 @test:AfterGroups { value:["g1", "g2"] }
 function afterGroupsFunc2() {
     io:println("I'm another after groups function!");

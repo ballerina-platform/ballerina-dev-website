@@ -265,7 +265,7 @@ All the Ballerina runtime internal exceptions will not be exposed. The `BError` 
 
 ##### Revamp File and Filepath Modules
 
-The `file/filepath` APIs have been revamped in this release. A summarized list of the changes done is as follows.
+The `File` and `Filepath` APIs have been revamped in this release. A summarized list of the changes done is as follows.
 
 1. The `File` and `Filepath` modules have been merged together. There will be no `Filepath` module anymore.
 
@@ -299,38 +299,38 @@ The new high-level APIs below were introduced to provide I/O operations.
 
 1. Introduced a new code-action `Add Type Cast` to add a typecast when variable assignment fails due to incompatible types.
 
-**Before execution:**
-```ballerina
-int myInt = 1.1;
-int myInt = getFloat();
-```
+    **Before execution:**
+        ```ballerina
+        int myInt = 1.1;
+        int myInt = getFloat();
+        ```
 
-**After execution:**
-```ballerina
-int myInt = <int>1.1;
-int myInt = <int>getFloat();
-```
+    **After execution:**
+        ```ballerina
+        int myInt = <int>1.1;
+        int myInt = <int>getFloat();
+        ```
 
 2. The code-action extension APIs have been revamped in this release. A summarized list of changes is as follows.
 
-- The `MatchedNode`, `matchedSymbol`, and `matchedExprType` for the cursor position are available now through the `PositionDetails` construct in the `CodeActionContext`.
-- Listing the priorities can be set for the code-actions now (lower the number, greater the priority).
+    - The `MatchedNode`, `matchedSymbol`, and `matchedExprType` for the cursor position are available now through the `PositionDetails` construct in the `CodeActionContext`.
+    - Listing the priorities can be set for the code-actions now (lower the number, greater the priority).
 
 #### Code to Cloud
 
 1. Introduced code to cloud (c2c) to simplify the experience of developing and deploying Ballerina code in the cloud. Code to cloud builds the containers and required artifacts by deriving the required values from the code without using any annotations.
 
-```ballerina
-import ballerina/http;
-import ballerina/c2c as _;
+        ```ballerina
+        import ballerina/http;
+        import ballerina/c2c as _;
 
-service hello on new http:Listener(9090) {
-    resource function sayHello(http:Caller caller, http:Request req) returns error? {
-        check caller->respond("Hello, World!");
-    }
-}
+        service hello on new http:Listener(9090) {
+            resource function sayHello(http:Caller caller, http:Request req) returns error? {
+                check caller->respond("Hello, World!");
+            }
+        }
 
-```
+        ```
 
 2. Removed the Kubernetes module and replaced it by c2c.
 
@@ -338,12 +338,12 @@ service hello on new http:Listener(9090) {
 
 1. It is no longer possible to specify the version in an import declaration. A specific version can be imported by specifying the package dependency along with the version in the `Ballerina.toml` file.
 
-```toml
-[[dependency]]
-org = "ballerina"
-name = "stringutils"
-version = "0.5.2"
-```
+        ```toml
+        [[dependency]]
+        org = "ballerina"
+        name = "stringutils"
+        version = "0.5.2"
+        ```
 
 2. As the initial step of upcoming changes for the error detail, the detail-type descriptor of an error type descriptor can no longer be a closed record.
 

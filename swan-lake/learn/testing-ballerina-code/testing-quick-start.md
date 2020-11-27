@@ -18,7 +18,7 @@ redirect_from:
 
 To get started, let's write a simple Ballerina function and test it.
 
-1. First, let’s create a Ballerina project. Use the `ballerina new` command to create the project.
+1. First, let’s create a Ballerina package. Use the `ballerina new` command to create the package.
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
     Following is the structure of a standard project with the default package. In this example, default module has the

@@ -84,14 +84,15 @@ This section assumes that you have already read [How to Structure Ballerina Code
 
 #### Creating a Ballerina Project
 ```sh
-> ballerina new yaml-project
-Created new Ballerina project at yaml-project
+> ballerina new yaml_project
+Created new Ballerina project at yaml_project
 
 Next:
     Move into the project directory and use `ballerina add <module-name>` to
     add a new Ballerina module.
 ```
 #### Adding a Ballerina Module to Your Project
+Move into the project directory and execute the following command.
 ```sh
 > ballerina add yamlparser
 Added new ballerina module at 'modules/yamlparser’
@@ -131,20 +132,20 @@ comments: >
 
 #### Verifying the Project
 ```sh
-> ballerina build yamlparser 
+> ballerina build
 Compiling source
-	sameera/yamlparser:0.1.0
+	sameera/yaml_project:0.1.0
 
 Creating balos
-	target/balo/yamlparser-2020r1-any-0.1.0.balo
+	target/balo/sameera-yaml_project-any-0.1.0.balo
 ... 
 ...
 
 Generating executables
-	target/bin/yamlparser.jar
+	target/bin/yaml_project.jar
 ```
 ```sh
-> ballerina run target/bin/yamlparser.jar
+> ballerina run target/bin/yaml_project.jar
 Hello World!
 ```
 Great! You are all set for the next step. 
@@ -158,7 +159,6 @@ In this step, we'll use the `bindgen` tool to generate Ballerina bindings for th
 Ballerina project detected at: /Users/sameera/yaml-project
 
 Resolving maven dependencies...
-snakeyaml-1.25.pom 100% [=================================================] 37/37 KB (0:00:00 / 0:00:00)
 snakeyaml-1.25.jar 100% [===============================================] 297/297 KB (0:00:01 / 0:00:00)
 
 Updated the `Ballerina.toml` file with the new platform libraries.
@@ -191,14 +191,14 @@ The `bindgen` tool generates bindings for:
 
 Before we move onto the next step, let’s verify the generated code. 
 ```sh
-> ballerina build yamlparser 
+> ballerina build
 ... 
 ...
 
 Generating executables
-	target/bin/yamlparser.jar
+	target/bin/yaml_project.jar
 
-> ballerina run target/bin/yamlparser.jar
+> ballerina run target/bin/yaml_project.jar
 Hello World!
 ```
 
@@ -250,7 +250,7 @@ Yaml yaml = newYaml1();
 ####  Loading the YAML Document
 We'll be using the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a Java Map instance from the given `InputStream`.
 ```ballerina
-Object mapObj = yaml.load(inputStream);
+Object mapObj = yaml.load(fileInputStream);
 ```
 
 The `org.yaml.snakeyaml.Yaml.load(InputStream is)` is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.  
@@ -261,7 +261,7 @@ You can print the content of the Map instance in the the standard out as follows
 io:println(mapObj);
 ```
 #### Completing the Code 
-Here, is the complete code. You can replace the contents in `src/yamlparser/main.bal` with the following code.
+Here, is the complete code. You can replace the contents in `modules/yamlparser/yamlparser.bal` with the following code.
 ```ballerina
 import ballerina/io;
  
@@ -280,22 +280,22 @@ public function main(string... args) returns error? {
 
 Let's build and run this code. 
 ```sh
-> ballerina build yamlparser 
+> ballerina build
 Compiling source
-	sameera/yamlparser:0.1.0
+	sameera/yaml_project:0.1.0
 
 Creating balos
-	target/balo/yamlparser-2020r1-any-0.1.0.balo
+	target/balo/sameera-yaml_project-any-0.1.0.balo
 ... 
 ...
 
 Generating executables
-	target/bin/yamlparser.jar
+	target/bin/yaml_project.jar
 ```
 
 Now, we need to pass the YAML file name as the first argument. 
 ```sh
-> ballerina run target/bin/yamlparser.jar invoice.yml
+> ballerina run target/bin/yaml_project.jar invoice.yml
 {invoice=34843, date=Mon Jan 22 16:00:00 PST 2001, bill-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.
 Suite #292
 , city=Royal Oak, state=MI, postal=48046}}, ship-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.
@@ -311,25 +311,21 @@ The next sections provide more details on various aspects related to Java intero
 The following subsections explain how the `bindgen` tool works.
 
 - [The `bindgen` Command](#the-bindgen-command)
-    - [Generated Bridge Code](#generated-bridge-code)
-    - [Java to Ballerina Mapping](#java-to-ballerina-mapping)
-        - [Java Classes](#java-classes)
-        - [Constructors](#constructors)
-        - [Methods](#methods)
-        - [Fields](#fields)
-        - [External Interop Functions](#external-interop-functions)
-        - [Dependency Objects](#dependency-objects)
-        - [Ballerina JObject](#ballerina-jobject)
-    - [Java to Ballerina Type Mappings](#java-to-ballerina-type-mappings)
-    - [Support for Java Subtyping](#support-for-java-subtyping)
-    - [Support for Java Casting](#support-for-java-casting)
-    - [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)
-- [Packaging Java Libraries with Ballerina Programs](#packaging-java-libraries-with-ballerina-programs)
-    - [Ballerina FFI](#ballerina-ffi)
-        - [The External Function Body](#the-external-function-body)
-        - [The Handle Type](#the-handle-type)
+- [Generated Bridge Code](#generated-bridge-code)
+- [Java to Ballerina Mapping](#java-to-ballerina-mapping)
+    - [Java Classes](#java-classes)
+    - [Constructors](#constructors)
+    - [Methods](#methods)
+    - [Fields](#fields)
+    - [External Interop Functions](#external-interop-functions)
+    - [Dependency Objects](#dependency-objects)
+    - [Ballerina JObject](#ballerina-jobject)
+- [Java to Ballerina Type Mappings](#java-to-ballerina-type-mappings)
+- [Support for Java Subtyping](#support-for-java-subtyping)
+- [Support for Java Casting](#support-for-java-casting)
+- [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)
 
->**Note:** The `bindgen` tool is still experimental. We are in the process of improving the generated code.*
+>**Note:** The `bindgen` tool is still experimental. We are in the process of improving the generated code.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
@@ -380,9 +376,9 @@ The generated bindings will be inside the specified output directory as follows.
 ### Java to Ballerina Mapping
 
 #### Java Classes
-A Java class will be mapped onto a Ballerina object. This Ballerina object will have the same name as that of the Java class. 
+A Java class will be mapped onto a Ballerina class. This Ballerina class will have the same name as that of the Java class.
 
-E.g., Generated Ballerina object of the `java.util.ArrayDeque` class will be as follows.
+E.g., Generated Ballerina class of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
 @java:Binding {
     'class: "java.util.ArrayDeque"
@@ -410,7 +406,7 @@ E.g. The command to generate bindings for `java.lang.Character.Subset` class wil
 When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the Ballerina bindings generated.
 
 #### Constructors
-Constructors of Java classes will be mapped onto public functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exists multiple constructors, they will be suffixed with an auto increment number.
+Constructors of Java classes will be mapped onto functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exists multiple constructors, they will be suffixed with an auto increment number.
 
 E.g., Generated constructors of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
@@ -444,7 +440,7 @@ class ArrayDeque {
    }
 };
 ```
-Static methods would reside outside the Ballerina object as public functions, which take the name of the Java method with the Java class name appended at the beginning as a prefix.
+Static methods would reside outside the Ballerina object as functions, which take the name of the Java method with the Java class name appended at the beginning as a prefix.
  
 E.g., A generated static method `randomUUID()` of the `java.util.UUID` class will be as follows. Here, the Ballerina equivalent of calling `UUID.randomUUID()` in Java will be `UUID_randomUUID()`.
 ```ballerina
@@ -496,7 +492,7 @@ public class List {
 ```
 
 #### Ballerina JObject
-A Ballerina binding object representing a Java class will always be implemented using the abstract class `JObject`. This is present inside the `ballerina/java` module of the Ballerina standard library and could be accessed as `java:JObject` if the java module is imported into a project.
+A Ballerina binding class representing a Java class will always be implemented using the abstract object `JObject`. This is present inside the `ballerina/java` module of the Ballerina standard library and could be accessed as `java:JObject` if the java module is imported into a project.
 
 To explain the implementation further, this Ballerina object will always store the handle reference of the Java object in it’s `jObj` field.
 
@@ -554,17 +550,16 @@ function read() returns int|IOException {
 >**Note:** If a Java exception class is generated as a Ballerina binding object, it would follow the naming convention `JException` or `JError`. For instance, the binding object's name for `java.io.FileNotFoundException` would be as `JFileNotFoundException`.
 
 ## Packaging Java Libraries with Ballerina Programs
-This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/). When you compile a Ballerina program with`ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with`ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
+This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/). When you compile a Ballerina program with`ballerina build`, the compiler creates an executable JAR file and when you compile a Ballerina module with`ballerina build -c`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 
 There are two kinds of Ballerina projects: 
 1. Produces executable programs 
-	* Contains one or more Ballerina modules and at least one of them has to be a root module.
-	* A root module has a `main` method and/or one or more services.
-	* Build the project with `ballerina build <root-module>` or use `ballerina build -a` if there is more than one root module.
-	* The best practice is to maintain a single root module in a Ballerina project.
+	* Contains a default root module and one or more Ballerina modules.
+	* The default root module has a `main` method and/or one or more services.
+	* Build the project with `ballerina build`.
 2. Produces Ballerina library modules
-	* Contains one or more Ballerina library modules. 
-	* Build the modules with `ballerina build -c <module>` or `ballerina build -c -a` to build all modules.
+	* Contains one or more Ballerina library modules, with at least one exported module.
+	* Build the modules with `ballerina build -c`.
 	* Usually, the compiled library modules are pushed to Ballerina central.
 
 How you package JAR files with compiled archives is the same in both kinds of projects. Therefore, a sample Ballerina project, which produces an executable is used here.
@@ -733,7 +728,7 @@ function newArrayDeque() returns handle = @java:Constructor {
 } external;
 ```
 
-You can also create a wrapper Ballerina object for Java classes as follows.
+You can also create a wrapper Ballerina class for Java classes as follows.
 
 ```ballerina
 import ballerina/java;
@@ -742,7 +737,7 @@ public function main() {
     ArrayDeque ad = new; 
 }
 
-type ArrayDeque object {
+class ArrayDeque {
     private handle jObj;
 
     function __init(){

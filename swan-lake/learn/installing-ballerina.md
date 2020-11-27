@@ -8,6 +8,7 @@ active: installing-ballerina
 intro: The sections below include information about installing Ballerina.
 redirect_from:
   - /swan-lake/learn/installing-ballerina
+  - /swan-lake/learn/installing-ballerina/
   - /swan-lake/learn/installing-ballerina/#installing-from-source
   - /swan-lake/learn/installing-ballerina/#installing-from-source/
 ---

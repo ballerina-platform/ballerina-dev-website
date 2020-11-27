@@ -10,6 +10,8 @@ redirect_from:
   - /learn/quick-tour
   - /v1-2/learn/quick-tour
   - /v1-2/learn/quick-tour/
+  - /learn/getting-started/quick-tour/
+  - /learn/getting-started/quick-tour
 ---
 
 ## Installing Ballerina

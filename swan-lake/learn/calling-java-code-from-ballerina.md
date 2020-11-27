@@ -23,7 +23,7 @@ This guide teaches you how to write those bindings manually as well as how to ge
 
 ## The Need to Call Java from Ballerina 
 - Ballerina is a relatively new language. Therefore, you may experience a shortage of libraries in [Ballerina Central](https://central.ballerina.io/). In such situations, as a workaround, you can use an existing Java library.
-- You are already familiar with a stable Java API that you would like to use in your Ballerina project. 
+- You are already familiar with a stable Java API that you would like to use in your Ballerina package.
 - You want to take advantage of the strengths of Ballerina but you don’t want to reinvest in the libraries that you or your company have written already. 
 
 There may be other reasons but these are great motivations to use Ballerina bindings. 
@@ -40,7 +40,7 @@ SnakeYAML is a YAML parser for Java. In this section, we'll learn how to use thi
 
 We'll develop a Ballerina program that parses the given YAML file and writes the content to the standard out.
 
-Let's get started.  
+Let's get started.
 
 ### Step 1 - Writing the Java Code
 We recommend you to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the `bindgen` tool to generate Ballerina bindings for those classes. 
@@ -84,21 +84,19 @@ This section assumes that you have already read [How to Structure Ballerina Code
 
 #### Creating a Ballerina Project
 ```sh
-> ballerina new yaml_project
-Created new Ballerina project at yaml_project
-
-Next:
-    Move into the project directory and use `ballerina add <module-name>` to
-    add a new Ballerina module.
+> ballerina new yaml_package
+Created new Ballerina package 'yaml_package' at yaml_package.
 ```
 #### Adding a Ballerina Module to Your Project
-Move into the project directory and execute the following command.
+This scenario makes use of a user-defined Ballerina module to demonstrate the generation of Ballerina bindings into a specified output directory. However, you could ignore this step if you wish to use the default root module instead.
+
+Navigate to the package directory and execute the following command.
 ```sh
 > ballerina add yamlparser
 Added new ballerina module at 'modules/yamlparser’
 ```
 #### Adding a Sample YAML File 
-Copy the below content to a file named invoice.yml in the project root directory.
+Copy the below content to a file named invoice.yml in the package root directory.
 ```yaml
 invoice: 34843
 date   : 2001-01-23
@@ -134,18 +132,18 @@ comments: >
 ```sh
 > ballerina build
 Compiling source
-	sameera/yaml_project:0.1.0
+	sameera/yaml_package:0.1.0
 
 Creating balos
-	target/balo/sameera-yaml_project-any-0.1.0.balo
+	target/balo/sameera-yaml_package-any-0.1.0.balo
 ... 
 ...
 
 Generating executables
-	target/bin/yaml_project.jar
+	target/bin/yaml_package.jar
 ```
 ```sh
-> ballerina run target/bin/yaml_project.jar
+> ballerina run target/bin/yaml_package.jar
 Hello World!
 ```
 Great! You are all set for the next step. 
@@ -156,7 +154,7 @@ In this step, we'll use the `bindgen` tool to generate Ballerina bindings for th
 ```sh
 > ballerina bindgen -mvn org.yaml:snakeyaml:1.25 -o modules/yamlparser org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
-Ballerina project detected at: /Users/sameera/yaml_project
+Ballerina package detected at: /Users/sameera/yaml_package
 
 Resolving maven dependencies...
 snakeyaml-1.25.jar 100% [===============================================] 297/297 KB (0:00:01 / 0:00:00)
@@ -196,14 +194,14 @@ Before we move onto the next step, let’s verify the generated code.
 ...
 
 Generating executables
-	target/bin/yaml_project.jar
+	target/bin/yaml_package.jar
 
-> ballerina run target/bin/yaml_project.jar
+> ballerina run target/bin/yaml_package.jar
 Hello World!
 ```
 
 ### Step 4 - Writing the Ballerina Code
->**Note:** The `bindgen` tool is still experimental. We are in the process of improving the generated code.
+>**Note:** The `bindgen` tool is still experimental. The generated code is in the process of being improved.
 
 Now, we’ll use the generated bindings and write the Ballerina code, which uses the SnakeYAML library. Here is the Java code. Let’s develop the corresponding Ballerina code step by step. 
 ```java
@@ -282,20 +280,20 @@ Let's build and run this code.
 ```sh
 > ballerina build
 Compiling source
-	sameera/yaml_project:0.1.0
+	sameera/yaml_package:0.1.0
 
 Creating balos
-	target/balo/sameera-yaml_project-any-0.1.0.balo
+	target/balo/sameera-yaml_package-any-0.1.0.balo
 ... 
 ...
 
 Generating executables
-	target/bin/yaml_project.jar
+	target/bin/yaml_package.jar
 ```
 
 Now, we need to pass the YAML file name as the first argument. 
 ```sh
-> ballerina run target/bin/yaml_project.jar invoice.yml
+> ballerina run target/bin/yaml_package.jar invoice.yml
 {invoice=34843, date=Mon Jan 22 16:00:00 PST 2001, bill-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.
 Suite #292
 , city=Royal Oak, state=MI, postal=48046}}, ship-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.
@@ -325,7 +323,7 @@ The following subsections explain how the `bindgen` tool works.
 - [Support for Java Casting](#support-for-java-casting)
 - [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)
 
->**Note:** The `bindgen` tool is still experimental. We are in the process of improving the generated code.
+>**Note:** The `bindgen` tool is still experimental. The generated code is in the process of being improved.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
@@ -343,7 +341,7 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
 
 `(-mvn|--maven) <groupId>:<artifactId>:<version>`
-This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the project. If the tool is not executed inside a project or if the output path does not point to a project, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project.
+This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the package. If the tool is not executed inside a package or if the output path does not point to a package, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina package.
 
 `(-o|--output) <output>`
 This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module.
@@ -376,9 +374,9 @@ The generated bindings will be inside the specified output directory as follows.
 ### Java to Ballerina Mapping
 
 #### Java Classes
-A Java class will be mapped onto a Ballerina class. This Ballerina class will have the same name as that of the Java class.
+A Java class will be mapped to a Ballerina class. This Ballerina class will have the same name as that of the Java class.
 
-E.g., Generated Ballerina class of the `java.util.ArrayDeque` class will be as follows.
+E.g., The generated Ballerina class of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
 @java:Binding {
     'class: "java.util.ArrayDeque"
@@ -406,7 +404,7 @@ E.g. The command to generate bindings for `java.lang.Character.Subset` class wil
 When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the Ballerina bindings generated.
 
 #### Constructors
-Constructors of Java classes will be mapped onto functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exists multiple constructors, they will be suffixed with an auto increment number.
+Constructors of Java classes will be mapped to functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exists multiple constructors, they will be suffixed with an auto-incremented number.
 
 E.g., Generated constructors of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
@@ -492,7 +490,7 @@ public class List {
 ```
 
 #### Ballerina JObject
-A Ballerina binding class representing a Java class will always be implemented using the abstract object `JObject`. This is present inside the `ballerina/java` module of the Ballerina standard library and could be accessed as `java:JObject` if the java module is imported into a project.
+A Ballerina binding class representing a Java class will always be implemented using the `JObject` abstract object. This is present inside the `ballerina/java` module of the Ballerina standard library and could be accessed as `java:JObject` if the java module is imported into a package.
 
 To explain the implementation further, this Ballerina object will always store the handle reference of the Java object in it’s `jObj` field.
 
@@ -550,21 +548,24 @@ function read() returns int|IOException {
 >**Note:** If a Java exception class is generated as a Ballerina binding object, it would follow the naming convention `JException` or `JError`. For instance, the binding object's name for `java.io.FileNotFoundException` would be as `JFileNotFoundException`.
 
 ## Packaging Java Libraries with Ballerina Programs
-This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/). When you compile a Ballerina program with`ballerina build`, the compiler creates an executable JAR file and when you compile a Ballerina module with`ballerina build -c`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 
-There are two kinds of Ballerina projects: 
+>**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/).
+ 
+When you compile a Ballerina program with `ballerina build`, the compiler creates an executable JAR file and when you compile a Ballerina module with `ballerina build -c`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
+
+There are two kinds of Ballerina packages:
 1. Produces executable programs 
 	* Contains a default root module and one or more Ballerina modules.
 	* The default root module has a `main` method and/or one or more services.
-	* Build the project with `ballerina build`.
+	* Build the package with `ballerina build`.
 2. Produces Ballerina library modules
-	* Contains one or more Ballerina library modules, with at least one exported module.
+	* Contains one or more Ballerina library modules with at least one exported module.
 	* Build the modules with `ballerina build -c`.
 	* Usually, the compiled library modules are pushed to Ballerina central.
 
-How you package JAR files with compiled archives is the same in both kinds of projects. Therefore, a sample Ballerina project, which produces an executable is used here.
+How you package JAR files with compiled archives is the same in both kinds of packages. Therefore, a sample Ballerina package, which produces an executable is used here.
 
-Here, is a Ballerina project layout of a microservice called "order management". The module `ordermgt` - the root module - contains a RESTFul service, which exposes resource functions to create, retrieve, update, and cancel orders. The `dbutils` module offers utility functions, which use a MySQL database to store orders. 
+Here, is a Ballerina package layout of a microservice called "order management". The module `ordermgt` - the root module - contains a RESTFul service, which exposes resource functions to create, retrieve, update, and cancel orders. The `dbutils` module offers utility functions, which use a MySQL database to store orders.
 
 ```
 ordermgt_service/
@@ -577,8 +578,8 @@ ordermgt_service/
     └── dbutils/
 ```    
     
-The Java MySQL connector is placed inside the `javalibs` directory. You are free to store the JAR files anywhere in your file system. This example places those JAR files inside the project directory. As a best practice, maintain Java libraries inside the project.
-The `Ballerina.toml` file, which marks a directory as a Ballerina project lives at the root of the project. It is also a manifest file that contains project information, dependent Ballerina module information, and platform-specific library information. Java libraries are considered as platform-specific libraries. 
+The Java MySQL connector is placed inside the `javalibs` directory. You are free to store the JAR files anywhere in your file system. This example places those JAR files inside the package directory. As a best practice, maintain Java libraries inside the package.
+The `Ballerina.toml` file, which marks a directory as a Ballerina package lives at the root of the package. It is also a manifest file that contains package information, dependent Ballerina module information, and platform-specific library information. Java libraries are considered as platform-specific libraries.
 Here, is how you can specify a JAR file dependency in the`Ballerina.toml`.
 
 ```toml
@@ -593,7 +594,7 @@ path = "<path-to-jar-file-2>"
 modules = ["<ballerina-module-1>","<ballerina-module-2>"]
 ```
 
-Alternatively, you can also specify Maven dependencies as platform-specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the project. You can specify a Maven dependency in the `Ballerina.toml` file as shown below.
+Alternatively, you can also specify Maven dependencies as platform-specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the package. You can specify a Maven dependency in the `Ballerina.toml` file as shown below.
 
 ```toml
 [[platform.java11.dependency]]
@@ -613,7 +614,7 @@ artifactId = "<artifact-id>"
 version = "<version>"
 ```
 
-Now, let’s look at the contents of the `Ballerina.toml` file in this project.
+Now, let’s look at the contents of the `Ballerina.toml` file in this package.
 ```toml
 [[platform.java11.dependency]] 
 path = "./javalibs/mysql-connector-java-<version>.jar" 
@@ -629,9 +630,9 @@ artifactId = "mysql-connector-java"
 version = "<version>"
 ```
 
-If your project has only one root module, then you can attach all the JAR file dependencies to your root module as the best practise. 
+If your package has only the default root module, then you can attach all the JAR file dependencies to your default root module as the best practise.
 
-If your project is a Ballerina library module project, then you should specify the JAR file dependencies in each Ballerina module if that module depends on the JAR file. 
+If your package is a Ballerina library package, then you should specify the JAR file dependencies in each Ballerina module if that module depends on the JAR file.
 
 Now, use `ballerina build ordermgt` to build an executable JAR. This command packages all JARs specified in your `Ballerina.toml` with the executable JAR file. 
 

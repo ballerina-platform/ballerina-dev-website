@@ -99,11 +99,11 @@ The service generation process is complete. The following files were created.
 #### Generate an OpenAPI Contract from a Service
 
  ```bash
-    ballerina openapi -i src/helloworld/helloService.bal
+    ballerina openapi -i modules/helloworld/helloService.bal
   ```
 This will generate the OpenAPI contracts for the Ballerina services, which are in the `hello.bal` Ballerina file.
  ```bash 
-    ballerina openapi -i src/helloworld/helloService.bal (-s | --service) helloworld
+    ballerina openapi -i modules/helloworld/helloService.bal (-s | --service) helloworld
   ```
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
  `helloService.bal` file.

@@ -1,0 +1,350 @@
+---
+layout: ballerina-blank-page
+title: Release Note
+---
+### Overview of Ballerina Swan Lake Preview 6 
+
+This release is the sixth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
+
+- [Updating Ballerina](#updating-ballerina)
+    - [For existing users](#for-existing-users)
+    - [For new users](#for-new-users)
+- [Highlights](#highlights)
+- [What is new in Ballerina Swan Lake Preview 6](#what-is-new-in-ballerina-swan-lake-preview-6)
+    - [Language](#language)
+        - [Support for Configurability](#support-for-configurability)
+        - [Isolated Variables](#isolated-variables)
+        - [Isolated Object Constructor Expressions](#isolated-object-constructor-expressions)
+        - [Support for Distinct Objects](#support-for-distinct-objects)
+    - [Runtime](#runtime)
+        - [Support for DynamicListener](#support-for-dynamiclistener)
+        - [New Runtime APIs](#new-runtime-apis)
+    - [Standard Library](#standard-library)
+        - [Revamp File and Filepath Modules](#revamp-file-and-filepath-modules)
+        - [Improved IO Module](#improved-io-module)
+    - [Language Server](#language-server)
+    - [Code to Cloud](#code-to-cloud)
+    - [Breaking Changes](#breaking-changes)
+
+#### Updating Ballerina
+
+You can use the update tool to update to Ballerina Swan Lake Preview 6 as follows.
+
+##### For existing users
+
+If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+                        
+> `ballerina update`
+
+ Next, execute the command below to update to Swan Lake Preview 6.
+
+ > `ballerina dist pull slp6`                 
+
+However, if you are using a Ballerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
+
+##### For new users
+
+If you have not installed Ballerina, then download the [installers](https://ballerina.io/downloads/) to install.
+
+#### Highlights
+
+- Support for configuring module-level, basic variables at the program execution
+- Ability to mark module-variable declarations with an initial value expression as `isolated`
+- Ability to use the `isolated` qualifier  with an object-constructor expression to construct an `isolated` object
+- Support to mark an object-type definition as a `distinct` object type 
+- Allow using the object constructor to create distinct objects
+- Support to register and deregister a dynamic listener at the runtime
+- Introduction of the new runtime APIs
+- Revamp of the `File/Filepath` modules
+- Introduction of new high-level APIs to provide I/O operations
+- Introduction of a new code-action `Add Type Cast`
+- Revamp of the code-action extension APIs 
+- Introduction of code to cloud to simplify deploying Ballerina code in the cloud
+
+### What is new in Ballerina Swan Lake Preview 6
+
+#### Language
+
+##### Support for Configurability
+
+Now, Ballerina supports configuring module-level, basic variables at the program execution. The value provided in the program will be overridden by the value specified in the configuration file. These variables can be initialized using the `configurable` keyword in the following ways. 
+
+- Required Configurable Variable 
+
+    This specifies that a value must be specified for this variable in the configuration file.
+
+    ``` ballerina
+    configurable string hostName = ?;
+    ```
+
+- Optional Configurable Variable
+
+    This specifies that the provided value can be overridden by the value specified in the configuration file. If it is not provided in the configuration, the value ` “0.0.0.0” ` is used for initialization.
+
+    ```ballerina
+    configurable string hostName = “0.0.0.0”;
+    ```
+
+Currently, the configuration is supported through a TOML (v0.4.0) file. This `configuration.toml` file is located in the running directory. The format of the configuration TOML file is as follows.
+
+```toml
+[orgName.pkgName.submoduleName]
+# The above toml table specification is not needed for single file execution
+intVar = 24
+floatVar = 4.8
+stringVar = "hello world"
+booleanVar = false
+```
+
+Currently, Ballerina supports configurable variables of the types `int`, `float`, `boolean`, and `string`. Future versions will add support for configurable variables of any type that is a subtype of `readonly&anydata`.
+
+##### Isolated Variables
+
+Module variable declarations with an initial value expression can now be marked as `isolated`. An `isolated` variable can be accessed only within a `lock` statement.
+
+Similar to isolated objects, isolated variables are also considered as isolated roots, which guarantee that their mutable state is only reachable via the isolated root. As with `isolated` objects, when an `isolated` variable is accessed within a `lock` statement, additional rules apply to how values are transferred in and out of the `lock` statement.
+
+An `isolated` variable can also be accessed in an `isolated` function.
+
+```ballerina
+type Coordinates record {|
+    decimal latitude;
+    decimal longitude;
+|};
+
+isolated map<Coordinates> cities = {};
+
+isolated function getLocation(string city) returns Coordinates? {
+    lock {
+        return cities[city].clone();
+    }
+}
+
+isolated function resetCities() {
+    lock {
+        cities = {};
+    }
+}
+```
+
+##### Isolated Object Constructor Expressions
+
+Several changes have been introduced to how an object constructor expression can construct an `isolated` object. Now, the `isolated` qualifier can be used with an object constructor expression to construct an `isolated` object.
+
+```ballerina
+class Identifier {
+    int id = 1;
+}
+
+public function main() {
+    Identifier nonIsolatedIdentifier = new;
+
+    Identifier isolatedIdentifier = isolated object {
+        final int id = 1;
+        private string name = "default";
+
+        function updateName(string name) {
+            lock {
+                self.name = name;
+            }
+        }
+    };
+
+    boolean b1 = <any> nonIsolatedIdentifier is isolated object {}; // false
+    boolean b2 = <any> isolatedIdentifier is isolated object {}; // true
+}
+```
+
+An object-constructor expression also constructs an `isolated` object if all of the fields of the object constructor expression are `final` and the types of the fields are subtypes of `readonly` or `isolated object {}`.
+
+```ballerina
+isolated class Identifier {
+    final int i;
+    private int j;
+
+    isolated function init(int i, int j) {
+        self.i = i;
+        self.j = j;
+    }
+}
+
+public function main() {
+    var ob = object { // Constructs an `isolated` object.
+        final int a = 1000;
+        final Identifier b = new (1, 2);
+    };
+
+    isolated object {} isolatedOb = ob; // Now valid.
+}
+```
+
+##### Support for Distinct Objects
+
+###### Distinct Object Type
+
+Marking an object type definition as a `distinct` object type is supported now.
+
+```ballerina
+type Circle distinct object {
+   int x;
+   int y;
+   int r;
+};
+
+type Color [int, int, int];
+
+class ColoredCircle {
+   *Circle;
+   Color color;
+
+   function init(int x, int y, int r, Color color) {
+       self.x = x;
+       self.y = y;
+       self.r = r;
+       self.color = color;
+   }
+}
+
+class ColoredCircleLookAlike {
+   int x;
+   int y;
+   int r;
+   Color color;
+
+   function init(int x, int y, int r, Color color) {
+       self.x = x;
+       self.y = y;
+       self.r = r;
+       self.color = color;
+   }
+}
+
+Circle c = new ColoredCircle(0, 0, 0, [123, 100, 100]);
+Circle d = new ColoredCircleLookAlike(0, 0, 0, [123, 100, 100]); // Not allowed.
+```
+
+The `ColoredCircle` is a subtype of the `Circle` distinct object type even though `ColoredCircle` is not marked as a distinct class.
+
+Although `ColoredCircleLookAlike` is structurally a subtype of the `Circle` type, since `Circle` is a distinct type and `ColoredCircleLookAlike` does not have a reference to it,`ColoredCircleLookAlike` is not considered as a subtype of `Circle`.
+
+###### Distinct Object Constructor
+
+If no type reference is provided for the object constructor, contextually, the expected type must be definite and type-ids of the constructed object are the type-ids of the contextually-expected type. This allows using the object constructor to create distinct objects.
+
+#### Runtime
+
+##### Support for DynamicListener
+
+ A dynamic listener can be registered and deregistered at the runtime as follows.
+
+ ```ballerina
+ ModListener listenerVar = new(); // Where ModListener is a DynamicListener 
+	runtime:registerListener(listenerVar);
+	runtime:deregisterListener(listenerVar);
+```
+
+These methods and the definition of the `DynamicListener` has been added to the new `lang.runtime` module.
+
+##### New Runtime APIs
+
+The `io.ballerina.runtime.api.` package will only be exposed to the outside. The runtime API package and its sub packages will contain the required APIs to handle the runtime constructs as follows.
+
+| Package                                                             | Description                                                                                                                                                                                                                                                               |
+|---------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| io.ballerina.runtime.api.creators                                   | Provides APIs to create runtime types, values, and errors                                                                                                                                                                                                                  |
+| io.ballerina.runtime.api.utils                                      | Provides APIs to manage XML, JSON, string, and type-related operations.                                                                                                                                                                                                      |
+| io.ballerina.runtime.api.types and  io.ballerina.runtime.api.values | Holds the Ballerina runtime API types and values.                                                                                                                                                                                                                             |
+| io.ballerina.runtime.api.Environment                                | Interop functions can have the `Environment` class variable as the first parameter.  This provides APIs to get the current module, strand ID, strand name, and strand metadata.  Also, with the environment instance, you can set and get the strand local properties. |
+| io.ballerina.runtime.api.Runtime                                    | Environment also provides an instance of current runtime class which will contain apis to invoke ballerina object functions.                                                                                                                                              |
+| io.ballerina.runtime.api.*                                          | Contains `Future`, `Module`, `PredefinedTypes`, and `TypeTags` classes to handle the other runtime constructs.                                                                                                
+All the Ballerina runtime internal exceptions will not be exposed. The `BError` should be used to handle Ballerina runtime errors. The `io.ballerina.runtime.api.creators.ErrorCreator` provides the required APIs to create runtime errors.                                                                         
+
+#### Standard Library
+
+##### Revamp File and Filepath Modules
+
+The `file/filepath` APIs have been revamped in this release. A summarized list of the changes done is as follows.
+
+1. The `File` and `Filepath` modules have been merged together. There will be no `Filepath` module anymore.
+
+2. Some APIs have been removed.
+
+    - From `filepath` - `extension`, `getPathSeparator`, `getPathListSeparator`, `isReserved`, and `matches`
+    - From `file` - `exists`, `tempDir`
+
+3. The implementation of some APIs has been modified.
+
+    - `Filepath` - `normalize`
+    - `File` - `createDir`, `remove`, `copy`, `readDir`, `getMetaData` (earlier `getFileInfo`)
+
+4. Some APIs have been introduced newly.
+
+    - `createTemp` - to create a temporary file in either the default `temp` directory of the OS or in a specific directory.
+    - `createTempDir` - to create a temporary directory as above.
+    - `test` - checks if a file/directory exists, readable, writable, etc.
+
+##### Improved IO Module
+
+The new high-level APIs below were introduced to provide I/O operations.
+
+1. Added a new set of APIs to read from files supporting different data types.
+    E.g., `io:fileReadBytes`, `io:fileReadJson`, `io:fileReadCsv`, and `io:fileReadXml`
+
+2. Added a new set of APIs to read files as streams.
+    E.g., `io:fileReadBlocksAsStream`, `io:fileReadLinesAsStream`, and `io:fileReadCsvAsStream`
+
+#### Language Server
+
+1. Introduced a new code-action `Add Type Cast` to add a typecast when variable assignment fails due to incompatible types.
+
+**Before execution:**
+```ballerina
+int myInt = 1.1;
+int myInt = getFloat();
+```
+
+**After execution:**
+```ballerina
+int myInt = <int>1.1;
+int myInt = <int>getFloat();
+```
+
+2. The code-action extension APIs have been revamped in this release. A summarized list of changes is as follows.
+
+- The `MatchedNode`, `matchedSymbol`, and `matchedExprType` for the cursor position are available now through the `PositionDetails` construct in the `CodeActionContext`.
+- Listing the priorities can be set for the code-actions now (lower the number, greater the priority).
+
+#### Code to Cloud
+
+1. Introduced code to cloud (c2c) to simplify the experience of developing and deploying Ballerina code in the cloud. Code to cloud builds the containers and required artifacts by deriving the required values from the code without using any annotations.
+
+```ballerina
+import ballerina/http;
+import ballerina/c2c as _;
+
+service hello on new http:Listener(9090) {
+    resource function sayHello(http:Caller caller, http:Request req) returns error? {
+        check caller->respond("Hello, World!");
+    }
+}
+
+```
+
+2. Removed the Kubernetes module and replaced it by c2c.
+
+#### Breaking Changes
+
+1. It is no longer possible to specify the version in an import declaration. A specific version can be imported by specifying the package dependency along with the version in the `Ballerina.toml` file.
+
+```toml
+[[dependency]]
+org = "ballerina"
+name = "stringutils"
+version = "0.5.2"
+```
+
+2. As the initial step of upcoming changes for the error detail, the detail-type descriptor of an error type descriptor can no longer be a closed record.
+
+3. The Kubernetes module is removed and replaced by the c2c module.
+
+

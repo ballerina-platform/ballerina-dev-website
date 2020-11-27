@@ -28,7 +28,7 @@ Code to cloud builds the containers and required artifacts by deriving the requi
 
 ## Package Layout
 
-Ballerina encourages to have one microservice per package. In order to adhere to that rule, code to cloud generates only one container per package. These artifacts can be found in the `target` directory of the package. A complete representation of the package structure is as follows.
+Ballerina encourages to have one microservice per package. In order to adhere to that rule, code to cloud generates only one container per package. These artifacts can be found in the `target` directory of the package. A complete representation of the package layout is as follows.
 
 ```
 ├── Kubernetes.toml                               

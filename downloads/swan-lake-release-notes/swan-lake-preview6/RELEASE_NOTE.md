@@ -7,8 +7,8 @@ title: Release Note
 This release is the sixth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
-    - [For existing users](#for-existing-users)
-    - [For new users](#for-new-users)
+    - [For Existing Users](#for-existing-users)
+    - [For New Users](#for-new-users)
 - [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Preview 6](#what-is-new-in-ballerina-swan-lake-preview-6)
     - [Language](#language)
@@ -30,7 +30,7 @@ This release is the sixth preview version of Ballerina Swan Lake. This release i
 
 You can use the update tool to update to Ballerina Swan Lake Preview 6 as follows.
 
-##### For existing users
+##### For Existing Users
 
 If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
@@ -42,7 +42,7 @@ If you are already using Ballerina, you can directly update your distribution to
 
 However, if you are using a Ballerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
 
-##### For new users
+##### For New Users
 
 If you have not installed Ballerina, then download the [installers](https://ballerina.io/downloads/) to install.
 

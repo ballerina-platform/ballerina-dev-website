@@ -300,16 +300,16 @@ The new high-level APIs below were introduced to provide I/O operations.
 1. Introduced a new code-action `Add Type Cast` to add a typecast when variable assignment fails due to incompatible types.
 
     **Before execution:**
-        ```ballerina
-        int myInt = 1.1;
-        int myInt = getFloat();
-        ```
+    ```ballerina
+    int myInt = 1.1;
+    int myInt = getFloat();
+    ```
 
     **After execution:**
-        ```ballerina
-        int myInt = <int>1.1;
-        int myInt = <int>getFloat();
-        ```
+    ```ballerina
+    int myInt = <int>1.1;
+    int myInt = <int>getFloat();
+    ```
 
 2. The code-action extension APIs have been revamped in this release. A summarized list of changes is as follows.
 

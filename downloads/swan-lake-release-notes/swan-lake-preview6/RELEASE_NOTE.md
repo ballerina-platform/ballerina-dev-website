@@ -256,7 +256,9 @@ The `io.ballerina.runtime.api.` package will only be exposed to the outside. The
 | io.ballerina.runtime.api.types and  io.ballerina.runtime.api.values | Holds the Ballerina runtime API types and values.                                                                                                                                                                                                                             |
 | io.ballerina.runtime.api.Environment                                | Interop functions can have the `Environment` class variable as the first parameter.  This provides APIs to get the current module, strand ID, strand name, and strand metadata.  Also, with the environment instance, you can set and get the strand local properties. |
 | io.ballerina.runtime.api.Runtime                                    | Environment also provides an instance of current runtime class which will contain apis to invoke ballerina object functions.                                                                                                                                              |
-| io.ballerina.runtime.api.*                                          | Contains `Future`, `Module`, `PredefinedTypes`, and `TypeTags` classes to handle the other runtime constructs.                                                                                                
+| io.ballerina.runtime.api.*                                          | Contains `Future`, `Module`, `PredefinedTypes`, and `TypeTags` classes to handle the other runtime constructs.                                                               
+
+
 All the Ballerina runtime internal exceptions will not be exposed. The `BError` should be used to handle Ballerina runtime errors. The `io.ballerina.runtime.api.creators.ErrorCreator` provides the required APIs to create runtime errors.                                                                         
 
 #### Standard Library

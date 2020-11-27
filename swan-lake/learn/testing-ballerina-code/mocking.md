@@ -308,7 +308,7 @@ function testSendNotification() {
 
 ## Mocking Functions
 
-The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that you are testing or a function of an imported module by using the mocking feature. This feature will help you to test your Ballerina code independently, from other modules and functions.
+The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that you are testing or a function of an imported module by using the mocking feature. This feature will help you to test your Ballerina code independently from other modules and functions.
 
 The object specified with the `@test:Mock {}` annotation will be considered as a mock function, which gets triggered in place of the real function.
 

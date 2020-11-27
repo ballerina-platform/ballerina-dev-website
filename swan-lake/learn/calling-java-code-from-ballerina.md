@@ -374,7 +374,7 @@ The generated bindings will be inside the specified output directory as follows.
 ### Java to Ballerina Mapping
 
 #### Java Classes
-A Java class will be mapped to a Ballerina class. This Ballerina class will have the same name as that of the Java class.
+A Java class will be mapped to a Ballerina class. This Ballerina class will have the same name as the Java class.
 
 E.g., The generated Ballerina class of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina

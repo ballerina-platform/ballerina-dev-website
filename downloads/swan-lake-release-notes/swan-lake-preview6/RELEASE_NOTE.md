@@ -290,9 +290,11 @@ The `File` and `Filepath` APIs have been revamped in this release. A summarized 
 The new high-level APIs below were introduced to provide I/O operations.
 
 1. Added a new set of APIs to read from files supporting different data types.
+    
     E.g., `io:fileReadBytes`, `io:fileReadJson`, `io:fileReadCsv`, and `io:fileReadXml`
 
 2. Added a new set of APIs to read files as streams.
+    
     E.g., `io:fileReadBlocksAsStream`, `io:fileReadLinesAsStream`, and `io:fileReadCsvAsStream`
 
 #### Language Server

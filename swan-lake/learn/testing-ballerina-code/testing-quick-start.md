@@ -18,19 +18,17 @@ redirect_from:
 
 To get started, let's write a simple Ballerina function and test it.
 
-1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
+1. First, let’s create a Ballerina project. Use the `ballerina new` command to create the project.
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
-    Following is the structure of a standard project with the default module. In this example, default module has the 
-    source file ***main.bal*** and the test file ***main_test.bal***.
+    Following is the structure of a standard project with the default package. In this example, default module has the
+     source file ***main.bal*** and the test file ***main_test.bal***.
 
     ```bash
     project-name/
         Ballerina.toml
         Package.md
-        Module.md
         main.bal
-        [modules]
         [resources]
         tests/
             main_test.bal
@@ -109,25 +107,25 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 
     ```
     Compiling source
-            foo/joke:0.1.0
+        foo/joke:0.1.0
 
     Creating balos
-            target/balo/foo-joke-any-0.1.0.balo
+        target/balo/foo-joke-any-0.1.0.balo
 
     Running Tests with Coverage
-            joke
+        joke
     When Sheldon wants an egg, he cracks open a chicken.
 
-            [pass] testGetRandomJoke
+        [pass] testGetRandomJoke
 
-            1 passing
-            0 failing
-            0 skipped
+        1 passing
+        0 failing
+        0 skipped
 
     Generating Test Report
-            target/test_results.json
+        target/test_results.json
 
-            View the test report at: file:///home/foo/test/sample-project/target/report/index.html
+        View the test report at: file:///home/foo/test/sample-package/target/report/index.html
     ```
  
  

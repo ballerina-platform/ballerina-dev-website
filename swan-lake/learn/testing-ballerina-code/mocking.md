@@ -308,11 +308,11 @@ function testSendNotification() {
 
 ## Mocking Functions
 
-The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that you are testing or a function of an imported module by using the mocking feature. This feature will help you to test your Ballerina code independently from other modules and functions.
+The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that you are testing or a function of an imported module by using the mocking feature. This feature will help you to test your Ballerina code independently, from other modules and functions.
 
 The object specified with the `@test:Mock {}` annotation will be considered as a mock function, which gets triggered in place of the real function.
 
-*   ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (no module) can be passed. If the function is in a different module but within the same project, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `orgName` and the `version` i.e., `orgName/module:version`. For native functions, the Ballerina module needs to be specified.
+*   ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (no module) can be passed. If the function is in a different module but within the same package, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `orgName` and the `version` i.e., `orgName/module:version`. For native functions, the Ballerina module needs to be specified.
 
 *   ***functionName : "&lt;functionName&gt;"*** - Name of the function to be mocked.
 

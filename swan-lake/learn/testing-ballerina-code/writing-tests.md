@@ -18,9 +18,7 @@ redirect_from:
 project-name/
     Ballerina.toml
     Package.md
-    Module.md
     main.bal
-    [modules]
     [resources]
     tests/              # tests for default module
         main_test.bal   # The test file for main.bal

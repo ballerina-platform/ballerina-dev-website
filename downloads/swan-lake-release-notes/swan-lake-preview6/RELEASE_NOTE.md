@@ -85,7 +85,7 @@ Now, Ballerina supports configuring module-level, basic variables at the program
     configurable string hostName = “0.0.0.0”;
     ```
 
-Currently, the configuration is supported through a TOML (v0.4.0) file. This `configuration.toml` file is located in the running directory. The format of the configuration TOML file is as follows.
+Currently, configuration is supported via a TOML (v0.4.0) file named `configuration.toml`. This file should be located in the current directory. The format of the `configuration.toml` file is as follows.
 
 ```toml
 [orgName.pkgName.submoduleName]

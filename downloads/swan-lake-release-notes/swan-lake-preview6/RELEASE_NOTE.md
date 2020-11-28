@@ -239,7 +239,15 @@ runtime:registerListener(listenerVar);
 runtime:deregisterListener(listenerVar);
 ```
 
-These methods and the definition of the `DynamicListener` has been added to the new `lang.runtime` module.
+These methods and the definition of `DynamicListener` have been added to the new `lang.runtime` module.
+
+```ballerina
+public type DynamicListener object {
+    public function __start() returns error?;
+    public function __gracefulStop() returns error?;
+    public function __immediateStop() returns error?;
+};
+```
 
 ##### New Runtime APIs
 

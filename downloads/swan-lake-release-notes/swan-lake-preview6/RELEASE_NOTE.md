@@ -182,7 +182,7 @@ public function main() {
 
 ###### Distinct Object Type
 
-Marking an object type definition as a `distinct` object type is supported now.
+An object type definition can now define a `distinct` object type.
 
 ```ballerina
 type Circle distinct object {

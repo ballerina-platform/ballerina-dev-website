@@ -4,7 +4,7 @@ title: Release Note
 ---
 ### Overview of Ballerina Swan Lake Preview 6 
 
-This release is the sixth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
+This release is the sixth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -251,11 +251,12 @@ The `io.ballerina.runtime.api.` package will only be exposed to the outside. The
 
 | Package                                                             | Description                                                                                                                                                                                                                                                               |
 |---------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| io.ballerina.runtime.api.creators                                   | Provides APIs to create runtime types, values, and errors                                                                                                                                                                                                                  |
+| io.ballerina.runtime.api.creators                                   | Provides APIs to create runtime types, values, and errors.                                                                                                                                                                                                                  |
 | io.ballerina.runtime.api.utils                                      | Provides APIs to manage XML, JSON, string, and type-related operations.                                                                                                                                                                                                      |
 | io.ballerina.runtime.api.types and  io.ballerina.runtime.api.values | Holds the Ballerina runtime API types and values.                                                                                                                                                                                                                             |
 | io.ballerina.runtime.api.Environment                                | Interop functions can have the `Environment` class variable as the first parameter.  This provides APIs to get the current module, strand ID, strand name, and strand metadata.  Also, with the environment instance, you can set and get the strand local properties. |
-| io.ballerina.runtime.api.Runtime                                    | Environment also provides an instance of the current runtime class which will contain apis to invoke ballerina object functions.                                                                                                                                              |
+
+| io.ballerina.runtime.api.Runtime                                    | The `Environment` also provides an instance of the current runtime class, which will contain APIs to invoke Ballerina object functions.                                                                                                                                              |
 | io.ballerina.runtime.api.*                                          | Contains `Future`, `Module`, `PredefinedTypes`, and `TypeTags` classes to handle the other runtime constructs.                                                               
 
 
@@ -350,3 +351,5 @@ The new high-level APIs below were introduced to provide I/O operations.
 2. As the initial step of upcoming changes for the error detail, the detail-type descriptor of an error type descriptor can no longer be a closed record.
 
 3. The Kubernetes module is removed and replaced by the c2c module.
+
+

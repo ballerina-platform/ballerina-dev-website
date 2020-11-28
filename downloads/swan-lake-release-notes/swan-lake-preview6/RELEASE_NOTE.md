@@ -284,7 +284,7 @@ The `file` and `filepath` APIs have been revamped in this release. A summarized 
     - From `Filepath` - `normalize`
     - From `File` - `createDir`, `remove`, `copy`, `readDir`, `getMetaData` (earlier `getFileInfo`)
 
-4. Some APIs have been introduced newly.
+4. Some new APIs have been introduced.
 
     - `createTemp` - to create a temporary file in either the default `temp` directory of the OS or in a specific directory.
     - `createTempDir` - to create a temporary directory as above.

@@ -233,10 +233,10 @@ If no type reference is provided for the object constructor, contextually, the e
 
  A dynamic listener can be registered and deregistered at the runtime as follows.
 
- ```ballerina
- ModListener listenerVar = new(); // Where ModListener is a DynamicListener 
-	runtime:registerListener(listenerVar);
-	runtime:deregisterListener(listenerVar);
+```ballerina
+ModListener listenerVar = new(); // Where ModListener is a DynamicListener 
+runtime:registerListener(listenerVar);
+runtime:deregisterListener(listenerVar);
 ```
 
 These methods and the definition of the `DynamicListener` has been added to the new `lang.runtime` module.
@@ -328,7 +328,6 @@ The new high-level APIs below were introduced to provide I/O operations.
                 check caller->respond("Hello, World!");
             }
         }
-
         ```
 
 2. Removed the Kubernetes module and replaced it by the `c2c` module.

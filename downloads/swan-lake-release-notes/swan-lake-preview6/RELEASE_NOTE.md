@@ -186,37 +186,37 @@ An object type definition can now define a `distinct` object type.
 
 ```ballerina
 type Circle distinct object {
-   int x;
-   int y;
-   int r;
+    int x;
+    int y;
+    int r;
 };
 
 type Color [int, int, int];
 
 class ColoredCircle {
-   *Circle;
-   Color color;
+    *Circle;
+    Color color;
 
-   function init(int x, int y, int r, Color color) {
-       self.x = x;
-       self.y = y;
-       self.r = r;
-       self.color = color;
-   }
+    function init(int x, int y, int r, Color color) {
+        self.x = x;
+        self.y = y;
+        self.r = r;
+        self.color = color;
+    }
 }
 
 class ColoredCircleLookAlike {
-   int x;
-   int y;
-   int r;
-   Color color;
+    int x;
+    int y;
+    int r;
+    Color color;
 
-   function init(int x, int y, int r, Color color) {
-       self.x = x;
-       self.y = y;
-       self.r = r;
-       self.color = color;
-   }
+    function init(int x, int y, int r, Color color) {
+        self.x = x;
+        self.y = y;
+        self.r = r;
+        self.color = color;
+    }
 }
 
 Circle c = new ColoredCircle(0, 0, 0, [123, 100, 100]);

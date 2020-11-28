@@ -262,9 +262,9 @@ All the Ballerina runtime internal exceptions will not be exposed. The `BError` 
 
 ##### Revamp File and Filepath Modules
 
-The `File` and `Filepath` APIs have been revamped in this release. A summarized list of the changes done is as follows.
+The `file` and `filepath` APIs have been revamped in this release. A summarized list of the changes done is as follows.
 
-1. The `File` and `Filepath` modules have been merged together. There will be no `Filepath` module anymore.
+1. The `file` and `filepath` modules have been merged together. There will be no `filepath` module anymore.
 
 2. Some APIs have been removed.
 

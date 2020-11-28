@@ -219,7 +219,7 @@ Circle c = new ColoredCircle(0, 0, 0, [123, 100, 100]);
 Circle d = new ColoredCircleLookAlike(0, 0, 0, [123, 100, 100]); // Not allowed.
 ```
 
-The `ColoredCircle` is a subtype of the `Circle` distinct object type even though `ColoredCircle` is not marked as a distinct class.
+The `ColoredCircle` type is a distinct type that is a subtype of the `Circle` distinct object type even though `ColoredCircle` is not marked as a distinct class.
 
 Although `ColoredCircleLookAlike` is structurally a subtype of the `Circle` type, since `Circle` is a distinct type and `ColoredCircleLookAlike` does not have a reference to it,`ColoredCircleLookAlike` is not considered as a subtype of `Circle`.
 

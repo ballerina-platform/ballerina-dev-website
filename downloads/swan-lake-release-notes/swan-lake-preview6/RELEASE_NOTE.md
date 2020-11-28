@@ -350,5 +350,4 @@ The new high-level APIs below were introduced to provide I/O operations.
 
 2. As the initial step of upcoming changes for the error detail, the detail-type descriptor of an error type descriptor can no longer be a closed record.
 
-3. The Kubernetes module is removed and replaced by the c2c module.
-
+3. The Kubernetes module is removed and replaced by the `c2c` module.

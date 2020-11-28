@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-27</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-28</h1>
 <p>
 Primary contributors:
 </p>
@@ -729,16 +729,14 @@ points.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="identifier">identifier</span> := <a href="#UnquotedIdentifier"><span class="ntref">UnquotedIdentifier</span></a> | <a href="#QuotedIdentifier"><span class="ntref">QuotedIdentifier</span></a>
-<span class="ntdfn" id="UnquotedIdentifier">UnquotedIdentifier</span> :=
-   <a href="#IdentifierInitialChar"><span class="ntref">IdentifierInitialChar</span></a> <a href="#IdentifierFollowingChar"><span class="ntref">IdentifierFollowingChar</span></a>*
-<span class="ntdfn" id="QuotedIdentifier">QuotedIdentifier</span> := <code>'</code> <a href="#QuotedIdentifierChar"><span class="ntref">QuotedIdentifierChar</span></a>+
-<span class="ntdfn" id="QuotedIdentifierChar">QuotedIdentifierChar</span> :=
-  <a href="#IdentifierFollowingChar"><span class="ntref">IdentifierFollowingChar</span></a>
-  | <a href="#QuotedIdentifierEscape"><span class="ntref">QuotedIdentifierEscape</span></a>
-  | <a href="#StringNumericEscape"><span class="ntref">StringNumericEscape</span></a>
+<span class="ntdfn" id="UnquotedIdentifier">UnquotedIdentifier</span> := (<a href="#IdentifierInitialChar"><span class="ntref">IdentifierInitialChar</span></a> | <a href="#IdentifierEscape"><span class="ntref">IdentifierEscape</span></a>) (<a href="#IdentifierFollowingChar"><span class="ntref">IdentifierFollowingChar</span></a> | <a href="#IdentifierEscape"><span class="ntref">IdentifierEscape</span></a>)*
+<span class="ntdfn" id="QuotedIdentifier">QuotedIdentifier</span> := <code>'</code> (<a href="#IdentifierFollowingChar"><span class="ntref">IdentifierFollowingChar</span></a> | <a href="#IdentifierEscape"><span class="ntref">IdentifierEscape</span></a>)+
 <span class="ntdfn" id="IdentifierInitialChar">IdentifierInitialChar</span> :=  <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> | <code>_</code> | <a href="#UnicodeIdentifierChar"><span class="ntref">UnicodeIdentifierChar</span></a>
 <span class="ntdfn" id="IdentifierFollowingChar">IdentifierFollowingChar</span> := <a href="#IdentifierInitialChar"><span class="ntref">IdentifierInitialChar</span></a> | <a href="#Digit"><span class="ntref">Digit</span></a>
-<span class="ntdfn" id="QuotedIdentifierEscape">QuotedIdentifierEscape</span> := <code>\</code> ^ ( <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> | 0x9 | 0xA | 0xD | <a href="#UnicodePatternWhiteSpaceChar"><span class="ntref">UnicodePatternWhiteSpaceChar</span></a> )
+<span class="ntdfn" id="IdentifierEscape">IdentifierEscape</span> := <a href="#IdentifierSingleEscape"><span class="ntref">IdentifierSingleEscape</span></a> | <a href="#NumericEscape"><span class="ntref">NumericEscape</span></a>
+<span class="ntdfn" id="IdentifierSingleEscape">IdentifierSingleEscape</span> := <code>\</code> ^ ( <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> | 0x9 | 0xA | 0xD | <a href="#UnicodePatternWhiteSpaceChar"><span class="ntref">UnicodePatternWhiteSpaceChar</span></a> )
+<span class="ntdfn" id="NumericEscape">NumericEscape</span> := <code>\u{</code> <a href="#CodePoint"><span class="ntref">CodePoint</span></a> <code>}</code>
+<span class="ntdfn" id="CodePoint">CodePoint</span> := <a href="#HexDigit"><span class="ntref">HexDigit</span></a>+
 <span class="ntdfn" id="AsciiLetter">AsciiLetter</span> := <code>A</code> .. <code>Z</code> | <code>a</code> .. <code>z</code>
 <span class="ntdfn" id="UnicodeIdentifierChar">UnicodeIdentifierChar</span> := ^ ( <a href="#AsciiChar"><span class="ntref">AsciiChar</span></a> | <a href="#UnicodeNonIdentifierChar"><span class="ntref">UnicodeNonIdentifierChar</span></a> )
 <span class="ntdfn" id="AsciiChar">AsciiChar</span> := 0x0 .. 0x7F
@@ -760,10 +758,14 @@ of Unicode TR31 for immutable identifiers; the set of characters is immutable in
 the sense that it does not change between Unicode versions.
 </p>
 <p>
-The QuotedIdentifier syntax allows an arbitrary non-empty string to be treated
-as an identifier. In particular, a reserved keyword <code><var>K</var></code>
-can be used as an identifier by preceding it with a single quote i.e.
-<code>'<var>K</var></code>.
+The <code>QuotedIdentifier</code> syntax allows a reserved keyword
+<code><var>K</var></code> can be used as an identifier by preceding it with a
+single quote i.e. <code>'<var>K</var></code>. The <code>IdentifierEscape</code>
+syntax allows an arbitrary non-empty string to be treated as an identifier. In a
+<code>NumericEscape</code>, <code>CodePoint</code> must valid Unicode code
+point; more precisely, it must be a hexadecimal numeral denoting an integer
+<em>n</em> where 0 ≤ <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n ≤
+0x10FFFF.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="TokenWhiteSpace">TokenWhiteSpace</span> := (<a href="#Comment"><span class="ntref">Comment</span></a> | <a href="#WhiteSpaceChar"><span class="ntref">WhiteSpaceChar</span></a>)*
@@ -1614,10 +1616,8 @@ always nil.
 <span class="ntdfn" id="string-literal">string-literal</span> := <a href="#DoubleQuotedStringLiteral"><span class="ntref">DoubleQuotedStringLiteral</span></a>
 <span class="ntdfn" id="DoubleQuotedStringLiteral">DoubleQuotedStringLiteral</span> := <code>"</code> (<a href="#StringChar"><span class="ntref">StringChar</span></a> | <a href="#StringEscape"><span class="ntref">StringEscape</span></a>)* <code>"</code>
 <span class="ntdfn" id="StringChar">StringChar</span> := ^ ( 0xA | 0xD | <code>\</code> | <code>"</code> )
-<span class="ntdfn" id="StringEscape">StringEscape</span> := <a href="#StringSingleEscape"><span class="ntref">StringSingleEscape</span></a> | <a href="#StringNumericEscape"><span class="ntref">StringNumericEscape</span></a>
+<span class="ntdfn" id="StringEscape">StringEscape</span> := <a href="#StringSingleEscape"><span class="ntref">StringSingleEscape</span></a> | <a href="#NumericEscape"><span class="ntref">NumericEscape</span></a>
 <span class="ntdfn" id="StringSingleEscape">StringSingleEscape</span> := <code>\t</code> | <code>\n</code> | <code>\r</code> | <code>\\</code> | <code>\"</code>
-<span class="ntdfn" id="StringNumericEscape">StringNumericEscape</span> := <code>\u{</code> <a href="#CodePoint"><span class="ntref">CodePoint</span></a> <code>}</code>
-<span class="ntdfn" id="CodePoint">CodePoint</span> := <a href="#HexDigit"><span class="ntref">HexDigit</span></a>+
 </pre>
 <p>
 A string is an sequence of zero or more Unicode characters. More precisely, it
@@ -1626,12 +1626,6 @@ Unicode scalar value is any code point in the Unicode range of 0x0 to 0x10FFFF
 inclusive, other than surrogate code points, which are 0xD800 to 0xDFFF
 inclusive. Note that a string may include Unicode noncharacters, such as 0xFFFE
 and 0xFFFF.
-</p>
-<p>
-In a <code>StringNumericEscape</code>, <code>CodePoint</code> must valid Unicode
-code point; more precisely, it must be a hexadecimal numeral denoting an
-integer <em>n</em> where 0 ≤ <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n ≤
-0x10FFFF.
 </p>
 <p>
 String values do not have storage identity and so the string basic type is

@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-27</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-28</h1>
 <p>
 Primary contributors:
 </p>
@@ -261,16 +261,14 @@ points.
 
 <pre
 class="grammar"><dfn>identifier</dfn> := <abbr>UnquotedIdentifier</abbr> | <abbr>QuotedIdentifier</abbr>
-<dfn>UnquotedIdentifier</dfn> :=
-   <abbr>IdentifierInitialChar</abbr> <abbr>IdentifierFollowingChar</abbr>*
-<dfn>QuotedIdentifier</dfn> := <code>'</code> <abbr>QuotedIdentifierChar</abbr>+
-<dfn>QuotedIdentifierChar</dfn> :=
-  <abbr>IdentifierFollowingChar</abbr>
-  | <abbr>QuotedIdentifierEscape</abbr>
-  | <abbr>StringNumericEscape</abbr>
+<dfn>UnquotedIdentifier</dfn> := (<abbr>IdentifierInitialChar</abbr> | <abbr>IdentifierEscape</abbr>) (<abbr>IdentifierFollowingChar</abbr> | <abbr>IdentifierEscape</abbr>)*
+<dfn>QuotedIdentifier</dfn> := <code>'</code> (<abbr>IdentifierFollowingChar</abbr> | <abbr>IdentifierEscape</abbr>)+
 <dfn>IdentifierInitialChar</dfn> :=  <abbr>AsciiLetter</abbr> | <code>_</code> | <abbr>UnicodeIdentifierChar</abbr>
 <dfn>IdentifierFollowingChar</dfn> := <abbr>IdentifierInitialChar</abbr> | <abbr>Digit</abbr>
-<dfn>QuotedIdentifierEscape</dfn> := <code>\</code> ^ ( <abbr>AsciiLetter</abbr> | 0x9 | 0xA | 0xD | <abbr>UnicodePatternWhiteSpaceChar</abbr> )
+<dfn>IdentifierEscape</dfn> := <abbr>IdentifierSingleEscape</abbr> | <abbr>NumericEscape</abbr>
+<dfn>IdentifierSingleEscape</dfn> := <code>\</code> ^ ( <abbr>AsciiLetter</abbr> | 0x9 | 0xA | 0xD | <abbr>UnicodePatternWhiteSpaceChar</abbr> )
+<dfn>NumericEscape</dfn> := <code>\u{</code> <abbr>CodePoint</abbr> <code>}</code>
+<dfn>CodePoint</dfn> := <abbr>HexDigit</abbr>+
 <dfn>AsciiLetter</dfn> := <code>A</code> .. <code>Z</code> | <code>a</code> .. <code>z</code>
 <dfn>UnicodeIdentifierChar</dfn> := ^ ( <abbr>AsciiChar</abbr> | <abbr>UnicodeNonIdentifierChar</abbr> )
 <dfn>AsciiChar</dfn> := 0x0 .. 0x7F
@@ -292,10 +290,14 @@ of Unicode TR31 for immutable identifiers; the set of characters is immutable in
 the sense that it does not change between Unicode versions.
 </p>
 <p>
-The QuotedIdentifier syntax allows an arbitrary non-empty string to be treated
-as an identifier. In particular, a reserved keyword <code><var>K</var></code>
-can be used as an identifier by preceding it with a single quote i.e.
-<code>'<var>K</var></code>.
+The <code>QuotedIdentifier</code> syntax allows a reserved keyword
+<code><var>K</var></code> can be used as an identifier by preceding it with a
+single quote i.e. <code>'<var>K</var></code>. The <code>IdentifierEscape</code>
+syntax allows an arbitrary non-empty string to be treated as an identifier. In a
+<code>NumericEscape</code>, <code>CodePoint</code> must valid Unicode code
+point; more precisely, it must be a hexadecimal numeral denoting an integer
+<em>n</em> where 0 &#x2264; <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &#x2264;
+0x10FFFF.
 </p>
 
 <pre
@@ -1153,10 +1155,8 @@ class="grammar"><dfn>string-type-descriptor</dfn> := <code>string</code>
 <dfn>string-literal</dfn> := <abbr>DoubleQuotedStringLiteral</abbr>
 <dfn>DoubleQuotedStringLiteral</dfn> := <code>"</code> (<abbr>StringChar</abbr> | <abbr>StringEscape</abbr>)* <code>"</code>
 <dfn>StringChar</dfn> := ^ ( 0xA | 0xD | <code>\</code> | <code>"</code> )
-<dfn>StringEscape</dfn> := <abbr>StringSingleEscape</abbr> | <abbr>StringNumericEscape</abbr>
+<dfn>StringEscape</dfn> := <abbr>StringSingleEscape</abbr> | <abbr>NumericEscape</abbr>
 <dfn>StringSingleEscape</dfn> := <code>\t</code> | <code>\n</code> | <code>\r</code> | <code>\\</code> | <code>\"</code>
-<dfn>StringNumericEscape</dfn> := <code>\u{</code> <abbr>CodePoint</abbr> <code>}</code>
-<dfn>CodePoint</dfn> := <abbr>HexDigit</abbr>+
 </pre>
 <p>
 A string is an sequence of zero or more Unicode characters. More precisely, it
@@ -1165,12 +1165,6 @@ Unicode scalar value is any code point in the Unicode range of 0x0 to 0x10FFFF
 inclusive, other than surrogate code points, which are 0xD800 to 0xDFFF
 inclusive. Note that a string may include Unicode noncharacters, such as 0xFFFE
 and 0xFFFF.
-</p>
-<p>
-In a <code>StringNumericEscape</code>, <code>CodePoint</code> must valid Unicode
-code point; more precisely, it must be a hexadecimal numeral denoting an
-integer <em>n</em> where 0 &#x2264; <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &#x2264;
-0x10FFFF.
 </p>
 <p>
 String values do not have storage identity and so the string basic type is

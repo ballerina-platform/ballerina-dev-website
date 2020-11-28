@@ -4,7 +4,7 @@ title: Release Note
 ---
 ### Overview of Ballerina Swan Lake Preview 6 
 
-This release is the sixth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
+This release is the sixth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -350,5 +350,4 @@ The new high-level APIs below were introduced to provide I/O operations.
 2. As the initial step of upcoming changes for the error detail, the detail-type descriptor of an error type descriptor can no longer be a closed record.
 
 3. The Kubernetes module is removed and replaced by the c2c module.
-
 

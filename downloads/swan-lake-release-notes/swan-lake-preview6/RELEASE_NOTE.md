@@ -69,21 +69,17 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 Now, Ballerina supports configuring module-level, basic variables at the program execution. The value provided in the program will be overridden by the value specified in the configuration file. These variables can be initialized using the `configurable` keyword in the following ways. 
 
-- Required Configurable Variable 
+A `configurable` variable that is defined with `?` as the initializer expression requires a value to be specified for such a variable in the configuration file.
 
-    This specifies that a value must be specified for this variable in the configuration file.
+```ballerina
+configurable string hostName = ?;
+```
 
-    ``` ballerina
-    configurable string hostName = ?;
-    ```
+A `configurable` variable that is defined with any other initializer expression can be overridden by a value specified in the configuration file. If a value is not provided in the configuration file, the initializer expression is used.
 
-- Optional Configurable Variable
-
-    This specifies that the provided value can be overridden by the value specified in the configuration file. If it is not provided in the configuration, the value ` “0.0.0.0” ` is used for initialization.
-
-    ```ballerina
-    configurable string hostName = “0.0.0.0”;
-    ```
+```ballerina
+configurable string hostName = “0.0.0.0”;
+```
 
 Currently, configuration is supported via a TOML (v0.4.0) file named `configuration.toml`. This file should be located in the current directory. The format of the `configuration.toml` file is as follows.
 

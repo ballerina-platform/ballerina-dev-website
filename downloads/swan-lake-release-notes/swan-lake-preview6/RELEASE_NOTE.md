@@ -225,7 +225,7 @@ Although `ColoredCircleLookAlike` is structurally a subtype of the `Circle` type
 
 ###### Distinct Object Constructor
 
-If no type reference is provided for the object constructor, contextually, the expected type must be definite and type-ids of the constructed object are the type-ids of the contextually-expected type. This allows using the object constructor to create distinct objects.
+If no type reference is provided in the object constructor, the contextually-expected type must be definite and the type-ids of the constructed object will be the type-ids of the contextually-expected type. This allows using the object constructor to create distinct objects.
 
 #### Runtime
 

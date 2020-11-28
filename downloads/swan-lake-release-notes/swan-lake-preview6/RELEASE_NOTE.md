@@ -231,7 +231,7 @@ If no type reference is provided in the object constructor, the contextually-exp
 
 ##### Support for DynamicListener
 
- A dynamic listener can be registered and deregistered at the runtime as follows.
+ A dynamic listener can be registered and deregistered at runtime as follows.
 
 ```ballerina
 ModListener listenerVar = new(); // Where ModListener is a DynamicListener 

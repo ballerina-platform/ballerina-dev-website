@@ -335,7 +335,7 @@ The new high-level APIs below were introduced to provide I/O operations.
 
         ```
 
-2. Removed the Kubernetes module and replaced it by c2c.
+2. Removed the Kubernetes module and replaced it by the `c2c` module.
 
 #### Breaking Changes
 
@@ -351,5 +351,4 @@ The new high-level APIs below were introduced to provide I/O operations.
 2. As the initial step of upcoming changes for the error detail, the detail-type descriptor of an error type descriptor can no longer be a closed record.
 
 3. The Kubernetes module is removed and replaced by the c2c module.
-
 

@@ -102,7 +102,7 @@ Currently, Ballerina supports configurable variables of the types `int`, `float`
 
 Module variable declarations with an initial value expression can now be marked as `isolated`. An `isolated` variable can be accessed only within a `lock` statement.
 
-Similar to isolated objects, isolated variables are also considered as isolated roots, which guarantee that their mutable state is only reachable via the isolated root. As with `isolated` objects, when an `isolated` variable is accessed within a `lock` statement, additional rules apply to how values are transferred in and out of the `lock` statement.
+Similar to `isolated` objects, `isolated` variables are also considered as isolated roots, which guarantee that their mutable state is only reachable via the isolated root. As with `isolated` objects, when an `isolated` variable is accessed within a `lock` statement, additional rules apply to how values are transferred in and out of the `lock` statement.
 
 An `isolated` variable can also be accessed in an `isolated` function.
 

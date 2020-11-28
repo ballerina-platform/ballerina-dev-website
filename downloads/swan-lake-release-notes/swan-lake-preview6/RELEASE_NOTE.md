@@ -256,7 +256,7 @@ The `io.ballerina.runtime.api.` package will only be exposed to the outside. The
 | io.ballerina.runtime.api.*                                          | Contains `Future`, `Module`, `PredefinedTypes`, and `TypeTags` classes to handle the other runtime constructs.                                                               
 
 
-All the Ballerina runtime internal exceptions will not be exposed. The `BError` should be used to handle Ballerina runtime errors. The `io.ballerina.runtime.api.creators.ErrorCreator` provides the required APIs to create runtime errors.                                                                         
+None of the Ballerina runtime internal exceptions will be exposed. The `BError` class should be used to handle Ballerina runtime errors. The `io.ballerina.runtime.api.creators.ErrorCreator` class provides the required APIs to create runtime errors.                                                                         
 
 #### Standard Library
 

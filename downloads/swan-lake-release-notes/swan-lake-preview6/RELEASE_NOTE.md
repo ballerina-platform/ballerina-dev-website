@@ -59,7 +59,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Introduction of new high-level APIs to provide I/O operations
 - Introduction of a new code-action `Add Type Cast`
 - Revamp of the code-action extension APIs 
-- Introduction of code to cloud to simplify deploying Ballerina code in the cloud
+- Introduction of code to cloud (`c2c`) to simplify deploying Ballerina code in the cloud
 
 ### What is new in Ballerina Swan Lake Preview 6
 

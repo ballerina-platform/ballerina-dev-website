@@ -2,7 +2,7 @@
 layout: ballerina-blank-page
 title: Release Note
 ---
-### Overview of Ballerina Swan Lake Preview 6 
+### Overview of Ballerina Swan Lake Preview 7 
 
 This release is the sixth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
 
@@ -10,7 +10,7 @@ This release is the sixth preview version of Ballerina Swan Lake. This release i
     - [For Existing Users](#for-existing-users)
     - [For New Users](#for-new-users)
 - [Highlights](#highlights)
-- [What is new in Ballerina Swan Lake Preview 6](#what-is-new-in-ballerina-swan-lake-preview-6)
+- [What is new in Ballerina Swan Lake Preview 7](#what-is-new-in-ballerina-swan-lake-preview-7)
     - [Language](#language)
         - [Support for Configurability](#support-for-configurability)
         - [Isolated Variables](#isolated-variables)
@@ -28,7 +28,7 @@ This release is the sixth preview version of Ballerina Swan Lake. This release i
 
 #### Updating Ballerina
 
-You can use the update tool to update to Ballerina Swan Lake Preview 6 as follows.
+You can use the update tool to update to Ballerina Swan Lake Preview 7 as follows.
 
 ##### For Existing Users
 
@@ -36,9 +36,9 @@ If you are already using Ballerina, you can directly update your distribution to
                         
 > `ballerina update`
 
- Next, execute the command below to update to Swan Lake Preview 6.
+ Next, execute the command below to update to Swan Lake Preview 7.
 
- > `ballerina dist pull slp6`                 
+ > `ballerina dist pull slp7`                 
 
 However, if you are using a Ballerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
 
@@ -61,7 +61,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Revamp of the code-action extension APIs 
 - Introduction of code to cloud (`c2c`) to simplify deploying Ballerina code in the cloud
 
-### What is new in Ballerina Swan Lake Preview 6
+### What is new in Ballerina Swan Lake Preview 7
 
 #### Language
 

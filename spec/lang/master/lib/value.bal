@@ -23,13 +23,6 @@ public type Cloneable readonly|xml|Cloneable[]|map<Cloneable>|table<map<Cloneabl
 @typeParam
 type CloneableType Cloneable;
 
-# A type parameter that is a subtype of `anydata`.
-# Has the special semantic that when used in a declaration
-# all uses in the declaration must refer to same type.
-@typeParam
-type AnydataType anydata;
-
-
 # Returns a clone of `v`.
 # A clone is a deep copy that does not copy immutable subtrees.
 # A clone can therefore safely be used concurrently with the original.
@@ -73,7 +66,7 @@ public isolated function cloneReadOnly(CloneableType v) returns CloneableType & 
 # - numeric values can be converted using the NumericConvert abstract operation
 # - if a record type descriptor specifies default values, these will be used
 #   to supply any missing members
-public isolated function cloneWithType(anydata v, typedesc<AnydataType> t) returns t|error = external;
+public isolated function cloneWithType(anydata v, typedesc<anydata> t = <>) returns t|error = external;
 
 # Tests whether `v` is read-only, i.e. immutable
 # Returns true if read-only, false otherwise.
@@ -91,7 +84,7 @@ public isolated function isReadOnly(anydata v) returns boolean = external;
 #
 # The details of the conversion are specified by the ToString abstract operation
 # defined in the Ballerina Language Specification, using the direct style.
-public isolated function toString((any|error) v) returns string = external;
+public isolated function toString(any v) returns string = external;
 
 # Converts a value to a string that describes the value in Ballerina syntax.
 # + v - the value to be converted to a string
@@ -103,7 +96,7 @@ public isolated function toString((any|error) v) returns string = external;
 #
 # The details of the conversion are specified by the ToString abstract operation
 # defined in the Ballerina Language Specification, using the expression style.
-public isolated function toBalString(any|error v) returns string = external;
+public isolated function toBalString(any v) returns string = external;
 
 # Parses and evaluates a subset of Ballerina expression syntax.
 # + s - the string to be parsed and evaluated
@@ -182,7 +175,7 @@ public isolated function fromJsonDecimalString(string str) returns JsonDecimal|e
 # + v - json value
 # + t - type to convert to
 # + return - value belonging to type `t` or error if this cannot be done
-public isolated function fromJsonWithType(json v, typedesc<anydata> t)
+public isolated function fromJsonWithType(json v, typedesc<anydata> t = <>)
     returns t|error = external;
 
 # Converts a string in JSON format to a user-specified type.
@@ -191,7 +184,7 @@ public isolated function fromJsonWithType(json v, typedesc<anydata> t)
 # + str - string in JSON format
 # + t - type to convert to
 # + return - value belonging to type `t` or error if this cannot be done
-public isolated function fromJsonStringWithType(string str, typedesc<anydata> t)
+public isolated function fromJsonStringWithType(string str, typedesc<anydata> t = <>)
     returns t|error = external;
     
 # Merges two json values.

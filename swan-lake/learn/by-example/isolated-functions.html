@@ -11,9 +11,27 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kd">const</span> <span class="nx">BALLERINA</span> <span class="p">=</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">;</span><span class="nx">final</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">prefixes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;greetings&quot;</span><span class="p">,</span> <span class="s">&quot;hello world&quot;</span><span class="p">];</span>
+<span class="nx">isolated</span> <span class="nx">class</span> <span class="nx">UniqueGreetingsStore</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">uniqueGreetings</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">string</span> <span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">lock</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">greeting</span><span class="p">)</span> <span class="o">==</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">remove</span><span class="p">(</span><span class="kt">string</span> <span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">lock</span> <span class="p">{</span>
+            <span class="kt">int</span><span class="err">?</span> <span class="nx">index</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>            <span class="k">if</span> <span class="nx">index</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">{</span>
+                <span class="nx">_</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="nx">final</span> <span class="nx">UniqueGreetingsStore</span> <span class="nx">uniqueGreetings</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">addGreetings</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">greetings</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">builtGreetings</span> <span class="p">=</span> <span class="nx">getGreetings</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
     <span class="nx">greetings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="o">...</span><span class="nx">builtGreetings</span><span class="p">);</span>
+    <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">greeting</span> <span class="nx">in</span> <span class="nx">builtGreetings</span> <span class="p">{</span>
+        <span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">getGreetings</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">builtGreetings</span> <span class="p">=</span> <span class="p">[];</span>
@@ -33,9 +51,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Isolated Functions</h2>
                             <p><p>An <code>isolated</code> function is a function that accesses mutable state only via its parameters.
- Such a function can only access module level state if it is final and immutable. Any
- function or method call in an <code>isolated</code> function should also call an <code>isolated</code> function
- or method.</p>
+ Such a function can only access module level state if it is final and the type is a subtype of
+ <code>readonly</code> or <code>isolated object {}</code>. Any function or method call in an <code>isolated</code> function should
+ also be calling an <code>isolated</code> function or method.</p>
 </p>
 
                         </td>
@@ -117,6 +135,18 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -150,6 +180,87 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>final string[] &amp; readonly prefixes = [&quot;hello&quot;, &quot;greetings&quot;, &quot;hello world&quot;];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated class UniqueGreetingsStore {
+    private string[] uniqueGreetings = [];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An <code>isolated</code> class.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function add(string greeting) {
+        lock {
+            if self.uniqueGreetings.indexOf(greeting) == () {
+                self.uniqueGreetings.push(greeting);
+            }
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function remove(string greeting) {
+        lock {
+            int? index = self.uniqueGreetings.indexOf(greeting);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            if index is int {
+                _ = self.uniqueGreetings.remove(index);
+            }
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>final UniqueGreetingsStore uniqueGreetings = new;
 </code></pre></div>
 
                                 </td>
@@ -205,7 +316,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    greetings.push(...builtGreetings);
-}
 </code></pre></div>
 
                                 </td>
@@ -215,6 +325,29 @@ redirect_from:
                                         <div>
                                             <p>Add the greetings returned by the <code>isolated</code> function to
  the mutable array passed as an argument.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach string greeting in builtGreetings {
+        uniqueGreetings.add(greeting);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Access the <code>final isolated object {}</code> variable <code>uniqueGreetings</code>,
+ and call a method to store the greetings if they are unique.</p>
 
                                         </div>
                                     </div>

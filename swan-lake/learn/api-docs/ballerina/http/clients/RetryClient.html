@@ -480,9 +480,9 @@ function displayMenu() {
             </a>
             <h2 > post </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -531,6 +531,24 @@ retrying functionality for a given endpoint to recover from network level failur
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -539,8 +557,9 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>
@@ -615,7 +634,7 @@ retrying functionality for a given endpoint to recover from network level failur
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li><p>The response or an <code>http:ClientError</code> if failed to establish the communication with the upstream server</p>
 </li>
             </ul>
         </div>
@@ -630,9 +649,9 @@ retrying functionality for a given endpoint to recover from network level failur
             </a>
             <h2 > put </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -681,6 +700,24 @@ retrying functionality for a given endpoint to recover from network level failur
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -689,8 +726,9 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>
@@ -705,9 +743,9 @@ retrying functionality for a given endpoint to recover from network level failur
             </a>
             <h2 > forward </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/classes/Request.html">Request</a> request)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/classes/Request.html">Request</a> request, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -755,6 +793,24 @@ functionality for a given endpoint with inbound request's HTTP verb to recover f
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -763,8 +819,9 @@ functionality for a given endpoint with inbound request's HTTP verb to recover f
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>
@@ -779,9 +836,9 @@ functionality for a given endpoint with inbound request's HTTP verb to recover f
             </a>
             <h2 > execute </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -848,6 +905,24 @@ from network level failures.</p>
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -856,8 +931,9 @@ from network level failures.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>
@@ -872,9 +948,9 @@ from network level failures.</p>
             </a>
             <h2 > patch </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -923,6 +999,24 @@ retrying functionality for a given endpoint to recover from network level failur
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -931,8 +1025,9 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>
@@ -947,9 +1042,9 @@ retrying functionality for a given endpoint to recover from network level failur
             </a>
             <h2 > delete </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -998,6 +1093,24 @@ retrying functionality for a given endpoint to recover from network level failur
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -1006,8 +1119,9 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message, or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>
@@ -1022,9 +1136,9 @@ retrying functionality for a given endpoint to recover from network level failur
             </a>
             <h2 > get </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -1073,6 +1187,24 @@ retrying functionality for a given endpoint to recover from network level failur
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -1081,8 +1213,9 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>
@@ -1097,9 +1230,9 @@ retrying functionality for a given endpoint to recover from network level failur
             </a>
             <h2 > options </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message, <span class="builtin-type">TargetType</span> targetType)</p>
             
-                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
@@ -1148,6 +1281,24 @@ retrying functionality for a given endpoint to recover from network level failur
                     </li>
                 </ul>
             </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >targetType</span>
+                        <span class="type">  <span class="builtin-type">TargetType</span> </span>
+                        <span class="default"> (default Response)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP response or the payload type (<code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,<code>record {| anydata...; |}</code>, or
+<code>record {| anydata...; |}[]</code>), which is expected to be returned after data binding</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     
@@ -1156,8 +1307,9 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#Payload">Payload</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or the payload (if the <code>targetType</code> is configured) or an <code>http:ClientError</code> if failed to
+establish the communication with the upstream server or a data binding failure</p>
 </li>
             </ul>
         </div>

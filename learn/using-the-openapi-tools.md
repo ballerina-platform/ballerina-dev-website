@@ -1,21 +1,22 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-left-nav-pages
 title: Using the OpenAPI Tools
 description: Check out how the Ballerina OpenAPI tooling makes it easy for users to start developing a service documented in the OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /swan-lake/learn/using-the-openapi-tools/
+permalink: /learn/using-the-openapi-tools/
 active: using-the-openapi-tools
+intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
 redirect_from:
-  - /swan-lake/learn/how-to-use-openapi-tools
-  - /swan-lake/learn/how-to-use-openapi-tools/
-  - /swan-lake/learn/using-the-openapi-tools
+  - /v1-2/learn/how-to-use-openapi-tools
+  - /v1-2/learn/how-to-use-openapi-tools/
+  - /learn/how-to-use-openapi-tools
+  - /learn/how-to-use-openapi-tools/
+  - /learn/using-the-openapi-tools
 ---
 
-# Using the OpenAPI Tools
+## Using the Capabilities of the OpenAPI Tools
 
-OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
-
-The OpenAPI tools provides following capabilities.
+The OpenAPI tools provide the following capabilities.
 
 1. Generate the Ballerina Service or Client code for a given OpenAPI definition.
 2. Generate the client stub for an existing Ballerina service at build time.
@@ -25,16 +26,6 @@ The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerin
 Code generation from OpenAPI to Ballerina can produce `ballerina mock services` and `ballerina client stubs`.
 
 For build time client stub generation, annotation support is provided.
-
-- [Mock Service from OpenAPI](#mock-service-from-openapi)
-- [Client Stub from OpenAPI](#client-stub-from-openapi)
-- [Service to OpenAPI Export](#service-to-openapi-export)
-- [Client Stub for Service](#client-stub-for-service)
-- [Samples](#samples)
-    - [Mock Service from OpenAPI Sample](#mock-service-from-openapi-sample)
-    - [Client Stub from OpenAPI Sample](#client-stub-from-openapi-sample)
-    - [OpenAPI from Service Sample](#openapi-from-service-sample)
-    - [Client Stub from Service Sample](#client-stub-from-service-sample)
 
 ## Mock Service from OpenAPI
 

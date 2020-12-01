@@ -89,6 +89,14 @@
         </li>
     
         <li >
+            <a href="#ensureType" onclick="menuLinkClick()">ensureType</a>
+        </li>
+    
+        <li >
+            <a href="#fromBalString" onclick="menuLinkClick()">fromBalString</a>
+        </li>
+    
+        <li >
             <a href="#fromJsonDecimalString" onclick="menuLinkClick()">fromJsonDecimalString</a>
         </li>
     
@@ -114,6 +122,10 @@
     
         <li >
             <a href="#mergeJson" onclick="menuLinkClick()">mergeJson</a>
+        </li>
+    
+        <li >
+            <a href="#toBalString" onclick="menuLinkClick()">toBalString</a>
         </li>
     
         <li >
@@ -233,6 +245,32 @@
                     </tr>
                 
                     <tr>
+                        <td width="30%"><a class="functions " href="#ensureType">ensureType</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromBalString">fromBalString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Parses and evaluates a subset of Ballerina expression syntax.</p> 
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
                         <td width="30%"><a class="functions " href="#fromJsonDecimalString">fromJsonDecimalString</a></td>
                         <td width="70%">
                             <div class="function-desc">
@@ -324,6 +362,19 @@
                     </tr>
                 
                     <tr>
+                        <td width="30%"><a class="functions " href="#toBalString">toBalString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Converts a value to a string that describes the value in Ballerina syntax.</p> 
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
                         <td width="30%"><a class="functions " href="#toJson">toJson</a></td>
                         <td width="70%">
                             <div class="function-desc">
@@ -357,7 +408,7 @@
                                 <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
                                 
                                 
-                                <p>Performs a minimal conversion of a value to a string.
+                                <p>Performs a direct conversion of a value to a string.
                             </div>
                         </td>
                     </tr>
@@ -580,6 +631,138 @@ structural values in the result will be mutable, except for error values
 <li>if a record type descriptor specifies default values, these will be used
 to supply any missing members</li>
 </ul>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="ensureType" title="ensureType">
+             <a class="url-link" href="#ensureType">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > ensureType </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> v, <span class="builtin-type">typedesc</span> t)</p>
+            
+                <b> returns </b><span class="builtin-type">any</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
+        
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >v</span>
+                        <span class="type">  <span class="builtin-type">any</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >t</span>
+                        <span class="type">  <span class="builtin-type">typedesc</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any</span> | <span class="builtin-type">error</span></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="fromBalString" title="fromBalString">
+             <a class="url-link" href="#fromBalString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromBalString </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> s)</p>
+            
+                <b> returns </b><span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
+        <p>Parses and evaluates a subset of Ballerina expression syntax.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >s</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to be parsed and evaluated</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">anydata</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>the result of evaluating the parsed expression, or
+an error if the string cannot be parsed
+The subset of Ballerina expression syntax supported is that produced
+by toBalString when applied to an anydata value.</p>
 </li>
             </ul>
         </div>
@@ -1073,6 +1256,69 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
 </div>
                     
                         <div class="method-content">
+    <div class="main-method-title here" id="toBalString" title="toBalString">
+             <a class="url-link" href="#toBalString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toBalString </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> v)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
+        <p>Converts a value to a string that describes the value in Ballerina syntax.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >v</span>
+                        <span class="type">  <span class="builtin-type">any</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the value to be converted to a string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>a string resulting from the conversion</p>
+<p>If <code>v</code> is anydata and does not have cycles, then the result will
+conform to the grammar for a Ballerina expression and when evaluated
+will result in a value that is == to v.</p>
+<p>The details of the conversion are specified by the ToString abstract operation
+defined in the Ballerina Language Specification, using the expression style.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="toJson" title="toJson">
              <a class="url-link" href="#toJson">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -1218,10 +1464,9 @@ This panics if <code>v</code> has cycles.</p>
         
         <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
-        <p>Performs a minimal conversion of a value to a string.
-The conversion is minimal in particular in the sense
-that the conversion applied to a value that is already
-a string does nothing.</p>
+        <p>Performs a direct conversion of a value to a string.
+The conversion is direct in the sense that when applied to a value that is already
+a string it leaves the value unchanged.</p>
 
     </div>
     
@@ -1254,46 +1499,8 @@ a string does nothing.</p>
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
                 <li><p>a string resulting from the conversion</p>
-<p>The result of <code>toString(v)</code> is as follows:</p>
-<ul>
-<li>if <code>v</code> is a string, then returns <code>v</code></li>
-<li>if <code>v</code> is <code>()</code>, then returns an empty string</li>
-<li>if <code>v</code> is boolean, then the string <code>true</code> or <code>false</code></li>
-<li>if <code>v</code> is an int, then return <code>v</code> represented as a decimal string</li>
-<li>if <code>v</code> is a float or decimal, then return <code>v</code> represented as a decimal string,
-with a decimal point only if necessary, but without any suffix indicating the type of <code>v</code>;
-return <code>NaN</code>, <code>Infinity</code> for positive infinity, and <code>-Infinity</code> for negative infinity</li>
-<li>if <code>v</code> is a list, then returns the results toString on each member of the list
-separated by a space character</li>
-<li>if <code>v</code> is a map, then returns key=value for each member separated by a space character</li>
-<li>if <code>v</code> is xml, then returns <code>v</code> in XML format (as if it occurred within an XML element)</li>
-<li>if <code>v</code> is table, TBD</li>
-<li>if <code>v</code> is an error, then a string consisting of the following in order
-<ol>
-<li>the string <code>error</code></li>
-<li>a space character</li>
-<li>the reason string</li>
-<li>if the detail record is non-empty
-<ol>
-<li>a space character</li>
-<li>the result of calling toString on the detail record</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>if <code>v</code> is an object, then
-<ul>
-<li>if <code>v</code> provides a <code>toString</code> method with a string return type and no required methods,
-then the result of calling that method on <code>v</code></li>
-<li>otherwise, <code>object</code> followed by some implementation-dependent string</li>
-</ul>
-</li>
-<li>if <code>v</code> is any other behavioral type, then the identifier for the behavioral type
-(<code>function</code>, <code>future</code>, <code>service</code>, <code>typedesc</code> or <code>handle</code>)
-followed by some implementation-dependent string</li>
-</ul>
-<p>Note that <code>toString</code> may produce the same string for two Ballerina values
-that are not equal (in the sense of the <code>==</code> operator).</p>
+<p>The details of the conversion are specified by the ToString abstract operation
+defined in the Ballerina Language Specification, using the direct style.</p>
 </li>
             </ul>
         </div>

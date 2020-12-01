@@ -23,6 +23,16 @@
       "moduleId": "lang.value"
     },
     {
+      "id": "ensureType",
+      "description": "",
+      "moduleId": "lang.value"
+    },
+    {
+      "id": "fromBalString",
+      "description": "\u003cp\u003eParses and evaluates a subset of Ballerina expression syntax.\u003c/p\u003e",
+      "moduleId": "lang.value"
+    },
+    {
       "id": "fromJsonDecimalString",
       "description": "\u003cp\u003eParses a string in JSON format and returns the value that it represents.\u003c/p\u003e",
       "moduleId": "lang.value"
@@ -58,6 +68,11 @@
       "moduleId": "lang.value"
     },
     {
+      "id": "toBalString",
+      "description": "\u003cp\u003eConverts a value to a string that describes the value in Ballerina syntax.\u003c/p\u003e",
+      "moduleId": "lang.value"
+    },
+    {
       "id": "toJson",
       "description": "\u003cp\u003eConverts a value of type \u003ccode\u003eanydata\u003c/code\u003e to \u003ccode\u003ejson\u003c/code\u003e.\u003c/p\u003e",
       "moduleId": "lang.value"
@@ -69,7 +84,7 @@
     },
     {
       "id": "toString",
-      "description": "\u003cp\u003ePerforms a minimal conversion of a value to a string.\u003c/p\u003e",
+      "description": "\u003cp\u003ePerforms a direct conversion of a value to a string.\u003c/p\u003e",
       "moduleId": "lang.value"
     }
   ],

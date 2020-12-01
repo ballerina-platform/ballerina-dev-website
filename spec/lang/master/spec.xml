@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-13</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-11-30</h1>
 <p>
 Primary contributors:
 </p>
@@ -40,12 +40,6 @@ Language and document status
 <p>
 This is a draft document, previewing the next release of the specification,
 code-named Swan Lake.
-</p>
-<p>
-Features marked as having <em>Preview</em> status are less stable than the rest
-of the language. We expect the final design of these features to be close enough
-to the current design that it will be straightforward for code that makes uses
-the current design to be updated to the final design.
 </p>
 <p>
 Comments on this document are welcome and should be made by creating an issue in
@@ -178,70 +172,50 @@ between the terminals and nonterminals that it references.
 <h2 id="program_structure">3. Program structure</h2>
 <p>
 A Ballerina program is divided into modules. A module has a source form and a
-binary form. The module is the unit of compilation; a Ballerina compiler
-translates the source form of a module into its binary form. A module may
-reference other modules. When a compiler translates a source module into a
-binary module, it needs access only to the binary form of other modules
-referenced from the source module.
+binary form. The source form of a module consists of an ordered collection of
+one or more source parts; each source part is a sequence of bytes that is the
+UTF-8 encoding of part of the source code for the module. The format of a source
+part is defined by this specification. The format of a binary module is
+specified by the Ballerina platform.
 </p>
 <p>
-A binary module can only be referenced if it is placed in a module store. There
-are two kinds of module store: a repository and a project. A module stored in a
-repository can be referenced from any other module. A module stored in a project
-can only be referenced from other modules stored in the same project.
+A source module can reference other modules. Each source module can be
+separately compiled into a binary module: compilation of a source module needs
+access only to the binary form of other modules referenced from the source
+module. A source module identifies each module that it references using an
+organization name and a module name, which is divided into one or more parts.
+Both the organization name and each part of the module name are Unicode strings.
+Any organization name starting with the string <code>ballerina</code> is
+reserved for use by the Ballerina platform.
 </p>
 <p>
-A repository organizes binary modules into a 3-level hierarchy:
+The Ballerina platform defines a packaging system for Ballerina modules, which
+allows one or more modules to be combined into a package. The packaging system
+treats the first part of each module's name as being a package name. All the
+modules combined into a package share the same package name. Packages have both
+a source and a binary format. The source format stores the source form of a
+package's modules in a hierarchical filesystem. The binary format stores the
+binary form of a package's module as a sequence of bytes.
+</p>
+<p>
+Binary packages can be stored in a package repository. Packages are versioned;
+versions are semantic, as described in the SemVer specification. A package
+repository can store multiple versions of the same package. Thus, within a
+repository, binary packages are organized into a three-level hierarchy:
 </p>
 <ol>
 <li>organization;</li>
-<li>module name;</li>
+<li>package name;</li>
 <li>version.</li>
 </ol>
 <p>
-Organizations are identified by Unicode strings, and are unique within a
-repository. Any organization name starting with the string
-<code>ballerina</code> is reserved for use by
-the Ballerina platform. A module name is a Unicode string and is unique within a
-repository organization. A particular module name can have one or more versions
-each associated with a separate binary module. Versions are semantic, as
-described in the SemVer specification.
+The source format of a package includes a <code>Ballerina.toml</code> file that
+allows control over the package versions used for referenced modules.
 </p>
 <p>
-A project stores modules using a simpler single-level hierarchy, in which the
-module is associated directly with the module name.
-</p>
-<p>
-A binary module is a sequence of octets. Its format is specified in the
-Ballerina platform.
-</p>
-<p>
-An abstract source module consists of:
-</p>
-<ul>
-<li>an ordered collection of one or more source parts; each source part is a
-sequence of octets that is the UTF-8 encoding of part of the source code for the
-module</li>
-<li>metadata containing the following
-<ul>
-<li>always required: module name</li>
-<li>required only if the source module is to be compiled into a binary module
-stored in a repository:
-<ul>
-<li>organization name</li>
-<li>version</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>
-An abstract source module can be stored in a variety of concrete forms. For
-example, the Ballerina platform describes a method for storing an
-abstract source module in a filesystem, where the source parts are files with a
-<code>.bal </code>extension stored in a directory, the module name comes from
-the name of that directory, and the version and organization name comes from a
-configuration file <code>Ballerina.toml</code> in that directory.
+The packaging system also allows control over which modules are exported from a
+package; modules that are not exported from a package are visible only to
+modules within the package.
 </p>
 </section>
 <section>
@@ -287,16 +261,14 @@ points.
 
 <pre
 class="grammar"><dfn>identifier</dfn> := <abbr>UnquotedIdentifier</abbr> | <abbr>QuotedIdentifier</abbr>
-<dfn>UnquotedIdentifier</dfn> :=
-   <abbr>IdentifierInitialChar</abbr> <abbr>IdentifierFollowingChar</abbr>*
-<dfn>QuotedIdentifier</dfn> := <code>'</code> <abbr>QuotedIdentifierChar</abbr>+
-<dfn>QuotedIdentifierChar</dfn> :=
-  <abbr>IdentifierFollowingChar</abbr>
-  | <abbr>QuotedIdentifierEscape</abbr>
-  | <abbr>StringNumericEscape</abbr>
+<dfn>UnquotedIdentifier</dfn> := (<abbr>IdentifierInitialChar</abbr> | <abbr>IdentifierEscape</abbr>) (<abbr>IdentifierFollowingChar</abbr> | <abbr>IdentifierEscape</abbr>)*
+<dfn>QuotedIdentifier</dfn> := <code>'</code> (<abbr>IdentifierFollowingChar</abbr> | <abbr>IdentifierEscape</abbr>)+
 <dfn>IdentifierInitialChar</dfn> :=  <abbr>AsciiLetter</abbr> | <code>_</code> | <abbr>UnicodeIdentifierChar</abbr>
 <dfn>IdentifierFollowingChar</dfn> := <abbr>IdentifierInitialChar</abbr> | <abbr>Digit</abbr>
-<dfn>QuotedIdentifierEscape</dfn> := <code>\</code> ^ ( <abbr>AsciiLetter</abbr> | 0x9 | 0xA | 0xD | <abbr>UnicodePatternWhiteSpaceChar</abbr> )
+<dfn>IdentifierEscape</dfn> := <abbr>IdentifierSingleEscape</abbr> | <abbr>NumericEscape</abbr>
+<dfn>IdentifierSingleEscape</dfn> := <code>\</code> ^ ( <abbr>AsciiLetter</abbr> | 0x9 | 0xA | 0xD | <abbr>UnicodePatternWhiteSpaceChar</abbr> )
+<dfn>NumericEscape</dfn> := <code>\u{</code> <abbr>CodePoint</abbr> <code>}</code>
+<dfn>CodePoint</dfn> := <abbr>HexDigit</abbr>+
 <dfn>AsciiLetter</dfn> := <code>A</code> .. <code>Z</code> | <code>a</code> .. <code>z</code>
 <dfn>UnicodeIdentifierChar</dfn> := ^ ( <abbr>AsciiChar</abbr> | <abbr>UnicodeNonIdentifierChar</abbr> )
 <dfn>AsciiChar</dfn> := 0x0 .. 0x7F
@@ -318,10 +290,14 @@ of Unicode TR31 for immutable identifiers; the set of characters is immutable in
 the sense that it does not change between Unicode versions.
 </p>
 <p>
-The QuotedIdentifier syntax allows an arbitrary non-empty string to be treated
-as an identifier. In particular, a reserved keyword <code><var>K</var></code>
-can be used as an identifier by preceding it with a single quote i.e.
-<code>'<var>K</var></code>.
+The <code>QuotedIdentifier</code> syntax allows a reserved keyword
+<code><var>K</var></code> can be used as an identifier by preceding it with a
+single quote i.e. <code>'<var>K</var></code>. The <code>IdentifierEscape</code>
+syntax allows an arbitrary non-empty string to be treated as an identifier. In a
+<code>NumericEscape</code>, <code>CodePoint</code> must valid Unicode code
+point; more precisely, it must be a hexadecimal numeral denoting an integer
+<em>n</em> where 0 &#x2264; <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &#x2264;
+0x10FFFF.
 </p>
 
 <pre
@@ -357,8 +333,7 @@ constructed from other values;</li>
 <li>structured values, like mappings and lists, which contain other values;</li>
 <li>sequence values, which combine aspects of simple values and structured
 values;</li>
-<li>behavioral values, like functions, which allow parts of Ballerina programs
-to be handled in a uniform way with other values</li>
+<li>behavioral values, like functions and objects, which are not just data</li>
 </ul>
 <p>
 There is a fundamental distinction between values that have a <em>storage
@@ -369,12 +344,12 @@ not. Storage identity for sequence values is more complicated and will be
 explained in the section on sequence values.
 </p>
 <p>
-Values can be stored in variables or as members of structures. When a value has
-no storage identity, it can be stored directly in the variable or structure.
-However, when a value has storage identity, what is stored in the variable or
-member is a reference to the location where the value is stored rather than the
-value itself. Storage identity allows values in Ballerina to represent not just
-trees but graphs.
+Values can be stored in variables or as members of structures or in constituents
+of sequences. When a value has no storage identity, it can be stored directly in
+the variable, structure or sequence. However, when a value has storage identity,
+what is stored in the variable, structure or sequence is a reference to the
+location where the value is stored rather than the value itself. Storage
+identity allows values in Ballerina to represent not just trees but graphs.
 </p>
 <p>
 Ballerina provides the ability to test whether two values have the same storage
@@ -386,13 +361,6 @@ concept of <em>copying</em>: it means to create a value that is the same, except
 for having a new storage identity. The concept of having storage identity is
 similar to the concept of a reference type in some other programming languages,
 but also accomodates the concept of a sequence value.
-</p>
-<p>
-Storage identity is tied to mutability. Mutation is only well-defined for values
-with storage identity. When a value stored in some storage location is mutated,
-the change will be visible through all variables referring to the value in that
-location. But not all values with storage identity can be mutated: a value may
-not support mutation even though it has a storage identity.
 </p>
 <p>
 Ballerina programs use types to categorize values both at compile-time and
@@ -407,47 +375,7 @@ shape of the structured value. Since shapes do not deal with storage identity,
 they represent trees rather graphs. For simple values, there is no difference
 between a shape and a value, with the exception of floating point values where
 the shape does not consider representation details that do not affect the
-mathematical value being represented. There are two important relations between
-a value and a type:
-</p>
-<ul>
-<li>a value <em>looks like</em> a type at a particular point in the execution of
-a program if its shape at that point is a member of the type;</li>
-<li>a value <em>belongs to</em> a type if it looks like the type, and it will
-necessarily continue to look like the type no matter how the value is mutated.</li>
-</ul>
-<p>
-When a Ballerina program declares a variable to have a compile-time type, this
-means that the Ballerina compiler together with the runtime system will ensure
-that the variable will only ever contain a value that belongs to the type.
-Ballerina also provides mechanisms that take a value that looks like a type and
-use it to create a value that belongs to a type.
-</p>
-<p>
-If a value cannot be mutated, looking like a type and belonging to a type are
-the same thing.
-</p>
-<p>
-Every value has a read-only bit. If the read-only bit is on, it means that the
-value is not mutable. A value's read-only bit is fixed when the value is
-constructed, and cannot be changed thereafter. Immutability is deep: the values
-contained in a structured value that has its read-only bit on will all have
-their read-only bits on. Some basic types are inherently immutable: the
-read-only bit is always on for a value that belongs to an inherently immutable
-basic type. All simple types are inherently immutable. Some basic types are
-selectively immutable: a type is selectively immutable if it is possible to
-construct both values of the type that have the read-only bit on and values
-that do not have the read-only bit on. All structured types are selectively
-immutable. Finally, some basic types are inherently mutable: the read-only bit
-is never on for a value belonging to an inherently mutable basic type.
-</p>
-<p>
-A shape is divided into two <em>aspects</em>: the <em>primary aspect</em> and
-the <em>read-only aspect</em>. A value's read-only bit is a part of the
-<em>read-only aspect</em> of the value's shape. The read-only bit of values
-contained in a structured value is part of the read-only aspect of those values
-and of the read-only aspect of the structured value. Everything about a shape
-except the read-only bits constitutes the primary aspect of the shape.
+mathematical value being represented.
 </p>
 <p>
 A value is <em>plain data</em> if it is a simple value, a sequence value or a
@@ -463,6 +391,143 @@ More precisely, a value is defined to be <em>plain data</em> if it is
 Plain data values can in general contain cycles of references, but in some
 contexts are restricted to be acyclic. Plain data values, including values with
 cycles, can be compared for equality.
+</p>
+<p>
+The two most important kinds of behavioural values are functions and objects. A
+function value can be executed by calling it; when a function is called, it is
+passed values and arguments and returns a value. An object encapsulates data
+with functions that operate on the data: an object's members are divided into
+fields, which hold the data, and methods, which are the functions that operate
+on the data.
+</p>
+</section>
+
+<section>
+<h4>Mutation</h4>
+<p>
+There are two kinds of things that can be mutated in Ballerina: variables and
+values. Mutation of values is tied to storage identity: mutation is only
+possible for values with storage identity. When a value stored in some storage
+location is mutated, the change will be visible through all variables referring
+to the value in that location. But not all values with storage identity can be
+mutated: a value may not support mutation even though it has a storage identity.
+</p>
+<p>
+The possibility of mutation gives rise to two relations between a value and a
+type:
+</p>
+<ul>
+<li>a value <em>looks like</em> a type at a particular point in the execution of
+a program if its shape at that point is a member of the type;</li>
+<li>a value <em>belongs to</em> a type if it looks like the type, and it will
+necessarily continue to look like the type no matter how the value is mutated.</li>
+</ul>
+<p>
+If a value cannot be mutated, looking like a type and belonging to a type are
+the same thing.
+</p>
+<p>
+When a Ballerina program declares a variable to have a compile-time type, this
+means that the Ballerina compiler together with the runtime system will ensure
+that the variable will only ever hold a value that belongs to the type.
+Ballerina also provides mechanisms that take a value that looks like a type and
+use it to create a value that belongs to a type.
+</p>
+<p>
+Every value has a read-only bit. If the read-only bit is on, it means that the
+value is immutable. A value's read-only bit is fixed when the value is
+constructed, and cannot be changed thereafter. Ballerina maintains the invariant
+that immutability is deep: any value reachable from a value with its read-only
+bit set is guaranteed to have its read-only bit set. Here <em>reachable</em>
+means reachable through read operations: every member of a structure value is
+reachable from the structure value; every constituent of a sequence value is
+reachable from the sequence value; every member of an object value is reachable
+from the object value. Reachability is transitive: if <var>t</var> is reachable
+from <var>s</var>, and <var>s</var> is reachable from <var>r</var>, then
+<var>t</var> is reachable from <var>r</var>. Reachability is also considered
+reflexive: a value is reachable from itself.
+</p>
+<p>
+Some basic types are inherently immutable: the read-only bit is always on for a
+value that belongs to an inherently immutable basic type. All simple types are
+inherently immutable as are functions. Some basic types are selectively
+immutable: a type is selectively immutable if it is possible to construct both
+values of the type that have the read-only bit on and values that do not have
+the read-only bit on. All structured types are selectively immutable as are
+objects. Finally, some basic types are inherently mutable: the read-only bit is
+never on for a value belonging to an inherently mutable basic type.
+</p>
+<p>
+It is also possible to limit the mutability of variables, by making them final.
+This means that the value that a variable holds cannot be changed after the
+variable has been initialized. Unlike immutability of variables, this is not
+deep. A final variable can hold a mutable value.
+</p>
+</section>
+
+<section>
+<h4>Isolation</h4>
+<p>
+There are three possible operations on storage: read, write and execute. The
+concept of immutability relates to reading and writing storage, and provides
+limited information about execution: execution cannot lead to mutation of an
+immutable value. For functions and objects, it is useful to have more
+information about how execution may lead to mutation. Ballerina has a concept of
+<em>isolation</em> that provides this.
+</p>
+<p>
+In addition to defining when a value is reachable from a value, we can define
+when a value is reachable from a variable: a value is reachable from a variable
+if the value is reachable from the value that the variable holds. We
+can also define when mutable state is reachable from a value or variable: the
+mutable state of a value v is reachable from a value or variable, if v is
+reachable from the value or variable; the mutable state of a variable v is
+reachable only from the variable v.
+</p>
+<p>
+Objects have an isolated bit in addition to a read-only bit; an object value is
+isolated if its isolated bit is set. Mutable state is defined to be <em>freely
+reachable</em> from a value or variable if it is reachable without following a
+reference to an isolated object. A variable or value is an <em>isolated
+root</em> if its mutable state is isolated from the rest of the program's
+mutable state: any mutable state that is freely reachable from the isolated root
+is reachable from outside only through the isolated root. More precisely, if
+some mutable state <var>s</var> is freely reachable from an isolated root value
+<var>r</var>, then <var>s</var> is not freely reachable from a variable or value
+that is not reachable from <var>r</var> except by following a reference through
+<var>r</var>; similarly, if some mutable state <var>s</var> is freely reachable
+from an isolated root variable <var>r</var>, then <var>s</var> is not freely
+reachable from a value that is not reachable from <var>r</var> and is not freely
+reachable from any variable other than <var>r</var>. A variable can also be
+declared to be isolated. Ballerina maintains the invariant that isolated objects
+and isolated variables are isolated roots. Ballerina also guarantees that any
+mutable state freely reachable from an isolated object or isolated variable is
+accessed only within the scope of a <a href="#lock_statement">lock
+statement</a>, which ensures that there is no data race in accessing that
+mutable state. This implies that there will be no data race accessing any
+mutable state that is reachable (not just freely reachable) from an isolated
+object or isolated variable.
+</p>
+<p>
+Functions and methods have an isolated bit in addition to a read-only bit; a
+function or method is isolated if its isolated bit is set. Ballerina guarantees
+that a call an isolated method or function will only result in access to mutable
+state if at least one of the following conditions applies:
+</p>
+<ul>
+<li>the mutable state is freely reachable from an argument passed to the
+function or method and the access happens on the strand on which the function is
+called; the object on which a method is invoked is considered as an argument for
+this purpose;</li>
+<li>the mutable state is freely reachable from an isolated variable or an
+isolated object;</li>
+<li>the mutable state is part of a new value created by the call.</li>
+</ul>
+<p>
+The caller of a function can thus ensure that a function call will not lead to a
+data race by ensuring that no data race is possible for the mutable state freely
+reachable from the arguments that it passes to the function, for example by
+passing only immutable values or isolated objects.
 </p>
 
 </section>
@@ -623,6 +688,16 @@ values are, recursively, json</td>
   </tr>
 </table>
 <p>
+A shape is divided into two <em>aspects</em>: the <em>primary aspect</em> and
+the <em>read-only aspect</em>. A value's read-only bit is a part of the
+<em>read-only aspect</em> of the value's shape. The read-only bit of values
+contained in a structured value is part of the read-only aspect of those values
+and of the read-only aspect of the structured value. Everything about a shape
+except the read-only bits constitutes the primary aspect of the shape. If two
+plain data values compare equal, then the primary aspect of their shapes is the
+same, but there may be differences in the read-only aspect.
+</p>
+<p>
 Type descriptors other than <code>readonly</code> describes types using only the
 primary aspect of shape: whether a value belongs to the type is not affected by
 the read-only aspect of the value's shape. The <code>readonly</code> type uses
@@ -654,6 +729,10 @@ together with associativity.
   <tr>
    <td><strong>Operator</strong></td>
    <td><strong>Associativity</strong></td>
+  </tr>
+  <tr>
+   <td><code>distinct T</code></td>
+   <td></td>
   </tr>
   <tr>
    <td><code>T[]</code></td>
@@ -695,7 +774,9 @@ uniquely identifies it within a Ballerina program. A type-id has three parts:
 <ol>
 <li>a module id, which identifies the module within which the
 distinct-type-descriptor occurs; this consists of an organization, a module
-name, and a version number;</li>
+name, and an array of platform-specified strings, which could include
+information about, for example, the repository or version of the package the
+module comes from;</li>
 <li>a local id, which identifies the occurrence of the
 <code>distinct</code> within the module; this takes one of two forms:
 <ul>
@@ -1074,10 +1155,8 @@ class="grammar"><dfn>string-type-descriptor</dfn> := <code>string</code>
 <dfn>string-literal</dfn> := <abbr>DoubleQuotedStringLiteral</abbr>
 <dfn>DoubleQuotedStringLiteral</dfn> := <code>"</code> (<abbr>StringChar</abbr> | <abbr>StringEscape</abbr>)* <code>"</code>
 <dfn>StringChar</dfn> := ^ ( 0xA | 0xD | <code>\</code> | <code>"</code> )
-<dfn>StringEscape</dfn> := <abbr>StringSingleEscape</abbr> | <abbr>StringNumericEscape</abbr>
+<dfn>StringEscape</dfn> := <abbr>StringSingleEscape</abbr> | <abbr>NumericEscape</abbr>
 <dfn>StringSingleEscape</dfn> := <code>\t</code> | <code>\n</code> | <code>\r</code> | <code>\\</code> | <code>\"</code>
-<dfn>StringNumericEscape</dfn> := <code>\u{</code> <abbr>CodePoint</abbr> <code>}</code>
-<dfn>CodePoint</dfn> := <abbr>HexDigit</abbr>+
 </pre>
 <p>
 A string is an sequence of zero or more Unicode characters. More precisely, it
@@ -1086,12 +1165,6 @@ Unicode scalar value is any code point in the Unicode range of 0x0 to 0x10FFFF
 inclusive, other than surrogate code points, which are 0xD800 to 0xDFFF
 inclusive. Note that a string may include Unicode noncharacters, such as 0xFFFE
 and 0xFFFF.
-</p>
-<p>
-In a <code>StringNumericEscape</code>, <code>CodePoint</code> must valid Unicode
-code point; more precisely, it must be a hexadecimal numeral denoting an
-integer <em>n</em> where 0 &#x2264; <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &#x2264;
-0x10FFFF.
 </p>
 <p>
 String values do not have storage identity and so the string basic type is
@@ -1153,11 +1226,12 @@ The <code>xml:Text</code> type is inherently immutable. This implies that both
 text singletons and empty xml values always have their read-only bits on. The
 <code>xml:Element</code>, <code>xml:ProcessingInstruction</code> and
 <code>xml:Comment</code> types are selectively immutable. The read-only bit of a
-xml value with length greater than one is on if and only if the read-only bit
-of all its constituent items is on. Immutability of xml values is deep: if the
-read-only bit of an <code>xml:Element</code> is on, then the read-only bits of the
-mapping representing its attributes and of the xml value representing its
-children are also on.
+xml value with length greater than one is on if and only if the read-only bit of
+all its constituent items is on. The attributes and children of an element are
+reachable from the element. Thus, if the read-only bit of an
+<code>xml:Element</code> is on, then the read-only bits of the mapping
+representing its attributes and of the xml value representing its children are
+also on.
 </p>
 <p>
 Note that although the mutable constituents of mutable xml value can be mutated,
@@ -1550,9 +1624,9 @@ class="grammar"><dfn>record-type-descriptor</dfn> :=
 <dfn>field-descriptor</dfn> :=
    <abbr>individual-field-descriptor</abbr> | <abbr>record-type-inclusion</abbr>
 <dfn>individual-field-descriptor</dfn> :=
-   <abbr>metadata</abbr> [<code>readonly</code>] <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<code>?</code> | <abbr>default-value</abbr>] <code>;</code>
+   <abbr>metadata</abbr> [<code>readonly</code>] <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<code>?</code> | (<code>=</code> <abbr>default-expression</abbr>)] <code>;</code>
 <dfn>field-name</dfn> := <abbr>identifier</abbr>
-<dfn>default-value</dfn> := <code>=</code> <abbr>expression</abbr>
+<dfn>default-expression</dfn> := <abbr>expression</abbr>
 <dfn>record-type-inclusion</dfn> := <code>*</code> <abbr>type-reference</abbr> <code>;</code>
 <dfn>record-rest-descriptor</dfn> := <abbr>type-descriptor</abbr> <code>...</code> <code>;</code>
 </pre>
@@ -1617,15 +1691,16 @@ specifies <code>readonly</code>, then it describes a type that is a subtype of
 set.
 </p>
 <p>
-A <code>default-value</code> specifies a default value for the field, which is
-used when the record type descriptor is used to construct a mapping value but no
-value is specified explicitly for the field. The type descriptor contains a
-0-argument function closure for each default value. The closure is created from
-the expression when the type descriptor is resolved. The expression must meet
-the requirements for an <a href="#isolated_functions">isolated function</a>. The
-closure is evaluated to create a field value each time the default is used in
-the construction of a mapping value. The default value does not affect the type
-described by the type descriptor.
+A <code>default-expression</code> is an expression that specifies a default
+value for the field, which is used when the record type descriptor is used to
+construct a mapping value but no value is specified explicitly for the field.
+The type descriptor contains a 0-argument function closure for each default
+value. The closure is created from the expression when the type descriptor is
+resolved. The expression must meet the requirements for an <a
+href="#isolated_functions">isolated function</a>. The closure is evaluated to
+create a field value each time the default is used in the construction of a
+mapping value. The default value does not affect the type described by the type
+descriptor.
 </p>
 <p>
 A <code>record-type-inclusion</code> includes fields from a named record type.
@@ -1800,7 +1875,8 @@ a non-empty set of type-ids.
 <h4 id="functions">Functions</h4>
 
 <pre
-class="grammar"><dfn>function-type-descriptor</dfn> := [<abbr>isolated-qual</abbr>] <code>function</code> <abbr>function-signature</abbr>
+class="grammar"><dfn>function-type-descriptor</dfn> := [<abbr>isolated-qual</abbr>] <code>function</code> [<abbr>function-signature</abbr>]
+<dfn>isolated-qual</dfn> := <code>isolated</code>
 <dfn>function-signature</dfn> := <code>(</code> <abbr>param-list</abbr> <code>)</code> <abbr>return-type-descriptor</abbr>
 </pre>
 <p>
@@ -1818,9 +1894,10 @@ class="grammar"><dfn>param-list</dfn> :=
 <dfn>required-params</dfn> := <abbr>required-param</abbr> (<code>,</code> <abbr>required-param</abbr>)*
 <dfn>required-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> [<abbr>param-name</abbr>]
 <dfn>defaultable-params</dfn> := <abbr>defaultable-param</abbr> (<code>,</code> <abbr>defaultable-param</abbr>)*
-<dfn>defaultable-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> [<abbr>param-name</abbr>] <abbr>default-value</abbr>
+<dfn>defaultable-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> [<abbr>param-name</abbr>] <code>=</code> (<abbr>default-expression</abbr> | <abbr>inferred-typedesc-default</abbr>) 
 <dfn>rest-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <code>...</code> [<abbr>param-name</abbr>]
 <dfn>param-name</dfn> := <abbr>identifier</abbr>
+<dfn>inferred-typedesc-default</dfn> := <code>&lt;</code> <code>&gt;</code>
 </pre>
 <p>
 A param-name can be omitted from a required-param, defaultable-param or
@@ -1862,11 +1939,17 @@ The conformance of the argument list ensures that the members of this list will
 belong to type T.
 </p>
 <p>
-A defaultable-param is a parameter for which a default value is specified. The
-expression specifying the default value may refer to previous parameters by
-name. For each defaultable parameter, the function's type descriptor includes a
-closure that computes the default value for the parameter using the values of
-previous parameters. The caller of the function uses the closures in the
+A defaultable-param is a parameter for which a default value is specified. An
+expression can be used to specify the default value; this expression may refer
+to previous parameters. Each such expression is turned into a closure that
+computes the default value for the parameter using the values of previous
+parameters, and this closure is part of the type descriptor for the function. It
+is also possible for the default to be specified as <code>&lt;&gt;</code>; this
+means that the default value is a <code>typedesc</code> value that is to be
+inferred by the caller from the contextually expected type of the function call.
+It is allowed only when the parameter name to which the default value applies is
+referenced in the return-type-descriptor, as described below, and is allowed for
+at most one parameter in a function. The caller of the function uses the
 function's type descriptor to compute default values for any defaultable
 arguments that were not specified explicitly. These default values are included
 in the argument list passed to the function. Whether a parameter is defaultable,
@@ -1876,8 +1959,8 @@ when the type descriptor is resolved; the default value is computed by calling
 the closure each time the function is called and the corresponding parameter is
 not specified. Whether a parameter is defaultable is used at compile time, but
 the closure that computes the default value is only used at runtime. If the
-function-type-descriptor includes an isolated-qual, then an expression in a
-default-value must meet the requirements for an <a
+function-type-descriptor includes an isolated-qual, then an expression used as a
+default-expression must meet the requirements for an <a
 href="#isolated_functions">isolated function</a>.
 </p>
 <p>
@@ -1929,43 +2012,32 @@ parameter list type P' if and only if R is a subtype of R' and P' is a subtype
 of P. A function value f belongs to a function type T if the declared type of f
 is a subtype of T.
 </p>
+<p>
+If a function-type-descriptor includes an <code>isolated-qual</code>, then a
+function value belongs to the type only if the value's isolated bit is set; if
+the function type does not include an <code>isolated-qual</code>, then whether a
+function value belongs to the type is not affected by the value's isolated bit.
+</p>
+<p>
+All function values belongs to a function-type-descriptor <code>function</code>;
+a function value belongs to the function-type-descriptor <code>isolated
+function</code> if and only if it is an isolated function.
+</p>
 
-<pre
-class="grammar"><dfn>isolated-qual</dfn> := <code>isolated</code>
-</pre>
-<p>
-Every function value has an isolated bit in addition to a read-only bit. If a
-function type includes the <code>isolated-qual</code>, then a function value
-belongs to the type only if the value's isolated bit is set; if the function
-type does not include <code>isolated-qual</code>, then whether a function value
-belongs to the type is not affected by the value's isolated bit.
-</p>
-<p>
-The read-only bit of a function value is always on, because a function's code
-cannot be modified. It provides no information about what happens when the
-function is executed; this is the role of the isolated bit. A function value
-with its isolated bit on is called an isolated function. The invocation of an
-isolated function is guaranteed not to result in access to a mutable storage
-location unless the storage location is reachable from an argument of that
-function invocation and the access happens on the strand on which the function
-is invoked. Reachable here means reachable by a succession of reads. This is the
-same concept used for readonly: any storage location reachable from a read-only
-value is read-only. Thus an invocation of an isolated function with only
-readonly arguments will access only read-only storage locations.
-</p>
 </section>
 <section>
 <h4>Objects</h4>
 <p>
-An object value contains fields and methods. A field of an object stores a
-value. A method of an object is a function that can be invoked on the object
-using a <code>method-call-expr</code>; when a method is invoked on an object,
-the function can access the object using the <code>self</code> variable. An
-object's methods are associated with the object when the object is constructed
-and cannot be changed thereafter. Fields and methods have names that uniquely
-identify them within their object; fields and methods share a single symbol
-space; it is not possible for an object to have a field and a method with the
-same name.
+An object value encapsulates data with functions that operate on the data. An
+object consists of named members, where each member is either a field or a
+method. A field of an object stores a value. A method of an object is a function
+that can be invoked on the object using a <code>method-call-expr</code>; when a
+method is invoked on an object, the function can access the object using the
+<code>self</code> variable. An object's methods are associated with the object
+when the object is constructed and cannot be changed thereafter. Fields and
+methods have names that uniquely identify them within their object; fields and
+methods share a single symbol space; it is not possible for an object to have a
+field and a method with the same name.
 </p>
 <p>
 The type of object values can be described using an
@@ -1988,70 +2060,25 @@ bit. Whether an object is read-only can be described separately using a
 
 <pre
 class="grammar"><dfn>object-type-descriptor</dfn> :=
-   [<abbr>object-network-qual</abbr>] <code>object</code> <code>{</code>
+   <abbr>object-type-quals</abbr> <code>object</code> <code>{</code>
       <abbr>object-member-descriptor</abbr>*
    <code>}</code>
+<dfn>object-type-quals</dfn> :=
+   <abbr>isolated-qual</abbr> [<abbr>object-network-qual</abbr>]
+   | [<abbr>object-network-qual</abbr> [<abbr>isolated-qual</abbr>]]
 <dfn>object-member-descriptor</dfn> :=
    <abbr>object-field-descriptor</abbr>
    | <abbr>method-decl</abbr>
+   | <abbr>remote-method-decl</abbr>
    | <abbr>object-type-inclusion</abbr>
 </pre>
 
-<section>
-<h5>Fields</h5>
-
-<pre
-class="grammar"><dfn>object-field-descriptor</dfn> :=
-   <abbr>metadata</abbr> [<code>public</code>] <abbr>type-descriptor</abbr> <abbr>field-name</abbr> <code>;</code>
-</pre>
 <p>
-An <code>object-field-descriptor</code> describes a field of the object. The
-<code>field-name</code> of an <code>object-field-descriptor</code> must be
-distinct from the <code>field-name</code> of every other
-<code>object-field-descriptor</code> in the <code>object-type-descriptor</code>
-and from the <code>method-name</code> of every <code>method-decl</code> in the
-<code>object-type-descriptor</code>.
+If an isolated-qual is specified, then an object belongs to the described type
+only if the object's isolated bit is set. If an isolated-qual is not specified,
+then an object's isolated bit does not affect whether it belongs to the
+described type.
 </p>
-<p>
-If an object's read-only bit is set, then the read-only bit of the value of
-every field must also be set and the value of a field cannot be changed after
-the object has been constructed.
-</p>
-</section>
-<section>
-<h5>Methods</h5>
-
-<pre
-class="grammar"><dfn>method-decl</dfn> :=
-   <abbr>metadata</abbr> <abbr>method-decl-quals</abbr>
-   <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
-<dfn>method-name</dfn> := <abbr>identifier</abbr>
-</pre>
-<p>
-A <code>method-decl</code> describes a method of the object. The
-<code>method-name</code> of a <code>method-decl</code> must be distinct from the
-<code>method-name</code> of every other <code>method-decl</code> in the
-<code>object-type-descriptor</code> and from the <code>field-name</code> of
-every <code>object-field-descriptor</code> in the
-<code>object-type-descriptor</code>. Note that here is no method overloading.
-The <code>method-name</code> in a <code>method-decl</code> must not be
-<code>init</code>.
-</p>
-
-<pre
-class="grammar"><dfn>method-decl-quals</dfn> :=
-   <code>public</code> [<abbr>isolated-qual</abbr>]
-   | (<abbr>remote-qual</abbr> | <abbr>isolated-qual</abbr>)*
-</pre>
-<p>
-Neither <code>remote-qual</code> not <code>isolated-qual</code> can occur more
-than once in <code>method-decl-quals</code>. The <code>isolated-qual</code>
-together with the <code>function-signature</code> give the function type of the
-method. An isolated method has the same access to the object on which the method
-is invoked that it has to parameters.
-</p>
-
-</section>
 
 <section>
 <h5>Network interaction</h5>
@@ -2080,44 +2107,112 @@ client object or service object or neither. A <code>object-network-qual</code>
 is not allowed in conjunction with <code>public</code>.
 </p>
 
+<p>
+Network interaction objects provide two additional features: remote methods and
+resources. Remote methods are supported by both client and service objects.
+Resources are supported only by service objects. Object type descriptors do not
+provide a way to describe the resources of a service object: whether a service
+object belongs to an object type is not affected by the service object's
+resources. Resources are described in detail in the <a
+href="#resources">section</a> on object constructors.
+</p>
+
+</section>
+
+<section>
+<h5>Fields</h5>
+
 <pre
-class="grammar"><dfn>remote-qual</dfn> := <code>remote</code>
+class="grammar"><dfn>object-field-descriptor</dfn> :=
+   <abbr>metadata</abbr> [<code>public</code>] <abbr>type-descriptor</abbr> <abbr>field-name</abbr> <code>;</code>
 </pre>
 <p>
-A method with a <code>remote-qual</code> is a remote method. Only a network
-interaction object can have a remote method. A remote method is a method for
-network interaction: a remote method of a client object is for outbound network
-interaction; a remote method of a service object is for inbound network
-interaction. A remote method cannot be called using the normal method call
-syntax. A remote method of a client object can only be invoked by a
-<code>client-remote-method-call-action</code>. A remote method of a service
-object is invoked by a Listener object provided by a library module; Ballerina
-does not yet define a mechanism to allow such a library module to be implemented
-completely in Ballerina.
+An <code>object-field-descriptor</code> describes a field of the object. The
+<code>field-name</code> of an <code>object-field-descriptor</code> must be
+distinct from the <code>field-name</code> of every other
+<code>object-field-descriptor</code> in the <code>object-type-descriptor</code>
+and from the <code>method-name</code> of every <code>method-decl</code> in the
+<code>object-type-descriptor</code>.
+</p>
+<p>
+If an object's read-only bit is set, then the read-only bit of the value of
+every field must also be set and the value of a field cannot be changed after
+the object has been constructed.
 </p>
 </section>
+
+<section>
+<h5>Methods</h5>
+
+<pre
+class="grammar"><dfn>method-decl</dfn> :=
+   <abbr>metadata</abbr> [<code>public</code>] [<abbr>isolated-qual</abbr>]
+   <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
+<dfn>method-name</dfn> := <abbr>identifier</abbr>
+</pre>
+<p>
+A <code>method-decl</code> describes a method of the object. The
+<code>method-name</code> of a <code>method-decl</code> must be distinct from the
+<code>method-name</code> of every other <code>method-decl</code> in the
+<code>object-type-descriptor</code> and from the <code>field-name</code> of
+every <code>object-field-descriptor</code> in the
+<code>object-type-descriptor</code>. Note that here is no method overloading.
+The <code>method-name</code> in a <code>method-decl</code> must not be
+<code>init</code>.
+</p>
+
+<p>
+The <code>isolated-qual</code> together with the <code>function-signature</code>
+give the function type of the method. An isolated method has the same access to
+the object on which the method is invoked that it has to parameters.
+</p>
+
+<pre
+class="grammar"><dfn>remote-method-decl</dfn> :=
+   <abbr>metadata</abbr> <abbr>remote-method-quals</abbr> 
+   <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
+<dfn>remote-method-quals</dfn> :=
+   <abbr>remote-qual</abbr> [<abbr>isolated-qual</abbr>]
+   | <abbr>isolated-qual</abbr> <abbr>remote-qual</abbr>
+<dfn>remote-qual</dfn> := <code>remote</code>
+</pre>
+<p>
+A <code>remote-method-decl</code> declares a remote method. An object can
+include a <code>remote-method-decl</code> only if it is a network interaction
+object. A remote method is a method for network interaction: a remote method of
+a client object is for outbound network interaction; a remote method of a
+service object is for inbound network interaction. A remote method cannot be
+called using the normal method call syntax. A remote method of a client object
+can only be invoked by a <code>client-remote-method-call-action</code>. A remote
+method of a service object is invoked by a listener object provided by a library
+module; Ballerina does not yet define a mechanism to allow such a library module
+to be implemented completely in Ballerina.
+</p>
+
+</section>
+
 <section>
 <h5>Visibility</h5>
 <p>
 Each field and method of an object has a <em>visibility region</em>, which is
 the region of code within which the field or method is visible and can be
-accessed. If <code>object-field-descriptor</code> or <code>method-decl</code>
-includes <code>public</code>, or if the <code>method-decl</code> includes
-<code>remote</code>, then its visibility region consists of all the modules of
-the program. Otherwise the visibility region is the module containing this
-object type descriptor; this is called module-level visibility.
+accessed. The visibility region of a <code>remote-method-decl</code> or of
+<code>object-field-descriptor</code> or <code>method-decl</code> that includes
+<code>public</code> consists of all the modules of the program. Otherwise the
+visibility region is the module containing this object type descriptor; this is
+called module-level visibility.
 </p>
 </section>
 <section>
 <h5>Typing</h5>
 
 <p>
-The shape of an object consists of a network interaction kind and an unordered
-collection of object field shapes and object method shapes. A network
-interaction kind has one of three values: service, client or empty. An object
-field shape or object method shape is a 4-tuple consisting of the name of the
-field or method, the visibility region, a remote flag and a shape for the value
-of the field or for the method's function.
+The shape of an object consists of a read-only bit, an isolated bit, a network
+interaction kind and an unordered collection of object field shapes and object
+method shapes. A network interaction kind has one of three values: service,
+client or empty. An object field shape or object method shape is a 4-tuple
+consisting of the name of the field or method, the visibility region, a remote
+flag and a shape for the value of the field or for the method's function.
 </p>
 <p>
 An object type is inclusive, in a similar way to an
@@ -2156,20 +2251,24 @@ class="grammar"><dfn>object-type-inclusion</dfn> := <code>*</code> <abbr>type-re
 Every type descriptor referenced directly or indirectly by a
 <code>type-reference</code> in an <code>object-type-inclusion</code> must be an
 <code>object-type-descriptor</code>, <code>distinct-type-descriptor</code>,
-<code>intersection-type-descriptor</code> or a class; the referenced type
-descriptor will thus necessarily be definite and a subtype of object. The
-<code>object-field-descriptor</code>s and <code>method-decl</code>s from the
-referenced type are included in the type being defined. A type-reference to a
-class is treated as a reference to the class's type; only the types of the
-methods and fields are copied from the referenced type. An
-<code>object-field-descriptor</code> or <code>method-decl</code> in a
-<code>object-type-descriptor</code> can override respectively an
-<code>object-field-descriptor</code> or <code>method-decl</code> of the same
-name in an included <code>object-type-descriptor</code>, provided the type
-declared for the field or method in the overriding descriptor is a subtype of
-the type declared in the overridden descriptor. An <code>object-field-descriptor</code>
-cannot override a <code>method-decl</code>, nor can a <code>method-decl</code>
-override an <code>object-field-descriptor</code>.
+<code>intersection-type-descriptor</code> or a class that is not readonly; the
+referenced type descriptor will thus necessarily be definite and a subtype of
+object. If a referenced object-type-descriptor or class has an
+<code>isolated</code>, <code>service</code> or <code>client</code> qualifier
+<var>Q</var>, then the referencing object-type-descriptor must also have the
+qualifier <var>Q</var>. The <code>object-field-descriptor</code>s and
+<code>method-decl</code>s from the referenced type are included in the type
+being defined. A type-reference to a class is treated as a reference to the
+class's type; only the types of the methods and fields are copied from the
+referenced type. An <code>object-field-descriptor</code> or
+<code>method-decl</code> in a <code>object-type-descriptor</code> can override
+respectively an <code>object-field-descriptor</code> or <code>method-decl</code>
+of the same name in an included <code>object-type-descriptor</code>, provided
+the type declared for the field or method in the overriding descriptor is a
+subtype of the type declared in the overridden descriptor. An
+<code>object-field-descriptor</code> cannot override a <code>method-decl</code>,
+nor can a <code>method-decl</code> override an
+<code>object-field-descriptor</code>.
 </p>
 <p>
 An object-type-descriptor is always definite. The set of type-ids induced by an
@@ -2238,7 +2337,7 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
 </section>
 
 <section>
-<h4>[Preview] Streams</h4>
+<h4>Streams</h4>
 
 <pre
 class="grammar"><dfn>stream-type-descriptor</dfn> := <code>stream</code> [<abbr>stream-type-parameters</abbr>]
@@ -2259,11 +2358,14 @@ include nil describes an unbounded stream.
 <p>
 A stream supports two primitive operations: a next operation and a close
 operation. The next operation has the same semantics as the next method on the
-Iterator object type. The close operation informs the stream that there
-will be no more next operations and thus allows the stream to release resources
-used by the stream; the close operation on a <code>stream&lt;T,C&gt;</code> has
-a result of type <code>C?</code>, where nil means that the close operation was
-successful.
+Iterator object type. The close operation informs the stream that there will be
+no more next operations and thus allows the stream to release resources used by
+the stream; the close operation on a <code>stream&lt;T,C&gt;</code> has a result
+of type <code>C?</code>, where nil means that the close operation was
+successful. The close operation is idempotent: performing the close operation on
+a stream on which the close operation has already been performed has no effect.
+When the generation of the sequence is complete, the stream automatically
+performs the close operation to release resources used by the stream.
 </p>
 <p>
 The type descriptor <code>stream&lt;T,C&gt;</code> works like a class, in that
@@ -2673,11 +2775,11 @@ belonging to the following type.
 
 <pre
 >    object {
-       public next() returns record {| T value; |}|C;
+       public isolated function next() returns record {| T value; |}|C;
     }
     | object {
-       public next() returns record {| T value; |}|C;
-       public close() returns C?;
+       public isolated function next() returns record {| T value; |}|C;
+       public isolated function close() returns C?;
     }
 </pre>
 
@@ -2693,25 +2795,28 @@ immediately returns <code>()</code>.
 <section>
 <h4>Listener</h4>
 <p>
-The Listener type is defined in <code>lang.object</code> as follows.
+The abstract object type Listener&lt;T&gt;, where T is a a subtype of
+<code>service object {}</code>, is described by the following object type
+descriptor:
 </p>
 
-<pre>distinct object {
-   public function attach(service object {} s, string? name = ()) returns error?;
-   public function detach(service object {} s) returns error?;
+<pre>object {
+   public function attach(T svc, string[]? path = ()) returns error?;
+   public function detach(T svc) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 }
 </pre>
-<!-- Fix in #615
 <p>
-Note that if an implementation does precise service typing using annotations on
-type definitions, it will need to treat Listener as being parameterized in the
-precise service type that is used to the first argument to
-<code>attach</code>.
+The above methods all return an error value if an error occurred, and
+return nil otherwise.
 </p>
--->
+<p>
+A type is a <em>listener object type</em> if it is a subtype of the abstract
+object type Listener&lt;T&gt;, for some type T that is a subtype of
+<code>service object {}</code>.
+</p>
 </section>
 <section>
 <h4>RawTemplate</h4>
@@ -3712,7 +3817,7 @@ completes abruptly in the same way as E1.
 <section>
 <h3>Static typing of expressions</h3>
 <p>
-A type is computed for every expression at compile type; this is called the
+A type is computed for every expression at compile time; this is called the
 static type of the expression. The compiler and runtime together guarantee that
 if the evaluation of an expression at runtime completes normally, then the
 resulting value will belong to the static type. A type is also computed for
@@ -3814,6 +3919,38 @@ the value that the literal represents, whereas the broad type is the precise
 type widened to contain the entire basic type of which it is a subtype. For
 example, the precise type of the string literal <code>"X"</code> is the
 singleton type <code>"X"</code>, but the broad type is <code>string</code>.
+</p>
+</section>
+<section>
+<h4>Isolated expressions</h4>
+<p>
+Ballerina defines requirements for when an expression is <em>isolated</em>. If
+an expression meets the requirements, then it is compile-time guaranteed that
+the value of the expression will be an isolated root and will not be aliased.
+</p>
+<p>
+If the static type of an expression is immutable, i.e. a subtype of
+<code>readonly</code>, or an isolated object, i.e. a subtype of <code>isolated
+object {}</code>, then the expression is isolated.
+</p>
+<p>
+Also, an expression of one of the following syntactic kinds is isolated if all
+its subexpressions are isolated (regardless of its static type):
+</p>
+<ul>
+<li><code>list-constructor-expr</code></li>
+<li><code>table-constructor-expr</code></li>
+<li><code>mapping-constructor-expr</code></li>
+<li><code>xml-template-expr</code></li>
+<li><code>raw-template-expr</code></li>
+<li><code>type-cast-expr</code></li>
+<li><code>checking-expr</code></li>
+<li><code>trap-expr</code></li>
+<li><code>conditional-expr</code></li>
+</ul>
+<p>
+The section for each kind of expression will describe any alternative conditions
+under which that kind of expression is also isolated.
 </p>
 </section>
 </section>
@@ -4334,9 +4471,9 @@ fields come from a separate, named class definition.
 
 <pre
 class="grammar"><dfn>object-constructor-expr</dfn> :=
-   [<abbr>annots</abbr>] [<abbr>object-network-qual</abbr>] <code>object</code> [<abbr>type-reference</abbr>] <abbr>object-constructor-block</abbr>
+   [<abbr>annots</abbr>] <abbr>object-type-quals</abbr> <code>object</code> [<abbr>type-reference</abbr>] <abbr>object-constructor-block</abbr>
 <dfn>object-constructor-block</dfn> := <code>{</code> <abbr>object-member</abbr>* <code>}</code>
-<dfn>object-member</dfn> := <abbr>object-field</abbr> | <abbr>method-defn</abbr>
+<dfn>object-member</dfn> := <abbr>object-field</abbr> | <abbr>method-defn</abbr> | <abbr>remote-method-defn</abbr> | <abbr>resource-method-defn</abbr>
 </pre>
 <p>
 The resulting of evaluating an <code>object-constructor-expr</code> is an
@@ -4351,10 +4488,6 @@ evaluated. This means that every object resulting from the evaluation of an
 <code>object-constructor-expr</code> has its own type descriptor.
 </p>
 <p>
-If the applicable contextually expected type is a subtype of readonly, then the
-object will be constructed with its read-only bit on.
-</p>
-<p>
 If there is a <code>type-reference</code>, then the referenced type is included
 in the object's type in the same was as an <code>object-type-inclusion</code>,
 and the type-ids of the constructed object are type-ids of the referenced type.
@@ -4362,7 +4495,35 @@ If there is no <code>type-reference</code>, then the applicable contextually
 expected type T, if any, must be definite, and the type-ids of the constructed
 object are the type-ids, if any, induced by T.
 </p>
+<p>
+The <code>object-constructor-expr</code> is <em>implicitly read-only</em> if the
+applicable contextually expected type is a subtype of readonly or if the
+<code>type-reference</code> is present and references a type that is a subtype
+of readonly. If the <code>object-constructor-expr</code> is <em>implicitly
+read-only</em>, then the object will be constructed with its read-only bit on;
+furthermore, in this case an <code>object-type-inclusion</code> is allowed to
+directly or indirectly reference a readonly class.
+</p>
+<p>
+The <code>object-constructor-expr</code> is <em>explicitly isolated</em> if
+<code>object-type-quals</code> includes <code>isolated</code> or if the
+type-reference is present and references an isolated object type. An
+<code>object-constructor-expr</code> that is explicitly isolated will construct
+an object with its isolated bit set.
+</p>
 
+<pre
+class="grammar"><dfn>object-visibility-qual</dfn> := <code>public</code>|<code>private</code>
+</pre>
+
+<p>
+A visibility qualifier of <code>private</code> can be used within an
+<code>object-constructor-expr</code> expression; this means that the visibility
+region consists of every method-defn-body in the object-constructor-expr.
+</p>
+
+<section>
+<h5>Fields</h5>
 <pre
 class="grammar"><dfn>object-field</dfn> :=
    <abbr>metadata</abbr> [<abbr>object-visibility-qual</abbr>] [<code>final</code>]
@@ -4375,9 +4536,12 @@ An <code>object-field</code> declares and initializes a field of the object.
 <p>
 If a field does not specify a field-initializer, then there must be an
 <code>init</code> method and the <code>init</code> method must initialize the
-field. The field-initializer must be the requirements for an isolated function
-unless there the <code>init</code> method is present and not declared as
-<code>isolated</code>.
+field. The field-initializer must meet the requirements for an isolated function
+unless the <code>init</code> method is present and not declared as
+<code>isolated</code>. If the <code>object-constructor-expr</code> is implicitly
+read-only, then the contextually expected type for a field-initializer will be
+the intersection of readonly and the type specified in the type-descriptor of
+the object-field.
 </p>
 <p>
 If <code>final</code> is present, then the field must be assigned to exactly
@@ -4385,43 +4549,217 @@ once, either by its initializer or in the <code>init</code> method.
 </p>
 <p>
 An <code>object-constructor-expr</code> will construct an object with its
-read-only bit set if
+read-only bit set if every object-field is declared as <code>final</code> and
+has a type-descriptor that is a subtype of <code>readonly</code>. In this case,
+the static type of the <code>object-constructor-expr</code> will be intersected
+with <code>readonly</code>.
 </p>
-<ul>
-<li>every object-field is declared as <code>final</code> and has a
-type-descriptor that is a subtype of readonly; or</li>
-<li>it occurs within a <code>const-expr</code> or the applicable contextually
-expected type is a subtype of readonly; in this case, the contextually expected
-type for a field-initializer will be the intersection of readonly and the type
-specified in the type-descriptor of the object-field.</li>
-</ul>
+<p>
+An object field is <em>isolated</em> if it is declared as <code>final</code> and
+has a type-descriptor that is a subtype of <code>readonly</code> or
+<code>isolated object {}</code>, or if the <code>object-constructor-expr</code>
+is implicitly read-only. An <code>object-constructor-expr</code> is
+<em>implicitly isolated</em> if it is implicitly readonly or if every object
+field is isolated. An <code>object-constructor-expr</code> that is implicitly
+isolated will construct an object with its isolated bit set. In this case, the
+static type of the <code>object-constructor-expr</code> will be intersected with
+<code>isolated object {}</code>. If the <code>object-constructor-expr</code> is
+explicitly isolated, then every <code>field-initializer</code> must be an
+isolated expression and any field that is not isolated must be declared as
+private.
+</p>
+</section>
+
+<section>
+<h5>Methods</h5>
 
 <pre
 class="grammar"><dfn>method-defn</dfn> :=
-   <abbr>metadata</abbr> <abbr>method-defn-quals</abbr>
+   <abbr>metadata</abbr> <abbr>object-visibility-qual</abbr> [<abbr>isolated-qual</abbr>]
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
-<dfn>method-defn-body</dfn> := <abbr>function-defn-body</abbr>
-<dfn>method-defn-quals</dfn> :=
-   <abbr>object-visibility-qual</abbr> [<abbr>isolated-qual</abbr>]
-   | (<abbr>remote-qual</abbr> | <abbr>isolated-qual</abbr>)*
-<dfn>object-visibility-qual</dfn> := <code>public</code>|<code>private</code>
 </pre>
 
 <p>
-A <code>method-defn</code> defines a method of an object. Neither
-<code>remote-qual</code> not <code>isolated-qual</code> can occur more than once
-in <code>method-defn-quals</code>. If <code>isolated</code> is present, then the
-method has its isolated bit set and its <code>method-defn-body</code> must
-satisfy the requirements for an <a href="#isolated_functions">isolated
-function</a>. If the <code>remote</code> is present, then the method is a remote
-method; this is allowed only when an <code>object-network-qual</code> is present
-in the <code>object-constructor-expr</code>.
+A <code>method-defn</code> defines a method of an object. 
 </p>
+
+<pre
+class="grammar"><dfn>remote-method-defn</dfn> :=
+   <abbr>metadata</abbr> <abbr>remote-method-quals</abbr>
+   <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
+</pre>
+<p>
+A <code>remote-method-defn</code> defines a remote method. This is allowed only
+when an <code>object-network-qual</code> is present in the
+<code>object-constructor-expr</code>.
+</p>
+
+<pre
+class="grammar"><dfn>method-defn-body</dfn> := <abbr>function-defn-body</abbr>
+</pre>
 <p>
 Within a <code>method-defn-body</code>, the fields and methods of the object are
-not implicitly in-scope; instead the keyword <code>self</code> is bound to the
-object and can be used to access fields and methods of the object.
+not implicitly in-scope; instead the variable <code>self</code> is bound to the
+object and can be used to access fields and methods of the object. If the
+<code>object-constructor-expr</code> is explicitly isolated, then the
+<code>self</code> variable must be accessed only within the scope of a lock
+statement, except when <code>self</code> is part of a
+<code>field-access-expr</code> of the form <code>self.<var>f</var></code>, where
+<code><var>f</var></code> is the name of an isolated field.
 </p>
+<p>
+If <code>isolated-qual</code> is present, then the method has its isolated bit
+set and its <code>method-defn-body</code> must satisfy the requirements for an
+<a href="#isolated_functions">isolated function</a>.
+</p>
+
+</section>
+
+<section>
+<h5 id="resources">Resources</h5>
+
+<p>
+In addition to remote methods, a service object can use <em>resources</em> to
+support network interaction. Resources support a more data-oriented style of
+network interaction, which complements the RPC style supported by remote
+methods. A service object's resources are arranged in a tree. Each resource
+exposes one or more named methods; by convention the method name
+<code>get</code> is used for retrieving the resource. A listener thus identifies
+a resource method to be called using the combination of a hierarchical path,
+which identifies the resource, and the resource method name. A resource method
+can also specify that a segment of the path provided by the listener should be
+treated as a parameter. A resource method can only be invoked by a listener
+object.
+</p>
+
+<pre
+class="grammar"><dfn>resource-method-defn</dfn> :=
+   <abbr>metadata</abbr> <abbr>resource-method-quals</abbr>
+   <code>function</code> <abbr>resource-method-name</abbr> <abbr>resource-path</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
+<dfn>resource-method-quals</dfn> :=
+   <abbr>resource-qual</abbr> [<abbr>isolated-qual</abbr>]
+   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr>
+<dfn>resource-qual</dfn> := <code>resource</code>
+<dfn>resource-method-name</dfn> := <abbr>identifier</abbr>
+<dfn>resource-path</dfn> :=
+   <abbr>dot-resource-path</abbr>
+   | <abbr>resource-path-segment</abbr> (<code>/</code> <abbr>resource-path-segment</abbr>)* [<code>/</code> <abbr>resource-path-rest-param</abbr>]
+   | <abbr>resource-path-rest-param</abbr>
+<dfn>dot-resource-path</dfn> := <code>.</code>
+<dfn>resource-path-segment</dfn> := <abbr>resource-path-segment-name</abbr> | <abbr>resource-path-segment-param</abbr>
+<dfn>resource-path-segment-name</dfn> := <abbr>identifier</abbr>
+<dfn>resource-path-segment-param</dfn> := <code>[</code>[<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <abbr>param-name</abbr><code>]</code>
+<dfn>resource-path-rest-param</dfn> := <code>[</code>[<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <code>...</code> <abbr>param-name</abbr><code>]</code>
+</pre>
+
+<p>
+A <code>resource-method-defn</code> defines a resource method. This is allowed
+only when an <code>object-network-qual</code> of <code>service</code> is present
+in the <code>object-constructor-expr</code>. The <code>resource-path</code>
+specifies the node in the service object's resource tree to which the method is
+attached and the <code>resource-method-name</code> specifies the method name. It
+is an error to have two <code>resource-method-defn</code>s that both have the
+same name and have a path that refers to the same node. A
+<code>dot-resource-path</code> specifies the root of the service object's
+resource tree. In a service object's resource tree, each edge from a parent node
+to a child node has a label, which uniquely identifies the child relative to its
+siblings. A label is either a string or one of two special values that indicate
+that the corresponding path segment should be treated as a parameter. It is an
+error for a parent node to have more than one edge to a child node labelled with
+one of the two special values. A <code>resource-path-segment-name</code>
+specifies a label that is a string. The two special label values come from a
+<code>resource-path-segment-param</code> and a
+<code>resource-path-rest-param</code> respectively. A parameter in a
+<code>resource-path-segment-param</code> will be bound to a value representing a
+single path segment; a parameter in a <code>resource-path-rest-param</code> will
+be bound to a list representing zero or more path segments, with each member
+representing a single path segment. The type of a path segment depends on the
+listener, but the listener must be able to convert it into a string. For
+example, in HTTP a path segment is natively a sequence of bytes, and an HTTP
+listener could convert it into a string by decoding with UTF-8. It also depends
+on the listener which types other than string it is able to convert a path
+segment to.
+</p>
+<p>
+The return type of a resource method must not allow values belonging to the
+function basic type. A resource method with a name of <code>get</code> that can
+return a service object represents a subservice. It is subject to the following
+restrictions:
+</p>
+<ul>
+<li>the return type must not allow anything other that service
+objects and errors;</li>
+<li>the resource path must not end with a <code>resource-path-rest-param</code>;</li>
+<li>the method's node must not have any child nodes.</li>
+</ul>
+<p>
+The semantics of hierarchical resources are defined by a lookup function, which
+takes four parameters:
+</p>
+<ul>
+<li><var>m</var> is the name of the method;</li>
+<li><var>p</var> is the resource path;</li>
+<li><var>r</var> refers to a node in the resource tree of a service object;</li>
+<li><var>v</var> is the list path segments bound so far.</li>
+</ul>
+<p>
+It returns an error or a tuple [<var>r</var>, <var>v</var>], where
+</p>
+<ul>
+<li><var>r</var> is a node in the resource tree with an m method, which is the
+method to be called;</li>
+<li><var>v</var> is a list of path segments to be bound to the method’s variable
+resource path parameters.</li>
+</ul>
+<p>
+The function lookup(<var>m</var>, <var>p</var>, <var>r</var>, <var>v</var>) is
+defined as follows:
+</p>
+<ol>
+<li>If <var>r</var> has a <code>get</code> method that can return a service
+object, then call the <code>get</code> method of <var>r</var> using <var>v</var>
+to bind the path parameters; if the result is an error, then return that error;
+otherwise, the result must be a service object. Let <var>r</var>' be the root of
+its resource tree. Return lookup(<var>m</var>, <var>p</var>, <var>r</var>',
+[]).</li>
+<li>If <var>p</var> is empty: 
+<ol>
+<li>if <var>r</var> has a method <var>m</var>, then return
+[<var>r</var>,<var>v</var>];</li>
+<li>otherwise, if <var>r</var> has a child labelled as repeated variable path
+segment and that child has a method <var>m</var>, then let <var>r</var>' be
+child with that label and return [<var>r</var>',<var>v</var>];</li>
+<li>otherwise, return an error.</li> 
+</ol>
+</li>
+<li>Let the first segment in <var>p</var> be <var>s</var> and let <var>p</var>'
+be a list of the 2nd and subsequent members of <var>p</var>.</li>
+<li>If <var>r</var> has a child labelled with the string that results from
+converting <var>s</var> to a string, then let <var>r</var>' be the child with
+that label. Return lookup(<var>m</var>, <var>p</var>', <var>r</var>',
+<var>v</var>).</li>
+<li>If <var>r</var> has an edge to a child labelled as a single path segment
+parameter, then let <var>r</var>' be that child and let <var>v</var>' be the
+result of adding <var>s</var> to the end of <var>v</var>. Return
+lookup(<var>m</var>, <var>p</var>', <var>r</var>', <var>v</var>').</li>
+<li>If <var>r</var> has an edge to a child labelled as a rest parameter and that
+child has a method <var>m</var>, then let <var>r</var>' be that child, and let
+<var>v</var>' be the result of concatenating <var>v</var> and <var>p</var>.
+Return [<var>r</var>',<var>v</var>'].</li>
+<li>Otherwise, return an error.</li>
+</ol>
+<p>
+The syntax allows only the last of a resource method's path parameters to be a
+rest parameter. When a list of path segments is bound to the path parameters of
+a resource method, one path segment is bound to each path parameter that is not
+a rest parameter and a list of the remaining path segments is bound to the rest
+parameter, if any.
+</p>
+
+</section>
+
+<section>
+<h5>Initialization</h5>
 <p>
 A <code>method-defn</code> with a <code>method-name</code> of <code>init</code>
 is used to initialize the object and is treated specially. The return type of
@@ -4450,6 +4788,12 @@ is not definitely assigned at that point. It is a compile error if a
 </li>
 </ul>
 <p>
+If the <code>object-constructor-expr</code> is explicitly isolated, then a field
+can only be assigned to by an <code>assignment-stmt</code> with a right hand
+side that is an isolated expression. The requirement to access <code>self</code>
+within a lock statement does not apply to the <code>init</code> method.
+</p>
+<p>
 The visibility of the <code>init</code> method cannot be <code>private</code>.
 </p>
 <p>
@@ -4463,11 +4807,7 @@ A missing <code>init</code> method is equivalent to an isolated
 <code>init</code> method with no parameters and an empty body (which will always
 return nil).
 </p>
-<p>
-A visibility qualifier of <code>private</code> can be used within an
-<code>object-constructor-expr</code> expression; this means that the visibility
-region consists of all method definitions in the object-constructor-expr.
-</p>
+</section>
 
 </section>
 <section>
@@ -4490,7 +4830,9 @@ class. It is a compile error if the type-descriptor if the arg-list does not
 match the signature of the class's <code>init</code> method. If the result of
 calling the <code>init</code> method is an error value e, then the result of
 evaluating the explicit-new-expr is e; otherwise the result is the newly
-initialized object.
+initialized object. The explicit-new-expr is isolated if the type of the
+<code>init</code> is isolated and the expression for every argument in the
+arg-list is isolated.
 </p>
 <p>
 When the class-reference refers to a stream type <code>stream&lt;T,E&gt;</code>,
@@ -4498,7 +4840,8 @@ the arg-list must either be empty or be a single argument belonging to object
 type StreamImplementor&lt;T,E?&gt;. When the arg-list is empty, the result will
 be an empty stream (i.e. a stream whose next method returns nil). When the
 arg-list evaluates to a StreamImplementor object, the result will be a stream
-that wraps that object.
+that wraps that object. The explicit-new-expr is isolated if the the arg-list is
+empty or if the expression for the single argument is isolated.
 </p>
 <p>
 An explicit-type-expr specifying a class-descriptor T has static type T, except
@@ -4548,6 +4891,15 @@ definition or a class defined with a module class definition, then the result of
 evaluating the variable-reference-expr is a typedesc value for that type or
 class.
 </p>
+<p>
+A variable-reference-expr is isolated if it refers to an identifier bound by a
+let-expr to an expression that is isolated.
+</p>
+<p>
+A variable-reference-expr that refers to a variable declared by a
+module-var-decl that includes <code>isolated</code> is only allowed within a
+lock-stmt.
+</p>
 </section>
 <section>
 <h3>Field access expression</h3>
@@ -4556,17 +4908,25 @@ class.
 class="grammar"><dfn>field-access-expr</dfn> := <abbr>expression</abbr> <code>.</code> <abbr>field-name</abbr>
 </pre>
 <p>
-A field-access-expr accesses a field of an object or a member of a mapping. The
-semantics depends on the static type T of expression. A field-access-expr where
-T is a subtype of xml is interpreted as an xml-required-attribute-access-expr.
+A field-access-expr is typically used to access a field of an object or a field
+of a record. More generally, it can be used to access a member of an object or a
+member of a mapping. The semantics depends on the static type T of expression. A
+field-access-expr where T is a subtype of xml is interpreted as an
+xml-required-attribute-access-expr.
 </p>
 <p>
-If T is a subtype of the object basic type, then T must have a field field-name
-and the static type of the field-access-expr is the type of that field. In this
-case, the field-access-expr is evaluated by first evaluating the expression to
-get a value <var>obj</var>; the result of the field-access-expr is the value of
-that field of <var>obj</var>. The rest of this subsection applies when T is not
-a subtype of the object basic type.
+If T is a subtype of the object basic type, then T must have a member with name
+field-name. The field-access-expr is evaluated by first evaluating the
+expression to get a value <var>obj</var>. If the member is a field, then the
+result of the expression if the value of that field of <var>obj</var> and the
+static type of the field-access-expr is the type of that field of T. If that
+member is a method, then the result of the expression is a new function value
+that when called will call the method with <code>self</code> bound to
+<var>obj</var>; the isolated bit of the new function value is set if and only if
+the isolated bits of both <var>obj</var> and the method are set; the type
+descriptor of the new function value will have the same annotations as the type
+descriptor of the method. The rest of this subsection applies when T is not a
+subtype of the object basic type.
 </p>
 <p>
 Let T' be the intersection of T and basic type mapping, let K be the singleton type
@@ -4858,35 +5218,72 @@ descriptor of the referenced function value.
 </p>
 <p>
 The expressions occurring in the arg-list are evaluated in the order in which
-they occur in the arg-list. The result of evaluating each positional-arg is
-added to the argument list in order. The contextually expected type for the
-expression in the i-th positional-arg is the type of the i-th parameter.
+they occur in the arg-list. The contextually expected type for the expression in
+the i-th positional-arg is the type of the i-th required or defaultable
+parameter; if there is no such parameter, then the contextually expected type is
+the type of the rest-param. The contextually expected type for the expression in
+a named-arg is the type declared for the corresponding parameter. The value of
+evaluating the expression for the rest-arg must be either a list or a mapping
+value.
 </p>
 <p>
-If there is a rest-arg, then it is evaluated. The result must be a list value.
-Each member of the list value is added to the argument in the order that it
-occurs. The static type of the list value must be such as to guarantee that the
-resulting argument list will conform to the function's declared param-list. The
-rest-arg is not restricted to supplying the part of the argument list that will
-be bound to a rest-param, and its static type is not restricted to being an
-array type. If there is rest-arg, then no parameter defaults are added.
+The results of evaluating the expressions in the arg-list are used to construct
+the argument list as follows. First, the result of evaluating each
+positional-arg is added to the argument list in order. Then there are three
+possibilities:
+</p>
+<ul>
+<li>If there is a rest-arg that evaluates to a list, then each member of the
+list value is added to the argument in the order that it occurs; default values
+are not used in this case.</li>
+<li>Otherwise, if there is no rest-arg, each required or defaultable parameter
+that was not supplied by a positional-arg is added in parameter declaration
+order from a named-arg, if there is one with the specified name, and otherwise
+using the default value as specified in the function's type descriptor.</li>
+<li>Otherwise, the rest-arg is a mapping and there are no named-args.
+The effect in this case is as if for each field of the mapping there
+was a named-arg, with the name and value of the named-arg coming
+from the name and value of the field.</li>
+</ul>
+<p>
+The static type of the rest-arg must be such as to guarantee that the
+constructed argument list will conform to the function's declared param-list.
+Note that in the case where the rest-arg is a list, it is is not restricted to
+supplying the part of the argument list that will be bound to a rest-param, nor
+is its static type restricted to being an array type. It is a compile-time error
+if there is a required parameter for which there was neither a positional
+argument nor a named argument, or if there is a named argument for a parameter
+that was supplied by a positional argument.
 </p>
 <p>
-If there is no rest-arg, then each non-rest parameter that was not supplied by
-positional argument is added in order from a named argument, if there is one,
-and otherwise using the parameter default. The contextually expected type for
-the expression specifying a named argument is the type declared for the
-corresponding parameter. A default parameter is computed by calling the closure
-in the type descriptor, passing it the previous arguments in the argument list.
-It is a compile-time error if there is a non-rest parameter for which there was
-no positional argument and no named argument and which is not defaultable. It is
-also an error if there is a named argument for a parameter that was supplied by
-a positional argument.
+If the default value for a parameter was specified as <code>&lt;&gt;</code>,
+then then the caller will pass a typedesc value determined at compile-time from
+the contextually expected type of the function-call-expr as follows. Let the
+name of the parameter for which a default of <code>&lt;&gt;</code> was specified
+be <var>t</var>. Let the type of <var>t</var> be typedesc&lt;<var>T</var>&gt;.
+Let the return type descriptor for the function be <var>R</var>, which will have
+references to <var>t</var>. Let the contextually expected type for the
+function-call-expr be <var>C</var>. Then the default value is found by unifying
+<var>C</var> and <var>R</var>: the default value is a typedesc value
+representing a type descriptor <var>S</var> that is a subtype of <var>T</var>,
+such that <var>R</var> with <var>S</var> substituted for <var>t</var> is
+equivalent to <var>C</var>.
 </p>
 <p>
-When a function to be called results from the evaluation of an expression that
-is not merely a variable reference, the function can be called by first storing
-the value of the expression in a variable.
+If the default value for a parameter was specifed using an expression, then it
+is computed by calling the closure stored in the type descriptor, passing it the
+previous arguments in the argument list.
+</p>
+<p>
+A function-call-expr is isolated if the type of the function being called is
+isolated and the expression for every argument is isolated. In addition, a call
+to the <code>clone</code> or <code>cloneReadOnly</code> functions defined by the
+lang.value module of the lang library is always isolated.
+</p>
+<p>
+When there is a need to call a function value resulting from the evaluation of
+an expression, the result of the expression evaluation can be assigned to a
+variable and then the function called by using a reference to the variable.
 </p>
 
 </section>
@@ -4897,8 +5294,9 @@ the value of the expression in a variable.
 class="grammar"><dfn>method-call-expr</dfn> := <abbr>expression</abbr> <code>.</code> <abbr>method-name</abbr> <code>(</code> <abbr>arg-list</abbr> <code>)</code>
 </pre>
 <p>
-A <code>method-call-expr</code> either calls a method or calls a function in the
-lang library. The evaluation of the method-call-expr starts by evaluating
+A <code>method-call-expr</code> either calls an object's method, calls an
+object's field where the type of the field is a function or calls a function in
+the lang library. The evaluation of the method-call-expr starts by evaluating
 <code>expression</code> resulting in some value <var>v</var>. There is no
 contextually expected type for <code>expression</code>.
 </p>
@@ -4906,14 +5304,24 @@ contextually expected type for <code>expression</code>.
 If the static type of <code>expression</code> is a subtype of object, and the
 object type includes a method named <code>method-name</code>, then the
 <code>method-call-expr</code> is executed by calling that method on
-<var>v</var>. A <code>method-call-expr</code> can be used within a method of a
-service to call another method of that service other than a remote method; in
-this case, <code>expression</code> must be <code>self</code>. The
-<code>arg-list</code> is used to construct an argument list that is passed to
-the method in the same way as with a <code>function-call-expr</code>. A
-<code>method-call-expr</code> cannot be used to call a remote method. A remote
-method of a client object can be called by a
-<code>client-remote-method-call-action</code>.
+<var>v</var>. The <code>arg-list</code> is used to construct an argument list
+that is passed to the method in the same way as with a
+<code>function-call-expr</code>. A <code>method-call-expr</code> cannot be used
+to call a remote method. A remote method of a client object can be called by a
+<code>client-remote-method-call-action</code>. In this case, a method-call-expr
+is isolated if the expression preceding <code>.</code> is isolated, the
+expression for each argument in the arg-list is isolated and the type of the
+method being called is isolated.
+</p>
+<p>
+Otherwise, if the static type of <code>expression</code> is a subtype of object,
+and the object type includes a field named <code>method-name</code> with a
+function type, then the <code>method-call-expr</code> is executed by calling the
+value of that field. The <code>arg-list</code> is used to construct an argument
+list that is passed to the method in the same way as with a
+<code>function-call-expr</code>. In this case, a method-call-expr is isolated if
+the type of the function is isolated and the expression for each argument in the
+arg-list is isolated.
 </p>
 <p>
 Otherwise, the <code>method-call-expr</code> will be turned into a call to a
@@ -4937,7 +5345,9 @@ the function is called.</li>
 <p>
 It is a compile-time error if the resulting function call does not satisfy all
 the constraints that would apply if it has been written explicitly as a
-<code>function-call-expr</code>.
+<code>function-call-expr</code>. The <code>method-call-expr</code> expression is
+isolated under the same conditions that the corresponding
+<code>function-call-expr</code> would be isolated.
 </p>
 </section>
 <section>
@@ -5058,7 +5468,10 @@ inferred from the precise static type of the expression following
 </p>
 <p>
 Since expressions cannot modify variables, the variables bound in a let-var-decl
-are implicitly final.
+are implicitly final. A let-expr is isolated if the expression following
+<code>in</code> is isolated; a reference in that expression to a variable bound
+by a let-var-decl will be treated as isolated if the expression initializing the
+variable in the let-var-decl is isolated.
 </p>
 
 </section>
@@ -5071,17 +5484,17 @@ class="grammar"><dfn>type-cast-expr</dfn> := <code>&lt;</code> <abbr>type-cast-p
 <dfn>type-cast-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> | <abbr>annots</abbr>
 </pre>
 <p>
+A <code>type-cast-expr</code> casts the value resulting from evaluating
+<code>expression</code> to the type described by the type-descriptor, performing
+an implicit conversion or numeric conversion if required.
+</p>
+<p>
 Normally, the parameter for a type-cast-expr includes a type-descriptor.
 However, it is also allowed for the parameter to consist only of annotations; in
 this case, the only effect of the type cast is for the contextually expected
 type for expression to be augmented with the specified annotations. The rest of
 this subsection describes the normal case, where the type-cast-expr includes a
 type-descriptor.
-</p>
-<p>
-A <code>type-cast-expr</code> casts the value resulting from evaluating
-<code>expression</code> to the type described by the type-descriptor, performing
-an implicit conversion or numeric conversion if required.
 </p>
 <p>
 A type-cast-expr is evaluated by first evaluating <code>expression</code>
@@ -5102,7 +5515,11 @@ be the static type of <code>expression</code>. Then the static type of the
 <code>type-cast-expr</code> is the intersection of T and TE', where TE' is TE
 with its xml shapes and numeric shapes transformed to take account to the
 possibility of the implicit conversion and numeric conversion specified in the
-previous paragraph.
+previous paragraph. It is a compile-time error to attempt to use a type cast to
+<em>cast away error</em>: if the intersection of TE and <code>error</code> is
+non-empty, then the intersection of T and <code>error</code> must also be
+non-empty. A <code>checkpanic</code> expression can be used instead to assert
+that the result of an expression will never be an error.
 </p>
 <p>
 The contextually expected type for <code>expression</code> is the intersection
@@ -5341,8 +5758,8 @@ with the same basic type as v.
 <pre
 class="grammar"><dfn>shift-expr</dfn> :=
    <abbr>expression</abbr> <code>&lt;&lt;</code> <abbr>expression</abbr>
-   <abbr>expression</abbr> <code>>></code> <abbr>expression</abbr>
-   <abbr>expression</abbr> <code>>>></code> <abbr>expression</abbr>
+   <abbr>expression</abbr> <code>&gt;&gt;</code> <abbr>expression</abbr>
+   <abbr>expression</abbr> <code>&gt;&gt;&gt;</code> <abbr>expression</abbr>
 </pre>
 <p>
 A shift-expr performs a bitwise shift. Both operand expressions must have static
@@ -5399,6 +5816,9 @@ of int.
 <p>
 A range-expr is designed to be used in a foreach statement, but it can be used
 elsewhere.
+</p>
+<p>
+A range-expr is always isolated.
 </p>
 </section>
 <section>
@@ -6387,21 +6807,25 @@ must be declared as isolated (a missing init method is equivalent is implicitly
 isolated).</li>
 </ul>
 </li>
-<li>Module-level state can be read only if it is immutable: in a variable-reference-expr
+<li>Non-isolated module-level state can only be read in two cases, specifically
+a variable-reference can refer to an an identifier declared by a
+module-var-decl, listener-decl or service-decl only if:
 <ul>
-<li>if the variable-reference refers to an identifier defined with a
-module-var-decl, the module-var-decl must include <code>final</code>; and</li>
-<li>if the variable-reference refers to an identifier defined with a
-module-var-decl, listener-decl or service-decl, the static type of the
-referenced variable must be a subtype of <code>readonly</code>.</li>
+<li>the identifier is declared by a module-var-decl that includes
+<code>final</code> but does not include <code>isolated</code>, or is declared by
+a listener-decl or a service-decl, and</li>
+<li>the static type of the variable is a subtype of <code>readonly</code> or of
+<code>isolated object {}</code>.</li>
 </ul>
 </li>
-<li>Module-level state cannot be mutated: a variable-reference-lvexpr cannot
-refer to a variable defined by a module-var-decl.</li>
-<li>Captured variables must be immutable: if the body is part of an
+<li>Non-isolated module-level state cannot be mutated: an identifier in a
+variable-reference-lvexpr or in a capture-binding-pattern in a
+destructuring-assignment-stmt must not refer to a variable defined by a
+module-var-decl that does not include <code>isolated</code>.</li>
+<li>Captured variables are restricted as follows: if the body is part of an
 anonymous-function-expr, then any captured variable references must refer to
 variables that are both final (either explicitly or implicitly) and have a
-static type that is a subtype of <code>readonly</code>.</li>
+static type that is a subtype of <code>readonly|isolated object {}</code>.</li>
 <li>New workers cannot be started: the following constructs are not allowed
 <ul>
 <li>named-worker-decl</li>
@@ -6410,10 +6834,6 @@ static type that is a subtype of <code>readonly</code>.</li>
 </ul>
 </li>
 </ul>
-<p>
-The result of these requirements is that an isolated function can only access
-mutable state that is reachable from its parameters.
-</p>
 <p>
 If an isolated function has an <code>external-function-body</code>, then the
 above requirements also apply to the external implementation as regards its
@@ -7050,20 +7470,20 @@ variable must not be assigned more than once.
 </p>
 </section>
 <section>
-<h3>Implicit variable type narrowing</h3>
+<h3 id="conditional_variable_type_narrowing">Conditional variable type narrowing</h3>
 <p>
 Usually the type of a reference to a variable is determined by the variable's
 declaration, either explicitly specified by a type descriptor or inferred from
-the static type of the initializer.
-</p>
-<p>
-In addition, this section defines cases where a variable is used in certain
-kinds of boolean expression in a conditional context, and it can be proved at
-compile time that the value stored in local variable or parameter will, within a
-particular region of code, always belong to a type that is narrower that the
-static type of the variable. In these cases, references to the variable within
-particular regions of code will have a static type that is narrower that the
-variable type.
+the static type of the initializer. However, the language also recognizes two
+kinds of case where the way a local variable or parameter is used means that is
+known at compile-time that within a particular region of code the value of the
+variable will belong to a type that is narrower than the declared type. In these
+cases, references to the variable within particular regions of code will have a
+static type that is narrower that the variable type. One kind of case, which is
+described in this section, is when a variable is used in a boolean expression in
+a conditional context. The other kind of case is when a variable is used in a
+match statement; this is described in the <a href="#match_statement">Match
+statement</a> section.
 </p>
 <p>
 Given an expression E with static type boolean, and a variable x with static
@@ -7341,6 +7761,11 @@ variable. Its static type is the declared or inferred type of the variable. The
 lvexpr is potentially uninitialized if it is possible for execution to have
 reached this point without initializing the referenced variable.
 </p>
+<p>
+A variable-reference-lvexpr that refers to a variable declared by a
+module-var-decl that includes <code>isolated</code> is only allowed within a
+lock-stmt.
+</p>
 
 <pre class="grammar"><dfn>field-access-lvexpr</dfn> := <abbr>lvexpr</abbr> <code>.</code> <abbr>field-name</abbr>
 </pre>
@@ -7403,9 +7828,9 @@ It is evaluated as follows:
 <var>k</var>.</li>
 </ol>
 <p>
-The static type of the member-access-expr is the member type for the key type K
+The static type of the member-access-lvexpr is the member type for the key type K
 in T, where T is the static type of the lvexpr and K is the static type type of
-expression; the member-access-expr is potentially undefined if K is an optional
+expression; the member-access-lvexpr is potentially undefined if K is an optional
 key type for T.
 </p>
 
@@ -7489,6 +7914,11 @@ The binding-pattern has a static type implied by the static type of the
 variables occurring in it. The static type of action-or-expr must be a subtype
 of this type.
 </p>
+<p>
+A binding pattern within a destructuring assignment must not refer to a variable
+declared by a module-var-decl that includes <code>isolated</code>.
+</p>
+
 </section>
 </section>
 <section>
@@ -7545,7 +7975,7 @@ class="grammar"><dfn>do-stmt</dfn> := <code>do</code> <abbr>statement-block</abb
 </pre>
 </section>
 <section>
-<h3>Match statement</h3>
+<h3 id="match_statement">Match statement</h3>
 
 <pre
 class="grammar"><dfn>match-stmt</dfn> := <code>match</code> <abbr>action-or-expr</abbr> <code>{</code> <abbr>match-clause</abbr>+ <code>}</code>
@@ -7564,7 +7994,7 @@ A match-stmt is executed as follows:
 <li>the expression is evaluated resulting in some value v;</li>
 <li>for each match-clause in order:
 <ol>
-<li>a match of match-pattern against v is attempted</li>
+<li>a match of match-pattern-list against v is attempted</li>
 <li>if the attempted match fails, the execution of the match-stmt continues to
 the next match-clause</li>
 <li>if the attempted match succeeds, then the variables in match-pattern are
@@ -7677,12 +8107,47 @@ bound to a new mapping that contains just the fields for which that did not
 match a <code>field-match-pattern</code>.
 </p>
 <p>
-For a match of an <code>error-match-pattern</code> with an
+For every match pattern, there is a set of shapes that the pattern matches. The
+type corresponding to the match pattern is the type containing these shapes. The
+value matches the pattern if and only if it looks like the type. A mutable value
+thus can match the pattern without belonging to the corresponding type. However,
+an immutable value that matches the pattern will always belong to the type.
+In particular, for the match of an <code>error-match-pattern</code> with an
 <code>error-type-reference</code> against an error value to succeed, the
-referenced error type must contain the shape of the error value; since errors
-are immutable, this requirement is equivalent to requiring that the error value
-belong to the referenced error type.
+error value must belong to the referenced error type.
 </p>
+<p>
+A variable is the <em>matched variable</em> of a <code>match-statement</code> if
+the <code>action-or-expression</code> following <code>match</code> is a
+<code>variable-reference</code> that references this variable. The type of a
+matched variable is subject to narrowing within regions of the
+<code>match-statement</code> as follows. The matched variable has a narrowed
+type at the start of each match-clause, which is determined by previous
+<code>match-clause</code>s; the type for the first <code>match-clause</code> is
+the normal static type of the variable. Narrowing is applied to each
+<code>match-clause</code> as follows:
+</p>
+<ul>
+<li>let <var>T</var> be the narrowed type of the matched variable at the start
+of the match-clause;</li>
+<li>let <var>P</var> be the union of the corresponding types of each
+<code>match-pattern</code> in the <code>match-pattern-list</code> of the
+<code>match-clause</code>;</li>
+<li>let <var>N</var> be the intersection of <var>T</var> and
+<var>P</var>;</li>
+<li>let <var>R</var> be the set difference of <var>T</var> and
+<var>P</var>;</li>
+<li>if <var>N</var> is a subtype of <code>readonly</code>, then the narrowed
+type for the <code>match-guard</code>, if any, and <code>statement-block</code>
+of the <code>match-clause</code> is <var>N</var>; otherwise it is
+<var>T</var>;</li>
+<li>if there is a match-guard, then the type narrowing described in <a
+href="#conditional_variable_type_narrowing">Conditional variable type
+narrowing</a> is done in addition to the type narrowing described here;</li>
+<li>if <var>R</var> is a subtype of <code>readonly</code> and there is no
+<code>match-guard</code>, then the narrowed type for the next
+<code>match-clause</code> is <var>R</var>; otherwise, it is <var>T</var>.</li>
+</ul>
 
 </section>
 <section>
@@ -7797,7 +8262,7 @@ enclosing while-stmt or foreach-stmt to terminate.
 </section>
 
 <section>
-<h3>Lock statement</h3>
+<h3 id="lock_statement">Lock statement</h3>
 <pre
 class="grammar"><dfn>lock-stmt</dfn> := <code>lock</code> <abbr>statement-block</abbr>
 </pre>
@@ -7825,6 +8290,37 @@ error if a function definition contains a named-worker-decl or start-action, and
 there is a function call lexically within the lock-stmt that might result
 directly or indirectly in a call to that defined function.
 </p>
+<p>
+There are two cases where a variable is restricted to be used only within a
+lock statement:
+</p>
+<ul>
+<li>when the variable is an isolated module-level variable; since module-level
+variables are not allowed to be public, this restriction applies
+to all functions in the module;</li>
+<li>when the variable is <code>self</code> within an isolated object, unless
+<code>self</code> is being used only to read an isolated field; since
+non-isolated fields are required to be private, this restriction applies only to
+the object's methods.</li>
+</ul>
+<p>
+When a lock statement contains one of the above two cases of restricted variable
+usage, the lock statement is subject to the following additional requirements,
+which maintain the invariant that the restricted variable is an isolated root.
+</p>
+<ul>
+<li>Only one such variable can occur in the lock statement.</li>
+<li>A function or method can be called in the lock statement only if the type of
+the function is isolated.</li>
+<li>Transferring values out of the lock statement is constrained: the expression
+following a return statement must be an isolated expression; an assignment to a
+variable defined outside the lock statement is allowed only if left-hand side is
+just a variable name and the right hand side is an isolated expression.</li>
+<li>Transferring values into the lock statement is constrained: a
+variable-reference-expr within the lock statement that refers to a variable or
+parameter defined outside the lock statement is allowed only if the
+variable-reference-expr occurs within an expression that is isolated.</li>
+</ul>
 
 </section>
 
@@ -7930,17 +8426,11 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
 <h3>Import declaration</h3>
 
 <pre
-class="grammar"><dfn>import-decl</dfn> := 
-   <code>import</code> [<abbr>org-name</abbr> <code>/</code>] <abbr>module-name</abbr> [<code>version</code> <abbr>sem-ver</abbr>] 
-   [<code>as</code> <abbr>import-prefix</abbr>] <code>;</code>
+class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</abbr> <code>/</code>] <abbr>module-name</abbr> [<code>as</code> <abbr>import-prefix</abbr>] <code>;</code>
 <dfn>import-prefix</dfn> := <abbr>module-prefix</abbr> | <code>_</code>
-<dfn>module-prefix</dfn> := <abbr>identifier</abbr>
+<dfn>module-prefix</dfn> := <abbr>identifier</abbr> | <abbr>predeclared-prefix</abbr>
 <dfn>org-name</dfn> := <abbr>identifier</abbr>
 <dfn>module-name</dfn> := <abbr>identifier</abbr> (<code>.</code> <abbr>identifier</abbr>)*
-<dfn>sem-ver</dfn> := <abbr>major-num</abbr> [<code>.</code> <abbr>minor-num</abbr> [<code>.</code> <abbr>patch-num</abbr>]]
-<dfn>major-num</dfn> := <abbr>DecimalNumber</abbr>
-<dfn>minor-num</dfn> := <abbr>DecimalNumber</abbr>
-<dfn>patch-num</dfn> := <abbr>DecimalNumber</abbr>
 
 <dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
 </pre>
@@ -7968,31 +8458,30 @@ same symbol space as a <code>xmlns-namespace-prefix</code> declared by an
 symbol space used by other declarations.
 </p>
 <p>
-The following module prefixes are predeclared:
-</p>
-<ul>
-<li><code>boolean</code></li>
-<li><code>decimal</code></li>
-<li><code>error</code></li>
-<li><code>float</code></li>
-<li><code>future</code></li>
-<li><code>int</code></li>
-<li><code>map</code></li>
-<li><code>object</code></li>
-<li><code>stream</code></li>
-<li><code>string</code></li>
-<li><code>table</code></li>
-<li><code>typedesc</code></li>
-<li><code>xml</code></li>
-</ul>
-<p>
-Each predeclared module prefix <code><var>t</var></code> is predeclared as
-referring to the <code>lang.<var>t</var></code> lang library module, but this
-can be overridden by an import-decl.
-</p>
-<p>
 It is an error for a module to directly or indirectly import itself. In other
 words, the directed graph of module imports must be acyclic.
+</p>
+<pre
+class="grammar"><dfn>predeclared-prefix</dfn> :=
+   <code>boolean</code>
+   | <code>decimal</code>
+   | <code>error</code>
+   | <code>float</code>
+   | <code>future</code>
+   | <code>int</code>
+   | <code>map</code>
+   | <code>object</code>
+   | <code>stream</code>
+   | <code>string</code>
+   | <code>table</code>
+   | <code>typedesc</code>
+   | <code>xml</code>
+</pre>
+<p>
+A reserved keyword <code><var>t</var></code> that is a predeclared-prefix is
+predeclared as referring to the <code>lang.<var>t</var></code> lang library
+module, but this can be overridden by an import-decl. A predeclared-prefix can
+be used as a module-prefix without using a QuotedIdentifier.
 </p>
 
 </section>
@@ -8055,6 +8544,19 @@ functions. The generated module, which imports the specified root module,
 becomes the new root module.
 </p>
 <p>
+A configuration is supplied as input to program execution. A
+<em>configuration</em> consists of mapping from names of configurable
+module-level variables to values. The values in a configuration always belong to
+the type <code>anydata&amp;readonly</code>. The value for a variable in the
+configuration is used during module initialization to initialize the variable
+instead of the value specified in the module. A configurable module-level
+variable may require that a configuration include a value for it. Except for
+this requirement, a configuration may be empty. Before initializing any module,
+the initialization phase must check that there is a value of the correct type
+supplied for every configurable module-level variable that requires
+configuration. If not, the module initialization phase terminates unsuccessfull.
+</p>
+<p>
 If the initialization phase of program execution completes successfully, then
 execution proceeds to the listening phase, which is described in the next
 section. The termination of the listening phase, which may be successful or
@@ -8066,34 +8568,37 @@ unsuccessful, terminates the program execution.
 <h3>Listeners and services</h3>
 
 <p>
-Service objects have remote methods, which are the network entry points of a
-Ballerina program. Listeners provide the interface between the network and
-service objects. A listener object receives network messages from a remote
-process according to some protocol and translates the received messages into
-calls on the remote methods of service objects that have been attached to the
-listener object. It is up to the listener object to determine how this
-translation happens; the type of the listener object thus constrains the type of
-a service that can be attached to the listener. (This constraint is not yet
-enforced by Ballerina's type system.)
+Service objects support network interaction using remote methods and resource
+methods. Listeners provide the interface between the network and service
+objects. A listener object receives network messages from a remote process
+according to some protocol and translates the received messages into calls on
+the remote and resource methods of service objects that have been attached to
+the listener object. It is up to the listener object to determine how this
+translation happens; the type of the listener object constrains the type of a
+service that can be attached to the listener. (This constraint cannot yet be
+fully expressed by Ballerina's type system.)
 </p>
 <p>
-An error return value is used by a service object's remote method to indicate
-that it encountered an error in processing the protocol message. The
-interpretation of other return values is dependent on the listener object. A
-listener object can allow a service object's remote method to use the return
-value to supply the response in the non-error case. This has the limitation that
-the remote method cannot control what happens if there is an error in sending a
-response. It also has the limitation that it cannot handle complex message
-exchange patterns, although returning multiple responses to a single request can
-be modelled by a remote method that returns a stream. A listener object can
+A service object's remote or resource method uses its return value to indicate
+to the listener what further handling of the network message is needed. An error
+return value is used to indicate that the method encountered some sort of error
+in handling the network message. When a service object is returned, it means
+that the listener should use that service object to further handle the network
+message. When no further handling is needed, the return value should be nil.
+</p>
+<p>
+The return value can also be used to supply a response to the network message.
+This has the limitation that the method cannot control what happens if there is
+an error in sending a response. It also has the limitation that it cannot handle
+complex message exchange patterns, although returning multiple responses to a
+single request can be modelled by returning a stream. A listener object can
 avoid these limitations by passing a client object as a parameter to the service
-object's remote method; the service object then makes calls on the remote
-methods of the client object in order to send a response back to the client. In
-this case, the service object's remote method should return nil if it does not
-return an error.
+object's remote or resource method; the service object then makes calls on the
+remote methods of the client object in order to send a response back to the
+client.
 </p>
 <p>
-The methods defined by the Listener object type allow for the
+The methods defined by the Listener&lt;T&gt; object type allow for the
 management of the lifecycle of a listener object and its attached services. A
 listener declaration registers a listener object with a module, so that it can
 be managed by the module. The runtime state of each module includes a list of
@@ -8137,7 +8642,7 @@ be assigned to. A module may have multiple multiple listeners.
 If the type-descriptor is present it specifies the static type of the variable;
 if it is not present, the the static type is the static type of
 <code>expression</code>. In both cases, the static type is constrained to be a
-subtype of the Listener object type.
+listener object type.
 </p>
 <p>
 When a listener-decl is initialized as part of module initialization, its
@@ -8153,37 +8658,55 @@ result of the evaluation.
 
 <pre
 class="grammar"><dfn>service-decl</dfn> :=
-   <abbr>metadata</abbr>
-   <code>service</code> [[<abbr>type-descriptor</abbr>] <abbr>variable-name</abbr>] <code>on</code> <abbr>expression-list</abbr> <abbr>object-constructor-block</abbr>
+   <abbr>metadata</abbr> [<abbr>isolated-qual</abbr>]
+   <code>service</code> [<abbr>type-descriptor</abbr>] [<abbr>absolute-resource-path</abbr>] <code>on</code> <abbr>expression-list</abbr> <abbr>object-constructor-block</abbr>
+<dfn>absolute-resource-path</dfn> :=
+   <abbr>root-resource-path</abbr>
+   (<code>/</code> <abbr>resource-path-segment</abbr>)+
+<dfn>root-resource-path</dfn> := <code>/</code>
+
 <dfn>expression-list</dfn> := <abbr>expression</abbr> (<code>,</code> <abbr>expression</abbr>)*
 </pre>
 <p>
 A <code>service-decl</code> creates a service object and attaches it to one or more
-listeners. If a variable-name is specified, it also declares a variable; as with
-a variable declared in a final variable declaration, the variable can be
-referenced by a variable-reference, but cannot be assigned to.
+listeners. 
 </p>
 <p>
 The static type S for the constructed service object is specified by the
 type-descriptor if present, and otherwise is the union of a type inferred from
 each expression in the expression list as follows. Each expression in the
-expression-list must have a type L|E where L is a listener and E is a subtype of
-error; the inferred type is the type of the first parameter to the
-<code>attach</code> method of L. The object-constructor-block has the same
-semantics as in an object-constructor-expr with a <code>service</code> qualifier
-and a type-reference that refers to S. The type S is also used as the type of
-the variable declared.
+expression-list must have a type Listener&lt;T&gt;|E where T is a subtype of
+<code>service object {}</code> and E is a subtype of <code>error</code>; the
+inferred type is T. The object-constructor-block has the same semantics as in an
+object-constructor-expr with a <code>service</code> qualifier and a
+type-reference that refers to S. If the service-decl includes <code>isolated</code>, then it
+is equivalent to an object-constructor-expr with an <code>isolated</code>
+qualifier as well as a <code>service</code> qualifier.
+</p>
+<p>
+The <code>absolute-resource-path</code> determines the second argument passed to
+the <code>attach</code> method: if the <code>absolute-resource-path</code> is
+absent, then the argument is nil; otherwise, the argument is an array of
+strings, with one string for each <code>resource-path-segment</code>. Attaching
+service objects <var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub>
+with absolute resource paths
+<var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub> is equivalent
+to attaching a single service object with <var>n</var> <code>get</code> resource
+methods to <code>/</code>, where the <var>i</var>-th resource method has a path
+<var>p</var><sub>i</sub> (an <code>absolute-resource-path</code> is turned into
+a <code>relative-resource-path</code> with the same
+<code>resource-path-segment</code>s) and returns
+<var>s</var><sub><var>i</var></sub>.
 </p>
 <p>
 A service-decl is initialized as part of module initialization as follows. The
 object-constructor-block is evaluated as in an object-constructor-expr resulting
-in a service object <code><var>s</var></code>. If variable-name is specified,
-then the variable is initialized to <code><var>s</var></code>. Then for each
-expression in expression-list:
+in a service object <code><var>s</var></code>. Then for each expression in
+expression-list:
 </p>
 <ol>
 <li>the expression is evaluated resulting in a value which is either an error or
-an object <code><var>obj</var></code> that is a subtype of Listener;</li>
+an object <code><var>obj</var></code> belonging to a listener object type;</li>
 <li>if it is an error, module initialization fails;</li>
 <li>otherwise, <code><var>obj</var></code> is registered as a module listener
 (registering the same object multiple times is the same as registering it
@@ -8199,25 +8722,30 @@ fails.</li>
 <h4>Isolated inference</h4>
 
 <p>
-A listener object can use the isolated bit of a service object's remote method to determine
-whether it is safe to make concurrent calls to the remote method.
+A listener object can use the isolated bit of a service object and of a service
+object's remote method to determine whether it is safe to make concurrent calls
+to the remote object or the remote method.
 </p>
 <p>
-The compiler may infer that a service object's remote method is isolated even it
-is not explicitly declared as such. In doing so, it analyzes a module to
-determine whether there is a set of definitions, where each definition is a
-<code>function-defn</code> or <code>method-defn</code>, and no definition is
-explicitly declared as isolated, such that if all the definitions were declared
-as isolated, then they all would meet the requirements for <a
-href="#isolated_functions">isolated functions</a>. If so, the isolated bit of
-the function value associated with each definition is set.
+The compiler may infer that a service object or a service object's remote method
+is isolated even it is not explicitly declared as such. In doing so, it analyzes
+a module to determine whether there is a set of declarations and definitions in
+the module, where each of them is a <code>service-decl</code>,
+<code>module-var-decl</code>, <code>module-class-defn</code>
+<code>function-defn</code> or <code>method-defn</code>, and none of them
+explicitly specified an <code>isolated</code> qualifier, such that if all them
+explicitly specified an <code>isolated</code> qualifier, then they all would
+meet the requirements for <a href="#isolated_functions">isolated functions</a>
+and isolated objects. If so, then the isolated bit of values resulting from them
+is set in the same way as if <code>isolated</code> qualifiers had been
+explicitly specified.
 </p>
 <p>
 This inference is purely an optimization to improve service concurrency and is
-subject to two constraints. First, any inferences do not affect the static type
-of functions visible to other modules. Second, any functions or methods
-explicitly declared as isolated must satisfy the requirements for isolated
-functions without relying on inference.
+subject to two constraints. First, any inferences do not affect the static types
+visible to other modules. Second, anything explicitly declared as
+<code>isolated</code> must satisfy the requirements of this specification
+without without relying on inference.
 </p>
 
 </section>
@@ -8265,7 +8793,6 @@ module initialization.
 
 </section>
 
-
 <section>
 <h3>Module class definition</h3>
 <p>
@@ -8281,10 +8808,12 @@ class="grammar"><dfn>module-class-defn</dfn> :=
    [<code>public</code>] <abbr>class-type-quals</abbr> <code>class</code> <abbr>identifier</abbr> <code>{</code>
       <abbr>class-member</abbr>*
   <code>}</code>
-<dfn>class-type-quals</dfn> := (<code>distinct</code> | <code>readonly</code> | <abbr>object-network-qual</abbr>)*
+<dfn>class-type-quals</dfn> := (<code>distinct</code> | <code>readonly</code> | <abbr>isolated-qual</abbr> | <abbr>object-network-qual</abbr>)*
 <dfn>class-member</dfn> :=
    <abbr>object-field</abbr>
    | <abbr>method-defn</abbr>
+   | <abbr>remote-method-defn</abbr>
+   | <abbr>resource-method-defn</abbr>
    | <abbr>object-type-inclusion</abbr>
 </pre>
 <p>
@@ -8306,19 +8835,33 @@ of each field is thus the intersection of the specified type and
 only if its read-only bit is set.
 </p>
 <p>
-If an object-type-inclusion references a type-descriptor that is a class, then
-only the type of the class is included: the definitions of the methods and any
-initializers for the fields are not included. If a class uses an
+If <code>class-type-quals</code> contains <code>isolated</code>, then the
+defined object type is an isolated type, and an object constructed using the
+type will have its isolated bit set. An <code>object-field</code> or
+<code>method-defn</code> occurring as a <code>class-member</code> in an isolated
+class is subject to same requirements as when it occurs as an
+<code>object-member</code> in an <code>object-constructor-expr</code> that is
+explicitly isolated.
+</p>
+<p>
+If an <code>object-type-inclusion</code> references a type-descriptor that is a
+class, then only the type of the class is included: the definitions of the
+methods and any initializers for the fields are not included. If a class uses an
 object-type-inclusion to include an object type T, then each method declared in
 T must be defined in the class using a <code>method-defn</code> with the same
 visibility. If T has a method or field with module-level visibility, then C must
-be in the same module.
+be in the same module. If the class is readonly (i.e.
+<code>class-type-quals</code> includes <code>readonly</code>), then an
+<code>object-type-inclusion</code> in the class is allowed to directly or
+indirectly reference a readonly class.
 </p>
 <p>
 If <code>class-type-quals</code> contains <code>distinct</code>, then the
 primary type-id of the class will the type-id of that occurrence of
 <code>distinct</code>, and the secondary type-ids will be the union of the
-type-ids of the included object types.
+type-ids of the included object types. If <code>class-type-quals</code> does not
+contain <code>distinct</code>, then the type-ids of the class come from the
+included object types in the same way as with an object type descriptor.
 </p>
 <p>
 An object of a class is initialized by:
@@ -8342,21 +8885,54 @@ The parameter list of an <code>init</code> method within an
 
 <pre
 class="grammar"><dfn>module-var-decl</dfn> := <abbr>module-init-var-decl</abbr> | <abbr>module-no-init-var-decl</abbr>
-<dfn>module-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>final</code>] <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>expression</abbr> <code>;</code>
 </pre>
 <p>
-The scope of variables declared in a module-var-decl is the entire module. Note
-that module variables are not allowed to be public. If final is specified, then
-it is not allowed to assign to the variable. If the typed-binding-pattern uses
-<code>var</code>, then the type of the variable is inferred from the static type
-of <code>expression</code>; if the module-var-decl includes <code>final</code>,
-the precise type is used, and otherwise the broad type is used. If the
-typed-binding-pattern specifies a type-descriptor, then that type-descriptor
-provides the contextually expected type for action-or-expr.
+A module-var-decl declares a variable. The scope of variables declared in a
+module-var-decl is the entire module. Module variables are not allowed to be
+public. The variable may be initialized in the declaration or within the
+module's <code>init</code> function. If <code>final</code> is specified, then it
+is not allowed to assign to the variable after it is initialized.
+</p>
+<pre
+class="grammar">
+<dfn>module-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>public</code>] <abbr>module-init-var-quals</abbr> <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>module-var-init</abbr> <code>;</code>
+<dfn>module-init-var-quals</dfn> := (<code>final</code> | <abbr>isolated-qual</abbr> | <code>configurable</code>)*
+<dfn>module-var-init</dfn> := <abbr>expression</abbr> | <code>?</code>
+</pre>
+<p>
+A module-init-var-decl declares and initializes a variable. It is an error for a
+keyword to appear more than once in <code>module-init-var-quals</code>. If the
+typed-binding-pattern uses <code>var</code>, then the type of the variable is
+inferred from the static type of <code>expression</code>; if the module-var-decl
+includes <code>final</code>, the precise type is used, and otherwise the broad
+type is used. If the typed-binding-pattern specifies a type-descriptor, then
+that type-descriptor provides the contextually expected type for action-or-expr.
+</p>
+<p>
+If a module-init-var-decl includes an isolated-qual, then the variable declared
+is isolated. In this case, <code>public</code> must not be specified, the
+binding-pattern in the typed-binding-pattern must be just a variable-name, and
+the expression must be an isolated expression. A variable declared as an
+isolated variable can be accessed only within a lock-stmt. When an isolated-qual
+occurs in a position where the grammar would allow it to be parsed as part of
+module-init-var-quals or typed-binding-pattern, the former parse is used.
+</p>
+<p>
+If <code>configurable</code> is specified, then the initializer specified in the
+module-var-init may be overridden at the time of module initialization by a
+value supplied when the program is run. If such a value is supplied, then the
+expression in the module-var-init is not evaluated and the variable is
+initialized with the supplied value instead. A module-var-init of <code>?</code>
+is allowed only when <code>configurable</code> is specified and means that a
+configurable value must be supplied for this variable. If
+<code>configurable</code> is specified, then the typed-binding-pattern must use
+an explicit type-descriptor rather than <code>var</code> and the binding-pattern
+must be just a variable-name. The type specified by the type-descriptor must be
+a subtype of <code>anydata</code>.
 </p>
 
 <pre
-class="grammar"><dfn>module-no-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>final</code>] <abbr>type-descriptor</abbr> <abbr>variable-name</abbr> <code>;</code>
+class="grammar"><dfn>module-no-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>public</code>] [<code>final</code>] <abbr>type-descriptor</abbr> <abbr>variable-name</abbr> <code>;</code>
 </pre>
 <p>
 A module variable declared with <code>module-no-init-var-decl</code> must be
@@ -8528,35 +9104,28 @@ annotation-tag-reference, and for each such identifier which module defines that
 annotation tag.
 </p>
 <p>
-If the annotation includes a mapping-constructor-expr, then the value of the
-annotation is the mapping value resulting from evaluating the
-mapping-constructor-expr; otherwise the value is the boolean value
-<code>true</code>. For every construct that has an annotation with a particular
-tag, there is an <em>effective value</em> for that annotation tag, which is
-constructed from the values of all annotations with that tag that were attached
-to that construct. The effective value must belong to the type of the annotation
-tag.
+Each annotation has a value. For every construct that has an annotation with a
+particular tag, there is also an <em>effective value</em> for that annotation
+tag, which is constructed from the values of all annotations with that tag that
+were attached to that construct. The effective value belongs to the type
+declared for the annotation tag. The type of the annotation tag determines the
+type of the annotation value and whether multiple annotations with the same tag
+on a single construct are allowed. For an annotation tag declared with type T,
+if T is M[] for some type mapping type M, then the type of the annotation value
+is M, multiple annotations are allowed, and the effective value is an array of
+the values for each annotation; otherwise the type of the annotation value is T,
+multiple annotations are not allowed, the effective value is the value of the
+single annotation.
 </p>
 <p>
-The type of the annotation tag constrains both the annotation value and the
-occurrence of multiple annotations with the same tag on a single construct as
-follows.
+If the type of the annotation value is <code>true</code>, then a
+mapping-constructor-expr is not allowed, and the annotation value is
+<code>true</code>. Otherwise the type of the annotation value must be a mapping
+type M; if a mapping-constructor-expr is not specified, then it defaults to
+<code>{ }</code>; the mapping-constructor-expr must have static type M and the
+annotation value is the result of evaluating the mapping-constructor-expr with M
+as the contextually expected type.
 </p>
-<ul>
-<li>If the type of the annotation tag is T[] for some T, then the
-mapping-constructor-expr must be specified and its static type must be a subtype
-of T; multiple annotations are allowed; the effective value is a list containing
-the value for each annotation with the tag in the order specified.</li>
-<li>Otherwise, multiple annotations with this tag are not allowed and the
-effective value for the tag is the value of the single annotation with the tag.
-<ul>
-<li>If the type of the annotation tag is true, then the mapping-constructor-expr
-must not be specified.</li>
-<li>Otherwise, the mapping-constructor-expr must be specified and its static
-type must be a subtype of the type of the annotation tag.</li>
-</ul>
-</li>
-</ul>
 <p>
 If the annotation-decl for a tag specifies <code>const</code>, then a
 mapping-constructor-expr in annotations with that tag must be a const-expr and
@@ -8827,10 +9396,10 @@ modules are called the <em>lang library</em>.
 </p>
 <p>
 The lang library comprises the following modules. With the exception of the
-<code>lang.value</code> module, each corresponds to a basic type.
+<code>lang.value</code> and <code>lang.runtime</code> modules, each corresponds
+to a basic type.
 </p>
 <ul>
-<li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 <li><code><a href="./lib/array.bal" type="text/plain">lang.array</a></code> for
 basic type list</li>
 <li><code><a href="./lib/boolean.bal" type="text/plain">lang.boolean</a></code> for
@@ -8859,13 +9428,9 @@ basic type table</li>
 basic type typedesc</li>
 <li><code><a href="./lib/xml.bal" type="text/plain">lang.xml</a></code> for
 basic type xml</li>
+<li><code><a href="./lib/runtime.bal" type="text/plain">lang.runtime</a></code></li>
+<li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 </ul>
-<p>
-For each version of the specification, there is a separate version number for
-each module in its lang library. The module version numbers for this version of
-the specification are <a href="./lib/versions.json"
-type="text/plain">specified</a> in JSON format.
-</p>
 <p>
 Modules in the lang library can make use generic typing. Since generic typing
 has not yet been added to Ballerina, the source code for the modules use an
@@ -9015,11 +9580,14 @@ object constructor expression, which includes method definitions, or by applying
 methods and fields of an object are not in a single symbol space. Classes and
 object constructors can declare fields as final.</li>
 <li>Services have become service objects that work in a similar way to client
-objects; resource methods on service objects have become remote methods.</li>
+objects; resource methods on service objects have become remote methods. There
+is a new concept for resource methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
-declared as <code>readonly</code>. Functions can be declared as
+declared as <code>readonly</code>.</li>
+<li>Functions, objects and module-level variables can be declared as
 <code>isolated</code>; this works in conjunction with <code>readonly</code> to
 support concurrency safety.</li>
+<li>Module-level variables can be public, provided they are not isolated.</li>
 <li>Intersection types have been added.</li>
 <li>Distinct types have been added; these provide the functionality of nominal
 types with the framework of a structural type system.</li>
@@ -9040,7 +9608,8 @@ function.</li>
 structural types and no longer has preview status.</li>
 <li>Enum declarations have been added.</li>
 <li>The return type of a function with an external body can depend on the value
-of a parameter of typedesc type.</li>
+of a parameter of typedesc type, which can be defaulted from the contextually
+expected type.</li>
 <li>Query expressions support some new clauses: <code>join</code> clause,
 <code>order by</code> clause, <code>limit</code> clause and <code>on
 conflict</code> clause.</li>
@@ -9057,6 +9626,15 @@ cannot be declared as <code>public</code>.</li>
 fail</code> clause for compound statements. If a <code>check</code> expression
 or action fails, it behaves like a <code>fail</code> statement rather than a
 <code>return</code> statement.</li>
+<li>The language has a concept of configurability: module level variables can be
+specified to be <code>configurable</code>, which allows their initial values to
+be specified at runtime.</li>
+<li>An import declaration can no longer specify a version.</li>
+<li>The stream type no longer has Preview status.</li>
+<li>Module prefixes for the langlib modules that correspond to keywords are
+predeclared.</li>
+<li>Backslash escapes can be used in identifiers without needing an initial
+single quote.</li>
 </ol>
 </section>
 <section>
@@ -9407,8 +9985,6 @@ automatically suspended and then later resumed upon the occurrence of particular
 external events.</li>
 <li><em>Reliable messaging</em> will allow for sending messages across the
 network with some guarantees about reliability.</li>
-<li><em>Concurrency safety</em> will be able automatically to make safe use of
-multiple threads</li>
 </ul>
 
 <p>

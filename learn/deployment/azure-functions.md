@@ -5,19 +5,12 @@ description: See how the Ballerina deployment in Azure Functions works
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions
 permalink: /learn/deployment/azure-functions/
 active: azure-functions
+intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 redirect_from:
   - /learn/deployment/azure-functions
 ---
 
-# Azure Functions
-
-The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform. This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation. 
-
-- [Triggers and Bindings](#triggers-and-bindings)
-- [Writing a Function](#writing-a-function)
-- [Building the Function](#building-the-function)
-- [Deploying the Function](#deploying-the-function)
-- [Invoking the Function](#invoking-the-function)
+This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation. 
 
 ## Triggers and Bindings
 

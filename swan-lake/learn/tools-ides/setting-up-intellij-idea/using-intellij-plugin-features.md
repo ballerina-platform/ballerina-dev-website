@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Using the features of the IntelliJ plugin
 permalink: /swan-lake/learn/setting-up-intellij-idea/using-intellij-plugin-features/
 active: using-intellij-plugin-features
+intro: The sections below include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 redirect_from:
   - /swan-lake/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
   - /swan-lake/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
@@ -15,38 +16,16 @@ redirect_from:
   - /swan-lake/learn/using-intellij-plugin-features/
 ---
 
-# Using the Features of the IntelliJ Plugin
-
-The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
-
-- [Running Ballerina Programs](#running-ballerina-programs)
-    - [Running the Main Method](#running-the-main-method)
-    - [Running Ballerina Services](#running-ballerina-services)
-- [Debugging Ballerina Programs](#debugging-ballerina-programs)
-    - [Troubleshooting](#troubleshooting)
-- [Viewing the Sequence Diagram](#viewing-the-sequence-diagram)
-- [Importing Modules on the Fly](#importing-modules-on-the-fly)
-- [Importing Unambiguous Modules](#importing-unambiguous-modules)
-- [Formatting Ballerina Codes](#formatting-ballerina-codes)
-- [Viewing Documentation](#viewing-documentation)
-- [Adding Annotation Fields via Suggestions](#adding-annotation-fields-via-suggestions)
-- [Using File Templates](#using-file-templates)
-- [Using Code Snippet Templates](#using-code-snippet-templates)
-- [Checking Spellings](#checking-spellings)
-- [Analyzing Semantics](#analyzing-semantics)
-- [Code Folding](#code-folding)
-- [Go to Definition](#go-to-definition)
-
 ## Running Ballerina Programs
 
 You can run Ballerina main/service programs with a single click without adding or changing any configurations.
 
-The below sections include instructions on how to run different elements of a Ballerina file.
+The sections below include instructions on how to run different elements of a Ballerina file.
 
 - [Running the main method](#running-the-main-method)
 - [Running Ballerina services](#running-ballerina-services)
 
-### Running the Main Method
+### Running the 'Main' Method
 
 Follow the steps below to run the main function of a Ballerina file.
 
@@ -91,7 +70,7 @@ You can debug Ballerina main/service programs with a few clicks.
 - There are some cases where stepping over gives unexpected behavior
     - Eg: When there are multiple workers and a wait expression waiting for them, even though step over hit and pass wait line in source, workers are not yet finished execution.
 
-## Viewing the Sequence Siagram
+## Viewing the Sequence Diagram
 
 The underlying language semantics of Ballerina were designed by modeling how independent parties communicate via structured interactions. Subsequently, every Ballerina program can be displayed as a sequence diagram of its flow including endpoints as well as synchronous and asynchronous calls.
 

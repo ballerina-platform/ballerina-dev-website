@@ -137,7 +137,7 @@
             </h1>
             
     
-    <div>Version : 1.0.2</div>
+    <div>Version : 1.0.3</div>
     
     <h2>Module Overview</h2>
 <p>This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.</p>
@@ -290,9 +290,6 @@
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Builds the header string from the <code>jwt:JwtHeader</code> record.</p>   
                 </td>
             </tr>
@@ -302,9 +299,6 @@
                     <a class="functions " href="functions.html#buildPayloadString">buildPayloadString</a>
                 </td>
                 <td class="module-desc">
-                    
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
                     
                     <p>Builds the payload string from the <code>jwt:JwtPayload</code> record.</p>   
                 </td>
@@ -316,7 +310,6 @@
                 </td>
                 <td class="module-desc">
                     
-                    
                     <p>Decodes the given JWT string.</p>   
                 </td>
             </tr>
@@ -327,9 +320,6 @@
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Issues a JWT based on the provided header and payload.
                 </td>
             </tr>
@@ -339,7 +329,6 @@
                     <a class="functions " href="functions.html#validateJwt">validateJwt</a>
                 </td>
                 <td class="module-desc">
-                    
                     
                     <p>Validates the given JWT string.</p>   
                 </td>
@@ -418,16 +407,6 @@
         <table>
             
             <tr>
-                <td class="module-title truncate types" id="Error" title="Error">
-                    <a class="types " href="types.html#Error">Error</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Represents the JWT error type with details.
-                </td>
-            </tr>
-            
-            <tr>
                 <td class="module-title truncate types" id="JwtSigningAlgorithm" title="JwtSigningAlgorithm">
                     <a class="types " href="types.html#JwtSigningAlgorithm">JwtSigningAlgorithm</a>
                 </td>
@@ -450,6 +429,16 @@
             <h2> Errors </h2>
         </div>
         <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="Error" title="Error">
+                    <a class="errors " href="errors.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the JWT error type with details.
+                </td>
+            </tr>
             
             <tr>
                 <td class="module-title truncate errors" id="JWTError" title="JWTError">

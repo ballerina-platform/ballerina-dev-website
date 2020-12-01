@@ -143,7 +143,7 @@ module JDBC.
             </h1>
             
     
-    <div>Version : 0.5.0</div>
+    <div>Version : 0.5.1</div>
     
     <h2>Module overview</h2>
 <p>This module provides the common interface and functionality to interact with a database. The corresponding database
@@ -436,7 +436,7 @@ if (ret is error) {
 <p>This example demonstrates how to execute a stored procedure with a single INSERT statement that is executed via the
 <code>call</code> remote function of the client.</p>
 <pre><code class="language-ballerina">int uid = 10;
-sql:OutParameter insertId = new;
+sql:IntegerOutParameter insertId = new;
 
 var ret = dbClient-&gt;call(`call InsertPerson(${uid}, ${insertId})`);
 if (ret is error) {
@@ -804,12 +804,292 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                     </tr>
                 
                     <tr>
-                        <td class="module-title truncate classes" id="OutParameter" title="OutParameter">
-                            <a class="classes " href="classes/OutParameter.html">OutParameter</a>
+                        <td class="module-title truncate classes" id="CharOutParameter" title="CharOutParameter">
+                            <a class="classes " href="classes/CharOutParameter.html">CharOutParameter</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents SQL OutParameter used in procedure calls.</p> 
+                            <p>Represents Char Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="VarcharOutParameter" title="VarcharOutParameter">
+                            <a class="classes " href="classes/VarcharOutParameter.html">VarcharOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Varchar Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="NCharOutParameter" title="NCharOutParameter">
+                            <a class="classes " href="classes/NCharOutParameter.html">NCharOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents NChar Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="NVarcharOutParameter" title="NVarcharOutParameter">
+                            <a class="classes " href="classes/NVarcharOutParameter.html">NVarcharOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents NVarchar Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="BinaryOutParameter" title="BinaryOutParameter">
+                            <a class="classes " href="classes/BinaryOutParameter.html">BinaryOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Binary Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="VarBinaryOutParameter" title="VarBinaryOutParameter">
+                            <a class="classes " href="classes/VarBinaryOutParameter.html">VarBinaryOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents VarBinary Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="TextOutParameter" title="TextOutParameter">
+                            <a class="classes " href="classes/TextOutParameter.html">TextOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Text Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="BlobOutParameter" title="BlobOutParameter">
+                            <a class="classes " href="classes/BlobOutParameter.html">BlobOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Blob Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="ClobOutParameter" title="ClobOutParameter">
+                            <a class="classes " href="classes/ClobOutParameter.html">ClobOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Clob Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="NClobOutParameter" title="NClobOutParameter">
+                            <a class="classes " href="classes/NClobOutParameter.html">NClobOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents NClob Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="DateOutParameter" title="DateOutParameter">
+                            <a class="classes " href="classes/DateOutParameter.html">DateOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Date Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="TimeOutParameter" title="TimeOutParameter">
+                            <a class="classes " href="classes/TimeOutParameter.html">TimeOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Time Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="DateTimeOutParameter" title="DateTimeOutParameter">
+                            <a class="classes " href="classes/DateTimeOutParameter.html">DateTimeOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents DateTime Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="TimestampOutParameter" title="TimestampOutParameter">
+                            <a class="classes " href="classes/TimestampOutParameter.html">TimestampOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Timestamp Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="ArrayOutParameter" title="ArrayOutParameter">
+                            <a class="classes " href="classes/ArrayOutParameter.html">ArrayOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Array Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="RowOutParameter" title="RowOutParameter">
+                            <a class="classes " href="classes/RowOutParameter.html">RowOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Row Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="SmallIntOutParameter" title="SmallIntOutParameter">
+                            <a class="classes " href="classes/SmallIntOutParameter.html">SmallIntOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents SmallInt Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="IntegerOutParameter" title="IntegerOutParameter">
+                            <a class="classes " href="classes/IntegerOutParameter.html">IntegerOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Integer Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="BigIntOutParameter" title="BigIntOutParameter">
+                            <a class="classes " href="classes/BigIntOutParameter.html">BigIntOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents BigInt Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="RealOutParameter" title="RealOutParameter">
+                            <a class="classes " href="classes/RealOutParameter.html">RealOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Real Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="FloatOutParameter" title="FloatOutParameter">
+                            <a class="classes " href="classes/FloatOutParameter.html">FloatOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Float Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="DoubleOutParameter" title="DoubleOutParameter">
+                            <a class="classes " href="classes/DoubleOutParameter.html">DoubleOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Double Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="NumericOutParameter" title="NumericOutParameter">
+                            <a class="classes " href="classes/NumericOutParameter.html">NumericOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Numeric Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="DecimalOutParameter" title="DecimalOutParameter">
+                            <a class="classes " href="classes/DecimalOutParameter.html">DecimalOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Decimal Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="BitOutParameter" title="BitOutParameter">
+                            <a class="classes " href="classes/BitOutParameter.html">BitOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Bit Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="BooleanOutParameter" title="BooleanOutParameter">
+                            <a class="classes " href="classes/BooleanOutParameter.html">BooleanOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Boolean Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="RefOutParameter" title="RefOutParameter">
+                            <a class="classes " href="classes/RefOutParameter.html">RefOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Ref Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="StructOutParameter" title="StructOutParameter">
+                            <a class="classes " href="classes/StructOutParameter.html">StructOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Struct Out Parameter used in procedure calls</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="XMLOutParameter" title="XMLOutParameter">
+                            <a class="classes " href="classes/XMLOutParameter.html">XMLOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents XML Out Parameter used in procedure calls</p> 
                         </td>
                     </tr>
                 
@@ -912,9 +1192,6 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     
                 </td>
             </tr>
@@ -924,9 +1201,6 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                     <a class="functions " href="functions.html#getGlobalConnectionPool">getGlobalConnectionPool</a>
                 </td>
                 <td class="module-desc">
-                    
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
                     
                     
                 </td>
@@ -995,12 +1269,22 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
             </tr>
             
             <tr>
+                <td class="module-title truncate types" id="OutParameter" title="OutParameter">
+                    <a class="types " href="types.html#OutParameter">OutParameter</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents all OUT parameters used in SQL stored procedure call.</p> 
+                </td>
+            </tr>
+            
+            <tr>
                 <td class="module-title truncate types" id="Parameter" title="Parameter">
                     <a class="types " href="types.html#Parameter">Parameter</a>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents all the parameters used in SQL stored procedure call.</p> 
+                    <p>Represents all parameters used in SQL stored procedure call.</p> 
                 </td>
             </tr>
             

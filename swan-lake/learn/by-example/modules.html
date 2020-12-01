@@ -27,8 +27,8 @@ redirect_from:
                             <p><p>Ballerina program files have the <code>.bal</code> extension and the file names do not have semantics.
  These source files can be grouped into modules. The code within a module can refer to any module-level symbol (name) declared
  in the same module. Module names can only contain alphanumerics, underscores, and periods and the maximum length is 256 characters.
- By default, the last element of the module name becomes an alias that is used to refer to the symbols of the imported module.
- If the module name has periods, then the word after the last period becomes the alias.</p>
+ By default, the last element of the module name becomes a prefix that is used to refer to the symbols of the imported module.
+ If the module name has periods, then the word after the last period becomes the prefix.</p>
 </p>
 
                         </td>
@@ -130,7 +130,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Declare an explicit alias.</p>
+                                            <p>Declare an explicit prefix.</p>
 
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Refer symbols of another module.
- <code>math:PI</code> is a qualified identifier. Note the usage of the module alias.</p>
+ <code>math:PI</code> is a qualified identifier. Note the usage of the module prefix.</p>
 
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Use the explicit alias <code>console</code> to invoke a function defined in the <code>ballerina/io</code> module.</p>
+                                            <p>Use the explicit prefix <code>console</code> to invoke a function defined in the <code>ballerina/io</code> module.</p>
 
                                         </div>
                                     </div>

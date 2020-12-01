@@ -6,30 +6,15 @@ description: Learn how to use Ballerina's built-in mocking API provided by the t
 keywords: ballerina, programming language, testing, mocking
 permalink: /learn/testing-ballerina-code/mocking/
 active: mocking
+intro: Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
 redirect_from:
   - /v1-2/learn/testing-ballerina-code/mocking
   - /learn/testing-ballerina-code/mocking
 ---
 
-# Mocking
-
-Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
-
-- [Mocking Objects](#mocking-objects)
-    - [Creating a Test Double](#creating-a-test-double)
-    - [Stubbing Member Functions and Variables of an Object](#stubbing-member-functions-and-variables-of-an-object)
-        - [Stubbing to Return a Specific Value](#stubbing-to-return-a-specific-value)
-        - [Stubbing with Multiple Values to Return Sequentially for Each Function Call](#stubbing-with-multiple-values-to-return-sequentially-for-each-function-call)
-        - [Stubbing a Member Variable](#stubbing-a-member-variable)
-        - [Stubbing to Do Nothing](#stubbing-to-do-nothing)
-- [Mocking Functions](#mocking-functions)
-    - [Stubbing to Return a Specific Value](#stubbing-to-return-a-specific-value)
-    - [Stubbing to Invoke Another Function in Place of the Real](#stubbing-to-invoke-another-function-in-place-of-the-real)
-
-
 ## Mocking Objects
 
-The test module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
+The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
 
 Mocking of objects can be done in two ways.
 

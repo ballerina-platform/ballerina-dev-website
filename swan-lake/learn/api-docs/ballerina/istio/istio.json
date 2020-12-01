@@ -1,7 +1,7 @@
 {
   "id": "istio",
-  "summary": "\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina. For information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/istio/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina. For information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/istio/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/p\u003e\n",
+  "summary": "\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina.\u003c/p\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina.\u003c/p\u003e\n",
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [
@@ -1031,7 +1031,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "listener, service",
+      "attachmentPoints": "service, listener",
       "name": "VirtualService",
       "description": "\u003cp\u003e@istio:VirtualService annotation to generate istio virtual service.\u003c/p\u003e\n",
       "isDeprecated": false

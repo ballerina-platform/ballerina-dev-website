@@ -5,18 +5,12 @@ permalink: /privacy-policy/
 
 ---
 
-<style>
+<!--<style>
 .cBlallerina-io-docs-left-nav-container {
 display:none;
 
 }
-</style>
-
-- [Privacy Policy](#privacy-policy)
-- [Cookie Policy](#cookie-policy)
-- [Contact us](#contact-us)
-
-# Privacy Policy
+</style>-->
 
 At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io](https://ballerina.io/) and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 Inc.
 
@@ -75,7 +69,7 @@ You may also choose to delete your data from our website at any time you choose,
 
 We only ever retain your personal data even after you have ceased using our services, requested to unsubscribe or delete your data only if reasonably necessary to comply with our legal obligations (including law enforcement requests), meet regulatory requirements, resolve disputes, maintain security, prevent fraud and abuse, or fulfill your request to "unsubscribe" from further messages from us.
 
-## Thord party offerings and services
+## Third party offerings and services
 
 At our discretion, we may include or offer third party products or services on our site. These third party sites have separate and independent privacy policies. We have no responsibility or liability for the content and activities of these linked sites. We encourage you to review the privacy statements of those websites to understand how your data is secured by them. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.
 
@@ -147,8 +141,68 @@ For further information about our Privacy Policy or if you have any questions, c
 
 **Effective April 12, 2018**
 
+<!--<style>
+.nav > li.cVersionItem  , .cBallerinaTocContainer {
+    display: none !important;
+}
+<<<<<<< HEAD
+
+.cBallerinaTocContainer  {
+    display:none;
+}
+=======
+</style>-->
+
 <style>
 .nav > li.cVersionItem {
     display: none !important;
 }
+.cFormSection {
+   background:#f3f3f3;
+   padding:30px;
+}
+label {
+	display: inline-block;
+	max-width: 95%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-check-input {
+   float:left;
+   margin-right:10px !important;
+}
+.cSignUp, button#subscribeUserButton {
+	background: #56b3af;
+	border: none;
+	color: #fff;
+	/* padding: 10px 20px; */
+	margin-top: 15px;
+	display: inline-block;
+	width: auto;
+	padding: 18px;
+	line-height: 0px;
+	font-family: "roboto";
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+.cSignUp:hover , button#subscribeUserButton:hover {
+background:#464646;
+}
+
+#form-status , #form-error {
+display:none;
+}
+
+#form-status.cShowBlock , #form-error.cShowBlock  {
+display:block;
+}
+a.cBookmark {
+display: inline-block;
+position: absolute;
+margin: -150px 0px 0px;
+}
+
+>>>>>>> 6c806b2ac2eb1aa9a1cef8bd80491fcf399aadd5
+
 </style>

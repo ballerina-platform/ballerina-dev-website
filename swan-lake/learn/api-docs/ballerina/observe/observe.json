@@ -616,7 +616,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -649,7 +649,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "unregister",
@@ -659,7 +659,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "1",
@@ -693,7 +693,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "reset",
@@ -703,7 +703,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -738,7 +738,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -771,7 +771,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "unregister",
@@ -781,7 +781,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "1",
@@ -815,7 +815,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "reset",
@@ -825,7 +825,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -990,7 +990,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -1023,7 +1023,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "unregister",
@@ -1033,7 +1033,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "1.0",
@@ -1067,7 +1067,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "1.0",
@@ -1101,7 +1101,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
@@ -1135,7 +1135,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -1168,7 +1168,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -1217,7 +1217,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -1250,7 +1250,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "unregister",
@@ -1260,7 +1260,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "1.0",
@@ -1294,7 +1294,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "1.0",
@@ -1328,7 +1328,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
@@ -1362,7 +1362,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -1395,7 +1395,7 @@
         {
           "isIsolated": false,
           "isRemote": false,
-          "isExtern": true,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {

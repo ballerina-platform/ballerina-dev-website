@@ -1,0 +1,43 @@
+
+- title: Quick Tour
+  url: /swan-lake/learn/getting-started/quick-tour/
+  active: quick-tour
+
+- title: Installing Ballerina
+  url: /swan-lake/learn/getting-started/installing-ballerina/
+  active: installing-ballerina
+
+- title: Setting up Visual Studio Code
+  url: /swan-lake/learn/getting-started/setting-up-visual-studio-code/ 
+  active: setting-up-visual-studio-code
+  #sublinks:
+    #- title: Language Intelligence
+      #url: /swan-lake/learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+      #active: language-intelligence
+    #- title: Run and Debug
+      #url: /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-and-debug 
+      #active: run-and-debug
+    #- title: Graphical View
+      #url: /swan-lake/learn/getting-started/setting-up-visual-studio-code/graphical-editor
+      #active: graphical-editor
+    #- title: Documentation Viewer
+      #url: /swan-lake/learn/getting-started/setting-up-visual-studio-code/documentation-viewer
+      #active: documentation-viewer
+    #- title: Run All Tests
+      #url: /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-all-tests
+      #active: run-all-tests
+
+
+
+ 
+
+
+   
+
+      
+
+
+
+
+
+

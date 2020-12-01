@@ -37,8 +37,8 @@ redirect_from:
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Error in connection : &quot;</span> 
-                                <span class="o">+</span> <span class="nx">returnResult</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Error in connection : &quot;</span>
+                            <span class="o">+</span> <span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">returnResult</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
@@ -103,9 +103,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="base-path-and-path.html">
+                                    <a class="next" href="http-client-data-binding.html">
                                         <span>NEXT ></span>
-                                        <p>Base Path and Path</p>
+                                        <p>Client Data Binding</p>
                                     </a>
                                 </div>
                                 
@@ -275,8 +275,8 @@ import ballerina/log;
                 }
             }
         } else {
-            var result = caller-&gt;respond(&quot;Error in connection : &quot; 
-                                + returnResult.message());
+            var result = caller-&gt;respond(&quot;Error in connection : &quot;
+                            + (&lt;@untainted error&gt;returnResult).message());
             if (result is error) {
                 log:printError(&quot;Error in responding&quot;, result);
             }

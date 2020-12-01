@@ -4,8 +4,6 @@ title: Ballerina Website License
 permalink: /license-of-site/
 ---
 
-# Ballerina Website License
-
 Except as detailed below, the content on this website is licensed under the [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/us/).
 
 ## What is not licensed?
@@ -49,8 +47,61 @@ In the creation of this website, we used the following Creative Commons Attribut
 ## Contact
 If you have any comments regarding Ballerina.io license policies, please send feedback to [legal@wso2.com](mailto:legal@wso2.com).
 
+<!--<style>
+.nav > li.cVersionItem , .cBallerinaTocContainer {
+    display: none !important;
+}
+</style>-->
+
 <style>
 .nav > li.cVersionItem {
     display: none !important;
 }
+.cFormSection {
+   background:#f3f3f3;
+   padding:30px;
+}
+label {
+	display: inline-block;
+	max-width: 95%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-check-input {
+   float:left;
+   margin-right:10px !important;
+}
+.cSignUp, button#subscribeUserButton {
+	background: #56b3af;
+	border: none;
+	color: #fff;
+	/* padding: 10px 20px; */
+	margin-top: 15px;
+	display: inline-block;
+	width: auto;
+	padding: 18px;
+	line-height: 0px;
+	font-family: "roboto";
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+.cSignUp:hover , button#subscribeUserButton:hover {
+background:#464646;
+}
+
+#form-status , #form-error {
+display:none;
+}
+
+#form-status.cShowBlock , #form-error.cShowBlock  {
+display:block;
+}
+a.cBookmark {
+display: inline-block;
+position: absolute;
+margin: -150px 0px 0px;
+}
+
+
 </style>

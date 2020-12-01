@@ -254,6 +254,11 @@
       "moduleId": "grpc"
     },
     {
+      "id": "ResiliencyError",
+      "description": "\u003cp\u003eRepresents all the resiliency-related errors.\u003c/p\u003e",
+      "moduleId": "grpc"
+    },
+    {
       "id": "ResourceExhaustedError",
       "description": "\u003cp\u003eRepresents error occur when the resource is exhausted.\u003c/p\u003e",
       "moduleId": "grpc"
@@ -293,11 +298,6 @@
     {
       "id": "Error",
       "description": "\u003cp\u003eRepresents gRPC related errors.\u003c/p\u003e",
-      "moduleId": "grpc"
-    },
-    {
-      "id": "ResiliencyError",
-      "description": "\u003cp\u003eRepresents all the resiliency-related errors.\u003c/p\u003e",
       "moduleId": "grpc"
     }
   ],

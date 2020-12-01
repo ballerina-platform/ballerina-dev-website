@@ -5,6 +5,7 @@ description: See how Ballerina offers a straightforward way to call existing Jav
 keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/calling-java-code-from-ballerina/
 active: calling-java-code-from-ballerina
+intro: Ballerina offers a straightforward way to call the existing Java code from Ballerina and also provides a Java API to call Ballerina code from Java.  Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
 redirect_from:
   - /learn/how-to-use-java-interoperability
   - /learn/how-to-use-java-interoperability/
@@ -14,65 +15,6 @@ redirect_from:
   - /learn/how-to-call-java-code-from-ballerina
   - /learn/calling-java-code-from-ballerina
 ---
-
-# Calling Java Code from Ballerina
-
-Ballerina offers a straightforward way to call the existing Java code from Ballerina and also provides a Java API to call Ballerina code from Java.  Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics. 
-
-- [Ballerina Bindings to Java Code](#ballerina-bindings-to-java-code)
-- [The Need to Call Java from Ballerina](#the-need-to-call-java-from-ballerina)
-- [Writing Ballerina Bindings](#writing-ballerina-bindings)
-- [Using the SnakeYAML Java Library in Ballerina](#using-the-snakeyaml-java-library-in-ballerina)
-    - [Step 1 - Writing the Java Code](#step-1---writing-the-java-code)
-    - [Step 2 - Setting Up the Ballerina Project](#step-2---setting-up-the-ballerina-project)
-        - [Creating a Ballerina Project](#creating-a-ballerina-project)
-        - [Adding a Ballerina Module to Your Project](#adding-a-ballerina-module-to-your-project)
-        - [Adding a Sample YAML File](#adding-a-sample-yaml-file)
-        - [Verifying the Project](#verifying-the-project)
-    - [Step 3 - Generating the Ballerina Bindings](#step-3---generating-the-ballerina-bindings)
-    - [Step 4 - Writing the Ballerina Code](#step-4---writing-the-ballerina-code)
-        - [Creating the `FileInputStream`](#creating-the-fileinputstream)
-        - [Creating the SnakeYAML Entry Point](#creating-the-snakeyaml-entry-point)
-        - [Loading the YAML Document](#loading-the-yaml-document)
-        - [Printing the Returned Map Instance](#printing-the-returned-map-instance)
-        - [Completing the Code](#completing-the-code)
-- [The Bindgen Tool](#the-bindgen-tool)
-- [The `bindgen` Command](#the-bindgen-command)
-    - [Generated Bridge Code](#generated-bridge-code)
-    - [Java to Ballerina Mapping](#java-to-ballerina-mapping)
-        - [Java Classes](#java-classes)
-        - [Constructors](#constructors)
-        - [Methods](#methods)
-        - [Fields](#fields)
-        - [External Interop Functions](#external-interop-functions)
-        - [Dependency Objects](#dependency-objects)
-        - [Ballerina JObject](#ballerina-jobject)
-    - [Java to Ballerina Type Mappings](#java-to-ballerina-type-mappings)
-    - [Support for Java Subtyping](#support-for-java-subtyping)
-    - [Support for Java Casting](#support-for-java-casting)
-    - [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)
-- [Packaging Java Libraries with Ballerina Programs](#packaging-java-libraries-with-ballerina-programs)
-    - [Ballerina FFI](#ballerina-ffi)
-        - [The External Function Body](#the-external-function-body)
-        - [The Handle Type](#the-handle-type)
-- [Calling Java Programs from Ballerina](#calling-java-programs-from-ballerina)
-    - [Instantiating Java Classes](#instantiating-java-classes)
-        - [Dealing with Overloaded Constructors](#dealing-with-overloaded-constructors)
-        - [The `paramTypes` Field](#the-paramtypes-field)
-    - [Calling Java Methods](#calling-java-methods)
-        - [Calling Static Methods](#calling-static-methods)
-        - [Calling Instance Methods](#calling-instance-methods)
-        - [Calling Methods Asynchronously](#calling-methods-asynchronously)
-        - [Mapping Java Classes into Ballerina Objects](#mapping-java-classes-into-ballerina-objects)
-        - [Calling Overloaded Java Methods](#calling-overloaded-java-methods)
-    - [Java Exceptions as Ballerina Errors](#java-exceptions-as-ballerina-errors)
-        - [Java Checked Exceptions](#java-checked-exceptions)
-        - [Mapping a Java Exception to a Ballerina Error Value](#mapping-a-java-exception-to-a-ballerina-error-value)
-    - [Null Safety](#null-safety)
-    - [Mapping Java Types to Ballerina Types and Vice Versa](#mapping-java-types-to-ballerina-types-and-vice-versa)
-        - [Mapping Java Types to Ballerina Types](#mapping-java-types-to-ballerina-types)
-        - [Mapping Ballerina Types to Java Types](#mapping-ballerina-types-to-java-types)
-        - [Access or Mutate Java Fields](#access-or-mutate-java-fields)
 
 ## Ballerina Bindings to Java code
 Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram. 
@@ -239,11 +181,12 @@ Generating dependency bindings for:
 	...
 	...
 ```
+
 - The `-mvn` option specifies the Maven dependency of the Java library required to generate bindings.
-- The `-o` option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the `yamlparser` module. 
+- The `-o` option specifies the output directory in which the generated bindings are stored. In this case, the tool is instructed to store bindings inside the `yamlparser` module.
 - The argument list specifies the Java class names. 
 
-The `bindgen` tool generate bindings for:
+The `bindgen` tool generates bindings for:
 - the specified Java classes
 - the Java classes exposed in the public APIs of all the specified classes
 
@@ -282,7 +225,7 @@ public class SnakeYamlSample {
 }
 ```
 
-#### Creating the `FileInputStream`
+#### Creating the 'FileInputStream'
 Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job. 
 
 ```ballerina
@@ -366,7 +309,7 @@ In this section, we explained how to use the `bindgen` tool to generate Ballerin
 
 The next sections provide more details on various aspects related to Java interoperability in Ballerina. 
 
-## The `bindgen` Tool
+## The 'bindgen' Tool
 
 The following subsections explain how the `bindgen` tool works.
 
@@ -393,7 +336,7 @@ The following subsections explain how the `bindgen` tool works.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
-### The `bindgen` Command
+### The 'bindgen' Command
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
@@ -407,10 +350,10 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
 
 `(-mvn|--maven) <groupId>:<artifactId>:<version>`
-This optional parameter could be used to specify a Maven dependency required for the generation of Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the project. If the tool is not executed inside a project or if the output path does not point to a project, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project.
+This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the project. If the tool is not executed inside a project or if the output path does not point to a project, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project.
 
 `(-o|--output) <output>`
-This optional parameter could be used to specify the directory path into which the Ballerina bindings should be inserted. If this path is not specified, the output will be written onto the same directory from where the command is run. You can point the path of a Ballerina module to generate the code inside a Ballerina module. 
+This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module.
 
 `--public`
 Set the visibility modifier of the generated binding objects to public. By default, the generated bindings will be module private.
@@ -668,7 +611,7 @@ path = "<path-to-jar-file-2>"
 modules = ["<ballerina-module-1>","<ballerina-module-2>"]
 ```
 
-Alternatively, you can also specify Maven dependencies as platform specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the project. Here, is how you can specify a Maven dependency in the `Ballerina.toml`.
+Alternatively, you can also specify Maven dependencies as platform-specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the project. You can specify a Maven dependency in the `Ballerina.toml` file as shown below.
 
 ```toml
 [platform]
@@ -866,7 +809,7 @@ function newArrayDequeWithCollection(handle c) returns handle = @java:Constructo
 } external;
 ```
 
-##### The `paramTypes` Field
+##### The 'paramTypes' Field
 You can use the `paramTypes` field to resolve the exact overloaded method. This field is defined as follows.
 
 ```ballerina

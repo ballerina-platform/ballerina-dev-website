@@ -6,29 +6,14 @@ description: Learn how to use Ballerina's built-in mocking API provided by the t
 keywords: ballerina, programming language, testing, mocking
 permalink: /swan-lake/learn/testing-ballerina-code/mocking/
 active: mocking
+intro: Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
 redirect_from:
   - /swan-lake/learn/testing-ballerina-code/mocking
 ---
 
-# Mocking
-
-Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
-
-- [Mocking Objects](#mocking-objects)
-    - [Creating a Test Double](#creating-a-test-double)
-    - [Stubbing Member Functions and Variables of an Object](#stubbing-member-functions-and-variables-of-an-object)
-        - [Stubbing to Return a Specific Value](#stubbing-to-return-a-specific-value)
-        - [Stubbing with Multiple Values to Return Sequentially for Each Function Call](#stubbing-with-multiple-values-to-return-sequentially-for-each-function-call)
-        - [Stubbing a Member Variable](#stubbing-a-member-variable)
-        - [Stubbing to Do Nothing](#stubbing-to-do-nothing)
-- [Mocking Functions](#mocking-functions)
-    - [Stubbing to Return a Specific Value](#stubbing-to-return-a-specific-value)
-    - [Stubbing to Invoke Another Function in Place of the Real](#stubbing-to-invoke-another-function-in-place-of-the-real)
-
-
 ## Mocking Objects
 
-The test module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
+The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
 
 Mocking of objects can be done in two ways.
 
@@ -56,8 +41,8 @@ import ballerina/http;
  
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
-    public remote function get(@untainted string path, http:RequestMessage message = ()) 
-    	returns http:Response|http:ClientError {
+
+    public remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:Payload|http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
@@ -99,30 +84,37 @@ http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.
 function getRandomJoke(string name, string category = "food") returns string|error {
-    http:Response response = checkpanic clientEndpoint->get("/categories");
+    string replacedText = "";
+    var response = clientEndpoint->get("/categories");
 
     // Check if the provided category is available
-    if (response.statusCode == http:STATUS_OK) {
-        json[] categories = <json[]>response.getJsonPayload();
-        if (!isCategoryAvailable(categories, category)) {
-            error err = error("'" + category + "' is not a valid category.");
-            io:println(err.message());
-            return err;
+    if (response is http:Response) {
+        if (response.statusCode == http:STATUS_OK) {
+            json[] categories = <json[]> response.getJsonPayload();
+            if (!isCategoryAvailable(categories, category)) {
+                error err = error("'" + category + "' is not a valid category.");
+                io:println(err.message());
+                return err;
+            }
+        } else {
+            return createError(response);
         }
-    } else {
-    	return createError(response);
     }
 
     // Get a random joke from the provided category
-    response = checkpanic clientEndpoint->get("/random?category=" + category);
-    if (response.statusCode == http:STATUS_OK) {
-        json payload = <json>response.getJsonPayload();
-        json joke = <json>payload.value;
-        string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
-        return replacedText;
-    } else {
-    	return createError(response);
+    response = clientEndpoint->get("/random?category=" + category);
+    if (response is http:Response) {
+        if (response.statusCode == http:STATUS_OK) {
+            json payload = <json>response.getJsonPayload();
+            json joke = <json>payload.value;
+            replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+            return replacedText;
+        } else {
+            return createError(response);
+        }
     }
+
+    return replacedText;
 }
 ```
 
@@ -320,7 +312,7 @@ The Ballerina test framework provides the capability to mock a function. You can
 
 The object specified with the `@test:Mock {}` annotation will be considered as a mock function, which gets triggered in place of the real function.
 
-*   ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (no module) can be passed. If the function is in a different module but within the same project, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `orgName` and the `version` i.e., `orgName/module:version`. For native functions, the Ballerina module needs to be specified.
+*   ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (no module) can be passed. If the function is in a different module but within the same package, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `packageOrg` (i.e., `packageOrg/moduleName`). For native functions, the Ballerina module needs to be specified.
 
 *   ***functionName : "&lt;functionName&gt;"*** - Name of the function to be mocked.
 
@@ -363,6 +355,9 @@ After the initialization, the following options can be used to stub the behaviou
 
 ```ballerina
 import ballerina/test;
+
+@test:Mock { functionName: "intAdd" }
+test:MockFunction intAddMockFn = new();
    
 @test:Config {}
 function testReturn() {
@@ -383,7 +378,10 @@ This test stubs the behavior of the `intAdd` function to substitute it with a us
 
 ```ballerina
 import ballerina/test;
-       
+
+@test:Mock { functionName: "intAdd" }
+test:MockFunction intAddMockFn = new();
+
 @test:Config {}
 function testCall() {
     // Stub to call another function when `intAdd` is called.
@@ -423,6 +421,33 @@ function testCall() {
    // to invoke the specified function.
    test:when(sqrtMockFn).call("mockSqrt");
    test:assertEquals(math:sqrt(25), 125.0);
+}
+```
+
+This test calls the original `intAdd` function after it has been stubbed with a user-defined mock function.
+
+```ballerina
+import ballerina/test;
+       
+@test:Mock { functionName: "intAdd" }
+test:MockFunction intAddMockFn = new();
+
+@test:Config {}
+function testCallOriginal() {
+    // Stub to call another function when `intAdd` is called.
+    test:when(intAddMockFn).call("mockIntAdd");
+   
+    test:assertEquals(addValues(11, 6), 5, msg = "function mocking failed");
+    
+    // Stub to call the original `intAdd` function.
+    test:when(intAddMockFn).callOriginal();
+    test:assertEquals(addValues(11, 6), 17, msg = "function mocking failed");
+    
+}
+    
+// The mock function to be used in place of the `intAdd` function
+public function mockIntAdd(int a, int b) returns int {
+    return (a - b);
 }
 ```
 

@@ -6,8 +6,6 @@ keywords: ballerina, community, ballerina community, newsletter
 permalink: /community/newsletter/
 ---
 
-# Ballerina Newsletter
-
 This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">

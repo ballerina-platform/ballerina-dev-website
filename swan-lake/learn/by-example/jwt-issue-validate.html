@@ -17,7 +17,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">KeyStore</span> <span class="nx">keyStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-              <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtKeyStoreConfig</span> <span class="nx">keyStoreConfig</span> <span class="p">=</span> <span class="p">{</span>
@@ -34,17 +34,17 @@ redirect_from:
     <span class="nx">payload</span><span class="p">.</span><span class="nx">iss</span> <span class="p">=</span> <span class="s">&quot;ballerina&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">jti</span> <span class="p">=</span> <span class="s">&quot;100078234ba23&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">aud</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">];</span>
-    <span class="nx">payload</span><span class="p">.</span><span class="nx">exp</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">().</span><span class="nx">time</span><span class="o">/</span><span class="mi">1000</span> <span class="o">+</span> <span class="mi">600</span><span class="p">;</span>
+    <span class="nx">payload</span><span class="p">.</span><span class="nx">exp</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">().</span><span class="nx">time</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">+</span> <span class="mi">600</span><span class="p">;</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jwt</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">issueJwt</span><span class="p">(</span><span class="nx">header</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">keyStoreConfig</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">jwt</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span> <span class="o">+</span> <span class="nx">jwt</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span><span class="p">,</span> <span class="nx">jwt</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while issuing the JWT: &quot;</span><span class="p">,</span>
-                    <span class="nx">jwt</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">jwt</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">TrustStore</span> <span class="nx">trustStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-              <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig1</span> <span class="p">=</span> <span class="p">{</span>
@@ -56,13 +56,13 @@ redirect_from:
             <span class="nx">trustStore</span><span class="p">:</span> <span class="nx">trustStore</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
-                                <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig1</span><span class="p">);</span>
+    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span>
+        <span class="nx">validatorConfig1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
-                                                            <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig2</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
@@ -79,44 +79,46 @@ redirect_from:
     <span class="p">};</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
-                                                        <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                    <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span><span class="kd">service</span> <span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+    <span class="p">});</span><span class="kd">service</span> <span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/jwks&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">jwks</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="kt">json</span> <span class="nx">jwks</span> <span class="p">=</span> <span class="p">{</span>
-          <span class="s">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-              <span class="s">&quot;kty&quot;</span><span class="p">:</span> <span class="s">&quot;RSA&quot;</span><span class="p">,</span>
-              <span class="s">&quot;e&quot;</span><span class="p">:</span> <span class="s">&quot;AQAB&quot;</span><span class="p">,</span>
-              <span class="s">&quot;use&quot;</span><span class="p">:</span> <span class="s">&quot;sig&quot;</span><span class="p">,</span>
-              <span class="s">&quot;kid&quot;</span><span class="p">:</span> <span class="s">&quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;</span><span class="p">,</span>
-              <span class="s">&quot;alg&quot;</span><span class="p">:</span> <span class="s">&quot;RS256&quot;</span><span class="p">,</span>
-              <span class="s">&quot;n&quot;</span><span class="p">:</span> <span class="s">&quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4&quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-J&quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;P5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FSt&quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;bZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc6&quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;0Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozS&quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;ot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZ&quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;OPuqgGa8TMPs=&quot;</span>
-            <span class="p">}</span>
-          <span class="p">]</span>
+            <span class="s">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;kty&quot;</span><span class="p">:</span> <span class="s">&quot;RSA&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;e&quot;</span><span class="p">:</span> <span class="s">&quot;AQAB&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;use&quot;</span><span class="p">:</span> <span class="s">&quot;sig&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;kid&quot;</span><span class="p">:</span> <span class="s">&quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;OGFkNjFiMQ&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;alg&quot;</span><span class="p">:</span> <span class="s">&quot;RS256&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;n&quot;</span><span class="p">:</span> <span class="s">&quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJ&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;nXD3vqrUu4GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3b&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;jpdbKjOnM98l2-i9-JP5XoedJsyDzZmml8Xd7zkKCuDqZID&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;tZ99poevrZKd7Gx5n2Kg0K5FStbZmDbTyX30gi0_griIZyV&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;CXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc60Yurnjd0RQiMW&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;A10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozSot231&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK&quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;3nZOPuqgGa8TMPs=&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
         <span class="p">};</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jwks</span><span class="p">);</span>
         <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
@@ -251,7 +253,7 @@ import ballerina/time;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    crypto:KeyStore keyStore = {
         path: config:getAsString(&quot;b7a.home&quot;) +
-              &quot;/bre/security/ballerinaKeystore.p12&quot;,
+            &quot;/bre/security/ballerinaKeystore.p12&quot;,
         password: &quot;ballerina&quot;
     };
 </code></pre></div>
@@ -322,7 +324,7 @@ import ballerina/time;
     payload.iss = &quot;ballerina&quot;;
     payload.jti = &quot;100078234ba23&quot;;
     payload.aud = [&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;];
-    payload.exp = time:currentTime().time/1000 + 600;
+    payload.exp = time:currentTime().time / 1000 + 600;
 </code></pre></div>
 
                                 </td>
@@ -343,10 +345,10 @@ import ballerina/time;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string|jwt:Error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
     if (jwt is string) {
-        io:println(&quot;Issued JWT: &quot; + jwt);
+        io:println(&quot;Issued JWT: &quot;, jwt);
     } else {
         io:println(&quot;An error occurred while issuing the JWT: &quot;,
-                    jwt.message());
+            jwt.message());
     }
 </code></pre></div>
 
@@ -355,7 +357,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Issues a JWT based on the provided header, payload and keystore config.</p>
+                                            <p>Issues a JWT based on the provided header, payload, and keystore config.</p>
 
                                         </div>
                                     </div>
@@ -368,7 +370,7 @@ import ballerina/time;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    crypto:TrustStore trustStore = {
         path: config:getAsString(&quot;b7a.home&quot;) +
-              &quot;/bre/security/ballerinaTruststore.p12&quot;,
+            &quot;/bre/security/ballerinaTruststore.p12&quot;,
         password: &quot;ballerina&quot;
     };
 </code></pre></div>
@@ -416,13 +418,13 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    jwt:JwtPayload|jwt:Error result =
-                                jwt:validateJwt(&lt;string&gt;jwt, validatorConfig1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(&lt;string&gt;jwt,
+        validatorConfig1);
     if (result is jwt:JwtPayload) {
-        io:println(&quot;Validated JWT Payload: &quot; + result.toString());
+        io:println(&quot;Validated JWT Payload: &quot;, result.toString());
     } else {
         io:println(&quot;An error occurred while validating the JWT: &quot;,
-                                                            result.message());
+            result.message());
     }
 </code></pre></div>
 
@@ -475,10 +477,10 @@ import ballerina/time;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    result = jwt:validateJwt(&lt;string&gt;jwt, validatorConfig2);
     if (result is jwt:JwtPayload) {
-        io:println(&quot;Validated JWT Payload: &quot; + result.toString());
+        io:println(&quot;Validated JWT Payload: &quot;, result.toString());
     } else {
         io:println(&quot;An error occurred while validating the JWT: &quot;,
-                                                        result.message());
+            result.message());
     }
 }
 </code></pre></div>
@@ -488,7 +490,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Validates the created JWT. Signature is validated using the truststore.</p>
+                                            <p>Validates the created JWT. Signature is validated using the JWKS endpoint.</p>
 
                                         </div>
                                     </div>
@@ -515,8 +517,9 @@ import ballerina/time;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run jwt_issue_validate.bal --b7a.home=&lt;ballerina_home_path&gt;
-Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.eyJzdWIiOiJKb2huIiwgImlzcyI6IndzbzIiLCAiZXhwIjoxNTg2NDM3MzgwLCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsiYmFsbGVyaW5hIiwgImJhbGxlcmluYVNhbXBsZXMiXX0.H67rsDKLmZJacI1NKMlYl6cCROS-rsLfW3Z2INvvDyHrntNau0P8FFoIc98D_c7UPe_L1_uV3no0nWweoWvzqQB8wfvduB6wKNxb1KGprIUF0ilxveQN1Vzab2Mvd7SJCJ19tf6OcKort38C7ES0am5vsm0495OyaNVDAq3ixFP8WRacQW53b0ELc25QCYJJBLhjFBdXLpnx1boSjgS2vhTrg8bY8zlkoV3pJULfHmjS3JX0a_FBqqeB1yQqbIp1RxGrWzGg4nA6kPjGC1GwYvxjcCVQjY5PWWsd9GAeCnnvmFE_Xy6Xenq5lfL2RWWO4H3yF8x_8hcLS9XidERGWQ
-Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=100078234ba23 exp=1586437380 customClaims=
+Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJzdWIiOiJhZG1pbiIsICJpc3MiOiJiYWxsZXJpbmEiLCAiZXhwIjoxNjAyNzc3NDA1LCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsidkV3emJjYXNKVlFtMWpWWUhVSENqaHhaNHRZYSJdfQ.EQSIa_YYsQMCfSdYqocIbePzw2zU5Gg50aEk_C3TieGBWbzsz3S8YCN3UsLMAmFp5cQxBnQWik8ncDoeBVvHP1X1ox4PbSIbHz-AbMFyKkscMqcl9RO16X3EZ7oOCy0XGjINULphublSA6tZ00iu8oPA8ABDw4EtkvoKZrT31eujv7EHpB5heyez3KxNAkl7V-kbEBW_-6RQs40yeK-sHPYwbz5I3LRZ9R5PvzdGblTDBENSirRakijZ9pyTpHMjXkzMcQZWBQs8Z-TR_1oOmqnVLgiYfra43tdV6rz2Yz8sXpvF0jeH9LI-uZIP_yflSbRn-Q0h5r58beVzqCx5Ug
+Validated JWT Payload: {&quot;iss&quot;:&quot;ballerina&quot;,&quot;sub&quot;:&quot;admin&quot;,&quot;aud&quot;:[&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;],&quot;jti&quot;:&quot;100078234ba23&quot;,&quot;exp&quot;:1602777405,&quot;customClaims&quot;:{&quot;sub&quot;:&quot;admin&quot;,&quot;iss&quot;:&quot;ballerina&quot;,&quot;exp&quot;:&quot;1602777405&quot;,&quot;jti&quot;:&quot;100078234ba23&quot;,&quot;aud&quot;:[&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;]}}
+Validated JWT Payload: {&quot;iss&quot;:&quot;ballerina&quot;,&quot;sub&quot;:&quot;admin&quot;,&quot;aud&quot;:[&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;],&quot;jti&quot;:&quot;100078234ba23&quot;,&quot;exp&quot;:1602777405,&quot;customClaims&quot;:{&quot;sub&quot;:&quot;admin&quot;,&quot;iss&quot;:&quot;ballerina&quot;,&quot;exp&quot;:&quot;1602777405&quot;,&quot;jti&quot;:&quot;100078234ba23&quot;,&quot;aud&quot;:[&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;]}}
 </code></pre></div>
 
                                 </td>
@@ -583,15 +586,15 @@ import ballerina/http;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener oauth2Server = new(20000, {
-    secureSocket: {
-        keyStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
-            password: &quot;ballerina&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener oauth2Server = new (20000, {
+        secureSocket: {
+            keyStore: {
+                path: config:getAsString(&quot;b7a.home&quot;) +
+                    &quot;/bre/security/ballerinaKeystore.p12&quot;,
+                password: &quot;ballerina&quot;
+            }
         }
-    }
-});
+    });
 </code></pre></div>
 
                                 </td>
@@ -622,22 +625,24 @@ import ballerina/http;
     resource function jwks(http:Caller caller, http:Request req) {
         http:Response res = new;
         json jwks = {
-          &quot;keys&quot;: [
-            {
-              &quot;kty&quot;: &quot;RSA&quot;,
-              &quot;e&quot;: &quot;AQAB&quot;,
-              &quot;use&quot;: &quot;sig&quot;,
-              &quot;kid&quot;: &quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;,
-              &quot;alg&quot;: &quot;RS256&quot;,
-              &quot;n&quot;: &quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4&quot; +
-                    &quot;GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-J&quot; +
-                    &quot;P5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FSt&quot; +
-                    &quot;bZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc6&quot; +
-                    &quot;0Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozS&quot; +
-                    &quot;ot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZ&quot; +
-                    &quot;OPuqgGa8TMPs=&quot;
-            }
-          ]
+            &quot;keys&quot;: [
+                    {
+                        &quot;kty&quot;: &quot;RSA&quot;,
+                        &quot;e&quot;: &quot;AQAB&quot;,
+                        &quot;use&quot;: &quot;sig&quot;,
+                        &quot;kid&quot;: &quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1&quot; +
+                            &quot;OGFkNjFiMQ&quot;,
+                        &quot;alg&quot;: &quot;RS256&quot;,
+                        &quot;n&quot;: &quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJ&quot; +
+                            &quot;nXD3vqrUu4GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3b&quot; +
+                            &quot;jpdbKjOnM98l2-i9-JP5XoedJsyDzZmml8Xd7zkKCuDqZID&quot; +
+                            &quot;tZ99poevrZKd7Gx5n2Kg0K5FStbZmDbTyX30gi0_griIZyV&quot; +
+                            &quot;CXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc60Yurnjd0RQiMW&quot; +
+                            &quot;A10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozSot231&quot; +
+                            &quot;I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK&quot; +
+                            &quot;3nZOPuqgGa8TMPs=&quot;
+                    }
+                ]
         };
         res.setJsonPayload(jwks);
         checkpanic caller-&gt;respond(res);

@@ -281,8 +281,8 @@ The `file` and `filepath` APIs have been revamped in this release. A summarized 
 
 3. The implementation of some APIs has been modified.
 
-    - From `Filepath` - `normalize`
-    - From `File` - `createDir`, `remove`, `copy`, `readDir`, `getMetaData` (earlier `getFileInfo`)
+    - From `filepath` - `normalize`
+    - From `file` - `createDir`, `remove`, `copy`, `readDir`, `getMetaData` (earlier `getFileInfo`)
 
 4. Some new APIs have been introduced.
 

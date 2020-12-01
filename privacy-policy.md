@@ -85,7 +85,7 @@ By using the Sites, you consent to our Privacy Policy and any revisions thereto.
 
 >**For EU/EEA/Switzerland residents:** If you are located within the European Union, the European Economic Area or Switzerland, WSO2 UK Limited will be the controller of your personal data provided to, or collected by or for, or processed in connection with our services. If you have any issues with regard to your data security on our website, then in addition to informing us, you also have the right to write directly to the independent data protection monitoring organization in your country. Within the UK, this is the [Information Commissioner’s Office](https://ico.org.uk/). The ICO is the UK’s independent authority set up to uphold information rights in the public interest, promoting openness by public bodies and data privacy for individuals. Please do email our data protection officer at [dpo@wso2.com](mailto:dpo@wso2.com) if you have any issues, concerns, or questions regarding your personal data and we are happy to help.
 
-# Cookie Policy
+# <a name="cookie-policy"></a>Cookie Policy
 
 Below is information about how the [Ballerina site](https://ballerina.io/) (the “Site”) uses cookies.
 

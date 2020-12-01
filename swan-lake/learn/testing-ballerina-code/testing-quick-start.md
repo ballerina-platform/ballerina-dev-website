@@ -18,55 +18,52 @@ redirect_from:
 
 To get started, let's write a simple Ballerina function and test it.
 
-1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
+1. First, let’s create a Ballerina package. Use the `ballerina new` command to create the package.
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
-    The standard project will have the structure below.
+    The following is the structure of a standard package with the default module. In this example, default module has the
+     ***main.bal*** source file and the ***main_test.bal*** test file.
 
     ```bash
-    project-name/
-        Ballerina.toml         
-        src/
-            module1/           	
-                main.bal   
-                Module.md
-                [resources/]
-                tests/
-                    main_test.bal
-                    [resources]	   
+    package-directory/
+        Ballerina.toml
+        main.bal
+        [resources]
+        tests/
+            main_test.bal
+            [resources]
     ```
 
-2. Now, let’s write the function, which handles sending a get request in the ***main.bal*** file of the module you just
- created.
+2. Now, let’s write the function, which handles sending a get request in the ***main.bal*** file of the default module.
  
     ```ballerina
     // main.bal
-    
     import ballerina/io;
     import ballerina/http;
     import ballerina/stringutils;
-    
-    http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
-    
+
+    http:Client clientEndpoint = new ("https://api.chucknorris.io/jokes/");
+
     // This function performs a `get` request to the Chuck Norris API and returns a random joke 
     // with the name replaced by the provided name or an error if the API invocation fails.
     function getRandomJoke(string name) returns string|error {
-        http:Response|error result = clientEndpoint->get("/random");
-        http:Response response = <http:Response>result;
-        if (response.statusCode == http:STATUS_OK) {
-            json payload = <json>response.getJsonPayload();
-            json joke = <json>payload.value;
-            string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
-            return replacedText;
-        } else {
-            error err = error("error occurred while sending GET request");
-            io:println(err.message(),
-                ", status code: ", response.statusCode,
-                ", reason: ", response.getJsonPayload());
-            return err;
+        var result = clientEndpoint->get("/random");
+        if (result is http:Response) {
+            http:Response response = <http:Response>result;
+            if (response.statusCode == http:STATUS_OK) {
+                json payload = <json>response.getJsonPayload();
+                json joke = <json>payload.value;
+                string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+                return replacedText;
+            } else {
+                error err = error("error occurred while sending GET request");
+                io:println(err.message(), ", status code: ", response.statusCode, ", reason: ", response.getJsonPayload());
+                return err;
+            }
         }
+        error err = error("error occurred while sending GET request");
+        return err;
     }
-    
     ```
 
 3. Now, let’s write a simple test case to verify the behavior of the `main` function in the ***main_test.bal*** file.
@@ -103,31 +100,31 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 
 4. Finally, let’s execute the tests using the following command.
 
-    `$ ballerina test --code-coverage --all`
+    `$ ballerina test --code-coverage`
 
     This will print an output similar to the following.
 
     ```
     Compiling source
         foo/joke:0.1.0
-    
+
     Creating balos
-        target/balo/joke-2020r2-any-0.1.0.balo
-    
+        target/balo/foo-joke-any-0.1.0.balo
+
     Running Tests with Coverage
-        foo/joke:0.1.0
+        joke
     When Sheldon wants an egg, he cracks open a chicken.
-    
+
         [pass] testGetRandomJoke
-    
+
         1 passing
         0 failing
         0 skipped
-    
+
     Generating Test Report
         target/test_results.json
-    
-        View the test report at: file:///home/foo/test/sample-project/target/report/index.html
+
+        View the test report at: file:///home/foo/test/sample-package/target/report/index.html
     ```
  
  

@@ -109,7 +109,7 @@ public function main() returns @tainted error? {
 
 In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `hello` service.
 
-> **Tip:** Make sure the `hello` service is [up and running](#running-the-ballerina-service).
+> **Tip:** Make sure the `hello` service is [up and running](#running-the-service).
 
 ```bash
 ballerina run hello_client.bal

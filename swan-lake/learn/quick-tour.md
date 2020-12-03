@@ -9,6 +9,8 @@ intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
   - /swan-lake/learn/quick-tour
   - /swan-lake/learn/quick-tour/
+  - /swan-lake/learn/getting-started/
+  - /swan-lake/learn/getting-started
 ---
 
 ## Installing Ballerina

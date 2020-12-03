@@ -191,6 +191,8 @@ mailing list.
 </li>
 <li>5.7.5 <a href="#section_5.7.5">RawTemplate</a>
 </li>
+<li>5.7.6 <a href="#section_5.7.6">RetryManager</a>
+</li>
 </ul>
 </li>
 <li>5.8 <a href="#section_5.8">Abstract operations</a><ul>
@@ -358,6 +360,8 @@ mailing list.
 </li>
 </ul>
 </li>
+<li>6.37 <a href="#section_6.37">Transactional expression</a>
+</li>
 </ul>
 </li>
 <li>7. <a href="#actions_statements">Actions and statements</a><ul>
@@ -438,23 +442,57 @@ mailing list.
 </li>
 <li>7.19 <a href="#match_statement">Match statement</a>
 </li>
-<li>7.20 <a href="#section_7.20">Foreach statement</a>
+<li>7.20 <a href="#section_7.20">Loops</a><ul>
+<li>7.20.1 <a href="#section_7.20.1">Foreach statement</a>
 </li>
-<li>7.21 <a href="#section_7.21">While statement</a>
+<li>7.20.2 <a href="#section_7.20.2">While statement</a>
 </li>
-<li>7.22 <a href="#section_7.22">Continue statement</a>
+<li>7.20.3 <a href="#section_7.20.3">Continue statement</a>
 </li>
-<li>7.23 <a href="#section_7.23">Break statement</a>
+<li>7.20.4 <a href="#section_7.20.4">Break statement</a>
 </li>
-<li>7.24 <a href="#lock_statement">Lock statement</a>
+</ul>
 </li>
-<li>7.25 <a href="#section_7.25">On fail clause</a>
+<li>7.21 <a href="#lock_statement">Lock statement</a>
 </li>
-<li>7.26 <a href="#section_7.26">Fail statement</a>
+<li>7.22 <a href="#section_7.22">Fail and retry</a><ul>
+<li>7.22.1 <a href="#section_7.22.1">On fail clause</a>
 </li>
-<li>7.27 <a href="#section_7.27">Panic statement</a>
+<li>7.22.2 <a href="#section_7.22.2">Fail statement</a>
 </li>
-<li>7.28 <a href="#section_7.28">Return statement</a>
+<li>7.22.3 <a href="#section_7.22.3">Retry statement</a>
+</li>
+</ul>
+</li>
+<li>7.23 <a href="#section_7.23">Transactions</a><ul>
+<li>7.23.1 <a href="#section_7.23.1">Transaction manager</a><ul>
+<li>7.23.1.1 <a href="#section_7.23.1.1">Begin operation</a>
+</li>
+<li>7.23.1.2 <a href="#section_7.23.1.2">Commit operation</a>
+</li>
+<li>7.23.1.3 <a href="#section_7.23.1.3">Rollback operation</a>
+</li>
+<li>7.23.1.4 <a href="#section_7.23.1.4">Info operation</a>
+</li>
+<li>7.23.1.5 <a href="#section_7.23.1.5">SetRollbackOnly operation</a>
+</li>
+<li>7.23.1.6 <a href="#section_7.23.1.6">SetTimeout operation</a>
+</li>
+</ul>
+</li>
+<li>7.23.2 <a href="#section_7.23.2">Transaction statement</a>
+</li>
+<li>7.23.3 <a href="#section_7.23.3">Retry transaction statement</a>
+</li>
+<li>7.23.4 <a href="#section_7.23.4">Commit action</a>
+</li>
+<li>7.23.5 <a href="#section_7.23.5">Rollback statement</a>
+</li>
+</ul>
+</li>
+<li>7.24 <a href="#section_7.24">Panic statement</a>
+</li>
+<li>7.25 <a href="#section_7.25">Return statement</a>
 </li>
 </ul>
 </li>
@@ -3223,7 +3261,7 @@ immediately returns <code>()</code>.
 <section>
 <h4 id="section_5.7.4">5.7.4 Listener</h4>
 <p>
-The abstract object type Listener&lt;T&gt;, where T is a a subtype of
+The object type Listener&lt;T&gt;, where T is a a subtype of
 <code>service object {}</code>, is described by the following object type
 descriptor:
 </p>
@@ -3259,6 +3297,20 @@ expression. The type is defined in <code>lang.object</code> as follows.
 </pre>
 
 </section>
+<section>
+<h4 id="section_5.7.6">5.7.6 RetryManager</h4>
+
+<p>
+The object type RetryManager&lt;E&gt;, where E is a a subtype of
+<code>error</code>, is described by the following object type descriptor:
+</p>
+
+<pre>object {
+   public function shouldRetry(E e) returns boolean;
+}
+</pre>
+</section>
+
 </section>
 <section>
 <h3 id="section_5.8">5.8 Abstract operations</h3>
@@ -4109,6 +4161,7 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#trap-expr"><span class="ntref">trap-expr</span></a>
    | <a href="#query-expr"><span class="ntref">query-expr</span></a>
    | <a href="#xml-navigate-expr"><span class="ntref">xml-navigate-expr</span></a>
+   | <a href="#transactional-expr"><span class="ntref">transactional-expr</span></a>
    | <code>(</code> <a href="#expression"><span class="ntref">expression</span></a> <code>)</code>
 </pre>
 <p>
@@ -7006,6 +7059,13 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
 </p>
 </section>
 </section>
+<section>
+<h3 id="section_6.37">6.37 Transactional expression</h3>
+
+<pre class="grammar"><span class="ntdfn" id="transactional-expr">transactional-expr</span> := <code>transactional</code>
+</pre>
+</section>
+
 </section>
 <section>
 <h2 id="actions_statements">7. Actions and statements</h2>
@@ -7023,6 +7083,7 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
    | <a href="#type-cast-action"><span class="ntref">type-cast-action</span></a>
    | <a href="#checking-action"><span class="ntref">checking-action</span></a>
    | <a href="#trap-action"><span class="ntref">trap-action</span></a>
+   | <a href="#commit-action"><span class="ntref">commit-action</span></a>
    | <code>(</code> <a href="#action"><span class="ntref">action</span></a> <code>)</code>
 <span class="ntdfn" id="action-or-expr">action-or-expr</span> := <a href="#action"><span class="ntref">action</span></a> | <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="type-cast-action">type-cast-action</span> := <code>&lt;</code> <a href="#type-cast-param"><span class="ntref">type-cast-param</span></a> <code>&gt;</code> <a href="#action"><span class="ntref">action</span></a>
@@ -7104,7 +7165,7 @@ strand must be part of the same thread as the current strand.
 <span class="ntdfn" id="default-worker-init">default-worker-init</span> := <a href="#statement"><span class="ntref">statement</span></a>*
 <span class="ntdfn" id="default-worker">default-worker</span> := <a href="#statement"><span class="ntref">statement</span></a>*
 <span class="ntdfn" id="named-worker-decl">named-worker-decl</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+   [<a href="#annots"><span class="ntref">annots</span></a>] [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="worker-name">worker-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
@@ -7304,6 +7365,10 @@ is called concurrently on multiple strands.
    | <a href="#break-stmt"><span class="ntref">break-stmt</span></a>
    | <a href="#stmt-with-on-fail"><span class="ntref">stmt-with-on-fail</span></a>
    | <a href="#fail-stmt"><span class="ntref">fail-stmt</span></a>
+   | <a href="#retry-stmt"><span class="ntref">retry-stmt</span></a>
+   | <a href="#transaction-stmt"><span class="ntref">transaction-stmt</span></a>
+   | <a href="#retry-transaction-stmt"><span class="ntref">retry-transaction-stmt</span></a>
+   | <a href="#rollback-stmt"><span class="ntref">rollback-stmt</span></a>
    | <a href="#panic-stmt"><span class="ntref">panic-stmt</span></a>
    | <a href="#return-stmt"><span class="ntref">return-stmt</span></a>
    | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
@@ -7320,7 +7385,7 @@ two possibilities.
 </p>
 <ul>
 <li>If the abrupt termination is a check-fail, then control flow is transferred
-as if by a fail statement with an expression that evaluates to e.</li>
+as if by a <code>fail-stmt</code> with an expression that evaluates to e.</li>
 <li>If the abrupt termination is a panic, then the current worker is terminated
 abnormally with termination value e. This is the same as if
 a panic statement is executed with an expression that evaluates to e.</li>
@@ -8573,7 +8638,9 @@ narrowing</a> is done in addition to the type narrowing described here;</li>
 
 </section>
 <section>
-<h3 id="section_7.20">7.20 Foreach statement</h3>
+<h3 id="section_7.20">7.20 Loops</h3>
+<section>
+<h4 id="section_7.20.1">7.20.1 Foreach statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="foreach-stmt">foreach-stmt</span> :=
    <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
@@ -8627,7 +8694,7 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 </p>
 </section>
 <section>
-<h3 id="section_7.21">7.21 While statement</h3>
+<h4 id="section_7.20.2">7.20.2 While statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
@@ -8657,7 +8724,7 @@ The static type of <code>expression</code> must be a subtype of boolean.
 </p>
 </section>
 <section>
-<h3 id="section_7.22">7.22 Continue statement</h3>
+<h4 id="section_7.20.3">7.20.3 Continue statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="continue-stmt">continue-stmt</span> := <code>continue</code> <code>;</code>
 </pre>
@@ -8669,7 +8736,7 @@ outermost statement-block in the while-stmt or foreach-stmt.
 </p>
 </section>
 <section>
-<h3 id="section_7.23">7.23 Break statement</h3>
+<h4 id="section_7.20.4">7.20.4 Break statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="break-stmt">break-stmt</span> := <code>break</code> <code>;</code>
 </pre>
@@ -8679,9 +8746,10 @@ while-stmt or a foreach-stmt. Executing a break statement causes the nearest
 enclosing while-stmt or foreach-stmt to terminate.
 </p>
 </section>
+</section>
 
 <section>
-<h3 id="lock_statement">7.24 Lock statement</h3>
+<h3 id="lock_statement">7.21 Lock statement</h3>
 <pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 
@@ -8743,7 +8811,9 @@ variable-reference-expr occurs within an expression that is isolated.</li>
 </section>
 
 <section>
-<h3 id="section_7.25">7.25 On fail clause</h3>
+<h3 id="section_7.22">7.22 Fail and retry</h3>
+<section>
+<h4 id="section_7.22.1">7.22.1 On fail clause</h4>
 <pre class="grammar"><span class="ntdfn" id="stmt-with-on-fail">stmt-with-on-fail</span> := <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a> <a href="#on-fail-clause"><span class="ntref">on-fail-clause</span></a>
 <span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
@@ -8767,7 +8837,7 @@ to succeed by the static type of the associated error value.
 </section>
 
 <section>
-<h3 id="section_7.26">7.26 Fail statement</h3>
+<h4 id="section_7.22.2">7.22.2 Fail statement</h4>
 <pre class="grammar"><span class="ntdfn" id="fail-stmt">fail-stmt</span> := <code>fail</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
 </pre>
 <p>
@@ -8782,9 +8852,82 @@ on-fail-clause or becomes the termination value of the current worker.
 </p>
 
 </section>
+<section>
+<h4 id="section_7.22.3">7.22.3 Retry statement</h4>
+<pre class="grammar"><span class="ntdfn" id="retry-stmt">retry-stmt</span> := <code>retry</code> <a href="#retry-spec"><span class="ntref">retry-spec</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+<span class="ntdfn" id="retry-spec">retry-spec</span> := [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>] [ <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code> ]
+</pre>
+</section>
+
+</section>
 
 <section>
-<h3 id="section_7.27">7.27 Panic statement</h3>
+<h3 id="section_7.23">7.23 Transactions</h3>
+
+<section>
+<h4 id="section_7.23.1">7.23.1 Transaction manager</h4>
+
+<section>
+<h5 id="section_7.23.1.1">7.23.1.1 Begin operation</h5>
+</section>
+
+<section>
+<h5 id="section_7.23.1.2">7.23.1.2 Commit operation</h5>
+</section>
+
+<section>
+<h5 id="section_7.23.1.3">7.23.1.3 Rollback operation</h5>
+</section>
+
+<section>
+<h5 id="section_7.23.1.4">7.23.1.4 Info operation</h5>
+</section>
+
+<section>
+<h5 id="section_7.23.1.5">7.23.1.5 SetRollbackOnly operation</h5>
+</section>
+
+<section>
+<h5 id="section_7.23.1.6">7.23.1.6 SetTimeout operation</h5>
+</section>
+
+</section>
+
+<section>
+<h4 id="section_7.23.2">7.23.2 Transaction statement</h4>
+
+<pre class="grammar"><span class="ntdfn" id="transaction-stmt">transaction-stmt</span> := <code>transaction</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+</pre>
+
+</section>
+
+
+<section>
+<h4 id="section_7.23.3">7.23.3 Retry transaction statement</h4>
+
+<pre class="grammar"><span class="ntdfn" id="retry-transaction-stmt">retry-transaction-stmt</span> := <code>retry</code> <a href="#retry-spec"><span class="ntref">retry-spec</span></a> <a href="#transaction-stmt"><span class="ntref">transaction-stmt</span></a>
+</pre>
+</section>
+
+<section>
+<h4 id="section_7.23.4">7.23.4 Commit action</h4>
+
+<pre class="grammar"><span class="ntdfn" id="commit-action">commit-action</span> := <code>commit</code>
+</pre>
+
+</section>
+
+<section>
+<h4 id="section_7.23.5">7.23.5 Rollback statement</h4>
+
+<pre class="grammar"><span class="ntdfn" id="rollback-stmt">rollback-stmt</span> := <code>rollback</code> [<a href="#expression"><span class="ntref">expression</span></a>] <code>;</code>
+</pre>
+
+</section>
+
+</section>
+<section>
+<h3 id="section_7.24">7.24 Panic statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
 </pre>
@@ -8798,7 +8941,7 @@ The static type of <code>expression</code> must be a subtype of error.
 </section>
 
 <section>
-<h3 id="section_7.28">7.28 Return statement</h3>
+<h3 id="section_7.25">7.25 Return statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
 </pre>
@@ -8808,6 +8951,7 @@ evaluating the action-or-expr provides the termination value of the worker. If
 action-or-expr is omitted, then the termination value is nil.
 </p>
 </section>
+
 
 </section>
 <section>
@@ -8885,6 +9029,7 @@ words, the directed graph of module imports must be acyclic.
    | <code>stream</code>
    | <code>string</code>
    | <code>table</code>
+   | <code>transaction</code>
    | <code>typedesc</code>
    | <code>xml</code>
 </pre>
@@ -9788,8 +9933,8 @@ modules are called the <em>lang library</em>.
 </p>
 <p>
 The lang library comprises the following modules. With the exception of the
-<code>lang.value</code> and <code>lang.runtime</code> modules, each corresponds
-to a basic type.
+<code>lang.value</code>, <code>lang.transaction</code> and
+<code>lang.runtime</code> modules, each corresponds to a basic type.
 </p>
 <ul>
 <li>
@@ -9835,6 +9980,7 @@ basic type typedesc</li>
 <code><a href="./lib/xml.bal" type="text/plain">lang.xml</a></code> for
 basic type xml</li>
 <li><code><a href="./lib/runtime.bal" type="text/plain">lang.runtime</a></code></li>
+<li><code><a href="./lib/transaction.bal" type="text/plain">lang.transaction</a></code></li>
 <li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 </ul>
 <p>
@@ -10046,6 +10192,7 @@ be specified at runtime.</li>
 predeclared.</li>
 <li>Backslash escapes can be used in identifiers without needing an initial
 single quote.</li>
+<li>Language support for transactions has been added.</li>
 </ol>
 </section>
 <section>
@@ -10377,14 +10524,11 @@ constrained.</li>
 <h2 id="planned_future_functionality">C. Planned future functionality</h2>
 
 <p>
-The vision for the Ballerina language includes a large range of functionality
+The vision for the Ballerina language includes a range of functionality
 that is not yet included in this specification.
 </p>
 
 <ul>
-<li>
-<em>Transactions</em> will provide language support both local and
-distributed transactions.</li>
 <li>
 <em>Security</em> will combine language and platform features to make
 programs secure by default.</li>

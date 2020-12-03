@@ -2805,7 +2805,7 @@ immediately returns <code>()</code>.
 <section>
 <h4>Listener</h4>
 <p>
-The abstract object type Listener&lt;T&gt;, where T is a a subtype of
+The object type Listener&lt;T&gt;, where T is a a subtype of
 <code>service object {}</code>, is described by the following object type
 descriptor:
 </p>
@@ -2841,6 +2841,20 @@ expression. The type is defined in <code>lang.object</code> as follows.
 </pre>
 
 </section>
+<section>
+<h4>RetryManager</h4>
+
+<p>
+The object type RetryManager&lt;E&gt;, where E is a a subtype of
+<code>error</code>, is described by the following object type descriptor:
+</p>
+
+<pre>object {
+   public function shouldRetry(E e) returns boolean;
+}
+</pre>
+</section>
+
 </section>
 <section>
 <h3>Abstract operations</h3>
@@ -3655,6 +3669,7 @@ class="grammar"><dfn>expression</dfn> :=
    | <abbr>trap-expr</abbr>
    | <abbr>query-expr</abbr>
    | <abbr>xml-navigate-expr</abbr>
+   | <abbr>transactional-expr</abbr>
    | <code>(</code> <abbr>expression</abbr> <code>)</code>
 </pre>
 <p>
@@ -6572,6 +6587,14 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
 </p>
 </section>
 </section>
+<section>
+<h3>Transactional expression</h3>
+
+<pre
+class="grammar"><dfn>transactional-expr</dfn> := <code>transactional</code>
+</pre>
+</section>
+
 </section>
 <section>
 <h2 id="actions_statements">7. Actions and statements</h2>
@@ -6590,6 +6613,7 @@ class="grammar"><dfn>action</dfn> :=
    | <abbr>type-cast-action</abbr>
    | <abbr>checking-action</abbr>
    | <abbr>trap-action</abbr>
+   | <abbr>commit-action</abbr>
    | <code>(</code> <abbr>action</abbr> <code>)</code>
 <dfn>action-or-expr</dfn> := <abbr>action</abbr> | <abbr>expression</abbr>
 <dfn>type-cast-action</dfn> := <code>&lt;</code> <abbr>type-cast-param</abbr> <code>&gt;</code> <abbr>action</abbr>
@@ -6672,7 +6696,7 @@ class="grammar"><dfn>block-function-body</dfn> :=
 <dfn>default-worker-init</dfn> := <abbr>statement</abbr>*
 <dfn>default-worker</dfn> := <abbr>statement</abbr>*
 <dfn>named-worker-decl</dfn> :=
-   [<abbr>annots</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr>
+   [<abbr>annots</abbr>] [<abbr>transactional-qual</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr>
 <dfn>worker-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
@@ -6875,6 +6899,10 @@ class="grammar"><dfn>statement</dfn> :=
    | <abbr>break-stmt</abbr>
    | <abbr>stmt-with-on-fail</abbr>
    | <abbr>fail-stmt</abbr>
+   | <abbr>retry-stmt</abbr>
+   | <abbr>transaction-stmt</abbr>
+   | <abbr>retry-transaction-stmt</abbr>
+   | <abbr>rollback-stmt</abbr>
    | <abbr>panic-stmt</abbr>
    | <abbr>return-stmt</abbr>
    | <abbr>fork-stmt</abbr>
@@ -6891,7 +6919,7 @@ two possibilities.
 </p>
 <ul>
 <li>If the abrupt termination is a check-fail, then control flow is transferred
-as if by a fail statement with an expression that evaluates to e.</li>
+as if by a <code>fail-stmt</code> with an expression that evaluates to e.</li>
 <li>If the abrupt termination is a panic, then the current worker is terminated
 abnormally with termination value e. This is the same as if
 a panic statement is executed with an expression that evaluates to e.</li>
@@ -8174,7 +8202,9 @@ narrowing</a> is done in addition to the type narrowing described here;</li>
 
 </section>
 <section>
-<h3>Foreach statement</h3>
+<h3>Loops</h3>
+<section>
+<h4>Foreach statement</h4>
 
 <pre
 class="grammar"><dfn>foreach-stmt</dfn> :=
@@ -8229,7 +8259,7 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 </p>
 </section>
 <section>
-<h3>While statement</h3>
+<h4>While statement</h4>
 
 <pre
 class="grammar"><dfn>while-stmt</dfn> := <code>while</code> <abbr>expression</abbr> <abbr>statement-block</abbr>
@@ -8260,7 +8290,7 @@ The static type of <code>expression</code> must be a subtype of boolean.
 </p>
 </section>
 <section>
-<h3>Continue statement</h3>
+<h4>Continue statement</h4>
 
 <pre
 class="grammar"><dfn>continue-stmt</dfn> := <code>continue</code> <code>;</code>
@@ -8273,7 +8303,7 @@ outermost statement-block in the while-stmt or foreach-stmt.
 </p>
 </section>
 <section>
-<h3>Break statement</h3>
+<h4>Break statement</h4>
 
 <pre class="grammar"><dfn>break-stmt</dfn> := <code>break</code> <code>;</code>
 </pre>
@@ -8282,6 +8312,7 @@ A break statement is only allowed if it is lexically enclosed within a
 while-stmt or a foreach-stmt. Executing a break statement causes the nearest
 enclosing while-stmt or foreach-stmt to terminate.
 </p>
+</section>
 </section>
 
 <section>
@@ -8348,7 +8379,9 @@ variable-reference-expr occurs within an expression that is isolated.</li>
 </section>
 
 <section>
-<h3>On fail clause</h3>
+<h3>Fail and retry</h3>
+<section>
+<h4>On fail clause</h4>
 <pre
 class="grammar"><dfn>stmt-with-on-fail</dfn> := <abbr>regular-compound-stmt</abbr> <abbr>on-fail-clause</abbr>
 <dfn>on-fail-clause</dfn> := <code>on</code> <code>fail</code> <abbr>typed-binding-pattern</abbr> <abbr>statement-block</abbr>
@@ -8373,7 +8406,7 @@ to succeed by the static type of the associated error value.
 </section>
 
 <section>
-<h3>Fail statement</h3>
+<h4>Fail statement</h4>
 <pre
 class="grammar"><dfn>fail-stmt</dfn> := <code>fail</code> <abbr>expression</abbr> <code>;</code>
 </pre>
@@ -8389,7 +8422,85 @@ on-fail-clause or becomes the termination value of the current worker.
 </p>
 
 </section>
+<section>
+<h4>Retry statement</h4>
+<pre
+class="grammar"><dfn>retry-stmt</dfn> := <code>retry</code> <abbr>retry-spec</abbr> <abbr>statement-block</abbr>
+<dfn>retry-spec</dfn> := [<abbr>type-parameter</abbr>] [ <code>(</code> <abbr>arg-list</abbr> <code>)</code> ]
+</pre>
+</section>
 
+</section>
+
+<section>
+<h3>Transactions</h3>
+
+<section>
+<h4>Transaction manager</h4>
+
+<section>
+<h5>Begin operation</h5>
+</section>
+
+<section>
+<h5>Commit operation</h5>
+</section>
+
+<section>
+<h5>Rollback operation</h5>
+</section>
+
+<section>
+<h5>Info operation</h5>
+</section>
+
+<section>
+<h5>SetRollbackOnly operation</h5>
+</section>
+
+<section>
+<h5>SetTimeout operation</h5>
+</section>
+
+</section>
+
+<section>
+<h4>Transaction statement</h4>
+
+<pre
+class="grammar"><dfn>transaction-stmt</dfn> := <code>transaction</code> <abbr>statement-block</abbr>
+</pre>
+
+</section>
+
+
+<section>
+<h4>Retry transaction statement</h4>
+
+<pre
+class="grammar"><dfn>retry-transaction-stmt</dfn> := <code>retry</code> <abbr>retry-spec</abbr> <abbr>transaction-stmt</abbr>
+</pre>
+</section>
+
+<section>
+<h4>Commit action</h4>
+
+<pre
+class="grammar"><dfn>commit-action</dfn> := <code>commit</code>
+</pre>
+
+</section>
+
+<section>
+<h4>Rollback statement</h4>
+
+<pre
+class="grammar"><dfn>rollback-stmt</dfn> := <code>rollback</code> [<abbr>expression</abbr>] <code>;</code>
+</pre>
+
+</section>
+
+</section>
 <section>
 <h3>Panic statement</h3>
 
@@ -8417,6 +8528,7 @@ evaluating the action-or-expr provides the termination value of the worker. If
 action-or-expr is omitted, then the termination value is nil.
 </p>
 </section>
+
 
 </section>
 <section>
@@ -8497,6 +8609,7 @@ class="grammar"><dfn>predeclared-prefix</dfn> :=
    | <code>stream</code>
    | <code>string</code>
    | <code>table</code>
+   | <code>transaction</code>
    | <code>typedesc</code>
    | <code>xml</code>
 </pre>
@@ -9419,8 +9532,8 @@ modules are called the <em>lang library</em>.
 </p>
 <p>
 The lang library comprises the following modules. With the exception of the
-<code>lang.value</code> and <code>lang.runtime</code> modules, each corresponds
-to a basic type.
+<code>lang.value</code>, <code>lang.transaction</code> and
+<code>lang.runtime</code> modules, each corresponds to a basic type.
 </p>
 <ul>
 <li><code><a href="./lib/array.bal" type="text/plain">lang.array</a></code> for
@@ -9452,6 +9565,7 @@ basic type typedesc</li>
 <li><code><a href="./lib/xml.bal" type="text/plain">lang.xml</a></code> for
 basic type xml</li>
 <li><code><a href="./lib/runtime.bal" type="text/plain">lang.runtime</a></code></li>
+<li><code><a href="./lib/transaction.bal" type="text/plain">lang.transaction</a></code></li>
 <li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 </ul>
 <p>
@@ -9658,6 +9772,7 @@ be specified at runtime.</li>
 predeclared.</li>
 <li>Backslash escapes can be used in identifiers without needing an initial
 single quote.</li>
+<li>Language support for transactions has been added.</li>
 </ol>
 </section>
 <section>
@@ -9985,13 +10100,11 @@ constrained.</li>
 <h2 id="planned_future_functionality">C. Planned future functionality</h2>
 
 <p>
-The vision for the Ballerina language includes a large range of functionality
+The vision for the Ballerina language includes a range of functionality
 that is not yet included in this specification.
 </p>
 
 <ul>
-<li><em>Transactions</em> will provide language support both local and
-distributed transactions.</li>
 <li><em>Security</em> will combine language and platform features to make
 programs secure by default.</li>
 <li><em>Date/time basic types</em> will provide one or more basic types related

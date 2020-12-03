@@ -1,7 +1,7 @@
 ---
 redirect_from:
-  - /v1-2/learn/api-docs/ballerina/cache/records/LinkedList
-  - /v1-2/learn/api-docs/ballerina/cache/records/LinkedList.html
+  - /v1-2/learn/api-docs/ballerina/cache/objects/LinkedList
+  - /v1-2/learn/api-docs/ballerina/cache/objects/LinkedList.html
 ---
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@ redirect_from:
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,cache">
 
-    <title>API Docs - Record : LinkedList</title>
+    <title>API Docs - Object : LinkedList</title>
     <script src="../../html-template-resources/jquery.min.js"></script>
 
     <!-- BIO THEME START -->
@@ -64,15 +64,19 @@ redirect_from:
 </a>
 
             <div class="primary-list">
-                <h3>Records</h3>
+                <h3>Objects</h3>
                 <ul>
                     
                         <li >
-                            <a href="CacheConfig.html" onclick="menuLinkClick()">CacheConfig</a>
+                            <a href="AbstractCache.html" onclick="menuLinkClick()">AbstractCache</a>
                         </li>
                     
                         <li >
-                            <a href="Detail.html" onclick="menuLinkClick()">Detail</a>
+                            <a href="AbstractEvictionPolicy.html" onclick="menuLinkClick()">AbstractEvictionPolicy</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Cache.html" onclick="menuLinkClick()">Cache</a>
                         </li>
                     
                         <li class="active">
@@ -80,7 +84,7 @@ redirect_from:
                         </li>
                     
                         <li >
-                            <a href="Node.html" onclick="menuLinkClick()">Node</a>
+                            <a href="LruEvictionPolicy.html" onclick="menuLinkClick()">LruEvictionPolicy</a>
                         </li>
                     
                 </ul>
@@ -89,7 +93,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.8</div>
+        <div class="version">v1.2.11</div>
     
 
 
@@ -112,10 +116,6 @@ redirect_from:
         
         
         
-        
-            <li>
-                <a data="functions" href="../../cache/index.html#functions" onclick="menuLinkClick()">Functions</a>
-            </li>
         
         
             <li>
@@ -356,145 +356,297 @@ redirect_from:
 </div>
         </div>
     </div>
-      <div class="content-wrapper pusher">
+    <div class="content-wrapper pusher">
         <div>
     <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
+
         <div class="main-wrapper">
-            <h1> 
+            <h1>
                 <a class="breadcrumb-home" href="
     ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
-                <span class="title-type">Record - </span>
+                <span class="title-type">Object - </span>
                 
                     <a href="../../cache/index.html">cache</a>
-                
-                 : <span class="records ">LinkedList</span>
+                 :
+                <span class="objects ">LinkedList</span>
             </h1>
             <p>
                 
-                <p>Represents a linked list, which is used to govern the cache eviction policy.</p>
+                <p>The <code>cache:LinkedList</code> object consists operations of <code>LinkedList</code> data structure which are related
+to LRU eviction algorithm</p>
 
             </p>
+
             <div class="constants">
-                
+                <div class="method-sum">
                     
-                        <h2>Fields</h2>
-                            <div class="data-wrapper">
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >head</span>
-                <span class="type">  <a href="../../cache/records/Node.html">Node</a>?</span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    <p>The first node of the linked list</p>
 
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >tail</span>
-                <span class="type">  <a href="../../cache/records/Node.html">Node</a>?</span>
                 
-            </li>
-            <li>
-                <p>
                     
-                    <p>The last node of the linked list</p>
-
-                </p>
-            </li>
-        </ul>
+                        <h2>Methods</h2>
+                        <div class="method-list">
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="addLast">
+        <a href="#addLast">addLast </a>
     </div>
-    
+    <div class="param-details"> 
+            
+        <p>Adds a node to the end of the provided linked list.
+    </div>
 </div>
 
-<script>
-let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
-let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="addFirst">
+        <a href="#addFirst">addFirst </a>
+    </div>
+    <div class="param-details"> 
+            
+        <p>Adds a node to the start of the provided linked list.
+    </div>
+</div>
 
-let lastId;
-let cur = [];
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="remove">
+        <a href="#remove">remove </a>
+    </div>
+    <div class="param-details"> 
+            
+        <p>Removes a node from the provided linked list.
+    </div>
+</div>
 
-let contentWrapper = document.querySelector(".content-wrapper");
-contentWrapper.addEventListener("scroll", event => {
-  let fromTop = contentWrapper.scrollTop;
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="removeLast">
+        <a href="#removeLast">removeLast </a>
+    </div>
+    <div class="param-details"> 
+            
+        <p>Removes the last node from the provided linked list.
+    </div>
+</div>
 
-  mainNavLinks.forEach(link => {
-    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="clear">
+        <a href="#clear">clear </a>
+    </div>
+    <div class="param-details"> 
+            
+        <p>Clears the provided linked list.
+    </div>
+</div>
 
-    if (
-      section.offsetTop <= fromTop &&
-      section.offsetTop + section.offsetHeight > fromTop
-    ) {
-      link.classList.add("current");
-    } else {
-      link.classList.remove("current");
-    }
-  });
-});
+                            
+                        </div>
+                    
 
-</script>
-<script>
-function menuLinkClick() {
-  if(window.matchMedia("(max-width: 600px)").matches) {
-    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
-  }
-}
-function displayMenu() {
-  var nav = document.getElementsByClassName("navi-wrapper")[0];
-  var content = document.getElementsByClassName("content-wrapper")[0];
-  if (nav.style.display === "none" || nav.style.display === "") {
-    nav.style.display = "block";
-    content.style.marginLeft = "210px";
-  } else {
-    nav.style.display = "none";
-    content.style.marginLeft = "0px";
-  }
-}
-</script>
-<script>
-function menuLinkClick() {
-  if(window.matchMedia("(max-width: 600px)").matches) {
-    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
-  }
-}
-function displayMenu() {
-  var nav = document.getElementsByClassName("navi-wrapper")[0];
-  var content = document.getElementsByClassName("content-wrapper")[0];
-  if (nav.style.display === "none" || nav.style.display === "") {
-    nav.style.display = "block";
-    content.style.marginLeft = "210px";
-  } else {
-    nav.style.display = "none";
-    content.style.marginLeft = "0px";
-  }
-}
-</script>
+                    
+                </div>
 
-<script>
-    window.onload = (event) => {
-        ballerinaHighlighter.highlightSnippets();
-    };
-</script>
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="addLast" title="addLast">
+             <a class="url-link" href="#addLast">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > addLast </h2>
+        <span class="method-types">
+            <p>(<a href="../../cache/records/Node.html">Node</a> node)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Adds a node to the end of the provided linked list.</p>
 
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >node</span>
+                        <span class="type">  <a href="../../cache/records/Node.html">Node</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The node, which should be added to the provided linked list</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="addFirst" title="addFirst">
+             <a class="url-link" href="#addFirst">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > addFirst </h2>
+        <span class="method-types">
+            <p>(<a href="../../cache/records/Node.html">Node</a> node)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Adds a node to the start of the provided linked list.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >node</span>
+                        <span class="type">  <a href="../../cache/records/Node.html">Node</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The node, which should be added to the provided linked list</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="remove" title="remove">
+             <a class="url-link" href="#remove">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > remove </h2>
+        <span class="method-types">
+            <p>(<a href="../../cache/records/Node.html">Node</a> node)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Removes a node from the provided linked list.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >node</span>
+                        <span class="type">  <a href="../../cache/records/Node.html">Node</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The node, which should be removed from the provided linked list</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="removeLast" title="removeLast">
+             <a class="url-link" href="#removeLast">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > removeLast </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><a href="../../cache/records/Node.html">Node</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Removes the last node from the provided linked list.</p>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/records/Node.html">Node</a>?</span>)</li>
+                <li><p>Last node of the provided linked list or <code>()</code> if the last node is empty</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="clear" title="clear">
+             <a class="url-link" href="#clear">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > clear </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Clears the provided linked list.</p>
+
+    </div>
+    
+
+    
+</div>
                     
                 
             </div>
         </div>
     </div>
+
 </body>
 
 <script>

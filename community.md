@@ -80,7 +80,8 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
 
-   - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
+   - Compiler, runtime, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
+   - Standard Library: <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues">ballerina-standard-library</a> repo
    - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo
    - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo
    - Security flaw: send an email to <a href="mailto:security@ballerina.io">security@ballerina.io</a>. For details, see the <a href="/security">security policy</a>.

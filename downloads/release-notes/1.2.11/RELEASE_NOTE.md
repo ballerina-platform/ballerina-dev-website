@@ -4,7 +4,7 @@ title: Release Note
 ---
 ### Overview of jBallerina 1.2.11
 
-The jBallerina 1.2.11 patch release improves upon the 1.2.10 release by addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.11%22+label%3AType%2FBug+is%3Aclosed).
+The jBallerina 1.2.11 patch release improves upon the 1.2.10 release by addressing a number of [issues](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.11%22+is%3Aclosed).
 
 You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to jBallerina 1.2.11 as follows.
 

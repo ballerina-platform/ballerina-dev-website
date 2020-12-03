@@ -7307,13 +7307,6 @@ is called concurrently on multiple strands.
    | <a href="#panic-stmt"><span class="ntref">panic-stmt</span></a>
    | <a href="#return-stmt"><span class="ntref">return-stmt</span></a>
    | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
-
-<span class="ntdfn" id="regular-compound-stmt">regular-compound-stmt</span> :=
-  <a href="#do-stmt"><span class="ntref">do-stmt</span></a>
-  | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
-  | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
-  | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
-  | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
 </pre>
 <p>
 The execution of any statement may involve the evaluation of actions and
@@ -7337,6 +7330,18 @@ If the execution of a substatement causes termination of the current worker,
 then the execution of the statement terminates at that point.
 </p>
 
+<pre class="grammar">
+<span class="ntdfn" id="regular-compound-stmt">regular-compound-stmt</span> :=
+  <a href="#do-stmt"><span class="ntref">do-stmt</span></a>
+  | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
+  | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
+  | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
+  | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
+</pre>
+<p>
+A <code>regular-compound-stmt</code> can be combined with an
+<code>on-fail-clause</code> to make a <code>stmt-with-on-fail</code>.
+</p>
 <pre class="grammar">
 <span class="ntdfn" id="statement-block">statement-block</span> := <code>{</code> <a href="#statement"><span class="ntref">statement</span></a>* <code>}</code>
 </pre>
@@ -8392,6 +8397,10 @@ is present, the corresponding statement block is executed.
 <h3 id="section_7.18">7.18 Do statement</h3>
 <pre class="grammar"><span class="ntdfn" id="do-stmt">do-stmt</span> := <code>do</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
+<p>
+A <code>do-stmt</code> is executed by executing its
+<code>statement-block</code>.
+</p>
 </section>
 <section>
 <h3 id="match_statement">7.19 Match statement</h3>

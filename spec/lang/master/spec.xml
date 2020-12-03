@@ -6878,13 +6878,6 @@ class="grammar"><dfn>statement</dfn> :=
    | <abbr>panic-stmt</abbr>
    | <abbr>return-stmt</abbr>
    | <abbr>fork-stmt</abbr>
-
-<dfn>regular-compound-stmt</dfn> :=
-  <abbr>do-stmt</abbr>
-  | <abbr>match-stmt</abbr>
-  | <abbr>foreach-stmt</abbr>
-  | <abbr>while-stmt</abbr>
-  | <abbr>lock-stmt</abbr>
 </pre>
 <p>
 The execution of any statement may involve the evaluation of actions and
@@ -6908,6 +6901,19 @@ If the execution of a substatement causes termination of the current worker,
 then the execution of the statement terminates at that point.
 </p>
 
+<pre
+class="grammar">
+<dfn>regular-compound-stmt</dfn> :=
+  <abbr>do-stmt</abbr>
+  | <abbr>match-stmt</abbr>
+  | <abbr>foreach-stmt</abbr>
+  | <abbr>while-stmt</abbr>
+  | <abbr>lock-stmt</abbr>
+</pre>
+<p>
+A <code>regular-compound-stmt</code> can be combined with an
+<code>on-fail-clause</code> to make a <code>stmt-with-on-fail</code>.
+</p>
 <pre
 class="grammar">
 <dfn>statement-block</dfn> := <code>{</code> <abbr>statement</abbr>* <code>}</code>
@@ -7986,6 +7992,10 @@ is present, the corresponding statement block is executed.
 <pre
 class="grammar"><dfn>do-stmt</dfn> := <code>do</code> <abbr>statement-block</abbr>
 </pre>
+<p>
+A <code>do-stmt</code> is executed by executing its
+<code>statement-block</code>.
+</p>
 </section>
 <section>
 <h3 id="match_statement">Match statement</h3>

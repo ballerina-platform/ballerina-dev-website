@@ -27,7 +27,7 @@ If you have not installed jBallerina, then download the [installers](/downloads/
 
 ##### HTTP
 
-Introduce HTTP 1.1 client inbound response validation. 
+Introduce inbound response validation for HTTP/1.1 client. 
 
 - `maxStatusLineLength` - The maximum length allowed for the response status line. Exceeding this limit will result in an error.
 - `maxHeaderSize` - The maximum size allowed for headers. Exceeding this limit will result in an error.

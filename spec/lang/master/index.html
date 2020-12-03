@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-30</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-12-03</h1>
 <p>
 Primary contributors:
 </p>
@@ -2321,8 +2321,14 @@ a non-empty set of type-ids.
 <section>
 <h4 id="functions">5.5.2 Functions</h4>
 
-<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> [<a href="#function-signature"><span class="ntref">function-signature</span></a>]
+<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> :=
+   <a href="#function-quals"><span class="ntref">function-quals</span></a> <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
+   | [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code>
+<span class="ntdfn" id="function-quals">function-quals</span> :=
+   <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>]
 <span class="ntdfn" id="isolated-qual">isolated-qual</span> := <code>isolated</code>
+<span class="ntdfn" id="transactional-qual">transactional-qual</span> := <code>transactional</code>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
 </pre>
 <p>
@@ -2584,8 +2590,9 @@ the object has been constructed.
 <h5 id="section_5.5.3.3">5.5.3.3 Methods</h5>
 
 <pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#method-quals"><span class="ntref">method-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
+<span class="ntdfn" id="method-quals">method-quals</span> := <a href="#function-quals"><span class="ntref">function-quals</span></a>
 <span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
@@ -2609,8 +2616,11 @@ the object on which the method is invoked that it has to parameters.
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#remote-method-quals"><span class="ntref">remote-method-quals</span></a> 
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
 <span class="ntdfn" id="remote-method-quals">remote-method-quals</span> :=
-   <a href="#remote-qual"><span class="ntref">remote-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+   <a href="#remote-qual"><span class="ntref">remote-qual</span></a> <a href="#function-quals"><span class="ntref">function-quals</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>] <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a> <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a> <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>
 <span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
 </pre>
 <p>
@@ -5013,7 +5023,7 @@ private.
 <h5 id="section_6.8.1.2">6.8.1.2 Methods</h5>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> <a href="#method-quals"><span class="ntref">method-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
 </pre>
 
@@ -5072,8 +5082,11 @@ object.
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#resource-method-quals"><span class="ntref">resource-method-quals</span></a>
    <code>function</code> <a href="#resource-method-name"><span class="ntref">resource-method-name</span></a> <a href="#resource-path"><span class="ntref">resource-path</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
 <span class="ntdfn" id="resource-method-quals">resource-method-quals</span> :=
-   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> <a href="#function-quals"><span class="ntref">function-quals</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>] <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a> <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a> <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>
 <span class="ntdfn" id="resource-qual">resource-qual</span> := <code>resource</code>
 <span class="ntdfn" id="resource-method-name">resource-method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="resource-path">resource-path</span> :=
@@ -5833,7 +5846,7 @@ the point where the error constructor was evaluated.
 <h3 id="section_6.18">6.18 Anonymous function expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="anonymous-function-expr">anonymous-function-expr</span> := <a href="#explicit-anonymous-function-expr"><span class="ntref">explicit-anonymous-function-expr</span></a> | <a href="#infer-anonymous-function-expr"><span class="ntref">infer-anonymous-function-expr</span></a>
-<span class="ntdfn" id="explicit-anonymous-function-expr">explicit-anonymous-function-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a> (<a href="#block-function-body"><span class="ntref">block-function-body</span></a>|<a href="#expr-function-body"><span class="ntref">expr-function-body</span></a>)
+<span class="ntdfn" id="explicit-anonymous-function-expr">explicit-anonymous-function-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#function-quals"><span class="ntref">function-quals</span></a> <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a> (<a href="#block-function-body"><span class="ntref">block-function-body</span></a>|<a href="#expr-function-body"><span class="ntref">expr-function-body</span></a>)
 </pre>
 <p>
 Evaluating an anonymous-function-expr creates a closure, whose basic type is
@@ -9144,7 +9157,7 @@ without without relying on inference.
 
 <pre class="grammar"><span class="ntdfn" id="function-defn">function-defn</span> := 
    <a href="#metadata"><span class="ntref">metadata</span></a>
-   [<code>public</code>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   [<code>public</code>] <a href="#function-quals"><span class="ntref">function-quals</span></a>
    <code>function</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
 <span class="ntdfn" id="function-defn-body">function-defn-body</span> :=
    <a href="#block-function-body"><span class="ntref">block-function-body</span></a>

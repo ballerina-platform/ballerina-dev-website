@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-30</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-12-03</h1>
 <p>
 Primary contributors:
 </p>
@@ -1875,8 +1875,14 @@ a non-empty set of type-ids.
 <h4 id="functions">Functions</h4>
 
 <pre
-class="grammar"><dfn>function-type-descriptor</dfn> := [<abbr>isolated-qual</abbr>] <code>function</code> [<abbr>function-signature</abbr>]
+class="grammar"><dfn>function-type-descriptor</dfn> :=
+   <abbr>function-quals</abbr> <code>function</code> <abbr>function-signature</abbr>
+   | [<abbr>isolated-qual</abbr>] <code>function</code>
+<dfn>function-quals</dfn> :=
+   <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>]
+   | [<abbr>isolated-qual</abbr>] [<abbr>transactional-qual</abbr>]
 <dfn>isolated-qual</dfn> := <code>isolated</code>
+<dfn>transactional-qual</dfn> := <code>transactional</code>
 <dfn>function-signature</dfn> := <code>(</code> <abbr>param-list</abbr> <code>)</code> <abbr>return-type-descriptor</abbr>
 </pre>
 <p>
@@ -2146,8 +2152,9 @@ the object has been constructed.
 
 <pre
 class="grammar"><dfn>method-decl</dfn> :=
-   <abbr>metadata</abbr> [<code>public</code>] [<abbr>isolated-qual</abbr>]
+   <abbr>metadata</abbr> [<code>public</code>] <abbr>method-quals</abbr>
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
+<dfn>method-quals</dfn> := <abbr>function-quals</abbr>
 <dfn>method-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
@@ -2172,8 +2179,11 @@ class="grammar"><dfn>remote-method-decl</dfn> :=
    <abbr>metadata</abbr> <abbr>remote-method-quals</abbr> 
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
 <dfn>remote-method-quals</dfn> :=
-   <abbr>remote-qual</abbr> [<abbr>isolated-qual</abbr>]
-   | <abbr>isolated-qual</abbr> <abbr>remote-qual</abbr>
+   <abbr>remote-qual</abbr> <abbr>function-quals</abbr>
+   | <abbr>isolated-qual</abbr> [<abbr>transactional-qual</abbr>] <abbr>remote-qual</abbr>
+   | <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>] <abbr>remote-qual</abbr>
+   | <abbr>isolated-qual</abbr> <abbr>remote-qual</abbr> <abbr>transactional-qual</abbr>
+   | <abbr>transactional-qual</abbr> <abbr>remote-qual</abbr> <abbr>isolated-qual</abbr>
 <dfn>remote-qual</dfn> := <code>remote</code>
 </pre>
 <p>
@@ -4575,7 +4585,7 @@ private.
 
 <pre
 class="grammar"><dfn>method-defn</dfn> :=
-   <abbr>metadata</abbr> <abbr>object-visibility-qual</abbr> [<abbr>isolated-qual</abbr>]
+   <abbr>metadata</abbr> <abbr>object-visibility-qual</abbr> <abbr>method-quals</abbr>
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
 </pre>
 
@@ -4637,8 +4647,11 @@ class="grammar"><dfn>resource-method-defn</dfn> :=
    <abbr>metadata</abbr> <abbr>resource-method-quals</abbr>
    <code>function</code> <abbr>resource-method-name</abbr> <abbr>resource-path</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
 <dfn>resource-method-quals</dfn> :=
-   <abbr>resource-qual</abbr> [<abbr>isolated-qual</abbr>]
-   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr>
+   <abbr>resource-qual</abbr> <abbr>function-quals</abbr>
+   | <abbr>isolated-qual</abbr> [<abbr>transactional-qual</abbr>] <abbr>resource-qual</abbr>
+   | <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>] <abbr>resource-qual</abbr>
+   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr> <abbr>transactional-qual</abbr>
+   | <abbr>transactional-qual</abbr> <abbr>resource-qual</abbr> <abbr>isolated-qual</abbr>
 <dfn>resource-qual</dfn> := <code>resource</code>
 <dfn>resource-method-name</dfn> := <abbr>identifier</abbr>
 <dfn>resource-path</dfn> :=
@@ -5401,7 +5414,7 @@ the point where the error constructor was evaluated.
 
 <pre
 class="grammar"><dfn>anonymous-function-expr</dfn> := <abbr>explicit-anonymous-function-expr</abbr> | <abbr>infer-anonymous-function-expr</abbr>
-<dfn>explicit-anonymous-function-expr</dfn> := [<abbr>annots</abbr>] [<abbr>isolated-qual</abbr>] <code>function</code> <abbr>function-signature</abbr> (<abbr>block-function-body</abbr>|<abbr>expr-function-body</abbr>)
+<dfn>explicit-anonymous-function-expr</dfn> := [<abbr>annots</abbr>] <abbr>function-quals</abbr> <code>function</code> <abbr>function-signature</abbr> (<abbr>block-function-body</abbr>|<abbr>expr-function-body</abbr>)
 </pre>
 <p>
 Evaluating an anonymous-function-expr creates a closure, whose basic type is
@@ -8757,7 +8770,7 @@ without without relying on inference.
 <pre
 class="grammar"><dfn>function-defn</dfn> := 
    <abbr>metadata</abbr>
-   [<code>public</code>] [<abbr>isolated-qual</abbr>]
+   [<code>public</code>] <abbr>function-quals</abbr>
    <code>function</code> <abbr>identifier</abbr> <abbr>function-signature</abbr> <abbr>function-defn-body</abbr>
 <dfn>function-defn-body</dfn> :=
    <abbr>block-function-body</abbr>

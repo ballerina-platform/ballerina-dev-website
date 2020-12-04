@@ -20,7 +20,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-4/">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-5/">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues">Past newsletter issues</a></li>
 
 </ul>

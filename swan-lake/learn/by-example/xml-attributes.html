@@ -11,19 +11,36 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.&#39;xml as xmllib;xmlns &quot;http://ballerina.com/aa&quot; as ns0;public function main()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">xml</span> <span class="k">as</span> <span class="nx">xmllib</span><span class="p">;</span>
+
+<span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/aa&quot;</span> <span class="k">as</span> <span class="nx">ns0</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Creates an XML element, which has attributes that are bound to a namespace as well as ones that are not.</span>
     <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">x1</span> <span class="p">=</span>
             <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
+
+    <span class="c1">// A single attribute that is bound to a namespace can be accessed using its qualified name.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">.</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">);</span>
+
+    <span class="c1">// Attribute access expressions are lax typed.</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">x1</span><span class="p">.</span><span class="nx">count</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+
+    <span class="c1">// Accessing a non-existent attribute will return an error.</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">count2</span> <span class="p">=</span> <span class="nx">x1</span><span class="p">.</span><span class="nx">count2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">count2</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">);</span>
+
+    <span class="c1">// It is possible to get all the attributes of an `xml` element.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">attributeMap</span> <span class="p">=</span> <span class="nx">x1</span><span class="p">.</span><span class="nx">getAttributes</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">attributeMap</span><span class="p">);</span>
+
+    <span class="c1">// An attribute can also be accessed using the string representation of the qualified name from the attribute map.</span>
     <span class="kt">string</span><span class="err">?</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">attributeMap</span><span class="p">[</span><span class="s">&quot;{http://ballerina.com/aa}status&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+
+    <span class="c1">// Update an attribute by updating the attribute map of an `xml` element.</span>
     <span class="nx">attributeMap</span><span class="p">[</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Not Available&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">.</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">);</span>
 <span class="p">}</span>

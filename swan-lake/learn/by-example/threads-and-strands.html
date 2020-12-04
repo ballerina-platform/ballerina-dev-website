@@ -11,46 +11,79 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function creates a new strand, which belongs to the same</span>
+<span class="c1">// thread as the current strand.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">case1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Execution of the `start` action causes the creation of a new strand and</span>
+    <span class="c1">// it will be part of the thread executing the current strand.</span>
+    <span class="c1">// However, the Ballerina runtime will not execute the new strand until the current strand yields.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;--- case 1 ---&quot;</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+    <span class="c1">// Here, the `wait` action causes the current strand to yield.</span>
+    <span class="c1">// Once it yields, the Ballerina runtime executes the new strand.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After the wait action\n&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function creates a new strand and it should be in a separate thread from the current strand.</span>
+<span class="c1">// The usage of the `@strand` annotation with the `thread` field value &quot;any&quot; enforces this behavior.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">case2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// This new strand does not belong to the thread executing the current strand.</span>
+    <span class="c1">// The Ballerina runtime assigns this new strand to a separate thread in the runtime thread pool.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;--- case 2 ---&quot;</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After the wait action\n&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Create two new strands and assign them to separate threads from the thread executing the current strand.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">case3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;--- case 3 ---&quot;</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After the wait action\n&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Create two new strands. Ballerina runtime assigns the first one to a separate thread and assigns</span>
+<span class="c1">// the second one to the same thread executing the current strand.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">case4</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;--- case 4 ---&quot;</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After the wait action\n&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Create two new strands. The Ballerina runtime assigns both strands to the same thread executing the current strand.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">case5</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;--- case 5 ---&quot;</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before the wait action&quot;</span><span class="p">);</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After the wait action\n&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">case1</span><span class="p">();</span>
     <span class="nx">case2</span><span class="p">();</span>
     <span class="nx">case3</span><span class="p">();</span>
     <span class="nx">case4</span><span class="p">();</span>
     <span class="nx">case5</span><span class="p">();</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Multiplying ${x} * ${y}`</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
 <span class="p">}</span>

@@ -13,13 +13,21 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">awslambda</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">system</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// The `@awslambda:Function` annotation marks a function to</span>
+<span class="c1">// generate an AWS Lambda function</span>
 <span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
    <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
-<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">uuid</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
    <span class="k">return</span> <span class="nx">system</span><span class="p">:</span><span class="nx">uuid</span><span class="p">();</span>
 <span class="p">}</span>
+
+<span class="c1">// The `awslambda:Context` object contains request execution</span>
+<span class="c1">// context information</span>
 <span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">ctxinfo</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
    <span class="kt">json</span> <span class="nx">result</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">RequestID</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequestId</span><span class="p">(),</span>
@@ -28,23 +36,33 @@ redirect_from:
                    <span class="nx">TraceID</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getTraceId</span><span class="p">(),</span>
                    <span class="nx">RemainingExecTime</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getRemainingExecutionTime</span><span class="p">()</span> <span class="p">};</span>
    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifySQS</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
                           <span class="nx">awslambda</span><span class="p">:</span><span class="nx">SQSEvent</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">body</span><span class="p">;</span>
-<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifyS3</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
                          <span class="nx">awslambda</span><span class="p">:</span><span class="nx">S3Event</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">s3</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">object</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
-<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifyDynamoDB</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
                                <span class="nx">awslambda</span><span class="p">:</span><span class="nx">DynamoDBEvent</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">Keys</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifySES</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
                           <span class="nx">awslambda</span><span class="p">:</span><span class="nx">SESEvent</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">ses</span><span class="p">.</span><span class="nx">mail</span><span class="p">.</span><span class="nx">commonHeaders</span><span class="p">.</span><span class="nx">subject</span><span class="p">;</span>
-<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">apigwRequest</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
                              <span class="nx">awslambda</span><span class="p">:</span><span class="nx">APIGatewayProxyRequest</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Path: &quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
@@ -70,16 +88,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="openshift-deployment.html">
+                                    <a class="prev" href="c2c-deployment.html">
                                         <span>< PREVIOUS</span>
-                                        <p>OpenShift Deployment</p>
+                                        <p>Code to Cloud Deployment</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="knative-deployment.html">
+                                    <a class="next" href="azure-functions-deployment.html">
                                         <span>NEXT ></span>
-                                        <p>Knative Deployment</p>
+                                        <p>Azure Functions</p>
                                     </a>
                                 </div>
                                 

@@ -10,19 +10,27 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="nx">readonly</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">gpa</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="nx">readonly</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">graduationYear</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="nx">type</span> <span class="nx">ReportTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Report</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="c1">// This is a `table` type with `Report` members uniquely identified by their `id` field.</span>
+<span class="nx">type</span> <span class="nx">ReportTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Report</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Michelle&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Sadler&quot;</span><span class="p">,</span> 
                    <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">1990</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.5</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> 
@@ -30,21 +38,42 @@ redirect_from:
     <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> 
                    <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2002</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> 
-                   <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">4.0</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+                   <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">4.0</span> <span class="p">};</span>
+
+    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+
+    <span class="c1">// The `query expression` starts with `table`.</span>
+    <span class="c1">// The key specifier `key(id)` specifies the key sequence of the constructed `table`.</span>
+    <span class="c1">// The result of the `query expression` is a `table`.</span>
     <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">reportTable</span> <span class="p">=</span>
         <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+        <span class="c1">// The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.</span>
+        <span class="c1">// It can refer to variables bound by the from clause.</span>
+        <span class="c1">// When the `where` condition evaluates to false, the current iteration is skipped.</span>
         <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">gpa</span> <span class="o">&gt;=</span> <span class="mf">2.0</span>
+        <span class="c1">// The `let` clause binds the variables.</span>
         <span class="nx">let</span> <span class="kt">string</span> <span class="nx">degreeName</span> <span class="p">=</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
         <span class="kt">int</span> <span class="nx">graduationYear</span> <span class="p">=</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
+        <span class="c1">// The `limit` clause limits the number of output items.</span>
         <span class="nx">limit</span> <span class="mi">2</span>
+        <span class="c1">// The `select` clause is evaluated for each iteration.</span>
+        <span class="c1">// During the construction of a `table`, each emitted value from the `select` clause is added as a new member.</span>
         <span class="nx">select</span> <span class="p">{</span>
             <span class="nx">id</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
             <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
             <span class="nx">degree</span><span class="p">:</span> <span class="nx">degreeName</span><span class="p">,</span>
             <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
-        <span class="p">};</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">reportTable</span><span class="p">);</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">duplicateStdList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s1</span><span class="p">];</span>
+        <span class="p">};</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">reportTable</span><span class="p">);</span>
+
+    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">duplicateStdList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s1</span><span class="p">];</span>
+
+    <span class="c1">// Defines an `error` to handle a key conflict.</span>
     <span class="nx">error</span> <span class="nx">onConflictError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Key Conflict&quot;</span><span class="p">,</span>
-                                  <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;cannot insert report&quot;</span><span class="p">);</span>    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span>
+                                  <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;cannot insert report&quot;</span><span class="p">);</span>
+
+    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">duplicateStdList</span>
         <span class="nx">select</span> <span class="p">{</span>
             <span class="nx">id</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
@@ -52,8 +81,15 @@ redirect_from:
             <span class="nx">degree</span><span class="p">:</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
             <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
         <span class="p">}</span> 
-        <span class="nx">on</span> <span class="nx">conflict</span> <span class="nx">onConflictError</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+        <span class="c1">// The `on conflict` clause gets executed when `select` emits a row</span>
+        <span class="c1">// that has the same key as a row that it emitted earlier.</span>
+        <span class="c1">// It gives an `onConflictError` error if there is a key conflict.</span>
+        <span class="nx">on</span> <span class="nx">conflict</span> <span class="nx">onConflictError</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

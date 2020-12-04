@@ -14,6 +14,8 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">ldap</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// Defines the LDAP connection configurations.</span>
 <span class="nx">ldap</span><span class="p">:</span><span class="nx">LdapConnectionConfig</span> <span class="nx">ldapConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">domainName</span><span class="p">:</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">,</span>
     <span class="nx">connectionURL</span><span class="p">:</span> <span class="s">&quot;ldap://localhost:20000&quot;</span><span class="p">,</span>
@@ -36,12 +38,23 @@ redirect_from:
     <span class="nx">readTimeoutInMillis</span><span class="p">:</span> <span class="mi">60000</span><span class="p">,</span>
     <span class="nx">retryAttempts</span><span class="p">:</span> <span class="mi">3</span>
 <span class="p">};</span>
+
+<span class="c1">// Creates an inbound LDAP authentication provider with the LDAP</span>
+<span class="c1">// connection configurations.</span>
 <span class="nx">ldap</span><span class="p">:</span><span class="nx">InboundLdapAuthProvider</span> <span class="nx">ldapAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">ldapConfig</span><span class="p">,</span> <span class="s">&quot;ldap01&quot;</span><span class="p">);</span>
+
+<span class="c1">// Creates a Basic Auth handler with the created LDAP Auth provider.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">ldapAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">ldapAuthProvider</span><span class="p">);</span>
+
+<span class="c1">// The endpoint used here is the `http:Listener`. The LDAP Auth handler is</span>
+<span class="c1">// set to this endpoint using the `authHandlers` attribute.</span>
+<span class="c1">// It is optional to override the authentication and authorization at the</span>
+<span class="c1">// service and resource levels.</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">ldapAuthHandler</span><span class="p">]</span>
         <span class="p">},</span>
+        <span class="c1">// The secure hello world sample uses HTTPS.</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
@@ -49,7 +62,9 @@ redirect_from:
                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">});</span><span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
+    <span class="p">});</span>
+
+<span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>

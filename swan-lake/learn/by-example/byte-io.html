@@ -12,15 +12,22 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// Copies the content from the source channel to a destination channel.</span>
 <span class="kd">function</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">src</span><span class="p">,</span>
               <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dst</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The below example shows how to read all the content from</span>
+    <span class="c1">// the source and copy it to the destination.</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// The operation attempts to read a maximum of 1000 bytes and returns</span>
+        <span class="c1">// with the available content, which could be &lt; 1000.</span>
         <span class="nx">byte</span><span class="p">[]|</span><span class="nx">io</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// The operation writes the given content into the channel.</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">dst</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
@@ -34,6 +41,8 @@ redirect_from:
     <span class="p">}</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Closes a given readable or writable byte channel.</span>
 <span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">|</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">public</span> <span class="kd">function</span> <span class="nx">close</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">;</span>
@@ -42,12 +51,17 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">srcPath</span> <span class="p">=</span> <span class="s">&quot;./files/ballerina.jpg&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">dstPath</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy.jpg&quot;</span><span class="p">;</span>
+    <span class="c1">// Initializes the readable byte channel.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">srcCh</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">srcPath</span><span class="p">);</span>
+    <span class="c1">// Initializes the writable byte channel.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dstCh</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">dstPath</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Start to copy files from &quot;</span> <span class="o">+</span> <span class="nx">srcPath</span> <span class="o">+</span> <span class="s">&quot; to &quot;</span> <span class="o">+</span> <span class="nx">dstPath</span><span class="p">);</span>
+    <span class="c1">// Copies the source byte channel to the target byte channel.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">srcCh</span><span class="p">,</span> <span class="nx">dstCh</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while performing copy &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -55,6 +69,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File copy completed. The copied file is located at &quot;</span> <span class="o">+</span>
                     <span class="nx">dstPath</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="c1">// Closes the connections.</span>
     <span class="nx">close</span><span class="p">(</span><span class="nx">srcCh</span><span class="p">);</span>
     <span class="nx">close</span><span class="p">(</span><span class="nx">dstCh</span><span class="p">);</span>
 <span class="p">}</span>
@@ -77,9 +92,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="locks.html">
+                                    <a class="prev" href="java-exceptions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Lock</p>
+                                        <p>Java Exceptions</p>
                                     </a>
                                 </div>
                                  

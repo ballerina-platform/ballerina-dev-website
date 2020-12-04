@@ -11,18 +11,54 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function takes the base salary, annual increment, and bonus rate as input</span>
+<span class="c1">// parameters and prints them. The first parameter `baseSalary` is a required</span>
+<span class="c1">// parameter. The next two parameters `annualIncrement` and `bonusRate` are </span>
+<span class="c1">// two defaultable parameters. They are optional parameters that have default</span>
+<span class="c1">// values of 20 and 0.02 respectively. Defaultable parameters must always be</span>
+<span class="c1">// defined after the required parameters.</span>
 <span class="kd">function</span> <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="kt">int</span> <span class="nx">baseSalary</span><span class="p">,</span>
                             <span class="kt">int</span> <span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">20</span><span class="p">,</span>
-                            <span class="kt">float</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.02</span><span class="p">)</span> <span class="p">{</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base Salary: &quot;</span><span class="p">,</span> <span class="nx">baseSalary</span><span class="p">,</span> 
+                            <span class="kt">float</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.02</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base Salary: &quot;</span><span class="p">,</span> <span class="nx">baseSalary</span><span class="p">,</span> 
                 <span class="s">&quot; | Annual Increment: &quot;</span><span class="p">,</span> <span class="nx">annualIncrement</span><span class="p">,</span>
                 <span class="s">&quot; | Bonus Rate: &quot;</span><span class="p">,</span> <span class="nx">bonusRate</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Call the function by passing a value only for the `baseSalary` parameter.</span>
+    <span class="c1">// The `annualIncrement` and `bonusRate` parameters default to</span>
+    <span class="c1">// 20 and 0.02 respectively.</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">);</span>
+
+    <span class="c1">// Call the function by passing values only for the `baseSalary` and `annualIncrement`</span>
+    <span class="c1">// parameters. The value for the `annualIncrement` parameter is passed as a named argument.</span>
+    <span class="c1">// The `bonusRate` parameter defaults to 0.02.</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="c1">// Call the function again by passing values only for the `baseSalary` and `annualIncrement`</span>
+    <span class="c1">// parameters, now passing the value for the `annualIncrement` parameter as a positional argument.</span>
+    <span class="c1">// The `bonusRate` parameter defaults to 0.02.</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="c1">// Call the function by passing values only for the `baseSalary` and `bonusRate` parameters.</span>
+    <span class="c1">// The `annualIncrement` parameter defaults to 20.</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
+
+    <span class="c1">// In order to pass the value for `bonusRate` as a positional argument, a value would</span>
+    <span class="c1">// have to be specified for the `annualIncrement` parameter too.</span>
+    <span class="c1">// All arguments are positional arguments here.</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
+
+    <span class="c1">// Call the function by passing values for all three parameters, the first argument as</span>
+    <span class="c1">// a positional argument and the rest as named arguments.</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
+
+    <span class="c1">// Call the function by passing all three arguments as named arguments.</span>
+    <span class="c1">// Any and all arguments after the first named argument need to be specified</span>
+    <span class="c1">// as named arguments but could be specified in any order.</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">baseSalary</span> <span class="p">=</span> <span class="mi">2500</span><span class="p">,</span>
                        <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
 <span class="p">}</span>

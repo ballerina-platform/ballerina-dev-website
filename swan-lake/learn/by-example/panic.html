@@ -10,23 +10,35 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Record</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Record</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">readRecord</span><span class="p">(</span><span class="nx">Record</span><span class="err">?</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">readRecord</span><span class="p">(</span><span class="nx">Record</span><span class="err">?</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="nx">Record</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Record ID: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="s">&quot;, value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Panics if `value` is `()`.</span>
         <span class="nx">panic</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Record is nil&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Record</span> <span class="nx">r1</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;record1&quot;</span>
     <span class="p">};</span>
     <span class="nx">readRecord</span><span class="p">(</span><span class="nx">r1</span><span class="p">);</span>
+
+    <span class="c1">// `r2` is `()`.</span>
     <span class="nx">Record</span><span class="err">?</span> <span class="nx">r2</span> <span class="p">=</span> <span class="p">();</span>
+    <span class="c1">// Since `r2` is `()`, `readRecord()` will panic.</span>
     <span class="nx">readRecord</span><span class="p">(</span><span class="nx">r2</span><span class="p">);</span>
+
+    <span class="c1">// The following lines of code will not be executed.</span>
     <span class="nx">Record</span> <span class="nx">r3</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;record3&quot;</span>

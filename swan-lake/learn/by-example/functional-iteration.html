@@ -10,7 +10,10 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Defines a `map` of `string` values.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">words</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">a</span><span class="p">:</span> <span class="s">&quot;ant&quot;</span><span class="p">,</span>
         <span class="nx">b</span><span class="p">:</span> <span class="s">&quot;bear&quot;</span><span class="p">,</span>
@@ -18,19 +21,43 @@ redirect_from:
         <span class="nx">d</span><span class="p">:</span> <span class="s">&quot;dear&quot;</span><span class="p">,</span>
         <span class="nx">e</span><span class="p">:</span> <span class="s">&quot;elephant&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// The `length()` function returns the number of elements in the container.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Number of elements in &#39;words&#39;: &quot;</span><span class="p">,</span> <span class="nx">words</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// The `map()` function applies the given function to each item of the container</span>
+    <span class="c1">// and returns a new container of the same type and length.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">animals</span> <span class="p">=</span> <span class="nx">words</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="nx">toUpper</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">animals</span><span class="p">);</span>
+
+    <span class="c1">// Defines an array of `int` values.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">];</span>
+
+    <span class="c1">// The `forEach()` function executes a specified function once for each of</span>
+    <span class="c1">// the elements in the container.</span>
     <span class="nx">numbers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
     <span class="p">});</span>
+
+    <span class="c1">// The `filter()` function returns a new container of the same type with</span>
+    <span class="c1">// all the elements that satisfy the input predicate function.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">positive</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Positive numbers: &quot;</span><span class="p">,</span> <span class="nx">positive</span><span class="p">);</span>
+
+    <span class="c1">// The `reduce()` function uses the given combining function to produce</span>
+    <span class="c1">// a single value. The combining function takes the combined value so far</span>
+    <span class="c1">// and an element of the container and returns a new combined value.</span>
     <span class="kt">int</span> <span class="nx">total</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total: &quot;</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">examScores</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;Jack&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">&quot;Anne&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">:</span> <span class="mi">50</span> <span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total: &quot;</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>
+
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">examScores</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;Jack&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">&quot;Anne&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">:</span> <span class="mi">50</span> <span class="p">};</span>
+
+    <span class="c1">// The functional iteration operations can be chained together.</span>
+    <span class="c1">// Here, we first filter the exam scores to only get the passed students,</span>
+    <span class="c1">// and then we do a map operation to convert the scores to grades, and</span>
+    <span class="c1">// we finally print out the grades of the students. </span>
     <span class="nx">examScores</span><span class="p">.</span><span class="nx">entries</span><span class="p">().</span><span class="nx">filter</span><span class="p">((</span><span class="nx">entry</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">).</span><span class="kt">map</span><span class="p">(</span>
         <span class="kd">function</span> <span class="p">([</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">entry</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">grade</span><span class="p">;</span>
@@ -46,9 +73,15 @@ redirect_from:
             <span class="k">return</span> <span class="p">[</span><span class="nx">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">grade</span><span class="p">];</span>
         <span class="p">}).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">([</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">entry</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student: &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot; Grade: &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-        <span class="p">});}</span><span class="kd">function</span> <span class="nx">toUpper</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="p">});</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">toUpper</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accumulator</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accumulator</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">currentValue</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

@@ -11,127 +11,163 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
+
+<span class="c1">// Represents the escape character.</span>
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">ESCAPE</span> <span class="p">=</span> <span class="s">&quot;!q&quot;</span><span class="p">;</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="c1">// Produces a message to a subject in the NATS sever.</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">subject</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Subject : &quot;</span><span class="p">);</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingProducer</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>    <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">message</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Message : &quot;</span><span class="p">);</span>
+    <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingProducer</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">message</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Message: &quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
+            <span class="c1">// Produces a message to the specified subject.</span>
+            <span class="kt">string</span><span class="p">|</span><span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="s">&quot;demo&quot;</span><span class="p">,</span>
+                                                        <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span>
-                                <span class="nx">e</span><span class="p">);</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while producing the message.&quot;</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span>
-                                     <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span>
+                            <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+    <span class="c1">// Closes the connection.</span>
+    <span class="nx">check</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
+
+<span class="c1">// Creates a NATS connection.</span>
 <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+<span class="c1">// Initializes the NATS Streaming listener.</span>
 <span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingListener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
+
+<span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
+<span class="c1">// By default, only new messages are received.</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveNewOnly</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message Received to service receiveNewOnly: &quot;</span>
-                                                              <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+       <span class="c1">// Prints the incoming message in the console.</span>
+       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message received to service receiveNewOnly: &quot;</span>
+                                                      <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
+       <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
                               <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while consuming the message.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
+<span class="c1">// Receives all messages from the beginning.</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
     <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">FIRST</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveFromBegining</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message Received to service receiveFromBegining: &quot;</span>
-                                                               <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+       <span class="c1">// Prints the incoming message in the console.</span>
+       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message received to service receiveFromBegining: &quot;</span>
+                                                           <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
+       <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
                               <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while consuming the message.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
+<span class="c1">// Receives messages starting from the last received message.</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
     <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">LAST_RECEIVED</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveFromLastReceived</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message Received to service &quot;</span> <span class="o">+</span>
-                          <span class="s">&quot;receiveFromLastReceived: &quot;</span> <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
-                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+       <span class="c1">// Prints the incoming message in the console.</span>
+       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message received to service receiveFromLastReceived: &quot;</span>
+                                                               <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
+       <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">SEQUENCE_NUMBER</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">sequenceNo</span> <span class="p">=</span> <span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">SEQUENCE_NUMBER</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while consuming the message.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">SEQUENCE_NUMBER</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">sequenceNo</span> <span class="p">=</span> <span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">SEQUENCE_NUMBER</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
+<span class="c1">// Receives messages starting from the provided sequence number.</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
     <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">sequenceNo</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveFromGivenIndex</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message Received to service receiveFromGivenIndex: &quot;</span>
-                                                                <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
-                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+       <span class="c1">// Prints the incoming message in the console.</span>
+       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message Received to service receiveFromGivenIndex: &quot;</span>
+                                                               <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
+       <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">TIME_DELTA_START</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">timeDelta</span> <span class="p">=</span> <span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">TIME_DELTA_START</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while consuming the message.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">TIME_DELTA_START</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">timeDelta</span> <span class="p">=</span> <span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">TIME_DELTA_START</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
+<span class="c1">// Receives messages since the provided historical time delta.</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
     <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">timeDelta</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveSinceTimeDelta</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message Received to service receiveSinceTimeDelta: &quot;</span>
-                                                                <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+       <span class="c1">// Prints the incoming message in the console.</span>
+       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message Received to service receiveSinceTimeDelta: &quot;</span>
+                                                               <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
+       <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
                               <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while consuming the message.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -223,10 +259,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -236,7 +268,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/log;
 import ballerinax/nats;
 </code></pre></div>
 
@@ -268,9 +299,10 @@ import ballerinax/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     string message = &quot;&quot;;
-    string subject = io:readln(&quot;Subject : &quot;);
+    nats:Connection conn = new;
+    nats:StreamingProducer publisher = new (conn);
 </code></pre></div>
 
                                 </td>
@@ -289,32 +321,8 @@ import ballerinax/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    nats:Connection conn = new;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    nats:StreamingProducer publisher = new (conn);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    while (message != ESCAPE) {
-        message = io:readln(&quot;Message : &quot;);
+        message = io:readln(&quot;Message: &quot;);
         if (message != ESCAPE) {
 </code></pre></div>
 
@@ -327,14 +335,13 @@ import ballerinax/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
+                                    <div class="highlight"><pre><code class=language-ballerina>            string|nats:Error result = publisher-&gt;publish(&quot;demo&quot;,
+                                                        &lt;@untainted&gt;message);
             if (result is nats:Error) {
-                error e = result;
-                log:printError(&quot;Error occurred while closing the connection&quot;,
-                                e);
+                io:println(&quot;Error occurred while producing the message.&quot;);
             } else {
-                log:printInfo(&quot;GUID &quot; + result
-                                     + &quot; received for the produced message.&quot;);
+                io:println(&quot;GUID &quot; + result +
+                            &quot; received for the produced message.&quot;);
             }
         }
     }
@@ -356,11 +363,7 @@ import ballerinax/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var result = conn.close();
-    if (result is error) {
-        error e = result;
-        log:printError(&quot;Error occurred while closing the connection&quot;, e);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check conn.close();
 }
 </code></pre></div>
 
@@ -398,13 +401,13 @@ import ballerinax/nats;
 ballerina run publisher.bal
 Subject : demo
 [ballerina/nats] Connection established with server nats://localhost:4222
-Message : First Message
+Message: First Message
 GUID UBMEgrERHdxZRqUBP05PtD received for the produced message.
-Message : Second Message
+Message: Second Message
 GUID UBMEgrERHdxZRqUBP05Puz received for the produced message.
-Message : Third Message
+Message: Third Message
 GUID UBMEgrERHdxZRqUBP05Pwl received for the produced message.
-Message : Forth Message
+Message: Forth Message
 GUID UBMEgrERHdxZRqUBP05PyX received for the produced message.
 </code></pre></div>
 
@@ -517,7 +520,7 @@ GUID UBMEgrERHdxZRqUBP05PyX received for the produced message.
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;string as strings;
-import ballerina/log;
+import ballerina/io;
 import ballerinax/nats;
 </code></pre></div>
 
@@ -592,13 +595,13 @@ service receiveNewOnly on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo(&quot;Message Received to service receiveNewOnly: &quot;
-                                                              + messageData);
-        } else {
-            log:printError(&quot;Error occurred while obtaining message data&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println(&quot;Message received to service receiveNewOnly: &quot;
+                                                      + messageData);
+       } else {
+            io:println(&quot;Error occurred while obtaining message data.&quot;);
+       }
     }
 </code></pre></div>
 
@@ -620,8 +623,7 @@ service receiveNewOnly on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, e);
+        io:println(&quot;Error occurred while consuming the message.&quot;);
     }
 }
 </code></pre></div>
@@ -660,13 +662,13 @@ service receiveFromBegining on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo(&quot;Message Received to service receiveFromBegining: &quot;
-                                                               + messageData);
-        } else {
-            log:printError(&quot;Error occurred while obtaining message data&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println(&quot;Message received to service receiveFromBegining: &quot;
+                                                           + messageData);
+       } else {
+            io:println(&quot;Error occurred while obtaining message data.&quot;);
+       }
     }
 </code></pre></div>
 
@@ -688,8 +690,7 @@ service receiveFromBegining on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, e);
+        io:println(&quot;Error occurred while consuming the message.&quot;);
     }
 }
 </code></pre></div>
@@ -728,13 +729,13 @@ service receiveFromLastReceived on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo(&quot;Message Received to service &quot; +
-                          &quot;receiveFromLastReceived: &quot; + messageData);
-        } else {
-            log:printError(&quot;Error occurred while obtaining message data&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println(&quot;Message received to service receiveFromLastReceived: &quot;
+                                                               + messageData);
+       } else {
+            io:println(&quot;Error occurred while obtaining message data.&quot;);
+       }
     }
 </code></pre></div>
 
@@ -756,8 +757,7 @@ service receiveFromLastReceived on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, e);
+        io:println(&quot;Error occurred while consuming the message.&quot;);
     }
 }
 </code></pre></div>
@@ -808,13 +808,13 @@ service receiveFromGivenIndex on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo(&quot;Message Received to service receiveFromGivenIndex: &quot;
-                                                                + messageData);
-        } else {
-            log:printError(&quot;Error occurred while obtaining message data&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println(&quot;Message Received to service receiveFromGivenIndex: &quot;
+                                                               + messageData);
+       } else {
+            io:println(&quot;Error occurred while obtaining message data.&quot;);
+       }
     }
 </code></pre></div>
 
@@ -836,8 +836,7 @@ service receiveFromGivenIndex on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, e);
+        io:println(&quot;Error occurred while consuming the message.&quot;);
     }
 }
 </code></pre></div>
@@ -888,13 +887,13 @@ service receiveSinceTimeDelta on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo(&quot;Message Received to service receiveSinceTimeDelta: &quot;
-                                                                + messageData);
-        } else {
-            log:printError(&quot;Error occurred while obtaining message data&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println(&quot;Message Received to service receiveSinceTimeDelta: &quot;
+                                                               + messageData);
+       } else {
+            io:println(&quot;Error occurred while obtaining message data.&quot;);
+       }
     }
 </code></pre></div>
 
@@ -916,8 +915,7 @@ service receiveSinceTimeDelta on lis {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, e);
+        io:println(&quot;Error occurred while consuming the message.&quot;);
     }
 }
 </code></pre></div>

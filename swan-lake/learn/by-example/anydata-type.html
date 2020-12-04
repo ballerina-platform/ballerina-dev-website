@@ -10,13 +10,23 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// In this example, the variable named `data1` of the `anydata` type holds an `int` value.</span>
     <span class="nx">anydata</span> <span class="nx">data1</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data1</span><span class="p">);</span>
+
+    <span class="c1">// Before using the value of `data1` in arithmetic operations, it is required to ascertain </span>
+    <span class="c1">// that is actually an `int`. A type cast or a type guard can be used for this.</span>
     <span class="kt">int</span> <span class="nx">intVal</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">data1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">intVal</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>    <span class="k">if</span> <span class="nx">data1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">intVal</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="nx">data1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data1</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// A variable of type `anydata` can hold any value of an `anydata` compatible type.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
     <span class="nx">anydata</span> <span class="nx">dataArray</span> <span class="p">=</span> <span class="nx">intArray</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">dataArray</span><span class="p">);</span>

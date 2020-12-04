@@ -10,42 +10,78 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
 <span class="p">|};</span>
+
+<span class="c1">// A record with both read-only and non-read-only fields.</span>
 <span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
+    <span class="c1">// `details` is a `readonly` field which cannot be updated once the value is created.</span>
+    <span class="c1">// `details` also expects an immutable value, and thus the effective contextually expected type for</span>
+    <span class="c1">// `details` is `Details &amp; readonly`.</span>
     <span class="nx">readonly</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>
 <span class="p">|};</span>
+
+<span class="c1">// A record with all read-only fields.</span>
 <span class="nx">type</span> <span class="nx">Identifier</span> <span class="nx">record</span> <span class="p">{|</span>
    <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
    <span class="nx">readonly</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Define an immutable `Details` value.</span>
     <span class="nx">Details</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableDetails</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">112233</span><span class="p">,</span>
         <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
-    <span class="p">};</span>    <span class="nx">Employee</span> <span class="nx">empOne</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="p">};</span>
+
+    <span class="nx">Employee</span> <span class="nx">empOne</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">department</span><span class="p">:</span> <span class="s">&quot;IT&quot;</span><span class="p">,</span>
+        <span class="c1">// Since `immutableDetails` was created as an immutable value, it can be used as the value for the `readonly`</span>
+        <span class="c1">// record field `details`.</span>
         <span class="nx">details</span><span class="p">:</span> <span class="nx">immutableDetails</span>
-    <span class="p">};</span>    <span class="nx">Employee</span> <span class="nx">empTwo</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="p">};</span>
+
+    <span class="nx">Employee</span> <span class="nx">empTwo</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">department</span><span class="p">:</span> <span class="s">&quot;finance&quot;</span><span class="p">,</span>
+        <span class="c1">// Alternatively, if the constructor expression is defined in-line for the `readonly` field, the value created</span>
+        <span class="c1">// would be created as an immutable value.</span>
         <span class="nx">details</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">id</span><span class="p">:</span> <span class="mi">212141</span><span class="p">,</span>
             <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;empTwo is immutable: &quot;</span><span class="p">,</span> <span class="nx">empTwo</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>    <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">empTwo</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
+
+    <span class="c1">// `empTwo` is not immutable.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;empTwo is immutable: &quot;</span><span class="p">,</span> <span class="nx">empTwo</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">empTwo</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
+    <span class="c1">// But, the `details` field of `empTwo` is immutable.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;details is immutable: &quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="c1">// Define an `Identifier` value.</span>
     <span class="nx">Identifier</span> <span class="nx">identifier</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
         <span class="nx">codes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;AS&quot;</span><span class="p">,</span> <span class="s">&quot;KL&quot;</span><span class="p">]</span>
     <span class="p">};</span>
+
+    <span class="c1">// If all the fields in a record are `read-only` fields, the record value itself is considered to be immutable.</span>
+    <span class="c1">// Thus, `identifier` belongs to `readonly`.</span>
     <span class="nx">readonly</span> <span class="nx">readonlyValue</span> <span class="p">=</span> <span class="nx">identifier</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;identifier is immutable: &quot;</span><span class="p">,</span> <span class="nx">identifier</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>    <span class="nx">record</span> <span class="p">{</span>
+    <span class="c1">// The immutable check for `identifier` also evaluates to true.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;identifier is immutable: &quot;</span><span class="p">,</span> <span class="nx">identifier</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="nx">record</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
         <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>
     <span class="p">}</span> <span class="nx">anyEmployee</span> <span class="p">=</span> <span class="nx">empOne</span><span class="p">;</span>
+
+    <span class="c1">// Attempting to update a `readonly` field results in a panic.</span>
     <span class="nx">anyEmployee</span><span class="p">.</span><span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">222288</span><span class="p">,</span>
         <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>

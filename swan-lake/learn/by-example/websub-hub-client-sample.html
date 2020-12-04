@@ -10,10 +10,16 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="c1">// The Ballerina WebSub Publisher brings up the internal Ballerina Hub,</span>
+<span class="c1">// registers a topic at the hub, and publishes updates to the topic.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Starts the internal Ballerina Hub using [startHub](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/functions.html#startHub).</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting up the Ballerina Hub Service&quot;</span><span class="p">);</span>
     <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">webSubHub</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">startHub</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9191</span><span class="p">),</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span> <span class="s">&quot;/hub&quot;</span><span class="p">);</span>
@@ -25,6 +31,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
+    <span class="c1">// Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/classes/Hub.html#registerTopic).</span>
     <span class="k">var</span> <span class="nx">registrationResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span>
                                             <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">registrationResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -33,7 +40,11 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic registration successful!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Makes the publisher wait until the subscriber subscribes at the hub.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+    <span class="c1">// Publishes directly to the internal Ballerina Hub using [publishUpdate][publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html#publishUpdate)..</span>
     <span class="k">var</span> <span class="nx">publishResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
                             <span class="p">{</span><span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;internal-hub&quot;</span><span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">publishResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -41,7 +52,11 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Update notification successful!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Makes the publisher wait until the subscriber unsubscribes at the hub.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+    <span class="c1">// Publishes directly to the internal Ballerina Hub.</span>
     <span class="nx">publishResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
                             <span class="p">{</span><span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;internal-hub&quot;</span><span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">publishResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -49,17 +64,29 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Update notification successful!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Makes the publisher wait until subscribers are notified.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
 <span class="p">}</span>
+<span class="c1">// The Ballerina WebSub Subscriber service, which represents the callback registered at the Hub.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="c1">// The endpoint to which the subscriber service is bound.</span>
 <span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
+
+<span class="c1">// Annotations specifying the subscription parameters.</span>
+<span class="c1">// The omission of `subscribeOnStartUp` as an annotation due to which a subscription request would not be sent</span>
+<span class="c1">// automatically on the start up.</span>
+<span class="c1">// Also, the exclusion of the onIntentVerification resource will result in auto intent-verification.</span>
 <span class="nd">@websub:SubscriberServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span>
     <span class="nx">target</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://localhost:9191/websub/hub&quot;</span><span class="p">,</span> <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">],</span>
     <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">websubSubscriber</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
+
+    <span class="c1">// This resource accepts content delivery requests.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">notification</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -69,26 +96,45 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+<span class="c1">// The Ballerina main program, which demonstrates the usage of the [Hub client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/SubscriptionClient.html) to subscribe/unsubscribe to notifications.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionClient</span> <span class="nx">websubHubClientEP</span> <span class="p">=</span>
-                            <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9191/websub/hub&quot;</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionClient</span> <span class="nx">websubHubClientEP</span> <span class="p">=</span>
+                            <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9191/websub/hub&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Sends the subscription request for the subscriber service.</span>
     <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionChangeRequest</span> <span class="nx">subscriptionRequest</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
         <span class="nx">callback</span><span class="p">:</span> <span class="s">&quot;http://localhost:8181/websub&quot;</span><span class="p">,</span>
         <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
-    <span class="p">};</span>    <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscriptionRequest</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionChangeResponse</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">};</span>
+
+    <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscriptionRequest</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionChangeResponse</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Subscription Request successful at Hub [&quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">hub</span> <span class="o">+</span>
                     <span class="s">&quot;] for Topic [&quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">topic</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred with Subscription Request: &quot;</span> <span class="o">+</span>
                     <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Waits for the initial notification before unsubscribing.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+    <span class="c1">// Sends the unsubscription request to the subscriber service.</span>
     <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionChangeRequest</span> <span class="nx">unsubscriptionRequest</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
         <span class="nx">callback</span><span class="p">:</span> <span class="s">&quot;http://localhost:8181/websub&quot;</span>
-    <span class="p">};</span>    <span class="nx">response</span> <span class="p">=</span> <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">unsubscribe</span><span class="p">(</span><span class="nx">unsubscriptionRequest</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionChangeResponse</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">};</span>
+
+    <span class="nx">response</span> <span class="p">=</span> <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">unsubscribe</span><span class="p">(</span><span class="nx">unsubscriptionRequest</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriptionChangeResponse</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Unsubscription Request successful at Hub [&quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">hub</span> <span class="o">+</span>
                     <span class="s">&quot;] for Topic [&quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">topic</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>

@@ -11,39 +11,77 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">final</span> <span class="kt">string</span> <span class="nx">ASSOCIATED_CONNECTION</span> <span class="p">=</span> <span class="s">&quot;ASSOCIATED_CONNECTION&quot;</span><span class="p">;</span>
-<span class="kd">const</span> <span class="kt">string</span> <span class="nx">REMOTE_BACKEND</span> <span class="p">=</span> <span class="s">&quot;ws://localhost:9095/retry/ws&quot;</span><span class="p">;</span><span class="nd">@http:WebSocketServiceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">final</span> <span class="kt">string</span> <span class="nx">ASSOCIATED_CONNECTION</span> <span class="p">=</span> <span class="s">&quot;ASSOCIATED_CONNECTION&quot;</span><span class="p">;</span>
+
+<span class="c1">// The URL of the remote backend.</span>
+<span class="kd">const</span> <span class="kt">string</span> <span class="nx">REMOTE_BACKEND</span> <span class="p">=</span> <span class="s">&quot;ws://localhost:9095/retry/ws&quot;</span><span class="p">;</span>
+
+<span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/retry/ws&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">retryProxyService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This resource gets invoked when a new client connects.</span>
+    <span class="c1">// Since messages to the server are not read by the service until</span>
+    <span class="c1">// the execution of the `onOpen` resource finishes,</span>
+    <span class="c1">// operations, which should happen before reading messages should be done</span>
+    <span class="c1">// in the `onOpen` resource.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// Defines the webSocket client.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span>
         <span class="nx">REMOTE_BACKEND</span><span class="p">,</span>
         <span class="p">{</span>
             <span class="nx">callbackService</span><span class="p">:</span> <span class="nx">retryClientService</span><span class="p">,</span>
+            <span class="c1">// When creating client endpoint, if `readyOnConnect` flag is set to</span>
+            <span class="c1">// `false`, client endpoint does not start reading frames automatically.</span>
             <span class="nx">readyOnConnect</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="c1">// Retry configuration options.</span>
             <span class="nx">retryConfig</span><span class="p">:</span> <span class="p">{</span>
+                <span class="c1">// The number of milliseconds to delay before attempting to reconnect.</span>
                 <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+                <span class="c1">// The maximum number of retry attempts.</span>
+                <span class="c1">// If the count is zero, the client will retry indefinitely.</span>
                 <span class="nx">maxCount</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                <span class="c1">// The rate of increase of the reconnect delay.</span>
                 <span class="nx">backOffFactor</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+                <span class="c1">// Upper limit of the retry interval in milliseconds. If</span>
+                <span class="c1">// `intervalInMillis` into `backOffFactor` value exceeded</span>
+                <span class="c1">// `maxWaitIntervalInMillis` interval value, then</span>
+                <span class="c1">// `maxWaitIntervalInMillis` will be considered as the retry interval.</span>
                 <span class="nx">maxWaitIntervalInMillis</span><span class="p">:</span> <span class="mi">20000</span>
             <span class="p">}</span>
         <span class="p">});</span>
+
+        <span class="c1">// Associate connections before starting to read messages.</span>
         <span class="nx">wsClientEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">caller</span><span class="p">);</span>
         <span class="nx">caller</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">wsClientEp</span><span class="p">);</span>
+
+        <span class="c1">// Once the client is ready to receive frames, the remote function `ready`</span>
+        <span class="c1">// of the client needs to be called separately.</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">ready</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error calling ready on client&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource gets invoked upon receiving a new text frame from a client.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
-                                <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
+                                <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">finalFrame</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
+
+    <span class="c1">// This resource gets invoked when an error occurs in the connection.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">1011</span><span class="p">,</span>
                                 <span class="nx">reason</span> <span class="p">=</span> <span class="s">&quot;Unexpected condition&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
@@ -51,23 +89,38 @@ redirect_from:
         <span class="p">}</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unexpected error hence closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource gets invoked when a client connection is closed from the client side.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
-                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
+                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">statusCode</span><span class="p">,</span> <span class="nx">reason</span> <span class="p">=</span> <span class="nx">reason</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Client service to receive frames from the remote server.</span>
 <span class="kd">service</span> <span class="nx">retryClientService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
+
+    <span class="c1">// This resource gets invoked upon receiving a new text frame from</span>
+    <span class="c1">// the remote backend.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
-                                <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
+                                <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">finalFrame</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
+
+    <span class="c1">// This resource gets invoked when an error occurs in the connection.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">1011</span><span class="p">,</span>
                                 <span class="nx">reason</span> <span class="p">=</span> <span class="s">&quot;Unexpected condition&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
@@ -76,35 +129,58 @@ redirect_from:
         <span class="p">}</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unexpected error hense closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource gets invoked when a client connection is closed by</span>
+    <span class="c1">// the remote backend.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
-                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
+                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">statusCode</span><span class="p">,</span> <span class="nx">reason</span> <span class="p">=</span> <span class="nx">reason</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
+
+<span class="c1">// Function to retrieve the associated client of a particular caller.</span>
 <span class="kd">function</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">ep</span><span class="p">)</span>
                 <span class="nx">returns</span> <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClient</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span>
     <span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">wsClient</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Function to retrieve the associated caller of a client.</span>
 <span class="kd">function</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">ep</span><span class="p">)</span>
                 <span class="nx">returns</span> <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">wsEndpoint</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span>
     <span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">wsEndpoint</span><span class="p">;</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// The annotation which is used to configure a WebSocket service.</span>
 <span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/retry/ws&quot;</span>
 <span class="p">}</span>
+
+<span class="c1">// Define the backend service with port 9095, which is called by the client.</span>
 <span class="kd">service</span> <span class="nx">server</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9095</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This resource gets invoked when a new client connects.</span>
+    <span class="c1">// Since messages to the server are not read by the service</span>
+    <span class="c1">// until the execution of the `onOpen` resource finishes,</span>
+    <span class="c1">// operations which should happen before reading messages should be</span>
+    <span class="c1">// done in the `onOpen` resource.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;WebSocket client connected wih the server. &quot;</span> <span class="o">+</span>
         <span class="s">&quot;The Connection ID: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource gets invoked when a server is receiving</span>
+    <span class="c1">// a text message from the client.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
                                 <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">finalFrame</span><span class="p">);</span>

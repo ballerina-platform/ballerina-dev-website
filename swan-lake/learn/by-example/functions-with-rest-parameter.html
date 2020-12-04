@@ -11,19 +11,48 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function takes one required parameter, one defaultable parameter, and</span>
+<span class="c1">// one rest parameter of the type `string`. A function can have only one rest</span>
+<span class="c1">// parameter. The rest parameter can take any number of values and is</span>
+<span class="c1">// equivalent to a list of the same type.</span>
 <span class="kd">function</span> <span class="nx">printDetails</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
                       <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">18</span><span class="p">,</span>
                       <span class="kt">string</span><span class="o">...</span> <span class="nx">modules</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">detailString</span> <span class="p">=</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;, Age: &quot;</span> <span class="o">+</span> <span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">detailString</span> <span class="p">=</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;, Age: &quot;</span> <span class="o">+</span> <span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">detailString</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kt">int</span> <span class="nx">index</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">moduleString</span> <span class="p">=</span> <span class="s">&quot;Module(s): &quot;</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span><span class="p">.&#39;join(...modules);    io:println(</span><span class="nx">detailString</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">moduleString</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="nx">index</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">moduleString</span> <span class="p">=</span> <span class="s">&quot;Module(s): &quot;</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span><span class="p">.</span><span class="err">&#39;</span><span class="k">join</span><span class="p">(</span><span class="o">...</span><span class="nx">modules</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">detailString</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">moduleString</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Call the function by passing only the required parameter.</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Call the function by passing the required parameter and</span>
+    <span class="c1">// the defaultable parameter. Named arguments can also be used</span>
+    <span class="c1">// since values are not passed for the rest parameter.</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+    <span class="c1">// Call the function by passing the required parameter, the defaultable</span>
+    <span class="c1">// parameter, and one value for the rest parameter.</span>
+    <span class="c1">// Arguments cannot be passed as named arguments since values are specified</span>
+    <span class="c1">// for the rest parameter.</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Corey&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="s">&quot;Math&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Call the function by passing the required parameter, defaultable parameter,</span>
+    <span class="c1">// and multiple values for the rest parameter.</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Diana&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;Math&quot;</span><span class="p">,</span> <span class="s">&quot;Physics&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Pass an array as the rest parameter instead of calling the</span>
+    <span class="c1">// function by passing each value separately.</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">modules</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Math&quot;</span><span class="p">,</span> <span class="s">&quot;Physics&quot;</span><span class="p">];</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Diana&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">...</span><span class="nx">modules</span><span class="p">);</span>
 <span class="p">}</span>

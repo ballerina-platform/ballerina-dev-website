@@ -12,7 +12,18 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
-<span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span><span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
+
+<span class="c1">// Creates a ballerina RabbitMQ connection that allows reusability if necessary.</span>
+<span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span>
+
+<span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
+
+<span class="c1">// The consumer service listens to the &quot;MyQueue&quot; queue.</span>
+<span class="c1">// Quality of service settings(prefetchCount and prefetchSize) can be</span>
+<span class="c1">// set at the listener initialization globally or per consumer service.</span>
+<span class="c1">// These settings impose limits on the amount of data the server</span>
+<span class="c1">// will deliver to consumers before requiring acknowledgements.</span>
+<span class="c1">// Thus they provide a means of consumer-initiated flow control.</span>
 <span class="nd">@rabbitmq:ServiceConfig {</span>
     <span class="nx">queueConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span>
@@ -20,7 +31,10 @@ redirect_from:
     <span class="nx">ackMode</span><span class="p">:</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">CLIENT_ACK</span><span class="p">,</span>
     <span class="nx">prefetchCount</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">}</span>
+<span class="c1">// Attaches the service to the listener.</span>
 <span class="kd">service</span> <span class="nx">QosConsumer</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
+
+    <span class="c1">// Gets triggered when a message is received by the queue.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getTextContent</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -29,6 +43,8 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
                         <span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
+        <span class="c1">// The consumer will continue to receive messages from the server</span>
+        <span class="c1">// once a total of 10(prefetchCount) messages are being acknowledged.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="kt">message</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>

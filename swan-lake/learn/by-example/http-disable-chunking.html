@@ -12,13 +12,26 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CHUNKING_AUTO),</span>
+<span class="c1">// [CHUNKING_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CHUNKING_ALWAYS),</span>
+<span class="c1">// or [CHUNKING_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CHUNKING_NEVER).</span>
+<span class="c1">// In this example, it is set to `CHUNKING_NEVER`, which means that chunking never happens irrespective of how it is</span>
+<span class="c1">// specified in the request. When chunking is set to `CHUNKING_AUTO`, chunking is done as specified in the request.</span>
+<span class="c1">// [http1Settings](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientHttp1Settings.html) annotation</span>
+<span class="c1">// provides the chunking-related configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
                                     <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span>
                                         <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}}</span>
-                                  <span class="p">);</span><span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+                                  <span class="p">);</span>
+
+<span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Create a new outbound request and set the payload.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">newReq</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">newReq</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
         <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo/&quot;</span><span class="p">,</span> <span class="nx">newReq</span><span class="p">);</span>
@@ -39,18 +52,24 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// A sample backend, which responds according to the chunking behavior.</span>
 <span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">echoResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="kt">boolean</span> <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="c1">//Set the response according to the request headers.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">);</span>
             <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">);</span>
+            <span class="c1">//Perform data validation for transfer-encoding.</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;chunked&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;compress&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;deflate&quot;</span>
                 <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;gzip&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
@@ -60,7 +79,10 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="p">=</span>
                 <span class="s">&quot;Neither Transfer-Encoding nor content-length header found&quot;</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="k">if</span> <span class="p">(!</span><span class="nx">validationErrorFound</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(!</span><span class="nx">validationErrorFound</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Since there is no validation error, mark the `value` as trusted data and set it to the response.</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">});</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
@@ -69,7 +91,9 @@ redirect_from:
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">isValid</span><span class="p">(</span><span class="kt">boolean</span><span class="p">|</span><span class="nx">error</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">isValid</span><span class="p">(</span><span class="kt">boolean</span><span class="p">|</span><span class="nx">error</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">boolean</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
     <span class="p">}</span>

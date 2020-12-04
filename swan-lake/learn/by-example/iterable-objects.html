@@ -11,9 +11,13 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// An object that is a subtype of `Iterator&lt;int&gt;`.</span>
 <span class="nx">class</span> <span class="nx">ArrayIterator</span> <span class="p">{</span>
     <span class="nx">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="nx">integers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">];</span>
     <span class="nx">private</span> <span class="kt">int</span> <span class="nx">cursor</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// `next` method which generates the sequence of values of type `int`.</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="p">&lt;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
@@ -23,12 +27,18 @@ redirect_from:
         <span class="k">return</span> <span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">//  An object that is a subtype of `Iterable&lt;int&gt;`.</span>
 <span class="nx">class</span> <span class="nx">IteratorGenerator</span> <span class="p">{</span>
+
+    <span class="c1">// The `__iterator()` method should return a new `Iterator&lt;T&gt;`.</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">object</span> <span class="p">{</span>
             <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">;}</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">new</span> <span class="nx">ArrayIterator</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">IteratorGenerator</span> <span class="nx">itrGen</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">itrGen</span> <span class="p">{</span>

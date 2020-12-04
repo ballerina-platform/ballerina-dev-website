@@ -13,10 +13,17 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">docker</span><span class="p">;</span>
+
+<span class="c1">//Adding the `@docker:Expose{}` annotation to a listener endpoint exposes the endpoint port.</span>
 <span class="nd">@docker:Expose {</span><span class="p">}</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="c1">//Adding the `@docker:Config{}` annotation to a service modifies the generated Docker image and Dockerfile.</span>
+<span class="c1">//This sample generates a Docker image as `helloworld:v1.0.0`.</span>
 <span class="nd">@docker:Config {</span>
+    <span class="c1">//Docker image name should be helloworld.</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;helloworld&quot;</span><span class="p">,</span>
+    <span class="c1">//Docker image version should be v1.0.</span>
     <span class="nx">tag</span><span class="p">:</span> <span class="s">&quot;v1.0&quot;</span>
 <span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
@@ -60,9 +67,9 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="kubernetes-deployment.html">
+                                    <a class="next" href="c2c-deployment.html">
                                         <span>NEXT ></span>
-                                        <p>Kubernetes Deployment</p>
+                                        <p>Code to Cloud Deployment</p>
                                     </a>
                                 </div>
                                 

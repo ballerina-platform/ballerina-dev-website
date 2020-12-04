@@ -12,106 +12,172 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// Create an endpoint with port 7090 to accept HTTP requests.</span>
+<span class="c1">// HTTP version is set to 2.0.</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">http2ServiceEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">7090</span><span class="p">,</span>
-    <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+    <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/http2Service&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">http2Service</span> <span class="nx">on</span> <span class="nx">http2ServiceEP</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">http2Service</span> <span class="nx">on</span> <span class="nx">http2ServiceEP</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">http2Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#promise).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">promise1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/resource1&quot;</span><span class="p">,</span> <span class="nx">method</span> <span class="p">=</span> <span class="s">&quot;GET&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">promiseResponse1</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">promise</span><span class="p">(</span><span class="nx">promise1</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">promiseResponse1</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the promise1&quot;</span><span class="p">,</span>
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">promiseResponse1</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// Send another Push Promise.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">promise2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/resource2&quot;</span><span class="p">,</span> <span class="nx">method</span> <span class="p">=</span> <span class="s">&quot;GET&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">promiseResponse2</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">promise</span><span class="p">(</span><span class="nx">promise2</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">promiseResponse2</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the promise2&quot;</span><span class="p">,</span>
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">promiseResponse2</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// Send one more Push Promise.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">promise3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/resource3&quot;</span><span class="p">,</span> <span class="nx">method</span> <span class="p">=</span> <span class="s">&quot;GET&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">promiseResponse3</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">promise</span><span class="p">(</span><span class="nx">promise3</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">promiseResponse3</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the promise3&quot;</span><span class="p">,</span>
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">promiseResponse3</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// Construct the requested resource.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;main resource&quot;</span><span class="p">}};</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+
+        <span class="c1">// Send the requested resource.</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the response&quot;</span><span class="p">,</span>
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// Construct promised resource1.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">push1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;push&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;resource1&quot;</span><span class="p">}};</span>
         <span class="nx">push1</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+
+        <span class="c1">// [Push promised resource1](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#pushPromisedResponse).</span>
         <span class="k">var</span> <span class="nx">pushResponse1</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushPromisedResponse</span><span class="p">(</span><span class="nx">promise1</span><span class="p">,</span> <span class="nx">push1</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">pushResponse1</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the promised &quot;</span> <span class="o">+</span>
                            <span class="s">&quot;response1&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">pushResponse1</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// Construct promised resource2.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">push2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;push&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;resource2&quot;</span><span class="p">}};</span>
         <span class="nx">push2</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+
+        <span class="c1">// Push promised resource2.</span>
         <span class="k">var</span> <span class="nx">pushResponse2</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushPromisedResponse</span><span class="p">(</span><span class="nx">promise2</span><span class="p">,</span> <span class="nx">push2</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">pushResponse2</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the promised &quot;</span> <span class="o">+</span>
                             <span class="s">&quot;response2&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">pushResponse2</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// Construct promised resource3.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">push3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;push&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;resource3&quot;</span><span class="p">}};</span>
         <span class="nx">push3</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+
+        <span class="c1">// Push promised resource3.</span>
         <span class="k">var</span> <span class="nx">pushResponse3</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushPromisedResponse</span><span class="p">(</span><span class="nx">promise3</span><span class="p">,</span> <span class="nx">push3</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">pushResponse3</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the promised &quot;</span> <span class="o">+</span>
                             <span class="s">&quot;response3&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">pushResponse3</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">serviceReq</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+<span class="c1">// Create an [HTTP client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html) that can send HTTP/2 messages.</span>
+<span class="c1">// HTTP version is set to 2.0.</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">serviceReq</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">HttpFuture</span> <span class="nx">httpFuture</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">submissionResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">submit</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;/http2Service&quot;</span><span class="p">,</span> <span class="nx">serviceReq</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">submissionResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">HttpFuture</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// [Submit a request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#submit).</span>
+    <span class="k">var</span> <span class="nx">submissionResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">submit</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;/http2Service&quot;</span><span class="p">,</span> <span class="nx">serviceReq</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">submissionResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">HttpFuture</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">httpFuture</span> <span class="p">=</span> <span class="nx">submissionResult</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while submitting a request&quot;</span><span class="p">,</span>
             <span class="nx">err</span> <span class="p">=</span> <span class="nx">submissionResult</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span><span class="err">?</span><span class="p">[]</span> <span class="nx">promises</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span><span class="err">?</span><span class="p">[]</span> <span class="nx">promises</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="kt">int</span> <span class="nx">promiseCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">boolean</span> <span class="nx">hasPromise</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">hasPromise</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>    <span class="k">while</span> <span class="p">(</span><span class="nx">hasPromise</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// [Check if promises exists](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#hasPromise).</span>
+    <span class="kt">boolean</span> <span class="nx">hasPromise</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">hasPromise</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">hasPromise</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">pushPromise</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="k">var</span> <span class="nx">nextPromiseResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">getNextPromise</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">nextPromiseResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// [Get the next promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#getNextPromise).</span>
+        <span class="k">var</span> <span class="nx">nextPromiseResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">getNextPromise</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">nextPromiseResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">pushPromise</span> <span class="p">=</span> <span class="nx">nextPromiseResult</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while fetching a push promise&quot;</span><span class="p">,</span>
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">nextPromiseResult</span><span class="p">);</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received a promise for &quot;</span> <span class="o">+</span> <span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span> <span class="o">==</span> <span class="s">&quot;/resource2&quot;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">rejectPromise</span><span class="p">(</span><span class="nx">pushPromise</span><span class="p">);</span>            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Push promise for resource2 rejected&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received a promise for &quot;</span> <span class="o">+</span> <span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span> <span class="o">==</span> <span class="s">&quot;/resource2&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// The client is not interested in receiving `/resource2`.</span>
+            <span class="c1">// Therefore, [reject the promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#rejectPromise).</span>
+            <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">rejectPromise</span><span class="p">(</span><span class="nx">pushPromise</span><span class="p">);</span>
+
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Push promise for resource2 rejected&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">promises</span><span class="p">[</span><span class="nx">promiseCount</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pushPromise</span><span class="p">;</span>            <span class="nx">promiseCount</span> <span class="p">=</span> <span class="nx">promiseCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="c1">// Store the required promises.</span>
+            <span class="nx">promises</span><span class="p">[</span><span class="nx">promiseCount</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pushPromise</span><span class="p">;</span>
+
+            <span class="nx">promiseCount</span> <span class="p">=</span> <span class="nx">promiseCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="nx">hasPromise</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">hasPromise</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">getResponse</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="c1">// [Get the requested resource](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#getResponse).</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">getResponse</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while fetching response&quot;</span><span class="p">,</span>
                 <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="k">var</span> <span class="nx">responsePayload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nx">responsePayload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">responsePayload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response : &quot;</span> <span class="o">+</span> <span class="nx">responsePayload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Expected response payload not received&quot;</span><span class="p">,</span>
           <span class="nx">err</span> <span class="p">=</span> <span class="nx">responsePayload</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Fetch required promise responses.</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">p</span> <span class="nx">in</span> <span class="nx">promises</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">promise</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span><span class="p">&gt;</span><span class="nx">p</span><span class="p">;</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">promisedResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>

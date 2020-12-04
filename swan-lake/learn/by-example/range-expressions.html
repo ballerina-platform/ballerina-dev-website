@@ -10,28 +10,43 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// A range expression `x ... y` can be used to iterate integers</span>
+    <span class="c1">// from `x` to `y` including `x` and `y` in ascending order.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;foreach for 25 ... 28&quot;</span><span class="p">);</span>
     <span class="nx">foreach</span> <span class="kt">int</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">25</span> <span class="o">...</span> <span class="mi">28</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// A range expression `x ..&lt; y` can be used to iterate integers</span>
+    <span class="c1">// from `x` to `y` including `x` but excluding `y` in ascending order.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nforeach for 25 ..&lt; 28&quot;</span><span class="p">);</span>
     <span class="nx">foreach</span> <span class="kt">int</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">25</span> <span class="p">..&lt;</span> <span class="mi">28</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// The result of a range expression can also be used by assigning it to</span>
+    <span class="c1">// an object belonging to the abstract object type `Iterable&lt;int&gt;`.</span>
     <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span>
             <span class="nx">object</span> <span class="p">{</span>
                 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">;</span>
             <span class="p">};</span>
-    <span class="p">}</span> <span class="nx">iterableObj</span> <span class="p">=</span> <span class="mi">25</span> <span class="p">..&lt;</span> <span class="mi">28</span><span class="p">;</span>    <span class="nx">object</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nx">iterableObj</span> <span class="p">=</span> <span class="mi">25</span> <span class="p">..&lt;</span> <span class="mi">28</span><span class="p">;</span>
+
+    <span class="nx">object</span> <span class="p">{</span>
             <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="nx">iterableObj</span><span class="p">.</span><span class="nx">__iterator</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\niterable object for 25 ..&lt; 28&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="nx">iterableObj</span><span class="p">.</span><span class="nx">__iterator</span><span class="p">();</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\niterable object for 25 ..&lt; 28&quot;</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span> <span class="nx">r</span> <span class="p">=</span> <span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|})</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// `r` is `()` implying the end of the iteration.</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>

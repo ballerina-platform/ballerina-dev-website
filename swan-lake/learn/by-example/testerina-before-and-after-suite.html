@@ -12,20 +12,28 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
+
+<span class="c1">// The function annotated with `BeforeSuite` is executed before all the test functions in the module.</span>
 <span class="err">@</span><span class="nx">test</span><span class="p">:</span><span class="nx">BeforeSuite</span>
 <span class="kd">function</span> <span class="nx">beforeSuit</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the before suite function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// A Test function.</span>
 <span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// A Test function.</span>
 <span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// The function annotated with `AfterSuite` will be executed after all the test functions in the module have been executed.</span>
 <span class="nd">@test:AfterSuite {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">afterSuite</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the after suite function!&quot;</span><span class="p">);</span>

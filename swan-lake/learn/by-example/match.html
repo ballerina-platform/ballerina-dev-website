@@ -10,7 +10,15 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="kt">int</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="nx">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">counter</span> <span class="nx">in</span> <span class="nx">intArray</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kt">int</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="nx">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">counter</span> <span class="nx">in</span> <span class="nx">intArray</span> <span class="p">{</span>
+
+        <span class="c1">// The value of the `counter` variable is matched against the given value match patterns.</span>
         <span class="nx">match</span> <span class="nx">counter</span> <span class="p">{</span>
             <span class="mi">0</span> <span class="p">=&gt;</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value is: 0&quot;</span><span class="p">);</span>
@@ -31,7 +39,13 @@ redirect_from:
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value is: 5&quot;</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="kt">string</span><span class="p">[]</span> <span class="nx">animals</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Cat&quot;</span><span class="p">,</span> <span class="s">&quot;Canine&quot;</span><span class="p">,</span> <span class="s">&quot;Mouse&quot;</span><span class="p">,</span> <span class="s">&quot;Horse&quot;</span><span class="p">];</span>    <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">animal</span> <span class="nx">in</span> <span class="nx">animals</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">animals</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Cat&quot;</span><span class="p">,</span> <span class="s">&quot;Canine&quot;</span><span class="p">,</span> <span class="s">&quot;Mouse&quot;</span><span class="p">,</span> <span class="s">&quot;Horse&quot;</span><span class="p">];</span>
+
+    <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">animal</span> <span class="nx">in</span> <span class="nx">animals</span> <span class="p">{</span>
+
+        <span class="c1">// The value match can also be used with binary OR expression.</span>
         <span class="nx">match</span> <span class="nx">animal</span> <span class="p">{</span>
             <span class="s">&quot;Mouse&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Mouse&quot;</span><span class="p">);</span>
@@ -42,6 +56,7 @@ redirect_from:
             <span class="s">&quot;Cat&quot;</span><span class="p">|</span><span class="s">&quot;Feline&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Cat&quot;</span><span class="p">);</span>
             <span class="p">}</span>
+            <span class="c1">// The pattern `_` can be used as the final static value match pattern, which will be matched against all values.</span>
             <span class="nx">_</span> <span class="p">=&gt;</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Match All&quot;</span><span class="p">);</span>
             <span class="p">}</span>

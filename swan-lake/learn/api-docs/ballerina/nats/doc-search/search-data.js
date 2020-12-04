@@ -1,0 +1,161 @@
+var searchData = {
+  "modules": [
+    {
+      "id": "nats",
+      "description": "\u003cp\u003eThis module provides the capability to connect with NATS and NATS Streaming servers and performs the\nbelow functionalities.\u003c/p\u003e"
+    }
+  ],
+  "classes": [
+    {
+      "id": "Message",
+      "description": "\u003cp\u003eRepresents the message, which a NATS server sends to its subscribed services.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "StreamingListener",
+      "description": "\u003cp\u003eRepresents the NATS streaming server connection to which a subscription service should be bound in order to\nreceive messages of the corresponding subscription.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "Connection",
+      "description": "\u003cp\u003eRepresents a single network connection to the NATS server.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "functions": [],
+  "records": [
+    {
+      "id": "SubscriptionConfigData",
+      "description": "\u003cp\u003eThe configurations for the NATS basic subscription.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "PendingLimits",
+      "description": "\u003cp\u003eThe configurations to set limits on the maximum number of messages or maximum size of messages this consumer will\nhold before it starts to drop new messages waiting for the resource functions to drain the queue.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "StreamingSubscriptionConfigData",
+      "description": "\u003cp\u003eThe configurations for the NATS streaming subscription.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "StreamingConfig",
+      "description": "\u003cp\u003eConfiguration related to establishing a streaming connection.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "ConnectionConfig",
+      "description": "\u003cp\u003eConfigurations related to creating a NATS streaming subscription.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "SecureSocket",
+      "description": "\u003cp\u003eConfigurations related to facilitating a secure communication with a remote HTTP endpoint.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "constants": [
+    {
+      "id": "NEW_ONLY",
+      "description": "\u003cp\u003eSpecifies that message delivery should start with the messages, which are published after the subscription is created.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "LAST_RECEIVED",
+      "description": "\u003cp\u003eSpecifies that message delivery should start with the last (most recent) message stored for this subject.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "FIRST",
+      "description": "\u003cp\u003eSpecifies that message delivery should begin with the oldest available message for this subject.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "TIME_DELTA_START",
+      "description": "\u003cp\u003eThe key for the \u003ccode\u003eTimeDeltaStart\u003c/code\u003e type.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "SEQUENCE_NUMBER",
+      "description": "\u003cp\u003eThe key for the \u003ccode\u003eSequenceNumber\u003c/code\u003e type.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "DEFAULT_URL",
+      "description": "\u003cp\u003eDefault URL for NATS connections.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "errors": [
+    {
+      "id": "NatsError",
+      "description": "\u003cp\u003eRepresents the NATS module related errors.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "types": [
+    {
+      "id": "TimeDeltaStart",
+      "description": "\u003cp\u003eSpecifies that message delivery should start with a given historical time delta (from now).\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "SequenceNumber",
+      "description": "\u003cp\u003eSpecifies that message delivery should start at the given sequence number.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "StartPosition",
+      "description": "\u003cp\u003eSpecifies the position to start receiving messages.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "Content",
+      "description": "\u003cp\u003eData types supported when publishing and consuming messages.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "Error",
+      "description": "\u003cp\u003eThe union of the NATS module related errors.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "clients": [
+    {
+      "id": "StreamingProducer",
+      "description": "\u003cp\u003eThe streaming producer provides the capability to publish messages to the NATS streaming server.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "StreamingMessage",
+      "description": "\u003cp\u003eRepresents the message a NATS Streaming Server sends to its subscribed services.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "Producer",
+      "description": "\u003cp\u003eThe producer provides the capability to publish messages to the NATS server.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "listeners": [
+    {
+      "id": "Listener",
+      "description": "\u003cp\u003eRepresents the NATS server connection to which a subscription service should be bound in order to\nreceive messages of the corresponding subscription.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "SubscriptionConfig",
+      "description": "\u003cp\u003eThe annotation, which is used to configure the basic subscription.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "StreamingSubscriptionConfig",
+      "description": "\u003cp\u003eThe annotation, which is used to configure the streaming subscription.\u003c/p\u003e",
+      "moduleId": "nats"
+    }
+  ],
+  "abstractObjects": []
+};

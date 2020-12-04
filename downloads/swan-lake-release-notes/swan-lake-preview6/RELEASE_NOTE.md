@@ -48,6 +48,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 #### Highlights
 
+- Introducing Ballerina Packages
 - Support for configuring module-level, basic variables at the program execution
 - Ability to mark module-variable declarations with an initial value expression as `isolated`
 - Ability to use the `isolated` qualifier  with an object-constructor expression to construct an `isolated` object
@@ -62,6 +63,18 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Introduction of code to cloud (`c2c`) to simplify deploying Ballerina code in the cloud
 
 ### What is new in Ballerina Swan Lake Preview 7
+
+#### Ballerina Packages 
+
+
+With this release we will be introducing Ballerina Packages. Ballerina Package is a bundle that consist of one or more Ballerina modules. Going forward, the Ballerina Package will be used to share Ballerina libraries. 
+
+
+With the introduction of Ballerina packages Ballerina project structure and build tools has also been changed. Please refer to the [Structuring Ballerina Code](https://ballerina.io/swan-lake/learn/structuring-ballerina-code/) page for more details. 
+
+
+For Swan Lake releases Ballerina Central will support users to push and pull Ballerina Packages. Going forward It will not be possible to push individual modules with swan lake releases. With the preview releases you have the ability to push and pull Ballerina Packages to/from Central. However the Packages pushed using preview releases will be cleared when we release the swan lake GA release.You can use the existing Ballerina Central key to push Packages.
+
 
 #### Language
 

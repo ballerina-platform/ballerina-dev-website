@@ -11,12 +11,27 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function accepts three `int` values, performs a calculation,</span>
+<span class="c1">// and returns the result as an integer.</span>
+<span class="c1">// All three parameters are required parameters.</span>
 <span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">c</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Call the `calculate()` function to retrieve the integer result.</span>
+    <span class="c1">// Arguments for required parameters can be passed as positional arguments.</span>
+    <span class="c1">// Positional arguments need to be passed in the expected order.</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">calculate</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+    <span class="c1">// Print the result.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+    <span class="c1">// Arguments for required parameters can also be passed as named arguments.</span>
+    <span class="c1">// All arguments after the first named argument need to be passed by name.</span>
+    <span class="c1">// Named arguments do not have to be specified in the order in which the parameters are defined.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">calculate</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nx">c</span> <span class="p">=</span> <span class="mi">7</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">6</span><span class="p">);</span>
+    <span class="c1">// Print the result.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

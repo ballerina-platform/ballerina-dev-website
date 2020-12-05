@@ -13,26 +13,66 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+
+<span class="c1">// The circuit breaker looks for errors across a rolling time window.</span>
+<span class="c1">// After the circuit is broken, it does not send requests to</span>
+<span class="c1">// the backend until the `resetTime`.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="c1">// Configuration options that control the behavior of the circuit</span>
+            <span class="c1">// breaker.</span>
             <span class="nx">circuitBreaker</span><span class="p">:</span> <span class="p">{</span>
+                <span class="c1">// Failure calculation window. This is how long the circuit</span>
+                <span class="c1">// breaker keeps the statistics for the operations.</span>
                 <span class="nx">rollingWindow</span><span class="p">:</span> <span class="p">{</span>
+
+                    <span class="c1">// Time period in milliseconds for which the failure</span>
+                    <span class="c1">// threshold is calculated.</span>
                     <span class="nx">timeWindowInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+
+                    <span class="c1">// The granularity (in milliseconds) at which the time</span>
+                    <span class="c1">// window slides. The `RollingWindow` is divided into</span>
+                    <span class="c1">// buckets and slides by these increments.</span>
                     <span class="nx">bucketSizeInMillis</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
-                    <span class="nx">requestVolumeThreshold</span><span class="p">:</span> <span class="mi">0</span>                <span class="p">},</span>
+
+                    <span class="c1">// Minimum number of requests in the `RollingWindow` that</span>
+                    <span class="c1">// will trip the circuit.</span>
+                    <span class="nx">requestVolumeThreshold</span><span class="p">:</span> <span class="mi">0</span>
+
+                <span class="p">},</span>
+                <span class="c1">// The threshold for request failures.</span>
+                <span class="c1">// When this threshold exceeds, the circuit trips. This is the</span>
+                <span class="c1">// ratio between failures and total requests. The ratio is</span>
+                <span class="c1">// calculated using the requests received within the given</span>
+                <span class="c1">// rolling window.</span>
                 <span class="nx">failureThreshold</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+
+                <span class="c1">// The time period (in milliseconds) to wait before attempting to</span>
+                <span class="c1">// make another request to the upstream service.</span>
                 <span class="nx">resetTimeInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-                <span class="nx">statusCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>            <span class="p">},</span>
+
+                <span class="c1">// HTTP response status codes that are considered as failures</span>
+                <span class="nx">statusCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+
+            <span class="p">},</span>
             <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
         <span class="p">}</span>
-    <span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
+    <span class="p">);</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cb&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">circuitbreaker</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="c1">// Create an HTTP service bound to the endpoint (circuitBreakerEP).</span>
+<span class="kd">service</span> <span class="nx">circuitbreaker</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="c1">// If the `backendResponse` is an `http:Response`, it is sent back to</span>
+        <span class="c1">// the client. If `backendResponse` is an `http:ClientError`, an</span>
+        <span class="c1">// internal server error is returned to the client.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
@@ -46,17 +86,31 @@ redirect_from:
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">}</span>    <span class="p">}</span>
-<span class="p">}</span><span class="kt">int</span> <span class="nx">counter</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span><span class="nd">@http:ServiceConfig {</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nx">counter</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="c1">// This sample service is used to mock connection timeouts and service outages.</span>
+<span class="c1">// This should run separately from the `circuitBreakerDemo` service.</span>
+<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
+            <span class="c1">// Delay the response by 5000 milliseconds to</span>
+            <span class="c1">// mimic the network level delays.</span>
+            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -71,7 +125,9 @@ redirect_from:
         <span class="p">}</span>
         <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>

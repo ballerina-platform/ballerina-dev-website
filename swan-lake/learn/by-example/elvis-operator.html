@@ -10,12 +10,22 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span><span class="err">?</span> <span class="nx">input</span> <span class="p">=</span> <span class="p">();</span>
+
+    <span class="c1">// You can use a type-guard with a conditional expression to check if a value is nil</span>
+    <span class="c1">// and if so, provide a new value or else use the input value itself.</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">input</span> <span class="nx">is</span> <span class="p">()</span> <span class="err">?</span> <span class="s">&quot;John Doe&quot;</span> <span class="p">:</span> <span class="nx">input</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+
+    <span class="c1">// You can achieve the same using the Elvis operator as follows.</span>
+    <span class="c1">// Here, it implicitly returns the value `input` if it&#39;s not nil.</span>
     <span class="nx">name</span> <span class="p">=</span> <span class="nx">input</span> <span class="err">?</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>    <span class="nx">input</span> <span class="p">=</span> <span class="s">&quot;Bill Lambert&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+
+    <span class="nx">input</span> <span class="p">=</span> <span class="s">&quot;Bill Lambert&quot;</span><span class="p">;</span>
     <span class="nx">name</span> <span class="p">=</span> <span class="nx">input</span> <span class="err">?</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>

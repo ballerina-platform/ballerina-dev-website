@@ -11,21 +11,46 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cachingEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
-                             <span class="p">{</span><span class="nx">cache</span><span class="p">:</span> <span class="p">{</span><span class="nx">isShared</span><span class="p">:</span> <span class="kc">true</span><span class="p">}});</span><span class="nd">@http:ServiceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// HTTP caching is enabled by default for client endpoints. Caching can be</span>
+<span class="c1">// disabled by setting `enabled=false` in the [cache config](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CacheConfig.html)</span>
+<span class="c1">// of the client endpoint. In this example, the `isShared` field of the `cacheConfig` is set</span>
+<span class="c1">// to true, as the cache will be a public cache in this particular scenario.</span>
+<span class="c1">//</span>
+<span class="c1">// The default caching policy is to cache a response only if it contains a</span>
+<span class="c1">// `cache-control` header and either an `etag` header or a `last-modified`</span>
+<span class="c1">// header. The user can control this behaviour by setting the [policy](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#CachingPolicy)</span>
+<span class="c1">// field of the `cacheConfig`. Currently, there are only 2 policies:</span>
+<span class="c1">// [CACHE_CONTROL_AND_VALIDATORS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CACHE_CONTROL_AND_VALIDATORS)</span>
+<span class="c1">// (the default policy) and [RFC_7234](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#RFC_7234).</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cachingEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
+                             <span class="p">{</span><span class="nx">cache</span><span class="p">:</span> <span class="p">{</span><span class="nx">isShared</span><span class="p">:</span> <span class="kc">true</span><span class="p">}});</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cache&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">cachingProxy</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">cachingProxy</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">cacheableResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">cachingEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">cachingEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// If the request was successful, an HTTP response will be</span>
+            <span class="c1">// returned. In this example, the received response is</span>
+            <span class="c1">// forwarded to the client through the outbound endpoint.</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// For failed requests, a `500` response is sent back to the</span>
+            <span class="c1">// caller.</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
@@ -35,19 +60,53 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kt">json</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kt">json</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">};</span>
+
+<span class="c1">// Sample backend service which serves cacheable responses.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span><span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span><span class="p">}</span>
+<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span><span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span><span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+        <span class="c1">// The [ResponseCacheControl](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/ResponseCacheControl.html)</span>
+        <span class="c1">// object in the [Response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html) object can be</span>
+        <span class="c1">// used for setting the cache control directives associated with the</span>
+        <span class="c1">// response. In this example, the `max-age` directive is set to 15 seconds</span>
+        <span class="c1">// indicating that the response will be fresh for 15 seconds. The</span>
+        <span class="c1">// `must-revalidate` directive instructs that the cache should not</span>
+        <span class="c1">// serve a stale response without validating it with the origin server</span>
+        <span class="c1">// first. The `public` directive is set by setting `isPrivate=false`.</span>
+        <span class="c1">// This indicates that the response can be cached even by intermediary</span>
+        <span class="c1">// caches which serve multiple users.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">ResponseCacheControl</span> <span class="nx">resCC</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">resCC</span><span class="p">.</span><span class="nx">maxAge</span> <span class="p">=</span> <span class="mi">15</span><span class="p">;</span>
         <span class="nx">resCC</span><span class="p">.</span><span class="nx">mustRevalidate</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="nx">resCC</span><span class="p">.</span><span class="nx">isPrivate</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>        <span class="nx">res</span><span class="p">.</span><span class="nx">cacheControl</span> <span class="p">=</span> <span class="nx">resCC</span><span class="p">;</span>
+        <span class="nx">resCC</span><span class="p">.</span><span class="nx">isPrivate</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+
+        <span class="nx">res</span><span class="p">.</span><span class="nx">cacheControl</span> <span class="p">=</span> <span class="nx">resCC</span><span class="p">;</span>
+
+        <span class="c1">// The [setETag()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#setETag)</span>
+        <span class="c1">// function can be used for generating ETags for `string`, `json`, and `xml` types. This uses the `getCRC32()`</span>
+        <span class="c1">// function from the `ballerina/crypto` module for generating the ETag.</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setETag</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setLastModified</span><span class="p">();</span>        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+
+        <span class="c1">// The [setLastModified()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#setLastModified)</span>
+        <span class="c1">// function sets the current time as the `last-modified` header.</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setLastModified</span><span class="p">();</span>
+
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+        <span class="c1">// When sending the response, if the `cacheControl` field of the</span>
+        <span class="c1">// response is set, and the user has not already set a `cache-control`</span>
+        <span class="c1">// header, a `cache-control` header will be set using the directives set</span>
+        <span class="c1">// in the [cacheControl](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/ResponseCacheControl.html) object.</span>
+
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>

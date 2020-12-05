@@ -11,21 +11,52 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// An object type descriptor.</span>
 <span class="nx">type</span> <span class="nx">Controller</span> <span class="nx">object</span> <span class="p">{</span>
    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-   <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>   <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+   <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="c1">// A `readonly` class definition.</span>
+<span class="c1">// If the class definition includes `readonly`, all the fields in the</span>
+<span class="c1">// object are effectively `final` and the values assigned to the fields</span>
+<span class="c1">// have to be immutable.</span>
 <span class="nx">readonly</span> <span class="nx">class</span> <span class="nx">MainController</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="c1">// The expected type for `codes` is `readonly &amp; string[]`.</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">codes</span> <span class="p">=</span> <span class="nx">codes</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kt">string</span> <span class="s">`Main: ${self.id}`</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// A new expression used with a `readonly class` constructs an immutable value.</span>
+    <span class="c1">// An object constructor expression or a new expression also constructs immutable values if</span>
+    <span class="c1">// all of its fields are `final` fields and the types of each individual field is a subtype</span>
+    <span class="c1">// of `readonly`.</span>
+    <span class="c1">// In either case, the fields cannot be updated once the value is created.</span>
     <span class="nx">MainController</span> <span class="nx">mc</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MainController</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">]);</span>
-    <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableController</span> <span class="p">=</span> <span class="nx">mc</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;immutableController ID: &quot;</span><span class="p">,</span> <span class="nx">immutableController</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>    <span class="nx">Controller</span> <span class="nx">controller</span> <span class="p">=</span> <span class="nx">immutableController</span><span class="p">;</span>
+
+    <span class="c1">// A `readonly` intersection (`T &amp; readonly`) can be used with an object type descriptor.</span>
+    <span class="c1">// Only immutable values belong to such an intersection.</span>
+    <span class="c1">// Since `MainController` is defined as a `readonly class`, the object value `mc` is considered</span>
+    <span class="c1">// to be immutable. Thus, it can be used where a `readonly` value is expected.</span>
+    <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableController</span> <span class="p">=</span> <span class="nx">mc</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;immutableController ID: &quot;</span><span class="p">,</span> <span class="nx">immutableController</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>
+
+    <span class="nx">Controller</span> <span class="nx">controller</span> <span class="p">=</span> <span class="nx">immutableController</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;controller is immutable: &quot;</span><span class="p">,</span>
                                         <span class="nx">controller</span> <span class="nx">is</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">Controller</span><span class="p">);</span>
 <span class="p">}</span>

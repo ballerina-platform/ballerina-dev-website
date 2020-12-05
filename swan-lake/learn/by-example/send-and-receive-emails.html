@@ -11,38 +11,95 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates an SMTP client with the connection parameters, host, username,</span>
+    <span class="c1">// and password. The default port number `465` is used over SSL with these</span>
+    <span class="c1">// configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;smtp.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;sender@email.com&quot;</span>
         <span class="p">,</span> <span class="s">&quot;pass123&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Define the email that is required to be sent.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">email</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// &quot;TO&quot;, &quot;CC&quot;, and &quot;BCC&quot; address lists are added as follows.</span>
+        <span class="c1">// Only &quot;TO&quot; address list is mandatory out of these three.</span>
         <span class="nx">to</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver2@email.com&quot;</span><span class="p">],</span>
         <span class="nx">cc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver3@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver4@email.com&quot;</span><span class="p">],</span>
         <span class="nx">bcc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver5@email.com&quot;</span><span class="p">],</span>
+        <span class="c1">// Subject of the email is added as follows. This field is mandatory.</span>
         <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;Sample Email&quot;</span><span class="p">,</span>
+        <span class="c1">// Body content of the email is added as follows.</span>
+        <span class="c1">// This field is mandatory.</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;This is a sample email.&quot;</span><span class="p">,</span>
+        <span class="c1">// Email author&#39;s address is added as follows. This field is mandatory.</span>
         <span class="err">&#39;</span><span class="nx">from</span><span class="p">:</span> <span class="s">&quot;author@email.com&quot;</span><span class="p">,</span>
+        <span class="c1">// Email sender service address is added as follows.</span>
+        <span class="c1">// This field is optional. `Sender` is same as the `&#39;from` when the</span>
+        <span class="c1">// email author himself sends the email.</span>
         <span class="nx">sender</span><span class="p">:</span> <span class="s">&quot;sender@email.com&quot;</span><span class="p">,</span>
+        <span class="c1">// List of recipients when replying to the email is added as follows.</span>
+        <span class="c1">// This field is optional. These addresses are required when the emails</span>
+        <span class="c1">// are to be replied to some other address(es) other than the sender or</span>
+        <span class="c1">// the author.</span>
         <span class="nx">replyTo</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;replyTo1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;replyTo2@email.com&quot;</span><span class="p">]</span>
     <span class="p">};</span>
+
+    <span class="c1">// Send the email with the client.</span>
     <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
+
+    <span class="c1">// Create the client with the connection parameters, host, username, and</span>
+    <span class="c1">// password. An error is received in a failure. The default port number</span>
+    <span class="c1">// `995` is used over SSL with these configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Read the first unseen email received by the POP3 server. `()` is</span>
+    <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
+    <span class="c1">// error is returned.</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
+    <span class="c1">// When no emails are available in the server, `()` is returned.</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Create the client with the connection parameters, host, username, and</span>
+    <span class="c1">// password. An error is received in a failure. The default port number</span>
+    <span class="c1">// `993` is used over SSL with these configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
-    <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Read the first unseen email received by the IMAP4 server. `()` is</span>
+    <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
+    <span class="c1">// error is returned.</span>
+    <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
-    <span class="p">}}</span>
+    <span class="c1">// When no emails are available in the server, `()` is returned.</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// Defines the protocol-specific configuration for the email listener. It can</span>
+<span class="c1">// either be `email:PopConfig` for POP or `email:ImapConfig` for IMAP.</span>
 <span class="nx">email</span><span class="p">:</span><span class="nx">PopConfig</span> <span class="nx">popConfig</span> <span class="p">=</span> <span class="p">{</span>
      <span class="nx">port</span><span class="p">:</span> <span class="mi">995</span><span class="p">,</span>
      <span class="nx">enableSsl</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">};</span>
+
+<span class="c1">// Create the listener with the connection parameters and protocol-related </span>
+<span class="c1">// configuration. The polling interval specifies the time duration between each poll</span>
+<span class="c1">// performed by the listener.</span>
 <span class="nx">listener</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">emailListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
@@ -51,15 +108,24 @@ redirect_from:
     <span class="nx">protocolConfig</span><span class="p">:</span> <span class="nx">popConfig</span><span class="p">,</span>
     <span class="nx">pollingInterval</span><span class="p">:</span> <span class="mi">2000</span>
 <span class="p">});</span>
+
+<span class="c1">// One or many services can listen to the email listener for the periodically-polled</span>
+<span class="c1">// emails.</span>
 <span class="kd">service</span> <span class="nx">emailObserver</span> <span class="nx">on</span> <span class="nx">emailListener</span> <span class="p">{</span>
+
+    <span class="c1">// When an email is successfully received, the `onMessage` method is called.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">emailMessage</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailMessage</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailMessage</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// When an error occurs during the email poll operations, the `onError` method is called.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">emailError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while polling for the emails: &quot;</span>
             <span class="o">+</span> <span class="nx">emailError</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
 </pre></div>
 
             </div>

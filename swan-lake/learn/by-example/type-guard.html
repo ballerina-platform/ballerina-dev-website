@@ -10,28 +10,48 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The `value` variable can hold a value of the type `string`, `int` or `boolean`.</span>
     <span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">|</span><span class="kt">boolean</span> <span class="nx">value</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
+
+    <span class="c1">// The type guard can be used with `value` to test to which of the types it belongs to and perform conditional</span>
+    <span class="c1">// logic based on the type which it belongs to.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// The type of `value` within this block is narrowed to `string`, and thus, `value` can be assigned to a</span>
+        <span class="c1">// variable of the type `string`.</span>
         <span class="kt">string</span> <span class="nx">str</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value is a string: &quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// The type of `value` within this block is narrowed to `int`, and thus, `value` can be used in a</span>
+        <span class="c1">// context where an `int` is expected.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value is an int: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value + 1: &quot;</span><span class="p">,</span> <span class="nx">addOneToInt</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+
+        <span class="c1">// If the value is updated within a type guard, the type is reset to the original type.</span>
         <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Hello World&quot;</span><span class="p">;</span>
+
+        <span class="c1">// The type test needs to be used again since the type of `value` is reset to `string|int|boolean`.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// `value` is an `int` here.</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;- value is an int: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// `value` is `string` or `boolean` here.</span>
             <span class="kt">string</span><span class="p">|</span><span class="kt">boolean</span> <span class="nx">sb</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;- value is string|boolean: &quot;</span><span class="p">,</span> <span class="nx">sb</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Within this block, the type of `value` is `boolean` since the previous `if` and `else if` blocks handle the</span>
+        <span class="c1">// other possible scenarios.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is &#39;true&#39;&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// A function that expects an `int` as an argument.</span>
 <span class="kd">function</span> <span class="nx">addOneToInt</span><span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>

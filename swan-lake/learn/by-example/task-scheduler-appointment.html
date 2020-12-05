@@ -12,26 +12,44 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span><span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentData</span> <span class="nx">appointmentDetails</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">seconds</span><span class="p">:</span> <span class="s">&quot;0/2&quot;</span><span class="p">,</span>
-        <span class="nx">minutes</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">hours</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">daysOfMonth</span><span class="p">:</span> <span class="s">&quot;?&quot;</span><span class="p">,</span>
-        <span class="nx">months</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">daysOfWeek</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;*&quot;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+    <span class="c1">// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the task scheduler.</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentConfiguration</span> <span class="nx">appointmentConfiguration</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// This CRON expression will schedule the appointment every two second.</span>
+        <span class="nx">cronExpression</span><span class="p">:</span> <span class="s">&quot;0/2 * * ? * * *&quot;</span>
     <span class="p">};</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">appointmentDetails</span><span class="p">});</span>
+
+    <span class="c1">// Creates an appointment using the given configuration.</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span>
+
+    <span class="c1">// Attaches the service to the scheduler.</span>
     <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">appointmentService</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">9000</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment cancelled.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Starts the scheduler.</span>
+    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">9000</span><span class="p">);</span>
+
+    <span class="c1">// Cancels the appointment.</span>
+    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment cancelled.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Creating a service on the task listener.</span>
 <span class="kd">service</span> <span class="nx">appointmentService</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+    <span class="c1">// This resource is triggered when the appointment is due.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">reminderCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span><span class="p">,</span> <span class="nx">reminderCount</span><span class="p">);</span>
-    <span class="p">}};</span>
+    <span class="p">}</span>
+
+<span class="p">};</span>
 </pre></div>
 
             </div>
@@ -132,6 +150,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -178,15 +198,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:AppointmentData appointmentDetails = {
-        seconds: &quot;0/2&quot;,
-        minutes: &quot;*&quot;,
-        hours: &quot;*&quot;,
-        daysOfMonth: &quot;?&quot;,
-        months: &quot;*&quot;,
-        daysOfWeek: &quot;*&quot;,
-        year: &quot;*&quot;
-    };
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:AppointmentConfiguration appointmentConfiguration = {
 </code></pre></div>
 
                                 </td>
@@ -194,7 +206,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentData.html"><code>task:AppointmentData</code></a> record provides the appointment configuration.</p>
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html"><code>task:AppointmentConfiguration</code></a> record of the task scheduler.</p>
 
                                         </div>
                                     </div>
@@ -205,7 +217,27 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler appointment = new ({appointmentDetails});
+                                    <div class="highlight"><pre><code class=language-ballerina>        cronExpression: &quot;0/2 * * ? * * *&quot;
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This CRON expression will schedule the appointment every two second.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler appointment = new (appointmentConfiguration);
 </code></pre></div>
 
                                 </td>

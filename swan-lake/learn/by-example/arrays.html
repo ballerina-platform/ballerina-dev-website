@@ -11,21 +11,39 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">array</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">array</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Creates an `int` array of length 0.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// Creates an array specifying an array literal.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// Arrays support several inbuilt functions such as `.reverse()`, `.pop()`, `.push()`, and `.removeAll()`.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">bReveresed</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reversed: &quot;</span><span class="p">,</span> <span class="nx">bReveresed</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reversed: &quot;</span><span class="p">,</span> <span class="nx">bReveresed</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">poppedValue</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Popped value: &quot;</span><span class="p">,</span> <span class="nx">poppedValue</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+
+    <span class="c1">// Arrays are an iterable type and arrays support functional iteration operations such as `.map()`, `.filter()`, and</span>
+    <span class="c1">// `.reduce()`.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">doubled</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
         <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Doubled: &quot;</span><span class="p">,</span> <span class="nx">doubled</span><span class="p">);</span>
+
+    <span class="c1">// An array can be sorted using `.sort()`. The `array:DESCENDING` is the `direction` in which sort should be done.</span>
+    <span class="c1">// The default sort direction is `ASCENDING`. The `isolated function` returns a `string[]` for each</span>
+    <span class="c1">// member, which is used as a `key` to sort the members. If the member type of the array</span>
+    <span class="c1">// is not sorted, then the `key` function must be specified.</span>
+    <span class="c1">// It returns an `array` consisting of the members of `b` in the sorted order.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">sortedArray</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="nx">array</span><span class="p">:</span><span class="nx">DESCENDING</span><span class="p">,</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span>
     <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
@@ -35,18 +53,34 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sorted Array: &quot;</span><span class="p">,</span> <span class="nx">sortedArray</span><span class="p">);</span>
+
+    <span class="c1">// Unless the length is explicitly specified or is expected to be inferred, arrays are unbounded in length.</span>
+    <span class="c1">// They can grow up to any length based on the given index.</span>
+    <span class="c1">// In this example, the length of the array is 1000.</span>
     <span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// Initializes a two dimensional `int` array.</span>
     <span class="kt">int</span><span class="p">[][]</span> <span class="nx">iarray</span> <span class="p">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">iarray</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">iarray</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// Initializes the outermost array to an empty array.</span>
     <span class="nx">iarray</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="c1">// Adds a new array as the first element.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">d</span> <span class="p">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">];</span>
     <span class="nx">iarray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">d</span><span class="p">;</span>
+
+    <span class="c1">// Prints the first value of the two-dimensional array.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">iarray</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+
+    <span class="c1">// Creates an `int` array with the fixed length of five.</span>
     <span class="kt">int</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="nx">e</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// To infer the size of the array from the array literal, use the following syntax.</span>
+    <span class="c1">// The fixed length of the array is set to four here.</span>
     <span class="kt">int</span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="nx">g</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
 <span class="p">}</span>

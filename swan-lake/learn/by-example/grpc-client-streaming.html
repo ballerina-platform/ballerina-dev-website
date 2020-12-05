@@ -10,13 +10,25 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                <div class="highlight"><pre><span class="c1">// This is the server implementation for the client streaming scenario.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nd">@grpc:ServiceDescriptor {</span>
+    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
+    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                             <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Client connected sucessfully.&quot;</span><span class="p">);</span>
+        <span class="c1">//Read and process each message in the client stream</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received greet: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="p">});</span>
+
+        <span class="c1">//Once the client sends a notification to indicate the end of the stream, &#39;grpc:EOS&#39; is returned by the stream</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;Ack&quot;</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
@@ -24,22 +36,35 @@ redirect_from:
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server send response : Ack&quot;</span><span class="p">);</span>
             <span class="p">}</span>
+
+        <span class="c1">//If the client sends an error to the server, the stream closes and returns the error</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+<span class="c1">// This is the client implementation for the client streaming scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kt">int</span> <span class="nx">total</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nx">total</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">HelloWorldClient</span> <span class="nx">helloWorldEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>    <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">ep</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">helloWorldEp</span><span class="o">-&gt;</span><span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">HelloWorldMessageListener</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Client endpoint configuration.</span>
+    <span class="nx">HelloWorldClient</span> <span class="nx">helloWorldEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+    <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">ep</span><span class="p">;</span>
+    <span class="c1">// Execute the unary non-blocking call that registers a server message listener.</span>
+    <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">helloWorldEp</span><span class="o">-&gt;</span><span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">HelloWorldMessageListener</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Initialized connection sucessfully.&quot;</span><span class="p">);</span>
         <span class="nx">ep</span> <span class="p">=</span> <span class="nx">res</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Send multiple messages to the server.</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">greets</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Hi&quot;</span><span class="p">,</span> <span class="s">&quot;Hey&quot;</span><span class="p">,</span> <span class="s">&quot;GM&quot;</span><span class="p">];</span>
     <span class="k">var</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">greet</span> <span class="nx">in</span> <span class="nx">greets</span> <span class="p">{</span>
@@ -50,20 +75,32 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Send greeting: &quot;</span> <span class="o">+</span> <span class="nx">greet</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// Once all the messages are sent, the server notifies the caller with a `complete` message.</span>
     <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in sending complete message&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">while</span> <span class="p">(</span><span class="nx">total</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="p">}</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">total</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Completed successfully&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Server Message Listener.</span>
 <span class="kd">service</span> <span class="nx">HelloWorldMessageListener</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+
+    <span class="c1">// Resource registered to receive server messages.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">total</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Response received from server: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Resource registered to receive server error messages.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error reported from server: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Resource registered to receive server completed messages.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">total</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Server Complete Sending Responses.&quot;</span><span class="p">);</span>
@@ -294,7 +331,11 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorld on new grpc:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
+service HelloWorld on new grpc:Listener(9090) {
 </code></pre></div>
 
                                 </td>

@@ -11,15 +11,20 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">filePath</span> <span class="p">=</span> <span class="s">&quot;./files/sample.xml&quot;</span><span class="p">;</span>
+    <span class="c1">// Creates XML content from the `string`.</span>
     <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Preparing to write xml file&quot;</span><span class="p">);</span>
+    <span class="c1">// Writes the content.</span>
     <span class="k">var</span> <span class="nx">wResult</span> <span class="p">=</span> <span class="nx">write</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">wResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while writing xml: &quot;</span><span class="p">,</span> <span class="nx">wResult</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Preparing to read the content written&quot;</span><span class="p">);</span>
+        <span class="c1">// Reads the content.</span>
         <span class="k">var</span> <span class="nx">rResult</span> <span class="p">=</span> <span class="nx">read</span><span class="p">(</span><span class="nx">filePath</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">rResult</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rResult</span><span class="p">);</span>
@@ -28,20 +33,33 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Writes `xml` content to a given path.</span>
 <span class="kd">function</span> <span class="nx">write</span><span class="p">(</span><span class="kt">xml</span> <span class="nx">content</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates a byte channel from the given path.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">wbc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+    <span class="c1">// Derives the character channel from the byte channel.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">wch</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">wbc</span><span class="p">,</span> <span class="s">&quot;UTF8&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wch</span><span class="p">.</span><span class="nx">writeXml</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+    <span class="c1">// Closes the character channel once you are done with it.</span>
     <span class="nx">closeWc</span><span class="p">(</span><span class="nx">wch</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Reads `xml` from a given path.</span>
 <span class="kd">function</span> <span class="nx">read</span><span class="p">(</span><span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted xml|error {</span>
+    <span class="c1">// Creates a byte channel from the given path.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">rbc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+    <span class="c1">// Derives the character channel from the byte Channel.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">rch</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">rbc</span><span class="p">,</span> <span class="s">&quot;UTF8&quot;</span><span class="p">);</span>
+    <span class="c1">// Reads the XML content from the character channel.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">rch</span><span class="p">.</span><span class="nx">readXml</span><span class="p">();</span>
+    <span class="c1">// Closes the character channel once you are done with it.</span>
     <span class="nx">closeRc</span><span class="p">(</span><span class="nx">rch</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Closes a readable channel.</span>
 <span class="kd">function</span> <span class="nx">closeRc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">rc</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">rc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -49,6 +67,8 @@ redirect_from:
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Closes a writable channel.</span>
 <span class="kd">function</span> <span class="nx">closeWc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">wc</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -83,9 +103,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="character-io.html">
+                                    <a class="next" href="file-io.html">
                                         <span>NEXT ></span>
-                                        <p>Read/Write Files</p>
+                                        <p>File I/O</p>
                                     </a>
                                 </div>
                                 

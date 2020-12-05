@@ -10,16 +10,37 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create a JSON object. A JSON object in Ballerina is equivalent to a `map&lt;json&gt;`.</span>
+    <span class="c1">// Thus, the same can be written as</span>
+    <span class="c1">// `map&lt;json&gt; j = { name: &quot;apple&quot;, color: &quot;red&quot;, price: j2 };`</span>
     <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="mi">100</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+
+    <span class="c1">// Since a JSON object is a `map&lt;json&gt;`, this type test evaluates to true.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;j is map&lt;json&gt;: &quot;</span><span class="p">,</span> <span class="nx">j</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;);</span>
-    <span class="kt">json</span> <span class="nx">empty</span> <span class="p">=</span> <span class="p">{};</span>    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">30</span><span class="p">;</span>
+
+    <span class="c1">// Create an empty JSON object. This is equivalent to an empty `map&lt;json&gt;`.</span>
+    <span class="kt">json</span> <span class="nx">empty</span> <span class="p">=</span> <span class="p">{};</span>
+
+    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="c1">// Create a JSON object. Keys can be defined with or without quotes.</span>
+    <span class="c1">// Values can be any `json` expression.</span>
     <span class="kt">json</span> <span class="nx">p</span> <span class="p">=</span> <span class="p">{</span><span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="nx">age</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+
+    <span class="c1">// You can add or change JSON object values using member access (i.e., the `[expr]` operator).</span>
+    <span class="c1">// In order to change fields of an object value, it needs to be accessed</span>
+    <span class="c1">// as a `map&lt;json&gt;`. This is done by casting `p` to `map&lt;json&gt;`.</span>
+    <span class="c1">// Alternatively, `p` could have been defined as a `map&lt;json&gt;`.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">mp</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span><span class="nx">p</span><span class="p">;</span>
     <span class="nx">mp</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">31</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+
+    <span class="c1">// Create a nested JSON object.</span>
+    <span class="c1">// This could also be defined as a `json` variable instead of `map&lt;json&gt;`.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">p2</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span>
         <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span><span class="p">,</span>
@@ -30,6 +51,9 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+
+    <span class="c1">// Member access expressions with `string` keys can be used to access fields of a</span>
+    <span class="c1">// mapping of `json`.</span>
     <span class="kt">json</span> <span class="nx">lastName</span> <span class="p">=</span> <span class="nx">p2</span><span class="p">[</span><span class="s">&quot;lname&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">lastName</span><span class="p">);</span>
 <span class="p">}</span>

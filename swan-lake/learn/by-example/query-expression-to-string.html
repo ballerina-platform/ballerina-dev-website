@@ -10,12 +10,16 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">gpa</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Michelle&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Sadler&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">1990</span><span class="p">,</span> 
                    <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.5</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2001</span><span class="p">,</span> 
@@ -23,10 +27,22 @@ redirect_from:
     <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2002</span><span class="p">,</span> 
                    <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span> 
-                   <span class="nx">gpa</span><span class="p">:</span> <span class="mf">4.0</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+                   <span class="nx">gpa</span><span class="p">:</span> <span class="mf">4.0</span> <span class="p">};</span>
+
+    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+
+    <span class="c1">//The `from` clause works similarly to a `foreach` statement.</span>
+    <span class="c1">//It can be used to iterate any iterable value.</span>
+    <span class="c1">//The `students` is the concatenated string of the query expression results.</span>
     <span class="kt">string</span> <span class="nx">students</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+       <span class="c1">//The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.</span>
+       <span class="c1">//It can refer to variables bound by the from clause.</span>
+       <span class="c1">//When the `where` condition evaluates to false, the current iteration is skipped.</span>
        <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">gpa</span> <span class="o">&gt;=</span> <span class="mf">2.0</span>
-       <span class="nx">select</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
+       <span class="c1">//The values emitted from `select` clause is concatenated to get the string result of the query statement.</span>
+       <span class="nx">select</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 

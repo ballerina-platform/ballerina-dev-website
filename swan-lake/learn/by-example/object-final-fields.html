@@ -10,43 +10,97 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
 <span class="p">|};</span>
+
+<span class="c1">// A class definition with both `final` and non-`final` fields.</span>
 <span class="nx">class</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
-    <span class="nx">final</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">department</span><span class="p">,</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// `details` is a `final` field to which a value cannot be assigned</span>
+    <span class="c1">// once the object value is created. However, since the type of `details` is</span>
+    <span class="c1">// a mutable type, updates can be attempted on the `details` field.</span>
+    <span class="nx">final</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">department</span><span class="p">,</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">department</span> <span class="p">=</span> <span class="nx">department</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">details</span> <span class="p">=</span> <span class="nx">details</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// A class definition for a `readonly` object.</span>
+<span class="c1">// If the class definition includes `readonly`, all the fields in the</span>
+<span class="c1">// object are considered to be `final` fields.</span>
+<span class="c1">// The effective type of each field is the intersection of the</span>
+<span class="c1">// specified type and `readonly`.</span>
 <span class="nx">readonly</span> <span class="nx">class</span> <span class="nx">MainController</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="c1">// The expected type for `codes` is `readonly &amp; string[]`.</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">codes</span> <span class="p">=</span> <span class="nx">codes</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kt">string</span> <span class="s">`Main: ${self.id}`</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kt">int</span> <span class="nx">currentId</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nx">currentId</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Define a mutable `Details` value.</span>
     <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">112233</span><span class="p">,</span>
         <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
     <span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;IT&quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ID: &quot;</span><span class="p">,</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+    <span class="c1">// Use `details` as the value for the `final` `details` field in `Employee`.</span>
+    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;IT&quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ID: &quot;</span><span class="p">,</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+    <span class="c1">// Even though the `details` field of `Employee` is `final`,</span>
+    <span class="c1">// it can hold a mutable value. Thus, we can attempt updating</span>
+    <span class="c1">// the `id` field of the `details` field.</span>
     <span class="nx">Details</span> <span class="nx">empDetails</span> <span class="p">=</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
     <span class="nx">empDetails</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="mi">223344</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;new ID: &quot;</span><span class="p">,</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+    <span class="c1">// Since all the fields in the object constructor expression are `final`</span>
+    <span class="c1">// and the types are subtypes of `readonly`, it constructs an immutable</span>
+    <span class="c1">// value, which can be assigned to a variable of type `MainController`</span>
+    <span class="c1">// which expects immutable values.</span>
     <span class="nx">MainController</span> <span class="nx">controller</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">final</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-        <span class="nx">final</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">codes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">,</span> <span class="s">&quot;CD&quot;</span><span class="p">];</span>        <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// A value is set for the `final` field `codes` using an initializer</span>
+        <span class="c1">// expression.</span>
+        <span class="c1">// A value cannot be set for this field via the `init` method or</span>
+        <span class="c1">// once the value is created.</span>
+        <span class="nx">final</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">codes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">,</span> <span class="s">&quot;CD&quot;</span><span class="p">];</span>
+
+        <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">currentId</span><span class="p">;</span>
             <span class="nx">currentId</span> <span class="p">=</span> <span class="nx">currentId</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">=&gt;</span> <span class="kt">string</span> <span class="s">`Default: ${self.id}`</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">=&gt;</span> <span class="kt">string</span> <span class="s">`Default: ${self.id}`</span><span class="p">;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Whether a field is `final` does not affect the type.</span>
+    <span class="c1">// Thus, an object value belongs to a type even if the type</span>
+    <span class="c1">// specifies `final` for a field for which the source object value</span>
+    <span class="c1">// does not.</span>
     <span class="nx">Employee</span> <span class="nx">emp2</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">department</span> <span class="p">=</span> <span class="s">&quot;finance&quot;</span><span class="p">;</span>
+        <span class="c1">// The `details` field is not `final` here even though it is</span>
+        <span class="c1">// a `final` field in `Employee`.</span>
         <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
             <span class="nx">id</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
             <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>

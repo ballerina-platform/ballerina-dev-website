@@ -14,27 +14,38 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">crypto</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Defines the keystore.</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">KeyStore</span> <span class="nx">keyStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
             <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Defines the JWT keystore configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtKeyStoreConfig</span> <span class="nx">keyStoreConfig</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="nx">keyStore</span><span class="p">,</span>
         <span class="nx">keyAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">keyPassword</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Defines the JWT header and sets the values.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtHeader</span> <span class="nx">header</span> <span class="p">=</span> <span class="p">{};</span>
     <span class="nx">header</span><span class="p">.</span><span class="nx">alg</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">RS256</span><span class="p">;</span>
     <span class="nx">header</span><span class="p">.</span><span class="nx">typ</span> <span class="p">=</span> <span class="s">&quot;JWT&quot;</span><span class="p">;</span>
     <span class="nx">header</span><span class="p">.</span><span class="nx">kid</span> <span class="p">=</span> <span class="s">&quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Defines the JWT payload and sets the values.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{};</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">sub</span> <span class="p">=</span> <span class="s">&quot;admin&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">iss</span> <span class="p">=</span> <span class="s">&quot;ballerina&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">jti</span> <span class="p">=</span> <span class="s">&quot;100078234ba23&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">aud</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">];</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">exp</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">().</span><span class="nx">time</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">+</span> <span class="mi">600</span><span class="p">;</span>
+
+    <span class="c1">// Issues a JWT based on the provided header, payload, and keystore config.</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jwt</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">issueJwt</span><span class="p">(</span><span class="nx">header</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">keyStoreConfig</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">jwt</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span><span class="p">,</span> <span class="nx">jwt</span><span class="p">);</span>
@@ -42,11 +53,15 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while issuing the JWT: &quot;</span><span class="p">,</span>
             <span class="nx">jwt</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Defines the truststore.</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">TrustStore</span> <span class="nx">trustStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
             <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Defines the JWT validator configurations with truststore configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig1</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
@@ -56,6 +71,8 @@ redirect_from:
             <span class="nx">trustStore</span><span class="p">:</span> <span class="nx">trustStore</span>
         <span class="p">}</span>
     <span class="p">};</span>
+
+    <span class="c1">// Validates the created JWT. Signature is validated using the truststore.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span>
         <span class="nx">validatorConfig1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
@@ -64,6 +81,8 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
             <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Defines the JWT validator configurations with JWKs configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig2</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
@@ -77,6 +96,8 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">};</span>
+
+    <span class="c1">// Validates the created JWT. Signature is validated using the JWKS endpoint.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -85,8 +106,11 @@ redirect_from:
             <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
+<span class="c1">// This is a mock JWK server, which is to expose the JWK components for testing purpose.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
@@ -94,7 +118,11 @@ redirect_from:
                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">});</span><span class="kd">service</span> <span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+    <span class="p">});</span>
+
+<span class="kd">service</span> <span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/jwks&quot;</span>
     <span class="p">}</span>

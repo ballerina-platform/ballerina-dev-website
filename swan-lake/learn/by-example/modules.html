@@ -10,9 +10,20 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span> <span class="k">as</span> <span class="nx">console</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="c1">// This example imports a module. You can only refer to the public symbols of</span>
+<span class="c1">// an imported module.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
+
+<span class="c1">// Declare an explicit prefix.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span> <span class="k">as</span> <span class="nx">console</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Refer symbols of another module.</span>
+    <span class="c1">// `math:PI` is a qualified identifier. Note the usage of the module prefix.</span>
     <span class="kt">float</span> <span class="nx">piValue</span> <span class="p">=</span> <span class="nx">math</span><span class="p">:</span><span class="nx">PI</span><span class="p">;</span>
+
+    <span class="c1">// Use the explicit prefix `console` to invoke a function defined in the `ballerina/io` module.</span>
     <span class="nx">console</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">piValue</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

@@ -11,11 +11,17 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">final</span> <span class="kt">string</span> <span class="nx">NAME</span> <span class="p">=</span> <span class="s">&quot;NAME&quot;</span><span class="p">;</span>
-<span class="nx">final</span> <span class="kt">string</span> <span class="nx">AGE</span> <span class="p">=</span> <span class="s">&quot;AGE&quot;</span><span class="p">;</span><span class="nd">@http:ServiceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">final</span> <span class="kt">string</span> <span class="nx">NAME</span> <span class="p">=</span> <span class="s">&quot;NAME&quot;</span><span class="p">;</span>
+<span class="nx">final</span> <span class="kt">string</span> <span class="nx">AGE</span> <span class="p">=</span> <span class="s">&quot;AGE&quot;</span><span class="p">;</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/chat&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">chatAppUpgrader</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Upgrade from HTTP to WebSocket and define the service the WebSocket client needs to connect to.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">webSocketUpgrade</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">upgradePath</span><span class="p">:</span> <span class="s">&quot;/{name}&quot;</span><span class="p">,</span>
@@ -24,7 +30,9 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">upgrader</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Retrieve query parameters from the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html).</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">queryParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParams</span><span class="p">();</span>
+        <span class="c1">// Cancel the handshake by sending a 400 status code if the age parameter is missing in the request.</span>
         <span class="k">if</span> <span class="p">(!</span><span class="nx">queryParams</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">cancelWebSocketUpgrade</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="s">&quot;Age is required&quot;</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
@@ -36,6 +44,8 @@ redirect_from:
         <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span> <span class="nx">wsEp</span> <span class="p">=</span>
                                        <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">acceptWebSocketUpgrade</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">wsEp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// The attributes of the caller is useful for storing connection-specific data.</span>
+            <span class="c1">// In this case, the `NAME`and `AGE` are unique to each connection.</span>
             <span class="nx">wsEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">NAME</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
             <span class="kt">string</span><span class="err">?</span> <span class="nx">ageValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">);</span>
             <span class="kt">string</span> <span class="nx">age</span> <span class="p">=</span> <span class="nx">ageValue</span> <span class="nx">is</span> <span class="kt">string</span> <span class="err">?</span> <span class="nx">ageValue</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
@@ -51,7 +61,14 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kt">map</span><span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">&gt;</span> <span class="nx">connectionsMap</span> <span class="p">=</span> <span class="p">{};</span><span class="kd">service</span> <span class="nx">chatApp</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
+
+<span class="c1">// Stores the connection IDs of users who join the chat.</span>
+<span class="kt">map</span><span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">&gt;</span> <span class="nx">connectionsMap</span> <span class="p">=</span> <span class="p">{};</span>
+
+<span class="kd">service</span> <span class="nx">chatApp</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
+
+    <span class="c1">// Once a user connects to the chat, store the attributes of the user, such as username and age, and</span>
+    <span class="c1">// broadcast that the user has joined the chat.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span><span class="p">;</span>
         <span class="nx">msg</span> <span class="p">=</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">NAME</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; with age &quot;</span>
@@ -59,11 +76,15 @@ redirect_from:
         <span class="nx">broadcast</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
         <span class="nx">connectionsMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">()]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">caller</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Broadcast the messages sent by a user.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">NAME</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
         <span class="nx">broadcast</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Broadcast that a user has left the chat once a user leaves the chat.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
     <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">_</span> <span class="p">=</span> <span class="nx">connectionsMap</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
@@ -71,6 +92,8 @@ redirect_from:
         <span class="nx">broadcast</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">};</span>
+
+<span class="c1">// Function to perform the broadcasting of text messages.</span>
 <span class="kd">function</span> <span class="nx">broadcast</span><span class="p">(</span><span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">con</span> <span class="nx">in</span> <span class="nx">connectionsMap</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">con</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
@@ -78,7 +101,9 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">ep</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">key</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">ep</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">key</span><span class="p">)</span>
 <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>

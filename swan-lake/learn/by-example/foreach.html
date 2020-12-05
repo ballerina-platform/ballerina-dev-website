@@ -10,30 +10,50 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Iterating a string array:- &quot;</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">fruits</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="s">&quot;cherry&quot;</span><span class="p">];</span>
+
+    <span class="c1">// The `foreach` statement can be used to iterate an array. Each iteration returns an element in the array.</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">fruit</span> <span class="nx">in</span> <span class="nx">fruits</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Fruit: &quot;</span><span class="p">,</span> <span class="nx">fruit</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a map:- &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a map:- &quot;</span><span class="p">);</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">countryCapitals</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;USA&quot;</span><span class="p">:</span> <span class="s">&quot;Washington, D.C.&quot;</span><span class="p">,</span>
                                     <span class="s">&quot;Sri Lanka&quot;</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">,</span>
                                     <span class="s">&quot;England&quot;</span><span class="p">:</span> <span class="s">&quot;London&quot;</span> <span class="p">};</span>
+    <span class="c1">// Iterating a map will return the values in the map.</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">capital</span> <span class="nx">in</span> <span class="nx">countryCapitals</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital: &quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Calling the `entries()` method on a `map` generates a new map in which its value contains a tuple</span>
+    <span class="c1">// [key, value]. In the tuple, the `key` and `value` are key/value pairs of the original map. In this manner, a `foreach` on </span>
+    <span class="c1">// the new map will iterate through each key/value pair as tuple values.</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">country</span><span class="p">,</span> <span class="nx">capital</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">countryCapitals</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country: &quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">,</span> <span class="s">&quot;, Capital: &quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON object:- &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON object:- &quot;</span><span class="p">);</span>
     <span class="kt">json</span> <span class="nx">apple</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">colors</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">],</span> <span class="nx">price</span><span class="p">:</span> <span class="mi">5</span> <span class="p">};</span>
+    <span class="c1">// Iterating a JSON is only supported with `map&lt;json&gt;` or `json[]`.</span>
+    <span class="c1">// To iterate a JSON, first cast it to the relevant iterable type.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">mapValue</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="nx">apple</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">mapValue</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Key: &quot;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="s">&quot; Value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON array:- &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON array:- &quot;</span><span class="p">);</span>
+    <span class="c1">// To iterate a JSON array, you need to first cast it into a JSON array (`json[]`).</span>
     <span class="kt">json</span><span class="p">[]</span> <span class="nx">colors</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span> <span class="nx">apple</span><span class="p">.</span><span class="nx">colors</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">color</span> <span class="nx">in</span> <span class="nx">colors</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Color: &quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating an XML:- &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating an XML:- &quot;</span><span class="p">);</span>
     <span class="kt">xml</span> <span class="nx">books</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;books&gt;</span>
 <span class="s">                       &lt;book&gt;</span>
 <span class="s">                           &lt;name&gt;Sherlock Holmes&lt;/name&gt;</span>
@@ -44,32 +64,52 @@ redirect_from:
 <span class="s">                           &lt;author&gt;J.K. Rowling&lt;/author&gt;</span>
 <span class="s">                       &lt;/book&gt;</span>
 <span class="s">                     &lt;/books&gt;`</span><span class="p">;</span>
+    <span class="c1">// Iterating an XML will return an individual element in each iteration.</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">book</span> <span class="nx">in</span> <span class="nx">books</span><span class="o">/</span><span class="p">&lt;</span><span class="o">*</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Book: \t\t\t&quot;</span><span class="p">,</span> <span class="nx">book</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a table:- &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a table:- &quot;</span><span class="p">);</span>
+    <span class="c1">// Iterating a table will return an individual row in each iteration.</span>
     <span class="nx">EmployeeTable</span> <span class="nx">employeeTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300.50</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Bella&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">500.50</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">750.0</span><span class="p">}</span>
-    <span class="p">];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">employee</span> <span class="nx">in</span> <span class="nx">employeeTab</span> <span class="p">{</span>
+    <span class="p">];</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">employee</span> <span class="nx">in</span> <span class="nx">employeeTab</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee: &quot;</span><span class="p">,</span> <span class="nx">employee</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a closed integer range:- &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating an integer range (1 ... endValue):- &quot;</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">endValue</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">..</span><span class="nx">endValue</span> <span class="p">{</span>
+    <span class="c1">// An integer range `1 ... endValue` in the `foreach` statement represents</span>
+    <span class="c1">// an incremental integer value range from the start</span>
+    <span class="c1">// expression (`1`) to the end expression (`endValue`) inclusively.</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="nx">endValue</span> <span class="p">{</span>
         <span class="nx">sum</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Summation from 1 to &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a half open integer range:- &quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Summation from 1 to &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating an integer range (1 ..&lt; endValue):- &quot;</span><span class="p">);</span>
     <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">.&lt;</span> <span class="nx">endValue</span> <span class="p">{</span>
+    <span class="c1">// An integer range `1 ..&lt; endValue` in the `foreach` statement represents an</span>
+    <span class="c1">// incremental integer value range from the start expression (`1`) inclusively</span>
+    <span class="c1">// to the end expression (`endValue`) exclusively.</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="p">..&lt;</span> <span class="nx">endValue</span> <span class="p">{</span>
         <span class="nx">sum</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Summation from 1 to &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span><span class="s">&quot; (exclusive) is &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">EmployeeTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">EmployeeTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
 </pre></div>
 
             </div>
@@ -454,7 +494,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a closed integer range:- &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating an integer range (1 ... endValue):- &quot;);
     int endValue = 10;
     int sum = 0;
 </code></pre></div>
@@ -468,7 +508,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var i in 1...endValue {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var i in 1 ... endValue {
         sum = sum + i;
     }
     io:println(&quot;Summation from 1 to &quot;, endValue, &quot; is &quot;, sum);
@@ -479,7 +519,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A closed integer range in the <code>foreach</code> statement represents an incremental integer value range from the start
+                                            <p>An integer range <code>1 ... endValue</code> in the <code>foreach</code> statement represents
+ an incremental integer value range from the start
  expression (<code>1</code>) to the end expression (<code>endValue</code>) inclusively.</p>
 
                                         </div>
@@ -491,7 +532,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a half open integer range:- &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating an integer range (1 ..&lt; endValue):- &quot;);
     sum = 0;
 </code></pre></div>
 
@@ -504,7 +545,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var i in 1..&lt; endValue {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var i in 1 ..&lt; endValue {
         sum = sum + i;
     }
     io:println(&quot;Summation from 1 to &quot;, endValue,&quot; (exclusive) is &quot;, sum);
@@ -516,8 +557,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A half-open integer range in the <code>foreach</code> statement represents an incremental integer value range from the start
- expression (<code>1</code>) inclusively to the end expression (<code>endValue</code>) exclusively.</p>
+                                            <p>An integer range <code>1 ..&lt; endValue</code> in the <code>foreach</code> statement represents an
+ incremental integer value range from the start expression (<code>1</code>) inclusively
+ to the end expression (<code>endValue</code>) exclusively.</p>
 
                                         </div>
                                     </div>
@@ -663,11 +705,11 @@ Color: green
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Iterating an XML:-
-Book:                  &lt;book&gt;
+Book:                   &lt;book&gt;
                            &lt;name&gt;Sherlock Holmes&lt;/name&gt;
                            &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;
                        &lt;/book&gt;
-Book:                  &lt;book&gt;
+Book:                   &lt;book&gt;
                            &lt;name&gt;Harry Potter&lt;/name&gt;
                            &lt;author&gt;J.K. Rowling&lt;/author&gt;
                        &lt;/book&gt;
@@ -697,7 +739,7 @@ Employee: {&quot;id&quot;:3,&quot;name&quot;:&quot;Peter&quot;,&quot;salary&quot
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating a closed integer range:-
+                                    <div class="highlight"><pre><code class=shell-session>Iterating an integer range (1 ... endValue):-
 Summation from 1 to 10 is 55
 </code></pre></div>
 
@@ -710,7 +752,7 @@ Summation from 1 to 10 is 55
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating a half open integer range:-
+                                    <div class="highlight"><pre><code class=shell-session>Iterating an integer range (1 ..&lt; endValue):-
 Summation from 1 to 10 (exclusive) is 45
 </code></pre></div>
 

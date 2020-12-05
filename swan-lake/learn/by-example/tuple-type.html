@@ -10,21 +10,42 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Defines the type of `a` as a pair that consists of an `int` and a `string`.</span>
     <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">aint</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">aint</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">astr</span><span class="p">;</span>
+    <span class="c1">// Defines a tuple of variable names on the left with a variable reference of which the type is a tuple.</span>
+    <span class="c1">// The assignment statement assigns values of the tuple on the right to the variables on the left.</span>
+    <span class="c1">// In Ballerina, this is referred to as tuple destructuring.</span>
     <span class="p">[</span><span class="nx">aint</span><span class="p">,</span> <span class="nx">astr</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">aint</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">astr</span><span class="p">);</span>
+
+    <span class="c1">// You can declare and assign values with `var` like this.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">aint1</span><span class="p">,</span> <span class="nx">astr1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
+
+    <span class="c1">// Invokes a function that returns a tuple.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">q</span><span class="p">,</span> <span class="nx">r</span><span class="p">]</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;06/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span> <span class="nx">q</span><span class="p">,</span> <span class="s">&quot; remainder=&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">);</span>
+
+    <span class="c1">// To ignore a value in a tuple, use `_`.</span>
+    <span class="c1">// This ignores the second return value.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">q1</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">57</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;57/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span> <span class="nx">q1</span><span class="p">);</span>    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">returnValue</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;57/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span> <span class="nx">q1</span><span class="p">);</span>
+
+    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">returnValue</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="c1">// This ignores the first value of a tuple.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">r1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;09/10: &quot;</span><span class="p">,</span> <span class="s">&quot;remainder=&quot;</span><span class="p">,</span> <span class="nx">r1</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function returns a tuple of two integers.</span>
 <span class="kd">function</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="kt">int</span> <span class="nx">d</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">([</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">q</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">r</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>

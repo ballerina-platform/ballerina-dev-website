@@ -11,7 +11,15 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">listenerEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">listenerEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="c1">// Since compression behavior of the service is set as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO),</span>
+<span class="c1">// entity body compression is done according to the scheme indicated in the `Accept-Encoding` request header.</span>
+<span class="c1">// Compression is not performed when the header is not present or when the header value is &quot;identity&quot;.</span>
+<span class="c1">// [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CompressionConfig.html) annotation</span>
+<span class="c1">// provides the related configurations.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">compression</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">enable</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">COMPRESSION_AUTO</span>
@@ -22,11 +30,21 @@ redirect_from:
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">({</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Auto compression&quot;</span><span class="p">});</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">({</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Auto compression&quot;</span><span class="p">});</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS)</span>
+<span class="c1">// guarantees a compressed response entity body. Compression scheme is set to the</span>
+<span class="c1">// value indicated in Accept-Encoding request header. When a particular header is not present or the header</span>
+<span class="c1">// value is &quot;identity&quot;, encoding is done using the &quot;gzip&quot; scheme.</span>
+<span class="c1">// By default, Ballerina compresses any MIME type unless they are mentioned under `contentTypes`.</span>
+<span class="c1">// Compression can be constrained to certain MIME types by specifying them as an array of MIME types.</span>
+<span class="c1">// In this example encoding is applied to &quot;text/plain&quot; responses only.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">compression</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">enable</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">COMPRESSION_ALWAYS</span><span class="p">,</span>
@@ -34,6 +52,8 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">alwaysCompress</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
+    <span class="c1">// Since compression is only constrained to &quot;text/plain&quot; MIME type,</span>
+    <span class="c1">// `getJson` resource does not compress the response entity body.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Always but constrained by content-type&quot;</span><span class="p">};</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
@@ -41,6 +61,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+    <span class="c1">// The response entity body is always compressed since MIME type has matched.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getString</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Type : This is a string&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -48,10 +69,20 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// The HTTP client can indicate the [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Compression)</span>
+<span class="c1">// behavior (&quot;AUTO&quot;, &quot;ALWAYS&quot;, &quot;NEVER&quot;) for content negotiation.</span>
+<span class="c1">// Depending on the compression option values, the `Accept-Encoding` header is sent along with the request.</span>
+<span class="c1">// In this example, the client compression behavior is set as [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS). If you have not specified</span>
+<span class="c1">// an `Accept-Encoding` header, the client specifies it with &quot;deflate, gzip&quot;. Alternatively, the existing header is sent.</span>
+<span class="c1">// When compression is specified as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.</span>
+<span class="c1">// If the behavior is set as [COMPRESSION_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">compression</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">COMPRESSION_ALWAYS</span>
     <span class="p">}</span>
-<span class="p">);</span><span class="kd">service</span> <span class="nx">passthrough</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">);</span>
+
+<span class="kd">service</span> <span class="nx">passthrough</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
@@ -71,6 +102,9 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO), which is the default value</span>
+<span class="c1">// of the compression config.</span>
 <span class="kd">service</span> <span class="nx">backend</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -80,7 +114,9 @@ redirect_from:
                             <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Accept-Encoding header is not present&quot;</span><span class="p">);</span>
-        <span class="p">}</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>

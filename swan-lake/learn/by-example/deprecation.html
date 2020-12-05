@@ -11,33 +11,56 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// The constant `LKA` is marked as deprecated using the `@deprecated` annotation.</span>
+<span class="c1">// Since it has documentation, the `# # Deprecated` documentation needs to be added as well.</span>
+<span class="c1">// This will appear in the generated documentation.</span>
 <span class="err">#</span> <span class="nx">Country</span> <span class="nx">code</span> <span class="k">for</span> <span class="nx">Sri</span> <span class="nx">Lanka</span><span class="p">.</span>
 <span class="err">#</span> <span class="err">#</span> <span class="nx">Deprecated</span>
 <span class="err">#</span> <span class="nx">This</span> <span class="nx">constant</span> <span class="nx">is</span> <span class="nx">deprecated</span><span class="p">.</span> <span class="nx">Use</span> <span class="nx">the</span> <span class="nx">constant</span> <span class="s">`LK`</span> <span class="nx">instead</span><span class="p">.</span>
 <span class="err">@</span><span class="nx">deprecated</span>
-<span class="nx">public</span> <span class="kd">const</span> <span class="kt">string</span> <span class="nx">LKA</span> <span class="p">=</span> <span class="s">&quot;LKA&quot;</span><span class="p">;</span><span class="err">#</span> <span class="nx">New</span> <span class="nx">country</span> <span class="nx">code</span> <span class="k">for</span> <span class="nx">Sri</span> <span class="nx">Lanka</span><span class="p">.</span>
-<span class="nx">public</span> <span class="kd">const</span> <span class="kt">string</span> <span class="nx">LK</span> <span class="p">=</span> <span class="s">&quot;LK&quot;</span><span class="p">;</span><span class="err">#</span> <span class="nx">Country</span> <span class="nx">code</span> <span class="k">for</span> <span class="nx">USA</span><span class="p">.</span>
+<span class="nx">public</span> <span class="kd">const</span> <span class="kt">string</span> <span class="nx">LKA</span> <span class="p">=</span> <span class="s">&quot;LKA&quot;</span><span class="p">;</span>
+
+<span class="err">#</span> <span class="nx">New</span> <span class="nx">country</span> <span class="nx">code</span> <span class="k">for</span> <span class="nx">Sri</span> <span class="nx">Lanka</span><span class="p">.</span>
+<span class="nx">public</span> <span class="kd">const</span> <span class="kt">string</span> <span class="nx">LK</span> <span class="p">=</span> <span class="s">&quot;LK&quot;</span><span class="p">;</span>
+
+<span class="err">#</span> <span class="nx">Country</span> <span class="nx">code</span> <span class="k">for</span> <span class="nx">USA</span><span class="p">.</span>
 <span class="nx">public</span> <span class="kd">const</span> <span class="kt">string</span> <span class="nx">USA</span> <span class="p">=</span> <span class="s">&quot;USA&quot;</span><span class="p">;</span>
+
+<span class="c1">// The type definition contains both the deprecated constant and its replacement.</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">CountryCode</span> <span class="nx">LK</span><span class="p">|</span><span class="nx">LKA</span><span class="p">|</span><span class="nx">USA</span><span class="p">;</span>
+
+<span class="c1">// The `Address` record type is deprecated, but does not have the `# # Deprecated` documentation.</span>
 <span class="err">@</span><span class="nx">deprecated</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">Address</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">street</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
     <span class="nx">CountryCode</span> <span class="nx">countryCode</span><span class="p">;</span>
 <span class="p">|};</span>
+
+<span class="c1">// The `Person` class type is deprecated, but does not have the `# # Deprecated` documentation.</span>
 <span class="err">@</span><span class="nx">deprecated</span>
 <span class="nx">public</span> <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span> <span class="p">=</span> <span class="s">&quot;Doe&quot;</span><span class="p">;</span>
+    <span class="c1">// Usage of the deprecated record `Address`.</span>
     <span class="nx">Address</span> <span class="nx">addr</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">street</span><span class="p">:</span> <span class="s">&quot;Palm Grove&quot;</span><span class="p">,</span>
         <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo 3&quot;</span><span class="p">,</span>
+        <span class="c1">// Usage of the deprecated constant `LKA`.</span>
         <span class="nx">countryCode</span><span class="p">:</span> <span class="nx">LKA</span>
     <span class="p">};</span>
+
+    <span class="c1">// Object methods can also be deprecated.</span>
     <span class="err">@</span><span class="nx">deprecated</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// The function `createPerson` is marked as deprecated using the `@deprecated` annotation.</span>
+<span class="c1">// Since it has documentation, the `# # Deprecated` documentation needs to be added as well.</span>
 <span class="err">#</span> <span class="nx">Creates</span> <span class="nx">and</span> <span class="nx">returns</span> <span class="nx">a</span> <span class="s">`Person`</span> <span class="nx">object</span> <span class="nx">given</span> <span class="nx">the</span> <span class="nx">parameters</span><span class="p">.</span>
 <span class="err">#</span>
 <span class="err">#</span> <span class="o">+</span> <span class="nx">fname</span> <span class="o">-</span> <span class="nx">First</span> <span class="nx">name</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">person</span>
@@ -53,14 +76,25 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">street</span><span class="p">,</span>
                              <span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">CountryCode</span> <span class="nx">countryCode</span><span class="p">)</span>
                              <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>    <span class="nx">p</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">fname</span><span class="p">;</span>
+
+    <span class="c1">// Usage of the deprecated class `Person`.</span>
+    <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+    <span class="nx">p</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="nx">p</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">=</span> <span class="nx">lname</span><span class="p">;</span>
     <span class="nx">p</span><span class="p">.</span><span class="nx">addr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">street</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">countryCode</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">p</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Usage of the deprecated object `Person` and function `createPerson`.</span>
     <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="s">&quot;Castro Street&quot;</span><span class="p">,</span>
                             <span class="s">&quot;Mountain View&quot;</span><span class="p">,</span> <span class="nx">USA</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());}</span>
+
+    <span class="c1">// Usage of the deprecated object method `getFullName`</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -517,6 +551,10 @@ public function createPerson(string fname, string lname, string street,
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -528,14 +566,25 @@ public function createPerson(string fname, string lname, string street,
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run deprecation.bal
-warning: .::deprecation.bal:26:5: usage of construct &#39;Address&#39; is deprecated
-warning: .::deprecation.bal:30:22: usage of construct &#39;LKA&#39; is deprecated
-warning: .::deprecation.bal:53:38: usage of construct &#39;Person&#39; is deprecated
-warning: .::deprecation.bal:55:5: usage of construct &#39;Person&#39; is deprecated
-warning: .::deprecation.bal:63:5: usage of construct &#39;Person&#39; is deprecated
-warning: .::deprecation.bal:63:16: usage of construct &#39;createPerson(Jane, Doe, Castro Street, Mountain View, USA)&#39; is deprecated
-warning: .::deprecation.bal:66:16: usage of construct &#39;p.getFullName()&#39; is deprecated
-Running executables
+WARNING [deprecation.bal:(35:5,35:12)] usage of construct &#39;Address&#39; is deprecated
+WARNING [deprecation.bal:(39:22,39:25)] usage of construct &#39;LKA&#39; is deprecated
+WARNING [deprecation.bal:(66:38,66:44)] usage of construct &#39;Person&#39; is deprecated
+WARNING [deprecation.bal:(69:5,69:11)] usage of construct &#39;Person&#39; is deprecated
+WARNING [deprecation.bal:(79:5,79:11)] usage of construct &#39;Person&#39; is deprecated
+WARNING [deprecation.bal:(79:16,80:50)] usage of construct &#39;createPerson(Jane, Doe, Castro Street, Mountain View, USA)&#39; is deprecated
+WARNING [deprecation.bal:(83:16,83:31)] usage of construct &#39;p.getFullName()&#39; is deprecated
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Running executable
 </code></pre></div>
 
                                 </td>

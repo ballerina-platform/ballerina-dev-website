@@ -10,7 +10,10 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// An `xml` element with nested children.</span>
     <span class="kt">xml</span> <span class="nx">school</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;school&gt;</span>
 <span class="s">                          &lt;student&gt;</span>
 <span class="s">                              &lt;firstName&gt;Michelle&lt;/firstName&gt;</span>
@@ -31,9 +34,17 @@ redirect_from:
 <span class="s">                              &lt;gpa&gt;3.7&lt;/gpa&gt;</span>
 <span class="s">                          &lt;/student&gt;</span>
 <span class="s">                      &lt;/school&gt;`</span><span class="p">;</span>
+
+    <span class="c1">// The `from` clause works similar to a `foreach` statement.</span>
+    <span class="c1">// The `students` is the concatenated `xml` of the `query expression` results.</span>
     <span class="kt">xml</span> <span class="nx">students</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">studentName</span> <span class="nx">in</span> <span class="nx">school</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">student</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">firstName</span><span class="p">&gt;</span>
+        <span class="c1">// The `limit` clause limits the number of output items.</span>
         <span class="nx">limit</span> <span class="mi">2</span>
-        <span class="nx">select</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">&gt;</span> <span class="nx">studentName</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
+        <span class="c1">// The `select` clause is evaluated for each iteration.</span>
+        <span class="c1">// The emitted values are concatenated to form the `xml` result.</span>
+        <span class="nx">select</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">&gt;</span> <span class="nx">studentName</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 

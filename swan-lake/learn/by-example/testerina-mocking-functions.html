@@ -10,30 +10,57 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="nx">public</span> <span class="kd">function</span> <span class="nx">addValues</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="c1">// This demonstrates different ways to mock functions.</span>
+
+<span class="c1">// This function calls the `intAdd` function and returns the result.</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">addValues</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">intAdd</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function adds two integers and returns the result.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span>
+<span class="c1">// This demonstrates different ways to mock functions.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span><span class="nd">@test:Mock {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
+
+<span class="nd">@test:Mock {</span>
+    <span class="c1">// This specifies a mock function that should replace the</span>
+    <span class="c1">// imported function `math:sqrt`.</span>
     <span class="nx">moduleName</span><span class="p">:</span> <span class="s">&quot;ballerina/math&quot;</span><span class="p">,</span>
     <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;sqrt&quot;</span>
 <span class="p">}</span>
 <span class="nx">test</span><span class="p">:</span><span class="nx">MockFunction</span> <span class="nx">sqrtMockFn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span>
+
+<span class="c1">// This is a mock function that can be called in place of `math:sqrt` function.</span>
 <span class="kd">function</span> <span class="nx">mockSqrt</span><span class="p">(</span><span class="kt">float</span> <span class="nx">val</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
     <span class="k">return</span> <span class="mf">125.0</span><span class="p">;</span>
-<span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testCall</span><span class="p">()</span> <span class="p">{</span>
+   <span class="c1">// This stubs the calls to `math:sqrt` function</span>
+   <span class="c1">// to invoke the specified function.</span>
    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">sqrtMockFn</span><span class="p">).</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;mockSqrt&quot;</span><span class="p">);</span>
    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">math</span><span class="p">:</span><span class="nx">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span> <span class="mf">125.0</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This creates an object for stubbing calls to `intAdd`</span>
+<span class="c1">// which is written in the same module.</span>
 <span class="nd">@test:Mock {</span> <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;intAdd&quot;</span> <span class="p">}</span>
-<span class="nx">test</span><span class="p">:</span><span class="nx">MockFunction</span> <span class="nx">intAddMockFn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span><span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="nx">test</span><span class="p">:</span><span class="nx">MockFunction</span> <span class="nx">intAddMockFn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span>
+
+<span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testReturn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// This stubs the calls to `intAdd` function to return the specified value.</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
+
+    <span class="c1">// This stubs the calls to `intAdd` function to return the specified value</span>
+    <span class="c1">// when the specified arguments are provided.</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
         <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking with arguments failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>

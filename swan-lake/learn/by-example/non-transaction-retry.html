@@ -10,12 +10,26 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The retry statement provides a general-purpose retry</span>
+    <span class="c1">// facility, which is independent of the transactions.</span>
+    <span class="c1">// Here, retrying happens according to the default retry manager</span>
+    <span class="c1">// since there is no custom retry manager being passed to </span>
+    <span class="c1">// the retry operation.</span>
+    <span class="c1">// As defined, retrying happens for maximum 3 times.</span>
     <span class="nx">retry</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Attempting execution...&quot;</span><span class="p">);</span>
+        <span class="c1">// Calls a function, which simulates an error scenario to </span>
+        <span class="c1">// trigger the retry operation.</span>
         <span class="k">return</span> <span class="nx">doWork</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// The function, which may return an error.</span>
 <span class="kd">function</span> <span class="nx">doWork</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">count</span> <span class="p">&lt;</span> <span class="mi">1</span> <span class="p">{</span>
         <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>

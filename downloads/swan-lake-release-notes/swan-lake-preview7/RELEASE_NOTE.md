@@ -5,7 +5,9 @@ title: Release Note
 
 ### Overview of Ballerina Swan Lake Preview 7 
 
-This release is the seventh preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
+This release is the seventh preview version of Ballerina Swan Lake. It is the successor of the fifth preview version (SLP5) and SLP6 is an internal-only release. 
+
+This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -341,16 +343,16 @@ The new high-level APIs below were introduced to provide I/O operations.
 
 1. Introduced code to cloud (c2c) to simplify the experience of developing and deploying Ballerina code in the cloud. Code to cloud builds the containers and required artifacts by deriving the required values from the code without using any annotations.
 
-        ```ballerina
-        import ballerina/http;
-        import ballerina/c2c as _;
+    ```ballerina
+    import ballerina/http;
+    import ballerina/c2c as _;
 
-        service hello on new http:Listener(9090) {
-            resource function sayHello(http:Caller caller, http:Request req) returns error? {
-                check caller->respond("Hello, World!");
-            }
+    service hello on new http:Listener(9090) {
+        resource function sayHello(http:Caller caller, http:Request req) returns error? {
+            check caller->respond("Hello, World!");
         }
-        ```
+    }
+    ```
 
 2. Removed the Kubernetes module and replaced it by the `c2c` module.
 
@@ -358,12 +360,12 @@ The new high-level APIs below were introduced to provide I/O operations.
 
 1. It is no longer possible to specify the version in an import declaration. A specific version can be imported by specifying the package dependency along with the version in the `Ballerina.toml` file.
 
-        ```toml
-        [[dependency]]
-        org = "ballerina"
-        name = "stringutils"
-        version = "0.5.2"
-        ```
+    ```toml
+    [[dependency]]
+    org = "ballerina"
+    name = "stringutils"
+    version = "0.5.2"
+    ```
 
 2. As the initial step of upcoming changes for the error detail, the detail type descriptor of an error type descriptor can no longer be a closed record.
 

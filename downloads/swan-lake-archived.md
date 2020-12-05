@@ -24,7 +24,7 @@ permalink: /downloads/swan-lake-archived/
 <div class="releases-row">
     <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
 
-This release is an internal release only.
+This is an internal-only release.
 
 </div>
 

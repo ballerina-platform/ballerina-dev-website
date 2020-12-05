@@ -10,14 +10,23 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// A tuple-typed binding pattern, which declares the variables `name`, `age`, and</span>
+    <span class="c1">// `address` of type `string`, `int`, and `string` respectively. The members of the tuple value</span>
+    <span class="c1">// given by the assignment expression provides the values for the variables.</span>
     <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">address</span><span class="p">]</span> <span class="p">=</span>
                        <span class="p">[</span><span class="s">&quot;Jack Smith&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;380 Lakewood Dr. Desoto, TX 75115&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="s">&quot; Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="s">&quot; Address: &quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">);</span>
+
+    <span class="c1">// The binding pattern can also be used by providing variables that were declared beforehand.</span>
     <span class="kt">float</span> <span class="nx">latitude</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">longitude</span><span class="p">;</span>
     <span class="p">[</span><span class="nx">latitude</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="mf">37.773972</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.431297</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Latitude: &quot;</span><span class="p">,</span> <span class="nx">latitude</span><span class="p">,</span> <span class="s">&quot; Longitude: &quot;</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">);</span>
+
+    <span class="c1">// Binding patterns can be nested arbitrarily.</span>
     <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">]][</span><span class="nx">eventId</span><span class="p">,</span> <span class="p">[</span><span class="nx">score1</span><span class="p">,</span> <span class="nx">score2</span><span class="p">,</span> <span class="nx">score3</span><span class="p">]]</span> <span class="p">=</span>
                                                      <span class="p">[</span><span class="s">&quot;E335&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">9.8</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">]];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Event Id: &quot;</span><span class="p">,</span> <span class="nx">eventId</span><span class="p">,</span> <span class="s">&quot; Score 1: &quot;</span><span class="p">,</span> <span class="nx">score1</span><span class="p">,</span>

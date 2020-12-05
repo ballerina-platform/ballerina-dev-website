@@ -13,8 +13,17 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
+
+<span class="c1">// Username and password of the MySQL database. This is used in the below</span>
+<span class="c1">// examples when initializing the MySQL connector. You need to change these</span>
+<span class="c1">// based on your setup to try locally.</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
-<span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeClients</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">initializeClients</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Initialize the MySQL Client without any parameters. In that case,</span>
+    <span class="c1">// all parameters will be using the default values:`localhost` for host,</span>
+    <span class="c1">// `3306` for port, and `()` for user, password, and database.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">mysqlClient1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient1</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when initializing the MySQL client without any &quot;</span> <span class="o">+</span>
@@ -23,45 +32,95 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Simple MySQL client created successfully&quot;</span><span class="p">);</span>
         <span class="nx">check</span> <span class="nx">mysqlClient1</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="p">}</span>
+
+    <span class="c1">// Initialize the MySQL client by providing the username and password.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">dbPassword</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL client with user and password created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Initialize the MySQL client by providing the username, password,</span>
+    <span class="c1">// and default host.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient3</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span>
         <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL client with user and password created &quot;</span> <span class="o">+</span>
         <span class="s">&quot;with default host.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Initialize the MySQL client by providing the host, username,</span>
+    <span class="c1">// password, database, and port.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient4</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">dbPassword</span><span class="p">,</span>
         <span class="s">&quot;information_schema&quot;</span><span class="p">,</span> <span class="mi">3306</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL client with host, user, password, database and &quot;</span> <span class="o">+</span>
         <span class="s">&quot;port created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Initialize the MySQL client by providing additional</span>
+    <span class="c1">// MySQL database properties.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Options</span> <span class="nx">mysqlOptions</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// SSL is enabled by default and the default mode is</span>
+        <span class="c1">// `sql:SSL_PREFERRED`. SSL will be disabled, if `ssl` is assigned to</span>
+        <span class="c1">// `()`.</span>
         <span class="nx">ssl</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">mode</span><span class="p">:</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">SSL_PREFERRED</span>        <span class="p">},</span>
+            <span class="c1">// Possible options for mode are `sql:SSL_PREFERRED`,</span>
+            <span class="c1">// `sql:SSL_REQUIRED`, `sql:SSL_VERIFY_CERT`, and</span>
+            <span class="c1">// `sql:SSL_VERIFY_IDENTITY`. For details on each mode, go to</span>
+            <span class="c1">// the MySQL reference (https://dev.mysql.com/doc/refman/8.0/en/using-encrypted-connections.html).</span>
+            <span class="nx">mode</span><span class="p">:</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">SSL_PREFERRED</span>
+
+        <span class="p">},</span>
         <span class="nx">connectTimeoutInSeconds</span><span class="p">:</span> <span class="mi">10</span>
     <span class="p">};</span>
+    <span class="c1">// Initialize the MySQL client with MySQL database options.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient5</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span>
         <span class="nx">options</span> <span class="p">=</span> <span class="nx">mysqlOptions</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL client with database options created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Connection pool is used to share and use the database connections</span>
+    <span class="c1">// efficiently. In the above samples, the global connection pool is</span>
+    <span class="c1">// created and shared among all the database clients since the</span>
+    <span class="c1">// `connectionPool` property is not set.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ConnectionPool</span> <span class="nx">connPool</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// Default max number of open connections in the connection pool is 15.</span>
         <span class="nx">maxOpenConnections</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="c1">// Default max life time of a connection in the connection pool is</span>
+        <span class="c1">// 1800 seconds (30 minutes).</span>
         <span class="nx">maxConnectionLifeTimeInSeconds</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span>
-        <span class="nx">minIdleConnections</span><span class="p">:</span> <span class="mi">5</span>    <span class="p">};</span>
+        <span class="c1">// Default minimum number of idle connections is 15.</span>
+        <span class="nx">minIdleConnections</span><span class="p">:</span> <span class="mi">5</span>
+
+    <span class="p">};</span>
+
+    <span class="c1">// Initialize the MySQL client with the specific connection pool.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient6</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span>
         <span class="nx">options</span> <span class="p">=</span> <span class="nx">mysqlOptions</span><span class="p">,</span> <span class="nx">connectionPool</span> <span class="p">=</span> <span class="nx">connPool</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL client with connection pool created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Initialize the MySQL client with all the parameters.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient7</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">dbPassword</span><span class="p">,</span>
         <span class="s">&quot;information_schema&quot;</span><span class="p">,</span> <span class="mi">3306</span><span class="p">,</span> <span class="nx">mysqlOptions</span><span class="p">,</span> <span class="nx">connPool</span><span class="p">);</span>
+
+    <span class="c1">// All properties are optional.</span>
+    <span class="c1">// Hence, named attributes can be used specifically to assign</span>
+    <span class="c1">// the attributes.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient8</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">host</span> <span class="p">=</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
         <span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span>
         <span class="s">&quot;information_schema&quot;</span><span class="p">,</span> <span class="nx">port</span> <span class="p">=</span> <span class="mi">3306</span><span class="p">,</span> <span class="nx">options</span> <span class="p">=</span> <span class="nx">mysqlOptions</span><span class="p">,</span>
         <span class="nx">connectionPool</span> <span class="p">=</span> <span class="nx">connPool</span><span class="p">);</span>
+
+    <span class="c1">// Close the clients to release the resource</span>
+    <span class="c1">// and destroy the connection pool.</span>
     <span class="nx">check</span> <span class="nx">mysqlClient2</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">mysqlClient3</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">mysqlClient4</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">mysqlClient5</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">mysqlClient6</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">mysqlClient7</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="nx">check</span> <span class="nx">mysqlClient8</span><span class="p">.</span><span class="nx">close</span><span class="p">();}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeClients</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">check</span> <span class="nx">mysqlClient8</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Initialize MySQL clients with different options.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeClients</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred, initialization failed! &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>

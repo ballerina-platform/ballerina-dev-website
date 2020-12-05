@@ -11,42 +11,69 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// To create the `time:Time` object, use either the `currentTime()`,</span>
+    <span class="c1">// `createTime()`, or the `parse()` function.</span>
+    <span class="c1">// This fetches the current time.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">();</span>
     <span class="kt">int</span> <span class="nx">currentTimeMills</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">time</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Current system time in milliseconds: &quot;</span><span class="p">,</span> <span class="nx">currentTimeMills</span><span class="p">);</span>
+    <span class="c1">// Specifies a time with the required year, month, date,</span>
+    <span class="c1">// time, and timezone information.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">timeCreated</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">createTime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span>
         <span class="mi">554</span><span class="p">,</span> <span class="s">&quot;America/Panama&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Created Time: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">timeCreated</span><span class="p">));</span>
+    <span class="c1">// This retrieves the time for a given string representation</span>
+    <span class="c1">// based on the specified string format.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">t1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nb">parse</span><span class="p">(</span><span class="s">&quot;2017-06-26T09:46:22.444-0500&quot;</span><span class="p">,</span>
         <span class="s">&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&quot;</span><span class="p">);</span>
+    <span class="c1">// Prints it as an ISO 8601 formatted string.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Parsed Time: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">t1</span><span class="p">));</span>
+    <span class="c1">// This fetches the formatted string of a given time.</span>
     <span class="kt">string</span> <span class="nx">customTimeString</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">format</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="s">&quot;yyyy-MM-dd-E&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Current system time in custom format: &quot;</span><span class="p">,</span> <span class="nx">customTimeString</span><span class="p">);</span>
+    <span class="c1">// These functions retrieve information related to a time object.</span>
+    <span class="c1">// This fetches the year of a given time.</span>
     <span class="kt">int</span> <span class="nx">year</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getYear</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Year: &quot;</span><span class="p">,</span> <span class="nx">year</span><span class="p">);</span>
+    <span class="c1">// This fetches the month value of a given time.</span>
     <span class="kt">int</span> <span class="nx">month</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getMonth</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Month: &quot;</span><span class="p">,</span> <span class="nx">month</span><span class="p">);</span>
+    <span class="c1">// This fetches the day value of a given time.</span>
     <span class="kt">int</span> <span class="nx">day</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getDay</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Day: &quot;</span><span class="p">,</span> <span class="nx">day</span><span class="p">);</span>
+    <span class="c1">// This fetches the hour value of a given time.</span>
     <span class="kt">int</span> <span class="nx">hour</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getHour</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hour: &quot;</span><span class="p">,</span> <span class="nx">hour</span><span class="p">);</span>
+    <span class="c1">// This fetches the minute value of a given time.</span>
     <span class="kt">int</span> <span class="nx">minute</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getMinute</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Minute: &quot;</span><span class="p">,</span> <span class="nx">minute</span><span class="p">);</span>
+    <span class="c1">// This fetches the seconds value of a given time.</span>
     <span class="kt">int</span> <span class="nx">second</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getSecond</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Second: &quot;</span><span class="p">,</span> <span class="nx">second</span><span class="p">);</span>
+    <span class="c1">// This fetches the millisecond value of a given time.</span>
     <span class="kt">int</span> <span class="nx">milliSecond</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getMilliSecond</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Millisecond: &quot;</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">);</span>
+    <span class="c1">// This fetches the day of the week of a given time.</span>
     <span class="kt">string</span> <span class="nx">weekday</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getWeekday</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Weekday: &quot;</span><span class="p">,</span> <span class="nx">weekday</span><span class="p">);</span>
+    <span class="c1">// This fetches the date component of the time using a single function.</span>
     <span class="p">[</span><span class="nx">year</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="nx">day</span><span class="p">]</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getDate</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Date: &quot;</span><span class="p">,</span> <span class="nx">year</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">day</span><span class="p">);</span>
+    <span class="c1">// This fetches the time component using a single function.</span>
     <span class="p">[</span><span class="nx">hour</span><span class="p">,</span> <span class="nx">minute</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">]</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getTime</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Time: &quot;</span><span class="p">,</span> <span class="nx">hour</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">minute</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">);</span>
+    <span class="c1">// This adds a given duration to a time. This example adds</span>
+    <span class="c1">// one year, one month, and one second to the current time.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">tmAdd</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">addDuration</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After adding a duration: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">tmAdd</span><span class="p">));</span>
+    <span class="c1">// This subtracts a given duration from a time. This example</span>
+    <span class="c1">// subtract sone year, one month, and one second from the current time.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">tmSub</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">subtractDuration</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After subtracting a duration: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">tmSub</span><span class="p">));</span>
+    <span class="c1">// This converts the time to a different timezone.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">t2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">createTime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">554</span><span class="p">,</span>
         <span class="s">&quot;America/Panama&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before converting the time zone: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">t2</span><span class="p">));</span>
@@ -73,9 +100,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="java-exceptions.html">
+                                    <a class="prev" href="file-io.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Java Exceptions</p>
+                                        <p>File I/O</p>
                                     </a>
                                 </div>
                                  

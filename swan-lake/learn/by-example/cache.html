@@ -12,25 +12,54 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">cache</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// This creates a new cache of size 10. The eviction factor is set to 0.2,</span>
+    <span class="c1">// which means at the time of eviction 10*0.2=2 entries get removed from</span>
+    <span class="c1">// the cache.</span>
+    <span class="c1">// The default max age of the cache entry is set to 2 seconds. The cache</span>
+    <span class="c1">// cleanup task runs every 3 seconds and clears all the expired entries.</span>
     <span class="nx">cache</span><span class="p">:</span><span class="nx">Cache</span> <span class="nx">cache</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
         <span class="nx">capacity</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
         <span class="nx">evictionFactor</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
         <span class="nx">defaultMaxAgeInSeconds</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="nx">cleanupIntervalInSeconds</span><span class="p">:</span> <span class="mi">3</span>
     <span class="p">});</span>
+
+    <span class="c1">// Adds a new entry to the cache.</span>
     <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s">&quot;key1&quot;</span><span class="p">,</span> <span class="s">&quot;value1&quot;</span><span class="p">);</span>
+    <span class="c1">// Adds a new entry to the cache by overriding the default max age.</span>
     <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">,</span> <span class="s">&quot;value2&quot;</span><span class="p">,</span> <span class="mi">3600</span><span class="p">);</span>
+
+    <span class="c1">// Checks for the cached key availability.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;key1&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// Fetches the cached value.</span>
         <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;key1&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;key1: &quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// This sends the current worker to the sleep mode for 4 seconds.</span>
+    <span class="c1">// No execution takes place during this period.</span>
+    <span class="c1">// During this time, the cache entry with the key &#39;key1&#39; should be removed</span>
+    <span class="c1">// since the max of it is set to 2 seconds by default. However, the cache</span>
+    <span class="c1">// entry with the key &#39;key2&#39; should exist in the cache.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4000</span><span class="p">);</span>
+
+    <span class="c1">// Get the keys of the cache entries.</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">keys</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: &quot;</span> <span class="o">+</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+
+    <span class="c1">// Get the size of the cache.</span>
     <span class="kt">int</span> <span class="nx">size</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">size</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;size: &quot;</span><span class="p">,</span> <span class="nx">size</span><span class="p">);</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidate</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: &quot;</span><span class="p">,</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
+
+    <span class="c1">// Discard the given cache entry.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidate</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: &quot;</span><span class="p">,</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
+
+    <span class="c1">// Discard all the cache entries of the cache.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidateAll</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>

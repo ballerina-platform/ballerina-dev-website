@@ -14,8 +14,14 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
+
+<span class="c1">// Creates an endpoint for the client.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9092&quot;</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">multipartEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
+
+<span class="c1">// Creates a listener for the service.</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">multipartEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/multiparts&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">multipartResponseEncoder</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
@@ -25,15 +31,25 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">multipartSender</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Creates an enclosing entity to hold the child parts.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">parentPart</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+        <span class="c1">// Creates a child part with the JSON content.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">childPart1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">childPart1</span><span class="p">.</span><span class="nx">setJson</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">});</span>
+        <span class="c1">// Creates another child part with a file.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">childPart2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// This file path is relative to where the Ballerina is running.</span>
+        <span class="c1">//If your file is located outside, please give the</span>
+        <span class="c1">//absolute file path instead.</span>
         <span class="nx">childPart2</span><span class="p">.</span><span class="nx">setFileAsEntityBody</span><span class="p">(</span><span class="s">&quot;./files/test.xml&quot;</span><span class="p">,</span>
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span><span class="p">);</span>
+        <span class="c1">// Creates an array to hold the child parts.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">childParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">childPart1</span><span class="p">,</span> <span class="nx">childPart2</span><span class="p">];</span>
+        <span class="c1">// [Sets the child parts to the parent part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#setBodyParts).</span>
         <span class="nx">parentPart</span><span class="p">.</span><span class="nx">setBodyParts</span><span class="p">(</span><span class="nx">childParts</span><span class="p">,</span>
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_MIXED</span><span class="p">);</span>
+        <span class="c1">// Creates an array to hold the parent part and set it to the response.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">immediatePartsToResponse</span> <span class="p">=</span> <span class="p">[</span><span class="nx">parentPart</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">outResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setBodyParts</span><span class="p">(</span><span class="nx">immediatePartsToResponse</span><span class="p">,</span>
@@ -44,6 +60,8 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Binds the listener to the service.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/multiparts&quot;</span>
 <span class="p">}</span>
@@ -52,14 +70,17 @@ redirect_from:
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/decode_in_response&quot;</span>
     <span class="p">}</span>
+    <span class="c1">// This resource accepts multipart responses.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">multipartReceiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">inResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">returnResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/multiparts/encode_out_response&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// [Extracts the body parts from the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getBodyParts).</span>
             <span class="k">var</span> <span class="nx">parentParts</span> <span class="p">=</span> <span class="nx">returnResult</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">parentParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
+                <span class="c1">//Loops through body parts.</span>
                 <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">parentPart</span> <span class="nx">in</span> <span class="nx">parentParts</span> <span class="p">{</span>
                     <span class="nx">handleNestedParts</span><span class="p">(</span><span class="nx">parentPart</span><span class="p">);</span>
                 <span class="p">}</span>
@@ -75,6 +96,8 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Gets the child parts that are nested within the parent.</span>
 <span class="kd">function</span> <span class="nx">handleNestedParts</span><span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">parentPart</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">contentTypeOfParent</span> <span class="p">=</span> <span class="nx">parentPart</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">contentTypeOfParent</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s">&quot;multipart/&quot;</span><span class="p">))</span> <span class="p">{</span>
@@ -90,9 +113,13 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">//The content logic that handles the body parts</span>
+<span class="c1">//vary based on your requirement.</span>
 <span class="kd">function</span> <span class="nx">handleContent</span><span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">bodyPart</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">baseType</span> <span class="p">=</span> <span class="nx">getBaseType</span><span class="p">(</span><span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">());</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span> <span class="o">||</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// [Extracts `xml` data]((https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#getXml) from the body part.</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getXml</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">strValue</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
@@ -101,6 +128,7 @@ redirect_from:
              <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing XML data&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// [Extracts `json` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#getJson) from the body part.</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;JSON data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
@@ -108,6 +136,7 @@ redirect_from:
              <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing JSON data&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// [Extracts text data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#getText) from the body part.</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Text data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
@@ -115,6 +144,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// [Extracts byte channel](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getByteChannel) from the body part and save it as a file.</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getByteChannel</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
@@ -131,6 +161,8 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">//Gets the base type from a given content type.</span>
 <span class="kd">function</span> <span class="nx">getBaseType</span><span class="p">(</span><span class="kt">string</span> <span class="nx">contentType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">getMediaType</span><span class="p">(</span><span class="nx">contentType</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MediaType</span><span class="p">)</span> <span class="p">{</span>
@@ -139,15 +171,19 @@ redirect_from:
         <span class="nx">panic</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Copies the content from the source channel to the destination channel.</span>
 <span class="kd">function</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dst</span><span class="p">)</span>
                 <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Operation attempts to read a maximum of 1000 bytes.</span>
         <span class="nx">byte</span><span class="p">[]|</span><span class="nx">io</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">//Writes the given content into the channel.</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">dst</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
@@ -161,6 +197,8 @@ redirect_from:
     <span class="p">}</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">//Closes the byte channel.</span>
 <span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">|</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">public</span> <span class="kd">function</span> <span class="nx">close</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">;</span>

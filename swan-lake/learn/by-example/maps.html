@@ -11,39 +11,92 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// A record representing marks received for humanities subjects.</span>
 <span class="nx">type</span> <span class="nx">Humanities</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">history</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">geography</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">;</span>    <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Declare a `map` constrained by the type `string`.</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">;</span>
+
+    <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">codeLiteral</span> <span class="p">=</span> <span class="s">&quot;code&quot;</span><span class="p">;</span>
+
+    <span class="c1">// You can also declare and initialize a `map` with a mapping constructor</span>
+    <span class="c1">// expression.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">addrMap</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// A field can be specified as a key-value pair.</span>
         <span class="nx">line1</span><span class="p">:</span> <span class="s">&quot;No. 20&quot;</span><span class="p">,</span>
         <span class="nx">line2</span><span class="p">:</span> <span class="s">&quot;Palm Grove&quot;</span><span class="p">,</span>
+        <span class="c1">// The value in a key-value pair can be any expression, which evaluates</span>
+        <span class="c1">// to a value of a type that belongs to the constraint type of the map.</span>
         <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo 03&quot;</span><span class="p">,</span>
+        <span class="c1">// A field can also be just a variable reference, which would result</span>
+        <span class="c1">// in the variable name being the field name and the variable itself</span>
+        <span class="c1">// being the value expression.</span>
+        <span class="c1">// This is equivalent to saying `country: country`.</span>
         <span class="nx">country</span><span class="p">,</span>
+        <span class="c1">// The key in a key-value pair can also be a computed key.</span>
+        <span class="c1">// A computed key is defined by specifying the key expression within</span>
+        <span class="c1">// brackets. The key expression must belong to type `string`.</span>
+        <span class="c1">// For a computed key, the key expression is evaluated at runtime and</span>
+        <span class="c1">// the resulting value is used as the key.</span>
         <span class="p">[</span><span class="nx">codeLiteral</span><span class="p">]:</span> <span class="s">&quot;00300&quot;</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">);</span>
-    <span class="kt">string</span><span class="err">?</span> <span class="nx">countryValue</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">[</span><span class="s">&quot;country&quot;</span><span class="p">];</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">countryValue</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Member access can be used to retrieve a value from a map.</span>
+    <span class="c1">// Member access returns the value if a field exists in the map with the</span>
+    <span class="c1">// specified key. Else, it returns `()` if a field does not exist with the specified key.</span>
+    <span class="c1">// Thus, the type of a member access expression for a map is the union of</span>
+    <span class="c1">// the constraint type and the nil type.</span>
+    <span class="kt">string</span><span class="err">?</span> <span class="nx">countryValue</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">[</span><span class="s">&quot;country&quot;</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">countryValue</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">countryValue</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;key &#39;country&#39; not found&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Retrieve a value using the `.get()` method.</span>
+    <span class="c1">// If the map has a field with the specified key, `.get()` returns the value.</span>
+    <span class="c1">// Else, it panics if the map does not have a field with the specified key.</span>
+    <span class="c1">// Thus, the return type of `.get()` when invoked on a map is the map&#39;s constraint type.</span>
     <span class="kt">string</span> <span class="nx">line2Value</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;line2&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">line2Value</span><span class="p">);</span>
+
+    <span class="c1">// The `.hasKey()` function checks if a map contains the specified key.</span>
     <span class="kt">boolean</span> <span class="nx">hasPostalCode</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;postalCode&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">hasPostalCode</span><span class="p">);</span>
+
+    <span class="c1">// Member access expressions can be used on the left hand side of an assignment</span>
+    <span class="c1">// to add fields to a map or update an already-existing field in the map.</span>
     <span class="nx">addrMap</span><span class="p">[</span><span class="s">&quot;postalCode&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;00300&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">);</span>
+
+    <span class="c1">// The `.keys()` method returns the keys of the map as an array.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
+
+    <span class="c1">// Print the number of fields in the map.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// Fields can be removed using the `.remove()` method.</span>
     <span class="kt">string</span> <span class="nx">removedElement</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s">&quot;code&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">);</span>
+
+    <span class="c1">// Maps support functional iteration.</span>
     <span class="nx">addrMap</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="p">});</span>    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">marks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">sam</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nx">jon</span><span class="p">:</span> <span class="mi">60</span><span class="p">};</span>
+    <span class="p">});</span>
+
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">marks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">sam</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nx">jon</span><span class="p">:</span> <span class="mi">60</span><span class="p">};</span>
+
+    <span class="c1">// Calling the `.entries()` method on a map will return a new map with values</span>
+    <span class="c1">// containing the key-value pairs as an array of tuples.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">modifiedMarks</span> <span class="p">=</span> <span class="nx">marks</span><span class="p">.</span><span class="nx">entries</span><span class="p">().</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">([</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">pair</span><span class="p">)</span>
         <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
             <span class="k">var</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">score</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pair</span><span class="p">;</span>
@@ -52,7 +105,16 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">modifiedMarks</span><span class="p">);</span>
+
+    <span class="c1">// Create a record value of type `Humanities`.  </span>
     <span class="nx">Humanities</span> <span class="nx">humanitiesMarks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">history</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="nx">geography</span><span class="p">:</span> <span class="mi">75</span><span class="p">};</span>
+
+    <span class="c1">// A mapping constructor expression can also include a spread field</span>
+    <span class="c1">// referring to another mapping value. When a spread field is specified,</span>
+    <span class="c1">// all the fields of the relevant mapping value are added to the new</span>
+    <span class="c1">// mapping value being created.</span>
+    <span class="c1">// A spread field is used with `humanitiesMarks` to include all the entries</span>
+    <span class="c1">// in `humanitiesMarks` when creating `allMarks`.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">allMarks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">physics</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="o">...</span><span class="nx">humanitiesMarks</span><span class="p">,</span> <span class="nx">chemistry</span><span class="p">:</span> <span class="mi">75</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">allMarks</span><span class="p">);</span>
 <span class="p">}</span>

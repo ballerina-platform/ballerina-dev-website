@@ -10,31 +10,53 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="c1">// This is an anonymous record type descriptor.</span>
     <span class="nx">record</span> <span class="p">{|</span>
         <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
     <span class="p">|}</span> <span class="nx">address</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// There is no difference in how we create normal records vs.</span>
+    <span class="c1">// how we create anonymous records.</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
         <span class="nx">address</span><span class="p">:</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">}</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
+
+    <span class="c1">// Since anonymous records do not have a type name associated with them,</span>
+    <span class="c1">// the record descriptor itself has to be specified when declaring</span>
+    <span class="c1">// variables of an anonymous record type.</span>
     <span class="nx">record</span> <span class="p">{|</span>
         <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-    <span class="p">|}</span> <span class="nx">addr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;UK&quot;</span><span class="p">};</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">addr</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
+    <span class="p">|}</span> <span class="nx">addr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;UK&quot;</span><span class="p">};</span>
+
+    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">addr</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>
+
+    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">fields</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function accepts any record with `anydata`-typed fields.</span>
+<span class="c1">// Anonymous record types are implicitly public.</span>
 <span class="kd">function</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">anydataRecord</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">anydata</span><span class="p">[]</span> <span class="p">{</span>
-    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recField</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
+    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recField</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
         <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">recField</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 

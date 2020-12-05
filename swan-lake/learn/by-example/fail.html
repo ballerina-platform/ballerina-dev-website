@@ -10,20 +10,35 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span><span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">negResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">negResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error returned:&quot;</span><span class="p">,</span> <span class="nx">negResult</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">invalidResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">invalidResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">invalidResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error returned:&quot;</span><span class="p">,</span> <span class="nx">invalidResult</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
      <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// Creates an error with the `InvalidAccountID` as the reason if</span>
+         <span class="c1">//the `accountID` is less than zero.</span>
          <span class="nx">error</span> <span class="nx">invalidAccoundIdError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span>
                                              <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
+         <span class="c1">// Returns the error. The error returned by the `fail` statement should match with the enclosing function&#39;s return type.</span>
          <span class="nx">fail</span> <span class="nx">invalidAccoundIdError</span><span class="p">;</span>
      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// Returns an error with the `AccountNotFound` as the reason if</span>
+         <span class="c1">//the `accountID` is greater than hundred.</span>
          <span class="nx">error</span> <span class="nx">accountNotFoundError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="nx">ACCOUNT_NOT_FOUND</span><span class="p">,</span>
                                             <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
          <span class="nx">fail</span> <span class="nx">accountNotFoundError</span><span class="p">;</span>

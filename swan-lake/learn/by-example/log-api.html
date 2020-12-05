@@ -11,8 +11,17 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;something went wrong!&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Shows the main log levels that are available. By default, all log messages are logged </span>
+    <span class="c1">// to the console at the `INFO` level. In addition to these log levels, </span>
+    <span class="c1">// there are 2 additional levels named `OFF` and `ALL`.</span>
+    <span class="c1">// `OFF` turns off logging and `ALL` enables all the log levels. The log</span>
+    <span class="c1">// level can be configured via a Ballerina configuration file or CLI</span>
+    <span class="c1">// parameters.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="s">&quot;debug log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log with cause&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
@@ -20,7 +29,9 @@ redirect_from:
     <span class="nx">log</span><span class="p">:</span><span class="nx">printTrace</span><span class="p">(</span><span class="s">&quot;trace log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printWarn</span><span class="p">(</span><span class="s">&quot;warn log&quot;</span><span class="p">);</span>
     
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// Logic constructing log messages with expensive operations can alternatively be passed as a function</span>
+    <span class="c1">// pointer implementation. The function will be executed if and only if that particular log level is enabled.</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kt">string</span> <span class="s">`Execution Context: ${runtime:getCallStack().toString()}`</span><span class="p">;</span>
     <span class="p">});</span>
 <span class="p">}</span>
@@ -180,7 +191,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(function() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(isolated function() returns string {
         return string `Execution Context: ${runtime:getCallStack().toString()}`;
     });
 }
@@ -226,7 +237,7 @@ import ballerina/runtime;
 # Note that in this sample, the org name is `ballerina` and the module name is `log`.
 ballerina run log_api.bal
 2019-08-09 11:47:07,334 ERROR [ballerina/log] - error log
-2019-08-09 11:47:07,340 ERROR [ballerina/log] - error log with cause : error something went wrong!
+2019-08-09 11:47:07,340 ERROR [ballerina/log] - error log with cause : error(&quot;something went wrong!&quot;)
 2019-08-09 11:47:07,341 INFO  [ballerina/log] - info log
 2019-08-09 11:47:07,342 WARN  [ballerina/log] - warn log
 </code></pre></div>
@@ -244,7 +255,7 @@ ballerina run log_api.bal
 ballerina run log_api.bal --b7a.log.level=TRACE 
 2019-08-09 11:48:04,411 DEBUG [ballerina/log] - debug log
 2019-08-09 11:48:04,415 ERROR [ballerina/log] - error log
-2019-08-09 11:48:04,416 ERROR [ballerina/log] - error log with cause : error something went wrong!
+2019-08-09 11:48:04,416 ERROR [ballerina/log] - error log with cause : error(&quot;something went wrong!&quot;)
 2019-08-09 11:48:04,416 INFO  [ballerina/log] - info log
 2019-08-09 11:48:04,417 TRACE [ballerina/log] - trace log
 2019-08-09 11:48:04,421 WARN  [ballerina/log] - warn log

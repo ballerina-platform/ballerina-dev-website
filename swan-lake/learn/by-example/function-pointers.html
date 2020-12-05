@@ -10,15 +10,28 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">v1</span> <span class="o">+</span> <span class="nx">v2</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="kt">int</span> <span class="nx">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="kt">int</span> <span class="nx">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">v1</span> <span class="o">*</span> <span class="nx">v2</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Here, the function pointer is used as a parameter. A function pointer can be invoked similar</span>
+<span class="c1">// to how a normal function is invoked.</span>
 <span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="nx">func</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v2</span><span class="p">)</span>
                                                             <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">v1</span><span class="p">,</span> <span class="nx">v2</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The function name `add` serves as a function pointer argument in the</span>
+    <span class="c1">// call to the `process()` function. Function names can be thought of as final variables</span>
+    <span class="c1">// since although you can use them like a regular variable, you cannot</span>
+    <span class="c1">// modify the values they are associated with.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Process Add 1, 2: &quot;</span><span class="p">,</span> <span class="nx">process</span><span class="p">(</span><span class="nx">add</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Process Multiply 3, 4: &quot;</span><span class="p">,</span> <span class="nx">process</span><span class="p">(</span><span class="nx">multiply</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span> 
 <span class="p">}</span>

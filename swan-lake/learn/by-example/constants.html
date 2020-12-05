@@ -11,15 +11,37 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Constants are defined using the `const` modifier.</span>
 <span class="kd">const</span> <span class="kt">float</span> <span class="nx">PI</span> <span class="p">=</span> <span class="mf">3.14159</span><span class="p">;</span>
+
+<span class="c1">// Constants can be defined without the type. Then, the type is inferred from the right hand side.</span>
 <span class="kd">const</span> <span class="nx">SPEED_OF_LIGHT</span> <span class="p">=</span> <span class="mi">299792000</span><span class="p">;</span>
+
+<span class="c1">// Constants of the `map` type can be defined as well. The constraint of these constant maps should be either a simple type</span>
+<span class="c1">// or another map type, which should eventually have a simple type constraint. `var` cannot be used to declare</span>
+<span class="c1">// constant maps. Therefore, the correct type should be present when declaring the constant.</span>
 <span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ID&quot;</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span> <span class="p">};</span>
+
+<span class="c1">// Constant with nested map literals.</span>
 <span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span> <span class="nx">complexData</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span>
-                                       <span class="s">&quot;data2&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span> <span class="p">}</span> <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;PI: &quot;</span><span class="p">,</span> <span class="nx">PI</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">distanceOfALightYear</span> <span class="p">=</span> <span class="nx">SPEED_OF_LIGHT</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Distance of a light year (meters): &quot;</span><span class="p">,</span> <span class="nx">distanceOfALightYear</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                                       <span class="s">&quot;data2&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span> <span class="p">}</span> <span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;PI: &quot;</span><span class="p">,</span> <span class="nx">PI</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">distanceOfALightYear</span> <span class="p">=</span> <span class="nx">SPEED_OF_LIGHT</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Distance of a light year (meters): &quot;</span><span class="p">,</span> <span class="nx">distanceOfALightYear</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">complexData</span><span class="p">);</span>
+
+    <span class="c1">// Values of a constant map can be accessed and used as usual.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">complexData</span><span class="p">[</span><span class="s">&quot;data&quot;</span><span class="p">][</span><span class="s">&quot;user&quot;</span><span class="p">]);</span>
+
+    <span class="c1">// However, updating a constant map similar to the following will produce a compile-time error:</span>
+    <span class="c1">// data.ID = &quot;4321&quot;;</span>
+    <span class="c1">// data.newField = 10;</span>
 <span class="p">}</span>
 </pre></div>
 

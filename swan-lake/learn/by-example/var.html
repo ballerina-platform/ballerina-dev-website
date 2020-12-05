@@ -10,9 +10,15 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The variable type is inferred from the expression on the right-hand side.</span>
+    <span class="c1">// This is the same as `int k = 5`;</span>
     <span class="k">var</span> <span class="nx">k</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="nx">k</span><span class="p">);</span>
+
+    <span class="c1">// The type of `strVar` is `string`.</span>
     <span class="k">var</span> <span class="nx">strVar</span> <span class="p">=</span> <span class="s">&quot;Hello!&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">strVar</span><span class="p">);</span>
 <span class="p">}</span>

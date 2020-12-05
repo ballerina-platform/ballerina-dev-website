@@ -11,6 +11,8 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// A record representing a `Person`.</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
@@ -18,18 +20,25 @@ redirect_from:
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
     <span class="nx">Address</span> <span class="nx">address</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="c1">// A record representing an `Address`.</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">Address</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">state</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">street</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Define an `Address` value.</span>
     <span class="nx">Address</span> <span class="nx">address</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">,</span>
         <span class="nx">state</span><span class="p">:</span> <span class="s">&quot;NC&quot;</span><span class="p">,</span>
         <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Raleigh&quot;</span><span class="p">,</span>
         <span class="nx">street</span><span class="p">:</span> <span class="s">&quot;Daniels St&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Define a `Person` value.</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
@@ -37,8 +46,16 @@ redirect_from:
         <span class="nx">salary</span><span class="p">:</span> <span class="mf">8000.0</span><span class="p">,</span>
         <span class="nx">address</span><span class="p">:</span> <span class="nx">address</span>
     <span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source value: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
+
+    <span class="c1">// Invoke the `.clone()` method. The return type is also `Person`.</span>
+    <span class="c1">// Provided that the type of the value being cloned belongs to `anydata`, the return type of `.clone()` would be</span>
+    <span class="c1">// the same as the type of the value being cloned.</span>
+    <span class="c1">// E.g., `anydata result = anydataValue.clone();` where `anydataValue` is a variable of type `anydata`.</span>
+    <span class="nx">Person</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source value: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Cloned value: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="c1">// Check reference inequality between the original value and the cloned value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source and Clone are at two different memory locations: &quot;</span><span class="p">,</span>
                 <span class="nx">result</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
 <span class="p">}</span>

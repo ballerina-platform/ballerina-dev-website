@@ -10,31 +10,53 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Address</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Address</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">street</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">state</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">zipcode</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">Address</span> <span class="nx">address</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    
+    <span class="c1">// A record-typed binding pattern, which declares the variables `name`, `age`, and</span>
+    <span class="c1">// `address` of type `string`, `int`, and `Address` respectively. The fields of the record value</span>
+    <span class="c1">// given by the assignment expression provides the values for the variables. </span>
+    <span class="c1">// Since `Person` is an open record, the `...otherFields` variable represents a rest parameter of </span>
+    <span class="c1">// type `map&lt;anydata|error&gt;`, which holds remaining fields of the record that had not been matched.</span>
     <span class="nx">Person</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="nx">myName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">myAge</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">myAddress</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherFields</span>
         <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;My Name: &quot;</span><span class="p">,</span> <span class="nx">myName</span><span class="p">,</span> <span class="s">&quot; My Age: &quot;</span><span class="p">,</span> <span class="nx">myAge</span><span class="p">,</span>
                 <span class="s">&quot; My Address: &quot;</span><span class="p">,</span> <span class="nx">myAddress</span><span class="p">,</span> <span class="s">&quot; Other Fields: &quot;</span><span class="p">,</span> <span class="nx">otherFields</span><span class="p">);</span>
+
+    <span class="c1">// If a field name is not given, the name of the variable will be considered as the field name as well</span>
+    <span class="c1">// i.e., `Person {name, age, address}` is same as Person `{name: name, age: age, address: address}`.</span>
+    <span class="c1">// Since a rest parameter is not given, all the remaining fields are ignored.</span>
     <span class="nx">Person</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">address</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="s">&quot; Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="s">&quot; Address: &quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">);</span>
+
+    <span class="c1">// Record-typed binding patterns can be used with `var` to infer the type from the context. In the current situation,</span>
+    <span class="c1">// the type is resolved by the value presented from the assignment expression.    </span>
     <span class="k">var</span> <span class="p">{</span><span class="nx">street</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getAddress</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;City: &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="s">&quot; State: &quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="s">&quot; State: &quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span>
                                                     <span class="s">&quot; Zip Code: &quot;</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getAddress</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Address</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getAddress</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Address</span> <span class="p">{</span>
     <span class="nx">Address</span> <span class="nx">address</span> <span class="p">=</span> <span class="p">{</span><span class="nx">street</span><span class="p">:</span> <span class="s">&quot;380 Lakewood Dr.&quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Desoto&quot;</span><span class="p">,</span>
                                                 <span class="nx">state</span><span class="p">:</span> <span class="s">&quot;TX&quot;</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">:</span> <span class="s">&quot;75115&quot;</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">address</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">Address</span> <span class="nx">address</span> <span class="p">=</span> <span class="nx">getAddress</span><span class="p">();</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jack Smith&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="nx">address</span><span class="p">,</span>
                                             <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span><span class="p">};</span>

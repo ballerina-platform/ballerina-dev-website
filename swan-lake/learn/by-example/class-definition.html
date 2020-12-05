@@ -11,16 +11,32 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Defines a class called `Person`. It contains `public`, `private`, and module-level visible fields along with their types.</span>
+<span class="c1">// For fields, the default value must be specified if an explicit object initializer method is not defined.</span>
 <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// If you need to have a field with its own type, you need to make that field defaultable</span>
+    <span class="c1">// (i.e., able to specify a default value).</span>
+    <span class="c1">// Here, the `parent` field is made defaultable by allowing it to have nil as a value.</span>
     <span class="nx">public</span> <span class="nx">Person</span><span class="err">?</span> <span class="nx">parent</span> <span class="p">=</span> <span class="p">();</span>
+    <span class="c1">// Private fields are only visible within the object and its functions.</span>
     <span class="nx">private</span> <span class="kt">string</span> <span class="nx">email</span> <span class="p">=</span> <span class="s">&quot;default@abc.com&quot;</span><span class="p">;</span>
+    <span class="c1">// Protected fields (i.e., no access modifiers) are visible only within the same module.</span>
     <span class="kt">string</span> <span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;No 20, Palm grove&quot;</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// There are three ways to initialize a `Person` object.</span>
     <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+
+    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+
+    <span class="c1">// This type of initialization is useful when you cannot determine the type of the object to be</span>
+    <span class="c1">// created based on the context (e.g., when the left hand side is a union of object types).</span>
     <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p3</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
 <span class="p">}</span>

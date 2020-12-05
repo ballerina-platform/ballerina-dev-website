@@ -2,6 +2,7 @@
 layout: ballerina-blank-page
 title: Release Note
 ---
+
 ### Overview of Ballerina Swan Lake Preview 7 
 
 This release is the seventh preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.

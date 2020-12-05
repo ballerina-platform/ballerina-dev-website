@@ -10,19 +10,48 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Gender</span> <span class="s">&quot;male&quot;</span><span class="p">|</span><span class="s">&quot;female&quot;</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Gender</span> <span class="s">&quot;male&quot;</span><span class="p">|</span><span class="s">&quot;female&quot;</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="c1">// This is a required field without an explicit default value.</span>
+    <span class="c1">// The compiler will not assign default values. Therefore, a value should be specified</span>
+    <span class="c1">// for this field when creating the record.</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">lname</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>    <span class="nx">Gender</span> <span class="nx">gender</span><span class="p">;</span>
+    <span class="c1">// This is a required field with an explicit default value specified.</span>
+    <span class="kt">string</span> <span class="nx">lname</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+    <span class="nx">Gender</span> <span class="nx">gender</span><span class="p">;</span>
+    <span class="c1">// Adding `?` following the identifier marks the field as an optional field.</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="err">?</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Default values are not given for the required fields `fname` and `gender` in the record type descriptor.</span>
+    <span class="c1">// Therefore, values must be specified for `fname` and `gender` when creating the record.</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span><span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">};</span>
+
+    <span class="c1">// The `age` field is not present in the record since it is an optional field.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person with the required fields: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">);</span>
+
+    <span class="c1">// Optional fields of the record can be accessed using the `?.` operator.</span>
+    <span class="c1">// This returns the value if the field is present in the record. Returns `()` if not.</span>
+    <span class="c1">// Since the `age` field is not set, optional field access returns `()` here.</span>
     <span class="kt">int</span><span class="err">?</span> <span class="nx">age</span> <span class="p">=</span> <span class="nx">john</span><span class="err">?</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age before setting: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+
+    <span class="c1">// Now set a value for the `age` field. Field access can be used to set the value since</span>
+    <span class="c1">// `age` is a field defined in the type descriptor for `Person`.</span>
     <span class="nx">john</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">25</span><span class="p">;</span>
+    <span class="c1">// Since the `age` field is set, optional field access returns the `int`-typed value.</span>
     <span class="nx">age</span> <span class="p">=</span> <span class="nx">john</span><span class="err">?</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age after setting: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+
+    <span class="c1">// Create a `Person`-typed value specifying a value for the defaultable field `lname`.</span>
     <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;female&quot;</span><span class="p">};</span>
+
+    <span class="c1">// Field values provided when creating a record takes the highest precedence.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person with values assigned to required fields: &quot;</span><span class="p">,</span> <span class="nx">jane</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

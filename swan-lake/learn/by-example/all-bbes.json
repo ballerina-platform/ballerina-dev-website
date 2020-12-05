@@ -100,10 +100,6 @@
             {
                 "name": "The Main Function",
                 "url": "the-main-function"
-            },
-            {
-                "name": "Isolated Functions",
-                "url": "isolated-functions"
             }
         ]
     },
@@ -250,6 +246,10 @@
             {
                 "name": "Let Expression",
                 "url": "let-expression"
+            },
+            {
+                "name": "Configurable Variables",
+                "url": "configurable"
             }
         ]
     },
@@ -529,40 +529,21 @@
         ]
     },
     {
-        "title": "I/O",
-        "column": 3,
+        "title": "Isolation",
+        "column": 2,
         "category": "Language concepts",
-        "samples": [{
-                "name": "Byte I/O",
-                "url": "byte-io"
+        "samples": [
+            {
+                "name": "Isolated Objects",
+                "url": "isolated-objects"
             },
             {
-                "name": "Data I/O",
-                "url": "data-io"
+                "name": "Isolated Variables",
+                "url": "isolated-variables"
             },
             {
-                "name": "Record I/O",
-                "url": "record-io"
-            },
-            {
-                "name": "CSV I/O",
-                "url": "csv-io"
-            },
-            {
-                "name": "JSON I/O",
-                "url": "json-io"
-            },
-            {
-                "name": "XML I/O",
-                "url": "xml-io"
-            },
-            {
-                "name": "Read/Write Files",
-                "url": "character-io"
-            },
-            {
-                "name": "JSON to CSV Transform",
-                "url": "json-csv"
+                "name": "Isolated Functions",
+                "url": "isolated-functions"
             }
         ]
     },
@@ -598,6 +579,41 @@
             {
                 "name": "Java Exceptions",
                 "url": "java-exceptions"
+            }
+        ]
+    },
+    {
+        "title": "I/O",
+        "column": 3,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Byte I/O",
+                "url": "byte-io"
+            },
+            {
+                "name": "Data I/O",
+                "url": "data-io"
+            },
+            {
+                "name": "Record I/O",
+                "url": "record-io"
+            },
+            {
+                "name": "CSV I/O",
+                "url": "csv-io"
+            },
+            {
+                "name": "JSON I/O",
+                "url": "json-io"
+            },
+            {
+                "name": "XML I/O",
+                "url": "xml-io"
+            },
+            {
+                "name": "File I/O",
+                "url": "file-io"
             }
         ]
     },
@@ -737,24 +753,14 @@
                 "githubLink": "https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment"
             },
             {
-                "name": "Kubernetes Deployment",
-                "url": "kubernetes-deployment",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/kubernetes-deployment"
-            },
-            {
-                "name": "OpenShift Deployment",
-                "url": "openshift-deployment",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/openshift-deployment"
+                "name": "Code to Cloud Deployment",
+                "url": "c2c-deployment",
+                "githubLink": "https://github.com/ballerina-platform/module-ballerina-c2c/tree/master/c2c-extension-examples/examples/c2c-deployment"
             },
             {
                 "name": "AWS Lambda Deployment",
                 "url": "aws-lambda-deployment",
                 "githubLink": "https://github.com/ballerina-platform/module-ballerinax-aws.lambda/tree/master/awslambda-extension-examples/examples/aws-lambda-deployment"
-            },
-            {
-                "name": "Knative Deployment",
-                "url": "knative-deployment",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/knative-deployment"
             },
             {
                 "name": "Azure Functions",

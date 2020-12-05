@@ -11,27 +11,69 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">object</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">object</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">;</span>
+    <span class="c1">// Create a raw template with the `name` variable interpolated in the</span>
+    <span class="c1">// literal.</span>
     <span class="err">&#39;</span><span class="nx">object</span><span class="p">:</span><span class="nx">RawTemplate</span> <span class="nx">template</span> <span class="p">=</span> <span class="s">`Hello ${name}!!!`</span><span class="p">;</span>
+    <span class="c1">// The string literal portions of the raw template are accessible</span>
+    <span class="c1">// through the `strings` field. The `strings` field is a list of</span>
+    <span class="c1">// `string` values. The string literal portions of the raw template</span>
+    <span class="c1">// are separated by the interpolations. If there are `n` insertions,</span>
+    <span class="c1">// there will be `n+1` strings.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">strings</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>    <span class="nx">Person</span><span class="p">[]</span> <span class="nx">people</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="c1">// The `insertions` field holds the values obtained by evaluating</span>
+    <span class="c1">// the expressions specified in the interpolations of the raw template.</span>
+    <span class="c1">// In this case, there is just one interpolation: a reference to the</span>
+    <span class="c1">// variable, `name`.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+    <span class="nx">Person</span><span class="p">[]</span> <span class="nx">people</span> <span class="p">=</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-    <span class="p">];</span>    <span class="nx">Query</span><span class="p">[]</span> <span class="nx">queries</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">p</span> <span class="nx">in</span> <span class="nx">people</span> <span class="p">{</span>
+    <span class="p">];</span>
+
+    <span class="nx">Query</span><span class="p">[]</span> <span class="nx">queries</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">p</span> <span class="nx">in</span> <span class="nx">people</span> <span class="p">{</span>
         <span class="nx">queries</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="s">`INSERT INTO Details VALUES (${p.name}, ${p.age})`</span><span class="p">;</span>
         <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">buildQuery</span><span class="p">(</span><span class="nx">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">buildQuery</span><span class="p">(</span><span class="nx">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">buildQuery</span><span class="p">(</span><span class="nx">queries</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
 <span class="p">}</span>
+
+<span class="c1">// A user can define their own raw template types as well. To define a</span>
+<span class="c1">// raw template type,&lt;br&gt;</span>
+<span class="c1">// 1) The type should be an abstract subtype of `object:RawTemplate` type&lt;br&gt;</span>
+<span class="c1">// 2) It should only have the two fields `strings` and `insertions`&lt;br&gt;</span>
+<span class="c1">// 3) It should not have method declarations</span>
 <span class="nx">type</span> <span class="nx">Query</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="c1">// The value space of the raw template type can be constrained to a certain</span>
+    <span class="c1">// extent by selecting suitable types for the `strings` and `insertions`</span>
+    <span class="c1">// fields. For example,&lt;br&gt;</span>
+    <span class="c1">// - Using a fixed-length array type to limit the number of</span>
+    <span class="c1">// strings/interpolations in the raw template.&lt;br&gt;</span>
+    <span class="c1">// - Using a tuple type to ensure the string/interpolation at a given</span>
+    <span class="c1">// position in the raw template expression is of the correct, expected</span>
+    <span class="c1">// type.</span>
     <span class="nx">public</span> <span class="kt">string</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">strings</span><span class="p">;</span>
     <span class="nx">public</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">insertions</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">|};</span><span class="kd">function</span> <span class="nx">buildQuery</span><span class="p">(</span><span class="nx">Query</span> <span class="nx">qu</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="kd">function</span> <span class="nx">buildQuery</span><span class="p">(</span><span class="nx">Query</span> <span class="nx">qu</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// We can do additional checks/verifications on the raw template.</span>
+    <span class="c1">// Here we&#39;re just building a concrete string query from the</span>
+    <span class="c1">// components.</span>
     <span class="k">return</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s%s%s%s%s&quot;</span><span class="p">,</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                         <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
 <span class="p">}</span>

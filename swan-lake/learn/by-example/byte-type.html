@@ -10,12 +10,21 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Define a `byte` variable.</span>
     <span class="nx">byte</span> <span class="nx">byteVal</span> <span class="p">=</span> <span class="mi">12</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteVal</span><span class="p">);</span>
+
+    <span class="c1">// Create a `byte` array using the list constructor.</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">243</span><span class="p">];</span>
+    <span class="c1">// Create a `byte` array using the `base16` byte array literal.</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray2</span> <span class="p">=</span> <span class="nx">base16</span> <span class="s">`aeeecdefabcd12345567888822`</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray3</span> <span class="p">=</span> <span class="nx">base64</span> <span class="s">`aGVsbG8gYmFsbGVyaW5hICEhIQ==`</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray1</span><span class="p">);</span>
+    <span class="c1">// Create a `byte` array using the `base64` byte array literal.</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray3</span> <span class="p">=</span> <span class="nx">base64</span> <span class="s">`aGVsbG8gYmFsbGVyaW5hICEhIQ==`</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray2</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray3</span><span class="p">);</span>
 <span class="p">}</span>

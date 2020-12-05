@@ -12,11 +12,23 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
+
+<span class="c1">// The `parse()` function takes a `string` argument and attempts to convert it to an `int`.</span>
 <span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">&#39;int:fromString(</span><span class="nx">num</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The `checkpanic` unary operator can be used to terminate execution on error.</span>
+    <span class="c1">// Here, `checkpanic` is used to panic if the `parse()`</span>
+    <span class="c1">// function evaluates to `error`. If the actual value returned</span>
+    <span class="c1">// by the function is an `error`, the function immediately panics</span>
+    <span class="c1">// with the error.</span>
+    <span class="c1">// Passing a valid integer as a `string` will return an `int`.</span>
     <span class="kt">int</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;120&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+
+    <span class="c1">// Passing a random `string` will result in a panic.</span>
     <span class="kt">int</span> <span class="nx">z</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;Invalid&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">z</span><span class="p">);</span>
 <span class="p">}</span>

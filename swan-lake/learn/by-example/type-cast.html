@@ -10,31 +10,61 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">empNo</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Department</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Department</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">code</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Define an `Employee` value and cast it to a `Person`.</span>
     <span class="nx">Employee</span> <span class="nx">employee</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">1</span><span class="p">};</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span><span class="nx">employee</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person Name: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person Age: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+
+    <span class="c1">// Cast the value held by the `person` variable to an `Employee`.</span>
+    <span class="c1">// This should succeed since `person` holds an `Employee` value.</span>
     <span class="nx">Employee</span> <span class="nx">employeeTwo</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span><span class="nx">person</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Name: &quot;</span><span class="p">,</span> <span class="nx">employeeTwo</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Age: &quot;</span><span class="p">,</span> <span class="nx">employeeTwo</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+
+    <span class="c1">// Cast an `int` value held by an `anydata` typed variable as an</span>
+    <span class="c1">// `int` value.</span>
     <span class="nx">anydata</span> <span class="nx">value</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Integer Value: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
+
+    <span class="c1">// Use the type cast expression with `value`, which currently holds</span>
+    <span class="c1">// an `int` value, to cast it to `float`.</span>
+    <span class="c1">// A numeric conversion would happen from `int` to `float`.</span>
     <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Converted Float Value: &quot;</span><span class="p">,</span> <span class="nx">f</span><span class="p">);</span>
+
+    <span class="c1">// Casting to a union type would also work similarly.</span>
+    <span class="c1">// If `value` belongs to the union type, the resultant value would</span>
+    <span class="c1">// be `value` itself. Else, if applicable, a numeric conversion will</span>
+    <span class="c1">// be attempted.</span>
+    <span class="c1">// A numeric conversion would happen from `int` to `float` here.</span>
     <span class="kt">float</span><span class="p">|</span><span class="kt">boolean</span> <span class="nx">u</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">|</span><span class="kt">boolean</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Converted Float Value: &quot;</span><span class="p">,</span> <span class="nx">u</span><span class="p">);</span>
+
+    <span class="c1">// Assign `employee` to `value`.</span>
     <span class="nx">value</span> <span class="p">=</span> <span class="nx">employee</span><span class="p">;</span>
+    <span class="c1">// Casting a value to an incorrect type (the value does not belong</span>
+    <span class="c1">// to the type and numeric conversion is not possible) would result</span>
+    <span class="c1">// in an abrupt completion with a panic.</span>
     <span class="nx">Department</span> <span class="nx">department</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Department</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

@@ -10,19 +10,35 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
+                <div class="highlight"><pre><span class="c1">// This is the server implementation for the unary blocking/unblocking scenario.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nd">@grpc:ServiceDescriptor {</span>
+    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
+    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
                              <span class="nx">grpc</span><span class="p">:</span><span class="nx">Headers</span> <span class="nx">headers</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="c1">// Reads custom headers in request message.</span>
         <span class="kt">string</span> <span class="nx">reqHeader</span> <span class="p">=</span> <span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;client_header_key&quot;</span><span class="p">)</span> <span class="err">?</span><span class="p">:</span> <span class="s">&quot;none&quot;</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received header value: &quot;</span> <span class="o">+</span> <span class="nx">reqHeader</span><span class="p">);</span>
+
+        <span class="c1">// Writes custom headers to response message.</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Headers</span> <span class="nx">resHeader</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">resHeader</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="s">&quot;server_header_key&quot;</span><span class="p">,</span> <span class="s">&quot;Response Header value&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Sends response message with headers.</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="nx">resHeader</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
+
+        <span class="c1">// Sends `completed` notification to caller.</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in sending completed notification to caller&quot;</span><span class="p">,</span>
@@ -30,13 +46,23 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+<span class="c1">// This is client implementation for unary blocking scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Client endpoint configuration.</span>
     <span class="nx">HelloWorldBlockingClient</span> <span class="nx">helloWorldBlockingEp</span> <span class="p">=</span>
                                              <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Writes custom headers to request message.</span>
     <span class="nx">grpc</span><span class="p">:</span><span class="nx">Headers</span> <span class="nx">headers</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">headers</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="s">&quot;client_header_key&quot;</span><span class="p">,</span> <span class="s">&quot;Request Header Value&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Executes unary blocking call with headers.</span>
     <span class="k">var</span> <span class="nx">unionResp</span> <span class="p">=</span> <span class="nx">helloWorldBlockingEp</span><span class="o">-&gt;</span><span class="nx">hello</span><span class="p">(</span><span class="s">&quot;WSO2&quot;</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+
+    <span class="c1">// Reads message and headers from response.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">unionResp</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">unionResp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -277,7 +303,11 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorld on new grpc:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
+service HelloWorld on new grpc:Listener(9090) {
 </code></pre></div>
 
                                 </td>

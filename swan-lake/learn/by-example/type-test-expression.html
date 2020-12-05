@@ -10,10 +10,16 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">any</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Checks whether the actual value of the `any` type variable is a `string`.</span>
     <span class="kt">boolean</span> <span class="nx">isString</span> <span class="p">=</span> <span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is &#39;message&#39; a string? &quot;</span><span class="p">,</span> <span class="nx">isString</span><span class="p">);</span>
+
+    <span class="c1">// The type test can be used as a condition of an `if` statement.</span>
     <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;message&#39; is an int with value: &quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -22,35 +28,55 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;message&#39; is not an int or string, and has the value: &quot;</span><span class="p">,</span>
                     <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// The type test can be used to find the type of a value held by a</span>
+    <span class="c1">// union-typed variable.</span>
     <span class="nx">Student</span> <span class="nx">alex</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span> <span class="p">};</span>
     <span class="nx">Student</span><span class="p">|</span><span class="nx">Person</span><span class="p">|</span><span class="nx">Vehicle</span> <span class="nx">entity</span> <span class="p">=</span> <span class="nx">alex</span><span class="p">;</span>
+
+    <span class="c1">// Type of `entity` is `Student`. Therefore, the `if` check will pass.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">entity</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is a student&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is not a student&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Type of `entity` is `Student`. However, it is structurally equivalent to `Person`.</span>
+    <span class="c1">// Therefore, the `if` check will pass.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">entity</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is a person&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is not a person&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Type of `entity` is Student. It is not structurally equivalent to `Vehicle`.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">entity</span> <span class="nx">is</span> <span class="nx">Vehicle</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is a vehicle&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is not a vehicle&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// The type test expression can be used with any expression.</span>
     <span class="kt">boolean</span> <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">createEntity</span><span class="p">(</span><span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Did createEntity(\&quot;student\&quot;) return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
     <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">createEntity</span><span class="p">(</span><span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Did createEntity(\&quot;vehicle\&quot;) return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Vehicle</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Vehicle</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">brand</span><span class="p">;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">createEntity</span><span class="p">(</span><span class="kt">string</span> <span class="nx">entityType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">createEntity</span><span class="p">(</span><span class="kt">string</span> <span class="nx">entityType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">entityType</span> <span class="o">==</span> <span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span> <span class="p">};</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">entityType</span> <span class="o">==</span> <span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="p">{</span>
@@ -238,7 +264,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The type test can be used to find the runtime type of union type variables.</p>
+                                            <p>The type test can be used to find the type of a value held by a
+ union-typed variable.</p>
 
                                         </div>
                                     </div>
@@ -308,7 +335,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type of <code>entity</code> is Student. However, it is not structurally equivalent to <code>Vehicle</code>.</p>
+                                            <p>Type of <code>entity</code> is Student. It is not structurally equivalent to <code>Vehicle</code>.</p>
 
                                         </div>
                                     </div>

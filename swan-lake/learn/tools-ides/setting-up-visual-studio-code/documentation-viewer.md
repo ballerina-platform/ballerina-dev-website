@@ -1,7 +1,7 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Documentation Viewer
-permalink: /swan-lake/learn/setting-up-visual-studio-code/documentation-viewer/
+permalink: /swan-lake/learn/getting-started/setting-up-visual-studio-code/documentation-viewer/
 active: documentation-viewer
 intro: The VS Code Ballerina extension is shipped with a Documentation Viewer. You can add documentation for the functions and other public entities in your module for the reference of other users of it. 
 redirect_from:

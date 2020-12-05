@@ -10,34 +10,71 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
 <span class="p">|};</span>
+
+<span class="c1">// This is the `type` created to represent a data row.</span>
+<span class="c1">// The type of the value of the ID field is `readonly` and the field itself cannot be mutated.</span>
+<span class="c1">// The ID is the unique identifier of an Employee.</span>
 <span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="c1">// This is a `table` type.</span>
+<span class="c1">// The `EmployeeTable` type has members that are employees, and within the `EmployeeTable`, each member is</span>
+<span class="c1">// uniquely identified by its ID field.</span>
 <span class="nx">type</span> <span class="nx">EmployeeTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-<span class="nx">type</span> <span class="nx">CustomerTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="c1">// You can define a `table` value whose members are of type `map` constrained by `any` type.</span>
+<span class="nx">type</span> <span class="nx">CustomerTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// A `table` constructor works like a `list` constructor.</span>
+    <span class="c1">// The table preserves the order of its members. Iterating over the table gives the</span>
+    <span class="c1">// members of the table sequentially.</span>
     <span class="nx">EmployeeTable</span> <span class="nx">employeeTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
       <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300.50</span><span class="p">},</span>
       <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Bella&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">500.50</span><span class="p">},</span>
       <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">750.0</span><span class="p">}</span>
     <span class="p">];</span>
+
+    <span class="c1">// Prints the `table` data.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Table Information: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">);</span>
+
+    <span class="c1">// Returns the number of members of a `table`.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total number of Employees: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// Adds a new member to the `Employee` table.</span>
     <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Max&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">900.0</span><span class="p">};</span>
     <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
+
+    <span class="c1">// Retrieves a member using the ID field of an Employee.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;New Employee: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+
+    <span class="c1">// Returns the member of a `table` with a given key.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee 1: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+
+    <span class="c1">// Removes the member of a `table` with a given key and returns it.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Information of the removed Employee: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+
+    <span class="c1">// Gives a list of all keys of a `table`.</span>
     <span class="k">var</span> <span class="nx">personTblKeys</span> <span class="p">=</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee table keys: &quot;</span><span class="p">,</span> <span class="nx">personTblKeys</span><span class="p">);</span>
+
+    <span class="c1">// The members of a `table` can be returned as an `array`.</span>
     <span class="nx">Employee</span><span class="p">[]</span> <span class="nx">tableToList</span> <span class="p">=</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">toArray</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee table to list: &quot;</span><span class="p">,</span> <span class="nx">tableToList</span><span class="p">);</span>
+
+    <span class="c1">// Tables are an iterable type and tables support functional iteration operations such as `.forEach()`,</span>
+    <span class="c1">// `.map()`, `.filter()`, and `.reduce()`.</span>
     <span class="kt">string</span> <span class="nx">filtered</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
     <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Employee</span> <span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
            <span class="k">if</span> <span class="p">(</span><span class="nx">employee</span><span class="p">.</span><span class="nx">salary</span> <span class="p">&lt;</span> <span class="mf">400.0</span><span class="p">)</span> <span class="p">{</span>
@@ -46,21 +83,31 @@ redirect_from:
            <span class="p">}</span>
     <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employees with salary &lt; 400.0: &quot;</span><span class="p">,</span> <span class="nx">filtered</span><span class="p">);</span>
+
+    <span class="c1">// `.map()` applies a function to each member of a table and returns a table of the result.</span>
+    <span class="c1">// The resulting table will have the same keys as the argument table.</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">personTab</span> <span class="p">=</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Employee</span> <span class="nx">employee</span><span class="p">)</span>
                                                             <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span><span class="nx">employee</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span><span class="mi">23</span><span class="p">};</span>
     <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person Table Information: &quot;</span><span class="p">,</span> <span class="nx">personTab</span><span class="p">);</span>
+
+    <span class="c1">// Create `table` values with map-constrained members.</span>
     <span class="nx">CustomerTable</span> <span class="nx">customerTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">13</span> <span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Dan&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Bing&quot;</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">23</span> <span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Hay&quot;</span> <span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Kelsey&quot;</span><span class="p">}</span>
     <span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer Table Information: &quot;</span><span class="p">,</span> <span class="nx">customerTab</span><span class="p">);</span>
+
+    <span class="c1">// The table constructor can be used without a contextually-expected type. Member access is not</span>
+    <span class="c1">// allowed here.</span>
     <span class="k">var</span> <span class="nx">studentTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Meena&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Kaur&quot;</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jay&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;Palm Grove, NY&quot;</span><span class="p">}</span>
     <span class="p">];</span>
-   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student Table Information: &quot;</span><span class="p">,</span> <span class="nx">studentTab</span><span class="p">);}</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student Table Information: &quot;</span><span class="p">,</span> <span class="nx">studentTab</span><span class="p">);</span>
+
+<span class="p">}</span>
 </pre></div>
 
             </div>

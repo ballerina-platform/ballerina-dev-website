@@ -1,7 +1,7 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Setting Up Visual Studio Code
-permalink: /swan-lake/learn/setting-up-visual-studio-code/
+permalink: /swan-lake/learn/getting-started/setting-up-visual-studio-code/
 active: setting-up-visual-studio-code
 intro: The VS Code Ballerina extension provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code extension.
 redirect_from:
@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/tools-ides/setting-up-visual-studio-code
   - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/
   - /swan-lake/learn/setting-up-visual-studio-code
+  - /swan-lake/learn/setting-up-visual-studio-code/
 ---
 
 ## Downloading VS Code 
@@ -50,7 +51,7 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 ## Troubleshooting
 
-If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using Mac OS, press 'Command+Q' keys to quit the app and reopen it.
+If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using macOS, press `Command+Q` keys to quit the app and reopen it.
 
 The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 

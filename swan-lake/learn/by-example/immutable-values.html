@@ -10,48 +10,96 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{|</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="err">&#39;</span><span class="nx">class</span><span class="p">;</span>
     <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">marks</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Create an immutable `Details` value, using an intersection type with `readonly`.</span>
     <span class="nx">Details</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableDetails</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;May&quot;</span><span class="p">,</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">112233</span>
     <span class="p">};</span>
+
+    <span class="c1">// Now create an immutable `Student` value similarly.</span>
     <span class="nx">Student</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">student</span> <span class="p">=</span> <span class="p">{</span>
         <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="c1">// Since `immutableDetails` was created as an immutable value it can be used as a member here.</span>
         <span class="nx">details</span><span class="p">:</span> <span class="nx">immutableDetails</span><span class="p">,</span>
+        <span class="c1">// The applicable contextually expected type for `marks` is now `map&lt;int&gt; &amp; readonly`.</span>
+        <span class="c1">// Thus the value for `marks` will be constructed as an immutable map.</span>
         <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">math</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
             <span class="nx">physics</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
             <span class="nx">chemistry</span><span class="p">:</span> <span class="mi">75</span>
         <span class="p">}</span>
     <span class="p">};</span>
+
+    <span class="c1">// `student` and all the fields in `student` will be immutable.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;student is immutable: &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;student.details is immutable: &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;student.marks is immutable: &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">.</span><span class="nx">marks</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="c1">// Create an `anydata`-typed `map` with two entries.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span><span class="p">};</span>
+
+    <span class="c1">// Call `.cloneReadOnly()` on the map `m1` and assign the returned value to another variable.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m2</span> <span class="p">=</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+
+    <span class="c1">// Reference equality checks for `m1` and `m2` should evaluate to false due to a clone being created</span>
+    <span class="c1">// since `m1` is not an immutable value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 === m2: &quot;</span><span class="p">,</span> <span class="nx">m1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m2</span><span class="p">);</span>
+
+    <span class="c1">// Check if `m1` is immutable. This evaluates to false since no changes are done to</span>
+    <span class="c1">// the original value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 is immutable: &quot;</span><span class="p">,</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="c1">// Check if `m2` is immutable. This evaluates to true since the returned clone is</span>
+    <span class="c1">// marked as immutable.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m2 is immutable: &quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="c1">// Attempt to add an entry to the `map` and trap the panic if it results in a panic.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">updateResult</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">addEntryToMap</span><span class="p">(</span><span class="nx">m2</span><span class="p">,</span> <span class="s">&quot;intValTwo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">updateResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// An error should occur since `m2` is immutable.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on update: &quot;</span><span class="p">,</span>
                    <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">updateResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Now call `.cloneReadOnly()` on the immutable value `m2`.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m3</span> <span class="p">=</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+
+    <span class="c1">// Reference equality checks for `m2` and `m3` should evaluate to true due to no clones being created</span>
+    <span class="c1">// since `m2` is already an immutable value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m2 === m3: &quot;</span><span class="p">,</span> <span class="nx">m2</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m3</span><span class="p">);</span>
+
+    <span class="c1">// An `is` check for an immutable value becomes an `is like` check.</span>
+    <span class="c1">// In other words, storage type is not considered.</span>
+    <span class="c1">// Define a `map` of the constraint type `string` or `int` but only with</span>
+    <span class="c1">// values of the type `string`.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m5</span> <span class="p">=</span> <span class="p">{</span><span class="nx">valueType</span><span class="p">:</span> <span class="s">&quot;map&quot;</span><span class="p">,</span> <span class="nx">constraint</span><span class="p">:</span> <span class="s">&quot;string&quot;</span><span class="p">};</span>
+    <span class="c1">// Make the map immutable. The resultant value would only</span>
+    <span class="c1">// contain values of the type `string` and no values can now be</span>
+    <span class="c1">// added to the map.</span>
     <span class="k">var</span> <span class="nx">immutableClonedVal</span> <span class="p">=</span> <span class="nx">m5</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+    <span class="c1">// Checking if the immutable value is of the type `map&lt;string&gt;`. Thus,</span>
+    <span class="c1">// it evaluates to `true`.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">immutableClonedVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;immutableClonedVal is map&lt;string&gt;&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Function to add an entry to a `map`.</span>
 <span class="kd">function</span> <span class="nx">addEntryToMap</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">key</span><span class="p">,</span> <span class="kt">string</span><span class="p">|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">m</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
 <span class="p">}</span>

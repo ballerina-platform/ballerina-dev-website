@@ -12,19 +12,32 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
+
+<span class="c1">// The `dataProvider` attribute allows you to add a data-provider function to the test-case.</span>
 <span class="nd">@test:Config {</span> 
+    <span class="c1">// The `stringDataProvider` function provides the dataset to this function.</span>
     <span class="nx">dataProvider</span><span class="p">:</span> <span class="s">&quot;stringDataProvider&quot;</span> <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testAddingValues</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">fValue</span><span class="p">);</span>
+<span class="c1">// Data is passed to the function as function parameters.</span>
+<span class="kd">function</span> <span class="nx">testAddingValues</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">fValue</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">value1</span> <span class="p">=</span> <span class="nx">val1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">val1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val2</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">sValue</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">value2</span> <span class="p">=</span> <span class="nx">val2</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">val2</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">? res1 : 0;    io:println(</span><span class="s">&quot;Input : [&quot;</span> <span class="o">+</span> <span class="nx">fValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">sValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">res1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Input : [&quot;</span> <span class="o">+</span> <span class="nx">fValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">sValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">,</span> <span class="nx">result1</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Incorrect Sum&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// The data provider function, which returns a `string` value-set.</span>
 <span class="kd">function</span> <span class="nx">stringDataProvider</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">[][])</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[[</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;10&quot;</span><span class="p">,</span> <span class="s">&quot;20&quot;</span><span class="p">,</span> <span class="s">&quot;30&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;6&quot;</span><span class="p">,</span> <span class="s">&quot;11&quot;</span><span class="p">]];</span>
-<span class="p">}</span><span class="nd">@test:Config {</span> 
+<span class="p">}</span>
+
+<span class="nd">@test:Config {</span> 
+    <span class="c1">// The `jsonDataProvider` function provides the dataset to this function.</span>
     <span class="nx">dataProvider</span><span class="p">:</span> <span class="s">&quot;jsonDataProvider&quot;</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testJsonObjects</span><span class="p">(</span><span class="kt">json</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span> <span class="p">};</span>
@@ -34,6 +47,8 @@ redirect_from:
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">sValue</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// The data-provider function, which returns a `json` value-set.</span>
 <span class="kd">function</span> <span class="nx">jsonDataProvider</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">json</span><span class="p">[][])</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[[{</span> <span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span> <span class="p">}]];</span>
 <span class="p">}</span>

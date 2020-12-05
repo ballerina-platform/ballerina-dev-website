@@ -11,20 +11,39 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function takes a `string` argument. However, it does not return a value.</span>
 <span class="kd">function</span> <span class="nx">printValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function takes in two `int` values as arguments and returns their</span>
+<span class="c1">// sum as an integer.</span>
 <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">t</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">t</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// A public function named `main` is considered as a default entry point of a</span>
+<span class="c1">// Ballerina program.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Call the `printValue()` function that prints the value provided.</span>
     <span class="nx">printValue</span><span class="p">(</span><span class="s">&quot;This is a sample text&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Call the `add()` function to retrieve the result of adding two given values.</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+    <span class="c1">// Print the result.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+    <span class="c1">// Ballerina does not allow ignoring the return value of a function</span>
+    <span class="c1">// invocation implicitly unless the return type is `()`. A return value can be ignored</span>
+    <span class="c1">// using `_` if the value may never be an `error` (i.e., the return type of the</span>
+    <span class="c1">// function does not contain `error`).</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

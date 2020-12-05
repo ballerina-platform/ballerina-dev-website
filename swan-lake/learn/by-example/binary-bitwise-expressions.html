@@ -11,20 +11,38 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">385</span><span class="p">;</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">128</span><span class="p">;</span>
+    <span class="c1">// For a bitwise &quot;AND&quot; (`&amp;`) expression, if the type of either operand is a subtype of</span>
+    <span class="c1">// `int:UnsignedK` when K is 8, 16 or 32, then the type of the result is `int:UnsignedN`</span>
+    <span class="c1">// where N is the smallest such K.</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">res1</span> <span class="p">=</span> <span class="nx">a</span> <span class="o">&amp;</span> <span class="nx">b</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 385 &amp; `int:Unsigned8` 128: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Signed16</span> <span class="nx">c</span> <span class="p">=</span> <span class="o">-</span><span class="mi">32700</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 385 &amp; `int:Unsigned8` 128: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
+
+    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Signed16</span> <span class="nx">c</span> <span class="p">=</span> <span class="o">-</span><span class="mi">32700</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">d</span> <span class="p">=</span> <span class="mi">249</span><span class="p">;</span>
+    <span class="c1">// Else, if neither operand is of a type that is a subtype of an unsigned `int` type,</span>
+    <span class="c1">// the type of the result for a bitwise &quot;AND&quot; expression is `int`.</span>
     <span class="kt">int</span> <span class="nx">res2</span> <span class="p">=</span> <span class="nx">c</span> <span class="o">&amp;</span> <span class="nx">d</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Signed16` -32700 &amp; `int` 249: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">e</span> <span class="p">=</span> <span class="mi">254</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Signed16` -32700 &amp; `int` 249: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>
+
+    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">e</span> <span class="p">=</span> <span class="mi">254</span><span class="p">;</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned16</span> <span class="nx">f</span> <span class="p">=</span> <span class="mi">511</span><span class="p">;</span>
+    <span class="c1">// For bitwise &quot;OR&quot; (`|`) and &quot;XOR&quot; (`^`) expressions, if the types of both operands are</span>
+    <span class="c1">// subtypes of `int:UnsignedK` when K is 8, 16 or 32, then the type of the result is</span>
+    <span class="c1">// `int:UnsignedN` where N is the smallest such K.</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">res3</span> <span class="p">=</span> <span class="nx">e</span> <span class="p">|</span> <span class="nx">f</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned8` 254 | `int:Unsigned16` 511: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">);</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">res4</span> <span class="p">=</span> <span class="nx">e</span> <span class="p">^</span> <span class="nx">f</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned8` 254 ^ `int:Unsigned16` 511: &quot;</span><span class="p">,</span> <span class="nx">res4</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">g</span> <span class="p">=</span> <span class="mi">12345678</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned8` 254 ^ `int:Unsigned16` 511: &quot;</span><span class="p">,</span> <span class="nx">res4</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">g</span> <span class="p">=</span> <span class="mi">12345678</span><span class="p">;</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Signed8</span> <span class="nx">h</span> <span class="p">=</span> <span class="o">-</span><span class="mi">127</span><span class="p">;</span>
+    <span class="c1">// Else, if at least one operand&#39;s type is not a subtype of an unsigned `int` type,</span>
+    <span class="c1">// the type of the result for a bitwise &quot;OR&quot; or &quot;XOR&quot; expression is `int`.</span>
     <span class="kt">int</span> <span class="nx">res5</span> <span class="p">=</span> <span class="nx">g</span> <span class="p">|</span> <span class="nx">h</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 12345678 | `int:Signed8` -127: &quot;</span><span class="p">,</span> <span class="nx">res5</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">res6</span> <span class="p">=</span> <span class="nx">g</span> <span class="p">^</span> <span class="nx">h</span><span class="p">;</span>

@@ -11,7 +11,10 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xmlutils</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xmlutils</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Creates a JSON object.</span>
     <span class="kt">json</span> <span class="nx">j1</span> <span class="p">=</span> <span class="p">{</span>
         <span class="s">&quot;Store&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s">&quot;@id&quot;</span><span class="p">:</span> <span class="s">&quot;AST&quot;</span><span class="p">,</span>
@@ -23,8 +26,12 @@ redirect_from:
             <span class="s">&quot;codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;8&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">};</span>
+    <span class="c1">// Converts the JSON object to XML using the default `attributePrefix`</span>
+    <span class="c1">// and the default `arrayEntryTag`.</span>
     <span class="k">var</span> <span class="nx">x1</span> <span class="p">=</span> <span class="nx">xmlutils</span><span class="p">:</span><span class="nx">fromJSON</span><span class="p">(</span><span class="nx">j1</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>    <span class="kt">json</span> <span class="nx">j2</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
+
+    <span class="kt">json</span> <span class="nx">j2</span> <span class="p">=</span> <span class="p">{</span>
         <span class="s">&quot;Store&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s">&quot;#id&quot;</span><span class="p">:</span> <span class="s">&quot;AST&quot;</span><span class="p">,</span>
             <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span>
@@ -35,6 +42,8 @@ redirect_from:
             <span class="s">&quot;codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;8&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">};</span>
+    <span class="c1">// Converts the JSON object to XML using a custom `attributePrefix` (i.e., the `#` character)</span>
+    <span class="c1">// and the custom `arrayEntryTag` (i.e., `wrapper`).</span>
     <span class="k">var</span> <span class="nx">x2</span> <span class="p">=</span> <span class="nx">xmlutils</span><span class="p">:</span><span class="nx">fromJSON</span><span class="p">(</span><span class="nx">j2</span><span class="p">,</span>
                         <span class="p">{</span><span class="nx">attributePrefix</span><span class="p">:</span> <span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="nx">arrayEntryTag</span><span class="p">:</span> <span class="s">&quot;wrapper&quot;</span><span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x2</span><span class="p">);</span>

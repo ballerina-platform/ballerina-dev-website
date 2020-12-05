@@ -1,13 +1,13 @@
 
-- title: Setting up Ballerina
-  url: '#'
-  sublinks:
-    - title: Installing Ballerina
-      url: /swan-lake/learn/installing-ballerina/
-      active: installing-ballerina
-    - title: Setting up Visual Studio Code
-      url: /swan-lake/learn/setting-up-visual-studio-code/
-      active: setting-up-visual-studio-code
+#- title: Setting up Ballerina
+  #url: '#'
+  #sublinks:
+    #- title: Installing Ballerina
+      #url: /swan-lake/learn/installing-ballerina/
+      #active: installing-ballerina
+    #- title: Setting up Visual Studio Code
+      #url: /swan-lake/learn/setting-up-visual-studio-code/
+      #active: setting-up-visual-studio-code
     # - title: Setting up IntelliJ IDEA
     #   url: /learn/setting-up-intellij-idea/
     #   active: setting-up-intellij-idea
@@ -51,12 +51,12 @@
 - title: Deployment
   url: '#' 
   sublinks:
+    - title: Code to Cloud
+      url: /swan-lake/learn/deployment/code-to-cloud/
+      active: code-to-cloud
     - title: Docker
       url: /swan-lake/learn/deployment/docker/
       active: docker
-    - title: Kubernetes
-      url: /swan-lake/learn/deployment/kubernetes/
-      active: kubernetes
     - title: AWS Lambda
       url: /swan-lake/learn/deployment/aws-lambda/
       active: aws-lambda

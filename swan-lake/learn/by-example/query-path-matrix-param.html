@@ -11,13 +11,22 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kd">service</span> <span class="nx">sample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="nx">sample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/path/{foo}&quot;</span>
     <span class="p">}</span>
+    <span class="c1">// The `PathParam` and `QueryParam` parameters extract values from the request URI.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">params</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                 <span class="kt">string</span> <span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getQueryParamValue)</span>
+        <span class="c1">// value for a given parameter key.</span>
         <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Get the [MatrixParams](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getMatrixParams).</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">pathMParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getMatrixParams</span><span class="p">(</span><span class="s">&quot;/sample/path&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">];</span>
         <span class="k">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">];</span>
@@ -27,14 +36,20 @@ redirect_from:
         <span class="k">var</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">[</span><span class="s">&quot;y&quot;</span><span class="p">];</span>
         <span class="kt">string</span> <span class="nx">fooMatrixStr</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`x=${x}, y=${y}`</span><span class="p">;</span>
         <span class="kt">json</span> <span class="nx">matrixJson</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;path&quot;</span><span class="p">:</span> <span class="nx">pathMatrixStr</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="nx">fooMatrixStr</span><span class="p">};</span>
+
+        <span class="c1">// Create a JSON payload with the extracted values.</span>
         <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span>
             <span class="s">&quot;pathParam&quot;</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span>
             <span class="s">&quot;queryParam&quot;</span><span class="p">:</span> <span class="nx">bar</span><span class="p">,</span>
             <span class="s">&quot;matrix&quot;</span><span class="p">:</span> <span class="nx">matrixJson</span>
         <span class="p">};</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// A util method to set the JSON payload to the response message.</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">responseJson</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Send a response to the client.</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>

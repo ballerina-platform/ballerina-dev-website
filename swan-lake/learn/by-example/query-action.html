@@ -10,23 +10,40 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">gpa</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">FullName</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">FullName</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Michelle&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Sadler&quot;</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.5</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">1.9</span> <span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>    <span class="nx">FullName</span><span class="p">[]</span> <span class="nx">nameList</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>
+
+    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>
+
+    <span class="nx">FullName</span><span class="p">[]</span> <span class="nx">nameList</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="c1">// The `query-action` works similar to a `foreach` statement.</span>
+    <span class="c1">// It can be used to iterate through any iterable value.</span>
+    <span class="c1">// The result of the `query-action` is the termination value of the iterable value.</span>
+    <span class="c1">// It can be either an error or `()`.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+        <span class="c1">// The block inside the `do` clause is executed in each iteration.</span>
         <span class="nx">do</span> <span class="p">{</span>
             <span class="nx">FullName</span> <span class="nx">fullName</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
                                   <span class="nx">lastName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">};</span>
             <span class="nx">nameList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">fullName</span><span class="p">);</span>
-        <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">name</span> <span class="nx">in</span> <span class="nx">nameList</span> <span class="p">{</span>
+        <span class="p">};</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">name</span> <span class="nx">in</span> <span class="nx">nameList</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>

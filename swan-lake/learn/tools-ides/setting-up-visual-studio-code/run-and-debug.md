@@ -1,7 +1,7 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Run and Debug
-permalink: /swan-lake/learn/setting-up-visual-studio-code/run-and-debug/
+permalink: /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug
 intro: The VS Code Ballerina extension gives you the  same debugging experience as the conventional VS Code Debugger. Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
 redirect_from:
@@ -34,8 +34,8 @@ You view the output in the **DEBUG CONSOLE**.
 For more information on debugging your code using VS Code, go to [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
 ## Troubleshooting
-- Stepping over code lines in non-blocking paths (eg: action invocations) will not pause VM on next line
-    - workaround: manually put a breakpoint to next line
+- Stepping over code lines in non-blocking paths (eg: action invocations) will not pause VM on the next line
+    - workaround: manually put a breakpoint to the next line
 - There are some cases where stepping over gives unexpected behavior
     - Eg: When there are multiple workers and a wait expression waiting for them, even though step over hit and pass wait line in source, workers are not yet finished execution.
 

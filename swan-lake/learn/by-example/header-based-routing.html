@@ -12,7 +12,9 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">weatherEPConfig</span> <span class="p">=</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">weatherEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">followRedirects</span><span class="p">:</span> <span class="p">{</span><span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">maxCount</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
@@ -22,39 +24,76 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
+
+<span class="c1">//Service is invoked using `basePath` value &quot;/hbr&quot;.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hbr&quot;</span>
-<span class="p">}</span><span class="kd">service</span> <span class="nx">headerBasedRouting</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">service</span> <span class="nx">headerBasedRouting</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// [http:ResourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html) annotation with &#39;GET&#39; method declares the</span>
+    <span class="c1">// HTTP method.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/route&quot;</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hbrResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hbrResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">weatherEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://samples.openweathermap.org&quot;</span><span class="p">,</span>
                                      <span class="nx">weatherEPConfig</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">locationEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
+        <span class="c1">// Create a new outbound request to handle client call.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">newRequest</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// Check whether `x-type` header exists in the request.</span>
         <span class="k">if</span> <span class="p">(!</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="kt">json</span> <span class="nx">errMsg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;&#39;x-type&#39; header is not found&quot;</span><span class="p">};</span>
-            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errMsg</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errMsg</span><span class="p">);</span>
+
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">);</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="c1">//[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getHeader) returns header value of the specified header name.</span>
+        <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">);</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">nameString</span> <span class="o">==</span> <span class="s">&quot;location&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//[post()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#post) remote function represents the &#39;POST&#39; operation</span>
+            <span class="c1">// of the HTTP client.</span>
+            <span class="c1">// Route payload to the relevant service.</span>
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">locationEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/v2/5adddd66300000bd2a4b2912&quot;</span><span class="p">,</span>
-                                        <span class="nx">newRequest</span><span class="p">);</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                                        <span class="nx">newRequest</span><span class="p">);</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">//[get()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#get) remote function can be used to make an http GET call.</span>
             <span class="nx">response</span> <span class="p">=</span>
                 <span class="nx">weatherEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;</span><span class="p">,</span>
-                                 <span class="nx">newRequest</span><span class="p">);</span>        <span class="p">}</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="nd">@untainted&gt;response);            if (result is error) {</span>
+                                 <span class="nx">newRequest</span><span class="p">);</span>
+
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// [respond()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#respond) sends back the inbound clientResponse to the caller</span>
+            <span class="c1">// if no error occurs.</span>
+
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>

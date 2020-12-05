@@ -12,20 +12,35 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+
+<span class="c1">// Let&#39;s create a Ballerina function to load Java classes by linking with the `forName` method of</span>
+<span class="c1">// the `java.lang.Class`. It throws a checked exception `java.lang.ClassNotFoundException`.</span>
+<span class="c1">// Therefore the `loadClass` ballerina function should have the `error` type as part of its return signature.</span>
 <span class="kd">function</span> <span class="nx">loadClass</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">className</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span><span class="p">|</span><span class="nx">error</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;forName&quot;</span><span class="p">,</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.Class&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="c1">// The class `java.util.ArrayDeque` is a resizable array that allows you to add or remove an element from both sides.</span>
+<span class="c1">// Here `newArrayDeque` function is linked with the default constructor of the `java.util.ArrayDeque` class.</span>
 <span class="kd">function</span> <span class="nx">newArrayDeque</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="c1">// The `offer` method in the ArrayDeque class throws a `java.lang.NullPointerException` if the element is null.</span>
 <span class="kd">function</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The `loadClass` function returns union of `handle` or `error`.</span>
     <span class="k">var</span> <span class="nx">classOrError</span> <span class="p">=</span> <span class="nx">loadClass</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;a.b.c.z.SomeClass&quot;</span><span class="p">));</span>
     <span class="k">if</span> <span class="nx">classOrError</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">classOrError</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Here we are sending a null element to `offer` function. The `createNull` function in `ballerina/java`</span>
+    <span class="c1">// module creates a handle value that refers to Java null.</span>
     <span class="k">var</span> <span class="nx">arrayDeque</span> <span class="p">=</span> <span class="nx">newArrayDeque</span><span class="p">();</span>
     <span class="kt">boolean</span><span class="p">|</span><span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">createNull</span><span class="p">());</span>
     <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
@@ -65,9 +80,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="time.html">
+                                    <a class="next" href="byte-io.html">
                                         <span>NEXT ></span>
-                                        <p>Time</p>
+                                        <p>Byte I/O</p>
                                     </a>
                                 </div>
                                 

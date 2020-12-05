@@ -16,6 +16,8 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code
   - /learn/tools-ides/setting-up-visual-studio-code/
   - /learn/setting-up-visual-studio-code
+  - /learn/getting-started/setting-up-visual-studio-code
+  - /learn/getting-started/setting-up-visual-studio-code/
 ---
 
 ## Downloading VS Code 

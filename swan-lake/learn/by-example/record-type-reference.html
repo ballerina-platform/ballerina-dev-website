@@ -10,23 +10,45 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">25</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="c1">// References the `Person` record.</span>
     <span class="o">*</span><span class="nx">Person</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">company</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">designation</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Manager</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">Manager</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="nx">Employee</span><span class="p">[]</span> <span class="nx">team</span><span class="err">?</span><span class="p">;</span>
+    <span class="c1">// References the `Employee` record. Since `Employee` references `Person`,</span>
+    <span class="c1">// `Manager` will have the fields of `Person` and the additional fields</span>
+    <span class="c1">// in `Employee`.</span>
     <span class="o">*</span><span class="nx">Employee</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// `Employee` has all the fields of `Person`.</span>
     <span class="nx">Employee</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span> <span class="nx">designation</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span><span class="p">};</span>
     <span class="nx">Employee</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">designation</span><span class="p">:</span> <span class="s">&quot;UX Engineer&quot;</span><span class="p">};</span>
+
+    <span class="c1">// Type referencing copies the fields including their properties</span>
+    <span class="c1">// (e.g., type, default value, optional status). As it can be seen</span>
+    <span class="c1">// by printing an `Employee` record, the optional field company</span>
+    <span class="c1">// is not included in the record.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>    <span class="nx">Manager</span> <span class="nx">mgr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Mark&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="nx">designation</span><span class="p">:</span> <span class="s">&quot;Engineering Manager&quot;</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>
+
+    <span class="nx">Manager</span> <span class="nx">mgr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Mark&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="nx">designation</span><span class="p">:</span> <span class="s">&quot;Engineering Manager&quot;</span><span class="p">};</span>
     <span class="nx">mgr</span><span class="p">.</span><span class="nx">team</span> <span class="p">=</span> <span class="p">[</span><span class="nx">john</span><span class="p">,</span> <span class="nx">jane</span><span class="p">];</span>
-    <span class="nx">mgr</span><span class="p">.</span><span class="nx">company</span> <span class="p">=</span> <span class="s">&quot;XYZ Inc.&quot;</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">mgr</span><span class="p">);</span>
+    <span class="nx">mgr</span><span class="p">.</span><span class="nx">company</span> <span class="p">=</span> <span class="s">&quot;XYZ Inc.&quot;</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">mgr</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 

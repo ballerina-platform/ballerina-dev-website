@@ -289,6 +289,20 @@ $("table").addClass('table-striped');
 //        $(".cBallerina-io-primitive-types").removeClass('cOpenMenu');
     });
 
+
+    /** 
+     * Privacy policy popup
+     * 
+    */
+    $('.cIUnderstand').click(function () {
+        setCookie('cookie_accepted', '1', 180);
+    });
+    var cookie_policy = is_cookie("cookie_accepted");
+    if (cookie_policy != -1) {
+        $(".cCookie-Policy").addClass('cHide-Policy');
+    }
+    
+
     initCodeLineNumbers();
 
     $('.cBBE-body').each(function() {
@@ -345,8 +359,29 @@ $("table").addClass('table-striped');
             'frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
         $(elem).replaceWith($iframe);
     });
-
+    
 });
+
+//set a cookie in the browser
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+//check the cookie exists
+function is_cookie(cookie_name) {
+    var cookie_string = document.cookie;
+    var cookie_value = "";
+    if (cookie_string.length != 0) {
+        var cookie_value = cookie_string.indexOf(cookie_name);
+    }
+    return cookie_value;
+}
 
 $(function() {
     var pathname = window.location.pathname;

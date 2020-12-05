@@ -14,6 +14,8 @@ redirect_from:
   - /learn/installing-ballerina/#installing-from-source
   - /v1-2/learn/installing-ballerina
   - /v1-2/learn/installing-ballerina/
+  - /learn/getting-started/installing-ballerina/
+  - /learn/getting-started/installing-ballerina
 ---
 
 ## Installing Ballerina via Installers

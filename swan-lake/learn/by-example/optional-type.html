@@ -11,6 +11,8 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function (optionally) returns a `string` value. In this example, `string?` is equivalent to `string|()`.</span>
 <span class="kd">function</span> <span class="nx">getLargestCountryInContinent</span><span class="p">(</span><span class="kt">string</span> <span class="nx">continent</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">continent</span> <span class="p">{</span>
         <span class="s">&quot;North America&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;USA&quot;</span><span class="p">;</span> <span class="p">}</span>
@@ -19,11 +21,20 @@ redirect_from:
         <span class="s">&quot;Europe&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Russia&quot;</span><span class="p">;</span> <span class="p">}</span>
         <span class="s">&quot;Asia&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Russia&quot;</span><span class="p">;</span> <span class="p">}</span>
         <span class="s">&quot;Australia&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Australia&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">// In Ballerina, the `nil` type that is provided as `()` contains a single value named &quot;nil&quot;. This is used</span>
+        <span class="c1">// to represent the absence of any other value. The `nil` value is written as `()`.</span>
         <span class="s">&quot;Antarctica&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="p">();</span> <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Not having a return statement at the end is also the same as explicitly returning `()`.</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// It is optional for `getLargestCountryInContinent()` to return a value of type `string`. </span>
+    <span class="c1">// Thus, the value could be either of type `string` or of type `()` and needs to be handled explicitly.</span>
     <span class="kt">string</span> <span class="nx">continent</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Enter continent: &quot;</span><span class="p">);</span>
     <span class="kt">string</span><span class="err">?</span> <span class="nx">country</span> <span class="p">=</span> <span class="nx">getLargestCountryInContinent</span><span class="p">(</span><span class="nx">continent</span><span class="p">);</span>
+
+    <span class="c1">// The type test can then be used to check if the value is in fact a `string` and then operate on it.</span>
     <span class="k">if</span> <span class="nx">country</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The largest country in &quot;</span><span class="p">,</span> <span class="nx">continent</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>

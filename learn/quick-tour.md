@@ -10,6 +10,8 @@ redirect_from:
   - /learn/quick-tour
   - /v1-2/learn/quick-tour
   - /v1-2/learn/quick-tour/
+  - /learn/getting-started/quick-tour/
+  - /learn/getting-started/quick-tour
 ---
 
 ## Installing Ballerina
@@ -30,7 +32,7 @@ import ballerina/io;
 # bound to port `9090`.
 service hello on new http:Listener(9090) {
 
-    # A resource respresenting an invokable API method
+    # A resource representing an invokable API method
     # accessible at `/hello/sayHello`.
     #
     # + caller - the client invoking this resource

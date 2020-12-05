@@ -12,7 +12,9 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
+
+<span class="c1">// The user-defined retry manager object.</span>
 <span class="nx">public</span> <span class="nx">class</span> <span class="nx">MyRetryManager</span> <span class="p">{</span>
     <span class="nx">private</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
@@ -27,34 +29,55 @@ redirect_from:
             <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The JDBC Client for the H2 database.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span>
                 <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/accountdb&quot;</span><span class="p">,</span>
                            <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Create the database table and populate some records.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS ACCOUNT &quot;</span> <span class="o">+</span>
                                 <span class="s">&quot;(ID INTEGER, BALANCE DECIMAL, &quot;</span> <span class="o">+</span>
                                 <span class="s">&quot;PRIMARY KEY(id))&quot;</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO ACCOUNT VALUES (1, 2500.0)&quot;</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO ACCOUNT VALUES (2, 1000.0)&quot;</span><span class="p">);</span>
+
+    <span class="c1">// In a retry scenario, if the the transaction block returns an error e.g., with a `check` expression, </span>
+    <span class="c1">// the transaction is automatically rollbacked and the retry manager is checked to retry the transaction.</span>
     <span class="nx">retry</span><span class="p">&lt;</span><span class="nx">MyRetryManager</span><span class="p">&gt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="nx">transaction</span> <span class="p">{</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">onRollback</span><span class="p">(</span><span class="nx">onRollbackFunc</span><span class="p">);</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">onCommit</span><span class="p">(</span><span class="nx">onCommitFunc</span><span class="p">);</span>
+
+        <span class="c1">// Execute database operations within the transaction.</span>
         <span class="k">var</span> <span class="nx">creditResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
                                        <span class="s">&quot;UPDATE ACCOUNT &quot;</span> <span class="o">+</span>
                                        <span class="s">&quot;SET BALANCE=BALANCE+500.0 WHERE ID=1&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">debitResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
                                        <span class="s">&quot;UPDATE ACCOUNT &quot;</span> <span class="o">+</span>
-                                       <span class="s">&quot;SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;</span><span class="p">);</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction Info: &quot;</span><span class="p">,</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">());</span>        <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
+                                       <span class="s">&quot;SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;</span><span class="p">);</span>
+
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction Info: &quot;</span><span class="p">,</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">());</span>
+
+        <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed.&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account Credit: &quot;</span><span class="p">,</span> <span class="nx">creditResult</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account Debit: &quot;</span><span class="p">,</span> <span class="nx">debitResult</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE ACCOUNT&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE ACCOUNT&quot;</span><span class="p">);</span>
     
+    <span class="c1">// Close the JDBC client.</span>
     <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
                         <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler executed.&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -166,7 +189,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;transaction as transactions;
 import ballerina/io;
-import ballerina/java.jdbc;
+import ballerina/jdbc;
 </code></pre></div>
 
                                 </td>
@@ -424,6 +447,8 @@ Commit handler executed.
 Transaction committed.
 Account Credit: {&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}
 Account Debit: {&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}
+[ballerina/http] started HTTP/WS listener 192.168.1.18:41699
+[ballerina/http] stopped HTTP/WS listener 192.168.1.18:41699
 </code></pre></div>
 
                                 </td>

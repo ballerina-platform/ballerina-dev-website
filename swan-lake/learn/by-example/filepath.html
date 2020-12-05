@@ -10,24 +10,39 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">filepath</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">absValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">absolute</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">);</span>
-    <span class="kt">boolean</span> <span class="nx">isAbs</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">isAbsolute</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">file</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Get the absolute representation of the path.</span>
+    <span class="kt">string</span> <span class="nx">absValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getAbsolutePath</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Check whether the path is absolute.</span>
+    <span class="kt">boolean</span> <span class="nx">isAbs</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">isAbsolutePath</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;/A/B/C is absolute: &quot;</span><span class="p">,</span> <span class="nx">isAbs</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">filename</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Get the base name of the path.</span>
+    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">basename</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Filename of /A/B/C: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">parentPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">parent</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Get the enclosing parent directory.</span>
+    <span class="kt">string</span> <span class="nx">parentPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">parentPath</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Parent of /A/B/C: &quot;</span><span class="p">,</span> <span class="nx">parentPath</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">normalizedPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">normalize</span><span class="p">(</span><span class="s">&quot;foo/../bar&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Get the shortest path name equivalent to path by purely lexical processing.</span>
+    <span class="kt">string</span> <span class="nx">normalizedPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">normalizePath</span><span class="p">(</span><span class="s">&quot;foo/../bar&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">CLEAN</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Normalized path of foo/../bar: &quot;</span><span class="p">,</span> <span class="nx">normalizedPath</span><span class="p">);</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">parts</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">split</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Get the list of path elements joined by the OS-specific path separator.</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">parts</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">splitPath</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Path elements of /A/B/C: %s&quot;</span><span class="p">,</span> <span class="nx">parts</span><span class="p">));</span>
-    <span class="kt">string</span> <span class="nx">path</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Join any number of path elements into a single path.</span>
+    <span class="kt">string</span> <span class="nx">path</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: &quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">ext</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">extension</span><span class="p">(</span><span class="s">&quot;path.bal&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Extension of path.bal: &quot;</span><span class="p">,</span> <span class="nx">ext</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">relPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">relative</span><span class="p">(</span><span class="s">&quot;a/b/c&quot;</span><span class="p">,</span> <span class="s">&quot;a/c/d&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Returns a relative path that is logically equivalent to the target path when joined to the base path.</span>
+    <span class="kt">string</span> <span class="nx">relPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">relativePath</span><span class="p">(</span><span class="s">&quot;a/b/c&quot;</span><span class="p">,</span> <span class="s">&quot;a/c/d&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: &quot;</span><span class="p">,</span> <span class="nx">relPath</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -39,10 +54,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>File Path</h2>
-                            <p><p>The Ballerina File Path API contains utility functions to manipulate file paths in a way that is compatible with the
+                            <p><p>The Ballerina File API also contains utility functions to manipulate file paths in a way that is compatible with the
  target operating system.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/filepath/index.html">File Path module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/file/index.html">File module</a>.</p>
 </p>
 
                         </td>
@@ -118,8 +133,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -128,7 +141,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/filepath;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/file;
 import ballerina/io;
 </code></pre></div>
 
@@ -153,7 +166,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string absValue = check filepath:absolute(&quot;test.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string absValue = check file:getAbsolutePath(&quot;test.txt&quot;);
 </code></pre></div>
 
                                 </td>
@@ -172,7 +185,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean isAbs = check filepath:isAbsolute(&quot;/A/B/C&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean isAbs = check file:isAbsolutePath(&quot;/A/B/C&quot;);
     io:println(&quot;/A/B/C is absolute: &quot;, isAbs);
 </code></pre></div>
 
@@ -192,7 +205,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string name = check filepath:filename(&quot;/A/B/C&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string name = check file:basename(&quot;/A/B/C&quot;);
     io:println(&quot;Filename of /A/B/C: &quot;, name);
 </code></pre></div>
 
@@ -212,7 +225,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string parentPath = check filepath:parent(&quot;/A/B/C&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string parentPath = check file:parentPath(&quot;/A/B/C&quot;);
     io:println(&quot;Parent of /A/B/C: &quot;, parentPath);
 </code></pre></div>
 
@@ -232,7 +245,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string normalizedPath = check filepath:normalize(&quot;foo/../bar&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string normalizedPath = check file:normalizePath(&quot;foo/../bar&quot;, file:CLEAN);
     io:println(&quot;Normalized path of foo/../bar: &quot;, normalizedPath);
 </code></pre></div>
 
@@ -252,7 +265,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string[] parts = check filepath:split(&quot;/A/B/C&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string[] parts = check file:splitPath(&quot;/A/B/C&quot;);
     io:println(io:sprintf(&quot;Path elements of /A/B/C: %s&quot;, parts));
 </code></pre></div>
 
@@ -272,7 +285,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string path = check filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string path = check file:joinPath(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
     io:println(&quot;Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: &quot;, path);
 </code></pre></div>
 
@@ -291,28 +304,8 @@ import ballerina/io;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string ext = check filepath:extension(&quot;path.bal&quot;);
-    io:println(&quot;Extension of path.bal: &quot;, ext);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Get the extension of the file path.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string relPath = check filepath:relative(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string relPath = check file:relativePath(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
     io:println(&quot;Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: &quot;, relPath);
 }
 </code></pre></div>
@@ -360,7 +353,6 @@ Parent of /A/B/C: /A/B
 Normalized path of foo/../bar: bar
 Path elements of /A/B/C: [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;]
 Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: /foo/bar
-Extension of path.bal: bal
 Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: ../../c/d
 </code></pre></div>
 
@@ -380,7 +372,6 @@ Parent of /A/B/C: \A\B
 Normalized path of foo/../bar: bar
 Path elements of /A/B/C: [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;]
 Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: \foo\bar
-Extension of path.bal: bal
 Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: ..\..\c\d
 </code></pre></div>
 

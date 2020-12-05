@@ -11,33 +11,60 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Defines an object type called `Person`. It should only contain</span>
+<span class="c1">// fields and method declarations. An object type cannot have</span>
+<span class="c1">// an initializer or method definitions.</span>
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
-    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">);</span>
+
+    <span class="c1">// Method declarations can be within the object. However, the method cannot</span>
+    <span class="c1">// have a body.</span>
+    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">);</span>
 <span class="p">};</span>
+
+<span class="c1">// Defines a `class` called `Employee`, which is structurally equivalent</span>
+<span class="c1">// to the `Person` type.</span>
 <span class="nx">class</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+
+    <span class="c1">// Non-abstract objects can have initializers.</span>
     <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">firstName</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">=</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Methods should have a body.</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// An object type itself cannot be initialized. It does not have</span>
+    <span class="c1">// an implicit initial value.</span>
+
+    <span class="c1">// Initializes a value using the `Employee` class</span>
+    <span class="c1">// and then assigns the value to the object-type variable.</span>
     <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
     
-    <span class="nx">p</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 

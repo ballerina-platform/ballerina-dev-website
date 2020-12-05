@@ -1,0 +1,148 @@
+var searchData = {
+  "modules": [
+    {
+      "id": "time",
+      "description": "\u003cp\u003eThis module provides implementations related to time, date, time zones, and durations.\u003c/p\u003e"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "id": "toString",
+      "description": "\u003cp\u003eReturns the ISO 8601 string representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "format",
+      "description": "\u003cp\u003eReturns the formatted string representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getYear",
+      "description": "\u003cp\u003eReturns the year representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getMonth",
+      "description": "\u003cp\u003eReturns the month representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getDay",
+      "description": "\u003cp\u003eReturns the date representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getWeekday",
+      "description": "\u003cp\u003eReturns the weekday representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getHour",
+      "description": "\u003cp\u003eReturns the hour representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getMinute",
+      "description": "\u003cp\u003eReturns the minute representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getSecond",
+      "description": "\u003cp\u003eReturns the second representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getMilliSecond",
+      "description": "\u003cp\u003eReturns the millisecond representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getDate",
+      "description": "\u003cp\u003eReturns the date representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "getTime",
+      "description": "\u003cp\u003eReturns the time representation of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "addDuration",
+      "description": "\u003cp\u003eAdd specified durations to the given time value.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "subtractDuration",
+      "description": "\u003cp\u003eSubtract specified durations from the given time value.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "toTimeZone",
+      "description": "\u003cp\u003eChange the time-zone of the given time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "currentTime",
+      "description": "\u003cp\u003eReturns the current time value with the default system time-zone.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "nanoTime",
+      "description": "\u003cp\u003eReturns the current system time in nano seconds.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "createTime",
+      "description": "\u003cp\u003eReturns the Time object correspoding to the given time components and time-zone.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "parse",
+      "description": "\u003cp\u003eReturns the time for the given string representation based on the given format string.\u003c/p\u003e",
+      "moduleId": "time"
+    }
+  ],
+  "records": [
+    {
+      "id": "TimeZone",
+      "description": "\u003cp\u003eRepresents the time-zone information associated with a particular time.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "Time",
+      "description": "\u003cp\u003eRepresents a particular time with its associated time-zone.\u003c/p\u003e",
+      "moduleId": "time"
+    }
+  ],
+  "constants": [
+    {
+      "id": "TIME_FORMAT_RFC_1123",
+      "description": "\u003cp\u003eSpecifies the time format defined by the RFC-1123.\u003c/p\u003e",
+      "moduleId": "time"
+    }
+  ],
+  "errors": [
+    {
+      "id": "TimeError",
+      "description": "\u003cp\u003eSpecifies the time error, which occurs in the module.\u003c/p\u003e",
+      "moduleId": "time"
+    }
+  ],
+  "types": [
+    {
+      "id": "TimeFormat",
+      "description": "\u003cp\u003eThe time format defined by the RFC-1123.\u003c/p\u003e",
+      "moduleId": "time"
+    },
+    {
+      "id": "Error",
+      "description": "\u003cp\u003eRepresents the Time module related error.\u003c/p\u003e",
+      "moduleId": "time"
+    }
+  ],
+  "clients": [],
+  "listeners": [],
+  "annotations": [],
+  "abstractObjects": []
+};

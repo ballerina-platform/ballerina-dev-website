@@ -1,0 +1,62 @@
+var searchData = {
+  "modules": [
+    {
+      "id": "mysql",
+      "description": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e"
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "Options",
+      "description": "\u003cp\u003eMySQL database options.\u003c/p\u003e",
+      "moduleId": "mysql"
+    },
+    {
+      "id": "SSLConfig",
+      "description": "\u003cp\u003eSSL Configuration to be used when connecting to mysql server.\u003c/p\u003e",
+      "moduleId": "mysql"
+    }
+  ],
+  "constants": [
+    {
+      "id": "SSL_PREFERRED",
+      "description": "\u003cp\u003ePossible options for SSL Mode.\u003c/p\u003e",
+      "moduleId": "mysql"
+    },
+    {
+      "id": "SSL_REQUIRED",
+      "description": "",
+      "moduleId": "mysql"
+    },
+    {
+      "id": "SSL_VERIFY_CERT",
+      "description": "",
+      "moduleId": "mysql"
+    },
+    {
+      "id": "SSL_VERIFY_IDENTITY",
+      "description": "",
+      "moduleId": "mysql"
+    }
+  ],
+  "errors": [],
+  "types": [
+    {
+      "id": "SSLMode",
+      "description": "\u003cp\u003eSSLMode as a union of available ssl modes.\u003c/p\u003e",
+      "moduleId": "mysql"
+    }
+  ],
+  "clients": [
+    {
+      "id": "Client",
+      "description": "\u003cp\u003eRepresents a MySQL database client.\u003c/p\u003e",
+      "moduleId": "mysql"
+    }
+  ],
+  "listeners": [],
+  "annotations": [],
+  "abstractObjects": []
+};

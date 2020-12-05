@@ -69,10 +69,6 @@
       "description": "\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e"
     },
     {
-      "id": "lang.annotations",
-      "description": "\u003cp\u003eThis module provides predefined annotations and default error type declaration.\u003c/p\u003e"
-    },
-    {
       "id": "lang.array",
       "description": "\u003cp\u003eThis module provides lang library list operations defined by the language specification 2020R1.\u003c/p\u003e"
     },
@@ -1609,86 +1605,6 @@
       "id": "buildPayloadString",
       "description": "\u003cp\u003eBuilds the payload string from the \u003ccode\u003ejwt:JwtPayload\u003c/code\u003e record.\u003c/p\u003e",
       "moduleId": "jwt"
-    },
-    {
-      "id": "createIntRange",
-      "description": "\u003cp\u003eThe \u003ccode\u003ecreateIntRange\u003c/code\u003e function creates a \u003ccode\u003eIntRange\u003c/code\u003e object and returns it.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "hasConfigurableValue",
-      "description": "\u003cp\u003eCheck whether a given key has a configuard value\u003c/p\u003e\n",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getConfigurableValue",
-      "description": "\u003cp\u003eGet the value of the configurable variable\u003c/p\u003e\n",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "setNarrowType",
-      "description": "\u003cp\u003eSets the narrowed type of the \u003ccode\u003evalue\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "construct",
-      "description": "\u003cp\u003eTakes in an iterator object and returns a new stream out of it.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getElementType",
-      "description": "\u003cp\u003eTakes a typedesc of an array or stream and returns the typedesc of the element or constraint type.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getFilterFunc",
-      "description": "\u003cp\u003eChange the given filter function\u0027s parameter to any|error and returns the same function.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getMapFunc",
-      "description": "\u003cp\u003eChange the given map function\u0027s parameter to any|error and returns the same function.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getReturnType",
-      "description": "\u003cp\u003eGet the return type of a given function\u003c/p\u003e\n",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getIteratorObj",
-      "description": "\u003cp\u003eTakes in a stream and returns the iterator object of that stream.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "invokeAsExternal",
-      "description": "\u003cp\u003eInvoke a non-isolated function as an external function (workaround for isolated invocations).\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getElements",
-      "description": "\u003cp\u003eGet elements matching at least one of \u003ccode\u003eelemNames\u003c/code\u003e\u003c/p\u003e\n",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getFilteredChildrenFlat",
-      "description": "\u003cp\u003eGet childElements matching \u003ccode\u003eelemNames\u003c/code\u003e and childIndex for each children sequence.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "selectDescendants",
-      "description": "\u003cp\u003eSearches in children recursively for elements matching the qualified name and returns a sequence containing them\nall.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getAttribute",
-      "description": "\u003cp\u003eReturn attribute matching expanded attribute name\u003c/p\u003e\n",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "getElementNameNilLifting",
-      "description": "\u003cp\u003eReturn name of the element if \u003ccode\u003ex\u003c/code\u003e is a element or nil if element name is not set, else error.\u003c/p\u003e",
-      "moduleId": "lang.__internal"
     },
     {
       "id": "length",
@@ -3741,11 +3657,6 @@
       "id": "JwtKeyStoreConfig",
       "description": "\u003cp\u003eRepresents JWT key store configurations.\u003c/p\u003e",
       "moduleId": "jwt"
-    },
-    {
-      "id": "StrandData",
-      "description": "\u003cp\u003eDescribes Strand execution details for the runtime.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
     },
     {
       "id": "Detail",
@@ -5822,11 +5733,6 @@
       "moduleId": "jwt"
     },
     {
-      "id": "\u0027error",
-      "description": "\u003cp\u003eDefault error type.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
       "id": "TransactionError",
       "description": "\u003cp\u003eRepresents the Transaction error.\u003c/p\u003e",
       "moduleId": "lang.transaction"
@@ -6277,21 +6183,6 @@
       "id": "Error",
       "description": "\u003cp\u003eRepresents the JWT error type with details.\u003c/p\u003e",
       "moduleId": "jwt"
-    },
-    {
-      "id": "Type",
-      "description": "",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "Type1",
-      "description": "",
-      "moduleId": "lang.__internal"
-    },
-    {
-      "id": "Thread",
-      "description": "",
-      "moduleId": "lang.annotations"
     },
     {
       "id": "Type",
@@ -6868,46 +6759,6 @@
       "id": "Binding",
       "description": "\u003cp\u003eDescribes the Java class representing a Ballerina binding.\u003c/p\u003e",
       "moduleId": "java"
-    },
-    {
-      "id": "tainted",
-      "description": "\u003cp\u003eDenote that the return value is tainted.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
-      "id": "untainted",
-      "description": "\u003cp\u003eDenote that the return value is untainted, parameter expect untainted value, type cast mark value untainted,\ndenote a listener as producing untainted arguments to service resource params.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
-      "id": "typeParam",
-      "description": "\u003cp\u003eDenotes annotated type is a parametric type.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
-      "id": "builtinSubtype",
-      "description": "\u003cp\u003eDenotes annotated type is a builtin sub type.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
-      "id": "isolatedParam",
-      "description": "\u003cp\u003eDenotes that the annotated parameter expects an \u003ccode\u003eisolated\u003c/code\u003e value when used in an \u003ccode\u003eisolated\u003c/code\u003e context.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
-      "id": "deprecated",
-      "description": "\u003cp\u003eAn annotation that marks a program element as deprecated.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
-      "id": "strand",
-      "description": "\u003cp\u003eDenotes new Strand execution semantics.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
-    },
-    {
-      "id": "icon",
-      "description": "\u003cp\u003eDenotes icon metadata related to types and functions.\u003c/p\u003e",
-      "moduleId": "lang.annotations"
     },
     {
       "id": "SubscriptionConfig",

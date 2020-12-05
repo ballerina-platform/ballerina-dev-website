@@ -6,6 +6,19 @@
     padding-bottom: 50px;
 }
 
+@keyframes highlight {
+    0% {
+        background: #d5f3ff; 
+    }
+    100% {
+        background: none;
+    }
+}
+
+.highlight {
+    animation: highlight 3s;
+}
+
 .hidden {
     display: none;
 }

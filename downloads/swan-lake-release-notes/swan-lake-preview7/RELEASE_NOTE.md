@@ -5,7 +5,9 @@ title: Release Note
 
 ### Overview of Ballerina Swan Lake Preview 7 
 
-This release is the seventh preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
+This release is the seventh preview version of Ballerina Swan Lake. It is the successor of the fifth preview version (SLP5) and SLP6 is an internal-only release. 
+
+This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)

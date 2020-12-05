@@ -14,17 +14,15 @@ redirect_from:
 ## Project Structure
 
 
-```
-project-name/
-  Ballerina.toml
-    src/
-      module1/
-        main.bal
-        Module.md 
-        [resources/]   
-        tests/       	  # Module-specific tests
-          main_test.bal   # The test file for main.bal
-          [resources]	  # Resources for the tests
+```bash
+package-directory/
+    Ballerina.toml
+    main.bal
+    [resources]
+    tests/              # tests for default module
+        main_test.bal   # The test file for main.bal
+        [resources]     # Resources for the tests
+
 ```
 
 
@@ -32,7 +30,7 @@ project-name/
 ## Test Source Files
 
 Unit tests bound to a module need to be placed in a sub folder called `tests/` within the module. In a standard
- Ballerina project, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are
+ Ballerina package, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are
   considered to be part of the same test suite.
 
 The test source files could have any name. The test functions are just Ballerina functions, which use a special
@@ -42,7 +40,7 @@ The test source files could have any name. The test functions are just Ballerina
 ## Test Resources
 
 The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are
- exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
+ exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the package root.
 
 ## Defining a Test
 
@@ -136,7 +134,7 @@ On the other hand, symbols defined in the test files will not be visible inside 
 The Ballerina test framework supports the following assertions, which help to verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 
-### **assertTrue(boolean expression, string message)**
+### assertTrue(boolean expression, string message)
 
 Asserts that the expression is true with an optional message.
 
@@ -151,7 +149,7 @@ function testAssertTrue() {
 }
 ```
 
-### **assertFalse(boolean expression, string message)**
+### assertFalse(boolean expression, string message)
 
 Asserts that the expression is false with an optional message.
 
@@ -166,7 +164,7 @@ function testAssertFalse() {
 }
 ```
 
-### **assertEquals(Anydata actual, Anydata expected, string message)**
+### assertEquals(Anydata actual, Anydata expected, string message)
 
 Asserts that the actual value is equal to the expected value with an optional message.
 
@@ -189,7 +187,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertNotEquals(Anydata actual, Anydata expected, string message)**
+### assertNotEquals(Anydata actual, Anydata expected, string message)
 
 Asserts that the actual value is not equal to the expected value with an optional message.
 
@@ -213,7 +211,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertExactEquals(Any actual, Any expected, string message)**
+### assertExactEquals(Any actual, Any expected, string message)
 
 Asserts that the actual entity is exactly equal to the expected entity with an optional message.
 
@@ -227,7 +225,7 @@ class Person {
     public Person? parent = ();
     private string email = "default@abc.com";
     string address = "No 20, Palm grove";
-};
+}
 
 @test:Config {}
 function testAssertExactEqualsObject() {
@@ -237,7 +235,7 @@ function testAssertExactEqualsObject() {
 }
 ```
 
-### **assertNotExactEquals(Any actual, Any expected, string message)**
+### assertNotExactEquals(Any actual, Any expected, string message)
 
 Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
 
@@ -252,7 +250,7 @@ class Person {
     public Person? parent = ();
     private string email = "default@abc.com";
     string address = "No 20, Palm grove";
-};
+}
 
 @test:Config {}
 function testAssertNotExactEqualsObject() {
@@ -262,7 +260,7 @@ function testAssertNotExactEqualsObject() {
 }
 ```
 
-### **assertFail(string message)**
+### assertFail(string message)
 
 Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
 
@@ -275,12 +273,163 @@ import ballerina/test;
 function foo() {
     error? e = trap bar(); // Expecting `bar()` to panic
     if (e is error) {
-        test:assertEquals(e.reason(), "Invalid Operation", msg = "Invalid error reason"); // Some other assertions
+        test:assertEquals(e.message().toString(), "Invalid Operation", msg = "Invalid error reason"); // Some other assertions
     } else {
         test:assertFail(msg = "Expected an error");
     }
 }
+
+function bar() {
+    panic error("Invalid Operation");
+}
 ```
+
+### Difference between expected and actual values when using 'assertEquals'
+
+* When type of the compared values are different.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertStringAndInt() {
+    test:assertEquals(1, "1");
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertStringAndInt:
+    Assertion Failed!
+
+        expected: <string> '1'
+        actual  : <int> '1'
+```
+
+* For string-typed values.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertString() {
+    test:assertEquals("hello ballerina user\nWelcome to Ballerina", "hello user\nWelcome to Ballerina");
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertString:
+    Assertion Failed!
+
+        expected: 'hello user
+        Welcome to Ballerina'
+        actual  : 'hello ballerina user
+        Welcome to Ballerina'
+
+         Diff    :
+
+         --- expected
+         +++ actual
+
+         @@ -1,2 +1,2 @@
+
+         -hello user
+         +hello ballerina user
+         Welcome to Ballerina
+
+```
+
+* For JSON/record/map typed values.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertJson() {
+    json j1 = {
+        name: "Anne",
+        age: "21",
+        marks: {
+            maths: 99,
+            english: 90,
+            status: {pass: true}
+        }
+    };
+    json j2 = {
+        name2: "Amie",
+        age: 21,
+        marks: {
+            maths: 35,
+            english: 90,
+            status: {pass: false}
+        }
+    };
+    test:assertEquals(j1, j2);
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertJson:
+    Assertion Failed!
+
+      expected: '{"name2":"Amie","age":21,"marks":{"maths":35,"english":90,"status":{"pass":false...'
+      actual  : '{"name":"Anne","age":"21","marks":{"maths":99,"english":90,"status":{"pass":true...'
+
+      Diff    :
+
+        expected keys   : name2
+        actual keys     : name
+
+        key: age
+        expected value  : <int> 21
+        actual value    : <string> 21
+
+        key: marks.maths
+        expected value  : 35
+        actual value    : 99
+
+        key: marks.status.pass
+        expected value  : false
+        actual value    : true
+
+```
+
+* For other anydata-typed values.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {}
+function testAssertTuples() {
+    [int, string] a = [10, "John"];
+    [int, string] b = [12, "John"];
+    test:assertEquals(a, b);
+}
+```
+
+***Output:***
+
+```bash
+[fail] testAssertTuples:
+    Assertion Failed!
+
+        expected: '12 John'
+        actual  : '10 John'
+```
+
 
 ## Setup and Teardown
 
@@ -328,26 +477,26 @@ For each group specified in this annotation, the function that follows the annot
 import ballerina/io;
 import ballerina/test;
 
-// The `BeforeGroups1` function is executed before running all the test functions in this module. 
-@test:BeforeGroups1 { value:["g1"] }
-function beforeFunc() {
+// The `beforeGroups1` function is executed before running all the test functions belonging to the `g1` group.
+@test:BeforeGroups { value:["g1"] }
+function beforeGroups1() {
     io:println("I'm the before groups function!");
 }
 
-// Another `BeforeGroups2` function is executed before running all the test functions in this module. 
-@test:BeforeGroups2 { value:["g1", "g2"] }
-function beforeFunc() {
+// Another `beforeGroups2` function is executed before running all the test functions belonging to the `g1` and `g2` groups. 
+@test:BeforeGroups { value:["g1", "g2"] }
+function beforeGroups2() {
     io:println("I'm another before groups function!");
 }
 
-// A test function that belongs to the group `g1`.
+// A test function that belongs to the `g1` group.
 @test:Config { groups:["g1"] }
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// A test function that belongs to the group `g2`.
+// A test function that belongs to the `g2` group.
 @test:Config { groups:["g2"] }
 function testFunction2() {
     io:println("I belong to group g2 ");
@@ -407,8 +556,8 @@ import ballerina/test;
 
 // This `AfterEach` function is executed before each test function.
 @test:AfterEach
-function beforeFunc() {
-    io:println("I'm the before function!");
+function afterFunc() {
+    io:println("I'm the after function!");
 }
 
 // The first test function.
@@ -444,30 +593,30 @@ For each group specified in this annotation, the function that follows the annot
 import ballerina/io;
 import ballerina/test;
 
-// A test function that belongs to the group `g1`.
+// A test function that belongs to the `g1` group.
 @test:Config { groups:["g1"] }
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// A test function that belongs to the group `g2`.
+// A test function that belongs to the `g2` group.
 @test:Config { groups:["g2"] }
 function testFunction2() {
     io:println("I belong to group g2 ");
     test:assertTrue(true, msg = "Failed");
 }
 
-// The `AfterGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups1 { value:["g1"] }
-function beforeFunc1() {
-    io:println("I'm the before groups function!");
+// The `afterGroupsFunc1` function is executed before running all the test functions belonging to the `g1` group.
+@test:AfterGroups { value:["g1"] }
+function afterGroupsFunc1() {
+    io:println("I'm the after groups function!");
 }
 
-// Another `AfterGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups2 { value:["g1", "g2"] }
-function beforeFunc2() {
-    io:println("I'm another before groups function!");
+// The `afterGroupsFunc2` function is executed before running all the test functions belonging to the `g1` and `g2` groups. 
+@test:AfterGroups { value:["g1", "g2"] }
+function afterGroupsFunc2() {
+    io:println("I'm another after groups function!");
 }
 ```
 

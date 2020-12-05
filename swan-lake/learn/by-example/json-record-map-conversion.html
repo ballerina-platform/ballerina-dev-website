@@ -11,16 +11,24 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This is a Ballerina record definition.</span>
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Movie</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Movie</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">title</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">year</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">released</span><span class="p">;</span>
     <span class="nx">Person</span> <span class="nx">writer</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">MapAnydata</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">MapAnydata</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Movie</span> <span class="nx">theRevenant</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">title</span><span class="p">:</span> <span class="s">&quot;The Revenant&quot;</span><span class="p">,</span>
         <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;2015&quot;</span><span class="p">,</span>
@@ -31,11 +39,16 @@ redirect_from:
             <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
+    <span class="c1">// This example shows how you can convert a record to a JSON object.</span>
+    <span class="c1">// This conversion could return an error because it may not be possible</span>
+    <span class="c1">// to convert some data types that are defined in the record to JSON.</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">theRevenantJson</span> <span class="p">=</span> <span class="nx">theRevenant</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="kt">json</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">theRevenantJson</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">theRevenantJson</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">theRevenantJson</span><span class="p">.</span><span class="nx">writer</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Similarly, you can convert a record to a map.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">movieMap</span> <span class="p">=</span> <span class="nx">theRevenant</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">MapAnydata</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">movieMap</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;)</span> <span class="p">{</span>
         <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">writer</span> <span class="p">=</span> <span class="nx">movieMap</span><span class="p">[</span><span class="s">&quot;writer&quot;</span><span class="p">].</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Person</span><span class="p">);</span>
@@ -43,6 +56,10 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">writer</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// This example shows how you can convert a JSON object to a record.</span>
+    <span class="c1">// This conversion could return an error because the field names and </span>
+    <span class="c1">// types are unknown until they are evaluated at runtime.</span>
     <span class="kt">json</span> <span class="nx">inceptionJson</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">title</span><span class="p">:</span> <span class="s">&quot;Inception&quot;</span><span class="p">,</span>
         <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;2010&quot;</span><span class="p">,</span>

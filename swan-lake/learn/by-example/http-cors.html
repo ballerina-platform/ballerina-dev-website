@@ -12,6 +12,9 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// Service-level [CORS config](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CorsConfig.html) applies</span>
+<span class="c1">// globally to each `resource`.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">cors</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">allowOrigins</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://www.m3.com&quot;</span><span class="p">,</span> <span class="s">&quot;http://www.hello.com&quot;</span><span class="p">],</span>
@@ -22,6 +25,9 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">crossOriginService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Resource-level [CORS config](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CorsConfig.html)</span>
+    <span class="c1">// overrides the service-level CORS headers.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/company&quot;</span><span class="p">,</span>
@@ -40,6 +46,9 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// Since there are no resource-level CORS configs defined here, the global</span>
+    <span class="c1">// service-level CORS configs will be applied to this resource.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/lang&quot;</span>

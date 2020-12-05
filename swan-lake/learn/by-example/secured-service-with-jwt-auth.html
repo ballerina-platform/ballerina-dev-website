@@ -14,6 +14,9 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// Creates an inbound JWT authentication provider with the relevant</span>
+<span class="c1">// configurations.</span>
 <span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
@@ -26,7 +29,12 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
+
+<span class="c1">// Creates a Bearer Auth handler with the created JWT Auth provider.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">jwtAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">jwtAuthProvider</span><span class="p">);</span>
+
+<span class="c1">// Alternatively, you can create an inbound JWT authentication provider</span>
+<span class="c1">// with the JWKs endpoint configurations.</span>
 <span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwkAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
@@ -43,11 +51,20 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
+
+<span class="c1">// Creates a Bearer Auth handler with the created JWT Auth provider</span>
+<span class="c1">// created using JWKs endpoint configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">jwkAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">jwkAuthProvider</span><span class="p">);</span>
+
+<span class="c1">// The endpoint used here is the `http:Listener`. The JWT authentication</span>
+<span class="c1">// handler is set to this endpoint using the `authHandlers` attribute.</span>
+<span class="c1">// It is optional to override the authentication and authorization at the</span>
+<span class="c1">// service and resource levels.</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">jwtAuthHandler</span><span class="p">,</span> <span class="nx">jwkAuthHandler</span><span class="p">]</span>
     <span class="p">},</span>
+    <span class="c1">// The secure hello world sample uses HTTPS.</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
@@ -55,9 +72,19 @@ redirect_from:
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+<span class="p">});</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
 <span class="p">}</span>
+<span class="c1">// The Auth configuration comprises of two parts -</span>
+<span class="c1">// authentication &amp; authorization.</span>
+<span class="c1">// Authentication can be disabled by setting the `enabled: false` flag.</span>
+<span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
+<span class="c1">// For a user to access a resource, the user should be in the same groups as</span>
+<span class="c1">// the scope.</span>
+<span class="c1">// To specify one or more scope of a resource, the annotation attribute</span>
+<span class="c1">// `scopes` can be used.</span>
 <span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
@@ -67,6 +94,11 @@ redirect_from:
             <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span>
         <span class="p">}</span>
     <span class="p">}</span>
+    <span class="c1">// The authentication and authorization settings can be overridden at</span>
+    <span class="c1">// the resource level.</span>
+    <span class="c1">// The hello resource would inherit the `enabled: true` flag from the</span>
+    <span class="c1">// service level, which is set automatically.</span>
+    <span class="c1">// The scope of the resource is defined as &quot;hello&quot;.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>

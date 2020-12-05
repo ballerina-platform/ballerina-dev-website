@@ -18,6 +18,8 @@ redirect_from:
   - /learn/setting-up-visual-studio-code/run-and-debug
   - /learn/run-and-debug
   - /learn/run-and-debug/
+  - /learn/getting-started/run-and-debug/
+  - /learn/getting-started/run-and-debug
 ---
 
 ## Starting a Debug Session

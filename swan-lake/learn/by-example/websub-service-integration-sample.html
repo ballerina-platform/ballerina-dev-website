@@ -10,21 +10,41 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="c1">// The order management HTTP service acting as a Ballerina WebSub Publisher brings up an internal Ballerina WebSub Hub</span>
+<span class="c1">// at which it will publish updates.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="c1">// The topic against which the publisher will publish updates and the subscribers</span>
+<span class="c1">// need to subscribe to, to receive notifications when an order is placed.</span>
 <span class="nx">final</span> <span class="kt">string</span> <span class="nx">ORDER_TOPIC</span> <span class="p">=</span> <span class="s">&quot;http://localhost:9090/ordermgt/ordertopic&quot;</span><span class="p">;</span>
+
+<span class="c1">// An in-memory `map` to which orders will be added.</span>
 <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">orderMap</span> <span class="p">=</span> <span class="p">{};</span>
-<span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">startHubAndRegisterTopic</span><span class="p">();</span><span class="nd">@http:ServiceConfig {</span>
+
+<span class="c1">// Invokes the function that starts up a Ballerina WebSub Hub, registers the topic</span>
+<span class="c1">// against which updates will be published, and maintains a reference to the</span>
+<span class="c1">// returned hub object to publish updates.</span>
+<span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">startHubAndRegisterTopic</span><span class="p">();</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/ordermgt&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">orderMgt</span> <span class="nx">on</span> <span class="nx">httpListener</span> <span class="p">{</span>
+
+    <span class="c1">// This resource accepts the discovery requests.</span>
+    <span class="c1">// Requests received at this resource would respond with a Link Header</span>
+    <span class="c1">// indicating the topic to subscribe to and the hub(s) to subscribe at.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;HEAD&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/order&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">discoverPlaceOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// Adds a link header indicating the hub and topic.</span>
         <span class="nx">websub</span><span class="p">:</span><span class="nx">addWebSubLinkHeader</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="p">[</span><span class="nx">webSubHub</span><span class="p">.</span><span class="nx">subscriptionUrl</span><span class="p">],</span>
                                     <span class="nx">ORDER_TOPIC</span><span class="p">);</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">202</span><span class="p">;</span>
@@ -33,6 +53,8 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource accepts order placement requests.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/order&quot;</span>
@@ -42,12 +64,16 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">orderReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">orderId</span> <span class="p">=</span> <span class="nx">orderReq</span><span class="p">.</span><span class="nx">Order</span><span class="p">.</span><span class="nx">ID</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
             <span class="nx">orderMap</span><span class="p">[</span><span class="nx">orderId</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">orderReq</span><span class="p">;</span>
+
+            <span class="c1">// Creates the response message indicating successful order creation.</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">202</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
+
+            <span class="c1">// Publishes the update to the Hub to notify the subscribers.</span>
             <span class="kt">string</span> <span class="nx">orderCreatedNotification</span> <span class="p">=</span> <span class="s">&quot;New Order Added: &quot;</span> <span class="o">+</span> <span class="nx">orderId</span><span class="p">;</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">orderCreatedNotification</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">updateResult</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="nx">ORDER_TOPIC</span><span class="p">,</span>
@@ -60,25 +86,41 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
             <span class="nx">panic</span> <span class="nx">e</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">}}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// Starts up a Ballerina WebSub Hub on port 9191 and registers the topic against</span>
+<span class="c1">// which updates will be published.</span>
 <span class="kd">function</span> <span class="nx">startHubAndRegisterTopic</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">hubStartUpResult</span> <span class="p">=</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">startHub</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9191</span><span class="p">),</span>
-                                            <span class="s">&quot;/websub&quot;</span><span class="p">,</span> <span class="s">&quot;/hub&quot;</span><span class="p">);</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="err">?</span> <span class="nx">hubVar</span> <span class="p">=</span> <span class="p">();</span>
+                                            <span class="s">&quot;/websub&quot;</span><span class="p">,</span> <span class="s">&quot;/hub&quot;</span><span class="p">);</span>
+
+    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="err">?</span> <span class="nx">hubVar</span> <span class="p">=</span> <span class="p">();</span>
     <span class="k">if</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartupError</span> <span class="p">{</span>
         <span class="nx">panic</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">hubVar</span> <span class="p">=</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span> <span class="err">?</span>
                             <span class="nx">hubStartUpResult</span><span class="p">[</span><span class="s">&quot;startedUpHub&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">internalHub</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">&gt;</span><span class="nx">hubVar</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">internalHub</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">&gt;</span><span class="nx">hubVar</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">internalHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span><span class="nx">ORDER_TOPIC</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error registering topic&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">internalHub</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="c1">// The Ballerina WebSub Subscriber service, which subscribes to notifications at the Hub.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="c1">// The endpoint to which the subscriber service is bound.</span>
 <span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
+
+<span class="c1">// Annotations specifying the subscription parameters for the order management service.</span>
+<span class="c1">// A subscription request would be sent to the hub with the topic discovered at the</span>
+<span class="c1">// resource URL specified.</span>
 <span class="nd">@websub:SubscriberServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/ordereventsubscriber&quot;</span><span class="p">,</span>
     <span class="nx">subscribeOnStartUp</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -87,6 +129,7 @@ redirect_from:
     <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">websubSubscriber</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
+    <span class="c1">// Defines the resource, which accepts the content delivery requests.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">notification</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>

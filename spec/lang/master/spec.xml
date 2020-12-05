@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-19</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-12-05</h1>
 <p>
 Primary contributors:
 </p>
@@ -40,12 +40,6 @@ Language and document status
 <p>
 This is a draft document, previewing the next release of the specification,
 code-named Swan Lake.
-</p>
-<p>
-Features marked as having <em>Preview</em> status are less stable than the rest
-of the language. We expect the final design of these features to be close enough
-to the current design that it will be straightforward for code that makes uses
-the current design to be updated to the final design.
 </p>
 <p>
 Comments on this document are welcome and should be made by creating an issue in
@@ -267,16 +261,14 @@ points.
 
 <pre
 class="grammar"><dfn>identifier</dfn> := <abbr>UnquotedIdentifier</abbr> | <abbr>QuotedIdentifier</abbr>
-<dfn>UnquotedIdentifier</dfn> :=
-   <abbr>IdentifierInitialChar</abbr> <abbr>IdentifierFollowingChar</abbr>*
-<dfn>QuotedIdentifier</dfn> := <code>'</code> <abbr>QuotedIdentifierChar</abbr>+
-<dfn>QuotedIdentifierChar</dfn> :=
-  <abbr>IdentifierFollowingChar</abbr>
-  | <abbr>QuotedIdentifierEscape</abbr>
-  | <abbr>StringNumericEscape</abbr>
+<dfn>UnquotedIdentifier</dfn> := (<abbr>IdentifierInitialChar</abbr> | <abbr>IdentifierEscape</abbr>) (<abbr>IdentifierFollowingChar</abbr> | <abbr>IdentifierEscape</abbr>)*
+<dfn>QuotedIdentifier</dfn> := <code>'</code> (<abbr>IdentifierFollowingChar</abbr> | <abbr>IdentifierEscape</abbr>)+
 <dfn>IdentifierInitialChar</dfn> :=  <abbr>AsciiLetter</abbr> | <code>_</code> | <abbr>UnicodeIdentifierChar</abbr>
 <dfn>IdentifierFollowingChar</dfn> := <abbr>IdentifierInitialChar</abbr> | <abbr>Digit</abbr>
-<dfn>QuotedIdentifierEscape</dfn> := <code>\</code> ^ ( <abbr>AsciiLetter</abbr> | 0x9 | 0xA | 0xD | <abbr>UnicodePatternWhiteSpaceChar</abbr> )
+<dfn>IdentifierEscape</dfn> := <abbr>IdentifierSingleEscape</abbr> | <abbr>NumericEscape</abbr>
+<dfn>IdentifierSingleEscape</dfn> := <code>\</code> ^ ( <abbr>AsciiLetter</abbr> | 0x9 | 0xA | 0xD | <abbr>UnicodePatternWhiteSpaceChar</abbr> )
+<dfn>NumericEscape</dfn> := <code>\u{</code> <abbr>CodePoint</abbr> <code>}</code>
+<dfn>CodePoint</dfn> := <abbr>HexDigit</abbr>+
 <dfn>AsciiLetter</dfn> := <code>A</code> .. <code>Z</code> | <code>a</code> .. <code>z</code>
 <dfn>UnicodeIdentifierChar</dfn> := ^ ( <abbr>AsciiChar</abbr> | <abbr>UnicodeNonIdentifierChar</abbr> )
 <dfn>AsciiChar</dfn> := 0x0 .. 0x7F
@@ -298,10 +290,14 @@ of Unicode TR31 for immutable identifiers; the set of characters is immutable in
 the sense that it does not change between Unicode versions.
 </p>
 <p>
-The QuotedIdentifier syntax allows an arbitrary non-empty string to be treated
-as an identifier. In particular, a reserved keyword <code><var>K</var></code>
-can be used as an identifier by preceding it with a single quote i.e.
-<code>'<var>K</var></code>.
+The <code>QuotedIdentifier</code> syntax allows a reserved keyword
+<code><var>K</var></code> can be used as an identifier by preceding it with a
+single quote i.e. <code>'<var>K</var></code>. The <code>IdentifierEscape</code>
+syntax allows an arbitrary non-empty string to be treated as an identifier. In a
+<code>NumericEscape</code>, <code>CodePoint</code> must valid Unicode code
+point; more precisely, it must be a hexadecimal numeral denoting an integer
+<em>n</em> where 0 &#x2264; <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &#x2264;
+0x10FFFF.
 </p>
 
 <pre
@@ -735,6 +731,10 @@ together with associativity.
    <td><strong>Associativity</strong></td>
   </tr>
   <tr>
+   <td><code>distinct T</code></td>
+   <td></td>
+  </tr>
+  <tr>
    <td><code>T[]</code></td>
    <td></td>
   </tr>
@@ -1155,10 +1155,8 @@ class="grammar"><dfn>string-type-descriptor</dfn> := <code>string</code>
 <dfn>string-literal</dfn> := <abbr>DoubleQuotedStringLiteral</abbr>
 <dfn>DoubleQuotedStringLiteral</dfn> := <code>"</code> (<abbr>StringChar</abbr> | <abbr>StringEscape</abbr>)* <code>"</code>
 <dfn>StringChar</dfn> := ^ ( 0xA | 0xD | <code>\</code> | <code>"</code> )
-<dfn>StringEscape</dfn> := <abbr>StringSingleEscape</abbr> | <abbr>StringNumericEscape</abbr>
+<dfn>StringEscape</dfn> := <abbr>StringSingleEscape</abbr> | <abbr>NumericEscape</abbr>
 <dfn>StringSingleEscape</dfn> := <code>\t</code> | <code>\n</code> | <code>\r</code> | <code>\\</code> | <code>\"</code>
-<dfn>StringNumericEscape</dfn> := <code>\u{</code> <abbr>CodePoint</abbr> <code>}</code>
-<dfn>CodePoint</dfn> := <abbr>HexDigit</abbr>+
 </pre>
 <p>
 A string is an sequence of zero or more Unicode characters. More precisely, it
@@ -1167,12 +1165,6 @@ Unicode scalar value is any code point in the Unicode range of 0x0 to 0x10FFFF
 inclusive, other than surrogate code points, which are 0xD800 to 0xDFFF
 inclusive. Note that a string may include Unicode noncharacters, such as 0xFFFE
 and 0xFFFF.
-</p>
-<p>
-In a <code>StringNumericEscape</code>, <code>CodePoint</code> must valid Unicode
-code point; more precisely, it must be a hexadecimal numeral denoting an
-integer <em>n</em> where 0 &#x2264; <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &#x2264;
-0x10FFFF.
 </p>
 <p>
 String values do not have storage identity and so the string basic type is
@@ -1632,9 +1624,9 @@ class="grammar"><dfn>record-type-descriptor</dfn> :=
 <dfn>field-descriptor</dfn> :=
    <abbr>individual-field-descriptor</abbr> | <abbr>record-type-inclusion</abbr>
 <dfn>individual-field-descriptor</dfn> :=
-   <abbr>metadata</abbr> [<code>readonly</code>] <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<code>?</code> | <abbr>default-value</abbr>] <code>;</code>
+   <abbr>metadata</abbr> [<code>readonly</code>] <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<code>?</code> | (<code>=</code> <abbr>default-expression</abbr>)] <code>;</code>
 <dfn>field-name</dfn> := <abbr>identifier</abbr>
-<dfn>default-value</dfn> := <code>=</code> <abbr>expression</abbr>
+<dfn>default-expression</dfn> := <abbr>expression</abbr>
 <dfn>record-type-inclusion</dfn> := <code>*</code> <abbr>type-reference</abbr> <code>;</code>
 <dfn>record-rest-descriptor</dfn> := <abbr>type-descriptor</abbr> <code>...</code> <code>;</code>
 </pre>
@@ -1699,15 +1691,16 @@ specifies <code>readonly</code>, then it describes a type that is a subtype of
 set.
 </p>
 <p>
-A <code>default-value</code> specifies a default value for the field, which is
-used when the record type descriptor is used to construct a mapping value but no
-value is specified explicitly for the field. The type descriptor contains a
-0-argument function closure for each default value. The closure is created from
-the expression when the type descriptor is resolved. The expression must meet
-the requirements for an <a href="#isolated_functions">isolated function</a>. The
-closure is evaluated to create a field value each time the default is used in
-the construction of a mapping value. The default value does not affect the type
-described by the type descriptor.
+A <code>default-expression</code> is an expression that specifies a default
+value for the field, which is used when the record type descriptor is used to
+construct a mapping value but no value is specified explicitly for the field.
+The type descriptor contains a 0-argument function closure for each default
+value. The closure is created from the expression when the type descriptor is
+resolved. The expression must meet the requirements for an <a
+href="#isolated_functions">isolated function</a>. The closure is evaluated to
+create a field value each time the default is used in the construction of a
+mapping value. The default value does not affect the type described by the type
+descriptor.
 </p>
 <p>
 A <code>record-type-inclusion</code> includes fields from a named record type.
@@ -1850,29 +1843,26 @@ information:
 the error</li>
 <li>a cause, which is either nil or another error value that was the cause of
 this error</li>
-<li>a detail, which is an immutable mapping providing additional information
-about the error; the members of the mapping must belong to type Cloneable, and
-so the detail mapping belongs to type <code>map&lt;Cloneable&gt;</code>;</li>
+<li>a detail, which is an immutable mapping providing additional information about
+the error</li>
 <li>a stack trace, which is an immutable snapshot of the state of the execution
 stack</li>
 </ul>
 <p>
-The shapes of the message, cause and detail record are part of the shape of the
-error; the stack trace is not part of the shape.
+The detail mapping must be a subtype of <code>map&lt;Cloneable&gt;</code>.
 </p>
 <p>
-A detail-type-descriptor in the error-type-param must refer to an inclusive
-record type descriptor or a union of such type descriptors. These inclusive
-record type descriptors are interpreted as being open to fields of type
-Cloneable, rather than in the usual way as being open to fields of type anydata.
-An error shape belongs to the type <code>error&lt;<var>T</var>&gt;</code>, where
-<code><var>T</var></code> is a detail-type-descriptor, if and only if the shape
-of its detail mapping belongs to T with this special interpretation. A type of
-<code>error&lt;*&gt;</code> means that the type is a subtype of error, where the
-type of the detail record is to be inferred from the context. This is allowed
+The shapes of the message, cause and detail record are part of the shape of the
+error; the stack trace is not part of the shape. A type descriptor
+<code>error&lt;<var>T</var>&gt;</code> contains an error shape if
+<code><var>T</var></code> contains the shape of its detail. The type
+<code>error</code> contains a shape if its basic type is error.
+</p>
+<p>
+A type of <code>error&lt;*&gt;</code> means that the type is a subtype of error,
+where the precise subtype is to be inferred from the context. This is allowed
 only within type descriptors occurring in a context that is specified to be
-inferable. A value belongs to the type <code>error</code> (with no type
-parameter) if and only if its basic type is error.
+inferable.
 </p>
 <p>
 An error-type-descriptor is always definite and induces an empty set of
@@ -1885,8 +1875,14 @@ a non-empty set of type-ids.
 <h4 id="functions">Functions</h4>
 
 <pre
-class="grammar"><dfn>function-type-descriptor</dfn> := [<abbr>isolated-qual</abbr>] <code>function</code> [<abbr>function-signature</abbr>]
+class="grammar"><dfn>function-type-descriptor</dfn> :=
+   <abbr>function-quals</abbr> <code>function</code> <abbr>function-signature</abbr>
+   | [<abbr>isolated-qual</abbr>] <code>function</code>
+<dfn>function-quals</dfn> :=
+   <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>]
+   | [<abbr>isolated-qual</abbr>] [<abbr>transactional-qual</abbr>]
 <dfn>isolated-qual</dfn> := <code>isolated</code>
+<dfn>transactional-qual</dfn> := <code>transactional</code>
 <dfn>function-signature</dfn> := <code>(</code> <abbr>param-list</abbr> <code>)</code> <abbr>return-type-descriptor</abbr>
 </pre>
 <p>
@@ -1904,9 +1900,10 @@ class="grammar"><dfn>param-list</dfn> :=
 <dfn>required-params</dfn> := <abbr>required-param</abbr> (<code>,</code> <abbr>required-param</abbr>)*
 <dfn>required-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> [<abbr>param-name</abbr>]
 <dfn>defaultable-params</dfn> := <abbr>defaultable-param</abbr> (<code>,</code> <abbr>defaultable-param</abbr>)*
-<dfn>defaultable-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> [<abbr>param-name</abbr>] <abbr>default-value</abbr>
+<dfn>defaultable-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> [<abbr>param-name</abbr>] <code>=</code> (<abbr>default-expression</abbr> | <abbr>inferred-typedesc-default</abbr>) 
 <dfn>rest-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <code>...</code> [<abbr>param-name</abbr>]
 <dfn>param-name</dfn> := <abbr>identifier</abbr>
+<dfn>inferred-typedesc-default</dfn> := <code>&lt;</code> <code>&gt;</code>
 </pre>
 <p>
 A param-name can be omitted from a required-param, defaultable-param or
@@ -1948,11 +1945,17 @@ The conformance of the argument list ensures that the members of this list will
 belong to type T.
 </p>
 <p>
-A defaultable-param is a parameter for which a default value is specified. The
-expression specifying the default value may refer to previous parameters by
-name. For each defaultable parameter, the function's type descriptor includes a
-closure that computes the default value for the parameter using the values of
-previous parameters. The caller of the function uses the closures in the
+A defaultable-param is a parameter for which a default value is specified. An
+expression can be used to specify the default value; this expression may refer
+to previous parameters. Each such expression is turned into a closure that
+computes the default value for the parameter using the values of previous
+parameters, and this closure is part of the type descriptor for the function. It
+is also possible for the default to be specified as <code>&lt;&gt;</code>; this
+means that the default value is a <code>typedesc</code> value that is to be
+inferred by the caller from the contextually expected type of the function call.
+It is allowed only when the parameter name to which the default value applies is
+referenced in the return-type-descriptor, as described below, and is allowed for
+at most one parameter in a function. The caller of the function uses the
 function's type descriptor to compute default values for any defaultable
 arguments that were not specified explicitly. These default values are included
 in the argument list passed to the function. Whether a parameter is defaultable,
@@ -1962,8 +1965,8 @@ when the type descriptor is resolved; the default value is computed by calling
 the closure each time the function is called and the corresponding parameter is
 not specified. Whether a parameter is defaultable is used at compile time, but
 the closure that computes the default value is only used at runtime. If the
-function-type-descriptor includes an isolated-qual, then an expression in a
-default-value must meet the requirements for an <a
+function-type-descriptor includes an isolated-qual, then an expression used as a
+default-expression must meet the requirements for an <a
 href="#isolated_functions">isolated function</a>.
 </p>
 <p>
@@ -2149,8 +2152,9 @@ the object has been constructed.
 
 <pre
 class="grammar"><dfn>method-decl</dfn> :=
-   <abbr>metadata</abbr> [<code>public</code>] [<abbr>isolated-qual</abbr>]
+   <abbr>metadata</abbr> [<code>public</code>] <abbr>method-quals</abbr>
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
+<dfn>method-quals</dfn> := <abbr>function-quals</abbr>
 <dfn>method-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
@@ -2175,8 +2179,11 @@ class="grammar"><dfn>remote-method-decl</dfn> :=
    <abbr>metadata</abbr> <abbr>remote-method-quals</abbr> 
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
 <dfn>remote-method-quals</dfn> :=
-   <abbr>remote-qual</abbr> [<abbr>isolated-qual</abbr>]
-   | <abbr>isolated-qual</abbr> <abbr>remote-qual</abbr>
+   <abbr>remote-qual</abbr> <abbr>function-quals</abbr>
+   | <abbr>isolated-qual</abbr> [<abbr>transactional-qual</abbr>] <abbr>remote-qual</abbr>
+   | <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>] <abbr>remote-qual</abbr>
+   | <abbr>isolated-qual</abbr> <abbr>remote-qual</abbr> <abbr>transactional-qual</abbr>
+   | <abbr>transactional-qual</abbr> <abbr>remote-qual</abbr> <abbr>isolated-qual</abbr>
 <dfn>remote-qual</dfn> := <code>remote</code>
 </pre>
 <p>
@@ -2254,20 +2261,24 @@ class="grammar"><dfn>object-type-inclusion</dfn> := <code>*</code> <abbr>type-re
 Every type descriptor referenced directly or indirectly by a
 <code>type-reference</code> in an <code>object-type-inclusion</code> must be an
 <code>object-type-descriptor</code>, <code>distinct-type-descriptor</code>,
-<code>intersection-type-descriptor</code> or a class; the referenced type
-descriptor will thus necessarily be definite and a subtype of object. The
-<code>object-field-descriptor</code>s and <code>method-decl</code>s from the
-referenced type are included in the type being defined. A type-reference to a
-class is treated as a reference to the class's type; only the types of the
-methods and fields are copied from the referenced type. An
-<code>object-field-descriptor</code> or <code>method-decl</code> in a
-<code>object-type-descriptor</code> can override respectively an
-<code>object-field-descriptor</code> or <code>method-decl</code> of the same
-name in an included <code>object-type-descriptor</code>, provided the type
-declared for the field or method in the overriding descriptor is a subtype of
-the type declared in the overridden descriptor. An <code>object-field-descriptor</code>
-cannot override a <code>method-decl</code>, nor can a <code>method-decl</code>
-override an <code>object-field-descriptor</code>.
+<code>intersection-type-descriptor</code> or a class that is not readonly; the
+referenced type descriptor will thus necessarily be definite and a subtype of
+object. If a referenced object-type-descriptor or class has an
+<code>isolated</code>, <code>service</code> or <code>client</code> qualifier
+<var>Q</var>, then the referencing object-type-descriptor must also have the
+qualifier <var>Q</var>. The <code>object-field-descriptor</code>s and
+<code>method-decl</code>s from the referenced type are included in the type
+being defined. A type-reference to a class is treated as a reference to the
+class's type; only the types of the methods and fields are copied from the
+referenced type. An <code>object-field-descriptor</code> or
+<code>method-decl</code> in a <code>object-type-descriptor</code> can override
+respectively an <code>object-field-descriptor</code> or <code>method-decl</code>
+of the same name in an included <code>object-type-descriptor</code>, provided
+the type declared for the field or method in the overriding descriptor is a
+subtype of the type declared in the overridden descriptor. An
+<code>object-field-descriptor</code> cannot override a <code>method-decl</code>,
+nor can a <code>method-decl</code> override an
+<code>object-field-descriptor</code>.
 </p>
 <p>
 An object-type-descriptor is always definite. The set of type-ids induced by an
@@ -2336,7 +2347,7 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
 </section>
 
 <section>
-<h4>[Preview] Streams</h4>
+<h4>Streams</h4>
 
 <pre
 class="grammar"><dfn>stream-type-descriptor</dfn> := <code>stream</code> [<abbr>stream-type-parameters</abbr>]
@@ -2357,11 +2368,14 @@ include nil describes an unbounded stream.
 <p>
 A stream supports two primitive operations: a next operation and a close
 operation. The next operation has the same semantics as the next method on the
-Iterator object type. The close operation informs the stream that there
-will be no more next operations and thus allows the stream to release resources
-used by the stream; the close operation on a <code>stream&lt;T,C&gt;</code> has
-a result of type <code>C?</code>, where nil means that the close operation was
-successful.
+Iterator object type. The close operation informs the stream that there will be
+no more next operations and thus allows the stream to release resources used by
+the stream; the close operation on a <code>stream&lt;T,C&gt;</code> has a result
+of type <code>C?</code>, where nil means that the close operation was
+successful. The close operation is idempotent: performing the close operation on
+a stream on which the close operation has already been performed has no effect.
+When the generation of the sequence is complete, the stream automatically
+performs the close operation to release resources used by the stream.
 </p>
 <p>
 The type descriptor <code>stream&lt;T,C&gt;</code> works like a class, in that
@@ -2791,7 +2805,7 @@ immediately returns <code>()</code>.
 <section>
 <h4>Listener</h4>
 <p>
-The abstract object type Listener&lt;T&gt;, where T is a a subtype of
+The object type Listener&lt;T&gt;, where T is a a subtype of
 <code>service object {}</code>, is described by the following object type
 descriptor:
 </p>
@@ -2827,6 +2841,20 @@ expression. The type is defined in <code>lang.object</code> as follows.
 </pre>
 
 </section>
+<section>
+<h4>RetryManager</h4>
+
+<p>
+The object type RetryManager&lt;E&gt;, where E is a a subtype of
+<code>error</code>, is described by the following object type descriptor:
+</p>
+
+<pre>object {
+   public function shouldRetry(E e) returns boolean;
+}
+</pre>
+</section>
+
 </section>
 <section>
 <h3>Abstract operations</h3>
@@ -3641,6 +3669,7 @@ class="grammar"><dfn>expression</dfn> :=
    | <abbr>trap-expr</abbr>
    | <abbr>query-expr</abbr>
    | <abbr>xml-navigate-expr</abbr>
+   | <abbr>transactional-expr</abbr>
    | <code>(</code> <abbr>expression</abbr> <code>)</code>
 </pre>
 <p>
@@ -4494,9 +4523,11 @@ object are the type-ids, if any, induced by T.
 <p>
 The <code>object-constructor-expr</code> is <em>implicitly read-only</em> if the
 applicable contextually expected type is a subtype of readonly or if the
-type-reference is present and references a type that is a subtype of readonly.
-If <code>object-constructor-expr</code> is <em>implicitly read-only</em>, then
-the object will be constructed with its read-only bit on.
+<code>type-reference</code> is present and references a type that is a subtype
+of readonly. If the <code>object-constructor-expr</code> is <em>implicitly
+read-only</em>, then the object will be constructed with its read-only bit on;
+furthermore, in this case an <code>object-type-inclusion</code> is allowed to
+directly or indirectly reference a readonly class.
 </p>
 <p>
 The <code>object-constructor-expr</code> is <em>explicitly isolated</em> if
@@ -4569,7 +4600,7 @@ private.
 
 <pre
 class="grammar"><dfn>method-defn</dfn> :=
-   <abbr>metadata</abbr> <abbr>object-visibility-qual</abbr> [<abbr>isolated-qual</abbr>]
+   <abbr>metadata</abbr> <abbr>object-visibility-qual</abbr> <abbr>method-quals</abbr>
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
 </pre>
 
@@ -4631,8 +4662,11 @@ class="grammar"><dfn>resource-method-defn</dfn> :=
    <abbr>metadata</abbr> <abbr>resource-method-quals</abbr>
    <code>function</code> <abbr>resource-method-name</abbr> <abbr>resource-path</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
 <dfn>resource-method-quals</dfn> :=
-   <abbr>resource-qual</abbr> [<abbr>isolated-qual</abbr>]
-   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr>
+   <abbr>resource-qual</abbr> <abbr>function-quals</abbr>
+   | <abbr>isolated-qual</abbr> [<abbr>transactional-qual</abbr>] <abbr>resource-qual</abbr>
+   | <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>] <abbr>resource-qual</abbr>
+   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr> <abbr>transactional-qual</abbr>
+   | <abbr>transactional-qual</abbr> <abbr>resource-qual</abbr> <abbr>isolated-qual</abbr>
 <dfn>resource-qual</dfn> := <code>resource</code>
 <dfn>resource-method-name</dfn> := <abbr>identifier</abbr>
 <dfn>resource-path</dfn> :=
@@ -5212,30 +5246,61 @@ descriptor of the referenced function value.
 </p>
 <p>
 The expressions occurring in the arg-list are evaluated in the order in which
-they occur in the arg-list. The result of evaluating each positional-arg is
-added to the argument list in order. The contextually expected type for the
-expression in the i-th positional-arg is the type of the i-th parameter.
+they occur in the arg-list. The contextually expected type for the expression in
+the i-th positional-arg is the type of the i-th required or defaultable
+parameter; if there is no such parameter, then the contextually expected type is
+the type of the rest-param. The contextually expected type for the expression in
+a named-arg is the type declared for the corresponding parameter. The value of
+evaluating the expression for the rest-arg must be either a list or a mapping
+value.
 </p>
 <p>
-If there is a rest-arg, then it is evaluated. The result must be a list value.
-Each member of the list value is added to the argument in the order that it
-occurs. The static type of the list value must be such as to guarantee that the
-resulting argument list will conform to the function's declared param-list. The
-rest-arg is not restricted to supplying the part of the argument list that will
-be bound to a rest-param, and its static type is not restricted to being an
-array type. If there is rest-arg, then no parameter defaults are added.
+The results of evaluating the expressions in the arg-list are used to construct
+the argument list as follows. First, the result of evaluating each
+positional-arg is added to the argument list in order. Then there are three
+possibilities:
+</p>
+<ul>
+<li>If there is a rest-arg that evaluates to a list, then each member of the
+list value is added to the argument in the order that it occurs; default values
+are not used in this case.</li>
+<li>Otherwise, if there is no rest-arg, each required or defaultable parameter
+that was not supplied by a positional-arg is added in parameter declaration
+order from a named-arg, if there is one with the specified name, and otherwise
+using the default value as specified in the function's type descriptor.</li>
+<li>Otherwise, the rest-arg is a mapping and there are no named-args.
+The effect in this case is as if for each field of the mapping there
+was a named-arg, with the name and value of the named-arg coming
+from the name and value of the field.</li>
+</ul>
+<p>
+The static type of the rest-arg must be such as to guarantee that the
+constructed argument list will conform to the function's declared param-list.
+Note that in the case where the rest-arg is a list, it is is not restricted to
+supplying the part of the argument list that will be bound to a rest-param, nor
+is its static type restricted to being an array type. It is a compile-time error
+if there is a required parameter for which there was neither a positional
+argument nor a named argument, or if there is a named argument for a parameter
+that was supplied by a positional argument.
 </p>
 <p>
-If there is no rest-arg, then each non-rest parameter that was not supplied by
-positional argument is added in order from a named argument, if there is one,
-and otherwise using the parameter default. The contextually expected type for
-the expression specifying a named argument is the type declared for the
-corresponding parameter. A default parameter is computed by calling the closure
-in the type descriptor, passing it the previous arguments in the argument list.
-It is a compile-time error if there is a non-rest parameter for which there was
-no positional argument and no named argument and which is not defaultable. It is
-also an error if there is a named argument for a parameter that was supplied by
-a positional argument.
+If the default value for a parameter was specified as <code>&lt;&gt;</code>,
+then then the caller will pass a typedesc value determined at compile-time from
+the contextually expected type of the function-call-expr as follows. Let the
+name of the parameter for which a default of <code>&lt;&gt;</code> was specified
+be <var>t</var>. Let the type of <var>t</var> be typedesc&lt;<var>T</var>&gt;.
+Let the return type descriptor for the function be <var>R</var>, which will have
+references to <var>t</var>. Let the contextually expected type for the
+function-call-expr be <var>C</var>. Then the default value is found by unifying
+<var>C</var> and <var>R</var>: the default value is a typedesc value
+representing a type descriptor <var>S</var> that is a subtype of <var>T</var>,
+such that <var>R</var> with <var>S</var> substituted for <var>t</var> is
+equivalent to <var>C</var>.
+</p>
+<p>
+If the default value for a parameter was specifed using an expression, then it
+is computed by calling the closure stored in the type descriptor, passing it the
+previous arguments in the argument list.
 </p>
 <p>
 A function-call-expr is isolated if the type of the function being called is
@@ -5244,9 +5309,9 @@ to the <code>clone</code> or <code>cloneReadOnly</code> functions defined by the
 lang.value module of the lang library is always isolated.
 </p>
 <p>
-When a function to be called results from the evaluation of an expression that
-is not merely a variable reference, the function can be called by first storing
-the value of the expression in a variable.
+When there is a need to call a function value resulting from the evaluation of
+an expression, the result of the expression evaluation can be assigned to a
+variable and then the function called by using a reference to the variable.
 </p>
 
 </section>
@@ -5364,7 +5429,7 @@ the point where the error constructor was evaluated.
 
 <pre
 class="grammar"><dfn>anonymous-function-expr</dfn> := <abbr>explicit-anonymous-function-expr</abbr> | <abbr>infer-anonymous-function-expr</abbr>
-<dfn>explicit-anonymous-function-expr</dfn> := [<abbr>annots</abbr>] [<abbr>isolated-qual</abbr>] <code>function</code> <abbr>function-signature</abbr> (<abbr>block-function-body</abbr>|<abbr>expr-function-body</abbr>)
+<dfn>explicit-anonymous-function-expr</dfn> := [<abbr>annots</abbr>] <abbr>function-quals</abbr> <code>function</code> <abbr>function-signature</abbr> (<abbr>block-function-body</abbr>|<abbr>expr-function-body</abbr>)
 </pre>
 <p>
 Evaluating an anonymous-function-expr creates a closure, whose basic type is
@@ -5447,17 +5512,17 @@ class="grammar"><dfn>type-cast-expr</dfn> := <code>&lt;</code> <abbr>type-cast-p
 <dfn>type-cast-param</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> | <abbr>annots</abbr>
 </pre>
 <p>
+A <code>type-cast-expr</code> casts the value resulting from evaluating
+<code>expression</code> to the type described by the type-descriptor, performing
+an implicit conversion or numeric conversion if required.
+</p>
+<p>
 Normally, the parameter for a type-cast-expr includes a type-descriptor.
 However, it is also allowed for the parameter to consist only of annotations; in
 this case, the only effect of the type cast is for the contextually expected
 type for expression to be augmented with the specified annotations. The rest of
 this subsection describes the normal case, where the type-cast-expr includes a
 type-descriptor.
-</p>
-<p>
-A <code>type-cast-expr</code> casts the value resulting from evaluating
-<code>expression</code> to the type described by the type-descriptor, performing
-an implicit conversion or numeric conversion if required.
 </p>
 <p>
 A type-cast-expr is evaluated by first evaluating <code>expression</code>
@@ -5478,7 +5543,11 @@ be the static type of <code>expression</code>. Then the static type of the
 <code>type-cast-expr</code> is the intersection of T and TE', where TE' is TE
 with its xml shapes and numeric shapes transformed to take account to the
 possibility of the implicit conversion and numeric conversion specified in the
-previous paragraph.
+previous paragraph. It is a compile-time error to attempt to use a type cast to
+<em>cast away error</em>: if the intersection of TE and <code>error</code> is
+non-empty, then the intersection of T and <code>error</code> must also be
+non-empty. A <code>checkpanic</code> expression can be used instead to assert
+that the result of an expression will never be an error.
 </p>
 <p>
 The contextually expected type for <code>expression</code> is the intersection
@@ -5717,8 +5786,8 @@ with the same basic type as v.
 <pre
 class="grammar"><dfn>shift-expr</dfn> :=
    <abbr>expression</abbr> <code>&lt;&lt;</code> <abbr>expression</abbr>
-   <abbr>expression</abbr> <code>>></code> <abbr>expression</abbr>
-   <abbr>expression</abbr> <code>>>></code> <abbr>expression</abbr>
+   <abbr>expression</abbr> <code>&gt;&gt;</code> <abbr>expression</abbr>
+   <abbr>expression</abbr> <code>&gt;&gt;&gt;</code> <abbr>expression</abbr>
 </pre>
 <p>
 A shift-expr performs a bitwise shift. Both operand expressions must have static
@@ -6518,6 +6587,14 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
 </p>
 </section>
 </section>
+<section>
+<h3>Transactional expression</h3>
+
+<pre
+class="grammar"><dfn>transactional-expr</dfn> := <code>transactional</code>
+</pre>
+</section>
+
 </section>
 <section>
 <h2 id="actions_statements">7. Actions and statements</h2>
@@ -6536,6 +6613,7 @@ class="grammar"><dfn>action</dfn> :=
    | <abbr>type-cast-action</abbr>
    | <abbr>checking-action</abbr>
    | <abbr>trap-action</abbr>
+   | <abbr>commit-action</abbr>
    | <code>(</code> <abbr>action</abbr> <code>)</code>
 <dfn>action-or-expr</dfn> := <abbr>action</abbr> | <abbr>expression</abbr>
 <dfn>type-cast-action</dfn> := <code>&lt;</code> <abbr>type-cast-param</abbr> <code>&gt;</code> <abbr>action</abbr>
@@ -6618,7 +6696,7 @@ class="grammar"><dfn>block-function-body</dfn> :=
 <dfn>default-worker-init</dfn> := <abbr>statement</abbr>*
 <dfn>default-worker</dfn> := <abbr>statement</abbr>*
 <dfn>named-worker-decl</dfn> :=
-   [<abbr>annots</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr>
+   [<abbr>annots</abbr>] [<abbr>transactional-qual</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr>
 <dfn>worker-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
@@ -6821,16 +6899,13 @@ class="grammar"><dfn>statement</dfn> :=
    | <abbr>break-stmt</abbr>
    | <abbr>stmt-with-on-fail</abbr>
    | <abbr>fail-stmt</abbr>
+   | <abbr>retry-stmt</abbr>
+   | <abbr>transaction-stmt</abbr>
+   | <abbr>retry-transaction-stmt</abbr>
+   | <abbr>rollback-stmt</abbr>
    | <abbr>panic-stmt</abbr>
    | <abbr>return-stmt</abbr>
    | <abbr>fork-stmt</abbr>
-
-<dfn>regular-compound-stmt</dfn> :=
-  <abbr>do-stmt</abbr>
-  | <abbr>match-stmt</abbr>
-  | <abbr>foreach-stmt</abbr>
-  | <abbr>while-stmt</abbr>
-  | <abbr>lock-stmt</abbr>
 </pre>
 <p>
 The execution of any statement may involve the evaluation of actions and
@@ -6844,7 +6919,7 @@ two possibilities.
 </p>
 <ul>
 <li>If the abrupt termination is a check-fail, then control flow is transferred
-as if by a fail statement with an expression that evaluates to e.</li>
+as if by a <code>fail-stmt</code> with an expression that evaluates to e.</li>
 <li>If the abrupt termination is a panic, then the current worker is terminated
 abnormally with termination value e. This is the same as if
 a panic statement is executed with an expression that evaluates to e.</li>
@@ -6854,6 +6929,19 @@ If the execution of a substatement causes termination of the current worker,
 then the execution of the statement terminates at that point.
 </p>
 
+<pre
+class="grammar">
+<dfn>regular-compound-stmt</dfn> :=
+  <abbr>do-stmt</abbr>
+  | <abbr>match-stmt</abbr>
+  | <abbr>foreach-stmt</abbr>
+  | <abbr>while-stmt</abbr>
+  | <abbr>lock-stmt</abbr>
+</pre>
+<p>
+A <code>regular-compound-stmt</code> can be combined with an
+<code>on-fail-clause</code> to make a <code>stmt-with-on-fail</code>.
+</p>
 <pre
 class="grammar">
 <dfn>statement-block</dfn> := <code>{</code> <abbr>statement</abbr>* <code>}</code>
@@ -7429,20 +7517,20 @@ variable must not be assigned more than once.
 </p>
 </section>
 <section>
-<h3>Implicit variable type narrowing</h3>
+<h3 id="conditional_variable_type_narrowing">Conditional variable type narrowing</h3>
 <p>
 Usually the type of a reference to a variable is determined by the variable's
 declaration, either explicitly specified by a type descriptor or inferred from
-the static type of the initializer.
-</p>
-<p>
-In addition, this section defines cases where a variable is used in certain
-kinds of boolean expression in a conditional context, and it can be proved at
-compile time that the value stored in local variable or parameter will, within a
-particular region of code, always belong to a type that is narrower that the
-static type of the variable. In these cases, references to the variable within
-particular regions of code will have a static type that is narrower that the
-variable type.
+the static type of the initializer. However, the language also recognizes two
+kinds of case where the way a local variable or parameter is used means that is
+known at compile-time that within a particular region of code the value of the
+variable will belong to a type that is narrower than the declared type. In these
+cases, references to the variable within particular regions of code will have a
+static type that is narrower that the variable type. One kind of case, which is
+described in this section, is when a variable is used in a boolean expression in
+a conditional context. The other kind of case is when a variable is used in a
+match statement; this is described in the <a href="#match_statement">Match
+statement</a> section.
 </p>
 <p>
 Given an expression E with static type boolean, and a variable x with static
@@ -7932,9 +8020,13 @@ is present, the corresponding statement block is executed.
 <pre
 class="grammar"><dfn>do-stmt</dfn> := <code>do</code> <abbr>statement-block</abbr>
 </pre>
+<p>
+A <code>do-stmt</code> is executed by executing its
+<code>statement-block</code>.
+</p>
 </section>
 <section>
-<h3>Match statement</h3>
+<h3 id="match_statement">Match statement</h3>
 
 <pre
 class="grammar"><dfn>match-stmt</dfn> := <code>match</code> <abbr>action-or-expr</abbr> <code>{</code> <abbr>match-clause</abbr>+ <code>}</code>
@@ -8066,16 +8158,53 @@ bound to a new mapping that contains just the fields for which that did not
 match a <code>field-match-pattern</code>.
 </p>
 <p>
-For a match of an <code>error-match-pattern</code> with an
+For every match pattern, there is a set of shapes that the pattern matches. The
+type corresponding to the match pattern is the type containing these shapes. The
+value matches the pattern if and only if it looks like the type. A mutable value
+thus can match the pattern without belonging to the corresponding type. However,
+an immutable value that matches the pattern will always belong to the type.
+In particular, for the match of an <code>error-match-pattern</code> with an
 <code>error-type-reference</code> against an error value to succeed, the
-referenced error type must contain the shape of the error value; since errors
-are immutable, this requirement is equivalent to requiring that the error value
-belong to the referenced error type.
+error value must belong to the referenced error type.
 </p>
+<p>
+A variable is the <em>matched variable</em> of a <code>match-statement</code> if
+the <code>action-or-expression</code> following <code>match</code> is a
+<code>variable-reference</code> that references this variable. The type of a
+matched variable is subject to narrowing within regions of the
+<code>match-statement</code> as follows. The matched variable has a narrowed
+type at the start of each match-clause, which is determined by previous
+<code>match-clause</code>s; the type for the first <code>match-clause</code> is
+the normal static type of the variable. Narrowing is applied to each
+<code>match-clause</code> as follows:
+</p>
+<ul>
+<li>let <var>T</var> be the narrowed type of the matched variable at the start
+of the match-clause;</li>
+<li>let <var>P</var> be the union of the corresponding types of each
+<code>match-pattern</code> in the <code>match-pattern-list</code> of the
+<code>match-clause</code>;</li>
+<li>let <var>N</var> be the intersection of <var>T</var> and
+<var>P</var>;</li>
+<li>let <var>R</var> be the set difference of <var>T</var> and
+<var>P</var>;</li>
+<li>if <var>N</var> is a subtype of <code>readonly</code>, then the narrowed
+type for the <code>match-guard</code>, if any, and <code>statement-block</code>
+of the <code>match-clause</code> is <var>N</var>; otherwise it is
+<var>T</var>;</li>
+<li>if there is a match-guard, then the type narrowing described in <a
+href="#conditional_variable_type_narrowing">Conditional variable type
+narrowing</a> is done in addition to the type narrowing described here;</li>
+<li>if <var>R</var> is a subtype of <code>readonly</code> and there is no
+<code>match-guard</code>, then the narrowed type for the next
+<code>match-clause</code> is <var>R</var>; otherwise, it is <var>T</var>.</li>
+</ul>
 
 </section>
 <section>
-<h3>Foreach statement</h3>
+<h3>Loops</h3>
+<section>
+<h4>Foreach statement</h4>
 
 <pre
 class="grammar"><dfn>foreach-stmt</dfn> :=
@@ -8130,7 +8259,7 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 </p>
 </section>
 <section>
-<h3>While statement</h3>
+<h4>While statement</h4>
 
 <pre
 class="grammar"><dfn>while-stmt</dfn> := <code>while</code> <abbr>expression</abbr> <abbr>statement-block</abbr>
@@ -8161,7 +8290,7 @@ The static type of <code>expression</code> must be a subtype of boolean.
 </p>
 </section>
 <section>
-<h3>Continue statement</h3>
+<h4>Continue statement</h4>
 
 <pre
 class="grammar"><dfn>continue-stmt</dfn> := <code>continue</code> <code>;</code>
@@ -8174,7 +8303,7 @@ outermost statement-block in the while-stmt or foreach-stmt.
 </p>
 </section>
 <section>
-<h3>Break statement</h3>
+<h4>Break statement</h4>
 
 <pre class="grammar"><dfn>break-stmt</dfn> := <code>break</code> <code>;</code>
 </pre>
@@ -8183,6 +8312,7 @@ A break statement is only allowed if it is lexically enclosed within a
 while-stmt or a foreach-stmt. Executing a break statement causes the nearest
 enclosing while-stmt or foreach-stmt to terminate.
 </p>
+</section>
 </section>
 
 <section>
@@ -8249,7 +8379,9 @@ variable-reference-expr occurs within an expression that is isolated.</li>
 </section>
 
 <section>
-<h3>On fail clause</h3>
+<h3>Fail and retry</h3>
+<section>
+<h4>On fail clause</h4>
 <pre
 class="grammar"><dfn>stmt-with-on-fail</dfn> := <abbr>regular-compound-stmt</abbr> <abbr>on-fail-clause</abbr>
 <dfn>on-fail-clause</dfn> := <code>on</code> <code>fail</code> <abbr>typed-binding-pattern</abbr> <abbr>statement-block</abbr>
@@ -8274,7 +8406,7 @@ to succeed by the static type of the associated error value.
 </section>
 
 <section>
-<h3>Fail statement</h3>
+<h4>Fail statement</h4>
 <pre
 class="grammar"><dfn>fail-stmt</dfn> := <code>fail</code> <abbr>expression</abbr> <code>;</code>
 </pre>
@@ -8290,7 +8422,85 @@ on-fail-clause or becomes the termination value of the current worker.
 </p>
 
 </section>
+<section>
+<h4>Retry statement</h4>
+<pre
+class="grammar"><dfn>retry-stmt</dfn> := <code>retry</code> <abbr>retry-spec</abbr> <abbr>statement-block</abbr>
+<dfn>retry-spec</dfn> := [<abbr>type-parameter</abbr>] [ <code>(</code> <abbr>arg-list</abbr> <code>)</code> ]
+</pre>
+</section>
 
+</section>
+
+<section>
+<h3>Transactions</h3>
+
+<section>
+<h4>Transaction manager</h4>
+
+<section>
+<h5>Begin operation</h5>
+</section>
+
+<section>
+<h5>Commit operation</h5>
+</section>
+
+<section>
+<h5>Rollback operation</h5>
+</section>
+
+<section>
+<h5>Info operation</h5>
+</section>
+
+<section>
+<h5>SetRollbackOnly operation</h5>
+</section>
+
+<section>
+<h5>SetTimeout operation</h5>
+</section>
+
+</section>
+
+<section>
+<h4>Transaction statement</h4>
+
+<pre
+class="grammar"><dfn>transaction-stmt</dfn> := <code>transaction</code> <abbr>statement-block</abbr>
+</pre>
+
+</section>
+
+
+<section>
+<h4>Retry transaction statement</h4>
+
+<pre
+class="grammar"><dfn>retry-transaction-stmt</dfn> := <code>retry</code> <abbr>retry-spec</abbr> <abbr>transaction-stmt</abbr>
+</pre>
+</section>
+
+<section>
+<h4>Commit action</h4>
+
+<pre
+class="grammar"><dfn>commit-action</dfn> := <code>commit</code>
+</pre>
+
+</section>
+
+<section>
+<h4>Rollback statement</h4>
+
+<pre
+class="grammar"><dfn>rollback-stmt</dfn> := <code>rollback</code> [<abbr>expression</abbr>] <code>;</code>
+</pre>
+
+</section>
+
+</section>
 <section>
 <h3>Panic statement</h3>
 
@@ -8318,6 +8528,7 @@ evaluating the action-or-expr provides the termination value of the worker. If
 action-or-expr is omitted, then the termination value is nil.
 </p>
 </section>
+
 
 </section>
 <section>
@@ -8352,7 +8563,7 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
 <pre
 class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</abbr> <code>/</code>] <abbr>module-name</abbr> [<code>as</code> <abbr>import-prefix</abbr>] <code>;</code>
 <dfn>import-prefix</dfn> := <abbr>module-prefix</abbr> | <code>_</code>
-<dfn>module-prefix</dfn> := <abbr>identifier</abbr>
+<dfn>module-prefix</dfn> := <abbr>identifier</abbr> | <abbr>predeclared-prefix</abbr>
 <dfn>org-name</dfn> := <abbr>identifier</abbr>
 <dfn>module-name</dfn> := <abbr>identifier</abbr> (<code>.</code> <abbr>identifier</abbr>)*
 
@@ -8382,31 +8593,31 @@ same symbol space as a <code>xmlns-namespace-prefix</code> declared by an
 symbol space used by other declarations.
 </p>
 <p>
-The following module prefixes are predeclared:
-</p>
-<ul>
-<li><code>boolean</code></li>
-<li><code>decimal</code></li>
-<li><code>error</code></li>
-<li><code>float</code></li>
-<li><code>future</code></li>
-<li><code>int</code></li>
-<li><code>map</code></li>
-<li><code>object</code></li>
-<li><code>stream</code></li>
-<li><code>string</code></li>
-<li><code>table</code></li>
-<li><code>typedesc</code></li>
-<li><code>xml</code></li>
-</ul>
-<p>
-Each predeclared module prefix <code><var>t</var></code> is predeclared as
-referring to the <code>lang.<var>t</var></code> lang library module, but this
-can be overridden by an import-decl.
-</p>
-<p>
 It is an error for a module to directly or indirectly import itself. In other
 words, the directed graph of module imports must be acyclic.
+</p>
+<pre
+class="grammar"><dfn>predeclared-prefix</dfn> :=
+   <code>boolean</code>
+   | <code>decimal</code>
+   | <code>error</code>
+   | <code>float</code>
+   | <code>future</code>
+   | <code>int</code>
+   | <code>map</code>
+   | <code>object</code>
+   | <code>stream</code>
+   | <code>string</code>
+   | <code>table</code>
+   | <code>transaction</code>
+   | <code>typedesc</code>
+   | <code>xml</code>
+</pre>
+<p>
+A reserved keyword <code><var>t</var></code> that is a predeclared-prefix is
+predeclared as referring to the <code>lang.<var>t</var></code> lang library
+module, but this can be overridden by an import-decl. A predeclared-prefix can
+be used as a module-prefix without using a QuotedIdentifier.
 </p>
 
 </section>
@@ -8493,31 +8704,34 @@ unsuccessful, terminates the program execution.
 <h3>Listeners and services</h3>
 
 <p>
-Service objects have remote methods, which are the network entry points of a
-Ballerina program. Listeners provide the interface between the network and
-service objects. A listener object receives network messages from a remote
-process according to some protocol and translates the received messages into
-calls on the remote methods of service objects that have been attached to the
-listener object. It is up to the listener object to determine how this
-translation happens; the type of the listener object thus constrains the type of
-a service that can be attached to the listener. (This constraint is not yet
-enforced by Ballerina's type system.)
+Service objects support network interaction using remote methods and resource
+methods. Listeners provide the interface between the network and service
+objects. A listener object receives network messages from a remote process
+according to some protocol and translates the received messages into calls on
+the remote and resource methods of service objects that have been attached to
+the listener object. It is up to the listener object to determine how this
+translation happens; the type of the listener object constrains the type of a
+service that can be attached to the listener. (This constraint cannot yet be
+fully expressed by Ballerina's type system.)
 </p>
 <p>
-An error return value is used by a service object's remote method to indicate
-that it encountered an error in processing the protocol message. The
-interpretation of other return values is dependent on the listener object. A
-listener object can allow a service object's remote method to use the return
-value to supply the response in the non-error case. This has the limitation that
-the remote method cannot control what happens if there is an error in sending a
-response. It also has the limitation that it cannot handle complex message
-exchange patterns, although returning multiple responses to a single request can
-be modelled by a remote method that returns a stream. A listener object can
+A service object's remote or resource method uses its return value to indicate
+to the listener what further handling of the network message is needed. An error
+return value is used to indicate that the method encountered some sort of error
+in handling the network message. When a service object is returned, it means
+that the listener should use that service object to further handle the network
+message. When no further handling is needed, the return value should be nil.
+</p>
+<p>
+The return value can also be used to supply a response to the network message.
+This has the limitation that the method cannot control what happens if there is
+an error in sending a response. It also has the limitation that it cannot handle
+complex message exchange patterns, although returning multiple responses to a
+single request can be modelled by returning a stream. A listener object can
 avoid these limitations by passing a client object as a parameter to the service
-object's remote method; the service object then makes calls on the remote
-methods of the client object in order to send a response back to the client. In
-this case, the service object's remote method should return nil if it does not
-return an error.
+object's remote or resource method; the service object then makes calls on the
+remote methods of the client object in order to send a response back to the
+client.
 </p>
 <p>
 The methods defined by the Listener&lt;T&gt; object type allow for the
@@ -8679,7 +8893,7 @@ without without relying on inference.
 <pre
 class="grammar"><dfn>function-defn</dfn> := 
    <abbr>metadata</abbr>
-   [<code>public</code>] [<abbr>isolated-qual</abbr>]
+   [<code>public</code>] <abbr>function-quals</abbr>
    <code>function</code> <abbr>identifier</abbr> <abbr>function-signature</abbr> <abbr>function-defn-body</abbr>
 <dfn>function-defn-body</dfn> :=
    <abbr>block-function-body</abbr>
@@ -8766,13 +8980,16 @@ class is subject to same requirements as when it occurs as an
 explicitly isolated.
 </p>
 <p>
-If an object-type-inclusion references a type-descriptor that is a class, then
-only the type of the class is included: the definitions of the methods and any
-initializers for the fields are not included. If a class uses an
+If an <code>object-type-inclusion</code> references a type-descriptor that is a
+class, then only the type of the class is included: the definitions of the
+methods and any initializers for the fields are not included. If a class uses an
 object-type-inclusion to include an object type T, then each method declared in
 T must be defined in the class using a <code>method-defn</code> with the same
 visibility. If T has a method or field with module-level visibility, then C must
-be in the same module.
+be in the same module. If the class is readonly (i.e.
+<code>class-type-quals</code> includes <code>readonly</code>), then an
+<code>object-type-inclusion</code> in the class is allowed to directly or
+indirectly reference a readonly class.
 </p>
 <p>
 If <code>class-type-quals</code> contains <code>distinct</code>, then the
@@ -8814,7 +9031,7 @@ is not allowed to assign to the variable after it is initialized.
 </p>
 <pre
 class="grammar">
-<dfn>module-init-var-decl</dfn> := <abbr>metadata</abbr> <abbr>module-init-var-quals</abbr> <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>module-var-init</abbr> <code>;</code>
+<dfn>module-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>public</code>] <abbr>module-init-var-quals</abbr> <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>module-var-init</abbr> <code>;</code>
 <dfn>module-init-var-quals</dfn> := (<code>final</code> | <abbr>isolated-qual</abbr> | <code>configurable</code>)*
 <dfn>module-var-init</dfn> := <abbr>expression</abbr> | <code>?</code>
 </pre>
@@ -8829,12 +9046,12 @@ that type-descriptor provides the contextually expected type for action-or-expr.
 </p>
 <p>
 If a module-init-var-decl includes an isolated-qual, then the variable declared
-is isolated. In this case, the binding-pattern in the typed-binding-pattern must
-be just a variable-name, and the expression must be an isolated expression. A
-variable declared as an isolated variable can be accessed only within a
-lock-stmt. When an isolated-qual occurs in a position where the grammar would
-allow it to be parsed as part of module-init-var-quals or typed-binding-pattern,
-the former parse is used.
+is isolated. In this case, <code>public</code> must not be specified, the
+binding-pattern in the typed-binding-pattern must be just a variable-name, and
+the expression must be an isolated expression. A variable declared as an
+isolated variable can be accessed only within a lock-stmt. When an isolated-qual
+occurs in a position where the grammar would allow it to be parsed as part of
+module-init-var-quals or typed-binding-pattern, the former parse is used.
 </p>
 <p>
 If <code>configurable</code> is specified, then the initializer specified in the
@@ -8851,7 +9068,7 @@ a subtype of <code>anydata</code>.
 </p>
 
 <pre
-class="grammar"><dfn>module-no-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>final</code>] <abbr>type-descriptor</abbr> <abbr>variable-name</abbr> <code>;</code>
+class="grammar"><dfn>module-no-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>public</code>] [<code>final</code>] <abbr>type-descriptor</abbr> <abbr>variable-name</abbr> <code>;</code>
 </pre>
 <p>
 A module variable declared with <code>module-no-init-var-decl</code> must be
@@ -9315,8 +9532,8 @@ modules are called the <em>lang library</em>.
 </p>
 <p>
 The lang library comprises the following modules. With the exception of the
-<code>lang.value</code> and <code>lang.runtime</code> modules, each corresponds
-to a basic type.
+<code>lang.value</code>, <code>lang.transaction</code> and
+<code>lang.runtime</code> modules, each corresponds to a basic type.
 </p>
 <ul>
 <li><code><a href="./lib/array.bal" type="text/plain">lang.array</a></code> for
@@ -9348,6 +9565,7 @@ basic type typedesc</li>
 <li><code><a href="./lib/xml.bal" type="text/plain">lang.xml</a></code> for
 basic type xml</li>
 <li><code><a href="./lib/runtime.bal" type="text/plain">lang.runtime</a></code></li>
+<li><code><a href="./lib/transaction.bal" type="text/plain">lang.transaction</a></code></li>
 <li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 </ul>
 <p>
@@ -9502,9 +9720,11 @@ object constructors can declare fields as final.</li>
 objects; resource methods on service objects have become remote methods. There
 is a new concept for resource methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
-declared as <code>readonly</code>. Functions can be declared as
+declared as <code>readonly</code>.</li>
+<li>Functions, objects and module-level variables can be declared as
 <code>isolated</code>; this works in conjunction with <code>readonly</code> to
 support concurrency safety.</li>
+<li>Module-level variables can be public, provided they are not isolated.</li>
 <li>Intersection types have been added.</li>
 <li>Distinct types have been added; these provide the functionality of nominal
 types with the framework of a structural type system.</li>
@@ -9525,7 +9745,8 @@ function.</li>
 structural types and no longer has preview status.</li>
 <li>Enum declarations have been added.</li>
 <li>The return type of a function with an external body can depend on the value
-of a parameter of typedesc type.</li>
+of a parameter of typedesc type, which can be defaulted from the contextually
+expected type.</li>
 <li>Query expressions support some new clauses: <code>join</code> clause,
 <code>order by</code> clause, <code>limit</code> clause and <code>on
 conflict</code> clause.</li>
@@ -9546,6 +9767,12 @@ or action fails, it behaves like a <code>fail</code> statement rather than a
 specified to be <code>configurable</code>, which allows their initial values to
 be specified at runtime.</li>
 <li>An import declaration can no longer specify a version.</li>
+<li>The stream type no longer has Preview status.</li>
+<li>Module prefixes for the langlib modules that correspond to keywords are
+predeclared.</li>
+<li>Backslash escapes can be used in identifiers without needing an initial
+single quote.</li>
+<li>Language support for transactions has been added.</li>
 </ol>
 </section>
 <section>
@@ -9873,13 +10100,11 @@ constrained.</li>
 <h2 id="planned_future_functionality">C. Planned future functionality</h2>
 
 <p>
-The vision for the Ballerina language includes a large range of functionality
+The vision for the Ballerina language includes a range of functionality
 that is not yet included in this specification.
 </p>
 
 <ul>
-<li><em>Transactions</em> will provide language support both local and
-distributed transactions.</li>
 <li><em>Security</em> will combine language and platform features to make
 programs secure by default.</li>
 <li><em>Date/time basic types</em> will provide one or more basic types related

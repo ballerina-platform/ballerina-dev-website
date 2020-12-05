@@ -10,16 +10,26 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">class</span> <span class="nx">StockKeeper</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">class</span> <span class="nx">StockKeeper</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">requestCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">amount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Locks the `amount` field and increments it by `n`.</span>
         <span class="nx">lock</span> <span class="p">{</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">amount</span> <span class="o">+=</span> <span class="nx">n</span><span class="p">;</span>
         <span class="p">}</span>
+        <span class="c1">// Increments the `requentCount` field. This does not lock the field.</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">requestCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">StockKeeper</span> <span class="nx">stockKeeper</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">StockKeeper</span> <span class="nx">stockKeeper</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Two workers executing the `add` method in `StockKeeper` concurrently</span>
+    <span class="c1">// in which their strands are executed in their own threads.</span>
     <span class="nd">@strand {</span>
         <span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span>
     <span class="p">}</span>
@@ -37,7 +47,10 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span> <span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span> <span class="p">};</span>
+    <span class="c1">// The amount would have a consistent result always since it was locked before incrementing.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Amount: &quot;</span><span class="p">,</span> <span class="nx">stockKeeper</span><span class="p">.</span><span class="nx">amount</span><span class="p">);</span>
+    <span class="c1">// The request count will be inconsistent between runs since its field access was not </span>
+    <span class="c1">// secured with locking to provide correct concurrent access behavior.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Request Count: &quot;</span><span class="p">,</span> <span class="nx">stockKeeper</span><span class="p">.</span><span class="nx">requestCount</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -67,9 +80,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="byte-io.html">
+                                    <a class="next" href="isolated-objects.html">
                                         <span>NEXT ></span>
-                                        <p>Byte I/O</p>
+                                        <p>Isolated Objects</p>
                                     </a>
                                 </div>
                                 

@@ -11,23 +11,37 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="c1">// This function reads records one by one and prints the records.</span>
 <span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span>
                                 <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+    <span class="c1">// Reads all the records from the provided file</span>
+    <span class="c1">// until there are no more records.</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">csvChannel</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// Reads the records.</span>
         <span class="k">var</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">csvChannel</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
+        <span class="c1">// Prints the records.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">records</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">[])</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">records</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">//Specifies the location of the `.CSV` file.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">srcFileName</span> <span class="p">=</span> <span class="s">&quot;./files/sample.csv&quot;</span><span class="p">;</span>
+    <span class="c1">// Opens a [CSV channel in the `write` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/WritableCSVChannel.html)</span>
+    <span class="c1">// and writes some data to the `./files/sample.csv` file for later use.</span>
+    <span class="c1">// The record separator of the `.CSV` file is a</span>
+    <span class="c1">// new line and the field separator is a comma (,).</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel</span> <span class="p">=</span>
                         <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">[][]</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">[[</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;James&quot;</span><span class="p">,</span> <span class="s">&quot;10000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;Nathan&quot;</span><span class="p">,</span> <span class="s">&quot;150000&quot;</span><span class="p">],</span>
@@ -35,6 +49,8 @@ redirect_from:
     <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;Oliver&quot;</span><span class="p">,</span> <span class="s">&quot;1100000&quot;</span><span class="p">]];</span>
     <span class="nx">writeDataToCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">,</span> <span class="o">...</span><span class="nx">data</span><span class="p">);</span>
     <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">);</span>
+    <span class="c1">// Opens a [CSV channel in the `read` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableCSVChannel.html),</span>
+    <span class="c1">// which is the default mode.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel</span> <span class="p">=</span>
                         <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Start processing the CSV file from &quot;</span><span class="p">,</span> <span class="nx">srcFileName</span><span class="p">);</span>
@@ -44,9 +60,12 @@ redirect_from:
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">processedResult</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Processing completed.&quot;</span><span class="p">);</span>
+    <span class="c1">// Closes the CSV channel.</span>
     <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">rCsvChannel</span><span class="p">);</span>
+    <span class="c1">// Opens a CSV channel in the `read` mode, which is the default mode.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel2</span> <span class="p">=</span>
                             <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
+    <span class="c1">// Reads the `.CSV` file as a `table` using [getTable](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableCSVChannel.html#getTable) function.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reading  &quot;</span> <span class="o">+</span> <span class="nx">srcFileName</span> <span class="o">+</span> <span class="s">&quot; as a table&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">tblResult</span> <span class="p">=</span> <span class="nx">rCsvChannel2</span><span class="p">.</span><span class="nx">getTable</span><span class="p">(</span><span class="nx">Employee</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">tblResult</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;)</span> <span class="p">{</span>
@@ -58,6 +77,7 @@ redirect_from:
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">tblResult</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">rCsvChannel2</span><span class="p">);</span>
+    <span class="c1">// Opens a CSV channel in the &quot;write&quot; mode and writes the `table` to a `.CSV` file.</span>
     <span class="kt">string</span> <span class="nx">targetFileName</span> <span class="p">=</span> <span class="s">&quot;./files/output.csv&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel2</span> <span class="p">=</span>
                         <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">targetFileName</span><span class="p">);</span>
@@ -70,6 +90,8 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel2</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Creates a `table` and adds some data.</span>
 <span class="kd">function</span> <span class="nx">createTableAndAddData</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">employeeTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[];</span>
     <span class="nx">Employee</span><span class="p">[]</span> <span class="nx">employees</span> <span class="p">=</span> <span class="p">[];</span>
@@ -81,6 +103,8 @@ redirect_from:
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">employeeTable</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Writes data to a given CSV Channel.</span>
 <span class="kd">function</span> <span class="nx">writeDataToCSVChannel</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">,</span>
                                 <span class="kt">string</span><span class="p">[]</span><span class="o">...</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">rec</span> <span class="nx">in</span> <span class="nx">data</span> <span class="p">{</span>
@@ -91,6 +115,8 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Closes the Readable CSV channel.</span>
 <span class="kd">function</span> <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">csvChannel</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -98,6 +124,8 @@ redirect_from:
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Closes the Writable CSV channel.</span>
 <span class="kd">function</span> <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">csvChannel</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>

@@ -11,15 +11,27 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// The `main` function that accepts student information and prints out a formatted string.</span>
+<span class="c1">// The first parameter `name` is a required parameter, while the second parameter `age` is a defaultable</span>
+<span class="c1">// parameter with the default value `18`. The third parameter `year` is also a defaultable parameter.</span>
+<span class="c1">// The rest parameter `modules` represents the additional arguments.</span>
+<span class="c1">// The `main` function may return an `error` or `()`.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
                      <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">18</span><span class="p">,</span>
                      <span class="kt">string</span> <span class="nx">year</span> <span class="p">=</span> <span class="s">&quot;Freshman&quot;</span><span class="p">,</span>
                      <span class="kt">string</span><span class="o">...</span> <span class="nx">modules</span><span class="p">)</span>
                   <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+    <span class="c1">// Return an error if the name is invalid.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;InvalidName&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;invalid length&quot;</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kt">string</span> <span class="nx">info</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`Name: ${name}, Age: ${age}, Year: ${year}`</span><span class="p">;</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kt">string</span> <span class="nx">info</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`Name: ${name}, Age: ${age}, Year: ${year}`</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">info</span> <span class="o">+=</span> <span class="s">&quot;, Module(s): &quot;</span> <span class="o">+</span> <span class="nx">modules</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
@@ -51,9 +63,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="isolated-functions.html">
+                                    <a class="next" href="if-else.html">
                                         <span>NEXT ></span>
-                                        <p>Isolated Functions</p>
+                                        <p>If/Else</p>
                                     </a>
                                 </div>
                                 

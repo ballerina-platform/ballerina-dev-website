@@ -12,23 +12,46 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nd">@http:ServiceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cookie-demo&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">cookieServer</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9095</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">cookieServer</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9095</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/login&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">login</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// Retrieve the JSON payload from the request as it</span>
+        <span class="c1">// contains the login details of a user.</span>
         <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">details</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="c1">// Retrieve the username and password.</span>
             <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">details</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-            <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">details</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="nx">is</span> <span class="kt">json</span> <span class="o">&amp;&amp;</span> <span class="nx">password</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">details</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="nx">is</span> <span class="kt">json</span> <span class="o">&amp;&amp;</span> <span class="nx">password</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Check the password value.</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">password</span> <span class="o">==</span> <span class="s">&quot;p@ssw0rd&quot;</span><span class="p">)</span> <span class="p">{</span>
+
+                    <span class="c1">// [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Cookie.html) by setting the `name` as the `username`</span>
+                    <span class="c1">// and `value` as the logged-in user&#39;s name.</span>
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+
+                    <span class="c1">// Set the cookie&#39;s path as `/` to apply it to all the</span>
+                    <span class="c1">// resources in the service.</span>
                     <span class="nx">cookie</span><span class="p">.</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
+
+                    <span class="c1">// [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#addCookie).</span>
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
                     <span class="nx">response</span><span class="p">.</span><span class="nx">addCookie</span><span class="p">(</span><span class="nx">cookie</span><span class="p">);</span>
+
+                    <span class="c1">// Set a message payload to inform that the login has</span>
+                    <span class="c1">// been succeeded.</span>
                     <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Login succeeded&quot;</span><span class="p">);</span>
                     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
                     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -38,6 +61,8 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// Upgrade from HTTP to WebSocket and define the service the WebSocket client needs to connect to.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">webSocketUpgrade</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">upgradePath</span><span class="p">:</span> <span class="s">&quot;/ws&quot;</span><span class="p">,</span>
@@ -45,7 +70,11 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">upgrader</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getCookies).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
+
+        <span class="c1">// Get the cookie value of the `username`.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">usernameCookie</span> <span class="p">=</span> <span class="nx">cookies</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span>
                                 <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">cookie</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&quot;username&quot;</span><span class="p">;</span>
@@ -55,6 +84,7 @@ redirect_from:
             <span class="k">if</span> <span class="p">(</span><span class="nx">user</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;WebSocket connection made successfully&quot;</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// If the user is `nil`, cancel the upgrade WebSocket connection.</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">cancelWebSocketUpgrade</span><span class="p">(</span><span class="mi">401</span><span class="p">,</span>
                                      <span class="s">&quot;Unauthorized request. Please login&quot;</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -63,6 +93,8 @@ redirect_from:
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// If the `username` cookie is not presented, cancel the upgrade</span>
+            <span class="c1">// WebSocket connection.</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">cancelWebSocketUpgrade</span><span class="p">(</span><span class="mi">401</span><span class="p">,</span>
                                  <span class="s">&quot;Unauthorized request. Please login&quot;</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -72,11 +104,17 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// The callback service to receive frames from the client.</span>
 <span class="kd">service</span> <span class="nx">cookieService</span> <span class="p">=</span>
         <span class="nd">@http:WebSocketServiceConfig {subProtocols: [&quot;xml&quot;, &quot;json&quot;]} service {</span>
+
+    <span class="c1">// This resource gets invoked when a new client connects.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;New WebSocket connection: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">//This resource gets invoked upon receiving a new text frame from a client.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
@@ -84,30 +122,52 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">//This resource gets invoked when an error occurs in the connection.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// The HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CookieConfig.html).</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">cookieConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create a new HTTP client by giving the URL and the client configuration.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span>
                     <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9095/cookie-demo&quot;</span><span class="p">,</span> <span class="nx">clientEPConfig</span><span class="p">);</span>
+
+    <span class="c1">// Initialize an HTTP request.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+    <span class="c1">// Send a username and a password as a JSON payload to the backend.</span>
     <span class="kt">json</span> <span class="nx">jsonPart</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;p@ssw0rd&quot;</span>
     <span class="p">};</span>
     <span class="nx">request</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonPart</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">loginResp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">loginMessage</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">loginMessage</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Send an outbound request to the `login` backend resource.</span>
+    <span class="k">var</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">loginResp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// This response contains the cookies added by the backend server.</span>
+        <span class="c1">// Get the login response message.</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">loginMessage</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">loginMessage</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">loginMessage</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// [Gets cookies from the `http:Response`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getCookies)</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
+            <span class="c1">// Initialize the WebSocket client with the cookies</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span>
                             <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://localhost:9095/cookie-demo/ws&quot;</span><span class="p">,</span>
                                     <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
@@ -115,6 +175,8 @@ redirect_from:
                                         <span class="nx">cookies</span><span class="p">:</span> <span class="nx">cookies</span>
                                     <span class="p">}</span>
                                 <span class="p">);</span>
+
+            <span class="c1">// Pushes text to the connection.</span>
             <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
@@ -124,11 +186,17 @@ redirect_from:
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">((&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">loginResp</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// The client service to receive frames from the remote server.</span>
 <span class="kd">service</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
+
+    <span class="c1">// This resource gets invoked upon receiving a new text frame from the remote backend.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
                              <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
     <span class="p">}</span>
+
+     <span class="c1">// This resource gets invoked when an error occurs in the connection.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>

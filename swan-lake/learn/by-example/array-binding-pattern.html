@@ -10,7 +10,12 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// An array-typed binding pattern, which declares the variables `score1`, `score2`, and</span>
+    <span class="c1">// `score3` of type `float`. The members of the array value given by the assignment</span>
+    <span class="c1">// expression provides the values for the variables.</span>
     <span class="kt">float</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="nx">scores</span> <span class="p">=</span> <span class="p">[</span><span class="mf">9.8</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">];</span>
     <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">]</span> <span class="p">[</span><span class="nx">score1</span><span class="p">,</span> <span class="nx">score2</span><span class="p">,</span> <span class="nx">score3</span><span class="p">]</span> <span class="p">=</span> <span class="nx">scores</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Score 1: &quot;</span><span class="p">,</span> <span class="nx">score1</span><span class="p">,</span> <span class="s">&quot; Score 2: &quot;</span><span class="p">,</span> <span class="nx">score2</span><span class="p">,</span> <span class="s">&quot; Score 3: &quot;</span><span class="p">,</span> <span class="nx">score3</span><span class="p">);</span>

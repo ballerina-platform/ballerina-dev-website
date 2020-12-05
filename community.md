@@ -20,7 +20,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-4/">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-5/">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues">Past newsletter issues</a></li>
 
 </ul>
@@ -80,7 +80,8 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
 
-   - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
+   - Compiler, runtime, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
+   - Standard Library: <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues">ballerina-standard-library</a> repo
    - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo
    - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo
    - Security flaw: send an email to <a href="mailto:security@ballerina.io">security@ballerina.io</a>. For details, see the <a href="/security">security policy</a>.

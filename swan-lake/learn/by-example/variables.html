@@ -11,12 +11,28 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Declare a module-level variable.</span>
 <span class="kt">int</span> <span class="nx">total</span> <span class="p">=</span> <span class="mi">99</span><span class="p">;</span>
+
+<span class="c1">// Declare a compile-time constant.</span>
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">OK</span> <span class="p">=</span> <span class="s">&quot;ok&quot;</span><span class="p">;</span>
+
+<span class="c1">// Declare a `public` compile-time constant.</span>
 <span class="nx">public</span> <span class="kd">const</span> <span class="kt">int</span> <span class="nx">COUNT</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="nx">final</span> <span class="kt">int</span> <span class="nx">status</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="c1">// Declare a final variable.</span>
+<span class="c1">// The value of the `final` variable is read-only. Once a value is assigned to a final</span>
+<span class="c1">// variable, it becomes immutable. All parameters of a function call are</span>
+<span class="c1">// implicitly final.</span>
+<span class="nx">final</span> <span class="kt">int</span> <span class="nx">status</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Access a global variable.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">total</span><span class="p">);</span>
+    <span class="c1">// Access a public constant.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">COUNT</span><span class="p">);</span>
+    <span class="c1">// This is a local variable.</span>
     <span class="kt">boolean</span> <span class="nx">available</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">available</span><span class="p">);</span>
 <span class="p">}</span>

@@ -13,15 +13,30 @@ redirect_from:
                 <div class="highlight"><pre><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="c1">// An optional field can be of type `never`, but a value can never be assigned to such a field.</span>
     <span class="nx">never</span> <span class="nx">gender</span><span class="err">?</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="c1">// This function never returns. So we have `never` as the return type.</span>
 <span class="kd">function</span> <span class="nx">somefunction</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">never</span> <span class="p">{</span>
     <span class="nx">panic</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Invalid&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// This is an example of using `never` as the type parameter in `xml`.</span>
+    <span class="c1">// `xml&lt;never&gt;` describes the `xml` type that has no constituents,</span>
+    <span class="c1">// i.e., the empty `xml` value.</span>
     <span class="kt">xml</span><span class="p">&lt;</span><span class="nx">never</span><span class="p">&gt;</span> <span class="nx">xmlValue</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">&lt;</span><span class="nx">never</span><span class="o">&gt;&gt;</span> <span class="p">&#39;xml:concat();</span>
+
+    <span class="c1">// You can define a mapping value with `never` as its constraint.</span>
+    <span class="c1">// But you can never add members to this map.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">never</span><span class="p">&gt;</span> <span class="nx">someMap</span> <span class="p">=</span> <span class="p">{};</span>
+
+    <span class="c1">// You can specify a key-less table with the `never` type as the key constraint.</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">&lt;</span><span class="nx">never</span><span class="p">&gt;</span> <span class="nx">personTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Paul&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>

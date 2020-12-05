@@ -19,6 +19,17 @@ permalink: /downloads/swan-lake-archived/
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers" id="archived-versions">
                 <h2>Swan Lake Archived Versions</h2>
+                <div class="cInstallers" style="height:150px"> 
+                <h3 class="release-version">swan-lake-preview6</h3>
+<div class="releases-row">
+    <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
+
+This is an internal-only release.
+
+</div>
+
+<div class="clearfix"></div>
+</div>
             </div>            
         </div>
     </div>
@@ -26,3 +37,4 @@ permalink: /downloads/swan-lake-archived/
 <style>
 li.cVersionItem  {display: none !important;  }
 </style>
+

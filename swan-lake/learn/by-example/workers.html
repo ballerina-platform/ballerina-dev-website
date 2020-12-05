@@ -12,22 +12,34 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+
+<span class="c1">// The code outside the named workers belong to an implicit </span>
+<span class="c1">// default worker. The default worker in each function wil be </span>
+<span class="c1">// executed in the same strand as the caller function.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution started&quot;</span><span class="p">);</span>
+
+    <span class="c1">// This block belongs to the `w1` worker.</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=2*3&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 1 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=5*7&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 2 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Waits for both workers to finish.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 

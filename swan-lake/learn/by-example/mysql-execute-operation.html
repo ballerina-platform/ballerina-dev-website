@@ -13,57 +13,113 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
+
+<span class="c1">// Username and password of the MySQL database. This is used in the below</span>
+<span class="c1">// examples when initializing the MySQL connector. You need to change these</span>
+<span class="c1">// based on your setup if you try locally.</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
-<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Initialize the client without any database to create the database.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
+    <span class="c1">// Create database if it does not exist. If any error occurred,</span>
+    <span class="c1">// the error will be returned.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS &quot;</span> <span class="o">+</span> <span class="nx">dbName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database created. &quot;</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();}</span><span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span>
+    <span class="c1">// Close the MySQL client.</span>
+    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span>
     <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Execute dropping the table. The `sql:ExecutionResult` is returned upon</span>
+    <span class="c1">// successful execution. An error will be returned in case of a failure.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS Customers&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Drop table executed. &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+
+    <span class="c1">// Similarly, to drop a table, the `create` table query is executed.</span>
+    <span class="c1">// Here, the `customerId` is an auto-generated column.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS Customers&quot;</span> <span class="o">+</span>
         <span class="s">&quot;(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300)&quot;</span> <span class="o">+</span>
         <span class="s">&quot;,lastName  VARCHAR(300), registrationID INTEGER,&quot;</span> <span class="o">+</span>
         <span class="s">&quot;creditLimit DOUBLE, country  VARCHAR(300), PRIMARY KEY (customerId))&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Insert sample data into the table. The result will have</span>
+    <span class="c1">// `affectedRowCount` and `lastInsertedId` with the auto-generated ID of</span>
+    <span class="c1">// the last row.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO Customers (firstName,&quot;</span> <span class="o">+</span>
         <span class="s">&quot;lastName,registrationID,creditLimit, country) VALUES (&#39;Peter&#39;, &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rows affected: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
+        <span class="s">&quot;&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rows affected: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated Customer ID: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Create a parameterized query.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">updateQuery</span> <span class="p">=</span>
         <span class="s">`Update Customers set creditLimit = 15000.5</span>
 <span class="s">        where customerId = ${generatedId}`</span><span class="p">;</span>
+
+    <span class="c1">// Update the record with the auto-generated ID.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">updateQuery</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">updateQuery</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Updated Row count: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="err">?</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Delete the record with the auto-generated ID.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">deleteQuery</span> <span class="p">=</span>
             <span class="s">`Delete from Customers where customerId = ${generatedId}`</span><span class="p">;</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
-                <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">deleteQuery</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">deleteQuery</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Deleted Row count: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeDatabase</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize the database.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeDatabase</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// Initialize the MySQL client to be used for the rest of the DDL</span>
+        <span class="c1">// and DML operations.</span>
         <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span>
-            <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="nx">dbName</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient</span> <span class="nx">is</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">initResult</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="nx">dbName</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient</span> <span class="nx">is</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//  Initialize a table and insert data.</span>
+            <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">initResult</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Update a record.</span>
                 <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
-                <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
+                <span class="c1">// Delete a record.</span>
+                <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
+
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table initialization failed!&quot;</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Close the MySQL client.</span>
+            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Table initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>

@@ -11,29 +11,52 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// An enum is defined using a module enum declaration.</span>
 <span class="nx">enum</span> <span class="nx">Color</span> <span class="p">{</span>
   <span class="nx">RED</span><span class="p">,</span>
   <span class="nx">GREEN</span><span class="p">,</span>
   <span class="nx">BLUE</span>
-<span class="p">}</span><span class="nx">enum</span> <span class="nx">Language</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">enum</span> <span class="nx">Language</span> <span class="p">{</span>
+    <span class="c1">// An enum member can explicitly specify an associated expression.</span>
     <span class="nx">EN</span> <span class="p">=</span> <span class="s">&quot;English&quot;</span><span class="p">,</span>
     <span class="nx">TA</span> <span class="p">=</span> <span class="s">&quot;Tamil&quot;</span><span class="p">,</span>
     <span class="nx">SI</span> <span class="p">=</span> <span class="s">&quot;Sinhala&quot;</span>
 <span class="p">}</span>
+
+<span class="c1">// An enum declaration can consist of a combination of members with or without</span>
+<span class="c1">// explicit associated values.</span>
 <span class="nx">enum</span> <span class="nx">Bands</span> <span class="p">{</span>
     <span class="nx">QUEEN</span><span class="p">,</span>
     <span class="nx">PF</span> <span class="p">=</span> <span class="s">&quot;Pink &quot;</span> <span class="o">+</span> <span class="s">&quot;Floyd&quot;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// An enum member can be used in the same way as a string constant.</span>
     <span class="kt">string</span> <span class="nx">skyColor</span> <span class="p">=</span> <span class="nx">BLUE</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Color of the sky: &quot;</span><span class="p">,</span> <span class="nx">skyColor</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">concatenated</span> <span class="p">=</span> <span class="nx">concat</span><span class="p">(</span><span class="nx">QUEEN</span><span class="p">,</span> <span class="nx">PF</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Color of the sky: &quot;</span><span class="p">,</span> <span class="nx">skyColor</span><span class="p">);</span>
+
+    <span class="kt">string</span> <span class="nx">concatenated</span> <span class="p">=</span> <span class="nx">concat</span><span class="p">(</span><span class="nx">QUEEN</span><span class="p">,</span> <span class="nx">PF</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;concatenated: &quot;</span><span class="p">,</span> <span class="nx">concatenated</span><span class="p">);</span>
+
+    <span class="c1">// An enum can also be used as a type.</span>
     <span class="nx">Language</span> <span class="nx">language</span> <span class="p">=</span> <span class="nx">getLanguage</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;language: &quot;</span><span class="p">,</span> <span class="nx">language</span><span class="p">);</span>    <span class="nx">Language</span> <span class="nx">sinhala</span> <span class="p">=</span> <span class="s">&quot;Sinhala&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sinhala: &quot;</span><span class="p">,</span> <span class="nx">sinhala</span><span class="p">);</span>    <span class="nx">EN</span> <span class="nx">english</span> <span class="p">=</span> <span class="s">&quot;English&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;language: &quot;</span><span class="p">,</span> <span class="nx">language</span><span class="p">);</span>
+
+    <span class="nx">Language</span> <span class="nx">sinhala</span> <span class="p">=</span> <span class="s">&quot;Sinhala&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sinhala: &quot;</span><span class="p">,</span> <span class="nx">sinhala</span><span class="p">);</span>
+
+    <span class="nx">EN</span> <span class="nx">english</span> <span class="p">=</span> <span class="s">&quot;English&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;english: &quot;</span><span class="p">,</span> <span class="nx">english</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">concat</span><span class="p">(</span><span class="kt">string</span> <span class="nx">str1</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">str2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">concat</span><span class="p">(</span><span class="kt">string</span> <span class="nx">str1</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">str2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">str1</span> <span class="o">+</span> <span class="s">&quot; and &quot;</span> <span class="o">+</span> <span class="nx">str2</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getLanguage</span><span class="p">(</span><span class="kt">string</span> <span class="nx">symbol</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Language</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getLanguage</span><span class="p">(</span><span class="kt">string</span> <span class="nx">symbol</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Language</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">symbol</span> <span class="p">{</span>
         <span class="s">&quot;e&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">EN</span><span class="p">;</span>

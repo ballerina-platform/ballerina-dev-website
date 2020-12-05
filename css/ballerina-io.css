@@ -1804,7 +1804,16 @@ ul, #toc {
 .cCookie-Policy p {
     font-size: 15px;
     line-height: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+}
+
+.cCookie-Policy p a {
+    color: #57595d !important;
+    font-weight: 600;
+}
+.cCookie-Policy p a:hover {
+    color: #fff !important;
+    text-decoration: underline !important;
 }
 
 .cIUnderstand {
@@ -1812,6 +1821,7 @@ background-color: #57595d;
 color: #fff;
 padding: 10px 20px;
 display: inline-block;
+margin-top: 10px;
 }
 
 .cBlallerina-io-docs-content-container ul li {

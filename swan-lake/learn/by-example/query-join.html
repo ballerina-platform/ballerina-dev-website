@@ -10,20 +10,28 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">deptId</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Department</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Department</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">deptId</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">deptName</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">deptName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Michelle&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Sadler&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">1990</span><span class="p">,</span> 
                    <span class="nx">deptId</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2001</span><span class="p">,</span> 
@@ -31,20 +39,36 @@ redirect_from:
     <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2002</span><span class="p">,</span> 
                    <span class="nx">deptId</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span> 
-                   <span class="nx">deptId</span><span class="p">:</span> <span class="mi">2</span> <span class="p">};</span>    <span class="nx">Department</span> <span class="nx">d1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">deptId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">deptName</span><span class="p">:</span> <span class="s">&quot;Physics&quot;</span> <span class="p">};</span>
+                   <span class="nx">deptId</span><span class="p">:</span> <span class="mi">2</span> <span class="p">};</span>
+
+    <span class="nx">Department</span> <span class="nx">d1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">deptId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">deptName</span><span class="p">:</span> <span class="s">&quot;Physics&quot;</span> <span class="p">};</span>
     <span class="nx">Department</span> <span class="nx">d2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">deptId</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">deptName</span><span class="p">:</span> <span class="s">&quot;Mathematics&quot;</span> <span class="p">};</span>
-    <span class="nx">Department</span> <span class="nx">d3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">deptId</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">deptName</span><span class="p">:</span> <span class="s">&quot;Chemistry&quot;</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+    <span class="nx">Department</span> <span class="nx">d3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">deptId</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">deptName</span><span class="p">:</span> <span class="s">&quot;Chemistry&quot;</span> <span class="p">};</span>
+
+    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
     <span class="nx">Department</span><span class="p">[]</span> <span class="nx">departmentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">d1</span><span class="p">,</span> <span class="nx">d2</span><span class="p">,</span> <span class="nx">d3</span><span class="p">];</span>
+
+    <span class="c1">// The `from` clause works similarly to a `foreach` statement.</span>
+    <span class="c1">// It can be used to iterate any iterable value.</span>
+    <span class="c1">// The `reportList` is the result of the `query expression`.</span>
     <span class="nx">Report</span><span class="p">[]</span> <span class="nx">reportList</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+       <span class="c1">// An inner equijoin is performed here.</span>
+       <span class="c1">// The `join` clause iterates any iterable value similarly to the `from` clause.</span>
        <span class="k">join</span> <span class="k">var</span> <span class="nx">department</span> <span class="nx">in</span> <span class="nx">departmentList</span>
+       <span class="c1">// The `on` condition is used to match the `student` with the `department` based on the `deptId`.</span>
+       <span class="c1">// The iteration is skipped when the condition is not satisfied.</span>
        <span class="nx">on</span> <span class="nx">student</span><span class="p">.</span><span class="nx">deptId</span> <span class="nx">equals</span> <span class="nx">department</span><span class="p">.</span><span class="nx">deptId</span>
+       <span class="c1">// The `limit` clause limits the number of output items.</span>
        <span class="nx">limit</span> <span class="mi">3</span>
+       <span class="c1">// The `select` clause is evaluated in each iteration when the `on` condition is satisfied.</span>
        <span class="nx">select</span> <span class="p">{</span>
               <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
               <span class="nx">deptName</span><span class="p">:</span> <span class="nx">department</span><span class="p">.</span><span class="nx">deptName</span><span class="p">,</span>
               <span class="nx">degree</span><span class="p">:</span> <span class="s">&quot;Bachelor of Science&quot;</span><span class="p">,</span>
               <span class="nx">intakeYear</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span>
-       <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
+       <span class="p">};</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>

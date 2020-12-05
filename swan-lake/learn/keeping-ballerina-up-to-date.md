@@ -16,7 +16,7 @@ redirect_from:
 
 The Ballerina compiler is a software program, which validates the Ballerina source code and translates it to an executable program. Ballerina has a stable and production-ready official compiler called jBallerina, which targets the JVM.
 
-Also, there is a plan to develop a native compiler called nBallerina in the future, which will target platforms such as Linux, Windows and Mac OS.
+Also, there is a plan to develop a native compiler called nBallerina in the future, which will target platforms such as Linux, Windows, and macOS.
 
 Ballerina distribution is a term, which refers to these jBallerina and nBallerina compilers.
 
@@ -44,7 +44,7 @@ These are feature releases of Ballerina distributions. Ballerina programs that y
 
 #### Release Maintenance
 
-In the 1.x stable release channel, a minor release 1.x.0 is manitained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
+In the 1.x stable release channel, a minor release 1.x.0 is maintained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
 
 In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
 
@@ -71,7 +71,7 @@ Once the installation is complete, you would see the directory structure below i
 
 The `distributions` is the directory, in which all your installed distributions are maintained. Only one distribution from the above list can be active at a given time. 
 
-> **Note:** The Ballerina tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  
+> **Note:** The Ballerina tool delegates most of the user requests to the active distribution. The commands such as `build`, `test`, `run`, `pull`, and `push` are delegated to the active distribution, while the commands such as `dist` and `version` are handled by the tool itself.
   
   E.g., when you invoke `ballerina build`, the Ballerina tool dispatches this request to the active distribution.
 
@@ -205,7 +205,7 @@ Downloading 1.2.8 100% [========================================================
 Successfully set the latest patch distribution '1.2.8' as the active distribution
 ```
 
->**Note:** If If the active distribution in your environment is `1.2.7`, it will bump to the next Swan Lake Preview version, which is `1.2.8` and will update to it.
+>**Note:** If the active distribution in your environment is `slp4`, it will bump to the next Swan Lake Preview version, which is `slp5` and will update to it.
 
 ### Pulling a Specific Distribution
 
@@ -223,7 +223,7 @@ Dependency 'jdk8u202-b08-jre' is already available locally
 
 ### Changing the Active Distribution
 
-The `ballerina dist use <distribution>` command sets a particular distribution version as the active one.  See the following workflow.
+The `ballerina dist use <distribution>` command sets a particular distribution version as the active one.
 
 ```sh
 → ballerina dist use 1.2.5

@@ -10,27 +10,54 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">InvalidAccountIDError</span> <span class="nx">error</span><span class="p">;</span><span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">error</span><span class="p">;</span><span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span><span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">InvalidAccountIDError</span> <span class="nx">error</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">error</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">negResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">invalidResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>    <span class="nx">transaction</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">invalidResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+
+    <span class="nx">transaction</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">parsedNum</span> <span class="p">=</span> <span class="nx">check</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;12&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="nx">parsedStr</span> <span class="p">=</span> <span class="nx">check</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;invalid&quot;</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+
+        <span class="c1">//Parsing a random string will return an error.</span>
+        <span class="c1">//This error will be caught within the `on-fail` clause.</span>
+        <span class="kt">int</span> <span class="nx">parsedStr</span> <span class="p">=</span> <span class="nx">check</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;invalid&quot;</span><span class="p">);</span>
+
+        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span> <span class="nx">on</span> <span class="nx">fail</span> <span class="nx">error</span> <span class="nx">e</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error caught during parsing: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">&#39;int:fromString(</span><span class="nx">num</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
        <span class="nx">do</span> <span class="p">{</span>
          <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="c1">// Throw an error with the `InvalidAccountID` as the reason if</span>
+             <span class="c1">//the `accountID` is less than zero.</span>
              <span class="nx">InvalidAccountIDError</span> <span class="nx">invalidAccoundIdError</span>
              <span class="p">=</span> <span class="nx">InvalidAccountIDError</span><span class="p">(</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
              <span class="nx">fail</span> <span class="nx">invalidAccoundIdError</span><span class="p">;</span>
          <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+             <span class="c1">// Throw an error with the `AccountNotFound` as the reason if</span>
+             <span class="c1">//the `accountID` is greater than hundred.</span>
              <span class="nx">AccountNotFoundError</span> <span class="nx">accountNotFoundError</span>
              <span class="p">=</span> <span class="nx">AccountNotFoundError</span><span class="p">(</span><span class="nx">ACCOUNT_NOT_FOUND</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
              <span class="nx">fail</span> <span class="nx">accountNotFoundError</span><span class="p">;</span>
          <span class="p">}</span>
+       <span class="c1">//The type of `e` should be the union of the error types that are</span>
+       <span class="c1">//thrown by the `do` statement.</span>
        <span class="p">}</span> <span class="nx">on</span> <span class="nx">fail</span> <span class="nx">InvalidAccountIDError</span><span class="p">|</span><span class="nx">AccountNotFoundError</span> <span class="nx">e</span> <span class="p">{</span>
           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error caught: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span><span class="s">&quot;, Account ID: &quot;</span><span class="p">,</span>
                      <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;accountID&quot;</span><span class="p">]);</span>
@@ -383,6 +410,8 @@ $ ballerina run error_handling_in_single_place.bal
 Error caught: InvalidAccountID, Account ID: -1
 Error caught: AccountNotFound, Account ID: 200
 Error caught during parsing: {ballerina/lang.int}NumberParsingError
+[ballerina/http] started HTTP/WS listener 192.168.1.18:34525
+[ballerina/http] stopped HTTP/WS listener 192.168.1.18:34525
 </code></pre></div>
 
                                 </td>

@@ -12,26 +12,46 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+
+<span class="c1">// This Ballerina function invokes the `java.lang.StringBuffer` constructor that takes a</span>
+<span class="c1">// `java.lang.String` as an argument. The `java.lang.StringBuffer` class has other overloaded</span>
+<span class="c1">// constructors that take a single parameter. Therefore you need to specify the parameter types here.</span>
 <span class="kd">function</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">str</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.String&quot;</span><span class="p">]</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="c1">// The `append` method in `java.lang.StringBuffer` is overloaded many methods that take a single parameter.</span>
+<span class="c1">// In this example, let&#39;s use two of those methods. The `appendString` function is linked with the Java `append`</span>
+<span class="c1">// method that takes a `java.lang.String` as an argument.</span>
 <span class="kd">function</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">str</span><span class="p">)</span>
                       <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;append&quot;</span><span class="p">,</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.String&quot;</span><span class="p">]</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="c1">// This `appendStringBuffer` function is linked with the Java `append` method that takes a</span>
+<span class="c1">// `java.lang.StringBuffer` as an argument.</span>
 <span class="kd">function</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">strBuffer</span><span class="p">)</span> 
                             <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;append&quot;</span><span class="p">,</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">]</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create a new `java.lang.StringBuffer` by passing a Java string as an argument.</span>
     <span class="k">var</span> <span class="nx">strBuffer</span> <span class="p">=</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Ballerina is &quot;</span><span class="p">));</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">strBuffer</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;awesome &quot;</span><span class="p">));</span>    <span class="k">var</span> <span class="nx">strBufferToAppend</span> <span class="p">=</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;and &quot;</span><span class="p">));</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">strBuffer</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;awesome &quot;</span><span class="p">));</span>
+
+    <span class="k">var</span> <span class="nx">strBufferToAppend</span> <span class="p">=</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;and &quot;</span><span class="p">));</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">strBufferToAppend</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;fun.&quot;</span><span class="p">));</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">strBuffer</span><span class="p">,</span> <span class="nx">strBufferToAppend</span><span class="p">);</span>    <span class="kt">string</span><span class="p">? text = java:toString(</span><span class="nx">strBuffer</span><span class="p">);</span>
+
+    <span class="c1">// Append an instance of a `java.lang.StringBuffer` to another `java.lang.StringBuffer` instance.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">strBuffer</span><span class="p">,</span> <span class="nx">strBufferToAppend</span><span class="p">);</span>
+
+    <span class="kt">string</span><span class="p">? text = java:toString(</span><span class="nx">strBuffer</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

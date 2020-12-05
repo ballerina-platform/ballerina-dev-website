@@ -11,21 +11,49 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Defines an object type called `Person`. It should only contain fields and the</span>
+<span class="c1">// method declarations.</span>
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+
+    <span class="c1">// Method declarations can be within the object. However, the method cannot</span>
+    <span class="c1">// have a body.</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="c1">// Defines another object type called `Employee`, which references the `Person` object.</span>
 <span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="c1">// Add a reference to the `Person` object type. </span>
+    <span class="c1">// All the member fields and member-method declarations will be copied from the `Person` object.</span>
     <span class="o">*</span><span class="nx">Person</span><span class="p">;</span>
-    <span class="nx">public</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span> <span class="nx">salary</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">class</span> <span class="nx">Owner</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span> <span class="nx">salary</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">class</span> <span class="nx">Owner</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">status</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">class</span> <span class="nx">Manager</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">class</span> <span class="nx">Manager</span> <span class="p">{</span>
+    <span class="c1">// Type references can be chained by adding a reference to the `Employee` object, which</span>
+    <span class="c1">// again has a reference to the `Employee` object. This will copy all the members from</span>
+    <span class="c1">// the `Employee` object. It will be the same as declaring each of those members within this object.</span>
     <span class="o">*</span><span class="nx">Employee</span><span class="p">;</span>
-    <span class="o">*</span><span class="nx">Owner</span><span class="p">;</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">dpt</span><span class="p">;</span>
+
+    <span class="c1">// It is possible to have more than one type reference as well.</span>
+    <span class="o">*</span><span class="nx">Owner</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">dpt</span><span class="p">;</span>
+
+    <span class="c1">// Referenced fields can be overridden in a type-descriptor if the type of the field  </span>
+    <span class="c1">// in the overriding descriptor is a sub-type of the original type of the field.</span>
     <span class="nx">public</span> <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
+
+    <span class="c1">// All the fields referenced through the type reference can be accessed within this object.</span>
     <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">firstName</span><span class="p">;</span>
@@ -34,16 +62,27 @@ redirect_from:
         <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span> <span class="p">=</span> <span class="mf">2000.0</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">dpt</span> <span class="p">=</span> <span class="s">&quot;HR&quot;</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// The member methods coming from the referenced type should be defined within the object.</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Referenced methods can also be overridden as long as the method in the overriding </span>
+    <span class="c1">// descriptor is a sub-type of the method in the referenced type.</span>
     <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Manager</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="s">&quot;Senior&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Accessing the fields that are coming from the referenced type.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dpt</span><span class="p">);</span>
+
+    <span class="c1">// Invoking the methods that are coming from the referenced type.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getSalary</span><span class="p">());</span>
 <span class="p">}</span>

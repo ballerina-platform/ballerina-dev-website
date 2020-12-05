@@ -112,7 +112,7 @@ reference the objects with a qualified identifier followed by a colon (`:`). For
 
 Identifiers are either derived or explicit. The default identifier is either the module name or if the module 
 name has dots (`.`) included, then the last word after the last dot. For example, `import ballerina/http;` will
-have `http:`as the derived identifer and the module `import ballerinax/java.jdbc` would have `jdbc:` as the 
+have `http:`as the derived identifier and the module `import ballerinax/java.jdbc` would have `jdbc:` as the 
 default identifier.
 
 You can have an explicit identifier by using the `as <identifier>` syntax.
@@ -196,7 +196,7 @@ ballerina new <project-name>
 ```
 
 The `new` command will create a project directory with the given name. A Ballerina project cannot reside in another 
-ballerina project. If you run `ballerina new` from inside a Ballerina project directory or from inside a sub directory of a Ballerina project,
+ballerina project. If you run `ballerina new` from inside a Ballerina project directory or from inside a subdirectory of a Ballerina project,
 it will give an error.
 
 It will create the `Ballerina.toml` file, and `src` folder.

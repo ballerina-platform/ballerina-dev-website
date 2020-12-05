@@ -51,7 +51,7 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 ## Troubleshooting
 
-If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using Mac OS, press 'Command+Q' keys to quit the app and reopen it.
+If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using macOS, press `Command+Q` keys to quit the app and reopen it.
 
 The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 

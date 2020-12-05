@@ -13,7 +13,7 @@
    </head>
    <body class="cBallerina-io">
       <header data-plugin-header="line-numbers"></header>
-      {% include nav.html %}
+      {% include nav.html %} 
       <div class="row cBallerina-io-Gray-row">
          <div class="container">
             <div class="row">
@@ -83,6 +83,22 @@
              </style>
 
 
+
+
+<script>
+
+$(document).ready(function () {
+   var slp = '<h2 class="releaseNoteTitle">swan-lake-preview6 </h2><p>This is an internal-only release.</p><h2 id="swanlakepreview5notes" class="releaseNoteTitle">swan-lake-preview5 (Oct 24, 2020)</h2>'
+
+    setTimeout(function(){
+       
+      $( "#swanlakepreview5notes" ).replaceWith(slp);
+
+
+    }, 2000);
+});
+
+</script>
 
 
    </body>

@@ -44,7 +44,7 @@ redirect_from:
          <h5>Ballerina: An Open-Source Cloud-Native Programming Language</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://ossalsjp20.sched.com/event/f2PC/ballerina-an-open-source-cloud-native-programming-language-anjana-fernando-wso2-inc?iframe=no&w=100%&sidebar=yes&bg=no" target="_blank">View Slides</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/0pKOkMRODF0" target="_blank">Watch Video</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="October 28, 2020 12:00:00">
       <td class="cEventDateContainer">

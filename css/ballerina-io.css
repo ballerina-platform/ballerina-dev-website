@@ -1840,3 +1840,7 @@ float: right;
 .closebuttoon img {
     width: 20px;
 }
+
+.cCookie-Policy.cHide-Policy {
+    display: none;
+}

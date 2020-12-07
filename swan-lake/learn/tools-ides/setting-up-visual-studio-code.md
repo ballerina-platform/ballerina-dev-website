@@ -22,6 +22,8 @@ Download the [Visual Studio Code editor](https://code.visualstudio.com/download)
 
 ## Installing the Extension
 
+>**Tip:** If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using macOS, press `Command+Q` keys to quit the app and reopen it.
+
 Follow the steps below to download and install the Ballerina VS Code extension.
 
 1. Download the [Visual Studio Code Ballerina Extension](/downloads).
@@ -47,17 +49,14 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 ## Using the Extension
 
-> **Tip:** Ballerina Language Specification supports a set of experimental features such as transactions syntax. In order to be compatible with the experimental features and for supporting language intelligence in VS Code Extension, enable the Allow Experimental option in user settings.
-
-## Troubleshooting
-
-If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using macOS, press `Command+Q` keys to quit the app and reopen it.
-
 The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 
 - [Language Intelligence](/swan-lake/learn/vscode-plugin/language-intelligence)
 - [Run and Debug](/swan-lake/learn/vscode-plugin/run-and-debug)
-- [Graphical View](/swan-lake/learn/vscode-plugin/graphical-editor)
-- [Documentation Viewer](/swan-lake/learn/vscode-plugin/documentation-viewer)
-- [Run All Tests](/swan-lake/learn/vscode-plugin/run-all-tests)
+
+
+
+
+
+
 

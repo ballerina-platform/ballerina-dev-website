@@ -16,7 +16,7 @@ redirect_from:
 
 Developers can write the documentation inline with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `ballerina doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
 
-Ballerina documentation design and usage is aligned with package and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
+Ballerina documentation design and usage is aligned with the package and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
 
 * Ballerina programmers can place the documentation inline with the source code using the documentation syntax.
 * Ballerina type definitions, global variables, annotations, listeners, etc. can be documented using the documentation syntax.
@@ -99,16 +99,16 @@ A typical package structure of a Ballerina package is like this:
 
 ```
 /
-  Ballerina.toml       # Configuration that defines package intent
+  Ballerina.toml       # Configuration, which defines the package intent.
   main.bal
-  Module.md            # Optional, contains descriptive metadata of the default module for display at
-                       # Ballerina Central        
-  Package.md           # Optional, contains descriptive metadata of the package for display at
-                       # Ballerina Central  
+  Module.md            # Contains descriptive metadata of the default module to be displayed in
+                       # Ballerina Central. This is optional.
+  Package.md           # Contains descriptive metadata of the package to be displayed in
+                       # Ballerina Central. This is optional.
     modules
       module1/             
-        Module.md          # Optional, contains descriptive metadata for display at
-                           # Ballerina Central
+        Module.md          # Contains descriptive metadata to be displayed in
+                           # Ballerina Central. This is optional.
         *.bal
         [tests/]           # Module-specific unit and integration tests
         [resources/]       # Module-specific resources
@@ -119,19 +119,19 @@ A typical package structure of a Ballerina package is like this:
         [tests/]
         [resources/]
 
-  [resources/]         # Resources included with every module in the package
+  [resources/]         # Resources included in every module in the package.
 
   target/              # Compiled executables and other artifacts end up here
 ```
 
-The `ballerina doc` command will read the `Package.md` and `Module.md` and prepend it to the generated HTML file.
+The `ballerina doc` command will read the `Package.md` and `Module.md` files and prepend it to the generated HTML file.
 
 Check [HTTP module documentation](/swan-lake/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
 ## Generating Ballerina Documentation
 
-Ballerina provides a `doc` command, which can be executed against a given Ballerina package. This command will result in generating the Ballerina documentation as HTML files, for all the modules in the package.
+Ballerina provides a `doc` command, which can be executed against a given Ballerina package. This command will result in generating the Ballerina documentation as HTML files for all the modules in the package.
 
 First, let's create a new Ballerina package:
 
@@ -145,7 +145,7 @@ Next, move into the package directory and execute `ballerina add <module-name>` 
 ```bash
 $ cd math/
 $ ballerina add world
-Added new ballerina module at 'modules/world'
+Added new ballerina module at 'modules/world'.
 $ tree
 .
 ├── Ballerina.toml
@@ -220,12 +220,12 @@ Generating API Documentation
 Saved to: target/apidocs
 ```
 
-`target/apidocs/math` folder would contain following;
+`target/apidocs/math` folder would contain the following;
 ```bash
 $ ls target/apidocs/
 bundle.js  index.html  ...
 ```
 
-* `index.html`  - the entry point for documentation. 
+* `index.html`  - the entry point for documentation
 
 For other options, run `ballerina doc --help`.

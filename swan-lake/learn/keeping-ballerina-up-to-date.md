@@ -71,15 +71,15 @@ Once the installation is complete, you would see the directory structure below i
 
 The `distributions` is the directory, in which all your installed distributions are maintained. Only one distribution from the above list can be active at a given time. 
 
-> **Note:** The Ballerina tool delegates most of the user requests to the active distribution. The commands such as `build`, `test`, `run`, `pull`, and `push` are delegated to the active distribution, while the commands such as `dist` and `version` are handled by the tool itself.
+> **Note:** The Ballerina Tool delegates most of the user requests to the active distribution. The commands such as `build`, `test`, `run`, `pull`, and `push` are delegated to the active distribution, while the commands such as `dist` and `version` are handled by the tool itself.
   
-  E.g., when you invoke `ballerina build`, the Ballerina tool dispatches this request to the active distribution.
+  E.g., when you invoke `ballerina build`, the Ballerina Tool dispatches this request to the active distribution.
 
 You can [change this active distribution](#changing-the-active-distribution) at any time or manage it using the Ballerina Tool. However, first, you need to update the Ballerina Tool to its latest version.
 
 ### Updating the Ballerina Tool
 
-The `ballerina update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent from the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
+The `ballerina update` command updates the Ballerina Ttool itself to the latest version. Ballerina Tool versions are independent from the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
 
 ```sh
 → ballerina update
@@ -89,7 +89,7 @@ Downloading ballerina-tool-0.8.8 100% [====================================] 1/1
 
 Updated to latest tool version: 0.8.8
 Cleaning old files...
-Ballerina tool updated successfully
+Ballerina Tool updated successfully
 ```
 
 ## Managing your Ballerina Distributions

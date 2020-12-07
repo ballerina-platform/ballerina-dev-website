@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-12-06</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-12-07</h1>
 <p>
 Primary contributors:
 </p>
@@ -3269,13 +3269,13 @@ immediately returns <code>()</code>.
 <section>
 <h4 id="section_5.7.4">5.7.4 Listener</h4>
 <p>
-The object type Listener&lt;T&gt;, where T is a a subtype of
-<code>service object {}</code>, is described by the following object type
-descriptor:
+The object type Listener&lt;T,A&gt;, where T is a a subtype of <code>service
+object {}</code> and A is a subtype of <code>string{}|string|()</code>, is
+described by the following object type descriptor:
 </p>
 
 <pre>object {
-   public function attach(T svc, string[]? path = ()) returns error?;
+   public function attach(T svc, A attachPoint) returns error?;
    public function detach(T svc) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
@@ -3287,9 +3287,9 @@ The above methods all return an error value if an error occurred, and
 return nil otherwise.
 </p>
 <p>
-A type is a <em>listener object type</em> if it is a subtype of the abstract
-object type Listener&lt;T&gt;, for some type T that is a subtype of
-<code>service object {}</code>.
+A type is a <em>listener object type</em> if it is a subtype of the object type
+Listener&lt;T,A&gt;, for some type T that is a subtype of <code>service object
+{}</code> and some type A that is a subtype of <code>string{}|string|()</code>.
 </p>
 </section>
 <section>
@@ -8952,7 +8952,7 @@ Static checking is based on the idea of a transactional scope: this is a lexical
 region of the program where it is known that at runtime the strand executing the
 region will always be in transactional mode. A function with the
 <code>transactional</code> qualifier can only be called in a transactional
-scope; this includes functions called using <code>start</code>.
+scope; this includes function calls using <code>start</code>.
 </p>
 <p>
 When a new strand is created by a named-worker-decl that includes a
@@ -9384,7 +9384,7 @@ remote methods of the client object in order to send a response back to the
 client.
 </p>
 <p>
-The methods defined by the Listener&lt;T&gt; object type allow for the
+The methods defined by the Listener object type allow for the
 management of the lifecycle of a listener object and its attached services. A
 listener declaration registers a listener object with a module, so that it can
 be managed by the module. The runtime state of each module includes a list of
@@ -9443,10 +9443,11 @@ result of the evaluation.
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#absolute-resource-path"><span class="ntref">absolute-resource-path</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#attach-point"><span class="ntref">attach-point</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+<span class="ntdfn" id="attach-point">attach-point</span> := <a href="#absolute-resource-path"><span class="ntref">absolute-resource-path</span></a> | <a href="#string-literal"><span class="ntref">string-literal</span></a>
 <span class="ntdfn" id="absolute-resource-path">absolute-resource-path</span> :=
    <a href="#root-resource-path"><span class="ntref">root-resource-path</span></a>
-   (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)+
+   | (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)+
 <span class="ntdfn" id="root-resource-path">root-resource-path</span> := <code>/</code>
 
 <span class="ntdfn" id="expression-list">expression-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
@@ -9459,26 +9460,29 @@ listeners.
 The static type S for the constructed service object is specified by the
 type-descriptor if present, and otherwise is the union of a type inferred from
 each expression in the expression list as follows. Each expression in the
-expression-list must have a type Listener&lt;T&gt;|E where T is a subtype of
-<code>service object {}</code> and E is a subtype of <code>error</code>; the
+expression-list must have a type Listener&lt;T,A&gt;|E where T is a subtype of
+<code>service object {}</code>, A is a subtype of
+<code>string[]|string|()</code> and E is a subtype of <code>error</code>; the
 inferred type is T. The object-constructor-block has the same semantics as in an
 object-constructor-expr with a <code>service</code> qualifier and a
-type-reference that refers to S. If the service-decl includes <code>isolated</code>, then it
-is equivalent to an object-constructor-expr with an <code>isolated</code>
-qualifier as well as a <code>service</code> qualifier.
+type-reference that refers to S. If the service-decl includes
+<code>isolated</code>, then it is equivalent to an object-constructor-expr with
+an <code>isolated</code> qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
-The <code>absolute-resource-path</code> determines the second argument passed to
-the <code>attach</code> method: if the <code>absolute-resource-path</code> is
-absent, then the argument is nil; otherwise, the argument is an array of
-strings, with one string for each <code>resource-path-segment</code>. Attaching
-service objects <var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub>
-with absolute resource paths
-<var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub> is equivalent
-to attaching a single service object with <var>n</var> <code>get</code> resource
-methods to <code>/</code>, where the <var>i</var>-th resource method has a path
-<var>p</var><sub>i</sub> (an <code>absolute-resource-path</code> is turned into
-a <code>relative-resource-path</code> with the same
+The <code>attach-point</code> determines the second argument passed to the
+<code>attach</code> method: if the <code>attach-point</code> is absent, then the
+argument is nil; if it is a <code>string-literal</code>, then the argument is a
+string; otherwise, it is an <code>absolute-resource-path</code> and the argument
+is an array of strings, with one string for each
+<code>resource-path-segment</code>. Attaching service objects
+<var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub> with absolute
+resource paths <var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub>
+is equivalent to attaching a single service object with <var>n</var>
+<code>get</code> resource methods to <code>/</code>, where the <var>i</var>-th
+resource method has a path <var>p</var><sub>i</sub> (an
+<code>absolute-resource-path</code> is turned into a
+<code>relative-resource-path</code> with the same
 <code>resource-path-segment</code>s) and returns
 <var>s</var><sub><var>i</var></sub>.
 </p>

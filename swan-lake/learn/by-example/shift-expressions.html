@@ -11,22 +11,45 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// `&lt;&lt;` performs a left shift. The bits shifted in on the right, in place</span>
+    <span class="c1">// of the bits shifted to the left, are `0`.</span>
+    <span class="c1">// The type of the result of a left shift is always `int`.</span>
     <span class="kt">int</span> <span class="nx">res1</span> <span class="p">=</span> <span class="nx">a</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 1 &lt;&lt; 2: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">128</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 1 &lt;&lt; 2: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
+
+    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">128</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">res2</span> <span class="p">=</span> <span class="nx">b</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned8` 128 &lt;&lt; 3: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>
+
+    <span class="c1">// `&gt;&gt;` performs a signed right shift. The bits shifted in on the left, in place</span>
+    <span class="c1">// of the bits shifted to the right, are the same as the most significant bit.</span>
+    <span class="c1">// If the value to be shifted is of a signed subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is `int`.</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Signed16</span> <span class="nx">c</span> <span class="p">=</span> <span class="o">-</span><span class="mi">32700</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">res3</span> <span class="p">=</span> <span class="nx">c</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Signed16` -32700 &gt;&gt; 2: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">);</span>
+
+    <span class="c1">// If the value to be shifted is of an unsigned subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is the same unsigned subtype of `int`.</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">d</span> <span class="p">=</span> <span class="mi">255</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">e</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">res4</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">&gt;&gt;</span> <span class="nx">e</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned8` 255 &gt;&gt; 4: &quot;</span><span class="p">,</span> <span class="nx">res4</span><span class="p">);</span>
+
+    <span class="c1">// `&gt;&gt;&gt;` performs an unsigned right shift. The bits shifted in on the left, in place</span>
+    <span class="c1">// of the bits shifted to the right, are `0`.</span>
+    <span class="c1">// If the value to be shifted is of a signed subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is `int`.</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Signed32</span> <span class="nx">f</span> <span class="p">=</span> <span class="mi">123167</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">res5</span> <span class="p">=</span> <span class="nx">f</span> <span class="o">&gt;&gt;</span><span class="p">&gt;</span> <span class="mi">3</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Signed32` 123167 &gt;&gt;&gt; 3: &quot;</span><span class="p">,</span> <span class="nx">res5</span><span class="p">);</span>
+
+    <span class="c1">// If the value to be shifted is of an unsigned subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is the same unsigned subtype of `int`.</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned16</span> <span class="nx">g</span> <span class="p">=</span> <span class="mi">32001</span><span class="p">;</span>
     <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned16</span> <span class="nx">res6</span> <span class="p">=</span> <span class="nx">g</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned16` 32001 &gt;&gt;&gt; 2: &quot;</span><span class="p">,</span> <span class="nx">res6</span><span class="p">);</span>

@@ -10,36 +10,58 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Address</span> <span class="nx">object</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Address</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
-    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">Address</span> <span class="nx">address</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// There is no difference in how objects of anonymous types are created.</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="c1">// This object constructor expression indicates that this creates an subtype of the object of type `Address`.</span>
+        <span class="c1">// This is similar to the type reference in class definitions and object-type definitions.</span>
         <span class="nx">address</span><span class="p">:</span> <span class="nx">object</span> <span class="nx">Address</span> <span class="p">{</span>
+                     <span class="c1">// In object constructor expressions, the `init` method does not take any parameters.</span>
                      <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
                          <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
                          <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
-                     <span class="p">}</span>                     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+                     <span class="p">}</span>
+
+                     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                          <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
                      <span class="p">}</span>
                  <span class="p">}</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;City: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
+
+    <span class="c1">// The type reference in an object constructor expression is optional.</span>
     <span class="nx">Address</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
                       <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
-                      <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>                      <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+                      <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+
+                      <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
                           <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;London&quot;</span><span class="p">;</span>
                           <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;UK&quot;</span><span class="p">;</span>
-                      <span class="p">}</span>                      <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+                      <span class="p">}</span>
+
+                      <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                           <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
                       <span class="p">}</span>
-                  <span class="p">};</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
+                  <span class="p">};</span>
+
+    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Address: &quot;</span><span class="p">,</span> <span class="nx">jane</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">country</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

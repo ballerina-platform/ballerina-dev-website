@@ -11,29 +11,61 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Use the reserved keyword `function` as the name of the function.</span>
 <span class="kd">function</span> <span class="err">&#39;</span><span class="kd">function</span><span class="p">(</span><span class="kt">int</span> <span class="nx">val</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">val</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Use different kinds of characters in the name of the function.</span>
 <span class="kd">function</span> <span class="err">&#39;</span><span class="nx">get_ɱȇşşağę_for_</span><span class="err">\#</span><span class="p">(</span><span class="kt">int</span> <span class="nx">val</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">val</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; is a numeric value&quot;</span> <span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Use different kinds of characters in the type definition.</span>
+<span class="c1">// The quoted identifier syntax is used in both the type name and the field names.</span>
 <span class="nx">type</span> <span class="err">&#39;</span><span class="nx">Person_</span><span class="err">\</span><span class="p">{</span><span class="nx">name</span><span class="err">\</span><span class="o">&amp;</span><span class="nx">Ȧɢέ</span><span class="err">\</span><span class="p">}</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="err">&#39;</span><span class="nx">first</span><span class="err">\</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="err">&#39;</span><span class="nx">Ȧɢέ</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Use the reserved keyword `int` as the name of the variable.</span>
     <span class="kt">int</span> <span class="err">&#39;</span><span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// Invoke the function named `function` with the variable named `int`.</span>
+    <span class="c1">// The quoted identifier syntax is used to refer to both the function and</span>
+    <span class="c1">// the variable.</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="err">&#39;</span><span class="kd">function</span><span class="p">(</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+
+    <span class="c1">// Define a variable of which the variable name starts with a digit.</span>
     <span class="kt">int</span> <span class="err">&#39;</span><span class="mi">1</span><span class="nx">PlusI</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="err">&#39;</span><span class="mi">1</span><span class="nx">PlusI</span><span class="p">);</span>
+
+    <span class="c1">// Define a variable of which the name contains special characters with a preceding `\`.</span>
     <span class="kt">int</span> <span class="err">&#39;\</span><span class="p">{</span><span class="nx">add</span><span class="err">\#</span><span class="mi">5</span><span class="err">\</span><span class="p">}</span> <span class="p">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="err">&#39;\</span><span class="p">{</span><span class="nx">add</span><span class="err">\#</span><span class="mi">5</span><span class="err">\</span><span class="p">});</span>
+
+    <span class="c1">// Define a variable of which the variable name contains unicode characters.</span>
     <span class="kt">string</span> <span class="err">&#39;</span><span class="nx">üňĩćőđę_ňāɱȇ</span> <span class="p">=</span> <span class="s">&quot;John doe&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">üňĩćőđę_ňāɱȇ</span><span class="p">);</span>
+
+    <span class="c1">// Define a variable of which the variable name contains unicode characters specified by hexadecimal code points.</span>
     <span class="kt">string</span> <span class="err">&#39;</span><span class="nx">unicode_</span><span class="err">\</span><span class="nx">u</span><span class="p">{</span><span class="mi">2324</span><span class="p">}</span> <span class="p">=</span> <span class="s">&quot;Jane doe&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">unicode_</span><span class="err">\</span><span class="nx">u</span><span class="p">{</span><span class="mi">2324</span><span class="p">});</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">get_ɱȇşşağę_for_</span><span class="err">\#</span><span class="p">(</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">));</span>    <span class="err">&#39;</span><span class="nx">Person_</span><span class="err">\</span><span class="p">{</span><span class="nx">name</span><span class="err">\</span><span class="o">&amp;</span><span class="nx">Ȧɢέ</span><span class="err">\</span><span class="p">}</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span><span class="err">&#39;</span><span class="nx">first</span><span class="err">\</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Tom&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">Ȧɢέ</span><span class="p">:</span><span class="mi">25</span><span class="p">};</span>
+
+    <span class="c1">// Invoke the function named `get_ɱȇşşağę_for_\#` with the variable named `int`.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">get_ɱȇşşağę_for_</span><span class="err">\#</span><span class="p">(</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">));</span>
+
+    <span class="err">&#39;</span><span class="nx">Person_</span><span class="err">\</span><span class="p">{</span><span class="nx">name</span><span class="err">\</span><span class="o">&amp;</span><span class="nx">Ȧɢέ</span><span class="err">\</span><span class="p">}</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span><span class="err">&#39;</span><span class="nx">first</span><span class="err">\</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Tom&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">Ȧɢέ</span><span class="p">:</span><span class="mi">25</span><span class="p">};</span>
+
+    <span class="c1">// Member access can be used to access the members of type `&#39;Person_{name&amp;Ȧɢέ}` by referring the to field name</span>
+    <span class="c1">// without escaping the special characters using a `\`.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">[</span><span class="s">&quot;first name&quot;</span><span class="p">]);</span>
+
+    <span class="c1">// The required field `&#39;Ȧɢέ` can be accessed using field based access.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">Ȧɢέ</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

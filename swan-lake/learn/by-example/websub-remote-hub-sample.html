@@ -10,18 +10,28 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="c1">// The Main program, which brings up the Ballerina WebSub Hub.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting up the Ballerina Hub Service&quot;</span><span class="p">);</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">webSubHub</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Starts the internal Ballerina Hub on port 9191 allowing remote publishers to register topics and publish</span>
+    <span class="c1">// updates of the topics.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting up the Ballerina Hub Service&quot;</span><span class="p">);</span>
+
+    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">webSubHub</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">startHub</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9191</span><span class="p">),</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span> <span class="s">&quot;/hub&quot;</span><span class="p">,</span>
         <span class="nx">hubConfiguration</span> <span class="p">=</span> <span class="p">{</span>
             <span class="nx">remotePublish</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">startedUpHub</span><span class="p">;</span>
@@ -29,12 +39,23 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);}</span>
+
+    <span class="c1">// Waits for the subscriber to subscribe at this hub and for the publisher to publish the notifications.</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+
+<span class="p">}</span>
+<span class="c1">// The Ballerina WebSub Publisher, which registers a topic at the hub and publishes updates to the hub for the topic.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="c1">// This is the remote [WebSub Hub client]((https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html) to which registration and publish requests are sent.</span>
 <span class="nx">websub</span><span class="p">:</span><span class="nx">PublisherClient</span> <span class="nx">websubHubClientEP</span> <span class="p">=</span>
-                    <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9191/websub/publish&quot;</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9191/websub/publish&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html#registerTopic).</span>
     <span class="k">var</span> <span class="nx">registrationResponse</span> <span class="p">=</span>
                 <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">registerTopic</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">registrationResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -43,7 +64,11 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic registration successful!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Makes the publisher wait until the subscriber subscribes at the hub.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+    <span class="c1">// Publishes updates to the remote hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html#publishUpdate).</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Publishing update to remote Hub&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">publishResponse</span> <span class="p">=</span>
         <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
@@ -53,11 +78,18 @@ redirect_from:
                                     <span class="nx">publishResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Update notification successful!&quot;</span><span class="p">);</span>
-    <span class="p">}}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="c1">// Ballerina WebSub Subscriber service, which subscribes to notifications at a Hub.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+
+<span class="c1">// The endpoint to which the subscriber service is bound.</span>
 <span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
+
+<span class="c1">// Annotations specifying the subscription parameters.</span>
 <span class="nd">@websub:SubscriberServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span>
     <span class="nx">subscribeOnStartUp</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -66,20 +98,31 @@ redirect_from:
     <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">websubSubscriber</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
+
+    <span class="c1">// Defines the resource that accepts the intent verification requests.</span>
+    <span class="c1">// If the resource is not specified, intent verification happens automatically. It verifies if the topic</span>
+    <span class="c1">// specified in the intent verification request matches the topic specified as the annotation.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onIntentVerification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                    <span class="nx">websub</span><span class="p">:</span><span class="nx">IntentVerificationRequest</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Builds the response for the subscription intent verification request that was received.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span>
-            <span class="nx">buildSubscriptionVerificationResponse</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">202</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">buildSubscriptionVerificationResponse</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">202</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Intent verified for subscription request&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printWarn</span><span class="p">(</span>
                         <span class="s">&quot;Intent verification denied for subscription request&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="nd">@untainted&gt;response);        if (result is error) {</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding to intent verification request&quot;</span><span class="p">,</span>
                                                         <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// Defines the resource that accepts the content delivery requests.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">notification</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>

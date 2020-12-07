@@ -11,13 +11,25 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeClients</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">initializeClients</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// This is a simple JDBC Client for an H2 database with the mandatory</span>
+    <span class="c1">// field - JDBC URL. This client can be used with any database</span>
+    <span class="c1">// by providing the corresponding JDBC URL and placing the relevant database</span>
+    <span class="c1">// driver JAR.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/sample1&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Simple JDBC client created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Initialize the JDBC client along by providing the username and password.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/sample2&quot;</span><span class="p">,</span>
         <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="s">&quot;rootPass&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JDBC client with user/password created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Initialize the JDBC client by providing additional</span>
+    <span class="c1">// database properties. The database properties can differ based</span>
+    <span class="c1">// on the specific JDBC datasource implementation of the database.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Options</span> <span class="nx">h2Options</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">datasourceName</span><span class="p">:</span> <span class="s">&quot;org.h2.jdbcx.JdbcDataSource&quot;</span><span class="p">,</span>
         <span class="nx">properties</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;loginTimeout&quot;</span><span class="p">:</span> <span class="s">&quot;2000&quot;</span><span class="p">}</span>
@@ -25,26 +37,56 @@ redirect_from:
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient3</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/sample3&quot;</span><span class="p">,</span>
         <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="s">&quot;rootPass&quot;</span><span class="p">,</span> <span class="nx">h2Options</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JDBC client with database options created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Connection pool is used to share and use the connections</span>
+    <span class="c1">// to the database efficiently. In the above samples, the global</span>
+    <span class="c1">// connection pool is created and shared</span>
+    <span class="c1">// among all the database clients since the `connectionPool` property</span>
+    <span class="c1">// is not set.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ConnectionPool</span> <span class="nx">connPool</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// Default max number of open connections in the connection pool is 15.</span>
         <span class="nx">maxOpenConnections</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="c1">// Default max life time of a connection in the connection pool is</span>
+        <span class="c1">// 1800 seconds (30 minutes).</span>
         <span class="nx">maxConnectionLifeTimeInSeconds</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span>
-        <span class="nx">minIdleConnections</span><span class="p">:</span> <span class="mi">5</span>    <span class="p">};</span>
+        <span class="c1">// Default minimum number of idle connections is 15.</span>
+        <span class="nx">minIdleConnections</span><span class="p">:</span> <span class="mi">5</span>
+
+    <span class="p">};</span>
+
+    <span class="c1">// Initialize the JDBC client with the specific connection pool.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient4</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/sample4&quot;</span><span class="p">,</span>
         <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="s">&quot;rootPass&quot;</span><span class="p">,</span> <span class="nx">h2Options</span><span class="p">,</span> <span class="nx">connPool</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JDBC client with connection pool created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Other than the JDBC URL, all other properties are optional.</span>
+    <span class="c1">// Hence, named attributes can be used specifically to assign</span>
+    <span class="c1">// the attributes.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient5</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./target/sample5&quot;</span><span class="p">,</span>
         <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;rootPass&quot;</span><span class="p">,</span> <span class="nx">options</span> <span class="p">=</span> <span class="nx">h2Options</span><span class="p">,</span>
         <span class="nx">connectionPool</span> <span class="p">=</span> <span class="nx">connPool</span><span class="p">);</span>
+
+    <span class="c1">// Initialize JDBC Client only with the URL and connection pool.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient6</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./target/sample6&quot;</span><span class="p">,</span>
         <span class="nx">connectionPool</span> <span class="p">=</span> <span class="nx">connPool</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JDBC client with optional params created.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Close the clients to release the resource</span>
+    <span class="c1">// and destroy the connection pool.</span>
     <span class="nx">check</span> <span class="nx">jdbcClient1</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">jdbcClient2</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">jdbcClient3</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">jdbcClient4</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">jdbcClient5</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="nx">check</span> <span class="nx">jdbcClient6</span><span class="p">.</span><span class="nx">close</span><span class="p">();}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeClients</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">check</span> <span class="nx">jdbcClient6</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Initialize JDBC clients with different options.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeClients</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred, initialization failed!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
@@ -66,7 +108,7 @@ redirect_from:
  default in the Ballerina distribution. Therefore, it is not required to copy
  the driver JAR for H2 databases.<br><br>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java.jdbc/index.html">JDBC module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/jdbc/index.html">JDBC module</a>.</p>
 </p>
 
                         </td>
@@ -167,7 +209,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/java.jdbc;
+import ballerina/jdbc;
 import ballerina/sql;
 </code></pre></div>
 

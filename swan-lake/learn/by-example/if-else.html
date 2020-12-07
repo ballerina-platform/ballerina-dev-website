@@ -10,17 +10,25 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// This is a basic `if` statement.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;a == 10&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// This is an `if-else` scenario.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;a &lt; b&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;a &gt;= b&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// This is an `if-else-if` ladder scenario.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">b</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;b &lt; 0&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">b</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
@@ -46,9 +54,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="isolated-functions.html">
+                                    <a class="prev" href="the-main-function.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Isolated Functions</p>
+                                        <p>The Main Function</p>
                                     </a>
                                 </div>
                                  

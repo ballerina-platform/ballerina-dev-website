@@ -11,23 +11,41 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+<span class="c1">// Defines a class called `Person`. Each class has its own `init()` method, which gets</span>
+<span class="c1">// invoked when creating the objects. You can place the logic for initializing the fields of the</span>
+<span class="c1">// class within the body of the `init()` method.</span>
+<span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
+
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">validateAge</span><span class="p">(</span><span class="nx">age</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">validateAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">validateAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">age</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">age</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">age</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">error</span> <span class="nx">invalidAge</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;The age should be between 0-100&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">error</span> <span class="nx">invalidAge</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;The age should be between 0-100&quot;</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">invalidAge</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Since the `init()` method potentially returns an `error`, the `p1` variable should</span>
+    <span class="c1">// be of the type `Person|error`.</span>
     <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">p1</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// `p2` will be an error since the name does not conform to the expected format.</span>
     <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">p2</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>

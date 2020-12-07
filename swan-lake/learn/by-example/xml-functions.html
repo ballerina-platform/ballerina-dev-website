@@ -11,23 +11,42 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">xml</span> <span class="k">as</span> <span class="nx">xmllib</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">xml</span> <span class="k">as</span> <span class="nx">xmllib</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">xml</span> <span class="nx">bookName</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;Book1&lt;/name&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">bookComment</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--some comment--&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">someText</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, World!`</span><span class="p">;</span>
-    <span class="kt">xml</span> <span class="nx">content</span> <span class="p">=</span> <span class="nx">someText</span> <span class="o">+</span> <span class="nx">bookName</span> <span class="o">+</span> <span class="nx">bookComment</span><span class="p">;</span>    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">book</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;book/&gt;`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">content</span> <span class="p">=</span> <span class="nx">someText</span> <span class="o">+</span> <span class="nx">bookName</span> <span class="o">+</span> <span class="nx">bookComment</span><span class="p">;</span>
+
+    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">book</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;book/&gt;`</span><span class="p">;</span>
+
+    <span class="c1">// Get the name of an XML element.</span>
     <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">bookNameElem</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="nx">bookName</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Element name: &quot;</span><span class="p">,</span> <span class="nx">bookNameElem</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+
+    <span class="c1">// Concatenate XML and string values.</span>
     <span class="kt">xml</span> <span class="nx">concat</span> <span class="p">=</span> <span class="nx">xmllib</span><span class="p">:</span><span class="nx">concat</span><span class="p">(</span><span class="nx">someText</span><span class="p">,</span> <span class="nx">bookName</span><span class="p">,</span> <span class="nx">bookComment</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Concat: &quot;</span><span class="p">,</span> <span class="nx">concat</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Equals: &quot;</span><span class="p">,</span> <span class="nx">content</span> <span class="o">==</span> <span class="nx">concat</span><span class="p">);</span>
+
+    <span class="c1">// Get the number of XML items in a sequence.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Length: &quot;</span><span class="p">,</span> <span class="nx">concat</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// Get a subsequence of an XML sequence.</span>
     <span class="kt">xml</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Subsequence: &quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
+
+    <span class="c1">// Get all the element-type items in an XML sequence.</span>
     <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">elements</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;All XML elements: &quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
+
+    <span class="c1">// Set the child elements of an XML element.</span>
     <span class="nx">book</span><span class="p">.</span><span class="nx">setChildren</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Child elements set: &quot;</span><span class="p">,</span> <span class="nx">book</span><span class="p">);</span>
+
+    <span class="c1">// Strip the insignificant parts of an XML value.</span>
+    <span class="c1">// Comments and processing instruction items are considered as insignificant.</span>
     <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">strip</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stripped: &quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
 <span class="p">}</span>

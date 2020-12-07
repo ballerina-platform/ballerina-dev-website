@@ -11,21 +11,47 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="c1">// Note the syntactic difference in the function body of an expression-bodied function</span>
+<span class="c1">// compared to a regular block function body. This is equivalent to</span>
+<span class="c1">// `function add(int a, int b) returns int { return a + b; }`. The static type of</span>
+<span class="c1">// the expression should either be the same or a subtype of the return type</span>
+<span class="c1">// of the function.</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// There is no difference in how you call an expression-bodied function.</span>
     <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
+
+    <span class="c1">// Anonymous functions can have expression bodies as well.</span>
+    <span class="c1">// Here, an expression bodied anonymous function is used to easily map a</span>
+    <span class="c1">// record to another record type.</span>
     <span class="k">var</span> <span class="nx">toEmployee</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Person</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">pos</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">=&gt;</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">fname</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">lname</span><span class="p">,</span>
         <span class="nx">designation</span><span class="p">:</span> <span class="nx">pos</span>
     <span class="p">};</span>
-    <span class="kd">function</span> <span class="p">(</span><span class="nx">Person</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="nx">canVote</span> <span class="p">=</span> <span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">;</span>    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span> <span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">johnEmp</span> <span class="p">=</span> <span class="nx">toEmployee</span><span class="p">(</span><span class="nx">john</span><span class="p">,</span> <span class="s">&quot;Software Engineer&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">johnEmp</span><span class="p">);</span>
+
+    <span class="c1">// An expression-bodied function can be written in this manner as well. </span>
+    <span class="c1">// The types of the input parameters are inferred from the left hand side.</span>
+    <span class="c1">// The return of the arrow function expression is determined by the</span>
+    <span class="c1">// evaluation of the expression on the right hand side of the `=&gt;` symbol.</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">Person</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="nx">canVote</span> <span class="p">=</span> <span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">;</span>
+
+    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span> <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">johnEmp</span> <span class="p">=</span> <span class="nx">toEmployee</span><span class="p">(</span><span class="nx">john</span><span class="p">,</span> <span class="s">&quot;Software Engineer&quot;</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">johnEmp</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">canVote</span><span class="p">(</span><span class="nx">john</span><span class="p">));</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">designation</span><span class="p">;</span>
 <span class="p">|};</span>

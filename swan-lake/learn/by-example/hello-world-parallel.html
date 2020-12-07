@@ -11,14 +11,21 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Use one or more workers to define a function execution.</span>
+<span class="c1">// The function invocation starts all the workers.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World! #m&quot;</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World! #n&quot;</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w3</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World! #k&quot;</span><span class="p">);</span>
     <span class="p">}</span>

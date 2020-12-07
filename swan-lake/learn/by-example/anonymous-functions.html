@@ -10,11 +10,15 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Defines an anonymous function.</span>
     <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">concat</span> <span class="p">=</span>
             <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
             <span class="p">};</span>
+    <span class="c1">// Defines an anonymous function with `var`.</span>
     <span class="k">var</span> <span class="nx">add</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
                   <span class="k">return</span> <span class="nx">v1</span> <span class="o">+</span> <span class="nx">v2</span><span class="p">;</span>
               <span class="p">};</span>

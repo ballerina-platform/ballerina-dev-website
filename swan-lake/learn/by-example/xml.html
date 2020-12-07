@@ -10,15 +10,26 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The XML element. There can be only one root element.</span>
     <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
+
+    <span class="c1">// The XML text.</span>
     <span class="kt">xml</span> <span class="nx">x2</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x2</span><span class="p">);</span>
+
+    <span class="c1">// The XML comment.</span>
     <span class="kt">xml</span> <span class="nx">x3</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x3</span><span class="p">);</span>
+
+    <span class="c1">// The XML processing instructions.</span>
     <span class="kt">xml</span> <span class="nx">x4</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x4</span><span class="p">);</span>
+
+    <span class="c1">// Multiple XML items can be combined to form a sequence of XML. The resulting sequence is another XML on its own.</span>
     <span class="kt">xml</span> <span class="nx">x5</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span> <span class="o">+</span> <span class="nx">x3</span> <span class="o">+</span> <span class="nx">x4</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nResulting XML sequence:&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x5</span><span class="p">);</span>

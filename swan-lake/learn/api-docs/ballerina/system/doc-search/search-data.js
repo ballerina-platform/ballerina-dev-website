@@ -1,0 +1,82 @@
+var searchData = {
+  "modules": [
+    {
+      "id": "system",
+      "description": "\u003cp\u003eThis module provides functions to retrieve information about the system and the current users of the system.\u003c/p\u003e"
+    }
+  ],
+  "classes": [
+    {
+      "id": "Process",
+      "description": "\u003cp\u003eThis object contains information on a process being created from Ballerina.\u003c/p\u003e",
+      "moduleId": "system"
+    }
+  ],
+  "functions": [
+    {
+      "id": "getEnv",
+      "description": "\u003cp\u003eReturns the environment variable value associated with the provided name.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "getUsername",
+      "description": "\u003cp\u003eReturns the current user\u0027s name.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "getUserHome",
+      "description": "\u003cp\u003eReturns the current user\u0027s home directory path.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "uuid",
+      "description": "\u003cp\u003eReturns a random UUID string.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "exec",
+      "description": "\u003cp\u003eExecutes an operating system command as a subprocess of the current process.\u003c/p\u003e",
+      "moduleId": "system"
+    }
+  ],
+  "records": [],
+  "constants": [],
+  "errors": [
+    {
+      "id": "InvalidOperationError",
+      "description": "\u003cp\u003eRepresents an \u003ccode\u003eInvalidOperationError\u003c/code\u003e with the message and the cause.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "PermissionError",
+      "description": "\u003cp\u003eRepresents a \u003ccode\u003ePermissionError\u003c/code\u003e with the message and the cause.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "FileSystemError",
+      "description": "\u003cp\u003eRepresents a \u003ccode\u003eFileSystemError\u003c/code\u003e with the message and the cause.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "FileNotFoundError",
+      "description": "\u003cp\u003eRepresents a \u003ccode\u003eFileNotFoundError\u003c/code\u003e with the message and the cause.\u003c/p\u003e",
+      "moduleId": "system"
+    },
+    {
+      "id": "ProcessExecError",
+      "description": "\u003cp\u003eRepresents an \u003ccode\u003eProcessExecError\u003c/code\u003e with the message and the cause.\u003c/p\u003e",
+      "moduleId": "system"
+    }
+  ],
+  "types": [
+    {
+      "id": "Error",
+      "description": "\u003cp\u003eThe union of all the System related errors.\u003c/p\u003e",
+      "moduleId": "system"
+    }
+  ],
+  "clients": [],
+  "listeners": [],
+  "annotations": [],
+  "abstractObjects": []
+};

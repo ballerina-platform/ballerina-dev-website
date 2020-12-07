@@ -1,0 +1,358 @@
+var searchData = {
+  "modules": [
+    {
+      "id": "io",
+      "description": "\u003cp\u003eThis module is designed to support input and output operations via channels in a canonical way, either in a blocking,\nor non-blocking manner.\u003c/p\u003e"
+    }
+  ],
+  "classes": [
+    {
+      "id": "WritableCSVChannel",
+      "description": "\u003cp\u003eRepresents a WritableCSVChannel, which could be used to write records from the CSV file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "ReadableDataChannel",
+      "description": "\u003cp\u003eRepresents a data channel for reading data.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "BlockStream",
+      "description": "\u003cp\u003e\u003ccode\u003eBlockStream\u003c/code\u003e used to initialize a stream of type \u003ccode\u003eio:Block\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "WritableCharacterChannel",
+      "description": "\u003cp\u003eRepresents a channel which could be used to write characters through a given WritableCharacterChannel.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "LineStream",
+      "description": "\u003cp\u003e\u003ccode\u003eLineStream\u003c/code\u003e used to initialize a stream of type strings(lines).\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "WritableByteChannel",
+      "description": "\u003cp\u003eWritableByteChannel represents an output resource (i.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "WritableTextRecordChannel",
+      "description": "\u003cp\u003eRepresents a channel, which will allow to write records through a given WritableCharacterChannel.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "ReadableCharacterChannel",
+      "description": "\u003cp\u003eRepresents a channel, which could be used to read characters through a given ReadableByteChannel.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "WritableDataChannel",
+      "description": "\u003cp\u003eRepresents a WritableDataChannel for writing data.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "ReadableTextRecordChannel",
+      "description": "\u003cp\u003eRepresents a channel which will allow to read.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "CSVStream",
+      "description": "\u003cp\u003e\u003ccode\u003eLineStream\u003c/code\u003e used to initialize a stream of type strings(lines).\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "ReadableByteChannel",
+      "description": "\u003cp\u003eReadableByteChannel represents an input resource (i.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "ReadableCSVChannel",
+      "description": "\u003cp\u003eRepresents a ReadableCSVChannel which could be used to read records from CSV file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "StringReader",
+      "description": "\u003cp\u003eRepresents a reader which will wrap string content as a channel.\u003c/p\u003e",
+      "moduleId": "io"
+    }
+  ],
+  "functions": [
+    {
+      "id": "readln",
+      "description": "\u003cp\u003eRetrieves the input read from the STDIN.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "print",
+      "description": "\u003cp\u003ePrints \u003ccode\u003eany\u003c/code\u003e or \u003ccode\u003eerror\u003c/code\u003e value(s) to the STDOUT.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "println",
+      "description": "\u003cp\u003ePrints \u003ccode\u003eany\u003c/code\u003e or \u003ccode\u003eerror\u003c/code\u003e value(s) to the STDOUT followed by a new line.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "sprintf",
+      "description": "\u003cp\u003eReturns a formatted string using the specified format string and arguments.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadCsv",
+      "description": "\u003cp\u003eRead file content as a CSV.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadCsvAsStream",
+      "description": "\u003cp\u003eRead file content as a CSV.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteCsv",
+      "description": "\u003cp\u003eWrite CSV content to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteCsvFromStream",
+      "description": "\u003cp\u003eWrite CSV record stream to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadString",
+      "description": "\u003cp\u003eReads the entire file content as a \u003ccode\u003estring\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadLines",
+      "description": "\u003cp\u003eReads the entire file content as a list of lines.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadLinesAsStream",
+      "description": "\u003cp\u003eReads file content as a stream of lines.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadJson",
+      "description": "\u003cp\u003eReads file content as a JSON.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadXml",
+      "description": "\u003cp\u003eReads file content as an XML.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteString",
+      "description": "\u003cp\u003eWrite a string content to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteLines",
+      "description": "\u003cp\u003eWrite an array of lines to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteLinesFromStream",
+      "description": "\u003cp\u003eWrite stream of lines to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteJson",
+      "description": "\u003cp\u003eWrite a JSON to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteXml",
+      "description": "\u003cp\u003eWrite XML content to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadBytes",
+      "description": "\u003cp\u003eRead the entire file content as a byte array.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileReadBlocksAsStream",
+      "description": "\u003cp\u003eRead the entire file content as a stream of blocks.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteBytes",
+      "description": "\u003cp\u003eWrite a set of bytes to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "fileWriteBlocksFromStream",
+      "description": "\u003cp\u003eWrite a byte stream to a file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "openReadableFile",
+      "description": "\u003cp\u003eRetrieves a \u003ccode\u003eReadableByteChannel\u003c/code\u003e from a given file path.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "openWritableFile",
+      "description": "\u003cp\u003eRetrieves a \u003ccode\u003eWritableByteChannel\u003c/code\u003e from a given file path.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "createReadableChannel",
+      "description": "\u003cp\u003eCreates an in-memory channel, which will be a reference stream of bytes.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "openReadableCsvFile",
+      "description": "\u003cp\u003eRetrieves a readable CSV channel from a given file path.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "openWritableCsvFile",
+      "description": "\u003cp\u003eRetrieves a writable CSV channel from a given file path.\u003c/p\u003e",
+      "moduleId": "io"
+    }
+  ],
+  "records": [],
+  "constants": [
+    {
+      "id": "CSV_RECORD_SEPARATOR",
+      "description": "\u003cp\u003eRepresents the record separator of the CSV file.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "FS_COLON",
+      "description": "\u003cp\u003eRepresents the colon separator, which should be used to identify colon-separated files.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "MINIMUM_HEADER_COUNT",
+      "description": "\u003cp\u003eRepresents the minimum number of headers, which will be included in the CSV.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "BIG_ENDIAN",
+      "description": "\u003cp\u003eSpecifies the bytes to be in the order of most significant byte first.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "LITTLE_ENDIAN",
+      "description": "\u003cp\u003eSpecifies the byte order to be the least significant byte first.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "DEFAULT",
+      "description": "\u003cp\u003eDefault value is the format specified by the CSVChannel.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "CSV",
+      "description": "\u003cp\u003eField separator will be \u0026quot;,\u0026quot; and the record separator will be a new line.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "TDF",
+      "description": "\u003cp\u003eField separator will be a tab and the record separator will be a new line.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "COMMA",
+      "description": "\u003cp\u003eComma (,) will be used as the field separator.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "TAB",
+      "description": "\u003cp\u003eTab (/t) will be use as the field separator.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "COLON",
+      "description": "\u003cp\u003eColon (:) will be use as the field separator.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "NEW_LINE",
+      "description": "\u003cp\u003eNew line character.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "DEFAULT_ENCODING",
+      "description": "\u003cp\u003eDefault encoding for the abstract read/write APIs.\u003c/p\u003e",
+      "moduleId": "io"
+    }
+  ],
+  "errors": [
+    {
+      "id": "ConnectionTimedOutError",
+      "description": "\u003cp\u003eThis will return when connection timed out happen when try to connect to a remote host.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "GenericError",
+      "description": "\u003cp\u003eRepresents generic IO error.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "AccessDeniedError",
+      "description": "\u003cp\u003eThis will get returned due to file permission issues.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "FileNotFoundError",
+      "description": "\u003cp\u003eThis will get returned if the file is not available in the given file path.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "TypeMismatchError",
+      "description": "\u003cp\u003eThis will get returned when there is an mismatch of given type and the expected type.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "EofError",
+      "description": "\u003cp\u003eThis will get returned if read operations are performed on a channel after it closed.\u003c/p\u003e",
+      "moduleId": "io"
+    }
+  ],
+  "types": [
+    {
+      "id": "Block",
+      "description": "",
+      "moduleId": "io"
+    },
+    {
+      "id": "Error",
+      "description": "\u003cp\u003eRepresents IO module related errors.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "ByteOrder",
+      "description": "\u003cp\u003eRepresents network byte order.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "ReadableChannel",
+      "description": "",
+      "moduleId": "io"
+    },
+    {
+      "id": "WritableChannel",
+      "description": "",
+      "moduleId": "io"
+    },
+    {
+      "id": "Format",
+      "description": "\u003cp\u003eThe format, which will be used to represent the CSV.\u003c/p\u003e",
+      "moduleId": "io"
+    },
+    {
+      "id": "Separator",
+      "description": "\u003cp\u003eField separators, which are supported by the \u003ccode\u003eDelimitedTextRecordChannel\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "io"
+    }
+  ],
+  "clients": [],
+  "listeners": [],
+  "annotations": [],
+  "abstractObjects": []
+};

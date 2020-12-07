@@ -11,28 +11,85 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">stringlib</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span><span class="kd">const</span> <span class="nx">EXEC_MAGIC_NUMBER</span> <span class="p">=</span> <span class="s">&quot;MZ&quot;</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nd">@untainted string secureParameter) {}type Student record {</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">EXEC_MAGIC_NUMBER</span> <span class="p">=</span> <span class="s">&quot;MZ&quot;</span><span class="p">;</span>
+
+<span class="c1">// The `@untainted` annotation can be used with the parameters of user-defined functions. This allow users to restrict</span>
+<span class="c1">// passing untrusted (tainted) data into a security sensitive parameter.</span>
+<span class="kd">function</span> <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nd">@untainted string secureParameter) {</span>
+
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">favQuote</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
                                        <span class="s">&quot;testdb&quot;</span><span class="p">,</span> <span class="mi">3306</span><span class="p">);</span>
+
+    <span class="c1">// Security sensitive parameters of Ballerina standard library functions</span>
+    <span class="c1">// are decorated with the `@untainted` annotation. This ensures that</span>
+    <span class="c1">// tainted data cannot pass into the security sensitive parameter.</span>
+    <span class="c1">//</span>
+    <span class="c1">// For example, the taint-checking mechanism of Ballerina warns the user to prevent</span>
+    <span class="c1">// SQL injection vulnerabilities by disallowing tainted data in the SQL query.</span>
+    <span class="c1">//</span>
+    <span class="c1">// The call to `query` action results in a compile time error because untainted</span>
+    <span class="c1">// data from `args[0]` is directly used in the SQL query string.</span>
+    <span class="c1">// Users should rather use raw templates when providing SQL query parameters</span>
+    <span class="c1">// to make sure SQL injection attacks are not possible. For more information, see [Parameterized Query](https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html)</span>
+    <span class="c1">// support. </span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;SELECT name, favQuote from Student &quot;</span> <span class="o">+</span>
                                  <span class="s">&quot;WHERE registrationId = &quot;</span> <span class="o">+</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">());</span>
-    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>    <span class="k">if</span> <span class="p">!</span><span class="nx">stringlib</span><span class="p">:</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">EXEC_MAGIC_NUMBER</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This line results in a compiler error because a user-provided argument is passed to a sensitive parameter.</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+
+    <span class="k">if</span> <span class="p">!</span><span class="nx">stringlib</span><span class="p">:</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">EXEC_MAGIC_NUMBER</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// After performing the necessary validations and/or escaping,</span>
+        <span class="c1">// use the type-cast expression with the @untainted annotation</span>
+        <span class="c1">// to mark the proceeding value as `trusted` and pass it to a sensitive parameter.</span>
         <span class="nx">userDefinedSecureOperation</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Invalid input: executable code detected!&quot;</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">var</span> <span class="nx">entry</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">result</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nx">entry</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">result</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
     <span class="nx">Student</span> <span class="nx">student</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">entry</span><span class="err">?</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">sanitizedData1</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>
-    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData1</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">sanitizedData2</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>
-    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData2</span><span class="p">);</span>    <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="kt">string</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// The return values of certain functions in the Ballerina standard library are decorated with the `@tainted` annotation to</span>
+    <span class="c1">// denote that the return value should be untrusted (tainted). One such example is the data read from a</span>
+    <span class="c1">// database.</span>
+    <span class="c1">//</span>
+    <span class="c1">// This line results in a compile error because a value derived from a database read (tainted) is passed to a</span>
+    <span class="c1">// sensitive parameter.</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>
+
+    <span class="kt">string</span> <span class="nx">sanitizedData1</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>
+    <span class="c1">// This line results in a compile error because the `sanitize` function returns a value derived from the tainted</span>
+    <span class="c1">// data. Therefore, the return value of the `sanitize` function is also tainted.</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData1</span><span class="p">);</span>
+
+    <span class="kt">string</span> <span class="nx">sanitizedData2</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">favQuote</span><span class="p">);</span>
+    <span class="c1">// This line compiles successfully. Although the `sanitize` function returns a value derived from tainted data,</span>
+    <span class="c1">// the return value is annotated with the `@untainted` annotation. This means that the return value is safe and can be</span>
+    <span class="c1">// trusted.</span>
+    <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData2</span><span class="p">);</span>
+
+    <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="kt">string</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// transform and sanitize the string here.</span>
     <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// The `@untainted` annotation denotes that the return value of the function should be trusted (untainted) even though</span>
+<span class="c1">// the return value is derived from tainted data.</span>
 <span class="kd">function</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="kt">string</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@untainted string {</span>
+    <span class="c1">// transform and sanitize the string here.</span>
     <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

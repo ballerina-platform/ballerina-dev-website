@@ -10,10 +10,22 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/aa&quot;</span> <span class="k">as</span> <span class="nx">ns0</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/aa&quot;</span> <span class="k">as</span> <span class="nx">ns0</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Namespaces can be declared at the module level as well as at the function level. The identifier followed by the</span>
+    <span class="c1">// `as` keyword is the prefix bound to this namespace name.</span>
     <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/bb&quot;</span> <span class="k">as</span> <span class="nx">ns1</span><span class="p">;</span>
+
+    <span class="c1">// Namespaces can be declared without the prefix. This will define a default namespace.</span>
     <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/default&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Namespaces can be used for XML-qualified names.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">foo</span><span class="p">);</span>
+
+    <span class="c1">// Module level namespaces can be overridden at the function level.</span>
     <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/updated&quot;</span> <span class="k">as</span> <span class="nx">ns0</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">foo</span><span class="p">);</span>
 <span class="p">}</span>

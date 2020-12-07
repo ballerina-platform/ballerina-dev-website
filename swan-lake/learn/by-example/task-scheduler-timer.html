@@ -13,24 +13,50 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+
+<span class="c1">// Defines a custom record type to use in the timer.</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">CounterContext</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">count</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Initializes the timer scheduler using the interval value. The delay will</span>
+    <span class="c1">// be equal to the interval if an initial delay is not provided.</span>
     <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
         <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">});</span>
+
+    <span class="c1">// Define a `CounterContext` object</span>
     <span class="nx">CounterContext</span> <span class="nx">counterCtx</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;MyCounter&quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">0</span><span class="p">};</span>
+
+    <span class="c1">// Attaching the service to the timer. This will not start the timer.</span>
+    <span class="c1">// However, it will attach the service to the timer and also provide the</span>
+    <span class="c1">// `CounterContext` object, that will be passed into the `onTrigger()` resource</span>
     <span class="nx">check</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">timerService</span><span class="p">,</span> <span class="nx">counterCtx</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4500</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;End.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Starts the timer.</span>
+    <span class="nx">check</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4500</span><span class="p">);</span>
+
+    <span class="c1">// Cancels the timer. This will stop the timer and all the services</span>
+    <span class="c1">// attached to it.</span>
+    <span class="nx">check</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;End.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// The service, which will be attached to the timer.</span>
 <span class="kd">service</span> <span class="nx">timerService</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+    <span class="c1">// The onTrigger resource, which will be invoked when the timer is triggered.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">CounterContext</span> <span class="nx">ctx</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">ctx</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
-    <span class="p">}};</span>
+    <span class="p">}</span>
+
+<span class="p">};</span>
 </pre></div>
 
             </div>

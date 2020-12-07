@@ -270,4 +270,7 @@ let redirections = {
     "/1.0/learn/getting-started/setting-up-visual-studio-code/run-all-tests/":"/1.0/learn/setting-up-visual-studio-code/run-all-tests/",
     "/1.1/learn/getting-started/setting-up-visual-studio-code/run-and-debug/":"/1.1/learn/setting-up-visual-studio-code/run-and-debug/",
     "/1.0/learn/getting-started/setting-up-visual-studio-code/run-and-debug/":"/1.0/learn/setting-up-visual-studio-code/run-and-debug/",
+    "/learn/structuring-ballerina-code/working-with-ballerina-modules/":"/page-not-available",
+    "/1.1/learn/structuring-ballerina-code/working-with-ballerina-modules/":"/1.1/page-not-available",
+    "/1.0/learn/structuring-ballerina-code/working-with-ballerina-modules/":"/1.0/page-not-available",
 }

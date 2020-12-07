@@ -16,7 +16,7 @@ redirect_from:
   - /swan-lake/learn
 ---
 
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 <a class="cBoxLink" href="/swan-lake/learn/quick-tour">
 
 <h2>Get Started</h2>
@@ -29,7 +29,7 @@ redirect_from:
 </div>
 
 
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 <a class="cBoxLink" href="/swan-lake/learn/by-example/">
 
 <h2>Ballerina by Example</h2>
@@ -41,7 +41,7 @@ redirect_from:
   
 </div>
 
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 <a class="cBoxLink" href="/swan-lake/learn/api-docs/ballerina">
 <h2>API Documentation</h2>
 <p>Learn the Ballerina standard library APIs and its components comprehensively.</p>
@@ -54,7 +54,7 @@ redirect_from:
 
 <!--<div class="clearfix"></div>-->
 
-<div class="col-sm-6 col-md-6  cLearnPageContentCol">
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
   <a class="cBoxLink" href="/swan-lake/learn/using-the-cli-tools/">
   <h2>Ballerina User Guide</h2>
@@ -62,9 +62,9 @@ redirect_from:
   </a>
 
 </div>
-<div class="clearfix"></div>
+<!-- <div class="clearfix"></div> -->
 
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
 <a class="cBoxLink" href="/spec/">
 <h2>Language Specification</h2>

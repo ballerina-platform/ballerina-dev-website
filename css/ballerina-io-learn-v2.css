@@ -106,7 +106,8 @@ nav.cLeftNavContainer {
     margin-bottom: 20px;
     }
     .cLearnPageContentCol  {
-    min-height: 340px;
+    /* min-height: 340px; */
+    margin-bottom: 30px;
     }
     ul.cLearnLandingLinks {
     margin: 20px 0 0 0;
@@ -128,10 +129,10 @@ nav.cLeftNavContainer {
     font-weight: 400;
     }
     .cBoxLink {
-        padding: 30px 50px 50px 50px;
+        padding: 30px;
         background-color: #f7f7f7;
         display: inline-block;
-        min-height: 310px;
+        min-height: 260px;
         border: 1px solid #f7f7f7;
     }
 
@@ -141,7 +142,21 @@ nav.cLeftNavContainer {
 
     .cBoxLink h2 {
         color: #20b6b0;
-        border-color: #20b6b0;
+        border-color: transparent;
+        background-color: transparent;
+    background-image: url("/img/go-bg-green.svg") !important;
+    border-bottom: none;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 50px;
+    background-position: right;
+    padding-bottom: 0;
+    margin-top: 0 !important;
+    height: 50px;
+    line-height:50px;
+    font-size: 22px !important;
+    margin-bottom: 10px !important;
+    
     }
     .cBoxLink:hover h2 {
         color: #585A5E;
@@ -256,3 +271,5 @@ color: #fff !important;
 .cBallerina-io-breadcrumbs {
     padding: 0;
 }
+
+

@@ -10,36 +10,41 @@ redirect_from:
 ---
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
-<!-- <h2>No upcoming events</h2> -->
-<h2>Upcoming Events</h2>
+<h2>No upcoming events</h2><br/>
+<!--<h2>Upcoming Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
-   <tr class="event-expiry" style="display:none" data-expiry="October 21, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
       <td class="cEventDateContainer">
-         <span class="cEventDate">October 19 - 21, 2020</span>
-         <p class="cEventLocation">Munich, Germany</p>
+         <span class="cEventDate">December 14 - 16, 2020</span>
+         <p class="cEventLocation">São Paulo, Brazil</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://osad-munich.org/en/">
-            <h4>Open Source Automation Days</h4>
+         <a target="_blank" href="https://qconsp.com/">
+            <h4>QCon São Paulo</h4>
          </a>
-         <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
-         <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
+         <h5></h5>
+         <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td>
    </tr>
-   <tr class="event-expiry" style="display:none" data-expiry="October 29, 2020 12:00:00">
+</table>-->
+
+
+<h2>Past Events</h2>
+<table class="cEventTable cConferencesList" style="width:100%;">
+   <tr class="event-expiry" style="display:none" data-expiry="December 4, 2020 12:00:00">
       <td class="cEventDateContainer">
-         <span class="cEventDate">October 27 - 29, 2020</span>
+         <span class="cEventDate">December 2 - 4, 2020</span>
          <p class="cEventLocation">Virtual</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://apiworld.co/">
-            <h4>API World Virtual</h4>
+         <a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-japan/">
+            <h4>Open Source Summit Japan</h4>
          </a>
-         <h5>Automatic Microservices Observability with Ballerina</h5>
+         <h5>Ballerina: An Open-Source Cloud-Native Programming Language</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/0pKOkMRODF0" target="_blank">Watch Video</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="October 28, 2020 12:00:00">
       <td class="cEventDateContainer">
@@ -55,37 +60,34 @@ redirect_from:
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
    </tr>
-   <tr class="event-expiry" style="display:none" data-expiry="December 4, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
-         <span class="cEventDate">December 2 - 4, 2020</span>
+         <span class="cEventDate">October 27 - 29, 2020</span>
          <p class="cEventLocation">Virtual</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-japan/">
-            <h4>Open Source Summit Japan</h4>
+         <a target="_blank" href="https://apiworld.co/">
+            <h4>API World Virtual</h4>
          </a>
-         <h5>Ballerina: An Open-Source Cloud-Native Programming Language</h5>
+         <h5>Automatic Microservices Observability with Ballerina</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/open-source-summit-japan/program/schedule-at-a-glance/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
    </tr>
-   <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
-         <span class="cEventDate">December 14 - 16, 2020</span>
-         <p class="cEventLocation">São Paulo, Brazil</p>
+         <span class="cEventDate">October 19 - 21, 2020</span>
+         <p class="cEventLocation">Munich, Germany</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://qconsp.com/">
-            <h4>QCon São Paulo</h4>
+         <a target="_blank" href="https://osad-munich.org/en/">
+            <h4>Open Source Automation Days</h4>
          </a>
-         <h5></h5>
-         <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
+         <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
+         <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td>
    </tr>
-</table>
-<h2>Past Events</h2>
-<table class="cEventTable cConferencesList" style="width:100%;">
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
          <span class="cEventDate">October 7, 2020</span>

@@ -15,7 +15,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
 
-<span class="c1">// Creates an endpoint for the [client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html).</span>
+<span class="c1">// Creates an endpoint for the [client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client).</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
 
 <span class="nd">@http:ServiceConfig {</span>
@@ -31,7 +31,7 @@ redirect_from:
                                          <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
-        <span class="c1">//[Sets the file](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#setFileAsPayload) as the request payload.</span>
+        <span class="c1">//[Sets the file](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#setFileAsPayload) as the request payload.</span>
         <span class="nx">request</span><span class="p">.</span><span class="nx">setFileAsPayload</span><span class="p">(</span><span class="s">&quot;./files/BallerinaLang.pdf&quot;</span><span class="p">,</span>
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span><span class="p">);</span>
 
@@ -67,7 +67,7 @@ redirect_from:
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientRequest</span><span class="p">.</span><span class="nx">getByteChannel</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//Writes the incoming stream to a file. First, [get the destination channel](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/functions.html#openWritableFile)</span>
+            <span class="c1">//Writes the incoming stream to a file. First, [get the destination channel](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/functions#openWritableFile)</span>
             <span class="c1">//by providing the file name to which the content should be written to.</span>
             <span class="k">var</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">);</span>
@@ -105,7 +105,7 @@ redirect_from:
     <span class="c1">// The below example shows how to read all the content from</span>
     <span class="c1">// the source and copy it to the destination.</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// The operation attempts to [read](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableByteChannel.html#read) a maximum of 1000 bytes and returns</span>
+        <span class="c1">// The operation attempts to [read](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableByteChannel#read) a maximum of 1000 bytes and returns</span>
         <span class="c1">// with the available content, which could be &lt; 1000.</span>
         <span class="nx">byte</span><span class="p">[]|</span><span class="nx">io</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
@@ -113,7 +113,7 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">// The operation [writes](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/WritableByteChannel.html#write) the given content into the channel.</span>
+            <span class="c1">// The operation [writes](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/WritableByteChannel#write) the given content into the channel.</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">dst</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
@@ -149,7 +149,7 @@ redirect_from:
                             <h2>HTTP Streaming</h2>
                             <p><p>Ballerina supports HTTP input and output streaming capability through io:ReadableByteChannel.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -268,7 +268,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an endpoint for the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html">client</a>.</p>
+                                            <p>Creates an endpoint for the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client">client</a>.</p>
 
                                         </div>
                                     </div>
@@ -321,7 +321,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#setFileAsPayload">Sets the file</a> as the request payload.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#setFileAsPayload">Sets the file</a> as the request payload.</p>
 
                                         </div>
                                     </div>
@@ -410,7 +410,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes the incoming stream to a file. First, <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/functions.html#openWritableFile">get the destination channel</a>
+                                            <p>Writes the incoming stream to a file. First, <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/functions#openWritableFile">get the destination channel</a>
 by providing the file name to which the content should be written to.</p>
 
                                         </div>
@@ -528,7 +528,7 @@ by providing the file name to which the content should be written to.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The operation attempts to <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableByteChannel.html#read">read</a> a maximum of 1000 bytes and returns
+                                            <p>The operation attempts to <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableByteChannel#read">read</a> a maximum of 1000 bytes and returns
  with the available content, which could be &lt; 1000.</p>
 
                                         </div>
@@ -560,7 +560,7 @@ by providing the file name to which the content should be written to.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The operation <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/WritableByteChannel.html#write">writes</a> the given content into the channel.</p>
+                                            <p>The operation <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/WritableByteChannel#write">writes</a> the given content into the channel.</p>
 
                                         </div>
                                     </div>

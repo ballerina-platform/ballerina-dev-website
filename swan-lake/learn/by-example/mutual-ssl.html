@@ -16,7 +16,7 @@ redirect_from:
 
 <span class="c1">// Create an HTTP listener configuration, which will configure a listener to</span>
 <span class="c1">// accept new connections that are secured via mutual SSL.</span>
-<span class="c1">// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ListenerSecureSocket.html) record provides the SSL related listener configurations.</span>
+<span class="c1">// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ListenerSecureSocket) record provides the SSL related listener configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
@@ -69,7 +69,7 @@ redirect_from:
 <span class="c1">// Create a client configuration to be passed to the client endpoint.</span>
 <span class="c1">// Configure the `keyStore` file `path` and `password`, `truststore`</span>
 <span class="c1">// file `path` and `password`, which are required to enable mutual SSL.</span>
-<span class="c1">// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientSecureSocket.html) record provides the SSL related configurations.</span>
+<span class="c1">// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientSecureSocket) record provides the SSL related configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
@@ -115,7 +115,7 @@ redirect_from:
 server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of
 each other&rsquo;s identity.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -234,7 +234,7 @@ import ballerina/log;
                                         <div>
                                             <p>Create an HTTP listener configuration, which will configure a listener to
  accept new connections that are secured via mutual SSL.
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ListenerSecureSocket.html">secureSocket</a> record provides the SSL related listener configurations.</p>
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ListenerSecureSocket">secureSocket</a> record provides the SSL related listener configurations.</p>
 
                                         </div>
                                     </div>
@@ -516,7 +516,7 @@ import ballerina/log;
                                             <p>Create a client configuration to be passed to the client endpoint.
  Configure the <code>keyStore</code> file <code>path</code> and <code>password</code>, <code>truststore</code>
  file <code>path</code> and <code>password</code>, which are required to enable mutual SSL.
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientSecureSocket.html">secureSocket</a> record provides the SSL related configurations.</p>
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientSecureSocket">secureSocket</a> record provides the SSL related configurations.</p>
 
                                         </div>
                                     </div>

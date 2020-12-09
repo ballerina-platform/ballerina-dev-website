@@ -40,7 +40,7 @@ redirect_from:
         <span class="nx">wsClientEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">caller</span><span class="p">);</span>
         <span class="nx">caller</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">wsClientEp</span><span class="p">);</span>
 
-        <span class="c1">// Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketClient.html#ready)</span>
+        <span class="c1">// Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#ready)</span>
         <span class="c1">// of the client need to be called separately.</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">ready</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
@@ -183,7 +183,7 @@ redirect_from:
                             <p><p>Ballerina can act as a proxy to another remote service. Ballerina forwards the
 requests sent by the clients that connect to it via a WebSocket to the respective remote service.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -452,7 +452,7 @@ service SimpleProxyService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Once the client is ready to receive frames, the remote function <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketClient.html#ready">ready</a>
+                                            <p>Once the client is ready to receive frames, the remote function <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#ready">ready</a>
  of the client need to be called separately.</p>
 
                                         </div>

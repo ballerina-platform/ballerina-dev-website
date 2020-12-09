@@ -5,7 +5,7 @@ description: Learn all the command line interface (CLI) commands need to get sta
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/using-the-cli-tools/
 active: using-the-cli-tools
-intro: The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. 
+intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /v1-2/learn/cli-commands
   - /v1-2/learn/cli-commands/
@@ -14,7 +14,7 @@ redirect_from:
   - /learn/using-the-cli-tools
 ---
 
-## Using the 'ballerina' Command
+## Using the Ballerina Tool
 
 In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below.
 

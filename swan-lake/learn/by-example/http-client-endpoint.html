@@ -40,7 +40,7 @@ redirect_from:
     <span class="c1">// which will be a request or a payload.</span>
     <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Get the content type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getContentType) from the response.</span>
+        <span class="c1">// [Get the content type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getContentType) from the response.</span>
         <span class="kt">string</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Content-Type: &quot;</span> <span class="o">+</span> <span class="nx">contentType</span><span class="p">);</span>
 
@@ -56,7 +56,7 @@ redirect_from:
 <span class="c1">//The below function handles the response received from the remote HTTP endpoint.</span>
 <span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Get the JSON payload](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getJsonPayload) from the response.</span>
+        <span class="c1">// [Get the JSON payload](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getJsonPayload) from the response.</span>
         <span class="k">var</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Prints the received `JSON` response.</span>
@@ -80,7 +80,7 @@ redirect_from:
                             <h2>Client Endpoint</h2>
                             <p><p>The HTTP Client Connector can be used to connect to and interact with an HTTP server.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -394,7 +394,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getContentType">Get the content type</a> from the response.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getContentType">Get the content type</a> from the response.</p>
 
                                         </div>
                                     </div>
@@ -463,7 +463,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getJsonPayload">Get the JSON payload</a> from the response.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getJsonPayload">Get the JSON payload</a> from the response.</p>
 
                                         </div>
                                     </div>

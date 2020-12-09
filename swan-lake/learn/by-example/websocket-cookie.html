@@ -38,7 +38,7 @@ redirect_from:
                 <span class="c1">// Check the password value.</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">password</span> <span class="o">==</span> <span class="s">&quot;p@ssw0rd&quot;</span><span class="p">)</span> <span class="p">{</span>
 
-                    <span class="c1">// [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Cookie.html) by setting the `name` as the `username`</span>
+                    <span class="c1">// [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Cookie) by setting the `name` as the `username`</span>
                     <span class="c1">// and `value` as the logged-in user&#39;s name.</span>
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
@@ -46,7 +46,7 @@ redirect_from:
                     <span class="c1">// resources in the service.</span>
                     <span class="nx">cookie</span><span class="p">.</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
 
-                    <span class="c1">// [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#addCookie).</span>
+                    <span class="c1">// [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#addCookie).</span>
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
                     <span class="nx">response</span><span class="p">.</span><span class="nx">addCookie</span><span class="p">(</span><span class="nx">cookie</span><span class="p">);</span>
 
@@ -71,7 +71,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">upgrader</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="c1">// [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getCookies).</span>
+        <span class="c1">// [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getCookies).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
 
         <span class="c1">// Get the cookie value of the `username`.</span>
@@ -132,7 +132,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// The HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CookieConfig.html).</span>
+<span class="c1">// The HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CookieConfig).</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">cookieConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span>
@@ -165,7 +165,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">loginMessage</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">loginMessage</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">// [Gets cookies from the `http:Response`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getCookies)</span>
+            <span class="c1">// [Gets cookies from the `http:Response`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getCookies)</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
             <span class="c1">// Initialize the WebSocket client with the cookies</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span>
@@ -441,7 +441,7 @@ service cookieServer on new http:Listener(9095) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Cookie.html">Create a new cookie</a> by setting the <code>name</code> as the <code>username</code>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Cookie">Create a new cookie</a> by setting the <code>name</code> as the <code>username</code>
  and <code>value</code> as the logged-in user&rsquo;s name.</p>
 
                                         </div>
@@ -482,7 +482,7 @@ service cookieServer on new http:Listener(9095) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#addCookie">Add the created cookie to the response</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#addCookie">Add the created cookie to the response</a>.</p>
 
                                         </div>
                                     </div>
@@ -554,7 +554,7 @@ service cookieServer on new http:Listener(9095) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getCookies">Retrieve cookies from the request</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getCookies">Retrieve cookies from the request</a>.</p>
 
                                         </div>
                                     </div>
@@ -889,7 +889,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client configurations associated with <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CookieConfig.html">enabling cookies</a>.</p>
+                                            <p>The HTTP client configurations associated with <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CookieConfig">enabling cookies</a>.</p>
 
                                         </div>
                                     </div>
@@ -1047,7 +1047,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getCookies">Gets cookies from the <code>http:Response</code></a></p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getCookies">Gets cookies from the <code>http:Response</code></a></p>
 
                                         </div>
                                     </div>

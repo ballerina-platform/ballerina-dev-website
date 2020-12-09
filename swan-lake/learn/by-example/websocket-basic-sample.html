@@ -73,7 +73,7 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// This `resource` is triggered when a ping message is received from the client. If this resource is not implemented,</span>
-    <span class="c1">// a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketCaller.html) when a ping is received.</span>
+    <span class="c1">// a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketCaller) when a ping is received.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onPing</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pong</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
@@ -87,7 +87,7 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// This resource is triggered when a particular client reaches the idle timeout that is defined in the</span>
-    <span class="c1">// [http:WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/annotations.html#WebSocketServiceConfig) annotation.</span>
+    <span class="c1">// [http:WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig) annotation.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onIdleTimeout</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nReached idle timeout&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Closing connection &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
@@ -122,7 +122,7 @@ redirect_from:
                             <h2>Basic Server Functionalities</h2>
                             <p><p>This example explains the basic functions of a WebSocket server.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -362,7 +362,7 @@ service basic on new http:Listener(9090) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This <code>resource</code> is triggered when a ping message is received from the client. If this resource is not implemented,
- a pong message is automatically sent to the connected <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketCaller.html">http:WebSocketCaller</a> when a ping is received.</p>
+ a pong message is automatically sent to the connected <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketCaller">http:WebSocketCaller</a> when a ping is received.</p>
 
                                         </div>
                                     </div>
@@ -411,7 +411,7 @@ service basic on new http:Listener(9090) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This resource is triggered when a particular client reaches the idle timeout that is defined in the
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/annotations.html#WebSocketServiceConfig">http:WebSocketServiceConfig</a> annotation.</p>
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig">http:WebSocketServiceConfig</a> annotation.</p>
 
                                         </div>
                                     </div>

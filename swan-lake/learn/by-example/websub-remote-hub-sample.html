@@ -49,13 +49,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
 
-<span class="c1">// This is the remote [WebSub Hub client]((https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html) to which registration and publish requests are sent.</span>
+<span class="c1">// This is the remote [WebSub Hub client]((https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient) to which registration and publish requests are sent.</span>
 <span class="nx">websub</span><span class="p">:</span><span class="nx">PublisherClient</span> <span class="nx">websubHubClientEP</span> <span class="p">=</span>
                     <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9191/websub/publish&quot;</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="c1">// Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html#registerTopic).</span>
+    <span class="c1">// Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient#registerTopic).</span>
     <span class="k">var</span> <span class="nx">registrationResponse</span> <span class="p">=</span>
                 <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">registerTopic</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">registrationResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -68,7 +68,7 @@ redirect_from:
     <span class="c1">// Makes the publisher wait until the subscriber subscribes at the hub.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
 
-    <span class="c1">// Publishes updates to the remote hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html#publishUpdate).</span>
+    <span class="c1">// Publishes updates to the remote hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient#publishUpdate).</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Publishing update to remote Hub&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">publishResponse</span> <span class="p">=</span>
         <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
@@ -154,7 +154,7 @@ redirect_from:
  that is brought up remotely is used by a Ballerina WebSub publisher to publish updates to a topic. A Ballerina
  WebSub Subscriber subscribes at this remote hub to get the topic updates.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/index.html">WebSub module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/">WebSub module</a>.</p>
 </p>
 
                         </td>
@@ -472,7 +472,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the remote [WebSub Hub client]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html">https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html</a>) to which registration and publish requests are sent.</p>
+                                            <p>This is the remote [WebSub Hub client]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient.html">https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient</a>) to which registration and publish requests are sent.</p>
 
                                         </div>
                                     </div>
@@ -510,7 +510,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Registers a topic at the hub using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html#registerTopic">registerTopic</a>.</p>
+                                            <p>Registers a topic at the hub using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient#registerTopic">registerTopic</a>.</p>
 
                                         </div>
                                     </div>
@@ -557,7 +557,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Publishes updates to the remote hub using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html#publishUpdate">publishUpdate</a>.</p>
+                                            <p>Publishes updates to the remote hub using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient#publishUpdate">publishUpdate</a>.</p>
 
                                         </div>
                                     </div>

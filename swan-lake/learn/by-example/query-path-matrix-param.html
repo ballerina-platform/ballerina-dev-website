@@ -22,11 +22,11 @@ redirect_from:
     <span class="c1">// The `PathParam` and `QueryParam` parameters extract values from the request URI.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">params</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                 <span class="kt">string</span> <span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getQueryParamValue)</span>
+        <span class="c1">// Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getQueryParamValue)</span>
         <span class="c1">// value for a given parameter key.</span>
         <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">);</span>
 
-        <span class="c1">// Get the [MatrixParams](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getMatrixParams).</span>
+        <span class="c1">// Get the [MatrixParams](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getMatrixParams).</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">pathMParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getMatrixParams</span><span class="p">(</span><span class="s">&quot;/sample/path&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">];</span>
         <span class="k">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">];</span>
@@ -65,7 +65,7 @@ redirect_from:
                             <h2>Query Path Matrix Param</h2>
                             <p><p>Ballerina supports extracting values using the <code>PathParam</code>, <code>QueryParam</code> and <code>MatrixParam</code> parameters.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -217,7 +217,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getQueryParamValue">QueryParam</a>
+                                            <p>Get the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getQueryParamValue">QueryParam</a>
  value for a given parameter key.</p>
 
                                         </div>
@@ -245,7 +245,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getMatrixParams">MatrixParams</a>.</p>
+                                            <p>Get the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getMatrixParams">MatrixParams</a>.</p>
 
                                         </div>
                                     </div>

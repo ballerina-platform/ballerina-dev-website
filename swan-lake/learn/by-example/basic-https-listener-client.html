@@ -53,7 +53,7 @@ redirect_from:
 <span class="c1">// This is a client endpoint configured to connect to the HTTPS service.</span>
 <span class="c1">// As this is a 1-way SSL connection, the client needs to provide</span>
 <span class="c1">// `trustStore` file `path` and its `password`.</span>
-<span class="c1">// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientSecureSocket.html) record provides the SSL related configurations.</span>
+<span class="c1">// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientSecureSocket) record provides the SSL related configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
@@ -89,7 +89,7 @@ redirect_from:
                             <p><p>This example demonstrates how the Ballerina https client can be configured to connect to an https listener through 1-way SSL connection (i.e., the server is verified by the client).
  This example uses the Ballerina https listener to host a service and the https client sends requests for that listener.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -383,7 +383,7 @@ import ballerina/log;
                                             <p>This is a client endpoint configured to connect to the HTTPS service.
  As this is a 1-way SSL connection, the client needs to provide
  <code>trustStore</code> file <code>path</code> and its <code>password</code>.
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientSecureSocket.html">secureSocket</a> record provides the SSL related configurations.</p>
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientSecureSocket">secureSocket</a> record provides the SSL related configurations.</p>
 
                                         </div>
                                     </div>

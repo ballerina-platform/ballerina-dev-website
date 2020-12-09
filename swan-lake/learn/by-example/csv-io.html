@@ -38,7 +38,7 @@ redirect_from:
 <span class="c1">//Specifies the location of the `.CSV` file.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">srcFileName</span> <span class="p">=</span> <span class="s">&quot;./files/sample.csv&quot;</span><span class="p">;</span>
-    <span class="c1">// Opens a [CSV channel in the `write` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/WritableCSVChannel.html)</span>
+    <span class="c1">// Opens a [CSV channel in the `write` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/WritableCSVChannel)</span>
     <span class="c1">// and writes some data to the `./files/sample.csv` file for later use.</span>
     <span class="c1">// The record separator of the `.CSV` file is a</span>
     <span class="c1">// new line and the field separator is a comma (,).</span>
@@ -49,7 +49,7 @@ redirect_from:
     <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;Oliver&quot;</span><span class="p">,</span> <span class="s">&quot;1100000&quot;</span><span class="p">]];</span>
     <span class="nx">writeDataToCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">,</span> <span class="o">...</span><span class="nx">data</span><span class="p">);</span>
     <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">);</span>
-    <span class="c1">// Opens a [CSV channel in the `read` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableCSVChannel.html),</span>
+    <span class="c1">// Opens a [CSV channel in the `read` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableCSVChannel),</span>
     <span class="c1">// which is the default mode.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel</span> <span class="p">=</span>
                         <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
@@ -65,7 +65,7 @@ redirect_from:
     <span class="c1">// Opens a CSV channel in the `read` mode, which is the default mode.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel2</span> <span class="p">=</span>
                             <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
-    <span class="c1">// Reads the `.CSV` file as a `table` using [getTable](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableCSVChannel.html#getTable) function.</span>
+    <span class="c1">// Reads the `.CSV` file as a `table` using [getTable](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableCSVChannel#getTable) function.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reading  &quot;</span> <span class="o">+</span> <span class="nx">srcFileName</span> <span class="o">+</span> <span class="s">&quot; as a table&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">tblResult</span> <span class="p">=</span> <span class="nx">rCsvChannel2</span><span class="p">.</span><span class="nx">getTable</span><span class="p">(</span><span class="nx">Employee</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">tblResult</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;)</span> <span class="p">{</span>
@@ -144,7 +144,7 @@ redirect_from:
                             <h2>CSV I/O</h2>
                             <p><p>This sample demonstrates how to read/write from/to a CSV file using the CSV channel of the I/O API.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/index.html">IO module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/">IO module</a>.</p>
 </p>
 
                         </td>
@@ -388,7 +388,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Opens a <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/WritableCSVChannel.html">CSV channel in the <code>write</code> mode</a>
+                                            <p>Opens a <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/WritableCSVChannel">CSV channel in the <code>write</code> mode</a>
  and writes some data to the <code>./files/sample.csv</code> file for later use.
  The record separator of the <code>.CSV</code> file is a
  new line and the field separator is a comma (,).</p>
@@ -418,7 +418,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Opens a <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableCSVChannel.html">CSV channel in the <code>read</code> mode</a>,
+                                            <p>Opens a <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableCSVChannel">CSV channel in the <code>read</code> mode</a>,
  which is the default mode.</p>
 
                                         </div>
@@ -487,7 +487,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reads the <code>.CSV</code> file as a <code>table</code> using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/classes/ReadableCSVChannel.html#getTable">getTable</a> function.</p>
+                                            <p>Reads the <code>.CSV</code> file as a <code>table</code> using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableCSVChannel#getTable">getTable</a> function.</p>
 
                                         </div>
                                     </div>

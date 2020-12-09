@@ -28,7 +28,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">http2Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="c1">// [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#promise).</span>
+        <span class="c1">// [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#promise).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">promise1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/resource1&quot;</span><span class="p">,</span> <span class="nx">method</span> <span class="p">=</span> <span class="s">&quot;GET&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">promiseResponse1</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">promise</span><span class="p">(</span><span class="nx">promise1</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">promiseResponse1</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -69,7 +69,7 @@ redirect_from:
         <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;push&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;resource1&quot;</span><span class="p">}};</span>
         <span class="nx">push1</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
 
-        <span class="c1">// [Push promised resource1](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#pushPromisedResponse).</span>
+        <span class="c1">// [Push promised resource1](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#pushPromisedResponse).</span>
         <span class="k">var</span> <span class="nx">pushResponse1</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushPromisedResponse</span><span class="p">(</span><span class="nx">promise1</span><span class="p">,</span> <span class="nx">push1</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">pushResponse1</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the promised &quot;</span> <span class="o">+</span>
@@ -104,7 +104,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// Create an [HTTP client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html) that can send HTTP/2 messages.</span>
+<span class="c1">// Create an [HTTP client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client) that can send HTTP/2 messages.</span>
 <span class="c1">// HTTP version is set to 2.0.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
 
@@ -112,7 +112,7 @@ redirect_from:
 
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">serviceReq</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">HttpFuture</span> <span class="nx">httpFuture</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="c1">// [Submit a request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#submit).</span>
+    <span class="c1">// [Submit a request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#submit).</span>
     <span class="k">var</span> <span class="nx">submissionResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">submit</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;/http2Service&quot;</span><span class="p">,</span> <span class="nx">serviceReq</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">submissionResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">HttpFuture</span><span class="p">)</span> <span class="p">{</span>
@@ -125,12 +125,12 @@ redirect_from:
 
     <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span><span class="err">?</span><span class="p">[]</span> <span class="nx">promises</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="kt">int</span> <span class="nx">promiseCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="c1">// [Check if promises exists](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#hasPromise).</span>
+    <span class="c1">// [Check if promises exists](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#hasPromise).</span>
     <span class="kt">boolean</span> <span class="nx">hasPromise</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">hasPromise</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>
 
     <span class="k">while</span> <span class="p">(</span><span class="nx">hasPromise</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">pushPromise</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// [Get the next promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#getNextPromise).</span>
+        <span class="c1">// [Get the next promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#getNextPromise).</span>
         <span class="k">var</span> <span class="nx">nextPromiseResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">getNextPromise</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">nextPromiseResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span><span class="p">)</span> <span class="p">{</span>
@@ -144,7 +144,7 @@ redirect_from:
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span> <span class="o">==</span> <span class="s">&quot;/resource2&quot;</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// The client is not interested in receiving `/resource2`.</span>
-            <span class="c1">// Therefore, [reject the promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#rejectPromise).</span>
+            <span class="c1">// Therefore, [reject the promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#rejectPromise).</span>
             <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">rejectPromise</span><span class="p">(</span><span class="nx">pushPromise</span><span class="p">);</span>
 
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Push promise for resource2 rejected&quot;</span><span class="p">);</span>
@@ -158,7 +158,7 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="c1">// [Get the requested resource](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#getResponse).</span>
+    <span class="c1">// [Get the requested resource](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#getResponse).</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">getResponse</span><span class="p">(</span><span class="nx">httpFuture</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -211,7 +211,7 @@ redirect_from:
                             <p><p>This example demonstrates sending and receiving HTTP/2 Server Push messages in Ballerina HTTP Library.
  HTTP/2 Server Push messages allow the server to send resources to the client before the client requests for it.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -382,7 +382,7 @@ service http2Service on http2ServiceEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#promise">Send a Push Promise</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#promise">Send a Push Promise</a>.</p>
 
                                         </div>
                                     </div>
@@ -518,7 +518,7 @@ service http2Service on http2ServiceEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#pushPromisedResponse">Push promised resource1</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#pushPromisedResponse">Push promised resource1</a>.</p>
 
                                         </div>
                                     </div>
@@ -771,7 +771,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html">HTTP client</a> that can send HTTP/2 messages.
+                                            <p>Create an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client">HTTP client</a> that can send HTTP/2 messages.
  HTTP version is set to 2.0.</p>
 
                                         </div>
@@ -816,7 +816,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#submit">Submit a request</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#submit">Submit a request</a>.</p>
 
                                         </div>
                                     </div>
@@ -866,7 +866,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#hasPromise">Check if promises exists</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#hasPromise">Check if promises exists</a>.</p>
 
                                         </div>
                                     </div>
@@ -898,7 +898,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#getNextPromise">Get the next promise</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#getNextPromise">Get the next promise</a>.</p>
 
                                         </div>
                                     </div>
@@ -949,7 +949,7 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The client is not interested in receiving <code>/resource2</code>.
- Therefore, <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#rejectPromise">reject the promise</a>.</p>
+ Therefore, <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#rejectPromise">reject the promise</a>.</p>
 
                                         </div>
                                     </div>
@@ -1027,7 +1027,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#getResponse">Get the requested resource</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#getResponse">Get the requested resource</a>.</p>
 
                                         </div>
                                     </div>

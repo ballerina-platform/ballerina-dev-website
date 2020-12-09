@@ -22,7 +22,7 @@ redirect_from:
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Check if the client expects a 100-continue response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#expects100Continue).</span>
+        <span class="c1">// [Check if the client expects a 100-continue response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#expects100Continue).</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">expects100Continue</span><span class="p">())</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span><span class="p">.</span><span class="nx">toLowerAscii</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;text/plain&quot;</span><span class="p">)</span> <span class="p">{</span>
@@ -79,7 +79,7 @@ redirect_from:
                             <p><p>Convenience functions are provided in the HTTP library for ease of use when handling 100-continue scenarios.
  100-continue indicates that the server has received the request headers and the client can proceed with sending the request.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -210,7 +210,7 @@ service helloWorld on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#expects100Continue">Check if the client expects a 100-continue response</a>.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#expects100Continue">Check if the client expects a 100-continue response</a>.</p>
 
                                         </div>
                                     </div>

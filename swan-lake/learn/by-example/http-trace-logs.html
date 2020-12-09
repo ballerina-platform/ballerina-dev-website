@@ -22,7 +22,7 @@ redirect_from:
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Create a new [http:Client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html).</span>
+        <span class="c1">// Create a new [http:Client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://httpstat.us&quot;</span><span class="p">);</span>
         <span class="c1">// Forward incoming requests to the remote backend.</span>
         <span class="k">var</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/200&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
@@ -49,7 +49,7 @@ redirect_from:
                             <h2>Trace Logs</h2>
                             <p><p>The HTTP trace logs can be used to monitor the HTTP traffic that goes in and out of Ballerina.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -166,7 +166,7 @@ service helloWorld on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html">http:Client</a>.</p>
+                                            <p>Create a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client">http:Client</a>.</p>
 
                                         </div>
                                     </div>

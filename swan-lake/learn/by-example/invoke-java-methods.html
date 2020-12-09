@@ -48,7 +48,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">arrayDeque</span> <span class="p">=</span> <span class="nx">newArrayDeque</span><span class="p">();</span>
 
     <span class="c1">// Ballerina strings are different from Java strings. </span>
-    <span class="c1">// The [fromString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/functions.html#fromString) function in </span>
+    <span class="c1">// The [fromString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/functions#fromString) function in </span>
     <span class="c1">// `ballerina/java` module converts a Ballerina string value to a Java String representation.</span>
     <span class="c1">// Java String is a reference type; hence,</span>
     <span class="c1">// this method returns a handle value referring to the created to Java string.</span>
@@ -57,7 +57,7 @@ redirect_from:
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Peter&quot;</span><span class="p">));</span>
 
     <span class="k">var</span> <span class="nx">nextInLineHandle</span> <span class="p">=</span> <span class="nx">poll</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">);</span>
-    <span class="c1">// The [toString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/functions.html#toString) function in </span>
+    <span class="c1">// The [toString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/functions#toString) function in </span>
     <span class="c1">// `ballerina/java` module creates a Ballerina string</span>
     <span class="c1">// representation of the Java reference value.</span>
     <span class="kt">string</span><span class="p">? nextInLine = java:toString(</span><span class="nx">nextInLineHandle</span><span class="p">);</span>
@@ -75,7 +75,7 @@ redirect_from:
                             <p><p>The <code>Method</code> annotation in <code>ballerina/java</code> module allows you to link a Java method (static or instance) with a
  Ballerina function with an external function body.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/index.html">Java module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/">Java module</a>.</p>
 </p>
 
                         </td>
@@ -326,7 +326,7 @@ import ballerina/java;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Ballerina strings are different from Java strings.
- The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/functions.html#fromString">fromString</a> function in
+ The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/functions#fromString">fromString</a> function in
  <code>ballerina/java</code> module converts a Ballerina string value to a Java String representation.
  Java String is a reference type; hence,
  this method returns a handle value referring to the created to Java string.</p>
@@ -362,7 +362,7 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/functions.html#toString">toString</a> function in
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/functions#toString">toString</a> function in
  <code>ballerina/java</code> module creates a Ballerina string
  representation of the Java reference value.</p>
 

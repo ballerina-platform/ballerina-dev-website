@@ -12,7 +12,7 @@ redirect_from:
   - /swan-lake/learn/using-the-cli-tools
 ---
 
-## Using the 'ballerina' Command
+## Using the Ballerina Tool
 
 **`Ballerina`** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
 

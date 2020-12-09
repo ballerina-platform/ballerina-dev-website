@@ -10,7 +10,7 @@ redirect_from:
 ---
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
-<h2>No upcoming events</h2>
+<h2>No upcoming events</h2><br/>
 <!--<h2>Upcoming Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
    <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">

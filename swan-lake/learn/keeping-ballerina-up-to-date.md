@@ -38,7 +38,7 @@ Patch releases of Ballerina distributions contain bug fixes and fixes for critic
 
 #### Minor Releases
 
-These are feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. There will be four minor releases a year. You will get access to a minor release on the 3rd Wednesday of the 3rd month of every quarter.
+These are feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. 
 
 *Example minor releases: 1.1.0, 1.2.0, 1.3.0*
 

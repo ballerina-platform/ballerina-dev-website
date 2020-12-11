@@ -52,7 +52,7 @@ This channel gives you access to patch releases of Ballerina distributions that 
 
 #### Minor Release Channel
 
-This channel gives you access to feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. There will be four minor releases a year. You will get access to a minor release on the 3rd Wednesday of the 3rd month of every quarter. 
+This channel gives you access to feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. 
 
 *Example minor releases: jballerina 1.1.0, jballerina 1.2.0, jballerina 1.3.0*
 

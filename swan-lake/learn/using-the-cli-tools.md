@@ -14,7 +14,7 @@ redirect_from:
 
 ## Using the Ballerina Tool
 
-**`Ballerina`** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
+The Ballerina Tool is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
 
 It also enables you to easily install, update, and switch among Ballerina distributions. 
 

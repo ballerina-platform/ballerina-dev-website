@@ -14,10 +14,10 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketClient.html) with the backend URL and assigns a callback service.</span>
+    <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient) with the backend URL and assigns a callback service.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">,</span>
                             <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span><span class="p">});</span>
-    <span class="c1">// Pushes a text message to the server using [pushText](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketClient.html#pushText).</span>
+    <span class="c1">// Pushes a text message to the server using [pushText](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#pushText).</span>
     <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Prints the error.</span>
@@ -48,7 +48,7 @@ redirect_from:
                             <h2>Client Endpoint</h2>
                             <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -162,7 +162,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketClient.html">WebSocket client</a> with the backend URL and assigns a callback service.</p>
+                                            <p>Creates a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient">WebSocket client</a> with the backend URL and assigns a callback service.</p>
 
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Pushes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketClient.html#pushText">pushText</a>.</p>
+                                            <p>Pushes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#pushText">pushText</a>.</p>
 
                                         </div>
                                     </div>

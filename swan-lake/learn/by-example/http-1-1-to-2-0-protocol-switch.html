@@ -27,7 +27,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">http11Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                      <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html) to the `http2` service.</span>
+        <span class="c1">// Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request) to the `http2` service.</span>
         <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">http2serviceClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/http2service&quot;</span><span class="p">,</span>
                                                         <span class="nx">clientRequest</span><span class="p">);</span>
 
@@ -36,7 +36,7 @@ redirect_from:
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c1">// Handle the errors that are returned when invoking the</span>
-            <span class="c1">// [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/HttpClient.html#forward) function.</span>
+            <span class="c1">// [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/HttpClient#forward) function.</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;(&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
@@ -89,7 +89,7 @@ redirect_from:
                             <p><p>In this example, the Ballerina HTTP service receives a message over the HTTP/1.1 protocol and forwards it
  to another service over the HTTP/2.0 protocol.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -254,7 +254,7 @@ service http11Service on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Forward the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html">clientRequest</a> to the <code>http2</code> service.</p>
+                                            <p>Forward the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request">clientRequest</a> to the <code>http2</code> service.</p>
 
                                         </div>
                                     </div>
@@ -291,7 +291,7 @@ service http11Service on new http:Listener(9090) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Handle the errors that are returned when invoking the
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/HttpClient.html#forward">forward</a> function.</p>
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/HttpClient#forward">forward</a> function.</p>
 
                                         </div>
                                     </div>

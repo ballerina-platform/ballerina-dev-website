@@ -27,7 +27,7 @@ redirect_from:
     <span class="c1">// in the `onOpen` resource.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="c1">// Defines the [webSocket failover client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html).</span>
+        <span class="c1">// Defines the [webSocket failover client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketFailoverClient).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketFailoverClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span>
         <span class="p">{</span>
             <span class="nx">callbackService</span><span class="p">:</span> <span class="nx">failoverClientService</span><span class="p">,</span>
@@ -46,7 +46,7 @@ redirect_from:
         <span class="nx">wsClientEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">caller</span><span class="p">);</span>
         <span class="nx">caller</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">wsClientEp</span><span class="p">);</span>
 
-        <span class="c1">// Once the client is ready to receive frames, the remote [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html#ready) function</span>
+        <span class="c1">// Once the client is ready to receive frames, the remote [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketFailoverClient#ready) function</span>
         <span class="c1">// of the client needs to be called separately.</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">ready</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
@@ -217,7 +217,7 @@ redirect_from:
  Ballerina automatically tries to connect with the remaining backends that are specified in the configuration.
  The trying happens only once for each of the backends.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -404,7 +404,7 @@ service failoverProxyService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html">webSocket failover client</a>.</p>
+                                            <p>Defines the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketFailoverClient">webSocket failover client</a>.</p>
 
                                         </div>
                                     </div>
@@ -508,7 +508,7 @@ service failoverProxyService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Once the client is ready to receive frames, the remote <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html#ready">ready</a> function
+                                            <p>Once the client is ready to receive frames, the remote <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketFailoverClient#ready">ready</a> function
  of the client needs to be called separately.</p>
 
                                         </div>

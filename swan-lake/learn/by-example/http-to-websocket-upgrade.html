@@ -19,7 +19,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">httpService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// This is an HTTP to WebSocket upgrade resource. This is defined using the WebSocket upgrade resource config.</span>
-    <span class="c1">// Here you have access to the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html), query, and path params where applicable.</span>
+    <span class="c1">// Here you have access to the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request), query, and path params where applicable.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">webSocketUpgrade</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">upgradePath</span><span class="p">:</span> <span class="s">&quot;/ws&quot;</span><span class="p">,</span>
@@ -34,7 +34,7 @@ redirect_from:
 
 <span class="c1">// Note: When a WebSocket upgrade path is defined in the HTTP resource configuration. &lt;br&gt;</span>
 <span class="c1">// - Without service configuration for WebSocketService default values are taken for sub protocols, idle timeout etc.&lt;br&gt;</span>
-<span class="c1">// - If [WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/annotations.html#WebSocketServiceConfig) is defined without the path, sub protocols, idle timeout etc. can be configured.&lt;br&gt;</span>
+<span class="c1">// - If [WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig) is defined without the path, sub protocols, idle timeout etc. can be configured.&lt;br&gt;</span>
 <span class="c1">// - If path is defined in the `WebSocketServiceConfig` it shall be ignored.&lt;br&gt;</span>
 <span class="c1">// - This service can also be bound to a different `Listener` in which case the path configuration becomes useful.</span>
 <span class="kd">service</span> <span class="nx">wsService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {</span><span class="nx">subProtocols</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;xml, json&quot;</span><span class="p">]</span>
@@ -67,7 +67,7 @@ redirect_from:
                             <h2>HTTP To WebSocket Upgrade</h2>
                             <p><p>This sample demonstrates how an HTTP endpoint is updated to a WebSocket endpoint using an upgrade resource.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -191,7 +191,7 @@ service httpService on new http:Listener(9090) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This is an HTTP to WebSocket upgrade resource. This is defined using the WebSocket upgrade resource config.
- Here you have access to the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html">http:Request</a>, query, and path params where applicable.</p>
+ Here you have access to the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request">http:Request</a>, query, and path params where applicable.</p>
 
                                         </div>
                                     </div>
@@ -226,7 +226,7 @@ service httpService on new http:Listener(9090) {
                                         <div>
                                             <p>Note: When a WebSocket upgrade path is defined in the HTTP resource configuration. <br>
  - Without service configuration for WebSocketService default values are taken for sub protocols, idle timeout etc.<br>
- - If <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/annotations.html#WebSocketServiceConfig">WebSocketServiceConfig</a> is defined without the path, sub protocols, idle timeout etc. can be configured.<br>
+ - If <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig">WebSocketServiceConfig</a> is defined without the path, sub protocols, idle timeout etc. can be configured.<br>
  - If path is defined in the <code>WebSocketServiceConfig</code> it shall be ignored.<br>
  - This service can also be bound to a different <code>Listener</code> in which case the path configuration becomes useful.</p>
 

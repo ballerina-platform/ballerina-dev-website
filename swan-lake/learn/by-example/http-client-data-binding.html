@@ -28,7 +28,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindCheck</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
                                                     <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-        <span class="c1">// The `string` typedesc is being passed to the `get` [client remote function](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#get)</span>
+        <span class="c1">// The `string` typedesc is being passed to the `get` [client remote function](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#get)</span>
         <span class="c1">// as the `targetType` expecting the payload to be bound to a string value.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
                         <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/getString&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
@@ -40,7 +40,7 @@ redirect_from:
             <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="c1">// If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Payload)</span>
+        <span class="c1">// If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/types#Payload)</span>
         <span class="c1">// is string.</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;String payload: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">);</span>
 
@@ -74,7 +74,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">handle500</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/get5XX&quot;</span><span class="p">,</span> <span class="s">&quot;want 500&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>
         <span class="c1">// When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the</span>
-        <span class="c1">// backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#RemoteServerError)</span>
+        <span class="c1">// backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#RemoteServerError)</span>
         <span class="c1">// including the error message and status code.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">RemoteServerError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -91,7 +91,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">handle404</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// When the data binding is expected to happen and if the client remote function gets a 4XX response from the</span>
-        <span class="c1">// backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#ClientRequestError)</span>
+        <span class="c1">// backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#ClientRequestError)</span>
         <span class="c1">// including the error message and status code.</span>
         <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/err&quot;</span><span class="p">,</span> <span class="s">&quot;want 400&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientRequestError</span><span class="p">)</span> <span class="p">{</span>
@@ -159,7 +159,7 @@ redirect_from:
  client remote operation. Since the default <code>targetType</code> is <code>http:Response</code>, the user still has the option to access
  the complete response to explore more.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -347,7 +347,7 @@ type Person record {|
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>string</code> typedesc is being passed to the <code>get</code> <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#get">client remote function</a>
+                                            <p>The <code>string</code> typedesc is being passed to the <code>get</code> <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#get">client remote function</a>
  as the <code>targetType</code> expecting the payload to be bound to a string value.</p>
 
                                         </div>
@@ -390,7 +390,7 @@ type Person record {|
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the type test of the error becomes false, it implies that the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Payload">payload type</a>
+                                            <p>If the type test of the error becomes false, it implies that the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/types#Payload">payload type</a>
  is string.</p>
 
                                         </div>
@@ -533,7 +533,7 @@ type Person record {|
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>When the data binding is expected to happen and if the <code>post</code> remote function gets a 5XX response from the
- backend, the response will be returned as an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#RemoteServerError">http:RemoteServerError</a>
+ backend, the response will be returned as an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#RemoteServerError">http:RemoteServerError</a>
  including the error message and status code.</p>
 
                                         </div>
@@ -579,7 +579,7 @@ type Person record {|
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>When the data binding is expected to happen and if the client remote function gets a 4XX response from the
- backend, the response will be returned as an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#ClientRequestError">http:ClientRequestError</a>
+ backend, the response will be returned as an <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#ClientRequestError">http:ClientRequestError</a>
  including the error message and status code.</p>
 
                                         </div>

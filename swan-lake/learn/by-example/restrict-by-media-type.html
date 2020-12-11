@@ -14,7 +14,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="kd">service</span> <span class="nx">infoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// The `consumes` and `produces` annotations of the [resource configuration](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html)</span>
+    <span class="c1">// The `consumes` and `produces` annotations of the [resource configuration](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig)</span>
     <span class="c1">// contain MIME types as an array of strings. The resource can only consume/accept `text/json` and</span>
     <span class="c1">// `application/json` media types. Therefore, the `Content-Type` header</span>
     <span class="c1">// of the request must be in one of these two types. The resource can produce</span>
@@ -58,7 +58,7 @@ redirect_from:
                             <p><p>You can configure resources of HTTP services to restrict the types of media they consume and produce.
  This is done through the &lsquo;consumes&rsquo; and &lsquo;produces&rsquo; annotation attributes of the ResourceConfig annotation, which is used with resources.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -175,7 +175,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>consumes</code> and <code>produces</code> annotations of the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html">resource configuration</a>
+                                            <p>The <code>consumes</code> and <code>produces</code> annotations of the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig">resource configuration</a>
  contain MIME types as an array of strings. The resource can only consume/accept <code>text/json</code> and
  <code>application/json</code> media types. Therefore, the <code>Content-Type</code> header
  of the request must be in one of these two types. The resource can produce

@@ -15,10 +15,10 @@ redirect_from:
 
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">listenerEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 
-<span class="c1">// Since compression behavior of the service is set as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO),</span>
+<span class="c1">// Since compression behavior of the service is set as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO),</span>
 <span class="c1">// entity body compression is done according to the scheme indicated in the `Accept-Encoding` request header.</span>
 <span class="c1">// Compression is not performed when the header is not present or when the header value is &quot;identity&quot;.</span>
-<span class="c1">// [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CompressionConfig.html) annotation</span>
+<span class="c1">// [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CompressionConfig) annotation</span>
 <span class="c1">// provides the related configurations.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">compression</span><span class="p">:</span> <span class="p">{</span>
@@ -38,7 +38,7 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS)</span>
+<span class="c1">// [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_ALWAYS)</span>
 <span class="c1">// guarantees a compressed response entity body. Compression scheme is set to the</span>
 <span class="c1">// value indicated in Accept-Encoding request header. When a particular header is not present or the header</span>
 <span class="c1">// value is &quot;identity&quot;, encoding is done using the &quot;gzip&quot; scheme.</span>
@@ -70,13 +70,13 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// The HTTP client can indicate the [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Compression)</span>
+<span class="c1">// The HTTP client can indicate the [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/types#Compression)</span>
 <span class="c1">// behavior (&quot;AUTO&quot;, &quot;ALWAYS&quot;, &quot;NEVER&quot;) for content negotiation.</span>
 <span class="c1">// Depending on the compression option values, the `Accept-Encoding` header is sent along with the request.</span>
-<span class="c1">// In this example, the client compression behavior is set as [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS). If you have not specified</span>
+<span class="c1">// In this example, the client compression behavior is set as [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_ALWAYS). If you have not specified</span>
 <span class="c1">// an `Accept-Encoding` header, the client specifies it with &quot;deflate, gzip&quot;. Alternatively, the existing header is sent.</span>
-<span class="c1">// When compression is specified as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.</span>
-<span class="c1">// If the behavior is set as [COMPRESSION_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.</span>
+<span class="c1">// When compression is specified as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.</span>
+<span class="c1">// If the behavior is set as [COMPRESSION_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">compression</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">COMPRESSION_ALWAYS</span>
     <span class="p">}</span>
@@ -103,7 +103,7 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO), which is the default value</span>
+<span class="c1">// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO), which is the default value</span>
 <span class="c1">// of the compression config.</span>
 <span class="kd">service</span> <span class="nx">backend</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
@@ -136,7 +136,7 @@ redirect_from:
  the particular header is not present or the header value is &ldquo;identity&rdquo;, the server does not perform any compression. Compression
  is disabled when the option is set to <code>COMPRESSION_NEVER</code>.&rdquo;<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -265,10 +265,10 @@ service autoCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since compression behavior of the service is set as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>,
+                                            <p>Since compression behavior of the service is set as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>,
  entity body compression is done according to the scheme indicated in the <code>Accept-Encoding</code> request header.
  Compression is not performed when the header is not present or when the header value is &ldquo;identity&rdquo;.
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CompressionConfig.html">compression</a> annotation
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CompressionConfig">compression</a> annotation
  provides the related configurations.</p>
 
                                         </div>
@@ -310,7 +310,7 @@ service alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>
  guarantees a compressed response entity body. Compression scheme is set to the
  value indicated in Accept-Encoding request header. When a particular header is not present or the header
  value is &ldquo;identity&rdquo;, encoding is done using the &ldquo;gzip&rdquo; scheme.
@@ -389,13 +389,13 @@ service alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client can indicate the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Compression">compression</a>
+                                            <p>The HTTP client can indicate the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/types#Compression">compression</a>
  behavior (&ldquo;AUTO&rdquo;, &ldquo;ALWAYS&rdquo;, &ldquo;NEVER&rdquo;) for content negotiation.
  Depending on the compression option values, the <code>Accept-Encoding</code> header is sent along with the request.
- In this example, the client compression behavior is set as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>. If you have not specified
+ In this example, the client compression behavior is set as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>. If you have not specified
  an <code>Accept-Encoding</code> header, the client specifies it with &ldquo;deflate, gzip&rdquo;. Alternatively, the existing header is sent.
- When compression is specified as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, only the user-specified <code>Accept-Encoding</code> header is sent.
- If the behavior is set as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_NEVER">COMPRESSION_NEVER</a>, the client makes sure not to send the <code>Accept-Encoding</code> header.</p>
+ When compression is specified as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, only the user-specified <code>Accept-Encoding</code> header is sent.
+ If the behavior is set as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_NEVER">COMPRESSION_NEVER</a>, the client makes sure not to send the <code>Accept-Encoding</code> header.</p>
 
                                         </div>
                                     </div>
@@ -454,7 +454,7 @@ service alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The compression behavior of the service is inferred by <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, which is the default value
+                                            <p>The compression behavior of the service is inferred by <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, which is the default value
  of the compression config.</p>
 
                                         </div>

@@ -22,7 +22,7 @@ redirect_from:
 <span class="nd">@http:ServiceConfig {</span><span class="p">}</span>
 <span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// The `body` annotation in the [ResourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html)</span>
+    <span class="c1">// The `body` annotation in the [ResourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig)</span>
     <span class="c1">// represents the entity body of the inbound request.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
@@ -98,7 +98,7 @@ redirect_from:
  parameter name should be declared in the resource config under the <code>body</code> annotation. <code>string</code>, <code>json</code>, <code>xml</code>,
  <code>byte[]</code>, record, and record[] are supported as parameter types.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -239,7 +239,7 @@ service hello on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>body</code> annotation in the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html">ResourceConfig</a>
+                                            <p>The <code>body</code> annotation in the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig">ResourceConfig</a>
  represents the entity body of the inbound request.</p>
 
                                         </div>

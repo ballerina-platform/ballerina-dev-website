@@ -30,7 +30,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">upgrader</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Retrieve query parameters from the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html).</span>
+        <span class="c1">// Retrieve query parameters from the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request).</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">queryParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParams</span><span class="p">();</span>
         <span class="c1">// Cancel the handshake by sending a 400 status code if the age parameter is missing in the request.</span>
         <span class="k">if</span> <span class="p">(!</span><span class="nx">queryParams</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">))</span> <span class="p">{</span>
@@ -119,7 +119,7 @@ redirect_from:
                             <h2>Chat Application</h2>
                             <p><p>This example explains how to write a simple chat application using Ballerina.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -286,7 +286,7 @@ service chatAppUpgrader on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Retrieve query parameters from the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html">http:Request</a>.</p>
+                                            <p>Retrieve query parameters from the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request">http:Request</a>.</p>
 
                                         </div>
                                     </div>

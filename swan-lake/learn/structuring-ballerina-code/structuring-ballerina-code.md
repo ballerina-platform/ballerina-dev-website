@@ -14,7 +14,7 @@ redirect_from:
 
 ## Organizing Your Code
 
-There are two ways to write you code in a Ballerina program: 
+There are two ways to write your code in a Ballerina program: 
 
 1. In a single Ballerina source file (with the .bal extension)
 2. In a Ballerina package

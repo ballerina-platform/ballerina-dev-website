@@ -79,7 +79,7 @@ You can [change this active distribution](#changing-the-active-distribution) at 
 
 ### Updating the Ballerina Tool
 
-The `ballerina update` command updates the Ballerina Ttool itself to the latest version. Ballerina Tool versions are independent from the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
+The `ballerina update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent from the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
 
 ```sh
 → ballerina update
@@ -229,4 +229,3 @@ The `ballerina dist use <distribution>` command sets a particular distribution v
 → ballerina dist use 1.2.5
 '1.2.5' is the current active distribution version
 ```
-

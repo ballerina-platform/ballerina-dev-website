@@ -5,20 +5,20 @@ description: Learn all the command line interface (CLI) commands need to get sta
 keywords: ballerina, cli, command line interface, programming language
 permalink: /swan-lake/learn/using-the-cli-tools/
 active: using-the-cli-tools
-intro: The `ballerina` Tool is your one-stop-shop for all the things you do in Ballerina. 
+intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /swan-lake/learn/cli-commands
   - /swan-lake/learn/cli-commands/
   - /swan-lake/learn/using-the-cli-tools
 ---
 
-## Using the 'ballerina' Tool
+## Using the Ballerina Tool
 
-**Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
+The Ballerina Tool is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
 
 It also enables you to easily install, update, and switch among Ballerina distributions. 
 
-In the CLI, execute the `ballerina help` command to view all the actions you can perform with the `ballerina` Tool as shown below:
+In the CLI, execute the `ballerina help` command to view all the actions you can perform with the Ballerina Tool as shown below:
 
 ```sh
 → ballerina help 
@@ -238,7 +238,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">update</td>
-<td class="cDescription">Update the Ballerina tool. For more information, see <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
+<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
 </td>
 </tr>
 </table>

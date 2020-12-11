@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-12-10</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-12-11</h1>
 <p>
 Primary contributors:
 </p>
@@ -9116,7 +9116,7 @@ class="grammar"><dfn>service-decl</dfn> :=
 <dfn>attach-point</dfn> := <abbr>absolute-resource-path</abbr> | <abbr>string-literal</abbr>
 <dfn>absolute-resource-path</dfn> :=
    <abbr>root-resource-path</abbr>
-   | (<code>/</code> <abbr>resource-path-segment</abbr>)+
+   | (<code>/</code> <abbr>resource-path-segment-name</abbr>)+
 <dfn>root-resource-path</dfn> := <code>/</code>
 
 <dfn>expression-list</dfn> := <abbr>expression</abbr> (<code>,</code> <abbr>expression</abbr>)*

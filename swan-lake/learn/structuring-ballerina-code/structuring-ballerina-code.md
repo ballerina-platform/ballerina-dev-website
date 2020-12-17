@@ -16,7 +16,7 @@ redirect_from:
 
 There are two ways to write your code in a Ballerina program: 
 
-1. In a single Ballerina source file (with the .bal extension)
+1. In a single Ballerina source file (with the `.bal` extension)
 2. In a Ballerina package
 
 The single source file program is a quick and easy way to get started with Ballerina. However, when your code grows, you often want to:

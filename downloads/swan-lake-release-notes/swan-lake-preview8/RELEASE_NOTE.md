@@ -14,7 +14,7 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
 - [What is new in Ballerina Swan Lake Preview 8](#what-is-new-in-ballerina-swan-lake-preview-8)
     - [Language](#language)
         - [Support Identifier Escapes Without an Initial Quote](#support-identifier-escapes-without-an-initial-quote)
-        - [Included Record Parameters](#included-record-parameter)
+        - [Included Record Parameters](#included-record-parameters)
         - [Service Typing Changes](#service-typing-changes)
         - [Transactional Services](#transactional-services)
     - [Standard Library](#standard-library)

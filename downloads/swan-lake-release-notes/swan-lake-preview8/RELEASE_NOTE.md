@@ -210,6 +210,22 @@ string[] basePath = ["hello", "path"]; // service on "/hello/path"
 l.attach(hello, basePath);
 ```
 
+##### Listener object 
+
+Listener is no longer defined in `ballerina/lang.object` lang-library, now it is a compiler known internal type.
+A type is a listener object type if it is a subtype of the object type Listener<T,A>, for some type `T` that is a subtype of `service object {}` and some type `A` that is a subtype of `string[]|string|()`.
+
+The object type Listener<T,A>, is described by the following object type descriptor:
+
+```ballerina
+object {
+   public function attach(T svc, A attachPoint) returns error?;
+   public function detach(T svc) returns error?;
+   public function start() returns error?;
+   public function gracefulStop() returns error?;
+   public function immediateStop() returns error?;
+}```
+
 ##### Transactional Services
 
 Ballerina transaction capabilities are extended to services. Now, you can define transactional resource functions and transactional remote functions. These functions will be participants of global distributed transactions. Infection and agreement protocols are implemented based on the Ballerina distributed transaction protocol. 

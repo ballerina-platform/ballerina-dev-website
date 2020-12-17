@@ -13,19 +13,17 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
 - [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Preview 8](#what-is-new-in-ballerina-swan-lake-preview-8)
     - [Language](#language)
-        - [Support for Configurability](#support-for-configurability)
-        - [Isolated Variables](#isolated-variables)
-        - [Isolated Object Constructor Expressions](#isolated-object-constructor-expressions)
-        - [Support for Distinct Objects](#support-for-distinct-objects)
-    - [Runtime](#runtime)
-        - [Support for DynamicListener](#support-for-dynamiclistener)
-        - [New Runtime APIs](#new-runtime-apis)
+        - [Support Identifier Escapes Without an Initial Quote](#support-identifier-escapes-without-an-initial-quote)
+        - [Included Record Parameters](#included-record-parameter)
+        - [Service Typing Changes](#service-typing-changes)
+        - [Transactional Services](#transactional-services)
     - [Standard Library](#standard-library)
-        - [Revamp File and Filepath Modules](#revamp-file-and-filepath-modules)
-        - [Improved IO Module](#improved-io-module)
-    - [Language Server](#language-server)
-    - [Code to Cloud](#code-to-cloud)
-    - [Breaking Changes](#breaking-changes)
+        - [HTTP Module Changes](#http-module-changes)
+        - [Log Module Changes](#log-module-changes)
+        - [Email Module Changes](#email-module-changes)
+        - [WebSub Module Changes](#websub-module-changes)
+        - [UUID Module Changes](#uuid-module-changes)
+        - [Introduced New Modules](#introduced-new-modules)
 
 #### Updating Ballerina
 
@@ -338,6 +336,8 @@ err? e =  listenerEP.attach(listenerMock, "mock1"); // mock1 is the absolute-res
 
 ##### Email Module Changes
 
+The methods related to sending and receiving emails were renamed. The Listener API was divided into the POP and IMAP protocols. 
+
 **Client Changes**
 
  - The `email:Email` definition is changed to `email:Message`.
@@ -437,10 +437,6 @@ service websub:SubscriberService /websub on new websub:Listener(8181) {
    remote function onNotification (websub:Notification notification) {}
 }
 ```
-
-##### Email Module Changes
-
-Renamed the methods related to sending and receiving emails. The Listener API was divided into the POP and IMAP protocols. 
 
 ##### UUID Module Changes
 

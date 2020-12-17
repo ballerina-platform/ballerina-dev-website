@@ -224,7 +224,8 @@ object {
    public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
-}```
+}
+```
 
 ##### Transactional Services
 

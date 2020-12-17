@@ -137,7 +137,7 @@ A named argument in a function call can correspond to an included record paramet
 
 ##### Service Typing Changes
 
-Now, services are being based on objects. The service declaration syntax below is mere syntactic sugar for creating a new instance of a service class and then attaching it to a listener. With this change, the path that the service should serve on can be provided in the service-declaration syntax. This used to be provided using an annotation before.
+Services are now based on objects. The service declaration syntax below is mere syntactic sugar for creating a new instance of a service class and then attaching it to a listener. With this change, the path that the service should serve on can be provided in the service-declaration syntax. This was previously provided using an annotation.
 
 Therefore, the example below;
 

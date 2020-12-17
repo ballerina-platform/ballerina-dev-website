@@ -16,6 +16,7 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
         - [Support Identifier Escapes Without an Initial Quote](#support-identifier-escapes-without-an-initial-quote)
         - [Included Record Parameters](#included-record-parameters)
         - [Service Typing Changes](#service-typing-changes)
+	- [Listener object](#listener-object)
         - [Transactional Services](#transactional-services)
     - [Standard Library](#standard-library)
         - [HTTP Module Changes](#http-module-changes)

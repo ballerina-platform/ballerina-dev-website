@@ -500,18 +500,20 @@ listener websocket:Listener wsListener = new(9090);
 **New Syntax**
 
 ```ballerina
- import ballerina/http;
-  import ballerina/websocket;
+import ballerina/http;
+import ballerina/websocket;
 
-     service websocket:UpgradeService /basic on new websocket:Listener(9000) {
-      remote isolated function onUpgrade(http:Caller caller, http:Request req) returns                  websocket:Service|websocket:WebSocketError {
-      return new WsService();
-      }
-  }
- 
-  service class WsService {
-     *websocket:Service;
-     remote isolated function onText(websocket:Caller caller, string data) {}
-     remote isolated function onBinary(websocket:Caller caller, byte[] data) {}
-  }
+service websocket:UpgradeService / basicon new websocket:Listener(9000) {
+remote isolated function onUpgrade(http:Caller caller, http:Request req) returns websocket:Service|websocket:WebSocketError {
+        return new WsService();
+    }
+}
+
+service class WsService {
+    *websocket:Service;
+    remote isolated function onText(websocket:Caller caller, string data) {
+    }
+    remote isolated function onBinary(websocket:Caller caller, byte[] data) {
+    }
+}
 ```

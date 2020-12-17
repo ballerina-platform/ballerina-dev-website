@@ -143,6 +143,7 @@ Therefore, the example below;
 
 ```ballerina
 import ballerina/http;
+
 service hello on new http:Listener(9090) {
 
     resource function sayHello() returns error? {
@@ -155,6 +156,7 @@ will turn into the code below.
 
 ```ballerina
 import ballerina/http;
+
 service [/optional_base_path] on new http:Listener(9090) {
 
     resource function get sayHello() returns string {
@@ -166,12 +168,12 @@ service [/optional_base_path] on new http:Listener(9090) {
 >**Note:** There is no longer a service variable name as `hello` in the first example. 
 Since services are objects, they can contain fields and regular methods. In addition to that, services can contain remote methods and resource methods.
 
-Resource functions are defined as follows:
+Resource methods are defined as follows:
 
  `resource function` `resource-method-name` `resource-path``() { }`
 
-- Resource functions do not have a method name similar to a regular method.
-- The `resource-method-name` instructs the listener on which operations this resource allows. For example, in the HTTP listener, the `resource-method-name` maps to the HTTP methods such as `GET` or `PUT`.
+- Resource methods do not have a method name similar to a regular method.
+- The `resource-method-name` informs the listener of the operations this resource allows. For example, in the HTTP listener, the `resource-method-name` maps to the HTTP methods such as `GET` or `PUT`.
 - The `resource-path` is the path in which this resource resides within the service. You can use `.` as the `resource-path` to indicate the path `/`.
 
 A service declared using the service-declaration syntax cannot be referred to using an identifier anymore. Instead, you need to use an object constructor prepended by the `service` keyword to declare a service object or create a new instance of a service class.
@@ -179,12 +181,13 @@ A service declared using the service-declaration syntax cannot be referred to us
 ```ballerina
 service object { } hello = service object {
     string message = "Hello";
+
     resource function get sayHello() returns string {
 
     }
-
 }
-listener http:Listener l = new(7000);
+
+listener http:Listener l = new (7000);
 string[] basePath = ["/"]; // service base path: /
 l.attach(hello, basePath);
 ```
@@ -200,7 +203,8 @@ service class HelloService {
         self.message = message;
     }
 }
-var helo = new HelloService();
+
+var hello = new HelloService();
 listener http:Listener l = new(7000);
 string[] basePath = ["hello", "path"]; // service on "/hello/path"
 l.attach(hello, basePath);

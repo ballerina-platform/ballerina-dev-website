@@ -47,7 +47,12 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 #### Highlights
 
-- Introducing Ballerina Packages
+- Ability to use `\` to escape the special characters in an identifier without mentioning the initial quote
+- Ability to specify included record parameters
+- Introduction of service typing changes basing services on objects
+- Extension of Ballerina transaction capabilities to define transactional resource functions and transactional remote functions
+- Improvements to the HTTP, Log, Email, WebSub, and UUID Standard Library modules
+- Introduction of the new GraphQL, NATS Streaming (STAN), and WebSocket Standard Library modules
 
 ### What is new in Ballerina Swan Lake Preview 8
 
@@ -132,7 +137,7 @@ A named argument in a function call can correspond to an included record paramet
 
 ##### Service Typing Changes
 
-Now services are being based on objects. The service declaration syntax below is mere syntactic sugar for creating a new instance of a service class and then attaching it to a listener. With this change, the path that the service should serve on can be provided in the service-declaration syntax. This used to be provided using an annotation before.
+Now, services are being based on objects. The service declaration syntax below is mere syntactic sugar for creating a new instance of a service class and then attaching it to a listener. With this change, the path that the service should serve on can be provided in the service-declaration syntax. This used to be provided using an annotation before.
 
 Therefore, the example below;
 

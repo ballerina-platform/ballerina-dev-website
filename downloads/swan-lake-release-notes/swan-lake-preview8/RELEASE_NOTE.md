@@ -170,7 +170,7 @@ Since services are objects, they can contain fields and regular methods. In addi
 
 Resource methods are defined as follows:
 
- `resource function` `resource-method-name` `resource-path``() { }`
+ `resource function` `resource-method-name` `resource-path` `() { }`
 
 - Resource methods do not have a method name similar to a regular method.
 - The `resource-method-name` informs the listener of the operations this resource allows. For example, in the HTTP listener, the `resource-method-name` maps to the HTTP methods such as `GET` or `PUT`.
@@ -204,7 +204,7 @@ service class HelloService {
     }
 }
 
-var hello = new HelloService();
+var hello = new HelloService("Hello");
 listener http:Listener l = new(7000);
 string[] basePath = ["hello", "path"]; // service on "/hello/path"
 l.attach(hello, basePath);

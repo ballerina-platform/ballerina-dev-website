@@ -362,7 +362,7 @@ The methods related to sending and receiving emails were renamed. The Listener A
 
 **Service Declaration**
 
-- The `email:Listener` is splitted into the `email:PopListener` and `email:ImapListener`. Therefore, the `protocol` field is removed from the new protocol-specific listeners. The `email:PopConfig` or `email:ImapConfig` that were used as a field for the `email:Listener` are not required for new the API implementation. The protocol configuration related fields are made parts of the new listeners.
+- The `email:Listener` is split into the `email:PopListener` and `email:ImapListener`. Therefore, the `protocol` field is removed from the new protocol-specific listeners. The `email:PopConfig` or `email:ImapConfig` that was used as a field for the `email:Listener` is not required for new the API implementation. The protocol configuration-related fields are made parts of the new listeners.
 - The resource functions are changed to remote functions in the new listener APIs.
 - The service name is given as a string with the new Ballerina language changes.
 - The `onMessage` method of the `email:Listener` (i.e., the new `email:PopListener` and `email:ImapListener`) are changed to `onEmailMessage`.

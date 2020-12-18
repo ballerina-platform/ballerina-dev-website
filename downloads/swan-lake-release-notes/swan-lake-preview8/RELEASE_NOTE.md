@@ -51,7 +51,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Introduction of included record parameters
 - Introduction of service typing changes basing services on objects
 - Extension of Ballerina transaction capabilities to define transactional resource functions and transactional remote functions
-- Improvements to the HTTP, Log, Email, WebSub, and UUID Standard Library modules
+- Improvements to the HTTP, Log, Email, and WebSub Standard Library modules
 - Introduction of the new GraphQL, NATS Streaming (STAN), and WebSocket Standard Library modules
 
 ### What is new in Ballerina Swan Lake Preview 8

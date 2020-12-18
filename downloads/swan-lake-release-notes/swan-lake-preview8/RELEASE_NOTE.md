@@ -255,7 +255,7 @@ transactional remote function callMyFirstService() returns @tainted any|error {
 }
 
 transactional remote function callMySecondService() returns @tainted any|error {
-    return self.httpClient->get("/echo/message");
+    return self.httpClient2->get("/user/history");
 }
 ```
 

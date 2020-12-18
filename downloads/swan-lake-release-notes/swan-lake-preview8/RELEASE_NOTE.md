@@ -246,7 +246,7 @@ transactional resource function get message(http:Caller caller, http:Request req
 }
 ```
 
-**Defining  the Transactional Remote Functions of a Client Object**
+**Defining Transactional Remote Methods in a Client Object**
 
 
 ```ballerina

@@ -483,7 +483,7 @@ listener http:Listener wsListener = new(9090);
 **New Syntax**
 
 ```ballerina
-listener websocket:Listener wsListener = new(9090);
+listener websocket:Listener wsListener = new (9090);
 ```
 
 - The base path is removed from the `WebSocketServiceConfig`.

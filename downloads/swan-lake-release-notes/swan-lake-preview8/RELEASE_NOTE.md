@@ -490,7 +490,7 @@ listener websocket:Listener wsListener = new (9090);
 - Has 2 types of services. In order to work with WebSockets, the two services below are mandatory.
 
     1. `websocket:UpgradeService` - This is to handle the WebSocket upgrade. This takes the `http:Request` and `http:Caller` parameters in. This service has a predefined `onUpgrade` remote function  and returns a `websocket:Service` or an error. Earlier, this was handled by an HTTP upgrade resource. 
-    2. `websocket:Service` - This is to handle events after the WebSocket upgrade. This service is still similar to the earlier WebSocket service, which had predefined resources like `onText`, `onBinary`, `onError`, `onPing`, and `onPong`. With the new syntax, all those resources are converted into remote functions.
+    2. `websocket:Service` - This is to handle events after the WebSocket upgrade. This service is still similar to the earlier WebSocket service, which had predefined resources like `onText`, `onBinary`, `onError`, `onPing`, and `onPong`. With the new syntax, all those resources are converted into remote methods.
 
 **Old Syntax**
 

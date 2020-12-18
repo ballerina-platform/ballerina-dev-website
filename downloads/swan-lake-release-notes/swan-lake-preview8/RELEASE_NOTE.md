@@ -23,7 +23,6 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
         - [Log Module Changes](#log-module-changes)
         - [Email Module Changes](#email-module-changes)
         - [WebSub Module Changes](#websub-module-changes)
-        - [UUID Module Changes](#uuid-module-changes)
         - [Introduced New Modules](#introduced-new-modules)
 
 #### Updating Ballerina
@@ -370,7 +369,7 @@ The methods related to sending and receiving emails were renamed. The Listener A
 
 A sample POP3 listener is given below.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 email:PopConfig popConfig = {
@@ -430,7 +429,7 @@ service "emailObserver" on emailListener {
 - The base path is removed from the `SubscriberServiceConfig`.
 - The `onNotification` and `onIntentVerification` resources are converted to remote functions.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 @websub:SubscriberServiceConfig {
@@ -455,10 +454,6 @@ service websub:SubscriberService /websub on new websub:Listener(8181) {
 }
 ```
 
-##### UUID Module Changes
-
-The Ballerina UUID module is introduced with this release. This module provides functions related to UUID(Universally Unique Identifier) such as generating different types of UUIDs and validating and checking the versions of UUID strings.
-
 ##### Introduced New Modules
 
 **GraphQL**
@@ -469,12 +464,16 @@ The Ballerina GraphQL module is introduced with this release. This module provid
 
 With this release, a new module is introduced for NATS Streaming. Previously, the Ballerina NATS module included the support for streaming as well. Now, NATS and NATS Streaming are separated into Ballerina NATS and Ballerina STAN modules.
 
+**UUID**
+
+The Ballerina UUID module is introduced with this release. This module provides functions related to UUID(Universally Unique Identifier) such as generating different types of UUIDs and validating and checking the versions of UUID strings.
+
 **WebSocket**
 
 - The WebSocket module has been moved out of the HTTP module. Therefore, you will have to change the import from `ballerina/http` to `ballerina/websocket`.
 - Introduced a new listener for the WebSocket module.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 listener http:Listener wsListener = new(9090);
@@ -492,7 +491,7 @@ listener websocket:Listener wsListener = new (9090);
     1. `websocket:UpgradeService` - This is to handle the WebSocket upgrade. This takes the `http:Request` and `http:Caller` parameters in. This service has a predefined `onUpgrade` remote method that returns a `websocket:Service` or an error. Earlier, this was handled by an HTTP upgrade resource. 
     2. `websocket:Service` - This is to handle events after the WebSocket upgrade. This service is still similar to the earlier WebSocket service, which had predefined resources like `onText`, `onBinary`, `onError`, `onPing`, and `onPong`. With the new syntax, all those resources are converted into remote methods.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 import ballerina/http;

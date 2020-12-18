@@ -69,71 +69,73 @@ int 'a\-b;
 
 ##### Included Record Parameters
 
-Included record parameters can be specified as `*T P` in which `T` denotes the record type descriptor and `P` denotes the name of the parameter. When this is compared with the required parameter, the difference is that the values, which are used for the fields of the included record parameter behave as named arguments for the function call, if it had been declared as parameters of the function.
+Included record parameters can be specified as `*T P` in which `T` denotes a record type descriptor and `P` denotes the name of the parameter.
 
-The field names of all included record parameters, which are not of the `never` type, must be distinct from each other and also from the names of the parameters.
+An included record parameter is similar to a required parameter, but it also allows the caller of the function to specify the value for a field of the record type as a named argument using the field's name, as if it had been declared as a parameter.
 
-```ballerina
-type Student record {
-	string firstName;
-	string secondName;
-	int age;
-	Address address?;
-	never gender?;
-};
+The names of the fields in the record type of an included record parameter must be distinct from each other and also from the names of the other parameters, unless it is an optional field of type `never`.
 
-type Address record {|
-	string city;
-	string country;
-|};
-
-type Grades record {|
-	never maths?;
-	never physics?;
-	never chemistry?;
-
-	int...;
-|};
-
-function studentDetails(int addmissionNo, string addmissionDate, *Student student) {
-	string fullName = <string>student.firstName  + <string>student.secondName;
-	int age = student.age;
-	if (student["address"] is Address) {
-    	Address address = <Address>student["address"];
-	}
-}   
-
-function studentTotalMarks(int maths, int physics, int chemistry, *Grades grades) {
-	int totalMarks = maths + physics + chemistry;
-	foreach [string, int?] [subject, marks] in grades.entries() {
-    	totalMarks = totalMarks + <int>marks;
-	}
-}
-```
-
-A named argument in a function call can correspond to an included record parameter in two different ways.
+A named argument in a function call can correspond to the fields of an included record parameter in two different ways.
 
 1. Being relevant to a field of the included recorded parameter, which is not of the `never` type.
 
-    ```ballerina 
-    public function main() {
-        studentDetails(1001, "2020-Nov-20", firstName = "Peter", secondName = "So", age = 18);
-        studentDetails(1002, "2020-Nov-22", firstName = "Anne", secondName = "Doe", age = 20, address = {city: "Colombo", country: "Sri Lanka"});
-    }
-    ```
+   ```ballerina 
+   import ballerina/io;
+ 
+   type Student record {
+       string firstName;
+       string lastName?;
+   };
+ 
+   function printStudentDetails(int admissionNo, *Student student) {
+       string name = student.firstName;
+ 
+       string? lastName = student?.lastName;
+       if lastName is string {
+           name += string ` ${lastName}`;
+       }
+ 
+       io:println("Admission No: ", admissionNo, ", Student Name: ", name);
+   }  
+ 
+   public function main() {
+       printStudentDetails(1001, firstName = "Peter");
+       printStudentDetails(1002, firstName = "Anne", lastName = "Doe");
+   } 
 
-2. Being relevant to a record rest descriptor of an included record parameter. Here, the field is described by a record rest descriptor either as explicitly part of an exclusive record type descriptor or as implicitly as part of an inclusive record type descriptor. The two conditions below should be satisfied for this.
+   ```
 
-    - In the parameter list, there should be only one included record parameter with a record rest descriptor.
-    - The included record parameter with the record rest descriptor must include optional individual field descriptors of the type `never`, which correspond to each parameter name and the names of each individual field descriptor of the other included record parameters. In addition to these optional individual field descriptors, there should not be any other field descriptors with this included record parameter.
+2. Being relevant to a record rest descriptor of an included record parameter that is of an open record type. The following conditions should be satisfied for this.
 
-    ```ballerina
-    public function main() {
-        studentTotalMarks(90, 85, 75);
-        studentTotalMarks(85, 85, 75, english = 75);
-        studentTotalMarks(75, 85, 90, english = 80, generalTest = 70);
-    }
-    ```
+    - In the parameter list, there should be only one included record parameter that is of an open record type.
+    - The open record type must disallow fields of the same names as the other parameters and individual field descriptors of the other included record parameters, by including optional individual field descriptors of the type `never`.  In addition to these optional individual field descriptors, there should not be any other field descriptors in this record type.
+
+   ```ballerina
+   import ballerina/io;
+ 
+   type Grades record {|
+       never math?;
+       never physics?;
+       int...;
+   |};
+ 
+   function printAverage(int math, int physics, *Grades grades) {
+       int totalMarks = math + physics;
+       int count = grades.length() + 2;
+ 
+       foreach int grade in grades {
+           totalMarks += grade;
+       }
+ 
+       io:println("Average: ", totalMarks/count);
+   }
+ 
+   public function main() {
+       printAverage(90, 85);
+       printAverage(85, 85, chemistry = 75);
+       printAverage(75, 85, chemistry = 90, zoology = 80);
+   }
+   ```
 
 ##### Service Typing Changes
 

@@ -307,7 +307,7 @@ service http:Service /hello on new http:Listener(9090) {
 - Use `default` as the resource method name when the resource has to support all methods including standard HTTP methods and custom methods (e.g., the passthrough/proxy use case).
 - The resource path segment represents the `path` as the `path` field of the `ResourceConfig` has been removed.
 - Use `.` to specify the resource path segment if the path needs to be set as `/`.
-- Path params are specified in the resource path segement within square brackets along with the type. The supported types are string, int, float, boolean (e.g., `path/[string foo]`).
+- Path params are specified in the resource path segment within square brackets along with the type. The supported types are string, int, float, boolean (e.g., `path/[string foo]`).
 - Resource signature parameters are optional. Even the `Caller` and `Request` are optional and not ordered.
 - Query param binding support is added. The supported types are string, int, float, boolean, decimal, and the array types of the aforementioned types. The `Query` param type can be nilable (e.g., `(string? bar)`).
 - Rest param support is added. It can be used as a wildcard path segment to accept requests to multiple different paths. Earlier it was used as `/*` and now it can be specified as `[string… s]` in which `s` is accessible within the resource. 
@@ -330,7 +330,7 @@ service http:Service /mytest on new http:Listener(9090) {
 - Log levels are reduced to `INFO` and `ERROR`. There will be no user configuration to control the log level. All the logs are printed as standard errors.
 - There are only two APIs to log messages as follows.
 
-1. Log `INFO` messages
+    1. Log `INFO` messages
 
     ```ballerina
     log:print(“something went wrong”, id = 845315);
@@ -339,7 +339,7 @@ service http:Service /mytest on new http:Listener(9090) {
     time = 2019-08-09 11:47:07,342 module = “myorg/hello” message = “something went wrong” id = 845315
     ```
 
-2. Log `ERROR` messages
+    2. Log `ERROR` messages
 
     ```ballerina
     log:printError(“something went wrong”, err = e, id = 845315);

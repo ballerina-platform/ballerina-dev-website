@@ -279,8 +279,8 @@ transaction {
 
 ###### Service Declaration
 
-- Basepath is removed from the `ServiceConfig`. Use the absolute resource path, which begins with `/` as the basePath. The `absolute-resource-path` is optional, which defaults to `/` when not specified.
-- The service type can be added after the `service` keyword as `http:Service`, which is also optional.
+- Basepath is removed from the `ServiceConfig`. Use the `absolute resource path`, which begins with `/` as the basePath. The `absolute resource path` is optional, which defaults to `/` when not specified.
+- The service type can be added as `http:Service`, which is optional after the `service` keyword.
 
 **Old Syntax**
 
@@ -288,7 +288,7 @@ transaction {
 @http:ServiceConfig {
     basePath: “hello”
 }
-service myService on new http:Listener(9090 {
+service myService on new http:Listener(9090) {
 
 }
 ```
@@ -296,29 +296,30 @@ service myService on new http:Listener(9090 {
 **New Syntax**
 
 ```ballerina
-service http:Service /hello on new http:Listener(9090 {
+service http:Service /hello on new http:Listener(9090) {
 
 }
 ```
 
 ###### Resource Function Declaration
 
-- Use the accessor name to specify the HTTP method instead of the `methods` field of the `ResourceConfig` (e.g., `get`).
-- Use `default` the as accessor name when all standard HTTP methods need to be supported (e.g., the passthrough/proxy use case).
-- The resource path segement represents the `path`. The `path` field of the `ResourceConfig` is removed.
-- Use `.` to specify the resource path segement if the path needs to be set as `/`.
-- Path params are specified in the resource path segement within square brackets along with the type. The supported types are string, int, float, boolean, decimal (e.g., `path/[string foo]`).
+- Use the `resource accessor name` to specify the HTTP method instead of the `methods` field of the `ResourceConfig` (e.g., `get`).
+- Use `default` as the accessor name when any HTTP methods need to be supported (e.g., the passthrough/proxy use case).
+- The resource path segment represents the `path` as the `path` field of the `ResourceConfig` has been removed.
+- Use `.` to specify the resource path segment if the path needs to be set as `/`.
+- Path params are specified in the resource path segement within square brackets along with the type. The supported types are string, int, float, boolean (e.g., `path/[string foo]`).
 - Resource signature params are optional. Even the `Caller` and `Request` are optional and not ordered.
-- Query param binding support is added. The supported types are string, int, float, boolean, decimal, and the array type of them. The `Query` param type can be nialble (e.g., `(string? bar)`).
-- Rest param support is added. It can be used as a wildcard path segment to get the multiple path requests dispatched. Earlier it was used as `/*` and now it can be specified as `[string… s]` in which `s` is accessible within the resource. 
-- Data binding and resource function return support is not added yet.
+- Query param binding support is added. The supported types are string, int, float, boolean, decimal, and the array types of the aforementioned types. The `Query` param type can be nilable (e.g., `(string? bar)`).
+- Rest param support is added. It can be used as a wildcard path segment to accept requests to multiple different paths. Earlier it was used as `/*` and now it can be specified as `[string… s]` in which `s` is accessible within the resource. 
+- Use the `@http:Payload {}` annotation to denote the data binding param in the resource function signature as the `body` field of the `ResourceConfig` has been removed.
 
 ```ballerina
-service http:Service /mytest on helloEP {
-    resource function get  [string... extra](string? bar, http:Caller caller) {
+service http:Service /mytest on new http:Listener(9090) {
+    resource function post  foo/[int id]/bar/[string... extra](string? bar, http:Caller caller, @http:Payload {} json p) {
         // [int id] is a path param
         // [string... extra] is a rest param
         // string? bar is a query param
+        // json p is the request payload
     }
 }
 ```

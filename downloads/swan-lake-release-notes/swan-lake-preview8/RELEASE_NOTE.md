@@ -303,8 +303,8 @@ service http:Service /hello on new http:Listener(9090) {
 
 ###### Resource Method Declaration
 
-- Use the `resource accessor name` to specify the HTTP method instead of the `methods` field of the `ResourceConfig` (e.g., `get`).
-- Use `default` as the accessor name when any HTTP methods need to be supported (e.g., the passthrough/proxy use case).
+- Use the resource method name to specify the HTTP method to support instead of the `methods` field of the `ResourceConfig` annotation (e.g., `get`).
+- Use `default` as the resource method name when the resource has to support all methods including standard HTTP methods and custom methods (e.g., the passthrough/proxy use case).
 - The resource path segment represents the `path` as the `path` field of the `ResourceConfig` has been removed.
 - Use `.` to specify the resource path segment if the path needs to be set as `/`.
 - Path params are specified in the resource path segement within square brackets along with the type. The supported types are string, int, float, boolean (e.g., `path/[string foo]`).

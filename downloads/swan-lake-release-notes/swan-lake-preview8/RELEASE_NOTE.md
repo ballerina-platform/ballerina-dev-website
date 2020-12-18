@@ -279,7 +279,7 @@ transaction {
 
 ###### Service Declaration
 
-- Basepath is removed from the `ServiceConfig`. Use the `absolute resource path`, which begins with `/` as the basePath. The `absolute resource path` is optional, which defaults to `/` when not specified.
+- Basepath field has been removed from the `ServiceConfig` annotation. Use the `absolute resource path` that begins with `/` as the basePath which is optional and defaults to `/` when not specified.
 - The service type can be added as `http:Service`, which is optional after the `service` keyword.
 
 **Old Syntax**

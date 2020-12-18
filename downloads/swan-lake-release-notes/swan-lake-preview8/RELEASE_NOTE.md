@@ -495,18 +495,17 @@ listener websocket:Listener wsListener = new (9090);
 **Old Syntax**
 
 ```ballerina
-   import ballerina/http;
+import ballerina/http;
 
-
-   listener http:Listener socketListener = new (9000);
+listener http:Listener socketListener = new (9000);
  
-   @http:WebSocketServiceConfig {
-      path: "/basic"
-   }
-   service echo on socketListener {
-      resource function onText(http:WebSocketCaller caller, json text) {}
-      resource function onBinary(http:WebSocketCaller caller, byte[] b) {}
-   }
+@http:WebSocketServiceConfig {
+   path: "/basic"
+}
+service echo on socketListener {
+   resource function onText(http:WebSocketCaller caller, json text) {}
+   resource function onBinary(http:WebSocketCaller caller, byte[] b) {}
+}
 ```
 
 **New Syntax**

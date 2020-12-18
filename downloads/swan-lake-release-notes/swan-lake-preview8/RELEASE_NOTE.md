@@ -347,7 +347,7 @@ service http:Service /mytest on new http:Listener(9090) {
     log:printError("something went wrong", err = e, id = 845315);
 
     Output:
-    time = 2019-08-09 11:47:07,342 module = “myorg/hello” message = “something went wrong” error = “invaild operation” id = 845315
+    time = 2019-08-09 11:47:07,342 module = "myorg/hello" message = "something went wrong" error = "invaild operation" id = 845315
     ```
 
 - The API supports passing any number of key/value pairs along with the message.

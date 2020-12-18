@@ -329,7 +329,7 @@ service http:Service /mytest on new http:Listener(9090) {
 
 ##### Log Module Changes
 
-- Log levels are reduced to `INFO` and `ERROR`. There will be no user configuration to control the log level. All the logs are printed as standard errors.
+- Log levels are reduced to `INFO` and `ERROR`. There will be no user configuration to control the log level. All the logs will be printed to the standard error stream.
 - There are only two APIs to log messages as follows.
 
     1. Log `INFO` messages

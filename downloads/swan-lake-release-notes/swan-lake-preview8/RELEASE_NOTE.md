@@ -235,7 +235,7 @@ Ballerina transaction capabilities have been extended to services. Now, you can 
 
 By defining services as participants, all services work as a single unit of work. If any of the services fail, the whole transaction will be reverted and if all the services are successfully called, the transaction will be completed and committed successfully. 
 
-**Defining a Transactional Resource Function of a Service**
+**Defining Transactional Resource Methods in a Service**
 
 ```ballerina
 transactional resource function get message(http:Caller caller, http:Request req) {

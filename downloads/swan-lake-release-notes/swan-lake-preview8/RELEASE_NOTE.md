@@ -251,7 +251,7 @@ transactional resource function get message(http:Caller caller, http:Request req
 
 ```ballerina
 transactional remote function callMyFirstService() returns @tainted any|error {
-    return self.httpClient->get("/echo/message");
+    return self.httpClient1->get("/echo/message");
 }
 
 transactional remote function callMySecondService() returns @tainted any|error {

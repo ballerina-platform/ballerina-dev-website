@@ -344,7 +344,7 @@ service http:Service /mytest on new http:Listener(9090) {
     2. Log `ERROR` messages
 
     ```ballerina
-    log:printError(“something went wrong”, err = e, id = 845315);
+    log:printError("something went wrong", err = e, id = 845315);
 
     Output:
     time = 2019-08-09 11:47:07,342 module = “myorg/hello” message = “something went wrong” error = “invaild operation” id = 845315

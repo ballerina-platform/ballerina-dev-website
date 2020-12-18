@@ -469,7 +469,7 @@ With this release, a new module is introduced for NATS Streaming. Previously, th
 
 **UUID**
 
-The Ballerina UUID module is introduced with this release. This module provides functions related to UUID(Universally Unique Identifier) such as generating different types of UUIDs and validating and checking the versions of UUID strings.
+The Ballerina UUID module is introduced with this release. This module provides functions related to UUID (Universally Unique Identifier) such as generating different types of UUIDs and validating and checking the versions of UUID strings.
 
 **WebSocket**
 

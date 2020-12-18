@@ -427,8 +427,8 @@ service "emailObserver" on emailListener {
 
 ##### WebSub Module Changes
 
-- The base path is removed from the `SubscriberServiceConfig`.
-- The `onNotification` and `onIntentVerification` resources are converted to remote functions.
+- The base path is removed from the `SubscriberServiceConfig` annotation.
+- The `onNotification` and `onIntentVerification` resources are converted to remote methods.
 
 **Old Syntax**
 
@@ -477,7 +477,7 @@ With this release, a new module is introduced for NATS Streaming. Previously, th
 **Old Syntax**
 
 ```ballerina
-listener http:Listener wsListener = new(9090);
+listener http:Listener wsListener = new (9090);
 ```
 
 **New Syntax**
@@ -489,24 +489,23 @@ listener websocket:Listener wsListener = new (9090);
 - The base path is removed from the `WebSocketServiceConfig`.
 - Has 2 types of services. In order to work with WebSockets, the two services below are mandatory.
 
-    1. `websocket:UpgradeService` - This is to handle the WebSocket upgrade. This takes the `http:Request` and `http:Caller` parameters in. This service has a predefined `onUpgrade` remote function  and returns a `websocket:Service` or an error. Earlier, this was handled by an HTTP upgrade resource. 
+    1. `websocket:UpgradeService` - This is to handle the WebSocket upgrade. This takes the `http:Request` and `http:Caller` parameters in. This service has a predefined `onUpgrade` remote method that returns a `websocket:Service` or an error. Earlier, this was handled by an HTTP upgrade resource. 
     2. `websocket:Service` - This is to handle events after the WebSocket upgrade. This service is still similar to the earlier WebSocket service, which had predefined resources like `onText`, `onBinary`, `onError`, `onPing`, and `onPong`. With the new syntax, all those resources are converted into remote methods.
 
 **Old Syntax**
 
 ```ballerina
-   import ballerina/http;
+import ballerina/http;
 
-
-   listener http:Listener socketListener = new (9000);
+listener http:Listener socketListener = new (9000);
  
-   @http:WebSocketServiceConfig {
-      path: "/basic"
-   }
-   service echo on socketListener {
-      resource function onText(http:WebSocketCaller caller, json text) {}
-      resource function onBinary(http:WebSocketCaller caller, byte[] b) {}
-   }
+@http:WebSocketServiceConfig {
+   path: "/basic"
+}
+service echo on socketListener {
+   resource function onText(http:WebSocketCaller caller, json text) {}
+   resource function onBinary(http:WebSocketCaller caller, byte[] b) {}
+}
 ```
 
 **New Syntax**

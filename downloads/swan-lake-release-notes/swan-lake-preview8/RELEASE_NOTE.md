@@ -461,7 +461,7 @@ service websub:SubscriberService /websub on new websub:Listener(8181) {
 
 **GraphQL**
 
-The Ballerina GraphQL module is introduced with this release. This module provides the support to define GraphQL services and handle simple GraphQL queries. Currently, this supports GraphQL service endpoints with the resource functions, which return `graphql:Scalar` values (`int`, `string`, `boolean`, and `float`) and record types only.
+The Ballerina GraphQL module is introduced with this release. This module provides the support to define GraphQL services and handle simple GraphQL queries. Currently, this supports GraphQL service endpoints with the resource methods, which return `graphql:Scalar` values (`int`, `string`, `boolean`, and `float`) and record types only.
 
 **NATS Streaming (STAN)**
 

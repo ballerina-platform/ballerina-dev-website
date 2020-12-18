@@ -368,7 +368,7 @@ The methods related to sending and receiving emails were renamed. The Listener A
 - The resource functions are changed to remote functions in the new listener APIs.
 - The service name is given as a string with the new Ballerina language changes.
 - The `onMessage` method of the `email:Listener` (i.e., the new `email:PopListener` and `email:ImapListener`) is changed to `onEmailMessage`.
-- The `pollingInterval` field of the `email:Listener` is changed to `pollingIntervalInMillis` in new listener APIs. That makes it consistent across the other Ballerina modules, which are time durations configured in milliseconds.
+- The `pollingInterval` field of the `email:Listener` is changed to `pollingIntervalInMillis` in new listener APIs. That makes it consistent with other Ballerina modules, which have time durations configured in milliseconds.
 
 A sample POP3 listener is given below.
 

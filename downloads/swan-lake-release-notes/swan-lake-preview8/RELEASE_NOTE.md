@@ -264,8 +264,9 @@ transactional remote function callMySecondService() returns @tainted any|error {
 ```ballerina
 transaction {
     var res1 = client->callMyFirstService();
-   var  res2 = client ->callMySecondService();
-   var x = commit;
+    var res2 = client ->callMySecondService();
+    
+    var x = commit;
     if (x is error) {
         // error code
     } else {

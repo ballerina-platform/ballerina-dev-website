@@ -338,7 +338,7 @@ service http:Service /mytest on new http:Listener(9090) {
     log:print("something went wrong", id = 845315);
 
     Output:
-    time = 2019-08-09 11:47:07,342 module = “myorg/hello” message = “something went wrong” id = 845315
+    time = 2019-08-09 11:47:07,342 module = "myorg/hello" message = "something went wrong" id = 845315
     ```
 
     2. Log `ERROR` messages

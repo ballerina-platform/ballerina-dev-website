@@ -301,14 +301,14 @@ service http:Service /hello on new http:Listener(9090) {
 }
 ```
 
-###### Resource Function Declaration
+###### Resource Method Declaration
 
 - Use the `resource accessor name` to specify the HTTP method instead of the `methods` field of the `ResourceConfig` (e.g., `get`).
 - Use `default` as the accessor name when any HTTP methods need to be supported (e.g., the passthrough/proxy use case).
 - The resource path segment represents the `path` as the `path` field of the `ResourceConfig` has been removed.
 - Use `.` to specify the resource path segment if the path needs to be set as `/`.
 - Path params are specified in the resource path segement within square brackets along with the type. The supported types are string, int, float, boolean (e.g., `path/[string foo]`).
-- Resource signature params are optional. Even the `Caller` and `Request` are optional and not ordered.
+- Resource signature parameters are optional. Even the `Caller` and `Request` are optional and not ordered.
 - Query param binding support is added. The supported types are string, int, float, boolean, decimal, and the array types of the aforementioned types. The `Query` param type can be nilable (e.g., `(string? bar)`).
 - Rest param support is added. It can be used as a wildcard path segment to accept requests to multiple different paths. Earlier it was used as `/*` and now it can be specified as `[string… s]` in which `s` is accessible within the resource. 
 - Use the `@http:Payload {}` annotation to denote the data binding param in the resource function signature as the `body` field of the `ResourceConfig` has been removed.

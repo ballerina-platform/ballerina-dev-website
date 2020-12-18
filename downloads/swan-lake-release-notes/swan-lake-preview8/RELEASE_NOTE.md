@@ -61,7 +61,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 ##### Support Identifier Escapes Without an Initial Quote
 
-Now, `\` can simply be used to escape the special characters in an identifier without mentioning the initial quote. For example, both the formats below are supported now.
+Now, `\` can simply be used to escape the special characters in an identifier without specifying the initial quote. For example, both the formats below are supported now.
 
 ```ballerina
 int a\-b;

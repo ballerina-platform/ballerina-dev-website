@@ -426,8 +426,8 @@ service "emailObserver" on emailListener {
 
 ##### WebSub Module Changes
 
-- The base path is removed from the `SubscriberServiceConfig`.
-- The `onNotification` and `onIntentVerification` resources are converted to remote functions.
+- The base path is removed from the `SubscriberServiceConfig` annotation.
+- The `onNotification` and `onIntentVerification` resources are converted to remote methods.
 
 **Previous Syntax**
 
@@ -476,7 +476,7 @@ The Ballerina UUID module is introduced with this release. This module provides 
 **Previous Syntax**
 
 ```ballerina
-listener http:Listener wsListener = new(9090);
+listener http:Listener wsListener = new (9090);
 ```
 
 **New Syntax**

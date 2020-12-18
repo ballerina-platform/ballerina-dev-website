@@ -233,7 +233,7 @@ object {
 
 Ballerina transaction capabilities have been extended to services. Now, you can define transactional resource methods and transactional remote methods. These methods will be participants of global distributed transactions. Infection and agreement protocols are implemented based on the Ballerina distributed transaction protocol. 
 
-By defining services as participants, all services work as a single unit of work. If any of the services fails, the whole transaction will be reverted and if all the services are successfully called, the transaction will be completed and committed successfully. 
+By defining services as participants, all services work as a single unit of work. If any of the services fail, the whole transaction will be reverted and if all the services are successfully called, the transaction will be completed and committed successfully. 
 
 **Defining a Transactional Resource Function of a Service**
 

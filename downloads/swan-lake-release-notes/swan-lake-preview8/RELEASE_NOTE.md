@@ -311,7 +311,7 @@ service http:Service /hello on new http:Listener(9090) {
 - Resource signature parameters are optional. Even the `Caller` and `Request` are optional and not ordered.
 - Query param binding support is added. The supported types are string, int, float, boolean, decimal, and the array types of the aforementioned types. The `Query` param type can be nilable (e.g., `(string? bar)`).
 - Rest param support is added. It can be used as a wildcard path segment to accept requests to multiple different paths. Earlier it was used as `/*` and now it can be specified as `[string… s]` in which `s` is accessible within the resource. 
-- Use the `@http:Payload {}` annotation to denote the data binding param in the resource function signature as the `body` field of the `ResourceConfig` has been removed.
+- Use the `@http:Payload {}` annotation to denote the data binding param in the resource signature as the `body` field of the `ResourceConfig` has been removed.
 
 ```ballerina
 service http:Service /mytest on new http:Listener(9090) {

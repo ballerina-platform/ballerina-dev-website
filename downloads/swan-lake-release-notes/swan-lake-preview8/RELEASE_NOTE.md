@@ -48,7 +48,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 #### Highlights
 
-- Ability to use `\` to escape the special characters in an identifier without mentioning the initial quote
+- Ability to use `\` to escape the special characters in an identifier without specifying the initial quote
 - Ability to specify included record parameters
 - Introduction of service typing changes basing services on objects
 - Extension of Ballerina transaction capabilities to define transactional resource functions and transactional remote functions

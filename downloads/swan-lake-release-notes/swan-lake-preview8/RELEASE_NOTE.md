@@ -323,17 +323,6 @@ service http:Service /mytest on helloEP {
 }
 ```
 
-###### Service Values Declaration
-
-```ballerina
-http:Service listenerMock = service object {
-    resource function get .(http:Caller caller, http:Request req) {
-        //...
-    }
-};
-
-err? e =  listenerEP.attach(listenerMock, "mock1"); // mock1 is the absolute-resource-path
-```
 
 ##### Log Module Changes
 

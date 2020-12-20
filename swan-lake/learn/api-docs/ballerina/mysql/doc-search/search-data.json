@@ -2,7 +2,9 @@
   "modules": [
     {
       "id": "mysql",
-      "description": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e",
+      "orgName": "ballerinax",
+      "version": "0.6.3"
     }
   ],
   "classes": [],
@@ -11,34 +13,46 @@
     {
       "id": "Options",
       "description": "\u003cp\u003eMySQL database options.\u003c/p\u003e",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "SSLConfig",
       "description": "\u003cp\u003eSSL Configuration to be used when connecting to mysql server.\u003c/p\u003e",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     }
   ],
   "constants": [
     {
       "id": "SSL_PREFERRED",
       "description": "\u003cp\u003ePossible options for SSL Mode.\u003c/p\u003e",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "SSL_REQUIRED",
       "description": "",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "SSL_VERIFY_CERT",
       "description": "",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "SSL_VERIFY_IDENTITY",
       "description": "",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     }
   ],
   "errors": [],
@@ -46,14 +60,18 @@
     {
       "id": "SSLMode",
       "description": "\u003cp\u003eSSLMode as a union of available ssl modes.\u003c/p\u003e",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     }
   ],
   "clients": [
     {
       "id": "Client",
       "description": "\u003cp\u003eRepresents a MySQL database client.\u003c/p\u003e",
-      "moduleId": "mysql"
+      "moduleId": "mysql",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.6.3"
     }
   ],
   "listeners": [],

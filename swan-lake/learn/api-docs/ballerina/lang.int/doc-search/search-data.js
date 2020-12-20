@@ -2,7 +2,9 @@ var searchData = {
   "modules": [
     {
       "id": "lang.int",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003eint\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003eint\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e",
+      "orgName": "ballerina",
+      "version": "1.1.0"
     }
   ],
   "classes": [],
@@ -10,37 +12,51 @@ var searchData = {
     {
       "id": "abs",
       "description": "\u003cp\u003eReturns absolute value of an int.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "sum",
       "description": "\u003cp\u003eReturns sum of zero or more int values.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "max",
       "description": "\u003cp\u003eMaximum of one or more int values.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "min",
       "description": "\u003cp\u003eMinimum of one or more int values\u003c/p\u003e\n",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "fromString",
       "description": "\u003cp\u003eReturns the integer that \u003ccode\u003es\u003c/code\u003e represents in decimal.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "toHexString",
       "description": "\u003cp\u003eReturns representation of \u003ccode\u003en\u003c/code\u003e as hexdecimal string.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "fromHexString",
       "description": "\u003cp\u003eReturns the integer that \u003ccode\u003es\u003c/code\u003e represents in hexadecimal.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     }
   ],
   "records": [],
@@ -48,57 +64,79 @@ var searchData = {
     {
       "id": "MAX_VALUE",
       "description": "\u003cp\u003eMaximum value of type \u003ccode\u003eint\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "MIN_VALUE",
       "description": "\u003cp\u003eMinimum value of type \u003ccode\u003eint\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "SIGNED32_MAX_VALUE",
       "description": "\u003cp\u003eMaximum value of type \u003ccode\u003eSigned32\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "SIGNED32_MIN_VALUE",
       "description": "\u003cp\u003eMinimum value of type \u003ccode\u003eSigned32\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "SIGNED16_MAX_VALUE",
       "description": "\u003cp\u003eMaximum value of type \u003ccode\u003eSigned16\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "SIGNED16_MIN_VALUE",
       "description": "\u003cp\u003eMinimum value of type \u003ccode\u003eSigned16\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "SIGNED8_MAX_VALUE",
       "description": "\u003cp\u003eMaximum value of type \u003ccode\u003eSigned8\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "SIGNED8_MIN_VALUE",
       "description": "\u003cp\u003eMinimum value of type \u003ccode\u003eSigned8\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "UNSIGNED32_MAX_VALUE",
       "description": "\u003cp\u003eMaximum value of type \u003ccode\u003eUnsigned32\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "UNSIGNED16_MAX_VALUE",
       "description": "\u003cp\u003eMaximum value of type \u003ccode\u003eUnsigned16\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     },
     {
       "id": "UNSIGNED8_MAX_VALUE",
       "description": "\u003cp\u003eMaximum value of type \u003ccode\u003eUnsigned8\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.int"
+      "moduleId": "lang.int",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
     }
   ],
   "errors": [],

@@ -2,7 +2,9 @@
   "modules": [
     {
       "id": "time",
-      "description": "\u003cp\u003eThis module provides implementations related to time, date, time zones, and durations.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides implementations related to time, date, time zones, and durations.\u003c/p\u003e",
+      "orgName": "ballerina",
+      "version": "1.0.5"
     }
   ],
   "classes": [],
@@ -10,135 +12,185 @@
     {
       "id": "toString",
       "description": "\u003cp\u003eReturns the ISO 8601 string representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "format",
       "description": "\u003cp\u003eReturns the formatted string representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getYear",
       "description": "\u003cp\u003eReturns the year representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getMonth",
       "description": "\u003cp\u003eReturns the month representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getDay",
       "description": "\u003cp\u003eReturns the date representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getWeekday",
       "description": "\u003cp\u003eReturns the weekday representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getHour",
       "description": "\u003cp\u003eReturns the hour representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getMinute",
       "description": "\u003cp\u003eReturns the minute representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getSecond",
       "description": "\u003cp\u003eReturns the second representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getMilliSecond",
       "description": "\u003cp\u003eReturns the millisecond representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getDate",
       "description": "\u003cp\u003eReturns the date representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "getTime",
       "description": "\u003cp\u003eReturns the time representation of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "addDuration",
       "description": "\u003cp\u003eAdd specified durations to the given time value.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "subtractDuration",
       "description": "\u003cp\u003eSubtract specified durations from the given time value.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "toTimeZone",
       "description": "\u003cp\u003eChange the time-zone of the given time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "currentTime",
       "description": "\u003cp\u003eReturns the current time value with the default system time-zone.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "nanoTime",
       "description": "\u003cp\u003eReturns the current system time in nano seconds.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "createTime",
       "description": "\u003cp\u003eReturns the Time object correspoding to the given time components and time-zone.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "parse",
       "description": "\u003cp\u003eReturns the time for the given string representation based on the given format string.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     }
   ],
   "records": [
     {
       "id": "TimeZone",
       "description": "\u003cp\u003eRepresents the time-zone information associated with a particular time.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "Time",
       "description": "\u003cp\u003eRepresents a particular time with its associated time-zone.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     }
   ],
   "constants": [
     {
       "id": "TIME_FORMAT_RFC_1123",
       "description": "\u003cp\u003eSpecifies the time format defined by the RFC-1123.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     }
   ],
   "errors": [
     {
       "id": "TimeError",
       "description": "\u003cp\u003eSpecifies the time error, which occurs in the module.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     }
   ],
   "types": [
     {
       "id": "TimeFormat",
       "description": "\u003cp\u003eThe time format defined by the RFC-1123.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "Error",
       "description": "\u003cp\u003eRepresents the Time module related error.\u003c/p\u003e",
-      "moduleId": "time"
+      "moduleId": "time",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     }
   ],
   "clients": [],

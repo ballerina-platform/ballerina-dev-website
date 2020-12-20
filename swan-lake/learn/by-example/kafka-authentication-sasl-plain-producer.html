@@ -26,7 +26,7 @@ redirect_from:
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
-    <span class="nx">valueSerializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">SER_STRING</span><span class="p">,</span>
+    <span class="nx">valueSerializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">SER_BYTE_ARRAY</span><span class="p">,</span>
     <span class="c1">// Provide the relevant authentication configuration record to authenticate the producer.</span>
     <span class="nx">authenticationConfiguration</span><span class="p">:</span> <span class="nx">authConfig</span>
 
@@ -35,7 +35,8 @@ redirect_from:
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;topic-sasl&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span> <span class="s">&quot;topic-sasl&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -226,7 +227,7 @@ import ballerinax/kafka;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>kafka:ProducerConfiguration producerConfigs = {
     bootstrapServers: &quot;localhost:9092&quot;,
-    valueSerializerType: kafka:SER_STRING,
+    valueSerializerType: kafka:SER_BYTE_ARRAY,
 </code></pre></div>
 
                                 </td>
@@ -282,7 +283,8 @@ import ballerinax/kafka;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    var result = kafkaProducer-&gt;send(&quot;Hello from Ballerina&quot;, &quot;topic-sasl&quot;);
+    string message = &quot;Hello from Ballerina&quot;;
+    var result = kafkaProducer-&gt;send(message.toBytes(), &quot;topic-sasl&quot;);
     if (result is error) {
         io:println(result);
     } else {

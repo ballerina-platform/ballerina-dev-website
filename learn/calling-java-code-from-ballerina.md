@@ -715,7 +715,7 @@ function randomUUID() returns handle = @java:Method {
 
 In Java, you can assign the `null` value to any variable of a reference type. Therefore, a `handle` type variable may also refer to the Java `null`.
 
-The following section describes various aspects of Java interoperability in Ballerina. You can copy and paste following examples into a .bal file and run it using the `ballerina run <file_name.bal>` command.
+The following section describes various aspects of Java interoperability in Ballerina. You can copy and paste following examples into a `.bal` file and run it using the `ballerina run <file_name.bal>` command.
 
 ## Calling Java Programs from Ballerina
 The following subsections explain how to call Java code from Ballerina. 

@@ -28,16 +28,9 @@ redirect_from:
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cachingEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
                              <span class="p">{</span><span class="nx">cache</span><span class="p">:</span> <span class="p">{</span><span class="nx">isShared</span><span class="p">:</span> <span class="kc">true</span><span class="p">}});</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cache&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">cachingProxy</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">cache</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">cacheableResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">cachingEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -46,7 +39,8 @@ redirect_from:
             <span class="c1">// forwarded to the client through the outbound endpoint.</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c1">// For failed requests, a `500` response is sent back to the</span>
@@ -56,7 +50,8 @@ redirect_from:
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -65,13 +60,9 @@ redirect_from:
 <span class="kt">json</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">};</span>
 
 <span class="c1">// Sample backend service which serves cacheable responses.</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span><span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span><span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
         <span class="c1">// The [ResponseCacheControl](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/ResponseCacheControl)</span>
@@ -108,7 +99,7 @@ redirect_from:
 
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -277,10 +268,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/cache&quot;
-}
-service cachingProxy on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /cache on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -292,11 +280,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/&quot;
-    }
-    resource function cacheableResource(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
         var response = cachingEP-&gt;forward(&quot;/hello&quot;, req);
 </code></pre></div>
 
@@ -323,7 +307,8 @@ service cachingProxy on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(&lt;@untainted&gt;response);
             if (result is error) {
-                log:printError(&quot;Failed to respond to the caller&quot;, result);
+                log:printError(&quot;Failed to respond to the caller&quot;,
+                                err = result);
             }
         } else {
 </code></pre></div>
@@ -351,7 +336,8 @@ service cachingProxy on new http:Listener(9090) {
             res.setPayload((&lt;@untainted error&gt;response).message());
             var result = caller-&gt;respond(res);
             if (result is error) {
-                log:printError(&quot;Failed to respond to the caller&quot;, result);
+                log:printError(&quot;Failed to respond to the caller&quot;,
+                                err = result);
             }
         }
     }
@@ -387,10 +373,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/hello&quot;
-}
-service helloWorld on new http:Listener(8080) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(8080) {
 </code></pre></div>
 
                                 </td>
@@ -409,8 +392,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {path: &quot;/&quot;}
-    resource function sayHello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
         http:Response res = new;
 </code></pre></div>
 
@@ -541,7 +523,7 @@ service helloWorld on new http:Listener(8080) {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(&quot;Failed to respond to the caller&quot;, result);
+            log:printError(&quot;Failed to respond to the caller&quot;, err = result);
         }
     }
 }

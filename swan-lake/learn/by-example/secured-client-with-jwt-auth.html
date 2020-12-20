@@ -64,49 +64,6 @@ redirect_from:
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-
-<span class="c1">// Defines the sample backend service, which is secured with JWT Auth</span>
-<span class="c1">// authentication.</span>
-<span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">inboundJwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-    <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">,</span>
-    <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">inboundJwtAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">inboundJwtAuthProvider</span><span class="p">);</span>
-
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">inboundJwtAuthHandler</span><span class="p">],</span>
-        <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-
-<span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -346,162 +303,19 @@ import ballerina/log;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
                         <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To test the client, first start the sample service by executing the 
-# command below by passing Ballerina home path as a system property.
-ballerina run secured_service_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_path&gt;
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
                             
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Then start the client by executing the command below by passing Ballerina home
+                                    <div class="highlight"><pre><code class=shell-session># To test the client, first start a sample service secured with JWT Auth.
+# Then start the client by executing the command below by passing Ballerina home
 # path as a system property.
 ballerina run secured_client_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_path&gt;
 INFO  [ballerina/log] - Hello, World!!!
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
-import ballerina/http;
-import ballerina/jwt;
-import ballerina/log;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new({
-    issuer: &quot;ballerina&quot;,
-    audience: &quot;ballerina.io&quot;,
-    trustStoreConfig: {
-        certificateAlias: &quot;ballerina&quot;,
-        trustStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                &quot;/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-http:BearerAuthHandler inboundJwtAuthHandler = new(inboundJwtAuthProvider);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the sample backend service, which is secured with JWT Auth
- authentication.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new(9090, config = {
-    auth: {
-        authHandlers: [inboundJwtAuthHandler],
-        scopes: [&quot;hello&quot;]
-    },
-    secureSocket: {
-        keyStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                &quot;/bre/security/ballerinaKeystore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>service hello on ep {
-    resource function sayHello(http:Caller caller, http:Request req) {
-        error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
-        if (result is error) {
-            log:printError(&quot;Error in responding to caller&quot;, result);
-        }
-    }
-}
 </code></pre></div>
 
                                 </td>

@@ -51,7 +51,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">strResult</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">strResult</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while reading name&quot;</span><span class="p">,</span> <span class="nx">strResult</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while reading name&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">=</span><span class="nx">strResult</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="c1">//Reads a 16-bit-signed integer.</span>
     <span class="k">var</span> <span class="nx">int16Result</span> <span class="p">=</span> <span class="nx">dc</span><span class="p">.</span><span class="nx">readInt16</span><span class="p">();</span>
@@ -322,7 +322,7 @@ import ballerina/log;
     if (strResult is string) {
         person.name = strResult;
     } else {
-        log:printError(&quot;Error occurred while reading name&quot;, strResult);
+        log:printError(&quot;Error occurred while reading name&quot;, err=strResult);
     }
 </code></pre></div>
 

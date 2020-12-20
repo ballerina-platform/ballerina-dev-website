@@ -11,6 +11,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
@@ -23,56 +24,40 @@ redirect_from:
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">],</span>
 
     <span class="nx">pollingIntervalInMillis</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-    <span class="c1">// Uses the default int deserializer for the keys.</span>
-    <span class="nx">keyDeserializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">DES_INT</span><span class="p">,</span>
-    <span class="c1">// Uses the default string deserializer for the values.</span>
-    <span class="nx">valueDeserializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">DES_STRING</span><span class="p">,</span>
+    <span class="nx">keyDeserializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">DES_BYTE_ARRAY</span><span class="p">,</span>
+    <span class="nx">valueDeserializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">DES_BYTE_ARRAY</span><span class="p">,</span>
     <span class="c1">// Set `autoCommit` to false, so that the records should be committed</span>
     <span class="c1">// manually.</span>
     <span class="nx">autoCommit</span><span class="p">:</span> <span class="kc">false</span>
-
 <span class="p">};</span>
 
-<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">consumerConfigs</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">consumerConfigs</span><span class="p">);</span>
 
-<span class="kd">service</span> <span class="nx">kafkaService</span> <span class="nx">on</span> <span class="nx">consumer</span> <span class="p">{</span>
-    <span class="c1">// This resource will be executed when a message is published to the</span>
-    <span class="c1">// subscribed topic/topics.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">kafkaConsumer</span><span class="p">,</span>
-            <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">kafkaListener</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                                <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// The set of Kafka records dispatched to the service are processed one</span>
         <span class="c1">// by one.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
             <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafkaRecord</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// Commit offsets for returned records by marking them as consumed.</span>
-        <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">kafkaConsumer</span><span class="o">-&gt;</span><span class="nx">commit</span><span class="p">();</span>
+        <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">commit</span><span class="p">();</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while committing the &quot;</span> <span class="o">+</span>
-                <span class="s">&quot;offsets for the consumer &quot;</span><span class="p">,</span> <span class="nx">commitResult</span><span class="p">);</span>
+                <span class="s">&quot;offsets for the consumer &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">commitResult</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">anydata</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-    <span class="nx">anydata</span> <span class="nx">key</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
-    <span class="c1">// The value should be a `string`, since the string deserializer is used</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="c1">// The value should be a `byte[]`, since the byte[] deserializer is used</span>
     <span class="c1">// for the value.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// The key should be an `int`, since the int deserializer is used for</span>
-        <span class="c1">// the key.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Prints the received Kafka record.</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Topic: &quot;</span> <span class="o">+</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">topic</span><span class="p">);</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Partition: &quot;</span> <span class="o">+</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">partition</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Key: &quot;</span> <span class="o">+</span> <span class="nx">key</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Value: &quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">);</span>
-
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Invalid key type received&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Value: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Invalid value type received&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -176,20 +161,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -199,6 +170,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerinax/kafka;
+import ballerina/lang.&#39;string;
 import ballerina/log;
 </code></pre></div>
 
@@ -275,48 +247,12 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    pollingIntervalInMillis: 1000,
+    keyDeserializerType: kafka:DES_BYTE_ARRAY,
+    valueDeserializerType: kafka:DES_BYTE_ARRAY,
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    keyDeserializerType: kafka:DES_INT,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Uses the default int deserializer for the keys.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    valueDeserializerType: kafka:DES_STRING,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Uses the default string deserializer for the values.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -325,6 +261,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    autoCommit: false
+};
 </code></pre></div>
 
                                 </td>
@@ -344,7 +281,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener = new (consumerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -356,44 +293,13 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Consumer consumer = new (consumerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>service kafka:Service on kafkaListener {
+    remote function onMessage(kafka:Caller caller,
+                                kafka:ConsumerRecord[] records) {
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service kafkaService on consumer {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(kafka:Consumer kafkaConsumer,
-            kafka:ConsumerRecord[] records) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This resource will be executed when a message is published to the
- subscribed topic/topics.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -423,7 +329,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var commitResult = kafkaConsumer-&gt;commit();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var commitResult = caller-&gt;commit();
 </code></pre></div>
 
                                 </td>
@@ -444,7 +350,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (commitResult is error) {
             log:printError(&quot;Error occurred while committing the &quot; +
-                &quot;offsets for the consumer &quot;, commitResult);
+                &quot;offsets for the consumer &quot;, err = commitResult);
         }
     }
 }
@@ -460,8 +366,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
-    anydata value = kafkaRecord.value;
-    anydata key = kafkaRecord.key;
+    byte[] value = kafkaRecord.value;
 </code></pre></div>
 
                                 </td>
@@ -471,73 +376,11 @@ import ballerina/log;
                             </tr>
                             
                             <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (value is string) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The value should be a <code>string</code>, since the string deserializer is used
- for the value.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (key is int) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The key should be an <code>int</code>, since the int deserializer is used for
- the key.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Topic: &quot; + kafkaRecord.topic);
-            log:printInfo(&quot;Partition: &quot; + kafkaRecord.partition.toString());
-            log:printInfo(&quot;Key: &quot; + key.toString());
-            log:printInfo(&quot;Value: &quot; + value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Prints the received Kafka record.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
-            log:printError(&quot;Invalid key type received&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error messageContent = &#39;string:fromBytes(value);
+    if (messageContent is string) {
+        log:print(&quot;Value: &quot; + messageContent);
     } else {
         log:printError(&quot;Invalid value type received&quot;);
     }
@@ -546,6 +389,14 @@ import ballerina/log;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The value should be a <code>byte[]</code>, since the byte[] deserializer is used
+ for the value.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>

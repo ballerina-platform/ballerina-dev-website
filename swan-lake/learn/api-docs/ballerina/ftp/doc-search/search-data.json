@@ -1,0 +1,144 @@
+{
+  "modules": [
+    {
+      "id": "ftp",
+      "description": "\u003cp\u003eThis module provides an FTP client and an FTP server listener implementation to facilitate an FTP connection to a remote location.\u003c/p\u003e",
+      "orgName": "ballerina",
+      "version": "1.0.3"
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "ClientEndpointConfig",
+      "description": "\u003cp\u003eConfiguration for FTP client endpoint.\u003c/p\u003e",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "FileInfo",
+      "description": "\u003cp\u003eThis provides metadata information for newly added files.\u003c/p\u003e",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "WatchEvent",
+      "description": "\u003cp\u003eThis represents the latest status change of the server from the last status change.\u003c/p\u003e",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "ListenerConfig",
+      "description": "\u003cp\u003eConfiguration for FTP listener endpoint.\u003c/p\u003e",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "FTPError",
+      "description": "",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "TrustStore",
+      "description": "\u003cp\u003eA record for providing \u003ccode\u003eTruststore\u003c/code\u003e related configurations\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "KeyStore",
+      "description": "\u003cp\u003eA record for providing \u003ccode\u003eKeystore\u003c/code\u003e related configurations\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "PrivateKey",
+      "description": "\u003cp\u003eA record for providing \u003ccode\u003ePrivateKey\u003c/code\u003e related configurations\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "BasicAuth",
+      "description": "\u003cp\u003eA record for providing \u003ccode\u003eBasicAuth\u003c/code\u003e related configurations\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "SecureSocket",
+      "description": "\u003cp\u003eProvides configurations for facilitating secure communication with a remote FTP server\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "InputContent",
+      "description": "\u003cp\u003eProvides configuration for the input given for FTP \u003ccode\u003eput\u003c/code\u003e and \u003ccode\u003eappend\u003c/code\u003e operations\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    }
+  ],
+  "constants": [
+    {
+      "id": "FTP",
+      "description": "\u003cp\u003eUnderlying communication happens using FTP\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "SFTP",
+      "description": "\u003cp\u003eUnderlying communication happens using SFTP\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    },
+    {
+      "id": "FTPS",
+      "description": "\u003cp\u003eUnderlying communication happens using FTPS\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    }
+  ],
+  "errors": [],
+  "types": [
+    {
+      "id": "Protocol",
+      "description": "\u003cp\u003eRepresents the set of protocols supported by the FTP listener and client\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    }
+  ],
+  "clients": [
+    {
+      "id": "Client",
+      "description": "\u003cp\u003eRepresents an FTP client that intracts with an FTP server\u003c/p\u003e\n",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    }
+  ],
+  "listeners": [
+    {
+      "id": "Listener",
+      "description": "\u003cp\u003eRepresents a service listener that monitors the FTP location.\u003c/p\u003e",
+      "moduleId": "ftp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.3"
+    }
+  ],
+  "annotations": [],
+  "abstractObjects": []
+}

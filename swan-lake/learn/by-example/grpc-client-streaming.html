@@ -18,14 +18,14 @@ redirect_from:
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                             <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Client connected sucessfully.&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Client connected successfully.&quot;</span><span class="p">);</span>
         <span class="c1">//Read and process each message in the client stream</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received greet: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+        <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">isolated</span> <span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server received greet: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="p">});</span>
 
         <span class="c1">//Once the client sends a notification to indicate the end of the stream, &#39;grpc:EOS&#39; is returned by the stream</span>
@@ -34,7 +34,7 @@ redirect_from:
             <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server send response : Ack&quot;</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server send response : Ack&quot;</span><span class="p">);</span>
             <span class="p">}</span>
 
         <span class="c1">//If the client sends an error to the server, the stream closes and returns the error</span>
@@ -87,21 +87,21 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Server Message Listener.</span>
-<span class="kd">service</span> <span class="nx">HelloWorldMessageListener</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">object</span><span class="p">{}</span> <span class="nx">HelloWorldMessageListener</span> <span class="p">=</span> <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
 
     <span class="c1">// Resource registered to receive server messages.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">total</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Response received from server: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// Resource registered to receive server error messages.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error reported from server: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="c1">// Resource registered to receive server completed messages.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">total</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Server Complete Sending Responses.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -335,7 +335,7 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on new grpc:Listener(9090) {
+service /HelloWorld on new grpc:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -347,9 +347,9 @@ service HelloWorld on new grpc:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function lotsOfGreetings(grpc:Caller caller,
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function lotsOfGreetings(grpc:Caller caller,
                             stream&lt;string,error&gt; clientStream) {
-        log:printInfo(&quot;Client connected sucessfully.&quot;);
+        log:print(&quot;Client connected successfully.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -361,8 +361,8 @@ service HelloWorld on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        error? e = clientStream.forEach(function(string name) {
-            log:printInfo(&quot;Server received greet: &quot; + name);
+                                    <div class="highlight"><pre><code class=language-ballerina>        error? e = clientStream.forEach(isolated function(string name) {
+            log:print(&quot;Server received greet: &quot; + name);
         });
 </code></pre></div>
 
@@ -387,7 +387,7 @@ service HelloWorld on new grpc:Listener(9090) {
             if (err is grpc:Error) {
                 log:printError(&quot;Error from Connector: &quot; + err.message());
             } else {
-                log:printInfo(&quot;Server send response : Ack&quot;);
+                log:print(&quot;Server send response : Ack&quot;);
             }
 </code></pre></div>
 
@@ -743,7 +743,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorldMessageListener = service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service object{} HelloWorldMessageListener = service object {
 </code></pre></div>
 
                                 </td>
@@ -762,7 +762,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function onMessage(string message) {
         total = 1;
         io:println(&quot;Response received from server: &quot; + message);
     }
@@ -784,7 +784,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function onError(error err) {
         io:println(&quot;Error reported from server: &quot; + err.message());
     }
 </code></pre></div>
@@ -805,7 +805,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onComplete() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function onComplete() {
         total = 1;
         io:println(&quot;Server Complete Sending Responses.&quot;);
     }

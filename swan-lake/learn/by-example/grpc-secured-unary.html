@@ -31,9 +31,9 @@ redirect_from:
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
 
         <span class="c1">// Send a response message to the caller.</span>
@@ -42,7 +42,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server send response : &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server send response : &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="c1">// Send the `completed` notification to the caller.</span>
@@ -338,9 +338,9 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on ep {
-    resource function hello(grpc:Caller caller, string name) {
-        log:printInfo(&quot;Server received hello from &quot; + name);
+service /HelloWorld on ep {
+    isolated remote function hello(grpc:Caller caller, string name) {
+        log:print(&quot;Server received hello from &quot; + name);
         string message = &quot;Hello &quot; + name;
 </code></pre></div>
 
@@ -375,7 +375,7 @@ service HelloWorld on ep {
                                     <div class="highlight"><pre><code class=language-ballerina>        if (err is grpc:Error) {
             log:printError(&quot;Error from Connector: &quot; + err.message());
         } else {
-            log:printInfo(&quot;Server send response : &quot; + message);
+            log:print(&quot;Server send response : &quot; + message);
         }
 </code></pre></div>
 

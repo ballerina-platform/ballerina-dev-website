@@ -2,78 +2,113 @@
   "modules": [
     {
       "id": "observe",
-      "description": "\u003cp\u003eThis module provides apis for observing Ballerina services.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides apis for observing Ballerina services.\u003c/p\u003e",
+      "orgName": "ballerina",
+      "version": "0.8.0"
     }
   ],
   "classes": [
     {
       "id": "Counter",
       "description": "\u003cp\u003eThis represents the metric type - counter, that can be only increased by an integer number.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "Gauge",
       "description": "\u003cp\u003eThis represents the metric type - gauge, that can hold instantaneous, increased or decreased value\nduring the usage.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     }
   ],
   "functions": [
     {
       "id": "startRootSpan",
       "description": "\u003cp\u003eStart a span with no parent span.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "startSpan",
       "description": "\u003cp\u003eStart a span and create child relationship to current active span or user specified span.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "addTagToSpan",
       "description": "\u003cp\u003eAdd a key value pair as a tag to the span.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "addTagToMetrics",
+      "description": "\u003cp\u003eAdd a key value pair as a tag to system metrics.\u003c/p\u003e",
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "finishSpan",
       "description": "\u003cp\u003eFinish the current span.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "getAllMetrics",
       "description": "\u003cp\u003eRetrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "lookupMetric",
       "description": "\u003cp\u003eRetrieves the specific metric that is described by the given name and tags.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "isObservabilityEnabled",
       "description": "\u003cp\u003eChecks of either metrics or tracing had been enabled.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     }
   ],
   "records": [
     {
       "id": "Metric",
       "description": "\u003cp\u003eThis represents the generic metric record that can represent both counter and gauge.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "StatisticConfig",
       "description": "\u003cp\u003eThis represents the statistic configuration that can be used to instatiate gauge metric.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "PercentileValue",
       "description": "\u003cp\u003eThis represents the percentile value record.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     },
     {
       "id": "Snapshot",
       "description": "\u003cp\u003eThis represents the snapshot of the statistics calculation of the gauge.\u003c/p\u003e",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     }
   ],
   "constants": [],
@@ -85,7 +120,9 @@
     {
       "id": "Observable",
       "description": "",
-      "moduleId": "observe"
+      "moduleId": "observe",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
     }
   ],
   "abstractObjects": []

@@ -1,0 +1,266 @@
+{
+  "modules": [
+    {
+      "id": "websocket",
+      "description": "\u003cp\u003eThis module provides an implementation for connecting and interacting with WebSocket endpoints.\u003c/p\u003e",
+      "orgName": "ballerina",
+      "version": "1.1.0"
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "WSServiceConfig",
+      "description": "\u003cp\u003eConfigurations for a WebSocket service.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WebSocketFailoverClientConfiguration",
+      "description": "\u003cp\u003eConfigurations for the WebSocket client endpoint.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WebSocketClientConfiguration",
+      "description": "\u003cp\u003eConfigurations for the WebSocket client.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "CommonWebSocketClientConfiguration",
+      "description": "\u003cp\u003eCommon client configurations for WebSocket clients.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WebSocketRetryConfig",
+      "description": "\u003cp\u003eRetry configurations for WebSocket.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "Remote",
+      "description": "\u003cp\u003ePresents a read-only view of the remote address.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "Local",
+      "description": "\u003cp\u003ePresents a read-only view of the local address.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "ListenerConfiguration",
+      "description": "\u003cp\u003eProvides a set of configurations for HTTP service endpoints.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "ListenerHttp1Settings",
+      "description": "\u003cp\u003eProvides settings related to HTTP/1.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "ListenerSecureSocket",
+      "description": "\u003cp\u003eConfigures the SSL/TLS options to be used for HTTP service.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ],
+  "constants": [
+    {
+      "id": "KEEPALIVE_AUTO",
+      "description": "\u003cp\u003eDecides to keep the connection alive or not based on the \u003ccode\u003econnection\u003c/code\u003e header of the client request }\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "KEEPALIVE_ALWAYS",
+      "description": "\u003cp\u003eKeeps the connection alive irrespective of the \u003ccode\u003econnection\u003c/code\u003e header value }\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "KEEPALIVE_NEVER",
+      "description": "\u003cp\u003eCloses the connection irrespective of the \u003ccode\u003econnection\u003c/code\u003e header value }\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "SERVICE_NAME",
+      "description": "\u003cp\u003eConstant for the service name reference.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "RESOURCE_NAME",
+      "description": "\u003cp\u003eConstant for the resource name reference.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "REQUEST_METHOD",
+      "description": "\u003cp\u003eConstant for the request method reference.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "AUTH_HEADER",
+      "description": "\u003cp\u003eRepresents the Authorization header name.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ],
+  "errors": [
+    {
+      "id": "WsConnectionClosureError",
+      "description": "\u003cp\u003eRaised during failures in connection closure\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WsInvalidHandshakeError",
+      "description": "\u003cp\u003eRaised during the handshake when the WebSocket upgrade fails\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WsPayloadTooBigError",
+      "description": "\u003cp\u003eRaised when receiving a frame with a payload exceeding the maximum size\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WsProtocolError",
+      "description": "\u003cp\u003eRaised when the other side breaks the protocol\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WsConnectionError",
+      "description": "\u003cp\u003eRaised during connection failures\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WsInvalidContinuationFrameError",
+      "description": "\u003cp\u003eRaised when an out of order/invalid continuation frame is received\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WsGenericError",
+      "description": "\u003cp\u003eRaised for errors not captured by the specific errors\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ],
+  "types": [
+    {
+      "id": "WebSocketError",
+      "description": "\u003cp\u003eThe union of all the WebSocket related errors\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "KeepAlive",
+      "description": "\u003cp\u003eDefines the possible values for the keep-alive configuration in service and client endpoints.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ],
+  "clients": [
+    {
+      "id": "Caller",
+      "description": "\u003cp\u003eRepresents a WebSocket caller.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "WebSocketFailoverClient",
+      "description": "\u003cp\u003eA WebSocket client endpoint, which provides failover support for multiple WebSocket targets.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "Client",
+      "description": "\u003cp\u003eRepresents a WebSocket client endpoint.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ],
+  "listeners": [
+    {
+      "id": "Listener",
+      "description": "\u003cp\u003eThis is used for creating Websocket server endpoints.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "ServiceConfig",
+      "description": "\u003cp\u003eThe annotation which is used to configure a WebSocket service.\u003c/p\u003e",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ],
+  "abstractObjects": [
+    {
+      "id": "Service",
+      "description": "\u003cp\u003eThe Websocket service type\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "CallbackService",
+      "description": "\u003cp\u003eThe Websocket callback service type\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "UpgradeService",
+      "description": "\u003cp\u003eThe Websocket callback service type\u003c/p\u003e\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ]
+}

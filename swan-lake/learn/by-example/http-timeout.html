@@ -21,17 +21,9 @@ redirect_from:
     <span class="p">});</span>
 
 <span class="c1">// Create an HTTP service bound to the listener endpoint.</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/timeout&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">timeoutService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="k">timeout</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
         <span class="c1">// If `backendResponse` is an `http:Response`, it is sent back to the</span>
@@ -40,7 +32,8 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -57,7 +50,8 @@ redirect_from:
             <span class="p">}</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
 
@@ -65,22 +59,17 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// This sample service is used to mock connection timeouts.</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Delay the response by 15000 milliseconds to mimic the network level</span>
         <span class="c1">// delays.</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">15000</span><span class="p">);</span>
 
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -240,10 +229,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/timeout&quot;
-}
-service timeoutService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /timeout on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -262,22 +248,7 @@ service timeoutService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/&quot;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request request) {
         var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
@@ -293,7 +264,8 @@ service timeoutService on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
             var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;backendResponse);
             if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         } else {
             http:Response response = new;
@@ -310,7 +282,8 @@ service timeoutService on new http:Listener(9090) {
             }
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         }
 </code></pre></div>
@@ -346,15 +319,7 @@ service timeoutService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/hello&quot;
-}
-service helloWorld on new http:Listener(8080) {
-    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/&quot;
-    }
-    resource function sayHello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(8080) {
 </code></pre></div>
 
                                 </td>
@@ -366,6 +331,18 @@ service helloWorld on new http:Listener(8080) {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -395,7 +372,8 @@ service helloWorld on new http:Listener(8080) {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Hello World!!!&quot;);
         if (result is error) {
-            log:printError(&quot;Error sending response from mock service&quot;, result);
+            log:printError(&quot;Error sending response from mock service&quot;,
+                            err = result);
         }
     }
 }

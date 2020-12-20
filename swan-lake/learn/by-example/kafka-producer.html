@@ -21,11 +21,7 @@ redirect_from:
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;basic-producer&quot;</span><span class="p">,</span>
     <span class="nx">acks</span><span class="p">:</span> <span class="s">&quot;all&quot;</span><span class="p">,</span>
     <span class="nx">retryCount</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="c1">// Uses the builtin string serializer for the values.</span>
-    <span class="nx">valueSerializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">SER_STRING</span><span class="p">,</span>
-    <span class="c1">// Uses the builtin int serializer for the keys.</span>
-    <span class="nx">keySerializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">SER_INT</span>
-
+    <span class="nx">valueSerializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">SER_BYTE_ARRAY</span>
 <span class="p">};</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfiguration</span><span class="p">);</span>
@@ -33,7 +29,7 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World, Ballerina&quot;</span><span class="p">;</span>
     <span class="c1">// Send the message to the Kafka topic</span>
-    <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span> <span class="nx">key</span> <span class="p">=</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while sending data: &quot;</span> <span class="o">+</span>
@@ -141,12 +137,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -203,56 +193,8 @@ import ballerinax/kafka;
                                     <div class="highlight"><pre><code class=language-ballerina>    clientId: &quot;basic-producer&quot;,
     acks: &quot;all&quot;,
     retryCount: 3,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    valueSerializerType: kafka:SER_STRING,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Uses the builtin string serializer for the values.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    keySerializerType: kafka:SER_INT
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Uses the builtin int serializer for the keys.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
+    valueSerializerType: kafka:SER_BYTE_ARRAY
+};
 </code></pre></div>
 
                                 </td>
@@ -289,7 +231,7 @@ import ballerinax/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var sendResult = kafkaProducer-&gt;send(message, &quot;test-kafka-topic&quot;, key = 1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var sendResult = kafkaProducer-&gt;send(message.toBytes(), &quot;test-kafka-topic&quot;);
 </code></pre></div>
 
                                 </td>

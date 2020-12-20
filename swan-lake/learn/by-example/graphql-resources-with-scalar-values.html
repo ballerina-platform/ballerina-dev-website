@@ -1,29 +1,24 @@
 ---
 layout: ballerina-example-page
-title: Ballerina To OpenAPI
+title: GraphQL Resources with Scalar Values
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/ballerina-to-openapi
+permalink: /swan-lake/learn/by-example/graphql-resources-with-scalar-values
 redirect_from:
-  - /vswan-lake/learn/by-example/ballerina-to-openapi
-  - /vswan-lake/learn/by-example/ballerina-to-openapi.html
+  - /vswan-lake/learn/by-example/graphql-resources-with-scalar-values
+  - /vswan-lake/learn/by-example/graphql-resources-with-scalar-values.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="c1">// The `graphql:Service` exposes a GraphQL service on the provided port.</span>
+<span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">helloEp</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">hi</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+    <span class="c1">// A resource function inside a `graphql:Service` represents a resolver.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greet</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
 
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -34,11 +29,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Ballerina To OpenAPI</h2>
-                            <p><p>The Ballerina to OpenApi tool is used to generate an OpenAPI Specification(OAS) v3 definition of a Ballerina service.
- This tool&rsquo;s command structure is as follows.
- <code>ballerina openapi  [-i &lt;ballerina-files&gt;] [-o &lt;openapi-contract&gt;]</code><br/><br/>
- For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-use-openapi-tools/">Ballerina OpenAPI Tools</a>.</p>
+                            <h2>GraphQL Resources with Scalar Values</h2>
+                            <p><p>In Ballerina GraphQL, a service represents the GraphQL endpoint.
+ Each resource function inside the service represents a resolver function for a field in the root Query type.
+ This example shows a simple GraphQL endpoint that has a single field in the root Query type, which returns a string.</p>
 </p>
 
                         </td>
@@ -46,16 +40,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="proto-to-ballerina.html">
+                                    <a class="prev" href="http-2-0-server-push.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Proto To Ballerina</p>
+                                        <p>HTTP 2.0 Server Push</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="openapi-to-ballerina.html">
+                                    <a class="next" href="graphql-resources-with-record-values.html">
                                         <span>NEXT ></span>
-                                        <p>OpenAPI To Ballerina</p>
+                                        <p>GraphQL Resources with Record Values</p>
                                     </a>
                                 </div>
                                 
@@ -64,7 +58,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="ballerina-to-openapi">
+            <div class="example" id="graphql-resources-with-scalar-values">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -75,7 +69,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/ballerina-to-openapi/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-resources-with-scalar-values/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -110,8 +104,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/graphql;
 </code></pre></div>
 
                                 </td>
@@ -120,29 +113,40 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener helloEp = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>service graphql:Service /graphql on new graphql:Listener(9090) {
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>graphql:Service</code> exposes a GraphQL service on the provided port.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on helloEp {
-    resource function get hi(http:Caller caller, http:Request request) {
-        http:Response res = new;
-        res.setPayload(&quot;Hello World!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greet(string name) returns string {
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A resource function inside a <code>graphql:Service</code> represents a resolver.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -150,10 +154,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
-        if (result is error) {
-           log:printError(&quot;Error when responding&quot;, err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;Hello, &quot; + name;
     }
 }
 </code></pre></div>
@@ -180,12 +181,12 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To export the OpenAPI definition of the `hello` Ballerina service, navigate to the directory that contains the
-# `ballerina_to_openapi.bal` file, and execute the`ballerina openapi` command below.
-`ballerina openapi -i ballerina_to_openapi.bal --service hello`
-Note: This is an Experimental tool shipped under Ballerina. Hence, this will only support a limited set of functionalities.
-Successfully generated the Ballerina contract at location.
-/examples/ballerina-to-openapi/hello-openapi.yaml
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+# Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
+# log will be printed.
+ballerina run graphql_resources_with_scalar_values.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>

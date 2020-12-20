@@ -16,17 +16,10 @@ redirect_from:
 
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/multiparts&quot;</span>
-<span class="p">}</span>
 <span class="c1">//Binds the listener to the service.</span>
-<span class="kd">service</span> <span class="nx">multipartDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">multiparts</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/decode&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">multipartReceiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">decode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span>
                                         <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="c1">// [Extracts bodyparts](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getBodyParts) from the request.</span>
@@ -43,15 +36,11 @@ redirect_from:
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/encode&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">multipartSender</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">encode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">//Create a json body part.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">jsonBodyPart</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">jsonBodyPart</span><span class="p">.</span><span class="nx">setContentDisposition</span><span class="p">(</span>
@@ -79,7 +68,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">returnResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -88,7 +77,7 @@ redirect_from:
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -104,7 +93,7 @@ redirect_from:
             <span class="c1">//[Extracts `xml` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getXml) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getXml</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
@@ -112,7 +101,7 @@ redirect_from:
             <span class="c1">//[Extracts `json` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getJson) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
@@ -120,7 +109,7 @@ redirect_from:
             <span class="c1">//[Extracts text data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getText) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
@@ -238,8 +227,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -271,24 +258,10 @@ import ballerina/mime;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/multiparts&quot;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service multipartDemoService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /multiparts on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -307,11 +280,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;POST&quot;],
-        path: &quot;/decode&quot;
-    }
-    resource function multipartReceiver(http:Caller caller, http:Request
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post decode(http:Caller caller, http:Request
                                         request) {
         http:Response response = new;
 </code></pre></div>
@@ -338,7 +307,7 @@ import ballerina/mime;
         }
         var result = caller-&gt;respond(response);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, result);
+            log:printError(&quot;Error sending response&quot;, err = result);
         }
     }
 </code></pre></div>
@@ -359,11 +328,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/encode&quot;
-    }
-    resource function multipartSender(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get encode(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -465,7 +430,7 @@ import ballerina/mime;
         if (returnResponse is http:Response) {
             var result = caller-&gt;respond(&lt;@untainted&gt;returnResponse);
             if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
         } else {
             http:Response response = new;
@@ -474,7 +439,7 @@ import ballerina/mime;
             response.statusCode = 500;
             var result = caller-&gt;respond(response);
             if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
         }
     }
@@ -544,7 +509,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getXml();
             if (payload is xml) {
-                log:printInfo(payload.toString());
+                log:print(payload.toString());
             } else {
                 log:printError(payload.message());
             }
@@ -569,7 +534,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getJson();
             if (payload is json) {
-                log:printInfo(payload.toJsonString());
+                log:print(payload.toJsonString());
             } else {
                 log:printError(payload.message());
             }
@@ -594,7 +559,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getText();
             if (payload is string) {
-                log:printInfo(payload);
+                log:print(payload);
             } else {
                 log:printError(payload.message());
             }

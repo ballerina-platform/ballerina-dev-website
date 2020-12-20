@@ -14,11 +14,11 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Creates a ballerina RabbitMQ channel.</span>
-    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Channel</span> <span class="nx">newChannel</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span>
+    <span class="c1">// Creates a ballerina RabbitMQ Client.</span>
+    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">newClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span>
 
     <span class="c1">// Declares the queue.</span>
-    <span class="k">var</span> <span class="nx">queueResult</span> <span class="p">=</span> <span class="nx">newChannel</span><span class="o">-&gt;</span><span class="nx">queueDeclare</span><span class="p">({</span><span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span><span class="p">});</span>
+    <span class="k">var</span> <span class="nx">queueResult</span> <span class="p">=</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">queueDeclare</span><span class="p">(</span><span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">queueResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while creating the queue&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -26,8 +26,9 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">transaction</span> <span class="p">{</span>
         <span class="c1">// Publishes the message using the routing key named &quot;MyQueue&quot;.</span>
-        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">newChannel</span><span class="o">-&gt;</span><span class="nx">basicPublish</span><span class="p">(</span><span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">,</span>
-                                                  <span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">basicPublish</span><span class="p">(</span>
+                                        <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
+                                        <span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while sending the message&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -58,9 +59,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="rabbitmq-consumer-with-qos-settings.html">
+                                    <a class="prev" href="rabbitmq-consumer-with-client-acknowledgement.html">
                                         <span>< PREVIOUS</span>
-                                        <p>QoS Settings</p>
+                                        <p>Client Acknowledgements</p>
                                     </a>
                                 </div>
                                  
@@ -149,7 +150,7 @@ import ballerinax/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    rabbitmq:Channel newChannel = new ({host: &quot;localhost&quot;, port: 5672});
+                                    <div class="highlight"><pre><code class=language-ballerina>    rabbitmq:Client newClient = new ({host: &quot;localhost&quot;, port: 5672});
 </code></pre></div>
 
                                 </td>
@@ -157,7 +158,7 @@ import ballerinax/rabbitmq;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a ballerina RabbitMQ channel.</p>
+                                            <p>Creates a ballerina RabbitMQ Client.</p>
 
                                         </div>
                                     </div>
@@ -168,7 +169,7 @@ import ballerinax/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var queueResult = newChannel-&gt;queueDeclare({queueName: &quot;MyQueue&quot;});
+                                    <div class="highlight"><pre><code class=language-ballerina>    var queueResult = newClient-&gt;queueDeclare(&quot;MyQueue&quot;);
     if (queueResult is error) {
         io:println(&quot;An error occurred while creating the queue&quot;);
     } else {
@@ -193,8 +194,9 @@ import ballerinax/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var sendResult = newChannel-&gt;basicPublish(&quot;Hello from Ballerina&quot;,
-                                                  &quot;MyQueue&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var sendResult = newClient-&gt;basicPublish(
+                                        &quot;Hello from Ballerina&quot;.toBytes(),
+                                        &quot;MyQueue&quot;);
         if (sendResult is error) {
             io:println(&quot;An error occurred while sending the message&quot;);
         } else {

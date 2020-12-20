@@ -44,21 +44,14 @@ redirect_from:
 <span class="c1">// Create a listener endpoint.</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9095</span><span class="p">,</span> <span class="nx">helloWorldEPConfig</span><span class="p">);</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
-<span class="p">}</span>
 <span class="c1">// Bind the service to the listener endpoint that you declared earlier.</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Send the response to the caller.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Successful&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -93,10 +86,10 @@ redirect_from:
     <span class="c1">// Create an HTTP client to interact with the created listener endpoint.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9095&quot;</span><span class="p">,</span> <span class="nx">clientEPConfig</span><span class="p">);</span>
     <span class="c1">// Send a GET request to the listener and bind the payload to a string value.</span>
-    <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/helloWorld/hello&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Log the retrieved text payload.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="c1">// If an error occurs when getting the response or binding payload, log the error.</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">((&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
@@ -170,8 +163,6 @@ each other&rsquo;s identity.<br/><br/>
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -323,24 +314,10 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/hello&quot;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service helloWorld on helloWorldEP {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /helloWorld on helloWorldEP {
 </code></pre></div>
 
                                 </td>
@@ -359,11 +336,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/&quot;
-    }
-    resource function sayHello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get hello(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -377,7 +350,7 @@ import ballerina/log;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Successful&quot;);
         if (result is error) {
-            log:printError(&quot;Error in responding&quot;, result);
+            log:printError(&quot;Error in responding&quot;, err = result);
         }
     }
 }
@@ -558,7 +531,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var payload = clientEP-&gt;get(&quot;/hello&quot;, targetType = string);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var payload = clientEP-&gt;get(&quot;/helloWorld/hello&quot;, targetType = string);
     if (payload is string) {
 </code></pre></div>
 
@@ -578,7 +551,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:print(payload);
     } else {
 </code></pre></div>
 
@@ -635,7 +608,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command along with the Ballerina home path as a config.
 ballerina run ssl_client.bal --b7a.home=&lt;ballerina_home_path&gt;
-INFO  [] - Successful
+level = INFO  module = &quot;&quot; message = &quot;Successful&quot;
 </code></pre></div>
 
                                 </td>

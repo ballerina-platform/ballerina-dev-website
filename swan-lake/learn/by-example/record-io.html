@@ -74,7 +74,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">rc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
-                        <span class="nx">closeResult</span><span class="p">);</span>
+                        <span class="nx">err</span><span class="p">=</span><span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -83,7 +83,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">wc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
-                        <span class="nx">closeResult</span><span class="p">);</span>
+                        <span class="nx">err</span><span class="p">=</span><span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -99,7 +99,7 @@ redirect_from:
                                                      <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\\r?\\n&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">readableChannel</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating readable record &quot;</span> <span class="o">+</span>
-                        <span class="s">&quot;channel. &quot;</span><span class="p">,</span> <span class="nx">readableChannel</span><span class="p">);</span>
+                        <span class="s">&quot;channel. &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">=</span><span class="nx">readableChannel</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">srcRecordChannel</span> <span class="p">=</span> <span class="nx">readableChannel</span><span class="p">;</span>
@@ -112,7 +112,7 @@ redirect_from:
                                                         <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\r\n&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">writableChannel</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating writable record &quot;</span> <span class="o">+</span>
-                        <span class="s">&quot;channel. &quot;</span><span class="p">,</span> <span class="nx">writableChannel</span><span class="p">);</span>
+                        <span class="s">&quot;channel. &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">=</span><span class="nx">writableChannel</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">dstRecordChannel</span> <span class="p">=</span> <span class="nx">writableChannel</span><span class="p">;</span>
@@ -123,7 +123,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">srcRecordChannel</span><span class="p">,</span> <span class="nx">dstRecordChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while processing the records: &quot;</span><span class="p">,</span>
-                        <span class="nx">result</span><span class="p">);</span>
+                        <span class="nx">err</span><span class="p">=</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Processing completed. The processed file is located in &quot;</span><span class="p">,</span>
                     <span class="nx">dstFileName</span><span class="p">);</span>
@@ -483,7 +483,7 @@ import ballerina/log;
     var closeResult = rc.close();
     if (closeResult is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;,
-                        closeResult);
+                        err=closeResult);
     }
 }
 </code></pre></div>
@@ -508,7 +508,7 @@ import ballerina/log;
     var closeResult = wc.close();
     if (closeResult is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;,
-                        closeResult);
+                        err=closeResult);
     }
 }
 </code></pre></div>
@@ -555,7 +555,7 @@ import ballerina/log;
                                                      &quot;UTF-8&quot;, &quot;\\r?\\n&quot;, &quot;,&quot;);
     if (readableChannel is error) {
         log:printError(&quot;An error occurred while creating readable record &quot; +
-                        &quot;channel. &quot;, readableChannel);
+                        &quot;channel. &quot;, err=readableChannel);
         return;
     } else {
         srcRecordChannel = readableChannel;
@@ -584,7 +584,7 @@ import ballerina/log;
                                                         &quot;UTF-8&quot;, &quot;\r\n&quot;, &quot;|&quot;);
     if (writableChannel is error) {
         log:printError(&quot;An error occurred while creating writable record &quot; +
-                        &quot;channel. &quot;, writableChannel);
+                        &quot;channel. &quot;, err=writableChannel);
         return;
     } else {
         dstRecordChannel = writableChannel;
@@ -613,7 +613,7 @@ is a new line and the field separator is a pipe (|).</p>
     var result = process(srcRecordChannel, dstRecordChannel);
     if (result is error) {
         log:printError(&quot;An error occurred while processing the records: &quot;,
-                        result);
+                        err=result);
     } else {
         io:println(&quot;Processing completed. The processed file is located in &quot;,
                     dstFileName);

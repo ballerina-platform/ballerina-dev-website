@@ -11,29 +11,26 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;something went wrong!&quot;</span><span class="p">);</span>
+    <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;something went wrong!&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Shows the main log levels that are available. By default, all log messages are logged </span>
-    <span class="c1">// to the console at the `INFO` level. In addition to these log levels, </span>
-    <span class="c1">// there are 2 additional levels named `OFF` and `ALL`.</span>
-    <span class="c1">// `OFF` turns off logging and `ALL` enables all the log levels. The log</span>
-    <span class="c1">// level can be configured via a Ballerina configuration file or CLI</span>
-    <span class="c1">// parameters.</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="s">&quot;debug log&quot;</span><span class="p">);</span>
+    <span class="c1">// There are two log levels (INFO, ERROR) and there is no user configuration to control which log level to print.</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log with cause&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printTrace</span><span class="p">(</span><span class="s">&quot;trace log&quot;</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printWarn</span><span class="p">(</span><span class="s">&quot;warn log&quot;</span><span class="p">);</span>
-    
-    <span class="c1">// Logic constructing log messages with expensive operations can alternatively be passed as a function</span>
-    <span class="c1">// pointer implementation. The function will be executed if and only if that particular log level is enabled.</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kt">string</span> <span class="s">`Execution Context: ${runtime:getCallStack().toString()}`</span><span class="p">;</span>
-    <span class="p">});</span>
+
+    <span class="c1">// Users can pass any number of key/value pairs which needs to be displayed in the log message.</span>
+    <span class="c1">// These can be of `anydata` type including int, string and boolean.</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">successful</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
+
+    <span class="c1">// Users can also pass key/value pairs where the values are function pointers.</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span>
+              <span class="nx">name</span> <span class="p">=</span> <span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;foo&quot;</span><span class="p">;});</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">,</span>
+        <span class="nx">id</span> <span class="p">=</span> <span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">845315</span><span class="p">;},</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Optionally an error can be passed to the printError function.</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log with cause&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -44,24 +41,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Log</h2>
-                            <p><p>The Ballerina Log API contains the application log handling
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/log/#functions">functions</a>.<br/><br/>
- To set the log level of the API, use the following CLI parameter: <br>
- <code>--b7a.log.level=[LOG_LEVEL]</code></p>
-
-<p>To configure using a configuration file, place the entry given below in
- the file:</p>
-
-<pre><code> [b7a.log]
- level=&quot;[LOG_LEVEL]&quot;
-</code></pre>
-
-<p><br><br>
- Each module can also be assigned its own log level. To assign a
- log level to a module, provide the following configuration:
- <code>&lt;MODULE_NAME&gt;.loglevel</code>.</p>
-
-<p>E.g., <code>--foo.loglevel=DEBUG</code> <br><br>
+                            <p><p>The Ballerina Log API contains the application log handling functions.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/log/">Log module</a>.</p>
 </p>
@@ -127,6 +107,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -136,7 +120,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
-import ballerina/runtime;
 </code></pre></div>
 
                                 </td>
@@ -149,7 +132,7 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    error err = error(&quot;something went wrong!&quot;);
+    error e = error(&quot;something went wrong!&quot;);
 </code></pre></div>
 
                                 </td>
@@ -161,13 +144,8 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(&quot;debug log&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:print(&quot;info log&quot;);
     log:printError(&quot;error log&quot;);
-    log:printError(&quot;error log with cause&quot;, err);
-    log:printInfo(&quot;info log&quot;);
-    log:printTrace(&quot;trace log&quot;);
-    log:printWarn(&quot;warn log&quot;);
-    
 </code></pre></div>
 
                                 </td>
@@ -175,12 +153,49 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Shows the main log levels that are available. By default, all log messages are logged
- to the console at the <code>INFO</code> level. In addition to these log levels,
- there are 2 additional levels named <code>OFF</code> and <code>ALL</code>.
- <code>OFF</code> turns off logging and <code>ALL</code> enables all the log levels. The log
- level can be configured via a Ballerina configuration file or CLI
- parameters.</p>
+                                            <p>There are two log levels (INFO, ERROR) and there is no user configuration to control which log level to print.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:print(&quot;info log&quot;, id = 845315, name = &quot;foo&quot;, successful = true);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Users can pass any number of key/value pairs which needs to be displayed in the log message.
+ These can be of <code>anydata</code> type including int, string and boolean.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:print(&quot;info log&quot;, id = 845315,
+              name = isolated function() returns string { return &quot;foo&quot;;});
+    log:printError(&quot;error log&quot;,
+        id = isolated function() returns int { return 845315;}, name = &quot;foo&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Users can also pass key/value pairs where the values are function pointers.</p>
 
                                         </div>
                                     </div>
@@ -191,9 +206,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(isolated function() returns string {
-        return string `Execution Context: ${runtime:getCallStack().toString()}`;
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printError(&quot;error log with cause&quot;, err = e, id = 845315, name = &quot;foo&quot;);
 }
 </code></pre></div>
 
@@ -202,8 +215,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Logic constructing log messages with expensive operations can alternatively be passed as a function
- pointer implementation. The function will be executed if and only if that particular log level is enabled.</p>
+                                            <p>Optionally an error can be passed to the printError function.</p>
 
                                         </div>
                                     </div>
@@ -219,10 +231,6 @@ import ballerina/runtime;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -230,36 +238,17 @@ import ballerina/runtime;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># As shown in the output, only the `INFO` and higher level logs are logged by default.
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># As shown in the output, both `INFO` and `ERROR` level logs are logged.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-# Note that in this sample, the org name is `ballerina` and the module name is `log`.
 ballerina run log_api.bal
-2019-08-09 11:47:07,334 ERROR [ballerina/log] - error log
-2019-08-09 11:47:07,340 ERROR [ballerina/log] - error log with cause : error(&quot;something went wrong!&quot;)
-2019-08-09 11:47:07,341 INFO  [ballerina/log] - info log
-2019-08-09 11:47:07,342 WARN  [ballerina/log] - warn log
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the log level is set to `TRACE`, logs of all log levels are logged.
-ballerina run log_api.bal --b7a.log.level=TRACE 
-2019-08-09 11:48:04,411 DEBUG [ballerina/log] - debug log
-2019-08-09 11:48:04,415 ERROR [ballerina/log] - error log
-2019-08-09 11:48:04,416 ERROR [ballerina/log] - error log with cause : error(&quot;something went wrong!&quot;)
-2019-08-09 11:48:04,416 INFO  [ballerina/log] - info log
-2019-08-09 11:48:04,417 TRACE [ballerina/log] - trace log
-2019-08-09 11:48:04,421 WARN  [ballerina/log] - warn log
-2019-08-09 12:17:35,946 DEBUG [ballerina/log] - Execution Context: [{&quot;callableName&quot;:&quot;getCallStack&quot;,&quot;moduleName&quot;:&quot;ballerina.runtime.0_5_0.errors&quot;,&quot;fileName&quot;:&quot;errors.bal&quot;,&quot;lineNumber&quot;:38},{&quot;callableName&quot;:&quot;$lambda$0&quot;,&quot;moduleName&quot;:&quot;log_api&quot;,&quot;fileName&quot;:&quot;log_api.bal&quot;,&quot;lineNumber&quot;:23},{&quot;callableName&quot;:&quot;printDebug&quot;,&quot;moduleName&quot;:&quot;ballerina.log.1_0_0.natives&quot;,&quot;fileName&quot;:&quot;natives.bal&quot;,&quot;lineNumber&quot;:36},{&quot;callableName&quot;:&quot;main&quot;,&quot;moduleName&quot;:&quot;log_api&quot;,&quot;fileName&quot;:&quot;log_api.bal&quot;,&quot;lineNumber&quot;:22}]
+time = 2020-12-15 17:54:53,058 level = INFO  module = &quot;&quot; message = &quot;info log&quot;
+time = 2020-12-15 17:54:53,102 level = ERROR module = &quot;&quot; message = &quot;error log&quot;
+time = 2020-12-15 17:54:53,098 level = INFO  module = &quot;&quot; message = &quot;info log&quot; name = &quot;foo&quot; id = 845315 successful = true
+time = 2020-12-15 17:54:53,100 level = INFO  module = &quot;&quot; message = &quot;info log&quot; name = &quot;foo&quot; id = 845315
+time = 2020-12-15 17:54:53,103 level = ERROR module = &quot;&quot; message = &quot;error log&quot; name = &quot;foo&quot; id = 845315
+time = 2020-12-15 17:54:53,105 level = ERROR module = &quot;&quot; message = &quot;error log with cause&quot; error = &quot;something went wrong!&quot; name = &quot;foo&quot; id = 845315
 </code></pre></div>
 
                                 </td>

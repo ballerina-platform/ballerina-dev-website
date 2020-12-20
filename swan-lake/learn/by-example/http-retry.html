@@ -41,17 +41,12 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">);</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/retry&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">retryDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
+
+<span class="kd">service</span> <span class="o">/</span><span class="p">&#39;retry on new http:Listener(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
     <span class="c1">// Parameters include a reference to the caller and an object of the</span>
     <span class="c1">// request data.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
 
         <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
@@ -61,7 +56,8 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -69,7 +65,8 @@ redirect_from:
             <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
 
@@ -81,27 +78,19 @@ redirect_from:
 <span class="c1">// This sample service is used to mock connection timeouts and service outages.</span>
 <span class="c1">// The service outage is mocked by stopping/starting this service.</span>
 <span class="c1">// This should run separately from the `retryDemoService` service.</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">mockHelloService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
-                <span class="s">&quot;Request received from the client to delayed service.&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Request received from the client to delayed service.&quot;</span><span class="p">);</span>
             <span class="c1">// Delay the response by 5000 milliseconds to mimic network level delays.</span>
             <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
 
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span>
                 <span class="s">&quot;Request received from the client to healthy service.&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
@@ -111,7 +100,8 @@ redirect_from:
 
 <span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -375,14 +365,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/retry&quot;
-}
-service retryDemoService on new http:Listener(9090) {
-    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/&quot;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>service /&#39;retry on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -394,7 +377,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request request) {
 </code></pre></div>
 
                                 </td>
@@ -429,7 +412,8 @@ service retryDemoService on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
             var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;backendResponse);
             if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         } else {
             http:Response response = new;
@@ -437,7 +421,8 @@ service retryDemoService on new http:Listener(9090) {
             response.setPayload((&lt;@untainted error&gt;backendResponse).message());
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         }
 </code></pre></div>
@@ -485,10 +470,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/hello&quot;
-}
-service mockHelloService on new http:Listener(8080) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(8080) {
 </code></pre></div>
 
                                 </td>
@@ -509,15 +491,10 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;, &quot;POST&quot;],
-        path: &quot;/&quot;
-    }
-    resource function sayHello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
         counter = counter + 1;
         if (counter % 4 != 0) {
-            log:printInfo(
-                &quot;Request received from the client to delayed service.&quot;);
+            log:print(&quot;Request received from the client to delayed service.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -551,7 +528,7 @@ service mockHelloService on new http:Listener(8080) {
                                     <div class="highlight"><pre><code class=language-ballerina>            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(responseToCaller);
         } else {
-            log:printInfo(
+            log:print(
                 &quot;Request received from the client to healthy service.&quot;);
             var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(responseToCaller);
@@ -571,7 +548,8 @@ service mockHelloService on new http:Listener(8080) {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
-        log:printError(&quot;Error sending response from mock service&quot;, result);
+        log:printError(&quot;Error sending response from mock service&quot;,
+                        err = result);
     }
 }
 </code></pre></div>

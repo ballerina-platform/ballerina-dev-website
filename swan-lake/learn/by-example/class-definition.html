@@ -12,33 +12,129 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// Defines a class called `Person`. It contains `public`, `private`, and module-level visible fields along with their types.</span>
-<span class="c1">// For fields, the default value must be specified if an explicit object initializer method is not defined.</span>
+<span class="c1">// Define a class named `Person` with `public`, `private`, and module-level visible fields.</span>
+<span class="c1">// All the fields have to be initialized either using field initializers (default values) or within the `init`</span>
+<span class="c1">// method, if present.</span>
 <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">email</span> <span class="p">=</span> <span class="s">&quot;default@abc.com&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Fields with no access modifiers are visible only within the same module.</span>
+    <span class="kt">string</span> <span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;No 20, Palm Grove&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Private fields are only visible within the class.</span>
+    <span class="nx">private</span> <span class="kt">boolean</span> <span class="nx">employed</span><span class="p">;</span>
+
+    <span class="c1">// If you need to have a field of the same class, you need to make that field&#39;s</span>
+    <span class="c1">// type a union with a different type, in order to set an initial value to the field.</span>
+    <span class="c1">// Here, the `parent` field does so by defining the field to be of type `Person` or nil.</span>
+    <span class="nx">public</span> <span class="nx">Person</span><span class="err">?</span> <span class="nx">parent</span> <span class="p">=</span> <span class="p">();</span>
+
+    <span class="c1">// The `init` method should initialize any field that does not have an initalizer</span>
+    <span class="c1">// expression. If the `init` method accepts parameters, arguments have to be passed</span>
+    <span class="c1">// for parameters when using the `new` expression with the class.</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">employed</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Fields of the class are accessed using `self`.</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">employed</span> <span class="p">=</span> <span class="nx">employed</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Methods can access all the fields of the class.</span>
+    <span class="kd">function</span> <span class="nx">isEmployed</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">=&gt;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">employed</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Define a class named `Employee`. It contains `public`, `private`, and module-level visible fields.</span>
+<span class="c1">// Initializer expressions are specified for all of the fields and this class does not contain</span>
+<span class="c1">// an `init` method.</span>
+<span class="nx">class</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="c1">// If you need to have a field with its own type, you need to make that field defaultable</span>
-    <span class="c1">// (i.e., able to specify a default value).</span>
-    <span class="c1">// Here, the `parent` field is made defaultable by allowing it to have nil as a value.</span>
-    <span class="nx">public</span> <span class="nx">Person</span><span class="err">?</span> <span class="nx">parent</span> <span class="p">=</span> <span class="p">();</span>
-    <span class="c1">// Private fields are only visible within the object and its functions.</span>
     <span class="nx">private</span> <span class="kt">string</span> <span class="nx">email</span> <span class="p">=</span> <span class="s">&quot;default@abc.com&quot;</span><span class="p">;</span>
-    <span class="c1">// Protected fields (i.e., no access modifiers) are visible only within the same module.</span>
-    <span class="kt">string</span> <span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;No 20, Palm grove&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;No 20, Palm Grove&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Private methods can only be called from within the class;</span>
+    <span class="nx">private</span> <span class="kd">function</span> <span class="nx">getDomainName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">=&gt;</span> <span class="s">&quot;abc.com&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Methods can update fields.</span>
+    <span class="c1">// Module-level visible methods can only be called from within the same module.</span>
+    <span class="kd">function</span> <span class="nx">setEmail</span><span class="p">(</span><span class="kt">string</span> <span class="nx">username</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">email</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${username}@${self.getDomainName()}`</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Public methods can be called from anywhere.</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">getEmail</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">=&gt;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">email</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">class</span> <span class="nx">Teenager</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+
+    <span class="c1">// An `init` method may return an error.</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">age</span> <span class="p">&gt;</span> <span class="mi">18</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="kt">string</span> <span class="s">`${name} is not a teenager!`</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// There are three ways to initialize a `Person` object.</span>
-    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="c1">// If there is no `init` method or the `init` method does not accept parameters,</span>
+    <span class="c1">// a value can be constructed with just the `new` expression.</span>
+    <span class="nx">Employee</span> <span class="nx">e1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e1</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
 
-    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="c1">// Such a value can also be constructed with the `new` expression with empty parentheses.</span>
+    <span class="nx">Employee</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
 
-    <span class="c1">// This type of initialization is useful when you cannot determine the type of the object to be</span>
-    <span class="c1">// created based on the context (e.g., when the left hand side is a union of object types).</span>
-    <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p3</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="c1">// Public fields of the class can be accessed and modified anywhere outside the class.</span>
+    <span class="nx">e2</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
+    <span class="nx">e2</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e2</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+
+    <span class="c1">// Module-level visible fields of the class can be accessed and modified within the same</span>
+    <span class="c1">// module as the class.</span>
+    <span class="nx">e2</span><span class="p">.</span><span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;Colombo, Sri Lanka&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e2</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+
+    <span class="c1">// Module-level visible methods of the class can be called from only within the same</span>
+    <span class="c1">// module as the class.</span>
+    <span class="nx">e2</span><span class="p">.</span><span class="nx">setEmail</span><span class="p">(</span><span class="s">&quot;john&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Public methods of the class can be called from anywhere.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e2</span><span class="p">.</span><span class="nx">getEmail</span><span class="p">());</span>
+
+    <span class="c1">// If there is an `init` method and it accepts parameters, relevant</span>
+    <span class="c1">// arguments need to be passed to the `new` expression, similar to</span>
+    <span class="c1">// a normal function call.</span>
+    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Kara&quot;</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">isEmployed</span><span class="p">());</span>
+
+    <span class="c1">// The `new` expression can also explicitly specify the class from which the object value</span>
+    <span class="c1">// needs to be created. It is a compile-time error if the value created by the `new`</span>
+    <span class="c1">// expression does not belong to the target type.</span>
+    <span class="kt">any</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s">&quot;Jim&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">);</span>
+
+    <span class="c1">// If the `init` method may return an error, the static type of the `new` expression</span>
+    <span class="c1">// would also contain error.</span>
+    <span class="c1">// If the `init` method returns an error, the object is not constructed.</span>
+    <span class="nx">Teenager</span><span class="p">|</span><span class="nx">error</span> <span class="nx">t1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Jo&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t1</span> <span class="nx">is</span> <span class="nx">Teenager</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="nx">t1</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// If the `init` method returns `()` (nil), the object is successfully constructed.</span>
+    <span class="nx">Teenager</span><span class="p">|</span><span class="nx">error</span> <span class="nx">t2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Amy&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t2</span> <span class="nx">is</span> <span class="nx">Teenager</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -49,10 +145,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Class Definitions</h2>
-                            <p><p>Classes are used to create values of the <code>object</code> type.
+                            <p><p>Classes describe an object type and provide a way to construct values of that type. <br/>
  Objects are a behaviourial type. An object is a combination of public, private, and module-level visible fields along with a
  set of associated functions (called methods) that can be used to manipulate the fields. This allows you
- to define custom-behavioural data types.</p>
+ to define custom-behavioural data types. <br/>
+ A class can have an <code>init</code> method that gets called when creating an object using the <code>new</code> expression.
+ The return type of the<code>init</code> method should be a subtype of <code>error?</code> containing <code>()</code>. If the <code>init</code> method execution
+ returns an error, the <code>new</code> expression will return the error.</p>
 </p>
 
                         </td>
@@ -60,9 +159,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="record-type-reference.html">
+                                    <a class="prev" href="record-type-inclusion.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Record Type Reference</p>
+                                        <p>Record Type Inclusion</p>
                                     </a>
                                 </div>
                                  
@@ -126,6 +225,42 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -147,8 +282,9 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>class Person {
-    public string name = &quot;&quot;;
-    public int age = 0;
+    public string name;
+    public int age;
+    public string email = &quot;default@abc.com&quot;;
 </code></pre></div>
 
                                 </td>
@@ -156,8 +292,47 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a class called <code>Person</code>. It contains <code>public</code>, <code>private</code>, and module-level visible fields along with their types.
- For fields, the default value must be specified if an explicit object initializer method is not defined.</p>
+                                            <p>Define a class named <code>Person</code> with <code>public</code>, <code>private</code>, and module-level visible fields.
+ All the fields have to be initialized either using field initializers (default values) or within the <code>init</code>
+ method, if present.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string address = &quot;No 20, Palm Grove&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Fields with no access modifiers are visible only within the same module.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    private boolean employed;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Private fields are only visible within the class.</p>
 
                                         </div>
                                     </div>
@@ -176,9 +351,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If you need to have a field with its own type, you need to make that field defaultable
- (i.e., able to specify a default value).
- Here, the <code>parent</code> field is made defaultable by allowing it to have nil as a value.</p>
+                                            <p>If you need to have a field of the same class, you need to make that field&rsquo;s
+ type a union with a different type, in order to set an initial value to the field.
+ Here, the <code>parent</code> field does so by defining the field to be of type <code>Person</code> or nil.</p>
 
                                         </div>
                                     </div>
@@ -189,7 +364,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    private string email = &quot;default@abc.com&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string name, int age, boolean employed) {
 </code></pre></div>
 
                                 </td>
@@ -197,7 +372,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Private fields are only visible within the object and its functions.</p>
+                                            <p>The <code>init</code> method should initialize any field that does not have an initalizer
+ expression. If the <code>init</code> method accepts parameters, arguments have to be passed
+ for parameters when using the <code>new</code> expression with the class.</p>
 
                                         </div>
                                     </div>
@@ -208,7 +385,29 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string address = &quot;No 20, Palm grove&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.name = name;
+        self.age = age;
+        self.employed = employed;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Fields of the class are accessed using <code>self</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function isEmployed() returns boolean =&gt; self.employed;
 }
 </code></pre></div>
 
@@ -217,10 +416,147 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Protected fields (i.e., no access modifiers) are visible only within the same module.</p>
+                                            <p>Methods can access all the fields of the class.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Employee {
+    public string name = &quot;&quot;;
+    public int age = 0;
+    private string email = &quot;default@abc.com&quot;;
+    string address = &quot;No 20, Palm Grove&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define a class named <code>Employee</code>. It contains <code>public</code>, <code>private</code>, and module-level visible fields.
+ Initializer expressions are specified for all of the fields and this class does not contain
+ an <code>init</code> method.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    private function getDomainName() returns string =&gt; &quot;abc.com&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Private methods can only be called from within the class;</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function setEmail(string username) {
+        self.email = string `${username}@${self.getDomainName()}`;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Methods can update fields.
+ Module-level visible methods can only be called from within the same module.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function getEmail() returns string =&gt; self.email;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Public methods can be called from anywhere.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Teenager {
+    string name;
+    int age;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string name, int age) returns error? {
+        if age &gt; 18 {
+            return error(string `${name} is not a teenager!`);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An <code>init</code> method may return an error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.name = name;
+        self.age = age;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -240,8 +576,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 = new;
-    io:println(p1.age);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee e1 = new;
+    io:println(e1.age);
 </code></pre></div>
 
                                 </td>
@@ -249,7 +585,176 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>There are three ways to initialize a <code>Person</code> object.</p>
+                                            <p>If there is no <code>init</code> method or the <code>init</code> method does not accept parameters,
+ a value can be constructed with just the <code>new</code> expression.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee e2 = new ();
+    io:println(e2.age);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Such a value can also be constructed with the <code>new</code> expression with empty parentheses.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    e2.name = &quot;John&quot;;
+    e2.age = 20;
+    io:println(e2.name);
+    io:println(e2.age);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Public fields of the class can be accessed and modified anywhere outside the class.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    e2.address = &quot;Colombo, Sri Lanka&quot;;
+    io:println(e2.address);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Module-level visible fields of the class can be accessed and modified within the same
+ module as the class.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    e2.setEmail(&quot;john&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Module-level visible methods of the class can be called from only within the same
+ module as the class.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(e2.getEmail());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Public methods of the class can be called from anywhere.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 = new (&quot;Kara&quot;, 26, true);
+    io:println(p1.isEmployed());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If there is an <code>init</code> method and it accepts parameters, relevant
+ arguments need to be passed to the <code>new</code> expression, similar to
+ a normal function call.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    any p2 = new Person(&quot;Jim&quot;, 33, false);
+    io:println(p2 is Person);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>new</code> expression can also explicitly specify the class from which the object value
+ needs to be created. It is a compile-time error if the value created by the <code>new</code>
+ expression does not belong to the target type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Teenager|error t1 = new (&quot;Jo&quot;, 20);
+    io:println(t1 is Teenager);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the <code>init</code> method may return an error, the static type of the <code>new</code> expression
+ would also contain error.
+ If the <code>init</code> method returns an error, the object is not constructed.</p>
 
                                         </div>
                                     </div>
@@ -260,8 +765,9 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person p2 = new ();
-    io:println(p2.age);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if t1 is error {
+        io:println(t1);
+    }
 </code></pre></div>
 
                                 </td>
@@ -273,8 +779,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person p3 = new Person();
-    io:println(p3.age);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Teenager|error t2 = new (&quot;Amy&quot;, 16);
+    io:println(t2 is Teenager);
 }
 </code></pre></div>
 
@@ -283,8 +789,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This type of initialization is useful when you cannot determine the type of the object to be
- created based on the context (e.g., when the left hand side is a union of object types).</p>
+                                            <p>If the <code>init</code> method returns <code>()</code> (nil), the object is successfully constructed.</p>
 
                                         </div>
                                     </div>
@@ -313,7 +818,15 @@ redirect_from:
 ballerina run class-definition.bal
 0
 0
-0
+John
+20
+Colombo, Sri Lanka
+john@abc.com
+true
+true
+false
+error(&quot;Jo is not a teenager!&quot;)
+true
 </code></pre></div>
 
                                 </td>

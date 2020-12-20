@@ -12,11 +12,11 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="c1">// This is the client implementation for the TCP socket with the attached callback service. Callback service is optional.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">tcp</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Create a new socket client by providing the host, port, and callback service.</span>
-    <span class="nx">socket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="c1">// Create a new tcp client by providing the host, port, and callback service.</span>
+    <span class="nx">tcp</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
         <span class="nx">port</span><span class="p">:</span> <span class="mi">61598</span>
     <span class="p">});</span>
@@ -70,18 +70,18 @@ redirect_from:
 <span class="c1">// This is the server implementation for the TCP socket.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">tcp</span><span class="p">;</span>
 
 <span class="c1">// Bind the service to the port.</span>
-<span class="c1">// The socket listener should have these four predefined resources.</span>
-<span class="kd">service</span> <span class="nx">echoServer</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">socket</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">61598</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// This resource is invoked when the new client joins.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Client connected: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="c1">// The tcp listener should have these four predefined resources.</span>
+<span class="kd">service</span> <span class="s">&quot;echoServer&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">61598</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This remote is invoked when the new client joins.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Client connected: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="c1">// This resource is invoked once the content is received from the client.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onReadReady</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This remote is invoked once the content is received from the client.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onReadReady</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
             <span class="k">var</span> <span class="p">[</span><span class="nx">content</span><span class="p">,</span> <span class="nx">length</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
@@ -102,33 +102,33 @@ redirect_from:
                         <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">arrayLength</span><span class="p">)</span> <span class="p">{</span>
                             <span class="k">var</span> <span class="nx">writeResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">write</span><span class="p">(</span><span class="nx">payloadByte</span><span class="p">);</span>
                             <span class="k">if</span> <span class="p">(</span><span class="nx">writeResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-                                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Number of bytes written: &quot;</span>
+                                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Number of bytes written: &quot;</span>
                                     <span class="o">+</span> <span class="nx">writeResult</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
                                 <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">writeResult</span><span class="p">;</span>
                                 <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">payloadByte</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">writeResult</span><span class="p">,</span>
                                                                 <span class="nx">arrayLength</span><span class="p">);</span>
                             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unable to write the content&quot;</span><span class="p">,</span>
-                                    <span class="nx">writeResult</span><span class="p">);</span>
+                                    <span class="nx">err</span> <span class="p">=</span> <span class="nx">writeResult</span><span class="p">);</span>
                             <span class="p">}</span>
                         <span class="p">}</span>
                     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while writing content to &quot;</span> <span class="o">+</span>
-                                        <span class="s">&quot;the caller&quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">);</span>
+                                        <span class="s">&quot;the caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">str</span><span class="p">);</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Client left: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Client left: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">// This resource is invoked for the error situation</span>
+    <span class="c1">// This remote is invoked for the error situation</span>
     <span class="c1">// if it happens during the `onConnect` and `onReadReady`.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">er</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="nx">er</span><span class="p">);</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">er</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">er</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -144,7 +144,7 @@ redirect_from:
  The TCP Client is used to connect to a remote TCP server.
  This sample demonstrates how the TCP socket listener service interacts with the TCP client.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/socket/">Socket module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/tcp/">TCP module</a>.</p>
 </p>
 
                         </td>
@@ -221,7 +221,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/socket;
+import ballerina/tcp;
 </code></pre></div>
 
                                 </td>
@@ -252,7 +252,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    socket:Client socketClient = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>    tcp:Client socketClient = new ({
         host: &quot;localhost&quot;,
         port: 61598
     });
@@ -265,7 +265,7 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new socket client by providing the host, port, and callback service.</p>
+                                            <p>Create a new tcp client by providing the host, port, and callback service.</p>
 
                                         </div>
                                     </div>
@@ -464,7 +464,7 @@ Client connection closed successfully.
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
-import ballerina/socket;
+import ballerina/tcp;
 </code></pre></div>
 
                                 </td>
@@ -483,7 +483,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service echoServer on new socket:Listener(61598) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service &quot;echoServer&quot; on new tcp:Listener(61598) {
 </code></pre></div>
 
                                 </td>
@@ -492,7 +492,7 @@ import ballerina/socket;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Bind the service to the port.
- The socket listener should have these four predefined resources.</p>
+ The tcp listener should have these four predefined resources.</p>
 
                                         </div>
                                     </div>
@@ -503,8 +503,8 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onConnect(socket:Caller caller) {
-        log:printInfo(&quot;Client connected: &quot; + caller.id.toString());
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onConnect(tcp:Caller caller) {
+        log:print(&quot;Client connected: &quot; + caller.id.toString());
     }
 </code></pre></div>
 
@@ -513,7 +513,7 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is invoked when the new client joins.</p>
+                                            <p>This remote is invoked when the new client joins.</p>
 
                                         </div>
                                     </div>
@@ -524,7 +524,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onReadReady(socket:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onReadReady(tcp:Caller caller) {
         var result = caller-&gt;read();
         if (result is [byte[], int]) {
             var [content, length] = result;
@@ -536,7 +536,7 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is invoked once the content is received from the client.</p>
+                                            <p>This remote is invoked once the content is received from the client.</p>
 
                                         </div>
                                     </div>
@@ -579,23 +579,23 @@ import ballerina/socket;
                         while (i &lt; arrayLength) {
                             var writeResult = caller-&gt;write(payloadByte);
                             if (writeResult is int) {
-                                log:printInfo(&quot;Number of bytes written: &quot;
+                                log:print(&quot;Number of bytes written: &quot;
                                     + writeResult.toString());
                                 i = i + writeResult;
                                 payloadByte = payloadByte.slice(writeResult,
                                                                 arrayLength);
                             } else {
                                 log:printError(&quot;Unable to write the content&quot;,
-                                    writeResult);
+                                    err = writeResult);
                             }
                         }
                     } else {
                         log:printError(&quot;Error while writing content to &quot; +
-                                        &quot;the caller&quot;, str);
+                                        &quot;the caller&quot;, err = str);
                     }
                 }
             } else {
-                log:printInfo(&quot;Client left: &quot; + caller.id.toString());
+                log:print(&quot;Client left: &quot; + caller.id.toString());
             }
         } else {
             io:println(result);
@@ -619,8 +619,8 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(socket:Caller caller, error er) {
-        log:printError(&quot;An error occurred&quot;, er);
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(tcp:Caller caller, error er) {
+        log:printError(&quot;An error occurred&quot;, err = er);
     }
 }
 </code></pre></div>
@@ -630,7 +630,7 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is invoked for the error situation
+                                            <p>This remote is invoked for the error situation
  if it happens during the <code>onConnect</code> and <code>onReadReady</code>.</p>
 
                                         </div>
@@ -677,8 +677,8 @@ ballerina run tcp_socket_listener.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The socket listener starts listening to the port 61598 for incoming client requests.
-[ballerina/socket] started socket listener 61598
+                                    <div class="highlight"><pre><code class=shell-session># The tcp listener starts listening to the port 61598 for incoming client requests.
+[ballerina/tcp] started tcp listener 61598
 </code></pre></div>
 
                                 </td>
@@ -690,9 +690,9 @@ ballerina run tcp_socket_listener.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>2019-02-18 11:24:32,429 INFO  [] - Client connected: 504372137
-2019-02-18 11:24:32,467 INFO  [] - Number of bytes written: 20
-2019-02-18 11:24:32,487 INFO  [] - Client left: 504372137
+                                    <div class="highlight"><pre><code class=shell-session>time = 2020-12-15 16:49:27,901 level = INFO  module = &quot;&quot; message = &quot;Client connected: 111342261&quot; 
+time = 2020-12-15 16:49:27,916 level = INFO  module = &quot;&quot; message = &quot;Number of bytes written: 20&quot; 
+time = 2020-12-15 16:49:27,935 level = INFO  module = &quot;&quot; message = &quot;Client left: 111342261&quot;
 </code></pre></div>
 
                                 </td>

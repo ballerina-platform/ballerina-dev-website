@@ -80,19 +80,19 @@ redirect_from:
 <span class="c1">// automatically on the start up.</span>
 <span class="c1">// Also, the exclusion of the onIntentVerification resource will result in auto intent-verification.</span>
 <span class="nd">@websub:SubscriberServiceConfig {</span>
-    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span>
     <span class="nx">target</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://localhost:9191/websub/hub&quot;</span><span class="p">,</span> <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">],</span>
     <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">websubSubscriber</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriberService</span> <span class="o">/</span><span class="nx">websub</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
 
-    <span class="c1">// This resource accepts content delivery requests.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This remote function accepts content delivery requests.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">notification</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;WebSub Notification Received: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;WebSub Notification Received: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span>
+                                  <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -566,11 +566,10 @@ import ballerina/websub;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@websub:SubscriberServiceConfig {
-    path: &quot;/websub&quot;,
     target: [&quot;http://localhost:9191/websub/hub&quot;, &quot;http://websubpubtopic.com&quot;],
     secret: &quot;Kslk30SNF2AChs2&quot;
 }
-service websubSubscriber on websubEP {
+service websub:SubscriberService /websub on websubEP {
 </code></pre></div>
 
                                 </td>
@@ -592,12 +591,13 @@ service websubSubscriber on websubEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onNotification(websub:Notification notification) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {
-            log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
+            log:print(&quot;WebSub Notification Received: &quot; + payload);
         } else {
-            log:printError(&quot;Error retrieving payload as string&quot;, payload);
+            log:printError(&quot;Error retrieving payload as string&quot;,
+                                  err = payload);
         }
     }
 }
@@ -608,7 +608,7 @@ service websubSubscriber on websubEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource accepts content delivery requests.</p>
+                                            <p>This remote function accepts content delivery requests.</p>
 
                                         </div>
                                     </div>

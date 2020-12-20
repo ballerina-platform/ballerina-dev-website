@@ -10,12 +10,12 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient) with the backend URL and assigns a callback service.</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">,</span>
+    <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">,</span>
                             <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span><span class="p">});</span>
     <span class="c1">// Pushes a text message to the server using [pushText](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#pushText).</span>
     <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
@@ -25,15 +25,16 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// The client callback service, which handles backend responses.</span>
-<span class="kd">service</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
+<span class="kd">service</span> <span class="nx">object</span> <span class="p">{}</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="nd">@websocket:ServiceConfig {} service object {</span>
 
-    <span class="c1">// This resource is triggered when a new text frame is received from the remote backend.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
+    <span class="c1">// This remote function is triggered when a new text frame is received from</span>
+    <span class="c1">// the remote backend.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
                              <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="c1">// This is triggered if an error occurs.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -56,9 +57,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-2-0-server-push.html">
+                                    <a class="prev" href="graphql-resources-with-record-values.html">
                                         <span>< PREVIOUS</span>
-                                        <p>HTTP 2.0 Server Push</p>
+                                        <p>GraphQL Resources with Record Values</p>
                                     </a>
                                 </div>
                                  
@@ -128,8 +129,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/websocket;
 </code></pre></div>
 
                                 </td>
@@ -153,7 +154,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:WebSocketClient wsClientEp = new (&quot;ws://echo.websocket.org&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    websocket:Client wsClientEp = new (&quot;ws://echo.websocket.org&quot;,
                             config = {callbackService: ClientService});
 </code></pre></div>
 
@@ -214,7 +215,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service ClientService = @http:WebSocketServiceConfig {} service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service object {} ClientService = @websocket:ServiceConfig {} service object {
 </code></pre></div>
 
                                 </td>
@@ -233,7 +234,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketClient conn, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onText(websocket:Client conn, string text,
                              boolean finalFrame) {
         io:println(text);
     }
@@ -244,7 +245,8 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is triggered when a new text frame is received from the remote backend.</p>
+                                            <p>This remote function is triggered when a new text frame is received from
+ the remote backend.</p>
 
                                         </div>
                                     </div>
@@ -255,7 +257,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketClient conn, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(websocket:Client conn, error err) {
         io:println(err);
     }
 };

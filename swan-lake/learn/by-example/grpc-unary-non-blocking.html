@@ -19,10 +19,10 @@ redirect_from:
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
 
         <span class="c1">// Send a response message to the caller.</span>
@@ -60,20 +60,20 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Server Message Listener.</span>
-<span class="kd">service</span> <span class="nx">HelloWorldMessageListener</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">object</span><span class="p">{}</span> <span class="nx">HelloWorldMessageListener</span> <span class="p">=</span> <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
 
     <span class="c1">// The `resource` registered to receive server messages.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Response received from server: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// The `resource` registered to receive server error messages.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error reported from server: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="c1">// The `resource` registered to receive server completed messages.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Server Complete Sending Response.&quot;</span><span class="p">);</span>
         <span class="nx">total</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
@@ -303,7 +303,7 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on new grpc:Listener(9090) {
+service /HelloWorld on new grpc:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -322,8 +322,8 @@ service HelloWorld on new grpc:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hello(grpc:Caller caller, string name) {
-        log:printInfo(&quot;Server received hello from &quot; + name);
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function hello(grpc:Caller caller, string name) {
+        log:print(&quot;Server received hello from &quot; + name);
         string message = &quot;Hello &quot; + name;
 </code></pre></div>
 
@@ -619,7 +619,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorldMessageListener = service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service object{} HelloWorldMessageListener = service object {
 </code></pre></div>
 
                                 </td>
@@ -638,7 +638,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function onMessage(string message) {
         io:println(&quot;Response received from server: &quot; + message);
     }
 </code></pre></div>
@@ -659,7 +659,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function onError(error err) {
         io:println(&quot;Error reported from server: &quot; + err.message());
     }
 </code></pre></div>
@@ -680,7 +680,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onComplete() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function onComplete() {
         io:println(&quot;Server Complete Sending Response.&quot;);
         total = 1;
     }

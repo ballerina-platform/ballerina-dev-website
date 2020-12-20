@@ -10,32 +10,24 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
 
-<span class="c1">// Creates a ballerina RabbitMQ connection that allows re-usability if necessary.</span>
-<span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span>
-
-<span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
 <span class="c1">// The consumer service listens to the &quot;MyQueue&quot; queue.</span>
 <span class="c1">// The `ackMode` is by default rabbitmq:AUTO_ACK where messages are acknowledged</span>
 <span class="c1">// immediately after consuming.</span>
 <span class="nd">@rabbitmq:ServiceConfig {</span>
-    <span class="nx">queueConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span>
-    <span class="p">}</span>
+    <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span>
 <span class="p">}</span>
 <span class="c1">// Attaches the service to the listener.</span>
-<span class="kd">service</span> <span class="nx">rabbitmqConsumer</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
-
-    <span class="c1">// Gets triggered when a message is received by the queue.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-
-        <span class="c1">// Retrieves the text content of the message.</span>
-        <span class="k">var</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getTextContent</span><span class="p">();</span>
+<span class="kd">service</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
                         <span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
@@ -122,12 +114,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -136,7 +122,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;string;
+import ballerina/log;
 import ballerinax/rabbitmq;
 </code></pre></div>
 
@@ -146,29 +133,10 @@ import ballerinax/rabbitmq;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a ballerina RabbitMQ connection that allows re-usability if necessary.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener rabbitmq:Listener channelListener = new (connection);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener rabbitmq:Listener channelListener = new;
 </code></pre></div>
 
                                 </td>
@@ -181,9 +149,7 @@ import ballerinax/rabbitmq;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@rabbitmq:ServiceConfig {
-    queueConfig: {
-        queueName: &quot;MyQueue&quot;
-    }
+    queueName: &quot;MyQueue&quot;
 }
 </code></pre></div>
 
@@ -204,48 +170,12 @@ import ballerinax/rabbitmq;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service rabbitmqConsumer on channelListener {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Attaches the service to the listener.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(rabbitmq:Message message) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Gets triggered when a message is received by the queue.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var messageContent = message.getTextContent();
+                                    <div class="highlight"><pre><code class=language-ballerina>service rabbitmq:Service on channelListener {
+    remote function onMessage(rabbitmq:Message message) {
+        string|error messageContent = &#39;string:fromBytes(message.content);
         if (messageContent is string) {
-            log:printInfo(&quot;The message received: &quot; + messageContent);
+            log:print(&quot;The message received: &quot; + messageContent);
         } else {
             log:printError(
                         &quot;Error occurred while retrieving the message content.&quot;);
@@ -259,7 +189,7 @@ import ballerinax/rabbitmq;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Retrieves the text content of the message.</p>
+                                            <p>Attaches the service to the listener.</p>
 
                                         </div>
                                     </div>

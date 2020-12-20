@@ -18,16 +18,9 @@ redirect_from:
 <span class="c1">// Creates an endpoint for the [client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client).</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/stream&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">HTTPStreamingService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="p">&#39;stream on new http:Listener(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/fileupload&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">handleOutputStream</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">fileupload</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                          <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
@@ -48,7 +41,7 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending data to the client &quot;</span><span class="p">,</span>
-                            <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
             <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
@@ -58,11 +51,7 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/receiver&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">handleInputStream</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">receiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientRequest</span><span class="p">.</span><span class="nx">getByteChannel</span><span class="p">();</span>
@@ -135,7 +124,7 @@ redirect_from:
     <span class="p">}</span> <span class="nx">channelResult</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">channelResult</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -279,10 +268,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/stream&quot;
-}
-service HTTPStreamingService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /&#39;stream on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -294,11 +280,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/fileupload&quot;
-    }
-    resource function handleOutputStream(http:Caller caller,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get fileupload(http:Caller caller,
                                          http:Request clientRequest) {
         http:Request request = new;
 </code></pre></div>
@@ -361,7 +343,7 @@ service HTTPStreamingService on new http:Listener(9090) {
             }
         } else {
             log:printError(&quot;Error occurred while sending data to the client &quot;,
-                            &lt;error&gt;clientResponse);
+                            err = &lt;error&gt;clientResponse);
             setError(res, &lt;error&gt;clientResponse);
         }
         var result = caller-&gt;respond(res);
@@ -381,11 +363,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;POST&quot;],
-        path: &quot;/receiver&quot;
-    }
-    resource function handleInputStream(http:Caller caller,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post receiver(http:Caller caller,
                                         http:Request clientRequest) {
         http:Response res = new;
         var payload = clientRequest.getByteChannel();
@@ -577,7 +555,7 @@ by providing the file name to which the content should be written to.</p>
     } channelResult = ch;
     var cr = channelResult.close();
     if (cr is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
+        log:printError(&quot;Error occurred while closing the channel: &quot;, err = cr);
     }
 }
 </code></pre></div>

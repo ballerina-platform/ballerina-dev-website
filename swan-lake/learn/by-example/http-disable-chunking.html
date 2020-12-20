@@ -25,12 +25,9 @@ redirect_from:
                                         <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}}</span>
                                   <span class="p">);</span>
 
-<span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">//Create a new outbound request and set the payload.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">newReq</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">newReq</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
@@ -38,7 +35,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -47,18 +44,16 @@ redirect_from:
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// A sample backend, which responds according to the chunking behavior.</span>
-<span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">echoResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">echo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>
 
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -191,6 +186,8 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -240,7 +237,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service chunkingSample on new http:Listener(9092) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /chunkingSample on new http:Listener(9092) {
 </code></pre></div>
 
                                 </td>
@@ -252,10 +249,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function invokeEndpoint(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -273,7 +267,7 @@ import ballerina/log;
         if (clientResponse is http:Response) {
             var result = caller-&gt;respond(&lt;@untainted&gt;clientResponse);
             if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
         } else {
             http:Response errorResponse = new;
@@ -282,7 +276,7 @@ import ballerina/log;
             errorResponse.setPayload(msg);
             var response = caller-&gt;respond(errorResponse);
             if (response is error) {
-                log:printError(&quot;Error sending response&quot;, response);
+                log:printError(&quot;Error sending response&quot;, err = response);
             }
         }
     }
@@ -305,12 +299,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service echo on new http:Listener(9090) {
-    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function echoResource(http:Caller caller, http:Request req) {
-        string value;
+                                    <div class="highlight"><pre><code class=language-ballerina>service /echo on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -322,6 +311,19 @@ import ballerina/log;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post .(http:Caller caller, http:Request req) {
+        string value;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

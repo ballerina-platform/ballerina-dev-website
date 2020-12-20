@@ -13,12 +13,12 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
 <span class="c1">// By default, Ballerina exposes an HTTP service via HTTP/1.1.</span>
-<span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// Resource functions are invoked with the HTTP caller and the</span>
     <span class="c1">// incoming request as arguments.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">// Send a response back to the caller.</span>
         <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -111,7 +111,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service hello on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -130,8 +130,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function sayHello(http:Caller caller,
-        http:Request req) returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get sayHello(http:Caller caller, http:Request req)
+            returns error? {
 </code></pre></div>
 
                                 </td>

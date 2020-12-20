@@ -11,9 +11,10 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">error</span> <span class="k">as</span> <span class="nx">errors</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// The retry statement provides a general-purpose retry</span>
+    <span class="c1">// The retry statement provides a general-purpose retry.</span>
     <span class="c1">// facility, which is independent of the transactions.</span>
     <span class="c1">// Here, retrying happens according to the default retry manager</span>
     <span class="c1">// since there is no custom retry manager being passed to </span>
@@ -23,7 +24,19 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Attempting execution...&quot;</span><span class="p">);</span>
         <span class="c1">// Calls a function, which simulates an error scenario to </span>
         <span class="c1">// trigger the retry operation.</span>
-        <span class="k">return</span> <span class="nx">doWork</span><span class="p">();</span>
+        <span class="nx">check</span> <span class="nx">doWork</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// You can pass a retry manager class as a type parameter.</span>
+    <span class="nx">retry</span><span class="p">&lt;</span><span class="nx">MyRetryManager</span><span class="p">&gt;(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Attempting execution...&quot;</span><span class="p">);</span>
+       <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+       <span class="k">if</span><span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">fail</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Custom Error&quot;</span><span class="p">);</span>
+       <span class="p">}</span>
+       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Work completed.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -33,10 +46,28 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">doWork</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">count</span> <span class="p">&lt;</span> <span class="mi">1</span> <span class="p">{</span>
         <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Execution Error&quot;</span><span class="p">);</span>
+        <span class="c1">// Return a retriable error so that</span>
+        <span class="c1">// the default retry manager retries.</span>
+        <span class="k">return</span> <span class="nx">errors</span><span class="p">:</span><span class="nx">Retriable</span><span class="p">(</span><span class="s">&quot;Execution Error&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Work done.&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Work completed.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Sample retry manager class with an arbitrarily logic.</span>
+<span class="nx">public</span> <span class="nx">class</span> <span class="nx">MyRetryManager</span> <span class="p">{</span>
+   <span class="nx">private</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">;</span>
+   <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">public</span> <span class="kd">function</span> <span class="nx">shouldRetry</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">&gt;</span>  <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -117,6 +148,14 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -126,6 +165,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/lang.&#39;error as errors;
 </code></pre></div>
 
                                 </td>
@@ -158,7 +198,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The retry statement provides a general-purpose retry
+                                            <p>The retry statement provides a general-purpose retry.
  facility, which is independent of the transactions.
  Here, retrying happens according to the default retry manager
  since there is no custom retry manager being passed to
@@ -174,9 +214,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return doWork();
+                                    <div class="highlight"><pre><code class=language-ballerina>        check doWork();
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -186,6 +225,45 @@ redirect_from:
                                         <div>
                                             <p>Calls a function, which simulates an error scenario to
  trigger the retry operation.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i = 0;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    retry&lt;MyRetryManager&gt;(2) {
+       io:println(&quot;Attempting execution...&quot;);
+       i += 1;
+       if(i &lt; 2) {
+           fail error(&quot;Custom Error&quot;);
+       }
+       io:println(&quot;Work completed.&quot;);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>You can pass a retry manager class as a type parameter.</p>
 
                                         </div>
                                     </div>
@@ -207,13 +285,31 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function doWork() returns error? {
     if count &lt; 1 {
         count += 1;
-        return error(&quot;Execution Error&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The function, which may return an error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return errors:Retriable(&quot;Execution Error&quot;);
     } else {
-        io:println(&quot;Work done.&quot;);
+        io:println(&quot;Work completed.&quot;);
     }
 }
 </code></pre></div>
@@ -223,7 +319,40 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The function, which may return an error.</p>
+                                            <p>Return a retriable error so that
+ the default retry manager retries.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>public class MyRetryManager {
+   private int count;
+   public function init(int count = 3) {
+       self.count = count;
+   }
+   public function shouldRetry(error? e) returns boolean {
+     if e is error &amp;&amp; self.count &gt;  0 {
+        self.count -= 1;
+        return true;
+     } else {
+        return false;
+     }
+   }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Sample retry manager class with an arbitrarily logic.</p>
 
                                         </div>
                                     </div>
@@ -252,7 +381,10 @@ redirect_from:
 ballerina run non_transaction_retry.bal
 Attempting execution...
 Attempting execution...
-Work done.
+Work completed.
+Attempting execution...
+Attempting execution...
+Work completed..
 </code></pre></div>
 
                                 </td>

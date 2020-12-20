@@ -15,16 +15,9 @@ redirect_from:
 
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">serverEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9095</span><span class="p">);</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cookie-demo&quot;</span>
-<span class="p">}</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">cookieDemo</span> <span class="nx">on</span> <span class="nx">serverEP</span> <span class="p">{</span>
 
-<span class="kd">service</span> <span class="nx">cookieServer</span> <span class="nx">on</span> <span class="nx">serverEP</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/login&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">login</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">login</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Retrieve the JSON payload from the request as it</span>
         <span class="c1">// contains the login details of a user.</span>
         <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
@@ -56,18 +49,14 @@ redirect_from:
                     <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Login succeeded&quot;</span><span class="p">);</span>
                     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
                     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/welcome&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">welcome</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">welcome</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getCookies).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
 
@@ -105,7 +94,7 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Create a new HTTP client by giving the URL and the client configuration.</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9095/cookie-demo&quot;</span><span class="p">,</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9095/cookieDemo&quot;</span><span class="p">,</span>
                                   <span class="nx">clientEPConfig</span><span class="p">);</span>
 
     <span class="c1">// Initialize an HTTP request.</span>
@@ -122,7 +111,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">loginResp</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">loginResp</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="c1">// When the login is successful, make another request to the</span>
         <span class="c1">// `/welcome` resource of the backend service.</span>
@@ -134,7 +123,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">welcomeResp</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// A welcome message with the sent username</span>
             <span class="c1">// will get printed.</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">welcomeResp</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">welcomeResp</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -157,9 +146,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-filters.html">
+                                    <a class="prev" href="http-compression.html">
                                         <span>< PREVIOUS</span>
-                                        <p>HTTP Interceptors/Filters</p>
+                                        <p>HTTP Compression</p>
                                     </a>
                                 </div>
                                  
@@ -282,9 +271,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/cookie-demo&quot;
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>service /cookieDemo on serverEP {
 </code></pre></div>
 
                                 </td>
@@ -296,12 +283,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service cookieServer on serverEP {
-    @http:ResourceConfig {
-        methods: [&quot;POST&quot;],
-        path: &quot;/login&quot;
-    }
-    resource function login(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post login(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -470,7 +452,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>                    response.setTextPayload(&quot;Login succeeded&quot;);
                     var result = caller-&gt;respond(response);
                     if (result is error) {
-                        log:printError(&quot;Failed to respond&quot;, result);
+                        log:printError(&quot;Failed to respond&quot;, err = result);
                     }
                 }
             }
@@ -495,11 +477,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/welcome&quot;
-    }
-    resource function welcome(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get welcome(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -779,7 +757,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client httpClient = new(&quot;http://localhost:9095/cookie-demo&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client httpClient = new(&quot;http://localhost:9095/cookieDemo&quot;,
                                   clientEPConfig);
 </code></pre></div>
 
@@ -861,7 +839,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    if (loginResp is error) {
-        log:printError(&quot;Login failed&quot;, loginResp);
+        log:printError(&quot;Login failed&quot;, err = loginResp);
     } else {
 </code></pre></div>
 
@@ -909,7 +887,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(welcomeResp);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:print(welcomeResp);
         }
     }
 }
@@ -948,7 +926,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run http_client.bal
-2020-06-12 15:52:15,513 INFO  [] - Welcome back John
+time = 2020-12-15 16:14:08,691 level = INFO  module = &quot;&quot; message = &quot;Welcome back John&quot;
 </code></pre></div>
 
                                 </td>

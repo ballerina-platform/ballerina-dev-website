@@ -27,13 +27,12 @@ redirect_from:
 <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 
 <span class="c1">// Creating a service bound to the task listener.</span>
-<span class="kd">service</span> <span class="nx">timerService</span> <span class="nx">on</span> <span class="nx">timer</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">on</span> <span class="nx">timer</span> <span class="p">{</span>
     <span class="c1">// This resource triggers when the timer goes off.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MyCounter: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
     <span class="p">}</span>
-
 <span class="p">}</span>
 </pre></div>
 
@@ -67,9 +66,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xslt-transformation.html">
+                                    <a class="next" href="uuid.html">
                                         <span>NEXT ></span>
-                                        <p>XSLT Transformation</p>
+                                        <p>UUID</p>
                                     </a>
                                 </div>
                                 
@@ -107,8 +106,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -217,7 +214,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service timerService on timer {
+                                    <div class="highlight"><pre><code class=language-ballerina>service on timer {
 </code></pre></div>
 
                                 </td>
@@ -235,11 +232,12 @@ import ballerina/task;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onTrigger() {
         count += 1;
         io:println(&quot;MyCounter: &quot;, count);
     }
+}
 </code></pre></div>
 
                                 </td>
@@ -251,18 +249,6 @@ import ballerina/task;
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

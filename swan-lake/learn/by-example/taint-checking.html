@@ -589,10 +589,10 @@ import ballerinax/mysql;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run taint_checking.bal
-error: .::taint_checking.bal:33:34: tainted value passed to untainted parameter &#39;sqlQuery&#39;
-error: .::taint_checking.bal:37:32: tainted value passed to untainted parameter &#39;secureParameter&#39;
-error: .::taint_checking.bal:56:32: tainted value passed to untainted parameter &#39;secureParameter&#39;
-error: .::taint_checking.bal:61:32: tainted value passed to untainted parameter &#39;secureParameter&#39;
+ERROR [taint_checking.bal:(33:34,34:69)] tainted value passed to untainted parameter &#39;sqlQuery&#39;
+ERROR [taint_checking.bal:(37:32,37:39)] tainted value passed to untainted parameter &#39;secureParameter&#39;
+ERROR [taint_checking.bal:(56:32,56:48)] tainted value passed to untainted parameter &#39;secureParameter&#39;
+ERROR [taint_checking.bal:(61:32,61:46)] tainted value passed to untainted parameter &#39;secureParameter&#39;
 </code></pre></div>
 
                                 </td>

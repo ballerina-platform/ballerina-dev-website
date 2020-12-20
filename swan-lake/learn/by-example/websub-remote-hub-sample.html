@@ -91,44 +91,43 @@ redirect_from:
 
 <span class="c1">// Annotations specifying the subscription parameters.</span>
 <span class="nd">@websub:SubscriberServiceConfig {</span>
-    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span>
     <span class="nx">subscribeOnStartUp</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">target</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://localhost:9191/websub/hub&quot;</span><span class="p">,</span> <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">],</span>
     <span class="nx">leaseSeconds</span><span class="p">:</span> <span class="mi">36000</span><span class="p">,</span>
     <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">websubSubscriber</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">SubscriberService</span> <span class="o">/</span><span class="nx">websub</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
 
-    <span class="c1">// Defines the resource that accepts the intent verification requests.</span>
-    <span class="c1">// If the resource is not specified, intent verification happens automatically. It verifies if the topic</span>
+    <span class="c1">// Defines the remote function that accepts the intent verification requests.</span>
+    <span class="c1">// If the remote function is not specified, intent verification happens automatically. It verifies if the topic</span>
     <span class="c1">// specified in the intent verification request matches the topic specified as the annotation.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onIntentVerification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onIntentVerification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                    <span class="nx">websub</span><span class="p">:</span><span class="nx">IntentVerificationRequest</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Builds the response for the subscription intent verification request that was received.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span>
             <span class="nx">buildSubscriptionVerificationResponse</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">202</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Intent verified for subscription request&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Intent verified for subscription request&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printWarn</span><span class="p">(</span>
-                        <span class="s">&quot;Intent verification denied for subscription request&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Intent verification denied for subscription request&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding to intent verification request&quot;</span><span class="p">,</span>
-                                                        <span class="nx">result</span><span class="p">);</span>
+                                                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">// Defines the resource that accepts the content delivery requests.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Defines the remote function that accepts the content delivery requests.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">notification</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;WebSub Notification Received: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;WebSub Notification Received: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span>
+                                     <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -472,7 +471,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the remote [WebSub Hub client]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient.html">https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient</a>) to which registration and publish requests are sent.</p>
+                                            <p>This is the remote [WebSub Hub client]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient">https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient</a>) to which registration and publish requests are sent.</p>
 
                                         </div>
                                     </div>
@@ -702,13 +701,12 @@ import ballerina/websub;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@websub:SubscriberServiceConfig {
-    path: &quot;/websub&quot;,
     subscribeOnStartUp: true,
     target: [&quot;http://localhost:9191/websub/hub&quot;, &quot;http://websubpubtopic.com&quot;],
     leaseSeconds: 36000,
     secret: &quot;Kslk30SNF2AChs2&quot;
 }
-service websubSubscriber on websubEP {
+service websub:SubscriberService /websub on websubEP {
 </code></pre></div>
 
                                 </td>
@@ -727,7 +725,7 @@ service websubSubscriber on websubEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onIntentVerification(websub:Caller caller,
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onIntentVerification(websub:Caller caller,
                                    websub:IntentVerificationRequest request) {
 </code></pre></div>
 
@@ -736,8 +734,8 @@ service websubSubscriber on websubEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the resource that accepts the intent verification requests.
- If the resource is not specified, intent verification happens automatically. It verifies if the topic
+                                            <p>Defines the remote function that accepts the intent verification requests.
+ If the remote function is not specified, intent verification happens automatically. It verifies if the topic
  specified in the intent verification request matches the topic specified as the annotation.</p>
 
                                         </div>
@@ -770,10 +768,9 @@ service websubSubscriber on websubEP {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (response.statusCode == 202) {
-            log:printInfo(&quot;Intent verified for subscription request&quot;);
+            log:print(&quot;Intent verified for subscription request&quot;);
         } else {
-            log:printWarn(
-                        &quot;Intent verification denied for subscription request&quot;);
+            log:print(&quot;Intent verification denied for subscription request&quot;);
         }
         var result = caller-&gt;respond(&lt;@untainted&gt;response);
 </code></pre></div>
@@ -789,7 +786,7 @@ service websubSubscriber on websubEP {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error responding to intent verification request&quot;,
-                                                        result);
+                                                        err = result);
         }
     }
 </code></pre></div>
@@ -803,12 +800,13 @@ service websubSubscriber on websubEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onNotification(websub:Notification notification) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {
-            log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
+            log:print(&quot;WebSub Notification Received: &quot; + payload);
         } else {
-            log:printError(&quot;Error retrieving payload as string&quot;, payload);
+            log:printError(&quot;Error retrieving payload as string&quot;,
+                                     err = payload);
         }
     }
 }
@@ -819,7 +817,7 @@ service websubSubscriber on websubEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the resource that accepts the content delivery requests.</p>
+                                            <p>Defines the remote function that accepts the content delivery requests.</p>
 
                                         </div>
                                     </div>

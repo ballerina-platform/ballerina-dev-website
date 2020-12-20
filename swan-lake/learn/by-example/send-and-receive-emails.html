@@ -21,9 +21,9 @@ redirect_from:
         <span class="p">,</span> <span class="s">&quot;pass123&quot;</span><span class="p">);</span>
 
     <span class="c1">// Define the email that is required to be sent.</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">email</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span> <span class="nx">email</span> <span class="p">=</span> <span class="p">{</span>
         <span class="c1">// &quot;TO&quot;, &quot;CC&quot;, and &quot;BCC&quot; address lists are added as follows.</span>
-        <span class="c1">// Only &quot;TO&quot; address list is mandatory out of these three.</span>
+        <span class="c1">// Only the &quot;TO&quot; address list is mandatory out of these three.</span>
         <span class="nx">to</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver2@email.com&quot;</span><span class="p">],</span>
         <span class="nx">cc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver3@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver4@email.com&quot;</span><span class="p">],</span>
         <span class="nx">bcc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver5@email.com&quot;</span><span class="p">],</span>
@@ -45,8 +45,8 @@ redirect_from:
         <span class="nx">replyTo</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;replyTo1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;replyTo2@email.com&quot;</span><span class="p">]</span>
     <span class="p">};</span>
 
-    <span class="c1">// Send the email with the client.</span>
-    <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
+    <span class="c1">// Send the email message with the client.</span>
+    <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">sendEmailMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
 
     <span class="c1">// Create the client with the connection parameters, host, username, and</span>
     <span class="c1">// password. An error is received in a failure. The default port number</span>
@@ -57,9 +57,10 @@ redirect_from:
     <span class="c1">// Read the first unseen email received by the POP3 server. `()` is</span>
     <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
     <span class="c1">// error is returned.</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">receiveEmailMessage</span><span class="p">();</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;POP client received an email.&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
     <span class="c1">// When no emails are available in the server, `()` is returned.</span>
@@ -77,9 +78,10 @@ redirect_from:
     <span class="c1">// Read the first unseen email received by the IMAP4 server. `()` is</span>
     <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
     <span class="c1">// error is returned.</span>
-    <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
+    <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">receiveEmailMessage</span><span class="p">();</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;IMAP client received an email.&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
     <span class="c1">// When no emails are available in the server, `()` is returned.</span>
@@ -90,37 +92,31 @@ redirect_from:
 
 <span class="p">}</span>
 
-<span class="c1">// Defines the protocol-specific configuration for the email listener. It can</span>
-<span class="c1">// either be `email:PopConfig` for POP or `email:ImapConfig` for IMAP.</span>
-<span class="nx">email</span><span class="p">:</span><span class="nx">PopConfig</span> <span class="nx">popConfig</span> <span class="p">=</span> <span class="p">{</span>
-     <span class="nx">port</span><span class="p">:</span> <span class="mi">995</span><span class="p">,</span>
-     <span class="nx">enableSsl</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">};</span>
-
-<span class="c1">// Create the listener with the connection parameters and protocol-related </span>
+<span class="c1">// Create the listener with the connection parameters and the protocol-related</span>
 <span class="c1">// configuration. The polling interval specifies the time duration between each poll</span>
-<span class="c1">// performed by the listener.</span>
-<span class="nx">listener</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">emailListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="c1">// performed by the listener in milliseconds.</span>
+<span class="nx">listener</span> <span class="nx">email</span><span class="p">:</span><span class="nx">PopListener</span> <span class="nx">emailListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;pass456&quot;</span><span class="p">,</span>
-    <span class="nx">protocol</span><span class="p">:</span> <span class="s">&quot;POP&quot;</span><span class="p">,</span>
-    <span class="nx">protocolConfig</span><span class="p">:</span> <span class="nx">popConfig</span><span class="p">,</span>
-    <span class="nx">pollingInterval</span><span class="p">:</span> <span class="mi">2000</span>
+    <span class="nx">pollingIntervalInMillis</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="nx">port</span><span class="p">:</span> <span class="mi">995</span><span class="p">,</span>
+    <span class="nx">enableSsl</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">});</span>
 
 <span class="c1">// One or many services can listen to the email listener for the periodically-polled</span>
 <span class="c1">// emails.</span>
-<span class="kd">service</span> <span class="nx">emailObserver</span> <span class="nx">on</span> <span class="nx">emailListener</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="s">&quot;emailObserver&quot;</span> <span class="nx">on</span> <span class="nx">emailListener</span> <span class="p">{</span>
 
     <span class="c1">// When an email is successfully received, the `onMessage` method is called.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">emailMessage</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onEmailMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Message</span> <span class="nx">emailMessage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;POP Listener received an email.&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailMessage</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailMessage</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// When an error occurs during the email poll operations, the `onError` method is called.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">emailError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">emailError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while polling for the emails: &quot;</span>
             <span class="o">+</span> <span class="nx">emailError</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
@@ -243,8 +239,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -300,7 +294,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:Email email = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Message email = {
 </code></pre></div>
 
                                 </td>
@@ -330,7 +324,7 @@ import ballerina/io;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>&ldquo;TO&rdquo;, &ldquo;CC&rdquo;, and &ldquo;BCC&rdquo; address lists are added as follows.
- Only &ldquo;TO&rdquo; address list is mandatory out of these three.</p>
+ Only the &ldquo;TO&rdquo; address list is mandatory out of these three.</p>
 
                                         </div>
                                     </div>
@@ -443,7 +437,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check smtpClient-&gt;send(email);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check smtpClient-&gt;sendEmailMessage(email);
 </code></pre></div>
 
                                 </td>
@@ -451,7 +445,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send the email with the client.</p>
+                                            <p>Send the email message with the client.</p>
 
                                         </div>
                                     </div>
@@ -484,7 +478,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:Email? emailResponse = check popClient-&gt;read();
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Message? emailResponse = check popClient-&gt;receiveEmailMessage();
 </code></pre></div>
 
                                 </td>
@@ -505,7 +499,8 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (emailResponse is email:Email) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (emailResponse is email:Message) {
+        io:println(&quot;POP client received an email.&quot;);
         io:println(&quot;Email Subject: &quot;, emailResponse.subject);
         io:println(&quot;Email Body: &quot;, emailResponse.body);
 </code></pre></div>
@@ -573,7 +568,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    emailResponse = check imapClient-&gt;read();
+                                    <div class="highlight"><pre><code class=language-ballerina>    emailResponse = check imapClient-&gt;receiveEmailMessage();
 </code></pre></div>
 
                                 </td>
@@ -594,7 +589,8 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (emailResponse is email:Email) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (emailResponse is email:Message) {
+        io:println(&quot;IMAP client received an email.&quot;);
         io:println(&quot;Email Subject: &quot;, emailResponse.subject);
         io:println(&quot;Email Body: &quot;, emailResponse.body);
 </code></pre></div>
@@ -652,36 +648,13 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>email:PopConfig popConfig = {
-     port: 995,
-     enableSsl: true
-};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the protocol-specific configuration for the email listener. It can
- either be <code>email:PopConfig</code> for POP or <code>email:ImapConfig</code> for IMAP.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener email:Listener emailListener = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>listener email:PopListener emailListener = new ({
     host: &quot;pop.email.com&quot;,
     username: &quot;reader@email.com&quot;,
     password: &quot;pass456&quot;,
-    protocol: &quot;POP&quot;,
-    protocolConfig: popConfig,
-    pollingInterval: 2000
+    pollingIntervalInMillis: 2000,
+    port: 995,
+    enableSsl: true
 });
 </code></pre></div>
 
@@ -690,9 +663,9 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create the listener with the connection parameters and protocol-related
+                                            <p>Create the listener with the connection parameters and the protocol-related
  configuration. The polling interval specifies the time duration between each poll
- performed by the listener.</p>
+ performed by the listener in milliseconds.</p>
 
                                         </div>
                                     </div>
@@ -703,7 +676,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service emailObserver on emailListener {
+                                    <div class="highlight"><pre><code class=language-ballerina>service &quot;emailObserver&quot; on emailListener {
 </code></pre></div>
 
                                 </td>
@@ -723,7 +696,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(email:Email emailMessage) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onEmailMessage(email:Message emailMessage) {
+        io:println(&quot;POP Listener received an email.&quot;);
         io:println(&quot;Email Subject: &quot;, emailMessage.subject);
         io:println(&quot;Email Body: &quot;, emailMessage.body);
     }
@@ -745,7 +719,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(email:Error emailError) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(email:Error emailError) {
         io:println(&quot;Error while polling for the emails: &quot;
             + emailError.message());
     }

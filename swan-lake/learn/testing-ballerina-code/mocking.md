@@ -42,7 +42,7 @@ import ballerina/http;
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
 
-    remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:Payload|http:ClientError {
+    remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:PayloadType|http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;

@@ -357,22 +357,16 @@ ballerina run graphql_resources_with_record_values.bal
 
                         <table class="cBBE-body">
                             
-                            <tr class="cTR hover-enable cOutputTr">
+                            <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl -XPOST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot; { profile(id: 1) { name, address { city } } }&quot; }&#39; &#39;http://localhost:9090/graphql&#39;
+                                    <div class="highlight"><pre><code class=shell-session># Invoke the GraphQL service with a cURL command.
+curl -XPOST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot; { profile(id: 1) { name, address { city } } }&quot; }&#39; &#39;http://localhost:9090/graphql&#39;
 {&quot;data&quot;:{&quot;profile&quot;:{&quot;name&quot;:&quot;Walter White&quot;, &quot;address&quot;:{&quot;city&quot;:&quot;Albuquerque&quot;}}}}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Invoke the GraphQL service with a cURL command.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>

@@ -842,7 +842,7 @@
             },
             {
                 "name": "Absolute Resource Path and Resource Path",
-                "url": "http-absolute-path-and-path"
+                "url": "absolute-path-and-path"
             },
             {
                 "name": "Query Path Matrix Param",
@@ -941,14 +941,7 @@
             {
                 "name": "GraphQL Resources with Scalar Values",
                 "url": "graphql-resources-with-scalar-values"
-            }
-        ]
-    },
-    {
-        "title": "GraphQL",
-        "column": 0,
-        "category": "Working over the network",
-        "samples": [
+            },
             {
                 "name": "GraphQL Resources with Record Values",
                 "url": "graphql-resources-with-record-values"

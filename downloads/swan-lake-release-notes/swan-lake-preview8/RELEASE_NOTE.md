@@ -235,7 +235,7 @@ Ballerina transaction capabilities have been extended to services. Now, you can 
 
 By defining services as participants, all services work as a single unit of work. If any of the services fail, the whole transaction will be reverted and if all the services are successfully called, the transaction will be completed and committed successfully. 
 
-**Defining Transactional Resource Methods in a Service**
+###### Defining Transactional Resource Methods in a Service
 
 ```ballerina
 transactional resource function get message(http:Caller caller, http:Request req) {
@@ -246,7 +246,7 @@ transactional resource function get message(http:Caller caller, http:Request req
 }
 ```
 
-**Defining Transactional Remote Methods in a Client Object**
+###### Defining Transactional Remote Methods in a Client Object
 
 
 ```ballerina
@@ -259,7 +259,7 @@ transactional remote function callMySecondService() returns @tainted any|error {
 }
 ```
 
-**Calling the Service**
+###### Calling the Service
 
 ```ballerina
 transaction {
@@ -357,12 +357,12 @@ service http:Service /mytest on new http:Listener(9090) {
 
 The methods related to sending and receiving emails were renamed. The Listener API was divided into the POP and IMAP protocols. 
 
-**Client Changes**
+###### Client Changes
 
  - The `email:Email` definition is changed to `email:Message`.
  - The `read` method of the `email:ImapClient`, `email:PopClient`, and `email:Listener` (i.e., the new `email:PopListener` and `email:ImapListener`) are changed to `receiveEmailMessage`.
 
-**Service Declaration**
+###### Service Declaration
 
 - The `email:Listener` is split into the `email:PopListener` and `email:ImapListener`. Therefore, the `protocol` field is removed from the new protocol-specific listeners. The `email:PopConfig` or `email:ImapConfig` that was used as a field for the `email:Listener` is not required for new the API implementation. The protocol configuration-related fields are made parts of the new listeners.
 - The resource methods are changed to remote methods in the new listener APIs.
@@ -459,19 +459,19 @@ service websub:SubscriberService /websub on new websub:Listener(8181) {
 
 ##### Introduced New Modules
 
-**GraphQL**
+###### GraphQL
 
 The Ballerina GraphQL module is introduced with this release. This module provides the support to define GraphQL services and handle simple GraphQL queries. Currently, this supports GraphQL service endpoints with the resource methods, which return `graphql:Scalar` values (`int`, `string`, `boolean`, and `float`) and record types only.
 
-**NATS Streaming (STAN)**
+###### NATS Streaming (STAN)
 
 With this release, a new module is introduced for NATS Streaming. Previously, the Ballerina NATS module included the support for streaming as well. Now, NATS and NATS Streaming are separated into Ballerina NATS and Ballerina STAN modules.
 
-**UUID**
+###### UUID
 
 The Ballerina UUID module is introduced with this release. This module provides functions related to UUID (Universally Unique Identifier) such as generating different types of UUIDs and validating and checking the versions of UUID strings.
 
-**WebSocket**
+###### WebSocket
 
 - The WebSocket module has been moved out of the HTTP module. Therefore, you will have to change the import from `ballerina/http` to `ballerina/websocket`.
 - Introduced a new listener for the WebSocket module.

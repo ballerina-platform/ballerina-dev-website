@@ -16,7 +16,7 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
         - [Support Identifier Escapes Without an Initial Quote](#support-identifier-escapes-without-an-initial-quote)
         - [Included Record Parameters](#included-record-parameters)
         - [Service Typing Changes](#service-typing-changes)
-        - [Listener object](#listener-object)
+        - [Listener Object](#listener-object)
         - [Transactional Services](#transactional-services)
     - [Standard Library](#standard-library)
         - [HTTP Module Changes](#http-module-changes)
@@ -141,7 +141,7 @@ A named argument in a function call can correspond to the fields of an included 
 
 Services are now based on objects. The service declaration syntax below is mere syntactic sugar for creating a new instance of a service class and then attaching it to a listener. With this change, the path that the service should serve on can be provided in the service-declaration syntax. This was previously provided using an annotation.
 
-Previous syntax:
+**Previous Syntax**
 
 ```ballerina
 import ballerina/http;
@@ -154,7 +154,7 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-New syntax:
+**New Syntax**
 
 ```ballerina
 import ballerina/http;
@@ -212,12 +212,12 @@ string[] basePath = ["hello", "path"]; // service on "/hello/path"
 l.attach(hello, basePath);
 ```
 
-##### Listener object 
+##### Listener Object 
 
 Listener is no longer defined in `ballerina/lang.object` lang-library, now it is a compiler known internal type.
 A type is a listener object type if it is a subtype of the object type Listener<T,A>, for some type `T` that is a subtype of `service object {}` and some type `A` that is a subtype of `string[]|string|()`.
 
-The object type Listener<T,A>, is described by the following object type descriptor:
+The `object type Listener<T,A>`, is described by the following object type descriptor:
 
 ```ballerina
 object {
@@ -284,7 +284,7 @@ transaction {
 - Basepath field has been removed from the `ServiceConfig` annotation. Use the `absolute resource path` that begins with `/` as the basePath which is optional and defaults to `/` when not specified.
 - The service type can be added as `http:Service`, which is optional after the `service` keyword.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 @http:ServiceConfig {

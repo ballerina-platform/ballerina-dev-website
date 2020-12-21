@@ -39,7 +39,7 @@ A Ballerina package is stored in a directory. It contains a collection of source
 
 Follow the steps below to write a simple program in a Ballerina package, which prints `Hello World!` in the console. 
 
-1. Get Ballerina [installed](/swan-lake/learn-installing-ballerina).
+1. Get Ballerina [installed](/swan-lake/learn/installing-ballerina).
 
 2. In the CLI, execute the `ballerina new helloworld` command to create a new Ballerina package.
 

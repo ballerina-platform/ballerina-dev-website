@@ -25,15 +25,13 @@ redirect_from:
         <span class="nx">enable</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">COMPRESSION_AUTO</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">autoCompress</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">autoCompress</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">({</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Auto compression&quot;</span><span class="p">});</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -51,21 +49,22 @@ redirect_from:
         <span class="nx">contentTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;text/plain&quot;</span><span class="p">]</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">alwaysCompress</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">alwaysCompress</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
+
     <span class="c1">// Since compression is only constrained to &quot;text/plain&quot; MIME type,</span>
     <span class="c1">// `getJson` resource does not compress the response entity body.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">getJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Always but constrained by content-type&quot;</span><span class="p">};</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="c1">// The response entity body is always compressed since MIME type has matched.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getString</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">getString</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Type : This is a string&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -82,22 +81,20 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">);</span>
 
-<span class="kd">service</span> <span class="nx">passthrough</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getCompressed</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">passthrough</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/echo&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="kt">json</span> <span class="nx">err</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;error occurred while invoking service&quot;</span><span class="p">};</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -105,8 +102,8 @@ redirect_from:
 
 <span class="c1">// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO), which is the default value</span>
 <span class="c1">// of the compression config.</span>
-<span class="kd">service</span> <span class="nx">backend</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">backend</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;accept-encoding&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;accept-encoding&quot;</span><span class="p">);</span>
@@ -118,7 +115,7 @@ redirect_from:
 
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -151,9 +148,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-filters.html">
+                                    <a class="next" href="http-cookies.html">
                                         <span>NEXT ></span>
-                                        <p>HTTP Interceptors/Filters</p>
+                                        <p>HTTP Cookies</p>
                                     </a>
                                 </div>
                                 
@@ -191,6 +188,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -252,12 +253,7 @@ import ballerina/log;
         enable: http:COMPRESSION_AUTO
     }
 }
-service autoCompress on listenerEndpoint {
-    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function invokeEndpoint(http:Caller caller, http:Request req) {
-        var result = caller-&gt;respond({&quot;Type&quot;: &quot;Auto compression&quot;});
+service /autoCompress on listenerEndpoint {
 </code></pre></div>
 
                                 </td>
@@ -280,8 +276,21 @@ service autoCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
+        var result = caller-&gt;respond({&quot;Type&quot;: &quot;Auto compression&quot;});
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, result);
+            log:printError(&quot;Error sending response&quot;, err = result);
         }
     }
 }
@@ -302,7 +311,7 @@ service autoCompress on listenerEndpoint {
         contentTypes: [&quot;text/plain&quot;]
     }
 }
-service alwaysCompress on listenerEndpoint {
+service /alwaysCompress on listenerEndpoint {
 </code></pre></div>
 
                                 </td>
@@ -327,11 +336,11 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getJson(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default getJson(http:Caller caller, http:Request req) {
         json msg = {&quot;Type&quot;: &quot;Always but constrained by content-type&quot;};
         var result = caller-&gt;respond(msg);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, result);
+            log:printError(&quot;Error sending response&quot;, err = result);
         }
     }
 </code></pre></div>
@@ -353,10 +362,10 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getString(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default getString(http:Caller caller, http:Request req) {
         var result = caller-&gt;respond(&quot;Type : This is a string&quot;);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, result);
+            log:printError(&quot;Error sending response&quot;, err = result);
         }
     }
 }
@@ -406,22 +415,30 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service passthrough on new http:Listener(9092) {
-    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function getCompressed(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /passthrough on new http:Listener(9092) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
         var response = clientEndpoint-&gt;post(&quot;/backend/echo&quot;, &lt;@untainted&gt;req);
         if (response is http:Response) {
             var result = caller-&gt;respond(&lt;@untainted&gt;response);
             if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
         } else {
             json err = {&quot;error&quot;: &quot;error occurred while invoking service&quot;};
             var result = caller-&gt;respond(err);
             if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
         }
     }
@@ -437,8 +454,8 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service backend on listenerEndpoint {
-    resource function echo(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /backend on listenerEndpoint {
+    resource function &#39;default echo(http:Caller caller, http:Request req) {
         http:Response res = new;
         if (req.hasHeader(&quot;accept-encoding&quot;)) {
             string value = req.getHeader(&quot;accept-encoding&quot;);
@@ -468,7 +485,7 @@ service alwaysCompress on listenerEndpoint {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, result);
+            log:printError(&quot;Error sending response&quot;, err = result);
         }
     }
 }

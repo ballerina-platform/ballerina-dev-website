@@ -5,7 +5,7 @@ description: Learn all the command line interface (CLI) commands need to get sta
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/using-the-cli-tools/
 active: using-the-cli-tools
-intro: The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. 
+intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /v1-2/learn/cli-commands
   - /v1-2/learn/cli-commands/
@@ -14,11 +14,72 @@ redirect_from:
   - /learn/using-the-cli-tools
 ---
 
-## Using the 'ballerina' Command
+## Using the Ballerina Tool
 
 In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below.
 
-![CLI commands](/learn/images/cli-commands.png)
+```sh
+→ ballerina help 
+NAME
+       The Ballerina build tool
+
+SYNOPSIS
+       ballerina <-v | --version>
+       ballerina [command] <-h | --help>
+       ballerina <command> [<args>]
+
+
+DESCRIPTION
+       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured
+       data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
+       functionality expected of a modern programming language, but it also has several unusual aspects that make it
+       particularly suitable for its intended purpose.
+
+       Find more information at: https://ballerina.io/
+
+
+OPTIONS
+       -v, --version
+           Print the Ballerina version information.
+
+       -h, --help
+           Print usage details of a command.
+
+
+BALLERINA COMMANDS
+        Here is a list of available subcommands:
+
+   Core Commands:
+        build           Compile Ballerina program into an executable
+        run             Build and run Ballerina program
+        test            Run module tests
+        doc             Generate API documentation
+        clean           Clean artifacts generated during the build
+        format          Format Ballerina sources
+
+   Module Commands:
+        pull            Pull a module from Ballerina Central
+        push            Upload module to the Ballerina Central
+        search          Search Ballerina Central for modules
+
+   Project Commands:
+        new             Create a new Ballerina project
+        add             Create a new Ballerina module in a project
+
+   Other Commands:
+        encrypt         Encrypt sensitive data
+        grpc            Generate Ballerina sources for the given protobuf definition
+        openapi         Generate Ballerina sources for the given OpenAPI definition and vice versa.
+        version         Print Ballerina version
+        bindgen         Generate Ballerina bindings for Java APIs
+
+   Update Commands:
+        dist            Manage Ballerina distributions
+        update          Update the Ballerina Tool
+
+
+Use 'ballerina help <command>' for more information on a specific command.
+```
 
  You can use the `ballerina` command in the below format.
 
@@ -26,7 +87,36 @@ In the CLI, execute the `ballerina help` command to view all the actions you can
 
 > **Tip:** You can view details of any of the commands below by executing `ballerina help <COMMAND>`. For example, the below is the output of the `ballerina help pull` command.
 
-![Ballerina help output](/learn/images/ballerina-help-output.png)
+```sh
+→ ballerina help pull
+NAME
+       ballerina-pull - Fetch modules from Ballerina Central
+
+SYNOPSIS
+       ballerina pull <org-name>/<module-name>[:<version>]
+
+
+DESCRIPTION
+       Pull downloads the specified module from Ballerina Central
+       along with its dependencies. It then caches this module at
+       '.ballerina' directory in user home.
+
+       Ballerina Central is a module repository hosted at
+       https://central.ballerina.io/. A module repository organizes modules
+       into a three-level hierarchy: organization, module name, and version.
+       Organizations are unique within a repository and can be mapped to an
+       individual user or organization registered with the repository.
+
+
+EXAMPLES
+       Pull the latest version of 'gmail' connector in 'wso2' organization
+       from Ballerina Central.
+          $ ballerina pull wso2/gmail
+
+       Pull the '1.1.0' version of 'gmail' connector in 'wso2' organization
+       from Ballerina Central.
+          $ ballerina pull wso2/gmail:1.1.0
+```
 
 ## Core Commands
 
@@ -146,7 +236,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">update</td>
-<td class="cDescription">Update the Ballerina tool. For more information, see <a href="/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
+<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
 </td>
 </tr>
 </table>

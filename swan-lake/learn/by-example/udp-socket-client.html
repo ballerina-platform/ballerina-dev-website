@@ -10,38 +10,44 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="c1">// This is the client implementation for the UDP socket.</span>
+                <div class="highlight"><pre><span class="c1">// This is the connectionless client implementation for the UDP socket.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">udp</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Create a new socket client.</span>
-    <span class="c1">// Optionally, you can provide port that this socket need to bind or</span>
-    <span class="c1">// both interface and port as follows.</span>
-    <span class="c1">// socket:UdpClient client = new(localAddress = { port: 48828 });</span>
-    <span class="c1">// socket:UdpClient client = new(localAddress = { host: &quot;localhost&quot;, port: 48828 });</span>
-    <span class="nx">socket</span><span class="p">:</span><span class="nx">UdpClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello from UDP client&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">c1</span> <span class="p">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+  
+    <span class="c1">// Create a new connectionless udp client.</span>
+    <span class="c1">// Optionally, you can provide interface that the socket need to bind </span>
+    <span class="c1">// and the timeout in milliseconds which specifies the read timeout value</span>
+    <span class="c1">// udp:Client client = new (&quot;localhost&quot;, 2000);</span>
+    <span class="nx">udp</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">;</span>
+   
+
+    <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
+    <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span> <span class="nx">datagram</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">remoteAddress</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nx">host</span> <span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="nx">port</span> <span class="p">:</span> <span class="mi">48829</span>
+        <span class="p">},</span>
+        <span class="nx">data</span> <span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span>
+    <span class="p">};</span>
+
     <span class="c1">// Send data to remote host.</span>
-    <span class="c1">// Second parameter is the address of the remote host.</span>
-    <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span>
-        <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">sendTo</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="p">{</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">48826</span><span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Number of bytes written: &quot;</span><span class="p">,</span> <span class="nx">sendResult</span><span class="p">);</span>
+    <span class="c1">// The parameter is a Datagram record which contains the remote address</span>
+    <span class="c1">// and the data to be.</span>
+    <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">datagram</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Datagram was sent to the remote host.&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">sendResult</span><span class="p">;</span>
         <span class="nx">panic</span> <span class="nx">e</span><span class="p">;</span>
     <span class="p">}</span>
+    
     <span class="c1">// Wait until data receive from remote host.</span>
-    <span class="c1">// This will block until receive at least a single byte.</span>
-    <span class="c1">// Optionally, you can specify the length as below.</span>
-    <span class="c1">// socketClient-&gt;receiveFrom(length = 30)</span>
-    <span class="c1">// This will block until specified length of bytes receive from host.</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">receiveFrom</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">socket</span><span class="p">:</span><span class="nx">Address</span><span class="p">])</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">content</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">address</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">byteChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span>
                 <span class="nx">new</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
@@ -56,10 +62,11 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while receiving the data &quot;</span><span class="p">,</span>
             <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
+
     <span class="c1">// Close the client and release the bound port.</span>
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while closing the connection &quot;</span><span class="p">,</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while closing the socket &quot;</span><span class="p">,</span>
             <span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -72,10 +79,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Basic UDP Client Socket</h2>
-                            <p><p>The UDP Client is used to connect to a remote UDP host.
+                            <p><p>The UDP Client is used to send data to a specified remote UDP host.
  This sample demonstrates how to send data to a remote server and print the echoed response.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/socket/">Socket module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/udp/">UDP module</a>.</p>
 </p>
 
                         </td>
@@ -90,9 +97,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="secured-service-with-basic-auth.html">
+                                    <a class="next" href="secured-client-with-basic-auth.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Service with Basic Auth</p>
+                                        <p>Secured Client with Basic Auth</p>
                                     </a>
                                 </div>
                                 
@@ -143,6 +150,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -152,7 +163,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/socket;
+import ballerina/udp;
 </code></pre></div>
 
                                 </td>
@@ -160,7 +171,7 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the client implementation for the UDP socket.</p>
+                                            <p>This is the connectionless client implementation for the UDP socket.</p>
 
                                         </div>
                                     </div>
@@ -172,6 +183,7 @@ import ballerina/socket;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
+  
 </code></pre></div>
 
                                 </td>
@@ -183,9 +195,8 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    socket:UdpClient socketClient = new;
-    string msg = &quot;Hello from UDP client&quot;;
-    byte[] c1 = msg.toBytes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    udp:Client socketClient = checkpanic new ;
+   
 </code></pre></div>
 
                                 </td>
@@ -193,11 +204,10 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new socket client.
- Optionally, you can provide port that this socket need to bind or
- both interface and port as follows.
- socket:UdpClient client = new(localAddress = { port: 48828 });
- socket:UdpClient client = new(localAddress = { host: &ldquo;localhost&rdquo;, port: 48828 });</p>
+                                            <p>Create a new connectionless udp client.
+ Optionally, you can provide interface that the socket need to bind
+ and the timeout in milliseconds which specifies the read timeout value
+ udp:Client client = new (&ldquo;localhost&rdquo;, 2000);</p>
 
                                         </div>
                                     </div>
@@ -205,17 +215,36 @@ import ballerina/socket;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string msg = &quot;Hello Ballerina echo&quot;;
+    udp:Datagram datagram = {
+        remoteAddress : {
+            host : &quot;localhost&quot;,
+            port : 48829
+        },
+        data : msg.toBytes()
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var sendResult =
-        socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
-    if (sendResult is int) {
-        io:println(&quot;Number of bytes written: &quot;, sendResult);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var sendResult = socketClient-&gt;send(datagram);
+    if (sendResult is ()) {
+        io:println(&quot;Datagram was sent to the remote host.&quot;);
     } else {
         error e = sendResult;
         panic e;
     }
+    
 </code></pre></div>
 
                                 </td>
@@ -224,7 +253,8 @@ import ballerina/socket;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Send data to remote host.
- Second parameter is the address of the remote host.</p>
+ The parameter is a Datagram record which contains the remote address
+ and the data to be.</p>
 
                                         </div>
                                     </div>
@@ -235,10 +265,27 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var result = socketClient-&gt;receiveFrom();
-    if (result is [byte[], int, socket:Address]) {
-        var [content, length, address] = result;
-        var byteChannel = io:createReadableChannel(content);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = socketClient-&gt;receive();
+    if (result is udp:Datagram) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Wait until data receive from remote host.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var byteChannel = io:createReadableChannel(result.data);
         if (byteChannel is io:ReadableByteChannel) {
             io:ReadableCharacterChannel characterChannel =
                 new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
@@ -258,17 +305,6 @@ import ballerina/socket;
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Wait until data receive from remote host.
- This will block until receive at least a single byte.
- Optionally, you can specify the length as below.
- socketClient-&gt;receiveFrom(length = 30)
- This will block until specified length of bytes receive from host.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
@@ -277,7 +313,7 @@ import ballerina/socket;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    var closeResult = socketClient-&gt;close();
     if (closeResult is error) {
-        io:println(&quot;An error occurred while closing the connection &quot;,
+        io:println(&quot;An error occurred while closing the socket &quot;,
             closeResult);
     }
 }
@@ -331,9 +367,9 @@ ballerina run udp_socket_client.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># This will print the below output upon a successful write.
-Number of bytes written: 21
+Datagram was sent to the remote host.
 # Print the response that is returned from the server as an echo.
-Received: Hello from UDP client
+Received: Hello Ballerina echo
 </code></pre></div>
 
                                 </td>

@@ -54,7 +54,7 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">//The below function handles the response received from the remote HTTP endpoint.</span>
-<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">PayloadType</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// [Get the JSON payload](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getJsonPayload) from the response.</span>
         <span class="k">var</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
@@ -88,9 +88,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="retry-transactions.html">
+                                    <a class="prev" href="xa-transactions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Retry Transactions</p>
+                                        <p>XA Transactions</p>
                                     </a>
                                 </div>
                                  
@@ -434,7 +434,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|http:Payload|error response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|http:PayloadType|error response) {
     if (response is http:Response) {
 </code></pre></div>
 

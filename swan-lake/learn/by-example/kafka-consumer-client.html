@@ -34,27 +34,20 @@ redirect_from:
     <span class="k">var</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">consumer</span><span class="o">-&gt;</span><span class="nx">poll</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">results</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while polling &quot;</span><span class="p">,</span> <span class="nx">results</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while polling &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">results</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]&gt;</span><span class="nx">results</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
-        <span class="nx">anydata</span> <span class="nx">serializedMessage</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">serializedMessage</span> <span class="nx">is</span> <span class="nx">byte</span><span class="p">[])</span> <span class="p">{</span>
-            <span class="c1">// Converts byte[] to string.</span>
-            <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">serializedMessage</span><span class="p">);</span>
+        <span class="nx">byte</span><span class="p">[]</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">messageContent</span><span class="p">);</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// Prints the retrieved Kafka record.</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic: &quot;</span><span class="p">,</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">topic</span><span class="p">,</span> <span class="s">&quot; Received Message: &quot;</span><span class="p">,</span>
-                    <span class="kt">message</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Prints the retrieved Kafka record.</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received Message: &quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">);</span>
 
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while converting message data&quot;</span><span class="p">,</span>
-                    <span class="kt">message</span><span class="p">);</span>
-            <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving message data;&quot;</span> <span class="o">+</span>
-                <span class="s">&quot;Unexpected type&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while converting message data&quot;</span><span class="p">,</span>
+                <span class="nx">err</span> <span class="p">=</span> <span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -130,8 +123,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -302,35 +293,16 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    if (results is error) {
-        log:printError(&quot;Error occurred while polling &quot;, results);
+        log:printError(&quot;Error occurred while polling &quot;, err = results);
     }
     kafka:ConsumerRecord[] records = &lt;kafka:ConsumerRecord[]&gt;results;
     foreach var kafkaRecord in records {
-        anydata serializedMessage = kafkaRecord.value;
-        if (serializedMessage is byte[]) {
+        byte[] messageContent = kafkaRecord.value;
+        string|error message = &#39;string:fromBytes(messageContent);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            string|error message = &#39;string:fromBytes(serializedMessage);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Converts byte[] to string.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -338,7 +310,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            if (message is string) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (message is string) {
 </code></pre></div>
 
                                 </td>
@@ -350,8 +322,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Received Message: &quot;,
-                    message);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Received Message: &quot;, message);
 </code></pre></div>
 
                                 </td>
@@ -370,13 +341,9 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>            } else {
-                log:printError(&quot;Error occurred while converting message data&quot;,
-                    message);
-            }
-        } else {
-            log:printError(&quot;Error occurred while retrieving message data;&quot; +
-                &quot;Unexpected type&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
+            log:printError(&quot;Error occurred while converting message data&quot;,
+                err = message);
         }
     }
 }

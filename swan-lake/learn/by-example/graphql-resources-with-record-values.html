@@ -1,0 +1,435 @@
+---
+layout: ballerina-example-page
+title: GraphQL Resources with Record Values
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/graphql-resources-with-record-values
+redirect_from:
+  - /vswan-lake/learn/by-example/graphql-resources-with-record-values
+  - /vswan-lake/learn/by-example/graphql-resources-with-record-values.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+
+<span class="c1">// Create an `http:Listener`.</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="c1">// The `graphql:Service` exposes a GraphQL service on the provided HTTP listener.</span>
+<span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="nx">httpListener</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This resolver returns a `Person` object. Each field of the `Person` object</span>
+    <span class="c1">// can be queried by a GraphQL client.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
+
+        <span class="k">return</span> <span class="nx">people</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Define the custom record types to return data.</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="nx">Address</span> <span class="nx">address</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Address</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">street</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Define an array of `Person` records.</span>
+<span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sherlock Holmes&quot;</span><span class="p">,</span>
+    <span class="nx">age</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="nx">address</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">number</span><span class="p">:</span> <span class="s">&quot;221/B&quot;</span><span class="p">,</span>
+        <span class="nx">street</span><span class="p">:</span> <span class="s">&quot;Baker Street&quot;</span><span class="p">,</span>
+        <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Walter White&quot;</span><span class="p">,</span>
+    <span class="nx">age</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="nx">address</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">number</span><span class="p">:</span> <span class="s">&quot;308&quot;</span><span class="p">,</span>
+        <span class="nx">street</span><span class="p">:</span> <span class="s">&quot;Negra Arroyo Lane&quot;</span><span class="p">,</span>
+        <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Albuquerque&quot;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Tom Marvolo Riddle&quot;</span><span class="p">,</span>
+    <span class="nx">age</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="nx">address</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">number</span><span class="p">:</span> <span class="s">&quot;Uknown&quot;</span><span class="p">,</span>
+        <span class="nx">street</span><span class="p">:</span> <span class="s">&quot;Unknown&quot;</span><span class="p">,</span>
+        <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Hogwarts&quot;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">Person</span><span class="p">[]</span> <span class="nx">people</span> <span class="p">=</span> <span class="p">[</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">,</span> <span class="nx">p3</span><span class="p">];</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>GraphQL Resources with Record Values</h2>
+                            <p><p>In Ballerina GraphQL, a service represents the GraphQL endpoint.
+ Each resource function inside the service represents a resolver function for a field in the root Query type.
+ This example shows a GraphQL endpoint, which has a field <code>profile</code> of type <code>Person</code>.
+ A GraphQL client can query on this service to retrieve specific fields or subfields of the <code>Person</code> object.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="graphql-resources-with-scalar-values.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>GraphQL Resources with Scalar Values</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="websocket-client.html">
+                                        <span>NEXT ></span>
+                                        <p>Client Endpoint</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="graphql-resources-with-record-values">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-resources-with-record-values/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/graphql;
+import ballerina/http;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Listener httpListener = new(9090);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create an <code>http:Listener</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service graphql:Service /graphql on new graphql:Listener(httpListener) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>graphql:Service</code> exposes a GraphQL service on the provided HTTP listener.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get profile(int id) returns Person {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resolver returns a <code>Person</code> object. Each field of the <code>Person</code> object
+ can be queried by a GraphQL client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return people[id];
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person record {
+    string name;
+    int age;
+    Address address;
+};
+public type Address record {
+    string number;
+    string street;
+    string city;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define the custom record types to return data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>Person p1 = {
+    name: &quot;Sherlock Holmes&quot;,
+    age: 40,
+    address: {
+        number: &quot;221/B&quot;,
+        street: &quot;Baker Street&quot;,
+        city: &quot;London&quot;
+    }
+};
+Person p2 = {
+    name: &quot;Walter White&quot;,
+    age: 50,
+    address: {
+        number: &quot;308&quot;,
+        street: &quot;Negra Arroyo Lane&quot;,
+        city: &quot;Albuquerque&quot;
+    }
+};
+Person p3 = {
+    name: &quot;Tom Marvolo Riddle&quot;,
+    age: 100,
+    address: {
+        number: &quot;Uknown&quot;,
+        street: &quot;Unknown&quot;,
+        city: &quot;Hogwarts&quot;
+    }
+};
+Person[] people = [p1, p2, p3];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define an array of <code>Person</code> records.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+# Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
+# log will be printed.
+ballerina run graphql_resources_with_record_values.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Invoke the GraphQL service with a cURL command.
+curl -XPOST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot; { profile(id: 1) { name, address { city } } }&quot; }&#39; &#39;http://localhost:9090/graphql&#39;
+{&quot;data&quot;:{&quot;profile&quot;:{&quot;name&quot;:&quot;Walter White&quot;, &quot;address&quot;:{&quot;city&quot;:&quot;Albuquerque&quot;}}}}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

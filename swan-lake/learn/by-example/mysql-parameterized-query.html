@@ -175,8 +175,9 @@ redirect_from:
                             <h2>Parameterized Query</h2>
                             <p><p>This example demonstrates how to use the <code>sql:ParameterizedQuery</code> to easily
  create pre-compiled SQL statements that can be reused. Note that the
- MySQL database driver JAR should be placed in the<code>&lt;BALLERINA_HOME&gt;/bre/lib/distributions/jballerina-&lt;VERSION&gt;/bre/lib</code>
- directory. The MySQL connector uses database properties from MySQL
+ MySQL database driver JAR should be defined in the <code>Ballerina.toml</code> file as a dependency.
+ See <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mysql/">MySQL module</a> for sample configuration.
+ The MySQL connector uses database properties from MySQL
  version 8.0.x onwards. Therefore, it is recommended to use a MySQL driver
  version greater than 8.0.x.<br><br>
  For more information on the underlying module,

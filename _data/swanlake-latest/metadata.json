@@ -1,19 +1,19 @@
 {
-  "version": "swan-lake-preview7",
-  "release-date": "2020-12-05",
-  "windows-installer": "ballerina-windows-installer-x64-swan-lake-preview7.msi",
-  "windows-installer-size": "164mb",
-  "linux-installer": "ballerina-linux-installer-x64-swan-lake-preview7.deb",
-  "linux-installer-size": "192mb",
-  "macos-installer": "ballerina-macos-installer-x64-swan-lake-preview7.pkg",
-  "macos-installer-size": "217mb",
-  "rpm-installer": "ballerina-linux-installer-x64-swan-lake-preview7.rpm",
-  "rpm-installer-size": "200mb",
+  "version": "swan-lake-preview8",
+  "release-date": "2020-12-20",
+  "windows-installer": "ballerina-windows-installer-x64-swan-lake-preview8.msi",
+  "windows-installer-size": "162mb",
+  "linux-installer": "ballerina-linux-installer-x64-swan-lake-preview8.deb",
+  "linux-installer-size": "202mb",
+  "macos-installer": "ballerina-macos-installer-x64-swan-lake-preview8.pkg",
+  "macos-installer-size": "229mb",
+  "rpm-installer": "ballerina-linux-installer-x64-swan-lake-preview8.rpm",
+  "rpm-installer-size": "211mb",
   "other-artefacts": [
-    "ballerina-swan-lake-preview7.zip",
-    "ballerina-swan-lake-preview7.vsix",
+    "ballerina-swan-lake-preview8.zip",
+    "ballerina-swan-lake-preview8.vsix",
     "ballerina-metrics-grafana-dashboard-prometheus.json"
   ],
-  "api-docs": "ballerina-api-docs-swan-lake-preview7.zip",
-  "release-notes": "ballerina-release-notes-swan-lake-preview7.md"
+  "api-docs": "ballerina-api-docs-swan-lake-preview8.zip",
+  "release-notes": "ballerina-release-notes-swan-lake-preview8.md"
 }

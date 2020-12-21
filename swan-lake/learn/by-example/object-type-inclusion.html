@@ -1,0 +1,623 @@
+---
+layout: ballerina-example-page
+title: Object Type Inclusion
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/object-type-inclusion
+redirect_from:
+  - /vswan-lake/learn/by-example/object-type-inclusion
+  - /vswan-lake/learn/by-example/object-type-inclusion.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Defines an object type called `Person`. It should only contain fields and the</span>
+<span class="c1">// method declarations.</span>
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+
+    <span class="c1">// Method declarations can be within the object. However, the method cannot</span>
+    <span class="c1">// have a body.</span>
+    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Defines another object type called `Employee`, which &quot;includes&quot; the `Person` object.</span>
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="c1">// Add an object type (`Person`) inclusion.</span>
+    <span class="c1">// All the member fields and member-method declarations will be copied from the `Person` object.</span>
+    <span class="o">*</span><span class="nx">Person</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span> <span class="nx">salary</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">class</span> <span class="nx">Owner</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">status</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">class</span> <span class="nx">Manager</span> <span class="p">{</span>
+    <span class="c1">// Inclusing the `Employee` object transitively includes the `Person` object as well.</span>
+    <span class="c1">// This will copy all the members in both `Employee` and `Person`.</span>
+    <span class="c1">// It will be the same as declaring each of those members within this object.</span>
+    <span class="o">*</span><span class="nx">Employee</span><span class="p">;</span>
+
+    <span class="c1">// It is possible to have more than one type inclusion as well.</span>
+    <span class="o">*</span><span class="nx">Owner</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">dpt</span><span class="p">;</span>
+
+    <span class="c1">// Included fields can be overridden in a type-descriptor if the type of the field</span>
+    <span class="c1">// in the overriding descriptor is a sub-type of the original type of the field.</span>
+    <span class="nx">public</span> <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
+
+    <span class="c1">// All the fields included through a type inclusion can be accessed within this object.</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">firstName</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">=</span> <span class="nx">lastName</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">status</span> <span class="p">=</span> <span class="nx">status</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span> <span class="p">=</span> <span class="mf">2000.0</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">dpt</span> <span class="p">=</span> <span class="s">&quot;HR&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The member methods coming from the included type should be defined within the object.</span>
+    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Included methods can also be overridden as long as the method in the overriding</span>
+    <span class="c1">// descriptor is a sub-type of the method in the included type.</span>
+    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Manager</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="s">&quot;Senior&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Accessing the fields that are coming from the included type.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dpt</span><span class="p">);</span>
+
+    <span class="c1">// Invoking the methods that are coming from the included type.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getSalary</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Object Type Inclusion</h2>
+                            <p><p>Type inclusions in a class or object provide a way to copy the members from a class or object
+ into another class or object. It is equivalent to declaring the members explicitly
+ within the new class/object, thus, eliminating redundancy. A class/object can have
+ zero or more type inclusions.
+ Fields and method definitions can override included fields and methods
+ provided that they are sub-types of included field/method types.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="object-final-fields.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Final Fields</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="iterable-objects.html">
+                                        <span>NEXT ></span>
+                                        <p>Iterable Objects</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="object-type-inclusion">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-type-inclusion/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
+    public int age;
+    public string firstName;
+    public string lastName;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines an object type called <code>Person</code>. It should only contain fields and the
+ method declarations.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Method declarations can be within the object. However, the method cannot
+ have a body.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee object {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines another object type called <code>Employee</code>, which &ldquo;includes&rdquo; the <code>Person</code> object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Person;
+    public float|string salary;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Add an object type (<code>Person</code>) inclusion.
+ All the member fields and member-method declarations will be copied from the <code>Person</code> object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getSalary() returns float|string;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Owner {
+    public string status = &quot;&quot;;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Manager {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Employee;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Inclusing the <code>Employee</code> object transitively includes the <code>Person</code> object as well.
+ This will copy all the members in both <code>Employee</code> and <code>Person</code>.
+ It will be the same as declaring each of those members within this object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Owner;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>It is possible to have more than one type inclusion as well.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public string dpt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public float salary;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Included fields can be overridden in a type-descriptor if the type of the field
+ in the overriding descriptor is a sub-type of the original type of the field.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(int age, string firstName, string lastName, string status) {
+        self.age = age;
+        self.firstName = firstName;
+        self.lastName = lastName;
+        self.status = status;
+        self.salary = 2000.0;
+        self.dpt = &quot;HR&quot;;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>All the fields included through a type inclusion can be accessed within this object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string {
+        return self.firstName + &quot; &quot; + self.lastName;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The member methods coming from the included type should be defined within the object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getSalary() returns float {
+        return self.salary;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Included methods can also be overridden as long as the method in the overriding
+ descriptor is a sub-type of the method in the included type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    Manager p = new Manager(5, &quot;John&quot;, &quot;Doe&quot;, &quot;Senior&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p.age);
+    io:println(p.dpt);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Accessing the fields that are coming from the included type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p.getFullName());
+    io:println(p.getSalary());
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Invoking the methods that are coming from the included type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run object_type_reference.bal
+5
+HR
+John Doe
+2000.0
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

@@ -13,19 +13,27 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
 <span class="kt">string</span> <span class="nx">ping</span> <span class="p">=</span> <span class="s">&quot;ping&quot;</span><span class="p">;</span>
 <span class="nx">byte</span><span class="p">[]</span> <span class="nx">pingData</span> <span class="p">=</span> <span class="nx">ping</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
-<span class="nd">@http:WebSocketServiceConfig {</span>
-    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/basic/ws&quot;</span><span class="p">,</span>
+<span class="nd">@websocket:ServiceConfig {</span>
     <span class="nx">subProtocols</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;xml&quot;</span><span class="p">,</span> <span class="s">&quot;json&quot;</span><span class="p">],</span>
     <span class="nx">idleTimeoutInSeconds</span><span class="p">:</span> <span class="mi">120</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">basic</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// This `resource` is triggered after a successful client connection.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">UpgradeService</span> <span class="o">/</span><span class="nx">basic</span><span class="o">/</span><span class="nx">ws</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onUpgrade</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
+                     <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">|</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">WebSocketError</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="nx">new</span> <span class="nx">WsService</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">service</span> <span class="nx">class</span> <span class="nx">WsService</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">;</span>
+    <span class="c1">// This `remote function` is triggered after a successful client connection.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nNew client connected&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Connection ID: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Negotiated Sub protocol: &quot;</span> <span class="o">+</span>
@@ -34,79 +42,81 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is connection secured: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">isSecure</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="c1">// This `resource` is triggered when a new text frame is received from a client.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
+    <span class="c1">// This `remote function` is triggered when a new text frame is received from a client.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
                                 <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\ntext message: &quot;</span> <span class="o">+</span> <span class="nx">text</span> <span class="o">+</span> <span class="s">&quot; &amp; final fragment: &quot;</span>
                                                     <span class="o">+</span> <span class="nx">finalFrame</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">text</span> <span class="o">==</span> <span class="s">&quot;ping&quot;</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Pinging...&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">ping</span><span class="p">(</span><span class="nx">pingData</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending ping&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending ping&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">text</span> <span class="o">==</span> <span class="s">&quot;closeMe&quot;</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">1001</span><span class="p">,</span>
                             <span class="nx">reason</span> <span class="p">=</span> <span class="s">&quot;You asked me to close the connection&quot;</span><span class="p">,</span>
                             <span class="nx">timeoutInSeconds</span> <span class="p">=</span> <span class="mi">0</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing connection&quot;</span><span class="p">,</span>
-                                <span class="nx">result</span><span class="p">);</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="s">&quot;You said: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">// This `resource` is triggered when a new binary frame is received from a client.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onBinary</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This `remote function` is triggered when a new binary frame is received from a client.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBinary</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nNew binary message received&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;UTF-8 decoded binary message: &quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushBinary</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending binary&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending binary&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">// This `resource` is triggered when a ping message is received from the client. If this resource is not implemented,</span>
+    <span class="c1">// This `remote function` is triggered when a ping message is received from the client. If this remote function is not implemented,</span>
     <span class="c1">// a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketCaller) when a ping is received.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onPing</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onPing</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pong</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span>
+                                   <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">// This resource is triggered when a pong message is received.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onPong</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This remote function is triggered when a pong message is received.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onPong</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Pong received&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="c1">// This resource is triggered when a particular client reaches the idle timeout that is defined in the</span>
+    <span class="c1">// This remote function is triggered when a particular client reaches the idle timeout that is defined in the</span>
     <span class="c1">// [http:WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig) annotation.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onIdleTimeout</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onIdleTimeout</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nReached idle timeout&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Closing connection &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">1001</span><span class="p">,</span> <span class="nx">reason</span> <span class="p">=</span>
                                     <span class="s">&quot;Connection timeout&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span>
+                               <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">// This resource is triggered when an error occurred in the connection or the transport.</span>
-    <span class="c1">// This resource is always followed by a connection closure with an appropriate WebSocket close frame</span>
+    <span class="c1">// This remote function is triggered when an error occurred in the connection or the transport.</span>
+    <span class="c1">// This remote function is always followed by a connection closure with an appropriate WebSocket close frame</span>
     <span class="c1">// and this is used only to indicate the error to the user and take post decisions if needed.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="c1">// This resource is triggered when a client connection is closed from the client side.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
+    <span class="c1">// This remote function is triggered when a client connection is closed from the client side.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Client left with ${statusCode} because ${reason}`</span><span class="p">);</span>
     <span class="p">}</span>
@@ -137,9 +147,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-to-websocket-upgrade.html">
+                                    <a class="next" href="header-based-routing.html">
                                         <span>NEXT ></span>
-                                        <p>HTTP To WebSocket Upgrade</p>
+                                        <p>Header-Based Routing</p>
                                     </a>
                                 </div>
                                 
@@ -200,6 +210,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -211,6 +225,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
+import ballerina/websocket;
 </code></pre></div>
 
                                 </td>
@@ -235,12 +250,40 @@ byte[] pingData = ping.toBytes();
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
-    path: &quot;/basic/ws&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>@websocket:ServiceConfig {
     subProtocols: [&quot;xml&quot;, &quot;json&quot;],
     idleTimeoutInSeconds: 120
 }
-service basic on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service websocket:UpgradeService /basic/ws on new websocket:Listener(9090) {
+   remote isolated function onUpgrade(http:Caller caller, http:Request req)
+                     returns websocket:Service|websocket:WebSocketError {
+       return new WsService();
+   }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service class WsService {
+    *websocket:Service;
 </code></pre></div>
 
                                 </td>
@@ -252,7 +295,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onOpen(websocket:Caller caller) {
         io:println(&quot;\nNew client connected&quot;);
         io:println(&quot;Connection ID: &quot; + caller.getConnectionId());
         io:println(&quot;Negotiated Sub protocol: &quot; +
@@ -267,7 +310,7 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This <code>resource</code> is triggered after a successful client connection.</p>
+                                            <p>This <code>remote function</code> is triggered after a successful client connection.</p>
 
                                         </div>
                                     </div>
@@ -278,28 +321,28 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onText(websocket:Caller caller, string text,
                                 boolean finalFrame) {
         io:println(&quot;\ntext message: &quot; + text + &quot; &amp; final fragment: &quot;
                                                     + finalFrame.toString());
         if (text == &quot;ping&quot;) {
             io:println(&quot;Pinging...&quot;);
             var err = caller-&gt;ping(pingData);
-            if (err is http:WebSocketError) {
-                log:printError(&quot;Error sending ping&quot;, err);
+            if (err is websocket:WebSocketError) {
+                log:printError(&quot;Error sending ping&quot;, err = err);
             }
         } else if (text == &quot;closeMe&quot;) {
             error? result = caller-&gt;close(statusCode = 1001,
                             reason = &quot;You asked me to close the connection&quot;,
                             timeoutInSeconds = 0);
-            if (result is http:WebSocketError) {
+            if (result is websocket:WebSocketError) {
                 log:printError(&quot;Error occurred when closing connection&quot;,
-                                result);
+                                err = result);
             }
         } else {
             var err = caller-&gt;pushText(&quot;You said: &quot; + text);
-            if (err is http:WebSocketError) {
-                log:printError(&quot;Error occurred when sending text&quot;, err);
+            if (err is websocket:WebSocketError) {
+                log:printError(&quot;Error occurred when sending text&quot;, err = err);
             }
         }
     }
@@ -310,7 +353,7 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This <code>resource</code> is triggered when a new text frame is received from a client.</p>
+                                            <p>This <code>remote function</code> is triggered when a new text frame is received from a client.</p>
 
                                         </div>
                                     </div>
@@ -321,13 +364,13 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onBinary(http:WebSocketCaller caller, byte[] b) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onBinary(websocket:Caller caller, byte[] b) {
         io:println(&quot;\nNew binary message received&quot;);
         io:print(&quot;UTF-8 decoded binary message: &quot;);
         io:println(b);
         var err = caller-&gt;pushBinary(b);
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error occurred when sending binary&quot;, err);
+        if (err is websocket:WebSocketError) {
+            log:printError(&quot;Error occurred when sending binary&quot;, err = err);
         }
     }
 </code></pre></div>
@@ -337,7 +380,7 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This <code>resource</code> is triggered when a new binary frame is received from a client.</p>
+                                            <p>This <code>remote function</code> is triggered when a new binary frame is received from a client.</p>
 
                                         </div>
                                     </div>
@@ -348,10 +391,11 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onPing(http:WebSocketCaller caller, byte[] data) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onPing(websocket:Caller caller, byte[] data) {
         var err = caller-&gt;pong(data);
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error occurred when closing the connection&quot;, err);
+        if (err is websocket:WebSocketError) {
+            log:printError(&quot;Error occurred when closing the connection&quot;,
+                                   err = err);
         }
     }
 </code></pre></div>
@@ -361,7 +405,7 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This <code>resource</code> is triggered when a ping message is received from the client. If this resource is not implemented,
+                                            <p>This <code>remote function</code> is triggered when a ping message is received from the client. If this remote function is not implemented,
  a pong message is automatically sent to the connected <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketCaller">http:WebSocketCaller</a> when a ping is received.</p>
 
                                         </div>
@@ -373,7 +417,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onPong(http:WebSocketCaller caller, byte[] data) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onPong(websocket:Caller caller, byte[] data) {
         io:println(&quot;Pong received&quot;);
     }
 </code></pre></div>
@@ -383,7 +427,7 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is triggered when a pong message is received.</p>
+                                            <p>This remote function is triggered when a pong message is received.</p>
 
                                         </div>
                                     </div>
@@ -394,13 +438,14 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onIdleTimeout(websocket:Caller caller) {
         io:println(&quot;\nReached idle timeout&quot;);
         io:println(&quot;Closing connection &quot; + caller.getConnectionId());
         var err = caller-&gt;close(statusCode = 1001, reason =
                                     &quot;Connection timeout&quot;);
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error occurred when closing the connection&quot;, err);
+        if (err is websocket:WebSocketError) {
+            log:printError(&quot;Error occurred when closing the connection&quot;,
+                               err = err);
         }
     }
 </code></pre></div>
@@ -410,7 +455,7 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is triggered when a particular client reaches the idle timeout that is defined in the
+                                            <p>This remote function is triggered when a particular client reaches the idle timeout that is defined in the
  <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig">http:WebSocketServiceConfig</a> annotation.</p>
 
                                         </div>
@@ -422,8 +467,8 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
-        log:printError(&quot;Error occurred &quot;, err);
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(websocket:Caller caller, error err) {
+        log:printError(&quot;Error occurred &quot;, err = err);
     }
 </code></pre></div>
 
@@ -432,8 +477,8 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is triggered when an error occurred in the connection or the transport.
- This resource is always followed by a connection closure with an appropriate WebSocket close frame
+                                            <p>This remote function is triggered when an error occurred in the connection or the transport.
+ This remote function is always followed by a connection closure with an appropriate WebSocket close frame
  and this is used only to indicate the error to the user and take post decisions if needed.</p>
 
                                         </div>
@@ -445,7 +490,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onClose(websocket:Caller caller, int statusCode,
                                 string reason) {
         io:println(string `Client left with ${statusCode} because ${reason}`);
     }
@@ -457,7 +502,7 @@ service basic on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is triggered when a client connection is closed from the client side.</p>
+                                            <p>This remote function is triggered when a client connection is closed from the client side.</p>
 
                                         </div>
                                     </div>

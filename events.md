@@ -11,24 +11,24 @@ redirect_from:
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
 <h2>No upcoming events</h2><br/>
-<!--<h2>Upcoming Events</h2>
-<table class="cEventTable cConferencesList" style="width:100%;">
-   <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
-      <td class="cEventDateContainer">
-         <span class="cEventDate">December 14 - 16, 2020</span>
-         <p class="cEventLocation">São Paulo, Brazil</p>
-      </td>
-      <td class="cEventDetail">
-         <a target="_blank" href="https://qconsp.com/">
-            <h4>QCon São Paulo</h4>
-         </a>
-         <h5></h5>
-         <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
-      </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td>
-   </tr>
-</table>-->
 
+<!--<h2>Upcoming Events</h2>	
+<table class="cEventTable cConferencesList" style="width:100%;">	
+   <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">December 14 - 16, 2020</span>	
+         <p class="cEventLocation">São Paulo, Brazil</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://qconsp.com/">	
+            <h4>QCon São Paulo</h4>	
+         </a>	
+         <h5></h5>	
+         <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2	
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td>	
+   </tr>	
+</table>--> 
 
 <h2>Past Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">

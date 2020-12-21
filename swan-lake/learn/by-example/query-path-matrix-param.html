@@ -13,15 +13,12 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="kd">service</span> <span class="nx">sample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">sample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/path/{foo}&quot;</span>
-    <span class="p">}</span>
     <span class="c1">// The `PathParam` and `QueryParam` parameters extract values from the request URI.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">params</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
-                                <span class="kt">string</span> <span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Path param is defined as a part of the resource path along with the type.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">path</span><span class="o">/</span><span class="p">[</span><span class="kt">string</span> <span class="nx">foo</span><span class="p">](</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                                            <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getQueryParamValue)</span>
         <span class="c1">// value for a given parameter key.</span>
         <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">);</span>
@@ -50,7 +47,7 @@ redirect_from:
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -73,9 +70,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="base-path-and-path.html">
+                                    <a class="prev" href="absolute-path-and-path.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Base Path and Path</p>
+                                        <p>Absolute Resource Path and Resource Path</p>
                                     </a>
                                 </div>
                                  
@@ -139,8 +136,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -162,22 +157,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service sample on new http:Listener(9090) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/path/{foo}&quot;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>service /sample on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -189,8 +169,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function params(http:Caller caller, http:Request req,
-                                string foo) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get path/[string foo](http:Caller caller,
+                                            http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -198,7 +178,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>PathParam</code> and <code>QueryParam</code> parameters extract values from the request URI.</p>
+                                            <p>The <code>PathParam</code> and <code>QueryParam</code> parameters extract values from the request URI.
+ Path param is defined as a part of the resource path along with the type.</p>
 
                                         </div>
                                     </div>
@@ -319,7 +300,7 @@ import ballerina/log;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
-            log:printError(&quot;Error when responding&quot;, result);
+            log:printError(&quot;Error when responding&quot;, err = result);
         }
     }
 }

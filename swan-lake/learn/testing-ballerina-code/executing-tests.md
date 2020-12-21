@@ -44,6 +44,18 @@ Run only the given test function(s) in the current package.
 $ ballerina test --tests <test_function>
 ```
 
+Run a given set of functions in the default module only.
+
+```
+$ ballerina test --tests PackageName:<test_function>
+```
+
+Run all the functions in the given module.
+
+```
+$ ballerina test --tests PackageName.ModuleName:*
+```
+
 Run only the previously-failed test cases in the current package.
 
 ```

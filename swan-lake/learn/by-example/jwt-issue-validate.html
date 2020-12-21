@@ -120,13 +120,9 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">});</span>
 
-<span class="kd">service</span> <span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/jwks&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">jwks</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">jwks</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="kt">json</span> <span class="nx">jwks</span> <span class="p">=</span> <span class="p">{</span>
             <span class="s">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -634,7 +630,7 @@ import ballerina/http;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service oauth2 on oauth2Server {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /oauth2 on oauth2Server {
 </code></pre></div>
 
                                 </td>
@@ -646,11 +642,7 @@ import ballerina/http;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/jwks&quot;
-    }
-    resource function jwks(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get jwks(http:Caller caller, http:Request req) {
         http:Response res = new;
         json jwks = {
             &quot;keys&quot;: [

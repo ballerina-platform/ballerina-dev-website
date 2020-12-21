@@ -12,6 +12,8 @@ redirect_from:
   - /swan-lake/learn/tools-ides/setting-up-intellij-idea
   - /swan-lake/learn/tools-ides/setting-up-intellij-idea/
   - /swan-lake/learn/setting-up-intellij-idea
+redirect_to:
+  - /swan-lake/page-not-available
 ---
 
 ## Setting Up the Prerequisites

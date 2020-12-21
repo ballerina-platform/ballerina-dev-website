@@ -26,19 +26,9 @@ redirect_from:
 <span class="p">};</span>
 
 <span class="c1">//Service is invoked using `basePath` value &quot;/hbr&quot;.</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hbr&quot;</span>
-<span class="p">}</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hbr</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-<span class="kd">service</span> <span class="nx">headerBasedRouting</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// [http:ResourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig) annotation with &#39;GET&#39; method declares the</span>
-    <span class="c1">// HTTP method.</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/route&quot;</span>
-    <span class="p">}</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hbrResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">route</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">weatherEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://samples.openweathermap.org&quot;</span><span class="p">,</span>
                                      <span class="nx">weatherEPConfig</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">locationEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
@@ -54,14 +44,14 @@ redirect_from:
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="c1">//[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getHeader) returns header value of the specified header name.</span>
         <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">);</span>
 
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">PayloadType</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">nameString</span> <span class="o">==</span> <span class="s">&quot;location&quot;</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">//[post()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#post) remote function represents the &#39;POST&#39; operation</span>
             <span class="c1">// of the HTTP client.</span>
@@ -84,7 +74,7 @@ redirect_from:
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
 
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -94,7 +84,7 @@ redirect_from:
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -118,9 +108,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websocket-cookie.html">
+                                    <a class="prev" href="websocket-basic-sample.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Cookie</p>
+                                        <p>Basic Server Functionalities</p>
                                     </a>
                                 </div>
                                  
@@ -206,10 +196,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -253,9 +239,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/hbr&quot;
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hbr on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -274,42 +258,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service headerBasedRouting on new http:Listener(9090) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/route&quot;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig">http:ResourceConfig</a> annotation with &lsquo;GET&rsquo; method declares the
- HTTP method.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hbrResource(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get route(http:Caller caller, http:Request req) {
         http:Client weatherEP = new (&quot;http://samples.openweathermap.org&quot;,
                                      weatherEPConfig);
         http:Client locationEP = new (&quot;http://www.mocky.io&quot;);
@@ -379,7 +328,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
             return;
         }
@@ -413,7 +362,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|http:Payload|error response;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|http:PayloadType|error response;
         if (nameString == &quot;location&quot;) {
 </code></pre></div>
 
@@ -536,7 +485,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
 </code></pre></div>
 
@@ -566,7 +515,7 @@ import ballerina/log;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
+                log:printError(&quot;Error sending response&quot;, err = result);
             }
         }
     }

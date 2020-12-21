@@ -71,7 +71,7 @@ redirect_from:
     <span class="c1">// Writes the `json` content.</span>
     <span class="k">var</span> <span class="nx">wResult</span> <span class="p">=</span> <span class="nx">write</span><span class="p">(</span><span class="nx">j1</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">wResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while writing json: &quot;</span><span class="p">,</span> <span class="nx">wResult</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while writing json: &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">=</span><span class="nx">wResult</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Preparing to read the content written&quot;</span><span class="p">);</span>
         <span class="c1">// Reads the `json` content.</span>
@@ -416,7 +416,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var wResult = write(j1, filePath);
     if (wResult is error) {
-        log:printError(&quot;Error occurred while writing json: &quot;, wResult);
+        log:printError(&quot;Error occurred while writing json: &quot;, err=wResult);
     } else {
         io:println(&quot;Preparing to read the content written&quot;);
 </code></pre></div>

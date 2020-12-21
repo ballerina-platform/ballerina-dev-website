@@ -18,15 +18,9 @@ redirect_from:
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">http2ServiceEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">7090</span><span class="p">,</span>
     <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/http2Service&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">http2Service</span> <span class="nx">on</span> <span class="nx">http2ServiceEP</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">http2Service</span> <span class="nx">on</span> <span class="nx">http2ServiceEP</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">http2Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
 
         <span class="c1">// [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#promise).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">PushPromise</span> <span class="nx">promise1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/resource1&quot;</span><span class="p">,</span> <span class="nx">method</span> <span class="p">=</span> <span class="s">&quot;GET&quot;</span><span class="p">);</span>
@@ -140,14 +134,14 @@ redirect_from:
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">nextPromiseResult</span><span class="p">);</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received a promise for &quot;</span> <span class="o">+</span> <span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Received a promise for &quot;</span> <span class="o">+</span> <span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">pushPromise</span><span class="p">.</span><span class="nx">path</span> <span class="o">==</span> <span class="s">&quot;/resource2&quot;</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// The client is not interested in receiving `/resource2`.</span>
             <span class="c1">// Therefore, [reject the promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#rejectPromise).</span>
             <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">rejectPromise</span><span class="p">(</span><span class="nx">pushPromise</span><span class="p">);</span>
 
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Push promise for resource2 rejected&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Push promise for resource2 rejected&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c1">// Store the required promises.</span>
             <span class="nx">promises</span><span class="p">[</span><span class="nx">promiseCount</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pushPromise</span><span class="p">;</span>
@@ -165,13 +159,13 @@ redirect_from:
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while fetching response&quot;</span><span class="p">,</span>
-                <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">);</span>
+                <span class="nx">err</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">var</span> <span class="nx">responsePayload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">responsePayload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response : &quot;</span> <span class="o">+</span> <span class="nx">responsePayload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Response : &quot;</span> <span class="o">+</span> <span class="nx">responsePayload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Expected response payload not received&quot;</span><span class="p">,</span>
           <span class="nx">err</span> <span class="p">=</span> <span class="nx">responsePayload</span><span class="p">);</span>
@@ -191,7 +185,7 @@ redirect_from:
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">promisedPayload</span> <span class="p">=</span> <span class="nx">promisedResponse</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">promisedPayload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Promised resource : &quot;</span> <span class="o">+</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Promised resource : &quot;</span> <span class="o">+</span>
                            <span class="nx">promisedPayload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Expected promised response payload not received&quot;</span><span class="p">,</span>
@@ -226,9 +220,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websocket-client.html">
+                                    <a class="next" href="graphql-resources-with-scalar-values.html">
                                         <span>NEXT ></span>
-                                        <p>Client Endpoint</p>
+                                        <p>GraphQL Resources with Scalar Values</p>
                                     </a>
                                 </div>
                                 
@@ -339,10 +333,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/http2Service&quot;
-}
-service http2Service on http2ServiceEP {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /http2Service on http2ServiceEP {
 </code></pre></div>
 
                                 </td>
@@ -354,10 +345,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function http2Resource(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -916,7 +904,7 @@ import ballerina/log;
                 err = nextPromiseResult);
             return;
         }
-        log:printInfo(&quot;Received a promise for &quot; + pushPromise.path);
+        log:print(&quot;Received a promise for &quot; + pushPromise.path);
 </code></pre></div>
 
                                 </td>
@@ -960,7 +948,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Push promise for resource2 rejected&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:print(&quot;Push promise for resource2 rejected&quot;);
         } else {
 </code></pre></div>
 
@@ -1042,7 +1030,7 @@ import ballerina/log;
         response = result;
     } else {
         log:printError(&quot;Error occurred while fetching response&quot;,
-                &lt;error&gt;result);
+                err = &lt;error&gt;result);
         return;
     }
 </code></pre></div>
@@ -1058,7 +1046,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var responsePayload = response.getJsonPayload();
     if (responsePayload is json) {
-        log:printInfo(&quot;Response : &quot; + responsePayload.toJsonString());
+        log:print(&quot;Response : &quot; + responsePayload.toJsonString());
     } else {
         log:printError(&quot;Expected response payload not received&quot;,
           err = responsePayload);
@@ -1087,7 +1075,7 @@ import ballerina/log;
         }
         var promisedPayload = promisedResponse.getJsonPayload();
         if (promisedPayload is json) {
-            log:printInfo(&quot;Promised resource : &quot; +
+            log:print(&quot;Promised resource : &quot; +
                            promisedPayload.toJsonString());
         } else {
             log:printError(&quot;Expected promised response payload not received&quot;,

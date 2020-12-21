@@ -87,12 +87,12 @@ Now that you are familiar with the terminology, let’s look at how you can keep
 ### The "active" Distribution
 
 - One only distribution from the above list can be active at a given time.
-- Ballerina tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  E.g., when you invoke `ballerina build`, the Ballerina tool dispatches this request to the active distribution.
+- The Ballerina Tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  E.g., when you invoke `ballerina build`, the Ballerina Tool dispatches this request to the active distribution.
 - You can change the active distribution at any time. Refer the [Change the active distribution](#change-the-active-distribution) section for more details.  
 
 ### The 'ballerina dist' Command
 
-Ballerina tool comes with various subcommands to help you manage Ballerina source code. The `ballerina dist` and `ballerina update` commands are the ones that will be explained in this guide. The `ballerina dist` command allows you to manage Ballerina distributions whereas the `ballerina update` command updates the tool itself.
+The Ballerina Tool comes with various subcommands to help you manage Ballerina source code. The `ballerina dist` and `ballerina update` commands are the ones that will be explained in this guide. The `ballerina dist` command allows you to manage Ballerina distributions whereas the `ballerina update` command updates the tool itself.
 
 The dist command has few other subcommands. Here is the output of `ballerina help dist`.
 
@@ -220,7 +220,7 @@ Downloading jballerina-1.2.4 100% [==================================] 96/96 MB 
 
 ### Update the Ballerina Tool
 
-- The `ballerina update` command updates the Ballerina tool itself to the latest version. Ballerina tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.
+- The `ballerina update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.
 
 ```sh
 → ballerina update
@@ -230,5 +230,5 @@ Downloading ballerina-tool-0.8.1 100% [====================================] 1/1
 
 Updated to latest tool version: 0.8.1
 Cleaning old files...
-Ballerina tool updated successfully
+Ballerina Tool updated successfully
 ```

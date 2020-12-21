@@ -1,0 +1,748 @@
+---
+layout: ballerina-example-page
+title: Distributed Transactions
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/distributed-transactions
+redirect_from:
+  - /vswan-lake/learn/by-example/distributed-transactions
+  - /vswan-lake/learn/by-example/distributed-transactions.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
+
+<span class="c1">// This is the initiator of the distributed transaction.</span>
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">init</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Initiating transaction...&quot;</span><span class="p">);</span>
+        <span class="c1">// When transaction statement starts, a distributed transaction context is created.</span>
+        <span class="nx">transaction</span> <span class="p">{</span>
+            <span class="c1">// Print the information about the current transaction.</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Started transaction: &quot;</span> <span class="o">+</span>
+                          <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+
+            <span class="c1">// When a participant is called, the transaction context is propagated and</span>
+            <span class="c1">// that participant joins the distributed transaction.</span>
+            <span class="kt">boolean</span> <span class="nx">successful</span> <span class="p">=</span> <span class="nx">callBusinessService</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">successful</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
+                <span class="c1">// Run the `2-phase commit coordination` protocol.</span>
+                <span class="c1">// All participants are prepared and depending on the joint outcome,</span>
+                <span class="c1">// either a `notify commit` or `notify abort` will be sent to the participants.</span>
+                <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+                <span class="k">if</span> <span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Transaction failed&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Internal Server Error&quot;</span><span class="p">);</span>
+                <span class="nx">rollback</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Send the response back to the client.</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to client&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">()});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Sent response back to client&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This is the business function call to the participant.</span>
+<span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">callBusinessService</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted boolean {</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8889/stockquote/&quot;</span> <span class="o">+</span>
+                                        <span class="s">&quot;update/updateStockQuote&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Generate the payload.</span>
+    <span class="kt">float</span> <span class="nx">price</span> <span class="p">=</span> <span class="mf">100.00</span><span class="p">;</span>
+    <span class="kt">json</span> <span class="nx">bizReq</span> <span class="p">=</span> <span class="p">{</span><span class="nx">symbol</span><span class="p">:</span> <span class="s">&quot;GOODS&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="nx">price</span><span class="p">};</span>
+
+    <span class="c1">// Send the request to the backend service.</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">bizReq</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">participantEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Got response from bizservice&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// This is a participant in the distributed transaction. It will get invoked when it receives</span>
+<span class="c1">// a transaction context from the participant.</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">stockquote</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8889</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Since the transaction context has been received, this resource will register with the initiator</span>
+    <span class="c1">// as a participant.</span>
+    <span class="nx">transactional</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">update</span><span class="o">/</span><span class="nx">updateStockQuote</span>
+                                     <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Received update stockquote request&quot;</span><span class="p">);</span>
+        <span class="c1">// Get the JSON payload.</span>
+        <span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="nx">updateReq</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
+
+        <span class="c1">// Generate the response.</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">updateReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Update stock quote request received. &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;symbol:%s, price:%s&quot;</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">symbol</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+            <span class="kt">json</span> <span class="nx">jsonRes</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;updating stock&quot;</span><span class="p">};</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonRes</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">updateReq</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Payload error occurred!&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="nx">updateReq</span><span class="p">.</span><span class="kt">message</span><span class="p">()});</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Send the response back to the initiator.</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to initiator&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">()});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Sent response back to initiator&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Distributed Transactions</h2>
+                            <p><p>To improve the reliability of microservice-based applications, a series of
+ microservice invocations can be bound into a single unit of work. The underlying
+ mechanisms are that of infection and agreement protocols. This example demonstrates
+ the Ballerina distributed transactions protocol in action.  <br/><br/>
+ After starting the <code>initiator service</code> and the <code>participant service</code>, execute the <code>curl -v localhost:8080/init</code>
+ cURL command to invoke the services. <br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/lang.transaction/index.html">Transactions module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="retry-transactions.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Retry Transactions</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="xa-transactions.html">
+                                        <span>NEXT ></span>
+                                        <p>XA Transactions</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="distributed-transactions">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/distributed-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+import ballerina/log;
+import ballerina/lang.&#39;transaction as transactions;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(8080) {
+    resource function get init(http:Caller conn, http:Request req) {
+        http:Response res = new;
+        log:print(&quot;Initiating transaction...&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the initiator of the distributed transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        transaction {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>When transaction statement starts, a distributed transaction context is created.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:print(&quot;Started transaction: &quot; +
+                          transactions:info().toString());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Print the information about the current transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            boolean successful = callBusinessService();
+            if (successful) {
+                res.statusCode = http:STATUS_OK;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>When a participant is called, the transaction context is propagated and
+ that participant joins the distributed transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                var commitResult = commit;
+                if commitResult is () {
+                    log:print(&quot;Transaction committed&quot;);
+                } else {
+                    log:printError(&quot;Transaction failed&quot;);
+                }
+            } else {
+                res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
+                log:printError(&quot;Internal Server Error&quot;);
+                rollback;
+            }
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Run the <code>2-phase commit coordination</code> protocol.
+ All participants are prepared and depending on the joint outcome,
+ either a <code>notify commit</code> or <code>notify abort</code> will be sent to the participants.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = conn-&gt;respond(res);
+        if (result is error) {
+            log:printError(&quot;Could not send response back to client&quot;,
+            {&quot;error&quot;: result.message()});
+        } else {
+            log:print(&quot;Sent response back to client&quot;);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Send the response back to the client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>transactional function callBusinessService() returns @tainted boolean {
+    http:Client participantEP = new (&quot;http://localhost:8889/stockquote/&quot; +
+                                        &quot;update/updateStockQuote&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the business function call to the participant.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    float price = 100.00;
+    json bizReq = {symbol: &quot;GOODS&quot;, price: price};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Generate the payload.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Request req = new;
+    req.setJsonPayload(bizReq);
+    var result = participantEP-&gt;post(&quot;&quot;, req);
+    log:print(&quot;Got response from bizservice&quot;);
+    if (result is http:Response) {
+        return result.statusCode == http:STATUS_OK;
+    } else {
+        return false;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Send the request to the backend service.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the `initiator` service, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+ballerina run initiator.bal
+[ballerina/http] started HTTP/WS listener 192.168.1.18:37869
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+time = 2020-12-15 21:19:15,787 level = INFO  module = &quot;&quot; message = &quot;Initiating transaction...&quot;
+time = 2020-12-15 21:19:15,820 level = INFO  module = &quot;&quot; message = &quot;Started transaction: {&quot;xid&quot;:[54,50,57,53,51,55,101,101,45,50,100,52,49,45,52,55,56,52,45,57,98,49,102,45,98,57,98,57,97,57,51,50,54,50,99,97],&quot;retryNumber&quot;:0,&quot;startTime&quot;:2020-12-15 21:19:15,801,&quot;prevAttempt&quot;:null}&quot;
+time = 2020-12-15 21:19:16,315 level = INFO  module = &quot;&quot; message = &quot;Got response from bizservice&quot;
+time = 2020-12-15 21:19:16,373 level = INFO  module = &quot;&quot; message = &quot;Transaction committed&quot;
+time = 2020-12-15 21:19:16,376 level = INFO  module = &quot;&quot; message = &quot;Sent response back to client&quot;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+import ballerina/io;
+import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service /stockquote on new http:Listener(8889) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is a participant in the distributed transaction. It will get invoked when it receives
+ a transaction context from the participant.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    transactional resource function post update/updateStockQuote
+                                     (http:Caller conn, http:Request req) {
+        log:print(&quot;Received update stockquote request&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since the transaction context has been received, this resource will register with the initiator
+ as a participant.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        json|http:ClientError updateReq = &lt;@untainted&gt;req.getJsonPayload();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get the JSON payload.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
+        if (updateReq is json) {
+            string msg = io:sprintf(&quot;Update stock quote request received. &quot; +
+                    &quot;symbol:%s, price:%s&quot;, updateReq.symbol, updateReq.price);
+            log:print(msg);
+            json jsonRes = {&quot;message&quot;: &quot;updating stock&quot;};
+            res.statusCode = http:STATUS_OK;
+            res.setJsonPayload(jsonRes);
+        } else {
+            res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
+            res.setPayload(updateReq.message());
+            log:printError(&quot;Payload error occurred!&quot;,
+            {&quot;error&quot;: updateReq.message()});
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Generate the response.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = conn-&gt;respond(res);
+        if (result is error) {
+            log:printError(&quot;Could not send response back to initiator&quot;,
+            {&quot;error&quot;: result.message()});
+        } else {
+            log:print(&quot;Sent response back to initiator&quot;);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Send the response back to the initiator.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the `participant` service, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+# Execute the command below to start the `participant` service.
+ballerina run participant.bal
+[ballerina/http] started HTTP/WS listener 192.168.1.18:37209
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8889
+time = 2020-12-15 21:19:16,287 level = INFO  module = &quot;&quot; message = &quot;Received update stockquote request&quot;
+time = 2020-12-15 21:19:16,292 level = INFO  module = &quot;&quot; message = &quot;Update stock quote request received. symbol:GOODS, price:100.0&quot;
+time = 2020-12-15 21:19:16,313 level = INFO  module = &quot;&quot; message = &quot;Sent response back to initiator&quot;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

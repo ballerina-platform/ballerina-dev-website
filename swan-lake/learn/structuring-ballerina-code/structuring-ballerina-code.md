@@ -16,7 +16,7 @@ redirect_from:
 
 There are two ways to write your code in a Ballerina program: 
 
-1. In a single Ballerina source file (with the .bal extension)
+1. In a single Ballerina source file (with the `.bal` extension)
 2. In a Ballerina package
 
 The single source file program is a quick and easy way to get started with Ballerina. However, when your code grows, you often want to:
@@ -39,7 +39,7 @@ A Ballerina package is stored in a directory. It contains a collection of source
 
 Follow the steps below to write a simple program in a Ballerina package, which prints `Hello World!` in the console. 
 
-1. Get Ballerina [installed](/swan-lake/learn-installing-ballerina).
+1. Get Ballerina [installed](/swan-lake/learn/installing-ballerina).
 
 2. In the CLI, execute the `ballerina new helloworld` command to create a new Ballerina package.
 

@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-12-11</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-12-17</h1>
 <p>
 Primary contributors:
 </p>
@@ -79,8 +79,8 @@ unusual aspects that make it particularly suitable for its intended purpose.
 <p>
 First, it provides language constructs specifically for consuming and providing
 network services. Future versions of Ballerina will add language constructs for
-other middleware functionality such as event stream processing, distributed
-transactions and reliable messaging; this is described in more detail in <a
+other middleware functionality such as event stream processing and reliable
+messaging; this is described in more detail in <a
 href="#planned_future_functionality">Appendix C</a>.
 </p>
 <p>
@@ -2140,11 +2140,12 @@ is not allowed in conjunction with <code>public</code>.
 
 <p>
 Network interaction objects provide two additional features: remote methods and
-resources. Remote methods are supported by both client and service objects.
-Resources are supported only by service objects. Object type descriptors do not
-provide a way to describe the resources of a service object: whether a service
-object belongs to an object type is not affected by the service object's
-resources. Resources are described in detail in the <a
+resources. Remote methods are supported by both client and service objects. The
+remote methods of an object are in a separate symbol space from the other
+methods of the object. Resources are supported only by service objects. Object
+type descriptors do not provide a way to describe the resources of a service
+object: whether a service object belongs to an object type is not affected by
+the service object's resources. Resources are described in detail in the <a
 href="#resources">section</a> on object constructors.
 </p>
 
@@ -2216,12 +2217,16 @@ A <code>remote-method-decl</code> declares a remote method. An object can
 include a <code>remote-method-decl</code> only if it is a network interaction
 object. A remote method is a method for network interaction: a remote method of
 a client object is for outbound network interaction; a remote method of a
-service object is for inbound network interaction. A remote method cannot be
-called using the normal method call syntax. A remote method of a client object
-can only be invoked by a <code>client-remote-method-call-action</code>. A remote
-method of a service object is invoked by a listener object provided by a library
-module; Ballerina does not yet define a mechanism to allow such a library module
-to be implemented completely in Ballerina.
+service object is for inbound network interaction. The <code>method-name</code>
+of a <code>remote-method-decl</code> must be distinct from the
+<code>method-name</code> of every other <code>remote-method-decl</code> in the
+<code>object-type-descriptor</code>. However, a <code>method-decl</code> and a
+<code>remote-method-decl</code> can have the same name. A remote method cannot
+be called using the normal method call syntax. A remote method of a client
+object can only be invoked by a <code>client-remote-method-call-action</code>. A
+remote method of a service object is invoked by a listener object provided by a
+library module; Ballerina does not yet define a mechanism to allow such a
+library module to be implemented completely in Ballerina.
 </p>
 
 </section>
@@ -2286,7 +2291,8 @@ class="grammar"><dfn>object-type-inclusion</dfn> := <code>*</code> <abbr>type-re
 Every type descriptor referenced directly or indirectly by a
 <code>type-reference</code> in an <code>object-type-inclusion</code> must be an
 <code>object-type-descriptor</code>, <code>distinct-type-descriptor</code>,
-<code>intersection-type-descriptor</code> or a class that is not readonly; the
+<code>intersection-type-descriptor</code> or
+a class without a <code>readonly</code> qualifier; the
 referenced type descriptor will thus necessarily be definite and a subtype of
 object. If a referenced object-type-descriptor or class has an
 <code>isolated</code>, <code>service</code> or <code>client</code> qualifier
@@ -5523,10 +5529,11 @@ class="grammar"><dfn>infer-anonymous-function-expr</dfn> := <abbr>infer-param-li
 </pre>
 <p>
 An infer-anonymous-function-expr can only be used in a context where a function
-type is expected. Both the types of the parameters and the presence of
-<code>isolated</code> and <code>transactional</code> qualifiers are inferred
-from the expected
-function type. The scope of the parameters is <code>expr-function-body</code>.
+type is expected. Both the types of the parameters and whether the function type
+is <code>isolated</code> are inferred from the expected function type. The
+function type will be inferred to be <code>transactional</code> if the
+expr-function-body calls any functions with a transactional type.
+The scope of the parameters is <code>expr-function-body</code>.
 The static type of the infer-anonymous-function-expr will be a function type
 whose return type is the static type of the <code>expression</code> in
 <code>expr-function-body</code>. If the contextually expected type for the
@@ -7032,11 +7039,12 @@ completion of the evaluation of expressions and actions as follows. There are
 two possibilities.
 </p>
 <ul>
-<li>If the abrupt termination is a check-fail, then control flow is transferred
-as if by a <code>fail-stmt</code> with an expression that evaluates to e.</li>
-<li>If the abrupt termination is a panic, then the current worker is terminated
-abnormally with termination value e. This is the same as if
-a panic statement is executed with an expression that evaluates to e.</li>
+<li>If the abrupt termination is a check-fail with associated value e, then
+control flow is transferred as if by a <code>fail-stmt</code> with an expression
+that evaluates to e.</li>
+<li>If the abrupt termination is a panic with associated value, then the current
+worker is terminated as if by a <code>panic-stmt</code> with an expression that
+evaluates to e.</li>
 </ul>
 <p>
 If the execution of a substatement causes termination of the current worker,
@@ -8495,17 +8503,34 @@ variable-reference-expr occurs within an expression that is isolated.</li>
 
 <section>
 <h3>Fail and retry</h3>
+<p>
+The execution of a statement can fail either as the result of <code>check</code>
+expression or action, or from an explicit <code>fail</code> statement. When
+execution of a statement fails, control flow transfers to the nearest lexically
+enclosing failure-handling statement. The failure handling statements are
+stmt-with-on-fail, retry-stmt, transaction-stmt and retry-transaction-stmt. If
+there is no such statement, it terminates the current worker normally. Note that
+failure is completely distinct from panic.
+</p>
+<p>
+When execution fails there is an associated error value, which is passed to the
+failure-handling statement if there is one. If there is no failure-handling
+statement, then the error value becomes the return value of the worker. The
+possible failure control flows are known at compile-time, as are the types of
+the associated error values. For every statement, the type of the error value
+associated with a failure causing control to transfer out of the block is
+determined at compile-time. This is in contrast with panics, for which the type
+of associated error value is not known at compile-time.
+</p>
+
 <section>
 <h4>Fail statement</h4>
 <pre
 class="grammar"><dfn>fail-stmt</dfn> := <code>fail</code> <abbr>expression</abbr> <code>;</code>
 </pre>
 <p>
-Executing a fail-stmt will cause control flow to transfer to the on-fail-clause
-of the nearest lexically enclosing failure handling statement. The failure
-handling statements are stmt-with-on-fail, retry-stmt, transaction-stmt and
-retry-transaction-stmt. If there is no such statement, it terminates the current
-worker normally.
+Executing a fail-stmt will cause control flow to transfer to the nearest
+lexically enclosing failure handling statement.
 </p>
 <p>
 The static type of the expression must be a subtype of error. Execution of the
@@ -8580,30 +8605,18 @@ If the type-parameter is omitted, it defaults to
 <h3 id="transactions">Transactions</h3>
 
 <p>
-Ballerina supports distributed transactions. A global transaction consists of
-multiple transaction branches, where a branch corresponds to work done by a
-single strand of a Ballerina program that is part of the global transaction.
-Every transaction branch is uniquely identified by an XID, which consists of an
-identifier of the global transaction and an identifier of a branch with the
-global transaction.
+Ballerina provides language support for distributed transactions. A global
+transaction consists of one or more transaction branches, where a branch
+corresponds to work done by a single strand of a Ballerina program that is part
+of the global transaction. Every transaction branch is uniquely identified by an
+XID, which consists of an identifier of the global transaction and an identifier
+of a branch with the global transaction.
 </p>
 <p>
 At runtime, there is a mapping from each strand to a transaction stack, which is
 a stack of transaction branches. A strand is in <em>transaction mode</em>, if
 its transaction stack is non-empty; the top of a strand's transaction stack is
 the current transaction branch for that strand.
-</p>
-<p>
-A running instance of a Ballerina program includes a transaction manager. This
-may run in the same process as the Ballerina program or in a separate process.
-It should not be connected over an unreliable network.
-</p>
-<p>
-A strand in transaction mode can register commit or rollback handlers with the
-transaction manager for the current transaction branch, which are functions
-which will be called by the transaction manager when the decision has been made
-whether to commit or rollback the global transaction to which the branch
-belongs.
 </p>
 <p>
 Static checking is based on the idea of a transactional scope: this is a lexical
@@ -8613,10 +8626,49 @@ region will always be in transactional mode. A function with the
 scope; this includes function calls using <code>start</code>.
 </p>
 <p>
+A running instance of a Ballerina program includes a transaction manager. This
+may run in the same process as the Ballerina program or in a separate process.
+It should not be connected over an unreliable network. The transaction manager
+of a program is responsible for managing the transaction branches of all the
+program's strands.
+</p>
+<p>
+When a global transaction involves multiple Ballerina programs, there must be a
+network protocol that allows that transaction managers for each Ballerina
+program to communicate. The protocol must also allow a remote method or resource
+method on a service object to be informed of the global transaction, if any, to
+which it belongs. When a listener object determines that a remote method or
+resource method of a service object is to be a part of a global transaction
+manager, then it will create a new transaction branch, join it to the global
+transaction and push that on the transaction stack for the strand on which the
+method is called; if the method is declared as <code>transactional</code>, the
+listener will not call the method unless it can do this. Similarly, the protocol
+must allow a remote method on a client object that is called in transaction mode
+to send information about the global transaction of which it is part; if the
+method is declared as <code>transactional</code>, then as usual the method can
+only be called in transaction mode; it also implies that the client object
+implementation is transaction-aware, and that the recipient of the message sent
+by the remote method must join the global transaction. A global transaction can
+combine Ballerina programs with programs written in other programming languages
+provided they agree on this network protocol.
+</p>
+<p>
+A strand in transaction mode can register commit or rollback handlers with the
+transaction manager; the handlers are functions which will be called by the
+transaction manager when the decision has been made whether to commit or
+rollback the global transaction to which the current transaction branch belongs.
+</p>
+<p>
+Note that internal storage in Ballerina is not transactional. Rolling back a
+transaction does <em>not</em> automatically restore the mutable values are
+variables to their state when the transaction started. It is up to the
+programmer to do this using commit or rollback handlers.
+</p>
+<p>
 When a new strand is created by a named-worker-decl that includes a
 <code>transactional</code> qualifier or by using <code>start</code> to call a
 function with a <code>transactional</code> qualifier, a new transaction branch
-will be created and joined to the current transaction; this transaction branch
+will be created and joined to the global transaction; this transaction branch
 will be pushed onto transaction stack for the newly created strand.
 </p>
 <p>
@@ -8692,7 +8744,7 @@ parameter to any rollback handlers.
 </p>
 <p>
 If the transaction manager decided to rollback, then the Commit operation
-returns the error value for the cause of the rollback. Otherwise, it returns
+returns the error value for the reason for the rollback. Otherwise, it returns
 nil.
 </p>
 
@@ -8707,10 +8759,12 @@ Rollback operation always removes the topmost transaction from the strand's
 transaction stack. The Rollback operations initiates a commit of the global
 transaction that the current transaction branch belongs to. The transaction
 manager calls the rollback handlers that were registered with it for the
-branches of the global transaction that it is managing.
+branches of the global transaction that it is managing. The Rollback operation
+has a parameter which is either an error value or nil; this is passed as an
+argument to any rollback handlers.
 </p>
 <p>
-The Rollback operation has an optional parameter which is a RetryManager object
+The Rollback operation also has an optional parameter which is a RetryManager object
 or nil, which defaults to nil. If this parameter is non-nil, then the
 transaction manager will call the RetryManager object's shouldRetry method,
 record the result and then pass it as the willRetry parameter to any rollback
@@ -8742,7 +8796,10 @@ A transaction-stmt is executed as follows:
 </p>
 <ul>
 <li>Perform the transaction Begin() operation.</li>
-<li>Execute the statement-block.</li>
+<li>Execute the statement-block. While executing the statement-block, any panic
+does not immediately terminate the current worker; rather control is transferred
+back to the transaction-stmt, so that the transaction-stmt can handle it as
+described in the next step.</li>
 <li>If the new transaction that was begun is still the current transaction, then
 the statement-block must have failed or panicked. In this case, perform a
 Rollback(e) operation, where e is the error associated with the fail or panic,
@@ -8752,6 +8809,13 @@ and then continue with the fail or panic.</li>
 The statement-block of a transaction-stmt is a transactional scope, except for
 any statements that could potentially be executed after the execution of a
 commit-action or rollback-stmt.
+</p>
+<p>
+It is an error for a transactional-stmt to appear in a transactional scope.
+However, it is not an error if the current strand is in transaction mode when a
+transaction-stmt is executed: in this case, the Begin() operation performed by
+the transaction-stmt will, as usual, start a new transaction, which will be
+completely independent of any existing transactions.
 </p>
 </section>
 
@@ -8792,8 +8856,9 @@ A <code>commit-action</code> is only allowed if it is lexically within the
 <p>
 Evaluating the <code>commit-action</code> performs the transaction manager
 Commit() operation; the result of this operation is the result of the
-<code>commit-action</code>. Note that the commit action does not alter the flow
-of control.
+<code>commit-action</code>. The type of the result is
+<code>transaction:Error?</code>. Note that the commit action does not alter the
+flow of control.
 </p>
 
 </section>
@@ -10042,8 +10107,9 @@ object constructor expression, which includes method definitions, or by applying
 methods and fields of an object are not in a single symbol space. Classes and
 object constructors can declare fields as final.</li>
 <li>Services have become service objects that work in a similar way to client
-objects; resource methods on service objects have become remote methods. There
-is a new concept for resource methods.</li>
+objects; resource methods on service objects have become remote methods. Remote
+methods are in a separate symbol space from regular methods. There is a new
+concept for resource methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
 declared as <code>readonly</code>.</li>
 <li>Functions, objects and module-level variables can be declared as

@@ -28,16 +28,10 @@ redirect_from:
         <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span>
 <span class="p">});</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/lb&quot;</span>
-<span class="p">}</span>
 <span class="c1">// Create an HTTP service bound to the endpoint (`loadBalancerEP`).</span>
-<span class="kd">service</span> <span class="nx">loadBalancerDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">lb</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">roundRobin</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">json</span> <span class="nx">requestPayload</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">lbBackendEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">requestPayload</span><span class="p">);</span>
         <span class="c1">// If a response is returned, the normal process runs. If the service</span>
@@ -46,7 +40,8 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">outResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -54,7 +49,8 @@ redirect_from:
             <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">outResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
 
@@ -62,14 +58,9 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Define the mock backend services, which are called by the load balancer.</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/mock1&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">mock1</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">mock1Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">mock1</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock1 resource was invoked.&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
@@ -77,14 +68,9 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/mock2&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">mock2</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">mock2Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">mock2</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock2 resource was invoked.&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
@@ -92,14 +78,9 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/mock3&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">mock3</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">mock3Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">mock3</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock3 resource was invoked.&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
@@ -110,7 +91,8 @@ redirect_from:
 <span class="c1">// Function to handle respond results</span>
 <span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -180,6 +162,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -301,24 +287,10 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/lb&quot;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service loadBalancerDemoService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /lb on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -337,10 +309,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function roundRobin(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
         json requestPayload = {&quot;name&quot;: &quot;Ballerina&quot;};
         var response = lbBackendEP-&gt;post(&quot;/&quot;, requestPayload);
 </code></pre></div>
@@ -357,7 +326,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>        if (response is http:Response) {
             var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;response);
             if (responseToCaller is http:ListenerError) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         } else {
             http:Response outResponse = new;
@@ -365,7 +335,8 @@ import ballerina/log;
             outResponse.setPayload((&lt;@untainted error&gt;response).message());
             var responseToCaller = caller-&gt;respond(outResponse);
             if (responseToCaller is http:ListenerError) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         }
 </code></pre></div>
@@ -401,20 +372,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/mock1&quot;
-}
-service mock1 on backendEP {
-    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function mock1Resource(http:Caller caller, http:Request req) {
-        var responseToCaller = caller-&gt;respond(&quot;Mock1 resource was invoked.&quot;);
-        if (responseToCaller is http:ListenerError) {
-            handleRespondResult(responseToCaller);
-        }
-    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>service /mock1 on backendEP {
 </code></pre></div>
 
                                 </td>
@@ -433,14 +391,37 @@ service mock1 on backendEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/mock2&quot;
-}
-service mock2 on backendEP {
-    @http:ResourceConfig {
-        path: &quot;/&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
+        var responseToCaller = caller-&gt;respond(&quot;Mock1 resource was invoked.&quot;);
+        if (responseToCaller is http:ListenerError) {
+            handleRespondResult(responseToCaller);
+        }
     }
-    resource function mock2Resource(http:Caller caller, http:Request req) {
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service /mock2 on backendEP {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
         var responseToCaller = caller-&gt;respond(&quot;Mock2 resource was invoked.&quot;);
         if (responseToCaller is http:ListenerError) {
             handleRespondResult(responseToCaller);
@@ -458,14 +439,19 @@ service mock2 on backendEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/mock3&quot;
-}
-service mock3 on backendEP {
-    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function mock3Resource(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /mock3 on backendEP {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
         var responseToCaller = caller-&gt;respond(&quot;Mock3 resource was invoked.&quot;);
         if (responseToCaller is http:ListenerError) {
             handleRespondResult(responseToCaller);
@@ -485,7 +471,8 @@ service mock3 on backendEP {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(http:ListenerError? result) {
     if (result is http:ListenerError) {
-        log:printError(&quot;Error sending response from mock service&quot;, result);
+        log:printError(&quot;Error sending response from mock service&quot;,
+                        err = result);
     }
 }
 </code></pre></div>

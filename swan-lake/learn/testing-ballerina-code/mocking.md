@@ -42,7 +42,7 @@ import ballerina/http;
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
 
-    public remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:Payload|http:ClientError {
+    remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:PayloadType|http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
@@ -270,13 +270,13 @@ email:SmtpClient smtpClient = new ("localhost", "admin","admin");
 
 // This function sends out emails to specified email addresses and returns an error if sending failed.
 function sendNotification(string[] emailIds) returns error? {
-    email:Email msg = {
+    email:Message msg = {
         'from: "builder@abc.com",
         subject: "Error Alert ...",
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient->send(msg);
+    email:Error? response = smtpClient->sendEmailMessage(msg);
     if (response is error) {
 	io:println("error while sending the email: " + response.message());
   	return response;
@@ -299,7 +299,7 @@ function testSendNotification() {
     smtpClient = test:mock(email:SmtpClient);
 
     // Stub to do nothing when the`send` function is invoked.
-    test:prepare(smtpClient).when("send").doNothing();
+    test:prepare(smtpClient).when("sendEmailMessage").doNothing();
 
     // Invoke the function to test and verify that no error occurred.
     test:assertEquals(sendNotification(emailIds), ());

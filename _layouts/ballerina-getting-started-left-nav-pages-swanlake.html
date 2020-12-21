@@ -20,12 +20,8 @@
                         {% include nav-breadcrumbs.html %}
                         <div class="cVersionContainer"></div>
                      </div>
-                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
-                        <ul class="wy-breadcrumbs">
-                           <li class="wy-breadcrumbs-aside">
-                              <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}">Edit on GitHub</a>
-                           </li>
-                        </ul>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs cGitLink">
+                       <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}"></a>>
                      </div>
                   </div>
                   <div class="cBlallerina-io-docs-content-container cPositionRelative">
@@ -36,7 +32,7 @@
                                  <h1>{{ page.title }}</h1>
                                  <p>{{ page.intro }}</p>
                                  <div class="cBallerinaTocContainer" id="table-of-content">
-                                    <p class="cTOCcontol" ><strong>Table of contents</strong> - <a href="#" id="tree-expand-all">Expand all</a> | <a href="#" id="tree-collapse-all">Collapse all</a></p>
+                                    <p class="cTOCcontol" ><strong>Table of contents</strong> - <a href="#" id="tree-expand-all">Expand all</a> &nbsp; <a href="#" id="tree-collapse-all">Collapse all</a></p>
                                     {% include toc.html html=content sanitize=true id="tree" %}
                                  </div>
                                  {{ content }}

@@ -2,7 +2,9 @@ var searchData = {
   "modules": [
     {
       "id": "lang.value",
-      "description": "\u003cp\u003eThis module provides lang library operations common to all values defined by the language specification 2020R1.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides lang library operations common to all values defined by the language specification 2020R1.\u003c/p\u003e",
+      "orgName": "ballerina",
+      "version": "1.0.0"
     }
   ],
   "classes": [],
@@ -10,82 +12,114 @@ var searchData = {
     {
       "id": "clone",
       "description": "\u003cp\u003eReturns a clone of \u003ccode\u003ev\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "cloneReadOnly",
       "description": "\u003cp\u003eReturns a clone of \u003ccode\u003ev\u003c/code\u003e that is read-only, i.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "cloneWithType",
       "description": "\u003cp\u003eConstructs a value with a specified type by cloning another value.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "isReadOnly",
       "description": "\u003cp\u003eTests whether \u003ccode\u003ev\u003c/code\u003e is read-only, i.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "toString",
       "description": "\u003cp\u003ePerforms a direct conversion of a value to a string.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "toBalString",
       "description": "\u003cp\u003eConverts a value to a string that describes the value in Ballerina syntax.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "fromBalString",
       "description": "\u003cp\u003eParses and evaluates a subset of Ballerina expression syntax.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "toJson",
       "description": "\u003cp\u003eConverts a value of type \u003ccode\u003eanydata\u003c/code\u003e to \u003ccode\u003ejson\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "toJsonString",
       "description": "\u003cp\u003eReturns the string that represents \u003ccode\u003ev\u003c/code\u003e in JSON format.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "fromJsonString",
       "description": "\u003cp\u003eParses a string in JSON format and returns the the value that it represents.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "fromJsonFloatString",
       "description": "\u003cp\u003eParses a string in JSON format and returns the value that it represents.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "fromJsonDecimalString",
       "description": "\u003cp\u003eParses a string in JSON format and returns the value that it represents.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "fromJsonWithType",
       "description": "\u003cp\u003eConverts a value of type json to a user-specified type.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "fromJsonStringWithType",
       "description": "\u003cp\u003eConverts a string in JSON format to a user-specified type.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "mergeJson",
       "description": "\u003cp\u003eMerges two json values.\u003c/p\u003e",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "ensureType",
       "description": "",
-      "moduleId": "lang.value"
+      "moduleId": "lang.value",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
     }
   ],
   "records": [],

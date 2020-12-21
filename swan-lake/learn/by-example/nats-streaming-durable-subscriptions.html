@@ -11,24 +11,24 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">stan</span><span class="p">;</span>
 
 <span class="c1">// Represents the escape character.</span>
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">ESCAPE</span> <span class="p">=</span> <span class="s">&quot;!q&quot;</span><span class="p">;</span>
 
-<span class="c1">// Produces a message to a subject in the NATS sever.</span>
+<span class="c1">// Produces a message to a subject in the NATS Streaming sever.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingProducer</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
+    <span class="nx">stan</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
     <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">message</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Message: &quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Produces a message to the specified subject.</span>
-            <span class="kt">string</span><span class="p">|</span><span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="s">&quot;demo&quot;</span><span class="p">,</span>
-                                                        <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">string</span><span class="p">|</span><span class="nx">stan</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
+                            <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="s">&quot;demo&quot;</span><span class="p">,</span>
+                                                <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while producing the message.&quot;</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span>
@@ -36,39 +36,28 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
-    <span class="c1">// Closes the connection.</span>
-    <span class="nx">check</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
-
-<span class="c1">// Creates a NATS connection.</span>
-<span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">stan</span><span class="p">;</span>
 
 <span class="c1">// Initializes the NATS Streaming listener.</span>
-<span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingListener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">clientId</span> <span class="p">=</span> <span class="s">&quot;c0&quot;</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">clientId</span> <span class="p">=</span> <span class="s">&quot;c0&quot;</span><span class="p">);</span>
 
 <span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
-<span class="nd">@nats:StreamingSubscriptionConfig {</span>
+<span class="nd">@stan:ServiceConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
     <span class="nx">durableName</span><span class="p">:</span> <span class="s">&quot;sample-name&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">demoService</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
        <span class="c1">// Prints the incoming message in the console.</span>
-       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
        <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
-                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while consuming the message.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -94,9 +83,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="nats-streaming-consumer-with-data-binding.html">
+                                    <a class="prev" href="nats-streaming-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Streaming Publisher and Subscriber With Data Binding</p>
+                                        <p>Basic Streaming Publisher and Subscriber</p>
                                     </a>
                                 </div>
                                  
@@ -152,8 +141,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -163,7 +150,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerinax/nats;
+import ballerinax/stan;
 </code></pre></div>
 
                                 </td>
@@ -196,8 +183,7 @@ import ballerinax/nats;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     string message = &quot;&quot;;
-    nats:Connection conn = new;
-    nats:StreamingProducer publisher = new (conn);
+    stan:Client publisher = new;
 </code></pre></div>
 
                                 </td>
@@ -205,7 +191,7 @@ import ballerinax/nats;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Produces a message to a subject in the NATS sever.</p>
+                                            <p>Produces a message to a subject in the NATS Streaming sever.</p>
 
                                         </div>
                                     </div>
@@ -229,10 +215,11 @@ import ballerinax/nats;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            string|nats:Error result = publisher-&gt;publish(&quot;demo&quot;,
-                                                        &lt;@untainted&gt;message);
-            if (result is nats:Error) {
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>            string|stan:Error result =
+                            publisher-&gt;publish(&quot;demo&quot;,
+                                                &lt;@untainted&gt;message.toBytes());
+            if (result is stan:Error) {
                 io:println(&quot;Error occurred while producing the message.&quot;);
             } else {
                 io:println(&quot;GUID &quot; + result +
@@ -240,25 +227,6 @@ import ballerinax/nats;
             }
         }
     }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Produces a message to the specified subject.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check conn.close();
 }
 </code></pre></div>
 
@@ -267,7 +235,7 @@ import ballerinax/nats;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes the connection.</p>
+                                            <p>Produces a message to the specified subject.</p>
 
                                         </div>
                                     </div>
@@ -322,14 +290,6 @@ GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
                         
                             
                                 
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -352,7 +312,7 @@ GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;string as strings;
 import ballerina/io;
-import ballerinax/nats;
+import ballerinax/stan;
 </code></pre></div>
 
                                 </td>
@@ -364,26 +324,7 @@ import ballerinax/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>nats:Connection conn = new;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a NATS connection.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener nats:StreamingListener lis = new (conn, clientId = &quot;c0&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener stan:Listener lis = new (clientId = &quot;c0&quot;);
 </code></pre></div>
 
                                 </td>
@@ -402,12 +343,12 @@ import ballerinax/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@stan:ServiceConfig {
     subject: &quot;demo&quot;,
     durableName: &quot;sample-name&quot;
 }
-service demoService on lis {
-    resource function onMessage(nats:StreamingMessage message) {
+service stan:Service on lis {
+    remote function onMessage(stan:Message message) {
 </code></pre></div>
 
                                 </td>
@@ -425,14 +366,15 @@ service demoService on lis {
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = strings:fromBytes(message.getData());
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = strings:fromBytes(message.content);
        if (messageData is string) {
             io:println(&quot;Received message: &quot; + messageData);
        } else {
             io:println(&quot;Error occurred while obtaining message data.&quot;);
        }
     }
+}
 </code></pre></div>
 
                                 </td>
@@ -444,22 +386,6 @@ service demoService on lis {
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
-                              nats:Error errorVal) {
-        io:println(&quot;Error occurred while consuming the message.&quot;);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

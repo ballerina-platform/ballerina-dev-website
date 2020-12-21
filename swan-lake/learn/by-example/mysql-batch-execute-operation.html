@@ -189,9 +189,10 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Batch Execute Operations</h2>
                             <p><p>This example demonstrates how to use the MySQL client to execute a batch of
- DDL/DML operations. Note that the MySQL database driver JAR should be placed in
- the<code>&lt;BALLERINA_HOME&gt;/bre/lib/distributions/jballerina-&lt;VERSION&gt;/bre/lib</code> directory. The MySQL connector uses database
- properties from MySQL version 8.0.x onwards. Therefore, it is
+ DDL/DML operations. Note that the MySQL database driver JAR should be defined in
+ the <code>Ballerina.toml</code> file as a dependency.
+ See <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mysql/">MySQL module</a> for sample configuration.
+ The MySQL connector uses database properties from MySQL version 8.0.x onwards. Therefore, it is
  recommended to use a MySQL driver version greater than 8.0.x.<br><br>
  For more information on the underlying module,
  see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mysql/">MySQL module</a>.</p>
@@ -1044,7 +1045,8 @@ ballerina run mysql_batch_execute_operation.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Database created. 
+                                    <div class="highlight"><pre><code class=shell-session>ballerina/http] stopped HTTP/WS listener 192.168.1.18:43179
+Database created.
 Drop table executed: {&quot;affectedRowCount&quot;:0,&quot;lastInsertId&quot;:null}
 Create table executed: {&quot;affectedRowCount&quot;:0,&quot;lastInsertId&quot;:null}
 </code></pre></div>

@@ -108,9 +108,6 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     Compiling source
         foo/joke:0.1.0
 
-    Creating balos
-        target/balo/foo-joke-any-0.1.0.balo
-
     Running Tests with Coverage
         joke
     When Sheldon wants an egg, he cracks open a chicken.

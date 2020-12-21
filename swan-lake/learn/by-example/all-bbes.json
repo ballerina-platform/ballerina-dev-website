@@ -1,8 +1,10 @@
-[{
+[
+    {
         "title": "Hello World",
         "column": 0,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Hello World Service",
                 "url": "hello-world-service"
             },
@@ -20,11 +22,12 @@
             }
         ]
     },
- 	{
+    {
         "title": "Ballerina Basics",
         "column": 0,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Modules",
                 "url": "modules"
             },
@@ -77,7 +80,8 @@
         "title": "Functions",
         "column": 0,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Function Pointers",
                 "url": "function-pointers"
             },
@@ -107,7 +111,8 @@
         "title": "Flow Control",
         "column": 0,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "If/Else",
                 "url": "if-else"
             },
@@ -141,7 +146,8 @@
         "title": "Query",
         "column": 0,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Query Expression",
                 "url": "query-expression"
             },
@@ -175,7 +181,8 @@
         "title": "Values and Types",
         "column": 1,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Values",
                 "url": "values"
             },
@@ -257,7 +264,8 @@
         "title": "Record",
         "column": 1,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Record",
                 "url": "records"
             },
@@ -274,8 +282,8 @@
                 "url": "record-readonly-fields"
             },
             {
-                "name": "Record Type Reference",
-                "url": "record-type-reference"
+                "name": "Record Type Inclusion",
+                "url": "record-type-inclusion"
             }
         ]
     },
@@ -283,7 +291,8 @@
         "title": "Object",
         "column": 1,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Class Definitions",
                 "url": "class-definition"
             },
@@ -316,8 +325,8 @@
                 "url": "object-final-fields"
             },
             {
-                "name": "Object Type Reference",
-                "url": "object-type-reference"
+                "name": "Object Type Inclusion",
+                "url": "object-type-inclusion"
             },
             {
                 "name": "Iterable Objects",
@@ -372,21 +381,23 @@
             }
         ]
     },
-     {
+    {
         "title": "Streams",
         "column": 1,
         "category": "Language concepts",
-        "samples": [{
-            "name": "Streams",
-            "url": "streams"
-        }
+        "samples": [
+            {
+                "name": "Streams",
+                "url": "streams"
+            }
         ]
     },
     {
         "title": "JSON / XML",
         "column": 2,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "JSON",
                 "url": "json"
             },
@@ -440,7 +451,8 @@
         "title": "Binding Patterns",
         "column": 2,
         "category": "Language concepts",
-        "samples": [ {
+        "samples": [
+            {
                 "name": "Tuple Binding Pattern",
                 "url": "tuple-binding-pattern"
             },
@@ -458,7 +470,8 @@
         "title": "Errors",
         "column": 2,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Error Handling",
                 "url": "error-handling"
             },
@@ -496,7 +509,8 @@
         "title": "Concurrency",
         "column": 2,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Workers",
                 "url": "workers"
             },
@@ -522,10 +536,11 @@
         "title": "Lock",
         "column": 2,
         "category": "Language concepts",
-        "samples": [{
-            "name": "Lock",
-            "url": "locks"
-        }
+        "samples": [
+            {
+                "name": "Lock",
+                "url": "locks"
+            }
         ]
     },
     {
@@ -617,11 +632,12 @@
             }
         ]
     },
- 	{
+    {
         "title": "Common Libraries",
         "column": 3,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Time",
                 "url": "time"
             },
@@ -670,6 +686,10 @@
                 "url": "task-service-timer"
             },
             {
+                "name": "UUID",
+                "url": "uuid"
+            },
+            {
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation"
             }
@@ -679,7 +699,8 @@
         "title": "Security",
         "column": 3,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Taint Checking",
                 "url": "taint-checking"
             },
@@ -697,11 +718,12 @@
             }
         ]
     },
- 	{
+    {
         "title": "Testing",
         "column": 3,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Assertions",
                 "url": "testerina-assertions"
             },
@@ -747,7 +769,8 @@
         "title": "Deployment",
         "column": 3,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Docker Deployment",
                 "url": "docker-deployment",
                 "githubLink": "https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment"
@@ -773,7 +796,8 @@
         "title": "Transactions",
         "column": 0,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Local Transactions",
                 "url": "local-transactions"
             },
@@ -788,6 +812,14 @@
             {
                 "name": "Retry Transactions",
                 "url": "retry-transactions"
+            },
+            {
+                "name": "Distributed Transactions",
+                "url": "distributed-transactions"
+            },
+            {
+                "name": "XA Transactions",
+                "url": "xa-transactions"
             }
         ]
     },
@@ -795,7 +827,8 @@
         "title": "HTTP/HTTPS",
         "column": 0,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Client Endpoint",
                 "url": "http-client-endpoint"
             },
@@ -808,8 +841,8 @@
                 "url": "http-client-data-binding"
             },
             {
-                "name": "Base Path and Path",
-                "url": "base-path-and-path"
+                "name": "Absolute Resource Path and Resource Path",
+                "url": "absolute-path-and-path"
             },
             {
                 "name": "Query Path Matrix Param",
@@ -880,10 +913,6 @@
                 "url": "http-compression"
             },
             {
-                "name": "HTTP Interceptors/Filters",
-                "url": "http-filters"
-            },
-            {
                 "name": "HTTP Cookies",
                 "url": "http-cookies"
             }
@@ -893,7 +922,8 @@
         "title": "HTTP2",
         "column": 0,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "HTTP 1.1 to 2.0 Protocol Switch",
                 "url": "http-1-1-to-2-0-protocol-switch"
             },
@@ -903,41 +933,33 @@
             }
         ]
     },
- 	{
+    {
+        "title": "GraphQL",
+        "column": 0,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "GraphQL Resources with Scalar Values",
+                "url": "graphql-resources-with-scalar-values"
+            },
+            {
+                "name": "GraphQL Resources with Record Values",
+                "url": "graphql-resources-with-record-values"
+            }
+        ]
+    },
+    {
         "title": "WebSockets ",
         "column": 1,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Client Endpoint",
                 "url": "websocket-client"
             },
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
-            },
-            {
-                "name": "HTTP To WebSocket Upgrade",
-                "url": "http-to-websocket-upgrade"
-            },
-            {
-                "name": "Proxy Server",
-                "url": "websocket-proxy-server"
-            },
-            {
-                "name": "Chat Application",
-                "url": "websocket-chat-application"
-            },
-            {
-                "name": "Failover",
-                "url": "websocket-failover"
-            },
-            {
-                "name": "Retry",
-                "url": "websocket-retry"
-            },
-            {
-                "name": "Cookie",
-                "url": "websocket-cookie"
             }
         ]
     },
@@ -945,7 +967,8 @@
         "title": "Routing",
         "column": 1,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Header-Based Routing",
                 "url": "header-based-routing"
             },
@@ -963,7 +986,8 @@
         "title": "Resiliency",
         "column": 1,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Circuit Breaker",
                 "url": "http-circuit-breaker"
             },
@@ -989,10 +1013,11 @@
         "title": "WebSub",
         "column": 1,
         "category": "Working over the network",
-        "samples": [{
-            "name": "Internal Hub Sample",
-            "url": "websub-internal-hub-sample"
-        },
+        "samples": [
+            {
+                "name": "Internal Hub Sample",
+                "url": "websub-internal-hub-sample"
+            },
             {
                 "name": "Remote Hub Sample",
                 "url": "websub-remote-hub-sample"
@@ -1011,10 +1036,16 @@
         "title": "Listeners",
         "column": 1,
         "category": "Working over the network",
-        "samples": [{
-            "name": "Directory Listener",
-            "url": "directory-listener"
-        }]
+        "samples": [
+            {
+                "name": "Directory Listener",
+                "url": "directory-listener"
+            },
+            {
+                "name": "Dynamic Listener",
+                "url": "dynamic-listener"
+            }
+        ]
     },
     {
         "title": "JDBC Database Connector",
@@ -1086,7 +1117,8 @@
         "title": "gRPC",
         "column": 2,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Unary Blocking",
                 "url": "grpc-unary-blocking"
             },
@@ -1116,11 +1148,12 @@
             }
         ]
     },
- 	{
+    {
         "title": "OpenAPI",
         "column": 2,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Ballerina To OpenAPI",
                 "url": "ballerina-to-openapi"
             },
@@ -1142,10 +1175,6 @@
             {
                 "name": "Basic Streaming Publisher and Subscriber",
                 "url": "nats-streaming-client"
-            },
-            {
-                "name": "Streaming Publisher and Subscriber With Data Binding",
-                "url": "nats-streaming-consumer-with-data-binding"
             },
             {
                 "name": "Durable Subscriptions",
@@ -1214,14 +1243,6 @@
                 "url": "rabbitmq-consumer-with-client-acknowledgement"
             },
             {
-                "name": "Data Binding",
-                "url": "rabbitmq-consumer-with-data-binding"
-            },
-            {
-                "name": "QoS Settings",
-                "url": "rabbitmq-consumer-with-qos-settings"
-            },
-            {
                 "name": "Transactional Producer",
                 "url": "rabbitmq-transaction-producer"
             },
@@ -1232,13 +1253,21 @@
         ]
     },
     {
-        "title": "Socket",
+        "title": "TCP",
         "column": 3,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Basic TCP Socket",
                 "url": "tcp-socket-listener-client"
-            },
+            }
+        ]
+    },
+    {
+        "title": "UDP",
+        "column": 3,
+        "category": "Working over the network",
+        "samples": [
             {
                 "name": "Basic UDP Client Socket",
                 "url": "udp-socket-client"
@@ -1249,22 +1278,7 @@
         "title": "Access Control",
         "column": 3,
         "category": "Working over the network",
-        "samples": [{
-                "name": "Secured Service with Basic Auth",
-                "url": "secured-service-with-basic-auth"
-            },
-            {
-                "name": "Secured Service with JWT Auth",
-                "url": "secured-service-with-jwt-auth"
-            },
-            {
-                "name": "Secured Service with OAuth2",
-                "url": "secured-service-with-oauth2"
-            },
-            {
-                "name": "Secured Service with LDAP",
-                "url": "secured-service-with-ldap"
-            },
+        "samples": [
             {
                 "name": "Secured Client with Basic Auth",
                 "url": "secured-client-with-basic-auth"
@@ -1283,7 +1297,8 @@
         "title": "Email",
         "column": 2,
         "category": "Working over the network",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Send and Receive Emails",
                 "url": "send-and-receive-emails"
             }

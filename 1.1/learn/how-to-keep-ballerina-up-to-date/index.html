@@ -90,7 +90,7 @@
 <link rel="stylesheet" href="/css/prism.css">
 
 <script src="/js/ballerina-common.js?100"></script>
-<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="/js/handlebars/4.7.6/handlebars.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <script>
    // Current page data
@@ -226,7 +226,7 @@
 <ul>
   <li><a href="#terminology">Terminology</a>
     <ul>
-      <li><a href="#ballerina-tool">Ballerina tool</a></li>
+      <li><a href="#ballerina-tool">The Ballerina Tool</a></li>
       <li><a href="#ballerina-distributions">Ballerina distributions</a></li>
       <li><a href="#release-channels">Release channels</a>
         <ul>
@@ -246,7 +246,7 @@
       <li><a href="#remove-distributions">Remove distributions</a></li>
       <li><a href="#change-the-active-distribution">Change the active distribution</a></li>
       <li><a href="#pull-a-specific-distribution">Pull a specific distribution</a></li>
-      <li><a href="#update-the-ballerina-tool">Update the Ballerina tool</a></li>
+      <li><a href="#update-the-ballerina-tool">Update the Ballerina Tool</a></li>
     </ul>
   </li>
 </ul>
@@ -255,7 +255,7 @@
 
 <p>This section introduces various terms used throughout this guide. We recommend that you read this section before proceeding to the next.</p>
 
-<h3 id="ballerina-tool">Ballerina tool</h3>
+<h3 id="ballerina-tool">The Ballerina Tool</h3>
 
 <p><strong>Ballerina</strong> is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build and run programs, etc.</p>
 
@@ -334,13 +334,13 @@
 
 <ul>
   <li>One only distribution from the above list can be active at a given time.</li>
-  <li>Ballerina tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  E.g., when you invoke <code class="highlighter-rouge">ballerina build</code>, the Ballerina tool dispatches this request to the active distribution.</li>
+  <li>The Ballerina Tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  E.g., when you invoke <code class="highlighter-rouge">ballerina build</code>, the Ballerina Tool dispatches this request to the active distribution.</li>
   <li>You can change the active distribution at any time. Refer the <a href="#Change-the-active-distribution">Change the active distribution</a> section for more details.</li>
 </ul>
 
 <h3 id="the-ballerina-dist-command">The <code class="highlighter-rouge">ballerina dist</code> command</h3>
 
-<p>Ballerina tool comes with various subcommands to help you manage Ballerina source code. The <code class="highlighter-rouge">ballerina dist</code> and <code class="highlighter-rouge">ballerina update</code> commands are the ones that will be explained in this guide. The <code class="highlighter-rouge">ballerina dist</code> command allows you to manage Ballerina distributions whereas the <code class="highlighter-rouge">ballerina update</code> command updates the tool itself.</p>
+<p>The Ballerina Tool comes with various subcommands to help you manage Ballerina source code. The <code class="highlighter-rouge">ballerina dist</code> and <code class="highlighter-rouge">ballerina update</code> commands are the ones that will be explained in this guide. The <code class="highlighter-rouge">ballerina dist</code> command allows you to manage Ballerina distributions whereas the <code class="highlighter-rouge">ballerina update</code> command updates the tool itself.</p>
 
 <p>The dist command has few other subcommands. Here is the output of <code class="highlighter-rouge">ballerina help dist</code>.</p>
 
@@ -452,10 +452,10 @@ Fetching the <span class="s1">'jballerina-1.0.3'</span> distribution from the re
 Downloading jballerina-1.0.3 100% <span class="o">[==================================]</span> 96/96 MB <span class="s1">'jballerina-1.0.3'</span> successfully <span class="nb">set </span>as the active distribution
 </code></pre></div></div>
 
-<h3 id="update-the-ballerina-tool">Update the Ballerina tool</h3>
+<h3 id="update-the-ballerina-tool">Update the Ballerina Tool</h3>
 
 <ul>
-  <li>The <code class="highlighter-rouge">ballerina update</code> command updates the Ballerina tool itself to the latest version. Ballerina tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.</li>
+  <li>The <code class="highlighter-rouge">ballerina update</code> command updates the Ballerina Tool itself to the latest version. The Ballerina Tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.</li>
 </ul>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>→ ballerina update
@@ -465,7 +465,7 @@ Downloading ballerina-tool-0.8.1 100% <span class="o">[=========================
 
 Updated to latest tool version: 0.8.1
 Cleaning old files...
-Ballerina tool updated successfully
+Ballerina Tool updated successfully
 </code></pre></div></div>
 
                               </div>

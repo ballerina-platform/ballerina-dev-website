@@ -1129,7 +1129,9 @@ cursor: pointer;
 
 } 
 
-
+.cGitLink {
+    text-align: right;
+}
 
 
 .cSecondCTAcontainer-left {

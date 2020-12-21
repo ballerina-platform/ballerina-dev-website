@@ -12,63 +12,39 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
-
-<span class="kt">string</span> <span class="nx">xaDatasourceName</span> <span class="p">=</span> <span class="s">&quot;org.h2.jdbcx.JdbcDataSource&quot;</span><span class="p">;</span>
-
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// The JDBC Client for the first H2 database.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span><span class="kt">string</span> <span class="nx">xaDatasourceName</span> <span class="p">=</span> <span class="s">&quot;org.h2.jdbcx.JdbcDataSource&quot;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:&quot;</span> <span class="o">+</span>
                             <span class="s">&quot;./xa-transactions/testdb1&quot;</span><span class="p">,</span> <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
                             <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">options</span> <span class="p">=</span>
                             <span class="p">{</span><span class="nx">datasourceName</span><span class="p">:</span> <span class="nx">xaDatasourceName</span><span class="p">});</span>
-    <span class="c1">// The JDBC Client for the second H2 database.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:&quot;</span> <span class="o">+</span>
                             <span class="s">&quot;./xa-transactions/testdb2&quot;</span><span class="p">,</span> <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
                             <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">options</span> <span class="p">=</span>
                             <span class="p">{</span><span class="nx">datasourceName</span><span class="p">:</span> <span class="nx">xaDatasourceName</span><span class="p">});</span>
-
-    <span class="c1">// Create the `Employee` table in the first database.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient1</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS EMPLOYEE &quot;</span> <span class="o">+</span>
                                   <span class="s">&quot;(ID INT, NAME VARCHAR(30))&quot;</span><span class="p">);</span>
-    <span class="c1">// Create the `Salary` table in the second database.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient2</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS SALARY &quot;</span> <span class="o">+</span>
                                  <span class="s">&quot;(ID INT, VALUE FLOAT)&quot;</span><span class="p">);</span>
-
-    <span class="c1">// Populate the tables with the records.</span>
     <span class="k">var</span> <span class="nx">e1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient1</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO EMPLOYEE(NAME) &quot;</span> <span class="o">+</span>
                                       <span class="s">&quot;VALUES (&#39;Anne&#39;)&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient2</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY &quot;</span> <span class="o">+</span>
                                       <span class="s">&quot;VALUES (1, 25000.00)&quot;</span><span class="p">);</span>
-
-    <span class="c1">// The transaction block initiates the transaction.</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="c1">// Execute the database operations within the transaction</span>
-        <span class="c1">// to update records in the `Employee` and `Salary` tables.</span>
         <span class="k">var</span> <span class="nx">customer</span> <span class="p">=</span> <span class="nx">dbClient1</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE EMPLOYEE &quot;</span> <span class="o">+</span>
                                        <span class="s">&quot;SET NAME=&#39;Annie&#39; WHERE ID=1&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">salary</span> <span class="p">=</span> <span class="nx">dbClient2</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE SALARY &quot;</span> <span class="o">+</span>
                                        <span class="s">&quot;SET SALARY=30000 WHERE ID=1&quot;</span><span class="p">);</span>
-
-        <span class="c1">// Return information about the current transaction.</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction Info: &quot;</span><span class="p">,</span> <span class="nx">transInfo</span><span class="p">);</span>
-
-        <span class="c1">// Perform the commit operation of the current transaction.</span>
         <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="k">if</span> <span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// Operations to be executed if the transaction is committed</span>
-            <span class="c1">// successfully.</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Updated: &quot;</span><span class="p">,</span> <span class="nx">e1</span><span class="p">);</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Salary Updated: &quot;</span><span class="p">,</span> <span class="nx">e2</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">// Operations to be executed if the transaction commit failed.</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction failed&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
-    <span class="c1">// Close the JDBC clients.</span>
     <span class="nx">checkpanic</span> <span class="nx">dbClient1</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">checkpanic</span> <span class="nx">dbClient2</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -122,6 +98,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xa-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=37cec845fa788f4784f5ca0bc27ab477&file=xa_transactions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

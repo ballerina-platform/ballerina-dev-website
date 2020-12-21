@@ -12,33 +12,16 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
-
-<span class="c1">// The [@java:Constructor](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/annotations#Constructor) </span>
-<span class="c1">// annotation links the default constructor of</span>
-<span class="c1">// the class `java.util.ArrayDeque` with this Ballerina function declaration.</span>
 <span class="kd">function</span> <span class="nx">newArrayDeque</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
-
-<span class="c1">// This ballerina function is linked with the `java.util.ArrayDeque` constructor that takes the initial capacity.</span>
-<span class="c1">// There are other overloaded constructors that take a single parameter in this class.</span>
-<span class="c1">// To link with the exact constructor, you can specify the `paramTypes` field. Refer </span>
-<span class="c1">// the [Overloaded Methods/Constructors](https://ballerina.io/swan-lake/learn/by-example/overloaded-methods-constructors.html)  </span>
-<span class="c1">// section for more details on dealing with overloaded methods and constructors.</span>
-<span class="c1">// This function returns a `handle` value, which refers to an object of `java.util.ArrayDeque` class.</span>
 <span class="kd">function</span> <span class="nx">newArrayDequeWithInitialCapacity</span><span class="p">(</span><span class="kt">int</span> <span class="nx">numElements</span><span class="p">)</span>
                                           <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
     <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;int&quot;</span><span class="p">]</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
-
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Create a new `java.util.ArrayDeque` object by invoking the default constructor via `newArrayDeque` function.</span>
+<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">arrayDeque</span> <span class="p">=</span> <span class="nx">newArrayDeque</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">);</span>
-
-    <span class="c1">// Create a new `java.util.ArrayDeque` object by invoking the constructor that takes an `int` argument</span>
-    <span class="c1">// via `newArrayDeque` function.</span>
     <span class="k">var</span> <span class="nx">arrayDequeWithCapacity</span> <span class="p">=</span> <span class="nx">newArrayDequeWithInitialCapacity</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arrayDequeWithCapacity</span><span class="p">);</span>
 <span class="p">}</span>
@@ -98,6 +81,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/create-java-objects/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee3725841dbc35213bcc5b889de6e333&file=create_java_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

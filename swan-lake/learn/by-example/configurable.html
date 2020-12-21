@@ -11,26 +11,11 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-
-<span class="c1">// `configurable` variables can be initialized with the `?` expression.</span>
-<span class="c1">// A value must be supplied for such variables in a `configuration.toml` file.</span>
 <span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">hostName</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
 <span class="nx">configurable</span> <span class="kt">int</span> <span class="nx">port</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
-
-<span class="c1">// A `configurable` variable can be initialized with an expression that is not `?`.</span>
-<span class="c1">// The `configuration.toml` file does not have to specify a value for such a variable.</span>
-<span class="c1">// But if specified, the value in the `configuration.toml` file overrides the value</span>
-<span class="c1">// specified as the initializer.</span>
-<span class="c1">// The values of the `enableRemote` and `maxPayload` variables here are</span>
-<span class="c1">// overridden by the values specified in the `configuration.toml` file.</span>
 <span class="nx">configurable</span> <span class="kt">boolean</span> <span class="nx">enableRemote</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="nx">configurable</span> <span class="kt">float</span> <span class="nx">maxPayload</span> <span class="p">=</span> <span class="mf">1.0</span><span class="p">;</span>
-
-<span class="c1">// The value `http` is used to initialize the `protocol` variable since a value is not</span>
-<span class="c1">// provided for it in the `configuration.toml` file.</span>
-<span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">protocol</span> <span class="p">=</span> <span class="s">&quot;http&quot;</span><span class="p">;</span>
-
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">protocol</span> <span class="p">=</span> <span class="s">&quot;http&quot;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;host: &quot;</span><span class="p">,</span> <span class="nx">hostName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;port: &quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;protocol: &quot;</span><span class="p">,</span> <span class="nx">protocol</span><span class="p">);</span>
@@ -94,6 +79,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/configurable/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f3d94899ed0280faf056039243346d99&file=configurable.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

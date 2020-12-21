@@ -13,26 +13,16 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
-
-<span class="c1">// This is the initiator of the distributed transaction.</span>
 <span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">init</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Initiating transaction...&quot;</span><span class="p">);</span>
-        <span class="c1">// When transaction statement starts, a distributed transaction context is created.</span>
         <span class="nx">transaction</span> <span class="p">{</span>
-            <span class="c1">// Print the information about the current transaction.</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Started transaction: &quot;</span> <span class="o">+</span>
                           <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
-
-            <span class="c1">// When a participant is called, the transaction context is propagated and</span>
-            <span class="c1">// that participant joins the distributed transaction.</span>
             <span class="kt">boolean</span> <span class="nx">successful</span> <span class="p">=</span> <span class="nx">callBusinessService</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">successful</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
-                <span class="c1">// Run the `2-phase commit coordination` protocol.</span>
-                <span class="c1">// All participants are prepared and depending on the joint outcome,</span>
-                <span class="c1">// either a `notify commit` or `notify abort` will be sent to the participants.</span>
                 <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
                 <span class="k">if</span> <span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
@@ -45,8 +35,6 @@ redirect_from:
                 <span class="nx">rollback</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
-
-        <span class="c1">// Send the response back to the client.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to client&quot;</span><span class="p">,</span>
@@ -56,17 +44,11 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-
-<span class="c1">// This is the business function call to the participant.</span>
 <span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">callBusinessService</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted boolean {</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8889/stockquote/&quot;</span> <span class="o">+</span>
                                         <span class="s">&quot;update/updateStockQuote&quot;</span><span class="p">);</span>
-
-    <span class="c1">// Generate the payload.</span>
     <span class="kt">float</span> <span class="nx">price</span> <span class="p">=</span> <span class="mf">100.00</span><span class="p">;</span>
     <span class="kt">json</span> <span class="nx">bizReq</span> <span class="p">=</span> <span class="p">{</span><span class="nx">symbol</span><span class="p">:</span> <span class="s">&quot;GOODS&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="nx">price</span><span class="p">};</span>
-
-    <span class="c1">// Send the request to the backend service.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">req</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">bizReq</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">participantEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
@@ -76,23 +58,14 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-
-<span class="c1">// This is a participant in the distributed transaction. It will get invoked when it receives</span>
-<span class="c1">// a transaction context from the participant.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">stockquote</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8889</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Since the transaction context has been received, this resource will register with the initiator</span>
-    <span class="c1">// as a participant.</span>
     <span class="nx">transactional</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">update</span><span class="o">/</span><span class="nx">updateStockQuote</span>
                                      <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Received update stockquote request&quot;</span><span class="p">);</span>
-        <span class="c1">// Get the JSON payload.</span>
         <span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="nx">updateReq</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-
-        <span class="c1">// Generate the response.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">updateReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Update stock quote request received. &quot;</span> <span class="o">+</span>
@@ -107,8 +80,6 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Payload error occurred!&quot;</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="nx">updateReq</span><span class="p">.</span><span class="kt">message</span><span class="p">()});</span>
         <span class="p">}</span>
-
-        <span class="c1">// Send the response back to the initiator.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to initiator&quot;</span><span class="p">,</span>
@@ -172,6 +143,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/distributed-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=14f81d61350b62d810c15a39ffec64a5&file=distributed_transactions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

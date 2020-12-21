@@ -12,22 +12,11 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-
-<span class="c1">// Create an `http:Listener`.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-
-<span class="c1">// The `graphql:Service` exposes a GraphQL service on the provided HTTP listener.</span>
 <span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="nx">httpListener</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="c1">// This resolver returns a `Person` object. Each field of the `Person` object</span>
-    <span class="c1">// can be queried by a GraphQL client.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
-
-        <span class="k">return</span> <span class="nx">people</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>        <span class="k">return</span> <span class="nx">people</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
-
-<span class="c1">// Define the custom record types to return data.</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
@@ -38,8 +27,6 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">street</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
 <span class="p">};</span>
-
-<span class="c1">// Define an array of `Person` records.</span>
 <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sherlock Holmes&quot;</span><span class="p">,</span>
     <span class="nx">age</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
@@ -118,6 +105,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-resources-with-record-values/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c95d8c8ca7c1749ac5fc6d8196722a48&file=graphql_resources_with_record_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

@@ -1,30 +1,30 @@
 ---
 layout: ballerina-example-page
-title: Docker Deployment
+title: Absolute Resource Path and Resource Path
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/docker-deployment
+permalink: /swan-lake/learn/by-example/absolute-path-and-path
 redirect_from:
-  - /vswan-lake/learn/by-example/docker-deployment
-  - /vswan-lake/learn/by-example/docker-deployment.html
+  - /vswan-lake/learn/by-example/absolute-path-and-path
+  - /vswan-lake/learn/by-example/absolute-path-and-path.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">docker</span><span class="p">;</span>
-<span class="nd">@docker:Expose {</span><span class="p">}</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-<span class="nd">@docker:Config {</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;helloworld&quot;</span><span class="p">,</span>
-    <span class="nx">tag</span><span class="p">:</span> <span class="s">&quot;v1.0&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">ok</span><span class="p">(</span><span class="s">&quot;Hello World from Docker! \n&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">responseResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseResult</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+<span class="kd">service</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bar</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -36,11 +36,12 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Docker Deployment</h2>
-                            <p><p>Ballerina supports generating Docker images, Dockerfile based on annotations.
-A single Ballerina module is mapped to a single Docker Image.
-Docker should be configured to run the sample.<br/><br/>
-For more information, see the <a href="https://ballerina.io/swan-lake/learn/deployment/docker/">Docker Deployment Guide</a>.</p>
+                            <h2>Absolute Resource Path and Resource Path</h2>
+                            <p><p>Ballerina supports writing RESTful services according to the JAX-RS specification.
+ You can use the <code>absolute-resource-path</code> and <code>resource-name</code> to access a resource function while the <code>accessor-name</code>,
+ which is an HTTP verb as <code>post</code> and <code>get</code> to constrain your resource function in a RESTful manner.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -48,16 +49,16 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="testerina-mocking-objects.html">
+                                    <a class="prev" href="http-client-data-binding.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Object Mocking</p>
+                                        <p>Client Data Binding</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="c2c-deployment.html">
+                                    <a class="next" href="query-path-matrix-param.html">
                                         <span>NEXT ></span>
-                                        <p>Code to Cloud Deployment</p>
+                                        <p>Query Path Matrix Param</p>
                                     </a>
                                 </div>
                                 
@@ -66,7 +67,7 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                     </tr>
                 </table>
             </div>
-            <div class="example" id="docker-deployment">
+            <div class="example" id="absolute-path-and-path">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -77,11 +78,11 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/absolute-path-and-path/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=cddff47a62af9d32d7656bd4fb15fe0d&file=docker_deployment.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ea76da0a0865c27c48e853fbf5914138&file=absolute_path_and_path.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -110,6 +111,8 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -120,7 +123,6 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
-import ballerina/docker;
 </code></pre></div>
 
                                 </td>
@@ -132,8 +134,7 @@ import ballerina/docker;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Expose {}
-listener http:Listener helloWorldEP = new(9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>service http:Service /foo on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -141,7 +142,10 @@ listener http:Listener helloWorldEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Adding the <code>@docker:Expose{}</code> annotation to a listener endpoint exposes the endpoint port.</p>
+                                            <p>The <code>absolute-resource-path</code> identifier represents the absolute path to the service.  When bound to a listener
+ endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to <code>/</code>.
+ A string literal also can represent the absolute path. E.g., <code>&quot;/foo&quot;</code>.
+ The <code>type descriptor</code> represents the respective type of the service. E.g., <code>http:Service</code>.</p>
 
                                         </div>
                                     </div>
@@ -152,7 +156,7 @@ listener http:Listener helloWorldEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post bar(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -160,8 +164,9 @@ listener http:Listener helloWorldEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Adding the <code>@docker:Config{}</code> annotation to a service modifies the generated Docker image and Dockerfile.
-This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
+                                            <p>The <code>accessor-name</code> identifier (<code>post</code>) confines the resource to the specified HTTP methods. In this instance,
+ only <code>POST</code> requests are allowed. The <code>default</code> accessor name can be used to match with any HTTP method.
+ The <code>resource-name</code> identifier associates the relative path to the service object&rsquo;s path. E.g., <code>bar</code>.</p>
 
                                         </div>
                                     </div>
@@ -172,7 +177,9 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    name: &quot;helloworld&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = req.getJsonPayload();
+        http:Response res = new;
+        if (payload is json) {
 </code></pre></div>
 
                                 </td>
@@ -180,7 +187,30 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Docker image name should be helloworld.</p>
+                                            <p>This method retrieves the request payload as a JSON.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            res.setJsonPayload(&lt;@untainted&gt;payload);
+        } else {
+            res.statusCode = 500;
+            res.setPayload(&lt;@untainted&gt;payload.message());
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since the JSON is known to be valid, <code>untaint</code> the data denoting that the data is trusted and set the JSON to the response.</p>
 
                                         </div>
                                     </div>
@@ -191,14 +221,9 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    tag: &quot;v1.0&quot;
-}
-service http:Service /helloWorld on helloWorldEP {
-    resource function get sayHello(http:Caller caller) {
-        var responseResult = caller-&gt;ok(&quot;Hello World from Docker! \n&quot;);
-        if (responseResult is error) {
-            error err = responseResult;
-            log:printError(&quot;Error sending response&quot;, err = err);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
+        if (result is error) {
+           log:printError(&quot;Error in responding&quot;, err = result);
         }
     }
 }
@@ -209,7 +234,7 @@ service http:Service /helloWorld on helloWorldEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Docker image version should be v1.0.</p>
+                                            <p>Reply to the client with the response.</p>
 
                                         </div>
                                     </div>
@@ -225,21 +250,29 @@ service http:Service /helloWorld on helloWorldEP {
                                 
                             
                         
+
+                    <div>
+
+                        <table class="cBBE-body">
                             
-                                
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and use the `ballerina run` command below.
+ballerina run absolute_path_and_path.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
                             
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
+                        </table>
+                    </div>
+                    
                         
                             
                                 
@@ -252,81 +285,10 @@ service http:Service /helloWorld on helloWorldEP {
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Docker image and Dockerfile.
-$ ballerina build docker_deployment.bal
-Compiling source
-	docker_deployment.bal
-Generating executables
-	docker_deployment.jar
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Generating docker artifacts...
-	@docker 		 - complete 2/2 
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 helloworld:v1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Verify if the Docker image is generated
-$ docker images
-REPOSITORY  TAG      IMAGE ID            CREATED             SIZE
-helloworld  v1.0    8d5b2f26145b        2 seconds ago        127MB
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the generated Docker image
-$ docker run -d -p 9090:9090 helloworld:v1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Access the service
-$ curl http://localhost:9090/helloWorld/sayHello
-Hello World from Docker!
+                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to use the client. 
+curl http://localhost:9090/foo/bar -d &quot;{\&quot;hello\&quot;: \&quot;world\&quot;}&quot; -H &quot;Content-Type: application/json&quot;
+{&quot;hello&quot;: &quot;world&quot;}
 </code></pre></div>
 
                                 </td>

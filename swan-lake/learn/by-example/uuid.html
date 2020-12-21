@@ -11,68 +11,39 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">uuid</span><span class="p">;</span>
-
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Generate a UUID of type 1 as a string.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">uuid</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">uuid1String</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType1AsString</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 1 as a string: &quot;</span><span class="p">,</span> <span class="nx">uuid1String</span><span class="p">);</span>
-
-    <span class="c1">// Generate a UUID of type 1 as a UUID record.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Uuid</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuid1Record</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType1AsRecord</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 1 as a record: &quot;</span><span class="p">,</span> <span class="nx">uuid1Record</span><span class="p">);</span>
-
-    <span class="c1">// Generate a UUID of type 3 as a string.</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuid3String</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType3AsString</span><span class="p">(</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">NAME_SPACE_DNS</span><span class="p">,</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 3 as a string: &quot;</span><span class="p">,</span> <span class="nx">uuid3String</span><span class="p">);</span>
-
-    <span class="c1">// Generate a UUID of type 3 as a record.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Uuid</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuid3Record</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType3AsRecord</span><span class="p">(</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">NAME_SPACE_DNS</span><span class="p">,</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 3 as a record: &quot;</span><span class="p">,</span> <span class="nx">uuid3Record</span><span class="p">);</span>
-
-    <span class="c1">// Generate a UUID of type 4 as a string.</span>
     <span class="kt">string</span> <span class="nx">uuid4String</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType4AsString</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 4 as a string: &quot;</span><span class="p">,</span> <span class="nx">uuid4String</span><span class="p">);</span>
-
-    <span class="c1">// Generate a UUID of type 1 as a UUID record.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Uuid</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuid4Record</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType4AsRecord</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 4 as a record: &quot;</span><span class="p">,</span> <span class="nx">uuid4Record</span><span class="p">);</span>
-
-    <span class="c1">// Generate a UUID of type 5 as a string.</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuid5String</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType5AsString</span><span class="p">(</span>
                                     <span class="nx">uuid</span><span class="p">:</span><span class="nx">NAME_SPACE_DNS</span><span class="p">,</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 5 as a string: &quot;</span><span class="p">,</span> <span class="nx">uuid5String</span><span class="p">);</span>
-
-    <span class="c1">// Generate a UUID of type 5 as a record.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Uuid</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuid5Record</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">createType5AsRecord</span><span class="p">(</span>
                                        <span class="nx">uuid</span><span class="p">:</span><span class="nx">NAME_SPACE_DNS</span><span class="p">,</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID of type 5 as a record: &quot;</span><span class="p">,</span> <span class="nx">uuid5Record</span><span class="p">);</span>
-
-    <span class="c1">// Generate a nil UUID as a string.</span>
     <span class="kt">string</span> <span class="nx">nilUuidString</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">nilAsString</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Nil UUID as a string: &quot;</span><span class="p">,</span> <span class="nx">nilUuidString</span><span class="p">);</span>
-
-    <span class="c1">// Generate a nil UUID as a UUID record.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Uuid</span> <span class="nx">nilUuidRecord</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">nilAsRecord</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Nil UUID as a record: &quot;</span><span class="p">,</span> <span class="nx">nilUuidRecord</span><span class="p">);</span>
-
-    <span class="c1">// Test a string to see if it is a valid UUID.</span>
     <span class="kt">boolean</span> <span class="nx">valid</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">validate</span><span class="p">(</span><span class="s">&quot;4397465e-35f9-11eb-adc1-0242ac120002&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID validated: &quot;</span><span class="p">,</span> <span class="nx">valid</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-
-    <span class="c1">// Detect RFC version of a UUID.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Version</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">v</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">getVersion</span><span class="p">(</span>
                                 <span class="s">&quot;4397465e-35f9-11eb-adc1-0242ac120002&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID version: &quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-
-    <span class="c1">// Convert a UUID string to an array of bytes.</span>
     <span class="nx">byte</span><span class="p">[]|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuidBytes</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">toBytes</span><span class="p">(</span>
                                   <span class="s">&quot;4397465e-35f9-11eb-adc1-0242ac120002&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID bytes: &quot;</span><span class="p">,</span> <span class="nx">uuidBytes</span><span class="p">);</span>
-
-    <span class="c1">// Convert a UUID record to a UUID string.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Uuid</span> <span class="nx">uuidRecord</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">timeLow</span><span class="p">:</span> <span class="mi">1133987422</span><span class="p">,</span>
         <span class="nx">timeMid</span><span class="p">:</span> <span class="mi">13817</span><span class="p">,</span>
@@ -83,8 +54,6 @@ redirect_from:
     <span class="p">};</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">uuidString</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">uuidRecord</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID string: &quot;</span><span class="p">,</span> <span class="nx">uuidString</span><span class="p">);</span>
-
-    <span class="c1">// Convert a UUID string to a UUID record.</span>
     <span class="nx">uuid</span><span class="p">:</span><span class="nx">Uuid</span><span class="p">|</span><span class="nx">uuid</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">uuidRecord2</span> <span class="p">=</span> <span class="nx">uuid</span><span class="p">:</span><span class="nx">toRecord</span><span class="p">(</span>
                                        <span class="s">&quot;4397465e-35f9-11eb-adc1-0242ac120002&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;UUID record: &quot;</span><span class="p">,</span> <span class="nx">uuidRecord2</span><span class="p">);</span>
@@ -140,6 +109,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/uuid/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d22b3ab231623222d027aa57a4c50023&file=uuid.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

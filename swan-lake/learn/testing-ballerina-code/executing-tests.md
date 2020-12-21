@@ -48,7 +48,6 @@ Run a given set of functions in the default module only.
 
 ```
 $ ballerina test --tests PackageName:<test_function>
-
 ```
 
 Run all the functions in the given module.

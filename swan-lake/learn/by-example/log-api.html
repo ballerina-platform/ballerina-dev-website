@@ -10,15 +10,26 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;something went wrong!&quot;</span><span class="p">);</span>
+
+    <span class="c1">// There are two log levels (INFO, ERROR) and there is no user configuration to control which log level to print.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Users can pass any number of key/value pairs which needs to be displayed in the log message.</span>
+    <span class="c1">// These can be of `anydata` type including int, string and boolean.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">successful</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
+
+    <span class="c1">// Users can also pass key/value pairs where the values are function pointers.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span>
               <span class="nx">name</span> <span class="p">=</span> <span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;foo&quot;</span><span class="p">;});</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">,</span>
         <span class="nx">id</span> <span class="p">=</span> <span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">845315</span><span class="p">;},</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Optionally an error can be passed to the printError function.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log with cause&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -70,10 +81,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/log-api/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=db8f58d558c63b7057cfed8d79915ecd&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

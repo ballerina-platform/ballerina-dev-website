@@ -10,41 +10,97 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kd">const</span> <span class="nx">BALLERINA</span> <span class="p">=</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">;</span><span class="nx">final</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">prefixes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;greetings&quot;</span><span class="p">,</span> <span class="s">&quot;hello world&quot;</span><span class="p">];</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">BALLERINA</span> <span class="p">=</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">;</span>
+
+<span class="nx">final</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">prefixes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;greetings&quot;</span><span class="p">,</span> <span class="s">&quot;hello world&quot;</span><span class="p">];</span>
+
+<span class="c1">// An `isolated` class.</span>
 <span class="nx">isolated</span> <span class="nx">class</span> <span class="nx">UniqueGreetingsStore</span> <span class="p">{</span>
-    <span class="nx">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">uniqueGreetings</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">string</span> <span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">uniqueGreetings</span> <span class="p">=</span> <span class="p">[];</span>
+
+    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">string</span> <span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">lock</span> <span class="p">{</span>
             <span class="k">if</span> <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">greeting</span><span class="p">)</span> <span class="o">==</span> <span class="p">()</span> <span class="p">{</span>
                 <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">remove</span><span class="p">(</span><span class="kt">string</span> <span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">remove</span><span class="p">(</span><span class="kt">string</span> <span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">lock</span> <span class="p">{</span>
-            <span class="kt">int</span><span class="err">?</span> <span class="nx">index</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>            <span class="k">if</span> <span class="nx">index</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">{</span>
+            <span class="kt">int</span><span class="err">?</span> <span class="nx">index</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="nx">index</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">{</span>
                 <span class="nx">_</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// A `final` variable of the type `UniqueGreetingsStore`, which</span>
+<span class="c1">// is a subtype of `isolated object {}`.</span>
+<span class="c1">// This variable can be accessed in an `isolated` function.</span>
 <span class="nx">final</span> <span class="nx">UniqueGreetingsStore</span> <span class="nx">uniqueGreetings</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+<span class="c1">// An `isolated` variable that can be accessed within</span>
+<span class="c1">// a `lock` statement in an `isolated` function.</span>
 <span class="nx">isolated</span> <span class="kt">int</span> <span class="nx">updateCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// An `isolated` function, which adds a specific number of</span>
+<span class="c1">// greeting strings to an array.</span>
+<span class="c1">// The `greetings` parameter is the array to which greetings have to</span>
+<span class="c1">// be added. The `count` parameter indicates the number of greetings</span>
+<span class="c1">// to add.</span>
 <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">addGreetings</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">greetings</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Call another `isolated` function to build a specific number</span>
+    <span class="c1">// of greetings.</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">builtGreetings</span> <span class="p">=</span> <span class="nx">getGreetings</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+
+    <span class="c1">// Add the greetings returned by the `isolated` function to</span>
+    <span class="c1">// the mutable array passed as an argument.</span>
     <span class="nx">greetings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="o">...</span><span class="nx">builtGreetings</span><span class="p">);</span>
+
+    <span class="c1">// Access the `final` `isolated object {}` variable `uniqueGreetings`</span>
+    <span class="c1">// and call a method to store the greetings if they are unique.</span>
     <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">greeting</span> <span class="nx">in</span> <span class="nx">builtGreetings</span> <span class="p">{</span>
         <span class="nx">uniqueGreetings</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Access the `isolated` variable within a `lock` statement.</span>
     <span class="nx">lock</span> <span class="p">{</span>
         <span class="nx">updateCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// An `isolated` function, which accesses global immutable state and</span>
+<span class="c1">// returns a mutable value.</span>
 <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">getGreetings</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">builtGreetings</span> <span class="p">=</span> <span class="p">[];</span>
+
+    <span class="c1">// The `isolated` function can access global state `prefixes` and</span>
+    <span class="c1">// `BALLERINA` since they are immutable.</span>
     <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">prefix</span> <span class="nx">in</span> <span class="nx">prefixes</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">builtGreetings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">prefix</span> <span class="o">+</span> <span class="s">&quot; from &quot;</span> <span class="o">+</span> <span class="nx">BALLERINA</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">return</span> <span class="nx">builtGreetings</span><span class="p">;</span>
-<span class="p">}</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">mutableGreetingArray</span> <span class="p">=</span> <span class="p">[];</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">addGreetings</span><span class="p">(</span><span class="nx">mutableGreetingArray</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">mutableGreetingArray</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">builtGreetings</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">string</span><span class="p">[]</span> <span class="nx">mutableGreetingArray</span> <span class="p">=</span> <span class="p">[];</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Access global mutable state `mutableGreetingArray`, and</span>
+    <span class="c1">// pass it as an argument to an `isolated` function.</span>
+    <span class="c1">// Mutable state can be passed as an argument to an `isolated`</span>
+    <span class="c1">// function. However, since this function accesses global mutable state</span>
+    <span class="c1">// that is not passed as a parameter, it cannot be marked as `isolated`.</span>
+    <span class="nx">addGreetings</span><span class="p">(</span><span class="nx">mutableGreetingArray</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">mutableGreetingArray</span><span class="p">);</span>
+
+    <span class="c1">// Access the `isolated` variable within a `lock` statement.</span>
     <span class="nx">lock</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">updateCount</span><span class="p">);</span>
     <span class="p">}</span>
@@ -101,10 +157,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/isolated-functions/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e5b3d8930f9fea0e6f3eb9d7fe663767&file=isolated_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

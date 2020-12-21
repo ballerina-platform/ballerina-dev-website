@@ -12,17 +12,31 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span><span class="k">var</span> <span class="nx">helloService</span> <span class="p">=</span>  <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="k">var</span> <span class="nx">helloService</span> <span class="p">=</span>  <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Send a response back to the caller.</span>
         <span class="k">var</span> <span class="nx">respondResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">respondResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when responding.&quot;</span><span class="p">,</span> 
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">respondResult</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// The resource function that will shutdown the server.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">shutDownServer</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Send a response back to the caller.</span>
         <span class="k">var</span> <span class="nx">respondResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Shutting down the server&quot;</span><span class="p">);</span>
+        <span class="c1">// Stop the listener.</span>
+        <span class="c1">// This will be called automatically if the program exits by means of a system call.</span>
         <span class="k">var</span> <span class="nx">stopResult</span> <span class="p">=</span> <span class="nx">httpListener</span><span class="p">.</span><span class="nx">gracefulStop</span><span class="p">();</span>
+        <span class="c1">// Deregister the listener dynamically.</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">deregisterListener</span><span class="p">(</span><span class="nx">httpListener</span><span class="p">);</span>
+        <span class="c1">// Handle the errors at the end.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">respondResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when responding.&quot;</span><span class="p">,</span> 
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">respondResult</span><span class="p">);</span>
@@ -32,9 +46,14 @@ redirect_from:
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">stopResult</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Attach the service to the listener.</span>
     <span class="nx">check</span> <span class="nx">httpListener</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">helloService</span><span class="p">);</span>
+    <span class="c1">// Start the listener.</span>
     <span class="nx">check</span> <span class="nx">httpListener</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">start</span><span class="p">();</span>
+    <span class="c1">// Register the listener dynamically.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">registerListener</span><span class="p">(</span><span class="nx">httpListener</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -86,10 +105,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/dynamic-listener/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=577cfa93ebbad36469b38c8e774ba2c0&file=dynamic_listener.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

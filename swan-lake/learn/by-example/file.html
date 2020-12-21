@@ -11,21 +11,32 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">file</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Get the path of the current directory.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Current directory: &quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getCurrentDir</span><span class="p">());</span>
+
+    <span class="c1">// Create a new directory.</span>
     <span class="nx">error</span><span class="p">? createDirResults = file:createDir(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">createDirResults</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">createDirResults</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Create a new directory with any non-existent parents.</span>
     <span class="kt">string</span> <span class="nx">dirPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
     <span class="nx">createDirResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createDir</span><span class="p">(</span><span class="nx">dirPath</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">RECURSIVE</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">createDirResults</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">createDirResults</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Create a file in the given file path.</span>
     <span class="nx">error</span><span class="p">? createFileResults = file:create(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">createFileResults</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">createFileResults</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Get metadata information of the file.</span>
     <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span><span class="p">|</span><span class="nx">error</span> <span class="nx">fileMetadata</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getMetaData</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">fileMetadata</span> <span class="nx">is</span> <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File path: &quot;</span><span class="p">,</span> <span class="nx">fileMetadata</span><span class="p">.</span><span class="nx">absPath</span><span class="p">);</span>
@@ -34,29 +45,45 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Modified at &quot;</span><span class="p">,</span> <span class="nx">fileMetadata</span><span class="p">.</span><span class="nx">modifiedTime</span><span class="p">.</span>
             <span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// Check whether the file or directory of the provided path exists.</span>
     <span class="kt">boolean</span> <span class="nx">fileExists</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">test</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">EXISTS</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file exists: &quot;</span><span class="p">,</span> <span class="nx">fileExists</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+
+    <span class="c1">// Copy the file or directory to the new path.</span>
     <span class="kt">string</span> <span class="nx">file</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
     <span class="nx">error</span><span class="p">? copyDirResults = file:copy(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">REPLACE_EXISTING</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">copyDirResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is copied to new path &quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Rename (Move) the file or directory to the new path.</span>
     <span class="kt">string</span> <span class="nx">newfile</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar1.txt&quot;</span><span class="p">);</span>
     <span class="nx">error</span><span class="p">? renameResults = file:rename(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">newfile</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">renameResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is moved to new path &quot;</span><span class="p">,</span> <span class="nx">newfile</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Get the list of files in the directory.</span>
     <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span><span class="p">[]|</span><span class="nx">error</span> <span class="nx">readDirResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">readDir</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Remove the file or directory in the specified file path.</span>
     <span class="nx">error</span><span class="p">? removeResults = file:remove(</span><span class="nx">newfile</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">removeResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Removed file at &quot;</span><span class="p">,</span> <span class="nx">newfile</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Remove the directory in the specified file path with all its children.</span>
     <span class="nx">removeResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">remove</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">RECURSIVE</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">removeResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Removed &#39;foo&#39; directory with all the children.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Create a temporary file in the default tmp directory of the OS</span>
     <span class="kt">string</span> <span class="nx">tmpResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createTemp</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Absolute path of the tmp file: &quot;</span><span class="p">,</span> <span class="nx">tmpResult</span><span class="p">);</span>
+
+    <span class="c1">// Create a temporary file in a specific directory</span>
     <span class="kt">string</span> <span class="nx">tmp2Result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createTemp</span><span class="p">(</span><span class="nx">dir</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getCurrentDir</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Absolute path of the tmp file: &quot;</span><span class="p">,</span> <span class="nx">tmp2Result</span><span class="p">);</span>
 <span class="p">}</span>
@@ -109,10 +136,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/file/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6f0c8cbcda8786c9325a2a20e3f98a1a&file=file.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

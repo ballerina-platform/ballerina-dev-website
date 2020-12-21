@@ -10,35 +10,77 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Coordinates</span> <span class="nx">record</span> <span class="p">{|</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Coordinates</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="nx">decimal</span> <span class="nx">latitude</span><span class="p">;</span>
     <span class="nx">decimal</span> <span class="nx">longitude</span><span class="p">;</span>
 <span class="p">|};</span>
-<span class="nx">isolated</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">cities</span> <span class="p">=</span> <span class="p">{};</span><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">Coordinates</span> <span class="nx">coordinates</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// The initialization expression of an `isolated` variable</span>
+<span class="c1">// has to be an isolated expression, which itself will be</span>
+<span class="c1">// an isolated root.</span>
+<span class="c1">// E.g., expressions with an immutable static type,</span>
+<span class="c1">// simple literals, constructor expressions</span>
+<span class="c1">// in which all the subexpressions are isolated expressions, etc.</span>
+<span class="nx">isolated</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">cities</span> <span class="p">=</span> <span class="p">{};</span>
+
+
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">Coordinates</span> <span class="nx">coordinates</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">lock</span> <span class="p">{</span>
+        <span class="c1">// An `isolated` variable can be accessed within a `lock` statement.</span>
         <span class="k">if</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="nx">city</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An entry already exists for &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">);</span>
             <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">updatedCities</span> <span class="p">=</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">updatedCities</span> <span class="p">=</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+        <span class="c1">// Any values transferred into the `lock` statement also need to be</span>
+        <span class="c1">// isolated expressions ensuring that the variable will continue</span>
+        <span class="c1">// to be an isolated root.</span>
         <span class="nx">updatedCities</span><span class="p">[</span><span class="nx">city</span><span class="p">]</span> <span class="p">=</span> <span class="nx">coordinates</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
         <span class="nx">cities</span> <span class="p">=</span> <span class="nx">updatedCities</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Added coordinates for &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getCoordinates</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Coordinates</span><span class="err">?</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Added coordinates for &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getCoordinates</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Coordinates</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">lock</span> <span class="p">{</span>
+        <span class="c1">// Similarly, transferring values out of the `lock` statement</span>
+        <span class="c1">// either using a `return` statement or by assigning to a variable</span>
+        <span class="c1">// defined outside the `lock` statement is also</span>
+        <span class="c1">// constrained. The expressions that transfer values out need to be</span>
+        <span class="c1">// isolated expressions.</span>
         <span class="k">return</span> <span class="nx">cities</span><span class="p">[</span><span class="nx">city</span><span class="p">].</span><span class="nx">clone</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getAllCoordinates</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getAllCoordinates</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
     <span class="nx">lock</span> <span class="p">{</span>
+        <span class="c1">// A function/method call within a `lock` statement that accesses an</span>
+        <span class="c1">// `isolated` variable should call a function/method that is</span>
+        <span class="c1">// `isolated`.</span>
         <span class="k">return</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="nx">cities</span><span class="p">.</span><span class="nx">clone</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">cities</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">formattedCoordinates</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">foreach</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Coordinates</span><span class="p">]</span> <span class="p">[</span><span class="nx">city</span><span class="p">,</span> <span class="nx">coords</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">cities</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">formattedCoordinates</span> <span class="p">=</span> <span class="p">[];</span>
+
+    <span class="nx">foreach</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Coordinates</span><span class="p">]</span> <span class="p">[</span><span class="nx">city</span><span class="p">,</span> <span class="nx">coords</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">formattedCoordinates</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
             <span class="kt">string</span> <span class="s">`${city} - ${coords.latitude}° N, ${coords.longitude}° E`</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">return</span> <span class="nx">formattedCoordinates</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">formattedCoordinates</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">add</span><span class="p">(</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">latitude</span><span class="p">:</span> <span class="mf">6.9271</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">:</span> <span class="mf">79.8612</span><span class="p">});</span>
-    <span class="nx">add</span><span class="p">(</span><span class="s">&quot;Kandy&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">latitude</span><span class="p">:</span> <span class="mf">7.2906</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">:</span> <span class="mf">80.6337</span><span class="p">});</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">getAllCoordinates</span><span class="p">());</span>
+    <span class="nx">add</span><span class="p">(</span><span class="s">&quot;Kandy&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">latitude</span><span class="p">:</span> <span class="mf">7.2906</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">:</span> <span class="mf">80.6337</span><span class="p">});</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">getAllCoordinates</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -96,10 +138,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/isolated-variables/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=12c37d84d2617bba64089299193f210a&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

@@ -11,11 +11,25 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">error</span> <span class="k">as</span> <span class="nx">errors</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">error</span> <span class="k">as</span> <span class="nx">errors</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The retry statement provides a general-purpose retry.</span>
+    <span class="c1">// facility, which is independent of the transactions.</span>
+    <span class="c1">// Here, retrying happens according to the default retry manager</span>
+    <span class="c1">// since there is no custom retry manager being passed to </span>
+    <span class="c1">// the retry operation.</span>
+    <span class="c1">// As defined, retrying happens for maximum 3 times.</span>
     <span class="nx">retry</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Attempting execution...&quot;</span><span class="p">);</span>
+        <span class="c1">// Calls a function, which simulates an error scenario to </span>
+        <span class="c1">// trigger the retry operation.</span>
         <span class="nx">check</span> <span class="nx">doWork</span><span class="p">();</span>
-    <span class="p">}</span>    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// You can pass a retry manager class as a type parameter.</span>
     <span class="nx">retry</span><span class="p">&lt;</span><span class="nx">MyRetryManager</span><span class="p">&gt;(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Attempting execution...&quot;</span><span class="p">);</span>
        <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -24,15 +38,23 @@ redirect_from:
        <span class="p">}</span>
        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Work completed.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// The function, which may return an error.</span>
 <span class="kd">function</span> <span class="nx">doWork</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">count</span> <span class="p">&lt;</span> <span class="mi">1</span> <span class="p">{</span>
         <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="c1">// Return a retriable error so that</span>
+        <span class="c1">// the default retry manager retries.</span>
         <span class="k">return</span> <span class="nx">errors</span><span class="p">:</span><span class="nx">Retriable</span><span class="p">(</span><span class="s">&quot;Execution Error&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Work completed.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Sample retry manager class with an arbitrarily logic.</span>
 <span class="nx">public</span> <span class="nx">class</span> <span class="nx">MyRetryManager</span> <span class="p">{</span>
    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">;</span>
    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
@@ -96,10 +118,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/non-transaction-retry/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ea2706e817dcd752f76f07c04fdca956&file=non_transaction_retry.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

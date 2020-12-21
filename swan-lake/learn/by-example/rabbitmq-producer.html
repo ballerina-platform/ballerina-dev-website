@@ -11,12 +11,20 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Creates a ballerina RabbitMQ client.</span>
     <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">newClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+    <span class="c1">// Declares the queue, MyQueue.</span>
     <span class="k">var</span> <span class="nx">queueResult1</span> <span class="p">=</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">queueDeclare</span><span class="p">(</span><span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">queueResult1</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while creating the MyQueue1 queue.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Publishing messages to an exchange using a routing key.</span>
+    <span class="c1">// Publishes the message using newChannel1 and the routing key named MyQueue.</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">basicPublish</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
                                     <span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
@@ -75,10 +83,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rabbitmq-producer/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=65b7a57c001f1a51dbefcff2ee5bbd84&file=rabbitmq_producer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

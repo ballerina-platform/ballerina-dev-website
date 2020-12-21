@@ -1786,6 +1786,21 @@ ul, #toc {
     margin-bottom: 20px;
 }
 
+
+.wy-breadcrumbs li, .wy-breadcrumbs li a  , ul.wy-breadcrumbs  {
+	color: #22b7b1 !important;
+	font-size: 14px !important;
+}
+
+ul.wy-breadcrumbs {
+    color: #57595d !important;
+}
+
+.cBalleinaBreadcrumbs li {
+    margin-right: 5px !important;
+}
+
+
 .cCookie-Policy {
     position: fixed;
     bottom: 0;

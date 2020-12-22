@@ -66,7 +66,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -89,10 +89,6 @@ redirect_from:
         
         
         
-        
-            <li>
-                <a data="functions" href="../cache/index.html#functions" onclick="menuLinkClick()">Functions</a>
-            </li>
         
         
             <li>
@@ -365,12 +361,12 @@ redirect_from:
 </code></pre>
 <p>The <code>cache:AbstractEvictionPolicy</code> object has the common APIs for the cache eviction functionalities. Custom implementations of the eviction policy can be done by maintaining the <code>cache:LinkedList</code> data structure according to the eviction algorithm.</p>
 <pre><code class="language-ballerina">public type AbstractEvictionPolicy abstract object {
-    public function get(LinkedList list, Node node);
-    public function put(LinkedList list, Node node);
-    public function remove(LinkedList list, Node node);
-    public function replace(LinkedList list, Node newNode, Node oldNode);
-    public function clear(LinkedList list);
-    public function evict(LinkedList list) returns Node?;
+    public function get(Node node);
+    public function put(Node node);
+    public function remove(Node node);
+    public function replace(Node newNode, Node oldNode);
+    public function clear();
+    public function evict() returns Node?;
 };
 </code></pre>
 <p>The Ballerina Cache module provides the <code>cache:Cache</code> object, which is a <code>map</code> data structure based implementation of the <code>cache:AbstractCache</code> object. It is not recommended to insert <code>()</code> as the value of the cache since it doesn't make sense to cache a nil. Also, it provides the <code>cache:LruEvictionPolicy</code> object, which is based on the LRU eviction algorithm.</p>
@@ -421,7 +417,6 @@ This is an optional parameter.</li>
 
 
             
-            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -430,7 +425,6 @@ This is an optional parameter.</li>
                 <h2> Records </h2>
                 </div>
                 <table>
-                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CacheConfig" title="CacheConfig">
@@ -442,8 +436,6 @@ This is an optional parameter.</li>
                             </td>
                         </tr>
                     
-                    
-                    
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
                                 <a class="records " href="records/Detail.html">Detail</a>
@@ -453,20 +445,6 @@ This is an optional parameter.</li>
                                 <p>Record type to hold the details of an error.
                             </td>
                         </tr>
-                    
-                    
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="LinkedList" title="LinkedList">
-                                <a class="records " href="records/LinkedList.html">LinkedList</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a linked list, which is used to govern the cache eviction policy.
-                            </td>
-                        </tr>
-                    
-                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Node" title="Node">
@@ -478,13 +456,10 @@ This is an optional parameter.</li>
                             </td>
                         </tr>
                     
-                    
                 </table>
             </section>
             
-            
 
-            
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -495,7 +470,6 @@ This is an optional parameter.</li>
                 </div>
                 <table>
                     
-                    
                         <tr>
                             <td class="module-title truncate objects" id="AbstractCache" title="AbstractCache">
                                 <a class="objects " href="objects/AbstractCache.html">AbstractCache</a>
@@ -505,8 +479,6 @@ This is an optional parameter.</li>
                                 <p>The <code>cache:AbstractCache</code> object is used for custom implementations of the Ballerina cache.
                             </td>
                         </tr>
-                    
-                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="AbstractEvictionPolicy" title="AbstractEvictionPolicy">
@@ -519,8 +491,6 @@ Ballerina cache object.
                             </td>
                         </tr>
                     
-                    
-                    
                         <tr>
                             <td class="module-title truncate objects" id="Cache" title="Cache">
                                 <a class="objects " href="objects/Cache.html">Cache</a>
@@ -531,7 +501,17 @@ Ballerina cache object.
                             </td>
                         </tr>
                     
-                    
+                        <tr>
+                            <td class="module-title truncate objects" id="LinkedList" title="LinkedList">
+                                <a class="objects " href="objects/LinkedList.html">LinkedList</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The <code>cache:LinkedList</code> object consists operations of <code>LinkedList</code> data structure which are related
+to LRU eviction algorithm</p>
+
+                            </td>
+                        </tr>
                     
                         <tr>
                             <td class="module-title truncate objects" id="LruEvictionPolicy" title="LruEvictionPolicy">
@@ -544,10 +524,8 @@ list data structure.
                             </td>
                         </tr>
                     
-                    
                 </table>
              </section>
-            
             
 
             
@@ -555,68 +533,6 @@ list data structure.
             
            
 
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="addFirst" title="addFirst">
-                                <a class="functions " href="functions.html#addFirst">addFirst</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Adds a node to the start of the provided linked list.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="addLast" title="addLast">
-                                <a class="functions " href="functions.html#addLast">addLast</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Adds a node to the end of the provided linked list.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="clear" title="clear">
-                                <a class="functions " href="functions.html#clear">clear</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Clears the provided linked list.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="remove" title="remove">
-                                <a class="functions " href="functions.html#remove">remove</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Removes a node from the provided linked list.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="removeLast" title="removeLast">
-                                <a class="functions " href="functions.html#removeLast">removeLast</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Removes the last node from the provided linked list.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
             
 
 

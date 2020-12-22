@@ -1,7 +1,7 @@
 ---
 redirect_from:
-  - /v1-2/learn/api-docs/ballerina/lang.stream/objects/T4
-  - /v1-2/learn/api-docs/ballerina/lang.stream/objects/T4.html
+  - /v1-2/learn/api-docs/ballerina/http/records/ResponseLimitConfigs
+  - /v1-2/learn/api-docs/ballerina/http/records/ResponseLimitConfigs.html
 ---
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,11 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides lang library operations on stream values defined by the language specification 2020R1.
+    <meta name="description" content="This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of network entry points as ‘Client’ and ‘Listener’.
 ">
-    <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.stream">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,http">
 
-    <title>API Docs - Object : T4</title>
+    <title>API Docs - Record : ResponseLimitConfigs</title>
     <script src="../../html-template-resources/jquery.min.js"></script>
 
     <!-- BIO THEME START -->
@@ -64,31 +64,207 @@ redirect_from:
 </a>
 
             <div class="primary-list">
-                <h3>Objects</h3>
+                <h3>Records</h3>
                 <ul>
                     
                         <li >
-                            <a href="T0.html" onclick="menuLinkClick()">T0</a>
+                            <a href="Bucket.html" onclick="menuLinkClick()">Bucket</a>
                         </li>
                     
                         <li >
-                            <a href="T2.html" onclick="menuLinkClick()">T2</a>
+                            <a href="CacheConfig.html" onclick="menuLinkClick()">CacheConfig</a>
                         </li>
                     
                         <li >
-                            <a href="T3.html" onclick="menuLinkClick()">T3</a>
+                            <a href="CircuitBreakerConfig.html" onclick="menuLinkClick()">CircuitBreakerConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CircuitBreakerInferredConfig.html" onclick="menuLinkClick()">CircuitBreakerInferredConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CircuitHealth.html" onclick="menuLinkClick()">CircuitHealth</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ClientConfiguration.html" onclick="menuLinkClick()">ClientConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ClientHttp1Settings.html" onclick="menuLinkClick()">ClientHttp1Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ClientHttp2Settings.html" onclick="menuLinkClick()">ClientHttp2Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ClientSecureSocket.html" onclick="menuLinkClick()">ClientSecureSocket</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CommonClientConfiguration.html" onclick="menuLinkClick()">CommonClientConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CompressionConfig.html" onclick="menuLinkClick()">CompressionConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CookieConfig.html" onclick="menuLinkClick()">CookieConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CorsConfig.html" onclick="menuLinkClick()">CorsConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Detail.html" onclick="menuLinkClick()">Detail</a>
+                        </li>
+                    
+                        <li >
+                            <a href="FailoverClientConfiguration.html" onclick="menuLinkClick()">FailoverClientConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="FailoverConfig.html" onclick="menuLinkClick()">FailoverConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="FailoverInferredConfig.html" onclick="menuLinkClick()">FailoverInferredConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="FollowRedirects.html" onclick="menuLinkClick()">FollowRedirects</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpResourceConfig.html" onclick="menuLinkClick()">HttpResourceConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpServiceConfig.html" onclick="menuLinkClick()">HttpServiceConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpTimeoutError.html" onclick="menuLinkClick()">HttpTimeoutError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ListenerAuth.html" onclick="menuLinkClick()">ListenerAuth</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ListenerConfiguration.html" onclick="menuLinkClick()">ListenerConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ListenerHttp1Settings.html" onclick="menuLinkClick()">ListenerHttp1Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ListenerOcspStapling.html" onclick="menuLinkClick()">ListenerOcspStapling</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ListenerSecureSocket.html" onclick="menuLinkClick()">ListenerSecureSocket</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LoadBalanceActionErrorData.html" onclick="menuLinkClick()">LoadBalanceActionErrorData</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LoadBalanceClientConfiguration.html" onclick="menuLinkClick()">LoadBalanceClientConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Local.html" onclick="menuLinkClick()">Local</a>
+                        </li>
+                    
+                        <li >
+                            <a href="MutualSslHandshake.html" onclick="menuLinkClick()">MutualSslHandshake</a>
+                        </li>
+                    
+                        <li >
+                            <a href="OutboundAuthConfig.html" onclick="menuLinkClick()">OutboundAuthConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="PoolConfiguration.html" onclick="menuLinkClick()">PoolConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Protocols.html" onclick="menuLinkClick()">Protocols</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ProxyConfig.html" onclick="menuLinkClick()">ProxyConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Remote.html" onclick="menuLinkClick()">Remote</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RequestLimitConfigs.html" onclick="menuLinkClick()">RequestLimitConfigs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ResourceAuth.html" onclick="menuLinkClick()">ResourceAuth</a>
                         </li>
                     
                         <li class="active">
-                            <a href="T4.html" onclick="menuLinkClick()">T4</a>
+                            <a href="ResponseLimitConfigs.html" onclick="menuLinkClick()">ResponseLimitConfigs</a>
                         </li>
                     
                         <li >
-                            <a href="T6.html" onclick="menuLinkClick()">T6</a>
+                            <a href="RetryConfig.html" onclick="menuLinkClick()">RetryConfig</a>
                         </li>
                     
                         <li >
-                            <a href="T7.html" onclick="menuLinkClick()">T7</a>
+                            <a href="RetryInferredConfig.html" onclick="menuLinkClick()">RetryInferredConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RollingWindow.html" onclick="menuLinkClick()">RollingWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ServiceAuth.html" onclick="menuLinkClick()">ServiceAuth</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TargetService.html" onclick="menuLinkClick()">TargetService</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ValidateCert.html" onclick="menuLinkClick()">ValidateCert</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Versioning.html" onclick="menuLinkClick()">Versioning</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WSServiceConfig.html" onclick="menuLinkClick()">WSServiceConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WebSocketClientConfiguration.html" onclick="menuLinkClick()">WebSocketClientConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WebSocketFailoverClientConfiguration.html" onclick="menuLinkClick()">WebSocketFailoverClientConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WebSocketRetryConfig.html" onclick="menuLinkClick()">WebSocketRetryConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WebSocketUpgradeConfig.html" onclick="menuLinkClick()">WebSocketUpgradeConfig</a>
                         </li>
                     
                 </ul>
@@ -97,37 +273,61 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
 <div class="primary-list module">
     
-        <a href="../../lang.stream/index.html" onclick="menuLinkClick()">
-            <h3>lang.stream</h3>
+        <a href="../../http/index.html" onclick="menuLinkClick()">
+            <h3>http</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../lang.stream/index.html#records" onclick="menuLinkClick()">Records</a>
+            <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../lang.stream/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
-        
-        
         
         
             <li>
-                <a data="functions" href="../../lang.stream/index.html#functions" onclick="menuLinkClick()">Functions</a>
+                <a data="clients" href="../../http/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
+            <li>
+                <a data="listeners" href="../../http/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
+            </li>
         
         
+            <li>
+                <a data="functions" href="../../http/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../http/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../http/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../http/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../http/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
         
     </ul>
     <div class="ui divider"></div>
@@ -356,96 +556,52 @@ redirect_from:
 </div>
         </div>
     </div>
-    <div class="content-wrapper pusher">
+      <div class="content-wrapper pusher">
         <div>
     <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <h1>
+            <h1> 
                 <a class="breadcrumb-home" href="
     ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
-                <span class="title-type">Object - </span>
+                <span class="title-type">Record - </span>
                 
-                    <a href="../../lang.stream/index.html">lang.stream</a>
-                 :
-                <span class="objects ">T4</span>
+                    <a href="../../http/index.html">http</a>
+                
+                 : <span class="records ">ResponseLimitConfigs</span>
             </h1>
             <p>
                 
-                
+                <p>Provides inbound response status line, total header and entity body size threshold configurations.</p>
+
             </p>
-
+            
+                <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+            
             <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                        <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> strm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>strm</b><span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span></span> </li>
-                <li>
-                    
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>func</b><span class="type">  <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code></span> </li>
-                <li>
-                    
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                        
-                    
-
+                
                 
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
-<div class="param-sum">
-    <div class="param-name " title="next">
-        <a href="#next">next </a>
-    </div>
-    <div class="param-details"> 
-            
-        
-    </div>
-</div>
-
-                            
-                        </div>
-                    
-
-                    
-                        
-                            <h2>Fields</h2>
-                                <div class="data-wrapper">
+                        <h2>Fields</h2>
+                            <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
             <li> 
-                <span >strm</span>
-                <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span></span>
-                
+                <span >maxStatusLineLength</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 4096)</span> 
             </li>
             <li>
                 <p>
                     
-                    
+                    <p>Maximum allowed length for response status line(<code>HTTP/1.1 200 OK</code>). Exceeding this limit will
+result in a <code>ClientError</code></p>
+
                 </p>
             </li>
         </ul>
@@ -454,14 +610,33 @@ redirect_from:
     <div class="params-listing">
         <ul>
             <li> 
-                <span >func</span>
-                <span class="type">  <span class="builtin-type">any</span></span>
-                
+                <span >maxHeaderSize</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 8192)</span> 
             </li>
             <li>
                 <p>
                     
+                    <p>Maximum allowed size for headers. Exceeding this limit will result in a <code>ClientError</code></p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> 
+                <span >maxEntityBodySize</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default -1)</span> 
+            </li>
+            <li>
+                <p>
                     
+                    <p>Maximum allowed size for the entity body. By default it is set to -1 which means there is no
+restriction <code>maxEntityBodySize</code>, On the Exceeding this limit will result in a <code>ClientError</code></p>
+
                 </p>
             </li>
         </ul>
@@ -538,48 +713,11 @@ function displayMenu() {
     };
 </script>
 
-                        
-                    
-                </div>
-
-                
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="next" title="next">
-             <a class="url-link" href="#next">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2 > next </h2>
-        <span class="method-types">
-            <p>()</p>
-            
-                <b> returns </b><a href="../../lang.stream/records/T11.html">T11</a> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../lang.stream/records/T11.html">T11</a> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
                     
                 
             </div>
         </div>
     </div>
-
 </body>
 
 <script>

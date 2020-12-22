@@ -1,7 +1,7 @@
 ---
 redirect_from:
-  - /v1-2/learn/api-docs/ballerina/lang.stream/records/T11
-  - /v1-2/learn/api-docs/ballerina/lang.stream/records/T11.html
+  - /v1-2/learn/api-docs/ballerina/kafka/records/AvroGenericRecord
+  - /v1-2/learn/api-docs/ballerina/kafka/records/AvroGenericRecord.html
 ---
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,12 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides lang library operations on stream values defined by the language specification 2020R1.
+    <meta name="description" content="This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
+This module supports Kafka 1.x.x and 2.0.0 versions.
 ">
-    <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.stream">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,kafka">
 
-    <title>API Docs - Record : T11</title>
+    <title>API Docs - Record : AvroGenericRecord</title>
     <script src="../../html-template-resources/jquery.min.js"></script>
 
     <!-- BIO THEME START -->
@@ -68,31 +69,55 @@ redirect_from:
                 <ul>
                     
                         <li >
-                            <a href="T1.html" onclick="menuLinkClick()">T1</a>
-                        </li>
-                    
-                        <li >
-                            <a href="T10.html" onclick="menuLinkClick()">T10</a>
+                            <a href="AuthenticationConfiguration.html" onclick="menuLinkClick()">AuthenticationConfiguration</a>
                         </li>
                     
                         <li class="active">
-                            <a href="T11.html" onclick="menuLinkClick()">T11</a>
+                            <a href="AvroGenericRecord.html" onclick="menuLinkClick()">AvroGenericRecord</a>
                         </li>
                     
                         <li >
-                            <a href="T12.html" onclick="menuLinkClick()">T12</a>
+                            <a href="AvroRecord.html" onclick="menuLinkClick()">AvroRecord</a>
                         </li>
                     
                         <li >
-                            <a href="T5.html" onclick="menuLinkClick()">T5</a>
+                            <a href="ConsumerConfiguration.html" onclick="menuLinkClick()">ConsumerConfiguration</a>
                         </li>
                     
                         <li >
-                            <a href="T8.html" onclick="menuLinkClick()">T8</a>
+                            <a href="ConsumerRecord.html" onclick="menuLinkClick()">ConsumerRecord</a>
                         </li>
                     
                         <li >
-                            <a href="T9.html" onclick="menuLinkClick()">T9</a>
+                            <a href="Detail.html" onclick="menuLinkClick()">Detail</a>
+                        </li>
+                    
+                        <li >
+                            <a href="KeyStore.html" onclick="menuLinkClick()">KeyStore</a>
+                        </li>
+                    
+                        <li >
+                            <a href="PartitionOffset.html" onclick="menuLinkClick()">PartitionOffset</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ProducerConfiguration.html" onclick="menuLinkClick()">ProducerConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Protocols.html" onclick="menuLinkClick()">Protocols</a>
+                        </li>
+                    
+                        <li >
+                            <a href="SecureSocket.html" onclick="menuLinkClick()">SecureSocket</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TopicPartition.html" onclick="menuLinkClick()">TopicPartition</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TrustStore.html" onclick="menuLinkClick()">TrustStore</a>
                         </li>
                     
                 </ul>
@@ -101,37 +126,49 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
 <div class="primary-list module">
     
-        <a href="../../lang.stream/index.html" onclick="menuLinkClick()">
-            <h3>lang.stream</h3>
+        <a href="../../kafka/index.html" onclick="menuLinkClick()">
+            <h3>kafka</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../lang.stream/index.html#records" onclick="menuLinkClick()">Records</a>
+            <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../lang.stream/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../kafka/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../../lang.stream/index.html#functions" onclick="menuLinkClick()">Functions</a>
+                <a data="constants" href="../../kafka/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
+            <li>
+                <a data="types" href="../../kafka/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
         
+        
+            <li>
+                <a data="errors" href="../../kafka/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
         
     </ul>
     <div class="ui divider"></div>
@@ -374,108 +411,20 @@ redirect_from:
 </a>
                 <span class="title-type">Record - </span>
                 
-                    <a href="../../lang.stream/index.html">lang.stream</a>
+                    <a href="../../kafka/index.html">kafka</a>
                 
-                 : <span class="records ">T11</span>
+                 : <span class="records ">AvroGenericRecord</span>
             </h1>
             <p>
                 
-                
+                <p>Represents a generic Avro record. This is the type of the value returned from an Avro deserializer consumer.</p>
+
             </p>
+            
             <div class="constants">
                 
-                    
-                        <h2>Fields</h2>
-                            <div class="data-wrapper">
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >value</span>
-                <span class="type">  <span class="builtin-type">Type</span></span>
+                    <p>This record doesn't contain any fields.</p>
                 
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-    
-</div>
-
-<script>
-let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
-let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
-
-let lastId;
-let cur = [];
-
-let contentWrapper = document.querySelector(".content-wrapper");
-contentWrapper.addEventListener("scroll", event => {
-  let fromTop = contentWrapper.scrollTop;
-
-  mainNavLinks.forEach(link => {
-    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
-
-    if (
-      section.offsetTop <= fromTop &&
-      section.offsetTop + section.offsetHeight > fromTop
-    ) {
-      link.classList.add("current");
-    } else {
-      link.classList.remove("current");
-    }
-  });
-});
-
-</script>
-<script>
-function menuLinkClick() {
-  if(window.matchMedia("(max-width: 600px)").matches) {
-    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
-  }
-}
-function displayMenu() {
-  var nav = document.getElementsByClassName("navi-wrapper")[0];
-  var content = document.getElementsByClassName("content-wrapper")[0];
-  if (nav.style.display === "none" || nav.style.display === "") {
-    nav.style.display = "block";
-    content.style.marginLeft = "210px";
-  } else {
-    nav.style.display = "none";
-    content.style.marginLeft = "0px";
-  }
-}
-</script>
-<script>
-function menuLinkClick() {
-  if(window.matchMedia("(max-width: 600px)").matches) {
-    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
-  }
-}
-function displayMenu() {
-  var nav = document.getElementsByClassName("navi-wrapper")[0];
-  var content = document.getElementsByClassName("content-wrapper")[0];
-  if (nav.style.display === "none" || nav.style.display === "") {
-    nav.style.display = "block";
-    content.style.marginLeft = "210px";
-  } else {
-    nav.style.display = "none";
-    content.style.marginLeft = "0px";
-  }
-}
-</script>
-
-<script>
-    window.onload = (event) => {
-        ballerinaHighlighter.highlightSnippets();
-    };
-</script>
-
-                    
                 
             </div>
         </div>

@@ -111,13 +111,17 @@ redirect_from:
                             <a href="SubscriptionDetails.html" onclick="menuLinkClick()">SubscriptionDetails</a>
                         </li>
                     
+                        <li >
+                            <a href="WebSubContent.html" onclick="menuLinkClick()">WebSubContent</a>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="ui divider"></div>
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -423,7 +427,11 @@ redirect_from:
                 <p>Record representing hub specific configurations.</p>
 
             </p>
+            
+                <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+            
             <div class="constants">
+                
                 
                     
                         <h2>Fields</h2>
@@ -526,6 +534,57 @@ to the topic</p>
                 <p>
                     
                     <p>The <code>HubPersistenceStore</code> to use to persist hub data</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> 
+                <span >tapOnMessage</span>
+                <span class="type">  <code> <span>function(</span><a href="../../websub/records/WebSubContent.html">WebSubContent</a><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The configuration for passing a function to be invoked when an update is received at the hub</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> 
+                <span >tapOnDelivery</span>
+                <span class="type">  <code> <span>function(</span><span class="builtin-type">string</span>, <span class="builtin-type">string</span>, <a href="../../websub/records/WebSubContent.html">WebSubContent</a><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The configuration for passing a function to be invoked when an update is successfully delivered to the subscribers</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> 
+                <span >tapOnDeliveryFailure</span>
+                <span class="type">  <code> <span>function(</span><span class="builtin-type">string</span>, <span class="builtin-type">string</span>, <a href="../../websub/records/WebSubContent.html">WebSubContent</a>, <a href="../../http/objects/Response.html">Response</a> | <span class="builtin-type">error</span>, <a href="../../websub/types.html#FailureReason">FailureReason</a><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The configuration for passing a function to be invoked when an update is failed to be delivered to the subscribers</p>
 
                 </p>
             </li>

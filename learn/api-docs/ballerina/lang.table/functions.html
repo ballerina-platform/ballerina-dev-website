@@ -97,7 +97,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -109,14 +109,6 @@ redirect_from:
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.table/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../lang.table/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
         
         
         
@@ -678,7 +670,7 @@ close is required only if it is not fully iterated.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">table</span> tbl)</p>
             
-                <b> returns </b><a href="../lang.table/objects/T2.html">T2</a> 
+                <b> returns </b><span class="builtin-type">object { public function next () returns (record {| ballerina/lang.table:RowType value; |}?); }</span> 
             
         </span>
     </div>
@@ -716,7 +708,7 @@ The iterator will iterate over the rows of the table in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.table/objects/T2.html">T2</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { public function next () returns (record {| ballerina/lang.table:RowType value; |}?); }</span></span>)</li>
                 <li><p>an iterator over <code>tbl</code></p>
 </li>
             </ul>

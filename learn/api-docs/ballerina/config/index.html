@@ -66,7 +66,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -385,7 +385,7 @@ $ set(x) b7a_http_accesslog_path=”./access.log”
 <pre><code class="language-toml">[b7a.http.tracelog]
 console=true
 path=&quot;./trace.log&quot;
-host=&quot;@env:{TRACE_LOG_READER_HOST}&quot;
+host=&quot;localhost&quot;
 port=5757
 
 [b7a.http.accesslog]
@@ -397,8 +397,6 @@ path=&quot;./access.log&quot;
 // Here, the map’s key-value pairs represent config key-value pairs.
 map&lt;anydata&gt; serverAlphaMap  = config:getAsMap(&quot;b7a.http.tracelog&quot;);
 </code></pre>
-<p>In the above configuration file, the <code>host</code> is specified as <code>@env:{TRACE_LOG_READER_HOST}</code>. When resolving the configurations, Ballerina looks for a variable named <code>TRACE_LOG_READER_HOST</code> in the environment variables and maps <code>b7a.http.tracelog.host</code> to its value.</p>
-<p>If the specified environment variable does not exist, it will will treat <code>@env:{TRACE_LOG_READER_HOST}</code> as a normal string value.</p>
 <h3>Securing configuration values</h3>
 <p>Sensitive values can be encrypted using the <code>encrypt</code> command as follows:</p>
 <pre><code class="language-sh">$ ballerina encrypt

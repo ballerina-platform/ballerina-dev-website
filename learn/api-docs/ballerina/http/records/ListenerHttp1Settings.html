@@ -208,7 +208,15 @@ redirect_from:
                         </li>
                     
                         <li >
+                            <a href="RequestLimitConfigs.html" onclick="menuLinkClick()">RequestLimitConfigs</a>
+                        </li>
+                    
+                        <li >
                             <a href="ResourceAuth.html" onclick="menuLinkClick()">ResourceAuth</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ResponseLimitConfigs.html" onclick="menuLinkClick()">ResponseLimitConfigs</a>
                         </li>
                     
                         <li >
@@ -265,7 +273,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -571,7 +579,11 @@ redirect_from:
                 <p>Provides settings related to HTTP/1.x protocol.</p>
 
             </p>
+            
+                <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+            
             <div class="constants">
+                
                 
                     
                         <h2>Fields</h2>
@@ -606,63 +618,8 @@ which always keeps the connection alive, or <code>KEEPALIVE_NEVER</code>, which 
                 <p>
                     
                     <p>Defines the maximum number of requests that can be processed at a given time on a single
-connection. By default 10 requests can be pipelined on a single cinnection and user can
+connection. By default 10 requests can be pipelined on a single connection and user can
 change this limit appropriately.</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >maxUriLength</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
-                 <span class="default">(default 4096)</span> 
-            </li>
-            <li>
-                <p>
-                    
-                    <p>Maximum allowed length for a URI. Exceeding this limit will result in a
-<code>414 - URI Too Long</code> response.</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >maxHeaderSize</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
-                 <span class="default">(default 8192)</span> 
-            </li>
-            <li>
-                <p>
-                    
-                    <p>Maximum allowed size for headers. Exceeding this limit will result in a
-<code>413 - Payload Too Large</code> response.</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> 
-                <span >maxEntityBodySize</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
-                 <span class="default">(default -1)</span> 
-            </li>
-            <li>
-                <p>
-                    
-                    <p>Maximum allowed size for the entity body. By default it is set to -1 which means there
-is no restriction <code>maxEntityBodySize</code>, On the Exceeding this limit will result in a
-<code>413 - Payload Too Large</code> response.</p>
 
                 </p>
             </li>

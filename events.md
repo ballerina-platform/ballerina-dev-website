@@ -32,7 +32,7 @@ redirect_from:
 
 <h2>Past Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
-   <tr class="event-expiry" style="display:none" data-expiry="December 4, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
          <span class="cEventDate">December 2 - 4, 2020</span>
          <p class="cEventLocation">Virtual</p>
@@ -46,7 +46,7 @@ redirect_from:
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/0pKOkMRODF0" target="_blank">Watch Video</a></td>
    </tr>
-   <tr class="event-expiry" style="display:none" data-expiry="October 28, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
          <span class="cEventDate">October 28, 2020</span>
          <p class="cEventLocation">Virtual</p>

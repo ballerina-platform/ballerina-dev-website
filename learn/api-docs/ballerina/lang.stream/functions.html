@@ -101,7 +101,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -113,14 +113,6 @@ redirect_from:
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.stream/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../lang.stream/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
         
         
         
@@ -667,7 +659,7 @@ The Combining function is applied to each member of stream in order.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
             
-                <b> returns </b><a href="../lang.stream/objects/T6.html">T6</a> 
+                <b> returns </b><span class="builtin-type">object { public function next () returns ((record {| (any|error) value; |}|error?)?); }</span> 
             
         </span>
     </div>
@@ -704,7 +696,7 @@ The Combining function is applied to each member of stream in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.stream/objects/T6.html">T6</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { public function next () returns ((record {| (any|error) value; |}|error?)?); }</span></span>)</li>
                 <li><p>a new iterator object that will iterate over the members of <code>stm</code>.</p>
 </li>
             </ul>
@@ -794,7 +786,7 @@ The Combining function is applied to each member of stream in order.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> strm)</p>
             
-                <b> returns </b><a href="../lang.stream/records/T1.html">T1</a> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span> 
+                <b> returns </b><span class="builtin-type">record {| (any|error) value; |}</span> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span> 
             
         </span>
     </div>
@@ -831,7 +823,7 @@ The Combining function is applied to each member of stream in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.stream/records/T1.html">T1</a> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">record {| (any|error) value; |}</span> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span></span>)</li>
                 <li><p>If the stream has elements, return the element wrapped in a record with single field called <code>value</code>,
 otherwise returns ()</p>
 </li>

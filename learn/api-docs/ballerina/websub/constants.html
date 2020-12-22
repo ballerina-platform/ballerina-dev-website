@@ -67,7 +67,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -478,6 +478,49 @@ needs to fetch the topic URL to identify the update content.</p>
                                     
                                     <p><code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
 the JSON payload of the request.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="FAILURE_REASON_SUBSCRIPTION_GONE">
+                                    <b >FAILURE_REASON_SUBSCRIPTION_GONE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> SUBSCRIPTION_GONE
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents subscription delivery failure due to the subscriber's callback URL
+replying with a HTTP 410 Gone status code.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="FAILURE_REASON_FAILURE_STATUS_CODE">
+                                    <b >FAILURE_REASON_FAILURE_STATUS_CODE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> FAILURE_STATUS_CODE
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents subscription delivery failures related to HTTP failure status codes except 410 Gone.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="FAILURE_REASON_DELIVERY_FAILURE">
+                                    <b >FAILURE_REASON_DELIVERY_FAILURE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> DELIVERY_FAILURE
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents subscription delivery failures related to network issues.</p>
 
                                 </li>
                             </ul>

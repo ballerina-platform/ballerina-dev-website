@@ -208,7 +208,15 @@ redirect_from:
                         </li>
                     
                         <li >
+                            <a href="RequestLimitConfigs.html" onclick="menuLinkClick()">RequestLimitConfigs</a>
+                        </li>
+                    
+                        <li >
                             <a href="ResourceAuth.html" onclick="menuLinkClick()">ResourceAuth</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ResponseLimitConfigs.html" onclick="menuLinkClick()">ResponseLimitConfigs</a>
                         </li>
                     
                         <li >
@@ -265,7 +273,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -588,11 +596,16 @@ configuration records in addition to the load balance client specific configs.</
 <tr><td align="left">circuitBreaker - Copied from CommonClientConfiguration</td></tr>
 <tr><td align="left">retryConfig - Copied from CommonClientConfiguration</td></tr>
 <tr><td align="left">cookieConfig - Copied from CommonClientConfiguration</td></tr>
+<tr><td align="left">responseLimits - Copied from CommonClientConfiguration</td></tr>
 </tbody>
 </table>
 
             </p>
+            
+                <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+            
             <div class="constants">
+                
                 
                     
                         <h2>Fields</h2>

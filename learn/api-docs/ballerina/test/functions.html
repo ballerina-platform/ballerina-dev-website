@@ -100,7 +100,15 @@ redirect_from:
                         </li>
                     
                         <li >
+                            <a href="#mockStringHandler" onclick="menuLinkClick()">mockStringHandler</a>
+                        </li>
+                    
+                        <li >
                             <a href="#prepare" onclick="menuLinkClick()">prepare</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toString" onclick="menuLinkClick()">toString</a>
                         </li>
                     
                         <li >
@@ -113,7 +121,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.11</div>
+        <div class="version">v1.2.12</div>
     
 
 
@@ -490,11 +498,33 @@ redirect_from:
                             </tr>
                         
                             <tr>
+                                <td width="30%"><a class="functions " href="#mockStringHandler">mockStringHandler</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Inter-op to handle function mocking which return string</p>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
                                 <td width="30%"><a class="functions " href="#prepare">prepare</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
                                         <p>Prepares a provided default mock object for stubbing.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toString">toString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Java implementation of toString</p>
+
                                     </div>
                                 </td>
                             </tr>
@@ -912,9 +942,9 @@ Allows a function to stub.
             </a>
             <h2 > mock </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">typedesc</span> T, <a href="../test/objects/T10.html">T10</a> mockObject)</p>
+            <p>(<span class="builtin-type">typedesc</span> T, <span class="builtin-type">object { }</span> mockObject)</p>
             
-                <b> returns </b><a href="../test/objects/T11.html">T11</a> 
+                <b> returns </b><span class="builtin-type">object { }</span> 
             
         </span>
     </div>
@@ -948,7 +978,7 @@ Allows a function to stub.
                 <ul>
                     <li>
                         <span >mockObject</span>
-                        <span class="type">  <a href="../test/objects/T10.html">T10</a> </span>
+                        <span class="type">  <span class="builtin-type">object { }</span> </span>
                         <span class="default"> (default BLangTypeInit: new null ([]) )</span>
                     </li>
                     <li>
@@ -968,7 +998,7 @@ Allows a function to stub.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../test/objects/T11.html">T11</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { }</span></span>)</li>
                 <li><p>created mock object</p>
 </li>
             </ul>
@@ -1050,13 +1080,85 @@ Allows a function to stub.
 </div>
                             
                                 <div class="method-content">
+    <div class="main-method-title here" id="mockStringHandler" title="mockStringHandler">
+             <a class="url-link" href="#mockStringHandler">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > mockStringHandler </h2>
+        <span class="method-types">
+            <p>(<a href="../test/objects/MockFunction.html">MockFunction</a> mockFunction, <span class="array-type"><span class="builtin-type">any</span> | <span class="builtin-type">error</span>...</span> args)</p>
+            
+                <b> returns </b><span class="builtin-type">handle</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Inter-op to handle function mocking which return string</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >mockFunction</span>
+                        <span class="type">  <a href="../test/objects/MockFunction.html">MockFunction</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>mockFunction object</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >args</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">any</span> | <span class="builtin-type">error</span>...</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>function arguments</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">handle</span></span>)</li>
+                <li><p>handle value returned specifically for strings</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
     <div class="main-method-title here" id="prepare" title="prepare">
              <a class="url-link" href="#prepare">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > prepare </h2>
         <span class="method-types">
-            <p>(<a href="../test/objects/T14.html">T14</a> mockObject)</p>
+            <p>(<span class="builtin-type">object { }</span> mockObject)</p>
             
                 <b> returns </b><a href="../test/objects/MockObject.html">MockObject</a> 
             
@@ -1075,7 +1177,7 @@ Allows a function to stub.
                 <ul>
                     <li>
                         <span >mockObject</span>
-                        <span class="type">  <a href="../test/objects/T14.html">T14</a> </span>
+                        <span class="type">  <span class="builtin-type">object { }</span> </span>
                         
                     </li>
                     <li>
@@ -1097,6 +1199,61 @@ Allows a function to stub.
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../test/objects/MockObject.html">MockObject</a></span>)</li>
                 <li><p>prepared object that allows a member function/field to register stubs</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toString" title="toString">
+             <a class="url-link" href="#toString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toString </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">handle</span> value)</p>
+            
+                <b> returns </b><span class="builtin-type">string?</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Java implementation of toString</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >value</span>
+                        <span class="type">  <span class="builtin-type">handle</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>handle value to convert to string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string?</span></span>)</li>
+                <li><p>extracted string value</p>
 </li>
             </ul>
         </div>

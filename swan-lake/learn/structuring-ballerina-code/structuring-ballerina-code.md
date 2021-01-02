@@ -87,24 +87,24 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
     ```bash
     Compiling source
-        examples/helloworlld:0.1.0
+        examples/helloworld:0.1.0
     
     Running Tests
     
-        helloworlld
+        helloworld
         No tests found
     
     Creating balo
-        target/balo/examples-helloworlld-any-0.1.0.balo
+        target/balo/examples-helloworld-any-0.1.0.balo
     
     Generating executable
-        target/bin/helloworlld.jar
+        target/bin/helloworld.jar
     ```
 
 4. Execute the `ballerina run` command to run the program. You view the output below.
 
     ```bash
-   $ ballerina run target/bin/helloworlld.jar
+   $ ballerina run target/bin/helloworld.jar
     Hello World!
     ```
 

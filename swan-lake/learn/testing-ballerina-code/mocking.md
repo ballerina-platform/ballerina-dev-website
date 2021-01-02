@@ -343,7 +343,7 @@ import ballerina/test;
 test:MockFunction intAddMockFn = new();
 ```
 
-After the initialization, the following options can be used to stub the behaviour of a function written in the
+After the initialization, the following options can be used to stub the behavior of a function written in the
  module being tested.
  
 ### Stubbing to Return a Specific Value
@@ -396,7 +396,7 @@ public function mockIntAdd(int a, int b) returns int {
 }
 ```
 
-This test stubs the behaviour of an imported function to substitute it with a user-defined mock function.
+This test stubs the behavior of an imported function to substitute it with a user-defined mock function.
 
 ```ballerina
 import ballerina/test;

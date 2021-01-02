@@ -171,7 +171,7 @@ public isolated function pow(float a, float b) returns float {
     return 0;
 }
 ```
-Add the follwoing class definition to the `world` module. Copy and paste the following code in to the `math/modules/world/world.bal` file.
+Add the following class definition to the `world` module. Copy and paste the following code in to the `math/modules/world/world.bal` file.
 
 ```ballerina
 # Represents a person object.

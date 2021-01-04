@@ -44,13 +44,12 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 import ballerina/http;
 import ballerina/docker;
- 
+
 @docker:Config {}
-service hello on new http:Listener(9090){
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /hello on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller) {
+        caller->ok("Hello World!");
+    }
 }
 
 ```
@@ -194,11 +193,10 @@ import ballerina/docker;
    username: "$env{DOCKER_USERNAME}",
    password: "$env{DOCKER_PASSWORD}"
 }
-service hello on new http:Listener(9090){
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /hello on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller) {
+        caller->ok("Hello World!");
+    }
 }
 ```
 
@@ -284,11 +282,10 @@ listener http:Listener helloWorldEP = new(9095, {
 @docker:Config {
    name: "https-helloworld"
 }
-service hello on helloWorldEP {
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /helloWorld on helloWorldEP {
+    resource function get sayHello(http:Caller caller) {
+        caller->ok("Hello World!");
+    }
 }
 ```
 
@@ -430,13 +427,13 @@ listener http:Listener helloEP = new(9090);
        { sourceFile: "./name.txt", target: "/home/ballerina/name.txt" }
    ]
 }
-service hello on helloEP {
+service /hello on helloEP {
  
-   resource function greet(http:Caller caller, http:Request request) returns error? {
+   resource function get greet(http:Caller caller) returns error? {
        http:Response response = new;
        string payload = readFile("./name.txt");
        response.setTextPayload("Hello " + <@untainted> payload + "\n");
-       check caller->respond(response);
+       check caller->ok(response);
    }
 }
  
@@ -616,10 +613,10 @@ import ballerina/docker;
    name: "helloworld_custom_baseimage",
    baseImage: "openjdk:11-jre-slim"
 }
-service hello on new http:Listener(9090){
+service /hello on new http:Listener(9090){
  
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
+  resource function get sayHello(http:Caller caller) returns error? {
+      check caller->ok("Hello World!");
   }
 }
 ```
@@ -747,10 +744,10 @@ import ballerina/docker;
    name: "custome_cmd",
    cmd:    cmd: "CMD java -Xdiag -cp \"${APP}:jars/*\" '$_init' --b7a.http.accesslog.console=true"
 }
-service hello on new http:Listener(9090){
+service /hello on new http:Listener(9090){
  
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
+  resource function get sayHello(http:Caller caller) returns error? {
+      check caller->ok("Hello World!");
   }
 }
 ```
@@ -917,10 +914,10 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
     @docker:Config {
       name: "pizza"
     }
-    service pizza on new http:Listener(9090){
+    service /pizza on new http:Listener(9090){
     
-      resource function menu(http:Caller caller,http:Request request) returns error? {
-          check result = caller->respond("Pizza Menu");
+      resource function get menu(http:Caller caller) returns error? {
+          check result = caller->ok("Pizza Menu");
       }
     }
     ```
@@ -936,10 +933,10 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
     @docker:Config {
       name: "burger"
     }
-    service burger on new http:Listener(8080){
+    service /burger on new http:Listener(8080){
     
-      resource function menu(http:Caller caller,http:Request request) returns error? {
-          check result = caller->respond("Burger Menu");
+      resource function get menu(http:Caller caller) returns error? {
+          check result = caller->ok("Burger Menu");
       }
     }
     ```

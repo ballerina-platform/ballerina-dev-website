@@ -29,7 +29,7 @@ For example, let’s create a package called `winery` to demonstrate Ballerina m
 The generated `winery` package will have the directory structure below. 
 
 ```bash
-.
+winery
 ├── Ballerina.toml
 └── main.bal
 
@@ -48,7 +48,7 @@ The other modules of a package should be placed inside the `modules` directory o
 
 The module names are derived by combining the package name and the directory name. E.g., If the directory name is `storage`, then the module name will be `winery.storage`. 
 
-Execute the `ballerina add model` command to add the `winery.model` module. 
+Navigate to the `winery` directory and execute the `ballerina add model` command to add the `winery.model` module. 
 
 >**Tip:** You need to provide the module name without the package name to the `add` command. 
 
@@ -70,7 +70,7 @@ This creates the `modules` directory and places the `model` directory in it. Thi
 
 Open the `modules/model/model.bal` file and add the content below to define the `Wine` record type. 
 
-```
+```ballerina
 public type Wine record {
    string id;
    string name;
@@ -103,17 +103,17 @@ Replace the content of the `storage.bal` file with the content below.
 import winery.model;
 
 public function getWineList() returns model:Wine[] {
-   return  [{
-       id : "W125678",
-       name : "Corton-Charlemagne Grand Cru, Coche-Dury",
-       color : "White",
-       country : "France"
-   }, {
-       id : "W425478",
-       name : "Échezeaux, Dom. de la Romanée-Conti",
-       color : "Red",
-       country : "France"
-   }];
+    return [{
+        id: "W125678",
+        name: "Corton-Charlemagne Grand Cru, Coche-Dury",
+        color: "White",
+        country: "France"
+    }, {
+        id: "W425478",
+        name: "Échezeaux, Dom. de la Romanée-Conti",
+        color: "Red",
+        country: "France"
+    }];
 }
 ```
 
@@ -156,12 +156,11 @@ import ballerina/io;
 import examples/winery.storage;
 import winery.model;
 
-
 public function main() {
-   model:Wine[] wines = storage:getWineList();
-   foreach var wine in wines {
-       io:println(wine);
-   }
+    model:Wine[] wines = storage:getWineList();
+    foreach var wine in wines {
+        io:println(wine);
+    }
 }
 ```
 
@@ -231,4 +230,3 @@ The compiler has added a dependency to the `ballerina/io` package in the `Baller
 From the second build onwards, the compiler honors the version declared in the TOML file unless there are version conflicts. 
 
 You can also update the dependencies in the `Ballerina.toml` file. If you found a newer version of the `ballerina/io` package and you want to use it in your code, you can either delete the corresponding dependency declaration from the TOML file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build. 
-

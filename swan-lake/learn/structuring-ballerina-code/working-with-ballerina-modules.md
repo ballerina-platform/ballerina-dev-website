@@ -48,7 +48,7 @@ The other modules of a package should be placed inside the `modules` directory o
 
 The module names are derived by combining the package name and the directory name. E.g., If the directory name is `storage`, then the module name will be `winery.storage`. 
 
-Execute the `ballerina add model` command within the `winery` directory to add the `winery.model` module. 
+Navigate to the `winery` directory and execute the `ballerina add model` command to add the `winery.model` module. 
 
 >**Tip:** You need to provide the module name without the package name to the `add` command. 
 
@@ -230,4 +230,3 @@ The compiler has added a dependency to the `ballerina/io` package in the `Baller
 From the second build onwards, the compiler honors the version declared in the TOML file unless there are version conflicts. 
 
 You can also update the dependencies in the `Ballerina.toml` file. If you found a newer version of the `ballerina/io` package and you want to use it in your code, you can either delete the corresponding dependency declaration from the TOML file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build. 
-

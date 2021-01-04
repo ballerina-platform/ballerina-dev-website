@@ -85,7 +85,7 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
     This function prints “Hello World!” in the console. 
 
-3. Execute the `ballerina build` command to build an execuatble of this file. You view the output below.
+3. Execute the `ballerina build` command to build an executable of this file. You view the output below.
 
     ```bash
     Compiling source

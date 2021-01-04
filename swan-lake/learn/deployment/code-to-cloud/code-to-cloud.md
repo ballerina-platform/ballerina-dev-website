@@ -171,7 +171,7 @@ Probe to indicate whether the container is running. No liveness probe will be ge
 
 ### [[cloud.deployment.storage.volumes]]
 
-Contains the volume definitions of the application. No default volumes will be generated if this propoert is not specified.
+Contains the volume definitions of the application. No default volumes will be generated if this property is not specified.
 
 | Identifier 	| Description                	| Example Value 	|
 |------------	|----------------------------	|---------------	|

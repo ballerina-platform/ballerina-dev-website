@@ -396,7 +396,7 @@ service helloWorld on secureHelloWorldEp {
 
 The authn/authz filters are engaged as the top-most filters of the filter array, which are configured in the HTTP listener configuration. You can configure the index of the authn/authz filters if it is needed to engage a custom filter before the authn/authz filters.
 
-The `position` attribute represents the authn/authz-filter position of the filter array. The position values starts from 0 and it is set to 0 implicitly.
+The `position` attribute represents the authn/authz-filter position of the filter array. The position values start from 0 and it is set to 0 implicitly.
 
 The following example engages the authn/authz filters in between the `customFilter1` and `customFilter2`. Then, the internally-updated filter chain would be `[customFilter1, authnFilter, authzFilter, customFilter2]`.
 

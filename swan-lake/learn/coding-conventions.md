@@ -289,11 +289,11 @@ For style guidelines on operators, keywords, and types, see [Operators, Keywords
 
 ## Statements
 
-For style guidelines on statements such as if, match, transaction etc., see [Statements](/swan-lake/learn/style-guide/statements).
+For style guidelines on statements such as if, match, transaction, etc., see [Statements](/swan-lake/learn/style-guide/statements).
 
 ## Expressions
 
-For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/swan-lake/learn/style-guide/expressions).
+For style guidelines on function invocation, literals, tuple, type casting, etc. see [Expressions](/swan-lake/learn/style-guide/expressions).
 
 ## Annotations, Documentation, and Comments
 

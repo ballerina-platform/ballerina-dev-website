@@ -131,7 +131,7 @@ On the other hand, symbols defined in the test files will not be visible inside 
 
 ## Using Assertions
 
-The Ballerina test framework supports the following assertions, which help to verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
+The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 
 ### assertTrue(boolean expression, string message)

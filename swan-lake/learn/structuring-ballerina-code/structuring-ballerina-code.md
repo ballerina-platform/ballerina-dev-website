@@ -33,7 +33,7 @@ A Ballerina package organizes Ballerina code providing a unique namespace for al
 
 A package has an organization name, package name, and a version, which are used to identify a package uniquely. The `organization` typically represents a user. It allows you to group all your packages. Both the organization and package names have to be valid Ballerina [identifiers](/spec/lang/master/#identifier). Package versions have to be semantic as described in the [SemVer specification](https://semver.org/).  
 
-A Ballerina package is stored in a directory. It contains a collection of source (.bal) files and a package manifest (`Ballerina.toml` file). The manifest file marks a directory as a Ballerina package. 
+A Ballerina package is stored in a directory. It contains a collection of source (`.bal`) files and a package manifest (`Ballerina.toml` file). The manifest file marks a directory as a Ballerina package.
 
 ## Writing Your First Ballerina Package
 
@@ -46,12 +46,10 @@ Follow the steps below to write a simple program in a Ballerina package, which p
     This generates a package directory with the structure below. 
 
     ```bash
-    $ cd helloworld
-    $ tree 
-    .
+    helloworld
     ├── Ballerina.toml
-    ── main.bal
-
+    └── main.bal
+    
     0 directories, 2 files
     ```
 
@@ -85,22 +83,28 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
     This function prints “Hello World!” in the console. 
 
-3. Execute the `ballerina build` command to build an execuatble of this file. You view the output below.
+3. Execute the `ballerina build` command to build an executable of this file. You view the output below.
 
     ```bash
     Compiling source
         examples/helloworld:0.1.0
-
+    
     Running Tests
+    
+        helloworld
         No tests found
-
+    
+    Creating balo
+        target/balo/examples-helloworld-any-0.1.0.balo
+    
     Generating executable
-    target/bin/helloword.jar
+        target/bin/helloworld.jar
     ```
 
 4. Execute the `ballerina run` command to run the program. You view the output below.
 
     ```bash
+   $ ballerina run target/bin/helloworld.jar
     Hello World!
     ```
 

@@ -32,7 +32,7 @@ service greetingService on new http:Listener(8080) {
 }
 ```
 
-* Each annotation attribute (i.e., key-value pairs) should block indent on its own line..
+* Each annotation attribute (i.e., key-value pairs) should block indent on its own line.
   
 **Example,**
   

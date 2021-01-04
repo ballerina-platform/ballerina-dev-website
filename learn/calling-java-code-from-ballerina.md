@@ -1049,7 +1049,7 @@ function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Meth
 ```
 
 ### Java Exceptions as Ballerina Errors
-A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practise is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java.
+A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practice is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java.
 
 Errors in Ballerina belong to the built-int type `error`. The error type can be considered as a distinct type from all other types: The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see BBEs. 
 
@@ -1103,7 +1103,7 @@ public function main() {
 } 
 ```
 #### Java Checked Exceptions
-Let’s see how you can call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of it’s return type.
+Let’s see how you can call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of its return type.
 
 The `java.util.zip.ZipFile` class is used to read entries in a ZIP file. There are many constructors in this class. Here, the constructor that takes the file name as an argument is used. 
 

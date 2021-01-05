@@ -273,5 +273,9 @@ let redirections = {
     "/learn/structuring-ballerina-code/working-with-ballerina-modules/":"/page-not-available",
     "/1.1/learn/structuring-ballerina-code/working-with-ballerina-modules/":"/1.1/page-not-available",
     "/1.0/learn/structuring-ballerina-code/working-with-ballerina-modules/":"/1.0/page-not-available",
-    "/swan-lake/learn/by-example/secured-service-with-oauth2.html":"/swan-lake/page-not-available"
+    "/swan-lake/learn/by-example/http-filters.html":"/swan-lake/page-not-available",
+    "/swan-lake/learn/by-example/secured-service-with-basic-auth.html":"/swan-lake/page-not-available",
+    "/swan-lake/learn/by-example/secured-service-with-jwt-auth.html":"/swan-lake/page-not-available",
+    "/swan-lake/learn/by-example/secured-service-with-oauth2.html":"/swan-lake/page-not-available",
+    "/swan-lake/learn/by-example/secured-service-with-ldap.html":"/swan-lake/page-not-available"
 }

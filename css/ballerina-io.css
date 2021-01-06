@@ -1861,3 +1861,19 @@ float: right;
 .cCookie-Policy.cHide-Policy {
     display: none;
 }
+
+.cNLButton {
+    background-color: #20b6b0;
+color: #fff;
+padding: 10px 20px;
+display: inline-block;
+margin-top: 20px;
+width: 100%;
+text-align: center;
+
+}
+
+.cNLButton:hover {
+    background-color: #57595d;
+    color: #fff !important;
+}

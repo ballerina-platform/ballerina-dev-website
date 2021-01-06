@@ -23,7 +23,7 @@
                         <div class="cVersionContainer"></div>
                      </div>
                      <div class="col-md-12 col-lg-1 cBallerina-io-breadcrumbs cGitLink">
-                        <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}"></a>
+                       
                         <!-- <ul class="wy-breadcrumbs">
                            <li class="wy-breadcrumbs-aside">
                              
@@ -36,13 +36,30 @@
                         <div class="rst-content">
                            <div role="main">
                               <div class="section">
-                                 <h1>{{ page.title }}</h1>
-                                 <p>{{ page.intro }}</p>
-                                 <div class="cBallerinaTocContainer" id="table-of-content">
-                                    <p class="cTOCcontol" ><strong>Table of contents</strong> <span class="cTocElements">  &nbsp;  </span> <a href="#" id="tree-expand-all">Expand all</a> <span class="cTocElements"> &nbsp; </span> <a href="#" id="tree-collapse-all">Collapse all</a></p>
-                                    {% include toc.html html=content sanitize=true id="tree" %}
+                                 
+                                 <div class="col-xs-11 col-sm-11 cNoPadding">
+                                    <h1>{{ page.title }}</h1>
                                  </div>
-                                 {{ content }}
+
+                                 <div class="col-xs-1 col-sm-1 cNoPadding">
+                                    <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}"></a>
+
+                                 </div>
+
+                                 <div class="col-xs-12 col-sm-12 cNoPadding">
+                                    <p>{{ page.intro }}</p>
+                                    <div class="cBallerinaTocContainer" id="table-of-content">
+                                       <p class="cTOCcontol" ><strong>Table of contents</strong> <span class="cTocElements">  &nbsp;  </span> <a href="#" id="tree-expand-all">Expand all</a> <span class="cTocElements"> &nbsp; </span> <a href="#" id="tree-collapse-all">Collapse all</a></p>
+                                       {% include toc.html html=content sanitize=true id="tree" %}
+                                    </div>
+                                    {{ content }}
+                                 </div>
+
+
+                                 
+
+
+                                
                               </div>
                            </div>
                         </div>

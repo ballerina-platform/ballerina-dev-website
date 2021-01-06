@@ -1877,3 +1877,16 @@ text-align: center;
     background-color: #57595d;
     color: #fff !important;
 }
+
+.cNoPadding {
+    padding: 0;
+}
+
+.cGithubContainer {
+    text-align: right;
+    padding-top: 20px;
+}
+
+.cGithubContainer .icon-github {
+    margin-top: 5px;
+}

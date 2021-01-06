@@ -22,26 +22,44 @@
                </div>
                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
                   <div class="col-xs-12 col-sm-12" style="padding: 0;">
-                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                     <div class="col-md-12 col-lg-12 cBallerina-io-breadcrumbs">
                         {% include nav-breadcrumbs.html %}
                         <div class="cVersionContainer"></div>
                      </div>
-                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs cGitLink">
-                        <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}"></a>
-                     </div>
+                     <!-- <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs cGitLink">
+                        
+                     </div> -->
                   </div>
                   <div class="cBlallerina-io-docs-content-container cPositionRelative">
                      <div class="wy-nav-content">
                         <div class="rst-content">
                            <div role="main">
                               <div class="section">
-                                 <h1>{{ page.title }}</h1>
-                                 <p>{{ page.intro }}</p>
-                                 <div class="cBallerinaTocContainer" id="table-of-content">
-                                    <p class="cTOCcontol" ><strong>Table of contents</strong>  &nbsp;  <a href="#" id="tree-expand-all">Expand all</a> &nbsp; <a href="#" id="tree-collapse-all">Collapse all</a></p>
-                                    {% include toc.html html=content sanitize=true id="tree" %}
+
+
+                                 <div class="col-xs-11 col-md-11 col-lg-11 cNoPadding">
+                                    <h1>{{ page.title }}</h1>
                                  </div>
-                                 {{ content }}
+                                 <div class="col-xs-1 col-md-1 col-lg-1 cNoPadding cGithubContainer">
+                                    <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}"></a>
+                                 </div>
+                                 <div class="col-xs-12 col-md-12 col-lg-12 cNoPadding">
+                                    <p>{{ page.intro }}</p>
+                                    <div class="cBallerinaTocContainer" id="table-of-content">
+                                       <p class="cTOCcontol" ><strong>Table of contents</strong>  &nbsp;  <a href="#" id="tree-expand-all">Expand all</a> &nbsp; <a href="#" id="tree-collapse-all">Collapse all</a></p>
+                                       {% include toc.html html=content sanitize=true id="tree" %}
+                                    </div>
+                                    {{ content }}
+   
+                                 </div>
+
+                                
+
+
+                         
+
+
+
                               </div>
                            </div>
                         </div>

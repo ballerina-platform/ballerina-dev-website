@@ -1890,3 +1890,7 @@ text-align: center;
 .cGithubContainer .icon-github {
     margin-top: 5px;
 }
+
+#tree-expand-all ,  #tree-collapse-all {
+    font-size: 14px;
+}

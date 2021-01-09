@@ -300,3 +300,8 @@ For style guidelines on function invocation, literals, tuple, type casting etc. 
 ## Annotations, Documentation, and Comments
 
 For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
+
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
+
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

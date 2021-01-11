@@ -6,6 +6,9 @@ jobs:
   spellChecker:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: Build the site
+        uses: shafreenAnfar/jekyll-build-action@v5
       - name: Check spelling
         uses: check-spelling/check-spelling@0.0.16-alpha
       - uses: actions/checkout@v2.0.0

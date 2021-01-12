@@ -12,8 +12,6 @@ jobs:
       - name: Lychee link checker action
         id: lc
         uses: lycheeverse/lychee-action@v1
-        with:
-          args: --progress
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:

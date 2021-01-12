@@ -11,14 +11,16 @@ jobs:
         uses: shafreenAnfar/jekyll-build-action@v5
       - name: Lychee link checker action
         id: lc
-        uses: lycheeverse/lychee-action@v1
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
+        uses: elliotforbes/broken-link-checker@1.0.2
         with:
-          name: Link Checker Report
-          path:  ./lychee/out.md  
-      #- name: Fail if there were link errors
-        #run: exit ${{ steps.lc.outputs.exit_code }}
+          url: 'https://dev.ballerina.io'
+      #- name: Archive production artifacts
+        #uses: actions/upload-artifact@v2
+        #with:
+          #name: Link Checker Report
+          #path:  ./lychee/out.md  
+      - name: Fail if there were link errors
+        run: exit ${{ steps.lc.outputs.exit_code }}
 
       #- name: SendGrid
         #uses: peter-evans/sendgrid-action@v1

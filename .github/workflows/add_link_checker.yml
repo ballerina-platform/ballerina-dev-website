@@ -13,7 +13,7 @@ jobs:
         id: lc
         uses: lycheeverse/lychee-action@v1
         with:
-          args: -E twitter.com novacodecamp.com 
+          args: --exclude=twitter.com --exclude=novacodecamp.com --verbose
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:

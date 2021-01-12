@@ -11,7 +11,7 @@ jobs:
         uses: shafreenAnfar/jekyll-build-action@v5
       - name: Lychee link checker action
         id: lc
-        uses: lycheeverse/lychee-action@v5
+        uses: lycheeverse/lychee-action@v0.5
         with:
           args: --exclude-private
       - name: Archive production artifacts

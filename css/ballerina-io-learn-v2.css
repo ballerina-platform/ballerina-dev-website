@@ -165,6 +165,7 @@ nav.cLeftNavContainer {
     #tree li {
         /* padding: 0 0 10px 0; */
         padding-right: 0px;
+        list-style-image: url('/img/toc-list.svg') !important;
 
     /* padding-right: 30px; */
 
@@ -172,6 +173,11 @@ nav.cLeftNavContainer {
     li.expanded {
         /* border-left: 1px solid #20b6b0; */
         /* margin-bottom: 10px; */
+    }
+
+    .abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon {
+        margin-right: 10px;
+        cursor: pointer;
     }
 
     
@@ -208,7 +214,7 @@ ul#tree  {
         width: 14px;
         height: 14px; 
         display: inline-block;
-        margin-left: -20px;
+        margin-left: -23px;
         background-size: 12px;
         background-repeat: no-repeat;
         background-position: center;

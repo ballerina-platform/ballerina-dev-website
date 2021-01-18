@@ -60,14 +60,13 @@ Once the test module is imported, the following annotation can be used to write 
 The function specified after the annotation is a test function. This annotation supports the following value fields.
 
 
-*   ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
-*   ***before: "&lt;function name&gt;"*** - Name of the function to be run just before the test is run. The default value is `none`.
-*   ***after: "&lt;function name&gt;"*** - Name of the function to be run just after the test is run.
-*   ***dependsOn: ["&lt;function names>", …]*** - List of function names on which the test function depends. The
+*   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
+*   ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
+*   ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
+*   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The
  order in
- which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config to control the order of the test execution.
-*   ***dataProvider: “&lt;function name>”*** - Specifies the name of the function that will be used to provide the value
- sets to execute the test against.
+ which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config in order to control the order of test execution.
+*   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the value
 *   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
  belongs.
 
@@ -97,10 +96,10 @@ function testFunction1() {
 
 // This test function depends on the `testFunction3`.
 @test:Config{  
-    before: "beforeFunc",
-    after: "afterFunc",
-    dependsOn: ["testFunction3"],
-    dataProvider:"dataGen",
+    before: beforeFunc,
+    after: afterFunc,
+    dependsOn: [testFunction3],
+    dataProvider: dataGen,
     groups: ["g1"]
 }
 function testFunction2 (int value) returns error? {

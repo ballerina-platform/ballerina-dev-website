@@ -86,7 +86,7 @@ Through these calls, we aim to open up our channels and give you direct access t
 
 - Be notified about [details of the upcoming community calls](https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform).
 
-- Get involved in our next cimmunity call by [submitting a discussion topic or requesting to do your own quick demo](https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform).
+- Get involved in our next Community Call by [submitting a discussion topic or requesting to do your own quick demo](https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform).
 
 ## Report issues
 

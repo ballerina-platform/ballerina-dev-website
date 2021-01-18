@@ -76,7 +76,7 @@ We are happy to help! Come engage with us on any channel that works for you.
    </div>
 </div>
 
-## Community Call
+## Join the Community Call
 
 The Ballerina team is now hosting monthly recorded community calls! These are interactive meetings that will explore Ballerina use cases.
 
@@ -86,7 +86,7 @@ Through these calls, we aim to open up our channels and give you direct access t
 
 - Be notified about [details of the upcoming community calls](https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform).
 
-- [Submit a discussion topic or request to do your own quick demo](https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform) in our next call.
+- Get involved in our next cimmunity call by [submitting a discussion topic or requesting to do your own quick demo](https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform).
 
 ## Report issues
 

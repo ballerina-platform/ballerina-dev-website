@@ -78,9 +78,7 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 ## Join the Community Call
 
-The Ballerina team is now hosting monthly recorded Community Calls! These are interactive meetings that will explore Ballerina use cases.
-
-Through these calls, we aim to open up our channels and give you direct access to our Engineers. As a participant, you will get the chance to ask our team and other community members any questions you have about Ballerina or your projects. 
+The Ballerina team is now hosting monthly recorded Community Calls! These are interactive meetings that will explore Ballerina use cases. These calls give you direct access to our Engineers and other community members to question or discuss about Ballerina and your projects.
 
 - Get information on the [past and upcoming calls](https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit).
 

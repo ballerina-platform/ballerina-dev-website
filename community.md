@@ -76,6 +76,18 @@ We are happy to help! Come engage with us on any channel that works for you.
    </div>
 </div>
 
+## Community Call
+
+The Ballerina team is now hosting monthly recorded community calls! These are interactive meetings that will explore Ballerina use cases.
+
+Through these calls, we aim to open up our channels and give you direct access to our engineers. As a participant, you will get the chance to ask our team and other community members any questions you have about Ballerina or your projects. 
+
+- Get information on the [past and upcoming calls](https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit).
+
+- Be notified about [details of the upcoming community calls](https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform).
+
+- Get involved in our next call by either submitting a topic of discussion or by [requesting to do a quick demo of your own](https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform).
+
 ## Report issues
 
 Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!

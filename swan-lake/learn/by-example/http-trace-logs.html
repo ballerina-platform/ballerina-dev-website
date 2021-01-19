@@ -258,8 +258,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># Trace logs are logged at `TRACE` level. 
 # To enable trace logs, the log level has to be set to `TRACE` using the runtime argument: &lt;br&gt; `--b7a.http.tracelog.console=true`. &lt;br&gt;
 # To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command with this runtime argument.
-ballerina run http_trace_logs.bal --b7a.http.tracelog.console=true 
+# `.bal` file and use the `bal run` command with this runtime argument.
+bal run http_trace_logs.bal --b7a.http.tracelog.console=true 
 ballerina: HTTP trace log enabled
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 # In the logs, `http.downstream` refers to the HTTP traffic that flows between the client and Ballerina, 

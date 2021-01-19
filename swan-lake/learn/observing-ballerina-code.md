@@ -37,10 +37,10 @@ Prometheus, etc. You can follow [Docker documentation](https://docs.docker.com/i
 
 ### Step 2 - Installing and Configuring the External Systems
 
-* Setup Prometheus for collecting metrics information by following section on [Setting up Prometheus](#setting-up-prometheus)
-* Setup Grafana to visualize metrics by following section on [Setting up Grafana](#setting-up-grafana)
-* Setup Jaeger analyze tracing as mentioned in section [Setting up Jaeger](#setting-up-the-jaeger-server)
-* Setup Elastic Stack only if you are interested in analysing logs by following section on [Setting up Elastic Stack](#setting-up-elastic-stack)
+* Set up Prometheus for collecting metrics information by following the section on [Setting up Prometheus](#setting-up-prometheus)
+* Set up Grafana to visualize metrics by following the section on [Setting up Grafana](#setting-up-grafana)
+* Set up Jaeger analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
+* Set up Elastic Stack only if you are interested in analysing logs by following the section on [Setting up Elastic Stack](#setting-up-elastic-stack)
 
 ### Step 3 - Creating a 'Hello World' Ballerina Service
  
@@ -187,7 +187,7 @@ The descriptions of each configuration above are provided below with possible al
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
 b7a.observability.metrics. enabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
-b7a.observability.metrics. reporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | prometheus | prometheus or if any custom implementation, then name of the reporter.
+b7a.observability.metrics. reporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | prometheus | prometheus or if any custom implementation, the name of the reporter.
 b7a.observability.metrics. prometheus.port | The value of the port in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
 b7a.observability.metrics. prometheus.host | The name of the host in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
 
@@ -294,7 +294,7 @@ specification.](https://github.com/opentracing/specification/blob/master/semanti
 
 ### Configuring Advanced Tracing for Ballerina
 
-Tracing can be enabled in Ballerina with `--b7a.observability.enabled=true` flag as mentioned in the [Observing a Ballerina Service](#observing-a-ballerina-service) section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.
+Tracing can be enabled in Ballerina with the `--b7a.observability.enabled=true` flag as mentioned in the [Observing a Ballerina Service](#observing-a-ballerina-service) section, as well as a configuration option. This section mainly focuses on the configuration options with the description and possible values.
 
 The sample configuration that enables tracing, and uses Jaeger as the sample tracer as provided below.
 
@@ -309,7 +309,7 @@ The table below provides the descriptions of each configuration option and possi
 Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
 b7a.observability.tracing.enabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
-b7a.observability.tracing.provider | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, then name of the tracer.
+b7a.observability.tracing.provider | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, the name of the tracer.
 
 #### Using the Jaeger Client
 Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
@@ -347,8 +347,8 @@ b7a.observability.tracing. jaeger.reporter.flush.interval.ms | Jaeger client wil
 b7a.observability.tracing. jaeger.reporter.max.buffer.spans | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
 ### Setting Up the External Systems for Tracing
-Ballerina by default supports Jaerger for distributed tracing. This section focuses on configuring the
-Jaeger with Dockers as a quick installation.
+By default, Ballerina supports Jaeger for distributed tracing. This section focuses on configuring the
+Jaeger with Docker as a quick installation.
 
 #### Setting Up the Jaeger Server
 Jaeger is the default distributed tracing system that is supported. There are many possible ways to deploy Jaeger and you can find more information on this [link](https://www.jaegertracing.io/docs/deployment/). Here we focus on all in one deployment with Docker.

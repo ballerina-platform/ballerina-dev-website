@@ -286,8 +286,8 @@ The user can easily identify where the error occurred and information of the err
 span as metadata.
 
 Ballerina supports [OpenTracing](http://opentracing.io/) standards by default. This means that Ballerina services
-can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/), and
-[Zipkin](https://zipkin.io/). Jaeger is the default tracer of Ballerina.
+can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/). Jaeger is the default
+tracer of Ballerina.
 
 Semantic tags used by Ballerina also follow the [semantic conventions defined in OpenTracing
 specification.](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)
@@ -309,7 +309,7 @@ The table below provides the descriptions of each configuration option and possi
 Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
 b7a.observability.tracing.enabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
-b7a.observability.tracing.name | Tracer name which implements tracer interface. | jaeger | jaeger or zipkin
+b7a.observability.tracing.name | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, then name of the tracer.
 
 #### Using the Jaeger Client
 Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
@@ -346,125 +346,9 @@ b7a.observability.tracing. jaeger.sampler.param | It is a floating value. Based 
 b7a.observability.tracing. jaeger.reporter.flush.interval.ms | Jaeger client will be sending the spans to the server at this interval. | 2000 | Any positive integer value.
 b7a.observability.tracing. jaeger.reporter.max.buffer.spans | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
-#### Using the Zipkin Client
-The tracing of Ballerina service can be done via Zipkin as well, but the required dependencies are not included in
-default Ballerina distribution. Follow the steps below to add the required dependencies to the Ballerina distribution.
-
-1. Go to [ballerina-observability](https://github.com/ballerina-platform/ballerina-observability) and clone
-the GitHub repository in any preferred location.
-
-2. Make sure you have installed [Apache Maven](http://maven.apache.org/).
-
-3. Open the command line and build the repository by using [Apache Maven](http://maven.apache.org/) with the command below while being in the root project directory `ballerina-observability`.
-
-```bash
-$ mvn clean install
-```
-
-4. Go to the path - `ballerina-observability/tracing-extensions/modules/ballerina-zipkin-extension/target/` and
-extract `distribution.zip`.
-
-5. Copy all the JAR files inside the `distribution.zip` to 'bre/lib' directory in the Ballerina distribution.
-
-6. Add following configuration to the `Ballerina.toml` of your module. 
-
-```toml
-[platform]
-target = "java8"
-
-    [[platform.libraries]]
-    artifactId = "ballerina-zipkin-extension"
-    version = "1.0.0-rc1-SNAPSHOT"
-    path = "/<absolute_path_to>/ballerina-zipkin-extension-1.0.0-rc1-SNAPSHOT.jar"
-    groupId = "org.ballerinalang"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "brave-opentracing"
-    version = "4.17.1"
-    path = "/<absolute_path_to>/brave-4.17.1.jar"
-    groupId = "io.opentracing.brave"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "brave"
-    version = "0.29.0"
-    path = "/<absolute_path_to>/brave-opentracing-0.29.0.jar"
-    groupId = "io.zipkin.brave"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-reporter"
-    version = "2.6.1"
-    path = "/<absolute_path_to>/zipkin-2.6.1.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-reporter-2.5.0.jar"
-    groupId = "io.zipkin.zipkin2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-sender-okhttp3"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-sender-okhttp3-2.5.0.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-sender-urlconnection"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-sender-urlconnection-2.5.0.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "kotlin-stdlib"
-    version = "1.3.31"
-    path = "/<absolute_path_to>/kotlin-stdlib-1.3.31.jar"
-    groupId = "org.jetbrains.kotlin"
-    modules = ["yourModuleName"]
-```
-
-7. Change the following configuration name to Zipkin. This ensures that all tracers are sent to Zipkin instead
-of the default Jaeger tracer.
-
-```toml
-[b7a.observability.tracing]
-name="zipkin"
-```
-
-8. The following configuration is a sample configuration option available for Zipkin tracer.
-
-```toml
-[b7a.observability.tracing.zipkin.reporter]
-hostname="localhost"
-port=9411
-
-[b7a.observability.tracing.zipkin.reporter.api]
-context="/api/v2/spans"
-version="v2"
-
-[b7a.observability.tracing.zipkin.reporter.compression]
-enabled=true
-```
-
-The table below provides the descriptions of each configuration option and possible values that can be assigned. 
-
-Configuration Key | Description | Default Value | Possible Values 
---- | --- | --- | --- 
-b7a.observability.tracing.zipkin. reporter.hostname | Hostname of the Zipkin server | localhost | IP or hostname of the Zipkin server. If it is running on the same node as Ballerina, it can be localhost. 
-b7a.observability.tracing.zipkin. reporter.port | Port of the Zipkin server | 9411 | The port that the Zipkin server is listening to.
-b7a.observability.tracing.zipkin. reporter.api.context | API context of the Zipkin server | `/api/v2/spans` | The API context of the Zipkin API. For V1 API, the context will be `/api/v1/spans`, and for V2 API, the context will be `/api/v2/spans` for default Zipkin server.
-b7a.observability.tracing.zipkin. reporter.api.version | API version of the Zipkin API | v2 | v1 or v2.
-b7a.observability.tracing.zipkin. reporter.compression.enabled | Enable the compression for the spans request | true | true or false.
-
 ### Setting Up the External Systems for Tracing
-Ballerina by default supports Jaerger and Zipkin for distributed tracing. This section focuses on configuring the
-Jaeger and Zipkin with Dockers as a quick installation.
+Ballerina by default supports Jaerger for distributed tracing. This section focuses on configuring the
+Jaeger with Dockers as a quick installation.
 
 #### Setting Up the Jaeger Server
 Jaeger is the default distributed tracing system that is supported. There are many possible ways to deploy Jaeger and you can find more information on this [link](https://www.jaegertracing.io/docs/deployment/). Here we focus on all in one deployment with Docker.
@@ -480,22 +364,6 @@ $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16
 The image below is the sample tracing information you can see from Jaeger.
 
 ![Jaeger Tracing Dashboard](../images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
-
-#### Setting Up the Zipkin Server
-Similar to Jaeger, Zipkin is another distributed tracing system that is supported by the Ballerina. There are many
-different configurations and deployment exist for Zipkin, please go to [link](https://github.com/openzipkin/zipkin)
-for more information. Here we focus on all in one deployment with Docker.
-
-1. Install Zipkin via Docker and start the Docker container by executing following command.
-
-```bash
-$ docker run -d -p 9411:9411 openzipkin/zipkin
-```
-
-2. Go to <http://localhost:9411/zipkin/> and load the web UI of the Zipkin to make sure it is functioning
-properly. The below shown is the sample Zipkin dashboard for the hello world sample in the [Quick Start](/swan-lake/learn/quick-tour)
-
-![Zipkin Sample](../images/zipkin-sample.png "Zipkin Sample")
 
 ## Distributed Logging
 Ballerina distributed logging and analysis is supported by Elastic Stack. Ballerina has a log module for logging in to 

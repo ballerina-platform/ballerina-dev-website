@@ -14,14 +14,14 @@ redirect_from:
 
 ## Generating Documentation for Modules
 
-Developers can write the documentation inline with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `ballerina doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
+Developers can write the documentation inline with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `bal doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
 
-Ballerina documentation design and usage is aligned with the package and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
+Ballerina documentation design and usage is aligned with the package and module semantics of Ballerina. You can generate documentation for modules using the `bal doc` command.
 
 * Ballerina programmers can place the documentation inline with the source code using the documentation syntax.
 * Ballerina type definitions, global variables, annotations, listeners, etc. can be documented using the documentation syntax.
 * Fields, parameters, return values, etc. can be marked using documentation attributes.
-* HTML documents can be generated using the `ballerina doc` command for each Ballerina module and if you have custom handlebars templates, you can use them to generate the HTMLs.
+* HTML documents can be generated using the `bal doc` command for each Ballerina module and if you have custom handlebars templates, you can use them to generate the HTMLs.
 
 ## Writing Ballerina Documentation
 
@@ -124,7 +124,7 @@ A typical package structure of a Ballerina package is like this:
   target/              # Compiled executables and other artifacts end up here
 ```
 
-The `ballerina doc` command will read the `Package.md` and `Module.md` files and prepend it to the generated HTML file.
+The `bal doc` command will read the `Package.md` and `Module.md` files and prepend it to the generated HTML file.
 
 Check [HTTP module documentation](/swan-lake/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
@@ -136,15 +136,15 @@ Ballerina provides a `doc` command, which can be executed against a given Baller
 First, let's create a new Ballerina package:
 
 ```bash
-$ ballerina new math
+$ bal new math
 Created new Ballerina package 'math' at math
 ```
 
-Next, move into the package directory and execute `ballerina add <module-name>` to add a new Ballerina module.
+Next, move into the package directory and execute `bal add <module-name>` to add a new Ballerina module.
 
 ```bash
 $ cd math/
-$ ballerina add world
+$ bal add world
 Added new ballerina module at 'modules/world'.
 $ tree
 .
@@ -210,7 +210,7 @@ public class Person {
 ```
 Now, let's generate documentation of the package:
 ```bash
-$ ballerina doc
+$ bal doc
 ```
 Output:
 ```bash
@@ -228,4 +228,4 @@ bundle.js  index.html  ...
 
 * `index.html`  - the entry point for documentation
 
-For other options, run `ballerina doc --help`.
+For other options, run `bal doc --help`.

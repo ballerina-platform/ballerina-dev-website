@@ -378,7 +378,7 @@ service hello on helloWorldEP {
     curl -k https://localhost:9095/hello/sayHello
     Hello World!
     ```
-    > **Note:** The cURL command is used with the -k option because self signed certificates are used in the keystore.
+    > **Note:** The cURL command is used with the -k option because self-signed certificates are used in the keystore.
 
 6. Clean up the used artifacts.
 

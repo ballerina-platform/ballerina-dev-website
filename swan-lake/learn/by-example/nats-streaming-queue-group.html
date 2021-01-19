@@ -263,8 +263,8 @@ import ballerinax/stan;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run publisher.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run publisher.bal
 Message: First Message
 GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
 </code></pre></div>
@@ -412,12 +412,12 @@ service stan:Service on lis {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file, and execute the `bal run` command.
 # `queue-group.bal` contains three services belonging to the same
 # queue group.
 # When several messages are published, it can be noticed that
 # each message is received by only one queue group member.
-ballerina run queue-group.bal
+bal run queue-group.bal
 Message Received to first queue group member: First Message
 Message Received to third queue group member: Second Message
 Message Received to second queue group member: Third Message

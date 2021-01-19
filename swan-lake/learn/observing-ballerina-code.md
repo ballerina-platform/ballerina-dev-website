@@ -37,10 +37,10 @@ Prometheus, etc. You can follow [Docker documentation](https://docs.docker.com/i
 
 ### Step 2 - Installing and Configuring the External Systems
 
-* Setup Prometheus for collecting metrics information by following section on [Setting up Prometheus](#prometheus)
-* Setup Grafana to visualize metrics by following section on [Setting up Grafana](#grafana)
-* Setup Jaeger analyze tracing as mentioned in section [Setting up Jaeger](#jaeger-server)
-* Setup Elastic Stack only if you are interested in analysing logs by following section on [Setting up Elastic Stack](#elastic-stack)
+* Setup Prometheus for collecting metrics information by following section on [Setting up Prometheus](#setting-up-prometheus)
+* Setup Grafana to visualize metrics by following section on [Setting up Grafana](#setting-up-grafana)
+* Setup Jaeger analyze tracing as mentioned in section [Setting up Jaeger](#setting-up-the-jaeger-server)
+* Setup Elastic Stack only if you are interested in analysing logs by following section on [Setting up Elastic Stack](#setting-up-elastic-stack)
 
 ### Step 3 - Creating a 'Hello World' Ballerina Service
  
@@ -294,7 +294,7 @@ specification.](https://github.com/opentracing/specification/blob/master/semanti
 
 ### Configuring Advanced Tracing for Ballerina
 
-Tracing can be enabled in Ballerina with `--b7a.observability.enabled=true` flag as mentioned in the [Getting Started](#getting-started) section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.
+Tracing can be enabled in Ballerina with `--b7a.observability.enabled=true` flag as mentioned in the [Observing a Ballerina Service](#observing-a-ballerina-service) section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.
 
 The sample configuration that enables tracing, and uses Jaeger as the sample tracer as provided below.
 

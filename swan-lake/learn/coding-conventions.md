@@ -79,7 +79,7 @@ service hello on ep1, ep2 {...}
 
 ## Blank Lines
 
-Separate both statements and top level definitions by zero or one blank lines.
+Separate both statements and top-level definitions by zero or one blank lines.
 
 **Example,**
   
@@ -179,7 +179,7 @@ function setValue(string value) {...}
 setValue("value");
 ```
 
-* To define an empty parentheses, do not keep spaces between the opening and closing parentheses `()`.
+* To define empty parentheses, do not keep spaces between the opening and closing parentheses `()`.
   
 **Example,**
 
@@ -190,7 +190,7 @@ int|() result = getResult();
 ## Line Breaks
 
 * Have only one statement in a line.
-* When splitting lines, which contains operator(s), split them right before an operator.
+* When splitting lines, which contain operator(s), split them right before an operator.
   
 **Example,**
   

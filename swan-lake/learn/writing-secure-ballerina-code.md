@@ -26,7 +26,7 @@ tainted value passed to sensitive parameter 'sqlQuery'
 
 We require developers to explicitly mark all values passed into security-sensitive parameters as 'trusted'. This explicit check forces developers and code reviewers to verify that the values being passed into the parameter are not vulnerable to a security violation.
 
-Ballerina standard library makes sure untrusted data cannot be used with security sensitive parameters such as SQL queries, file paths, file name, permission flags, request URLs and configuration keys, preventing  vulnerabilities, including:
+Ballerina standard library makes sure untrusted data cannot be used with security-sensitive parameters such as SQL queries, file paths, file name, permission flags, requests URLs and configuration keys preventing  vulnerabilities including:
 
 * SQL Injection
 * Path Manipulation
@@ -81,11 +81,11 @@ In order to compile, the program is modified to use query parameters:
 stream<record{}, error> resultStream = jdbcClient->query(`SELECT NAME FROM STUDENT WHERE ID = ${<@untainted> studentId}`);
 ```
 
-Command-line arguments passed to Ballerina programs and inputs received through service resources are considered as tainted. Additionally, return values of certain functions are marked with the `@tainted` annotation to denote that the resulting value should be considered as untrusted data.
+Command-line arguments passed to Ballerina programs and inputs received through service resources are considered as tainted. Additionally, return values of certain functions are marked with the `@tainted` annotation to denote that the resulting value should be considered untrusted data.
 
-For example, the `query` remote method of the `java.jdbc` client highlighted above returns a value of type `@tainted stream <record {}, sql:Error>`. This means that any value read from a database is considered as untrusted.
+For example, the `query` remote method of the `java.jdbc` client highlighted above returns a value of type `@tainted stream <record {}, sql:Error>`. This means that any value read from a database is considered untrusted.
 
-When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type with the `@tainted` annotation. If not, the function author has to clean up the data before returning. For instance, if you want to read from the database and return a result, you either need to annotate that function's return type with `@tainted` or you have to clean up and make sure the returned data is not tainted.
+When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type with the `@tainted` annotation. If not, the function author has to clean up the data before returning it. For instance, if you want to read from the database and return a result, you either need to annotate that function's return type with `@tainted` or you have to clean up and make sure the returned data is not tainted.
 
 ### Securely Using Tainted Data with Security-Sensitive Parameters
 
@@ -153,7 +153,7 @@ api.provider="not-a-security-sensitive-value"
 
 When running a Ballerina program that uses encrypted configuration values, Ballerina will require the secret used during the encryption process to perform the decryption.
 
-Ballerina will first look for a file named `secret.txt`. If such a file exists, Ballerina will read the decryption secret from the file and immediately remove the file to make sure secret cannot be accessed afterwards. If the secret file is not present, the Ballerina program will prompt for the decryption secret.
+Ballerina will first look for a file named `secret.txt`. If such a file exists, Ballerina will read the decryption secret from the file and immediately remove the file to make sure the secret cannot be accessed afterwards. If the secret file is not present, the Ballerina program will prompt for the decryption secret.
 
 The file-based approach is useful in automated deployments. The file containing the decryption secret can be deployed along with the Ballerina program. The name and the path of the secret file can be configured using the `ballerina.config.secret` runtime parameter:
 
@@ -180,7 +180,7 @@ The `http:InboundAuthHandler` is used to perform HTTP-level actions, which are e
 
 In a particular authentication scheme, the implemented instance of the `auth:InboundAuthProvider` is initialized with the required configurations and it is passed to the implemented instance of the `http:InboundAuthHandler`.
 
-Next, the implemented instance of  the `http:InboundAuthHandler` is passed to the `http:Listener` configuration as follows and the listener is initialized with authentication.
+Next, the implemented instance of the `http:InboundAuthHandler` is passed to the `http:Listener` configuration as follows, and the listener is initialized with authentication.
 
 The following example represents how a listener is secured with Basic Auth with the above-mentioned configurations.
 
@@ -421,7 +421,7 @@ service helloWorld on secureHelloWorldEp {
 
 #### JWT Inbound Authentication and Authorization
 
-Ballerina supports JWT Authentication and Authorizations for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and get validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
+Ballerina supports JWT Authentication and Authorization for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and get validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
 
 JWT validation requires several additional configurations for the `jwt:JwtValidatorConfig` including:
 
@@ -507,7 +507,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, signed JWT, but without the expected "scope", an authorization failure will occur. An example of a JWT without "scope" attribute is as follows.
+Once a request is made with a valid, signed JWT, but without the expected `scope`, an authorization failure will occur. An example of a JWT without the `scope` attribute is as follows.
 
 ```
 {
@@ -659,7 +659,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, authentication information, but if the introspection endpoint does not respond with the "scope" attribute of the response JSON payload or respond with the "scope" attribute, which are not the expected scopes, an authorization failure will occur.
+Once a request is made with valid authentication information, but if the introspection endpoint does not respond with the `scope` attribute of the response JSON payload or respond with the `scope` attribute, which is not the expected scope, an authorization failure will occur.
 
 ```
 curl -k -v https://localhost:9091/hello -H "Authorization:Bearer <token>"
@@ -697,7 +697,7 @@ Hello, World!
 
 #### LDAP Inbound Authentication and Authorization
 
-Ballerina supports LDAP Authentication and Authorizations for services. The `http:BasicAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credentials from the header value, which is `Basic <token>`. Then, the extracted credentials will be passed to the initialized AuthProvider to get validated. The `ldap:InboundLdapAuthProvider` is used to validate the credentials passed by the AuthHandler against the LDAP server configured at `ldap:LdapConnectionConfig`, which is provided by the user.
+Ballerina supports LDAP Authentication and Authorization for services. The `http:BasicAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credentials from the header value, which is `Basic <token>`. Then, the extracted credentials will be passed to the initialized AuthProvider to get validated. The `ldap:InboundLdapAuthProvider` is used to validate the credentials passed by the AuthHandler against the LDAP server configured at `ldap:LdapConnectionConfig`, which is provided by the user.
 
 LDAP token validation requires several additional configurations for the `ldap:LdapConnectionConfig` including:
 
@@ -803,7 +803,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, authentication information, but if the LDAP server responds with an empty group list or unexpected scopes, an authorization failure will occur.
+Once a request is made with valid authentication information, but if the LDAP server responds with an empty group list or unexpected scopes, an authorization failure will occur.
 
 ```
 curl -k -v https://localhost:9091/hello -H "Authorization: Basic <token>"
@@ -903,7 +903,7 @@ Restart the service using the following command.
 ballerina run --config sample-users.toml basic_auth_sample.bal
 ```
 
-Since passwords are encrypted, the Config API will request for the decryption key. Use `ballerina` as the decryption key in this sample.
+Since passwords are encrypted, the Config API will request the decryption key. Use `ballerina` as the decryption key in this sample.
 
 Also, the passwords can be hashed and provided with the configuration file. The following example file introduces three users along with the passwords hashed with `sha256`, `sha384`, and `sha512` hashing algorithms.
 
@@ -971,7 +971,7 @@ The `auth:OutboundAuthProvider` is used to create the credentials according to t
 
 In a particular authentication scheme, the implemented instance of the `auth:OutboundAuthProvider` is initialized with required configurations and it is passed to the implemented instance of the `http:OutboundAuthHandler`.
 
-Next, the implemented instance of  the `http:OutboundAuthHandler` is passed to the `http:Client` configuration as follows and the client is initialized with the authentication.
+Next, the implemented instance of the `http:OutboundAuthHandler` is passed to the `http:Client` configuration as follows, and the client is initialized with the authentication.
 
 The following example represents how a client is secured with Basic Auth with the above-mentioned configurations.
 

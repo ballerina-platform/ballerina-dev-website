@@ -79,7 +79,7 @@ You can [change this active distribution](#changing-the-active-distribution) at 
 
 ### Updating the Ballerina Tool
 
-The `ballerina update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent from the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
+The `ballerina update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent of the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
 
 ```sh
 → ballerina update
@@ -205,7 +205,7 @@ Downloading 1.2.8 100% [========================================================
 Successfully set the latest patch distribution '1.2.8' as the active distribution
 ```
 
->**Note:** If the active distribution in your environment is `slp4`, it will bump to the next Swan Lake Preview version, which is `slp5` and will update to it.
+>**Note:** If the active distribution in your environment is `slp4`, it will bump to the next Swan Lake Preview version, which is `slp5`, and will update to it.
 
 ### Pulling a Specific Distribution
 

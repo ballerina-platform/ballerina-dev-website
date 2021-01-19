@@ -21,7 +21,7 @@ To get started, let's write a simple Ballerina function and test it.
 1. First, let’s create a Ballerina package. Use the `ballerina new` command to create the package.
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
-    The following is the structure of a standard package with the default module. In this example, default module has the
+    The following is the structure of a standard package with the default module. In this example, the default module has the
      ***main.bal*** source file and the ***main_test.bal*** test file.
 
     ```bash
@@ -75,7 +75,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     import ballerina/http;
     
     // This test function tests the behavior of the `getRandomJoke` when
-    // the API returns a success response.
+    // the API returns a successful response.
     @test:Config {}
     function testGetRandomJoke() {
         // Create a default mock HTTP Client and assign it to the `clientEndpoint`

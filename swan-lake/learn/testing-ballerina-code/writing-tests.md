@@ -63,10 +63,8 @@ The function specified after the annotation is a test function. This annotation 
 *   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
 *   ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
 *   ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
-*   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The
- order in
- which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config in order to control the order of test execution.
-*   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the value
+*   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions, with one function depending on the other.
+*   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the value.
 *   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
  belongs.
 

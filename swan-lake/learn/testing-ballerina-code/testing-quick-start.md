@@ -100,7 +100,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 
 4. Finally, let’s execute the tests using the following command.
 
-    `$ ballerina test --code-coverage`
+    `$ bal test --code-coverage`
 
     This will print an output similar to the following.
 

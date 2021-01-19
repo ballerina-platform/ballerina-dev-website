@@ -35,7 +35,7 @@ The second parameter with the `json` value contains the input request data. This
 The AWS Lambda functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
-$ ballerina build functions.bal 
+$ bal build functions.bal 
 Compiling source
 	functions.bal
 

@@ -82,7 +82,7 @@ The Ballerina service is observable with default settings when the `--b7a.observ
 This lets you to collect the distributed tracing information with Jaeger and metrics information with Prometheus.
 
 ```bash
-$ ballerina run hello_world_service.bal --b7a.observability.enabled=true
+$ bal run hello_world_service.bal --b7a.observability.enabled=true
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
@@ -117,7 +117,7 @@ The created configuration file can be passed to the Ballerina program with `--b7
 the path of the configuration file.
 
 ```bash
-$ ballerina run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf
+$ bal run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797

@@ -48,7 +48,7 @@ The first parameter with the [Context](/swan-lake/learn/api-docs/ballerina/#/azu
 The Azure Functions functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
-$ ballerina build functions.bal 
+$ bal build functions.bal 
 Compiling source
 	functions.bal
 

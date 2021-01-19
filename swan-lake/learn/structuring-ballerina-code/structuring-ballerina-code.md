@@ -104,7 +104,7 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 4. Execute the `ballerina run` command to run the program. You view the output below.
 
     ```bash
-   $ ballerina run target/bin/helloworld.jar
+   $ bal run target/bin/helloworld.jar
     Hello World!
     ```
 

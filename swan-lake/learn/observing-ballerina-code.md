@@ -309,7 +309,7 @@ The table below provides the descriptions of each configuration option and possi
 Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
 b7a.observability.tracing.enabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
-b7a.observability.tracing.name | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, then name of the tracer.
+b7a.observability.tracing.provider | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, then name of the tracer.
 
 #### Using the Jaeger Client
 Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
@@ -318,7 +318,7 @@ the Jaeger.
 ```toml
 [b7a.observability.tracing]
 enabled=true
-name="jaeger"
+provider="jaeger"
 
 [b7a.observability.tracing.jaeger.sampler]
 type="const"

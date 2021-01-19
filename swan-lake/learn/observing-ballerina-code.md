@@ -50,12 +50,11 @@ Create a Service as shown below and save it as `hello_world_service.bal`.
 import ballerina/http;
 import ballerina/log;
 
-service hello on new http:Listener(9090) {
+service /hello on new http:Listener(9090) {
     
-    resource function sayHello (http:Caller caller, http:Request req) returns error? {
-        log:printInfo("This is a test Info log");
+    resource function get sayHello(http:Caller caller, http:Request req) returns error? {
+        log:print("This is a test Info log");
         log:printError("This is a test Error log");
-        log:printWarn("This is a test Warn log");
         http:Response res = new;
         res.setPayload("Hello, World!");
         check caller->respond(res);

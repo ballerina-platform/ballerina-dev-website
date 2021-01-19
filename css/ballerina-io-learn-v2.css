@@ -279,3 +279,26 @@ color: #fff !important;
 }
 
 
+  
+  /* Chrome 29+ */
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+    and (min-resolution:.001dpcm) {
+        span.icon {
+            background-color: #20b6b0;
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            margin-left: -21px;
+            background-size: 12px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+  }
+  
+  /* Chrome 22-28 */
+  @media screen and(-webkit-min-device-pixel-ratio:0) {
+    .span.icon {-chrome-:only(; 
+        margin-left: -21px;
+    );} 
+  }
+

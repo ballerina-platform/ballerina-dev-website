@@ -113,11 +113,11 @@ DESCRIPTION
 EXAMPLES
        Pull the latest version of 'gmail' connector in 'wso2' organization
        from Ballerina Central.
-          $ ballerina pull wso2/gmail
+          $ bal pull wso2/gmail
 
        Pull the '1.1.0' version of 'gmail' connector in 'wso2' organization
        from Ballerina Central.
-          $ ballerina pull wso2/gmail:1.1.0
+          $ bal pull wso2/gmail:1.1.0
 ```
 
 ## Core Commands

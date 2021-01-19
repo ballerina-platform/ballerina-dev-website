@@ -45,18 +45,18 @@ A single Ballerina source code file can be placed into any folder.
 If the source file contains at least one entry point, it can be executed using the `run` command.
     
 ```bash
-$ ballerina run foo.bal
+$ bal run foo.bal
 ```
 
 You can compile a source file with an entry point into an executable jar.
     
 ```bash
-$ ballerina build [-o outputfilename.jar] foo.bal
+$ bal build [-o outputfilename.jar] foo.bal
 ```  
 
 And you can run `.jar` files directly:
 ```bash
-$ ballerina run filename.jar
+$ bal run filename.jar
 ```
 
 ## Running a Project
@@ -64,18 +64,18 @@ A project is a folder that manages modules as part of a common versioning, depen
 
 Build all modules of a project:
 ```bash    
-$ ballerina build
+$ bal build
 ```
 
 Build a single module in a project:
 ```bash
-$ ballerina build <module-name>
+$ bal build <module-name>
 ```
 
 Options for running programs with entrypoints in a project:  
 ```bash
-$ ballerina run main.bal
-$ ballerina run main.jar
+$ bal run main.bal
+$ bal run main.jar
 ```
 
 ## Configuring Your Ballerina Runtimes
@@ -104,7 +104,7 @@ public function main() {
 
 The config key is `hello.user.name`. To pass a value to this config from the CLI, we can use `--key=value` format as the following command.
 ```bash
-$ ballerina run  main.bal --hello.user.name=Ballerina
+$ bal run  main.bal --hello.user.name=Ballerina
 Hello, Ballerina !
 ```
 
@@ -121,12 +121,12 @@ When running a program with config API lookups, Ballerina looks for a `ballerina
 
 If `ballerina.conf` resides in the same directory as `main.bal`, `balllerina run` can be used without any argument.
 ```bash
-$ ballerina run main.bal
+$ bal run main.bal
 Hello, Ballerina !
 ```
 To explicitly specify a configuration file, use the `--b7a.config.file` property. The path to the configuration file can be either an absolute or a relative path. 
 ```bash
-$ ballerina run main.bal --b7a.config.file=path/to/conf/file/custom-config-file-name.conf
+$ bal run main.bal --b7a.config.file=path/to/conf/file/custom-config-file-name.conf
 Hello, Ballerina !
 ```
 
@@ -137,7 +137,7 @@ Ballerina provides support for encrypting sensitive data such as passwords and a
 The `ballerina encrypt` command will encrypt parameters that can be securely sourced from your code files. For example, let's create a secure parameter named `Ballerina` with the value `12345` as the secret.
 
 ```ballerina
-$ ballerina encrypt
+$ bal encrypt
 Enter value:
 Enter secret:
 Re-enter secret to verify:
@@ -159,7 +159,7 @@ name="@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}"
 or (Enter secret `12345` when prompted.):
 
 ```bash
-$ ballerina run main.bal --hello.user.name=@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}
+$ bal run main.bal --hello.user.name=@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}
 ballerina: enter secret for config value decryption:
 
 Hello, Ballerina !
@@ -170,7 +170,7 @@ If a configuration contains an encrypted value, Ballerina looks for a `secret.tx
 
 ```bash
 $ echo 12345 > secret.txt
-$ ballerina run main.bal --b7a.config.file=ballerina.conf
+$ bal run main.bal --b7a.config.file=ballerina.conf
 Hello, Ballerina !
 ```
 
@@ -183,7 +183,7 @@ Alternatively, you can pass the path to this `secret.txt` file as a flag via the
 If the `secret.txt` file is not present, then CLI prompts the user for the secret. Enter secret `12345` when prompted.
 
 ```bash
-$ ballerina run main.bal --b7a.config.file=ballerina.conf
+$ bal run main.bal --b7a.config.file=ballerina.conf
 ballerina: enter secret for config value decryption:
 
 Hello, Ballerina !

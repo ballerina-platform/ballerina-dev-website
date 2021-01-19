@@ -17,66 +17,66 @@ Tests will be automatically executed when you run the build command or you can e
 Execute all the tests in the current package with the following command.
 
 ```
-$ ballerina test
+$ bal test
 ```
 
 List all the test groups in the package.
 
 ```
-$ ballerina test --list-groups
+$ bal test --list-groups
 ```
 
 Run only the tests belonging to the given group(s) in the current package.
 
 ```
-$ ballerina test --groups <group_1>,<group_2>
+$ bal test --groups <group_1>,<group_2>
 ```
 
 Run the tests in the current package excluding the given group(s).
 
 ```
-$ ballerina test --disable-groups <group_1>
+$ bal test --disable-groups <group_1>
 ```
 
 Run only the given test function(s) in the current package.
 
 ```
-$ ballerina test --tests <test_function>
+$ bal test --tests <test_function>
 ```
 
 Run a given set of functions in the default module only.
 
 ```
-$ ballerina test --tests PackageName:<test_function>
+$ bal test --tests PackageName:<test_function>
 ```
 
 Run all the functions in the given module.
 
 ```
-$ ballerina test --tests PackageName.ModuleName:*
+$ bal test --tests PackageName.ModuleName:*
 ```
 
 Run only the previously-failed test cases in the current package.
 
 ```
-$ ballerina test --rerun-failed
+$ bal test --rerun-failed
 ```
 
 Generate an HTML test report.
 
 ```
-$ ballerina test --test-report
+$ bal test --test-report
 ```
 
 Generate the HTML test report with code coverage information.
 
 ```
-$ ballerina test --code-coverage
+$ bal test --code-coverage
 ```
 
 For more options of the test command, run the following.
 
-`$ ballerina test --help` 
+`$ bal test --help` 
 
 ## Test Report
 
@@ -87,7 +87,7 @@ The test report contains the total passed, failed, and skipped tests of the enti
 ***Example:***
 
 ```
-$ ballerina test --test-report
+$ bal test --test-report
 ```
 
 A sample view of the test report is shown below.
@@ -111,7 +111,7 @@ The code coverage only includes the Ballerina source files being tested and not 
 ***Example:***
 
 ```
-$ ballerina test --code-coverage
+$ bal test --code-coverage
 ```
 
 A sample view of the code coverage report is shown below.

@@ -965,7 +965,7 @@ The `auth:OutboundAuthProvider` is used to create the credentials according to t
 
 In a particular authentication scheme, the implemented instance of the `auth:OutboundAuthProvider` is initialized with required configurations and it is passed to the implemented instance of the `http:OutboundAuthHandler`.
 
-Next, the implemented instance of the `http:OutboundAuthHandler` is passed to the `http:Client` configuration as follows and the client is initialized with authentication.
+Next, the implemented instance of the `http:OutboundAuthHandler` is passed to the `http:Client` configuration as follows, and the client is initialized with authentication.
 
 The following example represents how a client is secured with Basic Auth with the above-mentioned configurations.
 

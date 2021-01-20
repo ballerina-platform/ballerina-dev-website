@@ -11,7 +11,7 @@ redirect_from:
 ---
 
 ## Keywords and Types
-* Do not keep spaces between the type and the pipe operator when it is in an union type (e.g., `string|int`).
+* Do not keep spaces between the type and the pipe operator when it is in a union type (e.g., `string|int`).
   
 **Example,**
 

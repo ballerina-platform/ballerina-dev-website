@@ -10,12 +10,12 @@ redirect_from:
   - /swan-lake/learn/deployment/code-to-cloud
 ---
 
-This greatly simplifies the experience of developing and deploying Ballerina code in the cloud. It also enables using cloud native technologies easily without an in-depth knowledge.
+This greatly simplifies the experience of developing and deploying Ballerina code in the cloud. It also enables using cloud native technologies easily without in-depth knowledge.
 
 As of now, Ballerina code to cloud supports generating the deployment artifacts of the platforms below.
 
 1. Docker
-2. Kubernentes
+2. Kubernetes
 
 ## Setting Up the Prerequisites
 
@@ -115,7 +115,7 @@ Contains the secrets required for the application.
 |----------------	|--------------------------------------------------	|-----------------------	|
 | key_ref        	| Reference key of the secret                      	| "MYSQL_ROOT_PASSWORD" 	|
 | name(optional) 	| Name of the secret if its different from the key 	| "ROOT_PASSWORD"       	|
-| secret_name    	| Name of the secret group                         	| "db-crdential-secret" 	|
+| secret_name    	| Name of the secret group                         	| "db-credential-secret" 	|
 
 ### [[cloud.config.files]]
 
@@ -141,7 +141,7 @@ Contains the properties related to the deployment.
 
 ### [cloud.deployment.autoscaling]
 
-Contains the matrices to auto scale the container.
+Contains the matrices to auto-scale the container.
 
 | Identifier   	| Description                                                       	| Default Value 	|
 |--------------	|-------------------------------------------------------------------	|---------------	|
@@ -167,7 +167,7 @@ Probe to indicate whether the container is running. No liveness probe will be ge
 | Identifier 	| Description                          	| Example Value 	|
 |------------	|--------------------------------------	|---------------	|
 | port       	| Port of the liveness probe endpoint 	| 9091          	|
-| path       	| Endpoint of the leadiness probe      	| "/healthz"     	|
+| path       	| Endpoint of the liveness probe      	| "/healthz"     	|
 
 ### [[cloud.deployment.storage.volumes]]
 

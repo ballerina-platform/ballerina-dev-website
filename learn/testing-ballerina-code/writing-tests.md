@@ -1,8 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Writing Tests
-description: Learn how to use Ballerina's built-in test framework to write tests. The test framework provides a set of
- annotations and assertions to help write and run tests.
+description: Learn how to use Ballerina's built-in test framework to write tests. The test framework provides a set of annotations and assertions to help write and run tests.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/writing-tests/
 active: writing-tests
@@ -33,17 +32,14 @@ project-name/
 ## Test Source Files
 
 Unit tests bound to a module need to be placed in a sub folder called ***tests/*** within the module. In a standard
- Ballerina project, a module is mapped to a test suite. All tests within a module’s *tests/* subfolder are
-  considered to be part of the same test suite.
+ Ballerina project, a module is mapped to a test suite. All tests within a module’s *tests/* subfolder are considered to be part of the same test suite.
 
-The test source files could have any name. The test functions are just Ballerina functions, which use a special
- annotation to mark the function as a test. Test functions must be specified with the `@test:Config {}` annotation and there is no restriction on the test function name.
+The test source files could have any name. The test functions are just Ballerina functions, which use a special annotation to mark the function as a test. Test functions must be specified with the `@test:Config {}` annotation and there is no restriction on the test function name.
 
 
 ## Test Resources
 
-The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are
- exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
+The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
 
 ## Defining a Test
 
@@ -236,7 +232,7 @@ function foo() {
 
 ## Setup and Teardown
 
-The following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions in different levels.
+The following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions at different levels.
 
 ### @test:BeforeSuite {}
 
@@ -340,7 +336,7 @@ Configurations for testing can be provided using the Config API. For information
 ## What's Next?
 
  As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock
- backends for these external endpoints will be a tedious task (e.g., email client, spaceforce client).
+ backends for these external endpoints will be a tedious task (e.g., email client, Salesforce client).
  The mocking support in Ballerina will allow you to unit test your code without needing to set up mock backends by
  allowing you to control what the client objects return without actually sending requests to backends.
 

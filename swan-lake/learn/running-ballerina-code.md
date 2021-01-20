@@ -25,7 +25,7 @@ Both of these are considered as entry points for program execution.
 
 These applications can be structured into a single program file or a Ballerina module. A collection of modules can be managed together with versioning and dependency management as part of a Ballerina project. 
 
-Source files and modules can contain zero or more entrypoints, and the runtime engine has precedence and sequence rules for choosing which entrypoint to execute.
+Source files and modules can contain zero or more entry points, and the runtime engine has precedence and sequence rules for choosing which entry point to execute.
 
 - [Running Standalone Source Code](#running-standalone-source-code)
 - [Running a Project](#running-a-project)
@@ -60,7 +60,7 @@ $ bal run filename.jar
 ```
 
 ## Running a Project
-A project is a folder that manages modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/swan-lake/learn/how-to-structure-ballerina-code) for in-depth structuring of projects.
+A project is a folder that manages modules as part of common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/swan-lake/learn/how-to-structure-ballerina-code) for in-depth structuring of projects.
 
 Build all modules of a project:
 ```bash    
@@ -72,7 +72,7 @@ Build a single module in a project:
 $ bal build <module-name>
 ```
 
-Options for running programs with entrypoints in a project:  
+Options for running programs with entry points in a project:  
 ```bash
 $ bal run main.bal
 $ bal run main.jar

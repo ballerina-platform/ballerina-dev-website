@@ -27,7 +27,7 @@ The `http:InboundAuthHandler` is used to perform HTTP-level actions, which are e
 
 In a particular authentication scheme, the implemented instance of the `auth:InboundAuthProvider` is initialized with the required configurations and it is passed to the implemented instance of the `http:InboundAuthHandler`.
 
-Next, the implemented instance of  the `http:InboundAuthHandler` is passed to the `http:Listener` configuration as follows and the listener is initialized with authentication.
+Next, the implemented instance of the `http:InboundAuthHandler` is passed to the `http:Listener` configuration as follows, and the listener is initialized with authentication.
 
 The following example represents how a listener is secured with Basic Auth with the above-mentioned configurations.
 
@@ -268,7 +268,7 @@ service helloWorld on secureHelloWorldEp {
 
 #### JWT Inbound Authentication and Authorization
 
-Ballerina supports JWT Authentication and Authorizations for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and get validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
+Ballerina supports JWT Authentication and Authorization for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and get validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
 
 JWT validation requires several additional configurations for the `jwt:JwtValidatorConfig` including:
 
@@ -354,7 +354,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, signed JWT, but without the expected "scope", an authorization failure will occur. An example of a JWT without "scope" attribute is as follows.
+If a request is made with a valid, signed JWT, but without the expected `scope`, an authorization failure will occur. An example of a JWT without the `scope` attribute is as follows.
 
 ```
 {
@@ -506,7 +506,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, authentication information, but if the introspection endpoint does not respond with the "scope" attribute of the response JSON payload or respond with the "scope" attribute, which are not the expected scopes, an authorization failure will occur.
+Although a request is made with valid authentication information, if the introspection endpoint does not respond either with the `scope` attribute of the response JSON payload or with an unexpected `scope` attribute, an authorization failure will occur.
 
 ```
 curl -k -v https://localhost:9091/hello -H "Authorization:Bearer <token>"
@@ -544,7 +544,7 @@ Hello, World!
 
 #### LDAP Inbound Authentication and Authorization
 
-Ballerina supports LDAP Authentication and Authorizations for services. The `http:BasicAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credentials from the header value, which is `Basic <token>`. Then, the extracted credentials will be passed to the initialized AuthProvider to get validated. The `ldap:InboundLdapAuthProvider` is used to validate the credentials passed by the AuthHandler against the LDAP server configured at `ldap:LdapConnectionConfig`, which is provided by the user.
+Ballerina supports LDAP Authentication and Authorization for services. The `http:BasicAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credentials from the header value, which is `Basic <token>`. Then, the extracted credentials will be passed to the initialized AuthProvider to get validated. The `ldap:InboundLdapAuthProvider` is used to validate the credentials passed by the AuthHandler against the LDAP server configured at `ldap:LdapConnectionConfig`, which is provided by the user.
 
 LDAP token validation requires several additional configurations for the `ldap:LdapConnectionConfig` including:
 
@@ -650,7 +650,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, authentication information, but if the LDAP server responds with an empty group list or unexpected scopes, an authorization failure will occur.
+If a request is made with valid authentication information, but the LDAP server responds with an empty group list or unexpected scopes, an authorization failure will occur.
 
 ```
 curl -k -v https://localhost:9091/hello -H "Authorization: Basic <token>"
@@ -750,7 +750,7 @@ Restart the service using the following command.
 ballerina run --config sample-users.toml basic_auth_sample.bal
 ```
 
-Since passwords are encrypted, the Config API will request for the decryption key. Use `ballerina` as the decryption key in this sample.
+Since passwords are encrypted, the Config API will request the decryption key. Use `ballerina` as the decryption key in this sample.
 
 Also, the passwords can be hashed and provided with the configuration file. The following example file introduces three users along with the passwords hashed with `sha256`, `sha384`, and `sha512` hashing algorithms.
 
@@ -818,7 +818,7 @@ The `auth:OutboundAuthProvider` is used to create the credentials according to t
 
 In a particular authentication scheme, the implemented instance of the `auth:OutboundAuthProvider` is initialized with required configurations and it is passed to the implemented instance of the `http:OutboundAuthHandler`.
 
-Next, the implemented instance of  the `http:OutboundAuthHandler` is passed to the `http:Client` configuration as follows and the client is initialized with the authentication.
+Next, the implemented instance of the `http:OutboundAuthHandler` is passed to the `http:Client` configuration as follows, and the client is initialized with the authentication.
 
 The following example represents how a client is secured with Basic Auth with the above-mentioned configurations.
 

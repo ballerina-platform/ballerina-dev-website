@@ -5,7 +5,7 @@ description: Check out how the Ballerina OpenAPI tooling makes it easy for users
 keywords: ballerina, programming language, openapi, open api, restful api
 permalink: /swan-lake/learn/using-the-openapi-tools/
 active: using-the-openapi-tools
-intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
+intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start the development of a service documented in an OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
 redirect_from:
   - /swan-lake/learn/how-to-use-openapi-tools/
   - /swan-lake/learn/how-to-use-openapi-tools
@@ -50,7 +50,7 @@ You can give the specific tags and operations that you need to document as servi
 If not, it will take the execution path as the output path.
 
 ##### Modes
-If you  want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
+If you want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
 
 ```bash
 ballerina openapi   -i <openapi-contract> --mode service
@@ -84,10 +84,8 @@ If you need to document an OpenAPI contract for only one given service, then use
     ballerina openapi -i hello.yaml
 ```
 
-This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract 
-named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution
- path. 
-It is not mandatory  to run it from inside the Ballerina project.
+This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution path. 
+It is not mandatory to run it from inside the Ballerina project.
 
 Output:
 ```bash
@@ -110,7 +108,7 @@ This command will generate the `helloworld-openapi.yaml` file that is related to
 
 ## OpenAPI Validator Compiler Plugin
 
-The OpenAPI Validator Compiler plugin validates a service again a given OpenAPI contract. 
+The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. 
 The Compiler Plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares 
 the service and the OpenAPI Contract and validates both against a pre-defined set of validation rules. 
 If any of the rules fail, the plugin will give the result as one or more compilation errors.

@@ -34,9 +34,9 @@ You can generate Ballerina source code using the following command:
  file.
 
 `--output` - Location of the generated Ballerina source files. This is an optional field. 
-If output path is not specified, output will be written to a directory corresponding to the package in the Protocol
+If the output path is not specified, the output will be written to a directory corresponding to the package in the Protocol
  Buffers definition. 
-If package is not specified, output will be written to a 'temp' directory in the current location.
+If the package is not specified, the output will be written to a 'temp' directory in the current location.
 
 `--mode`   - Set the mode (client or service) to generate code samples. If not specified, only the stub file is
  generated.

@@ -15,7 +15,7 @@ redirect_from:
 
 ## General Practices
 
-* Do not indent the top level definitions. 
+* Do not indent the top-level definitions. 
   
 **Do's**
 
@@ -77,7 +77,7 @@ function func1() {}
 function Person.getName() {}
 ```
 
-* If the function needs to be split in to new lines due to it exceeding the max line length,
+* If the function needs to be split into new lines due to it exceeding the max line length,
   - can break lines from the parameter list by moving a parameter value only to a 
     new line and indenting it with four spaces from the starting position of the function.
     

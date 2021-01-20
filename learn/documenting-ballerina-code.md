@@ -16,7 +16,7 @@ redirect_from:
 
 ## Generating Documentation for Modules
 
-Developers can write the documentation inline with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `ballerina doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
+Developers can write the documentation in line with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `ballerina doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
 
 Ballerina documentation design and usage is aligned with project and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
 
@@ -27,7 +27,7 @@ Ballerina documentation design and usage is aligned with project and module sema
 
 ## Writing Ballerina Documentation
 
-Ballerina Flavored Markdown documentation is a first class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. If necessary, you can have multiple lines of documentation, which you can group together.
+Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. If necessary, you can have multiple lines of documentation, which you can group together.
 
 ```ballerina
 # <documentation line 1>
@@ -62,7 +62,7 @@ The supported structure of documentation syntax is as follows:
 >**Tip:** Always, add a full stop at the end of a function description. However, for the parameter and return type descriptions, omit the full stop if you have only one sentence. If there are multiple sentences, add the full stop at the end of each sentence. For example,
 
 ```ballerina
-# Description for the function.
+# Description of the function.
 #
 # + i - One sentence only
 # + s - Sentence one. Sentence two.
@@ -121,7 +121,7 @@ A typical project structure of a Ballerina project is like this:
   target/              # Compiled executables and other artifacts end up here
 ```
 
-The `ballerina doc` command will read the `Module.md` and prepend it to the generated HTML file.
+The `ballerina doc` command will read the `Module.md` and prepend the above to the generated HTML file.
 
 Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
@@ -146,7 +146,7 @@ Added new ballerina module at 'src/math'
 $ ballerina add world
 Added new ballerina module at 'src/world'
 ```
-Now, let's add a function to the `math` module to be documented. Copy and paste the following code in to the `myproject/src/math/main.bal` file.
+Now, let's add a function to the `math` module to be documented. Copy and paste the following code into the `myproject/src/math/main.bal` file.
 
 ```ballerina
 # Calculates the value of the 'a' raised to the power of 'b'.
@@ -190,7 +190,7 @@ public class Person {
         return self.address ;
     }
 
-    # Add wealth of the person.
+    # Add the wealth of the person.
     #
     # + amt - Amount to be added
     # + rate - Interest rate

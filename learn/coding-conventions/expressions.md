@@ -57,7 +57,7 @@ Person person = {
 };
 ```
 
-* You can define the fields in new lines. If so, make sure all the fields are in a separate line and they are block indented.
+* You can define the fields in new lines. If so, make sure all the fields are in a separate line and they are block-indented.
 
 **Do's**
 

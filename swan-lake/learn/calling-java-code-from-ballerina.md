@@ -978,7 +978,7 @@ public function main() {
 ```
 
 #### Calling Overloaded Java Methods
-The “Instantiate Java classes” section presents about how to deal with overloaded constructors in the. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer class. Here, is a subset of those methods. 
+The “Instantiate Java classes” section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer class. Here, is a subset of those methods. 
 
 ```java
 StringBuffer append(boolean b);

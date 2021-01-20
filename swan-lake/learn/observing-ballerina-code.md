@@ -221,7 +221,7 @@ scrape_configs:
 Here the targets `'a.b.c.d:9797'` should contain the host and port of the `/metrics` service that's exposed from 
 Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
 port (default `9797`).
-If you need more information refer [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
+If you need more information, refer the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
 
 3.  Start the Prometheus server in a Docker container with command below.
 

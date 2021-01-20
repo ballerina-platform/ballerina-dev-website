@@ -28,7 +28,7 @@ tainted value passed to sensitive parameter 'sqlQuery'
 
 We require developers to explicitly mark all values passed into security-sensitive parameters as 'trusted'. This explicit check forces developers and code reviewers to verify that the values being passed into the parameter are not vulnerable to a security violation.
 
-Ballerina standard library makes sure untrusted data cannot be used with security-sensitive parameters such as SQL queries, file paths, file name, permission flags, requests URLs and configuration keys preventing vulnerabilities including:
+Ballerina standard library makes sure untrusted data cannot be used with security-sensitive parameters such as SQL queries, file paths, file name, permission flags, request URLs and configuration keys preventing vulnerabilities including:
 
 * SQL Injection
 * Path Manipulation

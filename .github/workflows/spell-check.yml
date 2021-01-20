@@ -13,6 +13,7 @@ jobs:
     timeout-minutes: 4
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     steps:
+    - uses: actions/checkout@v2
     - name: Build the site
       uses: shafreenAnfar/jekyll-build-action@v5
     - name: TypoCheck

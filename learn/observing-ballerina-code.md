@@ -226,7 +226,7 @@ Ballerina for metrics collection. Add the IP of the host in which the Ballerina 
 port (default `9797`).
 If you need more information refer [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
 
-3. Start the Prometheus server in a Docker container with command below.
+3. Start the Prometheus server in a Docker container with the command below.
 
 ```bash
 $ docker run -p 19090:9090 -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus

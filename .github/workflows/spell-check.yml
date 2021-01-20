@@ -3,8 +3,8 @@ name: Typo CI
 
 on:
   pull_request:
-    branches-ignore:
-      - master
+    #branches-ignore:
+      #- master
 jobs:
   spellcheck:
     name: Typo CI (GitHub Action)

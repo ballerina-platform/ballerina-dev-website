@@ -221,7 +221,7 @@ scrape_configs:
 Here the targets `'a.b.c.d:9797'` should contain the host and port of the `/metrics` service that's exposed from 
 Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
 port (default `9797`).
-If you need more information, refer the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
+If you need more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
 
 3.  Start the Prometheus server in a Docker container with command below.
 
@@ -241,7 +241,7 @@ Prometheus as a data source. Follow the steps below to configure Grafana.
 ```bash
 $ docker run -d --name=grafana -p 3000:3000 grafana/grafana
 ```
-For more information refer [Grafana in Docker Hub](https://hub.docker.com/r/grafana/grafana/).
+For more information, go to [Grafana in Docker Hub](https://hub.docker.com/r/grafana/grafana/).
 
 2. Go to <http://localhost:3000/> to access the Grafana dashboard running on Docker.
 

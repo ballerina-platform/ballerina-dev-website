@@ -1,6 +1,6 @@
 # Add to: .github/workflows/spellcheck.yml
 #on: [pull_request]
-#name: Typo CI
+name: Typo CI
 
 on:
   pull_request:

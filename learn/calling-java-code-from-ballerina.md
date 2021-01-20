@@ -86,11 +86,11 @@ This section assumes that you have already read [Structuring Ballerina Code](/le
 
 #### Creating a Ballerina Project
 ```sh
-> ballerina new yaml-project
+> bal new yaml-project
 Created new Ballerina project at yaml-project
 
 Next:
-    Move into the project directory and use `ballerina add <module-name>` to
+    Move into the project directory and use `bal add <module-name>` to
     add a new Ballerina module.
 ```
 #### Adding a Ballerina Module to Your Project
@@ -1223,6 +1223,7 @@ boolean | boolean |
 byte | byte, short, char, int, long, float, double | Widening conversion from byte -> short, char, int, long, float, double
 int | byte, char, short, int, long | Narrowing conversion when int -> byte, char, short and int
 float | byte, char, short, int, long, float, double | Narrowing conversion when float -> byte, char, short, int, long, float
+<<<<<<< HEAD
 int[], float[], string[], byte[], boolean[] | io.ballerina.runtime.api.values.BArray |
 map | io.ballerina.runtime.api.values.BMap |
 
@@ -1232,6 +1233,18 @@ Ballerina does not provide direct mapping of Java arrays and maps types to balle
 In order to do mapping `arrays` from java to ballerina, you need to use `BArray` to enable array functionalities that support Ballerina.
 Following example illustrates how to write  to Ballerina.
 Java code that returns `BArray` type:
+=======
+string | io.ballerina.runtime.api.values.BString |
+int[], float[], string[], byte[], boolean[] | io.ballerina.runtime.api.values.BArray |
+map | io.ballerina.runtime.api.values.BMap |
+xml | io.ballerina.runtime.api.values.BXml |
+stream | io.ballerina.runtime.api.values.BStream |
+
+#### Using Ballerina Arrays and Maps in Java
+There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, `ballerina-runtime` libraries have to be added as a dependency to the java project and the relevant classes need to be imported from the `ballerina-runtime` library. You can find the latest version of the library [here](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/).
+##### Use Ballerina Arrays in Java
+To use Ballerina arrays in Java, `BArray` interface has been provided. Following example illustrates how to write Java intreop code that uses Ballerina arrays.
+>>>>>>> d0457292... Update Interoperability doc with array, map mapping
 ```java
 import io.ballerina.runtime.api.values.BArray;
 
@@ -1247,6 +1260,10 @@ public class ArrayReverse {
    }
 }
 ```
+<<<<<<< HEAD
+=======
+Associated Ballerina code:
+>>>>>>> d0457292... Update Interoperability doc with array, map mapping
 ```ballerina
 import ballerina/io;
 import ballerina/java;
@@ -1261,9 +1278,14 @@ function arrayReverse(int[] arr) returns int[] = @java:Method {
    'class: "javalibs.app.ArrayReverse"
 } external;
 ```
+<<<<<<< HEAD
 ##### Mapping of Map Types from Java to Ballerina
 `Ballerina-runtime` library provides an interface called `BMap`, which is providing a chance to map `map` types when calling java code from Ballerina. 
 Following example shows how you can use `BMap` for this purpose.
+=======
+##### Use Ballerina Maps in Java
+To use Ballerina maps in Java, `BMap` interface has been provided. Following example illustrates how to write Java intreop code that uses Ballerina maps.
+>>>>>>> d0457292... Update Interoperability doc with array, map mapping
 ```java
 import io.ballerina.runtime.api.values.BMap;
 import io.ballerina.runtime.api.values.BString;
@@ -1282,6 +1304,10 @@ public class ModifyValues {
    }
 }
 ```
+<<<<<<< HEAD
+=======
+Associated Ballerina code:
+>>>>>>> d0457292... Update Interoperability doc with array, map mapping
 ```ballerina
 import ballerina/io;
 import ballerina/java;

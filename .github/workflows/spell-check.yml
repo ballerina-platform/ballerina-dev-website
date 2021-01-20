@@ -3,7 +3,7 @@
 name: Typo CI
 
 on:
-  pull_request:
+  push:
     branches-ignore:
       - master
 jobs:

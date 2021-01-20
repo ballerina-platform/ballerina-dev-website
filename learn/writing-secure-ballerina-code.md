@@ -420,7 +420,7 @@ service helloWorld on secureHelloWorldEp {
 
 #### JWT Inbound Authentication and Authorization
 
-Ballerina supports JWT Authentication and Authorization for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and get validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
+Ballerina supports JWT Authentication and Authorization for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
 
 JWT validation requires several additional configurations for the `jwt:JwtValidatorConfig` including:
 

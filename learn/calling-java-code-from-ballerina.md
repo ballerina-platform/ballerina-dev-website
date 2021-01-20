@@ -1211,7 +1211,7 @@ char  | int, float | widening conversion
 int | int, float | widening conversion 
 long | int, float | widening conversion when long -> float
 float | float | widening conversion 
-double | float | 
+double | float |
 
 #### Mapping Ballerina Types to Java Types
 The following table summarizes how Ballerina types are mapped to corresponding Java types. These rules are applicable when mapping a Ballerina function argument to a Java method/constructor parameter.
@@ -1223,7 +1223,79 @@ boolean | boolean |
 byte | byte, short, char, int, long, float, double | Widening conversion from byte -> short, char, int, long, float, double
 int | byte, char, short, int, long | Narrowing conversion when int -> byte, char, short and int
 float | byte, char, short, int, long, float, double | Narrowing conversion when float -> byte, char, short, int, long, float
+int[], float[], string[], byte[], boolean[] | io.ballerina.runtime.api.values.BArray |
+map | io.ballerina.runtime.api.values.BMap |
 
+#### Mapping Arrays and Map Types from Java to Ballerina Types
+Ballerina does not provide direct mapping of Java arrays and maps types to ballerina. In order to do mapping of arrays and map types from java to ballerina, you have to add the `ballerina-runtime` library to your java project and need to import relevant classes from the `ballerina-runtime` library. You can find the latest version of the library [here](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/).
+##### Mapping of Arrays from Java to Ballerina
+In order to do mapping `arrays` from java to ballerina, you need to use `BArray` to enable array functionalities that support Ballerina.
+Following example illustrates how to write  to Ballerina.
+Java code that returns `BArray` type:
+```java
+import io.ballerina.runtime.api.values.BArray;
+
+public class ArrayReverse {
+   public static BArray arrayReverse(BArray arr) {
+       long len = arr.size();
+       for(long i = len - 1, j = 0; j < len/2; i--, j++) {
+           Object temp = arr.get(j);
+           arr.add(j, arr.get(i));
+           arr.add(i, temp);
+       }
+       return arr;
+   }
+}
+```
+```ballerina
+import ballerina/io;
+import ballerina/java;
+ 
+public function main() {
+   int[] a = [1,2,3,4,5];
+   int[] b = arrayReverse(a);
+   io:println(b);
+}
+ 
+function arrayReverse(int[] arr) returns int[] = @java:Method {
+   'class: "javalibs.app.ArrayReverse"
+} external;
+```
+##### Mapping of Map Types from Java to Ballerina
+`Ballerina-runtime` library provides an interface called `BMap`, which is providing a chance to map `map` types when calling java code from Ballerina. 
+Following example shows how you can use `BMap` for this purpose.
+```java
+import io.ballerina.runtime.api.values.BMap;
+import io.ballerina.runtime.api.values.BString;
+
+import java.util.Map;
+
+public class ModifyValues {
+   public static BMap<Object, Object> modifyMapValues(BMap<Object, Object> map) {
+       for(Map.Entry mapElement : map.entrySet()) {
+           BString key = (BString) mapElement.getKey();
+           long value = (long) mapElement.getValue();
+           long modifiedValue = value + 10;
+           map.put(key, modifiedValue);
+       }
+       return map;
+   }
+}
+```
+```ballerina
+import ballerina/io;
+import ballerina/java;
+ 
+public function main() {
+   map<int> marks = {sam: 50, jon: 60};
+   map<int> modifiedMarks = modifyMapValues(marks);
+   io:println(modifiedMarks);
+}
+ 
+function modifyMapValues(map<int> marks) returns map<int> = @java:Method {
+   'class: "javalibs.app.ModifyValues"
+} external;
+```
 
 ### Access or Mutate Java Fields
 The `@java:FieldGet` and `@java:FieldSet` annotations allow you to read and update the value of a Java static or instance field respectively. The most common use case is to read a value of a Java static constant. 

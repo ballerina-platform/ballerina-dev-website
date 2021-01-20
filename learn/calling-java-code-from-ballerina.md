@@ -439,7 +439,7 @@ function newArrayDeque3(Collection arg0) returns ArrayDeque {
 ```
 
 #### Methods
-All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there exist overloaded methods, a numeric suffix will be appended at the end of the name.
+All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there are overloaded methods, a numeric suffix will be appended at the end of the name.
 
 E.g., Some of the generated instance methods of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina

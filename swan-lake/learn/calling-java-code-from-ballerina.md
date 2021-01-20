@@ -404,7 +404,7 @@ E.g., The command to generate bindings for `java.lang.Character.Subset` class wi
 When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the Ballerina bindings generated.
 
 #### Constructors
-Constructors of Java classes will be mapped to functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exist multiple constructors, they will be suffixed with an auto-incremented number.
+Constructors of Java classes will be mapped to functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there are multiple constructors, they will be suffixed with an auto-incremented number.
 
 E.g., Generated constructors of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina

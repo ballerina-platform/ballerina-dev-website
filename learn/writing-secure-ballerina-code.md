@@ -653,7 +653,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with valid authentication information, but if the introspection endpoint does not respond with the "scope" attribute of the response JSON payload or respond with the "scope" attribute, which are not the expected scopes, an authorization failure will occur.
+Once a request is made with valid authentication information, but if the introspection endpoint does not respond with the "scope" attribute of the response JSON payload or the "scope" attribute, which are not the expected scopes, an authorization failure will occur.
 
 ```
 curl -k -v https://localhost:9091/hello -H "Authorization:Bearer <token>"

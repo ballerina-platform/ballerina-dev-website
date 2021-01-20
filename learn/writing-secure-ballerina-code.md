@@ -797,7 +797,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with valid authentication information, but if the LDAP server responds with an empty group list or unexpected scopes, an authorization failure will occur.
+If a request is made with valid authentication information but the LDAP server responds with an empty group list or unexpected scopes, an authorization failure will occur.
 
 ```
 curl -k -v https://localhost:9091/hello -H "Authorization: Basic <token>"

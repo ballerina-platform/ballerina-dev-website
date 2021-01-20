@@ -197,7 +197,7 @@ metrics from the Ballerina service and [Grafana] can connect to Prometheus and v
 
 #### Setting Up Prometheus
 [Prometheus] is used as the monitoring system, which pulls out the metrics collected from the Ballerina service
-'/metrics'. This section focuses on the quick installation of Prometheus with Docker, and configure it to collect metrics from Ballerina service with default configurations. Follow the steps below to configure 
+'/metrics'. This section focuses on the quick installation of Prometheus with Docker and configures it to collect metrics from the Ballerina service with default configurations. Follow the steps below to configure 
 Prometheus. 
 
 >**Tip:** There are many other ways to install the Prometheus and you can find possible options from

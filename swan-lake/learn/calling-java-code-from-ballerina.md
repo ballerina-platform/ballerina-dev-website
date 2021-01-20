@@ -404,7 +404,7 @@ E.g., The command to generate bindings for `java.lang.Character.Subset` class wi
 When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the Ballerina bindings generated.
 
 #### Constructors
-Constructors of Java classes will be mapped to functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exist multiple constructors, they will be suffixed with an auto-incremented number.
+Constructors of Java classes will be mapped to functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there are multiple constructors, they will be suffixed with an auto-incremented number.
 
 E.g., Generated constructors of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
@@ -422,7 +422,7 @@ function newArrayDeque3(Collection arg0) returns ArrayDeque {
 ```
 
 #### Methods
-All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there exist overloaded methods, a numeric suffix will be appended at the end of the name.
+All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there are overloaded methods, a numeric suffix will be appended at the end of the name.
 
 E.g., Some of the generated instance methods of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
@@ -665,7 +665,7 @@ function doSomething(int i) returns string = @java:Method {
 } external;
 ```
 
-The `@java:Method` annotation instructs the jBallerina compiler to link with the `doSomethingInJava` static method in the Java class `a.b.c.Foo`. There exist a set of annotations and other utilities available in the `ballerina/java` module to make Java interoperability work.  This guide covers most of them.
+The `@java:Method` annotation instructs the jBallerina compiler to link with the `doSomethingInJava` static method in the Java class `a.b.c.Foo`. There are a set of annotations and other utilities available in the `ballerina/java` module to make Java interoperability work.  This guide covers most of them.
 
 ### The Handle Type
 The handle type describes a reference to an externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.

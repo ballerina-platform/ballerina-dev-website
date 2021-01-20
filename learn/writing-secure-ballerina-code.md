@@ -164,7 +164,7 @@ api.provider="not-a-security-sensitive-value"
 
 When running a Ballerina program that uses encrypted configuration values, Ballerina will require the secret used during the encryption process to perform the decryption.
 
-Ballerina will first look for a file named `secret.txt`. If such file exists, Ballerina will read the decryption secret from the file and immediately remove the file to make sure the secret cannot be accessed afterwards. If the secret file is not present, the Ballerina program will prompt for the decryption secret.
+Ballerina will first look for a file named `secret.txt`. If such a file exists, Ballerina will read the decryption secret from the file and immediately remove the file to make sure the secret cannot be accessed afterward. If the secret file is not present, the Ballerina program will prompt for the decryption secret.
 
 The file based approach is useful in automated deployments. The file containing the decryption secret can be deployed along with the Ballerina program. The name and the path of the secret file can be configured using the `ballerina.config.secret` runtime parameter:
 

@@ -648,7 +648,7 @@ Configurations for testing can be provided using the Config API. For information
 
 ## What's Next?
 
- As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock backends for these external endpoints will be a tedious task (e.g., email client, salesforce client).
+ As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock backends for these external endpoints will be a tedious task (e.g., email client, SalesForce client).
  The mocking support in Ballerina will allow you to unit test your code without needing to set up mock backends by
  allowing you to control what the client objects return without actually sending requests to backends.
 

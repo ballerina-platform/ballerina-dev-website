@@ -164,7 +164,7 @@ api.provider="not-a-security-sensitive-value"
 
 When running a Ballerina program that uses encrypted configuration values, Ballerina will require the secret used during the encryption process to perform the decryption.
 
-Ballerina will first look for a file named `secret.txt`. If such file exists, Ballerina will read the decryption secret from the file and immediately remove the file to make sure the secret cannot be accessed afterwards. If the secret file is not present, the Ballerina program will prompt for the decryption secret.
+Ballerina will first look for a file named `secret.txt`. If such a file exists, Ballerina will read the decryption secret from the file and immediately remove the file to make sure the secret cannot be accessed afterward. If the secret file is not present, the Ballerina program will prompt for the decryption secret.
 
 The file based approach is useful in automated deployments. The file containing the decryption secret can be deployed along with the Ballerina program. The name and the path of the secret file can be configured using the `ballerina.config.secret` runtime parameter:
 
@@ -420,7 +420,7 @@ service helloWorld on secureHelloWorldEp {
 
 #### JWT Inbound Authentication and Authorization
 
-Ballerina supports JWT Authentication and Authorization for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and get validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
+Ballerina supports JWT Authentication and Authorization for services. The `http:BearerAuthHandler` is used to extract the HTTP `Authorization` header from the request and extract the credential from the header value which is `Bearer <token>`. Then the extracted credential will be passed to the initialized AuthProvider and validated. The `jwt:InboundJwtAuthProvider` is used to validate the credentials (JWT) passed by the AuthHandler against the `jwt:JwtValidatorConfig` provided by the user.
 
 JWT validation requires several additional configurations for the `jwt:JwtValidatorConfig` including:
 
@@ -503,7 +503,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, signed JWT, but without the expected `scope`, an authorization failure will occur. An example of a JWT without the `scope` attribute is as follows.
+If a request is made with a valid, signed JWT but without the expected `scope`, an authorization failure will occur. An example of a JWT without the `scope` attribute is as follows.
 
 ```
 {

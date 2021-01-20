@@ -251,7 +251,7 @@ For more information refer [Grafana in Docker Hub](https://hub.docker.com/r/graf
 
 3. Log in to the dashboard with the default user, username: `admin` and password: `admin`
 
-4. Add Prometheus as data source with `Browser` access configuration as provided below.
+4. Add Prometheus as a data source with `Browser` access configuration as provided below.
 
 ![Grafana Prometheus Datasource](../images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
 

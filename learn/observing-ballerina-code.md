@@ -226,7 +226,7 @@ Ballerina for metrics collection. Add the IP of the host in which the Ballerina 
 port (default `9797`).
 If you need more information refer [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
 
-3. Start the Prometheus server in a Docker container with command below.
+3. Start the Prometheus server in a Docker container with the command below.
 
 ```bash
 $ docker run -p 19090:9090 -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
@@ -251,7 +251,7 @@ For more information refer [Grafana in Docker Hub](https://hub.docker.com/r/graf
 
 3. Log in to the dashboard with the default user, username: `admin` and password: `admin`
 
-4. Add Prometheus as data source with `Browser` access configuration as provided below.
+4. Add Prometheus as a data source with `Browser` access configuration as provided below.
 
 ![Grafana Prometheus Datasource](../images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
 

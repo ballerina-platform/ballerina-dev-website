@@ -354,7 +354,7 @@ curl -k -v https://localhost:9091/hello
 Authentication failure
 ```
 
-Once a request is made with a valid, signed JWT, but without the expected `scope`, an authorization failure will occur. An example of a JWT without the `scope` attribute is as follows.
+If a request is made with a valid, signed JWT, but without the expected `scope`, an authorization failure will occur. An example of a JWT without the `scope` attribute is as follows.
 
 ```
 {

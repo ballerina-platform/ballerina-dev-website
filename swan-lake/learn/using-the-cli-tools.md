@@ -18,21 +18,22 @@ The Ballerina Tool is a command-line tool for managing Ballerina source code. It
 
 It also enables you to easily install, update, and switch among Ballerina distributions. 
 
-In the CLI, execute the `ballerina help` command to view all the actions you can perform with the Ballerina Tool as shown below:
+In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below:
 
 ```sh
 → ballerina help 
 NAME
-       The Ballerina build tool
+       The bal build tool
 
 SYNOPSIS
-       ballerina <-v | --version>
-       ballerina [command] <-h | --help>
-       ballerina <command> [<args>]
+       bal <-v | --version>
+       bal [command] <-h | --help>
+       bal <command> [<args>]
 
 
 DESCRIPTION
-       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
+       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured
+       data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
        functionality expected of a modern programming language, but it also has several unusual aspects that make it
        particularly suitable for its intended purpose.
 
@@ -53,19 +54,18 @@ BALLERINA COMMANDS
    Core Commands:
         build           Compile Ballerina program into an executable
         run             Build and run Ballerina program
-        test            Run module tests
+        test            Run package tests
         doc             Generate API documentation
         clean           Clean artifacts generated during the build
         format          Format Ballerina sources
 
-   Module Commands:
-        pull            Pull a module from Ballerina Central
-        push            Upload module to the Ballerina Central
-        search          Search Ballerina Central for modules
-
-   Project Commands:
-        new             Create a new Ballerina project
-        add             Create a new Ballerina module in a project
+   Package Commands:
+        new             Create a new Ballerina package
+        init            Create a new Ballerina package in the current directory
+        add             Create a new Ballerina module in the package
+        pull            Pull a package from Ballerina Central
+        push            Upload a package to Ballerina Central
+        search          Search Ballerina Central for packages
 
    Other Commands:
         encrypt         Encrypt sensitive data
@@ -76,35 +76,35 @@ BALLERINA COMMANDS
 
    Update Commands:
         dist            Manage Ballerina distributions
-        update          Update the Ballerina Tool
+        update          Update the Ballerina tool
 
 
-Use 'ballerina help <command>' for more information on a specific command.
+Use 'bal help <command>' for more information on a specific command.
 ```
 
 You can use it in the below format.
 
-> `ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
+> `bal <THE-COMMAND> <ITS-ARGUEMENTS>`
 
-> **Tip:** You can view details of any of the commands below by executing `ballerina help <COMMAND>`. For example, the below is the output of the `ballerina help pull` command.
+> **Tip:** You can view details of any of the commands below by executing `bal help <COMMAND>`. For example, the below is the output of the `bal help pull` command.
 
 ```sh
-→ ballerina help pull
+→ bal help pull
 NAME
-       ballerina-pull - Fetch modules from Ballerina Central
+       ballerina-pull - Fetch packages from Ballerina Central
 
 SYNOPSIS
-       ballerina pull <org-name>/<module-name>[:<version>]
+       bal pull <org-name>/<package-name>[:<version>]
 
 
 DESCRIPTION
-       Pull downloads the specified module from Ballerina Central
-       along with its dependencies. It then caches this module at
-       '.ballerina' directory in user home.
+       The pull command downloads the specified package from Ballerina Central
+       along with its dependencies. It then caches this package in the
+       '.ballerina' directory in the user home.
 
-       Ballerina Central is a module repository hosted at
-       https://central.ballerina.io/. A module repository organizes modules
-       into a three-level hierarchy: organization, module name, and version.
+       Ballerina Central is a package repository hosted at
+       https://central.ballerina.io/. A package repository organizes packages
+       into a three-level hierarchy: organization, package name, and version.
        Organizations are unique within a repository and can be mapped to an
        individual user or organization registered with the repository.
 

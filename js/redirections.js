@@ -132,7 +132,6 @@ let redirections = {
     "/swan-lake/learn/how-to-observe-ballerina-code/":"/swan-lake/learn/observing-ballerina-code",
     "/1.1/swan-lake/learn/how-to-observe-ballerina-code/":"/1.1/swan-lake/learn/observing-ballerina-code",
     "/1.0/swan-lake/learn/how-to-observe-ballerina-code/":"/1.0/swan-lake/learn/observing-ballerina-code",
-    "/swan-lake/learn/observing-ballerina-code/":"/swan-lake/page-not-available.html",
     "/swan-lake/learn/calling-java-code-from-ballerina":"/1.1/page-not-available.html/",
     "/1.1/learn/calling-java-code-from-ballerina":"/1.1/page-not-available.html",
     "/1.0/learn/calling-java-code-from-ballerina":"/1.0/page-not-available.html",

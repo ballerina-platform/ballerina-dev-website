@@ -2,7 +2,7 @@ var searchData = {
   "modules": [
     {
       "id": "lang.query",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003equery-action\u003c/code\u003es \u0026amp; \u003ccode\u003equery-expression\u003c/code\u003es.\u003c/p\u003e",
+      "description": "This module provides lang library operations on \"query-action\"s \u0026 \"query-expression\"s.",
       "orgName": "ballerina",
       "version": "0.0.1"
     }
@@ -15,7 +15,7 @@ var searchData = {
   "types": [
     {
       "id": "Type",
-      "description": "\u003cp\u003eA type parameter that is a subtype of \u003ccode\u003eany|error\u003c/code\u003e.\u003c/p\u003e",
+      "description": "A type parameter that is a subtype of `any|error`.",
       "moduleId": "lang.query",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.0.1"
@@ -24,5 +24,6 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

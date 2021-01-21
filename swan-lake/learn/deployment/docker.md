@@ -48,7 +48,7 @@ import ballerina/docker;
 @docker:Config {}
 service http:Service /hello on new http:Listener(9090) {
     resource function get sayHello(http:Caller caller) {
-        caller->ok("Hello World!");
+        caller->respond("Hello World!");
     }
 }
 
@@ -195,7 +195,7 @@ import ballerina/docker;
 }
 service http:Service /hello on new http:Listener(9090) {
     resource function get sayHello(http:Caller caller) {
-        caller->ok("Hello World!");
+        caller->respond("Hello World!");
     }
 }
 ```
@@ -284,7 +284,7 @@ listener http:Listener helloWorldEP = new(9095, {
 }
 service http:Service /helloWorld on helloWorldEP {
     resource function get sayHello(http:Caller caller) {
-        caller->ok("Hello World!");
+        caller->respond("Hello World!");
     }
 }
 ```
@@ -386,7 +386,7 @@ service http:Service /helloWorld on helloWorldEP {
     curl -k https://localhost:9095/hello/sayHello
     Hello World!
     ```
-    > **Note:** The cURL command is used with the -k option because self signed certificates are used in the keystore.
+    > **Note:** The cURL command is used with the -k option because self-signed certificates are used in the keystore.
 
 6. Clean up the used artifacts.
 
@@ -433,7 +433,7 @@ service /hello on helloEP {
        http:Response response = new;
        string payload = readFile("./name.txt");
        response.setTextPayload("Hello " + <@untainted> payload + "\n");
-       check caller->ok(response);
+       check caller->respond(response);
    }
 }
  
@@ -616,7 +616,7 @@ import ballerina/docker;
 service /hello on new http:Listener(9090){
  
   resource function get sayHello(http:Caller caller) returns error? {
-      check caller->ok("Hello World!");
+      check caller->respond("Hello World!");
   }
 }
 ```
@@ -747,7 +747,7 @@ import ballerina/docker;
 service /hello on new http:Listener(9090){
  
   resource function get sayHello(http:Caller caller) returns error? {
-      check caller->ok("Hello World!");
+      check caller->respond("Hello World!");
   }
 }
 ```

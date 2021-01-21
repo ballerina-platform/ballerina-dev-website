@@ -32,8 +32,7 @@ SYNOPSIS
 
 
 DESCRIPTION
-       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured
-       data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
+       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
        functionality expected of a modern programming language, but it also has several unusual aspects that make it
        particularly suitable for its intended purpose.
 
@@ -113,11 +112,11 @@ DESCRIPTION
 EXAMPLES
        Pull the latest version of 'gmail' connector in 'wso2' organization
        from Ballerina Central.
-          $ ballerina pull wso2/gmail
+          $ bal pull wso2/gmail
 
        Pull the '1.1.0' version of 'gmail' connector in 'wso2' organization
        from Ballerina Central.
-          $ ballerina pull wso2/gmail:1.1.0
+          $ bal pull wso2/gmail:1.1.0
 ```
 
 ## Core Commands
@@ -180,7 +179,7 @@ These commands allow you to work with the Ballerina Central to share Ballerina m
 
 ## Project Commands
 
-Ballerina projects are the way to organize real world Ballerina development tasks. 
+Ballerina projects are the way to organize real-world Ballerina development tasks. 
 
 <table class="cComandTable">
 <tr>

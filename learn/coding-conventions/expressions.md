@@ -57,7 +57,7 @@ Person person = {
 };
 ```
 
-* You can define the fields in new lines. If so, make sure all the fields are in a separate line and they are block indented.
+* You can define the fields in new lines. If so, make sure all the fields are in a separate line and they are block-indented.
 
 **Do's**
 
@@ -218,4 +218,9 @@ table<Employee> employee4 = table {
     ]
 }
 ```
+
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
+
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
   

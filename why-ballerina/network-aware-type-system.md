@@ -190,7 +190,7 @@ type Person record {
    io:println(p2);
 }
 </code></pre>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ ballerina run sample.bal 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ bal run sample.bal 
 P1's ethnicity: N/A
 P2's ethnicity: White
 name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
@@ -225,7 +225,7 @@ service RecordService on new http:Listener(8080) {
  
 }
 </code></pre>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ ballerina run sample.bal 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ bal run sample.bal 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 
 </code></pre>

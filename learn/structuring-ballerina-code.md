@@ -32,9 +32,7 @@ The `Ballerina Tool` requires you to organize your code in a specific way. This 
 
 ## Programs
 A *program* is a runtime executable ending with a `.jar` extension. A *program* is the transitive closure of one 
-Ballerina module without including `ballerina/*` modules, since those are dynamically linked within Ballerina's runtime 
-engine during execution. A *module*, which is a *program* compiles into a file with a `.jar` extension. Otherwise, it is 
-treated as a to-be-linked library that ends with a `.balo` extension.
+Ballerina module without including `ballerina/*` modules, since those are dynamically linked within Ballerina's runtime engine during execution. A *module*, which is a *program* compiles into a file with a `.jar` extension. Otherwise, it is treated as a to-be-linked library that ends with a `.balo` extension.
 
 To generate an executable `.jar` file, the program's module must contain either a `main()` function (a process entry point) or 
 a `service` (a network-accessible API).
@@ -87,9 +85,7 @@ $ ballerina run sample.jar
 ```
 
 ## Modules
-A *module* is a directory, which contains Ballerina source code files and is part of a namespace. Modules facilitate 
-collaboration, sharing, and reuse. Modules can include functions, clients, constants, annotations, services, and 
-objects. To share a module among programs, projects, and users, you need to push the module into a repository.
+A *module* is a directory, which contains Ballerina source code files and is part of a namespace. Modules facilitate collaboration, sharing, and reuse. Modules can include functions, clients, constants, annotations, services, and objects. To share a module among programs, projects, and users, you need to push the module into a repository.
 
 Modules:
 
@@ -99,8 +95,7 @@ Modules:
 <li>Are referenced by  <code>&lt;org-name&gt;/&lt;module-name&gt;</code> where <code>&lt;org-name&gt;</code> is a namespace from within a repository.</li>
 </ol>
 
-Module names can contain alphanumeric characters including dots (`.`). Dots in a module name has no meaning other
-than the last segment after the final dot being used as a default alias within your source code.
+Module names can contain alphanumeric characters including dots (`.`). Dots in a module name has no meaning other than the last segment after the final dot being used as a default alias within your source code.
 
 ### Importing Modules
 Your Ballerina source files can import modules:
@@ -112,10 +107,8 @@ import [<org-name>]/<module-name> [as <identifier>];
 When you import a module, you can use its functions, annotations, and other objects in your code. You can also 
 reference the objects with a qualified identifier followed by a colon (`:`). For example, `<identifier>:<module-object>`.
 
-Identifiers are either derived or explicit. The default identifier is either the module name or if the module 
-name has dots (`.`) included, then the last word after the last dot. For example, `import ballerina/http;` will
-have `http:`as the derived identifer and the module `import ballerinax/java.jdbc` would have `jdbc:` as the 
-default identifier.
+Identifiers are either derived or explicit. The default identifier is either the module name or if the module name has dots (`.`) included, then the last word after the last dot. For example, `import ballerina/http;` will
+have `http:`as the derived identifier, and the module `import ballerinax/java.jdbc` would have `jdbc:` as the default identifier.
 
 You can have an explicit identifier by using the `as <identifier>` syntax.
 
@@ -175,8 +168,7 @@ dependencies into the compiled unit.
 Modules can only be created, versioned, and pushed into a repository as part of a *project*.
 
 ### Running Compiled Modules
-An entrypoint such as a `main()` or a `service` that is compiled as part of a named module is automatically linked 
-into a `.jar`. You can run the compiled module `.jar`:
+An entry point such as a `main()` or a `service` that is compiled as part of a named module is automatically linked into a `.jar`. You can run the compiled module `.jar`:
 
 ```bash
 ballerina run module.jar
@@ -197,11 +189,10 @@ You can create a project using the `ballerina new` command:
 ballerina new <project-name>
 ```
 
-The `new` command will create a project directory with the given name. A Ballerina project cannot reside in another 
-ballerina project. If you run `ballerina new` from inside a Ballerina project directory or from inside a sub directory of a Ballerina project,
+The `new` command will create a project directory with the given name. A Ballerina project cannot reside in another Ballerina project. If you run `ballerina new` from inside a Ballerina project directory or from inside a sub-directory of a Ballerina project,
 it will give an error.
 
-It will create the `Ballerina.toml` file, and `src` folder.
+It will create the `Ballerina.toml` file and `src` folder.
 
 ### Adding a Module
 Once the project is initialized, a module can be created inside the project using the `ballerina add` command. 
@@ -212,11 +203,7 @@ module.
 ballerina add <module-name>
 ```
 
-The folders `tests/` and `resources/` are reserved folder names within the module. The `tests/` folder contains 
-unit test files of the module and the `resources/` folder contains the resources of the module that will be available at runtime. Any 
-additional subdirectories within the module have no semantic meaning and can be used by the developer for organizing 
-files. The module subdirectories can have as many Ballerina source files and all will be included within the 
-module when it is built. 
+The folders `tests/` and `resources/` are reserved folder names within the module. The `tests/` folder contains unit test files of the module and the `resources/` folder contains the resources of the module that will be available at runtime. Any additional subdirectories within the module have no semantic meaning and can be used by the developer for organizing files. The module subdirectories can have as many Ballerina source files and all will be included within the module when it is built. 
 
 ### Project Structure
 ```
@@ -331,9 +318,7 @@ Here, the BALO cache will be common across any version of Ballerina and the BIR 
 
 #### BALO Cache
 
-BALO cache is responsible for keeping BALOs of dependent modules. There is a BALO cache inside the Ballerina 
-distribution, which contains the BALOs of libraries that will get packed into the distribution. There is another cache 
-at the user's home repository, which is used to cache the BALOs fetched from Central. 
+BALO cache is responsible for keeping BALOs of dependent modules. There is a BALO cache inside the Ballerina distribution, which contains the BALOs of libraries that will get packed into the distribution. There is another cache at the user's home repository, which is used to cache the BALOs fetched from Central. 
 
 #### BIR Cache
 
@@ -347,8 +332,7 @@ JAR file will be generated only if there is an entry point (`main` function or s
 
 
 ## Module Repository - Ballerina Central
-A repository is a collection of compiled Ballerina modules. A repository helps to organize modules used by multiple 
-programs by managing their versions and assets in a central location. [Ballerina Central]
+A repository is a collection of compiled Ballerina modules. A repository helps to organize modules used by multiple programs by managing their versions and assets in a central location. [Ballerina Central]
 (http://central.ballerina.io) is the only module repository for Ballerina developers.
 
 ### Organizations
@@ -357,19 +341,15 @@ An organization is a logical name used for grouping modules together under a com
 All modules installed into a repository must have an organization name. Any installation or pushing of a module into a 
 repository will fail without an organization name.
 
-Organization names can contain lowercase alphanumeric characters and underscores. None of the characters in an 
-organization name have any semantic meaning.
+Organization names can contain lowercase alphanumeric characters and underscores. None of the characters in an organization name has any semantic meaning.
 
-The organization names `ballerina` and `ballerinax` are reserved for system use. Modules in `ballerina` and 
-`ballerinax` are included within the system distribution.
+The organization names `ballerina` and `ballerinax` are reserved for system use. Modules in `ballerina` and `ballerinax` are included within the system distribution.
 
 At Ballerina Central, every account is assigned a personal organization name, which is chosen by a 
 user when creating their account initially or is derived from the email address of the user.
 
 When pushing a module from a local computer into Ballerina Central, the user's organization name in the Ballerina 
-Central MUST match the `<org-name>` assigned in the `Ballerina.toml` file. If the names do not match, then the push operation 
-will fail. This enforcement may seem arbitrary. However, it is a simple way to ensure organization naming consistency 
-across remote and local development environments.
+Central MUST match the `<org-name>` assigned in the `Ballerina.toml` file. If the names do not match, then the push operation will fail. This enforcement may seem arbitrary. However, it is a simple way to ensure organization naming consistency across remote and local development environments.
 
 ### Pulling Remote Modules
 You can install modules that exist in Ballerina Central into your BALO cache in the home directory via "pulling" them. 
@@ -396,14 +376,10 @@ ballerina push <module-name>
 ```
 ### Configuring Ballerina Central Access
 
-Ballerina Central requires an account in order to push modules. Your account is represented by a CLI token that is 
-installed into your local Ballerina configuration file, i.e., `~/.ballerina/Settings.toml`. The CLI token is 
+Ballerina Central requires an account in order to push modules. Your account is represented by a CLI token that is installed into your local Ballerina configuration file, i.e., `~/.ballerina/Settings.toml`. The CLI token is 
 automatically installed into this file the first time you perform a `ballerina push` as Ballerina redirects to an 
-OAuth authorization screen, configures your account, and then copies your CLI token from Ballerina Central into your 
-local CLI configuration. To get your token, register on Ballerina Central and visit the 
+OAuth authorization screen, configures your account, and then copies your CLI token from Ballerina Central into your local CLI configuration. To get your token, register on Ballerina Central and visit the 
 [Ballerina Central Dashboard](https://central.ballerina.io/dashboard).
 
 Every push of the same module into Ballerina Central REQUIRES a new version even for minor text updates. 
-This policy is enforced to ensure that projects, which make use of dependencies cannot experience accidental behavior drift across 
-two versions of the same module given the same version. Essentially, there is no way to "update" a module for a specific 
-version in Ballerina Central.
+This policy is enforced to ensure that projects, which make use of dependencies cannot experience accidental behavior drift across two versions of the same module given the same version. Essentially, there is no way to "update" a module for a specific version in Ballerina Central.

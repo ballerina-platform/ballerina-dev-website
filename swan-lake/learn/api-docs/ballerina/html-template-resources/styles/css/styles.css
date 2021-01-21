@@ -8,7 +8,7 @@
 
 @keyframes highlight {
     0% {
-        background: #d5f3ff; 
+        background: #d5f3ff;
     }
     100% {
         background: none;
@@ -35,16 +35,27 @@
     text-transform: capitalize !important;
 }
 
+.line-number {
+    text-align: right;
+    display: inline-block;
+    width: 35px;
+    border-right: 1px solid #ddd;
+    padding-left: 0;
+    padding-right: 10px;
+    margin-right: 10px;
+    color: #888;
+}
+
 .method-signature {
     display: grid;
-    background-color:#f5f2f0;
+    background-color: #f5f2f0;
     padding: 1em;
     margin: .5em 0;
 }
 
 .method-signature a {
     font-size: 14px !important;
-    font-family: monospace,monospace !important;
+    font-family: monospace, monospace !important;
 }
 
 .method-signature .builtin-type {
@@ -166,8 +177,11 @@ margin-top: 24px;
     font-size: 16px;
 }
 
-
 .ui.visible.left.vertical.sidebar.menu .item:hover {
+    font-weight: 900;
+}
+
+.ui.visible.left.vertical.sidebar.menu .header a:hover {
     font-weight: 900;
 }
 
@@ -179,6 +193,7 @@ margin-top: 24px;
 .ui.visible.left.vertical.sidebar.menu .ui.divider {
     margin-right: 25px;
 }
+
 .ui.accordion .title {
     color: #888888 !important;
     font-size: 16px !important;
@@ -197,6 +212,10 @@ margin-top: 24px;
 .ui.sidebar.menu .ui.accordion div.content {
     padding-top: 0;
     margin: 0;
+}
+
+.row.nav-bar .ui.secondary.menu .right.menu {
+    margin-right: 25px;
 }
 
 .search-list .ui.basic.table {
@@ -279,7 +298,7 @@ margin-top: 24px;
 }
 
 .ui.breadcrumb a:hover {
-    color: #177576;
+    color: #22b7b1;
 }
 
 .ui.breadcrumb a.current {
@@ -293,8 +312,11 @@ margin-top: 24px;
 body .main-content {
     padding-left: 30px;
     padding-top: 30px;
-    background-color: #fafcfe;
     max-width: 960px;
+}
+
+body .main-content-holder {
+    background-color: #fafcfe;
 }
 
 body .module-construct {
@@ -325,12 +347,21 @@ body code.language-ballerina a {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
 }
 
-body p, a, li, ul {
+body p, a, li, ul, th, td {
     font-size: 16px !important;
 }
 
-body p, li, ul {
-    color: #a5a7b5;
+body p, li, ul, th, td {
+    color: #57595d;
+}
+
+.ui.table thead th {
+    color: #57595d !important;
+}
+
+.enum-name {
+    font-weight: 600;
+    max-width: 150px;
 }
 
 .break-spaces {
@@ -426,7 +457,6 @@ text-overflow: ellipsis;*/
 
 .content {
     margin-left: 240px;
-    max-width: 960px;
     font-size: 16px;
 }
 
@@ -485,7 +515,6 @@ text-overflow: ellipsis;*/
         margin-top: 15px;
         margin-left: 30px;
         height: 19px;
-
     }
     .mobile-logo-div {
         display: contents;

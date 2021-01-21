@@ -112,7 +112,7 @@ ballerina: started publishing traces to Jaeger on localhost:6831
 ```
 
 By default, when Ballerina observability is enabled, Ballerina runtime exposes internal metrics via an HTTP endpoint for
-metrics monitoring and tracers will be published to Jaeger. Prometheus should be configured to scrape metrics from
+metrics monitoring and traces will be published to Jaeger. Prometheus should be configured to scrape metrics from
 the metrics HTTP endpoint in Ballerina.
 
 Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
@@ -259,7 +259,7 @@ Ballerina SQL Client Metrics Dashboard Panel will be as below.
 ## Distributed Tracing
 
 Tracing provides information regarding the roundtrip of a service invocation based on the concept of spans, which are
-structured in a hierarchy based on the cause and effect concept. Tracers propagate across several services that can be
+structured in a hierarchy based on the cause and effect concept. A trace can spread across several services that can be
 deployed in several nodes, depicting a high-level view of interconnections among services as well, hence coining the
 term distributed tracing.
 
@@ -273,7 +273,7 @@ microservices.
 
 * Identify service bottlenecks - The user can monitor the latencies and identify when a service invocation slows down,
 pinpoint where the slowing down happens (by looking at the span latencies) and take action to improve the latency.
-* Error identification - If an error occurs during the service invocation, it will show up in the list of tracers.
+* Error identification - If an error occurs during the service invocation, it will show up in the list of traces.
 The user can easily identify where the error occurred and information of the error will be attached to the relevant
 span as metadata.
 
@@ -287,10 +287,10 @@ specification.](https://github.com/opentracing/specification/blob/master/semanti
 ### Configuring Advanced Tracing for Ballerina
 
 Tracing can be enabled in Ballerina with the few configurations as mentioned in the
-[Observing a Ballerina Service](#observing-a-ballerina-service) section, as well as a configuration option.
+[Observing a Ballerina Service](#observing-a-ballerina-service) section.
 This section mainly focuses on the configuration options with the description and possible values.
 
-The sample configuration that enables tracing, and uses Jaeger as the sample tracer as provided below.
+The sample configuration that enables tracing, and uses Jaeger as the tracer as provided below.
 
 ```toml
 [ballerina.observe]

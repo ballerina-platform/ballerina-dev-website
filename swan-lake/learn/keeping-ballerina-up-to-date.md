@@ -57,7 +57,7 @@ Once the installation is complete, you would see the directory structure below i
 ```sh
 .
 ├── bin
-│   └── ballerina
+│   └── bal
 ├── dependencies
 │   └── jdk8u202-b08-jre
 ├── distributions
@@ -94,7 +94,7 @@ Ballerina Tool updated successfully
 
 ## Managing your Ballerina Distributions
 
-After updating the Ballerina Tool, you can use the `bal dist` command of it to manage Ballerina distributions. The `bal help dist` output below shows all the details about the `ballerina dist` command.
+After updating the Ballerina Tool, you can use the `bal dist` command of it to manage Ballerina distributions. The `bal help dist` output below shows all the details about the `bal dist` command.
 
 ```sh
 → bal help dist
@@ -187,7 +187,7 @@ Use 'bal help dist' for more information on specific commands.
 The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
 ```sh
-→ ballerina dist remove 1.2.5
+→ bal dist remove 1.2.5
 Distribution '1.2.5' successfully removed
 ```
 
@@ -226,6 +226,6 @@ Dependency 'jdk8u202-b08-jre' is already available locally
 The `bal dist use <distribution>` command sets a particular distribution version as the active one.
 
 ```sh
-→ ballerina dist use 1.2.5
+→ bal dist use 1.2.5
 '1.2.5' is the current active distribution version
 ```

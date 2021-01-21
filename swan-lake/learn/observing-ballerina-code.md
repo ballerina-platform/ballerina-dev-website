@@ -71,34 +71,6 @@ When Ballerina observability is enabled, Ballerina runtime exposes internal metr
 monitoring and tracers will be published to Jaeger. Prometheus should be configured to scrape metrics from
 the metrics HTTP endpoint in Ballerina.
 
-Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
-pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
-
-#### Starting the Service Using a Flag
-
-The Ballerina service is observable with default settings when the `--b7a.observability.enabled=true` flag is used along with the Ballerina
-`run` command to start the service.
-This lets you collect the distributed tracing information with Jaeger and metrics information with Prometheus.
-
-```bash
-$ bal run hello_world_service.bal --b7a.observability.enabled=true
-
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
-ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-ballerina: started publishing tracers to Jaeger on localhost:5775
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-```
-
-Redirect the standard output to a file if you want to monitor logs.
-
-For example:
-
-```bash
-$ nohup ballerina run hello_world_service.bal --b7a.observability.enabled=true > ballerina.log &
-```
-
-#### Starting the Service Using a Configuration File
-
 Observability of Ballerina service can also be enabled from the configuration. Create a configuration file such as `ballerina.conf` and add the configuration below that starts metrics monitoring and distributed tracing with default 
 settings.
 
@@ -123,6 +95,9 @@ ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing tracers to Jaeger on localhost:5775
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
+
+Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
+pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
 
 Redirect the standard output to a file if you want to monitor logs.
 

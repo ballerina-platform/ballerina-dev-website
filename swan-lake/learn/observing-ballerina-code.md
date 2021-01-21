@@ -49,6 +49,8 @@ Create a Service as shown below and save it as `hello_world_service.bal`.
 ```ballerina
 import ballerina/http;
 import ballerina/log;
+import ballerinax/prometheus as _;
+import ballerinax/jaeger as _;
 
 service /hello on new http:Listener(9090) {
     
@@ -65,30 +67,43 @@ service /hello on new http:Listener(9090) {
 
 ### Step 4 - Observing the 'Hello World' Ballerina Service
 
-Observability is disabled by default and can be enabled by using the `--b7a.observability.enabled=true` flag or updating the configurations.
-
-When Ballerina observability is enabled, Ballerina runtime exposes internal metrics via an HTTP endpoint for metrics
-monitoring and tracers will be published to Jaeger. Prometheus should be configured to scrape metrics from
-the metrics HTTP endpoint in Ballerina.
-
-Observability of Ballerina service can also be enabled from the configuration. Create a configuration file such as `ballerina.conf` and add the configuration below that starts metrics monitoring and distributed tracing with default 
-settings.
+By default, Observability is not included in the executable created by Ballerina. It can be added
+by using the --observability-included build flag or by adding the following section to the `Ballerina.toml` file.
 
 ```toml
-[b7a.observability.metrics]
-# Flag to enable Metrics
-enabled=true
+[build-options]
+observabilityIncluded=true
+```
 
-[b7a.observability.tracing]
-# Flag to enable Tracing
+To include the Prometheus and Jaeger extensions into the executable,
+`ballerinax/prometheus` and `ballerinax/jaeger` modules need to be imported in your Ballerina code.
+
+```ballerina
+import ballerinax/prometheus as _;
+import ballerinax/jaeger as _;
+```
+
+Observability is disabled by default at runtime as well, and it can be enabled by adding
+the following runtime configurations to the `Config.toml` file.
+
+```toml
+[ballerina.observe]
 enabled=true
+```
+
+Alternatively, you can enable metrics and tracing selectively using the following configurations as well.
+
+```toml
+[ballerina.observe]
+metricsEnabled=true
+tracingEnabled=true
 ```
 
 The created configuration file can be passed to the Ballerina program with `--b7a.config.file` option along with
 the path of the configuration file.
 
 ```bash
-$ bal run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf
+$ BALCONFIGFILE=<path-to-conf>/Config.toml bal run --observability-included hello_world_service.bal
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
@@ -96,14 +111,17 @@ ballerina: started publishing tracers to Jaeger on localhost:5775
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
+By default, when Ballerina observability is enabled, Ballerina runtime exposes internal metrics via an HTTP endpoint for
+metrics monitoring and tracers will be published to Jaeger. Prometheus should be configured to scrape metrics from
+the metrics HTTP endpoint in Ballerina.
+
 Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
 pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
 
-Redirect the standard output to a file if you want to monitor logs.
+Therefore, redirect the standard output to a file if you want to monitor logs.
 
-For example:
 ```bash
-$ nohup ballerina run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf > ballerina.log &
+$ BALCONFIGFILE=<path-to-conf>/Config.toml nohup bal run --observability-included hello_world_service.bal > ballerina.log &
 ```
 
 ### Step 5 - Sending Few Requests

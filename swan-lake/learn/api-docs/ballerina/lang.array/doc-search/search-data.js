@@ -2,7 +2,7 @@ var searchData = {
   "modules": [
     {
       "id": "lang.array",
-      "description": "\u003cp\u003eThis module provides lang library list operations defined by the language specification 2020R1.\u003c/p\u003e",
+      "description": "This module provides lang library list operations defined by the language specification 2020R1.",
       "orgName": "ballerina",
       "version": "1.1.0"
     }
@@ -10,169 +10,169 @@ var searchData = {
   "classes": [],
   "functions": [
     {
-      "id": "length",
-      "description": "\u003cp\u003eReturns the number of members of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "iterator",
-      "description": "\u003cp\u003eReturns an iterator over an array.\u003c/p\u003e",
+      "id": "\u0027map",
+      "description": "Applies a function to each member of an array and returns an array of the results.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
     },
     {
       "id": "enumerate",
-      "description": "\u003cp\u003eReturns a new array consisting of index and member pairs.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "\u0027map",
-      "description": "\u003cp\u003eApplies a function to each member of an array and returns an array of the results.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "forEach",
-      "description": "\u003cp\u003eApplies a function to each member of an array.\u003c/p\u003e",
+      "description": "Returns a new array consisting of index and member pairs.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
     },
     {
       "id": "filter",
-      "description": "\u003cp\u003eSelects the members from an array for which a function returns true.\u003c/p\u003e",
+      "description": "Selects the members from an array for which a function returns true.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
     },
     {
-      "id": "reduce",
-      "description": "\u003cp\u003eCombines the members of an array using a combining function.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "slice",
-      "description": "\u003cp\u003eReturns a subarray starting from \u003ccode\u003estartIndex\u003c/code\u003e (inclusive) to \u003ccode\u003eendIndex\u003c/code\u003e (exclusive).\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "remove",
-      "description": "\u003cp\u003eRemoves a member of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "removeAll",
-      "description": "\u003cp\u003eRemoves all members of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "setLength",
-      "description": "\u003cp\u003eChanges the length of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "indexOf",
-      "description": "\u003cp\u003eReturns the index of first member of \u003ccode\u003earr\u003c/code\u003e that is equal to \u003ccode\u003eval\u003c/code\u003e if there is one.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "lastIndexOf",
-      "description": "\u003cp\u003eReturns the index of last member of \u003ccode\u003earr\u003c/code\u003e that is equal to \u003ccode\u003eval\u003c/code\u003e if there is one.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "reverse",
-      "description": "\u003cp\u003eReverses the order of the members of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "sort",
-      "description": "\u003cp\u003eSorts an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "pop",
-      "description": "\u003cp\u003eRemoves and returns the last member of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "push",
-      "description": "\u003cp\u003eAdds values to the end of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "shift",
-      "description": "\u003cp\u003eRemoves and returns first member of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "unshift",
-      "description": "\u003cp\u003eAdds values to the start of an array.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "toBase64",
-      "description": "\u003cp\u003eReturns the string that is the Base64 representation of an array of bytes.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "fromBase64",
-      "description": "\u003cp\u003eReturns the byte array that a string represents in Base64.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "toBase16",
-      "description": "\u003cp\u003eReturns the string that is the Base16 representation of an array of bytes.\u003c/p\u003e",
+      "id": "forEach",
+      "description": "Applies a function to each member of an array.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
     },
     {
       "id": "fromBase16",
-      "description": "\u003cp\u003eReturns the byte array that a string represents in Base16.\u003c/p\u003e",
+      "description": "Returns the byte array that a string represents in Base16.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "fromBase64",
+      "description": "Returns the byte array that a string represents in Base64.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "indexOf",
+      "description": "Returns the index of first member of `arr` that is equal to `val` if there is one.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "iterator",
+      "description": "Returns an iterator over an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "lastIndexOf",
+      "description": "Returns the index of last member of `arr` that is equal to `val` if there is one.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "length",
+      "description": "Returns the number of members of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "pop",
+      "description": "Removes and returns the last member of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "push",
+      "description": "Adds values to the end of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "reduce",
+      "description": "Combines the members of an array using a combining function.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "remove",
+      "description": "Removes a member of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "removeAll",
+      "description": "Removes all members of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "reverse",
+      "description": "Reverses the order of the members of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "setLength",
+      "description": "Changes the length of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "shift",
+      "description": "Removes and returns first member of an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "slice",
+      "description": "Returns a subarray starting from `startIndex` (inclusive) to `endIndex` (exclusive).",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "sort",
+      "description": "Sorts an array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "toBase16",
+      "description": "Returns the string that is the Base16 representation of an array of bytes.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "toBase64",
+      "description": "Returns the string that is the Base64 representation of an array of bytes.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
     },
     {
       "id": "toStream",
-      "description": "\u003cp\u003eReturns a stream from the given array.\u003c/p\u003e",
+      "description": "Returns a stream from the given array.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "unshift",
+      "description": "Adds values to the start of an array.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
@@ -183,22 +183,29 @@ var searchData = {
   "errors": [],
   "types": [
     {
-      "id": "Type",
-      "description": "\u003cp\u003eA type parameter that is a subtype of \u003ccode\u003eany|error\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.array",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
-    {
-      "id": "Type1",
-      "description": "\u003cp\u003eA type parameter that is a subtype of \u003ccode\u003eany|error\u003c/code\u003e.\u003c/p\u003e",
+      "id": "OrderedType",
+      "description": "Any ordered type is a subtype of this.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
     },
     {
       "id": "PureType",
-      "description": "\u003cp\u003eA type parameter that is a subtype of \u003ccode\u003eanydata|error\u003c/code\u003e.\u003c/p\u003e",
+      "description": "A type parameter that is a subtype of `anydata|error`.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "Type",
+      "description": "A type parameter that is a subtype of `any|error`.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "Type1",
+      "description": "A type parameter that is a subtype of `any|error`.",
       "moduleId": "lang.array",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
@@ -207,5 +214,14 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": [
+    {
+      "id": "SortDirection",
+      "description": "Direction for `sort` function.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    }
+  ]
 };

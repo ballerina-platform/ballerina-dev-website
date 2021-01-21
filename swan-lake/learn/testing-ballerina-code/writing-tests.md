@@ -639,8 +639,11 @@ function afterFunc() {
 
 ## Test Configurations
 
-Configurations for testing can be provided using the Config API. For information on using the config library, see
- [Config Module](/swan-lake/learn/api-docs/ballerina/config/index.html).
+Configurations for testing can be provided using Configurable Variables. The values for configurable
+variables can be provided in a file named `configuration.toml` located in the tests directory.
+
+For information on using Configurable variables, see
+ [Configurable Variables](swan-lake/learn/by-example/configurable.html).
 
 
 ## What's Next?

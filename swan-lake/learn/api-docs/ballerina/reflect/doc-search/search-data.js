@@ -2,26 +2,26 @@ var searchData = {
   "modules": [
     {
       "id": "reflect",
-      "description": "\u003cp\u003eThis module provides utility methods for obtaining reflective information about the Ballerina runtime.\u003c/p\u003e",
+      "description": "This module provides utility methods for obtaining reflective information about the Ballerina runtime.",
       "orgName": "ballerina",
-      "version": "0.5.4"
+      "version": "0.5.5"
     }
   ],
   "classes": [],
   "functions": [
     {
-      "id": "getServiceAnnotations",
-      "description": "\u003cp\u003eFunction to retrieve the service\u0027s annotation.\u003c/p\u003e",
+      "id": "getResourceAnnotations",
+      "description": "Function to retrieve the resource\u0027s annotation.",
       "moduleId": "reflect",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
-      "id": "getResourceAnnotations",
-      "description": "\u003cp\u003eFunction to retrieve the resource\u0027s annotation.\u003c/p\u003e",
+      "id": "getServiceAnnotations",
+      "description": "Function to retrieve the service\u0027s annotation.",
       "moduleId": "reflect",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     }
   ],
   "records": [],
@@ -31,5 +31,6 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

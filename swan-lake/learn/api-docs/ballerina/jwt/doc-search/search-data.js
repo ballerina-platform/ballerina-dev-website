@@ -2,186 +2,181 @@ var searchData = {
   "modules": [
     {
       "id": "jwt",
-      "description": "\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e",
+      "description": "This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.",
       "orgName": "ballerina",
-      "version": "1.0.6"
+      "version": "1.0.7"
     }
   ],
   "classes": [
     {
-      "id": "OutboundJwtAuthProvider",
-      "description": "\u003cp\u003eRepresents the outbound JWT auth provider, which is used to authenticate with an external endpoint by generating a JWT.\u003c/p\u003e",
+      "id": "ClientSelfSignedJwtAuthProvider",
+      "description": "Represents the client JWT Auth provider, which is used to authenticate with an external endpoint by generating\na self signed JWT.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "InboundJwtAuthProvider",
-      "description": "\u003cp\u003eRepresents the inbound JWT auth provider, which authenticates by validating a JWT.\u003c/p\u003e",
+      "id": "ListenerJwtAuthProvider",
+      "description": "Represents the listener JWT Auth provider, which authenticates by validating a JWT.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "functions": [
     {
-      "id": "validateJwt",
-      "description": "\u003cp\u003eValidates the given JWT string.\u003c/p\u003e",
+      "id": "decode",
+      "description": "Decodes the provided JWT string.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "decodeJwt",
-      "description": "\u003cp\u003eDecodes the given JWT string.\u003c/p\u003e",
+      "id": "issue",
+      "description": "Issues a JWT based on the provided header and payload.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "issueJwt",
-      "description": "\u003cp\u003eIssues a JWT based on the provided header and payload.\u003c/p\u003e",
+      "id": "validate",
+      "description": "Validates the provided JWT against the provided configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "buildHeaderString",
-      "description": "\u003cp\u003eBuilds the header string from the \u003ccode\u003ejwt:JwtHeader\u003c/code\u003e record.\u003c/p\u003e",
-      "moduleId": "jwt",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "buildPayloadString",
-      "description": "\u003cp\u003eBuilds the payload string from the \u003ccode\u003ejwt:JwtPayload\u003c/code\u003e record.\u003c/p\u003e",
-      "moduleId": "jwt",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "records": [
     {
-      "id": "JwtHeader",
-      "description": "\u003cp\u003eRepresents JWT header.\u003c/p\u003e",
+      "id": "ClientConfiguration",
+      "description": "Represents the configurations of the client used to call the JWKs endpoint.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "JwtPayload",
-      "description": "\u003cp\u003eRepresents JWT payload.\u003c/p\u003e",
+      "id": "Header",
+      "description": "Represents JWT header.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "JwtValidatorConfig",
-      "description": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e",
+      "id": "IssuerConfig",
+      "description": "Represents JWT issuer configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "JwksConfig",
-      "description": "\u003cp\u003eRepresents the JWKs endpoint configurations.\u003c/p\u003e",
+      "description": "Represents the JWKs endpoint configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "ClientConfiguration",
-      "description": "\u003cp\u003eRepresents the configurations of the client used to call the JWKs endpoint.\u003c/p\u003e",
+      "id": "KeyStoreConfig",
+      "description": "Represents JWT key store configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "Payload",
+      "description": "Represents JWT payload.",
+      "moduleId": "jwt",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "SecureSocket",
-      "description": "\u003cp\u003eRepresents the SSL/TLS configurations.\u003c/p\u003e",
+      "description": "Represents the SSL/TLS configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "JwtTrustStoreConfig",
-      "description": "\u003cp\u003eRepresents JWT trust store configurations.\u003c/p\u003e",
+      "id": "TrustStoreConfig",
+      "description": "Represents JWT trust store configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
-      "id": "JwtIssuerConfig",
-      "description": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e",
+      "id": "ValidatorConfig",
+      "description": "Represents JWT validator configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "JwtKeyStoreConfig",
-      "description": "\u003cp\u003eRepresents JWT key store configurations.\u003c/p\u003e",
-      "moduleId": "jwt",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "constants": [
     {
-      "id": "RS256",
-      "description": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA256\u003c/code\u003e algorithm\u003c/p\u003e\n",
+      "id": "NONE",
+      "description": "Unsecured JWTs (no signing)\n",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "RS256",
+      "description": "The `RSA-SHA256` algorithm\n",
+      "moduleId": "jwt",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "RS384",
-      "description": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA384\u003c/code\u003e algorithm\u003c/p\u003e\n",
+      "description": "The `RSA-SHA384` algorithm\n",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "RS512",
-      "description": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA512\u003c/code\u003e algorithm\u003c/p\u003e\n",
+      "description": "The `RSA-SHA512` algorithm\n",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "NONE",
-      "description": "\u003cp\u003eUnsecured JWTs (no signing)\u003c/p\u003e\n",
-      "moduleId": "jwt",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "errors": [
     {
-      "id": "JwtError",
-      "description": "\u003cp\u003eRepresents the JWT distinct error\u003c/p\u003e\n",
+      "id": "Error",
+      "description": "Represents the JWT error type with details.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "JwtError",
+      "description": "Represents the JWT distinct error\n",
+      "moduleId": "jwt",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.7"
     }
   ],
   "types": [
     {
-      "id": "JwtSigningAlgorithm",
-      "description": "\u003cp\u003eThe key algorithms supported by crypto module.\u003c/p\u003e",
+      "id": "SigningAlgorithm",
+      "description": "The key algorithms supported by crypto module.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents the JWT error type with details.\u003c/p\u003e",
-      "moduleId": "jwt",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": [
+    {
+      "id": "HttpVersion",
+      "description": "Represents HTTP versions.",
+      "moduleId": "jwt",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.7"
+    }
+  ]
 };

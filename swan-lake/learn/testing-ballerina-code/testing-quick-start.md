@@ -18,23 +18,21 @@ redirect_from:
 
 To get started, let's write a simple Ballerina function and test it.
 
-1. First, let’s create a Ballerina package. Use the `ballerina new` command to create the package.
+1. First, let’s create a Ballerina package. Use the `bal new` command to create the package.
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
-    The following is the structure of a standard package with the default module. In this example, the default module has the
-     ***main.bal*** source file and the ***main_test.bal*** test file.
+    A **tests** directory needs to be created to store the test files. In this example, the ***main_test.bal*** test file needs to be
+    added within a tests directory. 
 
     ```bash
     package-directory/
         Ballerina.toml
         main.bal
-        [resources]
         tests/
             main_test.bal
-            [resources]
     ```
 
-2. Now, let’s write the function, which handles sending a get request in the ***main.bal*** file of the default module.
+2. Let's write a function which handles sending a get request in the ***main.bal*** file of the default module.
  
     ```ballerina
     // main.bal

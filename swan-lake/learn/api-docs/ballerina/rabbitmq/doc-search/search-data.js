@@ -2,153 +2,168 @@ var searchData = {
   "modules": [
     {
       "id": "rabbitmq",
-      "description": "\u003cp\u003eThis module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1).\u003c/p\u003e",
+      "description": "This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1).",
       "orgName": "ballerinax",
-      "version": "1.0.6"
+      "version": "1.0.7"
     }
   ],
   "classes": [],
   "functions": [],
   "records": [
     {
-      "id": "Message",
-      "description": "\u003cp\u003eRepresents the message, which a RabbitMQ server sends to its subscribed services.\u003c/p\u003e",
-      "moduleId": "rabbitmq",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
-    },
-    {
       "id": "BasicProperties",
-      "description": "\u003cp\u003eBasic properties of the message - routing headers etc.\u003c/p\u003e",
+      "description": "Basic properties of the message - routing headers etc.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "QueueConfig",
-      "description": "\u003cp\u003eAdditional configurations used to declare a queue.\u003c/p\u003e",
-      "moduleId": "rabbitmq",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "ExchangeConfig",
-      "description": "\u003cp\u003eAdditional configurations used to declare an exchange.\u003c/p\u003e",
-      "moduleId": "rabbitmq",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "ConnectionConfig",
-      "description": "\u003cp\u003eConfigurations used to create a \u003ccode\u003erabbitmq:Connection\u003c/code\u003e.\u003c/p\u003e",
+      "description": "Configurations used to create a `rabbitmq:Connection`.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "Credentials",
+      "description": "Configurations related to authentication.",
+      "moduleId": "rabbitmq",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "ExchangeConfig",
+      "description": "Additional configurations used to declare an exchange.",
+      "moduleId": "rabbitmq",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "Message",
+      "description": "Represents the message, which a RabbitMQ server sends to its subscribed services.",
+      "moduleId": "rabbitmq",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "QosSettings",
-      "description": "\u003cp\u003eQoS settings to limit the number of unacknowledged\nmessages on a channel.\u003c/p\u003e",
+      "description": "QoS settings to limit the number of unacknowledged\nmessages on a channel.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "QueueConfig",
+      "description": "Additional configurations used to declare a queue.",
+      "moduleId": "rabbitmq",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "RabbitMQServiceConfig",
-      "description": "\u003cp\u003eConfigurations required to create a subscription.\u003c/p\u003e",
+      "description": "Configurations required to create a subscription.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "SecureSocket",
+      "description": "Configurations for facilitating secure connections.",
+      "moduleId": "rabbitmq",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.7"
     }
   ],
   "constants": [
     {
       "id": "DIRECT_EXCHANGE",
-      "description": "\u003cp\u003eConstant for the RabbitMQ Direct Exchange type.\u003c/p\u003e",
+      "description": "Constant for the RabbitMQ Direct Exchange type.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "FANOUT_EXCHANGE",
-      "description": "\u003cp\u003eConstant for the RabbitMQ Fan-out Exchange type.\u003c/p\u003e",
+      "description": "Constant for the RabbitMQ Fan-out Exchange type.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "TOPIC_EXCHANGE",
-      "description": "\u003cp\u003eConstant for the RabbitMQ Topic Exchange type.\u003c/p\u003e",
+      "description": "Constant for the RabbitMQ Topic Exchange type.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "errors": [
     {
-      "id": "RabbitMqError",
-      "description": "\u003cp\u003eRepresents the RabbitMQ module related errors.\u003c/p\u003e",
+      "id": "Error",
+      "description": "The union of the RabbitMQ module related errors.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
+    },
+    {
+      "id": "RabbitMqError",
+      "description": "Represents the RabbitMQ module related errors.",
+      "moduleId": "rabbitmq",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.7"
     }
   ],
   "types": [
     {
       "id": "ExchangeType",
-      "description": "\u003cp\u003eTypes of exchanges supported by the Ballerina RabbitMQ Connector.\u003c/p\u003e",
+      "description": "Types of exchanges supported by the Ballerina RabbitMQ Connector.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
-    },
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eThe union of the RabbitMQ module related errors.\u003c/p\u003e",
-      "moduleId": "rabbitmq",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "clients": [
     {
       "id": "Caller",
-      "description": "\u003cp\u003eProvides the functionality to manipulate the messages received by the consumer services.\u003c/p\u003e",
+      "description": "Provides the functionality to manipulate the messages received by the consumer services.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     },
     {
       "id": "Client",
-      "description": "\u003cp\u003eThe Ballerina interface to provide AMQP Channel related functionality.\u003c/p\u003e",
+      "description": "The Ballerina interface to provide AMQP Channel related functionality.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "listeners": [
     {
       "id": "Listener",
-      "description": "\u003cp\u003eBallerina RabbitMQ Message Listener.\u003c/p\u003e",
+      "description": "Ballerina RabbitMQ Message Listener.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "annotations": [
     {
       "id": "ServiceConfig",
-      "description": "\u003cp\u003eThe annotation, which is used to configure the subscription.\u003c/p\u003e",
+      "description": "The annotation, which is used to configure the subscription.",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
   ],
   "abstractObjects": [
     {
       "id": "Service",
-      "description": "\u003cp\u003eThe RabbitMQ service type\u003c/p\u003e\n",
+      "description": "The RabbitMQ service type\n",
       "moduleId": "rabbitmq",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.6"
+      "moduleVersion": "1.0.7"
     }
-  ]
+  ],
+  "enums": []
 };

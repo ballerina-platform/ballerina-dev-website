@@ -25,7 +25,7 @@ The code generation tool can produce `ballerina stub` and `ballerina service/cli
 You can generate Ballerina source code using the following command:
 
 ```
-./ballerina grpc --input <proto-file-path> [--output <path>] [--mode client | service]
+$ bal grpc --input <proto-file-path> [--output <path>] [--mode client | service]
 ```
 
 ### CLI Command Options
@@ -44,7 +44,7 @@ If the package is not specified, the output will be written to a 'temp' director
 
 ## Sample
 
-The below example shows how you can generate Ballerina source code from the following Protocol Buffers definition (in the `helloworld_service.proto` file).
+The below example shows how you can generate Ballerina source code from the following Protocol Buffer's definition (in the `helloworld_service.proto` file).
 
 ```proto
 syntax = "proto3";
@@ -67,7 +67,7 @@ message HelloResponse {
 ```
 $ bal grpc --input helloworld_service.proto --mode service --output service
 ```
-Once you execute the command, the service template file (`helloWorld_sample_service.bal`) is generated inside the service directory.
+Once you execute the command, the stub file (`helloworld_service_pb.bal`) and the service template file (`helloWorld_sample_service.bal`) are generated inside the service directory.
 > **Note:** If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.
 
 
@@ -75,7 +75,7 @@ Once you execute the command, the service template file (`helloWorld_sample_serv
 ```
 $ bal grpc --input helloworld_service.proto --mode client --output client
 ```
-Once you execute the command, the stub file(`helloworld_service_pb.bal`) and the service template file (`helloWorld_sample_client.bal`) are generated inside the client directory.
+Once you execute the command, the stub file (`helloworld_service_pb.bal`) and the client template file (`helloWorld_sample_client.bal`) are generated inside the client directory.
 
 
 * Execute the below command to generate only the client/service stub.

@@ -32,7 +32,7 @@ service greetingService on new http:Listener(8080) {
 }
 ```
 
-* Each annotation attribute (i.e., key-value pairs) should block indent on its own line..
+* Each annotation attribute (i.e., key-value pairs) should block indent on its own line.
   
 **Example,**
   
@@ -109,21 +109,21 @@ public function taintedReturn2() returns
 ```
   
 * Add a single space between the `//` and the content.
-* If the comment is in its own line, then indent it considering its context (i.e., top level or in a block).
+* If the comment is in its own line, then indent it considering its context (i.e., top-level or in a block).
   
 **Example,**
 
 ```ballerina
-// This is a top level comment.
+// This is a top-level comment.
 
 function func1() {
-    // This is a block level comment. 
+    // This is a block-level comment. 
 }
 
 function func2() {
     if (true) {
         if (true) {
-            // This is a nested if block level comment.
+            // This is a nested if block-level comment.
         }
     }
 }
@@ -184,3 +184,8 @@ service greet on new http:Listener(8080) {
     resource function sayHello(http:Caller caller, http:Request request) {...}
 }
 ```
+
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
+
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

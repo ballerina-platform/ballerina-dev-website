@@ -11,18 +11,16 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9095</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9095</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Respond with the message &quot;Successful&quot; for each request.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Successful&quot;</span><span class="p">);</span>
+        <span class="c1">// Log the `error` in case of a failure.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -37,7 +35,7 @@ redirect_from:
                             <h2>Access Logs</h2>
                             <p><p>Ballerina supports HTTP access logs for HTTP services. The access log format used is the combined log format.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -101,6 +99,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -122,15 +122,19 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/hello&quot;
-}
-service helloService on new http:Listener(9095) {
-    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/&quot;
-    }
-    resource function hello(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(9095) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request request) {
 </code></pre></div>
 
                                 </td>
@@ -162,7 +166,7 @@ service helloService on new http:Listener(9095) {
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
-            log:printError(&quot;Error occurred while responding&quot;, result);
+            log:printError(&quot;Error occurred while responding&quot;, err = result);
         }
     }
 }
@@ -204,10 +208,10 @@ service helloService on new http:Listener(9095) {
                                     <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
 # `.bal` file and do one of the following depending on whether you want the logs to be logged on the console, or in a file.
 # Run the service by setting the `--b7a.http.accesslog.console=true` property to log to the console.
-ballerina run http_access_logs.bal --b7a.http.accesslog.console=true 
+bal run http_access_logs.bal --b7a.http.accesslog.console=true 
 ballerina: HTTP access log enabled
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
-127.0.0.1 - - [30/Oct/2018:11:23:08 +0530] &quot;GET /hello HTTP/1.1&quot; 200 10 &quot;-&quot; &quot;curl/7.58.0&quot;
+0:0:0:0:0:0:0:1 - - [15/Dec/2020:16:56:09 +0530] &quot;GET /hello HTTP/1.1&quot; 200 10 &quot;-&quot; &quot;curl/7.54.0&quot;
 </code></pre></div>
 
                                 </td>
@@ -220,7 +224,7 @@ ballerina: HTTP access log enabled
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Or, run the service by setting `--b7a.http.accesslog.path=path/to/file.txt` to log to the specified file.
-ballerina run http_access_logs.bal --b7a.http.accesslog.path=path/to/file.txt 
+bal run http_access_logs.bal --b7a.http.accesslog.path=path/to/file.txt 
 ballerina: HTTP access log enabled
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 </code></pre></div>

@@ -254,7 +254,7 @@ Object mapObj = yaml.load(fileInputStream);
 The `org.yaml.snakeyaml.Yaml.load(InputStream is)` is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.  
 
 ####  Printing the Returned Map Instance
-You can print the content of the Map instance in the the standard out as follows. 
+You can print the content of the Map instance in the standard out as follows. 
 ```ballerina
 io:println(mapObj);
 ```
@@ -394,9 +394,9 @@ class ArrayDeque {
 ```
 If there are multiple classes with the same simple name, they need to be generated using a single execution. The tool will then apply a numerical identifier at the end of duplicated object names. This could be manually changed into something meaningful if required.
 
-The format for specifying inner classes using the command is `<package-name>.ClassName$InnerClassName`. The dollar sign might have to be escaped using the blackslash key.
+The format for specifying inner classes using the command is `<package-name>.ClassName$InnerClassName`. The dollar sign might have to be escaped using the backslash key.
 
-E.g. The command to generate bindings for `java.lang.Character.Subset` class will be as follows.
+E.g., The command to generate bindings for `java.lang.Character.Subset` class will be as follows.
 ```sh
 > ballerina bindgen java.lang.Character\$Subset
 ```
@@ -404,7 +404,7 @@ E.g. The command to generate bindings for `java.lang.Character.Subset` class wil
 When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the Ballerina bindings generated.
 
 #### Constructors
-Constructors of Java classes will be mapped to functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exists multiple constructors, they will be suffixed with an auto-incremented number.
+Constructors of Java classes will be mapped to functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there are multiple constructors, they will be suffixed with an auto-incremented number.
 
 E.g., Generated constructors of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
@@ -422,7 +422,7 @@ function newArrayDeque3(Collection arg0) returns ArrayDeque {
 ```
 
 #### Methods
-All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there exists overloaded methods, a numeric suffix will be appended at the end of the name.
+All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there are overloaded methods, a numeric suffix will be appended at the end of the name.
 
 E.g., Some of the generated instance methods of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
@@ -471,9 +471,9 @@ function java_io_FileInputStream_close(handle receiver) returns error? = @java:M
 ```
 
 #### Dependency Objects
-When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the bindgen tool generates an empty Ballerina binding object to represent each one of these classes. This will represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes are required later, the bindgen tool could be re-run to generate the Ballerina bindings.
+When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the bindgen tool generates an empty Ballerina binding object to represent each one of these classes. This will represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the bindgen tool could be re-run to generate the Ballerina bindings.
 
-E.g., Generated dependency object representing `java.util.List` will be as follows.
+E.g., The generated dependency object representing `java.util.List` will be as follows.
 ```ballerina
 public class List {
  
@@ -531,7 +531,7 @@ FileInputStream fileInputStream = <FileInputStream>check java:cast(inputStream, 
 ### Java Exceptions to Ballerina Errors
 When generating Ballerina bindings, Java exceptions will be mapped onto Ballerina errors. They will have identical names as that of the corresponding Java exceptions and these will be generated inside the `ballerina_bindings/utils/error_types` directory. Instead of returning a generic error from the Java side, the bindings will return a more meaningful error representing the exact Java exception.
 
-E.g. The following `IOException` will be returned from the `read()` function in the `java.io.FileInputStream` Ballerina binding object.
+E.g., The following `IOException` will be returned from the `read()` function in the `java.io.FileInputStream` Ballerina binding object.
 
 ```ballerina
 function read() returns int|IOException {
@@ -630,7 +630,7 @@ artifactId = "mysql-connector-java"
 version = "<version>"
 ```
 
-If your package has only the default root module, then you can attach all the JAR file dependencies to your default root module as the best practise.
+If your package has only the default root module, then you can attach all the JAR file dependencies to your default root module as the best practice.
 
 If your package is a Ballerina library package, then you should specify the JAR file dependencies in each Ballerina module if that module depends on the JAR file.
 
@@ -654,7 +654,7 @@ Ballerina also allows you to define a function without a function body and marks
 function doSomething(int i) returns string = external;
 ```
 
-Now, let’s see how you can link this function with a foriegn function. 
+Now, let’s see how you can link this function with a foreign function. 
 
 ```ballerina
 import ballerina/java;
@@ -665,7 +665,7 @@ function doSomething(int i) returns string = @java:Method {
 } external;
 ```
 
-The `@java:Method` annotation instructs the jBallerina compiler to link with the `doSomethingInJava` static method in the Java class `a.b.c.Foo`. There exists a set of annotations and other utilities available in the `ballerina/java` module to make Java interoperability work.  This guide covers most of them.
+The `@java:Method` annotation instructs the jBallerina compiler to link with the `doSomethingInJava` static method in the Java class `a.b.c.Foo`. There are a set of annotations and other utilities available in the `ballerina/java` module to make Java interoperability work.  This guide covers most of them.
 
 ### The Handle Type
 The handle type describes a reference to an externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.
@@ -689,7 +689,7 @@ function randomUUID() returns handle = @java:Method {
 
 In Java, you can assign the `null` value to any variable of a reference type. Therefore, a `handle` type variable may also refer to the Java `null`.
 
-The following section describes various aspects of Java interoperability in Ballerina. You can copy and paste following examples into a .bal file and run it using the `ballerina run <file_name.bal>` command.
+The following section describes various aspects of Java interoperability in Ballerina. You can copy and paste the following examples into a `.bal` file and run it using the `ballerina run <file_name.bal>` command.
 
 ## Calling Java Programs from Ballerina
 The following subsections explain how to call Java code from Ballerina. 
@@ -978,7 +978,7 @@ public function main() {
 ```
 
 #### Calling Overloaded Java Methods
-The “Instantiate Java classes” section presented about how to deal with overloaded constructors in the. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer class. Here, is a subset of those methods. 
+The “Instantiate Java classes” section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer class. Here, is a subset of those methods. 
 
 ```java
 StringBuffer append(boolean b);
@@ -1023,7 +1023,7 @@ function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Meth
 ```
 
 ### Java Exceptions as Ballerina Errors
-A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practise is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java. 
+A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practice is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java. 
 
 Errors in Ballerina belong to the built-int type `error`. The error type can be considered as a distinct type from all other types: The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see BBEs. 
 
@@ -1034,7 +1034,7 @@ Java interoperability layer in Ballerina handles checked exceptions differently 
 Java unchecked exceptions
 If the linked Java method throws an unchecked exception, then the corresponding Ballerina function will complete abruptly by raising a panic.
  
-The following example tries to pop an element out of an empty queue. The `pop` method in the `ArrayDeque` class throws an unchecked  `java.util.NoSuchElementException` exception in such cases. This exception will cause the Ballerina `pop` function  to raise a panic. 
+The following example tries to pop an element out of an empty queue. The `pop` method in the `ArrayDeque` class throws an unchecked  `java.util.NoSuchElementException` exception in such cases. This exception will cause the Ballerina `pop` function to raise a panic. 
 
 ```ballerina
 import ballerina/java;
@@ -1077,7 +1077,7 @@ public function main() {
 } 
 ```
 #### Java Checked Exceptions
-Let’s see how you can call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of it’s return type. 
+Let’s see how you can call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of its return type. 
 
 The `java.util.zip.ZipFile` class is used to read entries in a ZIP file. There are many constructors in this class. Here, the constructor that takes the file name as an argument is used. 
 
@@ -1105,7 +1105,7 @@ Now, let’s briefly look at how a Java exception is converted to a Ballerina er
 
 The `reason`:
 	* This is a string identifier for the category of error.
-	* In this case, reason value is set to the fully-qualified Java class name of the exception. 
+	* In this case, the reason value is set to the fully-qualified Java class name of the exception. 
 		* Unchecked: Class name of of the thrown unchecked exception
 		* Checked: Class name of the exception that is declared in the method signature
 The `detail`:
@@ -1115,7 +1115,7 @@ The `detail`:
 ### Null Safety
 Ballerina provides strict null safety compared to Java with optional types.  The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type. 
 
-As explained above, Ballerina handle values cannot be created in Ballerina code. They are created and returned by foriegn functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
+As explained above, Ballerina handle values cannot be created in Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
 
 Let’s look at an example, which deals with Java null. The following code uses the `peek` method in the `ArrayDeque` class. `Peek` retrieves but does not remove the head of the queue or returns null if the queue is empty. 
 
@@ -1165,7 +1165,7 @@ public function main() {
 }
 ```
 
-There are situations in which you need to pass a Java null to a method or store in a data structure. In such situations, you can create a handle value that refers to a Java null as follows. 
+There are situations in which you need to pass a Java null to a method or store it in a data structure. In such situations, you can create a handle value that refers to a Java null as follows. 
 
 ```ballerina
 handle nullValue = java:createNull();
@@ -1195,7 +1195,7 @@ Ballerina type | Java type | Notes
 handle | Any reference type | As specified by the Java method/constructor signature
 boolean | boolean | 
 byte | byte, short, char, int, long, float, double | Widening conversion from byte -> short, char, int, long, float, double
-int | byte, char, short, int, long | Narrowing conversion when int -> byte, char, short and int
+int | byte, char, short, int, long | Narrowing conversion when int -> byte, char, short, and int
 float | byte, char, short, int, long, float, double | Narrowing conversion when float -> byte, char, short, int, long, float
 
 

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Quick Tour
-description: A quick tour of the Ballerina programming language, including writing, running and invoking an HTTP service and using a client to interact with a service.
+description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
 permalink: /swan-lake/learn/getting-started/quick-tour/
 active: quick-tour
@@ -9,6 +9,8 @@ intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
   - /swan-lake/learn/quick-tour
   - /swan-lake/learn/quick-tour/
+  - /swan-lake/learn/getting-started/
+  - /swan-lake/learn/getting-started
 ---
 
 ## Installing Ballerina
@@ -28,14 +30,14 @@ import ballerina/io;
 
 # A service representing a network-accessible API
 # bound to port `9090`.
-service hello on new http:Listener(9090) {
+service /hello on new http:Listener(9090) {
 
     # A resource representing an invokable API method
     # accessible at `/hello/sayHello`.
     #
     # + caller - the client invoking this resource
     # + request - the inbound request
-    resource function sayHello(http:Caller caller, http:Request request) {
+    resource function get sayHello(http:Caller caller, http:Request request) {
 
         // Sends a response back to the caller.
         error? result = caller->respond("Hello Ballerina!");
@@ -109,7 +111,7 @@ public function main() returns @tainted error? {
 
 In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `hello` service.
 
-> **Tip:** Make sure the `hello` service is [up and running](#running-the-ballerina-service).
+> **Tip:** Make sure the `hello` service is [up and running](#running-the-service).
 
 ```bash
 ballerina run hello_client.bal

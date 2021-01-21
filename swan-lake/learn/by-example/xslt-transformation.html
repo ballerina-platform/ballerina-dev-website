@@ -11,13 +11,20 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Gets an `XML` value, which needs to be transformed.</span>
     <span class="kt">xml</span> <span class="nx">sourceXml</span> <span class="p">=</span> <span class="nx">getXml</span><span class="p">();</span>
+    <span class="c1">// Gets an `XSL` style sheet represented in an XML value.</span>
     <span class="kt">xml</span> <span class="nx">xsl</span> <span class="p">=</span> <span class="nx">getXsl</span><span class="p">();</span>
+    <span class="c1">// [Transforms](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/xslt/functions#transform) the `XML` content to another format.</span>
     <span class="kt">xml</span> <span class="nx">target</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">xslt</span><span class="p">:</span><span class="nx">transform</span><span class="p">(</span><span class="nx">sourceXml</span><span class="p">,</span> <span class="nx">xsl</span><span class="p">);</span>
     
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transformed XML: &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Returns an `XML` element, which needs to be transformed.</span>
 <span class="kd">function</span> <span class="nx">getXml</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;samples&gt;</span>
 <span class="s">                    &lt;song&gt;</span>
@@ -34,6 +41,8 @@ redirect_from:
 <span class="s">                    &lt;/song&gt;</span>
 <span class="s">                &lt;/samples&gt;`</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Returns an `XSL` style sheet represented by an XML element.</span>
 <span class="kd">function</span> <span class="nx">getXsl</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kt">xml</span>
         <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot; </span>
@@ -74,7 +83,7 @@ redirect_from:
                             <h2>XSLT Transformation</h2>
                             <p><p>This example demonstrates how XML content can be transformed to HTML using a given XSL transformation.
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/index.html">XSLT module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/xslt/">XSLT module</a>.</p>
 </p>
 
                         </td>
@@ -82,9 +91,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="task-service-timer.html">
+                                    <a class="prev" href="uuid.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Task Service Timer</p>
+                                        <p>UUID</p>
                                     </a>
                                 </div>
                                  
@@ -226,7 +235,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/functions.html#transform">Transforms</a> the <code>XML</code> content to another format.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/xslt/functions#transform">Transforms</a> the <code>XML</code> content to another format.</p>
 
                                         </div>
                                     </div>
@@ -332,8 +341,8 @@ import ballerina/xslt;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command below.
-ballerina run xslt_transformation.bal
+# `.bal` file and run the `bal run` command below.
+bal run xslt_transformation.bal
 Transformed XML: &lt;html&gt;
 &lt;body&gt;
 &lt;h2&gt;All time favourites&lt;/h2&gt;

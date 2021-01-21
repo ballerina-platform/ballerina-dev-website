@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-11-30</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2021-01-20</h1>
 <p>
 Primary contributors:
 </p>
@@ -191,6 +191,8 @@ mailing list.
 </li>
 <li>5.7.5 <a href="#section_5.7.5">RawTemplate</a>
 </li>
+<li>5.7.6 <a href="#section_5.7.6">RetryManager</a>
+</li>
 </ul>
 </li>
 <li>5.8 <a href="#section_5.8">Abstract operations</a><ul>
@@ -358,6 +360,8 @@ mailing list.
 </li>
 </ul>
 </li>
+<li>6.37 <a href="#section_6.37">Transactional expression</a>
+</li>
 </ul>
 </li>
 <li>7. <a href="#actions_statements">Actions and statements</a><ul>
@@ -366,13 +370,15 @@ mailing list.
 <li>7.2 <a href="#section_7.2">Threads and strands</a>
 </li>
 <li>7.3 <a href="#section_7.3">Function bodies</a><ul>
-<li>7.3.1 <a href="#section_7.3.1">Workers</a>
+<li>7.3.1 <a href="#section_7.3.1">Function parameters</a>
 </li>
-<li>7.3.2 <a href="#section_7.3.2">Expression-bodied functions</a>
+<li>7.3.2 <a href="#section_7.3.2">Workers</a>
 </li>
-<li>7.3.3 <a href="#section_7.3.3">External functions</a>
+<li>7.3.3 <a href="#section_7.3.3">Expression-bodied functions</a>
 </li>
-<li>7.3.4 <a href="#isolated_functions">Isolated functions</a>
+<li>7.3.4 <a href="#section_7.3.4">External functions</a>
+</li>
+<li>7.3.5 <a href="#isolated_functions">Isolated functions</a>
 </li>
 </ul>
 </li>
@@ -438,23 +444,51 @@ mailing list.
 </li>
 <li>7.19 <a href="#match_statement">Match statement</a>
 </li>
-<li>7.20 <a href="#section_7.20">Foreach statement</a>
+<li>7.20 <a href="#section_7.20">Loops</a><ul>
+<li>7.20.1 <a href="#section_7.20.1">Foreach statement</a>
 </li>
-<li>7.21 <a href="#section_7.21">While statement</a>
+<li>7.20.2 <a href="#section_7.20.2">While statement</a>
 </li>
-<li>7.22 <a href="#section_7.22">Continue statement</a>
+<li>7.20.3 <a href="#section_7.20.3">Continue statement</a>
 </li>
-<li>7.23 <a href="#section_7.23">Break statement</a>
+<li>7.20.4 <a href="#section_7.20.4">Break statement</a>
 </li>
-<li>7.24 <a href="#lock_statement">Lock statement</a>
+</ul>
 </li>
-<li>7.25 <a href="#section_7.25">On fail clause</a>
+<li>7.21 <a href="#lock_statement">Lock statement</a>
 </li>
-<li>7.26 <a href="#section_7.26">Fail statement</a>
+<li>7.22 <a href="#section_7.22">Fail and retry</a><ul>
+<li>7.22.1 <a href="#section_7.22.1">Fail statement</a>
 </li>
-<li>7.27 <a href="#section_7.27">Panic statement</a>
+<li>7.22.2 <a href="#section_7.22.2">On fail clause</a>
 </li>
-<li>7.28 <a href="#section_7.28">Return statement</a>
+<li>7.22.3 <a href="#section_7.22.3">Retry statement</a>
+</li>
+</ul>
+</li>
+<li>7.23 <a href="#transactions">Transactions</a><ul>
+<li>7.23.1 <a href="#section_7.23.1">Transaction manager</a><ul>
+<li>7.23.1.1 <a href="#section_7.23.1.1">Begin operation</a>
+</li>
+<li>7.23.1.2 <a href="#section_7.23.1.2">Commit operation</a>
+</li>
+<li>7.23.1.3 <a href="#section_7.23.1.3">Rollback operation</a>
+</li>
+</ul>
+</li>
+<li>7.23.2 <a href="#section_7.23.2">Transaction statement</a>
+</li>
+<li>7.23.3 <a href="#section_7.23.3">Retry transaction statement</a>
+</li>
+<li>7.23.4 <a href="#section_7.23.4">Commit action</a>
+</li>
+<li>7.23.5 <a href="#section_7.23.5">Rollback statement</a>
+</li>
+</ul>
+</li>
+<li>7.24 <a href="#section_7.24">Panic statement</a>
+</li>
+<li>7.25 <a href="#section_7.25">Return statement</a>
 </li>
 </ul>
 </li>
@@ -536,8 +570,8 @@ unusual aspects that make it particularly suitable for its intended purpose.
 <p>
 First, it provides language constructs specifically for consuming and providing
 network services. Future versions of Ballerina will add language constructs for
-other middleware functionality such as event stream processing, distributed
-transactions and reliable messaging; this is described in more detail in <a href="#planned_future_functionality">Appendix C</a>.
+other middleware functionality such as event stream processing and reliable
+messaging; this is described in more detail in <a href="#planned_future_functionality">Appendix C</a>.
 </p>
 <p>
 Second, its abstractions and syntax for concurrency and network interaction have
@@ -1433,7 +1467,7 @@ a two's complement representation).
 </p>
 <p>
 The <a href="#byte_type"><code>byte</code> type</a> is a subtype of
-<code>int</code>. The <code>lang.int</code> lang library module are also
+<code>int</code>. The <code>lang.int</code> lang library module also
 provides <a href="#built-in_subtypes">built-in subtypes</a> for signed and
 unsigned integers representable in 8, 16 and 32 bits.
 </p>
@@ -2137,7 +2171,7 @@ is an exclusive-record-type-descriptor with a record-rest-descriptor is called
 <em>closed</em>.
 </p>
 <p>
-If a record type descriptor is closed and every individual-type-descriptor
+If a record type descriptor is closed and every individual-field-descriptor
 specifies <code>readonly</code>, then it describes a type that is a subtype of
 <code>readonly</code>: a shape belongs to the type only if its read-only bit is
 set.
@@ -2169,7 +2203,7 @@ overridden field descriptor. It is an error for an
 <code>record-type-descriptor</code> to directly or indirectly include itself. A
 <code>record-rest-descriptor</code> in the including type overrides any
 <code>record-rest-descriptor</code> in the included type. For the purposes of
-resolving a <code>record-type-reference</code>, a including or included type
+resolving a <code>record-type-inclusion</code>, an including or included type
 that is an <code>inclusive-record-type-descriptor</code> is treated as if it
 were the equivalent <code>exclusive-record-type-descriptor</code> with an
 explicit <code>record-rest-descriptor</code>.
@@ -2321,8 +2355,14 @@ a non-empty set of type-ids.
 <section>
 <h4 id="functions">5.5.2 Functions</h4>
 
-<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> [<a href="#function-signature"><span class="ntref">function-signature</span></a>]
+<pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> :=
+   <a href="#function-quals"><span class="ntref">function-quals</span></a> <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
+   | [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code>
+<span class="ntdfn" id="function-quals">function-quals</span> :=
+   <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>]
 <span class="ntdfn" id="isolated-qual">isolated-qual</span> := <code>isolated</code>
+<span class="ntdfn" id="transactional-qual">transactional-qual</span> := <code>transactional</code>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
 </pre>
 <p>
@@ -2333,21 +2373,24 @@ an argument list as input and returns a value as output.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="param-list">param-list</span> :=
-   <a href="#required-params"><span class="ntref">required-params</span></a> [<code>,</code> <a href="#defaultable-params"><span class="ntref">defaultable-params</span></a>] [<code>,</code> <a href="#rest-param"><span class="ntref">rest-param</span></a>]
-   | <a href="#defaultable-params"><span class="ntref">defaultable-params</span></a> [<code>,</code> <a href="#rest-param"><span class="ntref">rest-param</span></a>]
+   <a href="#required-params"><span class="ntref">required-params</span></a> [<code>,</code> <a href="#defaultable-params"><span class="ntref">defaultable-params</span></a>] [<code>,</code> <a href="#included-record-params"><span class="ntref">included-record-params</span></a>] [<code>,</code> <a href="#rest-param"><span class="ntref">rest-param</span></a>]
+   | <a href="#defaultable-params"><span class="ntref">defaultable-params</span></a> [<code>,</code> <a href="#included-record-params"><span class="ntref">included-record-params</span></a>] [<code>,</code> <a href="#rest-param"><span class="ntref">rest-param</span></a>]
+   | <a href="#included-record-params"><span class="ntref">included-record-params</span></a> [<code>,</code> <a href="#rest-param"><span class="ntref">rest-param</span></a>]
    | [<a href="#rest-param"><span class="ntref">rest-param</span></a>]
 <span class="ntdfn" id="required-params">required-params</span> := <a href="#required-param"><span class="ntref">required-param</span></a> (<code>,</code> <a href="#required-param"><span class="ntref">required-param</span></a>)*
 <span class="ntdfn" id="required-param">required-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>]
 <span class="ntdfn" id="defaultable-params">defaultable-params</span> := <a href="#defaultable-param"><span class="ntref">defaultable-param</span></a> (<code>,</code> <a href="#defaultable-param"><span class="ntref">defaultable-param</span></a>)*
 <span class="ntdfn" id="defaultable-param">defaultable-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>] <code>=</code> (<a href="#default-expression"><span class="ntref">default-expression</span></a> | <a href="#inferred-typedesc-default"><span class="ntref">inferred-typedesc-default</span></a>) 
+<span class="ntdfn" id="included-record-params">included-record-params</span> := <a href="#included-record-param"><span class="ntref">included-record-param</span></a> (<code>,</code> <a href="#included-record-param"><span class="ntref">included-record-param</span></a>)*
+<span class="ntdfn" id="included-record-param">included-record-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>*</code> <a href="#type-reference"><span class="ntref">type-reference</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>]
 <span class="ntdfn" id="rest-param">rest-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>...</code> [<a href="#param-name"><span class="ntref">param-name</span></a>]
 <span class="ntdfn" id="param-name">param-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="inferred-typedesc-default">inferred-typedesc-default</span> := <code>&lt;</code> <code>&gt;</code>
 </pre>
 <p>
-A param-name can be omitted from a required-param, defaultable-param or
-rest-param only when occuring in the function-signature of a
-function-type-descriptor.
+A param-name can be omitted from a required-param, defaultable-param,
+included-record-param or rest-param only when occuring in the function-signature
+of a function-type-descriptor.
 </p>
 <p>
 The argument list passed to a function consists of zero or more arguments in order;
@@ -2359,11 +2402,13 @@ the function will panic.
 <p>
 It is convenient to consider the complete param-list as having a type. This type
 is described by a tuple-type-descriptor that has a member-type-descriptor for
-each required-param and defaultable-param, and has a tuple-rest-descriptor if
-and only if there is a rest-param. The i-th member-type-descriptor of the tuple
-type descriptor is the same as the type-descriptor of the i-th member of the
-param-list; the type-descriptor of the tuple-rest-descriptor, if present, is the
-same as the type-descriptor of the rest-param.
+each required-param, defaultable-param and included-record-param, and has a
+tuple-rest-descriptor if and only if there is a rest-param. The i-th
+member-type-descriptor of the tuple type descriptor is the same as the
+type-descriptor of the i-th member of the param-list; for an
+included-record-param, the type-descriptor is the type-reference; the
+type-descriptor of the tuple-rest-descriptor, if present, is the same as the
+type-descriptor of the rest-param.
 </p>
 <p>
 An argument list consisting of values v<sub>1</sub>,..., v<sub>n</sub> conforms
@@ -2371,17 +2416,6 @@ to a param-list that has type P, if and only if for each i with 1 ≤ i ≤
 n, v<sub>i</sub> belongs to T<sub>i</sub>, where T<sub>i</sub> is defined to be the type
 that contains a shape s if and only if P contains a list shape whose i-th member
 is s.
-</p>
-<p>
-When an argument list is passed to a function, the non-rest parameters are
-initialized from the arguments in the argument list in order. The conformance of
-the argument list to the param-list declared for the function ensures that each
-parameter will be initialized to a value that belongs to the declared type of
-the parameter. If there is a rest-param, then that is a initialized to a newly
-created lists containing the remaining arguments in the argument-list; the
-inherent type of this list will be T[] where T is the type of the rest-param.
-The conformance of the argument list ensures that the members of this list will
-belong to type T.
 </p>
 <p>
 A defaultable-param is a parameter for which a default value is specified. An
@@ -2414,6 +2448,23 @@ supplying. In this case, the caller uses the parameter name at compile time in
 conjunction with the type descriptor to create the argument list. The
 parameter names do not affect the shape of the function and thus do not affect
 typing.
+</p>
+<p>
+The type-reference in an included-record-param must refer to a type defined by a
+record-type-descriptor. Specifying an included-record-param <code>*<var>T</var>
+<var>p</var></code> is similar to specifying a required-param <code><var>T</var>
+<var>p</var></code>. The difference is that the caller of the function may
+specify the value for a field of an included-record-param using the field's name
+as if it had been declared as a parameter. Any field of the
+included-record-param not so specified is defaulted using the
+record-type-descriptor. A field-descriptor is a <code>parameter field
+descriptor</code> of a function if it is a field descriptor of a
+record-type-descriptor referenced by an included-record-param of the function.
+The field names of all the parameter field descriptors whose type is not
+<code>never</code> must be distinct from each other and from the names of the
+parameters. Whether a parameter is an included-record-param is part of the
+function's type-descriptor, but does not affect the shape of the function and
+thus does not affect whether a function value belongs to a function type.
 </p>
 <p>
 The process by which the function caller creates an argument list, which may
@@ -2466,7 +2517,21 @@ All function values belongs to a function-type-descriptor <code>function</code>;
 a function value belongs to the function-type-descriptor <code>isolated
 function</code> if and only if it is an isolated function.
 </p>
-
+<p>
+In addition to a readonly bit and an isolated bit, a function value also has a
+transactional bit. A function value with its transactional bit set can only be
+called in a <a href="#transactions">transactional scope</a>; this is enforced by
+the type system. A function value with its transactional bit not set belongs to
+the type described by a function-type-descriptor with a function-signature only
+if the function-type-descriptor does not include a <code>transactional</code>
+qualifier. This means that a function-type-descriptor with a function-signature
+but without a <code>transactional</code> qualifier is a subtype of the
+corresponding function-type-descriptor with a <code>transactional</code>
+qualifier. Note that the subtyping relationship for <code>transactional</code>
+is in the opposite direction from <code>isolated</code>. A function value's
+transactional bit does not affect whether it belongs to the type described by a
+function-type-descriptor without a function-signature.
+</p>
 </section>
 <section>
 <h4 id="section_5.5.3">5.5.3 Objects</h4>
@@ -2550,11 +2615,12 @@ is not allowed in conjunction with <code>public</code>.
 
 <p>
 Network interaction objects provide two additional features: remote methods and
-resources. Remote methods are supported by both client and service objects.
-Resources are supported only by service objects. Object type descriptors do not
-provide a way to describe the resources of a service object: whether a service
-object belongs to an object type is not affected by the service object's
-resources. Resources are described in detail in the <a href="#resources">section</a> on object constructors.
+resources. Remote methods are supported by both client and service objects. The
+remote methods of an object are in a separate symbol space from the other
+methods of the object. Resources are supported only by service objects. Object
+type descriptors do not provide a way to describe the resources of a service
+object: whether a service object belongs to an object type is not affected by
+the service object's resources. Resources are described in detail in the <a href="#resources">section</a> on object constructors.
 </p>
 
 </section>
@@ -2584,8 +2650,9 @@ the object has been constructed.
 <h5 id="section_5.5.3.3">5.5.3.3 Methods</h5>
 
 <pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#method-quals"><span class="ntref">method-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
+<span class="ntdfn" id="method-quals">method-quals</span> := <a href="#function-quals"><span class="ntref">function-quals</span></a>
 <span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
@@ -2609,8 +2676,11 @@ the object on which the method is invoked that it has to parameters.
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#remote-method-quals"><span class="ntref">remote-method-quals</span></a> 
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
 <span class="ntdfn" id="remote-method-quals">remote-method-quals</span> :=
-   <a href="#remote-qual"><span class="ntref">remote-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+   <a href="#remote-qual"><span class="ntref">remote-qual</span></a> <a href="#function-quals"><span class="ntref">function-quals</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>] <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <a href="#remote-qual"><span class="ntref">remote-qual</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a> <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> <a href="#remote-qual"><span class="ntref">remote-qual</span></a> <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>
 <span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
 </pre>
 <p>
@@ -2618,12 +2688,16 @@ A <code>remote-method-decl</code> declares a remote method. An object can
 include a <code>remote-method-decl</code> only if it is a network interaction
 object. A remote method is a method for network interaction: a remote method of
 a client object is for outbound network interaction; a remote method of a
-service object is for inbound network interaction. A remote method cannot be
-called using the normal method call syntax. A remote method of a client object
-can only be invoked by a <code>client-remote-method-call-action</code>. A remote
-method of a service object is invoked by a listener object provided by a library
-module; Ballerina does not yet define a mechanism to allow such a library module
-to be implemented completely in Ballerina.
+service object is for inbound network interaction. The <code>method-name</code>
+of a <code>remote-method-decl</code> must be distinct from the
+<code>method-name</code> of every other <code>remote-method-decl</code> in the
+<code>object-type-descriptor</code>. However, a <code>method-decl</code> and a
+<code>remote-method-decl</code> can have the same name. A remote method cannot
+be called using the normal method call syntax. A remote method of a client
+object can only be invoked by a <code>client-remote-method-call-action</code>. A
+remote method of a service object is invoked by a listener object provided by a
+library module; Ballerina does not yet define a mechanism to allow such a
+library module to be implemented completely in Ballerina.
 </p>
 
 </section>
@@ -2687,7 +2761,8 @@ of T only within the same module as T.
 Every type descriptor referenced directly or indirectly by a
 <code>type-reference</code> in an <code>object-type-inclusion</code> must be an
 <code>object-type-descriptor</code>, <code>distinct-type-descriptor</code>,
-<code>intersection-type-descriptor</code> or a class that is not readonly; the
+<code>intersection-type-descriptor</code> or
+a class without a <code>readonly</code> qualifier; the
 referenced type descriptor will thus necessarily be definite and a subtype of
 object. If a referenced object-type-descriptor or class has an
 <code>isolated</code>, <code>service</code> or <code>client</code> qualifier
@@ -3213,13 +3288,13 @@ immediately returns <code>()</code>.
 <section>
 <h4 id="section_5.7.4">5.7.4 Listener</h4>
 <p>
-The abstract object type Listener&lt;T&gt;, where T is a a subtype of
-<code>service object {}</code>, is described by the following object type
-descriptor:
+The object type Listener&lt;T,A&gt;, where T is a a subtype of <code>service
+object {}</code> and A is a subtype of <code>string[]|string|()</code>, is
+described by the following object type descriptor:
 </p>
 
 <pre>object {
-   public function attach(T svc, string[]? path = ()) returns error?;
+   public function attach(T svc, A attachPoint) returns error?;
    public function detach(T svc) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
@@ -3231,9 +3306,9 @@ The above methods all return an error value if an error occurred, and
 return nil otherwise.
 </p>
 <p>
-A type is a <em>listener object type</em> if it is a subtype of the abstract
-object type Listener&lt;T&gt;, for some type T that is a subtype of
-<code>service object {}</code>.
+A type is a <em>listener object type</em> if it is a subtype of the object type
+Listener&lt;T,A&gt;, for some type T that is a subtype of <code>service object
+{}</code> and some type A that is a subtype of <code>string[]|string|()</code>.
 </p>
 </section>
 <section>
@@ -3249,6 +3324,27 @@ expression. The type is defined in <code>lang.object</code> as follows.
 </pre>
 
 </section>
+<section>
+<h4 id="section_5.7.6">5.7.6 RetryManager</h4>
+
+<p>
+Classes of type RetryManager are defined by the application to allow control
+over retries performed by the retry statement and retry transaction statement
+The object type RetryManager&lt;E&gt;, where E is a a subtype of
+<code>error</code>, is described by the following object type descriptor:
+</p>
+
+<pre>object {
+   public function shouldRetry(E e) returns boolean;
+}
+</pre>
+<p>
+Note that RetryManager&lt;E&gt; is contravariant in E i.e. RetryManager&lt;E&gt;
+is a subtype of RetryManager&lt;E'&gt; if and only if E' is a subtype of E.
+</p>
+
+</section>
+
 </section>
 <section>
 <h3 id="section_5.8">5.8 Abstract operations</h3>
@@ -4099,6 +4195,7 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#trap-expr"><span class="ntref">trap-expr</span></a>
    | <a href="#query-expr"><span class="ntref">query-expr</span></a>
    | <a href="#xml-navigate-expr"><span class="ntref">xml-navigate-expr</span></a>
+   | <a href="#transactional-expr"><span class="ntref">transactional-expr</span></a>
    | <code>(</code> <a href="#expression"><span class="ntref">expression</span></a> <code>)</code>
 </pre>
 <p>
@@ -4311,8 +4408,8 @@ In this version of Ballerina, only the first step has been taken towards
 supporting this concept. There is a fixed set of type descriptors that are
 classified as lax: specifically <code>json</code> is lax, and
 <code>map&lt;T&gt;</code> is lax if T is lax. The only kinds of expression for
-which lax typing rules are specified are field-access-expr and
-optional-field-access-expr.
+which lax typing rules are specified are field-access-expr,
+optional-field-access-expr and checking-expr.
 </p>
 
 </section>
@@ -4804,7 +4901,7 @@ the broad types of the value-expr in all such fields.
 <p>
 If a specific-field does not use a string-literal for the name of the field and
 the inherent type descriptor is a record type descriptor, then the record type
-descriptor must include an individual-type-descriptor for that field.
+descriptor must include an individual-field-descriptor for that field.
 </p>
 <p>
 If the inherent type descriptor is a record type descriptor, a field will be
@@ -5013,7 +5110,7 @@ private.
 <h5 id="section_6.8.1.2">6.8.1.2 Methods</h5>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> <a href="#method-quals"><span class="ntref">method-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
 </pre>
 
@@ -5072,8 +5169,11 @@ object.
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#resource-method-quals"><span class="ntref">resource-method-quals</span></a>
    <code>function</code> <a href="#resource-method-name"><span class="ntref">resource-method-name</span></a> <a href="#resource-path"><span class="ntref">resource-path</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
 <span class="ntdfn" id="resource-method-quals">resource-method-quals</span> :=
-   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+   <a href="#resource-qual"><span class="ntref">resource-qual</span></a> <a href="#function-quals"><span class="ntref">function-quals</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>] <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <a href="#resource-qual"><span class="ntref">resource-qual</span></a>
+   | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a> <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>
+   | <a href="#transactional-qual"><span class="ntref">transactional-qual</span></a> <a href="#resource-qual"><span class="ntref">resource-qual</span></a> <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>
 <span class="ntdfn" id="resource-qual">resource-qual</span> := <code>resource</code>
 <span class="ntdfn" id="resource-method-name">resource-method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="resource-path">resource-path</span> :=
@@ -5424,7 +5524,7 @@ descriptor describing T is lax:
 non-empty;</li>
 <li>if it is not lax, then, in addition, T must be a subtype of the union of
 <code>()</code> and the mapping basic type, and the type descriptor for T must
-include <code>field-name</code> as an individual-type-descriptor (if the type
+include <code>field-name</code> as an individual-field-descriptor (if the type
 descriptor is a union, then this requirement must be satisfied by at least one
 member of the union).</li>
 </ul>
@@ -5628,87 +5728,124 @@ member-access-expr is M?, otherwise the static type is M.
 <span class="ntdfn" id="arg-list">arg-list</span> :=
    <a href="#positional-args"><span class="ntref">positional-args</span></a> [<code>,</code> <a href="#other-args"><span class="ntref">other-args</span></a>]
    | [<a href="#other-args"><span class="ntref">other-args</span></a>]
-<span class="ntdfn" id="positional-args">positional-args</span> := <a href="#positional-arg"><span class="ntref">positional-arg</span></a> (<code>,</code> <a href="#positional-arg"><span class="ntref">positional-arg</span></a>)*
-<span class="ntdfn" id="positional-arg">positional-arg</span> := <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="other-args">other-args</span> := <a href="#named-args"><span class="ntref">named-args</span></a> | <a href="#rest-arg"><span class="ntref">rest-arg</span></a>
-<span class="ntdfn" id="named-args">named-args</span> := <a href="#named-arg"><span class="ntref">named-arg</span></a> (<code>,</code> <a href="#named-arg"><span class="ntref">named-arg</span></a>)*
-<span class="ntdfn" id="named-arg">named-arg</span> := <a href="#arg-name"><span class="ntref">arg-name</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a>
-<span class="ntdfn" id="arg-name">arg-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
-<span class="ntdfn" id="rest-arg">rest-arg</span> := <code>...</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 A function-call-expr is evaluated by constructing an argument list and passing
-the argument list to the function referred to by the variable-name. If the
-function terminates normally, then the result of the function-call-expr is the
-return value of the function; otherwise the function-call-expr completes
-abruptly with a panic. The static type of the function-call-expr is the return
-type of the function type.
+the argument list to the function referred to by the variable-name. The argument
+list will be used to bind the parameters of the function before the body of the
+function is executed. If the function terminates normally, then the result of
+the function-call-expr is the return value of the function; otherwise the
+function-call-expr completes abruptly with a panic. The static type of the
+function-call-expr is the return type of the function type.
 </p>
 <p>
-The variable-reference must refer to a variable with function type. The type
+The function-reference must refer to a variable with function type. The type
 descriptor of that function type is used to construct an argument list from the
 specified arg-list. Note that it is the type descriptor of the declared type of
 the variable that is used for this purpose, rather than the runtime type
-descriptor of the referenced function value.
+descriptor of the referenced function value. The expressions occurring in the
+arg-list are evaluated in the order in which they occur in the arg-list; the
+contextually expected type for the expression comes from the static type
+required for the expression as specified below.
 </p>
+<pre class="grammar"><span class="ntdfn" id="positional-args">positional-args</span> := <a href="#positional-arg"><span class="ntref">positional-arg</span></a> (<code>,</code> <a href="#positional-arg"><span class="ntref">positional-arg</span></a>)*
+<span class="ntdfn" id="positional-arg">positional-arg</span> := <a href="#expression"><span class="ntref">expression</span></a>
+</pre>
 <p>
-The expressions occurring in the arg-list are evaluated in the order in which
-they occur in the arg-list. The contextually expected type for the expression in
-the i-th positional-arg is the type of the i-th required or defaultable
-parameter; if there is no such parameter, then the contextually expected type is
-the type of the rest-param. The contextually expected type for the expression in
-a named-arg is the type declared for the corresponding parameter. The value of
-evaluating the expression for the rest-arg must be either a list or a mapping
-value.
+The result of evaluating the <var>i</var>-th positional-arg becomes the
+<var>i</var>-th member of the argument list. The static type of the expression
+for the <var>i</var>-th positional-arg must be a subtype of the type declared
+for the <var>i</var>-th parameter that is not a rest-param, if there is such a
+parameter; otherwise, there must be a rest-param and the static type must be a
+subtype of the type declared for the rest-param.
 </p>
+<pre class="grammar"><span class="ntdfn" id="named-args">named-args</span> := <a href="#named-arg"><span class="ntref">named-arg</span></a> (<code>,</code> <a href="#named-arg"><span class="ntref">named-arg</span></a>)*
+<span class="ntdfn" id="named-arg">named-arg</span> := <a href="#arg-name"><span class="ntref">arg-name</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="arg-name">arg-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+</pre>
 <p>
-The results of evaluating the expressions in the arg-list are used to construct
-the argument list as follows. First, the result of evaluating each
-positional-arg is added to the argument list in order. Then there are three
-possibilities:
+The arg-name of every named-arg must be distinct. Each named-arg must correspond
+to either a parameter that is not a rest-param or to a field of an
+included-record-param. In the latter case, there are two possibilities.
 </p>
 <ul>
-<li>If there is a rest-arg that evaluates to a list, then each member of the
-list value is added to the argument in the order that it occurs; default values
-are not used in this case.</li>
-<li>Otherwise, if there is no rest-arg, each required or defaultable parameter
-that was not supplied by a positional-arg is added in parameter declaration
-order from a named-arg, if there is one with the specified name, and otherwise
-using the default value as specified in the function's type descriptor.</li>
-<li>Otherwise, the rest-arg is a mapping and there are no named-args.
-The effect in this case is as if for each field of the mapping there
-was a named-arg, with the name and value of the named-arg coming
-from the name and value of the field.</li>
+<li>The field is described by an individual-field-descriptor with a type that is not
+<code>never</code>.</li>
+<li>The field is described by a record-rest-descriptor, either explicitly as
+part of an exclusive-record-type-descriptor or implicitly as part of an
+inclusive-record-type-descriptor. In this case:
+<ul>
+<li>for every parameter name and every individual-field-descriptor of an
+included-record-param with a type that is not <code>never</code>, the
+record-type-descriptor must include an individual-field-descriptor that has type
+<code>never</code> and is optional, and so disallows a field with that
+name;</li>
+<li>the record-type-descriptor must not include any other
+individual-field-descriptor; and</li>
+<li>there must be no other included-record-param with a
+record-rest-descriptor.</li>
+</ul>
+</li>
 </ul>
 <p>
-The static type of the rest-arg must be such as to guarantee that the
-constructed argument list will conform to the function's declared param-list.
-Note that in the case where the rest-arg is a list, it is is not restricted to
-supplying the part of the argument list that will be bound to a rest-param, nor
-is its static type restricted to being an array type. It is a compile-time error
-if there is a required parameter for which there was neither a positional
-argument nor a named argument, or if there is a named argument for a parameter
-that was supplied by a positional argument.
+It is an error if there is a named-arg and a positional-arg that correspond to
+the same parameter. If there is a named-arg or positional-arg corresponding to
+an included-record-param, it is an error for a named-arg to specify a field of
+that included-record-param. The static type of the expression of the named-arg
+must be a subtype of the type declared for the corresponding parameter or
+field-descriptor.
+</p>
+<pre class="grammar"><span class="ntdfn" id="rest-arg">rest-arg</span> := <code>...</code> <a href="#expression"><span class="ntref">expression</span></a>
+</pre>
+<p>
+The static type of the expression in a rest-arg must be either a list type or a
+mapping type. If it is a list type, then the rest-arg is equivalent to
+specifying each member of the list as a positional-arg. If it is a mapping type,
+then the rest-arg is equivalent to specifying each field of the mapping as a
+named-arg, with the name and value of the named-arg coming from the name and
+value of the field. In either case, the static type of the expression must be
+such as to ensure that the equivalent named-args or positional-args would be
+valid.
 </p>
 <p>
-If the default value for a parameter was specified as <code>&lt;&gt;</code>,
-then then the caller will pass a typedesc value determined at compile-time from
-the contextually expected type of the function-call-expr as follows. Let the
-name of the parameter for which a default of <code>&lt;&gt;</code> was specified
-be <var>t</var>. Let the type of <var>t</var> be typedesc&lt;<var>T</var>&gt;.
-Let the return type descriptor for the function be <var>R</var>, which will have
-references to <var>t</var>. Let the contextually expected type for the
-function-call-expr be <var>C</var>. Then the default value is found by unifying
-<var>C</var> and <var>R</var>: the default value is a typedesc value
-representing a type descriptor <var>S</var> that is a subtype of <var>T</var>,
-such that <var>R</var> with <var>S</var> substituted for <var>t</var> is
-equivalent to <var>C</var>.
+If there is neither a named-arg nor a positional-arg for a parameter that is not
+a rest-param, then a default value is computed for the parameter, if possible;
+otherwise, it is an error. Default values are computed in parameter declaration
+order.
 </p>
-<p>
-If the default value for a parameter was specifed using an expression, then it
-is computed by calling the closure stored in the type descriptor, passing it the
-previous arguments in the argument list.
-</p>
+<ul>
+<li>If the parameter is a required-param, it is an error.</li>
+<li>If the parameter is a defaultable-param, then the value for the parameter is
+computed from the default value in the function's type descriptor.
+<ul>
+<li>If the default value for a defaultable-param was specifed
+using an expression, then it is computed by calling the closure stored in the
+type descriptor, passing it the previous arguments in the argument list.</li>
+<li>If the default value for a defaultable-param was specified as
+<code>&lt;&gt;</code>, then the value for the parameter will be a typedesc value
+determined at compile-time from the contextually expected type of the
+function-call-expr as follows. Let the name of the parameter for which a default
+of <code>&lt;&gt;</code> was specified be <var>t</var>. Let the type of
+<var>t</var> be typedesc&lt;<var>T</var>&gt;. Let the return type descriptor for
+the function be <var>R</var>, which will have references to <var>t</var>. Let
+the contextually expected type for the function-call-expr be <var>C</var>. Then
+the default value is found by unifying <var>C</var> and <var>R</var>: the
+default value is a typedesc value representing a type descriptor <var>S</var>
+that is a subtype of <var>T</var>, such that <var>R</var> with <var>S</var>
+substituted for <var>t</var> is equivalent to <var>C</var>.</li>
+</ul>
+</li>
+<li>If the parameter is an included-record-param, then a new mapping value is
+constructed for it using its record-type-descriptor. The mapping value will have
+a field for each named-arg that corresponds to a field of this
+included-record-param, with the name and value of the field coming from the name
+and value of the named-arg. The mapping value will also have a field for each
+individual-field-descriptor with a default-expr for which there was no
+corresponding named-arg. It is an error if the record-type-descriptor has an
+individual-field-descriptor that is not optional and has no default and there is
+not corresponding named-arg.</li>
+</ul>
 <p>
 A function-call-expr is isolated if the type of the function being called is
 isolated and the expression for every argument is isolated. In addition, a call
@@ -5720,7 +5857,6 @@ When there is a need to call a function value resulting from the evaluation of
 an expression, the result of the expression evaluation can be assigned to a
 variable and then the function called by using a reference to the variable.
 </p>
-
 </section>
 <section>
 <h3 id="section_6.16">6.16 Method call expression</h3>
@@ -5833,7 +5969,7 @@ the point where the error constructor was evaluated.
 <h3 id="section_6.18">6.18 Anonymous function expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="anonymous-function-expr">anonymous-function-expr</span> := <a href="#explicit-anonymous-function-expr"><span class="ntref">explicit-anonymous-function-expr</span></a> | <a href="#infer-anonymous-function-expr"><span class="ntref">infer-anonymous-function-expr</span></a>
-<span class="ntdfn" id="explicit-anonymous-function-expr">explicit-anonymous-function-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a> (<a href="#block-function-body"><span class="ntref">block-function-body</span></a>|<a href="#expr-function-body"><span class="ntref">expr-function-body</span></a>)
+<span class="ntdfn" id="explicit-anonymous-function-expr">explicit-anonymous-function-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#function-quals"><span class="ntref">function-quals</span></a> <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a> (<a href="#block-function-body"><span class="ntref">block-function-body</span></a>|<a href="#expr-function-body"><span class="ntref">expr-function-body</span></a>)
 </pre>
 <p>
 Evaluating an anonymous-function-expr creates a closure, whose basic type is
@@ -5855,9 +5991,11 @@ reference not a copy.
 </pre>
 <p>
 An infer-anonymous-function-expr can only be used in a context where a function
-type is expected. Both the types of the parameters and whether the function is
-isolated are inferred from the expected
-function type. The scope of the parameters is <code>expr-function-body</code>.
+type is expected. Both the types of the parameters and whether the function type
+is <code>isolated</code> are inferred from the expected function type. The
+function type will be inferred to be <code>transactional</code> if the
+expr-function-body calls any functions with a transactional type.
+The scope of the parameters is <code>expr-function-body</code>.
 The static type of the infer-anonymous-function-expr will be a function type
 whose return type is the static type of the <code>expression</code> in
 <code>expr-function-body</code>. If the contextually expected type for the
@@ -6471,8 +6609,23 @@ completes abruptly with a check-fail with associated value v;</li>
 completes abruptly with a panic with associated value v.</li>
 </ul>
 <p>
-If the static type of expression e is T|E, where E is a subtype of error, then
-the static type of check e is T.
+If the static type of expression <code><var>Expr</var></code> is T|E, where E is
+a subtype of error, then the static type of <code>check <var>Expr</var></code>
+or <code>checkpanic <var>Expr</var></code> is T. However, if:
+</p>
+<ul>
+<li>the checking-keyword is <code>check</code>,</li>
+<li>the above rules would result in a compile-time error,</li>
+<li>the static type of <code><var>Expr</var></code> is lax,</li>
+<li>T is a subtype of <code>json</code>, and</li>
+<li>there is a contextually expected type S, where S is a subtype of
+<code>()|int|float|decimal|string</code>,</li>
+</ul>
+<p>
+then instead <code>check <var>Expr</var></code> is treated as <code>check
+<var>val</var>:ensureType(<var>Expr</var>, <var>s</var>)</code>, where
+<code><var>s</var></code> is a typedesc value representing S and
+<code><var>val</var></code> refers to the <code>value</code> module in langlib.
 </p>
 </section>
 <section>
@@ -6993,6 +7146,18 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
 </p>
 </section>
 </section>
+<section>
+<h3 id="section_6.37">6.37 Transactional expression</h3>
+
+<pre class="grammar"><span class="ntdfn" id="transactional-expr">transactional-expr</span> := <code>transactional</code>
+</pre>
+<p>
+A <code>transactional-expr</code> evaluates to true if the expression is being
+evaluated in transaction mode and false otherwise.
+</p>
+
+</section>
+
 </section>
 <section>
 <h2 id="actions_statements">7. Actions and statements</h2>
@@ -7010,6 +7175,7 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
    | <a href="#type-cast-action"><span class="ntref">type-cast-action</span></a>
    | <a href="#checking-action"><span class="ntref">checking-action</span></a>
    | <a href="#trap-action"><span class="ntref">trap-action</span></a>
+   | <a href="#commit-action"><span class="ntref">commit-action</span></a>
    | <code>(</code> <a href="#action"><span class="ntref">action</span></a> <code>)</code>
 <span class="ntdfn" id="action-or-expr">action-or-expr</span> := <a href="#action"><span class="ntref">action</span></a> | <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="type-cast-action">type-cast-action</span> := <code>&lt;</code> <a href="#type-cast-param"><span class="ntref">type-cast-param</span></a> <code>&gt;</code> <a href="#action"><span class="ntref">action</span></a>
@@ -7084,14 +7250,35 @@ strand must be part of the same thread as the current strand.
 <h3 id="section_7.3">7.3 Function bodies</h3>
 
 <section>
-<h4 id="section_7.3.1">7.3.1 Workers</h4>
+<h4 id="section_7.3.1">7.3.1 Function parameters</h4>
+<p>
+Before the block-function-body of a function-defn is executed, the parameters
+declared in the function-signature of the function-defn are initialized from the
+argument list that was constructed by the function-call-expr. The non-rest
+parameters are initialized from the arguments in the argument list in order. The
+conformance of the argument list to the param-list declared for the function
+ensures that each parameter will be initialized to a value that belongs to the
+declared type of the parameter. If there is a rest-param, then that is a
+initialized to a newly created list containing the remaining arguments in the
+argument-list; the inherent type of this list will be T[] where T is the type of
+the rest-param. The conformance of the argument list ensures that the members of
+this list will belong to type T.
+</p>
+<p>
+The parameters are in scope for the block-function-body. They are implicitly
+final: they can be read but not modified.
+</p>
+</section>
+
+<section>
+<h4 id="section_7.3.2">7.3.2 Workers</h4>
 
 <pre class="grammar"><span class="ntdfn" id="block-function-body">block-function-body</span> :=
    <code>{</code> [<a href="#default-worker-init"><span class="ntref">default-worker-init</span></a> <a href="#named-worker-decl"><span class="ntref">named-worker-decl</span></a>+] <a href="#default-worker"><span class="ntref">default-worker</span></a> <code>}</code>
 <span class="ntdfn" id="default-worker-init">default-worker-init</span> := <a href="#statement"><span class="ntref">statement</span></a>*
 <span class="ntdfn" id="default-worker">default-worker</span> := <a href="#statement"><span class="ntref">statement</span></a>*
 <span class="ntdfn" id="named-worker-decl">named-worker-decl</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+   [<a href="#annots"><span class="ntref">annots</span></a>] [<a href="#transactional-qual"><span class="ntref">transactional-qual</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="worker-name">worker-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
@@ -7139,6 +7326,12 @@ particular, it is convenient to use <code>error&lt;*&gt;</code> to specify the
 error type.
 </p>
 <p>
+A named-worker is a transactional scope only if it is declared as
+<code>transactional</code>. This is allowed only if the block-function-body is a
+transactional scope, i.e. if it is the body of a function declared as
+<code>transactional</code>.
+</p>
+<p>
 When a function has named workers, the default worker executes in three stages,
 as follows:
 </p>
@@ -7150,8 +7343,8 @@ statement-block on its strand.</li>
 for the termination of the named workers started in stage 2.</li>
 </ol>
 <p>
-Variables declared in default-worker-init are in scope within named workers,
-whereas variables declared in default-worker are not.
+Parameters and variables declared in default-worker-init are in scope within
+named workers, whereas variables declared in default-worker are not.
 </p>
 <p>
 The execution of a worker's statements may result in the execution of a
@@ -7161,11 +7354,6 @@ terminates as soon as it has finished executing its statements. In this case,
 the worker terminates normally, and the termination value is nil. In other
 words, falling off the end of a worker is equivalent to <code>return;</code>,
 which is in turn equivalent to <code>return ();</code>.
-</p>
-<p>
-The parameters declared for a function are in scope in the block-function-body.
-They are implicitly final: they can be read but not modified. They are in scope
-for named workers as well as for the default worker.
 </p>
 <p>
 The scope of a worker-name in a named-worker-decl that is part of a
@@ -7191,7 +7379,7 @@ In the above, function includes method, and function call includes method call.
 </section>
 
 <section>
-<h4 id="section_7.3.2">7.3.2 Expression-bodied functions</h4>
+<h4 id="section_7.3.3">7.3.3 Expression-bodied functions</h4>
 
 <pre class="grammar"><span class="ntdfn" id="expr-function-body">expr-function-body</span> := <code>=&gt;</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -7206,7 +7394,7 @@ return <var>E</var>}</code>.
 </section>
 
 <section>
-<h4 id="section_7.3.3">7.3.3 External functions</h4>
+<h4 id="section_7.3.4">7.3.4 External functions</h4>
 
 <pre class="grammar"><span class="ntdfn" id="external-function-body">external-function-body</span> := <code>=</code> [<a href="#annots"><span class="ntref">annots</span></a>] <code>external</code> 
 </pre>
@@ -7220,7 +7408,7 @@ external-function-body.
 
 </section>
 <section>
-<h4 id="isolated_functions">7.3.4 Isolated functions</h4>
+<h4 id="isolated_functions">7.3.5 Isolated functions</h4>
 <p>
 The body of a function or method declared as <code>isolated</code> must meet the
 following requirements.
@@ -7291,16 +7479,13 @@ is called concurrently on multiple strands.
    | <a href="#break-stmt"><span class="ntref">break-stmt</span></a>
    | <a href="#stmt-with-on-fail"><span class="ntref">stmt-with-on-fail</span></a>
    | <a href="#fail-stmt"><span class="ntref">fail-stmt</span></a>
+   | <a href="#retry-stmt"><span class="ntref">retry-stmt</span></a>
+   | <a href="#transaction-stmt"><span class="ntref">transaction-stmt</span></a>
+   | <a href="#retry-transaction-stmt"><span class="ntref">retry-transaction-stmt</span></a>
+   | <a href="#rollback-stmt"><span class="ntref">rollback-stmt</span></a>
    | <a href="#panic-stmt"><span class="ntref">panic-stmt</span></a>
    | <a href="#return-stmt"><span class="ntref">return-stmt</span></a>
    | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
-
-<span class="ntdfn" id="regular-compound-stmt">regular-compound-stmt</span> :=
-  <a href="#do-stmt"><span class="ntref">do-stmt</span></a>
-  | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
-  | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
-  | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
-  | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
 </pre>
 <p>
 The execution of any statement may involve the evaluation of actions and
@@ -7313,17 +7498,30 @@ completion of the evaluation of expressions and actions as follows. There are
 two possibilities.
 </p>
 <ul>
-<li>If the abrupt termination is a check-fail, then control flow is transferred
-as if by a fail statement with an expression that evaluates to e.</li>
-<li>If the abrupt termination is a panic, then the current worker is terminated
-abnormally with termination value e. This is the same as if
-a panic statement is executed with an expression that evaluates to e.</li>
+<li>If the abrupt termination is a check-fail with associated value e, then
+control flow is transferred as if by a <code>fail-stmt</code> with an expression
+that evaluates to e.</li>
+<li>If the abrupt termination is a panic with associated value, then the current
+worker is terminated as if by a <code>panic-stmt</code> with an expression that
+evaluates to e.</li>
 </ul>
 <p>
 If the execution of a substatement causes termination of the current worker,
 then the execution of the statement terminates at that point.
 </p>
 
+<pre class="grammar">
+<span class="ntdfn" id="regular-compound-stmt">regular-compound-stmt</span> :=
+  <a href="#do-stmt"><span class="ntref">do-stmt</span></a>
+  | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
+  | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
+  | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
+  | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
+</pre>
+<p>
+A <code>regular-compound-stmt</code> can be combined with an
+<code>on-fail-clause</code> to make a <code>stmt-with-on-fail</code>.
+</p>
 <pre class="grammar">
 <span class="ntdfn" id="statement-block">statement-block</span> := <code>{</code> <a href="#statement"><span class="ntref">statement</span></a>* <code>}</code>
 </pre>
@@ -7372,6 +7570,7 @@ of basic type future immediately. If the static type of the call expression or
 action <code><var>C</var></code> is T, then the static type of <code>start
 <var>C</var></code> is future&lt;T&gt;.
 </p>
+
 
 </section>
 <section>
@@ -8196,7 +8395,7 @@ type, the semantics are as follows.
 <ul>
 <li>The following requirements apply at compile time: the type of lvexpr must
 include mapping shapes that have the specified field-name; type descriptor for
-lvexpr must include <code>field-name</code> as an individual-type-descriptor (if
+lvexpr must include <code>field-name</code> as an individual-field-descriptor (if
 lvexpr is a union, then this requirement applies to every member of the union);
 lvexpr must not be potentially uninitialized, but may be potentially
 undefined.</li>
@@ -8379,6 +8578,10 @@ is present, the corresponding statement block is executed.
 <h3 id="section_7.18">7.18 Do statement</h3>
 <pre class="grammar"><span class="ntdfn" id="do-stmt">do-stmt</span> := <code>do</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
+<p>
+A <code>do-stmt</code> is executed by executing its
+<code>statement-block</code>.
+</p>
 </section>
 <section>
 <h3 id="match_statement">7.19 Match statement</h3>
@@ -8551,7 +8754,9 @@ narrowing</a> is done in addition to the type narrowing described here;</li>
 
 </section>
 <section>
-<h3 id="section_7.20">7.20 Foreach statement</h3>
+<h3 id="section_7.20">7.20 Loops</h3>
+<section>
+<h4 id="section_7.20.1">7.20.1 Foreach statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="foreach-stmt">foreach-stmt</span> :=
    <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
@@ -8605,7 +8810,7 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 </p>
 </section>
 <section>
-<h3 id="section_7.21">7.21 While statement</h3>
+<h4 id="section_7.20.2">7.20.2 While statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
@@ -8635,31 +8840,32 @@ The static type of <code>expression</code> must be a subtype of boolean.
 </p>
 </section>
 <section>
-<h3 id="section_7.22">7.22 Continue statement</h3>
+<h4 id="section_7.20.3">7.20.3 Continue statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="continue-stmt">continue-stmt</span> := <code>continue</code> <code>;</code>
 </pre>
 <p>
-A continue statement is only allowed if it is lexically enclosed within a
+A continue statement is only allowed if it is lexically within a
 while-stmt or a foreach-stmt. Executing a continue statement causes execution of
 the nearest enclosing while-stmt or foreach-stmt to jump to the end of the
 outermost statement-block in the while-stmt or foreach-stmt.
 </p>
 </section>
 <section>
-<h3 id="section_7.23">7.23 Break statement</h3>
+<h4 id="section_7.20.4">7.20.4 Break statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="break-stmt">break-stmt</span> := <code>break</code> <code>;</code>
 </pre>
 <p>
-A break statement is only allowed if it is lexically enclosed within a
+A break statement is only allowed if it is lexically within a
 while-stmt or a foreach-stmt. Executing a break statement causes the nearest
 enclosing while-stmt or foreach-stmt to terminate.
 </p>
 </section>
+</section>
 
 <section>
-<h3 id="lock_statement">7.24 Lock statement</h3>
+<h3 id="lock_statement">7.21 Lock statement</h3>
 <pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 
@@ -8721,7 +8927,45 @@ variable-reference-expr occurs within an expression that is isolated.</li>
 </section>
 
 <section>
-<h3 id="section_7.25">7.25 On fail clause</h3>
+<h3 id="section_7.22">7.22 Fail and retry</h3>
+<p>
+The execution of a statement can fail either as the result of <code>check</code>
+expression or action, or from an explicit <code>fail</code> statement. When
+execution of a statement fails, control flow transfers to the nearest lexically
+enclosing failure-handling statement. The failure handling statements are
+stmt-with-on-fail, retry-stmt, transaction-stmt and retry-transaction-stmt. If
+there is no such statement, it terminates the current worker normally. Note that
+failure is completely distinct from panic.
+</p>
+<p>
+When execution fails there is an associated error value, which is passed to the
+failure-handling statement if there is one. If there is no failure-handling
+statement, then the error value becomes the return value of the worker. The
+possible failure control flows are known at compile-time, as are the types of
+the associated error values. For every statement, the type of the error value
+associated with a failure causing control to transfer out of the block is
+determined at compile-time. This is in contrast with panics, for which the type
+of associated error value is not known at compile-time.
+</p>
+
+<section>
+<h4 id="section_7.22.1">7.22.1 Fail statement</h4>
+<pre class="grammar"><span class="ntdfn" id="fail-stmt">fail-stmt</span> := <code>fail</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+</pre>
+<p>
+Executing a fail-stmt will cause control flow to transfer to the nearest
+lexically enclosing failure handling statement.
+</p>
+<p>
+The static type of the expression must be a subtype of error. Execution of the
+fail-stmt evaluates the expression; the resulting error value is passed to the
+failure handling statement or becomes the termination value of the current
+worker.
+</p>
+
+</section>
+<section>
+<h4 id="section_7.22.2">7.22.2 On fail clause</h4>
 <pre class="grammar"><span class="ntdfn" id="stmt-with-on-fail">stmt-with-on-fail</span> := <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a> <a href="#on-fail-clause"><span class="ntref">on-fail-clause</span></a>
 <span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
@@ -8745,24 +8989,320 @@ to succeed by the static type of the associated error value.
 </section>
 
 <section>
-<h3 id="section_7.26">7.26 Fail statement</h3>
-<pre class="grammar"><span class="ntdfn" id="fail-stmt">fail-stmt</span> := <code>fail</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+<h4 id="section_7.22.3">7.22.3 Retry statement</h4>
+<pre class="grammar"><span class="ntdfn" id="retry-stmt">retry-stmt</span> := <code>retry</code> <a href="#retry-spec"><span class="ntref">retry-spec</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+<span class="ntdfn" id="retry-spec">retry-spec</span> := [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>] [ <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code> ]
 </pre>
 <p>
-Executing a fail-stmt will cause control flow to transfer to the on-fail-clause
-of the nearest lexically enclosing statement that has an on-fail-clause. If
-there is no such statement, it terminates the current worker normally.
+The type-parameter in a retry-spec specifies a class, which must be a subtype of
+RetryManager&gt;F&lt;, where F is the failure type of the statement-block; this
+implies that the parameter type of the class's shouldRetry method must be a
+supertype of F. The arg-list in a retry-spec specifies parameters to be passed
+to the class's <code>init</code> method; as with <code>new</code>, the arg-list
+can be omitted if the class's <code>init</code> method has no required
+arguments.
 </p>
 <p>
-The static type of the expression must be a subtype of error. Execution of the
-fail-stmt evaluates the expression; the resulting error value is passed to the
-on-fail-clause or becomes the termination value of the current worker.
+A retry-stmt is executed as follows:
+</p>
+<ol>
+<li>Create an object r of type RetryManager by calling <code>new T(A)</code>,
+where T and A are the type-descriptor in the type-parameter and the arg-list
+respectively.</li>
+<li>Execute the statement-block.</li>
+<li>If the execution failed with associated error e, then call
+<code>r.shouldRetry(e)</code>. If the result is true, go back to the previous
+step. If the result is false, then continue with the fail.</li>
+</ol>
+<p>
+If the type-parameter is omitted, it defaults to
+<code>DefaultRetryManager</code> defined in langlib error module.
+</p>
+
+</section>
+
+</section>
+
+<section>
+<h3 id="transactions">7.23 Transactions</h3>
+
+<p>
+Ballerina provides language support for distributed transactions. A global
+transaction consists of one or more transaction branches, where a branch
+corresponds to work done by a single strand of a Ballerina program that is part
+of the global transaction. Every transaction branch is uniquely identified by an
+XID, which consists of an identifier of the global transaction and an identifier
+of a branch with the global transaction.
+</p>
+<p>
+At runtime, there is a mapping from each strand to a transaction stack, which is
+a stack of transaction branches. A strand is in <em>transaction mode</em>, if
+its transaction stack is non-empty; the top of a strand's transaction stack is
+the current transaction branch for that strand.
+</p>
+<p>
+Static checking is based on the idea of a transactional scope: this is a lexical
+region of the program where it is known that at runtime the strand executing the
+region will always be in transactional mode. A function with the
+<code>transactional</code> qualifier can only be called in a transactional
+scope; this includes function calls using <code>start</code>.
+</p>
+<p>
+A running instance of a Ballerina program includes a transaction manager. This
+may run in the same process as the Ballerina program or in a separate process.
+It should not be connected over an unreliable network. The transaction manager
+of a program is responsible for managing the transaction branches of all the
+program's strands.
+</p>
+<p>
+When a global transaction involves multiple Ballerina programs, there must be a
+network protocol that allows that transaction managers for each Ballerina
+program to communicate. The protocol must also allow a remote method or resource
+method on a service object to be informed of the global transaction, if any, to
+which it belongs. When a listener object determines that a remote method or
+resource method of a service object is to be a part of a global transaction
+manager, then it will create a new transaction branch, join it to the global
+transaction and push that on the transaction stack for the strand on which the
+method is called; if the method is declared as <code>transactional</code>, the
+listener will not call the method unless it can do this. Similarly, the protocol
+must allow a remote method on a client object that is called in transaction mode
+to send information about the global transaction of which it is part; if the
+method is declared as <code>transactional</code>, then as usual the method can
+only be called in transaction mode; it also implies that the client object
+implementation is transaction-aware, and that the recipient of the message sent
+by the remote method must join the global transaction. A global transaction can
+combine Ballerina programs with programs written in other programming languages
+provided they agree on this network protocol.
+</p>
+<p>
+A strand in transaction mode can register commit or rollback handlers with the
+transaction manager; the handlers are functions which will be called by the
+transaction manager when the decision has been made whether to commit or
+rollback the global transaction to which the current transaction branch belongs.
+</p>
+<p>
+Note that internal storage in Ballerina is not transactional. Rolling back a
+transaction does <em>not</em> automatically restore the mutable values are
+variables to their state when the transaction started. It is up to the
+programmer to do this using commit or rollback handlers.
+</p>
+<p>
+When a new strand is created by a named-worker-decl that includes a
+<code>transactional</code> qualifier or by using <code>start</code> to call a
+function with a <code>transactional</code> qualifier, a new transaction branch
+will be created and joined to the global transaction; this transaction branch
+will be pushed onto transaction stack for the newly created strand.
+</p>
+<p>
+Ballerina also has the concept that a transaction may be part of a sequence of
+retries, where the last transaction can complete with either a rollback or
+commit, and the preceding transactions all completed with a rollback.
+</p>
+
+<section>
+<h4 id="section_7.23.1">7.23.1 Transaction manager</h4>
+
+<p>
+The semantics of Ballerina's transactional language features are defined in
+terms of the following abstract operations on the transaction manager. These
+operations cover only the interface between the application and the transaction
+manager, not the interface between the resource manager and the application.
+These operations are all performed by a Ballerina program in the context of a
+strand. The transaction manager supports additional operations, which are
+defined in the langlib transaction module.
+</p>
+
+<section>
+<h5 id="section_7.23.1.1">7.23.1.1 Begin operation</h5>
+<p>
+The Begin operation starts a global transaction and pushes a transaction branch
+for the new global transaction onto the current strand's transaction stack. This
+transaction branch is the initiating branch of the global transaction. The
+current strand will be in transaction mode.
+</p>
+<p>
+The Begin operation has an optional parameter that contains information about
+the previous transactions in a sequence of retries.
+</p>
+</section>
+
+<section>
+<h5 id="section_7.23.1.2">7.23.1.2 Commit operation</h5>
+<p>
+The Commit operation is only called in transaction mode, and when the current
+transaction branch is the initiating branch of a global transaction. The Commit
+operation always removes the topmost transaction branch from the strand's transaction
+stack. The Commit operation initiates a commit of the global transaction that
+the current transaction branch belongs to.
+</p>
+<p>
+When the commit is initiated, the transaction manager runs a two-phase commit
+protocol if necessary. First, it requests each participant to prepare to commit
+and waits for the participants to respond. There are two possibilities. If it
+receives a response from each participant that it is prepared to commit, then
+the transaction manager will make a decision to commit. If it receives a
+response from any participant that it cannot commit or it gives up waiting for a
+response from any participant, then the transaction manager will make a decision
+to rollback; in this case, it will create an error value for the cause of the
+rollback.
+</p>
+<p>
+Once the transaction manager has made a decision whether to commit, it calls the
+handlers that were registered with it for for the branches of the global
+transaction that it is managing; the commit handlers are called if the decision
+was to commit and the rollback handlers are called if the decision was to
+rollback. The error value for the cause of the rollback will be passed as an
+argument to the call of each rollback handler. At this point, the Commit
+operation can return. The transaction manager will also communicate its decision
+to the transaction's participants, which will result in them running commit or
+rollback handlers for their branches.
+</p>
+<p>
+The Commit operation has an optional parameter which is a RetryManager object or
+nil, which defaults to nil. If this parameter is non-nil and the decision is to
+rollback, then the transaction manager will call the RetryManager object's
+shouldRetry method, record the result and then pass it as the willRetry
+parameter to any rollback handlers.
+</p>
+<p>
+If the transaction manager decided to rollback, then the Commit operation
+returns the error value for the reason for the rollback. Otherwise, it returns
+nil.
 </p>
 
 </section>
 
 <section>
-<h3 id="section_7.27">7.27 Panic statement</h3>
+<h5 id="section_7.23.1.3">7.23.1.3 Rollback operation</h5>
+<p>
+The Rollback operation is only called in transaction mode, and when the current
+transaction branch is the initiating branch of a global transaction. The
+Rollback operation always removes the topmost transaction from the strand's
+transaction stack. The Rollback operations initiates a commit of the global
+transaction that the current transaction branch belongs to. The transaction
+manager calls the rollback handlers that were registered with it for the
+branches of the global transaction that it is managing. The Rollback operation
+has a parameter which is either an error value or nil; this is passed as an
+argument to any rollback handlers.
+</p>
+<p>
+The Rollback operation also has an optional parameter which is a RetryManager object
+or nil, which defaults to nil. If this parameter is non-nil, then the
+transaction manager will call the RetryManager object's shouldRetry method,
+record the result and then pass it as the willRetry parameter to any rollback
+handlers.
+</p>
+
+</section>
+</section>
+
+<section>
+<h4 id="section_7.23.2">7.23.2 Transaction statement</h4>
+
+<p>
+A transaction is performed using a transaction statement. The semantics of the
+transaction statement guarantees that every transaction manager Begin operation
+will be paired with a Rollback or Commit operation.
+</p>
+<pre class="grammar"><span class="ntdfn" id="transaction-stmt">transaction-stmt</span> := <code>transaction</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+</pre>
+<p>
+The statement-block must contain at least one commit-action. In addition, the
+compiler must be able to verify that any exit out of the statement-block that is
+neither a panic nor a fail will have executed a commit-action or
+rollback-statement.
+</p>
+<p>
+A transaction-stmt is executed as follows:
+</p>
+<ul>
+<li>Perform the transaction Begin() operation.</li>
+<li>Execute the statement-block. While executing the statement-block, any panic
+does not immediately terminate the current worker; rather control is transferred
+back to the transaction-stmt, so that the transaction-stmt can handle it as
+described in the next step.</li>
+<li>If the new transaction that was begun is still the current transaction, then
+the statement-block must have failed or panicked. In this case, perform a
+Rollback(e) operation, where e is the error associated with the fail or panic,
+and then continue with the fail or panic.</li>
+</ul>
+<p>
+The statement-block of a transaction-stmt is a transactional scope, except for
+any statements that could potentially be executed after the execution of a
+commit-action or rollback-stmt.
+</p>
+<p>
+It is an error for a transactional-stmt to appear in a transactional scope.
+However, it is not an error if the current strand is in transaction mode when a
+transaction-stmt is executed: in this case, the Begin() operation performed by
+the transaction-stmt will, as usual, start a new transaction, which will be
+completely independent of any existing transactions.
+</p>
+</section>
+
+
+<section>
+<h4 id="section_7.23.3">7.23.3 Retry transaction statement</h4>
+
+<pre class="grammar"><span class="ntdfn" id="retry-transaction-stmt">retry-transaction-stmt</span> := <code>retry</code> <a href="#retry-spec"><span class="ntref">retry-spec</span></a> <a href="#transaction-stmt"><span class="ntref">transaction-stmt</span></a>
+</pre>
+<p>
+A retry-transaction-stmt is the same as a retry-stmt containing a
+transaction-stmt, except as follows.
+</p>
+<ul>
+<li>When a transaction is retried, information about the previous transaction is
+passed as a parameter to the Begin() operation.</li>
+<li>If the transaction committed successfully, but the statement-block of the
+transaction-stmt failed, then the transaction-stmt will not be retried.</li>
+<li>The RetryManager is passed as a parameter to the Commit() and Rollback()
+operations and the shouldRetry method is then called by those operations, so
+that the result is available to the rollback handlers. The transaction manager
+records the result of calling shouldRetry, and this is used to determine whether
+to retry.</li>
+</ul>
+</section>
+
+<section>
+<h4 id="section_7.23.4">7.23.4 Commit action</h4>
+
+<pre class="grammar"><span class="ntdfn" id="commit-action">commit-action</span> := <code>commit</code>
+</pre>
+<p>
+A <code>commit-action</code> is only allowed if it is lexically within the
+<code>statement-block</code> of a <code>transaction-stmt.</code>
+</p>
+<p>
+Evaluating the <code>commit-action</code> performs the transaction manager
+Commit() operation; the result of this operation is the result of the
+<code>commit-action</code>. The type of the result is
+<code>transaction:Error?</code>. Note that the commit action does not alter the
+flow of control.
+</p>
+
+</section>
+
+<section>
+<h4 id="section_7.23.5">7.23.5 Rollback statement</h4>
+
+<pre class="grammar"><span class="ntdfn" id="rollback-stmt">rollback-stmt</span> := <code>rollback</code> [<a href="#expression"><span class="ntref">expression</span></a>] <code>;</code>
+</pre>
+<p>
+A <code>rollback-stmt</code> is only allowed if it is lexically within the
+<code>statement-block</code> of a <code>transaction-stmt.</code>
+</p>
+<p>
+The <code>rollback-stmt</code> performs the transaction manager Rollback(e)
+operation, where e is the result of executing the <code>expression</code>, if
+present, and nil otherwise. Note that like the commit action, the rollback
+statement does not alter the flow of control.
+</p>
+
+</section>
+
+</section>
+<section>
+<h3 id="section_7.24">7.24 Panic statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
 </pre>
@@ -8776,7 +9316,7 @@ The static type of <code>expression</code> must be a subtype of error.
 </section>
 
 <section>
-<h3 id="section_7.28">7.28 Return statement</h3>
+<h3 id="section_7.25">7.25 Return statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
 </pre>
@@ -8786,6 +9326,7 @@ evaluating the action-or-expr provides the termination value of the worker. If
 action-or-expr is omitted, then the termination value is nil.
 </p>
 </section>
+
 
 </section>
 <section>
@@ -8863,6 +9404,7 @@ words, the directed graph of module imports must be acyclic.
    | <code>stream</code>
    | <code>string</code>
    | <code>table</code>
+   | <code>transaction</code>
    | <code>typedesc</code>
    | <code>xml</code>
 </pre>
@@ -8987,7 +9529,7 @@ remote methods of the client object in order to send a response back to the
 client.
 </p>
 <p>
-The methods defined by the Listener&lt;T&gt; object type allow for the
+The methods defined by the Listener object type allow for the
 management of the lifecycle of a listener object and its attached services. A
 listener declaration registers a listener object with a module, so that it can
 be managed by the module. The runtime state of each module includes a list of
@@ -9046,10 +9588,11 @@ result of the evaluation.
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#absolute-resource-path"><span class="ntref">absolute-resource-path</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#attach-point"><span class="ntref">attach-point</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+<span class="ntdfn" id="attach-point">attach-point</span> := <a href="#absolute-resource-path"><span class="ntref">absolute-resource-path</span></a> | <a href="#string-literal"><span class="ntref">string-literal</span></a>
 <span class="ntdfn" id="absolute-resource-path">absolute-resource-path</span> :=
    <a href="#root-resource-path"><span class="ntref">root-resource-path</span></a>
-   (<code>/</code> <a href="#resource-path-segment"><span class="ntref">resource-path-segment</span></a>)+
+   | (<code>/</code> <a href="#resource-path-segment-name"><span class="ntref">resource-path-segment-name</span></a>)+
 <span class="ntdfn" id="root-resource-path">root-resource-path</span> := <code>/</code>
 
 <span class="ntdfn" id="expression-list">expression-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
@@ -9062,26 +9605,29 @@ listeners.
 The static type S for the constructed service object is specified by the
 type-descriptor if present, and otherwise is the union of a type inferred from
 each expression in the expression list as follows. Each expression in the
-expression-list must have a type Listener&lt;T&gt;|E where T is a subtype of
-<code>service object {}</code> and E is a subtype of <code>error</code>; the
+expression-list must have a type Listener&lt;T,A&gt;|E where T is a subtype of
+<code>service object {}</code>, A is a subtype of
+<code>string[]|string|()</code> and E is a subtype of <code>error</code>; the
 inferred type is T. The object-constructor-block has the same semantics as in an
 object-constructor-expr with a <code>service</code> qualifier and a
-type-reference that refers to S. If the service-decl includes <code>isolated</code>, then it
-is equivalent to an object-constructor-expr with an <code>isolated</code>
-qualifier as well as a <code>service</code> qualifier.
+type-reference that refers to S. If the service-decl includes
+<code>isolated</code>, then it is equivalent to an object-constructor-expr with
+an <code>isolated</code> qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
-The <code>absolute-resource-path</code> determines the second argument passed to
-the <code>attach</code> method: if the <code>absolute-resource-path</code> is
-absent, then the argument is nil; otherwise, the argument is an array of
-strings, with one string for each <code>resource-path-segment</code>. Attaching
-service objects <var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub>
-with absolute resource paths
-<var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub> is equivalent
-to attaching a single service object with <var>n</var> <code>get</code> resource
-methods to <code>/</code>, where the <var>i</var>-th resource method has a path
-<var>p</var><sub>i</sub> (an <code>absolute-resource-path</code> is turned into
-a <code>relative-resource-path</code> with the same
+The <code>attach-point</code> determines the second argument passed to the
+<code>attach</code> method: if the <code>attach-point</code> is absent, then the
+argument is nil; if it is a <code>string-literal</code>, then the argument is a
+string; otherwise, it is an <code>absolute-resource-path</code> and the argument
+is an array of strings, with one string for each
+<code>resource-path-segment</code>. Attaching service objects
+<var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub> with absolute
+resource paths <var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub>
+is equivalent to attaching a single service object with <var>n</var>
+<code>get</code> resource methods to <code>/</code>, where the <var>i</var>-th
+resource method has a path <var>p</var><sub>i</sub> (an
+<code>absolute-resource-path</code> is turned into a
+<code>relative-resource-path</code> with the same
 <code>resource-path-segment</code>s) and returns
 <var>s</var><sub><var>i</var></sub>.
 </p>
@@ -9144,7 +9690,7 @@ without without relying on inference.
 
 <pre class="grammar"><span class="ntdfn" id="function-defn">function-defn</span> := 
    <a href="#metadata"><span class="ntref">metadata</span></a>
-   [<code>public</code>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   [<code>public</code>] <a href="#function-quals"><span class="ntref">function-quals</span></a>
    <code>function</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
 <span class="ntdfn" id="function-defn-body">function-defn-body</span> :=
    <a href="#block-function-body"><span class="ntref">block-function-body</span></a>
@@ -9159,6 +9705,10 @@ fails. The following special requirements apply to the <code>init</code>
 function of a module: it must not be declared <code>public</code>; its return
 type must both be a subtype of <code>error?</code> and contain <code>()</code>;
 it must have no parameters.
+</p>
+<p>
+If the function-quals includes <code>transactional</code>, then
+expr-function-body and the block-function-body are transactional scopes.
 </p>
 
 </section>
@@ -9766,8 +10316,8 @@ modules are called the <em>lang library</em>.
 </p>
 <p>
 The lang library comprises the following modules. With the exception of the
-<code>lang.value</code> and <code>lang.runtime</code> modules, each corresponds
-to a basic type.
+<code>lang.value</code>, <code>lang.transaction</code> and
+<code>lang.runtime</code> modules, each corresponds to a basic type.
 </p>
 <ul>
 <li>
@@ -9813,6 +10363,7 @@ basic type typedesc</li>
 <code><a href="./lib/xml.bal" type="text/plain">lang.xml</a></code> for
 basic type xml</li>
 <li><code><a href="./lib/runtime.bal" type="text/plain">lang.runtime</a></code></li>
+<li><code><a href="./lib/transaction.bal" type="text/plain">lang.transaction</a></code></li>
 <li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
 </ul>
 <p>
@@ -9969,8 +10520,9 @@ object constructor expression, which includes method definitions, or by applying
 methods and fields of an object are not in a single symbol space. Classes and
 object constructors can declare fields as final.</li>
 <li>Services have become service objects that work in a similar way to client
-objects; resource methods on service objects have become remote methods. There
-is a new concept for resource methods.</li>
+objects; resource methods on service objects have become remote methods. Remote
+methods are in a separate symbol space from regular methods. There is a new
+concept for resource methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
 declared as <code>readonly</code>.</li>
 <li>Functions, objects and module-level variables can be declared as
@@ -10024,6 +10576,7 @@ be specified at runtime.</li>
 predeclared.</li>
 <li>Backslash escapes can be used in identifiers without needing an initial
 single quote.</li>
+<li>Language support for transactions has been added.</li>
 </ol>
 </section>
 <section>
@@ -10355,14 +10908,11 @@ constrained.</li>
 <h2 id="planned_future_functionality">C. Planned future functionality</h2>
 
 <p>
-The vision for the Ballerina language includes a large range of functionality
+The vision for the Ballerina language includes a range of functionality
 that is not yet included in this specification.
 </p>
 
 <ul>
-<li>
-<em>Transactions</em> will provide language support both local and
-distributed transactions.</li>
 <li>
 <em>Security</em> will combine language and platform features to make
 programs secure by default.</li>

@@ -106,7 +106,8 @@ nav.cLeftNavContainer {
     margin-bottom: 20px;
     }
     .cLearnPageContentCol  {
-    min-height: 340px;
+    /* min-height: 340px; */
+    margin-bottom: 30px;
     }
     ul.cLearnLandingLinks {
     margin: 20px 0 0 0;
@@ -128,10 +129,10 @@ nav.cLeftNavContainer {
     font-weight: 400;
     }
     .cBoxLink {
-        padding: 30px 50px 50px 50px;
+        padding: 30px;
         background-color: #f7f7f7;
         display: inline-block;
-        min-height: 310px;
+        min-height: 260px;
         border: 1px solid #f7f7f7;
     }
 
@@ -141,7 +142,21 @@ nav.cLeftNavContainer {
 
     .cBoxLink h2 {
         color: #20b6b0;
-        border-color: #20b6b0;
+        border-color: transparent;
+        background-color: transparent;
+    background-image: url("/img/go-bg-green.svg") !important;
+    border-bottom: none;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 50px;
+    background-position: right;
+    padding-bottom: 0;
+    margin-top: 0 !important;
+    height: 50px;
+    line-height:50px;
+    font-size: 22px !important;
+    margin-bottom: 10px !important;
+    
     }
     .cBoxLink:hover h2 {
         color: #585A5E;
@@ -150,6 +165,7 @@ nav.cLeftNavContainer {
     #tree li {
         /* padding: 0 0 10px 0; */
         padding-right: 0px;
+        list-style-image: url('/img/toc-list.svg') !important;
 
     /* padding-right: 30px; */
 
@@ -157,6 +173,11 @@ nav.cLeftNavContainer {
     li.expanded {
         /* border-left: 1px solid #20b6b0; */
         /* margin-bottom: 10px; */
+    }
+
+    .abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon {
+        margin-right: 10px;
+        cursor: pointer;
     }
 
     
@@ -193,7 +214,7 @@ ul#tree  {
         width: 14px;
         height: 14px; 
         display: inline-block;
-        margin-left: -20px;
+        margin-left: -23px;
         background-size: 12px;
         background-repeat: no-repeat;
         background-position: center;
@@ -256,3 +277,28 @@ color: #fff !important;
 .cBallerina-io-breadcrumbs {
     padding: 0;
 }
+
+
+  
+  /* Chrome 29+ */
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+    and (min-resolution:.001dpcm) {
+        span.icon {
+            background-color: #20b6b0;
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            margin-left: -21px;
+            background-size: 12px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+  }
+  
+  /* Chrome 22-28 */
+  @media screen and(-webkit-min-device-pixel-ratio:0) {
+    .span.icon {-chrome-:only(; 
+        margin-left: -21px;
+    );} 
+  }
+

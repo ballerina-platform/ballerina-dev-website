@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Generating Ballerina Code for Protocol Buffer Definitions
-description: The Protocol Buffers to Ballerina tool provides capabilities to generate Ballerina source code for the Protocol Buffer definition.
+description: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for the Protocol Buffer definition.
 keywords: ballerina, protocol buffers, programming language
 permalink: /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions/
 active: generating-ballerina-code-for-protocol-buffer-definitions
-intro: The `Protocol Buffers to Ballerina` tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions.
+intro: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions.
 redirect_from:
   - /swan-lake/learn/how-to-generate-code-for-protocol-buffers
   - /swan-lake/learn/how-to-generate-code-for-protocol-buffers/
@@ -34,9 +34,9 @@ You can generate Ballerina source code using the following command:
  file.
 
 `--output` - Location of the generated Ballerina source files. This is an optional field. 
-If output path is not specified, output will be written to a directory corresponding to the package in the Protocol
+If the output path is not specified, the output will be written to a directory corresponding to the package in the Protocol
  Buffers definition. 
-If package is not specified, output will be written to a 'temp' directory in the current location.
+If the package is not specified, the output will be written to a 'temp' directory in the current location.
 
 `--mode`   - Set the mode (client or service) to generate code samples. If not specified, only the stub file is
  generated.
@@ -65,7 +65,7 @@ message HelloResponse {
 
 * Execute the below command to generate the service template file.
 ```
-$ ballerina grpc --input helloworld_service.proto --mode service --output service
+$ bal grpc --input helloworld_service.proto --mode service --output service
 ```
 Once you execute the command, the service template file (`helloWorld_sample_service.bal`) is generated inside the service directory.
 > **Note:** If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.
@@ -73,13 +73,13 @@ Once you execute the command, the service template file (`helloWorld_sample_serv
 
 * Execute the below command to generate the client/service stub and client template.
 ```
-$ ballerina grpc --input helloworld_service.proto --mode client --output client
+$ bal grpc --input helloworld_service.proto --mode client --output client
 ```
 Once you execute the command, the stub file(`helloworld_service_pb.bal`) and the service template file (`helloWorld_sample_client.bal`) are generated inside the client directory.
 
 
 * Execute the below command to generate only the client/service stub.
 ```
-$ ballerina grpc --input helloworld_service.proto --output stubs
+$ bal grpc --input helloworld_service.proto --output stubs
 ```
 Once you execute the command, only the stub file (`helloworld_service_pb.bal`) is generated inside the `stubs` directory.

@@ -14,18 +14,17 @@ redirect_from:
 
 ### Creating the Ballerina Package
 
-1. Execute the `ballerina new hello` command to create a new package named `hello`.
+1. Execute the `ballerina new hello` command to create a new module named `hello`.
 
 2. Replace the content of the `/hello/main.bal` file with the content below.
 
-    >**Note:** In the current version of Ballerina, you need the c2c import statement to enable the code to cloud functionality. All the other code is not related to Docker or Kubernetes and those are completely focused on the business logic. 
+    >**Note:** All the other code is not related to Docker or Kubernetes and those are completely focused on the business logic. 
 
     ***main.bal***
 
     ```ballerina
     import ballerina/http;
     import ballerina/log;
-    import ballerina/c2c as _;
 
     listener http:Listener helloEP = new(9090);
 
@@ -57,9 +56,16 @@ redirect_from:
 
 ### Generating the Artifacts
 
-Execute the `ballerina build` command to build the Ballerina package and you view the output below.
+Execute the `bal build --cloud=k8s` command to build the Ballerina package and you view the output below. Optionally,
+the build option can be added to the `Ballerina.toml` file as below.
+
+```toml
+[build-options]
+cloud = "k8s"
+```
 
 ```bash
+$> bal build --cloud=k8s
 Compiling source
         wso2/hello:0.1.0
 
@@ -236,7 +242,7 @@ Follow the steps below to execute the Kubernetes service.
       horizontalpodautoscaler.autoscaling/wso2-hello-0--hpa created
       ```
 
-2. Execute the `kubectl get pods` command to verify the Kuberentes pods.
+2. Execute the `kubectl get pods` command to verify the Kubernetes pods.
 
       ```bash
       NAME                                        READY   STATUS    RESTARTS   AGE
@@ -270,9 +276,9 @@ Follow the steps below to execute the Kubernetes service.
 
 ## Resource Limits and Auto Scaling Sample
 
-This sample focuses on setting up resource limits and auto scaling for the generated container. When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set. 
+This sample focuses on setting up resource limits and auto-scaling for the generated container. When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set. 
 
-Auto scaling policies allow the container to scale seamlessly without overloading a single container. Code to cloud generates artifacts required for the orchestrator to limit the resource taken from one container. It also generates auto scaling artifacts to smoothly scale when containers are overloaded. By default, code to cloud sets the default values for these configurations. You can find those values under the [Kubernetes.toml properties](/swan-lake/learn/deployment/code-to-cloud#properties-of-the-kubernetestoml-file). These values will be overridden in this example. 
+Auto-scaling policies allow the container to scale seamlessly without overloading a single container. Code to cloud generates artifacts required for the orchestrator to limit the resources taken from one container. It also generates auto-scaling artifacts to smoothly scale when containers are overloaded. Code to cloud sets the default values for these configurations. You can find those values under the [Kubernetes.toml properties](/swan-lake/learn/deployment/code-to-cloud#properties-of-the-kubernetestoml-file). These values will be overridden in this example. 
 
 ### Creating the Ballerina Package
 
@@ -284,8 +290,7 @@ Auto scaling policies allow the container to scale seamlessly without overloadin
 
     ```ballerina
     import ballerina/http;
-    import ballerina/log;
-    import ballerina/c2c as _;
+    import ballerina/log;   
 
     listener http:Listener helloEP = new(9090);
 
@@ -329,7 +334,7 @@ Auto scaling policies allow the container to scale seamlessly without overloadin
 
 ### Generating the Artifacts
 
-Execute the `ballerina build` command to build the Ballerina package and you view the output below.  
+Execute the `bal build --cloud=k8s` command to build the Ballerina package and you view the output below.  
 
 ```bash
 Compiling source
@@ -474,7 +479,7 @@ spec:
 
 ```
 
-**Note:** The autoscaling and resource limits specified in the `Kubernetes.toml` file are reflected in the kubernetes artifacts above.
+**Note:** The auto-scaling and resource limits specified in the `Kubernetes.toml` file are reflected in the kubernetes artifacts above.
 
 ### Executing the Kubernetes Service
 
@@ -488,7 +493,7 @@ Follow the steps below to deploy the generated Kubernetes artifacts directly.
     horizontalpodautoscaler.autoscaling/wso2-scaling-0--hpa created
     ```
 
-2. Execute the `kubectl get pods` command to verify the Kuberentes pods.
+2. Execute the `kubectl get pods` command to verify the Kubernetes pods.
 
     ```bash
     NAME                                          READY   STATUS    RESTARTS   AGE
@@ -519,4 +524,3 @@ Follow the steps below to deploy the generated Kubernetes artifacts directly.
       ```bash
       Hello, World from service helloWorld!
       ```   
-

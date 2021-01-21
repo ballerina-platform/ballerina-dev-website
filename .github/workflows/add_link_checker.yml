@@ -17,8 +17,8 @@ jobs:
         with:
           name: Link Checker Report
           path:  ./link-checker/out.md
-      #- name: Fail if there were link errors
-        #run: exit ${{ steps.lc.outputs.exit_code }}
+      - name: Fail if there were link errors
+        run: exit ${{ steps.lc.outputs.exit_code }}
 
       #- name: SendGrid
         #uses: peter-evans/sendgrid-action@v1

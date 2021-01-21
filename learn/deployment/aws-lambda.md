@@ -56,7 +56,7 @@ The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/awsla
 The second parameter contains the input request data. This input value will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). 
 
 
-The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response or else in an error situation, the function will return an `error` value, which provides information on the error to the system. You can also provide functions, which do not return anything at all, which implicitly signals a successful execution without a returning result.
+The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response, or else in an error situation, the function will return an `error` value, which provides information on the error to the system. You can also provide functions, which do not return anything at all, which implicitly signals a successful execution without a returning result.
 
 ## Building the Function
 

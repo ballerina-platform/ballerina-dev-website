@@ -13,7 +13,7 @@ redirect_from:
   - /swan-lake/learn/deployment/
 ---
 
-To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, youhave to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings. 
+To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, you have to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings.
 
 The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing the corresponding sample source code. 
 
@@ -44,13 +44,12 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 import ballerina/http;
 import ballerina/docker;
- 
+
 @docker:Config {}
-service hello on new http:Listener(9090){
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /hello on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller) {
+        caller->respond("Hello World!");
+    }
 }
 
 ```
@@ -194,11 +193,10 @@ import ballerina/docker;
    username: "$env{DOCKER_USERNAME}",
    password: "$env{DOCKER_PASSWORD}"
 }
-service hello on new http:Listener(9090){
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /hello on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller) {
+        caller->respond("Hello World!");
+    }
 }
 ```
 
@@ -284,11 +282,10 @@ listener http:Listener helloWorldEP = new(9095, {
 @docker:Config {
    name: "https-helloworld"
 }
-service hello on helloWorldEP {
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /helloWorld on helloWorldEP {
+    resource function get sayHello(http:Caller caller) {
+        caller->respond("Hello World!");
+    }
 }
 ```
 
@@ -389,7 +386,7 @@ service hello on helloWorldEP {
     curl -k https://localhost:9095/hello/sayHello
     Hello World!
     ```
-    > **Note:** The cURL command is used with the -k option because self signed certificates are used in the keystore.
+    > **Note:** The cURL command is used with the -k option because self-signed certificates are used in the keystore.
 
 6. Clean up the used artifacts.
 
@@ -430,9 +427,9 @@ listener http:Listener helloEP = new(9090);
        { sourceFile: "./name.txt", target: "/home/ballerina/name.txt" }
    ]
 }
-service hello on helloEP {
+service /hello on helloEP {
  
-   resource function greet(http:Caller caller, http:Request request) returns error? {
+   resource function get greet(http:Caller caller) returns error? {
        http:Response response = new;
        string payload = readFile("./name.txt");
        response.setTextPayload("Hello " + <@untainted> payload + "\n");
@@ -466,7 +463,7 @@ This sample sends a greeting to the caller by getting the name from a text file.
 }
 ```
 
->**Note:** In addition to the above, if you want to copy driver files such as JDBC, you can create a Ballerina project, add following entires to its `Ballerina.toml` file, and change the path to the JDBC driver appropriately.
+>**Note:** In addition to the above, if you want to copy driver files such as JDBC, you can create a Ballerina project, add the following entries to its `Ballerina.toml` file, and change the path to the JDBC driver appropriately.
 
 `Ballerina.toml`
 
@@ -616,9 +613,9 @@ import ballerina/docker;
    name: "helloworld_custom_baseimage",
    baseImage: "openjdk:11-jre-slim"
 }
-service hello on new http:Listener(9090){
+service /hello on new http:Listener(9090){
  
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+  resource function get sayHello(http:Caller caller) returns error? {
       check caller->respond("Hello World!");
   }
 }
@@ -747,9 +744,9 @@ import ballerina/docker;
    name: "custome_cmd",
    cmd:    cmd: "CMD java -Xdiag -cp \"${APP}:jars/*\" '$_init' --b7a.http.accesslog.console=true"
 }
-service hello on new http:Listener(9090){
+service /hello on new http:Listener(9090){
  
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+  resource function get sayHello(http:Caller caller) returns error? {
       check caller->respond("Hello World!");
   }
 }
@@ -873,264 +870,6 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
 
     > docker rmi 08611185ed10
     Untagged: custome_cmd:latest
-    ```
-
-### Creating Multiple Docker Images Corresponding to Modules of a Ballerina Project
-
-This use case shows how to add the Docker annotation to a Ballerina project to create the corresponding Docker images.
-
-### Setting Up the Prerequisites
-
-You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
-
-#### Sample Source Code
-
-1. Ballerina project to call the restaurant:
-
-    ```ballerina
-    > ballerina new restaurant
-    Created new Ballerina project at restaurant
-
-    Next:
-        Move into the project directory and use `ballerina add <module-name>` to
-        add a new Ballerina module.
-    ```
-
-2. The two modules to call and order pizzas and burgers:
-
-    ```ballerina
-    > ballerina add pizza
-    Added new ballerina module at 'src/pizza'
-
-    > ballerina add burger 
-    Added new ballerina module at 'src/burger'
-    ```
-
-3. Source code of `src/pizza` for the order:
-
-    `pizza_menu.bal`
-
-    ```ballerina
-    import ballerina/http;
-    import ballerina/docker;
-    
-    @docker:Config {
-      name: "pizza"
-    }
-    service pizza on new http:Listener(9090){
-    
-      resource function menu(http:Caller caller,http:Request request) returns error? {
-          check result = caller->respond("Pizza Menu");
-      }
-    }
-    ```
-
-4. Source code of `src/burger` for the order:
-
-    `burger_menu.bal`
-
-    ```ballerina
-    import ballerina/http;
-    import ballerina/docker;
-    
-    @docker:Config {
-      name: "burger"
-    }
-    service burger on new http:Listener(8080){
-    
-      resource function menu(http:Caller caller,http:Request request) returns error? {
-          check result = caller->respond("Burger Menu");
-      }
-    }
-    ```
-
-#### Steps to Run
-
-1. Compile the Ballerina project.
-
-    ```bash
-    > ballerina build -a
-    Compiling source
-      lakmal/burger:0.1.0
-      lakmal/pizza:0.1.0
-
-    Creating balos
-      target/balo/burger-2020r1-any-0.1.0.balo
-      target/balo/pizza-2020r1-any-0.1.0.balo
-
-    Running Tests
-      lakmal/burger:0.1.0
-    [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-    I'm the before suite function!
-    I'm the before function!
-    I'm in test function!
-    I'm the after function!
-    I'm the after suite function!
-    [ballerina/http] stopped HTTP/WS listener 0.0.0.0:8080
-
-      [pass] testFunction
-
-      1 passing
-      0 failing
-      0 skipped
-
-      lakmal/pizza:0.1.0
-    [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-    I'm the before suite function!
-    I'm the before function!
-    I'm in test function!
-    I'm the after function!
-    I'm the after suite function!
-    [ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090
-
-      [pass] testFunction
-
-      1 passing
-      0 failing
-      0 skipped
-
-
-    Generating executables
-      target/bin/burger.jar
-      target/bin/pizza.jar
-
-    Generating docker artifacts...
-      @docker 		 - complete 2/2 
-
-      Run the following command to start a Docker container:
-      docker run -d -p 8080:8080 burger:latest
-
-
-    Generating docker artifacts...
-      @docker 		 - complete 2/2 
-
-      Run the following command to start a Docker container:
-      docker run -d -p 9090:9090 pizza:latest
-    ```
-
-    The artifact files below will be generated with the build process.
-
-    ```bash
-    > tree
-    .
-    ├── Ballerina.lock
-    ├── Ballerina.toml
-    ├── src
-    │   ├── burger
-    │   │   ├── Module.md
-    │   │   ├── burger_menu.bal
-    │   │   ├── main.bal
-    │   │   ├── resources
-    │   │   └── tests
-    │   │       ├── main_test.bal
-    │   │       └── resources
-    │   └── pizza
-    │       ├── Module.md
-    │       ├── main.bal
-    │       ├── pizza_menu.bal
-    │       ├── resources
-    │       └── tests
-    │           ├── main_test.bal
-    │           └── resources
-    └── target
-        ├── balo
-        │   ├── burger-2020r1-any-0.1.0.balo
-        │   └── pizza-2020r1-any-0.1.0.balo
-        ├── bin
-        │   ├── burger.jar
-        │   └── pizza.jar
-        ├── caches
-        │   ├── bir_cache
-        │   │   └── lakmal
-        │   │       ├── burger
-        │   │       │   └── 0.1.0
-        │   │       │       └── burger.bir
-        │   │       └── pizza
-        │   │           └── 0.1.0
-        │   │               └── pizza.bir
-        │   ├── jar_cache
-        │   │   └── lakmal
-        │   │       ├── burger
-        │   │       │   └── 0.1.0
-        │   │       │       ├── lakmal-burger-0.1.0-testable.jar
-        │   │       │       └── lakmal-burger-0.1.0.jar
-        │   │       └── pizza
-        │   │           └── 0.1.0
-        │   │               ├── lakmal-pizza-0.1.0-testable.jar
-        │   │               └── lakmal-pizza-0.1.0.jar
-        │   └── json_cache
-        │       └── lakmal
-        │           ├── burger
-        │           │   └── 0.1.0
-        │           │       └── test_suit.json
-        │           └── pizza
-        │               └── 0.1.0
-        │                   └── test_suit.json
-        └── docker
-            ├── burger
-            │   └── Dockerfile
-            └── pizza
-                └── Dockerfile
-
-    34 directories, 24 files
-    ```
-
-2. Verify that the Docker image is created.
-
-    ```bash
-    > docker images
-    REPOSITORY       TAG           IMAGE ID            CREATED             SIZE
-    pizza            latest        72d12aa57bc1        2 minutes ago       134MB
-    burger           latest        d3facfd62996        2 minutes ago       134MB
-    ```
-
-3. Run the Docker image as a container (use the command below printed in step 1).
-
-    ```bash
-    > docker run -d -p 8080:8080 burger:latest
-    1d3b98286a45c2feeae607719c1a58d1c6b9daa57889cff37894cb42490d15de
-
-    > docker run -d -p 9090:9090 pizza:latest
-    c6bfd238515265fb2909d74c3d862830712019c0681f75e7400e7a90833ce84a
-    ```
-
-4. Verify that the Docker container is running.
-
-    ```bash
-    > docker ps
-    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-    c6bfd2385152        pizza:latest        "/bin/sh -c 'java -j…"   15 seconds ago      Up 14 seconds       0.0.0.0:9090->9090/tcp   romantic_lovelace
-    1d3b98286a45        burger:latest       "/bin/sh -c 'java -j…"   47 seconds ago      Up 46 seconds       0.0.0.0:8080->8080/tcp   priceless_rhodes
-    ```
-
-5. Access the pizza service and burger service with the cURL command below.
-
-    ```bash
-    > curl http://localhost:9090/pizza/menu
-    Pizza Menu
-
-    > curl http://localhost:8080/burger/menu
-    Burger Menu
-    ```
-
-6. Clean up the created artifacts.
-
-    ```bash
-    > docker kill c6bfd2385152
-    C6bfd2385152
-    > docker kill 1d3b98286a45
-    1d3b98286a45
-
-    > docker rm c6bfd2385152
-    C6bfd2385152
-    > docker rm 1d3b98286a45
-    1d3b98286a45
-
-
-    > docker rmi 72d12aa57bc1
-    Untagged: pizza:latest
-    > docker rmi d3facfd62996
-    Untagged: burger:latest
     ```
 
 ## Troubleshooting

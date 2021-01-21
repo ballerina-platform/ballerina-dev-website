@@ -12,6 +12,8 @@ redirect_from:
   - /swan-lake/learn/tools-ides/setting-up-intellij-idea
   - /swan-lake/learn/tools-ides/setting-up-intellij-idea/
   - /swan-lake/learn/setting-up-intellij-idea
+redirect_to:
+  - /swan-lake/page-not-available
 ---
 
 ## Setting Up the Prerequisites
@@ -90,7 +92,7 @@ After obtaining the ZIP file using either of the above approaches, follow the st
 > **Tip:** If you are using Ubuntu/Windows, click **File**, click **Settings**, and then click **Plugins**.
 2. Click the cogwheel icon, and then click **Install plugin from disk...**.
 3. Browse and select the ZIP file of the plugin you downloaded.
-> **Important:** Make sure you install the ZIP file and not the extracted JAR files. This is because the ZIP file contains of an additional library that is required by the plugin to function as expected.
+> **Important:** Make sure you install the ZIP file and not the extracted JAR files. This is because the ZIP file contains an additional library that is required by the plugin to function as expected.
 4. Click the **Installed** tab, click **Restart IDE**, and then click **Restart**.
 
 ![Install using the Preferences option of the IDE.](/swan-lake/learn/images/install-via-editor-preferences.gif)

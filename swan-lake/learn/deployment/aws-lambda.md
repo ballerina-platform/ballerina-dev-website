@@ -26,16 +26,16 @@ public function hash(awslambda:Context ctx, json input) returns json|error {
 }
 ```
 
-The first parameter with the [awslambda:Context](/swan-lake/learn/api-docs/ballerina/awslambda/classes/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+The first parameter with the [awslambda:Context](/swan-lake/learn/api-docs/ballerina/#/awslambda/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
-The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function e.g., an AWS S3 bucket update event. The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response or else in an error situation, the function will return an `error` value, which provides information on the error to the system.
+The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response, or else in an error situation, the function will return an `error` value, which provides information on the error to the system.
 
 ## Building the Function
 
 The AWS Lambda functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
-$ ballerina build functions.bal 
+$ bal build functions.bal 
 Compiling source
 	functions.bal
 
@@ -53,7 +53,7 @@ Generating executables
 
 ## Deploying the Function
 
-Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. An [AWS Lambda Role ](https://console.aws.amazon.com/iam/home?#/roles) for the user must be created with the `AWSLambdaBasicExecutionRole` permission in order to deploy the AWS Lambda functions. The created AWS Lambda Role ARN is required when deploying the functions through the CLI. 
+Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. An [AWS Lambda Role](https://console.aws.amazon.com/iam/home?#/roles) for the user must be created with the `AWSLambdaBasicExecutionRole` permission in order to deploy the AWS Lambda functions. The created AWS Lambda Role ARN is required when deploying the functions through the CLI.
 
 A sample execution to deploy the hash function as an AWS Lambda is shown below. 
 

@@ -1,0 +1,96 @@
+var searchData = {
+  "modules": [
+    {
+      "id": "tcp",
+      "description": "This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented protocols.",
+      "orgName": "ballerina",
+      "version": "0.7.3"
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "ClientConfig",
+      "description": "Configurations for the connection oriented tcp client.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    },
+    {
+      "id": "ListenerConfig",
+      "description": "",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    }
+  ],
+  "constants": [],
+  "errors": [
+    {
+      "id": "Error",
+      "description": "Represents tcp module related errors.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    },
+    {
+      "id": "GenericError",
+      "description": "Represents generic tcp error, which contains the information related to the error.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    },
+    {
+      "id": "ReadTimedOutError",
+      "description": "This will returns once the given read timed out time exceed for socket reads.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    }
+  ],
+  "types": [],
+  "clients": [
+    {
+      "id": "Caller",
+      "description": "Represents caller object in tcp service remote methods\n\n",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    },
+    {
+      "id": "Client",
+      "description": "Initializes the TCP connection client based on the \nprovided configurations.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    }
+  ],
+  "listeners": [
+    {
+      "id": "Listener",
+      "description": "This is used for creating TCP server endpoints.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    }
+  ],
+  "annotations": [],
+  "abstractObjects": [
+    {
+      "id": "ConnectionService",
+      "description": "Represent TCP Listener service type.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    },
+    {
+      "id": "Service",
+      "description": "Represent TCP Listener service type.",
+      "moduleId": "tcp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.3"
+    }
+  ],
+  "enums": []
+};

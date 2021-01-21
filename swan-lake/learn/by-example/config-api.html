@@ -11,9 +11,14 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Look up the configuration values. </span>
     <span class="kt">string</span> <span class="nx">username</span> <span class="p">=</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;app.auth.username&quot;</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;app.auth.password&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Authenticating user &#39;${username}&#39;`</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;app.auth.password&quot;</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Authenticating user &#39;${username}&#39;`</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -46,7 +51,7 @@ redirect_from:
  optional configurations are the default values of the return types of
  the functions. <br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/config/index.html">Config module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/config/">Config module</a>.</p>
 </p>
 
                         </td>
@@ -310,9 +315,9 @@ ballerina encrypt
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory, which contains the `config_api.bal` file, and execute the `ballerina run` command as follows.
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory, which contains the `config_api.bal` file, and execute the `bal run` command as follows.
 # The path to the configuration file can be either an absolute or a relative path. Also, enter the secret as `12345` when prompted.
-ballerina run config_api.bal --b7a.config.file=&lt;PATH_TO_THE_CONFIG_FILE&gt; 
+bal run config_api.bal --b7a.config.file=&lt;PATH_TO_THE_CONFIG_FILE&gt; 
 </code></pre></div>
 
                                 </td>
@@ -339,7 +344,7 @@ Authenticating user &#39;jack&#39;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Alternatively, if you have the `ballerina.conf` file in the same directory, which includes the `config_api.bal` file, execute the command below without passing the `--b7a.config.file` property. 
-ballerina run config_api.bal
+bal run config_api.bal
 </code></pre></div>
 
                                 </td>
@@ -364,7 +369,7 @@ ballerina run config_api.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># However, instead of creating a configuration file, the properties to be read can also be given via CLI parameters as follows. 
-ballerina run config_api.bal --app.auth.username=jack --app.auth.password=@encrypted:{njjb2H9u7Bax2FZX/X+UPZ50lR6+ckKmkesE87Yuw/x9wE1yvhcww1ehOc+mjgCc}&quot;}
+bal run config_api.bal --app.auth.username=jack --app.auth.password=@encrypted:{njjb2H9u7Bax2FZX/X+UPZ50lR6+ckKmkesE87Yuw/x9wE1yvhcww1ehOc+mjgCc}&quot;}
 </code></pre></div>
 
                                 </td>

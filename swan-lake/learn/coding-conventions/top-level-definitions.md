@@ -13,7 +13,7 @@ redirect_from:
 
 ## General Practices
 
-* Do not indent the top level definitions. 
+* Do not indent the top-level definitions. 
   
 **Do's**
 
@@ -82,7 +82,7 @@ function func1() {}
 function Person.getName() {}
 ```
 
-* If the function needs to be split in to new lines due to it exceeding the max line length,
+* If the function needs to be split into new lines due to it exceeding the max line length,
   - can break lines from the parameter list by moving a parameter value only to a 
     new line and indenting it with four spaces from the starting position of the function.
     
@@ -131,7 +131,7 @@ service hello on new http:Listener(9090) {
 ```
 
 * When formatting resource functions and function definitions, block indent each element and
-  follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/definitions#function-definition).
+  follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/top-level-definitions#function-definition).
   
 **Example,**
 
@@ -155,7 +155,7 @@ service hello on ep1, ep2 {
 
 * Block indent each field definition and each function definition on their own line.
 * Init function should be placed before all the other functions. 
-* For function definitions in the object definition, follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/definitions#function-definition).
+* For function definitions in the object definition, follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/top-level-definitions#function-definition).
 
 **Example,**
 
@@ -249,3 +249,8 @@ type Employee object {
     }
 };
 ```
+
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
+
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

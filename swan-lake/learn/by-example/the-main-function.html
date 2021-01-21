@@ -11,15 +11,27 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// The `main` function that accepts student information and prints out a formatted string.</span>
+<span class="c1">// The first parameter `name` is a required parameter, while the second parameter `age` is a defaultable</span>
+<span class="c1">// parameter with the default value `18`. The third parameter `year` is also a defaultable parameter.</span>
+<span class="c1">// The rest parameter `modules` represents the additional arguments.</span>
+<span class="c1">// The `main` function may return an `error` or `()`.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
                      <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">18</span><span class="p">,</span>
                      <span class="kt">string</span> <span class="nx">year</span> <span class="p">=</span> <span class="s">&quot;Freshman&quot;</span><span class="p">,</span>
                      <span class="kt">string</span><span class="o">...</span> <span class="nx">modules</span><span class="p">)</span>
                   <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+    <span class="c1">// Return an error if the name is invalid.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;InvalidName&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;invalid length&quot;</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kt">string</span> <span class="nx">info</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`Name: ${name}, Age: ${age}, Year: ${year}`</span><span class="p">;</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kt">string</span> <span class="nx">info</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`Name: ${name}, Age: ${age}, Year: ${year}`</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">info</span> <span class="o">+=</span> <span class="s">&quot;, Module(s): &quot;</span> <span class="o">+</span> <span class="nx">modules</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
@@ -51,9 +63,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="isolated-functions.html">
+                                    <a class="next" href="if-else.html">
                                         <span>NEXT ></span>
-                                        <p>Isolated Functions</p>
+                                        <p>If/Else</p>
                                     </a>
                                 </div>
                                 
@@ -233,7 +245,7 @@ redirect_from:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
+# `.bal` file, and execute the `bal run` command below.
 </code></pre></div>
 
                                 </td>
@@ -248,7 +260,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name`. `18` would be set as the value for
 # `age` and `Freshman` would be set as the value for `year`.
-ballerina run the_main_function.bal Alice
+bal run the_main_function.bal Alice
 Name: Alice, Age: 18, Year: Freshman
 </code></pre></div>
 
@@ -264,7 +276,7 @@ Name: Alice, Age: 18, Year: Freshman
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name` and `20` as the integer value for
 # `age`. Both arguments are specified as positional arguments.
-ballerina run the_main_function.bal Alice 20
+bal run the_main_function.bal Alice 20
 Name: Alice, Age: 20, Year: Freshman
 </code></pre></div>
 
@@ -280,7 +292,7 @@ Name: Alice, Age: 20, Year: Freshman
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name` and `Sophomore` as the string argument for
 # `year`. The value for `year` is specified as a named argument.
-ballerina run the_main_function.bal Alice -year=Sophomore
+bal run the_main_function.bal Alice -year=Sophomore
 Name: Alice, Age: 18, Year: Sophomore
 </code></pre></div>
 
@@ -296,7 +308,7 @@ Name: Alice, Age: 18, Year: Sophomore
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying values for
 # all parameters, including the rest parameter. All arguments are specified as
 # positional arguments.
-ballerina run the_main_function.bal Alice 20 Sophomore math physics
+bal run the_main_function.bal Alice 20 Sophomore math physics
 Name: Alice, Age: 20, Year: Sophomore, Module(s): [&quot;math&quot;,&quot;physics&quot;]
 </code></pre></div>
 
@@ -311,7 +323,7 @@ Name: Alice, Age: 20, Year: Sophomore, Module(s): [&quot;math&quot;,&quot;physic
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying an invalid 
 # string as the argument for `name`. The `error` returned would be printed.
-ballerina run the_main_function.bal Ali
+bal run the_main_function.bal Ali
 error: InvalidName {&quot;message&quot;:&quot;invalid length&quot;}
 </code></pre></div>
 

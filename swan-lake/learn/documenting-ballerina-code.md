@@ -14,18 +14,18 @@ redirect_from:
 
 ## Generating Documentation for Modules
 
-Developers can write the documentation inline with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `ballerina doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
+Developers can write the documentation in line with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `bal doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
 
-Ballerina documentation design and usage is aligned with project and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
+Ballerina documentation design and usage is aligned with the package and module semantics of Ballerina. You can generate documentation for modules using the `bal doc` command.
 
 * Ballerina programmers can place the documentation inline with the source code using the documentation syntax.
 * Ballerina type definitions, global variables, annotations, listeners, etc. can be documented using the documentation syntax.
 * Fields, parameters, return values, etc. can be marked using documentation attributes.
-* HTML documents can be generated using the `ballerina doc` command for each Ballerina module and if you have custom handlebars templates, you can use them to generate the HTMLs.
+* HTML documents can be generated using the `bal doc` command for each Ballerina module and if you have custom handlebars templates, you can use them to generate the HTMLs.
 
 ## Writing Ballerina Documentation
 
-Ballerina Flavored Markdown documentation is a first class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. If necessary, you can have multiple lines of documentation, which you can group together.
+Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. If necessary, you can have multiple lines of documentation, which you can group together.
 
 ```ballerina
 # <documentation line 1>
@@ -60,7 +60,7 @@ The supported structure of documentation syntax is as follows:
 >**Tip:** Always, add a full stop at the end of a function description. However, for the parameter and return type descriptions, omit the full stop if you have only one sentence. If there are multiple sentences, add the full stop at the end of each sentence. For example,
 
 ```ballerina
-# Description for the function.
+# Description of the function.
 #
 # + i - One sentence only
 # + s - Sentence one. Sentence two.
@@ -95,56 +95,68 @@ public function submit(@sensitive string httpVerb, string path, Request request)
 
 A Ballerina module can have a `Module.md` file, which describes the module and its usage.
 
-A typical project structure of a Ballerina project is like this:
+A typical package structure of a Ballerina package is like this:
 
 ```
 /
-  Ballerina.toml       # Configuration that defines project intent
-    src
-      module1/             # The source in this directory will be named “<org-name>/module1”
-        Module.md          # Optional, contains descriptive metadata for display at
-                           # Ballerina Central
+  Ballerina.toml       # Configuration, which defines the package intent.
+  main.bal
+  Module.md            # Contains descriptive metadata of the default module to be displayed in
+                       # Ballerina Central. This is optional.
+  Package.md           # Contains descriptive metadata of the package to be displayed in
+                       # Ballerina Central. This is optional.
+    modules
+      module1/             
+        Module.md          # Contains descriptive metadata to be displayed in
+                           # Ballerina Central. This is optional.
         *.bal
         [tests/]           # Module-specific unit and integration tests
         [resources/]       # Module-specific resources
 
-      modules.can.include.dots.in.dir.name/
+      module2/
         Module.md
         *.bal
         [tests/]
         [resources/]
 
-  [resources/]         # Resources included with every module in the project
+  [resources/]         # Resources included in every module in the package.
 
   target/              # Compiled executables and other artifacts end up here
 ```
 
-The `ballerina doc` command will read the `Module.md` and prepend it to the generated HTML file.
+The `bal doc` command will read the `Package.md` and `Module.md` files and prepend them to the generated HTML file.
 
 Check [HTTP module documentation](/swan-lake/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
 ## Generating Ballerina Documentation
 
-Ballerina provides a `doc` command, which can be executed against a given Ballerina project. This command will result in generating the Ballerina documentation as HTML files, for all the modules in the project.
+Ballerina provides a `doc` command, which can be executed against a given Ballerina package. This command will result in generating the Ballerina documentation as HTML files for all the modules in the package.
 
-First, let's create a new Ballerina project:
-
-```bash
-$ ballerina new myproject
-Created new Ballerina project at myproject
-```
-
-Next, move into the project directory and execute `ballerina add <module-name>` to add a new Ballerina module.
+First, let's create a new Ballerina package:
 
 ```bash
-$ cd myproject/
-$ ballerina add math
-Added new ballerina module at 'src/math'
-$ ballerina add world
-Added new ballerina module at 'src/world'
+$ bal new math
+Created new Ballerina package 'math' at math
 ```
-Now, let's add a function to the `math` module to be documented. Copy and paste the following code in to the `myproject/src/math/main.bal` file.
+
+Next, move into the package directory and execute `bal add <module-name>` to add a new Ballerina module.
+
+```bash
+$ cd math/
+$ bal add world
+Added new ballerina module at 'modules/world'.
+$ tree
+.
+├── Ballerina.toml
+├── main.bal
+└── modules
+    └── world
+        └── world.bal
+
+2 directories, 3 files
+```
+Now, let's add a function to the `math` module to be documented. Copy and paste the following code into the `math/main.bal` file.
 
 ```ballerina
 # Calculates the value of the 'a' raised to the power of 'b'.
@@ -159,7 +171,7 @@ public isolated function pow(float a, float b) returns float {
     return 0;
 }
 ```
-Add the follwoing class definition to the `world` module. Copy and paste the following code in to the `myproject/src/world/main.bal/` file.
+Add the following class definition to the `world` module. Copy and paste the following code in to the `math/modules/world/world.bal` file.
 
 ```ballerina
 # Represents a person object.
@@ -170,8 +182,8 @@ Add the follwoing class definition to the `world` module. Copy and paste the fol
 # + wealth - Account balance of the person
 public class Person {
     public string name = "";
-    public int age;
-    public string address;
+    public int age = 0;
+    public string address = "";
     public float wealth = 0;
 
     # Gets invoked to initialize the `Person` object.
@@ -188,7 +200,7 @@ public class Person {
         return self.address ;
     }
 
-    # Add wealth of the person.
+    # Add the wealth of the person.
     #
     # + amt - Amount to be added
     # + rate - Interest rate
@@ -196,34 +208,24 @@ public class Person {
     }
 }
 ```
-Now, let's generate documentation of the project:
+Now, let's generate documentation of the package:
 ```bash
-$ ballerina doc -a
+$ bal doc
 ```
 Output:
 ```bash
 Compiling source
-        foo/math:0.1.0
-        foo/world:0.1.0
-
+	user/math:0.1.0
 Generating API Documentation
-        target/apidocs
+Saved to: target/apidocs
 ```
 
-`target/apidocs/` folder would contain following;
+`target/apidocs/math` folder would contain the following;
 ```bash
 $ ls target/apidocs/
-index.html  math  world  ...
+bundle.js  index.html  ...
 ```
 
-* `index.html`  - contains an index page of all the modules in the Ballerina project 
-* `math` - contains the documentation of the module named `math`
-* `world` - contains the documentation of the module named `world`
+* `index.html`  - the entry point for documentation
 
-If you want to generate documentation for a selected Ballerina module, then you can execute the following command from the Ballerina project root directory:
-
-```bash
-$ ballerina doc <module_name>
-```
-
-For other options, run `ballerina doc --help`.
+For other options, run `bal doc --help`.

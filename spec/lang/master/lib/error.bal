@@ -22,7 +22,7 @@ type Cloneable readonly|xml|Cloneable[]|map<Cloneable>|table<map<Cloneable>>;
 
 # The type to which error detail records must belong.
 public type Detail record {|
-   ...Cloneable;
+   Cloneable...;
 |};
 
 # A type parameter that is a subtype of error `Detail` record type.
@@ -49,11 +49,22 @@ public isolated function cause(error e) returns error? = external;
 # + return - error detail value
 public isolated function detail(error<DetailType> e) returns readonly & DetailType = external;
 
-# Returns an object representing the stack trace of the error.
+# Type representing a stack frame.
+# A call stack is represented as an array of stack frames.
+# This type is also present in lang.runtime to avoid a dependency.
+public type StackFrame readonly & object {
+   # Returns a string representing this StackFrame.
+   # This must not contain any newline characters.
+   # + return - a string
+   public function toString() returns string;
+};
+
+# Returns an array representing an error's stack trace.
 #
 # + e - the error value
-# + return - a new object representing the stack trace of the error value
-public isolated function stackTrace(error e) returns readonly & object { } = external;
+# + return - an array representing the stack trace of the error value
+# The first member of the array represents the top of the call stack.
+public isolated function stackTrace(error e) returns StackFrame[] = external;
 
 # Converts an error to a string.
 #
@@ -71,3 +82,23 @@ public isolated function toString(error e) returns string = external;
 # The details of the conversion are specified by the ToString abstract operation
 # defined in the Ballerina Language Specification, using the expression style.
 public isolated function toBalString(error e) returns string = external;
+
+# A type of error which can be retried.
+public type Retriable distinct error;
+
+# The RetryManager used by default.
+public class DefaultRetryManager {
+   private int count;
+   public function init(int count = 3) {
+     this.count = count;
+   }
+   public function shouldRetry(error e) returns boolean {
+      if e is Retriable && count >  0 {
+         count -= 1;
+         return true;
+      }
+      else {
+         return false;
+      }
+   }
+}

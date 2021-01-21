@@ -29,6 +29,8 @@ Download the [Visual Studio Code editor](https://code.visualstudio.com/download)
 
 Use either of the below approaches to install the VS Code Ballerina extension.
 
+>**Tip:** If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using Mac OS, press 'Command+Q' keys to quit the app and reopen it.
+
 - [Installing via the VS Code editor](#installing-via-the-vs-code-editor)
 - [Installing by downloading the extension](#installing-by-downloading-the-extension)
 
@@ -63,15 +65,11 @@ In a new Command Line tab, execute the below command.
 ```bash
 $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 ```
-> **Tip**: In the above command, `<BALLERINA_EXTENSION-DIRECTORY>` refers to the path of the Ballerina extension directory (i.e., the VSIX file) you downloaded.
+> **Tip**: In the above command, `<BALLERINA_EXTENSION-DIRECTORY>` refers to the path in which you saved the Ballerina extension directory (i.e., the VSIX file) you downloaded.
 
 ## Using the Extension
 
 > **Tip:** Ballerina Language Specification supports a set of experimental features such as transactions syntax. In order to be compatible with the experimental features and for supporting language intelligence in VS Code Extension, enable the Allow Experimental option in user settings.
-
-## Troubleshooting
-
- If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. If you are using Mac OS, press 'Command+Q' keys to quit the app and reopen it.
 
 The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 
@@ -80,3 +78,7 @@ The sections below include information on the various capabilities that are faci
 - [Graphical View](/learn/vscode-plugin/graphical-editor)
 - [Documentation Viewer](/learn/vscode-plugin/documentation-viewer)
 - [Run All Tests](/learn/vscode-plugin/run-all-tests)
+
+
+
+

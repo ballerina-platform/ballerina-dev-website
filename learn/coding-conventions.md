@@ -81,7 +81,7 @@ service hello on ep1, ep2 {...}
 
 ## Blank Lines
 
-Separate both statements and top level definitions by zero or one blank lines.
+Separate both statements and top-level definitions by zero or one blank lines.
 
 **Example,**
   
@@ -181,7 +181,7 @@ function setValue(string value) {...}
 setValue("value");
 ```
 
-* To define an empty parentheses, do not keep spaces between the opening and closing parentheses `()`.
+* To define empty parentheses, do not keep spaces between the opening and closing parentheses `()`.
   
 **Example,**
 
@@ -192,7 +192,7 @@ int|() result = getResult();
 ## Line Breaks
 
 * Have only one statement in a line.
-* When splitting lines, which contains operator(s), split them right before an operator.
+* When splitting lines, which contain operator(s), split them right before an operator.
   
 **Example,**
   
@@ -300,3 +300,8 @@ For style guidelines on function invocation, literals, tuple, type casting etc. 
 ## Annotations, Documentation, and Comments
 
 For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
+
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
+
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

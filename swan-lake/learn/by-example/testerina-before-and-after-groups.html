@@ -12,19 +12,29 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
+
+<span class="c1">// The before-groups function, which is executed before</span>
+<span class="c1">// the first test function belonging to the group `g1`.</span>
 <span class="nd">@test:BeforeGroups {</span> <span class="nx">value</span><span class="p">:[</span><span class="s">&quot;g1&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">beforeGroupsFunc</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the before groups function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// The after-groups function, which is executed after</span>
+<span class="c1">// the last test function belonging to the group `g1`.</span>
 <span class="nd">@test:AfterGroups {</span> <span class="nx">value</span><span class="p">:[</span><span class="s">&quot;g1&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">afterGroupsFunc</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the after groups function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// A test function.</span>
 <span class="nd">@test:Config {</span> <span class="nx">groups</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;g1&quot;</span><span class="p">]}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// A test function.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 2!&quot;</span><span class="p">);</span>
@@ -43,7 +53,7 @@ redirect_from:
  specified group is executed and the function specified with the <code>AfterGroups</code> annotation is executed once after all
  the tests belonging to the specified group is executed.<br/><br/>
  For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
- and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html">Test Module</a>.</p>
+ and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/test/">Test Module</a>.</p>
 </p>
 
                         </td>
@@ -239,10 +249,6 @@ function testFunction2() {
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -254,19 +260,6 @@ function testFunction2() {
                                     <div class="highlight"><pre><code class=shell-session>ballerina test test_module
 Compiling source
         ballerinatest/test_module:0.1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/test_module-2020r1-any-0.1.0.balo
 </code></pre></div>
 
                                 </td>

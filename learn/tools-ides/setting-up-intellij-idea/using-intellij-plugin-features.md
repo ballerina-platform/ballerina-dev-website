@@ -45,7 +45,7 @@ This executes the main function of the Ballerina file and displays the output in
 
 ![Output of running the main function](/learn/images/output-of-main-function.png)
 
-> **Tip:** Alternatively, you can right click on the name of the file and run the main method of it.
+> **Tip:** Alternatively, you can right-click on the name of the file and run the main method of it.
 
 ### Running Ballerina Services
 
@@ -59,7 +59,7 @@ This starts the service and displays the output in the **Run** window. If you ha
 
 ![Output of running a service](/learn/images/output-of-ballerina-service.png)
 
-> **Tip:** Alternatively, you can right click on the name of the file and run the service(s) of it.
+> **Tip:** Alternatively, you can right-click on the name of the file and run the service(s) of it.
 
 
 ## Debugging Ballerina Programs
@@ -69,8 +69,8 @@ You can debug Ballerina main/service programs with a few clicks.
 ![Debug Ballerina programs](/learn/images/debug-ballerina-intellij.gif)
 
 ### Troubleshooting
-- Stepping over code lines in non-blocking paths (eg: action invocations) will not pause VM on next line
-    - workaround: manually put a breakpoint to next line
+- Stepping over code lines in non-blocking paths (eg: action invocations) will not pause VM on the next line
+    - workaround: manually put a breakpoint to the next line
 - There are some cases where stepping over gives unexpected behavior
     - Eg: When there are multiple workers and a wait expression waiting for them, even though step over hit and pass wait line in source, workers are not yet finished execution.
 
@@ -108,7 +108,7 @@ You can reformat the Ballerina codes by pressing the **Ctrl+Alt+L** keys.
 
 ## Viewing Documentation
 
-You can view the documentation of a function, remote function, etc. by pressing the **Ctrl+Q** keys or by hovering over the element while pressing the **Ctrl** key.
+You can view the documentation of a function, remote function, etc., by pressing the **Ctrl+Q** keys or by hovering over the element while pressing the **Ctrl** key.
 
 ![Viewing documentation](/learn/images/view-documentation.gif)
 
@@ -142,7 +142,7 @@ The spell-checker is enabled for all identifiers. You can rename all of the defi
 
 ## Analyzing Semantics
 
-The Ballerina IDEA plugin provides capabilities to diagnose and analyze semantics of your Ballerina programs through the Ballerina Language Server.
+The Ballerina IDEA plugin provides capabilities to diagnose and analyze the semantics of your Ballerina programs through the Ballerina Language Server.
 
 ![Analyzing semantics](/learn/images/analyzing-semantics.gif)
 
@@ -163,7 +163,7 @@ You expand/collapse the following Ballerina code segments using the icons in the
 
 ## Go to Definition
 
-This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
+This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
 
 ![Go to definition](/learn/images/go-to-definition-intellij.gif)
 

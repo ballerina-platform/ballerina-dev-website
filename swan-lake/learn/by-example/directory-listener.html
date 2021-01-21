@@ -12,22 +12,37 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">file</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// In this example, the listener monitors any modifications done to a specific directoy.</span>
+<span class="c1">// Before running the example, change the value of the &#39;path&#39; field </span>
+<span class="c1">// to indicate the path of the directory that you want the listener to monitor.</span>
+<span class="c1">// As the recursive property is set to false,</span>
+<span class="c1">// the listener does not monitor the child directories of the main directory</span>
+<span class="c1">// that it listens to.</span>
 <span class="nx">listener</span> <span class="nx">file</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">inFolder</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/home/ballerina/fs-server-connector/observed-dir&quot;</span><span class="p">,</span>
     <span class="nx">recursive</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">});</span>
-<span class="kd">service</span> <span class="nx">localObserver</span> <span class="nx">on</span> <span class="nx">inFolder</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onCreate</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// The directory listener should have at least one of these predefined resources.</span>
+<span class="kd">service</span> <span class="s">&quot;localObserver&quot;</span> <span class="nx">on</span> <span class="nx">inFolder</span> <span class="p">{</span>
+
+    <span class="c1">// This resource is invoked once a new file is created in the listening directory.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onCreate</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Create: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onDelete</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This resource is invoked once an existing file is deleted from the listening directory.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onDelete</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Delete: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onModify</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This resource is invoked once an existing file is modified in the listening directory.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onModify</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Modify: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -42,7 +57,7 @@ redirect_from:
                             <p><p>The <code>Directory Listener</code> is used to listen to a directory in the local file system.
  It notifies when new files are created in the directory or when the existing files are deleted or modified.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/file/index.html">File module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/file/">File module</a>.</p>
 </p>
 
                         </td>
@@ -57,9 +72,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="jdbc-init-options.html">
+                                    <a class="next" href="dynamic-listener.html">
                                         <span>NEXT ></span>
-                                        <p>Client Initialization</p>
+                                        <p>Dynamic Listener</p>
                                     </a>
                                 </div>
                                 
@@ -158,7 +173,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service localObserver on inFolder {
+                                    <div class="highlight"><pre><code class=language-ballerina>service &quot;localObserver&quot; on inFolder {
 </code></pre></div>
 
                                 </td>
@@ -177,9 +192,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onCreate(file:FileEvent m) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onCreate(file:FileEvent m) {
         string msg = &quot;Create: &quot; + m.name;
-        log:printInfo(msg);
+        log:print(msg);
     }
 </code></pre></div>
 
@@ -199,9 +214,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onDelete(file:FileEvent m) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onDelete(file:FileEvent m) {
         string msg = &quot;Delete: &quot; + m.name;
-        log:printInfo(msg);
+        log:print(msg);
     }
 </code></pre></div>
 
@@ -221,9 +236,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onModify(file:FileEvent m) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onModify(file:FileEvent m) {
         string msg = &quot;Modify: &quot; + m.name;
-        log:printInfo(msg);
+        log:print(msg);
     }
 }
 </code></pre></div>
@@ -257,13 +272,13 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Before running the sample, create a new file called `test1.txt` in the directory called `observed-dir` and modify and delete it.
+                                    <div class="highlight"><pre><code class=shell-session># After running the sample, create a new file called `test1.txt` in the directory called `observed-dir`, modify it, and delete it.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run directory_listener.bal
-Create: /home/ballerina/fs-server-connector/observed-dir/test1.txt
-Modify: /home/ballerina/fs-server-connector/observed-dir/test1.txt
-Delete: /home/ballerina/fs-server-connector/observed-dir/test1.txt
+# `.bal` file, and execute the `bal run` command below.
+bal run directory_listener.bal
+time = 2020-12-12 13:49:08,497 level = INFO  module = &quot;&quot; message = &quot;Create: /home/ballerina/fs-server-connector/observed-dir/test1.txt&quot;
+time = 2020-12-12 13:49:41,709 level = INFO  module = &quot;&quot; message = &quot;Modify: /home/ballerina/fs-server-connector/observed-dir/test1.txt&quot;
+time = 2020-12-12 13:50:04,997 level = INFO  module = &quot;&quot; message = &quot;Delete: /home/ballerina/fs-server-connector/observed-dir/test1.txt&quot;
 </code></pre></div>
 
                                 </td>

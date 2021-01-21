@@ -27,6 +27,30 @@ Execute tests in the entire project using the --all option.
 $ ballerina test --all
 ```
 
+List all test groups in a given module.
+
+```
+$ ballerina test --list-groups <module_name>
+```
+
+Run only the tests belonging to the given group(s) in the current project.
+
+```
+$ ballerina test --groups <group_1>,<group_2>  --all
+```
+
+Run the tests in the current project excluding the given group(s).
+
+```
+$ ballerina test --disable-groups <group_1>  --all
+```
+
+Run only the given test function(s) in the current project.
+
+```
+$ ballerina test --tests <test_function> --all
+```
+
 Generate an HTML test report.
 
 ```
@@ -64,7 +88,7 @@ A sample view of the test report is shown below.
 
 The Ballerina test framework provides an option to analyze the code coverage of a standard Ballerina project. This feature provides details about the coverage of the program source code by the tests executed. 
 
-You can pass the `--code-coverage`  flag in the test execution command and generate the code coverage report  at the end of the test execution. The generated file is an extended version of the test report. In addition to the test results, this file would contain details about the source code coverage in different levels.
+You can pass the `--code-coverage`  flag in the test execution command and generate the code coverage report at the end of the test execution. The generated file is an extended version of the test report. In addition to the test results, this file would contain details about the source code coverage at different levels.
 
 *   Project-level coverage as an average
 *   Module-level coverage as an average

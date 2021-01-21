@@ -371,8 +371,8 @@ import ballerina/websub;
 # Subscriber Service needs to start after the publisher registers the topic at the hub.
 # If the port is not specified, the hub service starts on the default port.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run hub.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run hub.bal
 Starting up the Ballerina Hub Service
 [ballerina/websub] Ballerina WebSub Hub started up.
 [ballerina/websub] Publish URL: http://localhost:9191/websub/publish
@@ -593,8 +593,8 @@ import ballerina/websub;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run publisher.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run publisher.bal
 Topic registration successful!
 Publishing update to remote Hub
 Update notification successful!
@@ -842,8 +842,8 @@ service websub:SubscriberService /websub on websubEP {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and use the `ballerina run` command below.
-ballerina run subscriber.bal
+# `.bal` file, and use the `bal run` command below.
+bal run subscriber.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8181
 2019-11-01 14:36:42,797 INFO  [ballerina/websub] - Subscription Request successfully sent to Hub[http://localhost:9191/websub/hub], for Topic[http://websubpubtopic.com], with Callback [http://localhost:8181/websub]
 2019-11-01 14:36:43,050 INFO  [] - Intent verified for subscription request

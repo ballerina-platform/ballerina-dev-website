@@ -53,7 +53,7 @@ Navigate to the `winery` directory and execute the `ballerina add model` command
 >**Tip:** You need to provide the module name without the package name to the `add` command. 
 
 ```bash
-$ ballerina add model
+$ bal add model
 Added new ballerina module at ‘modules/model’
 $ tree
 .
@@ -82,7 +82,7 @@ public type Wine record {
 Execute the `ballerina add storage` command to create another `winery.storage` module to retrieve a list of wines from a storage. 
 
 ```bash
-$ ballerina add storage
+$ bal add storage
 Added new ballerina module at ‘modules/storage’
 $ tree
 .
@@ -184,7 +184,7 @@ Build and run this example as follows.
 
 ```bash
 
-$ ballerina build
+$ bal build
 
 Compiling source
 	examples/winery:0.1.0
@@ -203,7 +203,7 @@ winery
 Generating executable
 	target/bin/winery.jar
 
-$ ballerina run target/bin/winery.jar
+$ bal run target/bin/winery.jar
 {"id":"W125678","name":"Corton-Charlemagne Grand Cru, Coche-Dury","color":"White","country":"France"}
 {"id":"W425478","name":"Échezeaux, Dom. de la Romanée-Conti","color":"Red","country":"France"}
 ```

@@ -559,8 +559,8 @@ import ballerina/websub;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># This sample requires starting up the Subscriber Service after the Publisher Service.
 # To start the service, navigate to the directory that contains the
-# `.bal` file, and use the `ballerina run` command below.
-ballerina run order_mgmt_service.bal
+# `.bal` file, and use the `bal run` command below.
+bal run order_mgmt_service.bal
 [ballerina/websub] Ballerina WebSub Hub started up.
 [ballerina/websub] Publish URL: http://localhost:9191/websub/publish
 [ballerina/websub] Subscription URL: http://localhost:9191/websub/hub
@@ -756,8 +756,8 @@ service websub:SubscriberService /ordereventsubscriber on websubEP {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and use the `ballerina run` command below.
-ballerina run subscriber.bal
+# `.bal` file, and use the `bal run` command below.
+bal run subscriber.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8181
 2019-11-01 14:15:05,823 INFO  [ballerina/websub] - Subscription Request successfully sent to Hub[http://localhost:9191/websub/hub], for Topic[http://localhost:9090/ordermgt/ordertopic], with Callback [http://localhost:8181/ordereventsubscriber]
 ballerina: Intent Verification agreed - Mode [subscribe], Topic [http://localhost:9090/ordermgt/ordertopic], Lease Seconds [3600]

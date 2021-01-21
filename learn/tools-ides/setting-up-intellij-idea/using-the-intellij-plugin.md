@@ -97,7 +97,7 @@ In order to automatically detect the Ballerina Home that is being used (without 
 
 ### Experimental Features
 
-Ballerina Language Specification supports a set of experimental features such as transactions syntax. In order to be compatible with the experimental features and for supporting language intelligence in IntelliJ plugin, enable the **Allow Experimental** option in **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Experimental Features**.
+Ballerina Language Specification supports a set of experimental features such as the transactions syntax. In order to be compatible with the experimental features and for supporting language intelligence in IntelliJ plugin, enable the **Allow Experimental** option in **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Experimental Features**.
 
 ![Experimental features](/learn/images/experimental-features.png)
 

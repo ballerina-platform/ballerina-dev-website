@@ -21,7 +21,7 @@ To get started, let's write a simple Ballerina function and test it.
 1. First, let’s create a Ballerina package. Use the `ballerina new` command to create the package.
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
-    The following is the structure of a standard package with the default module. In this example, default module has the
+    The following is the structure of a standard package with the default module. In this example, the default module has the
      ***main.bal*** source file and the ***main_test.bal*** test file.
 
     ```bash
@@ -42,19 +42,22 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     import ballerina/http;
     import ballerina/stringutils;
 
-    http:Client clientEndpoint = new ("https://api.chucknorris.io/jokes/");
+    http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
     // This function performs a `get` request to the Chuck Norris API and returns a random joke 
     // with the name replaced by the provided name or an error if the API invocation fails.
-    function getRandomJoke(string name) returns string|error {
+    function getRandomJoke(string name) returns @tainted string|error {
         var result = clientEndpoint->get("/random");
         if (result is http:Response) {
             http:Response response = <http:Response>result;
             if (response.statusCode == http:STATUS_OK) {
-                json payload = <json>response.getJsonPayload();
-                json joke = <json>payload.value;
-                string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
-                return replacedText;
+                var payload = response.getJsonPayload();
+
+                if (payload is json) {
+                    json joke = check payload.value;
+                    string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+                    return replacedText;
+                }
             } else {
                 error err = error("error occurred while sending GET request");
                 io:println(err.message(), ", status code: ", response.statusCode, ", reason: ", response.getJsonPayload());
@@ -75,7 +78,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     import ballerina/http;
     
     // This test function tests the behavior of the `getRandomJoke` when
-    // the API returns a success response.
+    // the API returns a successful response.
     @test:Config {}
     function testGetRandomJoke() {
         // Create a default mock HTTP Client and assign it to the `clientEndpoint`
@@ -100,7 +103,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 
 4. Finally, let’s execute the tests using the following command.
 
-    `$ ballerina test --code-coverage`
+    `$ bal test --code-coverage`
 
     This will print an output similar to the following.
 

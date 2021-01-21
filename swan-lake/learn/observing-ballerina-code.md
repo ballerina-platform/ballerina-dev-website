@@ -99,7 +99,7 @@ metricsEnabled=true
 tracingEnabled=true
 ```
 
-The created configuration file can be passed to the Ballerina program with `--b7a.config.file` option along with
+The created configuration file can be passed to the Ballerina program with `BALCONFIGFILE` environment variable along with
 the path of the configuration file.
 
 ```bash
@@ -166,11 +166,11 @@ This section focuses on the Ballerina configurations that are available for metr
 and the sample configuration is provided below.
 
 ```toml
-[b7a.observability.metrics]
-enabled=true
-reporter="prometheus"
+[ballerina.observe]
+metricsEnabled=true
+metricsReporter="prometheus"
 
-[b7a.observability.metrics.prometheus]
+[ballerinax.prometheus]
 port=9797
 host="0.0.0.0"
 ```
@@ -179,10 +179,10 @@ The descriptions of each configuration above are provided below with possible al
 
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
-b7a.observability.metrics. enabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
-b7a.observability.metrics. reporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | prometheus | prometheus or if any custom implementation, the name of the reporter.
-b7a.observability.metrics. prometheus.port | The value of the port in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
-b7a.observability.metrics. prometheus.host | The name of the host in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
+ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
+ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | prometheus | prometheus or if any custom implementation, the name of the reporter.
+ballerinax.prometheus. port | The value of the port in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
+ballerinax.prometheus. host | The name of the host in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
 
 ### Setting Up the External Systems for Metrics
 There are mainly two systems involved in collecting and visualizing the metrics. [Prometheus] is used to collect the
@@ -286,57 +286,53 @@ specification.](https://github.com/opentracing/specification/blob/master/semanti
 
 ### Configuring Advanced Tracing for Ballerina
 
-Tracing can be enabled in Ballerina with the `--b7a.observability.enabled=true` flag as mentioned in the [Observing a Ballerina Service](#observing-a-ballerina-service) section, as well as a configuration option. This section mainly focuses on the configuration options with the description and possible values.
+Tracing can be enabled in Ballerina with the few configurations as mentioned in the
+[Observing a Ballerina Service](#observing-a-ballerina-service) section, as well as a configuration option.
+This section mainly focuses on the configuration options with the description and possible values.
 
 The sample configuration that enables tracing, and uses Jaeger as the sample tracer as provided below.
 
 ```toml
-[b7a.observability.tracing]
-enabled=true
-name="jaeger"
+[ballerina.observe]
+tracingEnabled=true
+tracingProvider="jaeger"
 ```
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
 Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
-b7a.observability.tracing.enabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
-b7a.observability.tracing.provider | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, the name of the tracer.
+ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
+ballerina.observe.tracingProvider | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, the name of the tracer.
 
 #### Using the Jaeger Client
 Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
 the Jaeger.
 
 ```toml
-[b7a.observability.tracing]
-enabled=true
-provider="jaeger"
+[ballerina.observe]
+tracingEnabled=true
+tracingProvider="jaeger"
 
-[b7a.observability.tracing.jaeger.sampler]
-type="const"
-param=1.0
-
-[b7a.observability.tracing.jaeger.reporter]
-hostname="localhost"
-port=5775
-
-[b7a.observability.tracing.jaeger.reporter.flush.interval]
-ms=2000
-
-[b7a.observability.tracing.jaeger.reporter.max.buffer]
-spans=1000
+[ballerinax.jaeger]
+agentHostname="localhost"
+agentPort=6831
+samplerType="const"
+samplerParam=1.0
+reporterFlushInterval=2000
+reporterBufferSize=1000
 ```
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
-b7a.observability.tracing. jaeger.reporter.hostname | Hostname of the Jaeger server | localhost | IP or hostname of the Jaeger server. If it is running on the same node as Ballerina, it can be localhost. 
-b7a.observability.tracing. jaeger.reporter.port | Port of the Jaeger server | 5775 | The port to which the Jaeger server is listening.
-b7a.observability.tracing. jaeger.sampler.type | Type of the sampling methods used in the Jaeger tracer. | const | `const`, `probabilistic`, or `ratelimiting`.
-b7a.observability.tracing. jaeger.sampler.param | It is a floating value. Based on the sampler type, the effect of the sampler param varies | 1.0 | For `const` `0` (no sampling) or `1` (sample all spans), for `probabilistic` `0.0` to `1.0`, for `ratelimiting` any positive integer (rate per second).
-b7a.observability.tracing. jaeger.reporter.flush.interval.ms | Jaeger client will be sending the spans to the server at this interval. | 2000 | Any positive integer value.
-b7a.observability.tracing. jaeger.reporter.max.buffer.spans | Queue size of the Jaeger client. | 2000 | Any positive integer value.
+ballerina.observe. agentHostname | Hostname of the Jaeger agent | localhost | IP or hostname of the Jaeger agent. If it is running on the same node as Ballerina, it can be localhost. 
+ballerina.observe. agentPort | Port of the Jaeger agent | 6831 | The port to which the Jaeger agent is listening.
+ballerina.observe. samplerType | Type of the sampling methods used in the Jaeger tracer. | const | `const`, `probabilistic`, or `ratelimiting`.
+ballerina.observe. samplerParam | It is a floating value. Based on the sampler type, the effect of the sampler param varies | 1.0 | For `const` `0` (no sampling) or `1` (sample all spans), for `probabilistic` `0.0` to `1.0`, for `ratelimiting` any positive integer (rate per second).
+ballerina.observe. reporterFlushInterval | Jaeger client will be sending the spans to the server at this interval. | 2000 | Any positive integer value.
+ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
 ### Setting Up the External Systems for Tracing
 By default, Ballerina supports Jaeger for distributed tracing. This section focuses on configuring the

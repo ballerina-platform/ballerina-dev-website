@@ -107,7 +107,7 @@ $ BALCONFIGFILE=<path-to-conf>/Config.toml bal run --observability-included hell
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-ballerina: started publishing tracers to Jaeger on localhost:5775
+ballerina: started publishing traces to Jaeger on localhost:6831
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 

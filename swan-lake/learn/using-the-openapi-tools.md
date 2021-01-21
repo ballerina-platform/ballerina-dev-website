@@ -30,7 +30,7 @@ This plugin ensures that the implementation of a service does not deviate from i
 #### Generate Service and Client Stub from an OpenAPI Contract
 
 ```bash
-ballerina openapi   -i <openapi-contract> 
+bal openapi -i <openapi-contract-path> 
                [--service-name: generated files name]
                [--tags: tags list]
                [--operations: operationsID list]
@@ -39,8 +39,8 @@ ballerina openapi   -i <openapi-contract>
 ```
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
 
-This `-i <openapi-contract>` parameter of the command is mandatory. As an input, it will take the path to the OpenAPI
- contract file (i.e., `my-api.yaml` or `my-api.json`). 
+This `-i <openapi-contract-path>` parameter of the command is mandatory. As an input, it will take the path to the
+ OpenAPI contract file (i.e., `my-api.yaml` or `my-api.json`).
 
 The `--service-name`  is an optional parameter, which allows you to change the generated service name.
 
@@ -53,35 +53,34 @@ If not, it will take the execution path as the output path.
 If you want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
 
 ```bash
-ballerina openapi   -i <openapi-contract> --mode service
-                               [(-o|--output) output file path]
+bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file path]
 ```
 
 If you want to generate a Client only, you can set the mode as  `client` in the OpenAPI tool. 
 This client can be used in client applications to call the service defined in the OpenAPI file.
 
 ```bash
-ballerina openapi   -i <openapi-contract> --mode client
-                               [(-o|--output) output file path]
+bal openapi -i <openapi-contract-path> --mode client
+               [(-o|--output) output file path]
 ```
 
 ### Ballerina to OpenAPI
 #### Service to OpenAPI Export
 ```bash
-ballerina openapi   -i <ballerina file> 
-                    [(-o|--output) output openapi file path]
+bal openapi -i <ballerina-file-path> 
+               [(-o|--output) output openapi file path]
 ```
 Export the Ballerina service to an  OpenAPI Specification 3.0 definition. For the export to work properly, 
 the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 If you need to document an OpenAPI contract for only one given service, then use this command.
 ```bash
-    ballerina openapi -i <ballerina file> (-s | --service) <service name>
+    bal openapi -i <ballerina-file-path> (-s | --service) <service-name>
 ```
 
 ### Samples for OpenAPI Commands
 #### Generate Service and Client Stub from OpenAPI
 ```bash
-    ballerina openapi -i hello.yaml
+    bal openapi -i hello.yaml
 ```
 
 This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution path. 
@@ -97,11 +96,11 @@ The service generation process is complete. The following files were created.
 #### Generate an OpenAPI Contract from a Service
 
  ```bash
-    ballerina openapi -i modules/helloworld/helloService.bal
+    bal openapi -i modules/helloworld/helloService.bal
   ```
 This will generate the OpenAPI contracts for the Ballerina services, which are in the `hello.bal` Ballerina file.
  ```bash 
-    ballerina openapi -i modules/helloworld/helloService.bal (-s | --service) helloworld
+    bal openapi -i modules/helloworld/helloService.bal (-s | --service) helloworld
   ```
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
  `helloService.bal` file.

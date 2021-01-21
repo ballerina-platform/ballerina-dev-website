@@ -14,18 +14,17 @@ redirect_from:
 
 ### Creating the Ballerina Package
 
-1. Execute the `ballerina new hello` command to create a new package named `hello`.
+1. Execute the `ballerina new hello` command to create a new module named `hello`.
 
 2. Replace the content of the `/hello/main.bal` file with the content below.
 
-    >**Note:** In the current version of Ballerina, you need the c2c import statement to enable the code to cloud functionality. All the other code is not related to Docker or Kubernetes and those are completely focused on the business logic. 
+    >**Note:** All the other code is not related to Docker or Kubernetes and those are completely focused on the business logic. 
 
     ***main.bal***
 
     ```ballerina
     import ballerina/http;
     import ballerina/log;
-    import ballerina/cloud as _;
 
     listener http:Listener helloEP = new(9090);
 
@@ -57,9 +56,16 @@ redirect_from:
 
 ### Generating the Artifacts
 
-Execute the `ballerina build` command to build the Ballerina package and you view the output below.
+Execute the `bal build --cloud=k8s` command to build the Ballerina package and you view the output below. Optionally,
+the build option can be added to `Ballerina.toml` file as below.
+
+```toml
+[build-options]
+cloud = "k8s"
+```
 
 ```bash
+$> bal build --cloud=k8s
 Compiling source
         wso2/hello:0.1.0
 
@@ -284,8 +290,7 @@ Auto-scaling policies allow the container to scale seamlessly without overloadin
 
     ```ballerina
     import ballerina/http;
-    import ballerina/log;
-    import ballerina/cloud as _;
+    import ballerina/log;   
 
     listener http:Listener helloEP = new(9090);
 
@@ -329,7 +334,7 @@ Auto-scaling policies allow the container to scale seamlessly without overloadin
 
 ### Generating the Artifacts
 
-Execute the `ballerina build` command to build the Ballerina package and you view the output below.  
+Execute the `bal build --cloud=k8s` command to build the Ballerina package and you view the output below.  
 
 ```bash
 Compiling source

@@ -2,9 +2,9 @@ var searchData = {
   "modules": [
     {
       "id": "mysql",
-      "description": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e",
+      "description": "This module provides the functionality required to access and manipulate data stored in a MySQL database.",
       "orgName": "ballerinax",
-      "version": "0.6.3"
+      "version": "0.6.4"
     }
   ],
   "classes": [],
@@ -12,69 +12,70 @@ var searchData = {
   "records": [
     {
       "id": "Options",
-      "description": "\u003cp\u003eMySQL database options.\u003c/p\u003e",
+      "description": "MySQL database options.",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     },
     {
       "id": "SSLConfig",
-      "description": "\u003cp\u003eSSL Configuration to be used when connecting to mysql server.\u003c/p\u003e",
+      "description": "SSL Configuration to be used when connecting to mysql server.",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     }
   ],
   "constants": [
     {
       "id": "SSL_PREFERRED",
-      "description": "\u003cp\u003ePossible options for SSL Mode.\u003c/p\u003e",
+      "description": "Possible options for SSL Mode.",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     },
     {
       "id": "SSL_REQUIRED",
       "description": "",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     },
     {
       "id": "SSL_VERIFY_CERT",
       "description": "",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     },
     {
       "id": "SSL_VERIFY_IDENTITY",
       "description": "",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     }
   ],
   "errors": [],
   "types": [
     {
       "id": "SSLMode",
-      "description": "\u003cp\u003eSSLMode as a union of available ssl modes.\u003c/p\u003e",
+      "description": "SSLMode as a union of available ssl modes.",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     }
   ],
   "clients": [
     {
       "id": "Client",
-      "description": "\u003cp\u003eRepresents a MySQL database client.\u003c/p\u003e",
+      "description": "Represents a MySQL database client.",
       "moduleId": "mysql",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.3"
+      "moduleVersion": "0.6.4"
     }
   ],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

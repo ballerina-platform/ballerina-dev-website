@@ -2,160 +2,182 @@ var searchData = {
   "modules": [
     {
       "id": "stan",
-      "description": "\u003cp\u003eThis module provides the capability to connect with NATS Streaming server and performs the\nbelow functionalities.\u003c/p\u003e",
+      "description": "This module provides the capability to connect with NATS Streaming server and performs the\nbelow functionalities.",
       "orgName": "ballerinax",
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ],
   "classes": [],
   "functions": [],
   "records": [
     {
-      "id": "ServiceConfigData",
-      "description": "\u003cp\u003eThe configurations for the NATS streaming subscription.\u003c/p\u003e",
+      "id": "Credentials",
+      "description": "Configurations related to basic authentication.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     },
     {
       "id": "Message",
-      "description": "\u003cp\u003eRepresents the message, which a NATS server sends to its subscribed services.\u003c/p\u003e",
+      "description": "Represents the message, which a NATS server sends to its subscribed services.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
+    },
+    {
+      "id": "SecureSocket",
+      "description": "Configurations related to facilitating a secure communication with a remote HTTP endpoint.",
+      "moduleId": "stan",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.1"
+    },
+    {
+      "id": "ServiceConfigData",
+      "description": "The configurations for the NATS streaming subscription.",
+      "moduleId": "stan",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.1"
     },
     {
       "id": "StreamingConfig",
-      "description": "\u003cp\u003eConfiguration related to establishing a streaming connection.\u003c/p\u003e",
+      "description": "Configuration related to establishing a streaming connection.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
+    },
+    {
+      "id": "Tokens",
+      "description": "Configurations related to token based authentication.",
+      "moduleId": "stan",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.1"
     }
   ],
   "constants": [
     {
-      "id": "NEW_ONLY",
-      "description": "\u003cp\u003eSpecifies that message delivery should start with the messages, which are published after the subscription is created.\u003c/p\u003e",
+      "id": "DEFAULT_URL",
+      "description": "Default URL for NATS connections.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "LAST_RECEIVED",
-      "description": "\u003cp\u003eSpecifies that message delivery should start with the last (most recent) message stored for this subject.\u003c/p\u003e",
-      "moduleId": "stan",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     },
     {
       "id": "FIRST",
-      "description": "\u003cp\u003eSpecifies that message delivery should begin with the oldest available message for this subject.\u003c/p\u003e",
+      "description": "Specifies that message delivery should begin with the oldest available message for this subject.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     },
     {
-      "id": "TIME_DELTA_START",
-      "description": "\u003cp\u003eThe key for the \u003ccode\u003eTimeDeltaStart\u003c/code\u003e type.\u003c/p\u003e",
+      "id": "LAST_RECEIVED",
+      "description": "Specifies that message delivery should start with the last (most recent) message stored for this subject.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
+    },
+    {
+      "id": "NEW_ONLY",
+      "description": "Specifies that message delivery should start with the messages, which are published after the subscription is created.",
+      "moduleId": "stan",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.1"
     },
     {
       "id": "SEQUENCE_NUMBER",
-      "description": "\u003cp\u003eThe key for the \u003ccode\u003eSequenceNumber\u003c/code\u003e type.\u003c/p\u003e",
+      "description": "The key for the `SequenceNumber` type.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     },
     {
-      "id": "DEFAULT_URL",
-      "description": "\u003cp\u003eDefault URL for NATS connections.\u003c/p\u003e",
+      "id": "TIME_DELTA_START",
+      "description": "The key for the `TimeDeltaStart` type.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     }
   ],
   "errors": [
     {
-      "id": "StanError",
-      "description": "\u003cp\u003eRepresents the NATS module related errors.\u003c/p\u003e",
+      "id": "Error",
+      "description": "The union of the NATS module related errors.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
+    },
+    {
+      "id": "StanError",
+      "description": "Represents the NATS module related errors.",
+      "moduleId": "stan",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.1"
     }
   ],
   "types": [
     {
-      "id": "TimeDeltaStart",
-      "description": "\u003cp\u003eSpecifies that message delivery should start with a given historical time delta (from now).\u003c/p\u003e",
-      "moduleId": "stan",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "SequenceNumber",
-      "description": "\u003cp\u003eSpecifies that message delivery should start at the given sequence number.\u003c/p\u003e",
+      "description": "Specifies that message delivery should start at the given sequence number.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     },
     {
       "id": "StartPosition",
-      "description": "\u003cp\u003eSpecifies the position to start receiving messages.\u003c/p\u003e",
+      "description": "Specifies the position to start receiving messages.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     },
     {
-      "id": "Error",
-      "description": "\u003cp\u003eThe union of the NATS module related errors.\u003c/p\u003e",
+      "id": "TimeDeltaStart",
+      "description": "Specifies that message delivery should start with a given historical time delta (from now).",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     }
   ],
   "clients": [
     {
       "id": "Caller",
-      "description": "\u003cp\u003eRepresents the NATS caller.\u003c/p\u003e",
+      "description": "Represents the NATS caller.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     },
     {
       "id": "Client",
-      "description": "\u003cp\u003eThe streaming client provides the capability to publish messages to the NATS streaming server.\u003c/p\u003e",
+      "description": "The streaming client provides the capability to publish messages to the NATS streaming server.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     }
   ],
   "listeners": [
     {
       "id": "Listener",
-      "description": "\u003cp\u003eRepresents the NATS streaming server connection to which a subscription service should be bound in order to\nreceive messages of the corresponding subscription.\u003c/p\u003e",
+      "description": "Represents the NATS streaming server connection to which a subscription service should be bound in order to\nreceive messages of the corresponding subscription.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     }
   ],
   "annotations": [
     {
       "id": "ServiceConfig",
-      "description": "\u003cp\u003eThe annotation, which is used to configure the streaming subscription.\u003c/p\u003e",
+      "description": "The annotation, which is used to configure the streaming subscription.",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     }
   ],
   "abstractObjects": [
     {
       "id": "Service",
-      "description": "\u003cp\u003eThe STAN service type\u003c/p\u003e\n",
+      "description": "The STAN service type\n",
       "moduleId": "stan",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "1.0.1"
     }
-  ]
+  ],
+  "enums": []
 };

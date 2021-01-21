@@ -2,137 +2,180 @@ var searchData = {
   "modules": [
     {
       "id": "email",
-      "description": "\u003cp\u003eThis module contains functions to perform email operations such as sending and reading emails using the SMTP, POP3, and IMAP4 protocols.\u003c/p\u003e",
+      "description": "This module contains functions to perform email operations such as sending and reading emails using the SMTP, POP3, and IMAP4 protocols.",
       "orgName": "ballerina",
-      "version": "1.0.4"
+      "version": "1.0.5"
     }
   ],
   "classes": [
     {
       "id": "ImapListener",
-      "description": "\u003cp\u003eRepresents a service listener that monitors the email server location.\u003c/p\u003e",
+      "description": "Represents a service listener that monitors the email server location.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "PopListener",
-      "description": "\u003cp\u003eRepresents a service listener that monitors the email server location.\u003c/p\u003e",
+      "description": "Represents a service listener that monitors the email server location.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     }
   ],
   "functions": [],
   "records": [
     {
-      "id": "SmtpConfig",
-      "description": "\u003cp\u003eConfiguration of the SMTP Endpoint.\u003c/p\u003e",
+      "id": "Attachment",
+      "description": "Email attachment.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
-      "id": "Message",
-      "description": "\u003cp\u003eEmail message properties.\u003c/p\u003e",
+      "id": "Certificate",
+      "description": "Certificate configuration.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
-    },
-    {
-      "id": "ImapListenerConfig",
-      "description": "\u003cp\u003eConfiguration for Email listener endpoint.\u003c/p\u003e",
-      "moduleId": "email",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
-    },
-    {
-      "id": "PopConfig",
-      "description": "\u003cp\u003eConfiguration of the POP Endpoint.\u003c/p\u003e",
-      "moduleId": "email",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "ImapConfig",
-      "description": "\u003cp\u003eConfiguration of the IMAP Endpoint.\u003c/p\u003e",
+      "description": "Configuration of the IMAP Endpoint.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
+    },
+    {
+      "id": "ImapListenerConfig",
+      "description": "Configuration for Email listener endpoint.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
+    },
+    {
+      "id": "Message",
+      "description": "Email message properties.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
+    },
+    {
+      "id": "Options",
+      "description": "Optional parameters for an Email message.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
+    },
+    {
+      "id": "PopConfig",
+      "description": "Configuration of the POP Endpoint.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "PopListenerConfig",
-      "description": "\u003cp\u003eConfiguration for Email listener endpoint.\u003c/p\u003e",
+      "description": "Configuration for Email listener endpoint.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
+    },
+    {
+      "id": "Protocol",
+      "description": "Transport security protocol.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
+    },
+    {
+      "id": "SecureSocket",
+      "description": "Secure Socket configuration.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
+    },
+    {
+      "id": "SmtpConfig",
+      "description": "Configuration of the SMTP Endpoint.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
     }
   ],
   "constants": [
     {
       "id": "DEFAULT_FOLDER",
-      "description": "\u003cp\u003eDefault folder to read emails.\u003c/p\u003e",
+      "description": "Default folder to read emails.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     }
   ],
   "errors": [
     {
-      "id": "SendError",
-      "description": "\u003cp\u003eRepresents an error that occurs when sending an email fails.\u003c/p\u003e",
+      "id": "Error",
+      "description": "Represents email related errors.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "ReadClientInitError",
-      "description": "\u003cp\u003eRepresents an error that occurs when the email store access fails.\u003c/p\u003e",
+      "description": "Represents an error that occurs when the email store access fails.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "ReadError",
-      "description": "\u003cp\u003eRepresents an error that occurs an email read operation fails.\u003c/p\u003e",
+      "description": "Represents an error that occurs an email read operation fails.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
-    }
-  ],
-  "types": [
+      "moduleVersion": "1.0.5"
+    },
     {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents email related errors.\u003c/p\u003e",
+      "id": "SendError",
+      "description": "Represents an error that occurs when sending an email fails.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     }
   ],
+  "types": [],
   "clients": [
     {
-      "id": "SmtpClient",
-      "description": "\u003cp\u003eRepresents an SMTP Client, which interacts with an SMTP Server.\u003c/p\u003e",
+      "id": "ImapClient",
+      "description": "Represents an IMAP Client, which interacts with an IMAP Server.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
       "id": "PopClient",
-      "description": "\u003cp\u003eRepresents a POP Client, which interacts with a POP Server.\u003c/p\u003e",
+      "description": "Represents a POP Client, which interacts with a POP Server.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
-      "id": "ImapClient",
-      "description": "\u003cp\u003eRepresents an IMAP Client, which interacts with an IMAP Server.\u003c/p\u003e",
+      "id": "SmtpClient",
+      "description": "Represents an SMTP Client, which interacts with an SMTP Server.",
       "moduleId": "email",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     }
   ],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": [
+    {
+      "id": "Security",
+      "description": "Security type.",
+      "moduleId": "email",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.5"
+    }
+  ]
 };

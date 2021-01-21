@@ -2,7 +2,7 @@ var searchData = {
   "modules": [
     {
       "id": "awslambda",
-      "description": "\u003cp\u003eThis module offers the capabilities of creating AWS Lambda functions using Ballerina.\u003c/p\u003e",
+      "description": "This module offers the capabilities of creating AWS Lambda functions using Ballerina.",
       "orgName": "ballerinax",
       "version": "0.0.0"
     }
@@ -10,7 +10,7 @@ var searchData = {
   "classes": [
     {
       "id": "Context",
-      "description": "\u003cp\u003eObject to represent an AWS Lambda function execution context.\u003c/p\u003e",
+      "description": "Object to represent an AWS Lambda function execution context.",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "0.0.0"
@@ -189,11 +189,12 @@ var searchData = {
   "annotations": [
     {
       "id": "Function",
-      "description": "\u003cp\u003e@awslambda:Function annotation\u003c/p\u003e\n",
+      "description": "@awslambda:Function annotation\n",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "0.0.0"
     }
   ],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

@@ -2,35 +2,35 @@ var searchData = {
   "modules": [
     {
       "id": "jsonutils",
-      "description": "\u003cp\u003eThis module provides utility functions to manipulate the built-in \u003ccode\u003ejson\u003c/code\u003e data type.\u003c/p\u003e",
+      "description": "This module provides utility functions to manipulate the built-in \"json\" data type.",
       "orgName": "ballerina",
-      "version": "1.0.4"
+      "version": "1.0.5"
     }
   ],
   "classes": [],
   "functions": [
     {
-      "id": "fromXML",
-      "description": "\u003cp\u003eConverts an XML object to its JSON representation.\u003c/p\u003e",
+      "id": "fromTable",
+      "description": "Converts a table to its JSON representation.",
       "moduleId": "jsonutils",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     },
     {
-      "id": "fromTable",
-      "description": "\u003cp\u003eConverts a table to its JSON representation.\u003c/p\u003e",
+      "id": "fromXML",
+      "description": "Converts an XML object to its JSON representation.",
       "moduleId": "jsonutils",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     }
   ],
   "records": [
     {
       "id": "XmlOptions",
-      "description": "\u003cp\u003eProvides configurations for converting XML to JSON.\u003c/p\u003e",
+      "description": "Provides configurations for converting XML to JSON.",
       "moduleId": "jsonutils",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.4"
+      "moduleVersion": "1.0.5"
     }
   ],
   "constants": [],
@@ -39,5 +39,6 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

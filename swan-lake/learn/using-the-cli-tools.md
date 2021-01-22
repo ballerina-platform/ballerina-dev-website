@@ -86,7 +86,7 @@ You can use it in the below format.
 
 > `bal <THE-COMMAND> <ITS-ARGUEMENTS>`
 
-> **Tip:** You can view details of the commands below by executing `bal help <COMMAND>`. For example, the below is the output of the `bal help pull` command.
+> **Tip:** You can view details of the commands below by executing the `bal help <COMMAND>`. For example, the below is the output of the `bal help pull` command.
 
 ```sh
 → bal help pull
@@ -182,7 +182,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
+<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-packages-to-ballerina-central">Publishing Packages to Ballerina Central</a>.
 </td>
 </tr>
 <tr>

@@ -1,39 +1,38 @@
 ---
 layout: ballerina-example-page
-title: Docker Deployment
+title: TCP Client
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/docker-deployment
+permalink: /swan-lake/learn/by-example/tcp-client
 redirect_from:
-  - /vswan-lake/learn/by-example/docker-deployment
-  - /vswan-lake/learn/by-example/docker-deployment.html
+  - /vswan-lake/learn/by-example/tcp-client
+  - /vswan-lake/learn/by-example/tcp-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">docker</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">tcp</span><span class="p">;</span>
 
-<span class="c1">//Adding the `@docker:Expose{}` annotation to a listener endpoint exposes the endpoint port.</span>
-<span class="nd">@docker:Expose {</span><span class="p">}</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
 
-<span class="c1">//Adding the `@docker:Config{}` annotation to a service modifies the generated Docker image and Dockerfile.</span>
-<span class="c1">//This sample generates a Docker image as `helloworld:v1.0.0`.</span>
-<span class="nd">@docker:Config {</span>
-    <span class="c1">//Docker image name should be helloworld.</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;helloworld&quot;</span><span class="p">,</span>
-    <span class="c1">//Docker image version should be v1.0.</span>
-    <span class="nx">tag</span><span class="p">:</span> <span class="s">&quot;v1.0&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">ok</span><span class="p">(</span><span class="s">&quot;Hello World from Docker! \n&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">responseResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseResult</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="c1">// Create a new TCP client by providing the `remoteHost` and `remotePort`.</span>
+    <span class="c1">// Optionally, you can provide the interface that the socket needs to bind </span>
+    <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
+    <span class="c1">// tcp:Client client = check new (&quot;localhost&quot;, 3000, localHost = &quot;localhost&quot;,</span>
+    <span class="c1">//                             timeoutInMillis = 2000);</span>
+    <span class="nx">tcp</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
+
+    <span class="c1">// Send the desired content to the server.</span>
+    <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina Echo from client&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">msgByteArray</span> <span class="p">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">msgByteArray</span><span class="p">);</span>
+
+    <span class="c1">// Reading the response from the server.</span>
+    <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">receivedData</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">readBytes</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Recived: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">receivedData</span><span class="p">));</span>
+
+    <span class="c1">// Close the connection between the server and the client.</span>
+    <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -43,11 +42,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Docker Deployment</h2>
-                            <p><p>Ballerina supports generating Docker images, Dockerfile based on annotations.
-A single Ballerina module is mapped to a single Docker Image.
-Docker should be configured to run the sample.<br/><br/>
-For more information, see the <a href="https://ballerina.io/swan-lake/learn/deployment/docker/">Docker Deployment Guide</a>.</p>
+                            <h2>TCP Client</h2>
+                            <p><p>The TCP Client is used to connect to a remote TCP server.
+ This sample demonstrates how the TCP client interacts with the TCP server.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/tcp/">TCP module</a>.</p>
 </p>
 
                         </td>
@@ -55,16 +54,16 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="testerina-mocking-objects.html">
+                                    <a class="prev" href="rabbitmq-transaction-consumer.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Object Mocking</p>
+                                        <p>Transactional Consumer</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="c2c-deployment.html">
+                                    <a class="next" href="tcp-listener.html">
                                         <span>NEXT ></span>
-                                        <p>Code to Cloud Deployment</p>
+                                        <p>TCP Listener</p>
                                     </a>
                                 </div>
                                 
@@ -73,7 +72,7 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                     </tr>
                 </table>
             </div>
-            <div class="example" id="docker-deployment">
+            <div class="example" id="tcp-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -84,7 +83,11 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tcp-client/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e6e664bf8ebdbf099ad37caee762ea8f&file=tcp_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -113,6 +116,8 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -121,9 +126,20 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
-import ballerina/docker;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/tcp;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -135,8 +151,7 @@ import ballerina/docker;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Expose {}
-listener http:Listener helloWorldEP = new(9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>    tcp:Client socketClient = check new (&quot;localhost&quot;, 3000);
 </code></pre></div>
 
                                 </td>
@@ -144,7 +159,11 @@ listener http:Listener helloWorldEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Adding the <code>@docker:Expose{}</code> annotation to a listener endpoint exposes the endpoint port.</p>
+                                            <p>Create a new TCP client by providing the <code>remoteHost</code> and <code>remotePort</code>.
+ Optionally, you can provide the interface that the socket needs to bind
+ and the timeout in milliseconds, which specifies the read timeout value.
+ tcp:Client client = check new (&ldquo;localhost&rdquo;, 3000, localHost = &ldquo;localhost&rdquo;,
+                             timeoutInMillis = 2000);</p>
 
                                         </div>
                                     </div>
@@ -155,7 +174,9 @@ listener http:Listener helloWorldEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>    string msg = &quot;Hello Ballerina Echo from client&quot;;
+    byte[] msgByteArray = msg.toBytes();
+    check socketClient-&gt;writeBytes(msgByteArray);
 </code></pre></div>
 
                                 </td>
@@ -163,8 +184,7 @@ listener http:Listener helloWorldEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Adding the <code>@docker:Config{}</code> annotation to a service modifies the generated Docker image and Dockerfile.
-This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
+                                            <p>Send the desired content to the server.</p>
 
                                         </div>
                                     </div>
@@ -175,7 +195,8 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    name: &quot;helloworld&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    readonly &amp; byte[] receivedData = check socketClient-&gt;readBytes();
+    io:println(&quot;Recived: &quot;, string:fromBytes(receivedData));
 </code></pre></div>
 
                                 </td>
@@ -183,7 +204,7 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Docker image name should be helloworld.</p>
+                                            <p>Reading the response from the server.</p>
 
                                         </div>
                                     </div>
@@ -194,16 +215,7 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    tag: &quot;v1.0&quot;
-}
-service http:Service /helloWorld on helloWorldEP {
-    resource function get sayHello(http:Caller caller) {
-        var responseResult = caller-&gt;ok(&quot;Hello World from Docker! \n&quot;);
-        if (responseResult is error) {
-            error err = responseResult;
-            log:printError(&quot;Error sending response&quot;, err = err);
-        }
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check socketClient-&gt;close();
 }
 </code></pre></div>
 
@@ -212,7 +224,7 @@ service http:Service /helloWorld on helloWorldEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Docker image version should be v1.0.</p>
+                                            <p>Close the connection between the server and the client.</p>
 
                                         </div>
                                     </div>
@@ -236,18 +248,6 @@ service http:Service /helloWorld on helloWorldEP {
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -256,12 +256,9 @@ service http:Service /helloWorld on helloWorldEP {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Docker image and Dockerfile.
-$ bal  build docker_deployment.bal
-Compiling source
-	docker_deployment.bal
-Generating executables
-	docker_deployment.jar
+                                    <div class="highlight"><pre><code class=shell-session># As a prerequisite, navigate to the directory that contains the
+# `tcp_listener.bal` file and use the `bal run` command below.
+bal run tcp_listener.bal
 </code></pre></div>
 
                                 </td>
@@ -273,49 +270,9 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Generating docker artifacts...
-	@docker 		 - complete 2/2 
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 helloworld:v1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Verify if the Docker image is generated
-$ docker images
-REPOSITORY  TAG      IMAGE ID            CREATED             SIZE
-helloworld  v1.0    8d5b2f26145b        2 seconds ago        127MB
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the generated Docker image
-$ docker run -d -p 9090:9090 helloworld:v1.0
+                                    <div class="highlight"><pre><code class=shell-session># To run the client, navigate to the directory that contains the
+# `.bal` file and use the `bal run` command below.
+bal run tcp_client.bal
 </code></pre></div>
 
                                 </td>
@@ -327,9 +284,8 @@ $ docker run -d -p 9090:9090 helloworld:v1.0
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Access the service
-$ curl http://localhost:9090/helloWorld/sayHello
-Hello World from Docker!
+                                    <div class="highlight"><pre><code class=shell-session># Print the response that is obtained from the server.
+Recived: Hello Ballerina Echo from client
 </code></pre></div>
 
                                 </td>

@@ -12,7 +12,7 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">cache</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// This creates a new cache of size 10. The eviction factor is set to 0.2,</span>
@@ -44,7 +44,7 @@ redirect_from:
     <span class="c1">// During this time, the cache entry with the key &#39;key1&#39; should be removed</span>
     <span class="c1">// since the max of it is set to 2 seconds by default. However, the cache</span>
     <span class="c1">// entry with the key &#39;key2&#39; should exist in the cache.</span>
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4000</span><span class="p">);</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
 
     <span class="c1">// Get the keys of the cache entries.</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">keys</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
@@ -75,7 +75,7 @@ redirect_from:
  LRU algorithm based eviction policy. The caching implementation can be customized by providing different
  storage mechanisms and eviction policies. <br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/cache/">Cache module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/cache/latest/cache/">Cache module</a>.</p>
 </p>
 
                         </td>
@@ -90,9 +90,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="config-api.html">
+                                    <a class="next" href="log-api.html">
                                         <span>NEXT ></span>
-                                        <p>Config</p>
+                                        <p>Log</p>
                                     </a>
                                 </div>
                                 
@@ -113,6 +113,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/cache/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cf4b37a31a0e462840f53e19d27d37d9&file=cache.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -167,7 +171,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/cache;
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 </code></pre></div>
 
                                 </td>
@@ -297,7 +301,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(4000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(4);
 </code></pre></div>
 
                                 </td>

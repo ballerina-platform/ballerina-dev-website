@@ -48,7 +48,7 @@ redirect_from:
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON array:- &quot;</span><span class="p">);</span>
     <span class="c1">// To iterate a JSON array, you need to first cast it into a JSON array (`json[]`).</span>
-    <span class="kt">json</span><span class="p">[]</span> <span class="nx">colors</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span> <span class="nx">apple</span><span class="p">.</span><span class="nx">colors</span><span class="p">;</span>
+    <span class="kt">json</span><span class="p">[]</span> <span class="nx">colors</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span> <span class="nx">checkpanic</span> <span class="nx">apple</span><span class="p">.</span><span class="nx">colors</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">color</span> <span class="nx">in</span> <span class="nx">colors</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Color: &quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
     <span class="p">}</span>
@@ -158,6 +158,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/foreach/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e1321ee53ddb680b0ac0f2f24614e00d&file=foreach.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -380,7 +384,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    json[] colors = &lt;json[]&gt; apple.colors;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json[] colors = &lt;json[]&gt; checkpanic apple.colors;
     foreach var color in colors {
         io:println(&quot;Color: &quot;, color);
     }

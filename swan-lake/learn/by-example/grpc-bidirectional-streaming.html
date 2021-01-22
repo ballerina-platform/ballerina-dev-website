@@ -10,117 +10,160 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="c1">// This is the server implementation for the bidirectional streaming scenario.</span>
+                <div class="highlight"><pre><span class="c1">// This is the server implementation of the bidirectional streaming scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="kt">map</span><span class="p">&lt;</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span><span class="p">&gt;</span> <span class="nx">consMap</span> <span class="p">=</span> <span class="p">{};</span>
+<span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 
 <span class="nd">@grpc:ServiceDescriptor {</span>
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">Chat</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="kt">string</span> <span class="s">`${caller.getId()} connected to chat`</span><span class="p">);</span>
-        <span class="nx">consMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">().</span><span class="nx">toString</span><span class="p">()]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">caller</span><span class="p">;</span>
-        <span class="c1">//Read and process each message in the client stream</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="nx">chatMsg</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">ep</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${chatMsg.name}: ${chatMsg.message}`</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server received message: &quot;</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">);</span>
-            <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">callerId</span><span class="p">,</span> <span class="nx">connection</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">consMap</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
-                <span class="nx">ep</span> <span class="p">=</span> <span class="nx">connection</span><span class="p">;</span>
-                <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server message to caller &quot;</span> <span class="o">+</span> <span class="nx">callerId</span>
-                                                    <span class="o">+</span> <span class="s">&quot; sent successfully.&quot;</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
+<span class="kd">service</span> <span class="s">&quot;Chat&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
+                            <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Invoke the chat RPC&quot;</span><span class="p">);</span>
+        <span class="kt">string</span><span class="p">[]</span> <span class="nx">responses</span> <span class="p">=</span> <span class="p">[];</span>
+        <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="c1">// Read and process each message in the client stream.</span>
+        <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ChatMessage</span> <span class="nx">chatMsg</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">;</span>
+            <span class="nx">responses</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${chatMsg.message}: ${chatMsg.name}`</span><span class="p">;</span>
+            <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">});</span>
-        <span class="c1">//Once the client sends a notification to indicate the end of the stream, &#39;grpc:EOS&#39; is returned by the stream</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${caller.getId()} left the chat`</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">v</span> <span class="p">=</span> <span class="nx">consMap</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
-            <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">callerId</span><span class="p">,</span> <span class="nx">connection</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">consMap</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
-                <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">connection</span><span class="p">;</span>
-                <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Server message to caller &quot;</span> <span class="o">+</span> <span class="nx">callerId</span>
-                                                    <span class="o">+</span> <span class="s">&quot; sent successfully.&quot;</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="c1">//If the client sends an error to the server, the stream closes and returns the error</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="p">}</span>
-
+        <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;grpc:EOS&#39; is returned by the stream.</span>
+        <span class="k">return</span> <span class="nx">responses</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="c1">// This is client implementation for bidirectional streaming scenario.</span>
+
+<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">ChatStringCaller</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">send</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="nx">ContextString</span> <span class="nx">response</span><span class="p">)</span>
+                                <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendError</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">response</span><span class="p">)</span>
+                                        <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">complete</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="c1">// The context record includes the message payload and headers.</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextString</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">content</span><span class="p">;</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="c1">// The context record includes the message payload and headers.</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextChatMessage</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">&gt;</span> <span class="nx">content</span><span class="p">;</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ChatMessage</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="c1">// This is the client implementation of the bidirectional streaming scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 
-<span class="kt">int</span> <span class="nx">total</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="c1">//Client endpoint configuration.</span>
-    <span class="nx">ChatClient</span> <span class="nx">chatEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
-
-    <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">ep</span><span class="p">;</span>
-    <span class="c1">// Executes unary non-blocking call registering server message listener.</span>
-    <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">chatEp</span><span class="o">-&gt;</span><span class="nx">chat</span><span class="p">(</span><span class="nx">ChatMessageListener</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Initialized connection sucessfully.&quot;</span><span class="p">);</span>
-        <span class="nx">ep</span> <span class="p">=</span> <span class="nx">res</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Client endpoint configuration.</span>
+    <span class="nx">ChatClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+    <span class="c1">// Executes the RPC call and receives the customized streaming client.</span>
+    <span class="nx">ChatStreamingClient</span> <span class="nx">streamingClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">chat</span><span class="p">();</span>
 
     <span class="c1">// Sends multiple messages to the server.</span>
-    <span class="nx">ChatMessage</span> <span class="nx">mes</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">:</span> <span class="s">&quot;Hi &quot;</span><span class="p">};</span>
-    <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">connErr</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">mes</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">connErr</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">connErr</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="nx">ChatMessage</span><span class="p">[]</span> <span class="nx">messages</span> <span class="p">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">:</span> <span class="s">&quot;Hi&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Ann&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">:</span> <span class="s">&quot;Hey&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">:</span> <span class="s">&quot;Hello&quot;</span><span class="p">}</span>
+    <span class="p">];</span>
+    <span class="nx">foreach</span> <span class="nx">ChatMessage</span> <span class="nx">msg</span> <span class="nx">in</span> <span class="nx">messages</span> <span class="p">{</span>
+        <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">6000</span><span class="p">);</span>
-
-    <span class="c1">// Once all messages are sent, client send complete message to notify the server, I’m done.</span>
-    <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in sending complete message&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="c1">// Once all the messages are sent, the client sends the message to notify the server about the completion.</span>
+    <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
+    <span class="c1">// Receives the server stream response iteratively.</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;][</span><span class="nx">value</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span>
+            <span class="p">&lt;[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]&gt;</span> <span class="nx">result</span><span class="p">;</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(&lt;[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]&gt;</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">ChatClient</span> <span class="p">{</span>
 
-<span class="kd">service</span> <span class="nx">object</span><span class="p">{}</span> <span class="nx">ChatMessageListener</span> <span class="p">=</span> <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">AbstractClientEndpoint</span><span class="p">;</span>
 
-    <span class="c1">// Resource registered to receive server messages.</span>
-    <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Response received from server: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
+    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">grpcClient</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">url</span><span class="p">,</span>
+    <span class="nx">grpc</span><span class="p">:</span><span class="nx">ClientConfiguration</span><span class="err">?</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">())</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="c1">// Initialize the client endpoint.</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
+        <span class="nx">checkpanic</span> <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="p">.</span><span class="nx">initStub</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
+        <span class="nx">getDescriptorMap</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="c1">// Resource registered to receive server error messages.</span>
-    <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error reported from server: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">ChatStreamingClient</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">sClient</span> <span class="p">=</span> <span class="nx">check</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="o">-&gt;</span><span class="nx">executeBidirectionalStreaming</span><span class="p">(</span><span class="s">&quot;Chat/chat&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">new</span> <span class="nx">ChatStreamingClient</span><span class="p">(</span><span class="nx">sClient</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">ChatStreamingClient</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">sClient</span><span class="p">;</span>
+
+    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">sClient</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span> <span class="p">=</span> <span class="nx">sClient</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="c1">// Resource registered to receive server completed message.</span>
-    <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Server Complete Sending Responses.&quot;</span><span class="p">);</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">send</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">};</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">receive</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">anydata</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendError</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">response</span><span class="p">)</span>
+                                <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">complete</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ChatMessage</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="p">|};</span>
 </pre></div>
 
             </div>
@@ -135,7 +178,7 @@ redirect_from:
  operate when each of them sends a sequence of messages using a read-write stream.
  In such scenarios, the two streams operate independently. Therefore, clients and servers can read and write in any order.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/grpc/">GRPC module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/grpc/latest/grpc/">GRPC module</a>.</p>
 </p>
 
                         </td>
@@ -173,6 +216,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/grpc-bidirectional-streaming/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c14a7358a7e588222b43e10497850d5b&file=grpc_bidirectional_streaming.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -319,6 +366,30 @@ ballerina grpc --input grpc_bidirectional_streaming.proto  --output stubs
                         
                             
                                 
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -348,7 +419,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the server implementation for the bidirectional streaming scenario.</p>
+                                            <p>This is the server implementation of the bidirectional streaming scenario.</p>
 
                                         </div>
                                     </div>
@@ -359,7 +430,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>map&lt;grpc:Caller&gt; consMap = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>listener grpc:Listener ep = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -375,7 +446,69 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service /Chat on new grpc:Listener(9090) {
+service &quot;Chat&quot; on ep {
+    remote function chat(stream&lt;ChatMessage, error&gt; clientStream)
+                            returns stream&lt;string&gt; {
+        log:print(&quot;Invoke the chat RPC&quot;);
+        string[] responses = [];
+        int i = 0;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        error? e = clientStream.forEach(function(ChatMessage value) {
+            ChatMessage chatMsg = &lt;ChatMessage&gt; value;
+            responses[i] = string `${chatMsg.message}: ${chatMsg.name}`;
+            i += 1;
+        });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Read and process each message in the client stream.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return responses.toStream();
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Once the client sends a notification to indicate the end of the stream, &lsquo;grpc:EOS&rsquo; is returned by the stream.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public client class ChatStringCaller {
+    private grpc:Caller caller;
 </code></pre></div>
 
                                 </td>
@@ -387,10 +520,68 @@ service /Chat on new grpc:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function chat(grpc:Caller caller,
-                                stream&lt;ChatMessage, error&gt; clientStream) {
-        log:print(string `${caller.getId()} connected to chat`);
-        consMap[caller.getId().toString()] = &lt;@untainted&gt;caller;
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function init(grpc:Caller caller) {
+        self.caller = caller;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function getId() returns int {
+        return self.caller.getId();
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function send(string|ContextString response)
+                                returns grpc:Error? {
+        return self.caller-&gt;send(&lt;anydata&gt;response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendError(grpc:Error response)
+                                        returns grpc:Error? {
+        return self.caller-&gt;sendError(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function complete() returns grpc:Error? {
+        return self.caller-&gt;complete();
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -402,21 +593,10 @@ service /Chat on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        error? e = clientStream.forEach(function(ChatMessage chatMsg) {
-            grpc:Caller ep;
-            string msg = string `${chatMsg.name}: ${chatMsg.message}`;
-            log:print(&quot;Server received message: &quot; + msg);
-            foreach var [callerId, connection] in consMap.entries() {
-                ep = connection;
-                grpc:Error? err = ep-&gt;send(msg);
-                if (err is grpc:Error) {
-                    log:printError(&quot;Error from Connector: &quot; + err.message());
-                } else {
-                    log:print(&quot;Server message to caller &quot; + callerId
-                                                    + &quot; sent successfully.&quot;);
-                }
-            }
-        });
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextString record {|
+    stream&lt;string&gt; content;
+    map&lt;string[]&gt; headers;
+|};
 </code></pre></div>
 
                                 </td>
@@ -424,7 +604,7 @@ service /Chat on new grpc:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read and process each message in the client stream</p>
+                                            <p>The context record includes the message payload and headers.</p>
 
                                         </div>
                                     </div>
@@ -435,20 +615,10 @@ service /Chat on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (e is grpc:EOS) {
-            string msg = string `${caller.getId()} left the chat`;
-            log:print(msg);
-            var v = consMap.remove(caller.getId().toString());
-            foreach var [callerId, connection] in consMap.entries() {
-                grpc:Caller ep = connection;
-                grpc:Error? err = ep-&gt;send(msg);
-                if (err is grpc:Error) {
-                    log:printError(&quot;Error from Connector: &quot; + err.message());
-                } else {
-                    log:print(&quot;Server message to caller &quot; + callerId
-                                                    + &quot; sent successfully.&quot;);
-                }
-            }
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextChatMessage record {|
+    stream&lt;ChatMessage&gt; content;
+    map&lt;string[]&gt; headers;
+|};
 </code></pre></div>
 
                                 </td>
@@ -456,28 +626,7 @@ service /Chat on new grpc:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Once the client sends a notification to indicate the end of the stream, &lsquo;grpc:EOS&rsquo; is returned by the stream</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        } else if (e is error) {
-            log:printError(&quot;Error from Connector: &quot; + e.message());
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the client sends an error to the server, the stream closes and returns the error</p>
+                                            <p>The context record includes the message payload and headers.</p>
 
                                         </div>
                                     </div>
@@ -488,8 +637,10 @@ service /Chat on new grpc:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ChatMessage record {|
+    string name = &quot;&quot;;
+    string message = &quot;&quot;;
+|};
 </code></pre></div>
 
                                 </td>
@@ -553,7 +704,7 @@ service /Chat on new grpc:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;service&#39; module.
-ballerina build service
+bal build service
 </code></pre></div>
 
                                 </td>
@@ -629,6 +780,38 @@ bal run target/bin/service.jar
                         
                             
                                 
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -651,7 +834,6 @@ bal run target/bin/service.jar
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/io;
-import ballerina/runtime;
 </code></pre></div>
 
                                 </td>
@@ -659,7 +841,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is client implementation for bidirectional streaming scenario.</p>
+                                            <p>This is the client implementation of the bidirectional streaming scenario.</p>
 
                                         </div>
                                     </div>
@@ -670,8 +852,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>int total = 0;
-public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main (string... args) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -683,7 +864,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ChatClient chatEp = new (&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ChatClient ep = check new(&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -699,22 +880,10 @@ public function main() {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    grpc:StreamingClient ep;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var res = chatEp-&gt;chat(ChatMessageListener);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ChatStreamingClient streamingClient = check ep-&gt;chat();
 </code></pre></div>
 
                                 </td>
@@ -722,7 +891,7 @@ public function main() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Executes unary non-blocking call registering server message listener.</p>
+                                            <p>Executes the RPC call and receives the customized streaming client.</p>
 
                                         </div>
                                     </div>
@@ -730,29 +899,17 @@ public function main() {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (res is grpc:Error) {
-        io:println(&quot;Error from Connector: &quot; + res.message());
-        return;
-    } else {
-        io:println(&quot;Initialized connection sucessfully.&quot;);
-        ep = res;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ChatMessage mes = {name: &quot;Sam&quot;, message: &quot;Hi &quot;};
-    grpc:Error? connErr = ep-&gt;send(mes);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ChatMessage[] messages = [
+        {name: &quot;Sam&quot;, message: &quot;Hi&quot;},
+        {name: &quot;Ann&quot;, message: &quot;Hey&quot;},
+        {name: &quot;John&quot;, message: &quot;Hello&quot;}
+    ];
+    foreach ChatMessage msg in messages {
+        check streamingClient-&gt;send(msg);
+    }
 </code></pre></div>
 
                                 </td>
@@ -768,17 +925,21 @@ public function main() {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (connErr is grpc:Error) {
-        io:println(&quot;Error from Connector: &quot; + connErr.message());
-    }
-    runtime:sleep(6000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check streamingClient-&gt;complete();
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Once all the messages are sent, the client sends the message to notify the server about the completion.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -786,9 +947,14 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    grpc:Error? result = ep-&gt;complete();
-    if (result is grpc:Error) {
-        io:println(&quot;Error in sending complete message&quot;, result);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = streamingClient-&gt;receive();
+    while !(result is grpc:EOS) {
+        if !(result is grpc:Error) {
+            [anydata, map&lt;string|string[]&gt;][value, _] =
+            &lt;[anydata, map&lt;string|string[]&gt;]&gt; result;
+            io:println(&lt;[anydata, map&lt;string|string[]&gt;]&gt; result);
+        }
+        result = streamingClient-&gt;receive();
     }
 }
 </code></pre></div>
@@ -798,7 +964,7 @@ public function main() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Once all messages are sent, client send complete message to notify the server, I’m done.</p>
+                                            <p>Receives the server stream response iteratively.</p>
 
                                         </div>
                                     </div>
@@ -809,7 +975,44 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service object{} ChatMessageListener = service object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public client class ChatClient {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    *grpc:AbstractClientEndpoint;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    private grpc:Client grpcClient;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function init(string url,
+    grpc:ClientConfiguration? config = ()) returns grpc:Error? {
 </code></pre></div>
 
                                 </td>
@@ -821,8 +1024,9 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function onMessage(string message) {
-        io:println(&quot;Response received from server: &quot; + message);
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.grpcClient = check new(url, config);
+        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
+        getDescriptorMap());
     }
 </code></pre></div>
 
@@ -831,7 +1035,7 @@ public function main() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Resource registered to receive server messages.</p>
+                                            <p>Initialize the client endpoint.</p>
 
                                         </div>
                                     </div>
@@ -839,45 +1043,130 @@ public function main() {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function onError(error err) {
-        io:println(&quot;Error reported from server: &quot; + err.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function chat() returns (ChatStreamingClient|grpc:Error) {
+        grpc:StreamingClient sClient = check
+        self.grpcClient-&gt;executeBidirectionalStreaming(&quot;Chat/chat&quot;);
+        return new ChatStreamingClient(sClient);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public client class ChatStreamingClient {
+    private grpc:StreamingClient sClient;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function init(grpc:StreamingClient sClient) {
+        self.sClient = sClient;
     }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Resource registered to receive server error messages.</p>
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
-                                        </div>
-                                    </div>
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function send(ChatMessage message) returns grpc:Error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return self.sClient-&gt;send(message);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function receive() returns anydata|grpc:Error {
+        return self.sClient-&gt;receive();
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendError(grpc:Error response)
+                                returns grpc:Error? {
+        return self.sClient-&gt;sendError(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function complete() returns grpc:Error? {
+        return self.sClient-&gt;complete();
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function onComplete() {
-        io:println(&quot;Server Complete Sending Responses.&quot;);
-    }
-};
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ChatMessage record {|
+    string name = &quot;&quot;;
+    string message = &quot;&quot;;
+|};
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Resource registered to receive server completed message.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -937,7 +1226,7 @@ public function main() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;client&#39; module.
-ballerina build client
+bal build client
 </code></pre></div>
 
                                 </td>

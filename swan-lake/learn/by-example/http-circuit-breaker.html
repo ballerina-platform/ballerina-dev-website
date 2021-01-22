@@ -12,12 +12,12 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 
 <span class="c1">// The circuit breaker looks for errors across a rolling time window.</span>
 <span class="c1">// After the circuit is broken, it does not send requests to</span>
 <span class="c1">// the backend until the `resetTime`.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
             <span class="c1">// Configuration options that control the behavior of the circuit</span>
             <span class="c1">// breaker.</span>
             <span class="nx">circuitBreaker</span><span class="p">:</span> <span class="p">{</span>
@@ -96,7 +96,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Delay the response by 5000 milliseconds to</span>
             <span class="c1">// mimic the network level delays.</span>
-            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
@@ -132,7 +132,7 @@ redirect_from:
                             <h2>Circuit Breaker</h2>
                             <p><p>The Circuit Breaker is used to gracefully handle network related errors, which occur when using the HTTP Client.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -170,6 +170,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-circuit-breaker/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=be5c0f5470faa8b1689aab0d5684cc67&file=http_circuit_breaker.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -242,7 +246,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 </code></pre></div>
 
                                 </td>
@@ -254,7 +258,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = check new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -591,7 +595,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5000);
+                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5);
 </code></pre></div>
 
                                 </td>
@@ -673,13 +677,13 @@ import ballerina/runtime;
 bal run http_circuit_breaker.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-2019-09-04 17:08:02,595 INFO  [ballerina/http/resiliency] - CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.
-2019-09-04 17:08:12,514 INFO  [ballerina/http/resiliency] - CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.
-2019-09-04 17:08:14,993 INFO  [ballerina/http/resiliency] - CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.
-2019-09-04 17:08:20,003 ERROR [] - Error sending response from mock service : error {ballerina/http}GenericListenerError message=Connection between remote client and host is closed
-2019-09-04 17:08:22,082 INFO  [ballerina/http/resiliency] - CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.
-2019-09-04 17:08:32,755 INFO  [ballerina/http/resiliency] - CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.
-2019-09-04 17:08:35,268 INFO  [ballerina/http/resiliency] - CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.
+time = 2021-01-21 19:20:04,028 level = INFO  module = ballerina/http message = &quot;CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.&quot;
+time = 2021-01-21 19:20:14,306 level = INFO  module = ballerina/http message = &quot;CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.&quot;
+time = 2021-01-21 19:20:17,810 level = INFO  module = ballerina/http message = &quot;CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.&quot;
+time = 2021-01-21 19:20:36,295 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
+time = 2021-01-21 19:22:38,052 = INFO  module = ballerina/http message = &quot;CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.&quot;
+time = 2021-01-21 19:23:23,628 level = INFO  module = ballerina/http message = &quot;CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.&quot;
+time = 2021-01-21 19:23:57,633 level = INFO  module = ballerina/http message = &quot;CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.&quot;
 </code></pre></div>
 
                                 </td>

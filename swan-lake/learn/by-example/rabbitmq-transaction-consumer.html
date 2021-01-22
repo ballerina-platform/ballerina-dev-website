@@ -63,7 +63,7 @@ redirect_from:
  Messages will not be re-queued in the case of a rollback
  automatically unless negatively acknowledged by the user.
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/rabbitmq/">RabbitMQ module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/rabbitmq/latest/rabbitmq/">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -78,9 +78,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="tcp-socket-listener-client.html">
+                                    <a class="next" href="tcp-client.html">
                                         <span>NEXT ></span>
-                                        <p>Basic TCP Socket</p>
+                                        <p>TCP Client</p>
                                     </a>
                                 </div>
                                 
@@ -101,6 +101,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rabbitmq-transaction-consumer/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a25be299c561249fc5ed67acddc4dd99&file=rabbitmq_transaction_consumer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -302,7 +306,7 @@ import ballerinax/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run --experimental rabbitmq_transaction_consumer.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_transaction_consumer.bal
 </code></pre></div>
 
                                 </td>
@@ -326,9 +330,9 @@ import ballerinax/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>2019-06-07 12:53:55,028 INFO  [ballerina/transactions] - Created transaction: 190d5620-cf94-462b-b1dd-6fd1b372ca75
-2019-06-07 12:53:55,034 INFO  [] - The message received: Hello from Ballerina
-2019-06-07 12:53:55,034 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 190d5620-cf94-462b-b1dd-6fd1b372ca75:$anon$.$1
+                                    <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 192.168.1.2:51642
+[ballerina/rabbitmq] Consumer service started for queue MyQueue
+time = 2021-01-18 15:15:36,514 level = INFO  module = &quot;&quot; message = &quot;The message received: Hello from Ballerina&quot;
 </code></pre></div>
 
                                 </td>

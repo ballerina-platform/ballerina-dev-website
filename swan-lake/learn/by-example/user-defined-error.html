@@ -33,7 +33,7 @@ redirect_from:
     <span class="c1">// The first argument to the error constructor is the error message,</span>
     <span class="c1">// and the error constructor takes a second optional argument as the error cause.</span>
     <span class="c1">// The error details can be provided as named arguments.</span>
-    <span class="k">return</span> <span class="nx">InvalidAccountTypeError</span><span class="p">(</span><span class="s">&quot;Invalid account type&quot;</span><span class="p">,</span>
+    <span class="k">return</span> <span class="nx">error</span> <span class="nx">InvalidAccountTypeError</span><span class="p">(</span><span class="s">&quot;Invalid account type&quot;</span><span class="p">,</span>
                                     <span class="nx">accountType</span> <span class="p">=</span> <span class="nx">accountType</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -58,11 +58,12 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">AccountError</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Return an `InvalidAccountIdError` if the `accountID` is less than zero.</span>
-        <span class="k">return</span> <span class="nx">InvalidAccountIdError</span><span class="p">(</span><span class="s">&quot;Invalid account Id&quot;</span><span class="p">,</span>
+        <span class="k">return</span> <span class="nx">error</span> <span class="nx">InvalidAccountIdError</span><span class="p">(</span><span class="s">&quot;Invalid account Id&quot;</span><span class="p">,</span>
                                       <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Return an `AccountNotFoundError` if the `accountID` is greater than hundred.</span>
-        <span class="k">return</span> <span class="nx">AccountNotFoundError</span><span class="p">(</span><span class="s">&quot;Account not found&quot;</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">error</span> <span class="nx">AccountNotFoundError</span><span class="p">(</span><span class="s">&quot;Account not found&quot;</span><span class="p">,</span>
+                                          <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="c1">// Return a value if the `accountID` is in between zero and hundred inclusive.</span>
     <span class="k">return</span> <span class="mi">600</span><span class="p">;</span>
@@ -75,7 +76,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="nx">fromAccountId</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Create a new error with the error returned from `getAccountBalance()` as the cause.</span>
-        <span class="k">return</span> <span class="nx">AccountTransferError</span><span class="p">(</span><span class="s">&quot;Account transfer failed&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> 
+        <span class="k">return</span> <span class="nx">error</span> <span class="nx">AccountTransferError</span><span class="p">(</span><span class="s">&quot;Account transfer failed&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span>
                                     <span class="nx">fromAccountId</span> <span class="p">=</span> <span class="nx">fromAccountId</span><span class="p">,</span>
                                     <span class="nx">toAccountId</span> <span class="p">=</span> <span class="nx">toAccountId</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -166,6 +167,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/user-defined-error/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=43e377500b704ebfec5d64dc098aaf97&file=user_defined_error.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -306,7 +311,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return InvalidAccountTypeError(&quot;Invalid account type&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    return error InvalidAccountTypeError(&quot;Invalid account type&quot;,
                                     accountType = accountType);
 }
 </code></pre></div>
@@ -398,7 +403,7 @@ type AccountNotFoundError distinct AccountError;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return InvalidAccountIdError(&quot;Invalid account Id&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error InvalidAccountIdError(&quot;Invalid account Id&quot;,
                                       accountID = accountID);
     } else if (accountID &gt; 100) {
 </code></pre></div>
@@ -419,7 +424,8 @@ type AccountNotFoundError distinct AccountError;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return AccountNotFoundError(&quot;Account not found&quot;, accountID = accountID);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error AccountNotFoundError(&quot;Account not found&quot;,
+                                          accountID = accountID);
     }
 </code></pre></div>
 
@@ -486,7 +492,7 @@ type AccountNotFoundError distinct AccountError;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return AccountTransferError(&quot;Account transfer failed&quot;, result, 
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error AccountTransferError(&quot;Account transfer failed&quot;, result,
                                     fromAccountId = fromAccountId,
                                     toAccountId = toAccountId);
     } else {

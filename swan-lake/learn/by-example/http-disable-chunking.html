@@ -13,14 +13,14 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_AUTO),</span>
-<span class="c1">// [CHUNKING_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_ALWAYS),</span>
-<span class="c1">// or [CHUNKING_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_NEVER).</span>
+<span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO),</span>
+<span class="c1">// [CHUNKING_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS),</span>
+<span class="c1">// or [CHUNKING_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER).</span>
 <span class="c1">// In this example, it is set to `CHUNKING_NEVER`, which means that chunking never happens irrespective of how it is</span>
 <span class="c1">// specified in the request. When chunking is set to `CHUNKING_AUTO`, chunking is done as specified in the request.</span>
-<span class="c1">// [http1Settings](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientHttp1Settings) annotation</span>
+<span class="c1">// [http1Settings](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings) annotation</span>
 <span class="c1">// provides the chunking-related configurations.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
                                     <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span>
                                         <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}}</span>
                                   <span class="p">);</span>
@@ -59,21 +59,25 @@ redirect_from:
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="kt">boolean</span> <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
         <span class="c1">//Set the response according to the request headers.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">);</span>
-            <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">);</span>
-            <span class="c1">//Perform data validation for transfer-encoding.</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;chunked&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;compress&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;deflate&quot;</span>
-                <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;gzip&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding contains invalid data&quot;</span><span class="p">);</span>
-                <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
-            <span class="p">}</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">conLength</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">conLength</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">conLength</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="p">=</span>
-                <span class="s">&quot;Neither Transfer-Encoding nor content-length header found&quot;</span><span class="p">;</span>
+            <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">traEncoding</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">traEncoding</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">value</span> <span class="p">=</span> <span class="nx">traEncoding</span><span class="p">;</span>
+                <span class="c1">//Perform data validation for transfer-encoding.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;chunked&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;compress&quot;</span>
+                    <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;deflate&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;gzip&quot;</span>
+                    <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
+                    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding contains invalid data&quot;</span><span class="p">);</span>
+                    <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Neither Transfer-Encoding nor &quot;</span>
+                            <span class="o">+</span> <span class="s">&quot;content-length header found&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
 
         <span class="k">if</span> <span class="p">(!</span><span class="nx">validationErrorFound</span><span class="p">)</span> <span class="p">{</span>
@@ -106,7 +110,7 @@ redirect_from:
                             <p><p>This sample demonstrates how to configure the chunking behavior of an HTTP client endpoint. By default, the HTTP client sends messages with the <code>content-length</code> header.
 If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -144,6 +148,10 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-disable-chunking/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f033e2a7d27fb66a1f55f8f006bef956&file=http_disable_chunking.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -209,7 +217,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = check new (&quot;http://localhost:9090&quot;,
                                     {http1Settings:
                                         {chunking: http:CHUNKING_NEVER}}
                                   );
@@ -220,12 +228,12 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_AUTO">CHUNKING_AUTO</a>,
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
- or <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_NEVER">CHUNKING_NEVER</a>.
+                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO">CHUNKING_AUTO</a>,
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
+ or <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER">CHUNKING_NEVER</a>.
  In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of how it is
  specified in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done as specified in the request.
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientHttp1Settings">http1Settings</a> annotation
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings">http1Settings</a> annotation
  provides the chunking-related configurations.</p>
 
                                         </div>
@@ -344,11 +352,13 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (req.hasHeader(&quot;content-length&quot;)) {
-            value = req.getHeader(&quot;content-length&quot;);
-            value = &quot;Length-&quot; + value;
-        } else if (req.hasHeader(&quot;Transfer-Encoding&quot;)) {
-            value = req.getHeader(&quot;Transfer-Encoding&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error conLength = req.getHeader(&quot;content-length&quot;);
+        if (conLength is string) {
+            value = &quot;Length-&quot; + conLength;
+        } else {
+            string|error traEncoding = req.getHeader(&quot;Transfer-Encoding&quot;);
+            if (traEncoding is string) {
+                value = traEncoding;
 </code></pre></div>
 
                                 </td>
@@ -367,15 +377,17 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            if (value != &quot;chunked&quot; &amp;&amp; value != &quot;compress&quot; &amp;&amp; value != &quot;deflate&quot;
-                &amp;&amp; value != &quot;gzip&quot; &amp;&amp; value != &quot;identity&quot;) {
-                res.statusCode = 400;
-                res.setPayload(&quot;Transfer-Encoding contains invalid data&quot;);
-                validationErrorFound = true;
+                                    <div class="highlight"><pre><code class=language-ballerina>                if (value != &quot;chunked&quot; &amp;&amp; value != &quot;compress&quot;
+                    &amp;&amp; value != &quot;deflate&quot; &amp;&amp; value != &quot;gzip&quot;
+                    &amp;&amp; value != &quot;identity&quot;) {
+                    res.statusCode = 400;
+                    res.setPayload(&quot;Transfer-Encoding contains invalid data&quot;);
+                    validationErrorFound = true;
+                }
+            } else {
+                value = &quot;Neither Transfer-Encoding nor &quot;
+                            + &quot;content-length header found&quot;;
             }
-        } else {
-            value =
-                &quot;Neither Transfer-Encoding nor content-length header found&quot;;
         }
 </code></pre></div>
 

@@ -59,8 +59,9 @@ redirect_from:
 
 <span class="c1">// This is the business function call to the participant.</span>
 <span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">callBusinessService</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted boolean {</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8889/stockquote/&quot;</span> <span class="o">+</span>
-                                        <span class="s">&quot;update/updateStockQuote&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span>
+                                    <span class="s">&quot;http://localhost:8889/stockquote/&quot;</span> <span class="o">+</span>
+                                    <span class="s">&quot;update/updateStockQuote&quot;</span><span class="p">);</span>
 
     <span class="c1">// Generate the payload.</span>
     <span class="kt">float</span> <span class="nx">price</span> <span class="p">=</span> <span class="mf">100.00</span><span class="p">;</span>
@@ -172,6 +173,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/distributed-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=97f1ea22e0d868cc4ac3ed1f975cbb26&file=distributed_transactions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -375,8 +380,9 @@ import ballerina/lang.&#39;transaction as transactions;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>transactional function callBusinessService() returns @tainted boolean {
-    http:Client participantEP = new (&quot;http://localhost:8889/stockquote/&quot; +
-                                        &quot;update/updateStockQuote&quot;);
+    http:Client participantEP = checkpanic new (
+                                    &quot;http://localhost:8889/stockquote/&quot; +
+                                    &quot;update/updateStockQuote&quot;);
 </code></pre></div>
 
                                 </td>

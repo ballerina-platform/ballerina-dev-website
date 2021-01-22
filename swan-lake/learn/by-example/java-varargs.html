@@ -11,7 +11,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jballerina</span><span class="p">.</span><span class="nx">java</span><span class="p">;</span>
 
 <span class="c1">// Define a Ballerina function with an external function body whose implementation is provided by a Java method.</span>
 <span class="c1">// When a vararg is used in the Ballerina function signature, corresponding values are wrapped in</span>
@@ -40,7 +40,7 @@ redirect_from:
  If there are overloaded Java methods and you want to remove the ambiguity, the <code>paramTypes</code> field can be used
  to specify the element class type and dimension.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/">Java module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/java/latest/java/">Java module</a>.</p>
 </p>
 
                         </td>
@@ -80,6 +80,10 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/java-varargs/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f7d7946317dcdc214b44e1f69f6790dc&file=java_varargs.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -113,7 +117,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/java;
+import ballerina/jballerina.java;
 </code></pre></div>
 
                                 </td>

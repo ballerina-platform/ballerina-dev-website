@@ -1,43 +1,55 @@
 ---
 layout: ballerina-example-page
-title: Client Endpoint
+title: TCP Listener
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/websocket-client
+permalink: /swan-lake/learn/by-example/tcp-listener
 redirect_from:
-  - /vswan-lake/learn/by-example/websocket-client
-  - /vswan-lake/learn/by-example/websocket-client.html
+  - /vswan-lake/learn/by-example/tcp-listener
+  - /vswan-lake/learn/by-example/tcp-listener.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">tcp</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient) with the backend URL and assigns a callback service.</span>
-    <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">,</span>
-                            <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span><span class="p">});</span>
-    <span class="c1">// Pushes a text message to the server using [pushText](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#pushText).</span>
-    <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Prints the error.</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="c1">// Bind the service to the port. </span>
+<span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This remote method is invoked when the new client joins the server.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connected to echoServer: &quot;</span><span class="p">,</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">new</span> <span class="nx">EchoService</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="c1">// The client callback service, which handles backend responses.</span>
-<span class="kd">service</span> <span class="nx">object</span> <span class="p">{}</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="nd">@websocket:ServiceConfig {} service object {</span>
 
-    <span class="c1">// This remote function is triggered when a new text frame is received from</span>
-    <span class="c1">// the remote backend.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
-                             <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="kd">service</span> <span class="nx">class</span> <span class="nx">EchoService</span> <span class="p">{</span>
+    <span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span> <span class="p">=</span> <span class="nx">c</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="c1">// This is triggered if an error occurs.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+    <span class="c1">// This remote method is invoked once the content is received from the client.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Echo: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+        <span class="c1">// Echo back the data to the same client which the data received from.</span>
+        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">};</span>
+
+    <span class="c1">// This remote method is invoked in an error situation</span>
+    <span class="c1">// if it happens during the `onConnect` and `onBytes` methods.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// This remote method is invoked when the connection is closed.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client left: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="p">.</span><span class="nx">remoteHost</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">,</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -46,10 +58,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Client Endpoint</h2>
-                            <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server.<br/><br/>
+                            <h2>TCP Listener</h2>
+                            <p><p>The TCP Listener is used to expose a TCP service over the TCP protocol.
+ This sample demonstrates how the TCP socket listener service interacts with the TCP client.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/tcp/">TCP module</a>.</p>
 </p>
 
                         </td>
@@ -57,16 +70,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="graphql-resources-with-record-values.html">
+                                    <a class="prev" href="tcp-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>GraphQL Resources with Record Values</p>
+                                        <p>TCP Client</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websocket-basic-sample.html">
+                                    <a class="next" href="udp-client.html">
                                         <span>NEXT ></span>
-                                        <p>Basic Server Functionalities</p>
+                                        <p>UDP Connectionless Client</p>
                                     </a>
                                 </div>
                                 
@@ -75,7 +88,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="websocket-client">
+            <div class="example" id="tcp-listener">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -86,7 +99,11 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tcp-listener/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4309c7e8d2e8c5559804efd78d0942a7&file=tcp_listener.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -121,6 +138,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -130,7 +149,63 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/websocket;
+import ballerina/log;
+import ballerina/tcp;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service on new tcp:Listener(3000) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Bind the service to the port.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+        io:println(&quot;Client connected to echoServer: &quot;, caller.remotePort);
+        return new EchoService(caller);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This remote method is invoked when the new client joins the server.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service class EchoService {
+    tcp:Caller caller;
 </code></pre></div>
 
                                 </td>
@@ -142,61 +217,22 @@ import ballerina/websocket;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    websocket:Client wsClientEp = new (&quot;ws://echo.websocket.org&quot;,
-                            config = {callbackService: ClientService});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient">WebSocket client</a> with the backend URL and assigns a callback service.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var err = wsClientEp-&gt;pushText(&quot;Hello World!&quot;);
-    if (err is error) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Pushes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#pushText">pushText</a>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(err);
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function init(tcp:Caller c) {
+        self.caller = c;
     }
-}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onBytes(readonly &amp; byte[] data) returns tcp:Error? {
+        io:println(&quot;Echo: &quot;, string:fromBytes(data));
 </code></pre></div>
 
                                 </td>
@@ -204,7 +240,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Prints the error.</p>
+                                            <p>This remote method is invoked once the content is received from the client.</p>
 
                                         </div>
                                     </div>
@@ -215,28 +251,7 @@ import ballerina/websocket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service object {} ClientService = @websocket:ServiceConfig {} service object {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The client callback service, which handles backend responses.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onText(websocket:Client conn, string text,
-                             boolean finalFrame) {
-        io:println(text);
+                                    <div class="highlight"><pre><code class=language-ballerina>        check self.caller-&gt;writeBytes(data);
     }
 </code></pre></div>
 
@@ -245,8 +260,29 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This remote function is triggered when a new text frame is received from
- the remote backend.</p>
+                                            <p>Echo back the data to the same client which the data received from.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(readonly &amp; tcp:Error err) returns tcp:Error? {
+        log:printError(&quot;An error occurred&quot;, err = err);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This remote method is invoked in an error situation
+ if it happens during the <code>onConnect</code> and <code>onBytes</code> methods.</p>
 
                                         </div>
                                     </div>
@@ -257,10 +293,11 @@ import ballerina/websocket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(websocket:Client conn, error err) {
-        io:println(err);
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onClose() returns tcp:Error? {
+        io:println(&quot;Client left: &quot;, self.caller.remoteHost, &quot;/&quot;,
+            self.caller.remotePort);
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -268,7 +305,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is triggered if an error occurs.</p>
+                                            <p>This remote method is invoked when the connection is closed.</p>
 
                                         </div>
                                     </div>
@@ -297,8 +334,8 @@ import ballerina/websocket;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run websocket_client.bal
+# `.bal` file and use the `bal run` command below.
+bal run tcp_listener.bal
 </code></pre></div>
 
                                 </td>
@@ -310,7 +347,10 @@ bal run websocket_client.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Hello World!
+                                    <div class="highlight"><pre><code class=shell-session># The tcp listener starts listening to the port 61598 for incoming client requests.
+Client connected to echoServer: 48735
+Echo: Hello Ballerina Echo from client
+Client left: localhost/48735
 </code></pre></div>
 
                                 </td>

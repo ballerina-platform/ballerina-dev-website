@@ -67,7 +67,7 @@ service /hello on new http:Listener(9090) {
 
 ### Step 4 - Observing the 'Hello World' Ballerina Service
 
-By default, Observability is not included in the executable created by Ballerina. It can be added
+By default, observability is not included in the executable created by Ballerina. It can be added
 by using the --observability-included build flag or by adding the following section to the `Ballerina.toml` file.
 
 ```toml
@@ -75,7 +75,7 @@ by using the --observability-included build flag or by adding the following sect
 observabilityIncluded=true
 ```
 
-To include the Prometheus and Jaeger extensions into the executable,
+To include the Prometheus and Jaeger extensions into the executable, the
 `ballerinax/prometheus` and `ballerinax/jaeger` modules need to be imported in your Ballerina code.
 
 ```ballerina
@@ -83,7 +83,7 @@ import ballerinax/prometheus as _;
 import ballerinax/jaeger as _;
 ```
 
-Observability is disabled by default at runtime as well, and it can be enabled by adding
+Observability is disabled by default at runtime as well and it can be enabled by adding
 the following runtime configurations to the `Config.toml` file.
 
 ```toml
@@ -99,7 +99,7 @@ metricsEnabled=true
 tracingEnabled=true
 ```
 
-The created configuration file can be passed to the Ballerina program with `BALCONFIGFILE` environment variable along with
+The created configuration file can be passed to the Ballerina program with the `BALCONFIGFILE` environment variable along with
 the path of the configuration file.
 
 ```bash
@@ -111,11 +111,11 @@ ballerina: started publishing traces to Jaeger on localhost:6831
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
-By default, when Ballerina observability is enabled, Ballerina runtime exposes internal metrics via an HTTP endpoint for
+By default, when Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint for
 metrics monitoring and traces will be published to Jaeger. Prometheus should be configured to scrape metrics from
 the metrics HTTP endpoint in Ballerina.
 
-Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
+Ballerina logs are logged on the console. Therefore, the logs need to be redirected to a file, which can then be
 pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
 
 Therefore, redirect the standard output to a file if you want to monitor logs.
@@ -287,10 +287,10 @@ specification.](https://github.com/opentracing/specification/blob/master/semanti
 ### Configuring Advanced Tracing for Ballerina
 
 Tracing can be enabled in Ballerina with the few configurations as mentioned in the
-[Observing a Ballerina Service](#observing-a-ballerina-service) section.
+[Observing a Ballerina Service](#observing-a-ballerina-service).
 This section mainly focuses on the configuration options with the description and possible values.
 
-The sample configuration that enables tracing, and uses Jaeger as the tracer as provided below.
+The sample configuration that enables tracing and uses Jaeger as the tracer as provided below.
 
 ```toml
 [ballerina.observe]
@@ -303,7 +303,7 @@ The table below provides the descriptions of each configuration option and possi
 Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
 ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
-ballerina.observe.tracingProvider | Tracer name which implements tracer interface. | jaeger | jaeger or if any custom implementation, the name of the tracer.
+ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | jaeger | jaeger or the name of the tracer of any custom implementation.
 
 #### Using the Jaeger Client
 Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
@@ -328,10 +328,10 @@ The table below provides the descriptions of each configuration option and possi
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
 ballerina.observe. agentHostname | Hostname of the Jaeger agent | localhost | IP or hostname of the Jaeger agent. If it is running on the same node as Ballerina, it can be localhost. 
-ballerina.observe. agentPort | Port of the Jaeger agent | 6831 | The port to which the Jaeger agent is listening.
+ballerina.observe. agentPort | Port of the Jaeger agent | 6831 | The port on which the Jaeger agent is listening.
 ballerina.observe. samplerType | Type of the sampling methods used in the Jaeger tracer. | const | `const`, `probabilistic`, or `ratelimiting`.
 ballerina.observe. samplerParam | It is a floating value. Based on the sampler type, the effect of the sampler param varies | 1.0 | For `const` `0` (no sampling) or `1` (sample all spans), for `probabilistic` `0.0` to `1.0`, for `ratelimiting` any positive integer (rate per second).
-ballerina.observe. reporterFlushInterval | Jaeger client will be sending the spans to the server at this interval. | 2000 | Any positive integer value.
+ballerina.observe. reporterFlushInterval | The Jaeger client will be sending the spans to the agent at this interval. | 2000 | Any positive integer value.
 ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
 ### Setting Up the External Systems for Tracing

@@ -54,10 +54,6 @@ Note: Taint checker is disabled by default. This can be enabled by adding --tain
 import ballerina/jdbc;
 import ballerina/sql;
 
-type ResultStudent record {
-    string name;
-};
-
 public function main(string... args) {
 
     jdbc:Client|sql:Error jdbcClient = new("jdbc:mysql://localhost:3306/testdb", "test", "test");
@@ -98,8 +94,7 @@ There can be certain situations where a tainted value must be passed into a secu
 // Execute select query using the untrusted (tainted) student ID
 boolean isValid = isNumeric(studentId);
 if (isValid) {
-   var dt = testDB->select("SELECT NAME FROM STUDENT WHERE ID = " +
-                           <@untainted> studentId, ResultStudent);
+    var resultStream = jdbcClient->query("SELECT NAME FROM STUDENT WHERE ID = " + <@untainted>studentId);
 }
 // ...
 ```

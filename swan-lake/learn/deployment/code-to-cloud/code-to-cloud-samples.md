@@ -14,7 +14,7 @@ redirect_from:
 
 ### Creating the Ballerina Package
 
-1. Execute the `ballerina new hello` command to create a new module named `hello`.
+1. Execute the `bal new hello` command to create a new package named `hello`.
 
 2. Replace the content of the `/hello/main.bal` file with the content below.
 

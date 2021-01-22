@@ -216,7 +216,10 @@ Ballerina for metrics collection. Add the IP of the host in which the Ballerina 
 port (default `9797`).
 If you need more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
 
-3.  Start the Prometheus server in a Docker container with command below.
+If your Ballerina service is running on localhost and Prometheus in a Docker container,
+add the target as `host.docker.internal:9797` to access the localhost from Docker.
+
+3.  Start the Prometheus server in a Docker container with the command below.
 
 ```bash
 $ docker run -p 19090:9090 -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
@@ -359,7 +362,7 @@ Ballerina distributed logging and analysis is supported by Elastic Stack. Baller
 This can be done by running the Ballerina service as below.
 
 ```bash
-$ nohup ballerina run hello_world_service.bal > ballerina.log &
+$ nohup bal run hello_world_service.bal > ballerina.log &
 ```
 
 You can view the logs with the command below.

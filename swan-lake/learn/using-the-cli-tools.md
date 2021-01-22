@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Using the CLI Tools
-description: Learn all the command line interface (CLI) commands need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
+description: Learn all the command line interface (CLI) commands you need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /swan-lake/learn/using-the-cli-tools/
 active: using-the-cli-tools
@@ -157,7 +157,7 @@ These everyday commands are your best friends! They address the very basics of p
 
 ## Package Commands
 
-Ballerina packages are the way to organize real-world Ballerina development tasks. Some of them also allow you to work with the Ballerina Central to share Ballerina packages with others in a safe, secure, and dependable way.
+Ballerina packages are the way to organize real-world Ballerina development tasks. Some of them allow you to work with the Ballerina Central also to share Ballerina packages with others in a safe, secure, and dependable way.
 
 <table class="cComandTable">
 <tr>

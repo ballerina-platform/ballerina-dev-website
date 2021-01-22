@@ -25,7 +25,7 @@ The code generation tool can produce `ballerina stub` and `ballerina service/cli
 You can generate Ballerina source code using the following command:
 
 ```
-$ bal grpc --input <proto-file-path> [--output <path>] [--mode client | service | proxy]
+$ bal grpc --input <proto-file-path> [--output <path>] [--mode client | service]
 ```
 
 ### CLI Command Options
@@ -38,12 +38,12 @@ If the output path is not specified, the output will be written to a directory c
  Buffers definition. 
 If the package is not specified, the output will be written to a 'temp' directory in the current location.
 
-`--mode`   - Set the mode as client or service to generate code samples. Set the mode as proxy to generate a gateway proxy. If not specified, only the stub file is generated.
+`--mode`   - Set the mode as client or service to generate code samples. If not specified, only the stub file is generated.
 
 
 ## Sample
 
-The below example shows how you can generate Ballerina source code from the following Protocol Buffers' definition (in the `helloworld_service.proto` file).
+The below example shows how you can generate Ballerina source code from the following Protocol Buffers definition (in the `helloworld_service.proto` file).
 
 ```proto
 syntax = "proto3";

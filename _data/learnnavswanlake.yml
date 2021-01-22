@@ -43,9 +43,9 @@
     - title: Running Ballerina Code
       url: /swan-lake/learn/running-ballerina-code/
       active: running-ballerina-code
-    - title: Publishing Modules to Ballerina Central
-      url: /swan-lake/learn/publishing-modules-to-ballerina-central
-      active: publishing-modules-to-ballerina-central
+    - title: Publishing Packages to Ballerina Central
+      url: /swan-lake/learn/publishing-packages-to-ballerina-central
+      active: publishing-packages-to-ballerina-central
 
 
 - title: Deployment

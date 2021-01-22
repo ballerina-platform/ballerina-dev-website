@@ -167,7 +167,7 @@ These commands allow you to work with the Ballerina Central to share Ballerina m
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
+<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-packages-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
 </td>
 </tr>
 <tr>

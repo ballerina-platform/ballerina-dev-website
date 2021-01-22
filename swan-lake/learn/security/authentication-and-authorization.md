@@ -540,6 +540,31 @@ http:Client securedEP = check new("https://localhost:9090", {
 });
 ```
 
+
+#### Bearer Token Auth
+
+Ballerina supports Bearer Token Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:BearerTokenConfig` record.
+
+The `http:BearerTokenConfig` configurations include:
+
+* `token` - Bearer token for authentication
+
+```ballerina
+import ballerina/http;
+
+http:Client securedEP = check new("https://localhost:9090", {
+    auth: {
+        token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
+    },
+    secureSocket: {
+        trustStore: {
+            path: "/path/to/ballerinaTruststore.p12",
+            password: "ballerina"
+        }
+    }
+});
+```
+
 #### OAuth2
 
 Ballerina supports Basic Authentication for clients. It supports the Client Credentials grant type, Password grant type, and Direct Token type, in which, the credentials can be provided manually and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2DirectTokenConfig` records.

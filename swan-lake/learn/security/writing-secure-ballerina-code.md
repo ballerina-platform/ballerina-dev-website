@@ -47,7 +47,7 @@ public remote function query(@untainted string|sql:ParameterizedQuery sqlQuery, 
 
 The following example constructs an SQL query with a tainted argument:
 
-Note: Taint checker is disabled by default. This can be enabled by adding the `--taint-check` flag to the `build` or `run` command
+Note: Taint analyzer does not emit errors by default. This can be enabled by adding the `--taint-check` flag to the `build` or `run` command
  or by adding `taintCheck = true` in the `Ballerina.toml` file.
 
 ```ballerina

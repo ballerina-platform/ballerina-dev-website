@@ -18,7 +18,7 @@ The Ballerina HTTP listener can be configured to authenticate and authorize the 
 - JWT authentication
 - OAuth2 authentication
 
-The following example represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting  `httpLdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
+The following example represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting  `http:LdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
 
 ```ballerina
 import ballerina/http;
@@ -26,7 +26,7 @@ import ballerina/http;
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
         keyStore: {
-            path: "/path/tp/ballerinaKeystore.p12",
+            path: "/path/to/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -54,7 +54,7 @@ import ballerina/http;
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
         keyStore: {
-            path: "/path/tp/ballerinaKeystore.p12",
+            path: "/path/to/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -86,7 +86,7 @@ Ballerina supports LDAP user store Basic Authentication and Authorization for se
 The `http:LdapUserStoreConfig` configurations include:
 
 * `domainName` - Unique name to identify the user store
-* `connectionURL` - Connection URL to the LDAP server
+* `connectionUrl` - Connection URL to the LDAP server
 * `connectionName` - The username to connect to the LDAP server
 * `connectionPassword` - Password for the ConnectionName user
 * `userSearchBase` - DN of the context or object under which the user entries are stored in the LDAP server
@@ -107,7 +107,7 @@ The `http:LdapUserStoreConfig` configurations include:
 * `secureClientSocket` - The SSL configurations for the LDAP client socket. This needs to be configured in order to communicate through LDAPs
 
 ```ballerina
-iimport ballerina/http;
+import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
@@ -123,7 +123,7 @@ listener http:Listener securedEP = new(9090, config = {
         {
             ldapUserStoreConfig: {
                 domainName: "ballerina.io",
-                connectionURL: "ldap://localhost:20000",
+                connectionUrl: "ldap://localhost:20000",
                 connectionName: "uid=admin,ou=system",
                 connectionPassword: "secret",
                 userSearchBase: "ou=Users,dc=ballerina,dc=io",
@@ -170,7 +170,7 @@ curl -k -v https://localhost:9090/foo/bar
 < 
 ```
 
-If a request is made with valid authentication information, but the authenticated user does not have the required permission, an authorization failure will occur.
+When a request is made with valid authentication information, if the authenticated user does not have the required permission, an authorization failure will occur.
 
 ```
 curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
@@ -189,7 +189,7 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
 <
 ```
 
-If a request is made with valid authentication information and the authenticated user has the required permission, this will result in a successful invocation.
+When a request is made with valid authentication information, if the authenticated user has the required permission, this will result in a successful invocation.
 
 ```
 curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
@@ -385,6 +385,7 @@ curl -k -v https://localhost:9090/foo/bar
 > User-Agent: curl/7.47.0
 > Accept: */*
 > 
+
 < HTTP/1.1 401 Unauthorized
 < content-length: 0
 < server: ballerina
@@ -453,7 +454,7 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -480,11 +481,21 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 #### Self-Signed JWT Auth
@@ -525,18 +536,64 @@ http:Client securedEP = check new("https://localhost:9090", {
             keyAlias: "ballerina",
             keyPassword: "ballerina",
             keyStore: {
-                path: "../resources/ballerinaKeystore.p12",
+                path: "/path/to/ballerinaKeystore.p12",
                 password: "ballerina"
             }
         }
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
+```
+
+
+#### Bearer Token Auth
+
+Ballerina supports Bearer Token Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:BearerTokenConfig` record.
+
+The `http:BearerTokenConfig` configurations include:
+
+* `token` - Bearer token for authentication
+
+```ballerina
+import ballerina/http;
+import ballerina/log;
+
+http:Client securedEP = check new("https://localhost:9090", {
+    auth: {
+        token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
+    },
+    secureSocket: {
+        trustStore: {
+            path: "/path/to/ballerinaTruststore.p12",
+            password: "ballerina"
+        }
+    }
+});
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 #### OAuth2
@@ -556,7 +613,7 @@ The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
-    * `http:POST_BODY_BEARER | NO_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
+    * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
 * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
 
 ```ballerina
@@ -572,7 +629,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
+                    path: "/path/to/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
@@ -580,11 +637,21 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 ##### Password Grant Type
@@ -603,14 +670,14 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
     * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
     * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
         * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
-        * `http:POST_BODY_BEARER|NO_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
+        * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
     * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
 * `defaultTokenExpInSeconds` - Expiration time of the tokens if the authorization server response does not contain an `expires_in` field
 * `clockSkewInSeconds` - Clock skew in seconds that can be used to avoid token validation failures due to clock synchronization problems
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
-    * `http:POST_BODY_BEARER|NO_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
+    * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
 * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
 
 ```ballerina
@@ -631,7 +698,7 @@ http:Client securedEP = check new("https://localhost:9090", {
             clientConfig: {
                 secureSocket: {
                     trustStore: {
-                        path: "../resources/ballerinaTruststore.p12",
+                        path: "/path/to/ballerinaTruststore.p12",
                         password: "ballerina"
                     }
                 }
@@ -640,7 +707,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
+                    path: "/path/to/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
@@ -648,11 +715,21 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 ##### Direct Token Type
@@ -669,7 +746,7 @@ The `http:OAuth2DirectTokenConfig` configurations include:
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
-    * `http:POST_BODY_BEARER|NO_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
+    * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
 * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
 
 ```ballerina
@@ -686,7 +763,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
+                    path: "/path/to/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
@@ -694,9 +771,19 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```

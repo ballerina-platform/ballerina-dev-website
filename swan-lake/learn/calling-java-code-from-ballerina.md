@@ -87,14 +87,7 @@ This section assumes that you have already read [How to Structure Ballerina Code
 > bal new yaml_package
 Created new Ballerina package 'yaml_package' at yaml_package.
 ```
-#### Adding a Ballerina Module to Your Package
-This scenario makes use of a user-defined Ballerina module to demonstrate the generation of Ballerina bindings into a specified output directory. However, you could ignore this step if you wish to use the default root module instead.
 
-Navigate to the package directory and execute the following command.
-```sh
-> bal add yamlparser
-Added new ballerina module at 'modules/yamlparser’
-```
 #### Adding a Sample YAML File 
 Copy the below content to a file named invoice.yml in the package root directory.
 ```yaml
@@ -153,7 +146,7 @@ Great! You are all set for the next step.
 In this step, we'll use the `bindgen` tool to generate Ballerina bindings for those four classes that we talked about in Step 1. If you want more information about the tool, you can refer [The `bindgen` tool](#the-bindgen-tool).
 
 ```sh
-> bal bindgen -mvn org.yaml:snakeyaml:1.25 -o modules/yamlparser org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
+> bal bindgen -mvn org.yaml:snakeyaml:1.25 org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
 Ballerina package detected at: /Users/sameera/yaml_package
 
@@ -180,7 +173,6 @@ Generating dependency bindings for:
 ```
 
 - The `-mvn` option specifies the Maven dependency of the Java library required to generate bindings.
-- The `-o` option specifies the output directory in which the generated bindings are stored. In this case, the tool is instructed to store bindings inside the `yamlparser` module.
 - The argument list specifies the Java class names. 
 
 The `bindgen` tool generates bindings for:
@@ -287,7 +279,7 @@ Compiling source
 ...
 
 Creating balos
-	target/balo/sameera-yaml_package-any-0.1.0.balo
+	target/balo/sameera-yaml_package-java11-0.1.0.balo
 
 Generating executables
 	target/bin/yaml_package.jar
@@ -334,7 +326,7 @@ The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]
-                  [(-o|--output) <output>]
+                  [(-o|--output) <output> | (-m|--modules)]
                   [--public]
                   (<class-name>...)
 ```
@@ -347,6 +339,9 @@ This optional parameter could be used to specify a Maven dependency required for
 
 `(-o|--output) <output>`
 This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module.
+
+`(-m|--modules)`
+This optional flag could be used to generate Ballerina module level mappings for each Java package, instead of generating all the bindings inside the default module or a single output directory. If this flag is specified, all the generated Java class mappings belonging to a specific Java package will reside inside a separate module representing this Java package.
 
 `--public`
 Set the visibility modifier of the generated binding objects to public. By default, the generated bindings will be module private.
@@ -614,6 +609,15 @@ modules = ["<ballerina-module-1>","<ballerina-module-2>"]
 groupId = "<group-id>"
 artifactId = "<artifact-id>"
 version = "<version>"
+```
+
+If you wish to use a custom Maven repository, you can specify it in the `Ballerina.toml` file as shown below.
+```toml
+[[platform.java11.repository]]
+id = "<maven-repository-id>"
+url = "<maven-repository-url>"
+username = "<github-username>"
+password = "<github-PAT>"
 ```
 
 Now, let’s look at the contents of the `Ballerina.toml` file in this package.

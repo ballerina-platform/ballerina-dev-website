@@ -157,13 +157,12 @@ These everyday commands are your best friends! They address the very basics of p
 
 ## Package Commands
 
-Ballerina packages are the way to organize real-world Ballerina development tasks. Some of them also allow you to work with the Ballerina Central to share Ballerina modules with others in a safe, secure, and dependable way.
+Ballerina packages are the way to organize real-world Ballerina development tasks. Some of them also allow you to work with the Ballerina Central to share Ballerina packages with others in a safe, secure, and dependable way.
 
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/swan-lake/learn/structuring
--ballerina-code">Structuring Ballerina Code</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/swan-lake/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -178,17 +177,17 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">pull</td>
-<td class="cDescription">Pull a module from Ballerina Central.
+<td class="cDescription">Pull a package from Ballerina Central.
 </td>
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
+<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">search</td>
-<td class="cDescription">Search Ballerina Central for modules.
+<td class="cDescription">Search Ballerina Central for packages.
 </td>
 </tr>
 </table>

@@ -486,6 +486,16 @@ http:Client securedEP = check new("https://localhost:9090", {
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 #### Self-Signed JWT Auth
@@ -538,6 +548,16 @@ http:Client securedEP = check new("https://localhost:9090", {
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 
@@ -551,6 +571,7 @@ The `http:BearerTokenConfig` configurations include:
 
 ```ballerina
 import ballerina/http;
+import ballerina/log;
 
 http:Client securedEP = check new("https://localhost:9090", {
     auth: {
@@ -563,6 +584,16 @@ http:Client securedEP = check new("https://localhost:9090", {
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 #### OAuth2
@@ -611,6 +642,16 @@ http:Client securedEP = check new("https://localhost:9090", {
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 ##### Password Grant Type
@@ -679,6 +720,16 @@ http:Client securedEP = check new("https://localhost:9090", {
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```
 
 ##### Direct Token Type
@@ -725,4 +776,14 @@ http:Client securedEP = check new("https://localhost:9090", {
         }
     }
 });
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    var response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
+    }
+}
 ```

@@ -51,7 +51,7 @@ Note: Taint checker is disabled by default. This can be enabled by adding --tain
  or adding `taintCheck = true` in Ballerina.toml.
 
 ```ballerina
-import ballerina/jdbc;
+import ballerinax/java.jdbc
 import ballerina/sql;
 
 public function main(string... args) {
@@ -82,7 +82,8 @@ stream<record{}, error> resultStream = jdbcClient->query(`SELECT NAME FROM STUDE
 
 Command-line arguments passed to Ballerina programs and inputs received through service resources are considered as tainted. Additionally, return values of certain functions are marked with the `@tainted` annotation to denote that the resulting value should be considered as untrusted data.
 
-For example, the `query` remote method of the `jdbc` client highlighted above returns a value of type `@tainted stream <record {}, sql:Error>`. This means that any value read from a database is considered as untrusted.
+For example, the `query` remote method of the `java.jdbc` client highlighted above returns a value of type `@tainted
+ stream <record {}, sql:Error>`. This means that any value read from a database is considered as untrusted.
 
 When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type with the `@tainted` annotation. If not, the function author has to clean up the data before returning. For instance, if you want to read from the database and return a result, you either need to annotate that function's return type with `@tainted` or you have to clean up and make sure the returned data is not tainted.
 

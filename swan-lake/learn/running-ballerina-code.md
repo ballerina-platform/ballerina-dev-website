@@ -117,7 +117,7 @@ id = 1001
 name = "Jhone"
 ```
  Since `Config.toml` file contains a value for key `name`, the program default
-value will be overridden by the value in the `Config.tomal` file.
+value will be overridden by the value in the `Config.toml` file.
 
 ```bash
 $ bal run main.bal

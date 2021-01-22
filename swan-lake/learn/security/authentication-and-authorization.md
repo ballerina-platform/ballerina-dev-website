@@ -26,7 +26,7 @@ import ballerina/http;
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
         keyStore: {
-            path: "/path/tp/ballerinaKeystore.p12",
+            path: "/path/to/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -54,7 +54,7 @@ import ballerina/http;
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
         keyStore: {
-            path: "/path/tp/ballerinaKeystore.p12",
+            path: "/path/to/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -453,7 +453,7 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -480,7 +480,7 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -525,14 +525,14 @@ http:Client securedEP = check new("https://localhost:9090", {
             keyAlias: "ballerina",
             keyPassword: "ballerina",
             keyStore: {
-                path: "../resources/ballerinaKeystore.p12",
+                path: "/path/to/ballerinaKeystore.p12",
                 password: "ballerina"
             }
         }
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -572,7 +572,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
+                    path: "/path/to/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
@@ -580,7 +580,7 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -631,7 +631,7 @@ http:Client securedEP = check new("https://localhost:9090", {
             clientConfig: {
                 secureSocket: {
                     trustStore: {
-                        path: "../resources/ballerinaTruststore.p12",
+                        path: "/path/to/ballerinaTruststore.p12",
                         password: "ballerina"
                     }
                 }
@@ -640,7 +640,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
+                    path: "/path/to/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
@@ -648,7 +648,7 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -686,7 +686,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
+                    path: "/path/to/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
@@ -694,7 +694,7 @@ http:Client securedEP = check new("https://localhost:9090", {
     },
     secureSocket: {
         trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
+            path: "/path/to/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }

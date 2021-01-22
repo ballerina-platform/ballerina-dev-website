@@ -47,8 +47,8 @@ public remote function query(@untainted string|sql:ParameterizedQuery sqlQuery, 
 
 The following example constructs an SQL query with a tainted argument:
 
-Note: Taint checker is disabled by default. This can be enabled by adding --taint-check flag to build or run command
- or adding `taintCheck = true` in Ballerina.toml.
+Note: Taint checker is disabled by default. This can be enabled by adding the `--taint-check` flag to the `build` or `run` command
+ or by adding `taintCheck = true` in the `Ballerina.toml` file.
 
 ```ballerina
 import ballerinax/java.jdbc
@@ -111,4 +111,3 @@ function sanitizeSortColumn (string columnName) returns @untainted string {
 }
 // ...
 ```
-

@@ -43,7 +43,7 @@ If the package is not specified, the output will be written to a 'temp' director
 
 ## Sample
 
-The below example shows how you can generate Ballerina source code from the following Protocol Buffer's definition (in the `helloworld_service.proto` file).
+The below example shows how you can generate Ballerina source code from the following Protocol Buffers' definition (in the `helloworld_service.proto` file).
 
 ```proto
 syntax = "proto3";

@@ -11,7 +11,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">xml</span> <span class="k">as</span> <span class="nx">xmllib</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">xml</span> <span class="nx">bookName</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;Book1&lt;/name&gt;`</span><span class="p">;</span>
@@ -19,14 +18,14 @@ redirect_from:
     <span class="kt">xml</span> <span class="nx">someText</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, World!`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">content</span> <span class="p">=</span> <span class="nx">someText</span> <span class="o">+</span> <span class="nx">bookName</span> <span class="o">+</span> <span class="nx">bookComment</span><span class="p">;</span>
 
-    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">book</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;book/&gt;`</span><span class="p">;</span>
+    <span class="kt">xml</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">book</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;book/&gt;`</span><span class="p">;</span>
 
     <span class="c1">// Get the name of an XML element.</span>
-    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">bookNameElem</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="nx">bookName</span><span class="p">;</span>
+    <span class="kt">xml</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">bookNameElem</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="nx">bookName</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Element name: &quot;</span><span class="p">,</span> <span class="nx">bookNameElem</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
 
     <span class="c1">// Concatenate XML and string values.</span>
-    <span class="kt">xml</span> <span class="nx">concat</span> <span class="p">=</span> <span class="nx">xmllib</span><span class="p">:</span><span class="nx">concat</span><span class="p">(</span><span class="nx">someText</span><span class="p">,</span> <span class="nx">bookName</span><span class="p">,</span> <span class="nx">bookComment</span><span class="p">);</span>
+    <span class="kt">xml</span> <span class="nx">concat</span> <span class="p">=</span> <span class="kt">xml</span><span class="p">:</span><span class="nx">concat</span><span class="p">(</span><span class="nx">someText</span><span class="p">,</span> <span class="nx">bookName</span><span class="p">,</span> <span class="nx">bookComment</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Concat: &quot;</span><span class="p">,</span> <span class="nx">concat</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Equals: &quot;</span><span class="p">,</span> <span class="nx">content</span> <span class="o">==</span> <span class="nx">concat</span><span class="p">);</span>
 
@@ -61,7 +60,7 @@ redirect_from:
                             <h2>XML Functions</h2>
                             <p><p>Ballerina supports various built-in functions to manipulate XML content.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/lang.xml/">lang.xml module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/lang.xml/latest/lang.xml/">lang.xml module</a>.</p>
 </p>
 
                         </td>
@@ -99,6 +98,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-functions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=11a9cb73bd89c9c9ac892731a3f7c6d9&file=xml_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -146,7 +149,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;xml as xmllib;
 </code></pre></div>
 
                                 </td>
@@ -174,7 +176,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xmllib:Element book = &lt;xmllib:Element&gt; xml `&lt;book/&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml:Element book = &lt;xml:Element&gt; xml `&lt;book/&gt;`;
 </code></pre></div>
 
                                 </td>
@@ -186,7 +188,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xmllib:Element bookNameElem = &lt;xmllib:Element&gt; bookName;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml:Element bookNameElem = &lt;xml:Element&gt; bookName;
     io:println(&quot;Element name: &quot;, bookNameElem.getName());
 </code></pre></div>
 
@@ -206,7 +208,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml concat = xmllib:concat(someText, bookName, bookComment);
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml concat = xml:concat(someText, bookName, bookComment);
     io:println(&quot;Concat: &quot;, concat);
     io:println(&quot;Equals: &quot;, content == concat);
 </code></pre></div>

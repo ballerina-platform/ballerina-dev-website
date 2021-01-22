@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: XML I/O
+title: Read/Write XML
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /swan-lake/learn/by-example/xml-io
 redirect_from:
@@ -11,70 +11,17 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">filePath</span> <span class="p">=</span> <span class="s">&quot;./files/sample.xml&quot;</span><span class="p">;</span>
-    <span class="c1">// Creates XML content from the `string`.</span>
-    <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Preparing to write xml file&quot;</span><span class="p">);</span>
-    <span class="c1">// Writes the content.</span>
-    <span class="k">var</span> <span class="nx">wResult</span> <span class="p">=</span> <span class="nx">write</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">wResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while writing xml: &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">=</span><span class="nx">wResult</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Preparing to read the content written&quot;</span><span class="p">);</span>
-        <span class="c1">// Reads the content.</span>
-        <span class="k">var</span> <span class="nx">rResult</span> <span class="p">=</span> <span class="nx">read</span><span class="p">(</span><span class="nx">filePath</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">rResult</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rResult</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while reading xml: &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">=</span><span class="nx">rResult</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+    <span class="c1">// Initialize the XML file path and content.</span>
+    <span class="kt">string</span> <span class="nx">xmlFilePath</span> <span class="p">=</span> <span class="s">&quot;./files/xmlFile.xml&quot;</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">xmlContent</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
 
-<span class="c1">// Writes `xml` content to a given path.</span>
-<span class="kd">function</span> <span class="nx">write</span><span class="p">(</span><span class="kt">xml</span> <span class="nx">content</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Creates a byte channel from the given path.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">wbc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
-    <span class="c1">// Derives the character channel from the byte channel.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">wch</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">wbc</span><span class="p">,</span> <span class="s">&quot;UTF8&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wch</span><span class="p">.</span><span class="nx">writeXml</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
-    <span class="c1">// Closes the character channel once you are done with it.</span>
-    <span class="nx">closeWc</span><span class="p">(</span><span class="nx">wch</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Reads `xml` from a given path.</span>
-<span class="kd">function</span> <span class="nx">read</span><span class="p">(</span><span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted xml|error {</span>
-    <span class="c1">// Creates a byte channel from the given path.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">rbc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
-    <span class="c1">// Derives the character channel from the byte Channel.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">rch</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">rbc</span><span class="p">,</span> <span class="s">&quot;UTF8&quot;</span><span class="p">);</span>
-    <span class="c1">// Reads the XML content from the character channel.</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">rch</span><span class="p">.</span><span class="nx">readXml</span><span class="p">();</span>
-    <span class="c1">// Closes the character channel once you are done with it.</span>
-    <span class="nx">closeRc</span><span class="p">(</span><span class="nx">rch</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Closes a readable channel.</span>
-<span class="kd">function</span> <span class="nx">closeRc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">rc</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">rc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing character stream&quot;</span><span class="p">,</span>
-                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Closes a writable channel.</span>
-<span class="kd">function</span> <span class="nx">closeWc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">wc</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing character stream&quot;</span><span class="p">,</span>
-                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="c1">// Write the given XML to a file.</span>
+    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteXml</span><span class="p">(</span><span class="nx">xmlFilePath</span><span class="p">,</span> <span class="nx">xmlContent</span><span class="p">);</span>
+    <span class="c1">// If the write operation was successful, then, perform a read operation to read the XML content.</span>
+    <span class="kt">xml</span> <span class="nx">readXml</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadXml</span><span class="p">(</span><span class="nx">xmlFilePath</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">readXml</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -84,11 +31,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>XML I/O</h2>
+                            <h2>Read/Write XML</h2>
                             <p><p>This example demonstrates how XML content can be read from a file and written
  to a file using a character channel and the <code>readXml()</code> and <code>writeXml()</code> functions of the I/O API.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/">IO module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/io/latest/io/">IO module</a>.</p>
 </p>
 
                         </td>
@@ -98,14 +45,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="json-io.html">
                                         <span>< PREVIOUS</span>
-                                        <p>JSON I/O</p>
+                                        <p>Read/Write JSON</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="file-io.html">
+                                    <a class="next" href="time.html">
                                         <span>NEXT ></span>
-                                        <p>File I/O</p>
+                                        <p>Time</p>
                                     </a>
                                 </div>
                                 
@@ -126,6 +73,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-io/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4ea7bca4cc92acfc989d6433852ffb51&file=xml_io.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -154,28 +105,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -185,7 +114,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -197,8 +125,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    string filePath = &quot;./files/sample.xml&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -210,8 +137,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
-    io:println(&quot;Preparing to write xml file&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string xmlFilePath = &quot;./files/xmlFile.xml&quot;;
+    xml xmlContent = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
 </code></pre></div>
 
                                 </td>
@@ -219,7 +146,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates XML content from the <code>string</code>.</p>
+                                            <p>Initialize the XML file path and content.</p>
 
                                         </div>
                                     </div>
@@ -230,11 +157,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var wResult = write(x1, filePath);
-    if (wResult is error) {
-        log:printError(&quot;Error occurred while writing xml: &quot;, err=wResult);
-    } else {
-        io:println(&quot;Preparing to read the content written&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteXml(xmlFilePath, xmlContent);
 </code></pre></div>
 
                                 </td>
@@ -242,234 +165,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes the content.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var rResult = read(filePath);
-        if (rResult is xml) {
-            io:println(rResult);
-        } else {
-            log:printError(&quot;Error occurred while reading xml: &quot;, err=rResult);
-        }
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Reads the content.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function write(xml content, string path) returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Writes <code>xml</code> content to a given path.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableByteChannel wbc = check io:openWritableFile(path);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a byte channel from the given path.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableCharacterChannel wch = new (wbc, &quot;UTF8&quot;);
-    var result = wch.writeXml(content);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Derives the character channel from the byte channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    closeWc(wch);
-    return result;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes the character channel once you are done with it.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function read(string path) returns @tainted xml|error {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Reads <code>xml</code> from a given path.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableByteChannel rbc = check io:openReadableFile(path);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a byte channel from the given path.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableCharacterChannel rch = new (rbc, &quot;UTF8&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Derives the character channel from the byte Channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var result = rch.readXml();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Reads the XML content from the character channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    closeRc(rch);
-    return result;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes the character channel once you are done with it.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function closeRc(io:ReadableCharacterChannel rc) {
-    var result = rc.close();
-    if (result is error) {
-        log:printError(&quot;Error occurred while closing character stream&quot;,
-                        err = result);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes a readable channel.</p>
+                                            <p>Write the given XML to a file.</p>
 
                                         </div>
                                     </div>
@@ -480,12 +176,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function closeWc(io:WritableCharacterChannel wc) {
-    var result = wc.close();
-    if (result is error) {
-        log:printError(&quot;Error occurred while closing character stream&quot;,
-                        err = result);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml readXml = check io:fileReadXml(xmlFilePath);
+    io:println(readXml);
 }
 </code></pre></div>
 
@@ -494,7 +186,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes a writable channel.</p>
+                                            <p>If the write operation was successful, then, perform a read operation to read the XML content.</p>
 
                                         </div>
                                     </div>
@@ -510,6 +202,10 @@ import ballerina/log;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -517,13 +213,22 @@ import ballerina/log;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run xml_io.bal
-Preparing to write xml file
-Preparing to read the content written
-&lt;book&gt;The Lost World&lt;/book&gt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>&lt;book&gt;The Lost World&lt;/book&gt;
 </code></pre></div>
 
                                 </td>

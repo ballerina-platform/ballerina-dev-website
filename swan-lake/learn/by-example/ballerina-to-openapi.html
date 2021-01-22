@@ -37,7 +37,7 @@ redirect_from:
                             <h2>Ballerina To OpenAPI</h2>
                             <p><p>The Ballerina to OpenApi tool is used to generate an OpenAPI Specification(OAS) v3 definition of a Ballerina service.
  This tool&rsquo;s command structure is as follows.
- <code>ballerina openapi  [-i &lt;ballerina-files&gt;] [-o &lt;openapi-contract&gt;]</code><br/><br/>
+ <code>bal openapi  [-i &lt;ballerina-file-path&gt;] [-o &lt;openapi-contract-path&gt;]</code><br/><br/>
  For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-use-openapi-tools/">Ballerina OpenAPI Tools</a>.</p>
 </p>
 
@@ -46,9 +46,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="proto-to-ballerina.html">
+                                    <a class="prev" href="gauge-metrics.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Proto To Ballerina</p>
+                                        <p>Gauge-Based Metrics</p>
                                     </a>
                                 </div>
                                  
@@ -76,6 +76,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/ballerina-to-openapi/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=809e4810e06d1d031e611d5ea13bc15e&file=ballerina_to_openapi.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -181,8 +185,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To export the OpenAPI definition of the `hello` Ballerina service, navigate to the directory that contains the
-# `ballerina_to_openapi.bal` file, and execute the`ballerina openapi` command below.
-`ballerina openapi -i ballerina_to_openapi.bal --service hello`
+# `ballerina_to_openapi.bal` file, and execute the`bal openapi` command below.
+`bal openapi -i ballerina_to_openapi.bal --service hello`
 Note: This is an Experimental tool shipped under Ballerina. Hence, this will only support a limited set of functionalities.
 Successfully generated the Ballerina contract at location.
 /examples/ballerina-to-openapi/hello-openapi.yaml

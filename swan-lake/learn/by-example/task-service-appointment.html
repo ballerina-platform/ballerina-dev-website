@@ -13,7 +13,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
 
-<span class="c1">// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/records/AppointmentConfiguration) record of the task listener.</span>
+<span class="c1">// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration) record of the task listener.</span>
 <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentConfiguration</span> <span class="nx">appointmentConfiguration</span> <span class="p">=</span> <span class="p">{</span>
     <span class="c1">// This CRON expression will schedule the appointment every second.</span>
     <span class="nx">cronExpression</span><span class="p">:</span> <span class="s">&quot;* * * * * ?&quot;</span><span class="p">,</span>
@@ -45,12 +45,12 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Task Service Appointment</h2>
                             <p><p>A task appointment service can be used to schedule an appointment. The task listener can be provided with an
- appointment configuration that should have an <code>appointmentDetails</code> field. This can be either a <code>string</code> representing a
- CRON expression or a <code>task:AppointmentData</code> record. There is an optional
+ appointment configuration that should have a <code>cronExpression</code> field. This is a <code>string</code> representing a
+ CRON expression. There is an optional
  <code>noOfRecurrences</code> field that can be used to provide the maximum number of times
  the appointment should run before shutting down.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/">Task module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/">Task module</a>.</p>
 </p>
 
                         </td>
@@ -88,6 +88,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-service-appointment/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ad0cb492882946a35c6aa5dcf7fd6e10&file=task_service_appointment.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -153,7 +157,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/records/AppointmentConfiguration"><code>task:AppointmentConfiguration</code></a> record of the task listener.</p>
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration"><code>task:AppointmentConfiguration</code></a> record of the task listener.</p>
 
                                         </div>
                                     </div>

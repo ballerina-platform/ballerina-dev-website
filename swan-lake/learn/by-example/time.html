@@ -57,7 +57,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">milliSecond</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getMilliSecond</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Millisecond: &quot;</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">);</span>
     <span class="c1">// This fetches the day of the week of a given time.</span>
-    <span class="kt">string</span> <span class="nx">weekday</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getWeekday</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">DayOfWeek</span> <span class="nx">weekday</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getWeekday</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Weekday: &quot;</span><span class="p">,</span> <span class="nx">weekday</span><span class="p">);</span>
     <span class="c1">// This fetches the date component of the time using a single function.</span>
     <span class="p">[</span><span class="nx">year</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="nx">day</span><span class="p">]</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getDate</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
@@ -67,11 +67,16 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Time: &quot;</span><span class="p">,</span> <span class="nx">hour</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">minute</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">);</span>
     <span class="c1">// This adds a given duration to a time. This example adds</span>
     <span class="c1">// one year, one month, and one second to the current time.</span>
-    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">tmAdd</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">addDuration</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Duration</span> <span class="nx">duration</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">years</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">months</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">seconds</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">};</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">tmAdd</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">addDuration</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="nx">duration</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After adding a duration: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">tmAdd</span><span class="p">));</span>
     <span class="c1">// This subtracts a given duration from a time. This example</span>
-    <span class="c1">// subtract sone year, one month, and one second from the current time.</span>
-    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">tmSub</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">subtractDuration</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="c1">// subtracts one year, one month, and one second from the current time.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">tmSub</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">subtractDuration</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="nx">duration</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After subtracting a duration: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">tmSub</span><span class="p">));</span>
     <span class="c1">// This converts the time to a different timezone.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">t2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">createTime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">554</span><span class="p">,</span>
@@ -79,6 +84,11 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before converting the time zone: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">t2</span><span class="p">));</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">t3</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toTimeZone</span><span class="p">(</span><span class="nx">t2</span><span class="p">,</span> <span class="s">&quot;Asia/Colombo&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After converting the time zone: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">t3</span><span class="p">));</span>
+    <span class="c1">//This calculates the difference between two time values.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">startTime</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">createTime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">endTime</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">createTime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Duration</span> <span class="nx">delta</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getDifference</span><span class="p">(</span><span class="nx">startTime</span><span class="p">,</span> <span class="nx">endTime</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Difference between the two time values: &quot;</span><span class="p">,</span> <span class="nx">delta</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -92,7 +102,7 @@ redirect_from:
                             <p><p>The Ballerina time API provides operations to work with
  date and time.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/time/">Time module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/time/latest/time/">Time module</a>.</p>
 </p>
 
                         </td>
@@ -100,9 +110,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="file-io.html">
+                                    <a class="prev" href="xml-io.html">
                                         <span>< PREVIOUS</span>
-                                        <p>File I/O</p>
+                                        <p>Read/Write XML</p>
                                     </a>
                                 </div>
                                  
@@ -132,6 +142,10 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/time/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cffd9a501c2fb65fe37f266bcd9c3bbf&file=time.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -147,6 +161,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -467,7 +483,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string weekday = time:getWeekday(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:DayOfWeek weekday = time:getWeekday(time);
     io:println(&quot;Weekday: &quot;, weekday);
 </code></pre></div>
 
@@ -527,7 +543,12 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time tmAdd = time:addDuration(time, 1, 1, 0, 0, 0, 1, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Duration duration = {
+        years: 1,
+        months: 1,
+        seconds: 1
+    };
+    time:Time tmAdd = time:addDuration(time, duration);
     io:println(&quot;After adding a duration: &quot;, time:toString(tmAdd));
 </code></pre></div>
 
@@ -548,7 +569,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time tmSub = time:subtractDuration(time, 1, 1, 0, 0, 0, 1, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time tmSub = time:subtractDuration(time, duration);
     io:println(&quot;After subtracting a duration: &quot;, time:toString(tmSub));
 </code></pre></div>
 
@@ -558,7 +579,30 @@ import ballerina/time;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This subtracts a given duration from a time. This example
- subtract sone year, one month, and one second from the current time.</p>
+ subtracts one year, one month, and one second from the current time.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time t2 = check time:createTime(2017, 3, 28, 23, 42, 45, 554,
+        &quot;America/Panama&quot;);
+    io:println(&quot;Before converting the time zone: &quot;, time:toString(t2));
+    time:Time t3 = check time:toTimeZone(t2, &quot;Asia/Colombo&quot;);
+    io:println(&quot;After converting the time zone: &quot;, time:toString(t3));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This converts the time to a different timezone.</p>
 
                                         </div>
                                     </div>
@@ -569,11 +613,10 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time t2 = check time:createTime(2017, 3, 28, 23, 42, 45, 554,
-        &quot;America/Panama&quot;);
-    io:println(&quot;Before converting the time zone: &quot;, time:toString(t2));
-    time:Time t3 = check time:toTimeZone(t2, &quot;Asia/Colombo&quot;);
-    io:println(&quot;After converting the time zone: &quot;, time:toString(t3));
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time startTime = check time:createTime(2021, 5, 3, 10);
+    time:Time endTime = check time:createTime(2022, 7, 4, 11);
+    time:Duration delta = check time:getDifference(startTime, endTime);
+    io:println(&quot;Difference between the two time values: &quot;, delta);
 }
 </code></pre></div>
 
@@ -582,7 +625,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This converts the time to a different timezone.</p>
+                                            <p>This calculates the difference between two time values.</p>
 
                                         </div>
                                     </div>
@@ -627,6 +670,7 @@ After adding a duration: 2021-10-11T16:11:41.176-07:00
 After subtracting a duration: 2019-08-11T16:11:39.176-07:00
 Before converting the time zone: 2017-03-28T23:42:45.554-05:00
 After converting the time zone: 2017-03-29T10:12:45.554+05:30
+Difference between the two time values: {&quot;years&quot;:1,&quot;months&quot;:2,&quot;days&quot;:1,&quot;hours&quot;:1,&quot;minutes&quot;:0,&quot;seconds&quot;:0,&quot;milliSeconds&quot;:0}
 </code></pre></div>
 
                                 </td>

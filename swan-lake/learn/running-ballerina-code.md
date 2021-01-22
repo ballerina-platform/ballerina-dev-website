@@ -23,21 +23,14 @@ A Ballerina application can have:
 
 Both of these are considered as entry points for program execution. 
 
-These applications can be structured into a single program file or a Ballerina module. A collection of modules can be managed together with versioning and dependency management as part of a Ballerina project. 
+These applications can be structured into a single program file or a Ballerina module. A collection of modules can be managed together with versioning and dependency management as part of a Ballerina package. 
 
 Source files and modules can contain zero or more entry points, and the runtime engine has precedence and sequence rules for choosing which entry point to execute.
 
 - [Running Standalone Source Code](#running-standalone-source-code)
-- [Running a Project](#running-a-project)
+- [Running a Package](#running-a-package)
 - [Configuring Your Ballerina Runtimes](#configuring-your-ballerina-runtimes)
-  - [Ballerina Runtime Configuration Files](#ballerina-runtime-configuration-files)
-  - [Sourcing Parameters Into Ballerina Programs](#sourcing-parameters-into-ballerina-programs)
-    - [Sourcing CLI Parameters](#sourcing-cli-parameters)
-    - [Sourcing Configuration Values](#sourcing-configuration-values)
-  - [Configuring Secrets as Configuration Items](#configuring-secrets-as-configuration-items)
-    - [Creating a Secured Value](#creating-a-secured-value)
-    - [Using the Secured Value at Runtime](#using-the-secured-value-at-runtime)
-    - [Decrypting the Value](#decrypting-the-value)
+  - [Ballerina Runtime Configurable Variables](#ballerina-runtime-configurable-variables)
 
 ## Running Standalone Source Code
 A single Ballerina source code file can be placed into any folder. 
@@ -54,25 +47,37 @@ You can compile a source file with an entry point into an executable jar.
 $ bal build [-o outputfilename.jar] foo.bal
 ```  
 
-And you can run `.jar` files directly:
+You can run `.jar` files directly:
 ```bash
 $ bal run filename.jar
 ```
 
-## Running a Project
-A project is a folder that manages modules as part of common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/swan-lake/learn/how-to-structure-ballerina-code) for in-depth structuring of projects.
+## Running a Package
+A package is a folder that manages modules as part of common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/swan-lake/learn/how-to-structure-ballerina-code) for in-depth structuring of packages.
 
-Build all modules of a project:
+Running a ballerina package:
+```bash
+$ bal run myFirstPackage 
+$ bal run <ballerina-package-path>
+```
+
+Build a ballerina package:
+```bash
+$ bal build myFirstPackage
+$ bal build <ballerina-package-path>
+```
+Alternatively you can `cd` into ballerina package and run:
 ```bash    
 $ bal build
 ```
+Building a ballerina package will generate `.jar` inside `target/bin/` of the package directory.
 
-Build a single module in a project:
+You can run the `.jar` file directly:
 ```bash
-$ bal build <module-name>
+$ bal run target/bin/testPackage.jar
 ```
 
-Options for running programs with entry points in a project:  
+Options for running programs with entry points in a package:  
 ```bash
 $ bal run main.bal
 $ bal run main.jar
@@ -80,113 +85,54 @@ $ bal run main.jar
 
 ## Configuring Your Ballerina Runtimes
 
-### Ballerina Runtime Configuration Files
+### Ballerina Runtime Configurable Variables
 
-A Ballerina runtime can be configured using configuration parameters, which are arbitrary key/value pairs with structure. The `ballerina/config` module provides an API for sourcing configuration parameters and using them within your source code. See [Config API Documentation](/swan-lake/learn/api-docs/ballerina/config/index.html) for details.
+A Ballerina runtime can be configured using configurable variables, which can be configured using `Config.toml` file. 
+`Config.toml` file may or may not provide configuration values for configurable variables that are used in the program. 
+Ballerina currently supports configurable variables of types `int`, `float`, `boolean`, `string`, `decimal` and the arrays of respective types. 
+See [Configurable BBE](/swan-lake/learn/by-example/configurable.html) for more details.
 
-The configuration APIs accept a key and an optional default value. If a mapping does not exist for the specified key, the default value is returned as the configuration value. The default values of these optional configurations are the default values of the return types of the functions.
-
-### Sourcing Parameters into Ballerina Programs
-Configuration parameters for your programs and apps can be defined on the CLI, as an environment variable, or from a configuration file, with loading and override precedence in the same order.
-
-#### Sourcing CLI Parameters
-Consider the following example, which reads a Ballerina config value and prints it.
+Consider the following example, which uses configurable variables.
 
 ```ballerina
 import ballerina/io;
-import ballerina/config;
+
+configurable int id = ?;
+configurable string name = "Ann";
+configurable boolean married = true;
 
 public function main() {
-  string name = config:getAsString("hello.user.name");
-  io:println("Hello, " + name + " !");
+  io:println("User ID : ", id);
+  io:println("User Name : ", name);
+  io:println("Married : ", married);
 }
 ```
 
-The config key is `hello.user.name`. To pass a value to this config from the CLI, we can use `--key=value` format as the following command.
-```bash
-$ bal run  main.bal --hello.user.name=Ballerina
-Hello, Ballerina !
-```
-
-#### Sourcing Configuration Values
-
-The value can be passed as a config file as well. A configuration file should conform to the [TOML](https://github.com/toml-lang/toml) format. Ballerina only supports the following features of TOML: value types (string, int, float, and boolean), tables, and nested tables. Given below is a sample `ballerina.conf`:
-
+`?` denotes that `id` is a required configuration, hence `Config.toml` file must contain a value for key `id`.
+If a default value assigned, the configuration is optional, hence `Config.toml` file may or may not contain a values for
+configurable variables `name` and `married`.
+Consider the below `Config.toml` file.
 ```toml
-[hello.user]
-name="Ballerina"
+id = 1001
+name = "Jhone"
 ```
+ Since `Config.toml` file contains a value for key `name`, the program default
+value will be overridden by the value in the `Config.tomal` file.
 
-When running a program with config API lookups, Ballerina looks for a `ballerina.conf` file in the directory where the source files are located.
-
-If `ballerina.conf` resides in the same directory as `main.bal`, `balllerina run` can be used without any argument.
 ```bash
 $ bal run main.bal
-Hello, Ballerina !
-```
-To explicitly specify a configuration file, use the `--b7a.config.file` property. The path to the configuration file can be either an absolute or a relative path. 
-```bash
-$ bal run main.bal --b7a.config.file=path/to/conf/file/custom-config-file-name.conf
-Hello, Ballerina !
+User ID : 1001
+User Name : Jhone
+Married : true
 ```
 
-### Configuring Secrets as Configuration Items
-Ballerina provides support for encrypting sensitive data such as passwords and allows access to them securely through the configuration API in the code.
-
-#### Creating a Secured Value
-The `ballerina encrypt` command will encrypt parameters that can be securely sourced from your code files. For example, let's create a secure parameter named `Ballerina` with the value `12345` as the secret.
-
-```ballerina
-$ bal encrypt
-Enter value:
-Enter secret:
-Re-enter secret to verify:
-Add the following to the runtime config:
-<key>="@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}"
-
-Or add to the runtime command line:
---<key>=@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}
-```
-
-#### Using the Secured Value at Runtime
-The secured value can be placed in a config file as a value or passed on the command line. 
-
-```
-[hello.user]
-name="@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}"
-```
-
-or (Enter secret `12345` when prompted.):
+When running a program with configurable values, Ballerina looks for a `Config.toml` file in the directory of the source files. 
+You can set the path to `Config.toml` file via environment variable `BALCONFIGFILE`.
 
 ```bash
-$ bal run main.bal --hello.user.name=@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}
-ballerina: enter secret for config value decryption:
-
-Hello, Ballerina !
+$ export BALCONFIGPATH = <path>
+$ bal run main.bal
+User ID : 1001
+User Name : Jhone
+Married : true
 ```
-
-#### Decrypting the Value
-If a configuration contains an encrypted value, Ballerina looks for a `secret.txt` file in the directory where the source files are located. The `secret.txt` should contain the secret used to encrypt the value. The `secret.txt` file will be deleted after it is read.
-
-```bash
-$ echo 12345 > secret.txt
-$ bal run main.bal --b7a.config.file=ballerina.conf
-Hello, Ballerina !
-```
-
-Alternatively, you can pass the path to this `secret.txt` file as a flag via the CLI as follows:
-
-```bash
- ballerina run main.bal --b7a.config.secret=<PATH_TO_SECRET_FILE>
- ```
-
-If the `secret.txt` file is not present, then CLI prompts the user for the secret. Enter secret `12345` when prompted.
-
-```bash
-$ bal run main.bal --b7a.config.file=ballerina.conf
-ballerina: enter secret for config value decryption:
-
-Hello, Ballerina !
-```
-
-

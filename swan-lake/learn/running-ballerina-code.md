@@ -126,7 +126,7 @@ User Name : Jhone
 Married : true
 ```
 
-When running a program with configurable values, Ballerina looks for a `Config.toml` file in the directory of the source files. 
+When running a program with configurable values, Ballerina looks for a `Config.toml` file in the current working directory. 
 You can set the path to `Config.toml` file via environment variable `BALCONFIGFILE`.
 
 ```bash

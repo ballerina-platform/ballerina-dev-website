@@ -41,4 +41,4 @@ To successfully push your package, your package should contain `Package.md` file
 
 ## Organizations
 
-When you push a package to Ballerina Central, the runtime validates organizations for the user against the org-name defined in your package’s `Ballerina.toml` file. Therefore, when you have more than one organization in Ballerina Central, be sure to pick the organization name that you intend to push the package into and set that as the `org-name` in the `Ballerina.toml` file inside the package directory.
+When you push a package to Ballerina Central, the runtime validates organizations for the user against the `org` defined in your package’s `Ballerina.toml` file. Therefore, when you have more than one organization in Ballerina Central, be sure to pick the organization name that you intend to push the package into and set that as the `org` in the `Ballerina.toml` file inside the package directory.

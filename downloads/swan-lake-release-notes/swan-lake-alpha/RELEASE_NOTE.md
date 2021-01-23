@@ -39,7 +39,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Debugger](#debugger)
         - [Test Framework](#test-framework)
         - [Maven Resolver](#maven-resolver)
-        - [Ballerina Shell REPL [EXPERIMENTAL]](#ballerina-shell-repl-experimental])
+        - [Ballerina Shell REPL [EXPERIMENTAL]](#ballerina-shell-repl-experimental)
         - [Documentation](#documentation)
     - [Standard Library](#standard-library)
         - [HTTP Module Improvements](#http-module-improvements)
@@ -59,7 +59,8 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Removed Modules](#removed-modules)
     - [Code to Cloud](#code-to-cloud)
     - [Breaking Changes](#breaking-changes)
-    - [Taint Analyzer Updates](#taint-analyzer-updates)
+        - [Language](#language)
+    - [Taint Analyzer Update](#taint-analyzer-update)
 
 #### Updating Ballerina
 
@@ -1425,7 +1426,7 @@ The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
 - The `@icon` annotation has been replaced with the `@display` annotation.
 - The value type of the XML iteration, which was previously `xml|string` is now `xml`. Moreover, the value type of the `xml<T>` iteration is now `T`. 
 
-#### Taint Analyzer Updates
+#### Taint Analyzer Update
 
 With this release, the taint analyzer does not produce taint errors unless explicitly enabled. However, the taint analyzer does perform the taint flow analysis without producing errors regardless of it being enabled or not.
 

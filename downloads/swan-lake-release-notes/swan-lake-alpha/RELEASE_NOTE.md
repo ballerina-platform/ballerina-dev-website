@@ -14,10 +14,10 @@ This Alpha release includes the language features planned for the Ballerina Swan
 - [What is new in Ballerina Swan Lake Alpha](#what-is-new-in-ballerina-swan-lake-alpha)
     - [Packages](#packages)
         - [Introduction of Hierarchical Package Names](#introduction-of-hierarchical-package-names)
-        - [Introduction of the 'Dependencies.toml' file](#introduction-of-the-dependencies-toml-file)
-        - [Support to Accept an Empty 'Ballerina.toml' File](support-to-accept-an-empty-ballerina-toml-file)
+        - [Introduction of the Dependencies TOML file](#introduction-of-the-dependencies-toml-file)
+        - [Support to Accept an Empty Ballerina TOML File](support-to-accept-an-empty-ballerina-toml-file)
     - [Language](#language)
-        -[Intersection Type Support for Errors](#intersection-type-support-for-errors)
+        - [Intersection Type Support for Errors](#intersection-type-support-for-errors)
         - [Support for Passing a Closed Record as the Rest Argument](#support-for-passing-a-closed-record-as-the-rest-argument)
         - [Support for Empty XML Values](#support-for-empty-xml-values)
         - [Improved Usage of Listener Declarations with Listener Types](#improved-usage-of-listener-declarations-with-listener-types)
@@ -25,7 +25,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
         - [Updated Syntax for User-Defined Error Constructions](#updated-syntax-for-user-defined-error-constructions)
         - [Changes to Casting with Errors](#changes-to-casting-with-errors)
-        - [Changes to `toString()` and `toBalString()` with Errors](#changes-to-toString-()-and-toBalString-()-with-errors)
+        - [Changes to `toString` and `toBalString` with Errors](#changes-to-toString-and-toBalString-with-errors)
         - [Changes to Object Type Inclusion with Qualifiers](#changes-to-object-type-inclusion-with-qualifiers)
         - [Changes to Record Type Inclusion with Rest Descriptors](#changes-to-record-type-inclusion-with-rest-descriptors)
         - [Improved Listener Declaration](#improved-listener-declaration)
@@ -110,7 +110,7 @@ name = observe.prometheus
 version = 1.0.0
 ```
 
-##### Introduction of the `Dependencies.toml` file
+##### Introduction of the Dependencies TOML file
 
 This is a dedicated file to maintain all the dependencies, which are expected to be created in the package root directory. All the dependencies, which were declared in the `Ballerina.toml` file will be moved to this file now.
 
@@ -128,7 +128,7 @@ name = "log"
 version = "1.0.5"
 ```
 
-##### Support to Accept an Empty 'Ballerina.toml' File
+##### Support to Accept an Empty Ballerina TOML File
 
 A valid Ballerina package can now contain an empty `Ballerina.toml` file. This makes it easier to convert an `application/service` written in a standalone Ballerina file to a Ballerina package. 
 
@@ -379,7 +379,7 @@ public function main() returns error? {
 }
 ```
 
-##### Changes to `toString()` and `toBalString()` with Errors
+##### Changes to `toString` and `toBalString` with Errors
 
 It was previously possible to call `toString()` and `toBalString()` on unions of errors and non-errors.
 

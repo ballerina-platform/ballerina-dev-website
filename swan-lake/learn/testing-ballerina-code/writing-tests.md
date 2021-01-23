@@ -643,7 +643,7 @@ Configurations for testing can be provided using configurable variables. The val
 variables can be provided in a file named `Config.toml` located in the tests directory.
 
 For information on using configurable variables, see
- [Configurable Variables](swan-lake/learn/by-example/configurable.html).
+ [Configurable Variables](/swan-lake/learn/by-example/configurable.html).
 
 
 ## What's Next?

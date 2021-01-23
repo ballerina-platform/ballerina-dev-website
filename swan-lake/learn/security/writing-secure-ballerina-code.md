@@ -3,13 +3,15 @@ layout: ballerina-left-nav-pages-swanlake
 title: Writing Secure Ballerina Code
 description: Check out the different security features and controls available within the Ballerina programming language and follow the guidelines on writing secure Ballerina programs.
 keywords: ballerina, programming language, security, secure ballerina code
-permalink: /swan-lake/learn/writing-secure-ballerina-code/
+permalink: /swan-lake/learn/security/writing-secure-ballerina-code/
 active: writing-secure-ballerina-code
 intro: The sections below include information on the different security features and controls available within Ballerina. Also, they provide guidelines on writing secure Ballerina programs.
 redirect_from:
   - /swan-lake/learn/how-to-write-secure-ballerina-code
   - /swan-lake/learn/how-to-write-secure-ballerina-code/
+  - /swan-lake/learn/writing-secure-ballerina-code/
   - /swan-lake/learn/writing-secure-ballerina-code
+  - /swan-lake/learn/security/writing-secure-ballerina-code
 ---
 
 ## Securing by Design

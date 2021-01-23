@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "tcp",
-      "description": "This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented protocols.",
-      "orgName": "ballerina",
-      "version": "0.7.3"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [
@@ -79,7 +72,7 @@
   "abstractObjects": [
     {
       "id": "ConnectionService",
-      "description": "Represent TCP Listener service type.",
+      "description": "Represent TCP Listener ConnectionService service type.",
       "moduleId": "tcp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.7.3"

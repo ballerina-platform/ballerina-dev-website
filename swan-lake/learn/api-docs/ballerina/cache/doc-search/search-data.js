@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "cache",
-      "description": "This module provides APIs for handle caching in Ballerina.",
-      "orgName": "ballerina",
-      "version": "2.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "Cache",

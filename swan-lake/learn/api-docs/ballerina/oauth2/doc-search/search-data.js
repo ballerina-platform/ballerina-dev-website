@@ -1,16 +1,9 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "oauth2",
-      "description": "This module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ClientOAuth2Provider",
-      "description": "Represents the client OAuth2 provider, which generates OAtuh2 tokens.",
+      "description": "Represents the client OAuth2 provider, which generates OAuth2 tokens.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -86,7 +79,7 @@ var searchData = {
   "errors": [
     {
       "id": "Error",
-      "description": "Represents the OAuth2 error.",
+      "description": "Represents the OAuth2 error type with details.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -102,7 +95,7 @@ var searchData = {
   "types": [
     {
       "id": "GrantConfig",
-      "description": "Represents the grant type configs supported for OAuth2.",
+      "description": "Represents the grant type configurations supported for OAuth2.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"

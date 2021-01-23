@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "uuid",
-      "description": "This module provides functions related to \"UUID\".",
-      "orgName": "ballerina",
-      "version": "0.9.1"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

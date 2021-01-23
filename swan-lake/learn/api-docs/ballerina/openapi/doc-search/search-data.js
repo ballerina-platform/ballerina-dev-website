@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "openapi",
-      "description": "This module provides the following code generation capabilities.",
-      "orgName": "ballerina",
-      "version": "2.0.3"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [
@@ -15,7 +8,7 @@ var searchData = {
       "description": "Service validation codee\n",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.3"
+      "moduleVersion": "2.0.4"
     }
   ],
   "constants": [],
@@ -29,7 +22,7 @@ var searchData = {
       "description": "Annotation for additional OpenAPI information of a Ballerina service.",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.3"
+      "moduleVersion": "2.0.4"
     }
   ],
   "abstractObjects": [],

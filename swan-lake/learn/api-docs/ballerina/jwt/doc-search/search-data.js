@@ -1,16 +1,9 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "jwt",
-      "description": "This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.",
-      "orgName": "ballerina",
-      "version": "1.0.7"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ClientSelfSignedJwtAuthProvider",
-      "description": "Represents the client JWT Auth provider, which is used to authenticate with an external endpoint by generating\na self signed JWT.",
+      "description": "Represents the client JWT Auth provider, which is used to authenticate with an external endpoint by issuing a\nself-signed JWT.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -33,14 +26,14 @@ var searchData = {
     },
     {
       "id": "issue",
-      "description": "Issues a JWT based on the provided header and payload.",
+      "description": "Issues a JWT based on the provided configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "validate",
-      "description": "Validates the provided JWT against the provided configurations.",
+      "description": "Validates the provided JWT, against the provided configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -114,28 +107,28 @@ var searchData = {
   "constants": [
     {
       "id": "NONE",
-      "description": "Unsecured JWTs (no signing)\n",
+      "description": "Unsecured JWS (no signing).",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "RS256",
-      "description": "The `RSA-SHA256` algorithm\n",
+      "description": "The `RSA-SHA256` algorithm.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "RS384",
-      "description": "The `RSA-SHA384` algorithm\n",
+      "description": "The `RSA-SHA384` algorithm.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "RS512",
-      "description": "The `RSA-SHA512` algorithm\n",
+      "description": "The `RSA-SHA512` algorithm.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -151,7 +144,7 @@ var searchData = {
     },
     {
       "id": "JwtError",
-      "description": "Represents the JWT distinct error\n",
+      "description": "Represents the JWT distinct error.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -160,7 +153,7 @@ var searchData = {
   "types": [
     {
       "id": "SigningAlgorithm",
-      "description": "The key algorithms supported by crypto module.",
+      "description": "The cryptographic algorithms used to secure the JWS.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"

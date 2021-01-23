@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "os",
-      "description": "This module provides functions to retrieve information about the operating system and the current users of the operating system.",
-      "orgName": "ballerina",
-      "version": "0.7.0"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "Process",

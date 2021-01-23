@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "log",
-      "description": "This module provides a basic API for logging.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

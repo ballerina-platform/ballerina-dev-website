@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "reflect",
-      "description": "This module provides utility methods for obtaining reflective information about the Ballerina runtime.",
-      "orgName": "ballerina",
-      "version": "0.5.5"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

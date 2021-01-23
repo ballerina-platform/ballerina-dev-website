@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "mysql",
-      "description": "This module provides the functionality required to access and manipulate data stored in a MySQL database.",
-      "orgName": "ballerinax",
-      "version": "0.6.4"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [

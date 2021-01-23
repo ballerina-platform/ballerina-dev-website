@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "file",
-      "description": "This module contains functions to perform file system based operations such as create, delete, rename the\nfile/directory, and retrieve metadata of the file.",
-      "orgName": "ballerina",
-      "version": "0.6.3"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

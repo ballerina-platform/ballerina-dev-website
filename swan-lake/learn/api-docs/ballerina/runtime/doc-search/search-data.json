@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "runtime",
-      "description": "This module provides functions to interact with the Ballerina runtime invocation context.",
-      "orgName": "ballerina",
-      "version": "0.5.5"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

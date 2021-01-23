@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "graphql",
-      "description": "This module provides an implementation for connecting and interacting with GraphQL endpoints.",
-      "orgName": "ballerina",
-      "version": "0.1.1"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "Engine",

@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "docker",
-      "description": "This module offers an annotation based docker extension implementation for Ballerina.",
-      "orgName": "ballerina",
-      "version": "1.0.0"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [

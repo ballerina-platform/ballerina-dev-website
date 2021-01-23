@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "kafka",
-      "description": "This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.",
-      "orgName": "ballerinax",
-      "version": "2.0.4"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [

@@ -1,23 +1,9 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "auth",
-      "description": "This module provides the default authentication provider configurations, which can be extended to create new authentication providers and functions to interact with the \"auth:InvocationContext\".",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ClientBasicAuthProvider",
       "description": "Represents the client Basic Auth provider.",
-      "moduleId": "auth",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "ListenerFileUserStoreBasicAuthProvider",
-      "description": "Represents the configuration file based listener Basic Auth provider, which is an implementation of the\n`auth:ListenerBasicAuthProvider` object.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -43,13 +29,6 @@ var searchData = {
     {
       "id": "CredentialsConfig",
       "description": "Represents credentials for Basic Auth authentication.",
-      "moduleId": "auth",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "FileUserStoreConfig",
-      "description": "Represents the file user store configurations.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"

@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "xmlutils",
-      "description": "This module provides utility functions to manipulate the built-in \"xml\" data type.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

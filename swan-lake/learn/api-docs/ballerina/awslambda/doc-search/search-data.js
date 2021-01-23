@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "awslambda",
-      "description": "This module offers the capabilities of creating AWS Lambda functions using Ballerina.",
-      "orgName": "ballerinax",
-      "version": "0.0.0"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "Context",
@@ -18,14 +11,14 @@ var searchData = {
   ],
   "functions": [
     {
-      "id": "__register",
+      "id": "__process",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "__process",
+      "id": "__register",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -34,77 +27,7 @@ var searchData = {
   ],
   "records": [
     {
-      "id": "S3Identity",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Bucket",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Object",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Element",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Record",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Event",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "SQSRecord",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "SQSEvent",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
       "id": "APIGatewayProxyRequest",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "DynamoDBStreamRecord",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "DynamoDBRecord",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -118,7 +41,14 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESCommonHeaders",
+      "id": "DynamoDBRecord",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "DynamoDBStreamRecord",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -132,14 +62,42 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESMail",
+      "id": "S3Bucket",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESVerdict",
+      "id": "S3Element",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Event",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Identity",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Object",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Record",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -153,7 +111,7 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESReceipt",
+      "id": "SESCommonHeaders",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -167,6 +125,27 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
+      "id": "SESEvent",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "SESMail",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "SESReceipt",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
       "id": "SESRecord",
       "description": "",
       "moduleId": "awslambda",
@@ -174,7 +153,21 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESEvent",
+      "id": "SESVerdict",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "SQSEvent",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "SQSRecord",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",

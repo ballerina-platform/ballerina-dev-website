@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "jsonutils",
-      "description": "This module provides utility functions to manipulate the built-in \"json\" data type.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

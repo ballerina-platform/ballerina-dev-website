@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "regex",
-      "description": "This module provides the following regex utility functions.",
-      "orgName": "ballerina",
-      "version": "0.6.0"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

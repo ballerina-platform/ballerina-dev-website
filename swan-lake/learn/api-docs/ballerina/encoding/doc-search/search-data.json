@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "encoding",
-      "description": "This module provides the necessary utilities, which are required to encode and decode content using different URL encoding mechanisms and algorithms.",
-      "orgName": "ballerina",
-      "version": "1.0.7"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

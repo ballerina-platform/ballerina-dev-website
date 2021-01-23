@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "email",
-      "description": "This module contains functions to perform email operations such as sending and reading emails using the SMTP, POP3, and IMAP4 protocols.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ImapListener",

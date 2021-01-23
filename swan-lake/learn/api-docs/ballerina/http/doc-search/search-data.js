@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "http",
-      "description": "This module provides an implementation for connecting and interacting with HTTP and HTTP2 endpoints.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ClientBasicAuthHandler",
@@ -65,13 +58,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "ListenerFileUserStoreBasicAuthHandler",
-      "description": "Defines the file store Basic Auth handler for listener authentication.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "ListenerJwtAuthHandler",
       "description": "Defines the JWT auth handler for listener authentication.",
       "moduleId": "http",
@@ -122,301 +108,301 @@ var searchData = {
     },
     {
       "id": "StatusAccepted",
-      "description": "",
+      "description": "Represents the status code of `STATUS_ACCEPTED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusBadGateway",
-      "description": "",
+      "description": "Represents the status code of `STATUS_BAD_GATEWAY`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusBadRequest",
-      "description": "",
+      "description": "Represents the status code of `STATUS_BAD_REQUEST`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusConflict",
-      "description": "",
+      "description": "Represents the status code of `STATUS_CONFLICT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusContinue",
-      "description": "",
+      "description": "Represents the status code of `STATUS_CONTINUE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusCreated",
-      "description": "",
+      "description": "Represents the status code of `STATUS_CREATED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusExpectationFailed",
-      "description": "",
+      "description": "Represents the status code of `STATUS_EXPECTATION_FAILED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusForbidden",
-      "description": "",
+      "description": "Represents the status code of `STATUS_FORBIDDEN`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusFound",
-      "description": "",
+      "description": "Represents the status code of `STATUS_FOUND`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusGatewayTimeout",
-      "description": "",
+      "description": "Represents the status code of `STATUS_GATEWAY_TIMEOUT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusGone",
-      "description": "",
+      "description": "Represents the status code of `STATUS_GONE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusHttpVersionNotSupported",
-      "description": "",
+      "description": "Represents the status code of `STATUS_HTTP_VERSION_NOT_SUPPORTED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusInternalServerError",
-      "description": "",
+      "description": "Represents the status code of `STATUS_INTERNAL_SERVER_ERROR`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusLengthRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_LENGTH_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusMethodNotAllowed",
-      "description": "",
+      "description": "Represents the status code of `STATUS_METHOD_NOT_ALLOWED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusMovedPermanently",
-      "description": "",
+      "description": "Represents the status code of `STATUS_MOVED_PERMANENTLY`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusMultipleChoices",
-      "description": "",
+      "description": "Represents the status code of `STATUS_MULTIPLE_CHOICES`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNoContent",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NO_CONTENT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNonAuthoritativeInformation",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NON_AUTHORITATIVE_INFORMATION`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotAcceptable",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_ACCEPTABLE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotFound",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_FOUND`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotImplemented",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_IMPLEMENTED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotModified",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_MODIFIED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusOK",
-      "description": "",
+      "description": "Represents the status code of `STATUS_OK`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPartialContent",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PARTIAL_CONTENT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPayloadTooLarge",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PAYLOAD_TOO_LARGE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPaymentRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PAYMENT_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPermanentRedirect",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PERMANENT_REDIRECT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPreconditionFailed",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PRECONDITION_FAILED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusProxyAuthenticationRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PROXY_AUTHENTICATION_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusRangeNotSatisfiable",
-      "description": "",
+      "description": "Represents the status code of `STATUS_RANGE_NOT_SATISFIABLE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusRequestHeaderFieldsTooLarge",
-      "description": "",
+      "description": "Represents the status code of `STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusRequestTimeout",
-      "description": "",
+      "description": "Represents the status code of `STATUS_REQUEST_TIMEOUT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusResetContent",
-      "description": "",
+      "description": "Represents the status code of `STATUS_RESET_CONTENT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusSeeOther",
-      "description": "",
+      "description": "Represents the status code of `STATUS_SEE_OTHER`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusServiceUnavailable",
-      "description": "",
+      "description": "Represents the status code of `STATUS_SERVICE_UNAVAILABLE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusSwitchingProtocols",
-      "description": "",
+      "description": "Represents the status code of `STATUS_SWITCHING_PROTOCOLS`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusTemporaryRedirect",
-      "description": "",
+      "description": "Represents the status code of `STATUS_TEMPORARY_REDIRECT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUnauthorized",
-      "description": "",
+      "description": "Represents the status code of `STATUS_UNAUTHORIZED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUnsupportedMediaType",
-      "description": "",
+      "description": "Represents the status code of `STATUS_UNSUPPORTED_MEDIA_TYPE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUpgradeRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_UPGRADE_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUriTooLong",
-      "description": "",
+      "description": "Represents the status code of `STATUS_URI_TOO_LONG`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUseProxy",
-      "description": "",
+      "description": "Represents the status code of `STATUS_USE_PROXY`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -424,15 +410,8 @@ var searchData = {
   ],
   "functions": [
     {
-      "id": "addCookies",
-      "description": "Adds cookies to the custom header.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "authenticateResource",
-      "description": "",
+      "description": "Uses for declarative auth design, where the authentication/authorization decision is taken\nby reading the auth annotations provided in service/resource and the `Authorization` header of request.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -469,21 +448,21 @@ var searchData = {
   "records": [
     {
       "id": "Accepted",
-      "description": "",
+      "description": "The status code response record of `Accepted`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "BadGateway",
-      "description": "",
+      "description": "The status code response record of `BadGateway`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "BadRequest",
-      "description": "",
+      "description": "The status code response record of `BadRequest`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -573,13 +552,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "CommonWebSocketClientConfiguration",
-      "description": "Common client configurations for WebSocket clients.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "CompressionConfig",
       "description": "A record for providing configurations for content compression.",
       "moduleId": "http",
@@ -588,14 +560,14 @@ var searchData = {
     },
     {
       "id": "Conflict",
-      "description": "",
+      "description": "The status code response record of `Conflict`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Continue",
-      "description": "",
+      "description": "The status code response record of `Continue`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -616,7 +588,7 @@ var searchData = {
     },
     {
       "id": "Created",
-      "description": "",
+      "description": "The status code response record of `Created`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -637,7 +609,7 @@ var searchData = {
     },
     {
       "id": "ExpectationFailed",
-      "description": "",
+      "description": "The status code response record of `ExpectationFailed`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -664,20 +636,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "FileUserStoreConfig",
-      "description": "Represents file user store configurations for Basic Auth authentication.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "FileUserStoreConfigWithScopes",
-      "description": "",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "FollowRedirects",
       "description": "Provides configurations for controlling the endpoint\u0027s behaviour in response to HTTP redirect related responses.",
       "moduleId": "http",
@@ -686,28 +644,28 @@ var searchData = {
     },
     {
       "id": "Forbidden",
-      "description": "",
+      "description": "The status code response record of `Forbidden`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Found",
-      "description": "",
+      "description": "The status code response record of `Found`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "GatewayTimeout",
-      "description": "",
+      "description": "The status code response record of `GatewayTimeout`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Gone",
-      "description": "",
+      "description": "The status code response record of `Gone`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -749,14 +707,14 @@ var searchData = {
     },
     {
       "id": "HttpVersionNotSupported",
-      "description": "",
+      "description": "The status code response record of `HttpVersionNotSupported`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "InternalServerError",
-      "description": "",
+      "description": "The status code response record of `InternalServerError`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -798,7 +756,7 @@ var searchData = {
     },
     {
       "id": "LengthRequired",
-      "description": "",
+      "description": "The status code response record of `LengthRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -854,21 +812,21 @@ var searchData = {
     },
     {
       "id": "MethodNotAllowed",
-      "description": "",
+      "description": "The status code response record of `MethodNotAllowed`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "MovedPermanently",
-      "description": "",
+      "description": "The status code response record of `MovedPermanently`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "MultipleChoices",
-      "description": "",
+      "description": "The status code response record of `MultipleChoices`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -882,42 +840,42 @@ var searchData = {
     },
     {
       "id": "NoContent",
-      "description": "",
+      "description": "The status code response record of `NoContent`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NonAuthoritativeInformation",
-      "description": "",
+      "description": "The status code response record of `NonAuthoritativeInformation`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotAcceptable",
-      "description": "",
+      "description": "The status code response record of `NotAcceptable`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotFound",
-      "description": "",
+      "description": "The status code response record of `NotFound`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotImplemented",
-      "description": "",
+      "description": "The status code response record of `NotImplemented`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotModified",
-      "description": "",
+      "description": "The status code response record of `NotModified`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -959,35 +917,35 @@ var searchData = {
     },
     {
       "id": "Ok",
-      "description": "",
+      "description": "The status code response record of `Ok`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PartialContent",
-      "description": "",
+      "description": "The status code response record of `PartialContent`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PayloadTooLarge",
-      "description": "",
+      "description": "The status code response record of `PayloadTooLarge`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PaymentRequired",
-      "description": "",
+      "description": "The status code response record of `PaymentRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PermanentRedirect",
-      "description": "",
+      "description": "The status code response record of `PermanentRedirect`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1001,7 +959,7 @@ var searchData = {
     },
     {
       "id": "PreconditionFailed",
-      "description": "",
+      "description": "The status code response record of `PreconditionFailed`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1015,7 +973,7 @@ var searchData = {
     },
     {
       "id": "ProxyAuthenticationRequired",
-      "description": "",
+      "description": "The status code response record of `ProxyAuthenticationRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1029,7 +987,7 @@ var searchData = {
     },
     {
       "id": "RangeNotSatisfiable",
-      "description": "",
+      "description": "The status code response record of `RangeNotSatisfiable`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1043,7 +1001,7 @@ var searchData = {
     },
     {
       "id": "RequestHeaderFieldsTooLarge",
-      "description": "",
+      "description": "The status code response record of `RequestHeaderFieldsTooLarge`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1057,14 +1015,14 @@ var searchData = {
     },
     {
       "id": "RequestTimeout",
-      "description": "",
+      "description": "The status code response record of `RequestTimeout`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "ResetContent",
-      "description": "",
+      "description": "The status code response record of `ResetContent`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1099,21 +1057,21 @@ var searchData = {
     },
     {
       "id": "SeeOther",
-      "description": "",
+      "description": "The status code response record of `SeeOther`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "ServiceUnavailable",
-      "description": "",
+      "description": "The status code response record of `ServiceUnavailable`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "SwitchingProtocols",
-      "description": "",
+      "description": "The status code response record of `SwitchingProtocols`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1127,42 +1085,42 @@ var searchData = {
     },
     {
       "id": "TemporaryRedirect",
-      "description": "",
+      "description": "The status code response record of `TemporaryRedirect`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Unauthorized",
-      "description": "",
+      "description": "The status code response record of `Unauthorized`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UnsupportedMediaType",
-      "description": "",
+      "description": "The status code response record of `UnsupportedMediaType`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UpgradeRequired",
-      "description": "",
+      "description": "The status code response record of `UpgradeRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UriTooLong",
-      "description": "",
+      "description": "The status code response record of `UriTooLong`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UseProxy",
-      "description": "",
+      "description": "The status code response record of `UseProxy`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1170,41 +1128,6 @@ var searchData = {
     {
       "id": "ValidateCert",
       "description": "A record for providing configurations for certificate revocation status checks.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketClientConfiguration",
-      "description": "Configurations for the WebSocket client.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketFailoverClientConfiguration",
-      "description": "Configurations for the WebSocket client endpoint.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketRetryConfig",
-      "description": "Retry configurations for WebSocket.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketUpgradeConfig",
-      "description": "Resource configuration to upgrade from HTTP to WebSocket.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WSServiceConfig",
-      "description": "Configurations for a WebSocket service.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -2334,13 +2257,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "WebSocketError",
-      "description": "The union of all the WebSocket related errors\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "Writing100ContinueResponseError",
       "description": "Represents an error that occurred while writing 100 continue response\n",
       "moduleId": "http",
@@ -2371,55 +2287,6 @@ var searchData = {
     {
       "id": "WritingOutboundResponseHeadersError",
       "description": "Represents a listener error that occurred while writing outbound response headers\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsConnectionClosureError",
-      "description": "Raised during failures in connection closure\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsConnectionError",
-      "description": "Raised during connection failures\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsGenericError",
-      "description": "Raised for errors not captured by the specific errors\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsInvalidContinuationFrameError",
-      "description": "Raised when an out of order/invalid continuation frame is received\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsInvalidHandshakeError",
-      "description": "Raised during the handshake when the WebSocket upgrade fails\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsPayloadTooBigError",
-      "description": "Raised when receiving a frame with a payload exceeding the maximum size\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsProtocolError",
-      "description": "Raised when the other side breaks the protocol\n",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -2651,27 +2518,6 @@ var searchData = {
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketCaller",
-      "description": "Represents a WebSocket caller.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketClient",
-      "description": "Represents a WebSocket client endpoint.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketFailoverClient",
-      "description": "A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
     }
   ],
   "listeners": [
@@ -2708,13 +2554,6 @@ var searchData = {
     {
       "id": "ServiceConfig",
       "description": "The annotation which is used to configure an HTTP service.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketServiceConfig",
-      "description": "The annotation which is used to configure a WebSocket service.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"

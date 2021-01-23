@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "xslt",
-      "description": "This module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.",
-      "orgName": "ballerina",
-      "version": "1.0.6"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

@@ -56,7 +56,10 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Runtime Module Improvements](#runtime-module-improvements)
         - [Email Module Improvements](#email-module-improvements)
         - [Introduced Modules](#introduced-modules)
-
+        - [Removed Modules](#removed-modules)
+    - [Code to Cloud](#code-to-cloud)
+    - [Breaking Changes](#breaking-changes)
+    - [Taint Analyzer Updates](#taint-analyzer-updates)
 
 #### Updating Ballerina
 
@@ -645,7 +648,7 @@ password = "<github-PAT>"
 
 Introduced REPL support for Ballerina, which can be accessed via the `bal shell` command. Shell runs a REPL instance of Ballerina to enable running snippets of code. The Following is an example shell session:
 
-```cmd
+```bash
 > bal shall
 Welcome to Ballerina Shell REPL.
 Type /exit to exit and /help to list available commands.
@@ -1319,4 +1322,123 @@ service class TCPService {
    remote function onError(readonly & tcp:Error err) returns tcp:Error? {
    }
 }
+```
+
+###### UDP
+
+The UDP module has been moved out of the Socket module. Therefore, it is required to change the import from `ballerina/socket` to `ballerina/udp`.
+
+**Client Changes**
+
+- Initialization changed from `socket:UdpClient socketClient = new(localAddress = {host: "localhost", port: 8080 });` to `udp:Client socketClient = check new;`. This returns the `udp:Error` if an error occurred while initializing the client.
+- The `sendTo` method name changed to `sendDatagram`. This takes a `udp:Datagram` as a parameter. You don’t need to explicitly write a while loop to ensure the data is written completely. The `writeBytes` method ensures to write the data completely.
+- The `receiveFrom` method name changed to `receiveDatagram`. This now returns a `readonly & udp:Datagram` instead of a `[byte[], int, socket:Address]` tuple.
+
+    **New Syntax:**
+
+    ```ballerina
+    import ballerina/udp;
+
+    public function main() returns udp:Error? {
+    udp:Client socketClient = check new;
+
+    udp:Datagram datagram = {
+        remoteHost: "localhost",
+        remotePort : 48829,
+        data : "Hello Ballerina".toBytes()
+    };
+    check socketClient->sendDatagram(datagram);
+
+    readonly & udp:Datagram result = check socketClient->receiveDatagram();
+
+    check socketClient->close();
+    }
+    ```
+
+- Introduced a `ConnectClient` and a `Listener` to the new UDP module as follows.
+
+    **ConnectClient:**
+
+    ```ballerina
+    import ballerina/udp;
+
+    public function main() returns udp:Error? {
+    udp:ConnectClient socketClient = check new("localhost", 48829);
+
+    check socketClient->writeBytes("Hello Ballerina".toBytes());
+
+    readonly & byte[] result = check socketClient->readBytes();
+
+    check socketClient->close();
+    }
+    ```
+
+    **Listener:**
+
+    ```ballerina
+    import ballerina/udp;
+
+    service on new udp:Listener(48829) {
+
+    remote function onBytes(readonly & byte[] data, udp:Caller caller) returns (readonly & byte[])|udp:Error? {
+        return data;
+    }
+
+    remote function onError(readonly & udp:Error err) {
+    }
+    }
+    ```
+
+##### Removed Modules
+
+###### Config
+
+The configuration use cases are now covered under the `configurable` language feature. 
+
+###### Math
+
+The APIs related to random number generation were moved to the new `random` module. The rest of the APIs have replacements in the `lang.float` and `lang.int` packages.
+
+###### Stringutils
+
+The regex-related APIs that were supported by this module have been moved to the new `regex` module. The rest of the APIs have replacements in the the langlib packages.
+
+###### Socket
+
+The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
+
+
+#### Code to Cloud
+
+- The Kubernetes artifacts can be generated using the `--cloud=k8s` build option. The `import ballerina/cloud as _` is no longer required.
+- VS code plugin support for the `Kubernetes.toml`
+    - Code Completion based on the c2c specification
+    - Code Actions add/modify probes and envs based on the source code.
+
+#### Breaking Changes
+
+##### Language
+
+- Resource method declarations are no longer allowed in object-type descriptors.
+- Resource methods are not considered to be part of the type.
+- Non-`isolated` service variables defined outside an `isolated` function can be accessed within the function only if the variable is a `final` variable and the type is a subtype of `readonly`.
+- The `@icon` annotation has been replaced with the `@display` annotation.
+- The value type of the XML iteration, which was previously `xml|string` is now `xml`. Moreover, the value type of the `xml<T>` iteration is now `T`. 
+
+#### Taint Analyzer Updates
+
+With this release, the taint analyzer does not produce taint errors unless explicitly enabled. However, the taint analyzer does perform the taint flow analysis without producing errors regardless of it being enabled or not.
+
+This is enabled via the build options below in the `Ballerina.toml` file
+
+```toml
+[build-options]
+taintCheck = true
+```
+
+or else, by using the `--taint-check` flag in the Ballerina CLI tools as follows.
+
+```bash
+bal run --taint-check[file.bal | project]
+bal build --taint-check [file.bal | project]
 ```

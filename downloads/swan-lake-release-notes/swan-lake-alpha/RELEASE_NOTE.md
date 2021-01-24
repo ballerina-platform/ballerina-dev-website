@@ -597,7 +597,7 @@ TOML and MD files are made a part of the Project API.
 
 ##### Test Framework
 
-Support for function pointers in the `@test:Config {}` annotation. This applies to the `before`, `after`, `dependsOn`, and `dataProvider` fields of the annotation. 
+Support for function pointers in the `@test:Config {}` annotation. The fields `before`, `after`, `dependsOn` and `dataProvider`, which previously expected the name of the function as a `string`, now accept function pointers instead.
 
 ##### Bindgen Tool
 Introduced a `-m|--modules` flag to generate module-level mappings for Java packages generated using the Bindgen tool.

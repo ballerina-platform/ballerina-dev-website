@@ -254,10 +254,12 @@ match v {
 ```ballerina
 match v {
     error ("Message") => {
-    // Match errors with "Message" as the error message.
-    }error () => {
-    // Match all errors.
-    }}
+        // Match errors with "Message" as the error message.
+    }
+    error () => {
+        // Match all errors.
+    }
+}
 ```
 
 ###### Improved Type Narrowing Within Match Statements

@@ -322,15 +322,6 @@ public function main() {
 
 This is now disallowed and can be rewritten as follows.
 
-```ballerina
-function foo() returns string|int|error {
-    return error("Error Message");
-}
-
-public function main() {
-    string s = <string>checkpanic foo(); // use`checkpanic` to panic if `foo()` returns an error and then attempt the cast
-}
-```
 
 1. Using `checkpanic` - This will preserve the `panic` behavior (but with a different error - the previous error was a cast error. Now, it will be the actual error returned by `foo()`).
 

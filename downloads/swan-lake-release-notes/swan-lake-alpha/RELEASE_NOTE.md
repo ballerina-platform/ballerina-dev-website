@@ -95,7 +95,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Support for passing closed records as rest arguments in function/method calls
 - Support for the empty XML value
 - Improvements to the `match` statement
-- Support for cyclic union type descriptors to directly refer to its identifier
+- Support for cyclic union type descriptors
 - Improvements in error handling, casting, constructors
 - Changes to object-type and record-type inclusions
 - Improved listener declaration

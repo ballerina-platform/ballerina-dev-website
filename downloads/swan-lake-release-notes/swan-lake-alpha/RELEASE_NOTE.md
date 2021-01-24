@@ -210,7 +210,7 @@ Previously, it was possible to define a value of type `xml<never>` (i.e., the em
 xml<never> emptyXmlValue = <xml<never>>'xml:concat();
 ```
 
-With the new changes, it is now possible to directly create the empty XML value.
+It is now possible to directly create the empty XML value.
 
 ```
 ballerina

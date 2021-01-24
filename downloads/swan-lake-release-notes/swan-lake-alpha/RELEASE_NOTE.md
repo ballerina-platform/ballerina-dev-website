@@ -946,7 +946,6 @@ GraphQL resources can now return values union with  `error` values.
 ###### Service and Listener Changes
 
 - The return type of the `kafka:Listener init` is changed to `Error?`. 
-- The `resource` functions are changed to `remote` functions in the new listener APIs.
 - Has a single type of service that supports the two types of remote functions below:
     - `onConsumerRecord(kafka:ConsumerRecord[] record) {}` 
     - `onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] record) {}`

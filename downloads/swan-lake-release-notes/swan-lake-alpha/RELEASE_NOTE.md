@@ -574,7 +574,7 @@ The new `ValueCreator.createReadonlyArrayValue` API creates a new `readonly` Bal
 
 ##### Configurable
 
-The `configurable` feature is improved to support variables with decimal and arrays of int, float, string, boolean and decimal types.
+The `configurable` feature is improved to support variables with decimal and arrays of `int`, `float`, `string`, `boolean`, and `decimal` types.
 
 Configurations can be provided at runtime using the `Config.toml` file in the current working directory or by exporting the file path using the `BALCONFIGFILE` environment variable. For the tests, configurations can be overridden by having the `Config.toml` file inside the tests directory.
 

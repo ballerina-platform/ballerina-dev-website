@@ -126,17 +126,17 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a Ballerina program, a single BAL file, a module, an entire package, or a single root module into an executable JAR file. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Compile a Ballerina program, a single `.bal` file or an entire package into an executable JAR file. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire package, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Build and run a Ballerina program, a single `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina package. For more information, see <a href="/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
+<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -157,7 +157,7 @@ These everyday commands are your best friends! They address the very basics of p
 
 ## Package Commands
 
-Ballerina packages are the way to organize real-world Ballerina development tasks. Some of them allow you to work with the Ballerina Central also to share Ballerina packages with others in a safe, secure, and dependable way.
+Ballerina packages are the way to organize real-world Ballerina development tasks. The last 3 commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
 
 <table class="cComandTable">
 <tr>

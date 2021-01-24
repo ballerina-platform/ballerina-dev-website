@@ -99,9 +99,9 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Improvements in error handling, casting, constructors
 - Changes to object-type and record-type inclusions
 - Improved listener declaration
-- Improvements on the lang library modules and methods
-- Improvements on the `configurable` feature
-- Improvements on the Developer Tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
+- Improvements to the lang library modules 
+- Improvements to the `configurable` feature
+- Improvements to the Developer Tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
 - Introduction of the REPL support for Ballerina via the `bal shell` command
 - Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ, Time, Runtime, Email, and WebSub standard library modules
 - Rename the System standard library module to OS

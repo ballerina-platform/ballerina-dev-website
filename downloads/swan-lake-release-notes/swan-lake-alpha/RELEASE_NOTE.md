@@ -1059,7 +1059,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
     ```
 
 
-##### RabbitMQ Streaming Module Improvements
+##### RabbitMQ Module Improvements
 
 ###### Client Changes
 

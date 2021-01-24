@@ -104,7 +104,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Improvements on the `configurable` feature
 - Improvements on the Developer Tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
 - Introduction of the REPL support for Ballerina via the `bal shell` command
-- Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ Streaming, Time, Runtime, and Email standard library modules
+- Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ, Time, Runtime, and Email standard library modules
 - Rename the System standard library module to OS
 - Introduction of the new Random, TCP, and UDP standard library modules
 - Removal of the Config, Math, Stringutils, and Socket standard library modules

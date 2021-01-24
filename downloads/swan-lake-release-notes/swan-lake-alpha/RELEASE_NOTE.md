@@ -957,7 +957,7 @@ GraphQL resources can now return values union with  `error` values.
     listener kafka:Listener kafkaListener = new (consumerConfigs);
 
     service kafka:Service on kafkaListener {
-    remote function onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] records) {
+        remote function onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] records) {
         // Process consumed records
         }
     }

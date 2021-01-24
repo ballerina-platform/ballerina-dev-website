@@ -107,7 +107,7 @@ The following is a valid `Ballerina.toml` file.
 [package]
 org = ballerinax
 name = observe.prometheus
-version = 1.0.0
+version = "1.0.0"
 ```
 
 ##### Introduction of the Dependencies TOML file

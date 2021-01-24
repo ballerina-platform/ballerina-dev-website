@@ -52,7 +52,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Kafka Module Improvements](#kafka-module-improvements)
         - [NATS Module Improvements](#nats-module-improvements)
         - [NATS Streaming Module Improvements](#nats-streaming-module-improvements)
-        - [RabbitMQ Streaming Module Improvements](#rabbitmq-streaming-module-improvements)
+        - [RabbitMQ Module Improvements](#rabbitmq-module-improvements)
         - [Time Module Improvements](#time-module-improvements)
         - [Rename System Module to OS](#rename-system-module-to-os)
         - [Runtime Module Improvements](#runtime-module-improvements)

@@ -340,7 +340,8 @@ public function main() {
     }
 
     public function main() {
-        string s = <string>checkpanic foo(); // use`checkpanic` to panic if `foo()` returns an error and then attempt the cast
+        // Use`checkpanic` to panic if `foo()` returns an error and then attempt the cast.
+        string s = <string>checkpanic foo();
     }
     ```
 

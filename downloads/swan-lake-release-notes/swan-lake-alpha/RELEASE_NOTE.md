@@ -223,14 +223,15 @@ xml<never> emptyXmlValue = xml ``;
 **List Match Pattern**
 ```ballerina
 match v {
-    var     [a, b ] => {
-    // Matches lists with 2 elements.
-    }    var [a, [b, c], d]|var [a, b , c, d] => {
-    // Matches 
-    // - lists with 3 elements where the second element is a list of 2 elements or
-    // - lists with 4 elements
-    }}
-
+    var [a, b ] => {
+        // Matches lists with 2 elements.
+    }    
+    var [a, [b, c], d]|var [a, b , c, d] => {
+        // Matches 
+        // - lists with 3 elements where the second element is a list of 2 elements or
+        // - lists with 4 elements
+    }
+}
 ```
 
 **Mapping Match Pattern**

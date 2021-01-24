@@ -1114,7 +1114,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
     @rabbitmq:ServiceConfig {queueName: "MyQueue"}
     service rabbitmq:Service on channelListener {
-    remote function onMessage(rabbitmq:Message message) {
+        remote function onMessage(rabbitmq:Message message) {
         }
     }
     ```

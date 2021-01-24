@@ -603,7 +603,7 @@ Support for function pointers in the `@test:Config {}` annotation. This applies 
 Introduced a `-m|--modules` flag to generate module-level mappings for Java packages generated using the Bindgen tool.
 
 ##### Maven Resolver
-Introduced the support for specifying custom Maven repositories in the `Ballerina.toml` file. The configuration below can be used for this purpose.
+Introduced support for specifying custom Maven repositories in the `Ballerina.toml` file. The configuration below can be used for this purpose.
 
 ```toml
 [[platform.java11.repository]]

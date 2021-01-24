@@ -60,6 +60,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Introduced New Modules](#introduced-new-modules)
         - [Removed Modules](#removed-modules)
     - [Code to Cloud](#code-to-cloud)
+    - [Observability](#observability)
     - [Breaking Changes](#breaking-changes)
         - [Language](#language)
     - [Taint Analyzer Update](#taint-analyzer-update)
@@ -1483,6 +1484,48 @@ The regex-related APIs that were supported by this module have been moved to the
 
 The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
 
+#### Observability
+
+- A new extension model, which separates each extension into a separate module is introduced.
+    - Observability is not included into the final JAR by default. It can be added with the following configuration in the `Ballerina.toml`
+
+      ```toml
+      [build-options]
+      observabilityIncluded=true
+      ```
+
+    - The observability extension can be packaged by adding an import to the module in the code as shown in the example below.
+
+      ```ballerina
+      import ballerinax/prometheus as _;
+      ```
+
+- `Prometheus` and `Jaeger` extensions are introduced back.
+    - The `Prometheus` extension can be enabled by adding the following configuration in the `Config.toml` file.
+
+      ```toml
+      [ballerina.observe]
+      metricsEnabled=true
+      metricsReporter="prometheus"
+      
+      [ballerinax.prometheus]
+      host="127.0.0.1"  # Optional Configuration. Default value is localhost
+      port=9797         # Optional Configuration. Default value is 9797
+      ```
+
+    - The `Jaeger` extension can be enabled by adding the following config.
+
+      ```toml
+      [ballerina.observe]
+      tracingEnabled=true
+      tracingProvider="jaeger"
+      
+      [ballerinax.jaeger]
+      agentHostname="127.0.0.1"  # Optional Configuration. Default value is localhost
+      agentPort=6831             # Optional Configuration. Default value is 6831
+      ```
+
+    - By default, the `Jaeger` extension now publishes traces to the Jaeger Agent using the `jaeger.thrift` over the compact Thrift protocol.  
 
 #### Code to Cloud
 

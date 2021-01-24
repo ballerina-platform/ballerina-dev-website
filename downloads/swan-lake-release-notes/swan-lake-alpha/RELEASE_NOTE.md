@@ -1130,7 +1130,6 @@ The improvements below have been added to the `Time` module.
 
 The previous `system` module is now renamed to `os`. All the Operating System independent functionalities are included in this module.
 
-
 ##### Runtime Module Improvements
 
 The methods below have been removed from the `runtime` module since these methods have moved to the `lang:runtime`.
@@ -1146,12 +1145,12 @@ The methods below have been removed from the `runtime` module since these method
 
 - Attachment support is improved to support file attachments directly with its content type. The new `email:Attachment` is as follows.
 
-    ```ballerina
-    public type Attachment record {|
+```ballerina
+public type Attachment record {|
     string filePath;
     string contentType;
-    |};
-    ```
+|};
+```
 
 -  The `email:Message` record is modified with union-typed `string` types for `to`, `cc`, `bcc`, and `replyTo` to add flexibility. An optional `htmlBody` field is added to support the HTML body. The new record is as follows. 
 
@@ -1159,18 +1158,18 @@ The methods below have been removed from the `runtime` module since these method
 
     ```ballerina
     public type Message record {|
-    string|string[] to;
-    string subject;
-    string 'from;
-    string body;
-    string htmlBody?;
-    string|string[] cc?;
-    string|string[] bcc?;
-    string|string[] replyTo?;
-    string contentType?;
-    map<string> headers?;
-    string sender?;
-    Attachment|(mime:Entity|Attachment)[] attachments?;
+        string|string[] to;
+        string subject;
+        string 'from;
+        string body;
+        string htmlBody?;
+        string|string[] cc?;
+        string|string[] bcc?;
+        string|string[] replyTo?;
+        string contentType?;
+        map<string> headers?;
+        string sender?;
+        Attachment|(mime:Entity|Attachment)[] attachments?;
     |}
     ```
 
@@ -1183,20 +1182,9 @@ The methods below have been removed from the `runtime` module since these method
 - A new `sendEmail` method is added to the `email:SmtpClient` API to send emails directly without creating the `email:Email` record supporting extra fields as named optional parameters. An example of sending an email with the new API is given below.
 
     ```ballerina
-    Error? response = smtpClient->sendEmail(
-    toAddresses,
-    subject,
-    fromAddress,
-    body,
-    cc=ccAddresses,
-    bcc=bccAddresses,
-        htmlBody=htmlBody,
-    contentType=contentType,
-    headers={header1_name: "header1_value"},
-    sender=sender,
-        replyTo=replyToAddresses,
-    attachments=bodyParts
-    );
+    Error? response = smtpClient->sendEmail(toAddresses, subject, fromAddress, body, cc = ccAddresses, bcc = bccAddresses, 
+    htmlBody = htmlBody, contentType = contentType, headers = {header1_name: "header1_value"}, sender = sender, replyTo = 
+    replyToAddresses, attachments = bodyParts);
     ```
 
 - The `read` method of `email:ImapClient`, `email:PopClient`, and `email:Listener` (i.e., `new email:PopListener` and `email:ImapListener`) are changed to `receiveEmailMessage`.
@@ -1341,18 +1329,15 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     import ballerina/udp;
 
     public function main() returns udp:Error? {
-    udp:Client socketClient = check new;
-
-    udp:Datagram datagram = {
-        remoteHost: "localhost",
-        remotePort : 48829,
-        data : "Hello Ballerina".toBytes()
-    };
-    check socketClient->sendDatagram(datagram);
-
-    readonly & udp:Datagram result = check socketClient->receiveDatagram();
-
-    check socketClient->close();
+        udp:Client socketClient = check new;
+        udp:Datagram datagram = {
+            remoteHost: "localhost",
+            remotePort: 48829,
+            data: "Hello Ballerina".toBytes()
+        };
+        check socketClient->sendDatagram(datagram);
+        readonly & udp:Datagram result = check socketClient->receiveDatagram();
+        check socketClient->close();
     }
     ```
 
@@ -1364,13 +1349,10 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     import ballerina/udp;
 
     public function main() returns udp:Error? {
-    udp:ConnectClient socketClient = check new("localhost", 48829);
-
-    check socketClient->writeBytes("Hello Ballerina".toBytes());
-
-    readonly & byte[] result = check socketClient->readBytes();
-
-    check socketClient->close();
+        udp:ConnectClient socketClient = check new ("localhost", 48829);
+        check socketClient->writeBytes("Hello Ballerina".toBytes());
+        readonly & byte[] result = check socketClient->readBytes();
+        check socketClient->close();
     }
     ```
 
@@ -1382,11 +1364,11 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     service on new udp:Listener(48829) {
 
     remote function onBytes(readonly & byte[] data, udp:Caller caller) returns (readonly & byte[])|udp:Error? {
-        return data;
-    }
+            return data;
+        }
 
     remote function onError(readonly & udp:Error err) {
-    }
+        }
     }
     ```
 

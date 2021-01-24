@@ -177,29 +177,29 @@ public function main() {
 A closed record can be used as the rest argument in a function or method call. This is the same as passing each field in the record value as a named argument.
 
 ```ballerina
-    import ballerina/io;
+import ballerina/io;
 
-    type SalaryDetails record {|
-        int annualIncrement = 20;
-        float bonusRate?;
-    |};
+type SalaryDetails record {|
+    int annualIncrement = 20;
+    float bonusRate?;
+|};
 
-    function printSalaryDetails(int baseSalary, int annualIncrement, float bonusRate = 0.02) {
-        io:println("Base Salary: ", baseSalary, " | Annual Increment: ", annualIncrement, " | Bonus Rate: ", bonusRate);
-    }
+function printSalaryDetails(int baseSalary, int annualIncrement, float bonusRate = 0.02) {
+    io:println("Base Salary: ", baseSalary, " | Annual Increment: ", annualIncrement, " | Bonus Rate: ", bonusRate);
+}
 
-    public function main() {
-        SalaryDetails details = {
-            annualIncrement: 30,
-            bonusRate: 0.03
-        };
-        // Same as `printSalaryDetails(2500, annualIncrement = 30, bonusRate = 0.03);`
-        printSalaryDetails(2500, ...details);
+public function main() {
+    SalaryDetails details = {
+        annualIncrement: 30,
+        bonusRate: 0.03
+    };
+    // Same as `printSalaryDetails(2500, annualIncrement = 30, bonusRate = 0.03);`
+    printSalaryDetails(2500, ...details);
 
-        details = {};
-        // Same as `printSalaryDetails(2500, annualIncrement = 20);`
-        printSalaryDetails(2500, ...details);
-    }
+    details = {};
+    // Same as `printSalaryDetails(2500, annualIncrement = 20);`
+    printSalaryDetails(2500, ...details);
+}
 ```
 
 ##### Support for the Empty XML Value

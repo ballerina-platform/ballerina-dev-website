@@ -94,7 +94,6 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Support for intersection types with errors
 - Support for passing closed records as rest arguments in function/method calls
 - Support for the empty XML value
-- Improved listener declarations to support classes, which return `error?` from its `init` method
 - Improvements to the `match` statement
 - Support for cyclic union type descriptors to directly refer to its identifier
 - Improvements in error handling, casting, constructors

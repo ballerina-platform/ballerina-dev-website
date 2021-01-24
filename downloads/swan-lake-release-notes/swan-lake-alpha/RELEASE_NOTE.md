@@ -327,7 +327,7 @@ Integers intMap = {i: 1, j: 2};
 Integers integers = [intValue, intArray, intMap];
 ```
 
-##### Updated Syntax for User-Defined Error Constructions
+##### Updated Syntax for User-Defined Error Construction
 
 The error constructor expression now requires the `error` keyword to construct a user-defined error.
 

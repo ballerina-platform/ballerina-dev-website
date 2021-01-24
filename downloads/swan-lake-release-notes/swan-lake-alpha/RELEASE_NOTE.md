@@ -24,10 +24,10 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Improvements to the `match` Statement](#improvements-to-the-match-statement)
         - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
         - [Updated Syntax for User-Defined Error Constructions](#updated-syntax-for-user-defined-error-constructions)
-        - [Changes to Casting with Errors](#changes-to-casting-with-errors)
-        - [Changes to `toString` and `toBalString` with Errors](#changes-to-toString-and-toBalString-with-errors)
-        - [Changes to Object Type Inclusion with Qualifiers](#changes-to-object-type-inclusion-with-qualifiers)
-        - [Changes to Record Type Inclusion with Rest Descriptors](#changes-to-record-type-inclusion-with-rest-descriptors)
+        - [Changes on Casting with Errors](#changes-on-casting-with-errors)
+        - [Changes on `toString` and `toBalString` with Errors](#changes-on-toString-and-toBalString-with-errors)
+        - [Changes on Object Type Inclusion with Qualifiers](#changes-on-object-type-inclusion-with-qualifiers)
+        - [Changes on Record Type Inclusion with Rest Descriptors](#changes-on-record-type-inclusion-with-rest-descriptors)
         - [Improved Listener Declaration](#improved-listener-declaration)
         - [Referring Lang Library Modules Without Using Quoted Identifiers](#referring-lang-library-modules-without-using-quoted-identifiers)
         - [Improved Lang Library Methods](#improved-lang-library-methods)
@@ -38,6 +38,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Project API](#project-api)
         - [Debugger](#debugger)
         - [Test Framework](#test-framework)
+        - [Bindgen Tool](#bindgen-tool)
         - [Maven Resolver](#maven-resolver)
         - [Ballerina Shell REPL [EXPERIMENTAL]](#ballerina-shell-repl-experimental)
         - [Documentation](#documentation)
@@ -47,9 +48,10 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [gRPC Module Improvements](#grpc-module-improvements)
         - [Security Improvements](#security-improvements)
         - [GraphQL Module Improvements](#graphql-module-improvements)
-        - [Messaging Modules Improvements](#messaging-modules-improvements)
+        - [Common Changes in Messaging Modules](#common-changes-in-messaging-modules)
         - [Kafka Module Improvements](#kafka-module-improvements)
         - [NATS Module Improvements](#nats-module-improvements)
+        - [NATS Streaming Module Improvements](#nats-streaming-module-improvements)
         - [RabbitMQ Streaming Module Improvements](#rabbitmq-streaming-module-improvements)
         - [Time Module Improvements](#time-module-improvements)
         - [Rename System Module to OS](#rename-system-module-to-os)
@@ -85,13 +87,29 @@ If you have not installed Ballerina, then download the [installers](https://ball
 #### Highlights
 
 - The `ballerina` command is renamed to `bal `
-    Now onwards, all the commands will start with `bal` E.g., `bal -v`, `bal build`, `bal dist list`
+    Now onwards, all the commands will start with `bal` E.g., `bal -v`, `bal build`, `bal dist list`.
 - Introduction of hierarchical package names
     Now, the package name can take the form of `package-name := identifier(.identifer)*`.
 - Introduction of the `Dependencies.toml` file
 - Support for the intersection type in errors
 - Support for passing closed records as rest arguments in function/method calls
 - Support to define empty XML values using only the `concat` XML lang library function  
+- Improved listener declarations to support classes, which return `error?` from its `init` method
+- Improvements to the `match` statement
+- Support for cyclic union type descriptors to directly refer to its identifier
+- Improvements in error handling, casting, constructors
+- Changes on object-type and record-type inclusions
+- Improved listener declaration
+- Improvements on the lang library modules and methods
+- Improvements on the `configurable` feature
+- Improvements on the Developer Tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
+- Introduction of the REPL support for Ballerina via the `bal shell` command
+- Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ Streaming, Time, Runtime, and Email standard library modules
+- Rename the System standard library module to OS
+- Introduction of the new Random, TCP, and UDP standard library modules
+- Removal of the Config, Math, Stringutils, and Socket standard library modules
+- VSCode plugin support for code actions and code completions on Code To Cloud
+- Taint analyzer related updates
 
 ### What is New in Ballerina Swan Lake Alpha
 
@@ -189,7 +207,7 @@ public function main() {
 
 ##### Support for Empty XML Values
 
-Previously, it was possible to define a value of type `xml<never>` (i.e., the empty XML value) using only the `concat` XML lang library function. 
+Previously, it was possible to define a value of type `xml<never>` (i.e., the empty XML value) using only the `concat` XML Lang Library function. 
 
 ```ballerina
 xml<never> emptyXmlValue = <xml<never>> 'xml:concat();
@@ -327,7 +345,7 @@ MyError myError = MyError("Message");
 MyError myError = error MyError("Message");
 ```
 
-#### Changes to Casting with Errors
+#### Changes on Casting with Errors
 
 Errors cannot be cast away (i.e., if the value that is being cast can be an error, the type to which the cast is attempted should also have a subtype of error). 
 
@@ -379,7 +397,7 @@ public function main() returns error? {
 }
 ```
 
-##### Changes to `toString` and `toBalString` with Errors
+##### Changes on `toString` and `toBalString` with Errors
 
 It was previously possible to call `toString()` and `toBalString()` on unions of errors and non-errors.
 
@@ -397,14 +415,14 @@ function print(any|error val) {
 }
 ```
 
-#### Changes to Object Type Inclusion with Qualifiers
+#### Changes on Object Type Inclusion with Qualifiers
 
 - When object type inclusion is used with an object type descriptor with qualifiers (`isolated`, `client`, `service`), it is now mandatory for the object being included also to have these qualifiers.
 - Object type descriptors can no longer use object type inclusion with `readonly` classes.
 - Classes can use object type inclusion with `readonly` classes only if the including classes themselves are `readonly` classes.
 - The type reference in an object constructor expression can refer to a `readonly` class only if the object being constructed is `readonly`.
 
-#### Changes to Record Type Inclusion with Rest Descriptors
+#### Changes on Record Type Inclusion with Rest Descriptors
 
 Record type inclusion now copies the rest descriptor from the included type to the including type. The including type may override the rest descriptor. 
 
@@ -535,7 +553,7 @@ public class Listener {
 }
 ```
 
-##### Referring Lang Library Modules Without Using Quoted Identifiers\
+##### Referring Lang Library Modules Without Using Quoted Identifiers
 
 Lang library module prefixes can now be used without the initial quote. For example, both the approaches below are now supported.
 
@@ -901,9 +919,7 @@ Ballerina GraphQL services now support introspection queries on the schema.
 
 GraphQL resources can now return values union with  `error` values. 
 
-##### Messaging Modules Improvements
-
-###### Common Changes
+##### Common Changes in Messaging Modules
 
 - The `resource` functions are changed to `remote` functions in the new listener APIs. 
 - The `service` name is given as a string with the new Ballerina language changes.

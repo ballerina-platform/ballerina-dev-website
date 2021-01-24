@@ -1091,7 +1091,7 @@ The previous `system` module is now renamed to `os`. All the Operating System in
 
 ##### Runtime Module Improvements
 
-The methods below have been removed from the `runtime` module since these methods have moved to the `lang:runtime`.
+The methods below have been removed from the `runtime` module since these methods have moved to the `lang:runtime` lang library.
 
 - sleep
 - getCallStack

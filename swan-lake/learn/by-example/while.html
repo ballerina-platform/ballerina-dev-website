@@ -11,7 +11,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -27,7 +26,7 @@ redirect_from:
             <span class="c1">// The `break` statement can be used to break the loop.</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">value</span> <span class="p">=</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
         <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">age</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
@@ -92,6 +91,10 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/while/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=be57f170a3a33efcb16b4db9abc6021f&file=while.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -131,7 +134,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;int as ints;
 </code></pre></div>
 
                                 </td>
@@ -194,7 +196,7 @@ import ballerina/lang.&#39;int as ints;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            break;
         }
-        var value = ints:fromString(input);
+        var value = int:fromString(input);
         int age;
         if (value is int) {
             age = value;

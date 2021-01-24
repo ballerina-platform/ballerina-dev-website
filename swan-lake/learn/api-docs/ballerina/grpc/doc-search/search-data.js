@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "grpc",
-      "description": "This module provides support for the gRPC messaging protocol.",
-      "orgName": "ballerina",
-      "version": "0.7.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ClientBasicAuthHandler",
@@ -32,13 +25,6 @@ var searchData = {
     {
       "id": "ConnectionManager",
       "description": "",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.5"
-    },
-    {
-      "id": "ListenerFileUserStoreBasicAuthHandler",
-      "description": "Defines the file store Basic Auth handler for listener authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.7.5"
@@ -85,13 +71,6 @@ var searchData = {
     {
       "id": "CredentialsConfig",
       "description": "Represents credentials for Basic Auth authentication.",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.5"
-    },
-    {
-      "id": "FileUserStoreConfig",
-      "description": "Represents file user store configurations for Basic Auth authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.7.5"

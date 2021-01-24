@@ -11,8 +11,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">float</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
 
 <span class="c1">// The types `int`, `float`, `decimal`, `boolean`, `byte`, and `nil` are called simple basic types</span>
 <span class="c1">// because they are basic types with only simple values. Simple values are always immutable.</span>
@@ -23,7 +21,7 @@ redirect_from:
 
     <span class="c1">// The `ballerina/lang.int` module contains common functions that can be used</span>
     <span class="c1">// with `int` values.</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">i2</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="s">&quot;100&quot;</span><span class="p">);</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">i2</span> <span class="p">=</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">i2</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i2</span><span class="p">);</span>
     <span class="p">}</span>
@@ -33,9 +31,9 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
 
     <span class="c1">// The `ballerina/lang.float` module contains common functions that can be used with `float` values.</span>
-    <span class="kt">float</span> <span class="nx">f1</span> <span class="p">=</span> <span class="p">&#39;float:fromBitsInt(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="nx">f1</span> <span class="p">=</span> <span class="kt">float</span><span class="p">:</span><span class="nx">fromBitsInt</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
     <span class="kt">float</span> <span class="nx">f2</span> <span class="p">=</span> <span class="mf">22.0</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="nx">max</span> <span class="p">=</span> <span class="p">&#39;float:max(</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="nx">max</span> <span class="p">=</span> <span class="kt">float</span><span class="p">:</span><span class="nx">max</span><span class="p">(</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Max float: &quot;</span><span class="p">,</span> <span class="nx">max</span><span class="p">);</span>
 
     <span class="c1">// The `.isNaN()`, `.isInfinite()`, and `.isFinite()` langlib functions are supported by the `float` type.</span>
@@ -130,6 +128,10 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/values/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0e44df3e2feaaf0864646f78b4b2f2d0&file=values.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -185,8 +187,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;float;
-import ballerina/lang.&#39;int;
 </code></pre></div>
 
                                 </td>
@@ -238,7 +238,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int|error i2 = &#39;int:fromString(&quot;100&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error i2 = int:fromString(&quot;100&quot;);
     if (i2 is int) {
         io:println(i2);
     }
@@ -281,9 +281,9 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    float f1 = &#39;float:fromBitsInt(i);
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f1 = float:fromBitsInt(i);
     float f2 = 22.0;
-    float max = &#39;float:max(f1, f2);
+    float max = float:max(f1, f2);
     io:println(&quot;Max float: &quot;, max);
 </code></pre></div>
 

@@ -13,21 +13,21 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="c1">// `configurable` variables can be initialized with the `?` expression.</span>
-<span class="c1">// A value must be supplied for such variables in a `configuration.toml` file.</span>
+<span class="c1">// A value must be supplied for such variables in a `Config.toml` file.</span>
 <span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">hostName</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
 <span class="nx">configurable</span> <span class="kt">int</span> <span class="nx">port</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
 
 <span class="c1">// A `configurable` variable can be initialized with an expression that is not `?`.</span>
-<span class="c1">// The `configuration.toml` file does not have to specify a value for such a variable.</span>
-<span class="c1">// But if specified, the value in the `configuration.toml` file overrides the value</span>
+<span class="c1">// The `Config.toml` file does not have to specify a value for such a variable.</span>
+<span class="c1">// But if specified, the value in the `Config.toml` file overrides the value</span>
 <span class="c1">// specified as the initializer.</span>
 <span class="c1">// The values of the `enableRemote` and `maxPayload` variables here are</span>
-<span class="c1">// overridden by the values specified in the `configuration.toml` file.</span>
+<span class="c1">// overridden by the values specified in the `Config.toml` file.</span>
 <span class="nx">configurable</span> <span class="kt">boolean</span> <span class="nx">enableRemote</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="nx">configurable</span> <span class="kt">float</span> <span class="nx">maxPayload</span> <span class="p">=</span> <span class="mf">1.0</span><span class="p">;</span>
 
 <span class="c1">// The value `http` is used to initialize the `protocol` variable since a value is not</span>
-<span class="c1">// provided for it in the `configuration.toml` file.</span>
+<span class="c1">// provided for it in the `Config.toml` file.</span>
 <span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">protocol</span> <span class="p">=</span> <span class="s">&quot;http&quot;</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -52,11 +52,13 @@ redirect_from:
  be applied to a module-level variable declaration that contains an initializer.<br/></p>
 
 <p>The values for <code>configurable</code> variables can be provided in a file named
- <code>configuration.toml</code> located in the current directory.
- The configuration file must be in the TOML(v0.4) format.
+ <code>Config.toml</code>. The file location can be set through an environment variable with
+ the name <code>BALCONFIGFILE</code>. If an environment variable is not specified, it is located
+ in the current directory.</p>
+
+<p>The configuration file must be in the TOML(v0.4) format.
  Ballerina currently supports configurable variables of types <code>int</code>, <code>float</code>,
- <code>boolean</code> and <code>string</code>. Future versions will add support for <code>configurable</code> variables
- of any type that is a subtype of <code>anydata&amp;readonly</code>.</p>
+ <code>boolean</code>, <code>string</code>, <code>decimal</code> and the arrays of respective types.</p>
 </p>
 
                         </td>
@@ -94,6 +96,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/configurable/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=54086cf26e8e86fa651f20e9d848b2d2&file=configurable.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -152,7 +158,7 @@ configurable int port = ?;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p><code>configurable</code> variables can be initialized with the <code>?</code> expression.
- A value must be supplied for such variables in a <code>configuration.toml</code> file.</p>
+ A value must be supplied for such variables in a <code>Config.toml</code> file.</p>
 
                                         </div>
                                     </div>
@@ -173,11 +179,11 @@ configurable float maxPayload = 1.0;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>A <code>configurable</code> variable can be initialized with an expression that is not <code>?</code>.
- The <code>configuration.toml</code> file does not have to specify a value for such a variable.
- But if specified, the value in the <code>configuration.toml</code> file overrides the value
+ The <code>Config.toml</code> file does not have to specify a value for such a variable.
+ But if specified, the value in the <code>Config.toml</code> file overrides the value
  specified as the initializer.
  The values of the <code>enableRemote</code> and <code>maxPayload</code> variables here are
- overridden by the values specified in the <code>configuration.toml</code> file.</p>
+ overridden by the values specified in the <code>Config.toml</code> file.</p>
 
                                         </div>
                                     </div>
@@ -197,7 +203,7 @@ configurable float maxPayload = 1.0;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The value <code>http</code> is used to initialize the <code>protocol</code> variable since a value is not
- provided for it in the <code>configuration.toml</code> file.</p>
+ provided for it in the <code>Config.toml</code> file.</p>
 
                                         </div>
                                     </div>
@@ -251,7 +257,7 @@ configurable float maxPayload = 1.0;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a new TOML file with name `configuration.toml` in the
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a new TOML file with name `Config.toml` in the
 # same directory as the `.bal` file.
 </code></pre></div>
 
@@ -282,7 +288,7 @@ configurable float maxPayload = 1.0;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Then, navigate to the directory that contains the `.bal` and
-# `configuration.toml` files, and execute the `bal run` command below.
+# `Config.toml` files, and execute the `bal run` command below.
 </code></pre></div>
 
                                 </td>

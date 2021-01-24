@@ -1,136 +1,16 @@
 var searchData = {
   "modules": [
     {
-      "id": "auth",
-      "description": "This module provides the default authentication provider configurations, which can be extended to create new authentication providers and functions to interact with the \"auth:InvocationContext\".",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "awslambda",
-      "description": "This module offers the capabilities of creating AWS Lambda functions using Ballerina.",
-      "orgName": "ballerinax",
-      "version": "0.0.0"
-    },
-    {
-      "id": "azure_functions",
-      "description": "This module provides an annotation based Azure Functions extension implementation for Ballerina.",
-      "orgName": "ballerinax",
-      "version": "1.0.0"
-    },
-    {
-      "id": "cache",
-      "description": "This module provides APIs for handle caching in Ballerina.",
-      "orgName": "ballerina",
-      "version": "2.0.5"
-    },
-    {
-      "id": "config",
-      "description": "This module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "crypto",
-      "description": "This module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "docker",
-      "description": "This module offers an annotation based docker extension implementation for Ballerina.",
-      "orgName": "ballerina",
-      "version": "1.0.0"
-    },
-    {
-      "id": "email",
-      "description": "This module contains functions to perform email operations such as sending and reading emails using the SMTP, POP3, and IMAP4 protocols.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "encoding",
-      "description": "This module provides the necessary utilities, which are required to encode and decode content using different URL encoding mechanisms and algorithms.",
-      "orgName": "ballerina",
-      "version": "1.0.7"
-    },
-    {
-      "id": "file",
-      "description": "This module contains functions to perform file system based operations such as create, delete, rename the\nfile/directory, and retrieve metadata of the file.",
-      "orgName": "ballerina",
-      "version": "0.6.3"
-    },
-    {
-      "id": "ftp",
-      "description": "This module provides an FTP client and an FTP server listener implementation to facilitate an FTP connection to a remote location.",
-      "orgName": "ballerina",
-      "version": "1.0.4"
-    },
-    {
-      "id": "graphql",
-      "description": "This module provides an implementation for connecting and interacting with GraphQL endpoints.",
-      "orgName": "ballerina",
-      "version": "0.1.1"
-    },
-    {
-      "id": "grpc",
-      "description": "This module provides support for the gRPC messaging protocol.",
-      "orgName": "ballerina",
-      "version": "0.7.5"
-    },
-    {
-      "id": "http",
-      "description": "This module provides an implementation for connecting and interacting with HTTP and HTTP2 endpoints.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "io",
-      "description": "This module is designed to support input and output operations via channels in a canonical way, either in a blocking,\nor non-blocking manner.",
-      "orgName": "ballerina",
-      "version": "0.5.5"
-    },
-    {
-      "id": "jarrays",
+      "id": "java.arrays",
       "description": "This module provides APIs to create new Java array instances, get elements from arrays, set elements, etc.",
-      "orgName": "ballerina",
+      "orgName": "ballerinax",
       "version": "0.9.5"
     },
     {
-      "id": "java",
+      "id": "jballerina.java",
       "description": "This module provides the API for Java interoperability in Ballerina.",
       "orgName": "ballerina",
       "version": "0.9.0"
-    },
-    {
-      "id": "jdbc",
-      "description": "This module provides the functionality required to access and manipulate data stored in any type of relational database\nthat is accessible via Java Database Connectivity (JDBC).",
-      "orgName": "ballerina",
-      "version": "0.5.4"
-    },
-    {
-      "id": "jsonutils",
-      "description": "This module provides utility functions to manipulate the built-in \"json\" data type.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "jwt",
-      "description": "This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.",
-      "orgName": "ballerina",
-      "version": "1.0.7"
-    },
-    {
-      "id": "kafka",
-      "description": "This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.",
-      "orgName": "ballerinax",
-      "version": "2.0.4"
-    },
-    {
-      "id": "lang.annotations",
-      "description": "This module provides predefined annotations and default error type declaration.",
-      "orgName": "ballerina",
-      "version": "1.0.0"
     },
     {
       "id": "lang.array",
@@ -235,179 +115,22 @@ var searchData = {
       "version": "0.8.0"
     },
     {
-      "id": "log",
-      "description": "This module provides a basic API for logging.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "mime",
-      "description": "This module provides functions to encapsulate multiple body parts such as attachments into a single message.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "mysql",
-      "description": "This module provides the functionality required to access and manipulate data stored in a MySQL database.",
-      "orgName": "ballerinax",
-      "version": "0.6.4"
-    },
-    {
-      "id": "nats",
-      "description": "This module provides the capability to connect with NATS server and performs the\nbelow functionalities.",
-      "orgName": "ballerinax",
-      "version": "1.0.7"
-    },
-    {
-      "id": "oauth2",
-      "description": "This module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
       "id": "observe",
       "description": "This module provides apis for observing Ballerina services.",
       "orgName": "ballerina",
       "version": "0.9.0"
     },
     {
-      "id": "openapi",
-      "description": "This module provides the following code generation capabilities.",
-      "orgName": "ballerina",
-      "version": "2.0.3"
-    },
-    {
-      "id": "os",
-      "description": "This module provides functions to retrieve information about the operating system and the current users of the operating system.",
-      "orgName": "ballerina",
-      "version": "0.7.0"
-    },
-    {
-      "id": "rabbitmq",
-      "description": "This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1).",
-      "orgName": "ballerinax",
-      "version": "1.0.7"
-    },
-    {
-      "id": "random",
-      "description": "This module provides functions related to random number generation.",
-      "orgName": "ballerina",
-      "version": "0.9.0"
-    },
-    {
-      "id": "reflect",
-      "description": "This module provides utility methods for obtaining reflective information about the Ballerina runtime.",
-      "orgName": "ballerina",
-      "version": "0.5.5"
-    },
-    {
-      "id": "regex",
-      "description": "This module provides the following regex utility functions.",
-      "orgName": "ballerina",
-      "version": "0.6.0"
-    },
-    {
-      "id": "runtime",
-      "description": "This module provides functions to interact with the Ballerina runtime invocation context.",
-      "orgName": "ballerina",
-      "version": "0.5.5"
-    },
-    {
-      "id": "sql",
-      "description": "This module provides the common interface and functionality to interact with a database.",
-      "orgName": "ballerina",
-      "version": "0.5.4"
-    },
-    {
-      "id": "stan",
-      "description": "This module provides the capability to connect with NATS Streaming server and performs the\nbelow functionalities.",
-      "orgName": "ballerinax",
-      "version": "1.0.1"
-    },
-    {
-      "id": "stringutils",
-      "description": "This module provides utility functions to manipulate the built-in \"string\" data type.",
-      "orgName": "ballerina",
-      "version": "0.5.5"
-    },
-    {
-      "id": "task",
-      "description": "This module provides the functionality to configure and manage Task Listeners and Task Schedulers.",
-      "orgName": "ballerina",
-      "version": "1.1.5"
-    },
-    {
-      "id": "tcp",
-      "description": "This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented protocols.",
-      "orgName": "ballerina",
-      "version": "0.7.3"
-    },
-    {
       "id": "test",
       "description": "This module facilitates developers to write automation tests for ballerina code in a simple manner.",
       "orgName": "ballerina",
       "version": "0.0.0"
-    },
-    {
-      "id": "time",
-      "description": "This module provides implementations related to time, date, time zones, and durations.",
-      "orgName": "ballerina",
-      "version": "1.0.6"
-    },
-    {
-      "id": "udp",
-      "description": "This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for connectionless protocols.",
-      "orgName": "ballerina",
-      "version": "0.8.1"
-    },
-    {
-      "id": "uuid",
-      "description": "This module provides functions related to \"UUID\".",
-      "orgName": "ballerina",
-      "version": "0.9.1"
-    },
-    {
-      "id": "websocket",
-      "description": "This module provides an implementation for connecting and interacting with WebSocket endpoints.",
-      "orgName": "ballerina",
-      "version": "1.1.1"
-    },
-    {
-      "id": "websub",
-      "description": "This module contains an implementation of the W3C \"WebSub\" (https://www.",
-      "orgName": "ballerina",
-      "version": "1.1.0"
-    },
-    {
-      "id": "websubhub",
-      "description": "This module contains an implementation of the W3C \"WebSub\" (https://www.",
-      "orgName": "ballerina",
-      "version": "0.1.0"
-    },
-    {
-      "id": "xmlutils",
-      "description": "This module provides utility functions to manipulate the built-in \"xml\" data type.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    },
-    {
-      "id": "xslt",
-      "description": "This module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.",
-      "orgName": "ballerina",
-      "version": "1.0.6"
     }
   ],
   "classes": [
     {
       "id": "ClientBasicAuthProvider",
       "description": "Represents the client Basic Auth provider.",
-      "moduleId": "auth",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "ListenerFileUserStoreBasicAuthProvider",
-      "description": "Represents the configuration file based listener Basic Auth provider, which is an implementation of the\n`auth:ListenerBasicAuthProvider` object.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -567,13 +290,6 @@ var searchData = {
       "moduleVersion": "0.7.5"
     },
     {
-      "id": "ListenerFileUserStoreBasicAuthHandler",
-      "description": "Defines the file store Basic Auth handler for listener authentication.",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.5"
-    },
-    {
       "id": "ListenerJwtAuthHandler",
       "description": "Defines the JWT auth handler for listener authentication.",
       "moduleId": "grpc",
@@ -637,13 +353,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "ListenerFileUserStoreBasicAuthHandler",
-      "description": "Defines the file store Basic Auth handler for listener authentication.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "ListenerJwtAuthHandler",
       "description": "Defines the JWT auth handler for listener authentication.",
       "moduleId": "http",
@@ -694,301 +403,301 @@ var searchData = {
     },
     {
       "id": "StatusAccepted",
-      "description": "",
+      "description": "Represents the status code of `STATUS_ACCEPTED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusBadGateway",
-      "description": "",
+      "description": "Represents the status code of `STATUS_BAD_GATEWAY`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusBadRequest",
-      "description": "",
+      "description": "Represents the status code of `STATUS_BAD_REQUEST`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusConflict",
-      "description": "",
+      "description": "Represents the status code of `STATUS_CONFLICT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusContinue",
-      "description": "",
+      "description": "Represents the status code of `STATUS_CONTINUE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusCreated",
-      "description": "",
+      "description": "Represents the status code of `STATUS_CREATED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusExpectationFailed",
-      "description": "",
+      "description": "Represents the status code of `STATUS_EXPECTATION_FAILED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusForbidden",
-      "description": "",
+      "description": "Represents the status code of `STATUS_FORBIDDEN`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusFound",
-      "description": "",
+      "description": "Represents the status code of `STATUS_FOUND`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusGatewayTimeout",
-      "description": "",
+      "description": "Represents the status code of `STATUS_GATEWAY_TIMEOUT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusGone",
-      "description": "",
+      "description": "Represents the status code of `STATUS_GONE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusHttpVersionNotSupported",
-      "description": "",
+      "description": "Represents the status code of `STATUS_HTTP_VERSION_NOT_SUPPORTED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusInternalServerError",
-      "description": "",
+      "description": "Represents the status code of `STATUS_INTERNAL_SERVER_ERROR`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusLengthRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_LENGTH_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusMethodNotAllowed",
-      "description": "",
+      "description": "Represents the status code of `STATUS_METHOD_NOT_ALLOWED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusMovedPermanently",
-      "description": "",
+      "description": "Represents the status code of `STATUS_MOVED_PERMANENTLY`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusMultipleChoices",
-      "description": "",
+      "description": "Represents the status code of `STATUS_MULTIPLE_CHOICES`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNoContent",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NO_CONTENT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNonAuthoritativeInformation",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NON_AUTHORITATIVE_INFORMATION`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotAcceptable",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_ACCEPTABLE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotFound",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_FOUND`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotImplemented",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_IMPLEMENTED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusNotModified",
-      "description": "",
+      "description": "Represents the status code of `STATUS_NOT_MODIFIED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusOK",
-      "description": "",
+      "description": "Represents the status code of `STATUS_OK`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPartialContent",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PARTIAL_CONTENT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPayloadTooLarge",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PAYLOAD_TOO_LARGE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPaymentRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PAYMENT_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPermanentRedirect",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PERMANENT_REDIRECT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusPreconditionFailed",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PRECONDITION_FAILED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusProxyAuthenticationRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_PROXY_AUTHENTICATION_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusRangeNotSatisfiable",
-      "description": "",
+      "description": "Represents the status code of `STATUS_RANGE_NOT_SATISFIABLE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusRequestHeaderFieldsTooLarge",
-      "description": "",
+      "description": "Represents the status code of `STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusRequestTimeout",
-      "description": "",
+      "description": "Represents the status code of `STATUS_REQUEST_TIMEOUT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusResetContent",
-      "description": "",
+      "description": "Represents the status code of `STATUS_RESET_CONTENT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusSeeOther",
-      "description": "",
+      "description": "Represents the status code of `STATUS_SEE_OTHER`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusServiceUnavailable",
-      "description": "",
+      "description": "Represents the status code of `STATUS_SERVICE_UNAVAILABLE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusSwitchingProtocols",
-      "description": "",
+      "description": "Represents the status code of `STATUS_SWITCHING_PROTOCOLS`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusTemporaryRedirect",
-      "description": "",
+      "description": "Represents the status code of `STATUS_TEMPORARY_REDIRECT`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUnauthorized",
-      "description": "",
+      "description": "Represents the status code of `STATUS_UNAUTHORIZED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUnsupportedMediaType",
-      "description": "",
+      "description": "Represents the status code of `STATUS_UNSUPPORTED_MEDIA_TYPE`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUpgradeRequired",
-      "description": "",
+      "description": "Represents the status code of `STATUS_UPGRADE_REQUIRED`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUriTooLong",
-      "description": "",
+      "description": "Represents the status code of `STATUS_URI_TOO_LONG`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "StatusUseProxy",
-      "description": "",
+      "description": "Represents the status code of `STATUS_USE_PROXY`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1094,13 +803,13 @@ var searchData = {
     {
       "id": "StackFrameImpl",
       "description": "Implementation for the `runtime.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "ClientSelfSignedJwtAuthProvider",
-      "description": "Represents the client JWT Auth provider, which is used to authenticate with an external endpoint by generating\na self signed JWT.",
+      "description": "Represents the client JWT Auth provider, which is used to authenticate with an external endpoint by issuing a\nself-signed JWT.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -1149,7 +858,7 @@ var searchData = {
     },
     {
       "id": "ClientOAuth2Provider",
-      "description": "Represents the client OAuth2 provider, which generates OAtuh2 tokens.",
+      "description": "Represents the client OAuth2 provider, which generates OAuth2 tokens.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -1638,11 +1347,11 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "IntentVerificationRequest",
-      "description": " representing an intent verification request received.",
-      "moduleId": "websub",
+      "id": "DynamicListener",
+      "description": "",
+      "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
+      "moduleVersion": "1.1.1"
     },
     {
       "id": "Notification",
@@ -1652,15 +1361,22 @@ var searchData = {
       "moduleVersion": "1.1.0"
     },
     {
+      "id": "StatusOK",
+      "description": "Response status OK\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
       "id": "StatusPermanentRedirect",
-      "description": "",
+      "description": "Response status Permanent Redirect\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "StatusTemporaryRedirect",
-      "description": "",
+      "description": "Response status Temporary Redirect\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
@@ -1675,13 +1391,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "__register",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
       "id": "__process",
       "description": "",
       "moduleId": "awslambda",
@@ -1689,18 +1398,11 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "getMetadata",
-      "description": "INTERNAL usage - extracts the metadata.",
-      "moduleId": "azure_functions",
+      "id": "__register",
+      "description": "",
+      "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "createContext",
-      "description": "INTERNAL usage - creates function context.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "0.0.0"
     },
     {
       "id": "__register",
@@ -1710,162 +1412,8 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "setHTTPOutput",
-      "description": "INTERNAL usage - Sets the HTTP output.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "setStringOutput",
-      "description": "INTERNAL usage - Sets the string output.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "setBlobOutput",
-      "description": "INTERNAL usage - Sets the Blob output.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "setTwilioSmsOutput",
-      "description": "INTERNAL usage - Sets the Twilio output.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "setPureHTTPOutput",
-      "description": "INTERNAL usage - Sets the pure HTTP output.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "setPureStringOutput",
-      "description": "INTERNAL usage - Sets the pure string output.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "setPureJsonOutput",
-      "description": "INTERNAL usage - Sets the pure JSON output.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getHTTPRequestFromParams",
-      "description": "INTERNAL usage - Returns the HTTP request data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getStringFromHTTPReq",
-      "description": "INTERNAL usage - Returns the string payload from the HTTP request.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getJsonFromMetadata",
-      "description": "INTERNAL usage - Returns a json value from metadata.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getStringFromMetadata",
-      "description": "INTERNAL usage - Returns a string value from metadata.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getJsonFromHTTPReq",
-      "description": "INTERNAL usage - Returns the JSON payload from the HTTP request.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getBinaryFromHTTPReq",
-      "description": "INTERNAL usage - Returns the binary payload from the HTTP request.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getStringFromInputData",
-      "description": "INTERNAL usage - Returns the string value from input data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getOptionalStringFromInputData",
-      "description": "INTERNAL usage - Returns the optional string value from input data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getBytesFromInputData",
-      "description": "INTERNAL usage - Returns the binary value from input data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getOptionalBytesFromInputData",
-      "description": "INTERNAL usage - Returns the optional binary value from input data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getStringConvertedBytesFromInputData",
-      "description": "INTERNAL usage - Returns the string value converted from input binary data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getOptionalStringConvertedBytesFromInputData",
-      "description": "INTERNAL usage - Returns the optional string value converted from input binary data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getBodyFromHTTPInputData",
-      "description": "INTERNAL usage - Returns the HTTP body value from input data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getHTTPRequestFromInputData",
-      "description": "INTERNAL usage - Populates the HTTP request structure from an input data entry.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getJsonFromInputData",
-      "description": "INTERNAL usage - Returns the JSON value from input data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "getJsonFromInputDataDoubleEscaped",
-      "description": "INTERNAL usage - Returns the JSON value from input data - double escape.",
+      "id": "createContext",
+      "description": "INTERNAL usage - creates function context.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -1885,6 +1433,76 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
+      "id": "getBinaryFromHTTPReq",
+      "description": "INTERNAL usage - Returns the binary payload from the HTTP request.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getBodyFromHTTPInputData",
+      "description": "INTERNAL usage - Returns the HTTP body value from input data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getBytesFromInputData",
+      "description": "INTERNAL usage - Returns the binary value from input data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getHTTPRequestFromInputData",
+      "description": "INTERNAL usage - Populates the HTTP request structure from an input data entry.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getHTTPRequestFromParams",
+      "description": "INTERNAL usage - Returns the HTTP request data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getJsonFromHTTPReq",
+      "description": "INTERNAL usage - Returns the JSON payload from the HTTP request.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getJsonFromInputData",
+      "description": "INTERNAL usage - Returns the JSON value from input data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getJsonFromInputDataDoubleEscaped",
+      "description": "INTERNAL usage - Returns the JSON value from input data - double escape.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getJsonFromMetadata",
+      "description": "INTERNAL usage - Returns a json value from metadata.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getMetadata",
+      "description": "INTERNAL usage - extracts the metadata.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
       "id": "getOptionalBallerinaValueFromInputDataDoubleEscape",
       "description": "INTERNAL usage - Returns the optional converted Ballerina value from input data - double escape.",
       "moduleId": "azure_functions",
@@ -1892,22 +1510,50 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "setStringReturn",
-      "description": "INTERNAL usage - Sets the string return value.",
+      "id": "getOptionalBytesFromInputData",
+      "description": "INTERNAL usage - Returns the optional binary value from input data.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "setJsonReturn",
-      "description": "INTERNAL usage - Sets the JSON return value.",
+      "id": "getOptionalStringConvertedBytesFromInputData",
+      "description": "INTERNAL usage - Returns the optional string value converted from input binary data.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "setCosmosDBJsonReturn",
-      "description": "INTERNAL usage - Sets the CosmosDS JSON return value.",
+      "id": "getOptionalStringFromInputData",
+      "description": "INTERNAL usage - Returns the optional string value from input data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getStringConvertedBytesFromInputData",
+      "description": "INTERNAL usage - Returns the string value converted from input binary data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getStringFromHTTPReq",
+      "description": "INTERNAL usage - Returns the string payload from the HTTP request.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getStringFromInputData",
+      "description": "INTERNAL usage - Returns the string value from input data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "getStringFromMetadata",
+      "description": "INTERNAL usage - Returns a string value from metadata.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -1920,8 +1566,29 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
+      "id": "setBlobOutput",
+      "description": "INTERNAL usage - Sets the Blob output.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
       "id": "setCosmosDBBallerinaValueAsJsonReturn",
       "description": "INTERNAL usage - Converts a CosmosDS Ballerina value to a JSON and set the return value.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "setCosmosDBJsonReturn",
+      "description": "INTERNAL usage - Sets the CosmosDS JSON return value.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "setHTTPOutput",
+      "description": "INTERNAL usage - Sets the HTTP output.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -1934,60 +1601,53 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "contains",
-      "description": "Checks whether the given key is in the configuration registry.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "setJsonReturn",
+      "description": "INTERNAL usage - Sets the JSON return value.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
     },
     {
-      "id": "getAsArray",
-      "description": "Retrieves the specified configuration value as an array.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "setPureHTTPOutput",
+      "description": "INTERNAL usage - Sets the pure HTTP output.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
     },
     {
-      "id": "getAsBoolean",
-      "description": "Retrieves the specified configuration value as a boolean.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "setPureJsonOutput",
+      "description": "INTERNAL usage - Sets the pure JSON output.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
     },
     {
-      "id": "getAsFloat",
-      "description": "Retrieves the specified configuration value as a float.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "setPureStringOutput",
+      "description": "INTERNAL usage - Sets the pure string output.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
     },
     {
-      "id": "getAsInt",
-      "description": "Retrieves the specified configuration value as an int.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "setStringOutput",
+      "description": "INTERNAL usage - Sets the string output.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
     },
     {
-      "id": "getAsMap",
-      "description": "Retrieves the specified configuration value as a map.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "setStringReturn",
+      "description": "INTERNAL usage - Sets the string return value.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
     },
     {
-      "id": "getAsString",
-      "description": "Retrieves the specified configuration value as a string.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "setConfig",
-      "description": "Sets the specified key/value pair as a configuration.",
-      "moduleId": "config",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "setTwilioSmsOutput",
+      "description": "INTERNAL usage - Sets the Twilio output.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
     },
     {
       "id": "buildRsaPublicKey",
@@ -2389,15 +2049,8 @@ var searchData = {
       "moduleVersion": "0.7.5"
     },
     {
-      "id": "addCookies",
-      "description": "Adds cookies to the custom header.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "authenticateResource",
-      "description": "",
+      "description": "Uses for declarative auth design, where the authentication/authorization decision is taken\nby reading the auth annotations provided in service/resource and the `Authorization` header of request.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -2622,91 +2275,91 @@ var searchData = {
     {
       "id": "fromHandle",
       "description": "Returns a Ballerina array for a handle that holds a Java array.",
-      "moduleId": "jarrays",
-      "moduleOrgName": "ballerina",
+      "moduleId": "java.arrays",
+      "moduleOrgName": "ballerinax",
       "moduleVersion": "0.9.5"
     },
     {
       "id": "get",
       "description": "Returns a `handle`, which refers to the element at the specified index in the given Java array.",
-      "moduleId": "jarrays",
-      "moduleOrgName": "ballerina",
+      "moduleId": "java.arrays",
+      "moduleOrgName": "ballerinax",
       "moduleVersion": "0.9.5"
     },
     {
       "id": "getLength",
       "description": "Returns the length of the given Java array.",
-      "moduleId": "jarrays",
-      "moduleOrgName": "ballerina",
+      "moduleId": "java.arrays",
+      "moduleOrgName": "ballerinax",
       "moduleVersion": "0.9.5"
     },
     {
       "id": "newInstance",
       "description": "Returns a new Java array instance with the specified element type and dimensions.",
-      "moduleId": "jarrays",
-      "moduleOrgName": "ballerina",
+      "moduleId": "java.arrays",
+      "moduleOrgName": "ballerinax",
       "moduleVersion": "0.9.5"
     },
     {
       "id": "set",
       "description": "Replaces the indexed element at the specified index in the given Java array with the specified element.",
-      "moduleId": "jarrays",
-      "moduleOrgName": "ballerina",
+      "moduleId": "java.arrays",
+      "moduleOrgName": "ballerinax",
       "moduleVersion": "0.9.5"
     },
     {
       "id": "toHandle",
       "description": "Returns a handle value representation for a Ballerina array.",
-      "moduleId": "jarrays",
-      "moduleOrgName": "ballerina",
+      "moduleId": "java.arrays",
+      "moduleOrgName": "ballerinax",
       "moduleVersion": "0.9.5"
     },
     {
       "id": "cast",
       "description": "Returns an `JObject|error`, which is obtained after casting the provided `JObject` instance\nto the given `JObject` type depending on assignability.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "createNull",
       "description": "Returns a `handle`, which refers to Java null.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "fromString",
       "description": "Returns a `handle`, which refers to the Java string representation of the Ballerina `string`.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "getClass",
       "description": "Returns a `handle`, which refers to the Java Class object associated with the class or interface with the given\nstring name.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "isNull",
       "description": "Returns `true` if this handle refers to Java null.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "jObjToString",
       "description": "Returns the string representation of a Java object stored in a handle reference.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "toString",
       "description": "Returns a Ballerina `string` representation of the Java object referred by the `handle`.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
@@ -2733,129 +2386,17 @@ var searchData = {
     },
     {
       "id": "issue",
-      "description": "Issues a JWT based on the provided header and payload.",
+      "description": "Issues a JWT based on the provided configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "validate",
-      "description": "Validates the provided JWT against the provided configurations.",
+      "description": "Validates the provided JWT, against the provided configurations.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
-    },
-    {
-      "id": "construct",
-      "description": "Takes in an iterator object and returns a new stream out of it.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "createIntRange",
-      "description": "The `createIntRange` function creates a `IntRange` object and returns it.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getAttribute",
-      "description": "Return attribute matching expanded attribute name\n\n",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getConfigurableValue",
-      "description": "Get the value of the configurable variable\n\n",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getElementNameNilLifting",
-      "description": "Return name of the element if `x` is a element or nil if element name is not set, else error.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getElements",
-      "description": "Get elements matching at least one of `elemNames`\n\n",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getElementType",
-      "description": "Takes a typedesc of an array or stream and returns the typedesc of the element or constraint type.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getFilteredChildrenFlat",
-      "description": "Get childElements matching `elemNames` and childIndex for each children sequence.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getFilterFunc",
-      "description": "Change the given filter function\u0027s parameter to any|error and returns the same function.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getIteratorObj",
-      "description": "Takes in a stream and returns the iterator object of that stream.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getMapFunc",
-      "description": "Change the given map function\u0027s parameter to any|error and returns the same function.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "getReturnType",
-      "description": "Get the return type of a given function\n\n",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "hasConfigurableValue",
-      "description": "Check whether a given key has a configuard value\n\n",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "invokeAsExternal",
-      "description": "Invoke a non-isolated function as an external function (workaround for isolated invocations).",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "selectDescendants",
-      "description": "Searches in children recursively for elements matching the qualified name and returns a sequence containing them\nall.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "setNarrowType",
-      "description": "Sets the narrowed type of the `value`.",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
     },
     {
       "id": "\u0027map",
@@ -4454,76 +3995,6 @@ var searchData = {
       "moduleVersion": "0.5.4"
     },
     {
-      "id": "contains",
-      "description": "Checks whether the given string contains a particular substring.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "equalsIgnoreCase",
-      "description": "Checks if two strings are equal ignoring the case of the strings.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "hashCode",
-      "description": "Returns a hash code for a given string.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "lastIndexOf",
-      "description": "Returns the last index of the provided substring within a string.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "matches",
-      "description": "Checks whether the given string matches the provided regex.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "replace",
-      "description": "Replaces each occurrence of the provided `substring` inside the provided\n`originalString` with the specified `replacement` string.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "replaceAll",
-      "description": "Replaces each occurrence of the substrings, which matches the provided\nregular expression from the given original string value with the\nprovided replacement string.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "replaceFirst",
-      "description": "Replaces the first substring that matches the given regular expression with\nthe provided `replacement` string.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "split",
-      "description": "Returns an array of strings by splitting a string using the provided\ndelimiter.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
-      "id": "toBoolean",
-      "description": "Returns a boolean value of a given string.",
-      "moduleId": "stringutils",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
-    },
-    {
       "id": "assertEquals",
       "description": "Asserts whether the given values are equal.",
       "moduleId": "test",
@@ -4897,13 +4368,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "FileUserStoreConfig",
-      "description": "Represents the file user store configurations.",
-      "moduleId": "auth",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "LdapUserStoreConfig",
       "description": "Represents the configurations that are required for an LDAP user store.",
       "moduleId": "auth",
@@ -4925,77 +4389,7 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "S3Identity",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Bucket",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Object",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Element",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Record",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "S3Event",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "SQSRecord",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "SQSEvent",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
       "id": "APIGatewayProxyRequest",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "DynamoDBStreamRecord",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
-      "id": "DynamoDBRecord",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -5009,7 +4403,14 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESCommonHeaders",
+      "id": "DynamoDBRecord",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "DynamoDBStreamRecord",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -5023,14 +4424,42 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESMail",
+      "id": "S3Bucket",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESVerdict",
+      "id": "S3Element",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Event",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Identity",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Object",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "S3Record",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -5044,7 +4473,7 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESReceipt",
+      "id": "SESCommonHeaders",
       "description": "",
       "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
@@ -5058,13 +4487,6 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "SESRecord",
-      "description": "",
-      "moduleId": "awslambda",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.0.0"
-    },
-    {
       "id": "SESEvent",
       "description": "",
       "moduleId": "awslambda",
@@ -5072,22 +4494,50 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
-      "id": "HTTPTriggerConfiguration",
-      "description": "HTTPTrigger annotation configuration.",
-      "moduleId": "azure_functions",
+      "id": "SESMail",
+      "description": "",
+      "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "0.0.0"
     },
     {
-      "id": "QueueConfiguration",
-      "description": "Queue annotation configuration.",
-      "moduleId": "azure_functions",
+      "id": "SESReceipt",
+      "description": "",
+      "moduleId": "awslambda",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
+      "moduleVersion": "0.0.0"
     },
     {
-      "id": "TimerTriggerConfiguration",
-      "description": "TimerTrigger annotation configuration.",
+      "id": "SESRecord",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "SESVerdict",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "SQSEvent",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "SQSRecord",
+      "description": "",
+      "moduleId": "awslambda",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.0.0"
+    },
+    {
+      "id": "BindingNameConfiguration",
+      "description": "BindingName annotation configuration.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -5100,8 +4550,8 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "CosmosDBTriggerConfiguration",
-      "description": "CosmosDB trigger annotation configuration.",
+      "id": "BytesOutputBinding",
+      "description": "Byte array output binding data.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -5121,15 +4571,15 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "TwilioSmsConfiguration",
-      "description": "Twilio annotation configuration.",
+      "id": "CosmosDBTriggerConfiguration",
+      "description": "CosmosDB trigger annotation configuration.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "BindingNameConfiguration",
-      "description": "BindingName annotation configuration.",
+      "id": "HandlerParams",
+      "description": "INTERNAL stucture - the request handler parameter data.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -5142,27 +4592,6 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "StringOutputBinding",
-      "description": "String output binding data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "BytesOutputBinding",
-      "description": "Byte array output binding data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "TwilioSmsOutputBinding",
-      "description": "Twilion SMS output binding data.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "HTTPRequest",
       "description": "HTTP request binding data.",
       "moduleId": "azure_functions",
@@ -5170,8 +4599,43 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "HandlerParams",
-      "description": "INTERNAL stucture - the request handler parameter data.",
+      "id": "HTTPTriggerConfiguration",
+      "description": "HTTPTrigger annotation configuration.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "QueueConfiguration",
+      "description": "Queue annotation configuration.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "StringOutputBinding",
+      "description": "String output binding data.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "TimerTriggerConfiguration",
+      "description": "TimerTrigger annotation configuration.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "TwilioSmsConfiguration",
+      "description": "Twilio annotation configuration.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "TwilioSmsOutputBinding",
+      "description": "Twilion SMS output binding data.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -5541,13 +5005,6 @@ var searchData = {
       "moduleVersion": "0.7.5"
     },
     {
-      "id": "FileUserStoreConfig",
-      "description": "Represents file user store configurations for Basic Auth authentication.",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.5"
-    },
-    {
       "id": "JwtIssuerConfig",
       "description": "Represents JWT issuer configurations for JWT authentication.",
       "moduleId": "grpc",
@@ -5675,21 +5132,21 @@ var searchData = {
     },
     {
       "id": "Accepted",
-      "description": "",
+      "description": "The status code response record of `Accepted`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "BadGateway",
-      "description": "",
+      "description": "The status code response record of `BadGateway`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "BadRequest",
-      "description": "",
+      "description": "The status code response record of `BadRequest`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -5779,13 +5236,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "CommonWebSocketClientConfiguration",
-      "description": "Common client configurations for WebSocket clients.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "CompressionConfig",
       "description": "A record for providing configurations for content compression.",
       "moduleId": "http",
@@ -5794,14 +5244,14 @@ var searchData = {
     },
     {
       "id": "Conflict",
-      "description": "",
+      "description": "The status code response record of `Conflict`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Continue",
-      "description": "",
+      "description": "The status code response record of `Continue`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -5822,7 +5272,7 @@ var searchData = {
     },
     {
       "id": "Created",
-      "description": "",
+      "description": "The status code response record of `Created`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -5843,7 +5293,7 @@ var searchData = {
     },
     {
       "id": "ExpectationFailed",
-      "description": "",
+      "description": "The status code response record of `ExpectationFailed`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -5870,20 +5320,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "FileUserStoreConfig",
-      "description": "Represents file user store configurations for Basic Auth authentication.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "FileUserStoreConfigWithScopes",
-      "description": "",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "FollowRedirects",
       "description": "Provides configurations for controlling the endpoint\u0027s behaviour in response to HTTP redirect related responses.",
       "moduleId": "http",
@@ -5892,28 +5328,28 @@ var searchData = {
     },
     {
       "id": "Forbidden",
-      "description": "",
+      "description": "The status code response record of `Forbidden`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Found",
-      "description": "",
+      "description": "The status code response record of `Found`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "GatewayTimeout",
-      "description": "",
+      "description": "The status code response record of `GatewayTimeout`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Gone",
-      "description": "",
+      "description": "The status code response record of `Gone`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -5955,14 +5391,14 @@ var searchData = {
     },
     {
       "id": "HttpVersionNotSupported",
-      "description": "",
+      "description": "The status code response record of `HttpVersionNotSupported`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "InternalServerError",
-      "description": "",
+      "description": "The status code response record of `InternalServerError`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6004,7 +5440,7 @@ var searchData = {
     },
     {
       "id": "LengthRequired",
-      "description": "",
+      "description": "The status code response record of `LengthRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6060,21 +5496,21 @@ var searchData = {
     },
     {
       "id": "MethodNotAllowed",
-      "description": "",
+      "description": "The status code response record of `MethodNotAllowed`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "MovedPermanently",
-      "description": "",
+      "description": "The status code response record of `MovedPermanently`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "MultipleChoices",
-      "description": "",
+      "description": "The status code response record of `MultipleChoices`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6088,42 +5524,42 @@ var searchData = {
     },
     {
       "id": "NoContent",
-      "description": "",
+      "description": "The status code response record of `NoContent`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NonAuthoritativeInformation",
-      "description": "",
+      "description": "The status code response record of `NonAuthoritativeInformation`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotAcceptable",
-      "description": "",
+      "description": "The status code response record of `NotAcceptable`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotFound",
-      "description": "",
+      "description": "The status code response record of `NotFound`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotImplemented",
-      "description": "",
+      "description": "The status code response record of `NotImplemented`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "NotModified",
-      "description": "",
+      "description": "The status code response record of `NotModified`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6165,35 +5601,35 @@ var searchData = {
     },
     {
       "id": "Ok",
-      "description": "",
+      "description": "The status code response record of `Ok`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PartialContent",
-      "description": "",
+      "description": "The status code response record of `PartialContent`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PayloadTooLarge",
-      "description": "",
+      "description": "The status code response record of `PayloadTooLarge`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PaymentRequired",
-      "description": "",
+      "description": "The status code response record of `PaymentRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "PermanentRedirect",
-      "description": "",
+      "description": "The status code response record of `PermanentRedirect`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6207,7 +5643,7 @@ var searchData = {
     },
     {
       "id": "PreconditionFailed",
-      "description": "",
+      "description": "The status code response record of `PreconditionFailed`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6221,7 +5657,7 @@ var searchData = {
     },
     {
       "id": "ProxyAuthenticationRequired",
-      "description": "",
+      "description": "The status code response record of `ProxyAuthenticationRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6235,7 +5671,7 @@ var searchData = {
     },
     {
       "id": "RangeNotSatisfiable",
-      "description": "",
+      "description": "The status code response record of `RangeNotSatisfiable`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6249,7 +5685,7 @@ var searchData = {
     },
     {
       "id": "RequestHeaderFieldsTooLarge",
-      "description": "",
+      "description": "The status code response record of `RequestHeaderFieldsTooLarge`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6263,14 +5699,14 @@ var searchData = {
     },
     {
       "id": "RequestTimeout",
-      "description": "",
+      "description": "The status code response record of `RequestTimeout`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "ResetContent",
-      "description": "",
+      "description": "The status code response record of `ResetContent`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6305,21 +5741,21 @@ var searchData = {
     },
     {
       "id": "SeeOther",
-      "description": "",
+      "description": "The status code response record of `SeeOther`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "ServiceUnavailable",
-      "description": "",
+      "description": "The status code response record of `ServiceUnavailable`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "SwitchingProtocols",
-      "description": "",
+      "description": "The status code response record of `SwitchingProtocols`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6333,42 +5769,42 @@ var searchData = {
     },
     {
       "id": "TemporaryRedirect",
-      "description": "",
+      "description": "The status code response record of `TemporaryRedirect`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "Unauthorized",
-      "description": "",
+      "description": "The status code response record of `Unauthorized`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UnsupportedMediaType",
-      "description": "",
+      "description": "The status code response record of `UnsupportedMediaType`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UpgradeRequired",
-      "description": "",
+      "description": "The status code response record of `UpgradeRequired`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UriTooLong",
-      "description": "",
+      "description": "The status code response record of `UriTooLong`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
     },
     {
       "id": "UseProxy",
-      "description": "",
+      "description": "The status code response record of `UseProxy`.",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -6381,81 +5817,46 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "WebSocketClientConfiguration",
-      "description": "Configurations for the WebSocket client.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketFailoverClientConfiguration",
-      "description": "Configurations for the WebSocket client endpoint.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketRetryConfig",
-      "description": "Retry configurations for WebSocket.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketUpgradeConfig",
-      "description": "Resource configuration to upgrade from HTTP to WebSocket.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WSServiceConfig",
-      "description": "Configurations for a WebSocket service.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "id": "Options",
+      "description": "Provides a set of configuration related to database.",
+      "moduleId": "java.jdbc",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.5.4"
     },
     {
       "id": "ArrayType",
       "description": "Represents a Java array type.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "ConstructorData",
       "description": "Describes a Java constructor.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "FieldData",
       "description": "Describes a Java field.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "MethodData",
       "description": "Describes a Java method.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "ObjectData",
       "description": "Describes a Java class that corresponds to a Ballerina object.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
-    },
-    {
-      "id": "Options",
-      "description": "Provides a set of configuration related to database.",
-      "moduleId": "jdbc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
     },
     {
       "id": "XmlOptions",
@@ -6617,13 +6018,6 @@ var searchData = {
       "moduleId": "kafka",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "2.0.4"
-    },
-    {
-      "id": "StrandData",
-      "description": "Describes Strand execution details for the runtime.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
     },
     {
       "id": "CallStackElement",
@@ -6826,7 +6220,7 @@ var searchData = {
       "description": "Service validation codee\n",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.3"
+      "moduleVersion": "2.0.4"
     },
     {
       "id": "BasicProperties",
@@ -7054,7 +6448,7 @@ var searchData = {
     },
     {
       "id": "ClientConfig",
-      "description": "Configurations for the connectionless udp client\n\n",
+      "description": "Configurations for the connectionless UDP client.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.1"
@@ -7158,6 +6552,20 @@ var searchData = {
       "moduleVersion": "1.1.1"
     },
     {
+      "id": "Acknowledgement",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "ContentDistributionMessage",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
       "id": "ExtensionConfig",
       "description": "The extension configuration to introduce custom subscriber services.",
       "moduleId": "websub",
@@ -7193,99 +6601,134 @@ var searchData = {
       "moduleVersion": "1.1.0"
     },
     {
-      "id": "Acknowledgement",
+      "id": "SubscriptionVerification",
       "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "SubscriptionVerificationSuccess",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "Acknowledgement",
+      "description": "Record to represent acknowledgement of content updated by the publisher\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "ClientConfiguration",
+      "description": "Record to represent client configuration for HubClient / PublisherClient\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "ContentDistributionMessage",
+      "description": "Record to represent a WebSub content delivery.",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "ContentDistributionSuccess",
+      "description": "Record to represent the successful WebSub content delivery\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "Subscription",
-      "description": "",
+      "description": "Record to represent subscription request body\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "SubscriptionAccepted",
-      "description": "",
+      "description": "Record to represent accepted subscription by the `hub`\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "SubscriptionPermanentRedirect",
-      "description": "",
+      "description": "Record to represent permanent subscription redirects\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "SubscriptionTemporaryRedirect",
-      "description": "",
+      "description": "Record to represent temporary subscription redirects\n\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "TopicDeregistration",
+      "description": "Record to represent Topic-Deregistration request body\n\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "TopicDeregistrationSuccess",
+      "description": "Record to represent Topic Deregistration Success\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "TopicRegistration",
-      "description": "",
+      "description": "Record to represent Topic-Registration request body\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "TopicRegistrationSuccess",
-      "description": "",
-      "moduleId": "websubhub",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "TopicUnregistration",
-      "description": "",
-      "moduleId": "websubhub",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "TopicUnregistrationSuccess",
-      "description": "",
+      "description": "Record to represent Topic Registration success\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "Unsubscription",
-      "description": "",
+      "description": "Record to represent the unsubscription request body\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "UnsubscriptionAccepted",
-      "description": "",
+      "description": "Record to represent unsubscription acceptance\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "UpdateMessage",
-      "description": "",
+      "description": "Record to represent content-update message\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "VerifiedSubscription",
-      "description": "",
+      "description": "Record to represent completed subscription\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "VerifiedUnsubscription",
-      "description": "",
+      "description": "Record to represent completed unsubscription\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
@@ -8589,28 +8032,28 @@ var searchData = {
     },
     {
       "id": "NONE",
-      "description": "Unsecured JWTs (no signing)\n",
+      "description": "Unsecured JWS (no signing).",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "RS256",
-      "description": "The `RSA-SHA256` algorithm\n",
+      "description": "The `RSA-SHA256` algorithm.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "RS384",
-      "description": "The `RSA-SHA384` algorithm\n",
+      "description": "The `RSA-SHA384` algorithm.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
     },
     {
       "id": "RS512",
-      "description": "The `RSA-SHA512` algorithm\n",
+      "description": "The `RSA-SHA512` algorithm.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -10242,13 +9685,6 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "WebSocketError",
-      "description": "The union of all the WebSocket related errors\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "Writing100ContinueResponseError",
       "description": "Represents an error that occurred while writing 100 continue response\n",
       "moduleId": "http",
@@ -10279,55 +9715,6 @@ var searchData = {
     {
       "id": "WritingOutboundResponseHeadersError",
       "description": "Represents a listener error that occurred while writing outbound response headers\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsConnectionClosureError",
-      "description": "Raised during failures in connection closure\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsConnectionError",
-      "description": "Raised during connection failures\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsGenericError",
-      "description": "Raised for errors not captured by the specific errors\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsInvalidContinuationFrameError",
-      "description": "Raised when an out of order/invalid continuation frame is received\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsInvalidHandshakeError",
-      "description": "Raised during the handshake when the WebSocket upgrade fails\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsPayloadTooBigError",
-      "description": "Raised when receiving a frame with a payload exceeding the maximum size\n",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WsProtocolError",
-      "description": "Raised when the other side breaks the protocol\n",
       "moduleId": "http",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -10384,7 +9771,7 @@ var searchData = {
     {
       "id": "JavaClassNotFoundError",
       "description": "Represents a `JavaError` with the message and the cause.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
@@ -10397,7 +9784,7 @@ var searchData = {
     },
     {
       "id": "JwtError",
-      "description": "Represents the JWT distinct error\n",
+      "description": "Represents the JWT distinct error.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -10424,18 +9811,18 @@ var searchData = {
       "moduleVersion": "2.0.4"
     },
     {
-      "id": "\u0027error",
-      "description": "Default error type.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "Retriable",
       "description": "Represents the Retriable error.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "ErrorType",
+      "description": "A type parameter that is a subtype of `error`.",
+      "moduleId": "lang.stream",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.4.0"
     },
     {
       "id": "Error",
@@ -10572,7 +9959,7 @@ var searchData = {
     },
     {
       "id": "Error",
-      "description": "Represents the OAuth2 error.",
+      "description": "Represents the OAuth2 error type with details.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -10858,6 +10245,13 @@ var searchData = {
       "moduleVersion": "1.1.1"
     },
     {
+      "id": "WsGenericClientError",
+      "description": "Raised when the client creation fails\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.1"
+    },
+    {
       "id": "WsGenericError",
       "description": "Raised for errors not captured by the specific errors\n",
       "moduleId": "websocket",
@@ -10900,6 +10294,20 @@ var searchData = {
       "moduleVersion": "1.1.0"
     },
     {
+      "id": "SubscriptionDeniedError",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "SubscriptionVerificationError",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
       "id": "WebSubError",
       "description": "Represents a webSub distinct error.",
       "moduleId": "websub",
@@ -10908,63 +10316,77 @@ var searchData = {
     },
     {
       "id": "BadSubscriptionError",
-      "description": "",
+      "description": "Error Type representing the errors in subscription request\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "BadUnsubscriptionError",
-      "description": "",
+      "description": "Error Type representing the errors in unsubscription request\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "ContentDeliveryError",
+      "description": "Error Type representing the internal errors in content distribution\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "InternalSubscriptionError",
-      "description": "",
+      "description": "Error Type representing the internal errors in subscription action\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "InternalUnsubscriptionError",
-      "description": "",
+      "description": "Error Type representing the internal errors in unsubscription action\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "SubscriptionDeletedError",
+      "description": "Error Type representing the subscriber ending the subscription \nby sending `HTTP 410` for content delivery response\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "SubscriptionDeniedError",
-      "description": "",
+      "description": "Error Type representing the validation errors in subscription request body\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
+      "id": "TopicDeregistrationError",
+      "description": "Error Type representing the errors in topic unregistration action\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "TopicRegistrationError",
-      "description": "",
-      "moduleId": "websubhub",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "TopicUnregistrationError",
-      "description": "",
+      "description": "Error Type representing the errors in topic registration action\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "UnsubscriptionDeniedError",
-      "description": "",
+      "description": "Error Type representing the validation errors in unsubscription request body\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
     },
     {
       "id": "UpdateMessageError",
-      "description": "",
+      "description": "Error Type representing the errors in content update request\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
@@ -11239,7 +10661,7 @@ var searchData = {
     },
     {
       "id": "SigningAlgorithm",
-      "description": "The key algorithms supported by crypto module.",
+      "description": "The cryptographic algorithms used to secure the JWS.",
       "moduleId": "jwt",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.7"
@@ -11301,41 +10723,6 @@ var searchData = {
       "moduleVersion": "2.0.4"
     },
     {
-      "id": "Type",
-      "description": "",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "Type1",
-      "description": "",
-      "moduleId": "lang.__internal",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.1.0"
-    },
-    {
-      "id": "\u0027anydata",
-      "description": "Denotes anydata type\n",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "\u0027json",
-      "description": "Denotes json type\n",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "Thread",
-      "description": "",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "OrderedType",
       "description": "Any ordered type is a subtype of this.",
       "moduleId": "lang.array",
@@ -11390,13 +10777,6 @@ var searchData = {
       "moduleId": "lang.query",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.0.1"
-    },
-    {
-      "id": "ErrorType",
-      "description": "A type parameter that is a subtype of `error`.",
-      "moduleId": "lang.stream",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.4.0"
     },
     {
       "id": "Type",
@@ -11470,7 +10850,7 @@ var searchData = {
     },
     {
       "id": "GrantConfig",
-      "description": "Represents the grant type configs supported for OAuth2.",
+      "description": "Represents the grant type configurations supported for OAuth2.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.5"
@@ -11758,31 +11138,10 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "WebSocketCaller",
-      "description": "Represents a WebSocket caller.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketClient",
-      "description": "Represents a WebSocket client endpoint.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
-      "id": "WebSocketFailoverClient",
-      "description": "A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "Client",
       "description": "Represents a JDBC client.",
-      "moduleId": "jdbc",
-      "moduleOrgName": "ballerina",
+      "moduleId": "java.jdbc",
+      "moduleOrgName": "ballerinax",
       "moduleVersion": "0.5.4"
     },
     {
@@ -11871,14 +11230,14 @@ var searchData = {
     },
     {
       "id": "Caller",
-      "description": "Represents caller object in udp service remote methods\n\n",
+      "description": "Represents caller object in UDP service remote methods.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.1"
     },
     {
       "id": "Client",
-      "description": "Initializes the UDP connectionless client based on the provided configurations\n",
+      "description": "Initializes the UDP connectionless client based on the provided configurations.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.1"
@@ -11905,7 +11264,7 @@ var searchData = {
       "moduleVersion": "1.1.1"
     },
     {
-      "id": "SyncClient",
+      "id": "Client",
       "description": "Represents a WebSocket synchronous client endpoint.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
@@ -11933,8 +11292,15 @@ var searchData = {
       "moduleVersion": "1.1.0"
     },
     {
+      "id": "HubClient",
+      "description": "HTTP Based client for WebSub content publishing to subscribers\n",
+      "moduleId": "websubhub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.1.0"
+    },
+    {
       "id": "PublisherClient",
-      "description": "The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.",
+      "description": "The HTTP based client for WebSub topic registration and deregistration, and notifying the hub of new updates.",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"
@@ -12049,6 +11415,55 @@ var searchData = {
       "moduleVersion": "0.0.0"
     },
     {
+      "id": "BindingName",
+      "description": "@azurefunctions:BindingName annotation.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "BlobInput",
+      "description": "@azurefunctions:BlobInput annotation.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "BlobOutput",
+      "description": "@azurefunctions:BlobOutput annotation.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "BlobTrigger",
+      "description": "@azurefunctions:BlobTrigger annotation.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "CosmosDBInput",
+      "description": "@azurefunctions:CosmosDBInput annotation.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "CosmosDBOutput",
+      "description": "@azurefunctions:CosmosDBOutput annotation.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "CosmosDBTrigger",
+      "description": "@azurefunctions:CosmosDBTrigger annotation.",
+      "moduleId": "azure_functions",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "1.0.0"
+    },
+    {
       "id": "Function",
       "description": "@azurefunctions:Function annotation.",
       "moduleId": "azure_functions",
@@ -12056,15 +11471,15 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "HTTPTrigger",
-      "description": "@azurefunctions:HTTPTrigger annotation.",
+      "id": "HTTPOutput",
+      "description": "@azurefunctions:HTTPOutput annotation\n",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "HTTPOutput",
-      "description": "@azurefunctions:HTTPOutput annotation\n",
+      "id": "HTTPTrigger",
+      "description": "@azurefunctions:HTTPTrigger annotation.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -12091,57 +11506,8 @@ var searchData = {
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "BlobTrigger",
-      "description": "@azurefunctions:BlobTrigger annotation.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "BlobInput",
-      "description": "@azurefunctions:BlobInput annotation.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "BlobOutput",
-      "description": "@azurefunctions:BlobOutput annotation.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "CosmosDBTrigger",
-      "description": "@azurefunctions:CosmosDBTrigger annotation.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "CosmosDBInput",
-      "description": "@azurefunctions:CosmosDBInput annotation.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "CosmosDBOutput",
-      "description": "@azurefunctions:CosmosDBOutput annotation.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "TwilioSmsOutput",
       "description": "@azurefunctions:TwilioSmsOutput annotation.",
-      "moduleId": "azure_functions",
-      "moduleOrgName": "ballerinax",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "BindingName",
-      "description": "@azurefunctions:BindingName annotation.",
       "moduleId": "azure_functions",
       "moduleOrgName": "ballerinax",
       "moduleVersion": "1.0.0"
@@ -12203,102 +11569,39 @@ var searchData = {
       "moduleVersion": "1.0.5"
     },
     {
-      "id": "WebSocketServiceConfig",
-      "description": "The annotation which is used to configure a WebSocket service.",
-      "moduleId": "http",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
-    },
-    {
       "id": "Binding",
       "description": "Describes the Java class representing a Ballerina binding.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "Constructor",
       "description": "Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as\n`external`.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "FieldGet",
       "description": "Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as\n`external`.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "FieldSet",
       "description": "Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as\n`external`.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
     {
       "id": "Method",
       "description": "Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as\n`external`.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
-    },
-    {
-      "id": "builtinSubtype",
-      "description": "Denotes annotated type is a builtin sub type.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "deprecated",
-      "description": "An annotation that marks a program element as deprecated.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "display",
-      "description": "Denotes general-purpose metadata to customize how Ballerina symbols are displayed in a UI environment.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "isolatedParam",
-      "description": "Denotes that the annotated parameter expects an `isolated` value when used in an `isolated` context.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "strand",
-      "description": "Denotes new Strand execution semantics.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "tainted",
-      "description": "Denote that the return value is tainted.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "typeParam",
-      "description": "Denotes annotated type is a parametric type.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "untainted",
-      "description": "Denote that the return value is untainted, parameter expect untainted value, type cast mark value untainted,\ndenote a listener as producing untainted arguments to service resource params.",
-      "moduleId": "lang.annotations",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
     },
     {
       "id": "ServiceConfig",
@@ -12319,7 +11622,7 @@ var searchData = {
       "description": "Annotation for additional OpenAPI information of a Ballerina service.",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.3"
+      "moduleVersion": "2.0.4"
     },
     {
       "id": "ServiceConfig",
@@ -12501,7 +11804,7 @@ var searchData = {
     {
       "id": "JObject",
       "description": "The Ballerina abstract object which is to be extended by Ballerina\nobjects representing Ballerina bindings for Java classes.",
-      "moduleId": "java",
+      "moduleId": "jballerina.java",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.9.0"
     },
@@ -12598,7 +11901,7 @@ var searchData = {
     },
     {
       "id": "ConnectionService",
-      "description": "Represent TCP Listener service type.",
+      "description": "Represent TCP Listener ConnectionService service type.",
       "moduleId": "tcp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.7.3"
@@ -12747,7 +12050,7 @@ var searchData = {
     },
     {
       "id": "MessageType",
-      "description": "",
+      "description": "Enum to differenciate the type of content-update message\n\n",
       "moduleId": "websubhub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.1.0"

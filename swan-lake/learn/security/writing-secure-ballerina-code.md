@@ -3,13 +3,15 @@ layout: ballerina-left-nav-pages-swanlake
 title: Writing Secure Ballerina Code
 description: Check out the different security features and controls available within the Ballerina programming language and follow the guidelines on writing secure Ballerina programs.
 keywords: ballerina, programming language, security, secure ballerina code
-permalink: /swan-lake/learn/writing-secure-ballerina-code/
+permalink: /swan-lake/learn/security/writing-secure-ballerina-code/
 active: writing-secure-ballerina-code
 intro: The sections below include information on the different security features and controls available within Ballerina. Also, they provide guidelines on writing secure Ballerina programs.
 redirect_from:
   - /swan-lake/learn/how-to-write-secure-ballerina-code
   - /swan-lake/learn/how-to-write-secure-ballerina-code/
+  - /swan-lake/learn/writing-secure-ballerina-code/
   - /swan-lake/learn/writing-secure-ballerina-code
+  - /swan-lake/learn/security/writing-secure-ballerina-code
 ---
 
 ## Securing by Design
@@ -47,13 +49,12 @@ public remote function query(@untainted string|sql:ParameterizedQuery sqlQuery, 
 
 The following example constructs an SQL query with a tainted argument:
 
-```ballerina
-import ballerina/java.jdbc;
-import ballerina/sql;
+Note: Taint analyzer does not emit errors by default. This can be enabled by adding the `--taint-check` flag to the `build` or `run` command
+ or by adding `taintCheck = true` in the `Ballerina.toml` file.
 
-type ResultStudent record {
-    string name;
-};
+```ballerina
+import ballerinax/java.jdbc
+import ballerina/sql;
 
 public function main(string... args) {
 
@@ -83,7 +84,8 @@ stream<record{}, error> resultStream = jdbcClient->query(`SELECT NAME FROM STUDE
 
 Command-line arguments passed to Ballerina programs and inputs received through service resources are considered as tainted. Additionally, return values of certain functions are marked with the `@tainted` annotation to denote that the resulting value should be considered as untrusted data.
 
-For example, the `query` remote method of the `java.jdbc` client highlighted above returns a value of type `@tainted stream <record {}, sql:Error>`. This means that any value read from a database is considered as untrusted.
+For example, the `query` remote method of the `java.jdbc` client highlighted above returns a value of type `@tainted
+ stream <record {}, sql:Error>`. This means that any value read from a database is considered as untrusted.
 
 When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type with the `@tainted` annotation. If not, the function author has to clean up the data before returning. For instance, if you want to read from the database and return a result, you either need to annotate that function's return type with `@tainted` or you have to clean up and make sure the returned data is not tainted.
 
@@ -95,8 +97,7 @@ There can be certain situations where a tainted value must be passed into a secu
 // Execute select query using the untrusted (tainted) student ID
 boolean isValid = isNumeric(studentId);
 if (isValid) {
-   var dt = testDB->select("SELECT NAME FROM STUDENT WHERE ID = " +
-                           <@untainted> studentId, ResultStudent);
+    var resultStream = jdbcClient->query("SELECT NAME FROM STUDENT WHERE ID = " + <@untainted>studentId);
 }
 // ...
 ```
@@ -111,52 +112,4 @@ function sanitizeSortColumn (string columnName) returns @untainted string {
    return sanitizedSortColumn;
 }
 // ...
-```
-
-## Securing Passwords and Secrets
-
-Ballerina provides an API to access configuration values from different sources. For more information, see [Config Ballerina by Example](/swan-lake/learn/by-example/config-api.html).
-
-Configuration values containing passwords or secrets should be encrypted. The Ballerina Config API will decrypt such configuration values when being accessed.
-
-Use the following command to encrypt a configuration value:
-
-```cmd
-$ bal encrypt
-```
-
-The `encrypt` command will prompt for the plain-text value to be encrypted and an encryption secret.
-
-```cmd
-$ bal encrypt
-Enter value: 
-
-Enter secret: 
-
-Re-enter secret to verify: 
-
-Add the following to the configuration file:
-<key>="@encrypted:{hcBLnR+b4iaGS9PEtCMSQOUXJQTQo+zknNxCkpZ0t7w=}"
-
-Or provide it as a command line argument:
---<key>=@encrypted:{hcBLnR+b4iaGS9PEtCMSQOUXJQTQo+zknNxCkpZ0t7w=}
-```
-
-Ballerina uses AES, CBC mode with PKCS#5 padding for encryption. The generated encrypted value should be used in place of the plain-text configuration value.
-
-For example, contents of a configuration file that includes a secret value should look as follows:
-
-```
-api.secret="@encrypted:{hcBLnR+b4iaGS9PEtCMSQOUXJQTQo+zknNxCkpZ0t7w=}"
-api.provider="not-a-security-sensitive-value"
-```
-
-When running a Ballerina program that uses encrypted configuration values, Ballerina will require the secret used during the encryption process to perform the decryption.
-
-Ballerina will first look for a file named `secret.txt`. If such a file exists, Ballerina will read the decryption secret from the file and immediately remove the file to make sure secret cannot be accessed afterwards. If the secret file is not present, the Ballerina program will prompt for the decryption secret.
-
-The file-based approach is useful in automated deployments. The file containing the decryption secret can be deployed along with the Ballerina program. The name and the path of the secret file can be configured using the `ballerina.config.secret` runtime parameter:
-
-```
-$ bal run --b7a.config.secret=path/to/secret/file securing_configuration_values.bal
 ```

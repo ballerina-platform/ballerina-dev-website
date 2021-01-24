@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "mime",
-      "description": "This module provides functions to encapsulate multiple body parts such as attachments into a single message.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ContentDisposition",

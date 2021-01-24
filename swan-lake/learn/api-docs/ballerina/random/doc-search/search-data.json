@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "random",
-      "description": "This module provides functions related to random number generation.",
-      "orgName": "ballerina",
-      "version": "0.9.0"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

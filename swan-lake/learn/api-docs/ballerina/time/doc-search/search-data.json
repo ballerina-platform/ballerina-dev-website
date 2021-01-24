@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "time",
-      "description": "This module provides implementations related to time, date, time zones, and durations.",
-      "orgName": "ballerina",
-      "version": "1.0.6"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

@@ -11,7 +11,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jballerina</span><span class="p">.</span><span class="nx">java</span><span class="p">;</span>
 
 <span class="c1">// Let&#39;s create a Ballerina function to load Java classes by linking with the `forName` method of</span>
 <span class="c1">// the `java.lang.Class`. It throws a checked exception `java.lang.ClassNotFoundException`.</span>
@@ -39,7 +39,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">classOrError</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="c1">// Here we are sending a null element to `offer` function. The `createNull` function in `ballerina/java`</span>
+    <span class="c1">// Here we are sending a null element to `offer` function. The `createNull` function in `ballerina/jballerina.java`</span>
     <span class="c1">// module creates a handle value that refers to Java null.</span>
     <span class="k">var</span> <span class="nx">arrayDeque</span> <span class="p">=</span> <span class="nx">newArrayDeque</span><span class="p">();</span>
     <span class="kt">boolean</span><span class="p">|</span><span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">createNull</span><span class="p">());</span>
@@ -65,7 +65,7 @@ redirect_from:
  should have the <code>error</code> type in its return signature.
  Let&rsquo;s look at how to handle Java exceptions in Ballerina.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/">Java module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/java/latest/java/">Java module</a>.</p>
 </p>
 
                         </td>
@@ -82,7 +82,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="byte-io.html">
                                         <span>NEXT ></span>
-                                        <p>Byte I/O</p>
+                                        <p>Read/Write Bytes</p>
                                     </a>
                                 </div>
                                 
@@ -103,6 +103,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/java-exceptions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=906a4377c689eca1cec80207b7884037&file=java_exceptions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -144,7 +148,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/java;
+import ballerina/jballerina.java;
 </code></pre></div>
 
                                 </td>
@@ -270,7 +274,7 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here we are sending a null element to <code>offer</code> function. The <code>createNull</code> function in <code>ballerina/java</code>
+                                            <p>Here we are sending a null element to <code>offer</code> function. The <code>createNull</code> function in <code>ballerina/jballerina.java</code>
  module creates a handle value that refers to Java null.</p>
 
                                         </div>

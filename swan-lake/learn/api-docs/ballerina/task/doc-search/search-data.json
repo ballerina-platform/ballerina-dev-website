@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "task",
-      "description": "This module provides the functionality to configure and manage Task Listeners and Task Schedulers.",
-      "orgName": "ballerina",
-      "version": "1.1.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "Scheduler",

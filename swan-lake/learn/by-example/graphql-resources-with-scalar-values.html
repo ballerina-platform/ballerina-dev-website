@@ -31,7 +31,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>GraphQL Resources with Scalar Values</h2>
                             <p><p>In Ballerina GraphQL, a service represents the GraphQL endpoint.
- Each resource function inside the service represents a resolver function for a field in the root Query type.
+ Each resource function inside the service represents a resolver function for a field in the root Query type.<br/><br/>
+ For more information on the underlying package, see the
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/graphql/latest/graphql/">GraphQL package</a>.<br/><br/>
  This example shows a simple GraphQL endpoint that has a single field in the root Query type, which returns a string.</p>
 </p>
 
@@ -70,6 +72,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-resources-with-scalar-values/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9e7a31401015435603fef9ed24ec1ff2&file=graphql_resources_with_scalar_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -182,7 +188,7 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
+# `.bal` file, and issue the `bal run` command below.
 # Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
 # log will be printed.
 bal run graphql_resources_with_scalar_values.bal

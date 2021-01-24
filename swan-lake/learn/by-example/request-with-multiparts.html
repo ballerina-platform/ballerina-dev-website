@@ -14,7 +14,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
 
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
 
 <span class="c1">//Binds the listener to the service.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">multiparts</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
@@ -22,7 +22,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">decode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span>
                                         <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// [Extracts bodyparts](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getBodyParts) from the request.</span>
+        <span class="c1">// [Extracts bodyparts](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getBodyParts) from the request.</span>
         <span class="k">var</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">bodyParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
             <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">part</span> <span class="nx">in</span> <span class="nx">bodyParts</span> <span class="p">{</span>
@@ -58,7 +58,7 @@ redirect_from:
         <span class="c1">// Create an array to hold all the body parts.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">jsonBodyPart</span><span class="p">,</span> <span class="nx">xmlFilePart</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// [Set the body parts](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#setBodyParts) to the request.</span>
+        <span class="c1">// [Set the body parts](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setBodyParts) to the request.</span>
         <span class="c1">// Here the content-type is set as multipart form data.</span>
         <span class="c1">// This also works with any other multipart media type.</span>
         <span class="c1">// eg:- `multipart/mixed`, `multipart/related` etc.</span>
@@ -85,12 +85,12 @@ redirect_from:
 
 <span class="c1">// The content logic that handles the body parts vary based on your requirement.</span>
 <span class="kd">function</span> <span class="nx">handleContent</span><span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">bodyPart</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// [Get the media type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/functions#getMediaType) from the body part retrieved from the request.</span>
+    <span class="c1">// [Get the media type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/functions#getMediaType) from the body part retrieved from the request.</span>
     <span class="k">var</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">getMediaType</span><span class="p">(</span><span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">());</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MediaType</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">baseType</span> <span class="p">=</span> <span class="nx">mediaType</span><span class="p">.</span><span class="nx">getBaseType</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span> <span class="o">||</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts `xml` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getXml) from the body part.</span>
+            <span class="c1">//[Extracts `xml` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getXml) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getXml</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -98,7 +98,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts `json` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getJson) from the body part.</span>
+            <span class="c1">//[Extracts `json` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getJson) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
@@ -106,7 +106,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts text data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getText) from the body part.</span>
+            <span class="c1">//[Extracts text data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getText) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
@@ -137,7 +137,7 @@ redirect_from:
  When you request multiparts from the HTTP inbound request, you get an array of body parts (an array of entities).
  You can loop through this array and handle the received body parts according to your requirement.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/">Mime module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/">Mime module</a>.</p>
 </p>
 
                         </td>
@@ -175,6 +175,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/request-with-multiparts/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4aa95f13101a2489c3baaed955acd724&file=request_with_multiparts.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -249,7 +253,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP = new (&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP = check new (&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -317,7 +321,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getBodyParts">Extracts bodyparts</a> from the request.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getBodyParts">Extracts bodyparts</a> from the request.</p>
 
                                         </div>
                                     </div>
@@ -451,7 +455,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#setBodyParts">Set the body parts</a> to the request.
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setBodyParts">Set the body parts</a> to the request.
  Here the content-type is set as multipart form data.
  This also works with any other multipart media type.
  eg:- <code>multipart/mixed</code>, <code>multipart/related</code> etc.
@@ -496,7 +500,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/functions#getMediaType">Get the media type</a> from the body part retrieved from the request.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/functions#getMediaType">Get the media type</a> from the body part retrieved from the request.</p>
 
                                         </div>
                                     </div>
@@ -521,7 +525,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getXml">Extracts <code>xml</code> data</a> from the body part.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getXml">Extracts <code>xml</code> data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -546,7 +550,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getJson">Extracts <code>json</code> data</a> from the body part.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getJson">Extracts <code>json</code> data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -573,7 +577,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getText">Extracts text data</a> from the body part.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getText">Extracts text data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -619,12 +623,12 @@ import ballerina/mime;
 # `.bal` file and use the `bal run` command below.
 bal run request_with_multiparts.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-2020-09-23 10:14:32,206 INFO  [] - {&quot;name&quot;:&quot;ballerina&quot;}
-2020-09-23 10:20:17,106 INFO  [] - {&quot;name&quot;:&quot;wso2&quot;}
-2020-09-23 10:20:17,248 INFO  [] - &lt;ballerinalang&gt;
+time = 2021-01-21 22:00:17,167 level = INFO  module = &quot;&quot; message = &quot;{&quot;name&quot;:&quot;ballerina&quot;}&quot;
+time = 2021-01-21 22:01:18,466 level = INFO  module = &quot;&quot; message = &quot;{&quot;name&quot;:&quot;wso2&quot;}&quot;
+time = 2021-01-21 22:01:18,682 level = INFO  module = &quot;&quot; message = &quot;&lt;ballerinalang&gt;
     &lt;version&gt;0.963&lt;/version&gt;
     &lt;test&gt;test xml file to be used as a file part&lt;/test&gt;
-&lt;/ballerinalang&gt;
+&lt;/ballerinalang&gt;&quot;
 ^C[ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 

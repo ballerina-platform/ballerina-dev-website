@@ -14,10 +14,10 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="c1">// Create an endpoint with port 8080 for the mock backend services.</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">backendEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">backendEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
 
 <span class="c1">// Define the load balance client endpoint to call the backend services.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">LoadBalanceClient</span> <span class="nx">lbBackendEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">LoadBalanceClient</span> <span class="nx">lbBackendEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="c1">// Define the set of HTTP clients that need to be load balanced.</span>
         <span class="nx">targets</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock1&quot;</span><span class="p">},</span>
@@ -107,7 +107,7 @@ redirect_from:
                             <p><p>An HTTP load balancing endpoint is used when the request load needs to be load balanced across a given
  set of target endpoints.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -145,6 +145,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-load-balancer/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3730c70aee8b1e73eedcd17954f61e27&file=http_load_balancer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -216,7 +220,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener backendEP = new (8080);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener backendEP = check new (8080);
 </code></pre></div>
 
                                 </td>
@@ -235,7 +239,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:LoadBalanceClient lbBackendEP = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>http:LoadBalanceClient lbBackendEP = check new ({
 </code></pre></div>
 
                                 </td>

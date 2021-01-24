@@ -1,18 +1,11 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "udp",
-      "description": "This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for connectionless protocols.",
-      "orgName": "ballerina",
-      "version": "0.8.1"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [
     {
       "id": "ClientConfig",
-      "description": "Configurations for the connectionless udp client\n\n",
+      "description": "Configurations for the connectionless UDP client.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.1"
@@ -67,14 +60,14 @@ var searchData = {
   "clients": [
     {
       "id": "Caller",
-      "description": "Represents caller object in udp service remote methods\n\n",
+      "description": "Represents caller object in UDP service remote methods.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.1"
     },
     {
       "id": "Client",
-      "description": "Initializes the UDP connectionless client based on the provided configurations\n",
+      "description": "Initializes the UDP connectionless client based on the provided configurations.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.1"

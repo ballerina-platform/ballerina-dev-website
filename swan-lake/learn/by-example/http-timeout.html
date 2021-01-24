@@ -12,9 +12,9 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="c1">// Timeout configuration.</span>
         <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">10000</span>
 
@@ -64,7 +64,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Delay the response by 15000 milliseconds to mimic the network level</span>
         <span class="c1">// delays.</span>
-        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">15000</span><span class="p">);</span>
+        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -84,7 +84,7 @@ redirect_from:
                             <h2>Timeout</h2>
                             <p><p>The Timeout is used to gracefully handle network timeouts, which occur when using the HTTP Client.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -99,9 +99,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websub-internal-hub-sample.html">
+                                    <a class="next" href="directory-listener.html">
                                         <span>NEXT ></span>
-                                        <p>Internal Hub Sample</p>
+                                        <p>Directory Listener</p>
                                     </a>
                                 </div>
                                 
@@ -122,6 +122,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-timeout/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2ef42e0026537a047276b13a2e411e72&file=http_timeout.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -174,7 +178,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 </code></pre></div>
 
                                 </td>
@@ -186,7 +190,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = check new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -350,7 +354,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(15000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(15);
 </code></pre></div>
 
                                 </td>
@@ -406,7 +410,7 @@ import ballerina/runtime;
 bal run http_timeout.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-2020-09-21 20:37:01,147 ERROR [] - Error sending response from mock service : error(&quot;Connection between remote client and host is closed&quot;)
+time = 2021-01-21 18:56:14,394 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
 </code></pre></div>
 
                                 </td>

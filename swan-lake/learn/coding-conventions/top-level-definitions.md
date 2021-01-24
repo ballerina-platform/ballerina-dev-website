@@ -71,7 +71,8 @@ import ballerina/http;
 **Example,**
 
 ```ballerina
-function func1() {}
+function func1() {
+}
 ```
  
 * If the function has an object attached to it, do not keep spaces around the Dot `.`. Also, keep a single space between the `function` keyword and the name of the object.
@@ -79,7 +80,8 @@ function func1() {}
 **Example,**
 
 ```ballerina
-function Person.getName() {}
+function Person.getName() {
+}
 ```
 
 * If the function needs to be split into new lines due to it exceeding the max line length,
@@ -137,12 +139,12 @@ service hello on new http:Listener(9090) {
 
 ```ballerina
 service hello on ep1, ep2 {
-    resource function sayHello(http:Caller caller, http:Request req) returns error? {
+    resource function sayHelloPath hello(http:Caller caller, http:Request req) returns error? {
         http:Response res = new;
         res.setPayload(self.getGreeting());
         _ = caller->respond(res);
     }
-        
+
     function getGreeting() returns string {
         return "Hello";
     }
@@ -163,8 +165,8 @@ service hello on ep1, ep2 {
 type Person object {
     // Object field definitions.
     public boolean isMarried = false;
-      int age;
-      string name;
+    int age;
+    string name;
   
     // Object init function.
     function __init(string name, int age = 0) {

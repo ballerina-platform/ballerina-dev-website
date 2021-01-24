@@ -11,7 +11,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
 
 <span class="c1">// Defines a custom record type to use in the timer.</span>
@@ -23,7 +23,7 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Initializes the timer scheduler using the interval value. The delay will</span>
     <span class="c1">// be equal to the interval if an initial delay is not provided.</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
         <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">});</span>
@@ -39,7 +39,7 @@ redirect_from:
     <span class="c1">// Starts the timer.</span>
     <span class="nx">check</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4500</span><span class="p">);</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">4.5</span><span class="p">);</span>
 
     <span class="c1">// Cancels the timer. This will stop the timer and all the services</span>
     <span class="c1">// attached to it.</span>
@@ -71,10 +71,10 @@ redirect_from:
  method and the listener can be started using the <code>start()</code> method.
  The service that is being attached must contain the <code>onTrigger()</code> resource function.
  Additionally, a user can pass a set of <code>any</code> values to the resource using
- the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/classes/Scheduler#attach"><code>attach()</code></a> method, which then can be used inside the <code>onTrigger()</code>
+ the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/classes/Scheduler#attach"><code>attach()</code></a> method, which then can be used inside the <code>onTrigger()</code>
  function. The Listener can be stopped by calling the <code>stop()</code> method.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/">Task module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/">Task module</a>.</p>
 </p>
 
                         </td>
@@ -112,6 +112,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-scheduler-timer/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b0315f677ae7a79847016ef5ec15299f&file=task_scheduler_timer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -165,7 +169,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/task;
 </code></pre></div>
 
@@ -212,7 +216,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler timer = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler timer = check new ({
         intervalInMillis: 1000,
         initialDelayInMillis: 0
     });
@@ -294,7 +298,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(4500);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(4.5);
 </code></pre></div>
 
                                 </td>

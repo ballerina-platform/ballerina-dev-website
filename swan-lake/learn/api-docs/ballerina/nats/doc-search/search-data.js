@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "nats",
-      "description": "This module provides the capability to connect with NATS server and performs the\nbelow functionalities.",
-      "orgName": "ballerinax",
-      "version": "1.0.7"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [

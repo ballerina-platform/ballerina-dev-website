@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "crypto",
-      "description": "This module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.",
-      "orgName": "ballerina",
-      "version": "1.0.5"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {

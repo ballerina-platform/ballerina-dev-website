@@ -73,7 +73,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">updateResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// An error should occur since `m2` is immutable.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on update: &quot;</span><span class="p">,</span>
-                   <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">updateResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+                   <span class="nx">updateResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
 
     <span class="c1">// Now call `.cloneReadOnly()` on the immutable value `m2`.</span>
@@ -164,6 +164,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/immutable-values/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=eadcd876aef4b2400a9b371ffdc9e422&file=immutable_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -515,7 +519,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Error occurred on update: &quot;,
-                   &lt;string&gt;updateResult.detail()[&quot;message&quot;]);
+                   updateResult.detail()[&quot;message&quot;]);
     }
 </code></pre></div>
 

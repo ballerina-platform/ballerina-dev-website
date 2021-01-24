@@ -1,13 +1,14 @@
 {
-  "modules": [
+  "modules": [],
+  "classes": [
     {
-      "id": "websocket",
-      "description": "This module provides an implementation for connecting and interacting with WebSocket endpoints.",
-      "orgName": "ballerina",
-      "version": "1.1.1"
+      "id": "DynamicListener",
+      "description": "",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.1"
     }
   ],
-  "classes": [],
   "functions": [],
   "records": [
     {
@@ -183,6 +184,13 @@
       "moduleVersion": "1.1.1"
     },
     {
+      "id": "WsGenericClientError",
+      "description": "Raised when the client creation fails\n",
+      "moduleId": "websocket",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.1"
+    },
+    {
       "id": "WsGenericError",
       "description": "Raised for errors not captured by the specific errors\n",
       "moduleId": "websocket",
@@ -243,7 +251,7 @@
       "moduleVersion": "1.1.1"
     },
     {
-      "id": "SyncClient",
+      "id": "Client",
       "description": "Represents a WebSocket synchronous client endpoint.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",

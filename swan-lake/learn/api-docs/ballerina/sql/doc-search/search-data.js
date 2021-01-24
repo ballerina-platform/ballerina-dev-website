@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "sql",
-      "description": "This module provides the common interface and functionality to interact with a database.",
-      "orgName": "ballerina",
-      "version": "0.5.4"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "ArrayOutParameter",

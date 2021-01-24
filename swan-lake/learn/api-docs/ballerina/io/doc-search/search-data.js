@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "io",
-      "description": "This module is designed to support input and output operations via channels in a canonical way, either in a blocking,\nor non-blocking manner.",
-      "orgName": "ballerina",
-      "version": "0.5.5"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
       "id": "BlockStream",

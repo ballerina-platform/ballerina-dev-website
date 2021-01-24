@@ -16,9 +16,10 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Creates an SMTP client with the connection parameters, host, username,</span>
     <span class="c1">// and password. The default port number `465` is used over SSL with these</span>
-    <span class="c1">// configurations.</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;smtp.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;sender@email.com&quot;</span>
-        <span class="p">,</span> <span class="s">&quot;pass123&quot;</span><span class="p">);</span>
+    <span class="c1">// configurations. `SmtpConfig` can be configured and passed to this</span>
+    <span class="c1">// client if the port or security is to be customized.</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;smtp.email.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;sender@email.com&quot;</span> <span class="p">,</span> <span class="s">&quot;pass123&quot;</span><span class="p">);</span>
 
     <span class="c1">// Define the email that is required to be sent.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span> <span class="nx">email</span> <span class="p">=</span> <span class="p">{</span>
@@ -45,13 +46,15 @@ redirect_from:
         <span class="nx">replyTo</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;replyTo1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;replyTo2@email.com&quot;</span><span class="p">]</span>
     <span class="p">};</span>
 
-    <span class="c1">// Send the email message with the client.</span>
+    <span class="c1">// Send the email message with the client. The `sendEmail` method can be used</span>
+    <span class="c1">// instead, if the email is required to be sent with mandatory and optional</span>
+    <span class="c1">// parameters instead of configuring an `email:Message` record.</span>
     <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">sendEmailMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
 
     <span class="c1">// Create the client with the connection parameters, host, username, and</span>
-    <span class="c1">// password. An error is received in a failure. The default port number</span>
+    <span class="c1">// password. An error is returned in a failure. The default port number</span>
     <span class="c1">// `995` is used over SSL with these configurations.</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
 
     <span class="c1">// Read the first unseen email received by the POP3 server. `()` is</span>
@@ -72,8 +75,8 @@ redirect_from:
     <span class="c1">// Create the client with the connection parameters, host, username, and</span>
     <span class="c1">// password. An error is received in a failure. The default port number</span>
     <span class="c1">// `993` is used over SSL with these configurations.</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
 
     <span class="c1">// Read the first unseen email received by the IMAP4 server. `()` is</span>
     <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
@@ -95,20 +98,19 @@ redirect_from:
 <span class="c1">// Create the listener with the connection parameters and the protocol-related</span>
 <span class="c1">// configuration. The polling interval specifies the time duration between each poll</span>
 <span class="c1">// performed by the listener in milliseconds.</span>
-<span class="nx">listener</span> <span class="nx">email</span><span class="p">:</span><span class="nx">PopListener</span> <span class="nx">emailListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="nx">listener</span> <span class="nx">email</span><span class="p">:</span><span class="nx">PopListener</span> <span class="nx">emailListener</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;pass456&quot;</span><span class="p">,</span>
     <span class="nx">pollingIntervalInMillis</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
-    <span class="nx">port</span><span class="p">:</span> <span class="mi">995</span><span class="p">,</span>
-    <span class="nx">enableSsl</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="nx">port</span><span class="p">:</span> <span class="mi">995</span>
 <span class="p">});</span>
 
 <span class="c1">// One or many services can listen to the email listener for the periodically-polled</span>
 <span class="c1">// emails.</span>
 <span class="kd">service</span> <span class="s">&quot;emailObserver&quot;</span> <span class="nx">on</span> <span class="nx">emailListener</span> <span class="p">{</span>
 
-    <span class="c1">// When an email is successfully received, the `onMessage` method is called.</span>
+    <span class="c1">// When an email is successfully received, the `onEmailMessage` method is called.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onEmailMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Message</span> <span class="nx">emailMessage</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;POP Listener received an email.&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailMessage</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
@@ -136,7 +138,7 @@ redirect_from:
  sending and receiving emails with default configurations over SSL using
  default ports.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/email/">Email module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/email/latest/email/">Email module</a>.</p>
 </p>
 
                         </td>
@@ -144,9 +146,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-client-with-oauth2.html">
+                                    <a class="prev" href="secured-client-with-oauth2-direct-token-type.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Client with OAuth2</p>
+                                        <p>Secured Client with OAuth2 Direct Token Type</p>
                                     </a>
                                 </div>
                                  
@@ -167,6 +169,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/send-and-receive-emails/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4cfa48a16ecbd8579a93d50bba457f2a&file=send_and_receive_emails.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -272,8 +278,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;, &quot;sender@email.com&quot;
-        , &quot;pass123&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:SmtpClient smtpClient = check new (&quot;smtp.email.com&quot;,
+        &quot;sender@email.com&quot; , &quot;pass123&quot;);
 </code></pre></div>
 
                                 </td>
@@ -283,7 +289,8 @@ import ballerina/io;
                                         <div>
                                             <p>Creates an SMTP client with the connection parameters, host, username,
  and password. The default port number <code>465</code> is used over SSL with these
- configurations.</p>
+ configurations. <code>SmtpConfig</code> can be configured and passed to this
+ client if the port or security is to be customized.</p>
 
                                         </div>
                                     </div>
@@ -445,7 +452,9 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send the email message with the client.</p>
+                                            <p>Send the email message with the client. The <code>sendEmail</code> method can be used
+ instead, if the email is required to be sent with mandatory and optional
+ parameters instead of configuring an <code>email:Message</code> record.</p>
 
                                         </div>
                                     </div>
@@ -456,7 +465,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:PopClient popClient = new (&quot;pop.email.com&quot;, &quot;reader@email.com&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:PopClient popClient = check new (&quot;pop.email.com&quot;, &quot;reader@email.com&quot;,
         &quot;pass456&quot;);
 </code></pre></div>
 
@@ -466,7 +475,7 @@ import ballerina/io;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Create the client with the connection parameters, host, username, and
- password. An error is received in a failure. The default port number
+ password. An error is returned in a failure. The default port number
  <code>995</code> is used over SSL with these configurations.</p>
 
                                         </div>
@@ -546,8 +555,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:ImapClient imapClient = new (&quot;imap.email.com&quot;, &quot;reader@email.com&quot;,
-        &quot;pass456&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:ImapClient imapClient = check new (&quot;imap.email.com&quot;,
+        &quot;reader@email.com&quot;, &quot;pass456&quot;);
 </code></pre></div>
 
                                 </td>
@@ -648,13 +657,12 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener email:PopListener emailListener = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>listener email:PopListener emailListener = check new ({
     host: &quot;pop.email.com&quot;,
     username: &quot;reader@email.com&quot;,
     password: &quot;pass456&quot;,
     pollingIntervalInMillis: 2000,
-    port: 995,
-    enableSsl: true
+    port: 995
 });
 </code></pre></div>
 
@@ -708,7 +716,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>When an email is successfully received, the <code>onMessage</code> method is called.</p>
+                                            <p>When an email is successfully received, the <code>onEmailMessage</code> method is called.</p>
 
                                         </div>
                                     </div>

@@ -1,12 +1,5 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "stan",
-      "description": "This module provides the capability to connect with NATS Streaming server and performs the\nbelow functionalities.",
-      "orgName": "ballerinax",
-      "version": "1.0.1"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [

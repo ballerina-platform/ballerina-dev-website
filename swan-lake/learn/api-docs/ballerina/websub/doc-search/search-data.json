@@ -1,20 +1,6 @@
 {
-  "modules": [
-    {
-      "id": "websub",
-      "description": "This module contains an implementation of the W3C \"WebSub\" (https://www.",
-      "orgName": "ballerina",
-      "version": "1.1.0"
-    }
-  ],
+  "modules": [],
   "classes": [
-    {
-      "id": "IntentVerificationRequest",
-      "description": " representing an intent verification request received.",
-      "moduleId": "websub",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0"
-    },
     {
       "id": "Notification",
       "description": "Represents the WebSub Content Delivery Request received.",
@@ -33,6 +19,20 @@
     }
   ],
   "records": [
+    {
+      "id": "Acknowledgement",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "ContentDistributionMessage",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
     {
       "id": "ExtensionConfig",
       "description": "The extension configuration to introduce custom subscriber services.",
@@ -64,6 +64,20 @@
     {
       "id": "SubscriptionChangeResponse",
       "description": "Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "SubscriptionVerification",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "SubscriptionVerificationSuccess",
+      "description": "",
       "moduleId": "websub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"
@@ -124,6 +138,20 @@
     {
       "id": "ListenerStartupError",
       "description": "Represents a listener startup error.",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "SubscriptionDeniedError",
+      "description": "",
+      "moduleId": "websub",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
+      "id": "SubscriptionVerificationError",
+      "description": "",
       "moduleId": "websub",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.1.0"

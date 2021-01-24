@@ -1,12 +1,5 @@
 {
-  "modules": [
-    {
-      "id": "ftp",
-      "description": "This module provides an FTP client and an FTP server listener implementation to facilitate an FTP connection to a remote location.",
-      "orgName": "ballerina",
-      "version": "1.0.4"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [

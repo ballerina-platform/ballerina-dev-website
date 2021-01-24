@@ -437,8 +437,7 @@ type DefaultCongifuration record {|
 DefaultCongifuration config = {
     id: 1000,
     active: true,
-    // Additional fields of type `decimal` 
-    // can be specified since the rest descriptor
+    // Additional fields of type `decimal` can be specified since the rest descriptor
     // is copied from `Congifuration`.
     "factor": 1.0,
     "index": 0.0

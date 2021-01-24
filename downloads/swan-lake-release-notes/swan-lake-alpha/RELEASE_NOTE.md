@@ -615,7 +615,7 @@ password = "<github-PAT>"
 
 ##### Ballerina Shell REPL [EXPERIMENTAL]
 
-Introduced REPL support for Ballerina, which can be accessed via the `bal shell` command. Shell runs a REPL instance of Ballerina to enable running snippets of code. An example shell session is shown below:
+Introduced Read-Evaluate-Print-Loop (REPL) support for Ballerina, which can be accessed via the `bal shell` command. Shell runs a REPL instance of Ballerina to enable running snippets of code. An example shell session is shown below:
 
 ```bash
 > bal shall

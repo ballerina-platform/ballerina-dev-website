@@ -556,7 +556,7 @@ runtime:StackFrame[] stackFrames = runtime:getStackTrace();
 
 ###### Introduction of the `Cloneable` Type
 
-A new `Cloneable` type has been introduced to the `ballerina/lang.value` library. This is a cyclic union type. This type represents the values on which `clone` and `cloneReadOnly` can be applied on.
+A new type named `Cloneable` has been introduced to the `ballerina/lang.value` library. This is a cyclic union type. This type represents the values on which `clone` and `cloneReadOnly` can be applied on.
 
 ```ballerina
 public type Cloneable readonly|xml|Cloneable[]|map<Cloneable>|table<map<Cloneable>>;

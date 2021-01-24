@@ -147,7 +147,7 @@ version = "1.0.5"
 
 ##### Support to Accept an Empty Ballerina TOML File
 
-A valid Ballerina package can now contain an empty `Ballerina.toml` file. This makes it easier to convert an `application/service` written in a standalone Ballerina file to a Ballerina package. 
+A valid Ballerina package can now contain an empty `Ballerina.toml` file. This makes it easier to convert an application/service written in a standalone Ballerina file to a Ballerina package. 
 
 #### Language
 

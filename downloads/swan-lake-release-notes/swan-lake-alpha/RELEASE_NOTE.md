@@ -1524,6 +1524,6 @@ taintCheck = true
 or else, by using the `--taint-check` flag in the Ballerina CLI tools as follows.
 
 ```bash
-bal run --taint-check[file.bal | project]
+bal run --taint-check [file.bal | project]
 bal build --taint-check [file.bal | project]
 ```

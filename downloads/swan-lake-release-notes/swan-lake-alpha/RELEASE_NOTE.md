@@ -973,9 +973,9 @@ GraphQL resources can now return values union with  `error` values.
 
     ```ballerina
     public type Message record {|
-    byte[] content;
-    string subject;
-    string replyTo?;
+           byte[] content;
+           string subject;
+           string replyTo?;
     |};
     ```
 

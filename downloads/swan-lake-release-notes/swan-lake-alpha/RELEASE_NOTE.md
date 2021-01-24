@@ -212,8 +212,7 @@ xml<never> emptyXmlValue = <xml<never>>'xml:concat();
 
 It is now possible to directly create the empty XML value.
 
-```
-ballerina
+```ballerina
 xml<never> emptyXmlValue = xml ``;
 ```
 

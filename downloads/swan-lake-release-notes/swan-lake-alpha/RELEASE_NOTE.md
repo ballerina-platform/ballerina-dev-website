@@ -1194,7 +1194,7 @@ public type Attachment record {|
 ###### Hub-Related Changes
 
 - Default implementation for the `websub:Hub` has been removed from the module.
-- API specification for the WebSub Hub is moved to the `websubhub` module.
+- API specification for the WebSub Hub is moved to the [`websubhub` module](#websubhub).
 
 ##### Publisher-Related Changes
 

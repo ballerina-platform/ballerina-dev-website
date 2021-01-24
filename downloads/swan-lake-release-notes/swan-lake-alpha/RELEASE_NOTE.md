@@ -105,7 +105,7 @@ The following is a valid `Ballerina.toml` file.
 
 ```toml
 [package]
-org = ballerinax
+org = "ballerinax"
 name = "observe.prometheus"
 version = "1.0.0"
 ```

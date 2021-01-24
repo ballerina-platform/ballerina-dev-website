@@ -204,7 +204,7 @@ public function main() {
 
 ##### Support for the Empty XML Value
 
-Previously, it was possible to define a value of type `xml<never>` (i.e., the empty XML value) using only the `concat` XML Lang Library function. 
+Previously, it was possible to define a value of type `xml<never>` (i.e., the empty XML value) only using the `concat` XML lang library method. 
 
 ```ballerina
 xml<never> emptyXmlValue = <xml<never>>'xml:concat();

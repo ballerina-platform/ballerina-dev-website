@@ -613,7 +613,7 @@ The `ballerina/java` module is renamed to `ballerina/jballerina.java`.
 
 #### Runtime
 
-New APIs are added for creating `readonly` Ballerina records and arrays from Java. 
+New APIs are added for creating immutable Ballerina records and arrays from Java. 
 
 The new `ValueCreator.createReadonlyArrayValue` API creates a new `readonly` Ballerina array from the given Java array and the `ValueCreator.createReadonlyRecordValue` creates a new `readonly` Ballerina record.
 

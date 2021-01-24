@@ -23,7 +23,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Improved Usage of Listener Declarations with Listener Types](#improved-usage-of-listener-declarations-with-listener-types)
         - [Improvements to the Match Statement](#improvements-to-the-match-statement)
         - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
-        - [Updated Syntax for User-Defined Error Constructions](#updated-syntax-for-user-defined-error-constructions)
+        - [Updated Syntax for User-Defined Error Construction](#updated-syntax-for-user-defined-error-construction)
         - [Changes on Casting with Errors](#changes-on-casting-with-errors)
         - [Changes on `toString` and `toBalString` with Errors](#changes-on-toString-and-toBalString-with-errors)
         - [Changes on Object Type Inclusion with Qualifiers](#changes-on-object-type-inclusion-with-qualifiers)

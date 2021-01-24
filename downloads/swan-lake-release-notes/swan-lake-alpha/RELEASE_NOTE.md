@@ -346,15 +346,16 @@ public function main() {
 
 2. Using `check` - Alternatively, if the function’s return type allows returning the error, `check` can be used before attempting the cast to return the error instead of panicking.
 
-```ballerina
-function foo() returns string|int|error {
-    return error(“Error Message”);
-}
+    ```ballerina
+    function foo() returns string|int|error {
+        return error(“Error Message”);
+    }
 
-public function main() returns error? {
-    string s = <string>check foo(); // use`check` to return the error if `foo()` returns an error, and then attempt the cast
-}
-```
+    public function main() returns error? {
+        // Use`check` to return the error if `foo()` returns an error, and then attempt the cast.
+        string s = <string>check foo();
+    }
+    ```
 
 ##### Changes to `toString` and `toBalString` with Errors
 

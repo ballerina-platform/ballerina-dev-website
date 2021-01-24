@@ -107,7 +107,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of the REPL support for Ballerina via the `bal shell` command
 - Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ, Time, Runtime, Email, and WebSub standard library modules
 - Rename the System standard library module to OS
-- Introduction of the new Random, TCP, UDP, and WebSubHub standard library modules
+- Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
 - Removal of the Config, Math, Stringutils, and Socket standard library modules
 - VSCode plugin support for code actions and code completions on Code To Cloud
 - Taint analyzer related updates
@@ -1288,6 +1288,10 @@ public type Attachment record {|
 ###### Random
 
 This module provides functions related to random number generation.
+
+###### RegEx
+
+This module provides RegEx utilities such as checking whether a string matches a given RegEx, replacing substrings, and splitting strings based on a RegEx.
 
 ###### TCP
 

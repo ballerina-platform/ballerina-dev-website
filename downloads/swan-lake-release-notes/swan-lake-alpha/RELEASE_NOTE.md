@@ -238,16 +238,15 @@ match v {
 ```ballerina
 match v {
     {a: "hello", b: "world"}     => {
-    // Match mappings that contain the field `a` with
-    // value "hello" and field `b` with value "world".
+        // Match mappings that contain the field `a` with
+        // value "hello" and field `b` with value "world".
     }
-{
-    a:var x} => {
-// Match mappings that contain the field `a`.
-// The value is assigned to the variable `x`
-// and can be assigned within the block.
-io:println(x);
-}
+    {a: var x} => {
+        // Match mappings that contain the field `a`.
+        // The value is assigned to the variable `x`
+        // and can be assigned within the block.
+        io:println(x);
+    }
 }
 ```
 

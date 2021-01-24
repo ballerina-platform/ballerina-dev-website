@@ -255,7 +255,7 @@ public class Listener {
 listener Listener ln = new (8080);
 ```
 
-##### Improvements to the 'match' Statement
+##### Improvements to the Match Statement
 
 ###### Support for More Match Patterns
 

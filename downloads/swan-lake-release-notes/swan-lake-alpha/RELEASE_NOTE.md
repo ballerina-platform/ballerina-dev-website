@@ -86,7 +86,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 #### Highlights
 
-- The `ballerina` command is renamed to `bal `
+- The `ballerina` command is renamed to `bal`
     Now onwards, all the commands will start with `bal` E.g., `bal -v`, `bal build`, `bal dist list`.
 - Introduction of hierarchical package names
     Now, the package name can take the form of `package-name := identifier(.identifer)*`.
@@ -178,31 +178,29 @@ public function main() {
 A closed record can be used as the rest argument in a function or method call. This is the same as passing each field in the record value as a named argument.
 
 ```ballerina
-import ballerina/io;
+    import ballerina/io;
 
-type SalaryDetails record {|
-    int annualIncrement = 20;
-    float bonusRate?;
-|};
+    type SalaryDetails record {|
+        int annualIncrement = 20;
+        float bonusRate?;
+    |};
 
-function printSalaryDetails(int baseSalary, int annualIncrement, float bonusRate = 0.02) {
-    io:println("Base Salary: ", baseSalary, 
-                " | Annual Increment: ", annualIncrement,
-                " | Bonus Rate: ", bonusRate);
-}
+    function printSalaryDetails(int baseSalary, int annualIncrement, float bonusRate = 0.02) {
+        io:println("Base Salary: ", baseSalary, " | Annual Increment: ", annualIncrement, " | Bonus Rate: ", bonusRate);
+    }
 
-public function main() {
-    SalaryDetails details = {
-        annualIncrement: 30,
-        bonusRate: 0.03
-    };
-    // Same as `printSalaryDetails(2500, annualIncrement = 30, bonusRate = 0.03);`
-    printSalaryDetails(2500, ...details);
+    public function main() {
+        SalaryDetails details = {
+            annualIncrement: 30,
+            bonusRate: 0.03
+        };
+        // Same as `printSalaryDetails(2500, annualIncrement = 30, bonusRate = 0.03);`
+        printSalaryDetails(2500, ...details);
 
-    details = {};
-    // Same as `printSalaryDetails(2500, annualIncrement = 20);`
-    printSalaryDetails(2500, ...details);
-}
+        details = {};
+        // Same as `printSalaryDetails(2500, annualIncrement = 20);`
+        printSalaryDetails(2500, ...details);
+    }
 ```
 
 ##### Support for Empty XML Values
@@ -210,7 +208,7 @@ public function main() {
 Previously, it was possible to define a value of type `xml<never>` (i.e., the empty XML value) using only the `concat` XML Lang Library function. 
 
 ```ballerina
-xml<never> emptyXmlValue = <xml<never>> 'xml:concat();
+xml<never> emptyXmlValue = <xml<never>>'xml:concat();
 ```
 
 With the new changes, it is now possible to directly create the empty XML value.
@@ -232,8 +230,7 @@ public class Listener {
         if isUnavailable(port) {
             return error("Port already in use");
         }
-
-        // Initialization.
+    // Initialization.
     }
 
     public isolated function attach(service object {} svc, string|string[]? attachPoint) returns error? {
@@ -264,43 +261,41 @@ listener Listener ln = new (8080);
 **List Match Pattern**
 ```ballerina
 match v {
-    var [a, b] => {
-        // Matches lists with 2 elements.
-    }
-    var [a, [b, c], d] | var [a, b, c, d] => {
-        // Matches 
-        // - lists with 3 elements where the second element is a list of 2 elements or
-        // - lists with 4 elements
-    }
-}
+    var     [a, b ] => {
+    // Matches lists with 2 elements.
+    }    var [a, [b, c], d]|var [a, b , c, d] => {
+    // Matches 
+    // - lists with 3 elements where the second element is a list of 2 elements or
+    // - lists with 4 elements
+    }}
+
 ```
 
 **Mapping Match Pattern**
 ```ballerina
 match v {
-    {a: "hello", b: "world"} => {
-        // Match mappings that contain the field `a` with
-        // value "hello" and field `b` with value "world".
+    {a: "hello", b: "world"}     => {
+    // Match mappings that contain the field `a` with
+    // value "hello" and field `b` with value "world".
     }
-    {a: var x} => {
-        // Match mappings that contain the field `a`.
-        // The value is assigned to the variable `x`
-        // and can be assigned within the block.
-        io:println(x);
-    }
+{
+    a:var x} => {
+// Match mappings that contain the field `a`.
+// The value is assigned to the variable `x`
+// and can be assigned within the block.
+io:println(x);
+}
 }
 ```
 
 **Error Match Pattern**
 ```ballerina
 match v {
-    error("Message") => {
-        // Match errors with "Message" as the error message.
-    }
-    error() => {
-        // Match all errors.
-    }
-}
+    error ("Message") => {
+    // Match errors with "Message" as the error message.
+    }error () => {
+    // Match all errors.
+    }}
 ```
 
 ###### Improved Type Narrowing Within Match Statements
@@ -324,7 +319,7 @@ Cyclic union types are now supported. A cyclic union type descriptor can directl
 
 ```ballerina
 type Integers int|Integers[]|map<Integers>;
- 
+
 Integers intValue = 5;
 Integers intArray = [1, 2, 3, 4];
 Integers intMap = {i: 1, j: 2};
@@ -353,11 +348,11 @@ The following was allowed previously.
 
 ```ballerina
 function foo() returns string|int|error {
-   return error(“Error Message”);
+    return error(“Error Message”);
 }
- 
+
 public function main() {
-   string s = <string> foo(); // Cast without considering the error.
+    string s = <string>foo(); // Cast without considering the error.
 }
 ```
 
@@ -365,11 +360,11 @@ This is now disallowed and can be rewritten as follows.
 
 ```ballerina
 function foo() returns string|int|error {
-  return error("Error Message");
+    return error("Error Message");
 }
- 
+
 public function main() {
-  string s = <string> checkpanic foo(); // use`checkpanic` to panic if `foo()` returns an error and then attempt the cast
+    string s = <string>checkpanic foo(); // use`checkpanic` to panic if `foo()` returns an error and then attempt the cast
 }
 ```
 
@@ -377,11 +372,11 @@ public function main() {
 
     ```ballerina
     function foo() returns string|int|error {
-    return error("Error Message");
+        return error("Error Message");
     }
-    
+
     public function main() {
-    string s = <string> checkpanic foo(); // use`checkpanic` to panic if `foo()` returns an error and then attempt the cast
+        string s = <string>checkpanic foo(); // use`checkpanic` to panic if `foo()` returns an error and then attempt the cast
     }
     ```
 
@@ -389,11 +384,11 @@ public function main() {
 
 ```ballerina
 function foo() returns string|int|error {
-   return error(“Error Message”);
+    return error(“Error Message”);
 }
- 
+
 public function main() returns error? {
-   string s = <string> check foo(); // use`check` to return the error if `foo()` returns an error, and then attempt the cast
+    string s = <string>check foo(); // use`check` to return the error if `foo()` returns an error, and then attempt the cast
 }
 ```
 
@@ -403,7 +398,7 @@ It was previously possible to call `toString()` and `toBalString()` on unions of
 
 ```ballerina
 function print(any|error val) {
-   string s = val.toString();
+    string s = val.toString();
 }
 ```
 
@@ -411,7 +406,7 @@ This has now been disallowed and the error scenarios need to be handled explicit
 
 ```ballerina
 function print(any|error val) {
-   string s = val is error ? val.toString() : val.toString();
+    string s = val is error ? val.toString() : val.toString();
 }
 ```
 
@@ -701,7 +696,7 @@ When returning anydata, the `@http:Payload` annotation can be used to specify th
 
 ```ballerina
 service on helloEP {
-    resource function get hello () returns @http:Payload{mediaType:text/plain} string {
+    resource function gethello () returns @http:Payload {mediaType: text / plain} string {
         return “Hello world”;
     }
 }
@@ -725,14 +720,11 @@ service on helloEP {
 The `http:Client` facilitates inbound response validations on the size limits. Each response that fails to meet the threshold will be returned as an error.
 
 ```ballerina
-http:Client clientEP = new ("http://localhost:9092/hello", config = {
-    responseLimits : {
-        maxStatusLineLength : 50,
-        maxHeaderSize : 1000,
+http:Client clientEP = new ("http://localhost:9092/hello", config = {responseLimits: {
+        maxStatusLineLength: 50,
+        maxHeaderSize: 1000,
         maxEntityBodySize: 50
-        }
-    }
-);
+    }});
 ```
 
 ###### Improve Listener/Client Return Type to Union with Error
@@ -742,8 +734,8 @@ Errors, which might occur during the listener and client initialization can be h
 **New Syntax:**
 
 ```ballerina
-http:Listener|http:ListenerError ep = new(9090); 
-http:Client|http:ClientError myClient = new("http://localhost:9100", { httpVersion: "2.0" });
+http:Listener|http:ListenerError ep = new (9090);
+http:Client|http:ClientError myClient = new ("http://localhost:9100", {httpVersion: "2.0"});
 ```
 
 ###### Improve the `getHeader()` and `getHeaders()` return types to Union with Error
@@ -773,21 +765,21 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     ```ballerina
     import ballerina/http;
     import ballerina/websocket;
-    
-    service /basic on new websocket:Listener(9000) {
-        resource function get .(http:Request req) returns  websocket:Service|websocket:UpgradeError {
+
+    service / basicon new websocket:Listener(9000) {
+        resource function get.(http:Request req) returns websocket:Service|websocket:UpgradeError {
             return new WsService();
         }
     }
-    
+
     service class WsService {
         *websocket:Service;
         remote function onOpen(websocket:Caller caller) {
         }
-    
+
         remote function onTextMessage(websocket:Caller caller, string text) {
         }
-    
+
         remote function onBinaryMessage(websocket:Caller caller, byte[] b) {
         }
     }
@@ -814,8 +806,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     import ballerina/websocket;
 
     public function main() returns websocket:Error? {
-        websocket:AsyncClient wsClientEp = check new ("ws://echo.websocket.org",
-                                            new ClientService());
+        websocket:AsyncClient wsClientEp = check new ("ws://echo.websocket.org", new ClientService());
         var err = wsClientEp->writeTextMessage("Hello World!");
     }
 
@@ -852,8 +843,9 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
 - Enable returning specific data types directly from the remote functions (even record types and streams).
     ```ballerina
     service "Chat" on ep {
-        remote function chat(stream<string, error?> clientStream) returns stream<string, error?> {}
+remote function chat(stream<string, error?> clientStream) returns stream<string, error?> {
     }
+}
     ```
 - Add support to send/receive custom headers in the request/response path.
 
@@ -861,7 +853,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
 
 - Clients have the capability to receive a stream object in the server streaming scenario.
     ```ballerina
-    stream<string, grpc:Error?> result = check endpoint>chat("WSO2");
+    stream<string, grpc:Error?> result = check endpoint > chat("WSO2");
     ```
 - In the client and bidirectional streaming use cases, it returns a streaming client that has the capability to read and write data.
     ```ballerina
@@ -965,9 +957,8 @@ GraphQL resources can now return values union with  `error` values.
     listener kafka:Listener kafkaListener = new (consumerConfigs);
 
     service kafka:Service on kafkaListener {
-        remote function onConsumerRecord(kafka:Caller caller,
-                                    kafka:ConsumerRecord[] records) {
-            // Process consumed records
+    remote function onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] records) {
+        // Process consumed records
         }
     }
     ```
@@ -982,9 +973,9 @@ GraphQL resources can now return values union with  `error` values.
 
     ```ballerina
     public type Message record {|
-        byte[] content;
-        string subject;
-        string replyTo?;
+    byte[] content;
+    string subject;
+    string replyTo?;
     |};
     ```
 
@@ -992,12 +983,13 @@ GraphQL resources can now return values union with  `error` values.
 
     ```ballerina
     string message = "Hello from Ballerina";
-        
+
     nats:Client natsClient = check new;
 
     check natsClient->publishMessage({
-                    content: message.toBytes(),
-                    subject: "demo.bbe.subject"});
+        content: message.toBytes(),
+        subject: "demo.bbe.subject"
+    });
     ```
 
 ###### Service and Listener Changes
@@ -1015,12 +1007,10 @@ GraphQL resources can now return values union with  `error` values.
 
     listener nats:Listener subscription = new;
 
-    @nats:ServiceConfig {
-        subject: "demo.bbe.*"
-    }
+    @nats:ServiceConfig {subject: "demo.bbe.*"}
     service nats:Service on subscription {
 
-        remote function onMessage(nats:Message message) {
+    remote function onMessage(nats:Message message) {
         }
     }
     ```
@@ -1042,8 +1032,9 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
         string message = "Hello from Ballerina";
         stan:Client stanClient = check new;
         string result = check stanClient->publishMessage({
-                                content: message.toBytes(),
-                                subject: "demo"});
+            content: message.toBytes(),
+            subject: "demo"
+        });
     }
     ```
 
@@ -1060,11 +1051,9 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
     listener stan:Listener lis = new;
 
-    @stan:ServiceConfig {
-        subject: "demo"
-    }
+    @stan:ServiceConfig {subject: "demo"}
     service stan:Service on lis {
-        remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) {
         }
     }
     ```
@@ -1080,11 +1069,11 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
     ```ballerina
     public type Message record {|
-    byte[] content;
-    string routingKey;
-    string exchange = "";
-    int deliveryTag?;
-    BasicProperties properties?;
+        byte[] content;
+        string routingKey;
+        string exchange = "";
+        int deliveryTag?;
+        BasicProperties properties?;
     |};
     ```
 
@@ -1100,8 +1089,10 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
         check newClient->queueDeclare("MyQueue");
 
         string message = "Hello from Ballerina";
-        check newClient->publishMessage({ content: message.toBytes(),
-                                            routingKey: "MyQueue" });
+        check newClient->publishMessage({
+            content: message.toBytes(),
+            routingKey: "MyQueue"
+        });
     }
     ```
 
@@ -1121,11 +1112,9 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
     listener rabbitmq:Listener channelListener = new;
 
-    @rabbitmq:ServiceConfig {
-        queueName: "MyQueue"
-    }
+    @rabbitmq:ServiceConfig {queueName: "MyQueue"}
     service rabbitmq:Service on channelListener {
-        remote function onMessage(rabbitmq:Message message) {
+    remote function onMessage(rabbitmq:Message message) {
         }
     }
     ```
@@ -1236,14 +1225,13 @@ public type Attachment record {|
 
     service "emailObserver" on emailListener {
 
-        remote function onEmailMessage(email:Message emailMessage) {
+    remote function onEmailMessage(email:Message emailMessage) {
 
         }
 
-        remote function onError(email:Error emailError) {
+    remote function onError(email:Error emailError) {
 
         }
-
     }
     ```
 
@@ -1272,13 +1260,13 @@ import ballerina/tcp;
 
 public function main() returns tcp:Error? {
 
-   tcp:Client socketClient = check new ("localhost", 3000);
-  
-   check socketClient->writeBytes(“Hello Ballerina”.toBytes());
-  
-   readonly & byte[] receivedData = check socketClient->readBytes();
-  
-   check socketClient->close();
+    tcp:Client socketClient = check new ("localhost", 3000);
+
+    check socketClient->writeBytes(“Hello Ballerina”.toBytes());
+
+    readonly & byte[] receivedData = check socketClient->readBytes();
+
+    check socketClient->close();
 }
 ```
 
@@ -1306,26 +1294,27 @@ The `read` method is removed from the `tcp:Caller`. Also, the `write` methods of
 import ballerina/tcp;
 
 service on new tcp:Listener(3000) {
-   remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
-       return new TCPService(caller);
-   }
+remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+        return new TCPService(caller);
+    }
 }
+
 service class TCPService {
-   tcp:Caller caller;
+    tcp:Caller caller;
 
-   public function init(tcp:Caller c) {
-       self.caller = c;
-   }
+    public function init(tcp:Caller c) {
+        self.caller = c;
+    }
 
-   remote function onBytes(readonly & byte[] data) returns byte[]|tcp:Error? {
-       return data;
-   }
+    remote function onBytes(readonly & byte[] data) returns byte[]|tcp:Error? {
+        return data;
+    }
 
-   remote function onClose() returns tcp:Error? {
-   }
+    remote function onClose() returns tcp:Error? {
+    }
 
-   remote function onError(readonly & tcp:Error err) returns tcp:Error? {
-   }
+    remote function onError(readonly & tcp:Error err) returns tcp:Error? {
+    }
 }
 ```
 

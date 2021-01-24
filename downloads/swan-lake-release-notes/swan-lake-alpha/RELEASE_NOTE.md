@@ -558,7 +558,7 @@ int a = int:sum(1, 2);
 ```
 
 ```ballerina
-int a = ‘int:sum(1, 2);
+int a = 'int:sum(1, 2);
 ```
 
 The way of overriding a langlib module is also relaxed now. For example, both the approaches below are now supported.

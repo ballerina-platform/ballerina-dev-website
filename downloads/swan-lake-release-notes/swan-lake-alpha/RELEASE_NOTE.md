@@ -153,7 +153,7 @@ A valid Ballerina package can now contain an empty `Ballerina.toml` file. This m
 
 ##### Intersection Type Support for Errors
 
-Intersection types are now allowed with `error` types. The set of values that belong to the intersection type will be the set of errors that belong to each error type in the intersection. 
+Intersection types are now allowed with `error` types. An `error` value will belong to the intersection type (`E1 & E2`) only if it belongs to each member error type (`E1` and `E2`) of the intersection. 
 
 ```ballerina
 type InvalidCodeError error<record { int code; }>;

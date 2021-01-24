@@ -528,8 +528,6 @@ The way of overriding a langlib module is also relaxed now. For example, both th
 import somePackage.someModule as string;
 ```
 
-and
-
 ```ballerina
 import somePackage.someModule as `string;
 ```

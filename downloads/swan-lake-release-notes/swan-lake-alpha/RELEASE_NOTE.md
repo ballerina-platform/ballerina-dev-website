@@ -92,7 +92,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of hierarchical package names
     Now, the package name can take the form of `package-name := identifier(.identifer)*`.
 - Introduction of the `Dependencies.toml` file
-- Support for the intersection type in errors
+- Support for intersection types with errors
 - Support for passing closed records as rest arguments in function/method calls
 - Support to define empty XML values using only the `concat` XML lang library function  
 - Improved listener declarations to support classes, which return `error?` from its `init` method

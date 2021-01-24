@@ -1536,8 +1536,6 @@ The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
 
 #### Breaking Changes
 
-##### Language
-
 - Resource method declarations are no longer allowed in object-type descriptors.
 - Resource methods are not considered to be part of the type.
 - Non-`isolated` service variables defined outside an `isolated` function can be accessed within the function only if the variable is a `final` variable and the type is a subtype of `readonly`.

@@ -96,7 +96,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Support for the empty XML value
 - Improvements to the `match` statement
 - Support for cyclic union type descriptors
-- Improvements in error handling, casting, constructors
+- Changes to casting and `toString`/`toBalString` with errors
 - Changes to object-type and record-type inclusions
 - Improved listener declaration
 - Improvements to the lang library modules 

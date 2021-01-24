@@ -129,7 +129,7 @@ version = "1.0.0"
 
 ##### Introduction of the Dependencies TOML file
 
-This is a dedicated file to maintain all the dependencies, which is expected to be created in the package root directory. All the dependencies, which were declared in the `Ballerina.toml` file should be moved to this file now.
+This is a dedicated file to maintain all the dependencies, which is expected to be created in the package root directory. All the dependencies which were previously declared in the `Ballerina.toml` file should be moved to this file now.
 
 A valid `Dependencies.toml` file will be as follows.
 

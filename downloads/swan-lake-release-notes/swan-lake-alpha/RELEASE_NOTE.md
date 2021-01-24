@@ -76,13 +76,13 @@ If you are already using Ballerina, you can directly update your distribution to
 
  Next, execute the command below to update to Swan Lake Alpha.
 
- > `ball dist pull alpha`                 
+ > `bal dist pull alpha`                 
 
-However, if you are using a Ballerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
+However, if you are using a Ballerina version below 1.1.0, install via the [installers](/downloads/#swanlake).
 
 ##### For New Users
 
-If you have not installed Ballerina, then download the [installers](https://ballerina.io/downloads/) to install.
+If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
 #### Highlights
 
@@ -892,7 +892,7 @@ A Ballerina HTTP listener can be configured to authenticate and authorize the in
 - JWT authentication
 - OAuth2 authentication
 
-For more information, see [Authentication and Authorization](/swan-lake/learn/authentication-and-authorization/#http-listener-authentication-and-authorization)
+For more information, see [Authentication and Authorization](/swan-lake/learn/security/authentication-and-authorization/#http-listener-authentication-and-authorization).
 
 ###### HTTP Client Authentication
 
@@ -907,7 +907,7 @@ The Ballerina HTTP client can be configured to send authentication information t
 - Password grant type
 - Direct token type
 
-For more information, see [Authentication and Authorization](/swan-lake/learn/authentication-and-authorization/#http-client-authentication).
+For more information, see [Authentication and Authorization](/swan-lake/learn/security/authentication-and-authorization/#http-client-authentication).
 
 ##### GraphQL Module Improvements
 

@@ -1053,7 +1053,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
     @stan:ServiceConfig {subject: "demo"}
     service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+        remote function onMessage(stan:Message message) {
         }
     }
     ```

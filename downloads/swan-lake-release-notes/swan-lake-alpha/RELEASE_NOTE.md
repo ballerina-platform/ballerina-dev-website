@@ -1010,7 +1010,7 @@ GraphQL resources can now return values union with  `error` values.
     @nats:ServiceConfig {subject: "demo.bbe.*"}
     service nats:Service on subscription {
 
-    remote function onMessage(nats:Message message) {
+        remote function onMessage(nats:Message message) {
         }
     }
     ```

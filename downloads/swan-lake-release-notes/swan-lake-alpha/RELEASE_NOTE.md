@@ -204,7 +204,7 @@ A closed record can be used as the rest argument in a function or method call. T
     }
 ```
 
-##### Support for Empty XML Values
+##### Support for the Empty XML Value
 
 Previously, it was possible to define a value of type `xml<never>` (i.e., the empty XML value) using only the `concat` XML Lang Library function. 
 

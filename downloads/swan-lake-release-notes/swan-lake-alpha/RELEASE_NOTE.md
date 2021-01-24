@@ -218,42 +218,6 @@ ballerina
 xml<never> emptyXmlValue = xml ``;
 ```
 
-#### Improved Usage of Listener Declarations with Listener Types
-
-Listener declarations now support classes, which return `error?` from its `init` method. Before this change, the `init` method had to be made panic to use a listener class in a listener declaration.
-
-If the initialization of the listener object returns an error, module initialization will fail.
-
-```ballerina
-public class Listener {
-    public function init(int port) returns error? {
-        if isUnavailable(port) {
-            return error("Port already in use");
-        }
-    // Initialization.
-    }
-
-    public isolated function attach(service object {} svc, string|string[]? attachPoint) returns error? {
-    }
-
-    public isolated function detach(service object {} svc) returns error? {
-    }
-
-    public isolated function 'start() returns error? {
-    }
-
-    public isolated function gracefulStop() returns error? {
-    }
-
-    public isolated function immediateStop() returns error? {
-    }
-}
-
-// Now a valid listener declaration.
-// If the initialization returns an error, module initialization will fail.
-listener Listener ln = new (8080);
-```
-
 ##### Improvements to the Match Statement
 
 ###### Support for More Match Patterns

@@ -862,9 +862,9 @@ For more information, see [Authentication and Authorization](/swan-lake/learn/se
 
 Ballerina GraphQL services now support introspection queries on the schema.
 
-###### Improved Resource Functions
+###### Improved Resource Methods
 
-GraphQL resources can now return values union with  `error` values. 
+GraphQL resources may now return error values.
 
 ##### Common Changes in Messaging Modules
 

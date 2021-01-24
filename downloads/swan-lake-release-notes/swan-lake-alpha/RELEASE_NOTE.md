@@ -378,7 +378,7 @@ function print(any|error val) {
 
 #### Changes to Object Type Inclusion with Qualifiers
 
-- When object type inclusion is used with an object type descriptor with qualifiers (`isolated`, `client`, `service`), it is now mandatory for the object being included also to have these qualifiers.
+- When object type inclusion is used with an object type descriptor with qualifiers (`isolated`, `client`, `service`), it is now mandatory for the object in which the inclusion is done also to have these qualifiers.
 - Object type descriptors can no longer use object type inclusion with `readonly` classes.
 - Classes can use object type inclusion with `readonly` classes only if the including classes themselves are `readonly` classes.
 - The type reference in an object constructor expression can refer to a `readonly` class only if the object being constructed is `readonly`.

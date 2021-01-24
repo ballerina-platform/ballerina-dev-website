@@ -24,10 +24,10 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Improvements to the Match Statement](#improvements-to-the-match-statement)
         - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
         - [Updated Syntax for User-Defined Error Construction](#updated-syntax-for-user-defined-error-construction)
-        - [Changes on Casting with Errors](#changes-on-casting-with-errors)
-        - [Changes on `toString` and `toBalString` with Errors](#changes-on-toString-and-toBalString-with-errors)
-        - [Changes on Object Type Inclusion with Qualifiers](#changes-on-object-type-inclusion-with-qualifiers)
-        - [Changes on Record Type Inclusion with Rest Descriptors](#changes-on-record-type-inclusion-with-rest-descriptors)
+        - [Changes to Casting with Errors](#changes-to-casting-with-errors)
+        - [Changes to `toString` and `toBalString` with Errors](#changes-to-toString-and-toBalString-with-errors)
+        - [Changes to Object Type Inclusion with Qualifiers](#changes-to-object-type-inclusion-with-qualifiers)
+        - [Changes to Record Type Inclusion with Rest Descriptors](#changes-to-record-type-inclusion-with-rest-descriptors)
         - [Improved Listener Declaration](#improved-listener-declaration)
         - [Referring Lang Library Modules Without Using Quoted Identifiers](#referring-lang-library-modules-without-using-quoted-identifiers)
         - [Improved Lang Library Methods](#improved-lang-library-methods)
@@ -99,7 +99,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Improvements to the `match` statement
 - Support for cyclic union type descriptors to directly refer to its identifier
 - Improvements in error handling, casting, constructors
-- Changes on object-type and record-type inclusions
+- Changes to object-type and record-type inclusions
 - Improved listener declaration
 - Improvements on the lang library modules and methods
 - Improvements on the `configurable` feature
@@ -341,7 +341,7 @@ MyError myError = MyError("Message");
 MyError myError = error MyError("Message");
 ```
 
-#### Changes on Casting with Errors
+#### Changes to Casting with Errors
 
 Errors cannot be cast away (i.e., if the value that is being cast can be an error, the type to which the cast is attempted should also have a subtype of error). 
 
@@ -393,7 +393,7 @@ public function main() returns error? {
 }
 ```
 
-##### Changes on `toString` and `toBalString` with Errors
+##### Changes to `toString` and `toBalString` with Errors
 
 It was previously possible to call `toString()` and `toBalString()` on unions of errors and non-errors.
 
@@ -411,14 +411,14 @@ function print(any|error val) {
 }
 ```
 
-#### Changes on Object Type Inclusion with Qualifiers
+#### Changes to Object Type Inclusion with Qualifiers
 
 - When object type inclusion is used with an object type descriptor with qualifiers (`isolated`, `client`, `service`), it is now mandatory for the object being included also to have these qualifiers.
 - Object type descriptors can no longer use object type inclusion with `readonly` classes.
 - Classes can use object type inclusion with `readonly` classes only if the including classes themselves are `readonly` classes.
 - The type reference in an object constructor expression can refer to a `readonly` class only if the object being constructed is `readonly`.
 
-#### Changes on Record Type Inclusion with Rest Descriptors
+#### Changes to Record Type Inclusion with Rest Descriptors
 
 Record type inclusion now copies the rest descriptor from the included type to the including type. The including type may override the rest descriptor. 
 

@@ -5,7 +5,7 @@ title: Release Note
 
 ### Overview of Ballerina Swan Lake Alpha 
 
-This Alpha release includes the language features planned for the Ballerina Swan Lake. In this release note, only the new features and updates added after the eighth preview are listed. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
+This Alpha release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the eighth preview of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)

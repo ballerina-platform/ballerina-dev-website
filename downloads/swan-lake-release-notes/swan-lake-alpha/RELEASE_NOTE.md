@@ -20,7 +20,6 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Intersection Type Support for Errors](#intersection-type-support-for-errors)
         - [Support for Passing a Closed Record as the Rest Argument](#support-for-passing-a-closed-record-as-the-rest-argument)
         - [Support for the Empty XML Value](#support-for-the-empty-xml-value)
-        - [Improved Usage of Listener Declarations with Listener Types](#improved-usage-of-listener-declarations-with-listener-types)
         - [Improvements to the Match Statement](#improvements-to-the-match-statement)
         - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
         - [Updated Syntax for User-Defined Error Construction](#updated-syntax-for-user-defined-error-construction)

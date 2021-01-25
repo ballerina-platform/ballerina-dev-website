@@ -655,7 +655,7 @@ service on new http:Listener(8080) {
         return "Hello"; // Content type defaults to `text/plain`
     }
 
-    resource function get goodbye () returns @http:Payload {mediaType: "application/json"} string {
+    resource function get goodbye () returns @http:Payload {mediaType: "text/plain+id"} string {
         return "\"Goodbye!\"";
     }
 }

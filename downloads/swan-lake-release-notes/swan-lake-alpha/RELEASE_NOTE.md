@@ -1284,13 +1284,13 @@ public type Attachment record {|
 
 - The `email:Listener` is split into the `email:PopListener` and `email:ImapListener`. Therefore, the `protocol` field is removed from the new protocol-specific listeners. The `email:PopConfig` or `email:ImapConfig` that were used as fields for the `email:Listener` are not required for the new API implementation. Protocol configuration related fields are made parts of the new listeners.
 
-- The `resource` functions are changed to `remote` functions in the new listener APIs.
+- The `resource` methods are changed to `remote` methods in the new listener APIs.
 
 - The `service` name is given as a string with the new Ballerina language changes.
 
-- The `onMessage` method of the `email:Listener` (i.e., `new email:PopListener` and `email:ImapListener`) are changed to `onEmailMessage`.
+- The `onMessage` method of the `email:Listener` (i.e., `new email:PopListener` and `email:ImapListener`) is changed to `onEmailMessage`.
 
-- The `pollingInterval` field of the `email:Listener` is changed to `pollingIntervalInMillis` in the new listener APIs. That makes it consistent across other Ballerina modules, which are time durations configured in milliseconds.
+- The `pollingInterval` field of the `email:Listener` is changed to `pollingIntervalInMillis` in the new listener APIs. That makes it consistent across other Ballerina modules, in which time durations are configured in milliseconds.
 
 - A sample POP3 listener is given below.
 
@@ -1307,12 +1307,12 @@ public type Attachment record {|
 
     service "emailObserver" on emailListener {
 
-    remote function onEmailMessage(email:Message emailMessage) {
+        remote function onEmailMessage(email:Message emailMessage) {
 
         }
 
-    remote function onError(email:Error emailError) {
-
+        remote function onError(email:Error emailError) {
+            
         }
     }
     ```

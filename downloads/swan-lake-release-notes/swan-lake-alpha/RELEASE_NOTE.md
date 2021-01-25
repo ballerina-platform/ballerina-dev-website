@@ -510,16 +510,6 @@ int a = int:sum(1, 2);
 int a = 'int:sum(1, 2);
 ```
 
-The way of overriding a langlib module is also relaxed now. For example, both the approaches below are now supported.
-
-```ballerina
-import somePackage.someModule as string;
-```
-
-```ballerina
-import somePackage.someModule as `string;
-```
-
 ##### Improved Lang Library Methods
 
 ###### Introduction of the `includes` Method
@@ -569,13 +559,14 @@ The new `ValueCreator.createReadonlyArrayValue` API creates a new `readonly` Bal
 
 The `configurable` feature is improved to support variables with decimal and arrays of `int`, `float`, `string`, `boolean`, and `decimal` types.
 
-For example if the `Config.toml` file contains the following TOML arrays, 
+For example if the `Config.toml` file contains the following arrays, 
 
 ```toml
 ints = [1,2,3]
 strings = ["red", "yellow", "green"]
 ```
-they can be loaded with following configurable variables.
+
+they can be loaded as follows.
 
 ```ballerina
 configurable int[] & readonly ints = ?;

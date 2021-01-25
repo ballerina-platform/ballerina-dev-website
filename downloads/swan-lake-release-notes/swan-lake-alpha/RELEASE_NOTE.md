@@ -1335,7 +1335,7 @@ public type Attachment record {|
   - `acceptLanguage` - The expected language type
 - API specification for the `@websub:SubscriberService` is updated with the changes below.
   - The `onIntentVerification` and `onNotification` functions are removed.
-  - The `onSubscriptionVerification`, `onEventNotification`, and `onSubscriptionValidationDenied` functions are introduced.
+  - The `onSubscriptionVerification`, `onEventNotification`, and `onSubscriptionValidationDenied` methods are introduced.
 - The updated `websub:SubscriberService` sample implementation is as follows.
 
     ```ballerina

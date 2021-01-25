@@ -1349,7 +1349,7 @@ public type Attachment record {|
 
 ##### Subscriber-Related Changes
 
-- The two new configurations below are introduced to the `@websub:SubscriberServiceConfiguration`.
+- The two new configurations below are introduced to the `@websub:SubscriberServiceConfiguration` for hub/topic discovery.
   - `accept` - The expected media type
   - `acceptLanguage` - The expected language type
 - API specification for the `@websub:SubscriberService` is updated with the changes below.

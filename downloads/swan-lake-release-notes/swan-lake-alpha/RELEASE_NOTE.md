@@ -1363,7 +1363,7 @@ public type Attachment record {|
     ```
 
 
-##### Introduced New Modules
+##### Introduce New Modules (Regex and Random modules)
 
 ###### Random
 

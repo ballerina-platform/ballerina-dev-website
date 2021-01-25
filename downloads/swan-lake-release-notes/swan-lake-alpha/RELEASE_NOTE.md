@@ -573,7 +573,7 @@ configurable int[] & readonly ints = ?;
 configurable string[] & readonly strings = ?;
 ```
 
-Configurations can be provided at runtime using the `Config.toml` file in the current working directory or by exporting the file path using the `BALCONFIGFILE` environment variable. For the tests, configurations can be overridden by having the `Config.toml` file inside the tests directory.
+Configurations can be provided at runtime using the `Config.toml` file in the current working directory or by exporting the file path using the `BALCONFIGFILE` environment variable. For the tests, configurations can be overridden by having a `Config.toml` file inside the tests directory.
 
 #### Developer Tools
 
@@ -1034,7 +1034,12 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 ###### Service and Listener Changes
 
 - The return type of the `init` method of `kafka:Listener` is changed to `Error?`. 
+<<<<<<< HEAD
 - Has a single type of service that supports the two types of the remote function below:
+=======
+- Has a single type of service that supports the two types of remote methods below:
+    - `onConsumerRecord(kafka:ConsumerRecord[] record) {}` 
+>>>>>>> a76506a421f50505a569437f89847624b2282147
     - `onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] record) {}`
 - The `kafka:Caller` is introduced to remote functions to commit offsets of the consumed records.
 - The new syntax with the service changes is given below.

@@ -1536,7 +1536,7 @@ The previous `ballerina/system` module is now renamed to `ballerina/os`. All the
 
 #### Taint Analyzer Update
 
-With this release, the taint analyzer does not produce taint errors unless explicitly enabled. However, the taint analyzer does perform the taint flow analysis without producing errors regardless of it being enabled or not.
+With this release, the taint analyzer does not produce taint errors unless explicitly enabled. However, the taint analyzer still performs the taint flow analysis without producing errors if error logging is not enabled.
 
 This is enabled via the build option below in the `Ballerina.toml` file
 

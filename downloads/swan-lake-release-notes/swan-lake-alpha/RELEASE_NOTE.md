@@ -11,11 +11,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
     - [For Existing Users](#for-existing-users)
     - [For New Users](#for-new-users)
 - [Highlights](#highlights)
-- [What is new in Ballerina Swan Lake Alpha](#what-is-new-in-ballerina-swan-lake-alpha)
-    - [Packages](#packages)
-        - [Introduction of Hierarchical Package Names](#introduction-of-hierarchical-package-names)
-        - [Introduction of the Dependencies TOML file](#introduction-of-the-dependencies-toml-file)
-        - [Support to Accept an Empty Ballerina TOML File](#support-to-accept-an-empty-ballerina-toml-file)
+- [What is new in Ballerina Swan Lake Alpha](#what-is-new-in-ballerina-swan-lake-alpha
     - [Language](#language)
         - [Intersection Type Support for Errors](#intersection-type-support-for-errors)
         - [Support for Passing a Closed Record as the Rest Argument](#support-for-passing-a-closed-record-as-the-rest-argument)
@@ -30,6 +26,10 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Improved Listener Declaration](#improved-listener-declaration)
         - [Referring Lang Library Modules Without Using Quoted Identifiers](#referring-lang-library-modules-without-using-quoted-identifiers)
         - [Improved Lang Library Methods](#improved-lang-library-methods)
+    - [Packages](#packages)
+        - [Introduction of Hierarchical Package Names](#introduction-of-hierarchical-package-names)
+        - [Introduction of the Dependencies TOML file](#introduction-of-the-dependencies-toml-file)
+        - [Support to Accept an Empty Ballerina TOML File](#support-to-accept-an-empty-ballerina-toml-file)
     - [Runtime](#runtime)
         - [Configurable](#configurable)
     - [Developer Tools](#developer-tools)
@@ -104,44 +104,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
 - Code action and code completion support for Code to Cloud libraries in the VS Code plugin
 
-### What is New in Ballerina Swan Lake Alpha
-
-#### Packages
-
-##### Introduction of Hierarchical Package Names
-
-Now, the package name can take the form of `package-name := identifier(.identifer)*` meaning the dot (`.`) is allowed in the package name.
-
-The following is a valid `Ballerina.toml` file.
-
-```toml
-[package]
-org = "ballerinax"
-name = "observe.prometheus"
-version = "1.0.0"
-```
-
-##### Introduction of the Dependencies TOML file
-
-This is a dedicated file to maintain all the dependencies, which is expected to be created in the package root directory. All the dependencies which were previously declared in the `Ballerina.toml` file should be moved to this file now.
-
-A valid `Dependencies.toml` file will be as follows.
-
-```toml
-[[dependency]]
-org = "ballerina"
-name = "io"
-version = "0.5.5"
-
-[[dependency]]
-org = "ballerina"
-name = "log"
-version = "1.0.5"
-```
-
-##### Support to Accept an Empty Ballerina TOML File
-
-A valid Ballerina package can now contain an empty `Ballerina.toml` file. This makes it easier to convert an application/service written in a standalone Ballerina file to a Ballerina package. 
+### What is New in Ballerina Swan Lake Alpha 
 
 #### Language
 
@@ -548,6 +511,43 @@ public type Cloneable readonly|xml|Cloneable[]|map<Cloneable>|table<map<Cloneabl
 #### Rename of the `ballerina/java` Module
 
 The `ballerina/java` module is renamed to `ballerina/jballerina.java`.
+
+#### Packages
+
+##### Introduction of Hierarchical Package Names
+
+Now, the package name can take the form of `package-name := identifier(.identifer)*` meaning the dot (`.`) is allowed in the package name.
+
+The following is a valid `Ballerina.toml` file.
+
+```toml
+[package]
+org = "ballerinax"
+name = "observe.prometheus"
+version = "1.0.0"
+```
+
+##### Introduction of the Dependencies TOML file
+
+This is a dedicated file to maintain all the dependencies, which is expected to be created in the package root directory. All the dependencies which were previously declared in the `Ballerina.toml` file should be moved to this file now.
+
+A valid `Dependencies.toml` file will be as follows.
+
+```toml
+[[dependency]]
+org = "ballerina"
+name = "io"
+version = "0.5.5"
+
+[[dependency]]
+org = "ballerina"
+name = "log"
+version = "1.0.5"
+```
+
+##### Support to Accept an Empty Ballerina TOML File
+
+A valid Ballerina package can now contain an empty `Ballerina.toml` file. This makes it easier to convert an application/service written in a standalone Ballerina file to a Ballerina package.
 
 #### Runtime
 

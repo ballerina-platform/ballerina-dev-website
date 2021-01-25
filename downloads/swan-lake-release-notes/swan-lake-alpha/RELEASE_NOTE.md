@@ -573,7 +573,7 @@ configurable int[] & readonly ints = ?;
 configurable string[] & readonly strings = ?;
 ```
 
-Configurations can be provided at runtime using the `Config.toml` file in the current working directory or by exporting the file path using the `BALCONFIGFILE` environment variable. For the tests, configurations can be overridden by having the `Config.toml` file inside the tests directory.
+Configurations can be provided at runtime using the `Config.toml` file in the current working directory or by exporting the file path using the `BALCONFIGFILE` environment variable. For the tests, configurations can be overridden by having a `Config.toml` file inside the tests directory.
 
 #### Developer Tools
 

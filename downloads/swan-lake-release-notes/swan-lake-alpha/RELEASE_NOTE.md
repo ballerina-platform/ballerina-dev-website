@@ -93,7 +93,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of hierarchical package names
 - Introduction of the `Dependencies.toml` file
 - Support for intersection types with errors
-- Improvements to the `match` statement
+- Support for more match patterns in the match statement
 - Support for cyclic union type descriptors
 - Changes to casting and `toString`/`toBalString` with errors
 - Changes to object-type and record-type inclusions

@@ -575,6 +575,19 @@ The new `ValueCreator.createReadonlyArrayValue` API creates a new `readonly` Bal
 
 The `configurable` feature is improved to support variables with decimal and arrays of `int`, `float`, `string`, `boolean`, and `decimal` types.
 
+For example if the `Config.toml` file contains the following TOML arrays, 
+
+```toml
+ints = [1,2,3]
+strings = ["red", "yellow", "green"]
+```
+they can be loaded with following configurable variables.
+
+```ballerina
+configurable int[] & readonly ints = ?;
+configurable string[] & readonly strings = ?;
+```
+
 Configurations can be provided at runtime using the `Config.toml` file in the current working directory or by exporting the file path using the `BALCONFIGFILE` environment variable. For the tests, configurations can be overridden by having the `Config.toml` file inside the tests directory.
 
 #### Developer Tools

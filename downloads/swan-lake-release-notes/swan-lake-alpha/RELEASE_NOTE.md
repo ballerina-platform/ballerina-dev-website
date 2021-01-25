@@ -47,6 +47,8 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [gRPC Module Improvements](#grpc-module-improvements)
         - [Security Improvements](#security-improvements)
         - [GraphQL Module Improvements](#graphql-module-improvements)
+        - [TCP Module Improvements](#tcp-module-improvements)
+        - [UDP Module Improvements](#udp-module-improvements)
         - [Common Changes in Messaging Modules](#common-changes-in-messaging-modules)
         - [Kafka Module Improvements](#kafka-module-improvements)
         - [NATS Module Improvements](#nats-module-improvements)
@@ -869,6 +871,142 @@ GraphQL resources may now return error values.
 - The `resource` functions are changed to `remote` functions in the new listener APIs. 
 - The `service` name is given as a string with the new Ballerina language changes.
 
+##### TCP Module Improvements
+
+The Socket module is replaced by the TCP module. Therefore, the import statement needs to be changed from `ballerina/socket` to `ballerina/tcp`.
+
+New APIs for the client and listener are introduced in the TCP module.
+
+###### Client Changes
+
+- `tcp:Client` initialization may now return `tcp:Error` if an error occurs while initializing the client.
+- The name of the `write` method changed to `writeBytes`. You don’t have to explicitly write a while loop to ensure the data is written completely as before. Instead, the `writeBytes` method ensures to write the data completely.
+- The name of the `read` method changed to `readBytes`. This method now returns `readonly & byte[]` instead of `[byte[], int]`.
+
+**New Syntax:**
+
+```ballerina
+import ballerina/tcp;
+
+public function main() returns tcp:Error? {
+
+    tcp:Client socketClient = check new ("localhost", 3000);
+
+    check socketClient->writeBytes(“Hello Ballerina”.toBytes());
+
+    readonly & byte[] receivedData = check socketClient->readBytes();
+
+    check socketClient->close();
+}
+```
+
+###### Service and Listener Changes
+
+**New Syntax:**
+
+```ballerina
+listener tcp:Listener socketListener = new (9090);
+```
+
+The service type with resource methods is removed from the module. The new implementation has the following two types of services.
+
+1. `tcp:Service` which handles a TCP connection. This service has a predefined `onConnect` remote method that returns `tcp:ConnectionService` or `tcp:Error?`.
+2. `tcp: ConnectionService` which handles the traffic between the client and server. This can have the following optional remote methods.
+    - `remote function onBytes(readonly & byte[] data) returns Error? { }`
+    - `remote function onClose() returns Error? { }`
+    - `remote function onError(readonly & Error err) returns Error? { }`
+
+The `read` method is removed from `tcp:Caller`. Also, the `write` method of `Caller` is renamed to `writeBytes`, which is similar to the Client’s `writeBytes` method.
+
+**New Syntax:**
+
+```ballerina
+import ballerina/tcp;
+
+service on new tcp:Listener(3000) {
+    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+        return new TCPService(caller);
+    }
+}
+
+service class TCPService {
+    tcp:Caller caller;
+
+    public function init(tcp:Caller c) {
+        self.caller = c;
+    }
+
+    remote function onBytes(readonly & byte[] data) returns byte[]|tcp:Error? {
+        return data;
+    }
+
+    remote function onClose() returns tcp:Error? {
+    }
+
+    remote function onError(readonly & tcp:Error err) returns tcp:Error? {
+    }
+}
+```
+
+##### UDP Module Improvements
+
+The UDP module has been moved out of the Socket module. Therefore, it is required to change the import from `ballerina/socket` to `ballerina/udp`.
+
+###### Client Changes
+
+- `udp:Client` initialization may now return `udp:Error` if an error occurred while initializing the client.
+- The name of the `sendTo` method changed to `sendDatagram`. This takes a `udp:Datagram` as a parameter. You don’t need to explicitly write a while loop to ensure the data is written completely. The `writeBytes` method ensures to write the data completely.
+- The name of the `receiveFrom` method changed to `receiveDatagram`. This now returns `readonly & udp:Datagram` instead of `[byte[], int, socket:Address]`.
+
+    **New Syntax:**
+
+    ```ballerina
+    import ballerina/udp;
+
+    public function main() returns udp:Error? {
+        udp:Client socketClient = check new;
+        udp:Datagram datagram = {
+            remoteHost: "localhost",
+            remotePort: 48829,
+            data: "Hello Ballerina".toBytes()
+        };
+        check socketClient->sendDatagram(datagram);
+        readonly & udp:Datagram result = check socketClient->receiveDatagram();
+        check socketClient->close();
+    }
+    ```
+
+  Introduced `ConnectClient` and `Listener` to the new UDP module as follows.
+
+    **ConnectClient:**
+
+    ```ballerina
+    import ballerina/udp;
+
+    public function main() returns udp:Error? {
+        udp:ConnectClient socketClient = check new ("localhost", 48829);
+        check socketClient->writeBytes("Hello Ballerina".toBytes());
+        readonly & byte[] result = check socketClient->readBytes();
+        check socketClient->close();
+    }
+    ```
+
+    **Listener:**
+
+    ```ballerina
+    import ballerina/udp;
+
+    service on new udp:Listener(48829) {
+
+        remote function onBytes(readonly & byte[] data, udp:Caller caller) returns (readonly & byte[])|udp:Error? {
+            return data;
+        }
+
+        remote function onError(readonly & udp:Error err) {
+        }
+    }
+    ```
+
 ##### Kafka Module Improvements
 
 ###### Client Changes
@@ -1244,142 +1382,6 @@ This module provides functions related to random number generation.
 ###### RegEx
 
 This module provides RegEx utilities such as checking whether a string matches a given RegEx, replacing substrings, and splitting strings based on a RegEx.
-
-###### TCP
-
-The Socket module is replaced by the TCP module. Therefore, the import statement needs to be changed from `ballerina/socket` to `ballerina/tcp`.
-
-New APIs for the client and listener are introduced in the TCP module.
-
-**Client Changes**
-
-- `tcp:Client` initialization may now return `tcp:Error` if an error occurs while initializing the client.
-- The name of the `write` method changed to `writeBytes`. You don’t have to explicitly write a while loop to ensure the data is written completely as before. Instead, the `writeBytes` method ensures to write the data completely.
-- The name of the `read` method changed to `readBytes`. This method now returns `readonly & byte[]` instead of `[byte[], int]`.
-
-**New Syntax:**
-
-```ballerina
-import ballerina/tcp;
-
-public function main() returns tcp:Error? {
-
-    tcp:Client socketClient = check new ("localhost", 3000);
-
-    check socketClient->writeBytes(“Hello Ballerina”.toBytes());
-
-    readonly & byte[] receivedData = check socketClient->readBytes();
-
-    check socketClient->close();
-}
-```
-
-**Listener Changes**
-
-**New Syntax:**
-
-```ballerina
-listener tcp:Listener socketListener = new (9090);
-```
-
-The service type with resource methods is removed from the module. The new implementation has the following two types of services.
-
-1. `tcp:Service` which handles a TCP connection. This service has a predefined `onConnect` remote method that returns `tcp:ConnectionService` or `tcp:Error?`.
-2. `tcp: ConnectionService` which handles the traffic between the client and server. This can have the following optional remote methods.
-    - `remote function onBytes(readonly & byte[] data) returns Error? { }`
-    - `remote function onClose() returns Error? { }`
-    - `remote function onError(readonly & Error err) returns Error? { }`
-
-The `read` method is removed from `tcp:Caller`. Also, the `write` method of `Caller` is renamed to `writeBytes`, which is similar to the Client’s `writeBytes` method.
-
-**New Syntax:**
-
-```ballerina
-import ballerina/tcp;
-
-service on new tcp:Listener(3000) {
-    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
-        return new TCPService(caller);
-    }
-}
-
-service class TCPService {
-    tcp:Caller caller;
-
-    public function init(tcp:Caller c) {
-        self.caller = c;
-    }
-
-    remote function onBytes(readonly & byte[] data) returns byte[]|tcp:Error? {
-        return data;
-    }
-
-    remote function onClose() returns tcp:Error? {
-    }
-
-    remote function onError(readonly & tcp:Error err) returns tcp:Error? {
-    }
-}
-```
-
-###### UDP
-
-The UDP module has been moved out of the Socket module. Therefore, it is required to change the import from `ballerina/socket` to `ballerina/udp`.
-
-**Client Changes**
-
-- `udp:Client` initialization may now return `udp:Error` if an error occurred while initializing the client.
-- The name of the `sendTo` method changed to `sendDatagram`. This takes a `udp:Datagram` as a parameter. You don’t need to explicitly write a while loop to ensure the data is written completely. The `writeBytes` method ensures to write the data completely.
-- The name of the `receiveFrom` method changed to `receiveDatagram`. This now returns `readonly & udp:Datagram` instead of `[byte[], int, socket:Address]`.
-
-    **New Syntax:**
-
-    ```ballerina
-    import ballerina/udp;
-
-    public function main() returns udp:Error? {
-        udp:Client socketClient = check new;
-        udp:Datagram datagram = {
-            remoteHost: "localhost",
-            remotePort: 48829,
-            data: "Hello Ballerina".toBytes()
-        };
-        check socketClient->sendDatagram(datagram);
-        readonly & udp:Datagram result = check socketClient->receiveDatagram();
-        check socketClient->close();
-    }
-    ```
-
-- Introduced `ConnectClient` and `Listener` to the new UDP module as follows.
-
-    **ConnectClient:**
-
-    ```ballerina
-    import ballerina/udp;
-
-    public function main() returns udp:Error? {
-        udp:ConnectClient socketClient = check new ("localhost", 48829);
-        check socketClient->writeBytes("Hello Ballerina".toBytes());
-        readonly & byte[] result = check socketClient->readBytes();
-        check socketClient->close();
-    }
-    ```
-
-    **Listener:**
-
-    ```ballerina
-    import ballerina/udp;
-
-    service on new udp:Listener(48829) {
-
-        remote function onBytes(readonly & byte[] data, udp:Caller caller) returns (readonly & byte[])|udp:Error? {
-            return data;
-        }
-
-        remote function onError(readonly & udp:Error err) {
-        }
-    }
-    ```
 
 ###### WebSubHub 
 

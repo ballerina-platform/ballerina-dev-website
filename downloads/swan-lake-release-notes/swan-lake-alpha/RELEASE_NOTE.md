@@ -721,20 +721,17 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     import ballerina/http;
     import ballerina/websocket;
 
-    service / basicon new websocket:Listener(9000) {
-        resource function get.(http:Request req) returns websocket:Service|websocket:UpgradeError {
+    service / basic on new websocket:Listener(9000) {
+        resource function get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
             return new WsService();
         }
     }
-
     service class WsService {
         *websocket:Service;
         remote function onOpen(websocket:Caller caller) {
         }
-
         remote function onTextMessage(websocket:Caller caller, string text) {
         }
-
         remote function onBinaryMessage(websocket:Caller caller, byte[] b) {
         }
     }

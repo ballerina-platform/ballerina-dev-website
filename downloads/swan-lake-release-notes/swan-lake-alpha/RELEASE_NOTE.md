@@ -851,7 +851,7 @@ The Ballerina HTTP client can be configured to send authentication information t
 - Password grant type
 - Direct token type
 
-For more information, see [Authentication and Authorization](/swan-lake/learn/security/authentication-and-authorization/#http-client-authentication).
+For more information, see [HTTP Client Authentication](/swan-lake/learn/security/authentication-and-authorization/#http-client-authentication).
 
 ##### GraphQL Module Improvements
 

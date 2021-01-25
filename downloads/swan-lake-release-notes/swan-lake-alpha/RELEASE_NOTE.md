@@ -1217,10 +1217,6 @@ The improvements below have been added to the `Time` module.
 - Introduced a new `time:getTimezones()` method to retrieve the timezone IDs supported by the underlying native code.
 - Introduced an enum to represent the days of the week and modified the `time:getWeekday()` method to return this enum.
 
-##### Rename System Module to OS
-
-The previous `system` module is now renamed to `os`. All the Operating System independent functionalities are included in this module.
-
 ##### Runtime Module Improvements
 
 The methods below have been removed from the `runtime` module since these methods have moved to the `lang:runtime` lang library.

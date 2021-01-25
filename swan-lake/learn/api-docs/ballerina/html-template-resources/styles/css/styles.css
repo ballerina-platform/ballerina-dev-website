@@ -361,7 +361,6 @@ body p, li, ul, th, td {
 
 .enum-name {
     font-weight: 600;
-    max-width: 150px;
 }
 
 .break-spaces {

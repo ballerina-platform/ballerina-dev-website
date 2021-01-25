@@ -1270,8 +1270,8 @@ public type Attachment record {|
 
     ```ballerina
     Error? response = smtpClient->sendEmail(toAddresses, subject, fromAddress, body, cc = ccAddresses, bcc = bccAddresses, 
-    htmlBody = htmlBody, contentType = contentType, headers = {header1_name: "header1_value"}, sender = sender, replyTo = 
-    replyToAddresses, attachments = bodyParts);
+        htmlBody = htmlBody, contentType = contentType, headers = {header1_name: "header1_value"}, sender = sender, replyTo = 
+        replyToAddresses, attachments = bodyParts);
     ```
 
 - The `read` method of `email:ImapClient`, `email:PopClient`, and `email:Listener` (i.e., `new email:PopListener` and `email:ImapListener`) are changed to `receiveEmailMessage`.

@@ -1256,9 +1256,9 @@ New APIs for the client and listener are introduced in the TCP module.
 
 **Client Changes**
 
-- The initialization changed from `socket:Client socketClient = new ({ host: "localhost", port: 61598 }); ` to `tcp:Client socketClient = check new ("localhost", 3000);`, which returns the `tcp:Error` if there an error occurs while initializing the client.
-- The `write` method name changed to `writeBytes`. You don’t have to explicitly write a while loop to ensure the data is written completely as before. Instead, the `writeBytes` method ensures to write the data completely.
-- The `read` method name changed to `readBytes`, which now returns a `readonly & byte[]` instead of a `[byte[], int]` tuple.
+- `tcp:Client` initialization may now return `tcp:Error` if an error occurs while initializing the client.
+- The name of the `write` method changed to `writeBytes`. You don’t have to explicitly write a while loop to ensure the data is written completely as before. Instead, the `writeBytes` method ensures to write the data completely.
+- The name of the `read` method changed to `readBytes`. This method now returns `readonly & byte[]` instead of `[byte[], int]`.
 
 **New Syntax:**
 
@@ -1285,15 +1285,15 @@ public function main() returns tcp:Error? {
 listener tcp:Listener socketListener = new (9090);
 ```
 
-The service type with resource functions is removed from the module. The new implementation has the following two types of services.
+The service type with resource methods is removed from the module. The new implementation has the following two types of services.
 
-1. The `tcp:Service`, which handles a TCP connection. This service has a predefined `onConnect` remote method that returns a `tcp:ConnectionService` or `tcp:Error?`.
-2. The `tcp: ConnectionService`, which handles the traffic between the client and server. This can have the following optional remote methods.
+1. `tcp:Service` which handles a TCP connection. This service has a predefined `onConnect` remote method that returns `tcp:ConnectionService` or `tcp:Error?`.
+2. `tcp: ConnectionService` which handles the traffic between the client and server. This can have the following optional remote methods.
     - `remote function onBytes(readonly & byte[] data) returns Error? { }`
     - `remote function onClose() returns Error? { }`
     - `remote function onError(readonly & Error err) returns Error? { }`
 
-The `read` method is removed from the `tcp:Caller`. Also, the `write` methods of the `Caller` renamed to `writeBytes`, which is similar to the Client’s `writeBytes` method.
+The `read` method is removed from `tcp:Caller`. Also, the `write` method of `Caller` is renamed to `writeBytes`, which is similar to the Client’s `writeBytes` method.
 
 **New Syntax:**
 
@@ -1301,7 +1301,7 @@ The `read` method is removed from the `tcp:Caller`. Also, the `write` methods of
 import ballerina/tcp;
 
 service on new tcp:Listener(3000) {
-remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         return new TCPService(caller);
     }
 }
@@ -1331,9 +1331,9 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 
 **Client Changes**
 
-- Initialization changed from `socket:UdpClient socketClient = new(localAddress = {host: "localhost", port: 8080 });` to `udp:Client socketClient = check new;`. This returns the `udp:Error` if an error occurred while initializing the client.
-- The `sendTo` method name changed to `sendDatagram`. This takes a `udp:Datagram` as a parameter. You don’t need to explicitly write a while loop to ensure the data is written completely. The `writeBytes` method ensures to write the data completely.
-- The `receiveFrom` method name changed to `receiveDatagram`. This now returns a `readonly & udp:Datagram` instead of a `[byte[], int, socket:Address]` tuple.
+- `udp:Client` initialization may now return `udp:Error` if an error occurred while initializing the client.
+- The name of the `sendTo` method changed to `sendDatagram`. This takes a `udp:Datagram` as a parameter. You don’t need to explicitly write a while loop to ensure the data is written completely. The `writeBytes` method ensures to write the data completely.
+- The name of the `receiveFrom` method changed to `receiveDatagram`. This now returns `readonly & udp:Datagram` instead of `[byte[], int, socket:Address]`.
 
     **New Syntax:**
 
@@ -1353,7 +1353,7 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     }
     ```
 
-- Introduced a `ConnectClient` and a `Listener` to the new UDP module as follows.
+- Introduced `ConnectClient` and `Listener` to the new UDP module as follows.
 
     **ConnectClient:**
 
@@ -1375,11 +1375,11 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 
     service on new udp:Listener(48829) {
 
-    remote function onBytes(readonly & byte[] data, udp:Caller caller) returns (readonly & byte[])|udp:Error? {
+        remote function onBytes(readonly & byte[] data, udp:Caller caller) returns (readonly & byte[])|udp:Error? {
             return data;
         }
 
-    remote function onError(readonly & udp:Error err) {
+        remote function onError(readonly & udp:Error err) {
         }
     }
     ```

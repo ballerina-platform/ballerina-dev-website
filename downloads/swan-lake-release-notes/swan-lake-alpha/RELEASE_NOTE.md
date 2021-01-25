@@ -1235,7 +1235,7 @@ The methods below have been removed from the `runtime` module since these method
 
 - `email:Email` is changed to `email:Message`.
 
-- Attachment support is improved to support file attachments directly with its content type. The new `email:Attachment` is as follows.
+- Attachment support is improved to support file attachments directly with its content type. The new `email:Attachment` record is as follows.
 
 ```ballerina
 public type Attachment record {|

@@ -89,23 +89,19 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 #### Highlights
 
-- The `ballerina` command is renamed to `bal`
-- Introduction of hierarchical package names
-- Introduction of the `Dependencies.toml` file
 - Support for intersection types with errors
 - Support for more match patterns in the match statement
 - Support for cyclic union type descriptors
 - Changes to casting and `toString`/`toBalString` with errors
 - Changes to object-type and record-type inclusions
 - Improved listener declaration
-- Improvements to the lang library modules 
-- Improvements to the `configurable` feature
-- Improvements to the Developer Tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
+- The `ballerina` command has been renamed to `bal`
+- Introduction of hierarchical package names
+- Introduction of the `Dependencies.toml` file
 - Introduction of REPL support for Ballerina via the `bal shell` command
+- Improvements to developer tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
 - Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ, Time, Runtime, Email, and WebSub standard library modules
-- Rename the System standard library module to OS
 - Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
-- Removal of the Config, Math, Stringutils, and Socket standard library modules
 - Code action and code completion support for Code to Cloud libraries in the VS Code plugin
 
 ### What is New in Ballerina Swan Lake Alpha

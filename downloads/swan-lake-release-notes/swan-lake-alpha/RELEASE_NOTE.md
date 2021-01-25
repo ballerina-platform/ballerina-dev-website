@@ -1260,7 +1260,7 @@ public type Attachment record {|
     |}
     ```
 
-- The `enableSsl` boolean property is replaced with the `security` parameter to enable different types of transport-layer security. This new parameter is an enumeration with the `START_TLS_AUTO|START_TLS_ALWAYS|START_TLS_NEVER|SSL` options. The default/undefined value is `SSL`.
+- The `enableSsl` boolean field is replaced with the `security` field to enable different types of transport-layer security. This new parameter is an enumeration with the `START_TLS_AUTO|START_TLS_ALWAYS|START_TLS_NEVER|SSL` options. The default/undefined value is `SSL`.
 
 - Self-signed certificate support is added while default SSL/TLS support is restricted to self-signed certificates with relevant configurations and CA-certified certificates. Hostname verification is made mandatory for SSL/TLS support. Anyway, hostname verification can be disabled with the configuration by passing the value of the `mail.smtp.ssl.checkserveridentity` property as `”false”`.
 

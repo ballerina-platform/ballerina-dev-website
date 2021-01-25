@@ -836,7 +836,7 @@ A Ballerina HTTP listener can be configured to authenticate and authorize the in
 - JWT authentication
 - OAuth2 authentication
 
-For more information, see [Authentication and Authorization](/swan-lake/learn/security/authentication-and-authorization/#http-listener-authentication-and-authorization).
+For more information, see [HTTP Listener Authentication and Authorization](/swan-lake/learn/security/authentication-and-authorization/#http-listener-authentication-and-authorization).
 
 ###### HTTP Client Authentication
 

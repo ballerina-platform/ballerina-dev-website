@@ -1211,12 +1211,12 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 The improvements below have been added to the `Time` module.
 
 - Added support for commonly-used date-time formatters in the `time:format()` & `time:parse()` APIs.
-- The hours, minutes, seconds, milliseconds, and zone ID parameters of the `time:createTime()` API have been made defaultable.
+- The hours, minutes, seconds, milliseconds, and zone ID parameters of the `time:createTime()` method have been made defaultable.
 - Introduced a new `time:Duration` record type to represent a chunk of time.
-- Modified the `time:addDuration()` and `time:subtractDuration()` APIs to accept the `time:Duration` records to be added/subtracted.
-- Introduced a new `time:getDifference()` API to calculate the difference between two `time:Time` records.
-- Introduced a new `time:getTimezones()` API to retrieve the timezone IDs supported by the underlying native code.
-- Introduced an enum to represent the days of the week and modified the `time:getWeekday()` API to return this enum.
+- Modified the `time:addDuration()` and `time:subtractDuration()` methods to accept the `time:Duration` records to be added/subtracted.
+- Introduced a new `time:getDifference()` method to calculate the difference between two `time:Time` records.
+- Introduced a new `time:getTimezones()` method to retrieve the timezone IDs supported by the underlying native code.
+- Introduced an enum to represent the days of the week and modified the `time:getWeekday()` method to return this enum.
 
 ##### Rename System Module to OS
 

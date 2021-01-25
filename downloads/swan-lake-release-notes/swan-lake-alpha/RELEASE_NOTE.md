@@ -796,7 +796,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
 
 ###### Service Changes
 
-- Enable returning specific data types directly from the remote functions (even record types and streams).
+- Enable returning specific data types directly from the remote methods (even record types and streams).
     ```ballerina
     service "Chat" on ep {
 remote function chat(stream<string, error?> clientStream) returns stream<string, error?> {

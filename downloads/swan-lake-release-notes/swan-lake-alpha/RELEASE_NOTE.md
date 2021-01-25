@@ -1541,7 +1541,7 @@ The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
 
 - The Kubernetes artifacts can be generated using the `--cloud=k8s` build option. The `import ballerina/cloud as _` is no longer required.
 - VS code plugin support for the `Kubernetes.toml`
-    - Code Completion based on the c2c specification
+    - Code Completion based on the c2c specification.
     - Code Actions add/modify the probes and environments based on the source code.
 
 #### Breaking Changes

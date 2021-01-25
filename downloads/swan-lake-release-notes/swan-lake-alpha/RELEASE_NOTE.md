@@ -795,9 +795,9 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
 - Enable returning specific data types directly from the remote methods (even record types and streams).
     ```ballerina
     service "Chat" on ep {
-remote function chat(stream<string, error?> clientStream) returns stream<string, error?> {
+        remote function chat(stream<string, error?> clientStream) returns stream<string, error?> {
+        }
     }
-}
     ```
 - Add support to send/receive custom headers in the request/response path.
 
@@ -825,7 +825,7 @@ remote function chat(stream<string, error?> clientStream) returns stream<string,
 
 ##### Security Improvements
 
-Ballerina listener authentication and authorization, and client authentication were completely redesigned. The new design is compatible with most of the standard libraries like HTTP, gRPC, WebSocket etc.,
+Ballerina listener authentication and authorization, and client authentication were completely redesigned. The new design is compatible with most of the standard libraries like HTTP, gRPC, WebSocket, etc.,
 
 ###### HTTP Listener Authentication and Authorization
 

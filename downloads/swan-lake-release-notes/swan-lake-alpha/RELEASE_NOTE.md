@@ -1207,7 +1207,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
 ##### Time Module Improvements
 
-The improvements below have been added to the `Time` module.
+The improvements below have been introduced to the `ballerina/time` module.
 
 - Added support for commonly-used date-time formatters in the `time:format()` & `time:parse()` APIs.
 - The hours, minutes, seconds, milliseconds, and zone ID parameters of the `time:createTime()` method have been made defaultable.

@@ -1027,8 +1027,8 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 
     ```ballerina
     string message = "Hello World, Ballerina";
-    kafkaProducer->sendProducerRecord({ topic: "test-kafka-topic",
-                                        value: message.toBytes() });
+    kafkaProducer->sendProducerRecord({topic: "test-kafka-topic",
+                                       value: message.toBytes()});
     ```
 
 ###### Service and Listener Changes

@@ -825,7 +825,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
 
 ##### Security Improvements
 
-Ballerina listener authentication and authorization, and client authentication were completely redesigned. The new design is compatible with most of the standard libraries like HTTP, gRPC, WebSocket etc.,
+Ballerina listener authentication and authorization, and client authentication were completely redesigned. The new design is compatible with most of the standard libraries like HTTP, gRPC, WebSocket, etc.,
 
 ###### HTTP Listener Authentication and Authorization
 

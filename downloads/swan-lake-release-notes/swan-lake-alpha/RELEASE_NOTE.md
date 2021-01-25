@@ -650,21 +650,25 @@ The `resource` method can return anydata type, an `http:Response` object, `Statu
 When returning anydata, the `@http:Payload` annotation can be used to specify the content type of the response additionally. Otherwise, the default content type of the respective return value type will be added. 
 
 ```ballerina
-service on helloEP {
-    resource function gethello () returns @http:Payload {mediaType: text / plain} string {
-        return “Hello world”;
+service on new http:Listener(8080) {
+    resource function get hello () returns string {
+        return "Hello"; // Content type defaults to `text/plain`
+    }
+
+    resource function get goodbye () returns @http:Payload {mediaType: "application/json"} string {
+        return "\"Goodbye!\"";
     }
 }
 ```
 
 ##### Introduce Status Code Response Records
 
-With the introduction of records to the mostly used status code, the response can be sent inline. 
+With the introduction of records for the most commonly used status codes, the response can be sent inline. 
 
 ```ballerina
 service on helloEP {
     resource function get hello () returns http:Ok? {
-        return {body:”Hello world”, headers: {x-test:”123abc”}, mediaType:”text/plain”};
+        return {body: "Hello world", headers: {"x-test": "123abc"}, mediaType: "text/plain"};
     }
 }
 ```
@@ -672,7 +676,7 @@ service on helloEP {
 ###### Introduce the Response Limit Configuration
 
 
-The `http:Client` facilitates inbound response validations on the size limits. Each response that fails to meet the threshold will be returned as an error.
+The `http:Client` facilitates validations on inbound responses based on size limits. Each response that exceeds the limits will be returned as an error.
 
 ```ballerina
 http:Client clientEP = new ("http://localhost:9092/hello", config = {responseLimits: {
@@ -684,7 +688,7 @@ http:Client clientEP = new ("http://localhost:9092/hello", config = {responseLim
 
 ###### Improve Listener/Client Return Type to Union with Error
 
-Errors, which might occur during the listener and client initialization can be handled now. When the `listener` keyword is added to the listener, the error will fail the module init. 
+Listener and client initialization may return an error now. When the listener is used in a listener declaration, module initialization will fail if the listener initialization returns an error.
 
 **New Syntax:**
 

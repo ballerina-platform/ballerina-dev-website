@@ -93,8 +93,6 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
     Now, the package name can take the form of `package-name := identifier(.identifer)*`.
 - Introduction of the `Dependencies.toml` file
 - Support for intersection types with errors
-- Support for passing closed records as rest arguments in function/method calls
-- Support for the empty XML value
 - Improvements to the `match` statement
 - Support for cyclic union type descriptors
 - Changes to casting and `toString`/`toBalString` with errors
@@ -108,8 +106,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Rename the System standard library module to OS
 - Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
 - Removal of the Config, Math, Stringutils, and Socket standard library modules
-- VSCode plugin support for code actions and code completions on Code To Cloud
-- Taint analyzer related updates
+- Code action and code completion support for Code to Cloud libraries in the VS Code plugin
 
 ### What is New in Ballerina Swan Lake Alpha
 

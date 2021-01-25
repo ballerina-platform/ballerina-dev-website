@@ -1547,14 +1547,14 @@ The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
 
 With this release, the taint analyzer does not produce taint errors unless explicitly enabled. However, the taint analyzer does perform the taint flow analysis without producing errors regardless of it being enabled or not.
 
-This is enabled via the build options below in the `Ballerina.toml` file
+This is enabled via the build option below in the `Ballerina.toml` file
 
 ```toml
 [build-options]
 taintCheck = true
 ```
 
-or else, by using the `--taint-check` flag in the Ballerina CLI tools as follows.
+or else, by using the `--taint-check` option in the Ballerina CLI tools as follows.
 
 ```bash
 bal run --taint-check [file.bal | project]

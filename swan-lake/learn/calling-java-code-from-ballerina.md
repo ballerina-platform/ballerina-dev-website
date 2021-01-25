@@ -616,8 +616,8 @@ If you wish to use a custom Maven repository, you can specify it in the `Balleri
 [[platform.java11.repository]]
 id = "<maven-repository-id>"
 url = "<maven-repository-url>"
-username = "<github-username>"
-password = "<github-PAT>"
+username = "<maven-repository-username>"
+password = "<maven-repository-password>"
 ```
 
 Now, let’s look at the contents of the `Ballerina.toml` file in this package.

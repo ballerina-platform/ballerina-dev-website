@@ -1375,78 +1375,80 @@ The `ballerina/regex` module provides RegEx utilities such as checking whether a
 
 ###### WebSubHub 
 
-- This module contains the API specifications and implementations related to the WebSub Hub, WebSub Hub Client and WebSub Publisher.
+- This module contains the API specifications and implementations related to the WebSub Hub, WebSub Hub Client, and WebSub Publisher.
 - This is an inter-dependent module for the `websub` module.
 
 **Hub Implementation**
 
 - The default `websub:Hub` implementation has been removed and language-specific API abstraction is defined in the `websubhub:Service`.
-- Updated the WebSub Hub sample implementation to comply with the new API specification as follows.
+- Updated WebSub Hub sample implementation to comply with the new API specification is as follows.
 
     ```ballerina
     listener websubhub:Listener hubListener = new (9001);
 
-    service / websubhubon hubListener {
-
-    remote function onRegisterTopic(TopicRegistration message) returns TopicRegistrationSuccess|TopicRegistrationError {
-        // implement action to execute on topic-registration
+    service /websubhub on hubListener {
+        remote function onRegisterTopic(websubhub:TopicRegistration message) 
+                returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError {
+            // implement action to execute on topic-registration
         }
-
-    remote function onDeregisterTopic(TopicDeregistration message) returns TopicDeregistrationSuccess|TopicDeregistrationError {
-        // implement action to execute on topic-deregistration
+        
+        remote function onDeregisterTopic(websubhub:TopicDeregistration message) 
+                returns websubhub:TopicDeregistrationSuccess|websubhub:TopicDeregistrationError {
+            // implement action to execute on topic-deregistration
         }
-
-    remote function onUpdateMessage(UpdateMessage msg) returns Acknowledgement|UpdateMessageError {
-        // implement action to execute on content-update for topic
+        remote function onUpdateMessage(websubhub:UpdateMessage msg) 
+                returns websubhub:Acknowledgement|websubhub:UpdateMessageError {
+            // implement action to execute on content-update for topic
         }
-
-    remote function onSubscription(Subscription msg) returns SubscriptionAccepted|SubscriptionPermanentRedirect|
-        SubscriptionTemporaryRedirect|BadSubscriptionError|InternalSubscriptionError {
-        // implement action to execute on new subscription
+        remote function onSubscription(websubhub:Subscription msg) 
+                returns websubhub:SubscriptionAccepted|websubhub:SubscriptionPermanentRedirect|
+                    websubhub:SubscriptionTemporaryRedirect|websubhub:BadSubscriptionError|
+                    websubhub:InternalSubscriptionError {
+            // implement action to execute on new subscription
         }
-
-    remote function onSubscriptionValidation(Subscription msg) returns SubscriptionDeniedError? {
-        // implement action to execute on subscription validation
+        remote function onSubscriptionValidation(websubhub:Subscription msg) 
+                returns websubhub:SubscriptionDeniedError? {
+            // implement action to execute on subscription validation
         }
-
-    remote function onSubscriptionIntentVerified(VerifiedSubscription msg) {
-        // implement action to execute on subscription intent verification
+    
+        remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) {
+            // implement action to execute on subscription intent verification
         }
-
-    remote function onUnsubscription(Unsubscription msg) returns UnsubscriptionAccepted|BadUnsubscriptionError|
-        InternalUnsubscriptionError {
-        // implement action to execute on unsubscription
+        remote function onUnsubscription(websubhub:Unsubscription msg) 
+                returns websubhub:UnsubscriptionAccepted|websubhub:BadUnsubscriptionError|
+                    websubhub:InternalUnsubscriptionError {
+            // implement action to execute on unsubscription
         }
-
-    remote function onUnsubscriptionValidation(Unsubscription msg) returns UnsubscriptionDeniedError? {
-        // implement action to execute on unsubscription validation
+    
+        remote function onUnsubscriptionValidation(websubhub:Unsubscription msg) 
+                returns websubhub:UnsubscriptionDeniedError? {
+            // implement action to execute on unsubscription validation
         }
-
-    remote function onUnsubscriptionIntentVerified(VerifiedUnsubscription msg) {
-        // implement action to execute on unsubscription intent verification
+        
+        remote function onUnsubscriptionIntentVerified(websubhub:VerifiedUnsubscription msg) {
+            // implement action to execute on unsubscription intent verification
         }
-    }    
+    }   
     ```
 
 **Hub Client Implementation**
 
-- The `websubhub:Client` is introduced to distribute the updated content to subscribers.
+- `websubhub:Client` is introduced to distribute the updated content to subscribers.
 - The example below is a sample use-case of the WebSub Hub Client.
 
 ```ballerina
-    service / websubhubon hubListener {
+    service /websubhub on hubListener {
     remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) {
 
-            // you can pass client config if you want 
-            // say maybe retry config
+            // Client configuration (e.g., retry config) can be passed if required.
             websub:HubClient hubclient = new (msg);
-            check start notifySubscriber(hubclient);
+            var responseFuture =  start notifySubscriber(hubclient);
         }
 
         function notifySubscriber(websubhub:HubClient hubclient) returns error? {
             while (true) {
-                // fetch the message from MB
-                check hubclient->notifyContentDistribution({content: "This is sample content delivery"});
+                // Fetch the messages to be delivered. 
+               ContentDistributionSuccess | SubscriptionDeletedError | error publishResponse = check hubclient->notifyContentDistribution({content: "This is sample content delivery"});
             }
         }
     }
@@ -1454,7 +1456,7 @@ The `ballerina/regex` module provides RegEx utilities such as checking whether a
 
 **Publisher Implementation**
 
-The `websub:PublisherClient` is moved to the `websubhub:PublisherClient`.
+`websub:PublisherClient` is moved to `ballerina/websubhub` and can now be used as `websubhub:PublisherClient`.
 
 ##### Remove Modules (Config, Math and Stringutils modules)
 

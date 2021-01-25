@@ -865,7 +865,7 @@ GraphQL resources may now return error values.
 
 ##### Common Changes in Messaging Modules
 
-- The `resource` functions are changed to `remote` functions in the new listener APIs. 
+- The `resource` methods are changed to `remote` methods in the new listener APIs. 
 - The `service` name is given as a string with the new Ballerina language changes.
 
 ##### TCP Module Improvements

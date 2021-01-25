@@ -1367,7 +1367,7 @@ public type Attachment record {|
         leaseSeconds: 36000,
         secret: "Kslk30SNF2AChs2"
     }
-    service / subscriberon testListener {
+    service /subscriber on testListener {
     remote function onSubscriptionValidationDenied(SubscriptionDeniedError msg) returns Acknowledgement {
         // execute subscription validation denied action
         }

@@ -1009,8 +1009,8 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 ###### Client Changes
 
 - The `kafka:Consumer` is separated into `kafka:Listener` (asynchronous) and `kafka:Consumer` (synchronous). 
-- The return type of the `init` functions of the `kafka:Producer` and `kafka:Consumer` is changed to `Error?`. 
-- The `subscribeToPattern()` of the `kafka:Consumer` is changed to `subscribeWithPattern()`.
+- The return type of the `init` methods of the `kafka:Producer` and `kafka:Consumer` is changed to `Error?`. 
+- The `subscribeToPattern()` method of the `kafka:Consumer` is changed to `subscribeWithPattern()`.
 - A new record type named `ProducerRecord` is introduced for sending messages. 
 
     ```ballerina
@@ -1027,13 +1027,13 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 
     ```ballerina
     string message = "Hello World, Ballerina";
-    kafkaProducer->sendProducerRecord({ topic: "test-kafka-topic",
-                                        value: message.toBytes() });
+    kafkaProducer->sendProducerRecord({topic: "test-kafka-topic",
+                                       value: message.toBytes()});
     ```
 
 ###### Service and Listener Changes
 
-- The return type of the `kafka:Listener init` is changed to `Error?`. 
+- The return type of the `init` method of `kafka:Listener` is changed to `Error?`. 
 - Has a single type of service that supports the two types of remote functions below:
     - `onConsumerRecord(kafka:ConsumerRecord[] record) {}` 
     - `onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] record) {}`
@@ -1235,7 +1235,7 @@ The methods below have been removed from the `runtime` module since these method
 
 - `email:Email` is changed to `email:Message`.
 
-- Attachment support is improved to support file attachments directly with its content type. The new `email:Attachment` is as follows.
+- Attachment support is improved to support file attachments directly with its content type. The new `email:Attachment` record is as follows.
 
 ```ballerina
 public type Attachment record {|

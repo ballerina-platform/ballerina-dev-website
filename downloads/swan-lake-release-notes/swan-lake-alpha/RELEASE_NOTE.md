@@ -1233,7 +1233,7 @@ The methods below have been removed from the `runtime` module since these method
 
 ###### Common Changes for Client and Server Configurations
 
-- The `email:Email` is changed to `email:Message`.
+- `email:Email` is changed to `email:Message`.
 
 - Attachment support is improved to support file attachments directly with its content type. The new `email:Attachment` is as follows.
 

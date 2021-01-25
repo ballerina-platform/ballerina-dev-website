@@ -805,7 +805,7 @@ remote function chat(stream<string, error?> clientStream) returns stream<string,
 
 - Clients have the capability to receive a stream object in the server streaming scenario.
     ```ballerina
-    stream<string, grpc:Error?> result = check endpoint > chat("WSO2");
+    stream<string, grpc:Error?> result = check endpoint->chat("WSO2");
     ```
 - In the client and bidirectional streaming use cases, it returns a streaming client that has the capability to read and write data.
     ```ballerina

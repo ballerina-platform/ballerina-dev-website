@@ -713,7 +713,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
 `listener websocket:Listener wsListener = new(9090);`
 - This module now has the two types of services below that are mandatory to work with WebSockets. 
     - `websocket:UpgradeService` - This handles the HTTP to WebSocket upgrade. This service has a single get resource, which returns a `websocket:Service` or an error. Optionally, this takes in the `http:Request` parameter. To accept the WebSocket upgrade, this resource should return a `websocket:Service`. Or else, to cancel the WebSocket upgrade, it must return a `websocket:Error`.
-    - `websocket:Service` - This handles the events after the WebSocket upgrade. This service has a predefined set of remote functions like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, `onClose`. Once the connection is successfully updated to a WebSocket connection, upon receiving WebSocket frames/messages, those will get dispatched to these remote functions. 
+    - `websocket:Service` - This handles the events after the WebSocket upgrade. This service has a predefined set of remote methods like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, `onClose`. Once the connection is successfully updated to a WebSocket connection, upon receiving WebSocket frames/messages, those will get dispatched to these remote methods. 
 
     **New Syntax:**
 

@@ -126,12 +126,12 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a Ballerina program, a single `.bal` file or an entire package into an executable JAR file. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a Ballerina program, a single `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -141,7 +141,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or package. For more information, see <a href="/swan-lake/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/swan-lake/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
 </td>
 </tr>
 <tr>

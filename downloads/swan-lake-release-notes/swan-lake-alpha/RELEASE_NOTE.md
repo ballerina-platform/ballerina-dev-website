@@ -755,7 +755,6 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     **New Syntax**
 
     ```ballerina
-    import ballerina/io;
     import ballerina/websocket;
 
     public function main() returns websocket:Error? {

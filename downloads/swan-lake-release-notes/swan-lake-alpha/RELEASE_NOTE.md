@@ -1209,7 +1209,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
 The improvements below have been introduced to the `ballerina/time` module.
 
-- Added support for commonly-used date-time formatters in the `time:format()` & `time:parse()` APIs.
+- Added support for commonly-used date-time formatters in the `time:format()` and `time:parse()` APIs.
 - The hours, minutes, seconds, milliseconds, and zone ID parameters of the `time:createTime()` method have been made defaultable.
 - Introduced a new `time:Duration` record type to represent a chunk of time.
 - Modified the `time:addDuration()` and `time:subtractDuration()` methods to accept the `time:Duration` records to be added/subtracted.

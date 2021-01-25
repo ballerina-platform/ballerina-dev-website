@@ -1351,7 +1351,6 @@ public type Attachment record {|
     listener websub:Listener testListener = new (9090);
 
     @websub:SubscriberServiceConfig {
-        subscribeOnStartUp: false,
         target: ["http://localhost:9191/websub/hub", "http://websubpubtopic.com"],
         leaseSeconds: 36000,
         secret: "Kslk30SNF2AChs2"

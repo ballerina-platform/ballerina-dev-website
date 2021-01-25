@@ -1484,7 +1484,7 @@ The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
 #### Observability
 
 - A new extension model, which separates each extension into a separate module is introduced.
-    - Observability is not included into the final JAR by default. It can be added with the following configuration in the `Ballerina.toml`
+    - Observability can be included in the final JAR by adding the following configuration in the `Ballerina.toml` file.
 
       ```toml
       [build-options]

@@ -90,9 +90,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 #### Highlights
 
 - The `ballerina` command is renamed to `bal`
-    Now onwards, all the commands will start with `bal` E.g., `bal -v`, `bal build`, `bal dist list`.
 - Introduction of hierarchical package names
-    Now, the package name can take the form of `package-name := identifier(.identifer)*`.
 - Introduction of the `Dependencies.toml` file
 - Support for intersection types with errors
 - Improvements to the `match` statement

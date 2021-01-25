@@ -1456,7 +1456,7 @@ This module provides RegEx utilities such as checking whether a string matches a
 
 The `websub:PublisherClient` is moved to the `websubhub:PublisherClient`.
 
-##### Removed Modules
+##### Remove Modules (Config, Math and Stringutils modules)
 
 ###### Config
 

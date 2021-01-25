@@ -77,9 +77,9 @@ If you are already using Ballerina, you can directly update your distribution to
                         
 > `ballerina update`
 
- Next, execute the command below to update to Swan Lake Alpha.
+From now onwards, the `ballerina` command has to be issued as `bal`. Next, execute the command below to update to Swan Lake Alpha.
 
- > `bal dist pull alpha`                 
+ > `bal dist pull slalpha1`                 
 
 However, if you are using a Ballerina version below 1.1.0, install via the [installers](/downloads/#swanlake).
 

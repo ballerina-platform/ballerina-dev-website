@@ -1519,7 +1519,7 @@ The previous `ballerina/system` module is now renamed to `ballerina/os`. All the
 
 #### Code to Cloud
 
-- The Kubernetes artifacts can be generated using the `--cloud=k8s` build option. The `import ballerina/cloud as _` is no longer required.
+- The Kubernetes artifacts can be generated using the `--cloud=k8s` build option. The `import ballerina/cloud as _` import is no longer required.
 - VS code plugin support for the `Kubernetes.toml`
     - Code Completion based on the c2c specification.
     - Code Actions add/modify the probes and environments based on the source code.

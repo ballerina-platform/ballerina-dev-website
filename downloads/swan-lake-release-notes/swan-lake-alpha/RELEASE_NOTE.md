@@ -1441,7 +1441,7 @@ The `ballerina/regex` module provides RegEx utilities such as checking whether a
     remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) {
 
             // Client configuration (e.g., retry config) can be passed if required.
-            websub:HubClient hubclient = new (msg);
+            websubhub:HubClient hubclient = check new (msg);
             var responseFuture =  start notifySubscriber(hubclient);
         }
 

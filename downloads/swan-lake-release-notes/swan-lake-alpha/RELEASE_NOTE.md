@@ -1367,11 +1367,11 @@ public type Attachment record {|
 
 ###### Random
 
-This module provides functions related to random number generation.
+The `ballerina/random` module provides functions related to random number generation.
 
 ###### RegEx
 
-This module provides RegEx utilities such as checking whether a string matches a given RegEx, replacing substrings, and splitting strings based on a RegEx.
+The `ballerina/regex` module provides RegEx utilities such as checking whether a string matches a given RegEx, replacing substrings, and splitting strings based on a RegEx.
 
 ###### WebSubHub 
 

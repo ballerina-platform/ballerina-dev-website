@@ -1033,7 +1033,7 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 
 ###### Service and Listener Changes
 
-- The return type of the `kafka:Listener init` is changed to `Error?`. 
+- The return type of the `init` method of `kafka:Listener` is changed to `Error?`. 
 - Has a single type of service that supports the two types of remote functions below:
     - `onConsumerRecord(kafka:ConsumerRecord[] record) {}` 
     - `onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] record) {}`

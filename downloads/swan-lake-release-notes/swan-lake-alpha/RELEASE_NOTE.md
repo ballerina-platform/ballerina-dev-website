@@ -1207,9 +1207,9 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
 ##### Time Module Improvements
 
-The improvements below have been added to the `Time` module.
+The improvements below have been introduced to the `ballerina/time` module.
 
-- Added support for commonly-used date-time formatters in the `time:format()` & `time:parse()` APIs.
+- Added support for commonly-used date-time formatters in the `time:format()` and `time:parse()` APIs.
 - The hours, minutes, seconds, milliseconds, and zone ID parameters of the `time:createTime()` method have been made defaultable.
 - Introduced a new `time:Duration` record type to represent a chunk of time.
 - Modified the `time:addDuration()` and `time:subtractDuration()` methods to accept the `time:Duration` records to be added/subtracted.
@@ -1239,7 +1239,7 @@ public type Attachment record {|
 |};
 ```
 
--  The `email:Message` record is modified with union-typed `string` types for `to`, `cc`, `bcc`, and `replyTo` to add flexibility. An optional `htmlBody` field is added to support the HTML body. The new record is as follows. 
+-  The `email:Message` record is modified to accept either a `string` or a `string[]` for the `to`, `cc`, `bcc`, and `replyTo` fields to add flexibility. An optional `htmlBody` field is added to support the HTML body. The new record is as follows. 
 
     > Note how the `attachments` field is modified.
 
@@ -1335,7 +1335,7 @@ public type Attachment record {|
   - `acceptLanguage` - The expected language type
 - API specification for the `@websub:SubscriberService` is updated with the changes below.
   - The `onIntentVerification` and `onNotification` functions are removed.
-  - The `onSubscriptionVerification`, `onEventNotification`, and `onSubscriptionValidationDenied` functions are introduced.
+  - The `onSubscriptionVerification`, `onEventNotification`, and `onSubscriptionValidationDenied` methods are introduced.
 - The updated `websub:SubscriberService` sample implementation is as follows.
 
     ```ballerina

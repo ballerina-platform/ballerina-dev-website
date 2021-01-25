@@ -1009,7 +1009,7 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 ###### Client Changes
 
 - The `kafka:Consumer` is separated into `kafka:Listener` (asynchronous) and `kafka:Consumer` (synchronous). 
-- The return type of the `init` functions of the `kafka:Producer` and `kafka:Consumer` is changed to `Error?`. 
+- The return type of the `init` methods of the `kafka:Producer` and `kafka:Consumer` is changed to `Error?`. 
 - The `subscribeToPattern()` of the `kafka:Consumer` is changed to `subscribeWithPattern()`.
 - A new record type named `ProducerRecord` is introduced for sending messages. 
 

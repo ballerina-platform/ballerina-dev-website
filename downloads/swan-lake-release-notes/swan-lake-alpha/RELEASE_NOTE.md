@@ -1239,7 +1239,7 @@ public type Attachment record {|
 |};
 ```
 
--  The `email:Message` record is modified with union-typed `string` types for `to`, `cc`, `bcc`, and `replyTo` to add flexibility. An optional `htmlBody` field is added to support the HTML body. The new record is as follows. 
+-  The `email:Message` record is modified to accept either a `string` or a `string[]` for the `to`, `cc`, `bcc`, and `replyTo` fields to add flexibility. An optional `htmlBody` field is added to support the HTML body. The new record is as follows. 
 
     > Note how the `attachments` field is modified.
 

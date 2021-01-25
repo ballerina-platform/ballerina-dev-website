@@ -737,9 +737,9 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     }
     ```
 
-    The `onTextMessage` and `onBinaryMessage` will take in the complete WebSocket message. Unlike earlier versions, `onTextMessage` doesn’t support data binding. WebSocket messages dispatched to this remote function will only be in the `string` format.
+    The `onTextMessage` and `onBinaryMessage` will take in the complete WebSocket message. Unlike earlier versions, `onTextMessage` doesn't support data binding. WebSocket messages dispatched to this remote method will only be in the `string` format.
 
-    The `websocket:Caller` has the `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and, `close` as remote functions. Unlike earlier versions, `writeTextMessage` doesn’t support data binding. Complete messages only in the string format will be accepted by this.
+    The `websocket:Caller` has `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and, `close` as remote methods. Unlike earlier versions, `writeTextMessage` doesn't support data binding. Complete messages only in the string format will be accepted by this.
 
     **New Syntax:**
 
@@ -749,7 +749,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     ```
 
 - Introduced a WebSocket Async client
-    The WebSocket module now has a `websocket:AsyncClient`. This client can take in a `websocket:Service` as a callback service to receive WebSocket messages at the client initialization. This service has a predefined set of remote functions like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, and `onClose`. 
+    The WebSocket module now has a `websocket:AsyncClient`. This client can take in a `websocket:Service` as a callback service to receive WebSocket messages at the client initialization. This service has a predefined set of remote methods like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, and `onClose`. 
 
     **New Syntax**
 
@@ -769,7 +769,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     }
     ```
 
-    The `websocket:AsyncClient` has the `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and `close` remote functions. 
+    The `websocket:AsyncClient` has the `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and `close` remote methods. 
 
     **New Syntax:**
 
@@ -779,13 +779,13 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     ```
 
 - Improved the listener/client return type to union with error
-    Errors, which might occur during the listener and client initialization can be handled now. When the `listener` keyword is added to the listener, the error will fail the module init. 
+    Listener and client initialization may return an error now. When the listener is used in a listener declaration, module initialization will fail if the listener initialization returns an error.
 
     **New Syntax:**
 
     ```ballerina
-    websocket:Listener|websocket:Error ep = new(9090); 
-    websocket:AsyncClient|websocket:Error wsClient = new("ws://echo.websocket.org");
+    websocket:Listener|websocket:Error ep = new (9090); 
+    websocket:AsyncClient|websocket:Error wsClient = new ("ws://echo.websocket.org");
     ```
 
 ##### gRPC Module Improvements

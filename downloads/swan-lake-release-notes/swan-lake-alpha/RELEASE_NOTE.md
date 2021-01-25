@@ -1550,7 +1550,7 @@ The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
 - Resource methods are not considered to be part of the type.
 - Non-`isolated` service variables defined outside an `isolated` function can be accessed within the function only if the variable is a `final` variable and the type is a subtype of `readonly`.
 - The `@icon` annotation has been replaced with the `@display` annotation.
-- The value type of the XML iteration, which was previously `xml|string` is now `xml`. Moreover, the value type of the `xml<T>` iteration is now `T`. 
+- The value type of XML iteration, which was previously `xml|string` is now `xml`. Moreover, the value type of `xml<T>` iteration is now `T`. 
 
 #### Taint Analyzer Update
 

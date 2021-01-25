@@ -1474,10 +1474,6 @@ The APIs related to random number generation were moved to the new `random` modu
 
 The regex-related APIs that were supported by this module have been moved to the new `regex` module. The rest of the APIs have replacements in the langlib packages.
 
-###### Socket
-
-The `socket` module was removed and got replaced by the `TCP` and `UDP` modules.
-
 #### Observability
 
 - A new extension model, which separates each extension into a separate module is introduced.

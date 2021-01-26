@@ -245,7 +245,7 @@ redirect_from:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
+# `.bal` file, and execute the `bal run` command below.
 </code></pre></div>
 
                                 </td>
@@ -260,7 +260,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name`. `18` would be set as the value for
 # `age` and `Freshman` would be set as the value for `year`.
-ballerina run the_main_function.bal Alice
+bal run the_main_function.bal Alice
 Name: Alice, Age: 18, Year: Freshman
 </code></pre></div>
 
@@ -276,7 +276,7 @@ Name: Alice, Age: 18, Year: Freshman
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name` and `20` as the integer value for
 # `age`. Both arguments are specified as positional arguments.
-ballerina run the_main_function.bal Alice 20
+bal run the_main_function.bal Alice 20
 Name: Alice, Age: 20, Year: Freshman
 </code></pre></div>
 
@@ -292,7 +292,7 @@ Name: Alice, Age: 20, Year: Freshman
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name` and `Sophomore` as the string argument for
 # `year`. The value for `year` is specified as a named argument.
-ballerina run the_main_function.bal Alice -year=Sophomore
+bal run the_main_function.bal Alice -year=Sophomore
 Name: Alice, Age: 18, Year: Sophomore
 </code></pre></div>
 
@@ -308,7 +308,7 @@ Name: Alice, Age: 18, Year: Sophomore
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying values for
 # all parameters, including the rest parameter. All arguments are specified as
 # positional arguments.
-ballerina run the_main_function.bal Alice 20 Sophomore math physics
+bal run the_main_function.bal Alice 20 Sophomore math physics
 Name: Alice, Age: 20, Year: Sophomore, Module(s): [&quot;math&quot;,&quot;physics&quot;]
 </code></pre></div>
 
@@ -323,7 +323,7 @@ Name: Alice, Age: 20, Year: Sophomore, Module(s): [&quot;math&quot;,&quot;physic
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying an invalid 
 # string as the argument for `name`. The `error` returned would be printed.
-ballerina run the_main_function.bal Ali
+bal run the_main_function.bal Ali
 error: InvalidName {&quot;message&quot;:&quot;invalid length&quot;}
 </code></pre></div>
 

@@ -65,40 +65,46 @@ map<string> names = {};
 
 ```ballerina
 [string, int, boolean] tupleVar = ["", 0, false];
-    
+
 int[] arrayOfInteger = [1, 2, 3, 4];
-    
+
 map<string> stringMap = {one: st1, two: st2, three: st3};
+
+Person personRecord = {name: "marcus", id: 0};
+
+function foo(string name, int id) {
+}
     
-Person personRecord = {name:"marcus", id: 0};
-    
-function foo(string name, int id) {}
-    
-service hello on ep1, ep2 {...}
+service hello on ep1, ep2 {
+    ...
+}
 ```
 
 ## Blank Lines
 
-Separate both statements and top level definitions by zero or one blank lines.
+Separate both statements and top-level definitions by zero or one blank lines.
 
 **Example,**
   
 ```ballerina
 import ballerina/http;
 import ballerina/io;
-    
+
 const string CITY = "Colombo";
 const int CITY_NO = 1;
-    
+
 function getName() returns string {
     string firstName = "john";
     string lastName = "doe";
-        
+
     return firstName + lastName;
 }
-    
-function setName(string name) {}
-function setAge(int age) {}
+
+function setName(string name) {
+}
+
+function setAge(int age) {
+}
 ```
   
 > **Note:** You can configure tools and plugins to change the number of minimum and maximum blank lines used when formatting. 
@@ -138,17 +144,19 @@ function setName(string name)
 ```ballerina
 
 function func1() {
-    if (true) {}
+    if (true) {
+    }
 }
 
 ```
 
-* If a block is empty, do not keep spaces in between the opening and closing braces.
+* If an inline block is empty, do not keep spaces in between the opening and closing braces.
   
 **Example,**
 
 ```ballerina
-function func1() {}
+function func1() {
+}
 ``` 
 
 * Indent all the statements inside a block to be at the same level.
@@ -173,13 +181,15 @@ match a {
 
 ```ballerina
 [string, int] tupleVar = ["", 0];
-  
-function setValue(string value) {...}
-  
+
+function setValue(string value) {
+    ...
+}
+
 setValue("value");
 ```
 
-* To define an empty parentheses, do not keep spaces between the opening and closing parentheses `()`.
+* To define empty parentheses, do not keep spaces between the opening and closing parentheses `()`.
   
 **Example,**
 
@@ -190,7 +200,7 @@ int|() result = getResult();
 ## Line Breaks
 
 * Have only one statement in a line.
-* When splitting lines, which contains operator(s), split them right before an operator.
+* When splitting lines, which contain operator(s), split them right before an operator.
   
 **Example,**
   

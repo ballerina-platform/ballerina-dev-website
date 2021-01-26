@@ -1,12 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Writing Tests
-description: Learn how to use Ballerina's built-in test framework to write tests. The test framework provides a set of
- annotations and assertions to help write and run tests.
+description: Learn how to use Ballerina's built-in test framework to write tests. The test framework provides a set of annotations and assertions to help write and run tests.
 keywords: ballerina, programming language, testing
 permalink: /swan-lake/learn/testing-ballerina-code/writing-tests/
 active: writing-tests
-ntro: The sections below include information about writing tests in Ballerina.
+intro: The sections below include information about writing tests in Ballerina.
 redirect_from:
   - /swan-lake/learn/testing-ballerina-code/writing-tests
 ---
@@ -30,17 +29,14 @@ package-directory/
 ## Test Source Files
 
 Unit tests bound to a module need to be placed in a sub folder called `tests/` within the module. In a standard
- Ballerina package, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are
-  considered to be part of the same test suite.
+ Ballerina package, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are considered to be part of the same test suite.
 
-The test source files could have any name. The test functions are just Ballerina functions, which use a special
- annotation to mark the function as a test. Test functions must be specified with the `@test:Config {}` annotation and there is no restriction on the test function name.
+The test source files could have any name. The test functions are just Ballerina functions, which use a special annotation to mark the function as a test. Test functions must be specified with the `@test:Config {}` annotation and there is no restriction on the test function name.
 
 
 ## Test Resources
 
-The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are
- exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the package root.
+The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the package root.
 
 ## Defining a Test
 
@@ -60,14 +56,11 @@ Once the test module is imported, the following annotation can be used to write 
 The function specified after the annotation is a test function. This annotation supports the following value fields.
 
 
-*   ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
-*   ***before: "&lt;function name&gt;"*** - Name of the function to be run just before the test is run. The default value is `none`.
-*   ***after: "&lt;function name&gt;"*** - Name of the function to be run just after the test is run.
-*   ***dependsOn: ["&lt;function names>", …]*** - List of function names on which the test function depends. The
- order in
- which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config to control the order of the test execution.
-*   ***dataProvider: “&lt;function name>”*** - Specifies the name of the function that will be used to provide the value
- sets to execute the test against.
+*   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
+*   ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
+*   ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
+*   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions, with one function depending on the other.
+*   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the value.
 *   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
  belongs.
 
@@ -97,10 +90,10 @@ function testFunction1() {
 
 // This test function depends on the `testFunction3`.
 @test:Config{  
-    before: "beforeFunc",
-    after: "afterFunc",
-    dependsOn: ["testFunction3"],
-    dataProvider:"dataGen",
+    before: beforeFunc,
+    after: afterFunc,
+    dependsOn: [testFunction3],
+    dataProvider: dataGen,
     groups: ["g1"]
 }
 function testFunction2 (int value) returns error? {
@@ -286,7 +279,7 @@ function bar() {
 
 ### Difference between expected and actual values when using 'assertEquals'
 
-* When type of the compared values are different.
+* When the type of the compared values are different.
 
 ***Example:***
 
@@ -433,7 +426,7 @@ function testAssertTuples() {
 
 ## Setup and Teardown
 
-The following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions in different levels.
+The following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions at different levels.
 
 ### @test:BeforeSuite {}
 
@@ -646,14 +639,16 @@ function afterFunc() {
 
 ## Test Configurations
 
-Configurations for testing can be provided using the Config API. For information on using the config library, see
- [Config Module](/swan-lake/learn/api-docs/ballerina/config/index.html).
+Configurations for testing can be provided using configurable variables. The values for configurable
+variables can be provided in a file named `Config.toml` located in the tests directory.
+
+For information on using configurable variables, see
+ [Configurable Variables](/swan-lake/learn/by-example/configurable.html).
 
 
 ## What's Next?
 
- As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock
- backends for these external endpoints will be a tedious task (e.g., email client, spaceforce client).
+ As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock backends for these external endpoints will be a tedious task (e.g., email client, SalesForce client).
  The mocking support in Ballerina will allow you to unit test your code without needing to set up mock backends by
  allowing you to control what the client objects return without actually sending requests to backends.
 

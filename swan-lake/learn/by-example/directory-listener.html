@@ -57,7 +57,7 @@ redirect_from:
                             <p><p>The <code>Directory Listener</code> is used to listen to a directory in the local file system.
  It notifies when new files are created in the directory or when the existing files are deleted or modified.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/file/">File module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/file/latest/file/">File module</a>.</p>
 </p>
 
                         </td>
@@ -65,9 +65,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websub-service-integration-sample.html">
+                                    <a class="prev" href="http-timeout.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Service Integration Sample</p>
+                                        <p>Timeout</p>
                                     </a>
                                 </div>
                                  
@@ -274,8 +274,8 @@ import ballerina/log;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># After running the sample, create a new file called `test1.txt` in the directory called `observed-dir`, modify it, and delete it.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run directory_listener.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run directory_listener.bal
 time = 2020-12-12 13:49:08,497 level = INFO  module = &quot;&quot; message = &quot;Create: /home/ballerina/fs-server-connector/observed-dir/test1.txt&quot;
 time = 2020-12-12 13:49:41,709 level = INFO  module = &quot;&quot; message = &quot;Modify: /home/ballerina/fs-server-connector/observed-dir/test1.txt&quot;
 time = 2020-12-12 13:50:04,997 level = INFO  module = &quot;&quot; message = &quot;Delete: /home/ballerina/fs-server-connector/observed-dir/test1.txt&quot;

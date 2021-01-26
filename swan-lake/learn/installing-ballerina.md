@@ -65,8 +65,8 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 
 **Command**|**Description**
 :-----:|:-----:
-`ballerina dist update`|Update to the latest patch version of the active distribution
-`ballerina dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
+`bal dist update`|Update to the latest patch version of the active distribution
+`bal dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
 
 For more information, see [Keeping Ballerina Up to Date](/swan-lake//learn/keeping-ballerina-up-to-date/).
   
@@ -126,7 +126,7 @@ Usually, the installation location is `/Library/Ballerina/distributions` in macO
 
 To remove:
 
-- a specific jBallerina version (via the update tool): execute `ballerina dist remove` 
+- a specific jBallerina version (via the update tool): execute `bal dist remove` 
 - all the installed jBallerina versions: delete the `/../Ballerina` directory in the respective installation location
 
 ## What's Next?

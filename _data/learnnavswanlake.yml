@@ -43,9 +43,9 @@
     - title: Running Ballerina Code
       url: /swan-lake/learn/running-ballerina-code/
       active: running-ballerina-code
-    - title: Publishing Modules to Ballerina Central
-      url: /swan-lake/learn/publishing-modules-to-ballerina-central
-      active: publishing-modules-to-ballerina-central
+    - title: Publishing Packages to Ballerina Central
+      url: /swan-lake/learn/publishing-packages-to-ballerina-central
+      active: publishing-packages-to-ballerina-central
 
 
 - title: Deployment
@@ -64,12 +64,12 @@
       url: /swan-lake/learn/deployment/azure-functions/
       active: azure-functions
 
-#- title: Observability
-  #url: '#' 
-  #sublinks:
-    #- title: Observing Ballerina Code
-      #url: /swan-lake/learn/observing-ballerina-code
-      #active: observing-ballerina-code
+- title: Observability
+  url: '#' 
+  sublinks:
+    - title: Observing Ballerina Code
+      url: /swan-lake/learn/observing-ballerina-code
+      active: observing-ballerina-code
 
 - title: Interoperability
   url: '#' 
@@ -82,8 +82,11 @@
   url: '#' 
   sublinks:
     - title: Writing Secure Ballerina Code
-      url: /swan-lake/learn/writing-secure-ballerina-code
+      url: /swan-lake/learn/security/writing-secure-ballerina-code
       active: writing-secure-ballerina-code
+    - title: Authentication and Authorization
+      url: /swan-lake/learn/authentication-and-authorization
+      active: authentication-and-authorization
 
 - title: Testing Ballerina Code
   url: '#' 

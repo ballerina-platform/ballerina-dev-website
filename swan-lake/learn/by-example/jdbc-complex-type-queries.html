@@ -11,7 +11,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
 
@@ -227,7 +227,7 @@ redirect_from:
  Ballerina distribution. Therefore, it is not required to copy the driver JAR
  for the H2 database.<br><br>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/jdbc/">JDBC module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/jdbc/latest/jdbc/">JDBC module</a>.</p>
 </p>
 
                         </td>
@@ -364,7 +364,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/jdbc;
+import ballerinax/java.jdbc;
 import ballerina/sql;
 import ballerina/time;
 </code></pre></div>
@@ -1052,8 +1052,8 @@ import ballerina/time;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run jdbc_complex_type_queries.bal
+# `.bal` file and execute the `bal run` command below.
+bal run jdbc_complex_type_queries.bal
 </code></pre></div>
 
                                 </td>

@@ -24,11 +24,11 @@ redirect_from:
  you can use that contract to generate a Ballerina source code.
  Currently, Ballerina supports two types of code generation.
  To generate a mock version of the Ballerina service for a provided OAS definition:
- <code>ballerina openapi -i &lt;openapi-contract&gt; --mode service -o &lt;output path&gt;</code>
+ <code>bal openapi -i &lt;openapi-contract-path&gt; --mode service -o &lt;output-path&gt;</code>
  To generate a Ballerina client endpoint for a provided OAS definition:
- <code>ballerina openapi -i &lt;openapi-contract&gt; --mode client -o &lt;output path&gt;</code>
+ <code>bal openapi -i &lt;openapi-contract-path&gt; --mode client -o &lt;output-path&gt;</code>
  To generate both the mock version of the Ballerina service and a Ballerina client endpoint for a provided OAS definition.
- <code>ballerina openapi -i &lt;openapi-contract&gt; -o &lt;output path&gt;</code><br/><br/>
+ <code>bal openapi -i &lt;openapi-contract-path&gt; -o &lt;output-path&gt;</code><br/><br/>
  For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-use-openapi-tools/">Ballerina OpenAPI Tools</a>.</p>
 </p>
 
@@ -229,7 +229,7 @@ components:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the command below in a Ballerina project to generate the service and client from the OpenAPI contract.
-`ballerina openapi -i petstore.yaml`
+`bal openapi -i petstore.yaml`
 Note: This is an Experimental tool shipped under Ballerina. Hence, this will only support limited a set of functionalities.
 The following files were created.
     -- petstore-service.bal

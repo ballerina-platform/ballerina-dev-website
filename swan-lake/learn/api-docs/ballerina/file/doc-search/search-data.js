@@ -1,277 +1,299 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "file",
-      "description": "\u003cp\u003eThis module contains functions to perform file system based operations such as create, delete, rename the\nfile/directory, and retrieve metadata of the file.\u003c/p\u003e",
-      "orgName": "ballerina",
-      "version": "0.6.2"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [
     {
-      "id": "getAbsolutePath",
-      "description": "\u003cp\u003eRetrieves the absolute path from the provided location.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "isAbsolutePath",
-      "description": "\u003cp\u003eReports whether the path is absolute.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
       "id": "basename",
-      "description": "\u003cp\u003eRetrieves the base name of the file from the provided location,\nwhich is the last element of the path.\u003c/p\u003e",
+      "description": "Retrieves the base name of the file from the provided location,\nwhich is the last element of the path.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "parentPath",
-      "description": "\u003cp\u003eReturns the enclosing parent directory.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "normalizePath",
-      "description": "\u003cp\u003eNormalizes a path value.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "splitPath",
-      "description": "\u003cp\u003eSplits a list of paths joined by the OS-specific path separator.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "joinPath",
-      "description": "\u003cp\u003eJoins any number of path elements into a single path.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "relativePath",
-      "description": "\u003cp\u003eReturns a relative path, which is logically equivalent to the target path when joined to the base path with an\nintervening separator.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "getCurrentDir",
-      "description": "\u003cp\u003eReturns the current working directory.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "createDir",
-      "description": "\u003cp\u003eCreates a new directory with the specified name.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "remove",
-      "description": "\u003cp\u003eRemoves the specified file or directory.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "rename",
-      "description": "\u003cp\u003eRenames(Moves) the old path with the new path.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "create",
-      "description": "\u003cp\u003eCreates a file in the specified file path.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "getMetaData",
-      "description": "\u003cp\u003eReturns the metadata information of the file specified in the file path.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "readDir",
-      "description": "\u003cp\u003eReads the directory and returns a list of metadata of files and directories\ninside the specified directory.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "copy",
-      "description": "\u003cp\u003eCopy the file/directory in the old path to the new path.\u003c/p\u003e",
+      "description": "Copy the file/directory in the old path to the new path.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "create",
+      "description": "Creates a file in the specified file path.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "createDir",
+      "description": "Creates a new directory with the specified name.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "createTemp",
-      "description": "\u003cp\u003eCreates a temporary file.\u003c/p\u003e",
+      "description": "Creates a temporary file.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "createTempDir",
-      "description": "\u003cp\u003eCreates a temporary directory.\u003c/p\u003e",
+      "description": "Creates a temporary directory.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "getAbsolutePath",
+      "description": "Retrieves the absolute path from the provided location.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "getCurrentDir",
+      "description": "Returns the current working directory.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "getMetaData",
+      "description": "Returns the metadata information of the file specified in the file path.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "isAbsolutePath",
+      "description": "Reports whether the path is absolute.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "joinPath",
+      "description": "Joins any number of path elements into a single path.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "normalizePath",
+      "description": "Normalizes a path value.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "parentPath",
+      "description": "Returns the enclosing parent directory.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "readDir",
+      "description": "Reads the directory and returns a list of metadata of files and directories\ninside the specified directory.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "relativePath",
+      "description": "Returns a relative path, which is logically equivalent to the target path when joined to the base path with an\nintervening separator.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "remove",
+      "description": "Removes the specified file or directory.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "rename",
+      "description": "Renames(Moves) the old path with the new path.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "splitPath",
+      "description": "Splits a list of paths joined by the OS-specific path separator.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "test",
-      "description": "\u003cp\u003eTests a file path against a test condition .\u003c/p\u003e",
+      "description": "Tests a file path against a test condition .",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     }
   ],
   "records": [
     {
-      "id": "ListenerConfig",
-      "description": "\u003cp\u003eRepresents configurations that required for directory listener.\u003c/p\u003e",
+      "id": "FileEvent",
+      "description": "Represents an event which will trigger when there is a changes to listining direcotry.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     },
     {
-      "id": "FileEvent",
-      "description": "\u003cp\u003eRepresents an event which will trigger when there is a changes to listining direcotry.\u003c/p\u003e",
+      "id": "ListenerConfig",
+      "description": "Represents configurations that required for directory listener.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "MetaData",
-      "description": "\u003cp\u003eMetadata record contains metadata information of a file.\u003c/p\u003e",
+      "description": "Metadata record contains metadata information of a file.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     }
   ],
   "constants": [],
   "errors": [
     {
-      "id": "InvalidOperationError",
-      "description": "\u003cp\u003eRepresents an error that occurs when a file system operation is denied due to invalidity.\u003c/p\u003e",
+      "id": "Error",
+      "description": "Represents file system related errors.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "PermissionError",
-      "description": "\u003cp\u003eRepresents an error that occurs when a file system operation is denied, due to the absence of file permission.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "FileSystemError",
-      "description": "\u003cp\u003eRepresents an error that occurs when a file system operation fails.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "FileNotFoundError",
-      "description": "\u003cp\u003eRepresents an error that occurs when the file/directory does not exist at the given filepath.\u003c/p\u003e",
+      "description": "Represents an error that occurs when the file/directory does not exist at the given filepath.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     },
     {
-      "id": "NotLinkError",
-      "description": "\u003cp\u003eRepresents error occur when the file at the given filepath is not a symbolic link.\u003c/p\u003e",
+      "id": "FileSystemError",
+      "description": "Represents an error that occurs when a file system operation fails.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "IOError",
-      "description": "\u003cp\u003eRepresents IO error occur when trying to access the file at the given filepath.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "SecurityError",
-      "description": "\u003cp\u003eRepresents security error occur when trying to access the file at the given filepath.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "InvalidPathError",
-      "description": "\u003cp\u003eRepresents error occur when the given file path is invalid.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "InvalidPatternError",
-      "description": "\u003cp\u003eRepresent error occur when the given pattern is not a valid filepath pattern.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "RelativePathError",
-      "description": "\u003cp\u003eRepresents an error that occurs when the given target filepath cannot be derived relative to the base filepath.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    },
-    {
-      "id": "UNCPathError",
-      "description": "\u003cp\u003eRepresents error occur in the UNC path.\u003c/p\u003e",
-      "moduleId": "file",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     },
     {
       "id": "GenericError",
-      "description": "\u003cp\u003eRepresents generic error for filepath\u003c/p\u003e\n",
+      "description": "Represents generic error for filepath\n",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
-    }
-  ],
-  "types": [
+      "moduleVersion": "0.6.3"
+    },
     {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents file system related errors.\u003c/p\u003e",
+      "id": "InvalidOperationError",
+      "description": "Represents an error that occurs when a file system operation is denied due to invalidity.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "InvalidPathError",
+      "description": "Represents error occur when the given file path is invalid.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "InvalidPatternError",
+      "description": "Represent error occur when the given pattern is not a valid filepath pattern.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "IOError",
+      "description": "Represents IO error occur when trying to access the file at the given filepath.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "NotLinkError",
+      "description": "Represents error occur when the file at the given filepath is not a symbolic link.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "PermissionError",
+      "description": "Represents an error that occurs when a file system operation is denied, due to the absence of file permission.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "RelativePathError",
+      "description": "Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "SecurityError",
+      "description": "Represents security error occur when trying to access the file at the given filepath.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "UNCPathError",
+      "description": "Represents error occur in the UNC path.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
     }
   ],
+  "types": [],
   "clients": [],
   "listeners": [
     {
       "id": "Listener",
-      "description": "\u003cp\u003eRepresents the directory listener endpoint, which is used to listen to a directory in the local file system.\u003c/p\u003e",
+      "description": "Represents the directory listener endpoint, which is used to listen to a directory in the local file system.",
       "moduleId": "file",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.2"
+      "moduleVersion": "0.6.3"
     }
   ],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": [
+    {
+      "id": "CopyOption",
+      "description": "Represents options that can be used when copying files/directories\n\n",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "DirOption",
+      "description": "Represents options that can be used when creating or removing directories.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "NormOption",
+      "description": "Represents the options that can be passed to normalizePath function.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    },
+    {
+      "id": "TestOption",
+      "description": "Represents the options that can be passed to test function.",
+      "moduleId": "file",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.6.3"
+    }
+  ]
 };

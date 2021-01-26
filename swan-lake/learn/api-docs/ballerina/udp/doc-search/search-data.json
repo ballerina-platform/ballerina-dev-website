@@ -1,66 +1,103 @@
 {
-  "modules": [
-    {
-      "id": "udp",
-      "description": "\u003cp\u003eThis module provides an implementation for sending/receiving messages to/from another application process (local or remote) for connectionless protocols.\u003c/p\u003e",
-      "orgName": "ballerina",
-      "version": "0.8.0"
-    }
-  ],
+  "modules": [],
   "classes": [],
   "functions": [],
   "records": [
     {
-      "id": "Address",
-      "description": "\u003cp\u003eThis represent the IP socket address.\u003c/p\u003e",
+      "id": "ClientConfig",
+      "description": "Configurations for the connectionless UDP client.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
+      "moduleVersion": "0.8.1"
+    },
+    {
+      "id": "ConnectClientConfig",
+      "description": "Configurations for the connection oriented udp client.",
+      "moduleId": "udp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.1"
     },
     {
       "id": "Datagram",
-      "description": "\u003cp\u003eA self-contained, independent entity of data carrying sufficient information\nto be routed from the source to the destination nodes without reliance\non earlier exchanges between the nodes and the transporting network.\u003c/p\u003e",
+      "description": "A self-contained, independent entity of data carrying sufficient information\nto be routed from the source to the destination nodes without reliance\non earlier exchanges between the nodes and the transporting network.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
+      "moduleVersion": "0.8.1"
+    },
+    {
+      "id": "ListenerConfig",
+      "description": "Represents the UDP listener configuration.",
+      "moduleId": "udp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.1"
     }
   ],
   "constants": [],
   "errors": [
     {
-      "id": "ReadTimedOutError",
-      "description": "\u003cp\u003eThis will returns once the given read timed out time exceed for socket reads.\u003c/p\u003e",
+      "id": "Error",
+      "description": "Represents udp module related errors.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
+      "moduleVersion": "0.8.1"
     },
     {
       "id": "GenericError",
-      "description": "\u003cp\u003eRepresents generic socket error, which contains the information related to the error.\u003c/p\u003e",
+      "description": "Represents generic socket error, which contains the information related to the error.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    }
-  ],
-  "types": [
+      "moduleVersion": "0.8.1"
+    },
     {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents udp module related errors.\u003c/p\u003e",
+      "id": "ReadTimedOutError",
+      "description": "This will returns once the given read timed out time exceed for socket reads.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
+      "moduleVersion": "0.8.1"
     }
   ],
+  "types": [],
   "clients": [
     {
-      "id": "Client",
-      "description": "\u003cp\u003eInitializes the UDP connectionless client based on the provided configurations.\u003c/p\u003e",
+      "id": "Caller",
+      "description": "Represents caller object in UDP service remote methods.",
       "moduleId": "udp",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
+      "moduleVersion": "0.8.1"
+    },
+    {
+      "id": "Client",
+      "description": "Initializes the UDP connectionless client based on the provided configurations.",
+      "moduleId": "udp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.1"
+    },
+    {
+      "id": "ConnectClient",
+      "description": "Initializes the UDP connection oriented client based on the \nprovided configurations.",
+      "moduleId": "udp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.1"
     }
   ],
-  "listeners": [],
+  "listeners": [
+    {
+      "id": "Listener",
+      "description": "This is used for creating UDP server endpoints.",
+      "moduleId": "udp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.1"
+    }
+  ],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [
+    {
+      "id": "Service",
+      "description": "Represent UDP Listener service type.",
+      "moduleId": "udp",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.1"
+    }
+  ],
+  "enums": []
 }

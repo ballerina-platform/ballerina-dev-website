@@ -11,7 +11,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="c1">// Workers interact with each other by sending and receiving messages.</span>
@@ -54,10 +53,10 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">string</span> <span class="nx">expr</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted int|error {</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span>
         <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="kt">string</span> <span class="s">`/v4/?expr=${expr}`</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">check</span> <span class="p">&#39;int:fromString(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">check</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -161,7 +160,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/lang.&#39;int;
 import ballerina/io;
 </code></pre></div>
 
@@ -366,10 +364,10 @@ import ballerina/io;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function calculate(string expr) returns @tainted int|error {
-    http:Client httpClient = new (&quot;https://api.mathjs.org&quot;);
+    http:Client httpClient = checkpanic new (&quot;https://api.mathjs.org&quot;);
     string response = &lt;string&gt; check
         httpClient-&gt;get(string `/v4/?expr=${expr}`, targetType = string);
-    return check &#39;int:fromString(response);
+    return check int:fromString(response);
 }
 </code></pre></div>
 
@@ -396,8 +394,8 @@ import ballerina/io;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run worker_interaction.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run worker_interaction.bal
 [w2] Message from w1: 6
 [w1] Message from w2: 91
 [w3] Messages from w1: 6, 91

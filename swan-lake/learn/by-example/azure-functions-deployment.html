@@ -10,7 +10,7 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">system</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">uuid</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">azure_functions</span> <span class="k">as</span> <span class="nx">af</span><span class="p">;</span>
 
 <span class="c1">// HTTP request/response with no authentication</span>
@@ -145,7 +145,8 @@ redirect_from:
 <span class="s">    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
 <span class="s">    returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">                                 databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
-<span class="s">    json entry = { id: system:uuid(), name: &quot;</span><span class="nx">Saman</span><span class="s">&quot;, country: &quot;</span><span class="nx">Sri</span> <span class="nx">Lanka</span><span class="s">&quot; };</span>
+<span class="s">    json entry = { id: uuid:createType1AsString(), name: &quot;</span><span class="nx">Saman</span><span class="s">&quot;, country: &quot;</span><span class="nx">Sri</span> <span class="nx">Lanka</span><span class="s">&quot; };</span>
+<span class="s">    string entryString = entry is error ? entry.toString() : entry.toString();</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entry</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
 <span class="s">}</span>
@@ -157,8 +158,8 @@ redirect_from:
 <span class="s">        returns @af:CosmosDBOutput { </span>
 <span class="s">            connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">            databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
-<span class="s">    json entry = [{ id: system:uuid(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">A</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; }, </span>
-<span class="s">                  { id: system:uuid(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">B</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; }];</span>
+<span class="s">    json entry = [{ id: system:createType1AsString(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">A</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; },</span>
+<span class="s">                  { id: system:createType1AsString(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">B</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; }];</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entries</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
 <span class="s">}</span>
@@ -170,8 +171,8 @@ redirect_from:
 <span class="s">                        connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">                        databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } Person[] {</span>
 <span class="s">    Person[] persons = [];</span>
-<span class="s">    persons.push({id: system:uuid(), name: &quot;</span><span class="nx">Jack</span><span class="s">&quot;, country: &quot;</span><span class="nx">UK</span><span class="s">&quot;});</span>
-<span class="s">    persons.push({id: system:uuid(), name: &quot;</span><span class="nx">Will</span><span class="s">&quot;, country: &quot;</span><span class="nx">UK</span><span class="s">&quot;});</span>
+<span class="s">    persons.push({id: uuid:createType1AsString(), name: &quot;</span><span class="nx">Jack</span><span class="s">&quot;, country: &quot;</span><span class="nx">UK</span><span class="s">&quot;});</span>
+<span class="s">    persons.push({id: uuid:createType1AsString(), name: &quot;</span><span class="nx">Will</span><span class="s">&quot;, country: &quot;</span><span class="nx">UK</span><span class="s">&quot;});</span>
 <span class="s">    return persons;</span>
 <span class="s">}</span>
 
@@ -293,7 +294,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/system;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/uuid;
 import ballerinax/azure_functions as af;
 </code></pre></div>
 
@@ -621,7 +622,8 @@ public function httpTriggerCosmosDBOutput1(
     @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
     returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
                                  databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
-    json entry = { id: system:uuid(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
+    json entry = { id: uuid:createType1AsString(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
+    string entryString = entry is error ? entry.toString() : entry.toString();
     hb.payload = &quot;Adding entry: &quot; + entry.toString();
     return entry;
 }
@@ -650,8 +652,8 @@ public function httpTriggerCosmosDBOutput2(
         returns @af:CosmosDBOutput { 
             connectionStringSetting: &quot;CosmosDBConnection&quot;, 
             databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
-    json entry = [{ id: system:uuid(), name: &quot;John Doe A&quot;, country: &quot;USA&quot; }, 
-                  { id: system:uuid(), name: &quot;John Doe B&quot;, country: &quot;USA&quot; }];
+    json entry = [{ id: system:createType1AsString(), name: &quot;John Doe A&quot;, country: &quot;USA&quot; },
+                  { id: system:createType1AsString(), name: &quot;John Doe B&quot;, country: &quot;USA&quot; }];
     hb.payload = &quot;Adding entries: &quot; + entry.toString();
     return entry;
 }
@@ -673,8 +675,8 @@ public function httpTriggerCosmosDBOutput3(
                         connectionStringSetting: &quot;CosmosDBConnection&quot;, 
                         databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } Person[] {
     Person[] persons = [];
-    persons.push({id: system:uuid(), name: &quot;Jack&quot;, country: &quot;UK&quot;});
-    persons.push({id: system:uuid(), name: &quot;Will&quot;, country: &quot;UK&quot;});
+    persons.push({id: uuid:createType1AsString(), name: &quot;Jack&quot;, country: &quot;UK&quot;});
+    persons.push({id: uuid:createType1AsString(), name: &quot;Will&quot;, country: &quot;UK&quot;});
     return persons;
 }
 </code></pre></div>
@@ -798,7 +800,7 @@ public function queuePopulationTimer(
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Azure Functions
-ballerina build azure_functions_deployment.bal
+bal build azure_functions_deployment.bal
 Compiling source
 	azure_functions_deployment.bal
 </code></pre></div>

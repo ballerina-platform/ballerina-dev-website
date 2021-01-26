@@ -14,7 +14,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 
 <span class="k">var</span> <span class="nx">helloService</span> <span class="p">=</span>  <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
 
@@ -173,7 +173,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Listener httpListener = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Listener httpListener = check new (9090);
 </code></pre></div>
 
                                 </td>
@@ -426,7 +426,7 @@ import ballerina/log;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Navigate to the directory that contains the
-# &#39;dynamic_listener.bal&#39; file, and run the &#39;ballerina run&#39; command below.
+# &#39;dynamic_listener.bal&#39; file, and run the &#39;bal run&#39; command below.
 </code></pre></div>
 
                                 </td>
@@ -438,7 +438,7 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina run dynamic_listener.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run dynamic_listener.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 

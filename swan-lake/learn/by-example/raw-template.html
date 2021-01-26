@@ -11,13 +11,12 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">object</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">;</span>
     <span class="c1">// Create a raw template with the `name` variable interpolated in the</span>
     <span class="c1">// literal.</span>
-    <span class="err">&#39;</span><span class="nx">object</span><span class="p">:</span><span class="nx">RawTemplate</span> <span class="nx">template</span> <span class="p">=</span> <span class="s">`Hello ${name}!!!`</span><span class="p">;</span>
+    <span class="nx">object</span><span class="p">:</span><span class="nx">RawTemplate</span> <span class="nx">template</span> <span class="p">=</span> <span class="s">`Hello ${name}!!!`</span><span class="p">;</span>
     <span class="c1">// The string literal portions of the raw template are accessible</span>
     <span class="c1">// through the `strings` field. The `strings` field is a list of</span>
     <span class="c1">// `string` values. The string literal portions of the raw template</span>
@@ -184,7 +183,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;object;
 </code></pre></div>
 
                                 </td>
@@ -209,7 +207,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    &#39;object:RawTemplate template = `Hello ${name}!!!`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    object:RawTemplate template = `Hello ${name}!!!`;
 </code></pre></div>
 
                                 </td>
@@ -446,8 +444,8 @@ import ballerina/lang.&#39;object;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run raw_template.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run raw_template.bal
 [&quot;Hello &quot;,&quot;!!!&quot;]
 Ballerina
 INSERT INTO Details VALUES (John Doe, 25)

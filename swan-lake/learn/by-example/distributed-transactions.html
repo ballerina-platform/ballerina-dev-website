@@ -59,8 +59,9 @@ redirect_from:
 
 <span class="c1">// This is the business function call to the participant.</span>
 <span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">callBusinessService</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted boolean {</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8889/stockquote/&quot;</span> <span class="o">+</span>
-                                        <span class="s">&quot;update/updateStockQuote&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span>
+                                    <span class="s">&quot;http://localhost:8889/stockquote/&quot;</span> <span class="o">+</span>
+                                    <span class="s">&quot;update/updateStockQuote&quot;</span><span class="p">);</span>
 
     <span class="c1">// Generate the payload.</span>
     <span class="kt">float</span> <span class="nx">price</span> <span class="p">=</span> <span class="mf">100.00</span><span class="p">;</span>
@@ -375,8 +376,9 @@ import ballerina/lang.&#39;transaction as transactions;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>transactional function callBusinessService() returns @tainted boolean {
-    http:Client participantEP = new (&quot;http://localhost:8889/stockquote/&quot; +
-                                        &quot;update/updateStockQuote&quot;);
+    http:Client participantEP = checkpanic new (
+                                    &quot;http://localhost:8889/stockquote/&quot; +
+                                    &quot;update/updateStockQuote&quot;);
 </code></pre></div>
 
                                 </td>
@@ -457,8 +459,8 @@ import ballerina/lang.&#39;transaction as transactions;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the `initiator` service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-ballerina run initiator.bal
+# `.bal` file and execute the `bal run` command.
+bal run initiator.bal
 [ballerina/http] started HTTP/WS listener 192.168.1.18:37869
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 time = 2020-12-15 21:19:15,787 level = INFO  module = &quot;&quot; message = &quot;Initiating transaction...&quot;
@@ -668,9 +670,9 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the `participant` service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file and execute the `bal run` command.
 # Execute the command below to start the `participant` service.
-ballerina run participant.bal
+bal run participant.bal
 [ballerina/http] started HTTP/WS listener 192.168.1.18:37209
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8889
 time = 2020-12-15 21:19:16,287 level = INFO  module = &quot;&quot; message = &quot;Received update stockquote request&quot;

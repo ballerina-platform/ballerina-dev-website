@@ -12,10 +12,10 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 
 <span class="c1">// Define the endpoint to the call the `mockHelloService`.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
             <span class="c1">// Retry configuration options.</span>
             <span class="nx">retryConfig</span><span class="p">:</span> <span class="p">{</span>
 
@@ -85,7 +85,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Request received from the client to delayed service.&quot;</span><span class="p">);</span>
             <span class="c1">// Delay the response by 5000 milliseconds to mimic network level delays.</span>
-            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
@@ -115,7 +115,7 @@ redirect_from:
                             <h2>Retry</h2>
                             <p><p>The HTTP retry client tries sending over the same request to the backend service when there is a network level failure.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -219,7 +219,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 </code></pre></div>
 
                                 </td>
@@ -231,7 +231,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = check new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -506,7 +506,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5000);
+                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5);
 </code></pre></div>
 
                                 </td>
@@ -577,17 +577,17 @@ import ballerina/runtime;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command below.
-ballerina run http_retry.bal.bal
+# `.bal` file and use the `bal run` command below.
+bal run http_retry.bal.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-2020-09-21 20:19:53,917 INFO  [] - Request received from the client to delayed service. 
-2020-09-21 20:19:58,965 INFO  [] - Request received from the client to delayed service. 
-2020-09-21 20:19:58,978 ERROR [] - Error sending response from mock service : error(&quot;Connection between remote client and host is closed&quot;) 
-2020-09-21 20:20:03,970 ERROR [] - Error sending response from mock service : error(&quot;Connection between remote client and host is closed&quot;) 
-2020-09-21 20:20:06,967 INFO  [] - Request received from the client to delayed service. 
-2020-09-21 20:20:11,970 ERROR [] - Error sending response from mock service : error(&quot;Connection between remote client and host is closed&quot;) 
-2020-09-21 20:20:20,985 INFO  [] - Request received from the client to healthy service.
+time = 2021-01-21 19:00:21,374 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
+time = 2021-01-21 19:00:26,379 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
+time = 2021-01-21 19:00:26,446 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
+time = 2021-01-21 19:00:31,387 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
+time = 2021-01-21 19:00:34,402 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
+time = 2021-01-21 19:00:39,409 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
+time = 2021-01-21 19:00:48,404 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to healthy service.&quot;
 </code></pre></div>
 
                                 </td>

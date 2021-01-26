@@ -1,7 +1,7 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Quick Tour
-description: A quick tour of the Ballerina programming language, including writing, running and invoking an HTTP service and using a client to interact with a service.
+description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
 permalink: /swan-lake/learn/getting-started/quick-tour/
 active: quick-tour
@@ -26,7 +26,6 @@ Write a simple HTTP service as shown below in a file with the `.bal` extension.
 ***hello_service.bal***
 ```ballerina
 import ballerina/http;
-import ballerina/io;
 
 # A service representing a network-accessible API
 # bound to port `9090`.
@@ -35,15 +34,10 @@ service /hello on new http:Listener(9090) {
     # A resource representing an invokable API method
     # accessible at `/hello/sayHello`.
     #
-    # + caller - the client invoking this resource
-    # + request - the inbound request
-    resource function get sayHello(http:Caller caller, http:Request request) {
-
-        // Sends a response back to the caller.
-        error? result = caller->respond("Hello Ballerina!");
-        if (result is error) {
-            io:println("Error in responding: ", result);
-        }
+    # + return - A string payload which eventually becomes 
+    #            the payload of the response
+    resource function get sayHello() returns string {
+        return "Hello Ballerina!";
     }
 }
 ```
@@ -53,7 +47,7 @@ service /hello on new http:Listener(9090) {
 In the CLI, navigate to the location in which you have the `hello_service.bal` file and run the service by executing the command below.
 
 ```bash
-ballerina run hello_service.bal
+bal run hello_service.bal
 ```
 
 You get the following output.
@@ -93,7 +87,7 @@ import ballerina/io;
 
 public function main() returns @tainted error? {
     // Add the relevant endpoint URL to perform the invocation.
-    http:Client helloClient = new("http://localhost:9090/hello");
+    http:Client helloClient = check new("http://localhost:9090/hello");
 
     // Perform a `GET` request to the `hello` service. If successful, 
     // the remote call would return an `http:Response` or the payload 
@@ -114,7 +108,7 @@ In a new tab of the CLI, navigate to the location in which you have the `hello_c
 > **Tip:** Make sure the `hello` service is [up and running](#running-the-service).
 
 ```bash
-ballerina run hello_client.bal
+bal run hello_client.bal
 ```
 
 This would produce the following output.

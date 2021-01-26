@@ -1,470 +1,654 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "grpc",
-      "description": "\u003cp\u003eThis module provides support for the gRPC messaging protocol.\u003c/p\u003e",
-      "orgName": "ballerina",
-      "version": "0.7.4"
-    }
-  ],
+  "modules": [],
   "classes": [
+    {
+      "id": "ClientBasicAuthHandler",
+      "description": "Defines the Basic Auth handler for client authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ClientBearerTokenAuthHandler",
+      "description": "Defines the Bearer token auth handler for client authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ClientSelfSignedJwtAuthHandler",
+      "description": "Defines the self signed JWT handler for client authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
     {
       "id": "ConnectionManager",
       "description": "",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "Headers",
-      "description": "\u003cp\u003eProvides the actions to read/write header values in a gRPC request/response message.\u003c/p\u003e",
+      "id": "ListenerJwtAuthHandler",
+      "description": "Defines the JWT auth handler for listener authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     }
   ],
-  "functions": [],
-  "records": [
+  "functions": [
     {
-      "id": "RetryConfiguration",
-      "description": "\u003cp\u003eRepresents grpc client retry functionality configurations.\u003c/p\u003e",
+      "id": "getHeader",
+      "description": "Returns the header value with the specified header name.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "getHeaders",
+      "description": "Gets all the transport headers with the specified header name.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    }
+  ],
+  "records": [
+    {
+      "id": "BearerTokenConfig",
+      "description": "Represents token for Bearer token authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "ClientConfiguration",
-      "description": "\u003cp\u003eRepresents client endpoint configuration.\u003c/p\u003e",
+      "description": "Represents client endpoint configuration.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "SecureSocket",
-      "description": "\u003cp\u003eProvides the configurations for facilitating secure communication with a remote HTTP endpoint.\u003c/p\u003e",
+      "id": "CredentialsConfig",
+      "description": "Represents credentials for Basic Auth authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "ServiceDescriptorData",
-      "description": "\u003cp\u003eService descriptor data generated at the compile time.\u003c/p\u003e",
+      "id": "JwtIssuerConfig",
+      "description": "Represents JWT issuer configurations for JWT authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "Remote",
-      "description": "\u003cp\u003ePresents a read-only view of the remote address.\u003c/p\u003e",
+      "id": "JwtValidatorConfig",
+      "description": "Represents JWT validator configurations for JWT authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "Local",
-      "description": "\u003cp\u003ePresents a read-only view of the local address.\u003c/p\u003e",
+      "id": "LdapUserStoreConfig",
+      "description": "Represents LDAP user store configurations for Basic Auth authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "Protocols",
-      "description": "\u003cp\u003eProtocols record represents SSL/TLS protocol related options to be used for HTTP client/service invocation.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "ValidateCert",
-      "description": "\u003cp\u003eValidateCert record represents options related to check whether a certificate is revoked or not.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "ListenerOcspStapling",
-      "description": "\u003cp\u003eOcspStapling record represents options related to check whether a certificate is revoked or not.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "PoolConfiguration",
-      "description": "\u003cp\u003eConfigurations for managing the gRPC client connection pool.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "ListenerConfiguration",
-      "description": "\u003cp\u003eRepresents the gRPC server endpoint configuration.\u003c/p\u003e",
+      "description": "Represents the gRPC server endpoint configuration.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ListenerOcspStapling",
+      "description": "OcspStapling record represents options related to check whether a certificate is revoked or not.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "ListenerSecureSocket",
-      "description": "\u003cp\u003eConfigures the SSL/TLS options to be used for HTTP service.\u003c/p\u003e",
+      "description": "Configures the SSL/TLS options to be used for HTTP service.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "Local",
+      "description": "Presents a read-only view of the local address.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "OAuth2ClientCredentialsGrantConfig",
+      "description": "Represents OAuth2 client credentials grant configurations for OAuth2 authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "OAuth2DirectTokenConfig",
+      "description": "Represents OAuth2 direct token configurations for OAuth2 authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "OAuth2IntrospectionConfig",
+      "description": "Represents OAuth2 introspection server configurations for OAuth2 authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "OAuth2PasswordGrantConfig",
+      "description": "Represents OAuth2 password grant configurations for OAuth2 authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "PoolConfiguration",
+      "description": "Configurations for managing the gRPC client connection pool.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "Protocols",
+      "description": "Protocols record represents SSL/TLS protocol related options to be used for HTTP client/service invocation.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "Remote",
+      "description": "Presents a read-only view of the remote address.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "RetryConfiguration",
+      "description": "Represents grpc client retry functionality configurations.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "SecureSocket",
+      "description": "Provides the configurations for facilitating secure communication with a remote HTTP endpoint.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ServiceDescriptorData",
+      "description": "Service descriptor data generated at the compile time.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ValidateCert",
+      "description": "ValidateCert record represents options related to check whether a certificate is revoked or not.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     }
   ],
   "constants": [
     {
-      "id": "COMPRESSION_AUTO",
-      "description": "\u003cp\u003eWhen service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the\noutbound request/response accept-encoding/content-encoding option.\u003c/p\u003e",
+      "id": "ABORTED",
+      "description": "The gRPC error status code: 10 Aborted.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "COMPRESSION_ALWAYS",
-      "description": "\u003cp\u003eAlways set accept-encoding/content-encoding in outbound request/response.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "COMPRESSION_NEVER",
-      "description": "\u003cp\u003eNever set accept-encoding/content-encoding header in outbound request/response.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "OK",
-      "description": "\u003cp\u003eThe gRPC error status code: 0 OK.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "CANCELED",
-      "description": "\u003cp\u003eThe gRPC error status code: 1 Canceled.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "UNKNOWN",
-      "description": "\u003cp\u003eThe gRPC error status code: 2 Unknown.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "INVALID_ARGUMENT",
-      "description": "\u003cp\u003eThe gRPC error status code: 3 Invalid Argument.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "DEADLINE_EXCEEDED",
-      "description": "\u003cp\u003eThe gRPC error status code: 4 Deadline Exceeded.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "NOT_FOUND",
-      "description": "\u003cp\u003eThe gRPC error status code: 5 Not Found.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "ALREADY_EXISTS",
-      "description": "\u003cp\u003eThe gRPC error status code: 6 Already Exists.\u003c/p\u003e",
+      "description": "The gRPC error status code: 6 Already Exists.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "PERMISSION_DENIED",
-      "description": "\u003cp\u003eThe gRPC error status code: 7 Permission Denied.\u003c/p\u003e",
+      "id": "AUTH_HEADER",
+      "description": "Represents the Authorization header name.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "RESOURCE_EXHAUSTED",
-      "description": "\u003cp\u003eThe gRPC error status code: 8 Resource Exhausted.\u003c/p\u003e",
+      "id": "AUTH_SCHEME_BASIC",
+      "description": "The prefix used to denote the Basic authentication scheme.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "FAILED_PRECONDITION",
-      "description": "\u003cp\u003eThe gRPC error status code: 9 Failed Precondition.\u003c/p\u003e",
+      "id": "AUTH_SCHEME_BEARER",
+      "description": "The prefix used to denote the Bearer authentication scheme.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "ABORTED",
-      "description": "\u003cp\u003eThe gRPC error status code: 10 Aborted.\u003c/p\u003e",
+      "id": "CANCELED",
+      "description": "The gRPC error status code: 1 Canceled.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "OUT_OF_RANGE",
-      "description": "\u003cp\u003eThe gRPC error status code: 11 Out of Range.\u003c/p\u003e",
+      "id": "COMPRESSION_ALWAYS",
+      "description": "Always set accept-encoding/content-encoding in outbound request/response.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "UNIMPLEMENTED",
-      "description": "\u003cp\u003eThe gRPC error status code: 12 Unimplemented.\u003c/p\u003e",
+      "id": "COMPRESSION_AUTO",
+      "description": "When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the\noutbound request/response accept-encoding/content-encoding option.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "INTERNAL",
-      "description": "\u003cp\u003eThe gRPC error status code: 13 Internal.\u003c/p\u003e",
+      "id": "COMPRESSION_NEVER",
+      "description": "Never set accept-encoding/content-encoding header in outbound request/response.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "UNAVAILABLE",
-      "description": "\u003cp\u003eThe gRPC error status code: 14 Unavailable.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "DATA_LOSS",
-      "description": "\u003cp\u003eThe gRPC error status code: 15 Data Loss.\u003c/p\u003e",
+      "description": "The gRPC error status code: 15 Data Loss.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "DEADLINE_EXCEEDED",
+      "description": "The gRPC error status code: 4 Deadline Exceeded.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "FAILED_PRECONDITION",
+      "description": "The gRPC error status code: 9 Failed Precondition.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "INTERNAL",
+      "description": "The gRPC error status code: 13 Internal.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "INVALID_ARGUMENT",
+      "description": "The gRPC error status code: 3 Invalid Argument.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "NOT_FOUND",
+      "description": "The gRPC error status code: 5 Not Found.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "OK",
+      "description": "The gRPC error status code: 0 OK.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "OUT_OF_RANGE",
+      "description": "The gRPC error status code: 11 Out of Range.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "PERMISSION_DENIED",
+      "description": "The gRPC error status code: 7 Permission Denied.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "PERMISSION_DENIED_ERROR_MSG",
+      "description": "The permission denied error message.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "RESOURCE_EXHAUSTED",
+      "description": "The gRPC error status code: 8 Resource Exhausted.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "UNAUTHENTICATED",
-      "description": "\u003cp\u003eThe gRPC error status code: 16 Unauthenticated.\u003c/p\u003e",
+      "description": "The gRPC error status code: 16 Unauthenticated.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UNAUTHENTICATED_ERROR_MSG",
+      "description": "The permission denied error message.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UNAVAILABLE",
+      "description": "The gRPC error status code: 14 Unavailable.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UNIMPLEMENTED",
+      "description": "The gRPC error status code: 12 Unimplemented.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UNKNOWN",
+      "description": "The gRPC error status code: 2 Unknown.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     }
   ],
   "errors": [
     {
-      "id": "CancelledError",
-      "description": "\u003cp\u003eRepresents the operation canceled(typically by the caller) error.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "UnKnownError",
-      "description": "\u003cp\u003eRepresents unknown error.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "InvalidArgumentError",
-      "description": "\u003cp\u003eRepresents client specified an invalid argument error.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "DeadlineExceededError",
-      "description": "\u003cp\u003eRepresents operation expired before completion error.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "NotFoundError",
-      "description": "\u003cp\u003eRepresents requested entity (e.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "AlreadyExistsError",
-      "description": "\u003cp\u003eRepresents error occur when attempt to create an entity which already exists.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "PermissionDeniedError",
-      "description": "\u003cp\u003eRepresents error occur when the caller does not have permission to execute the specified operation.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "UnauthenticatedError",
-      "description": "\u003cp\u003eRepresents error occur when the request does not have valid authentication credentials for the operation.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "ResourceExhaustedError",
-      "description": "\u003cp\u003eRepresents error occur when the resource is exhausted.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "FailedPreconditionError",
-      "description": "\u003cp\u003eRepresents error occur when operation is rejected because the system is not in a state required for the operation\u0027s execution.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
       "id": "AbortedError",
-      "description": "\u003cp\u003eRepresents error occur when operation is aborted.\u003c/p\u003e",
+      "description": "Represents error occur when operation is aborted.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "OutOfRangeError",
-      "description": "\u003cp\u003eRepresents error occur when specified value is out of range.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "UnimplementedError",
-      "description": "\u003cp\u003eRepresents error occur when operation is not implemented or not supported/enabled in this service.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "InternalError",
-      "description": "\u003cp\u003eRepresents internal error.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "UnavailableError",
-      "description": "\u003cp\u003eRepresents error occur when the service is currently unavailable.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
-    },
-    {
-      "id": "DataLossError",
-      "description": "\u003cp\u003eRepresents unrecoverable data loss or corruption erros.\u003c/p\u003e",
-      "moduleId": "grpc",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "AllRetryAttemptsFailed",
-      "description": "\u003cp\u003eRepresents error scenario where the maximum retry attempts are done and still received an error.\u003c/p\u003e",
+      "description": "Represents error scenario where the maximum retry attempts are done and still received an error.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "StreamClosedError",
-      "description": "\u003cp\u003eRepresents an error when calling next when the stream has closed.\u003c/p\u003e",
+      "id": "AlreadyExistsError",
+      "description": "Represents error occur when attempt to create an entity which already exists.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "CancelledError",
+      "description": "Represents the operation canceled(typically by the caller) error.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ClientAuthError",
+      "description": "Represents an error when client authentication error occured.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "DataLossError",
+      "description": "Represents unrecoverable data loss or corruption erros.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "DataMismatchError",
+      "description": "Represents an error when expected data type is not available.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "DeadlineExceededError",
+      "description": "Represents operation expired before completion error.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "EOS",
-      "description": "\u003cp\u003eRepresents an error when reaching the end of the client stream.\u003c/p\u003e",
+      "description": "Represents an error when reaching the end of the client stream.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "Error",
+      "description": "Represents gRPC related errors.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "FailedPreconditionError",
+      "description": "Represents error occur when operation is rejected because the system is not in a state required for the operation\u0027s execution.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "InternalError",
+      "description": "Represents internal error.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "InvalidArgumentError",
+      "description": "Represents client specified an invalid argument error.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "NotFoundError",
+      "description": "Represents requested entity (e.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "OutOfRangeError",
+      "description": "Represents error occur when specified value is out of range.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "PermissionDeniedError",
+      "description": "Represents error occur when the caller does not have permission to execute the specified operation.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ResiliencyError",
+      "description": "Represents all the resiliency-related errors.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ResourceExhaustedError",
+      "description": "Represents error occur when the resource is exhausted.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "StreamClosedError",
+      "description": "Represents an error when calling next when the stream has closed.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UnauthenticatedError",
+      "description": "Represents error occur when the request does not have valid authentication credentials for the operation.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UnavailableError",
+      "description": "Represents error occur when the service is currently unavailable.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UnimplementedError",
+      "description": "Represents error occur when operation is not implemented or not supported/enabled in this service.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "UnKnownError",
+      "description": "Represents unknown error.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     }
   ],
   "types": [
     {
+      "id": "ClientAuthConfig",
+      "description": "Defines the authentication configurations for the HTTP client.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
       "id": "Compression",
-      "description": "\u003cp\u003eOptions to compress using gzip or deflate.\u003c/p\u003e",
+      "description": "Options to compress using gzip or deflate.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "ResiliencyError",
-      "description": "\u003cp\u003eRepresents all the resiliency-related errors.\u003c/p\u003e",
+      "id": "ErrorType",
+      "description": "Represents gRPC related error types.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents gRPC related errors.\u003c/p\u003e",
+      "id": "OAuth2GrantConfig",
+      "description": "Represents OAuth2 grant configurations for OAuth2 authentication.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     }
   ],
   "clients": [
     {
-      "id": "Client",
-      "description": "\u003cp\u003eThe gRPC client endpoint provides the capability for initiating contact with a remote gRPC service.\u003c/p\u003e",
+      "id": "Caller",
+      "description": "Provides the gRPC remote functions for interacting with caller.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
-      "id": "Caller",
-      "description": "\u003cp\u003eProvides the gRPC remote functions for interacting with caller.\u003c/p\u003e",
+      "id": "Client",
+      "description": "The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ClientOAuth2Handler",
+      "description": "Defines the OAuth2 handler for client authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ListenerLdapUserStoreBasicAuthProvider",
+      "description": "Defines the LDAP store Basic Auth handler for listener authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
+    },
+    {
+      "id": "ListenerOAuth2Handler",
+      "description": "Defines the OAuth2 handler for listener authentication.",
+      "moduleId": "grpc",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "StreamingClient",
-      "description": "\u003cp\u003eProvides the gRPC streaming client actions for interacting with the gRPC server.\u003c/p\u003e",
+      "description": "Provides the gRPC streaming client actions for interacting with the gRPC server.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     }
   ],
   "listeners": [
     {
       "id": "Listener",
-      "description": "\u003cp\u003eRepresents server listener where one or more services can be registered.\u003c/p\u003e",
+      "description": "Represents server listener where one or more services can be registered.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     }
   ],
   "annotations": [
     {
       "id": "ServiceDescriptor",
-      "description": "\u003cp\u003eService descriptor annotation.\u003c/p\u003e",
+      "description": "Service descriptor annotation.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     }
   ],
   "abstractObjects": [
     {
       "id": "AbstractClientEndpoint",
-      "description": "\u003cp\u003eRepresents the abstract gRPC client endpoint.\u003c/p\u003e",
+      "description": "Represents the abstract gRPC client endpoint.",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     },
     {
       "id": "Service",
-      "description": "\u003cp\u003eThe gRPC service type\u003c/p\u003e\n",
+      "description": "The gRPC service type\n",
       "moduleId": "grpc",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.7.4"
+      "moduleVersion": "0.7.5"
     }
-  ]
+  ],
+  "enums": []
 };

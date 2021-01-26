@@ -52,6 +52,10 @@
                 "url": "functions-with-defaultable-parameters"
             },
             {
+                "name": "Included Record Parameters",
+                "url": "functions-with-included-record-parameters"
+            },
+            {
                 "name": "Rest Parameters",
                 "url": "functions-with-rest-parameter"
             },
@@ -127,6 +131,18 @@
             {
                 "name": "Match",
                 "url": "match"
+            },
+            {
+                "name": "Tuple Match",
+                "url": "tuple-match-statement"
+            },
+            {
+                "name": "Mapping Match",
+                "url": "mapping-match-statement"
+            },
+            {
+                "name": "Error Match",
+                "url": "error-match-statement"
             },
             {
                 "name": "Type Test Expression",
@@ -603,32 +619,24 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Byte I/O",
+                "name": "Read/Write Bytes",
                 "url": "byte-io"
             },
             {
-                "name": "Data I/O",
-                "url": "data-io"
+                "name": "Read/Write Text",
+                "url": "text-io"
             },
             {
-                "name": "Record I/O",
-                "url": "record-io"
-            },
-            {
-                "name": "CSV I/O",
+                "name": "Read/Write CSV",
                 "url": "csv-io"
             },
             {
-                "name": "JSON I/O",
+                "name": "Read/Write JSON",
                 "url": "json-io"
             },
             {
-                "name": "XML I/O",
+                "name": "Read/Write XML",
                 "url": "xml-io"
-            },
-            {
-                "name": "File I/O",
-                "url": "file-io"
             }
         ]
     },
@@ -646,16 +654,8 @@
                 "url": "cache"
             },
             {
-                "name": "Config",
-                "url": "config-api"
-            },
-            {
                 "name": "Log",
                 "url": "log-api"
-            },
-            {
-                "name": "Math",
-                "url": "math-functions"
             },
             {
                 "name": "String",
@@ -668,6 +668,10 @@
             {
                 "name": "File",
                 "url": "file"
+            },
+            {
+                "name": "Random",
+                "url": "random"
             },
             {
                 "name": "Task Scheduler Appointment",
@@ -841,7 +845,7 @@
                 "url": "http-client-data-binding"
             },
             {
-                "name": "Absolute Resource Path and Resource Path",
+                "name": "Absolute Path and Resource Path",
                 "url": "absolute-path-and-path"
             },
             {
@@ -905,10 +909,6 @@
                 "url": "different-payload-types"
             },
             {
-                "name": "HTTP Streaming",
-                "url": "http-streaming"
-            },
-            {
                 "name": "HTTP Compression",
                 "url": "http-compression"
             },
@@ -954,12 +954,20 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Client Endpoint",
-                "url": "websocket-client"
+                "name": "Async Client Endpoint",
+                "url": "websocket-async-client"
             },
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
+            },
+            {
+                "name": "Proxy Server",
+                "url": "websocket-proxy-server"
+            },
+            {
+                "name": "Chat Application",
+                "url": "websocket-chat-application"
             }
         ]
     },
@@ -1006,29 +1014,6 @@
             {
                 "name": "Timeout",
                 "url": "http-timeout"
-            }
-        ]
-    },
-    {
-        "title": "WebSub",
-        "column": 1,
-        "category": "Working over the network",
-        "samples": [
-            {
-                "name": "Internal Hub Sample",
-                "url": "websub-internal-hub-sample"
-            },
-            {
-                "name": "Remote Hub Sample",
-                "url": "websub-remote-hub-sample"
-            },
-            {
-                "name": "Hub Client Sample",
-                "url": "websub-hub-client-sample"
-            },
-            {
-                "name": "Service Integration Sample",
-                "url": "websub-service-integration-sample"
             }
         ]
     },
@@ -1123,10 +1108,6 @@
                 "url": "grpc-unary-blocking"
             },
             {
-                "name": "Unary Non-Blocking",
-                "url": "grpc-unary-non-blocking"
-            },
-            {
                 "name": "Server Streaming",
                 "url": "grpc-server-streaming"
             },
@@ -1147,6 +1128,24 @@
                 "url": "proto-to-ballerina"
             }
         ]
+    },
+    {	
+        "title": "Observability",	
+        "column": 2,	
+        "category": "Working over the network",	
+        "samples": [{	
+                "name": "Distributed Tracing",	
+                "url": "tracing"	
+            },	
+            {	
+                "name": "Counter-Based Metrics",	
+                "url": "counter-metrics"	
+            },	
+            {	
+                "name": "Gauge-Based Metrics",	
+                "url": "gauge-metrics"	
+            }	
+        ]	
     },
     {
         "title": "OpenAPI",
@@ -1258,8 +1257,12 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Basic TCP Socket",
-                "url": "tcp-socket-listener-client"
+                "name": "TCP Client",
+                "url": "tcp-client"
+            },
+            {
+                "name": "TCP Listener",
+                "url": "tcp-listener"
             }
         ]
     },
@@ -1269,8 +1272,16 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Basic UDP Client Socket",
-                "url": "udp-socket-client"
+                "name": "UDP Connectionless Client",
+                "url": "udp-client"
+            },
+            {
+                "name": "UDP Connection oriented Client",
+                "url": "udp-connect-client"
+            },
+            {
+                "name": "UDP Listener",
+                "url": "udp-listener"
             }
         ]
     },
@@ -1280,16 +1291,40 @@
         "category": "Working over the network",
         "samples": [
             {
+                "name": "Secured Service with Basic Auth LDAP User Store",
+                "url": "secured-service-with-basic-auth-ldap-user-store"
+            },
+            {
+                "name": "Secured Service with JWT Auth",
+                "url": "secured-service-with-jwt-auth"
+            },
+            {
+                "name": "Secured Service with OAuth2",
+                "url": "secured-service-with-oauth2"
+            },
+            {
                 "name": "Secured Client with Basic Auth",
                 "url": "secured-client-with-basic-auth"
             },
             {
-                "name": "Secured Client with JWT Auth",
-                "url": "secured-client-with-jwt-auth"
+                "name": "Secured Client with Bearer Token Auth",
+                "url": "secured-client-with-bearer-token-auth"
             },
             {
-                "name": "Secured Client with OAuth2",
-                "url": "secured-client-with-oauth2"
+                "name": "Secured Client with Self Signed JWT Auth",
+                "url": "secured-client-with-self-signed-jwt-auth"
+            },
+            {
+                "name": "Secured Client with OAuth2 Client Credentials Grant Type",
+                "url": "secured-client-with-oauth2-client-credentials-grant-type"
+            },
+            {
+                "name": "Secured Client with OAuth2 Password Grant Type",
+                "url": "secured-client-with-oauth2-password-grant-type"
+            },
+            {
+                "name": "Secured Client with OAuth2 Direct Token Type",
+                "url": "secured-client-with-oauth2-direct-token-type"
             }
         ]
     },

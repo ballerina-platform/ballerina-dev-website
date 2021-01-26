@@ -3,15 +3,15 @@ layout: ballerina-release-notes
 title: Release Note
 ---
 
-### Overview of Ballerina Swan Lake Alpha 
+### Overview of Ballerina Swan Lake Alpha1  
 
-This Alpha release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the eighth preview of Ballerina Swan Lake.
+This Alpha1 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the eighth preview of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
     - [For New Users](#for-new-users)
 - [Highlights](#highlights)
-- [What is new in Ballerina Swan Lake Alpha 1](#what-is-new-in-ballerina-swan-lake-alpha-1)
+- [What is new in Ballerina Swan Lake Alpha1](#what-is-new-in-ballerina-swan-lake-alpha1)
     - [Language](#language)
         - [Intersection Type Support for Errors](#intersection-type-support-for-errors)
         - [Support for Passing a Closed Record as the Rest Argument](#support-for-passing-a-closed-record-as-the-rest-argument)
@@ -20,7 +20,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
         - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
         - [Updated Syntax for User-Defined Error Construction](#updated-syntax-for-user-defined-error-construction)
         - [Changes to Casting with Errors](#changes-to-casting-with-errors)
-        - [Changes to `toString` and `toBalString` with Errors](#changes-to-toString-and-toBalString-with-errors)
+        - [Changes to toString and toBalString with Errors](#changes-to-toString-and-toBalString-with-errors)
         - [Changes to Object Type Inclusion with Qualifiers](#changes-to-object-type-inclusion-with-qualifiers)
         - [Changes to Record Type Inclusion with Rest Descriptors](#changes-to-record-type-inclusion-with-rest-descriptors)
         - [Improved Listener Declaration](#improved-listener-declaration)
@@ -69,7 +69,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
 
 #### Updating Ballerina
 
-You can use the update tool to update to Ballerina Swan Lake Alpha as follows.
+You can use the update tool to update to Ballerina Swan Lake Alpha1 as follows.
 
 ##### For Existing Users
 
@@ -77,7 +77,7 @@ If you are already using Ballerina, you can directly update your distribution to
                         
 > `ballerina update`
 
-From now onwards, the `ballerina` command has to be issued as `bal`. Next, execute the command below to update to Swan Lake Alpha.
+From now onwards, the `ballerina` command has to be issued as `bal`. Next, execute the command below to update to Swan Lake Alpha1.
 
  > `bal dist pull swan-lake-alpha1`                 
 
@@ -104,7 +104,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
 - Code action and code completion support for Code to Cloud libraries in the VS Code plugin
 
-### What is New in Ballerina Swan Lake Alpha 1
+### What is New in Ballerina Swan Lake Alpha1
 
 #### Language
 
@@ -306,7 +306,7 @@ This is now disallowed and can be rewritten as follows.
     }
     ```
 
-##### Changes to `toString` and `toBalString` with Errors
+##### Changes to toString and toBalString with Errors
 
 It was previously possible to call `toString()` and `toBalString()` on unions of errors and non-errors.
 

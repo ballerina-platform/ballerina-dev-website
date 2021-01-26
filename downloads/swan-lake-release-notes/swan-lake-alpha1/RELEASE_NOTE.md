@@ -1364,7 +1364,7 @@ string contentType;
     ```
 
 
-##### Introduce New Modules (Regex and Random modules)
+##### Introduced New Modules 
 
 ###### Random
 
@@ -1459,7 +1459,7 @@ The `ballerina/regex` module provides RegEx utilities such as checking whether a
 
 `websub:PublisherClient` is moved to `ballerina/websubhub` and can now be used as `websubhub:PublisherClient`.
 
-##### Remove Modules (Config, Math and Stringutils modules)
+##### Removed Modules 
 
 ###### Config
 

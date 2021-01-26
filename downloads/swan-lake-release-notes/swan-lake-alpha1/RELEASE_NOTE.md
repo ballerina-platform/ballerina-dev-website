@@ -180,7 +180,7 @@ xml<never> emptyXmlValue = xml ``;
 **List Match Pattern**
 ```ballerina
 match v {
-    var [a, b ] => {
+    var [a, b] => {
         // Matches lists with 2 elements.
     }    
     var [a, [b, c], d]|var [a, b , c, d] => {
@@ -194,7 +194,7 @@ match v {
 **Mapping Match Pattern**
 ```ballerina
 match v {
-    {a: "hello", b: "world"}     => {
+    {a: "hello", b: "world"} => {
         // Match mappings that contain the field `a` with
         // value "hello" and field `b` with value "world".
     }
@@ -224,12 +224,14 @@ match v {
 When code is executed through each match-clause, the type of the matched expression is narrowed. In the example below, the type of `v` in the last match clause is narrowed to `string`.
 
 ```ballerina
-match v {
-    var a if a is int|boolean => {
-        return a.toString();
-    }
-    _ => {
-        return v; // Type of `v` is `string` here.
+function getString(boolean|int|string v) returns string {
+    match v {
+        var a if a is int|boolean => {
+            return a.toString();
+        }
+        _ => {
+            return v; // Type of `v` is `string` here.
+        }
     }
 }
 ```
@@ -269,7 +271,7 @@ The following was allowed previously.
 
 ```ballerina
 function foo() returns string|int|error {
-    return error(“Error Message”);
+    return error("Error Message");
 }
 
 public function main() {
@@ -297,7 +299,7 @@ This is now disallowed and can be rewritten as follows.
 
     ```ballerina
     function foo() returns string|int|error {
-        return error(“Error Message”);
+        return error("Error Message");
     }
 
     public function main() returns error? {
@@ -326,7 +328,7 @@ function print(any|error val) {
 
 #### Changes to Object Type Inclusion with Qualifiers
 
-- When object type inclusion is used with an object type descriptor with qualifiers (`isolated`, `client`, `service`), it is now mandatory for the object in which the inclusion is done also to have these qualifiers.
+- When object type inclusion is used with an object type descriptor with qualifiers (`isolated`, `client`, `service`), it is now mandatory for the object in which the inclusion is done to also have these qualifiers.
 - Object type descriptors can no longer use object type inclusion with `readonly` classes.
 - Classes can use object type inclusion with `readonly` classes only if the including classes themselves are `readonly` classes.
 - The type reference in an object constructor expression can refer to a `readonly` class only if the object being constructed is `readonly`.
@@ -402,7 +404,7 @@ The rest descriptor type of the `InclusiveCongifuration` is `anydata` and that o
 
 ##### Improved Listener Declaration  
 
-The listener declaration is improved to accept listener values that are a subtype of both the compiler built-in type `listener` and `error` type. This allows the following listener declaration when the `init` method of `Listener` may return an error.
+The listener declaration is improved to accept listener types that may return an error on initialization. This allows the following listener declaration where the `init` method of `Listener` may return an error.
 
 ```ballerina
 listener lsn = new Listener();
@@ -417,28 +419,28 @@ listener lsn = new Listener();
 
 public class Listener {
 
-   public isolated function 'start() returns error? {
-   }
+    public isolated function 'start() returns error? {
+    }
 
-   public isolated function gracefulStop() returns error? {
-   }
+    public isolated function gracefulStop() returns error? {
+    }
 
-   public isolated function immediateStop() returns error? {
-   }
+    public isolated function immediateStop() returns error? {
+    }
 
-   public isolated function detach(service object {} s) returns error? {
-   }
+    public isolated function detach(service object {} s) returns error? {
+    }
 
-   public isolated function attach(service object {} s, string[]|string? name = ()) returns error? {
-   }
+    public isolated function attach(service object {} s, string[]|string? name = ()) returns error? {
+    }
 
-   public function init() returns error? {
-      ...
-      // object init failed due to some reason
-      if (object_init_failed) {
-         return error("Listener initialization failed");
-      }
-   }
+    public function init() returns error? {
+        ...
+        // Return an error if initialization failed due to some reason.
+        if (objectInitFailed) {
+            return error("Listener initialization failed");
+        }
+    }
 }
 ```
 
@@ -481,7 +483,7 @@ A new lang library method named `includes`, which tests whether a `string` value
 
 ```ballerina
 string str = "Ballerina Programming Language";
-boolean contains = str.includes("Language", 10);
+boolean includes = str.includes("Language", 10);
 ```
 
 ###### Introduction of the `sleep` Method

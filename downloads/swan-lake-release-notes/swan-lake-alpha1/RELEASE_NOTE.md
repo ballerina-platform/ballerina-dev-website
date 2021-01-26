@@ -404,7 +404,7 @@ The rest descriptor type of the `InclusiveCongifuration` is `anydata` and that o
 
 ##### Improved Listener Declaration  
 
-The listener declaration is improved to accept listener types that may return an error on initialization. This allows the following listener declaration where the `init` method of `Listener` may return an error.
+The listener declaration is improved to allow using listener classes that may return an error on initialization. This allows the following listener declaration where the `init` method of `Listener` may return an error.
 
 ```ballerina
 listener lsn = new Listener();

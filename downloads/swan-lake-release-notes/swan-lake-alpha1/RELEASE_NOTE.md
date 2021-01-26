@@ -20,7 +20,7 @@ This Alpha1 release includes the language features planned for the Ballerina Swa
         - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
         - [Updated Syntax for User-Defined Error Construction](#updated-syntax-for-user-defined-error-construction)
         - [Changes to Casting with Errors](#changes-to-casting-with-errors)
-        - [Changes to toString and toBalString with Errors](#changes-to-toString-and-toBalString-with-errors)
+        - [Changes to `toString` and `toBalString` with Errors](#changes-to-tostring-and-tobalstring-with-errors)
         - [Changes to Object Type Inclusion with Qualifiers](#changes-to-object-type-inclusion-with-qualifiers)
         - [Changes to Record Type Inclusion with Rest Descriptors](#changes-to-record-type-inclusion-with-rest-descriptors)
         - [Improved Listener Declaration](#improved-listener-declaration)
@@ -614,7 +614,7 @@ password = "<github-PAT>"
 Introduced Read-Evaluate-Print-Loop (REPL) support for Ballerina, which can be accessed via the `bal shell` command. Shell runs a REPL instance of Ballerina to enable running snippets of code. An example shell session is shown below:
 
 ```bash
-> bal shall
+> bal shell
 Welcome to Ballerina Shell REPL.
 Type /exit to exit and /help to list available commands.
 
@@ -715,38 +715,38 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     - `websocket:UpgradeService` - This handles the HTTP to WebSocket upgrade. This service has a single get resource, which returns a `websocket:Service` or an error. Optionally, this takes in the `http:Request` parameter. To accept the WebSocket upgrade, this resource should return a `websocket:Service`. Or else, to cancel the WebSocket upgrade, it must return a `websocket:UpgradeError`.
     - `websocket:Service` - This handles the events after the WebSocket upgrade. This service has a predefined set of remote methods like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, `onClose`. Once the connection is successfully updated to a WebSocket connection, upon receiving WebSocket frames/messages, those will get dispatched to these remote methods. 
 
-    **New Syntax:**
+**New Syntax:**
 
-    ```ballerina
-    import ballerina/http;
-    import ballerina/websocket;
+```ballerina
+import ballerina/http;
+import ballerina/websocket;
 
-    service / basic on new websocket:Listener(9000) {
-        resource function get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
-            return new WsService();
-        }
+service / basic on new websocket:Listener(9000) {
+    resource function get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
+        return new WsService();
     }
-    service class WsService {
-        *websocket:Service;
-        remote function onOpen(websocket:Caller caller) {
-        }
-        remote function onTextMessage(websocket:Caller caller, string text) {
-        }
-        remote function onBinaryMessage(websocket:Caller caller, byte[] b) {
-        }
+}
+service class WsService {
+*websocket:Service;
+    remote function onOpen(websocket:Caller caller) {
     }
-    ```
+    remote function onTextMessage(websocket:Caller caller, string text) {
+    }
+    remote function onBinaryMessage(websocket:Caller caller, byte[] b) {
+    }
+}
+```
 
-    The `onTextMessage` and `onBinaryMessage` will take in the complete WebSocket message. Unlike earlier versions, `onTextMessage` doesn't support data binding. WebSocket messages dispatched to this remote method will only be in the `string` format.
+The `onTextMessage` and `onBinaryMessage` will take in the complete WebSocket message. Unlike earlier versions, `onTextMessage` doesn't support data binding. WebSocket messages dispatched to this remote method will only be in the `string` format.
 
-    The `websocket:Caller` has `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and, `close` as remote methods. Unlike earlier versions, `writeTextMessage` doesn't support data binding. Complete messages only in the string format will be accepted by this.
+The `websocket:Caller` has `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and, `close` as remote methods. Unlike earlier versions, `writeTextMessage` doesn't support data binding. Complete messages only in the string format will be accepted by this.
 
-    **New Syntax:**
+**New Syntax:**
 
-    ```ballerina   
-    caller->writeTextMessage(text);
-    caller->writeBinaryMessage(byteArr);
-    ```
+```ballerina   
+caller->writeTextMessage(text);
+caller->writeBinaryMessage(byteArr);
+```
 
 - Introduced a WebSocket Async client
     The WebSocket module now has a `websocket:AsyncClient`. This client can take in a `websocket:Service` as a callback service to receive WebSocket messages at the client initialization. This service has a predefined set of remote methods like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, and `onClose`. 
@@ -1234,7 +1234,7 @@ The methods below have been removed from the `runtime` module since these method
 ```ballerina
 public type Attachment record {|
     string filePath;
-    string contentType;
+string contentType;
 |};
 ```
 
@@ -1435,23 +1435,23 @@ The `ballerina/regex` module provides RegEx utilities such as checking whether a
 - `websubhub:Client` is introduced to distribute the updated content to subscribers.
 - The example below is a sample use-case of the WebSub Hub Client.
 
-```ballerina
-    service /websubhub on hubListener {
-    remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) {
+    ```ballerina
+        service /websubhub on hubListener {
+        remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) {
 
-            // Client configuration (e.g., retry config) can be passed if required.
-            websubhub:HubClient hubclient = check new (msg);
-            var responseFuture =  start notifySubscriber(hubclient);
-        }
+                // Client configuration (e.g., retry config) can be passed if required.
+                websubhub:HubClient hubclient = check new (msg);
+                var responseFuture =  start notifySubscriber(hubclient);
+            }
 
-        function notifySubscriber(websubhub:HubClient hubclient) returns error? {
-            while (true) {
-                // Fetch the messages to be delivered. 
-               ContentDistributionSuccess | SubscriptionDeletedError | error publishResponse = check hubclient->notifyContentDistribution({content: "This is sample content delivery"});
+            function notifySubscriber(websubhub:HubClient hubclient) returns error? {
+                while (true) {
+                    // Fetch the messages to be delivered. 
+                ContentDistributionSuccess | SubscriptionDeletedError | error publishResponse = check hubclient->notifyContentDistribution({content: "This is sample content delivery"});
+                }
             }
         }
-    }
-```
+    ```
 
 **Publisher Implementation**
 

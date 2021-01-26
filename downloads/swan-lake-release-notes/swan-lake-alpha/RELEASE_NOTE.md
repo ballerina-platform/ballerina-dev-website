@@ -1065,7 +1065,7 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     |};
     ```
 
-- The `publish()` of the `nats:Producer` is changed to `publishMessage(Message message)` of the `nats:Client`. An example of sending a message with the new API is given below.
+- The `publish()` method of the `nats:Producer` is changed to `publishMessage(Message message)` of the `nats:Client`. An example of sending a message with the new API is given below.
 
     ```ballerina
     string message = "Hello from Ballerina";
@@ -1080,11 +1080,11 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 
 ###### Service and Listener Changes
 
-- The return type of the `nats:Listener init` is changed to `Error?`. 
+- The return type of the `init` method of `nats:Listener` is changed to `Error?`. 
 - Has a single type of service that supports the two types of remote functions below:
     - `onMessage(nats:Message message) {}`  
     - `onRequest(nats:Message message) returns anydata {}` 
-- A new `onRequest` function is introduced to directly reply to a message by returning a value if the `replyTo` subject is present.
+- A new `onRequest` remote method is introduced to directly reply to a message by returning a value if the `replyTo` subject is present.
 - If the subject name is not given in the `@nats:ServiceConfig`, the name of the service is considered as the subject name. 
 - The new syntax with the service changes is given below.
 
@@ -1107,8 +1107,8 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
 ###### Client Changes
 
-- The `nats:Connection` is removed entirely from the NATS Streaming client as well. 
-- The `stan:Client` is introduced to handle the client-side functionality. 
+- `nats:Connection` is removed entirely from the NATS Streaming client as well. 
+- `stan:Client` is introduced to handle the client-side functionality. 
 - An example of sending messages using the new `ballerinax/stan` package to a NATS Streaming server is given below. 
 
     ```ballerina
@@ -1126,8 +1126,8 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
 ###### Service and Listener Changes
 
-- The return type of the `stan:Listener init` is `Error?`. 
-- Has a single type of service that supports the `onMessage` remote function below:
+- The return type of the `init` method of `stan:Listener` is `Error?`. 
+- Has a single type of service that supports the `onMessage` remote method below:
     `onMessage(nats:Message message) {}`
 - If the subject name is not given in the `@stan:ServiceConfig`, the name of the service is considered as the subject name. 
 - The new syntax with the service changes is given below.
@@ -1149,8 +1149,8 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
 ###### Client Changes
 
-- The `rabbitmq:Connection` is removed entirely.
-- The `rabbitmq:Channel` is renamed to `rabbitmq:Client`, which will handle the client-side functionality. The `init` function of the `rabbitmq:Client` returns `Error?`.
+- `rabbitmq:Connection` is removed entirely.
+- `rabbitmq:Channel` is renamed to `rabbitmq:Client`, which will handle the client-side functionality. The `init` method of `rabbitmq:Client` returns `Error?`.
 - The `rabbitmq:Message` object is changed into a record type.
 
     ```ballerina
@@ -1163,8 +1163,8 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
     |};
     ```
 
-- The `queueDeclare()` function of the `rabbtimq:Channel` is split into `queueDeclare()` and `queueAutoGenerate()` of the `rabbtimq:Client`. 
-- The `basicPublish()` function of the `rabbitmq:Channel` is changed to `publishMessage(Message message)` of the `rabbitmq:Client`. An example of sending a message with the new API is given below.
+- The `queueDeclare()` method of `rabbtimq:Channel` is split into `queueDeclare()` and `queueAutoGenerate()` of `rabbtimq:Client`. 
+- The `basicPublish()` method of `rabbitmq:Channel` is changed to `publishMessage(Message message)` of the `rabbitmq:Client`. An example of sending a message with the new API is given below.
 
     ```ballerina
     import ballerinax/rabbitmq;
@@ -1184,12 +1184,12 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
 
 ###### Service and Listener Changes
 
-- The return type of the `rabbitmq:Listener init` is changed to `Error?`. 
+- The return type of the `init` method of `rabbitmq:Listener` is changed to `Error?`. 
 - Has a single type of service that supports the three types of remote functions below:
      - `onMessage(rabbitmq:Message message) {}`
      - `onMessage(rabbitmq:Message message, rabbitmq:Caller caller) {}`
      - `onRequest(rabbitmq:Message message) returns anydata {}`
-- A new `onRequest` function is introduced to directly reply to a message by returning a value if the `replyTo` subject is present.
+- A new `onRequest` method is introduced to directly reply to a message by returning a value if the `replyTo` subject is present.
 - If the subject name is not given in the `@rabbitmq:ServiceConfig`, the name of the service is considered as the subject name. 
 - The new syntax with the service changes is given below.
 

@@ -11,7 +11,7 @@ This Alpha release includes the language features planned for the Ballerina Swan
     - [For Existing Users](#for-existing-users)
     - [For New Users](#for-new-users)
 - [Highlights](#highlights)
-- [What is new in Ballerina Swan Lake Alpha](#what-is-new-in-ballerina-swan-lake-alpha
+- [What is new in Ballerina Swan Lake Alpha 1](#what-is-new-in-ballerina-swan-lake-alpha-1)
     - [Language](#language)
         - [Intersection Type Support for Errors](#intersection-type-support-for-errors)
         - [Support for Passing a Closed Record as the Rest Argument](#support-for-passing-a-closed-record-as-the-rest-argument)
@@ -104,7 +104,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
 - Code action and code completion support for Code to Cloud libraries in the VS Code plugin
 
-### What is New in Ballerina Swan Lake Alpha 
+### What is New in Ballerina Swan Lake Alpha 1
 
 #### Language
 

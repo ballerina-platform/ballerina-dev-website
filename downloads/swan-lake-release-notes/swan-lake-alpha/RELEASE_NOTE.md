@@ -1052,9 +1052,9 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
 ##### NATS Module Improvements
 
  - The `ballerinax/nats` module is split into two packages as `ballerinax/nats` (NATS client) and `ballerinax/stan` (NATS Streaming client).
-- The `nats:Connection` is removed entirely. 
-- The `nats:Producer` is renamed to `nats:Client`. 
-- The return type of the `nats:Client` is changed to `Error?`.
+- The `nats:Connection` object is removed entirely. 
+- The `nats:Producer` client is renamed to `nats:Client`. 
+- The return type of the `nats:Client` client is changed to `Error?`.
 - The `nats:Message` object is changed into a record type. 
 
     ```ballerina

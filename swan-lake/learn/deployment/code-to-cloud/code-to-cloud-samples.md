@@ -28,11 +28,8 @@ redirect_from:
 
     listener http:Listener helloEP = new(9090);
 
-    @http:ServiceConfig {
-        basePath: "/helloWorld"
-    }
-    service helloWorld on helloEP {
-        resource function sayHello(http:Caller caller, http:Request request) {
+    service /helloWorld on helloEP {
+        resource function get sayHello(http:Caller caller, http:Request request) {
             http:Response response = new;
             response.setTextPayload("Hello, World from service helloWorld ! ");
             var responseResult = caller->respond(response);
@@ -294,11 +291,8 @@ Auto-scaling policies allow the container to scale seamlessly without overloadin
 
     listener http:Listener helloEP = new(9090);
 
-    @http:ServiceConfig {
-        basePath: "/helloWorld"
-    }
-    service helloWorld on helloEP {
-        resource function sayHello(http:Caller caller, http:Request request) {
+    service /helloWorld on helloEP {
+        resource function get sayHello(http:Caller caller, http:Request request) {
             http:Response response = new;
             response.setTextPayload("Hello, World from service helloWorld ! ");
             var responseResult = caller->respond(response);

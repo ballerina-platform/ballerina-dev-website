@@ -1,5 +1,5 @@
 ---
-layout: ballerina-release-notes
+layout: ballerina-blank-page
 title: Release Note
 ---
 
@@ -64,7 +64,6 @@ This Alpha1 release includes the language features planned for the Ballerina Swa
     - [Code to Cloud](#code-to-cloud)
     - [Observability](#observability)
     - [Breaking Changes](#breaking-changes)
-        - [Language](#language)
     - [Taint Analyzer Update](#taint-analyzer-update)
 
 #### Updating Ballerina

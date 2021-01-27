@@ -1213,7 +1213,7 @@ typedesc | io.ballerina.runtime.api.values.BTypedesc |
 error | io.ballerina.runtime.api.values.BError |
 
 #### Using Ballerina Arrays and Maps in Java
-There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, `ballerina-runtime` libraries have to be added as a dependency to the java project and the relevant classes need to be imported from the `ballerina-runtime` library. You can find all released versions of the `ballerina-runtime` library [here](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/) and add the latest version of it as a dependency by adding following lines to `build.gradle` file.
+There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. You can find all the released versions of the `ballerina-runtime` library [here](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/). The latest version of the dependency can be added to gradle using the following:
 ```groovy
 repositories {
    // Use WSO2's Nexus repository manager for resolving dependencies.
@@ -1223,13 +1223,13 @@ repositories {
 }
 
 dependencies {
-   // Add ballerina-runtime:2.0.0-Preview8 as dependency.
+   // Add ballerina-runtime as dependency.
    implementation 'org.ballerinalang:ballerina-runtime:+'
 }
 ```
 
 ##### Using Ballerina Arrays in Java
-To use Ballerina arrays in Java, `BArray` interface has been provided. Following example illustrates how to write Java intreop code that uses Ballerina arrays.
+To use Ballerina arrays in Java, the `BArray` interface has to be used. The example below illustrates how to write Java intreop code that uses Ballerina arrays.
 ```java
 import io.ballerina.runtime.api.values.BArray;
 
@@ -1262,7 +1262,7 @@ function arrayReverse(int[] arr) returns int[] = @java:Method {
 ```
 
 ##### Using Ballerina Maps in Java
-To use Ballerina maps in Java, `BMap` interface has been provided. Following example illustrates how to write Java intreop code that uses Ballerina maps.
+To use Ballerina maps in Java, the `BMap` interface has to be used. The example below illustrates how to write Java intreop code that uses Ballerina maps.
 ```java
 import io.ballerina.runtime.api.values.BMap;
 import io.ballerina.runtime.api.values.BString;

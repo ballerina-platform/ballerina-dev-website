@@ -10,7 +10,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/data-streaming
 ---
 
-## Chunking and Non-Chunking Modes
+## Data Streaming Modes
 
 In Ballerina, the clients automatically switch between the chunked or non-chunked modes based on the size of the content provided as the payload. This is controlled by the [`http:ClientConfiguration`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration) object’s [`http1Settings.chunking`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientHttp1Settings) property, which has a default value of [`AUTO`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/constants#CHUNKING_AUTO). The fully supported modes are as follows.
 
@@ -24,7 +24,7 @@ To use the HTTP streaming feature effectively, you need to create an HTTP reques
 
 Therefore, you should use a streaming data channel by using an API such as the [`io:openReadableFile`](/swan-lake/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#openReadableFile), which returns a [`ReadableByteChannel`](/swan-lake/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/classes/ReadableByteChannel). This streaming data channel can be used in places that accept streaming channels such as the [`http:Request`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object’s [`setByteStream`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setByteStream). 
 
-The data_streaming.bal example below opens a file with a streaming data channel and uses it to create an HTTP request to stream its data to a remote endpoint.
+The `data_streaming.bal` example below opens a file with a streaming data channel and uses it to create an HTTP request to stream its data to a remote endpoint.
 
 >**Info:** Since the code below uses the default HTTP client configurations, if the input file is larger than 8KB, it will automatically stream the content to the remote endpoint using chunked transfer encoding. 
 

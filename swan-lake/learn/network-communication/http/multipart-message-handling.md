@@ -10,7 +10,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/multipart-message-handling
 ---
 
-You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Request`] object(/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request).
+You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Request`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object.
 
 A MIME entity in Ballerina is represented using the [`mime:Entity`](/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object.
 
@@ -63,7 +63,7 @@ The code above explicitly creates the MIME entity and sets it in the HTTP reques
 
 The [`mime:Entity`](/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object contains functions for setting the body with other data types such as [binary](https://dev.ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setTextPayload), [XML](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setXmlPayload), and [JSON](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setJsonPayload) as well.
 
-A multipart message can be created by setting the body parts in the [`mime:Entity`](/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object using the [`setBodyParts'](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setBodyParts) method. 
+A multipart message can be created by setting the body parts in the [`mime:Entity`](/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object using the [`setBodyParts`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setBodyParts) method. 
 
 This method takes in an array of [`mime:Entity`](/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) objects, and also optionally, the content type of the enclosing entity, in which, the default is set to [`multipart/form-data`](/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/constants#MULTIPART_FORM_DATA). 
 
@@ -74,7 +74,7 @@ If required, you can override the default `multipart/form-data` with other multi
 
 The `multipart_example_two.bal` below shows how a `multipart/mixed` message is created using plain text content and an image file as an attachment. 
 
-**multipart_example_two**
+**multipart_example_two.bal**
 ```ballerina
 import ballerina/http;
 import ballerina/mime;
@@ -106,9 +106,9 @@ In the above code, the [`setContentDisposition`](/swan-lake/learn/api-docs/balle
 
 Similar to how you work with MIME entities in HTTP requests, the HTTP response entities can also be processed using the [`getEntity`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response#getEntity) method in the [`http:Response`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response) object.
 
-The `multipart_example_three` below is an example of its usage.
+The `multipart_example_three.bal` below is an example of its usage.
 
-**multipart_example_three**
+**multipart_example_three.bal**
 ```ballerina
 import ballerina/http;
 import ballerina/mime;

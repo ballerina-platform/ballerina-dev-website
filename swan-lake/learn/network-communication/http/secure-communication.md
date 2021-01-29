@@ -10,8 +10,6 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/secure-communication
 ---
 
-The sections below provides more details on them.
-
 ## TLS
 
 The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can  provide the information on the trust store location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration). 

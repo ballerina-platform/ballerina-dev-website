@@ -45,19 +45,19 @@ The [Circuit Breaker](https://docs.microsoft.com/en-us/azure/architecture/patter
 
 If the requests keep failing continuously and adding more stress to the backend system, it is not a desirable state for your system. Then, you should rather fail-fast and handle the error from the application. This makes sure the caller is not wasting too many resources by waiting for request timeouts etc. Thus, holding back a chain of network calls, which in-turn may hold up resources such as execution threads and network connections. 
 
-### Circuit Breaker Closed State
+### Circuit Breaker 'Closed' State
 
 As a solution for this, you can have an intermediary between the service client and the backend service that acts as a circuit breaker. In this manner, when the backend service is healthy, the requests originated from the client go through the circuit breaker and the backend service will successfully return the response to the client through the circuit breaker. This is called the `closed` state in the circuit breaker, which is depicted by the diagram below. 
 
 ![Circuit Breaker Closed State](/swan-lake/learn/images/circuit-breaker-closed-state.png)
 
-### Circuit Breaker Open State
+### Circuit Breaker 'Open' State
 
 If the circuit breaker detects that the backend service is repeatedly failing, it can stop forwarding the client requests to the backend service and fail the requests immediately by returning with a specific error message to the client. In this situation, the circuit breaker is in the `open` state, which is depicted by the diagram below. 
 
 ![Circuit Breaker Open State](/swan-lake/learn/images/circuit-breaker-open-state.png)
 
-### Circuit Breaker Half-Open State
+### Circuit Breaker 'Half-Open' State
 
 While the circuit breaker is in the `open` state and after a specific timeout since it was in this state, the circuit breaker will allow some requests from the client to be passed to the backend service. This is called the `half-open` state, which is depicted by the diagram below. 
 
@@ -138,7 +138,7 @@ In the above code, the three hosts configured using the `targets` property provi
 
 For more detailed configuration options, see the [http:LoadBalanceClientConfiguration](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/LoadBalanceClientConfiguration).
 
-## Handling Failovee Scenarios
+## Handling Failover Scenarios
 
 Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in an order, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
 

@@ -97,3 +97,7 @@ Execute the `bal run client_demo_get.bal` command and the output will be as foll
 ```bash
 Payload: {"args":{},"data":"Hello!","files":{},"form":{},"headers":{"Content-Length":"6","Content-Type":"text/plain","Host":"httpbin.org","User-Agent":"ballerina","X-Amzn-Trace-Id":"Root=1-5fd3b957-4110242263315d0a3fa66dcc","X-User":"Jack"},"json":null,"origin":"45.30.94.9","url":"http://httpbin.org/post"}
 ```
+
+### EXECUTE
+
+Similar to the [`get`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) and [`post`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#post) remote methods above, there are other methods such as [`put`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#put), [`delete`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#delete), [`patch`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#patch), [`head`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#head), and [`options`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#options) to represent the HTTP methods. There is also a generic [`execute`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#execute) remote method for users to specify the HTTP verb and execute the HTTP action. 

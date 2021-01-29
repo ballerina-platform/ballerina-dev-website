@@ -2,7 +2,7 @@ var searchData = {
   "modules": [
     {
       "id": "lang.error",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003eerror\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e",
+      "description": "This module provides lang library operations on \"error\" values defined by the language specification 2020R1.",
       "orgName": "ballerina",
       "version": "1.0.0"
     }
@@ -10,7 +10,14 @@ var searchData = {
   "classes": [
     {
       "id": "CallStack",
-      "description": "\u003cp\u003eRepresent error call stack.\u003c/p\u003e",
+      "description": "Represent error call stack.",
+      "moduleId": "lang.error",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "DefaultRetryManager",
+      "description": "Default retry manager to be used with retry statement.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -18,29 +25,43 @@ var searchData = {
   ],
   "functions": [
     {
-      "id": "message",
-      "description": "\u003cp\u003eReturns the error\u0027s message.\u003c/p\u003e",
-      "moduleId": "lang.error",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "cause",
-      "description": "\u003cp\u003eReturns the error\u0027s cause.\u003c/p\u003e",
+      "description": "Returns the error\u0027s cause.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "detail",
-      "description": "\u003cp\u003eReturns the error\u0027s detail record.\u003c/p\u003e",
+      "description": "Returns the error\u0027s detail record.",
+      "moduleId": "lang.error",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "message",
+      "description": "Returns the error\u0027s message.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "stackTrace",
-      "description": "\u003cp\u003eReturns an object representing the stack trace of the error.\u003c/p\u003e",
+      "description": "Returns an object representing the stack trace of the error.",
+      "moduleId": "lang.error",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "toBalString",
+      "description": "Converts an error to a string that describes the value in Ballerina syntax.",
+      "moduleId": "lang.error",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "toString",
+      "description": "Converts an error to a string.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -48,15 +69,15 @@ var searchData = {
   ],
   "records": [
     {
-      "id": "Detail",
-      "description": "\u003cp\u003eThe type to which error detail records must belong.\u003c/p\u003e",
+      "id": "CallStackElement",
+      "description": "Representation of `CallStackElement`\n\n",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "CallStackElement",
-      "description": "\u003cp\u003eRepresentation of \u003ccode\u003eCallStackElement\u003c/code\u003e\u003c/p\u003e\n",
+      "id": "Detail",
+      "description": "The type to which error detail records must belong.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -66,7 +87,7 @@ var searchData = {
   "errors": [
     {
       "id": "Retriable",
-      "description": "\u003cp\u003eRepresents the Retriable error.\u003c/p\u003e",
+      "description": "Represents the Retriable error.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -75,7 +96,7 @@ var searchData = {
   "types": [
     {
       "id": "DetailType",
-      "description": "\u003cp\u003eA type parameter that is a subtype of error \u003ccode\u003eDetail\u003c/code\u003e record type.\u003c/p\u003e",
+      "description": "A type parameter that is a subtype of error `Detail` record type.",
       "moduleId": "lang.error",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -84,5 +105,14 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [
+    {
+      "id": "RetryManager",
+      "description": "",
+      "moduleId": "lang.error",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    }
+  ],
+  "enums": []
 };

@@ -11,9 +11,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">decimal</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">float</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
 
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
@@ -62,14 +59,14 @@ redirect_from:
 
     <span class="c1">// The `fromString()` method in the `ballerina/lang.int` module returns the integer value represented by a</span>
     <span class="c1">// given string if there is a valid representation, else returns an `error`.</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">s1</span><span class="p">);</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">s2</span><span class="p">);</span>
+    <span class="nx">res1</span> <span class="p">=</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -78,7 +75,7 @@ redirect_from:
 
     <span class="c1">// The `fromString()` method in the `ballerina/lang.float` module returns the float value represented by a given</span>
     <span class="c1">// string if there is a valid representation, else returns an `error`.</span>
-    <span class="kt">float</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res2</span> <span class="p">=</span> <span class="p">&#39;float:fromString(</span><span class="nx">s3</span><span class="p">);</span>
+    <span class="kt">float</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res2</span> <span class="p">=</span> <span class="kt">float</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s3</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res2</span> <span class="nx">is</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;float value: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -87,7 +84,7 @@ redirect_from:
 
     <span class="c1">// The `fromString()` method in the `ballerina/lang.decimal` module returns the decimal value represented by a given</span>
     <span class="c1">// string if there is a valid representation, else returns an `error`.</span>
-    <span class="nx">decimal</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res3</span> <span class="p">=</span> <span class="p">&#39;decimal:fromString(</span><span class="nx">s4</span><span class="p">);</span>
+    <span class="nx">decimal</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res3</span> <span class="p">=</span> <span class="nx">decimal</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s4</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res3</span> <span class="nx">is</span> <span class="nx">decimal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;decimal value: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -227,9 +224,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;decimal;
-import ballerina/lang.&#39;float;
-import ballerina/lang.&#39;int;
 </code></pre></div>
 
                                 </td>
@@ -422,7 +416,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int|error res1 = &#39;int:fromString(s1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error res1 = int:fromString(s1);
     if (res1 is int) {
         io:println(&quot;int value: &quot;, res1);
     } else {
@@ -447,7 +441,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    res1 = &#39;int:fromString(s2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    res1 = int:fromString(s2);
     if (res1 is int) {
         io:println(&quot;int value: &quot;, res1);
     } else {
@@ -464,7 +458,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    float|error res2 = &#39;float:fromString(s3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    float|error res2 = float:fromString(s3);
     if (res2 is float) {
         io:println(&quot;float value: &quot;, res2);
     } else {
@@ -489,7 +483,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    decimal|error res3 = &#39;decimal:fromString(s4);
+                                    <div class="highlight"><pre><code class=language-ballerina>    decimal|error res3 = decimal:fromString(s4);
     if (res3 is decimal) {
         io:println(&quot;decimal value: &quot;, res3);
     } else {
@@ -623,8 +617,8 @@ import ballerina/lang.&#39;int;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run the program, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run type_conversion.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run type_conversion.bal
 Employee to Person, name: Jack Sparrow
 map&lt;anydata&gt; to Person, name: Hector Barbossa
 Error occurred on conversion: {&quot;message&quot;:&quot;&#39;map&lt;anydata&gt;&#39; value cannot be converted to &#39;Person&#39;&quot;}

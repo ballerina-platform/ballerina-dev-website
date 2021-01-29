@@ -22,8 +22,8 @@ redirect_from:
 <span class="c1">// Use the `before` and `after` attributes to define the function names</span>
 <span class="c1">// of the functions that need to be executed before and after the test function.</span>
 <span class="nd">@test:Config {</span>
-    <span class="nx">before</span><span class="p">:</span> <span class="s">&quot;beforeFunc&quot;</span><span class="p">,</span>
-    <span class="nx">after</span><span class="p">:</span> <span class="s">&quot;afterFunc&quot;</span>
+    <span class="nx">before</span><span class="p">:</span> <span class="nx">beforeFunc</span><span class="p">,</span>
+    <span class="nx">after</span><span class="p">:</span> <span class="nx">afterFunc</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function!&quot;</span><span class="p">);</span>
@@ -47,7 +47,7 @@ redirect_from:
  This capability can be used for setting up prerequisites that need to be executed before executing a test.
  Similarly, the <code>after</code> attribute can be used to execute a function after a test function.<br/><br/>
  For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
- and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/test/">Test Module</a>.</p>
+ and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/test/latest/test/">Test Module</a>.</p>
 </p>
 
                         </td>
@@ -154,8 +154,8 @@ import ballerina/test;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config {
-    before: &quot;beforeFunc&quot;,
-    after: &quot;afterFunc&quot;
+    before: beforeFunc,
+    after: afterFunc
 }
 function testFunction() {
     io:println(&quot;I&#39;m in test function!&quot;);
@@ -227,7 +227,7 @@ function testFunction() {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina test test_module
+                                    <div class="highlight"><pre><code class=shell-session>bal test test_module
 Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>

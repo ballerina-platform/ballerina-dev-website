@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Quick Tour
-description: A quick tour of the Ballerina programming language, including writing, running and invoking an HTTP service and using a client to interact with a service.
+description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
 permalink: /learn/quick-tour/
 active: quick-tour
@@ -133,7 +133,7 @@ Hello Ballerina!
 
 Similarly, you can use a Ballerina HTTP client to interact with any HTTP service.
 
-Now, let's  look at a simple HTTP client that retrieves sunrise/sunset time details for Colombo.
+Now, let's look at a simple HTTP client that retrieves sunrise/sunset time details for Colombo.
 
 Create a client with the relevant endpoint URL as follows.
 

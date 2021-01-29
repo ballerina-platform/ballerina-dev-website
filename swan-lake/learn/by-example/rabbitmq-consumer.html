@@ -10,8 +10,7 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
 
 <span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -25,7 +24,7 @@ redirect_from:
 <span class="c1">// Attaches the service to the listener.</span>
 <span class="kd">service</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -50,7 +49,7 @@ redirect_from:
  Multiple services consuming messages from the same queue or from
  different queues can be attached to the same Listener.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/rabbitmq/">RabbitMQ module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/rabbitmq/latest/rabbitmq/">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -122,8 +121,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;string;
-import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerinax/rabbitmq;
 </code></pre></div>
 
@@ -173,7 +171,7 @@ import ballerinax/rabbitmq;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message) {
-        string|error messageContent = &#39;string:fromBytes(message.content);
+        string|error messageContent = string:fromBytes(message.content);
         if (messageContent is string) {
             log:print(&quot;The message received: &quot; + messageContent);
         } else {
@@ -228,7 +226,7 @@ import ballerinax/rabbitmq;
                                     <div class="highlight"><pre><code class=shell-session># Make sure to have the RabbitMQ broker running.
 #
 # Navigate to the directory that contains the
-# &#39;rabbitmq_consumer.bal&#39; file, and run the &#39;ballerina run&#39; command below.
+# &#39;rabbitmq_consumer.bal&#39; file, and run the &#39;bal run&#39; command below.
 </code></pre></div>
 
                                 </td>
@@ -240,7 +238,7 @@ import ballerinax/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina run rabbitmq_consumer.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_consumer.bal
 </code></pre></div>
 
                                 </td>
@@ -264,7 +262,8 @@ import ballerinax/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>2019-03-29 12:11:18,194 INFO [] - The message received: Hello from Ballerina
+                                    <div class="highlight"><pre><code class=shell-session>[ballerina/rabbitmq] Consumer service started for queue MyQueue
+time = 2021-01-18 14:49:16,472 level = INFO  module = &quot;&quot; message = &quot;The message received: Hello from Ballerina&quot;
 </code></pre></div>
 
                                 </td>

@@ -16,8 +16,8 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
 
 <span class="c1">// Clients objects are defined globally to be able to replace in test files.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
-<span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">);</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
+<span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">);</span>
 
 <span class="c1">// This function performs two `GET` requests to the specified</span>
 <span class="c1">// endpoint and returns the response.</span>
@@ -158,7 +158,7 @@ redirect_from:
  throughout all tests whereas stubbing is ideal when defining different behaviors for
  different test cases is required.<br/><br/>
  For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
- and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/test/">Test Module</a>.</p>
+ and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/test/latest/test/">Test Module</a>.</p>
 </p>
 
                         </td>
@@ -253,8 +253,8 @@ import ballerina/email;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
-email:SmtpClient smtpClient = new(&quot;localhost&quot;, &quot;admin&quot;, &quot;admin&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = check new(&quot;http://postman-echo.com&quot;);
+email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;, &quot;admin&quot;);
 </code></pre></div>
 
                                 </td>
@@ -805,7 +805,7 @@ function testMemberVariable() {
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
 # Replace the content of the `main_test.bal` file residing inside the tests/ directory
 under the created module, and execute the `ballerina test` command  below from the project root directory.
-ballerina test bbe_mocking
+bal test bbe_mocking
 Compiling source
         ballerinatest/bbe_mocking:0.1.0
 </code></pre></div>

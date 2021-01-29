@@ -11,9 +11,9 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jballerina</span><span class="p">.</span><span class="nx">java</span><span class="p">;</span>
 
-<span class="c1">// The [@java:Constructor](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/annotations#Constructor) </span>
+<span class="c1">// The [@java:Constructor](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/java/latest/java/annotations#Constructor) </span>
 <span class="c1">// annotation links the default constructor of</span>
 <span class="c1">// the class `java.util.ArrayDeque` with this Ballerina function declaration.</span>
 <span class="kd">function</span> <span class="nx">newArrayDeque</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
@@ -60,7 +60,7 @@ redirect_from:
  the implementations of Ballerina functions that are marked as <code>external</code>.
  In this example, let&rsquo;s look at how to create Java objects by invoking their constructors from Ballerina.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/">Java module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/java/latest/java/">Java module</a>.</p>
 </p>
 
                         </td>
@@ -137,7 +137,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/java;
+import ballerina/jballerina.java;
 </code></pre></div>
 
                                 </td>
@@ -159,7 +159,7 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/annotations#Constructor">@java:Constructor</a>
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/java/latest/java/annotations#Constructor">@java:Constructor</a>
  annotation links the default constructor of
  the class <code>java.util.ArrayDeque</code> with this Ballerina function declaration.</p>
 
@@ -268,8 +268,8 @@ import ballerina/java;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run create-java-objects.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run create-java-objects.bal
 []
 []
 </code></pre></div>

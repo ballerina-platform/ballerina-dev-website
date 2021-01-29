@@ -3,7 +3,7 @@ layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Graphical View
 permalink: /swan-lake/learn/getting-started/setting-up-visual-studio-code/graphical-editor/
 active: graphical-editor
-intro: A rich set of visualization tools will immensely enhance your development experience especially in the integration space.The Graphical Editor of the VS Code Ballerina extension allows you to design your integration scenario graphically. Thus, by using it, you can visualize your code in a sequence diagram, which presents the endpoint interactions and parallel invocations that happen in the code. The sections below discuss how to use the Graphical Editor and explore its capabilities.
+intro: A rich set of visualization tools will immensely enhance your development experience especially in the integration space. The Graphical Editor of the VS Code Ballerina extension allows you to design your integration scenario graphically. Thus, by using it, you can visualize your code in a sequence diagram, which presents the endpoint interactions and parallel invocations that happen in the code. The sections below discuss how to use the Graphical Editor and explore its capabilities.
 redirect_from:
   - /swan-lake/learn/tools-ides/vscode-plugin/graphical-editor
   - /swan-lake/learn/tools-ides/vscode-plugin/graphical-editor/
@@ -45,7 +45,7 @@ The below sections include information to explore the features of the Graphical 
 
 ### Viewing the Source
 
-From the design view you can jump to the respective source segment as shown below.
+From the design view, you can jump to the respective source segment as shown below.
 
 ![Viewing the source](/swan-lake/learn/images/jump-to-source-view.gif)
 

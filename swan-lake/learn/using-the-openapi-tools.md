@@ -5,7 +5,7 @@ description: Check out how the Ballerina OpenAPI tooling makes it easy for users
 keywords: ballerina, programming language, openapi, open api, restful api
 permalink: /swan-lake/learn/using-the-openapi-tools/
 active: using-the-openapi-tools
-intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
+intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start the development of a service documented in an OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
 redirect_from:
   - /swan-lake/learn/how-to-use-openapi-tools/
   - /swan-lake/learn/how-to-use-openapi-tools
@@ -30,7 +30,7 @@ This plugin ensures that the implementation of a service does not deviate from i
 #### Generate Service and Client Stub from an OpenAPI Contract
 
 ```bash
-ballerina openapi   -i <openapi-contract> 
+bal openapi -i <openapi-contract-path> 
                [--service-name: generated files name]
                [--tags: tags list]
                [--operations: operationsID list]
@@ -39,8 +39,8 @@ ballerina openapi   -i <openapi-contract>
 ```
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
 
-This `-i <openapi-contract>` parameter of the command is mandatory. As an input, it will take the path to the OpenAPI
- contract file (i.e., `my-api.yaml` or `my-api.json`). 
+This `-i <openapi-contract-path>` parameter of the command is mandatory. As an input, it will take the path to the
+ OpenAPI contract file (i.e., `my-api.yaml` or `my-api.json`).
 
 The `--service-name`  is an optional parameter, which allows you to change the generated service name.
 
@@ -50,44 +50,41 @@ You can give the specific tags and operations that you need to document as servi
 If not, it will take the execution path as the output path.
 
 ##### Modes
-If you  want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
+If you want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
 
 ```bash
-ballerina openapi   -i <openapi-contract> --mode service
-                               [(-o|--output) output file path]
+bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file path]
 ```
 
 If you want to generate a Client only, you can set the mode as  `client` in the OpenAPI tool. 
 This client can be used in client applications to call the service defined in the OpenAPI file.
 
 ```bash
-ballerina openapi   -i <openapi-contract> --mode client
-                               [(-o|--output) output file path]
+bal openapi -i <openapi-contract-path> --mode client
+               [(-o|--output) output file path]
 ```
 
 ### Ballerina to OpenAPI
 #### Service to OpenAPI Export
 ```bash
-ballerina openapi   -i <ballerina file> 
-                    [(-o|--output) output openapi file path]
+bal openapi -i <ballerina-file-path> 
+               [(-o|--output) output openapi file path]
 ```
 Export the Ballerina service to an  OpenAPI Specification 3.0 definition. For the export to work properly, 
 the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 If you need to document an OpenAPI contract for only one given service, then use this command.
 ```bash
-    ballerina openapi -i <ballerina file> (-s | --service) <service name>
+    bal openapi -i <ballerina-file-path> (-s | --service) <service-name>
 ```
 
 ### Samples for OpenAPI Commands
 #### Generate Service and Client Stub from OpenAPI
 ```bash
-    ballerina openapi -i hello.yaml
+    bal openapi -i hello.yaml
 ```
 
-This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract 
-named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution
- path. 
-It is not mandatory  to run it from inside the Ballerina project.
+This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution path. 
+It is not mandatory to run it from inside the Ballerina project.
 
 Output:
 ```bash
@@ -99,18 +96,18 @@ The service generation process is complete. The following files were created.
 #### Generate an OpenAPI Contract from a Service
 
  ```bash
-    ballerina openapi -i modules/helloworld/helloService.bal
+    bal openapi -i modules/helloworld/helloService.bal
   ```
 This will generate the OpenAPI contracts for the Ballerina services, which are in the `hello.bal` Ballerina file.
  ```bash 
-    ballerina openapi -i modules/helloworld/helloService.bal (-s | --service) helloworld
+    bal openapi -i modules/helloworld/helloService.bal (-s | --service) helloworld
   ```
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
  `helloService.bal` file.
 
 ## OpenAPI Validator Compiler Plugin
 
-The OpenAPI Validator Compiler plugin validates a service again a given OpenAPI contract. 
+The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. 
 The Compiler Plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares 
 the service and the OpenAPI Contract and validates both against a pre-defined set of validation rules. 
 If any of the rules fail, the plugin will give the result as one or more compilation errors.

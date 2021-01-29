@@ -2,7 +2,7 @@ var searchData = {
   "modules": [
     {
       "id": "lang.future",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003efuture\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e",
+      "description": "This module provides lang library operations on \"future\" values defined by the language specification 2020R1.",
       "orgName": "ballerina",
       "version": "1.0.0"
     }
@@ -11,7 +11,7 @@ var searchData = {
   "functions": [
     {
       "id": "cancel",
-      "description": "\u003cp\u003eRequests cancellation of a future.\u003c/p\u003e",
+      "description": "Requests cancellation of a future.",
       "moduleId": "lang.future",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -24,5 +24,6 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

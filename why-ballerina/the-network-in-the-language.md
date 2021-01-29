@@ -37,7 +37,7 @@ service hello on helloWorldEP {
 }
 </code></pre>
                               <p>The Ballerina source file can compile into an executable jar:</p>
-                              <pre class="highlight"><code class="cBasicCode hljs">$ ballerina build hello.bal
+                              <pre class="highlight"><code class="cBasicCode hljs">$ bal build hello.bal
 Compiling source
     hello.bal
 Generating executables

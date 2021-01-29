@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Absolute Resource Path and Resource Path
+title: Absolute Path and Resource Path
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /swan-lake/learn/by-example/absolute-path-and-path
 redirect_from:
@@ -13,15 +13,16 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// The `absolute-resource-path` identifier represents the absolute path to the service.  When bound to a listener</span>
+<span class="c1">// The `absolute resource path` identifier represents the absolute path to the service.  When bound to a listener</span>
 <span class="c1">// endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to `/`.</span>
 <span class="c1">// A string literal also can represent the absolute path. E.g., `&quot;/foo&quot;`.</span>
 <span class="c1">// The `type descriptor` represents the respective type of the service. E.g., `http:Service`.</span>
 <span class="kd">service</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// The `accessor-name` identifier (`post`) confines the resource to the specified HTTP methods. In this instance,</span>
-    <span class="c1">// only `POST` requests are allowed. The `default` accessor name can be used to match with any HTTP method.</span>
-    <span class="c1">// The `resource-name` identifier associates the relative path to the service object&#39;s path. E.g., `bar`.</span>
+    <span class="c1">// The `resource method name` identifier (`post`) confines the resource to the specified HTTP methods. In this</span>
+    <span class="c1">// instance, only `POST` requests are allowed. The `default` accessor name can be used to match with all methods</span>
+    <span class="c1">// including standard HTTP methods and custom methods.</span>
+    <span class="c1">// The `resource path` identifier associates the relative path to the service object&#39;s path. E.g., `bar`.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bar</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// This method retrieves the request payload as a JSON.</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
@@ -48,12 +49,12 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Absolute Resource Path and Resource Path</h2>
+                            <h2>Absolute Path and Resource Path</h2>
                             <p><p>Ballerina supports writing RESTful services according to the JAX-RS specification.
  You can use the <code>absolute-resource-path</code> and <code>resource-name</code> to access a resource function while the <code>accessor-name</code>,
  which is an HTTP verb as <code>post</code> and <code>get</code> to constrain your resource function in a RESTful manner.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -150,7 +151,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>absolute-resource-path</code> identifier represents the absolute path to the service.  When bound to a listener
+                                            <p>The <code>absolute resource path</code> identifier represents the absolute path to the service.  When bound to a listener
  endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to <code>/</code>.
  A string literal also can represent the absolute path. E.g., <code>&quot;/foo&quot;</code>.
  The <code>type descriptor</code> represents the respective type of the service. E.g., <code>http:Service</code>.</p>
@@ -172,9 +173,10 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>accessor-name</code> identifier (<code>post</code>) confines the resource to the specified HTTP methods. In this instance,
- only <code>POST</code> requests are allowed. The <code>default</code> accessor name can be used to match with any HTTP method.
- The <code>resource-name</code> identifier associates the relative path to the service object&rsquo;s path. E.g., <code>bar</code>.</p>
+                                            <p>The <code>resource method name</code> identifier (<code>post</code>) confines the resource to the specified HTTP methods. In this
+ instance, only <code>POST</code> requests are allowed. The <code>default</code> accessor name can be used to match with all methods
+ including standard HTTP methods and custom methods.
+ The <code>resource path</code> identifier associates the relative path to the service object&rsquo;s path. E.g., <code>bar</code>.</p>
 
                                         </div>
                                     </div>
@@ -267,8 +269,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command below.
-ballerina run absolute_path_and_path.bal
+# `.bal` file and use the `bal run` command below.
+bal run absolute_path_and_path.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 

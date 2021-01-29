@@ -12,7 +12,7 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
 
 <span class="c1">// The user-defined retry manager object.</span>
 <span class="nx">public</span> <span class="nx">class</span> <span class="nx">MyRetryManager</span> <span class="p">{</span>
@@ -72,12 +72,12 @@ redirect_from:
     <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
                         <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -97,7 +97,7 @@ redirect_from:
  retries. This sample uses an H2 database, which is
  created when running the sample. <br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/lang.transaction/">Transactions module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/lang.transaction/latest/lang.transaction/">Transactions module</a>.</p>
 </p>
 
                         </td>
@@ -189,7 +189,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;transaction as transactions;
 import ballerina/io;
-import ballerina/jdbc;
+import ballerinax/java.jdbc;
 </code></pre></div>
 
                                 </td>
@@ -397,7 +397,7 @@ import ballerina/jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc(transactions:Info info,
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated function onRollbackFunc(transactions:Info info,
                         error? cause, boolean willRetry) {
     io:println(&quot;Rollback handler executed.&quot;);
 }
@@ -412,7 +412,7 @@ import ballerina/jdbc;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function onCommitFunc(transactions:Info info) {
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated function onCommitFunc(transactions:Info info) {
     io:println(&quot;Commit handler executed.&quot;);
 }
 </code></pre></div>
@@ -440,8 +440,8 @@ import ballerina/jdbc;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run retry_transactions.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run retry_transactions.bal
 [ballerina/http] started HTTP/WS listener 192.168.1.18:32885
 Transaction Info: {&quot;xid&quot;:[51,101,52,55,55,101,54,49,45,54,54,101,97,45,52,100,97,53,45,56,102,97,48,45,99,56,99,53,53,49,51,102,55,48,50,102],&quot;retryNumber&quot;:0,&quot;startTime&quot;:2020-12-16 09:44:27,339,&quot;prevAttempt&quot;:null}
 Commit handler executed.

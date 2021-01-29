@@ -28,7 +28,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">ok</span><span class="p">(</span><span class="s">&quot;Hello World from Docker! \n&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World from Docker! \n&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">responseResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseResult</span><span class="p">;</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
@@ -198,7 +198,7 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
 }
 service http:Service /helloWorld on helloWorldEP {
     resource function get sayHello(http:Caller caller) {
-        var responseResult = caller-&gt;ok(&quot;Hello World from Docker! \n&quot;);
+        var responseResult = caller-&gt;respond(&quot;Hello World from Docker! \n&quot;);
         if (responseResult is error) {
             error err = responseResult;
             log:printError(&quot;Error sending response&quot;, err = err);
@@ -257,7 +257,7 @@ service http:Service /helloWorld on helloWorldEP {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Docker image and Dockerfile.
-$ ballerina build docker_deployment.bal
+$ bal build docker_deployment.bal
 Compiling source
 	docker_deployment.bal
 Generating executables

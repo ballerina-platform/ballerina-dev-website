@@ -14,8 +14,8 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="c1">// Creates an HTTP client to interact with a remote endpoint.</span>
-<span class="c1">// [followRedirects](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/FollowRedirects) record provides configurations associated with HTTP redirects.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9092&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="c1">// [followRedirects](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/FollowRedirects) record provides configurations associated with HTTP redirects.</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9092&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">followRedirects</span><span class="p">:</span> <span class="p">{</span><span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">maxCount</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
     <span class="p">}</span>
 <span class="p">);</span>
@@ -89,7 +89,7 @@ redirect_from:
  To follow redirects when calling an external HTTP server using the Ballerina HTTP client connector, set <code>followRedirect</code>
  to true.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -190,7 +190,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9092&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = check new (&quot;http://localhost:9092&quot;, {
         followRedirects: {enabled: true, maxCount: 5}
     }
 );
@@ -202,7 +202,7 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Creates an HTTP client to interact with a remote endpoint.
- <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/FollowRedirects">followRedirects</a> record provides configurations associated with HTTP redirects.</p>
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/FollowRedirects">followRedirects</a> record provides configurations associated with HTTP redirects.</p>
 
                                         </div>
                                     </div>
@@ -412,8 +412,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run http_redirects.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run http_redirects.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9093

@@ -80,7 +80,7 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
     import ballerina/http;
     
     // This test function tests the behavior of the `getRandomJoke` when
-    // the API returns a success response.
+    // the API returns a successful response.
     @test:Config {}
     function testGetRandomJoke() {
         // Create a default mock HTTP Client and assign it to the `clientEndpoint`

@@ -220,7 +220,7 @@ Downloading jballerina-1.2.4 100% [==================================] 96/96 MB 
 
 ### Update the Ballerina Tool
 
-- The `ballerina update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.
+- The `ballerina update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent of the distribution versions. We expect these tool updates to be rare compared to distribution releases.
 
 ```sh
 → ballerina update

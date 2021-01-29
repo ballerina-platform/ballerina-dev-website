@@ -1,439 +1,439 @@
 var searchData = {
-  "modules": [
-    {
-      "id": "io",
-      "description": "\u003cp\u003eThis module is designed to support input and output operations via channels in a canonical way, either in a blocking,\nor non-blocking manner.\u003c/p\u003e",
-      "orgName": "ballerina",
-      "version": "0.5.4"
-    }
-  ],
+  "modules": [],
   "classes": [
     {
-      "id": "WritableCSVChannel",
-      "description": "\u003cp\u003eRepresents a WritableCSVChannel, which could be used to write records from the CSV file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "ReadableDataChannel",
-      "description": "\u003cp\u003eRepresents a data channel for reading data.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
       "id": "BlockStream",
-      "description": "\u003cp\u003e\u003ccode\u003eBlockStream\u003c/code\u003e used to initialize a stream of type \u003ccode\u003eio:Block\u003c/code\u003e.\u003c/p\u003e",
+      "description": "`BlockStream` used to initialize a stream of type `io:Block`.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "WritableCharacterChannel",
-      "description": "\u003cp\u003eRepresents a channel which could be used to write characters through a given WritableCharacterChannel.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "LineStream",
-      "description": "\u003cp\u003e\u003ccode\u003eLineStream\u003c/code\u003e used to initialize a stream of type strings(lines).\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "WritableByteChannel",
-      "description": "\u003cp\u003eWritableByteChannel represents an output resource (i.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "WritableTextRecordChannel",
-      "description": "\u003cp\u003eRepresents a channel, which will allow to write records through a given WritableCharacterChannel.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "ReadableCharacterChannel",
-      "description": "\u003cp\u003eRepresents a channel, which could be used to read characters through a given ReadableByteChannel.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "WritableDataChannel",
-      "description": "\u003cp\u003eRepresents a WritableDataChannel for writing data.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "ReadableTextRecordChannel",
-      "description": "\u003cp\u003eRepresents a channel which will allow to read.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "CSVStream",
-      "description": "\u003cp\u003e\u003ccode\u003eLineStream\u003c/code\u003e used to initialize a stream of type strings(lines).\u003c/p\u003e",
+      "description": "`LineStream` used to initialize a stream of type strings(lines).",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "LineStream",
+      "description": "`LineStream` used to initialize a stream of type strings(lines).",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "ReadableByteChannel",
-      "description": "\u003cp\u003eReadableByteChannel represents an input resource (i.\u003c/p\u003e",
+      "description": "ReadableByteChannel represents an input resource (i.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "ReadableCharacterChannel",
+      "description": "Represents a channel, which could be used to read characters through a given ReadableByteChannel.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "ReadableCSVChannel",
-      "description": "\u003cp\u003eRepresents a ReadableCSVChannel which could be used to read records from CSV file.\u003c/p\u003e",
+      "description": "Represents a ReadableCSVChannel which could be used to read records from CSV file.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "ReadableDataChannel",
+      "description": "Represents a data channel for reading data.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "ReadableTextRecordChannel",
+      "description": "Represents a channel which will allow to read.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "StringReader",
-      "description": "\u003cp\u003eRepresents a reader which will wrap string content as a channel.\u003c/p\u003e",
+      "description": "Represents a reader which will wrap string content as a channel.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "WritableByteChannel",
+      "description": "WritableByteChannel represents an output resource (i.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "WritableCharacterChannel",
+      "description": "Represents a channel which could be used to write characters through a given WritableCharacterChannel.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "WritableCSVChannel",
+      "description": "Represents a WritableCSVChannel, which could be used to write records from the CSV file.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "WritableDataChannel",
+      "description": "Represents a WritableDataChannel for writing data.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "WritableTextRecordChannel",
+      "description": "Represents a channel, which will allow to write records through a given WritableCharacterChannel.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     }
   ],
   "functions": [
     {
-      "id": "readln",
-      "description": "\u003cp\u003eRetrieves the input read from the STDIN.\u003c/p\u003e",
+      "id": "createReadableChannel",
+      "description": "Creates an in-memory channel, which will be a reference stream of bytes.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "print",
-      "description": "\u003cp\u003ePrints \u003ccode\u003eany\u003c/code\u003e or \u003ccode\u003eerror\u003c/code\u003e value(s) to the STDOUT.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "println",
-      "description": "\u003cp\u003ePrints \u003ccode\u003eany\u003c/code\u003e or \u003ccode\u003eerror\u003c/code\u003e value(s) to the STDOUT followed by a new line.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "sprintf",
-      "description": "\u003cp\u003eReturns a formatted string using the specified format string and arguments.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadCsv",
-      "description": "\u003cp\u003eRead file content as a CSV.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadCsvAsStream",
-      "description": "\u003cp\u003eRead file content as a CSV.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileWriteCsv",
-      "description": "\u003cp\u003eWrite CSV content to a file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileWriteCsvFromStream",
-      "description": "\u003cp\u003eWrite CSV record stream to a file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadString",
-      "description": "\u003cp\u003eReads the entire file content as a \u003ccode\u003estring\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadLines",
-      "description": "\u003cp\u003eReads the entire file content as a list of lines.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadLinesAsStream",
-      "description": "\u003cp\u003eReads file content as a stream of lines.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadJson",
-      "description": "\u003cp\u003eReads file content as a JSON.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadXml",
-      "description": "\u003cp\u003eReads file content as an XML.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileWriteString",
-      "description": "\u003cp\u003eWrite a string content to a file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileWriteLines",
-      "description": "\u003cp\u003eWrite an array of lines to a file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileWriteLinesFromStream",
-      "description": "\u003cp\u003eWrite stream of lines to a file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileWriteJson",
-      "description": "\u003cp\u003eWrite a JSON to a file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileWriteXml",
-      "description": "\u003cp\u003eWrite XML content to a file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "fileReadBytes",
-      "description": "\u003cp\u003eRead the entire file content as a byte array.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "fileReadBlocksAsStream",
-      "description": "\u003cp\u003eRead the entire file content as a stream of blocks.\u003c/p\u003e",
+      "description": "Read the entire file content as a stream of blocks.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
-      "id": "fileWriteBytes",
-      "description": "\u003cp\u003eWrite a set of bytes to a file.\u003c/p\u003e",
+      "id": "fileReadBytes",
+      "description": "Read the entire file content as a byte array.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileReadCsv",
+      "description": "Read file content as a CSV.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileReadCsvAsStream",
+      "description": "Read file content as a CSV.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileReadJson",
+      "description": "Reads file content as a JSON.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileReadLines",
+      "description": "Reads the entire file content as a list of lines.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileReadLinesAsStream",
+      "description": "Reads file content as a stream of lines.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileReadString",
+      "description": "Reads the entire file content as a `string`.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileReadXml",
+      "description": "Reads file content as an XML.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "fileWriteBlocksFromStream",
-      "description": "\u003cp\u003eWrite a byte stream to a file.\u003c/p\u003e",
+      "description": "Write a byte stream to a file.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
-      "id": "openReadableFile",
-      "description": "\u003cp\u003eRetrieves a \u003ccode\u003eReadableByteChannel\u003c/code\u003e from a given file path.\u003c/p\u003e",
+      "id": "fileWriteBytes",
+      "description": "Write a set of bytes to a file.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
-      "id": "openWritableFile",
-      "description": "\u003cp\u003eRetrieves a \u003ccode\u003eWritableByteChannel\u003c/code\u003e from a given file path.\u003c/p\u003e",
+      "id": "fileWriteCsv",
+      "description": "Write CSV content to a file.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
-      "id": "createReadableChannel",
-      "description": "\u003cp\u003eCreates an in-memory channel, which will be a reference stream of bytes.\u003c/p\u003e",
+      "id": "fileWriteCsvFromStream",
+      "description": "Write CSV record stream to a file.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileWriteJson",
+      "description": "Write a JSON to a file.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileWriteLines",
+      "description": "Write an array of lines to a file.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileWriteLinesFromStream",
+      "description": "Write stream of lines to a file.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileWriteString",
+      "description": "Write a string content to a file.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "fileWriteXml",
+      "description": "Write XML content to a file.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "openReadableCsvFile",
-      "description": "\u003cp\u003eRetrieves a readable CSV channel from a given file path.\u003c/p\u003e",
+      "description": "Retrieves a readable CSV channel from a given file path.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "openReadableFile",
+      "description": "Retrieves a `ReadableByteChannel` from a given file path.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "openWritableCsvFile",
-      "description": "\u003cp\u003eRetrieves a writable CSV channel from a given file path.\u003c/p\u003e",
+      "description": "Retrieves a writable CSV channel from a given file path.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "openWritableFile",
+      "description": "Retrieves a `WritableByteChannel` from a given file path.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "print",
+      "description": "Prints `any` or `error` value(s) to the STDOUT.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "println",
+      "description": "Prints `any` or `error` value(s) to the STDOUT followed by a new line.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "readln",
+      "description": "Retrieves the input read from the STDIN.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "sprintf",
+      "description": "Returns a formatted string using the specified format string and arguments.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     }
   ],
   "records": [],
   "constants": [
     {
-      "id": "CSV_RECORD_SEPARATOR",
-      "description": "\u003cp\u003eRepresents the record separator of the CSV file.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "FS_COLON",
-      "description": "\u003cp\u003eRepresents the colon separator, which should be used to identify colon-separated files.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "MINIMUM_HEADER_COUNT",
-      "description": "\u003cp\u003eRepresents the minimum number of headers, which will be included in the CSV.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
       "id": "BIG_ENDIAN",
-      "description": "\u003cp\u003eSpecifies the bytes to be in the order of most significant byte first.\u003c/p\u003e",
+      "description": "Specifies the bytes to be in the order of most significant byte first.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "LITTLE_ENDIAN",
-      "description": "\u003cp\u003eSpecifies the byte order to be the least significant byte first.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "DEFAULT",
-      "description": "\u003cp\u003eDefault value is the format specified by the CSVChannel.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "CSV",
-      "description": "\u003cp\u003eField separator will be \u0026quot;,\u0026quot; and the record separator will be a new line.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "TDF",
-      "description": "\u003cp\u003eField separator will be a tab and the record separator will be a new line.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "COMMA",
-      "description": "\u003cp\u003eComma (,) will be used as the field separator.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "TAB",
-      "description": "\u003cp\u003eTab (/t) will be use as the field separator.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "COLON",
-      "description": "\u003cp\u003eColon (:) will be use as the field separator.\u003c/p\u003e",
+      "description": "Colon (:) will be use as the field separator.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
-      "id": "NEW_LINE",
-      "description": "\u003cp\u003eNew line character.\u003c/p\u003e",
+      "id": "COMMA",
+      "description": "Comma (,) will be used as the field separator.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "CSV",
+      "description": "Field separator will be \",\" and the record separator will be a new line.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "CSV_RECORD_SEPARATOR",
+      "description": "Represents the record separator of the CSV file.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "DEFAULT",
+      "description": " Default value is the format specified by the CSVChannel.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "DEFAULT_ENCODING",
-      "description": "\u003cp\u003eDefault encoding for the abstract read/write APIs.\u003c/p\u003e",
+      "description": "Default encoding for the abstract read/write APIs.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "FS_COLON",
+      "description": "Represents the colon separator, which should be used to identify colon-separated files.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "LITTLE_ENDIAN",
+      "description": "Specifies the byte order to be the least significant byte first.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "MINIMUM_HEADER_COUNT",
+      "description": "Represents the minimum number of headers, which will be included in the CSV.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "NEW_LINE",
+      "description": "New line character.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "TAB",
+      "description": "Tab (/t) will be use as the field separator.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "TDF",
+      "description": "Field separator will be a tab and the record separator will be a new line.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     }
   ],
   "errors": [
     {
-      "id": "ConnectionTimedOutError",
-      "description": "\u003cp\u003eThis will return when connection timed out happen when try to connect to a remote host.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "GenericError",
-      "description": "\u003cp\u003eRepresents generic IO error.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
       "id": "AccessDeniedError",
-      "description": "\u003cp\u003eThis will get returned due to file permission issues.\u003c/p\u003e",
+      "description": "This will get returned due to file permission issues.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
-      "id": "FileNotFoundError",
-      "description": "\u003cp\u003eThis will get returned if the file is not available in the given file path.\u003c/p\u003e",
+      "id": "ConnectionTimedOutError",
+      "description": "This will return when connection timed out happen when try to connect to a remote host.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "TypeMismatchError",
-      "description": "\u003cp\u003eThis will get returned when there is an mismatch of given type and the expected type.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "EofError",
-      "description": "\u003cp\u003eThis will get returned if read operations are performed on a channel after it closed.\u003c/p\u003e",
+      "description": "This will get returned if read operations are performed on a channel after it closed.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "Error",
+      "description": "Represents IO module related errors.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "FileNotFoundError",
+      "description": "This will get returned if the file is not available in the given file path.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "GenericError",
+      "description": "Represents generic IO error.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "TypeMismatchError",
+      "description": "This will get returned when there is an mismatch of given type and the expected type.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     }
   ],
   "types": [
@@ -442,53 +442,47 @@ var searchData = {
       "description": "",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents IO module related errors.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "ByteOrder",
-      "description": "\u003cp\u003eRepresents network byte order.\u003c/p\u003e",
+      "description": "Represents network byte order.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "Format",
+      "description": "The format, which will be used to represent the CSV.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "ReadableChannel",
       "description": "",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
+    },
+    {
+      "id": "Separator",
+      "description": "Field separators, which are supported by the `DelimitedTextRecordChannel`.",
+      "moduleId": "io",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.5.5"
     },
     {
       "id": "WritableChannel",
       "description": "",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "Format",
-      "description": "\u003cp\u003eThe format, which will be used to represent the CSV.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
-    },
-    {
-      "id": "Separator",
-      "description": "\u003cp\u003eField separators, which are supported by the \u003ccode\u003eDelimitedTextRecordChannel\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "io",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.4"
+      "moduleVersion": "0.5.5"
     }
   ],
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

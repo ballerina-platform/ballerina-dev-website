@@ -15,19 +15,19 @@ redirect_from:
 
 <span class="c1">// Defines the rollback handlers, which are triggered once the</span>
 <span class="c1">// rollback statement is executed.</span>
-<span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span>
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span>
                         <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #1 executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">onRollbackFunc2</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span>
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onRollbackFunc2</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span>
                          <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #2 executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// Defines the commit handler, which gets triggered once the</span>
 <span class="c1">// commit action is executed.</span>
-<span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -80,7 +80,7 @@ redirect_from:
  system in a consistent state. This example demonstrates how to use
  transaction util methods and the various usages of them.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/lang.transaction/">Transactions module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/lang.transaction/latest/lang.transaction/">Transactions module</a>.</p>
 </p>
 
                         </td>
@@ -181,7 +181,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc(transactions:Info info, error? cause,
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated function onRollbackFunc(transactions:Info info, error? cause,
                         boolean willRetry) {
     io:println(&quot;Rollback handler #1 executed.&quot;);
 }
@@ -204,7 +204,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc2(transactions:Info info, error? cause,
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated function onRollbackFunc2(transactions:Info info, error? cause,
                          boolean willRetry) {
     io:println(&quot;Rollback handler #2 executed.&quot;);
 }
@@ -219,7 +219,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function onCommitFunc(transactions:Info info) {
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated function onCommitFunc(transactions:Info info) {
     io:println(&quot;Commit handler executed.&quot;);
 }
 </code></pre></div>
@@ -410,8 +410,8 @@ import ballerina/io;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run local_transactions_with_handlers.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run local_transactions_with_handlers.bal
 Transaction Info: {&quot;xid&quot;:[50,50,98,100,101,48,54,53,45,49,50,98,97,45,52,52,97,99,45,98,48,50,100,45,57,97,99,49,50,51,100,53,49,57,56,53],&quot;retryNumber&quot;:0,&quot;startTime&quot;:1600688819823,&quot;prevAttempt&quot;:null}
 Invoke local participant function.
 Local participant error.

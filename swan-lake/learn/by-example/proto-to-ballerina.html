@@ -33,7 +33,7 @@ redirect_from:
  <code>--mode</code> The mode (client or server) to generate code samples.
  If no value is specified for this parameter, only the stub file will be generated.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/grpc/">GRPC module</a> and
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/grpc/latest/grpc/">GRPC module</a> and
  <a href="https://ballerina.io/swan-lake/learn/how-to-generate-code-for-protocol-buffers/">How to generate Ballerina code for Protocol Buffer Definition</a>.</p>
 </p>
 
@@ -49,9 +49,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="ballerina-to-openapi.html">
+                                    <a class="next" href="tracing.html">
                                         <span>NEXT ></span>
-                                        <p>Ballerina To OpenAPI</p>
+                                        <p>Distributed Tracing</p>
                                     </a>
                                 </div>
                                 
@@ -176,7 +176,7 @@ message ByeResponse {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the mock service.
-ballerina grpc --input proto_to_ballerina.proto --mode service --output service
+bal grpc --input proto_to_ballerina.proto --mode service --output service
 </code></pre></div>
 
                                 </td>
@@ -189,7 +189,7 @@ ballerina grpc --input proto_to_ballerina.proto --mode service --output service
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the client endpoint and the stub file.
-ballerina grpc --input proto_to_ballerina.proto --mode client --output client
+bal grpc --input proto_to_ballerina.proto --mode client --output client
 </code></pre></div>
 
                                 </td>
@@ -202,7 +202,7 @@ ballerina grpc --input proto_to_ballerina.proto --mode client --output client
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the stub file.
-ballerina grpc --input proto_to_ballerina.proto
+bal grpc --input proto_to_ballerina.proto
 </code></pre></div>
 
                                 </td>

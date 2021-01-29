@@ -93,7 +93,7 @@ match x {
 }
 ```
 
-* If pattern body is empty, then keep it as an empty block.
+* If the pattern body is empty, then keep it as an empty block.
   
   
   **Example,**

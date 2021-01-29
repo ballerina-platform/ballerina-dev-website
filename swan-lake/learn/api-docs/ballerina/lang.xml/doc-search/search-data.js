@@ -2,7 +2,7 @@ var searchData = {
   "modules": [
     {
       "id": "lang.xml",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003exml\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e",
+      "description": "This module provides lang library operations on \"xml\" values defined by the language specification 2020R1.",
       "orgName": "ballerina",
       "version": "0.8.0"
     }
@@ -10,169 +10,169 @@ var searchData = {
   "classes": [],
   "functions": [
     {
-      "id": "length",
-      "description": "\u003cp\u003eReturns number of xml items in \u003ccode\u003ex\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "iterator",
-      "description": "\u003cp\u003eReturns an iterator over the xml items of \u003ccode\u003ex\u003c/code\u003e\u003c/p\u003e\n",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "get",
-      "description": "\u003cp\u003eReturns the item of \u003ccode\u003ex\u003c/code\u003e with index \u003ccode\u003ei\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "concat",
-      "description": "\u003cp\u003eConcatenates xml and string values.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "getName",
-      "description": "\u003cp\u003eReturns a string giving the expanded name of \u003ccode\u003eelem\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "setName",
-      "description": "\u003cp\u003eChange the name of element \u003ccode\u003eelem\u003c/code\u003e to \u003ccode\u003exName\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "getChildren",
-      "description": "\u003cp\u003eReturns the children of \u003ccode\u003eelem\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "setChildren",
-      "description": "\u003cp\u003eSets the children of \u003ccode\u003eelem\u003c/code\u003e to \u003ccode\u003echildren\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "getAttributes",
-      "description": "\u003cp\u003eReturns the map representing the attributes of \u003ccode\u003eelem\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "getTarget",
-      "description": "\u003cp\u003eReturns the target part of the processing instruction.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "getContent",
-      "description": "\u003cp\u003eReturns the content of a text or processing instruction or comment item.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "createElement",
-      "description": "\u003cp\u003eConstructs an xml sequence consisting of only a new element item.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "createProcessingInstruction",
-      "description": "\u003cp\u003eConstructs an xml sequence consisting of only a processing instruction item.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "createComment",
-      "description": "\u003cp\u003eConstructs an xml sequence consisting of only a comment item.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "createText",
-      "description": "\u003cp\u003eConstructs an xml sequence representing zero of more parsed characters.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "slice",
-      "description": "\u003cp\u003eReturns a subsequence of an xml value.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "strip",
-      "description": "\u003cp\u003eStrips the insignificant parts of the an xml value.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "elements",
-      "description": "\u003cp\u003eSelects elements from an xml value.\u003c/p\u003e",
+      "id": "\u0027map",
+      "description": "Applies a function to each item in an xml sequence, and returns an xml sequence of the results.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
     },
     {
       "id": "children",
-      "description": "\u003cp\u003eReturns the children of elements in an xml value.\u003c/p\u003e",
+      "description": "Returns the children of elements in an xml value.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "concat",
+      "description": "Concatenates xml and string values.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "createComment",
+      "description": "Constructs an xml sequence consisting of only a comment item.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "createElement",
+      "description": "Constructs an xml sequence consisting of only a new element item.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "createProcessingInstruction",
+      "description": "Constructs an xml sequence consisting of only a processing instruction item.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "createText",
+      "description": "Constructs an xml sequence representing zero of more parsed characters.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
     },
     {
       "id": "elementChildren",
-      "description": "\u003cp\u003eSelects element children of an xml value\u003c/p\u003e\n",
+      "description": "Selects element children of an xml value\n",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
     },
     {
-      "id": "\u0027map",
-      "description": "\u003cp\u003eApplies a function to each item in an xml sequence, and returns an xml sequence of the results.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "forEach",
-      "description": "\u003cp\u003eApplies a function to each item in an xml sequence.\u003c/p\u003e",
+      "id": "elements",
+      "description": "Selects elements from an xml value.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
     },
     {
       "id": "filter",
-      "description": "\u003cp\u003eSelects the items from an xml sequence for which a function returns true.\u003c/p\u003e",
+      "description": "Selects the items from an xml sequence for which a function returns true.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "forEach",
+      "description": "Applies a function to each item in an xml sequence.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
     },
     {
       "id": "fromString",
-      "description": "\u003cp\u003eConstructs an xml value from a string.\u003c/p\u003e",
+      "description": "Constructs an xml value from a string.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "get",
+      "description": "Returns the item of `x` with index `i`.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "getAttributes",
+      "description": "Returns the map representing the attributes of `elem`.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "getChildren",
+      "description": "Returns the children of `elem`.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "getContent",
+      "description": "Returns the content of a text or processing instruction or comment item.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "getName",
+      "description": "Returns a string giving the expanded name of `elem`.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "getTarget",
+      "description": "Returns the target part of the processing instruction.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "iterator",
+      "description": "Returns an iterator over the xml items of `x`\n\n",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "length",
+      "description": "Returns number of xml items in `x`.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "setChildren",
+      "description": "Sets the children of `elem` to `children`.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "setName",
+      "description": "Change the name of element `elem` to `xName`.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "slice",
+      "description": "Returns a subsequence of an xml value.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "strip",
+      "description": "Strips the insignificant parts of the an xml value.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
@@ -181,36 +181,36 @@ var searchData = {
   "records": [],
   "constants": [
     {
-      "id": "XML_NAMESPACE_URI",
-      "description": "\u003cp\u003eThe namespace URI bound to the \u003ccode\u003exml\u003c/code\u003e prefix.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "XMLNS_NAMESPACE_URI",
-      "description": "\u003cp\u003eThe namespace URI bound to the \u003ccode\u003exmlns\u003c/code\u003e prefix.\u003c/p\u003e",
-      "moduleId": "lang.xml",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.8.0"
-    },
-    {
-      "id": "space",
-      "description": "\u003cp\u003eThe expanded name of the \u003ccode\u003exml:space\u003c/code\u003e attribute.\u003c/p\u003e",
+      "id": "base",
+      "description": "The expanded name of the `xml:base` attribute.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
     },
     {
       "id": "lang",
-      "description": "\u003cp\u003eThe expanded name of the \u003ccode\u003exml:lang\u003c/code\u003e attribute.\u003c/p\u003e",
+      "description": "The expanded name of the `xml:lang` attribute.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
     },
     {
-      "id": "base",
-      "description": "\u003cp\u003eThe expanded name of the \u003ccode\u003exml:base\u003c/code\u003e attribute.\u003c/p\u003e",
+      "id": "space",
+      "description": "The expanded name of the `xml:space` attribute.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "XML_NAMESPACE_URI",
+      "description": "The namespace URI bound to the `xml` prefix.",
+      "moduleId": "lang.xml",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.8.0"
+    },
+    {
+      "id": "XMLNS_NAMESPACE_URI",
+      "description": "The namespace URI bound to the `xmlns` prefix.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
@@ -220,7 +220,7 @@ var searchData = {
   "types": [
     {
       "id": "ItemType",
-      "description": "\u003cp\u003eA type parameter that is a subtype of any singleton or empty xml sequence.\u003c/p\u003e",
+      "description": "A type parameter that is a subtype of any singleton or empty xml sequence.",
       "moduleId": "lang.xml",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.8.0"
@@ -229,5 +229,6 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

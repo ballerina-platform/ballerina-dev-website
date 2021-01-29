@@ -143,12 +143,13 @@ redirect_from:
                   and for installation instructions, see <a href="/learn/installing-ballerina/">Installing Ballerina</a>.
                </p>
                </p>
-               <h2>Preview Release: {{ site.data.swanlake-latest.metadata.version | capitalize_all }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
+               <h2 id="swanlake">Preview Release: {{ site.data.swanlake-latest.metadata.version | capitalize_all }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
                <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
                   <p>If you already have jBallerina installed, you can use the <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to update it to {{ site.data.swanlake-latest.metadata.version | capitalize_all }}. To do this, first, execute the command below to get the Update Tool updated to its latest version. </p>
                   <pre>ballerina update</pre>
-                  <p>Next, execute the command below to update to {{ site.data.swanlake-latest.metadata.version | capitalize_all }}.</p>
-                  <pre>ballerina dist pull {{ site.data.swanlake-latest.metadata.version | replace: "swan-lake-preview", "slp" }}</pre>
+                  <p>From now onwards, the `ballerina` command has to be issued as `bal`.
+                  Next, execute the command below to update to {{ site.data.swanlake-latest.metadata.version | capitalize_all }}.</p>
+                  <pre>bal dist pull {{ site.data.swanlake-latest.metadata.version | replace: "swan-lake-alpha1", "slalpha1" }}</pre>
                   <p>For further details, see the <a href="/downloads/swan-lake-release-notes">Release Note</a>. </p>
                </div>
                <br>

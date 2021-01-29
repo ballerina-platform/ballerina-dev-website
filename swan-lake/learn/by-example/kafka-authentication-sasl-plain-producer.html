@@ -26,21 +26,22 @@ redirect_from:
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
-    <span class="nx">valueSerializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">SER_BYTE_ARRAY</span><span class="p">,</span>
     <span class="c1">// Provide the relevant authentication configuration record to authenticate the producer.</span>
     <span class="nx">authenticationConfiguration</span><span class="p">:</span> <span class="nx">authConfig</span>
 
 <span class="p">};</span>
 
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span> <span class="s">&quot;topic-sasl&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">sendProducerRecord</span><span class="p">({</span>
+                            <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;topic-sasl&quot;</span><span class="p">,</span>
+                            <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span> <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;success&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message successfully sent&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -57,7 +58,7 @@ redirect_from:
  and it should be configured to use the SASL/PLAIN authentication mechanism.
  <br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/kafka/">Kafka module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/kafka/latest/kafka/">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -227,7 +228,6 @@ import ballerinax/kafka;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>kafka:ProducerConfiguration producerConfigs = {
     bootstrapServers: &quot;localhost:9092&quot;,
-    valueSerializerType: kafka:SER_BYTE_ARRAY,
 </code></pre></div>
 
                                 </td>
@@ -270,7 +270,7 @@ import ballerinax/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -284,11 +284,13 @@ import ballerinax/kafka;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string message = &quot;Hello from Ballerina&quot;;
-    var result = kafkaProducer-&gt;send(message.toBytes(), &quot;topic-sasl&quot;);
+    var result = kafkaProducer-&gt;sendProducerRecord({
+                            topic: &quot;topic-sasl&quot;,
+                            value: message.toBytes() });
     if (result is error) {
         io:println(result);
     } else {
-        io:println(&quot;success&quot;);
+        io:println(&quot;Message successfully sent&quot;);
     }
 }
 </code></pre></div>
@@ -320,8 +322,8 @@ import ballerinax/kafka;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run kafka_authentication_sasl_plain_producer.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run kafka_authentication_sasl_plain_producer.bal
 </code></pre></div>
 
                                 </td>

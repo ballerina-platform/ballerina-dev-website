@@ -11,7 +11,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 
@@ -54,7 +53,7 @@ redirect_from:
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">bArray</span> <span class="p">=</span> <span class="nx">hello</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
     <span class="c1">// Convert a `byte` array to a `string`.</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">s6</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">bArray</span><span class="p">);</span>
+    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">s6</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">bArray</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">s6</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;From bytes: &quot;</span><span class="p">,</span> <span class="nx">s6</span><span class="p">);</span>
     <span class="p">}</span>
@@ -71,6 +70,11 @@ redirect_from:
     <span class="c1">// Check whether the given `string` starts with the prefix &quot;Lion&quot;.</span>
     <span class="kt">boolean</span> <span class="nx">hasPrefix</span> <span class="p">=</span> <span class="nx">statement</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s">&quot;Lion&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;HasPrefix: &quot;</span><span class="p">,</span> <span class="nx">hasPrefix</span><span class="p">);</span>
+
+    <span class="c1">// Check whether the given string contains another string.</span>
+    <span class="c1">// An optional second argument is the index to start searching from.</span>
+    <span class="kt">boolean</span> <span class="nx">contains</span> <span class="p">=</span> <span class="nx">statement</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s">&quot;Town&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Contains: &quot;</span><span class="p">,</span> <span class="nx">contains</span><span class="p">);</span>
 
     <span class="c1">// Format a `string` according to the given format arguments.</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Sam&quot;</span><span class="p">;</span>
@@ -98,7 +102,7 @@ redirect_from:
                             <h2>String</h2>
                             <p><p>Ballerina contains a comprehensive set of functions to manipulate strings.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/lang.string/">lang.string module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/lang.string/latest/lang.string/">lang.string module</a>.</p>
 </p>
 
                         </td>
@@ -106,9 +110,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="math-functions.html">
+                                    <a class="prev" href="log-api.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Math</p>
+                                        <p>Log</p>
                                     </a>
                                 </div>
                                  
@@ -190,6 +194,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -199,7 +205,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;string;
 </code></pre></div>
 
                                 </td>
@@ -397,7 +402,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string|error s6 = &#39;string:fromBytes(bArray);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error s6 = string:fromBytes(bArray);
     if (s6 is string) {
         io:println(&quot;From bytes: &quot;, s6);
     }
@@ -480,6 +485,27 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean contains = statement.includes(&quot;Town&quot;, 7);
+    io:println(&quot;Contains: &quot;, contains);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Check whether the given string contains another string.
+ An optional second argument is the index to start searching from.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string name = &quot;Sam&quot;;
     int marks = 90;
     string[] subjects = [&quot;English&quot;, &quot;Science&quot;];
@@ -542,8 +568,8 @@ import ballerina/lang.&#39;string;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run strings.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run strings.bal
 ToUpper: LION IN TOWN. CATCH THE LION
 ToLower: lion in town. catch the lion
 SubString: Lion
@@ -555,6 +581,7 @@ From bytes: Hello
 Trim: Ballerina Programming Language
 HasSuffix: true
 HasPrefix: true
+Contains: true
 Sprintf: Sam scored 90 for English and has an average of 71.50.
 Member Access: L
 </code></pre></div>

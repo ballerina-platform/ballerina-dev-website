@@ -24,7 +24,7 @@ The value of the first identifier of the modules belonging to the same package w
 
 For example, let’s create a package called `winery` to demonstrate Ballerina modules. This package exposes an API to list the available wine types and to get details about a particular wine. You can organize the source code with three modules named `winery`, `winery.model`, and `winery.storage`.
 
->**Tip:** If you are still inside the previous `helloword` directory, use the `cd ..` command to go to the parent directory. Then, execute the `ballerina new winery` command to create the `winery` package. 
+>**Tip:** If you are still inside the previous `helloword` directory, use the `cd ..` command to go to the parent directory. Then, execute the `bal new winery` command to create the `winery` package. 
 
 The generated `winery` package will have the directory structure below. 
 
@@ -48,13 +48,13 @@ The other modules of a package should be placed inside the `modules` directory o
 
 The module names are derived by combining the package name and the directory name. E.g., If the directory name is `storage`, then the module name will be `winery.storage`. 
 
-Navigate to the `winery` directory and execute the `ballerina add model` command to add the `winery.model` module. 
+Navigate to the `winery` directory and execute the `bal add model` command to add the `winery.model` module. 
 
 >**Tip:** You need to provide the module name without the package name to the `add` command. 
 
 ```bash
-$ ballerina add model
-Added new ballerina module at ‘modules/model’
+$ bal add model
+Added new bal module at ‘modules/model’
 $ tree
 .
 ├── Ballerina.toml
@@ -79,10 +79,10 @@ public type Wine record {
 };
 ```
 
-Execute the `ballerina add storage` command to create another `winery.storage` module to retrieve a list of wines from a storage. 
+Execute the `bal add storage` command to create another `winery.storage` module to retrieve a list of wines from a storage. 
 
 ```bash
-$ ballerina add storage
+$ bal add storage
 Added new ballerina module at ‘modules/storage’
 $ tree
 .
@@ -184,7 +184,7 @@ Build and run this example as follows.
 
 ```bash
 
-$ ballerina build
+$ bal build
 
 Compiling source
 	examples/winery:0.1.0
@@ -203,7 +203,7 @@ winery
 Generating executable
 	target/bin/winery.jar
 
-$ ballerina run target/bin/winery.jar
+$ bal run target/bin/winery.jar
 {"id":"W125678","name":"Corton-Charlemagne Grand Cru, Coche-Dury","color":"White","country":"France"}
 {"id":"W425478","name":"Échezeaux, Dom. de la Romanée-Conti","color":"Red","country":"France"}
 ```

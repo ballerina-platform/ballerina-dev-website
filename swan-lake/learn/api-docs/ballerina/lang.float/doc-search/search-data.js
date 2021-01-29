@@ -2,7 +2,7 @@ var searchData = {
   "modules": [
     {
       "id": "lang.float",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003efloat\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e",
+      "description": "This module provides lang library operations on \"float\" values defined by the language specification 2020R1.",
       "orgName": "ballerina",
       "version": "1.0.0"
     }
@@ -10,218 +10,218 @@ var searchData = {
   "classes": [],
   "functions": [
     {
-      "id": "isFinite",
-      "description": "\u003cp\u003eTests whether a float is finite.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "isInfinite",
-      "description": "\u003cp\u003eTests whether a float is infinite.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "isNaN",
-      "description": "\u003cp\u003eTests whether a float is NaN.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "sum",
-      "description": "\u003cp\u003eSum of zero or more float values.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "max",
-      "description": "\u003cp\u003eMaximum of zero or more float values.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "min",
-      "description": "\u003cp\u003eMinimum of zero or more float values.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "abs",
-      "description": "\u003cp\u003eIEEE abs operation.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "round",
-      "description": "\u003cp\u003eRound a float value to the closest integral value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "floor",
-      "description": "\u003cp\u003eRounds a float down to the closest integral value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "ceiling",
-      "description": "\u003cp\u003eRounds a float up to the closest integral value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "sqrt",
-      "description": "\u003cp\u003eReturns the square root of a float value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "cbrt",
-      "description": "\u003cp\u003eReturns the cube root of a float value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "pow",
-      "description": "\u003cp\u003eRaises one float value to the power of another float values.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "log",
-      "description": "\u003cp\u003eReturns the natural logarithm of a float value\nCorresponds to IEEE log operation.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "log10",
-      "description": "\u003cp\u003eReturns the base 10 logarithm of a float value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "exp",
-      "description": "\u003cp\u003eRaises Euler\u0027s number to a power.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "sin",
-      "description": "\u003cp\u003eReturns the sine of a float value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "cos",
-      "description": "\u003cp\u003eReturns the cosine of a float value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "tan",
-      "description": "\u003cp\u003eReturns the tangent of a float value.\u003c/p\u003e",
+      "description": "IEEE abs operation.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "acos",
-      "description": "\u003cp\u003eReturns the arccosine of a float value.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "atan",
-      "description": "\u003cp\u003eReturns the arctangent of a float value.\u003c/p\u003e",
+      "description": "Returns the arccosine of a float value.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "asin",
-      "description": "\u003cp\u003eReturns the arcsine of a float value.\u003c/p\u003e",
+      "description": "Returns the arcsine of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "atan",
+      "description": "Returns the arctangent of a float value.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "atan2",
-      "description": "\u003cp\u003ePerforms the 2-argument arctangent operation.\u003c/p\u003e",
+      "description": "Performs the 2-argument arctangent operation.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "sinh",
-      "description": "\u003cp\u003eReturns the hyperbolic sine of a float value.\u003c/p\u003e",
+      "id": "cbrt",
+      "description": "Returns the cube root of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "ceiling",
+      "description": "Rounds a float up to the closest integral value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "cos",
+      "description": "Returns the cosine of a float value.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "cosh",
-      "description": "\u003cp\u003eReturns the hyperbolic cosine of a float value.\u003c/p\u003e",
+      "description": "Returns the hyperbolic cosine of a float value.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "tanh",
-      "description": "\u003cp\u003eReturns the hyperbolic tangent of a float value.\u003c/p\u003e",
+      "id": "exp",
+      "description": "Raises Euler\u0027s number to a power.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
-      "id": "fromString",
-      "description": "\u003cp\u003eReturn the float value represented by \u003ccode\u003es\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "toHexString",
-      "description": "\u003cp\u003eReturns a string that represents \u003ccode\u003ex\u003c/code\u003e as a hexadecimal floating point number.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "fromHexString",
-      "description": "\u003cp\u003eReturn the float value represented by \u003ccode\u003es\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "toBitsInt",
-      "description": "\u003cp\u003eReturns IEEE 64-bit binary floating point format representation of \u003ccode\u003ex\u003c/code\u003e as an int.\u003c/p\u003e",
+      "id": "floor",
+      "description": "Rounds a float down to the closest integral value.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "fromBitsInt",
-      "description": "\u003cp\u003eReturns the float that is represented in IEEE 64-bit floating point by \u003ccode\u003ex\u003c/code\u003e.\u003c/p\u003e",
+      "description": "Returns the float that is represented in IEEE 64-bit floating point by `x`.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "fromHexString",
+      "description": "Return the float value represented by `s`.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "fromString",
+      "description": "Return the float value represented by `s`.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "isFinite",
+      "description": "Tests whether a float is finite.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "isInfinite",
+      "description": "Tests whether a float is infinite.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "isNaN",
+      "description": "Tests whether a float is NaN.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "log",
+      "description": "Returns the natural logarithm of a float value\nCorresponds to IEEE log operation.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "log10",
+      "description": "Returns the base 10 logarithm of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "max",
+      "description": "Maximum of zero or more float values.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "min",
+      "description": "Minimum of zero or more float values.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "pow",
+      "description": "Raises one float value to the power of another float values.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "round",
+      "description": "Round a float value to the closest integral value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "sin",
+      "description": "Returns the sine of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "sinh",
+      "description": "Returns the hyperbolic sine of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "sqrt",
+      "description": "Returns the square root of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "sum",
+      "description": "Sum of zero or more float values.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "tan",
+      "description": "Returns the tangent of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "tanh",
+      "description": "Returns the hyperbolic tangent of a float value.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "toBitsInt",
+      "description": "Returns IEEE 64-bit binary floating point format representation of `x` as an int.",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "toHexString",
+      "description": "Returns a string that represents `x` as a hexadecimal floating point number.",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -230,29 +230,29 @@ var searchData = {
   "records": [],
   "constants": [
     {
-      "id": "PI",
-      "description": "\u003cp\u003eThe number π\u003c/p\u003e\n",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
       "id": "E",
-      "description": "\u003cp\u003eEuler\u0027s number\u003c/p\u003e\n",
-      "moduleId": "lang.float",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.0"
-    },
-    {
-      "id": "NaN",
-      "description": "\u003cp\u003eIEEE not-a-number value\u003c/p\u003e\n",
+      "description": "Euler\u0027s number\n",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
     },
     {
       "id": "Infinity",
-      "description": "\u003cp\u003eIEEE positive infinity\u003c/p\u003e\n",
+      "description": "IEEE positive infinity\n",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "NaN",
+      "description": "IEEE not-a-number value\n",
+      "moduleId": "lang.float",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.0.0"
+    },
+    {
+      "id": "PI",
+      "description": "The number π\n",
       "moduleId": "lang.float",
       "moduleOrgName": "ballerina",
       "moduleVersion": "1.0.0"
@@ -263,5 +263,6 @@ var searchData = {
   "clients": [],
   "listeners": [],
   "annotations": [],
-  "abstractObjects": []
+  "abstractObjects": [],
+  "enums": []
 };

@@ -102,6 +102,8 @@ Payload: {"args":{},"data":"Hello!","files":{},"form":{},"headers":{"Content-Len
 
 Similar to the [`get`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) and [`post`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#post) remote methods above, there are other methods such as [`put`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#put), [`delete`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#delete), [`patch`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#patch), [`head`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#head), and [`options`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#options) to represent the HTTP methods. There is also a generic [`execute`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#execute) remote method for users to specify the HTTP verb and execute the HTTP action. 
 
+## What's Next?
+
 For more advanced use cases of HTTP clients, see the topics below.
 
 - [Multipart Message Handling](/swan-lake/learn/network-communication/http/multipart-message-handling)

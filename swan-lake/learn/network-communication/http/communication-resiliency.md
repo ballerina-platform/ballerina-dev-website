@@ -18,7 +18,7 @@ The HTTP client can be configured with a retry configuration using the [`retryCo
 
 The `retry_demo.bal` below shows an HTTP client configured with a retry configuration. 
 
->**Info:** In the below code, the client is configured to have three retries in the case of a request failure with an initial 3,000 milliseconds retry interval. This interval is multiplied by two with each retry, so that the second and third retries will have 6,000 and 12,000-millisecond intervals respectively. Also, it provides 20,000 milliseconds as the maximum value the retry interval will increase to. Therefore, in this scenario, the fourth and fifth retry intervals will be restricted to 20,000 milliseconds. 
+>**Info:** In the below code, the client is configured to have three retries in the case of a request failure with an initial 3,000 milliseconds retry interval. This interval is multiplied by two with each retry so that the second and third retries will have 6,000 and 12,000-millisecond intervals respectively. Also, it provides 20,000 milliseconds as the maximum value to which the retry interval will increase. Therefore, in this scenario, the fourth and fifth retry intervals will be restricted to 20,000 milliseconds. 
 
 **retry_demo.bal**
 ```ballerina
@@ -140,7 +140,7 @@ For more detailed configuration options, see the [http:LoadBalanceClientConfigur
 
 ## Handling Failover Scenarios
 
-Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in an order, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
+Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
 
 The `fail_over_load-balancer_demo.bal` example below shows this in action. 
 

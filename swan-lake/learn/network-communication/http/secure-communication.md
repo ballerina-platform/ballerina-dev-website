@@ -69,7 +69,7 @@ Execute the `bal run tls_custom_demo.bal --b7a.home=BALLERINA_HOME_PATH>` comman
 
 ```bash
 Compiling source
-    	client_demo.bal
+    	tls_custom_demo.bal.bal
 
 Running executable
 

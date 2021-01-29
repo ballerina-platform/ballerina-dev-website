@@ -96,7 +96,7 @@ Execute the `bal run data_binding_example_two.bal` command and the output will b
 
 ```bash
 Compiling source
-    	client_demo.bal
+    	data_binding_example_two.bal
 
 Running executable
 

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Data Streaming
+title: Communication Resiliency
 description: The HTTP client supports multiple communication resiliency options out of the box.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /swan-lake/learn/network-communication/http/communication-resiliency/

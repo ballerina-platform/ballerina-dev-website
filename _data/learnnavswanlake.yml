@@ -51,8 +51,8 @@
   url: '#' 
   sublinks:
     - title: HTTP
-      url: /swan-lake/learn/network-communication/http/
-      active: http
+      url: /swan-lake/learn/network-communication/creating-http-clients/
+      active: creating-http-clients
     - title: gRPC
       url: /swan-lake/learn/network-communication/grpc/
       active: grpc

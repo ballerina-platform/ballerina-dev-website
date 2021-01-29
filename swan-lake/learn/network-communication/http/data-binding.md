@@ -3,18 +3,20 @@ layout: ballerina-left-nav-pages-swanlake
 title: Data Binding
 description: The sections below explain the how to perform data binding with HTTP clients.
 keywords: ballerina, cli, command line interface, programming language
-permalink: /swan-lake/learn/network-communication/data-binding/
+permalink: /swan-lake/learn/network-communication/http/data-binding/
 active: data-binding
 intro: The sections below explain the how to perform data binding with HTTP clients.  
 redirect_from:
-  - /swan-lake/learn/network-communication/data-binding
+  - /swan-lake/learn/network-communication/http/data-binding
 ---
 
 In the previous [HTTP GET scenarios](/swan-lake/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method of the [`http:Client`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/HttpClient), which is the [`http:Response`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 
 
 In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method will return the error value of the [`http:ClientError`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/errors#ClientError) type. 
 
-The `data_binding_example_one.bal` below illustrates an example of using JSON and XML data binding.
+## Using JSON and XML in Data Binding
+
+The `data_binding_example_one.bal` below illustrates an example of using JSON and XML in data binding.
 
 **data_binding_example_one.bal**
 
@@ -52,6 +54,8 @@ XML Payload:
     	<MetroCode>807</MetroCode>
 </Response>
 ```
+
+## Using a Custom Record Type in Data Binding
 
 Similarly, the `data_binding_example_two.bal` demonstrates the usage of a custom record type in data binding.
 

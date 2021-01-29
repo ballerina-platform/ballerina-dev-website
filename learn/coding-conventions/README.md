@@ -242,7 +242,7 @@ Separate both statements and top level definitions by zero or one blank lines.
       };
       ```
 
-### [Top Level Definitions](definitions.md)
+### [Top Level Definitions](top-level-definitions.md)
 ### [Operators, Keywords and Types](operators_keywords_and_types.md)
 ### [Statements](statements.md)
 ### [Expressions](expressions.md)

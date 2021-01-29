@@ -57,24 +57,32 @@ redirect_from:
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
   <a class="cBoxLink" href="/swan-lake/learn/using-the-cli-tools/">
-  <h2>Ballerina User Guide</h2>
+  <h2>User Guide</h2>
   <p>Learn about all the features of the language and its platform capabilities.</p>
   </a>
 
 </div>
-<!-- <div class="clearfix"></div> -->
+
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+
+<a class="cBoxLink" href="/lang-guide/">
+<h2>Language Guide</h2>
+<p>Learn about all the details of the Ballerina language.</p>
+</a>
+
+</div>
+ 
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
 <a class="cBoxLink" href="/spec/">
 <h2>Language Specification</h2>
 <p>Master Ballerina by reading through the Language Specification by which the Ballerina platform is specified.</p>
-
-
 </a>
 
-
 </div>
+
+<div class="clearfix"></div>
 
 
 

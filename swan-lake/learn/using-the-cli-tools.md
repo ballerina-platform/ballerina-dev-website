@@ -242,3 +242,5 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </td>
 </tr>
 </table>
+
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

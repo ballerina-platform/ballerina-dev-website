@@ -65,7 +65,7 @@ redirect_from:
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-<a class="cBoxLink" href="/swan-lake/learn/lang-guide/">
+<a class="cBoxLink" href="/lang-guide/Ballerina_Language_Presentation-2021-01-29.pdf">
 <h2>Language Guide</h2>
 <p>Learn about all the details of the Ballerina language.</p>
 </a>

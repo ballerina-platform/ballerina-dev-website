@@ -23,7 +23,7 @@ In the CLI, execute the `bal help` command to view all the actions you can perfo
 ```sh
 → bal help
 NAME
-       The bal build tool
+       The Ballerina tool
 
 SYNOPSIS
        bal <-v | --version>
@@ -73,6 +73,7 @@ BALLERINA COMMANDS
         openapi         Generate Ballerina sources for the given OpenAPI definition and vice versa.
         version         Print Ballerina version
         bindgen         Generate Ballerina bindings for Java APIs
+        shell           Run ballerina interactive REPL [EXPERIMENTAL]
 
    Update Commands:
         dist            Manage Ballerina distributions
@@ -239,3 +240,5 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </td>
 </tr>
 </table>
+
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

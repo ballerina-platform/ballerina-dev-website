@@ -52,3 +52,5 @@ For other use cases of HTTP clients, see the topics below.
 - [Data Binding](/swan-lake/learn/network-communication/http/data-binding)
 - [Communication Resiliency](/swan-lake/learn/network-communication/http/communication-resiliency)
 - [Secure Communication](/swan-lake/learn/network-communication/http/secure-communication)
+
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

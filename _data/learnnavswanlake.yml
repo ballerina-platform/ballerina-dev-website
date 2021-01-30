@@ -47,6 +47,15 @@
       url: /swan-lake/learn/publishing-packages-to-ballerina-central
       active: publishing-packages-to-ballerina-central
 
+- title: Network Communication
+  url: '#' 
+  sublinks:
+    - title: HTTP
+      url: /swan-lake/learn/network-communication/http/
+      active: http
+    #- title: gRPC
+      #url: /swan-lake/learn/network-communication/grpc/
+      #active: grpc
 
 - title: Deployment
   url: '#' 

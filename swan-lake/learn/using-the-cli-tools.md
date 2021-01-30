@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Using the CLI Tools
-description: Learn all the command line interface (CLI) commands need to get started, build, test and run programs, work with Ballerina Central, and manage projects.
+description: Learn all the command line interface (CLI) commands you need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /swan-lake/learn/using-the-cli-tools/
 active: using-the-cli-tools
@@ -14,25 +14,26 @@ redirect_from:
 
 ## Using the Ballerina Tool
 
-The Ballerina Tool is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
+The Ballerina Tool is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina packages and modules, test, build, and run programs, etc.
 
 It also enables you to easily install, update, and switch among Ballerina distributions. 
 
-In the CLI, execute the `ballerina help` command to view all the actions you can perform with the Ballerina Tool as shown below:
+In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below:
 
 ```sh
-→ ballerina help 
+→ bal help
 NAME
-       The Ballerina build tool
+       The Ballerina tool
 
 SYNOPSIS
-       ballerina <-v | --version>
-       ballerina [command] <-h | --help>
-       ballerina <command> [<args>]
+       bal <-v | --version>
+       bal [command] <-h | --help>
+       bal <command> [<args>]
 
 
 DESCRIPTION
-       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
+       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured
+       data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
        functionality expected of a modern programming language, but it also has several unusual aspects that make it
        particularly suitable for its intended purpose.
 
@@ -53,19 +54,18 @@ BALLERINA COMMANDS
    Core Commands:
         build           Compile Ballerina program into an executable
         run             Build and run Ballerina program
-        test            Run module tests
+        test            Run package tests
         doc             Generate API documentation
         clean           Clean artifacts generated during the build
         format          Format Ballerina sources
 
-   Module Commands:
-        pull            Pull a module from Ballerina Central
-        push            Upload module to the Ballerina Central
-        search          Search Ballerina Central for modules
-
-   Project Commands:
-        new             Create a new Ballerina project
-        add             Create a new Ballerina module in a project
+   Package Commands:
+        new             Create a new Ballerina package
+        init            Create a new Ballerina package in the current directory
+        add             Create a new Ballerina module in the package
+        pull            Pull a package from Ballerina Central
+        push            Upload a package to Ballerina Central
+        search          Search Ballerina Central for packages
 
    Other Commands:
         encrypt         Encrypt sensitive data
@@ -73,38 +73,39 @@ BALLERINA COMMANDS
         openapi         Generate Ballerina sources for the given OpenAPI definition and vice versa.
         version         Print Ballerina version
         bindgen         Generate Ballerina bindings for Java APIs
+        shell           Run ballerina interactive REPL [EXPERIMENTAL]
 
    Update Commands:
         dist            Manage Ballerina distributions
-        update          Update the Ballerina Tool
+        update          Update the Ballerina tool
 
 
-Use 'ballerina help <command>' for more information on a specific command.
+Use 'bal help <command>' for more information on a specific command.
 ```
 
 You can use it in the below format.
 
-> `ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
+> `bal <THE-COMMAND> <ITS-ARGUEMENTS>`
 
-> **Tip:** You can view details of any of the commands below by executing `ballerina help <COMMAND>`. For example, the below is the output of the `ballerina help pull` command.
+> **Tip:** You can view details of the commands below by executing the `bal help <COMMAND>`. For example, the below is the output of the `bal help pull` command.
 
 ```sh
-→ ballerina help pull
+→ bal help pull
 NAME
-       ballerina-pull - Fetch modules from Ballerina Central
+       ballerina-pull - Fetch packages from Ballerina Central
 
 SYNOPSIS
-       ballerina pull <org-name>/<module-name>[:<version>]
+       bal pull <org-name>/<package-name>[:<version>]
 
 
 DESCRIPTION
-       Pull downloads the specified module from Ballerina Central
-       along with its dependencies. It then caches this module at
-       '.ballerina' directory in user home.
+       The pull command downloads the specified package from Ballerina Central
+       along with its dependencies. It then caches this package in the
+       '.ballerina' directory in the user home.
 
-       Ballerina Central is a module repository hosted at
-       https://central.ballerina.io/. A module repository organizes modules
-       into a three-level hierarchy: organization, module name, and version.
+       Ballerina Central is a package repository hosted at
+       https://central.ballerina.io/. A package repository organizes packages
+       into a three-level hierarchy: organization, package name, and version.
        Organizations are unique within a repository and can be mapped to an
        individual user or organization registered with the repository.
 
@@ -126,27 +127,27 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a Ballerina program, a single BAL file, a module, an entire project, or a single root module into an executable JAR file.
+<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire project, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
+<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project. For more information, see <a href="/swan-lake/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/swan-lake/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">clean</td>
-<td class="cDescription">Clean all artifacts generated by the build command for a project.
+<td class="cDescription">Clean all artifacts generated by the build command for a package.
 </td>
 </tr>
 <tr>
@@ -155,41 +156,39 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 </table>
 
-## Module Commands
+## Package Commands
 
-These commands allow you to work with the Ballerina Central to share Ballerina modules with others in a safe, secure, and dependable way.
-
-<table class="cComandTable">
-<tr>
-<td class="cCommand">pull</td>
-<td class="cDescription">Pull a module from Ballerina Central.
-</td>
-</tr>
-<tr>
-<td class="cCommand">push</td>
-<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-packages-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
-</td>
-</tr>
-<tr>
-<td class="cCommand">search</td>
-<td class="cDescription">Search Ballerina Central for modules.
-</td>
-</tr>
-</table>
-
-## Project Commands
-
-Ballerina projects are the way to organize real-world Ballerina development tasks. 
+Ballerina packages are the way to organize real-world Ballerina development tasks. The last 3 commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
 
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina project. For more information, see <a href="/swan-lake/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/swan-lake/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
+</td>
+</tr>
+<tr>
+<td class="cCommand">init</td>
+<td class="cDescription">Create a new Ballerina package in the current directory.
 </td>
 </tr>
 <tr>
 <td class="cCommand">add</td>
-<td class="cDescription">Create a new Ballerina module in a project. For more information, see <a href="/swan-lake/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
+<td class="cDescription">Create a new Ballerina module in a package.
+</td>
+</tr>
+<tr>
+<td class="cCommand">pull</td>
+<td class="cDescription">Pull a package from Ballerina Central.
+</td>
+</tr>
+<tr>
+<td class="cCommand">push</td>
+<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-packages-to-ballerina-central">Publishing Packages to Ballerina Central</a>.
+</td>
+</tr>
+<tr>
+<td class="cCommand">search</td>
+<td class="cDescription">Search Ballerina Central for packages.
 </td>
 </tr>
 </table>
@@ -222,7 +221,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">help</td>
-<td class="cDescription">Prints the usage details of any Ballerina command (e.g., `ballerina help pull`).
+<td class="cDescription">Prints the usage details of any Ballerina command (e.g., `bal help pull`).
 </td>
 </tr>
 </table>
@@ -241,3 +240,5 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </td>
 </tr>
 </table>
+
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

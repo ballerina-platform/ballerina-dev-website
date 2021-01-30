@@ -16,7 +16,7 @@ In an RPC service, the first step is to define the interface of the service. Thi
 
 For example, the diagram below shows a sample RPC service, which contains the actions to do some computational operations, store them, and return a custom type. 
 
-![Admin RPC Service](/swan-lake/learn/images/admin-rpc-service.png.png)
+![Admin RPC Service](/swan-lake/learn/images/grpc-admin-service.png)
 
 ### Creating the Proto File
 
@@ -121,9 +121,16 @@ service AdminService {
 
 The above is the full ProtoBuf definition for the service. 
 
-## What's Next?
+## Implementing gRPC Services and Clients
 
 For instructions on implementing the above service and writing a client to invoke it, see [Implementing gRPC Services and Clients](/swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients/).
+
+
+## Performing gRPC Streaming
+
+For instructions on this, see [Performing gRPC Streaming](/swan-lake/learn/network-communication/grpc/performing-grpc-streaming/).
+
+
 
 
 

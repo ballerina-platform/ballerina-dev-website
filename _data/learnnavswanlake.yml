@@ -53,9 +53,9 @@
     - title: HTTP
       url: /swan-lake/learn/network-communication/http/
       active: http
-    #- title: gRPC
-      #url: /swan-lake/learn/network-communication/grpc/
-      #active: grpc
+    - title: gRPC
+      url: /swan-lake/learn/network-communication/grpc/
+      active: grpc
 
 - title: Deployment
   url: '#' 

@@ -1,25 +1,25 @@
 ---
 layout: ballerina-left-nav-pages
 title: Language Intelligence
-permalink: /learn/setting-up-visual-studio-code/language-intelligence/
+permalink: /1.2/learn/ setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence
 intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency. Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/
-  - /learn/tools-ides/vscode-plugin/language-intelligence
-  - /learn/tools-ides/vscode-plugin/language-intelligence/
+  - /1.2/learn/ tools-ides/vscode-plugin/language-intelligence
+  - /1.2/learn/ tools-ides/vscode-plugin/language-intelligence/
   - /v1-2/learn/vscode-plugin/language-intelligence/
   - /v1-2/learn/vscode-plugin/language-intelligence
-  - /learn/vscode-plugin/language-intelligence/
-  - /learn/vscode-plugin/language-intelligence/
-  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence
-  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
-  - /learn/setting-up-visual-studio-code/language-intelligence
-  - /learn/language-intelligence
-  - /learn/language-intelligence/
-  - /learn/getting-started/language-intelligence
-  - /learn/getting-started/language-intelligence/
+  - /1.2/learn/ vscode-plugin/language-intelligence/
+  - /1.2/learn/ vscode-plugin/language-intelligence/
+  - /1.2/learn/ tools-ides/setting-up-visual-studio-code/language-intelligence
+  - /1.2/learn/ tools-ides/setting-up-visual-studio-code/language-intelligence/
+  - /1.2/learn/ setting-up-visual-studio-code/language-intelligence
+  - /1.2/learn/ language-intelligence
+  - /1.2/learn/ language-intelligence/
+  - /1.2/learn/ getting-started/language-intelligence
+  - /1.2/learn/ getting-started/language-intelligence/
 ---
 
 ## Semantic and Syntactic Diagnostics
@@ -28,13 +28,13 @@ When there are syntax or semantic errors in your code, you will be notified with
 
 > **Tip**: The detailed description that appears when you hover over the lines underlined in red will be consistent with the error message that you get during compile-time.
 
-![Semantic and syntactic diagnostics](/learn/images/semantic-and-syntactic.gif)
+![Semantic and syntactic diagnostics](/1.2/learn/ images/semantic-and-syntactic.gif)
 
 ## Suggestions and Auto-Completion
 
 The extension provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs etc.,).
 
-![Suggestions and auto completion](/learn/images/suggestions.gif)
+![Suggestions and auto completion](/1.2/learn/ images/suggestions.gif)
 
 > **Tip**: You can use these suggestions to access the contents of the modules available in your Ballerina home repo as well as in the Ballerina distribution.
 
@@ -50,7 +50,7 @@ These allow you to perform the below tasks easily based on the diagnostics and t
 
 For example, you can add documentation for a function as shown below.
 
- ![Code actions](/learn/images/code-actions.gif)
+ ![Code actions](/1.2/learn/ images/code-actions.gif)
 
 ## Hover Support
 
@@ -58,17 +58,17 @@ For example, you can add documentation for a function as shown below.
  
  For example, if you hover over a function name, you can view its description, information about its parameters, and the description of its return type as shown below.
 
-  ![Hover support](/learn/images/hover-support.gif)
+  ![Hover support](/1.2/learn/ images/hover-support.gif)
  
  > **Tip**: Likewise, if you hover over an entity name of an object or a record, you can view the description of the object/record as well as descriptions of its fields.
 
 ## Go to definition
 
-This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
+This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/1.2/learn/ api-docs/ballerina/).
 
-![Go to definition](/learn/images/go-to-definition-vscode.gif)
+![Go to definition](/1.2/learn/ images/go-to-definition-vscode.gif)
 
 ## What's Next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/learn/vscode-plugin/run-and-debug).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin).
+ - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/1.2/learn/ vscode-plugin/run-and-debug).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/1.2/learn/ vscode-plugin).

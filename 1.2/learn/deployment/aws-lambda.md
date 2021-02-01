@@ -3,11 +3,11 @@ layout: ballerina-left-nav-pages
 title: AWS Lambda
 description: See how the Ballerina deployment in AWS Lambda works
 keywords: ballerina, programming language, serverless, cloud, AWS, Lambda
-permalink: /learn/deployment/aws-lambda/
+permalink: /1.2/learn/ deployment/aws-lambda/
 intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
 active: aws-lambda
 redirect_from:
-  - /learn/deployment/aws-lambda
+  - /1.2/learn/ deployment/aws-lambda
 ---
 
 Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. 
@@ -51,7 +51,7 @@ public function apigwRequest(awslambda:Context ctx, awslambda:APIGatewayProxyReq
 }
 ```
 
-The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+The first parameter with the [awslambda:Context](/1.2/learn/ api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
 The second parameter contains the input request data. This input value will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). 
 

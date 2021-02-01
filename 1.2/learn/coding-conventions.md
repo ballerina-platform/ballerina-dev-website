@@ -3,15 +3,15 @@ layout: ballerina-left-nav-pages
 title: Coding Conventions
 description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
 keywords: ballerina, programming language, ballerina style guide
-permalink: /learn/coding-conventions/
+permalink: /1.2/learn/ coding-conventions/
 active: coding-conventions
 intro: This Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
 redirect_from:
-  - /learn/style-guide
-  - /learn/style-guide/
-  - /v1-2/learn/style-guide
-  - /v1-2/learn/style-guide/
-  - /learn/coding-conventions
+  - /1.2/learn/ style-guide
+  - /1.2/learn/ style-guide/
+  - /v1-2/1.2/learn/ style-guide
+  - /v1-2/1.2/learn/ style-guide/
+  - /1.2/learn/ coding-conventions
 ---
 
 > You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
@@ -283,23 +283,23 @@ table<Employee> employee = table {
 
 ## Top-Level Definitions
 
-For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
+For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/1.2/learn/ style-guide/definitions).
 
 ## Operators, Keywords, and Types
 
-For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/learn/style-guide/operators_keywords_and_types).
+For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/1.2/learn/ style-guide/operators_keywords_and_types).
 
 ## Statements
 
-For style guidelines on statements such as if, match, transaction etc., see [Statements](/learn/style-guide/statements).
+For style guidelines on statements such as if, match, transaction etc., see [Statements](/1.2/learn/ style-guide/statements).
 
 ## Expressions
 
-For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/learn/style-guide/expressions).
+For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/1.2/learn/ style-guide/expressions).
 
 ## Annotations, Documentation, and Comments
 
-For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
+For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/1.2/learn/ style-guide/annotations_documentation_and_comments).
 
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 

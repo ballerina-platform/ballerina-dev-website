@@ -3,17 +3,17 @@ layout: ballerina-left-nav-pages
 title: Quick Start
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/testing-quick-start/
+permalink: /1.2/learn/ testing-ballerina-code/testing-quick-start/
 active: testing-quick-start
 intro: The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 redirect_from:
   - /v1-2/learn/how-to-test-ballerina-code/
   - /v1-2/learn/how-to-test-ballerina-code
-  - /learn/how-to-test-ballerina-code/
-  - /learn/how-to-test-ballerina-code
-  - /learn/testing-ballerina-code/testing-quick-start
-  - /learn/testing-ballerina-code/
-  - /learn/testing-ballerina-code
+  - /1.2/learn/ how-to-test-ballerina-code/
+  - /1.2/learn/ how-to-test-ballerina-code
+  - /1.2/learn/ testing-ballerina-code/testing-quick-start
+  - /1.2/learn/ testing-ballerina-code/
+  - /1.2/learn/ testing-ballerina-code
 ---
 
 ## Writing a simple function
@@ -21,7 +21,7 @@ redirect_from:
 To get started, let's write a simple Ballerina function and test it.
 
 1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
-For more information on the command, see [Structuring Ballerina Code](/learn/structuring-ballerina-code/).
+For more information on the command, see [Structuring Ballerina Code](/1.2/learn/ structuring-ballerina-code/).
 
     The standard project will have the structure below.
 
@@ -136,4 +136,4 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
 ## What's Next?
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
- features in [Writing Tests](/learn/testing-ballerina-code/writing-tests).
+ features in [Writing Tests](/1.2/learn/ testing-ballerina-code/writing-tests).

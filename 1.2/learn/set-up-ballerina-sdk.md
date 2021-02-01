@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages
 title: Setting up Ballerina SDK
-permalink: /learn/set-up-ballerina-sdk/
+permalink: /1.2/learn/ set-up-ballerina-sdk/
 active: set-up-ballerina-sdk
 intro: After installing the IntelliJ Ballerina plugin, you need to set up Ballerina SDK for your Ballerina projects to activate all the capabilities of the plugin. Click on the below links for instructions on how to set up Ballerina SDK.
 redirect_from:
-  - /learn/set-up-ballerina-sdk
+  - /1.2/learn/ set-up-ballerina-sdk
   - /v1-2/learn/set-up-ballerina-sdk
   - /v1-2/learn/set-up-ballerina-sdk/
 ---

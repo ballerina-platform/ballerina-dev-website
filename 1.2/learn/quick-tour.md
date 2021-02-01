@@ -3,22 +3,22 @@ layout: ballerina-inner-page
 title: Ballerina Quick Tour
 description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
-permalink: /learn/quick-tour/
+permalink: /1.2/learn/ quick-tour/
 active: quick-tour
 intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
-  - /learn/quick-tour
+  - /1.2/learn/ quick-tour
   - /v1-2/learn/quick-tour
   - /v1-2/learn/quick-tour/
-  - /learn/getting-started/quick-tour/
-  - /learn/getting-started/quick-tour
+  - /1.2/learn/ getting-started/quick-tour/
+  - /1.2/learn/ getting-started/quick-tour
 ---
 
 ## Installing Ballerina
 
 1. [Download](https://ballerina.io/downloads) Ballerina based on the Operating System you are using. 
-1. Follow the instructions given on the [Getting Started](/learn/getting-started) page to set it up. 
-1. Follow the instructions given on the [Visual Studio Code Plugin](/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
+1. Follow the instructions given on the [Getting Started](/1.2/learn/ getting-started) page to set it up. 
+1. Follow the instructions given on the [Visual Studio Code Plugin](/1.2/learn/ tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/1.2/learn/ tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
 
 ## Writing a Service, Running It, and Invoking It
 
@@ -180,7 +180,7 @@ This should print out the sunrise/sunset details.
 
 Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
 
-* Go through the [Ballerina by Examples](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
+* Go through the [Ballerina by Examples](/1.2/learn/ by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
 * Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues.
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 

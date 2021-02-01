@@ -3,19 +3,19 @@ layout: ballerina-left-nav-pages
 title: Installing Ballerina
 description: Get started with the Ballerina programming language by following these instructions on installing and setting up Ballerina.
 keywords: ballerina, installing ballerina, programming language, ballerina installation
-permalink: /learn/installing-ballerina/
+permalink: /1.2/learn/ installing-ballerina/
 active: installing-ballerina
 intro: The sections below include information about installing Ballerina.
 redirect_from:
   - /v1-2/learn/getting-started
-  - /learn/getting-started
-  - /learn/getting-started/
-  - /learn/installing-ballerina
-  - /learn/installing-ballerina/#installing-from-source
+  - /1.2/learn/ getting-started
+  - /1.2/learn/ getting-started/
+  - /1.2/learn/ installing-ballerina
+  - /1.2/learn/ installing-ballerina/#installing-from-source
   - /v1-2/learn/installing-ballerina
   - /v1-2/learn/installing-ballerina/
-  - /learn/getting-started/installing-ballerina/
-  - /learn/getting-started/installing-ballerina
+  - /1.2/learn/ getting-started/installing-ballerina/
+  - /1.2/learn/ getting-started/installing-ballerina
 ---
 
 ## Installing Ballerina via Installers
@@ -79,7 +79,7 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 `ballerina dist update`|Update to the latest patch version of the active distribution
 `ballerina dist pull jballerina-<JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
 
-For more information, see [Keeping Ballerina Up to Date](/learn/keeping-ballerina-up-to-date/).
+For more information, see [Keeping Ballerina Up to Date](/1.2/learn/ keeping-ballerina-up-to-date/).
   
 ## Building from Source
 
@@ -146,5 +146,5 @@ Once you have successfully installed Ballerina, click the links below to set up 
 
 >**Tip:** To get help when you work with Ballerina, see [Community](/community).
 
-- [Setting up Visual Studio Code](/learn/vscode-plugin/)
-- [Setting up IntelliJ IDEA](/learn/intellij-plugin/)
+- [Setting up Visual Studio Code](/1.2/learn/ vscode-plugin/)
+- [Setting up IntelliJ IDEA](/1.2/learn/ intellij-plugin/)

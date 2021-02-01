@@ -3,15 +3,15 @@ layout: ballerina-left-nav-pages
 title: Writing Secure Ballerina Code
 description: Check out the different security features and controls available within the Ballerina programming language and follow the guidelines on writing secure Ballerina programs.
 keywords: ballerina, programming language, security, secure ballerina code
-permalink: /learn/writing-secure-ballerina-code/
+permalink: /1.2/learn/ writing-secure-ballerina-code/
 active: writing-secure-ballerina-code
 intro: The sections below include information on the different security features and controls available within Ballerina. Also, they provide guidelines on writing secure Ballerina programs.
 redirect_from:
-  - /learn/how-to-write-secure-ballerina-code
-  - /learn/how-to-write-secure-ballerina-code/
+  - /1.2/learn/ how-to-write-secure-ballerina-code
+  - /1.2/learn/ how-to-write-secure-ballerina-code/
   - /v1-2/learn/how-to-write-secure-ballerina-code
   - /v1-2/learn/how-to-write-secure-ballerina-code/
-  - /learn/writing-secure-ballerina-code
+  - /1.2/learn/ writing-secure-ballerina-code
 ---
 
 ## Secure by Design
@@ -126,7 +126,7 @@ function sanitizeSortColumn (string columnName) returns @untainted string {
 
 ## Securing Passwords and Secrets
 
-Ballerina provides an API to access configuration values from different sources. For more information, see [Config Ballerina by Example](/learn/by-example/config-api.html).
+Ballerina provides an API to access configuration values from different sources. For more information, see [Config Ballerina by Example](/1.2/learn/ by-example/config-api.html).
 
 Configuration values containing passwords or secrets should be encrypted. The Ballerina Config API will decrypt such configuration values when being accessed.
 

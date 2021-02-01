@@ -3,15 +3,15 @@ layout: ballerina-left-nav-pages
 title: Using the CLI Tools
 description: Learn all the command line interface (CLI) commands need to get started, build, test and run programs, work with Ballerina Central, and manage projects.
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/using-the-cli-tools/
+permalink: /1.2/learn/ using-the-cli-tools/
 active: using-the-cli-tools
 intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /v1-2/learn/cli-commands
   - /v1-2/learn/cli-commands/
-  - /learn/cli-commands/
-  - /learn/cli-commands
-  - /learn/using-the-cli-tools
+  - /1.2/learn/ cli-commands/
+  - /1.2/learn/ cli-commands
+  - /1.2/learn/ using-the-cli-tools
 ---
 
 ## Using the Ballerina Tool
@@ -129,17 +129,17 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a Ballerina program, a single BAL file, a module, an entire project, or a previously-built program. For more information, see <a href="/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Build and run a Ballerina program, a single BAL file, a module, an entire project, or a previously-built program. For more information, see <a href="/1.2/learn/ running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
+<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/1.2/learn/ testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project. For more information, see <a href="/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project. For more information, see <a href="/1.2/learn/ documenting-ballerina-code">Documenting Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -149,7 +149,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">format</td>
-<td class="cDescription">Format Ballerina source files as per the <a href="/learn/coding-conventions">Coding Conventions</a>.</td>
+<td class="cDescription">Format Ballerina source files as per the <a href="/1.2/learn/ coding-conventions">Coding Conventions</a>.</td>
 </tr>
 </table>
 
@@ -165,7 +165,7 @@ These commands allow you to work with the Ballerina Central to share Ballerina m
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
+<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/1.2/learn/ publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
 </td>
 </tr>
 <tr>
@@ -182,12 +182,12 @@ Ballerina projects are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina project. For more information, see <a href="/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
+<td class="cDescription">Create a Ballerina project. For more information, see <a href="/1.2/learn/ structuring-ballerina-code">Structuring Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">add</td>
-<td class="cDescription">Create a new Ballerina module in a project. For more information, see <a href="/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
+<td class="cDescription">Create a new Ballerina module in a project. For more information, see <a href="/1.2/learn/ structuring-ballerina-code">Structuring Ballerina Code</a>.
 </td>
 </tr>
 </table>
@@ -204,11 +204,11 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a>.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/1.2/learn/ generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">openapi</td>
-<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/using-the-openapi-tools">Using the OpenAPI Tools</a>.</td>
+<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/1.2/learn/ using-the-openapi-tools">Using the OpenAPI Tools</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">version</td>
@@ -216,7 +216,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>
-<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
+<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/1.2/learn/ calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">help</td>
@@ -230,12 +230,12 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <table class="cComandTable">
 <tr>
 <td class="cCommand">dist</td>
-<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
+<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/1.2/learn/ keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">update</td>
-<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
+<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/1.2/learn/ keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
 </td>
 </tr>
 </table>

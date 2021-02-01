@@ -3,17 +3,17 @@ layout: ballerina-left-nav-pages
 title: Observing Ballerina Code
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs
-permalink: /learn/observing-ballerina-code/
+permalink: /1.2/learn/ observing-ballerina-code/
 active: observing-ballerina-code
 intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs. 
 redirect_from:
-  - /learn/how-to-observe-ballerina-code
-  - /learn/how-to-observe-ballerina-code/
+  - /1.2/learn/ how-to-observe-ballerina-code
+  - /1.2/learn/ how-to-observe-ballerina-code/
   - /v1-2/learn/how-to-observe-ballerina-code
   - /v1-2/learn/how-to-observe-ballerina-code/
-  - /learn/how-to-observe-ballerina-services/
-  - /learn/how-to-observe-ballerina-services
-  - /learn/observing-ballerina-code
+  - /1.2/learn/ how-to-observe-ballerina-services/
+  - /1.2/learn/ how-to-observe-ballerina-services
+  - /1.2/learn/ observing-ballerina-code
 ---
 
 ## Providing Observability in Ballerina
@@ -496,7 +496,7 @@ $ docker run -d -p 9411:9411 openzipkin/zipkin
 ```
 
 4. Go to <http://localhost:9411/zipkin/> and load the web UI of the Zipkin to make sure it is functioning
-properly. The sample Zipkin dashboard for the hello world sample in the [Quick Start](/learn/quick-tour) is shown below.
+properly. The sample Zipkin dashboard for the hello world sample in the [Quick Start](/1.2/learn/ quick-tour) is shown below.
 
 ![Zipkin Sample](../images/zipkin-sample.png "Zipkin Sample")
 

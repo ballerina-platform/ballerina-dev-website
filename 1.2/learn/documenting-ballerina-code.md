@@ -3,15 +3,15 @@ layout: ballerina-left-nav-pages
 title: Documenting Ballerina Code
 description: Learn how to write unstructured documents with a bit of structure to enable HTML content generation as API documentation.
 keywords: ballerina, programming language, api documentation, api docs
-permalink: /learn/documenting-ballerina-code/
+permalink: /1.2/learn/ documenting-ballerina-code/
 active: documenting-ballerina-code
 intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
 redirect_from:
-  - /learn/how-to-document-ballerina-code
-  - /learn/how-to-document-ballerina-code/
+  - /1.2/learn/ how-to-document-ballerina-code
+  - /1.2/learn/ how-to-document-ballerina-code/
   - /v1-2/learn/how-to-document-ballerina-code
   - /v1-2/learn/how-to-document-ballerina-code/
-  - /learn/documenting-ballerina-code
+  - /1.2/learn/ documenting-ballerina-code
 ---
 
 ## Generating Documentation for Modules
@@ -123,7 +123,7 @@ A typical project structure of a Ballerina project is like this:
 
 The `ballerina doc` command will read the `Module.md` and prepend the above to the generated HTML file.
 
-Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
+Check [HTTP module documentation](/1.2/learn/ api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
 ## Generating Ballerina Documentation

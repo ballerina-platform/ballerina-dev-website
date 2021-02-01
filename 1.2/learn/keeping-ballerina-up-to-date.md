@@ -3,18 +3,18 @@ layout: ballerina-left-nav-pages
 title: Keeping Ballerina Up to Date
 description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest releases.
 keywords: ballerina, programming language, release, update
-permalink: /learn/keeping-ballerina-up-to-date/
+permalink: /1.2/learn/ keeping-ballerina-up-to-date/
 active: keeping-ballerina-up-to-date
 intro: This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases. 
 redirect_from:
   - /v1-2/learn/how-to-keep-ballerina-up-to-date
   - /v1-2/learn/how-to-keep-ballerina-up-to-date/
-  - /learn/how-to-keep-ballerina-up-to-date/
-  - /learn/how-to-keep-ballerina-up-to-date
-  - /learn/keeping-ballerina-up-to-date
+  - /1.2/learn/ how-to-keep-ballerina-up-to-date/
+  - /1.2/learn/ how-to-keep-ballerina-up-to-date
+  - /1.2/learn/ keeping-ballerina-up-to-date
 ---
 
-If you haven’t installed Ballerina yet, see the [Installing Ballerina](/learn/installing-ballerina/).
+If you haven’t installed Ballerina yet, see the [Installing Ballerina](/1.2/learn/ installing-ballerina/).
 
 ## Terminology
 
@@ -65,7 +65,7 @@ This channel gives you access to feature releases of Ballerina distributions. Ba
 
 Now that you are familiar with the terminology, let’s look at how you can keep your Ballerina distributions up to date.
 
-- The first step is to install Ballerina. Visit our [installation guide](/learn/installing-ballerina/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
+- The first step is to install Ballerina. Visit our [installation guide](/1.2/learn/ installing-ballerina/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
 
 ```sh
 .

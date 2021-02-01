@@ -24,8 +24,8 @@ redirect_from:
             <h4>Lunch & Learn</h4>	
          </a>	
          <h5>Ballerina: OS Cloud-native Programming Language</h5>	
-         <b>Caludio Guidi,</b> Senior Director - Solutions Architecture, WSO2<br/>	
-         <b>Anjana Fernando,</b> Jolie Evangelist and Project Co-Leader	
+         <b>Caludio Guidi,</b> Jolie Evangelist and Project Co-Leader<br/>	
+         <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
       </td>	
       <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
    </tr>	

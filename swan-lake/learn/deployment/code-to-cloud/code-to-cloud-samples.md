@@ -67,7 +67,7 @@ Compiling source
         wso2/hello:0.1.0
 
 Creating balos
-        target/balo/hello-2020r2-any-0.1.0.balo
+        target/BALA/hello-2020r2-any-0.1.0.BALA
 
 Running Tests
 
@@ -335,7 +335,7 @@ Compiling source
         wso2/scaling:0.1.0
 
 Creating balos
-        target/balo/scaling-2020r2-any-0.1.0.balo
+        target/BALA/scaling-2020r2-any-0.1.0.BALA
 
 Running Tests
 

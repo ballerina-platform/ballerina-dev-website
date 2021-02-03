@@ -122,7 +122,7 @@ For more information on Ballerina’s authentication/authorization features, see
 
 ## What's Next?
 
-For other advanced use cases of HTTP clients, see the topics below.
+For other use cases of HTTP clients, see the topics below.
 - [Multipart Message Handling](/swan-lake/learn/network-communication/http/multipart-message-handling)
 - [Data Binding](/swan-lake/learn/network-communication/http/data-binding)
 - [Data Streaming](/swan-lake/learn/network-communication/http/data-streaming)

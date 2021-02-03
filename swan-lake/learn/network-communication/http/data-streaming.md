@@ -47,8 +47,10 @@ public function main() returns @tainted error? {
 
 ## What's Next?
 
-For other advanced use cases of HTTP clients, see the topics below.
+For other use cases of HTTP clients, see the topics below.
 - [Multipart Message Handling](/swan-lake/learn/network-communication/http/multipart-message-handling)
 - [Data Binding](/swan-lake/learn/network-communication/http/data-binding)
 - [Communication Resiliency](/swan-lake/learn/network-communication/http/communication-resiliency)
 - [Secure Communication](/swan-lake/learn/network-communication/http/secure-communication)
+
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

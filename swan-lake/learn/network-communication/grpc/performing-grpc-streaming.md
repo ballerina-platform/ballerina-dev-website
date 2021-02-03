@@ -149,8 +149,8 @@ Follow the steps below to perform a sample run of the above implementation.
 Compiling source
     laf/service:0.1.0
 
-Creating balo
-    target/balo/laf-service-any-0.1.0.balo
+Creating bala
+    target/bala/laf-service-any-0.1.0.bala
 
 Running executable
 

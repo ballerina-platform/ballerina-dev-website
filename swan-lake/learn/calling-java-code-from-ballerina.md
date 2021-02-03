@@ -130,8 +130,8 @@ Compiling source
 ... 
 ...
 
-Creating balos
-	target/balo/sameera-yaml_package-any-0.1.0.balo
+Creating balas
+	target/bala/sameera-yaml_package-any-0.1.0.bala
 
 Generating executables
 	target/bin/yaml_package.jar
@@ -278,8 +278,8 @@ Compiling source
 ... 
 ...
 
-Creating balos
-	target/balo/sameera-yaml_package-java11-0.1.0.balo
+Creating balas
+	target/bala/sameera-yaml_package-java11-0.1.0.bala
 
 Generating executables
 	target/bin/yaml_package.jar
@@ -548,7 +548,7 @@ function read() returns int|IOException {
 
 >**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/).
  
-When you compile a Ballerina program with `bal build`, the compiler creates an executable JAR file and when you compile a Ballerina module with `bal build -c`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
+When you compile a Ballerina program with `bal build`, the compiler creates an executable JAR file and when you compile a Ballerina module with `bal build -c`, the compiler creates a BALA file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 
 There are two kinds of Ballerina packages:
 1. Produces executable programs 

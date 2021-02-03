@@ -66,8 +66,8 @@ $> bal build --cloud=k8s
 Compiling source
         wso2/hello:0.1.0
 
-Creating balos
-        target/balo/hello-2020r2-any-0.1.0.balo
+Creating balas
+        target/bala/hello-2020r2-any-0.1.0.bala
 
 Running Tests
 
@@ -334,8 +334,8 @@ Execute the `bal build --cloud=k8s` command to build the Ballerina package and y
 Compiling source
         wso2/scaling:0.1.0
 
-Creating balos
-        target/balo/scaling-2020r2-any-0.1.0.balo
+Creating balas
+        target/bala/scaling-2020r2-any-0.1.0.bala
 
 Running Tests
 

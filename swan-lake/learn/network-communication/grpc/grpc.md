@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: gRPC
-description: gRPC is an open source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina.
+description: gRPC is an open-source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /swan-lake/learn/network-communication/grpc/
 active: grpc
-intro: gRPC is an open source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina. 
+intro: gRPC is an open-source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina. 
 redirect_from:
   - /swan-lake/learn/network-communication/grpc
 ---
@@ -75,7 +75,7 @@ service AdminService {
 }
 ```
 
-The snippet above defines the `AdminService` RPC service with a method `Add`, which takes in the `AddRequest` message and returns an `AddResponse` message. In this manner, multiple methods can be added to a single service. The following ProtoBuf definition contains the full service definition for the service shown in the above diagram. 
+The snippet above defines the `AdminService` RPC service with a method `Add`, which takes in the `AddRequest` message and returns an `AddResponse` message. In this manner, multiple methods can be added to a single service. The following ProtoBuf definition contains the complete service definition for the service shown in the above diagram. 
 
 ```proto
 syntax = "proto3";

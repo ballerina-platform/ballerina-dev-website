@@ -57,6 +57,13 @@
       url: /swan-lake/learn/network-communication/grpc/
       active: grpc
 
+- title: Data and Events Processing 
+  url: '#' 
+  sublinks:
+    - title: Using Language-Integrated Queries
+      url: /swan-lake/learn/data-and-events-processing/using-language-integrated-queries/
+      active: using-language-integrated-queries
+
 - title: Deployment
   url: '#' 
   sublinks:

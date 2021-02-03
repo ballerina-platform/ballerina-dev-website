@@ -19,7 +19,7 @@ As of now, language-integrated queries are supported for iterator implementation
 
 ## Query Expressions
 
-Query expressions allow you to generate a list, table, string, or an XML. The sections below include the clauses you can use in a query expression.
+Query expressions allow you to generate a list, table, string, or XML. The sections below include the clauses you can use in a query expression.
 
 ### Query Clauses
 
@@ -233,11 +233,11 @@ Person[] outputPersonList =
 
 #### 'Select` Clause 
 
-The `select` clause is a mandatory clause in query expressions that are used for projection. You can use this clause to create values required to generate iterators such as list, table, XML, string, and stream. 
+The `select` clause is mandatory in query expressions that are used for projection. You can use this clause to create values required to generate iterators such as list, table, XML, string, and stream. 
 
 **List as an Output**
 
-The `select` clause of the example below creates a record that allows to generate a list as an output.
+The `select` clause of the example below creates a record that allows generating a list as an output.
 
 ```ballerina
 Report[] reportList = from var student in studentList
@@ -364,7 +364,7 @@ service emart on new http:Listener(9090) {
     }
 ```
 
-2. Manipulate he product details array (iterator) using query expressions to find the price of each product in the iterator. As per the query, you only consider the grocery products. In this process, there is a `join` with the table, which contains the product prices.
+2. Manipulate the product details array (iterator) using query expressions to find the price of each product in the iterator. As per the query, you only consider the grocery products. In this process, there is a `join` with the table, which contains the product prices.
 
 ```ballerina
 ProductAmount[] output = from var product in products
@@ -479,7 +479,7 @@ Follow the steps below to try out the above language integrated query example.
 
 2. Copy the Ballerina code above and create an `order_service.bal` file.
 
-3. Eecute the command below to start the HTTP service, which accepts product order requests.
+3. Execute the command below to start the HTTP service, which accepts product order requests.
 
 ```bash
 bal run order_service.bal

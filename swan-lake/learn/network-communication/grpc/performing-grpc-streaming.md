@@ -10,7 +10,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/grpc/performing-grpc-streaming
 ---
 
->**Info:** gRPC supports both client and bi-directional streaming. In client streaming, the client writes a sequence of messages and sends them to the server via a stream. Once the client has finished writing the messages, it waits for the server to read them and return a response. In bi-directional streaming, the client and server each sends a sequence of messages using read-write streams that operate independently allowing them to read and write in any order.
+>**Info:** gRPC supports both client and bi-directional streaming. In client streaming, the client writes a sequence of messages and sends them to the server via a stream. Once the client has finished writing the messages, it waits for the server to read them and return a response. In bi-directional streaming, the client and server each send a sequence of messages using read-write streams that operate independently allowing them to read and write in any order.
 
 
 ## Implementing Bi-Directional Streaming
@@ -34,9 +34,9 @@ service StreamingCalcService {
 }
 ```
 
-The above definitionintroduces the stream qualifier for the method parameters and the return types. This signifies that the parameter/return value will be sent as a stream of individual values. 
+The above definition introduces the stream qualifier for the method parameters and the return types. This signifies that the parameter/return value will be sent as a stream of individual values. 
 
-The `sum` method takes in a stream of int64 values, and returns a single int64 value. The `incrementalSum` method takes in and returns a stream of int64 values, which contain the individual results for each intermediate sum value in the calculation. 
+The `sum` method takes in a stream of int64 values and returns a single int64 value. The `incrementalSum` method takes in and returns a stream of int64 values, which contain the individual results for each intermediate sum value in the calculation. 
 
 ## Implementing the Service and Client
 
@@ -54,14 +54,14 @@ Created new Ballerina package 'service' at service.
 Created new Ballerina package 'client' at client.
 ```
 
-3. Execute the `bal grpc --mode service --input streaming_calc.proto --output service/` to ecxtract the library files of the service. You view the output below.
+3. Execute the `bal grpc --mode service --input streaming_calc.proto --output service/` to extract the library files of the service. You view the output below.
 
 ```bash
 Successfully extracted library files.
 Successfully generated ballerina file.
 ```
 
-4. Execute the `bal grpc --mode client --input streaming_calc.proto --output client/` to ecxtract the library files of the client. You view the output below.
+4. Execute the `bal grpc --mode client --input streaming_calc.proto --output client/` to extract the library files of the client. You view the output below.
 
 ```bash
 Successfully extracted library files.
@@ -137,7 +137,7 @@ service object {} StreamingCalcServiceMessageListener = service object {
 };
 ```
 
->**Info:** In the above implementation, the `StreamingCalcServiceMessageListener` service is created along with the client code. This service is used as a callback for processing a streaming result from the remote service. A `grpc:StreamingClient` object is alsom provided when invoking the remote method of the service. This client is used to send streaming values to the active service request.
+>**Info:** In the above implementation, the `StreamingCalcServiceMessageListener` service is created along with the client code. This service is used as a callback for processing a streaming result from the remote service. A `grpc:StreamingClient` object is also provided when invoking the remote method of the service. This client is used to send streaming values to the active service request.
 
 ## Performing Bi-Directional Streaming
 

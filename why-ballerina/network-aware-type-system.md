@@ -102,8 +102,8 @@ io:println("Door - Open: ", eds2.open, " Locked: ", eds2.locked);
 |};
 ...
 Result[] results = from var person in persons
+                       let int lgrade = (grades[person.name] ?: 0),
                        where lgrade > 75
-                           let int lgrade = (grades[person.name] ?: 0),
                            string targetCollege = "Stanford"
                            select {
                                name: person.name,
@@ -199,30 +199,20 @@ name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
                               <p>
                                  The type system features for records in Ballerina can be used when implementing <a href="https://ballerina.io/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina: 
                               </p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client asianRecordsDB = new("http://example.com/");
- 
-@http:ServiceConfig {
-   basePath: "/"
-}
-service RecordService on new http:Listener(8080) {
- 
-   @http:ResourceConfig {
-       path: "/record",
-       body: "entry"
-   }
-   resource function process(http:Caller caller, http:Request request,
-                             Person entry) returns error? {
-       if entry?.ethnicity == "Asian" {
-           io:println("Asian Record: ", entry);
-           json jsonPayload = check json.constructFrom(entry);
-           _ = check asianRecordsDB->post("/store",
-                                          <@untainteD> jsonPayload);
-       } else {
-           io:println("Non-Asian Record: ", entry);
-       }
-       check caller->respond();
-   }
- 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client asianRecordsDB = check new ("http://example.com/");
+
+service / on new http:Listener(8080) {
+
+    resource function get 'record(@http:Payload {} Person entry) returns error? {
+        if entry?.ethnicity == "Asian" {
+            io:println("Asian Record: ", entry);
+            json jsonPayload = check entry.cloneWithType(json);
+            _ = check asianRecordsDB->post("/store", <@untainted>jsonPayload);
+        } else {
+            io:println("Non-Asian Record: ", entry);
+        }
+    }
+
 }
 </code></pre>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ bal run sample.bal 

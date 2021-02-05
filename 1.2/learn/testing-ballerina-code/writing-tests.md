@@ -8,7 +8,7 @@ active: writing-tests
 intro: The sections below include information about writing tests in Ballerina.
 redirect_from:
   - /v1-2/learn/testing-ballerina-code/writing-tests
-  - /learn/testing-ballerina-code/writing-tests
+  - /1.2/learn/testing-ballerina-code/writing-tests
 ---
 
 ## Project Structure

@@ -7,11 +7,11 @@ permalink: /1.2/learn/structuring-ballerina-code/
 active: structuring-ballerina-code
 intro: This document demonstrates the development of a Ballerina project and shows how to use the `Ballerina Tool` to fetch, build, and install Ballerina modules. 
 redirect_from:
-  - /learn/how-to-structure-ballerina-code
-  - /learn/how-to-structure-ballerina-code/
+  - /1.2/learn/how-to-structure-ballerina-code
+  - /1.2/learn/how-to-structure-ballerina-code/
   - /v1-2/learn/how-to-structure-ballerina-code
   - /v1-2/learn/how-to-structure-ballerina-code/
-  - /learn/structuring-ballerina-code
+  - /1.2/learn/structuring-ballerina-code
 ---
 
 ## Organizing Your Code

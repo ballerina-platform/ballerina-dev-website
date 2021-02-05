@@ -7,19 +7,19 @@ intro: This option allows you to run all the tests that belong to multiple modul
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests
   - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests/
-  - /learn/tools-ides/vscode-plugin/run-all-tests
-  - /learn/tools-ides/vscode-plugin/run-all-tests/
+  - /1.2/learn/tools-ides/vscode-plugin/run-all-tests
+  - /1.2/learn/tools-ides/vscode-plugin/run-all-tests/
   - /v1-2/learn/vscode-plugin/run-all-tests/
   - /v1-2/learn/vscode-plugin/run-all-tests
-  - /learn/vscode-plugin/run-all-tests/
-  - /learn/vscode-plugin/run-all-tests
-  - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests
-  - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
-  - /learn/setting-up-visual-studio-code/run-all-tests
-  - /learn/run-all-tests
-  - /learn/run-all-tests/
-  - /learn/getting-started/run-all-tests
-  - /learn/getting-started/run-all-tests/
+  - /1.2/learn/vscode-plugin/run-all-tests/
+  - /1.2/learn/vscode-plugin/run-all-tests
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/run-all-tests
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
+  - /1.2/learn/setting-up-visual-studio-code/run-all-tests
+  - /1.2/learn/run-all-tests
+  - /1.2/learn/run-all-tests/
+  - /1.2/learn/getting-started/run-all-tests
+  - /1.2/learn/getting-started/run-all-tests/
 ---
 
 ## Running All Tests 

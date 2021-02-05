@@ -7,17 +7,17 @@ intro: The VS Code Ballerina extension provides the Ballerina development capabi
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin
   - /v1-2/learn/tools-ides/vscode-plugin/
-  - /learn/tools-ides/vscode-plugin
-  - /learn/tools-ides/vscode-plugin/
+  - /1.2/learn/tools-ides/vscode-plugin
+  - /1.2/learn/tools-ides/vscode-plugin/
   - /v1-2/learn/vscode-plugin
   - /v1-2/learn/vscode-plugin/
-  - /learn/vscode-plugin/
-  - /learn/vscode-plugin
-  - /learn/tools-ides/setting-up-visual-studio-code
-  - /learn/tools-ides/setting-up-visual-studio-code/
-  - /learn/setting-up-visual-studio-code
-  - /learn/getting-started/setting-up-visual-studio-code
-  - /learn/getting-started/setting-up-visual-studio-code/
+  - /1.2/learn/vscode-plugin/
+  - /1.2/learn/vscode-plugin
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/
+  - /1.2/learn/setting-up-visual-studio-code
+  - /1.2/learn/getting-started/setting-up-visual-studio-code
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/
 ---
 
 ## Downloading VS Code 

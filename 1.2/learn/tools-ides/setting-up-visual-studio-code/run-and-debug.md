@@ -7,19 +7,19 @@ intro: The VS Code Ballerina extension gives you the same debugging experience a
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug
   - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug/
-  - /learn/tools-ides/vscode-plugin/run-and-debug/
-  - /learn/tools-ides/vscode-plugin/run-and-debug
+  - /1.2/learn/tools-ides/vscode-plugin/run-and-debug/
+  - /1.2/learn/tools-ides/vscode-plugin/run-and-debug
   - /v1-2/learn/vscode-plugin/run-and-debug/
   - /v1-2/learn/vscode-plugin/run-and-debug
-  - /learn/vscode-plugin/run-and-debug/
-  - /learn/vscode-plugin/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
-  - /learn/setting-up-visual-studio-code/run-and-debug
-  - /learn/run-and-debug
-  - /learn/run-and-debug/
-  - /learn/getting-started/run-and-debug/
-  - /learn/getting-started/run-and-debug
+  - /1.2/learn/vscode-plugin/run-and-debug/
+  - /1.2/learn/vscode-plugin/run-and-debug
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/run-and-debug
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
+  - /1.2/learn/setting-up-visual-studio-code/run-and-debug
+  - /1.2/learn/run-and-debug
+  - /1.2/learn/run-and-debug/
+  - /1.2/learn/getting-started/run-and-debug/
+  - /1.2/learn/getting-started/run-and-debug
 ---
 
 ## Starting a Debug Session

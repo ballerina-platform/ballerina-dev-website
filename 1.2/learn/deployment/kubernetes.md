@@ -7,7 +7,7 @@ permalink: /1.2/learn/deployment/kubernetes/
 active: kubernetes
 intro: The Kubernetes builder extension offers native support for running Ballerina programs on Kubernetes with the use of annotations that you can include as part of your service code.
 redirect_from:
-  - /learn/deployment/kubernetes
+  - /1.2/learn/deployment/kubernetes
 ---
 
 The Kubernetes builder extension takes care of the creation of the Docker images, so you don't need to explicitly create Docker images prior to deployment on Kubernetes.

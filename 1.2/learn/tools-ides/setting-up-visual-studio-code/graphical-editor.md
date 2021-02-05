@@ -7,19 +7,19 @@ intro: A rich set of visualization tools will immensely enhance your development
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor
   - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor/
-  - /learn/vscode-plugin/graphical-editor
-  - /learn/vscode-plugin/graphical-editor/
+  - /1.2/learn/vscode-plugin/graphical-editor
+  - /1.2/learn/vscode-plugin/graphical-editor/
   - /v1-2/learn/vscode-plugin/graphical-editor/
   - /v1-2/learn/vscode-plugin/graphical-editor
-  - /learn/tools-ides/vscode-plugin/graphical-editor/
-  - /learn/tools-ides/vscode-plugin/graphical-editor
-  - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor
-  - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
-  - /learn/setting-up-visual-studio-code/graphical-editor
-  - /learn/graphical-editor
-  - /learn/graphical-editor/
-  - /learn/getting-started/graphical-editor/
-  - /learn/getting-started/graphical-editor
+  - /1.2/learn/tools-ides/vscode-plugin/graphical-editor/
+  - /1.2/learn/tools-ides/vscode-plugin/graphical-editor
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/graphical-editor
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
+  - /1.2/learn/setting-up-visual-studio-code/graphical-editor
+  - /1.2/learn/graphical-editor
+  - /1.2/learn/graphical-editor/
+  - /1.2/learn/getting-started/graphical-editor/
+  - /1.2/learn/getting-started/graphical-editor
 ---
 
 ## Launching the Graphical View

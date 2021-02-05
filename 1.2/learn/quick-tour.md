@@ -7,11 +7,11 @@ permalink: /1.2/learn/quick-tour/
 active: quick-tour
 intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
-  - /learn/quick-tour
+  - /1.2/learn/quick-tour
   - /v1-2/learn/quick-tour
   - /v1-2/learn/quick-tour/
-  - /learn/getting-started/quick-tour/
-  - /learn/getting-started/quick-tour
+  - /1.2/learn/getting-started/quick-tour/
+  - /1.2/learn/getting-started/quick-tour
 ---
 
 ## Installing Ballerina

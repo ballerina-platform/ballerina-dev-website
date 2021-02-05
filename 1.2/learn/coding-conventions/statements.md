@@ -7,9 +7,9 @@ intro: The sections below include the coding conventions with respect to stateme
 redirect_from:
   - /v1-2/learn/style-guide/statements/
   - /v1-2/learn/style-guide/statements
-  - /learn/style-guide/statements
-  - /learn/style-guide/statements/
-  - /learn/coding-conventions/statements
+  - /1.2/learn/style-guide/statements
+  - /1.2/learn/style-guide/statements/
+  - /1.2/learn/coding-conventions/statements
 ---
 
 ## If Statement

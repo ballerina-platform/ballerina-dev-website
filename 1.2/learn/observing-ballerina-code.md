@@ -7,13 +7,13 @@ permalink: /1.2/learn/observing-ballerina-code/
 active: observing-ballerina-code
 intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs. 
 redirect_from:
-  - /learn/how-to-observe-ballerina-code
-  - /learn/how-to-observe-ballerina-code/
+  - /1.2/learn/how-to-observe-ballerina-code
+  - /1.2/learn/how-to-observe-ballerina-code/
   - /v1-2/learn/how-to-observe-ballerina-code
   - /v1-2/learn/how-to-observe-ballerina-code/
-  - /learn/how-to-observe-ballerina-services/
-  - /learn/how-to-observe-ballerina-services
-  - /learn/observing-ballerina-code
+  - /1.2/learn/how-to-observe-ballerina-services/
+  - /1.2/learn/how-to-observe-ballerina-services
+  - /1.2/learn/observing-ballerina-code
 ---
 
 ## Providing Observability in Ballerina

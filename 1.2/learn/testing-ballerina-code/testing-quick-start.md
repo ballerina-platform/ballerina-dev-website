@@ -9,11 +9,11 @@ intro: The Ballerina Language has a built-in robust test framework, which allows
 redirect_from:
   - /v1-2/learn/how-to-test-ballerina-code/
   - /v1-2/learn/how-to-test-ballerina-code
-  - /learn/how-to-test-ballerina-code/
-  - /learn/how-to-test-ballerina-code
-  - /learn/testing-ballerina-code/testing-quick-start
-  - /learn/testing-ballerina-code/
-  - /learn/testing-ballerina-code
+  - /1.2/learn/how-to-test-ballerina-code/
+  - /1.2/learn/how-to-test-ballerina-code
+  - /1.2/learn/testing-ballerina-code/testing-quick-start
+  - /1.2/learn/testing-ballerina-code/
+  - /1.2/learn/testing-ballerina-code
 ---
 
 ## Writing a simple function

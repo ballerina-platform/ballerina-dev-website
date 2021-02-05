@@ -7,19 +7,19 @@ permalink: /1.2/learn/
 redirect_from:
   - /v1-2/learn/tools-ides
   - /v1-2/learn/tools-ides/
-  - /learn
+  - /1.2/learn
   - /v1-2/learn
   - /v1-2/learn/
-  - /learn/faqs
-  - /learn/faqs/
+  - /1.2/learn/faqs
+  - /1.2/learn/faqs/
   - /v1-2/learn/faqs
   - /v1-2/learn/faqs/
-  - /learn/faq
-  - /learn/faq/
+  - /1.2/learn/faq
+  - /1.2/learn/faq/
   - /v1-2/learn/faq
   - /v1-2/learn/faq/
-  - /learn/by-guide
-  - /learn/by-guide/
+  - /1.2/learn/by-guide
+  - /1.2/learn/by-guide/
   - /v1-2/learn/by-guide
   - /v1-2/learn/by-guide/
 ---

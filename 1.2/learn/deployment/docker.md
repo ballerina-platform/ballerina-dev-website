@@ -7,10 +7,10 @@ permalink: /1.2/learn/deployment/docker/
 active: docker
 intro: Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud. 
 redirect_from:
-  - /learn/deployment/docker
-  - /learn/deploying-ballerina-programs-in-the-cloud
-  - /learn/deploying-ballerina-programs-in-the-cloud/
-  - /learn/deployment/
+  - /1.2/learn/deployment/docker
+  - /1.2/learn/deploying-ballerina-programs-in-the-cloud
+  - /1.2/learn/deploying-ballerina-programs-in-the-cloud/
+  - /1.2/learn/deployment/
 ---
 
 To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, youhave to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings. 

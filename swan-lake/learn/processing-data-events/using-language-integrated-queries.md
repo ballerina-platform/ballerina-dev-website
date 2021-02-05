@@ -350,18 +350,15 @@ Follow the steps below to write an integrated query related to an online product
 >**Info:** The payload is a JSON array that represents the product details.
 
 ```ballerina
-@http:ServiceConfig {}
-service emart on new http:Listener(9090) {
+import ballerina/http;
  
-    @http:ResourceConfig {
-        methods: ["POST"],
-        body: "products",
-        consumes: ["application/json"]
-    }
-    resource function orderProduct(http:Caller caller, http:Request req,
-                                 Product[] products) {
-     …
-    }
+service /emart on new http:Listener(9090) {
+ 
+   resource function post orderProduct(@http:Payload {} Product[] products) {
+    …
+   }
+ 
+}
 ```
 
 2. Manipulate the product details array (iterator) using query expressions to find the price of each product in the iterator. As per the query, you only consider the grocery products. In this process, there is a `join` with the table, which contains the product prices.
@@ -379,13 +376,13 @@ ProductAmount[] output = from var product in products
                               };
 ```
 
-3. Use an integrated query to calculate the total bill amount.
+3. Use the integrated query below to calculate the total bill amount.
 
 ```ballerina
-= from var productAmount in output
-                do {
-                    totalBillAmount = totalBillAmount + productAmount.TotalAmount;                    
-                };  
+ var result = from var productAmount in output
+                    do {
+                        totalBillAmount = totalBillAmount + productAmount.TotalAmount;                    
+                    }; 
 ```
 
 4. Send the total bill amount as a response to the HTTP request made.
@@ -400,74 +397,57 @@ The below is the complete Ballerina code for writing the integrated query for th
 
 ```ballerina
 import ballerina/http;
-import ballerina/log;
 import ballerina/io;
  
 type Product record {
-    string Name;
-    int Id;
-    int Quantity;
-    string ShoppingCardId;
-    string Category;
+   string Name;
+   int Id;
+   int Quantity;
+   string ShoppingCardId;
+   string Category;
 };
  
 type PriceInfo record {
-    int Id;
-    float Price;
+   int Id;
+   float Price;
 };
  
 type ProductAmount record {
-    string ShoppingCardId;
-    string Name;
-    float TotalAmount;
+   string ShoppingCardId;
+   string Name;
+   float TotalAmount;
 };
  
 table<PriceInfo> priceInfoTable = loadPriceInfo();
  
-@http:ServiceConfig {}
-service emart on new http:Listener(9090) {
+service /emart on new http:Listener(9090) {
  
-    @http:ResourceConfig {
-        methods: ["POST"],
-        body: "products",
-        consumes: ["application/json"]
-    }
-    resource function orderProduct(http:Caller caller, http:Request req,
-                                 Product[] products) {
+   resource function post orderProduct(@http:Payload {} Product[] products) returns string {
+       ProductAmount[] output = from var product in products
+                               where product.Category == "Grocery"
+                               join var priceInfo in priceInfoTable
+                                   on product.Id equals priceInfo.Id
+                               order by product.Name ascending      
+                               select {
+                                   ShoppingCardId: product.ShoppingCardId,
+                                   Name: product.Name,
+                                   TotalAmount: product.Quantity * priceInfo.Price
+                               };
+       float totalBillAmount = 0;
+       var result = from var productAmount in output
+                   do {
+                       totalBillAmount = totalBillAmount + productAmount.TotalAmount;                   
+                   };
+       io:println(output);
  
-        ProductAmount[] output = from var product in products
-                                where product.Category == "Grocery"
-                                join var priceInfo in priceInfoTable
-                                    on product.Id equals priceInfo.Id 
-                                order by product.Name ascending       
-                                select {
-                                    ShoppingCardId: product.ShoppingCardId,
-                                    Name: product.Name,
-                                    TotalAmount: product.Quantity * priceInfo.Price
-                                };
- 
-        float totalBillAmount = 0;
-        _ = from var productAmount in output
-                    do {
-                        totalBillAmount = totalBillAmount + productAmount.TotalAmount;                    
-                    };                          
- 
-        io:println(output.toString());
- 
-        http:Response res = new;
-        res.setPayload("Order is accepted, Total grocery bill amount is " + totalBillAmount.toString());
- 
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError(result.message(), result);
-        }
-    }
+       return string `Order is accepted; total grocery bill amount is + ${totalBillAmount}`;
+   }
 }
  
 function loadPriceInfo() returns table<PriceInfo> {
-    table<PriceInfo> productDetails = table [{Id: 2345, Price: 120.00},
-                                            {Id: 3256, Price: 23.00}];
-    return productDetails;
+   table<PriceInfo> productDetails = table [{Id: 2345, Price: 120.00},
+                                           {Id: 3256, Price: 23.00}];
+   return productDetails;
 }
 ```
 
@@ -491,7 +471,11 @@ bal run order_service.bal
 curl -v http://localhost:9090/emart/orderProduct -d '[{ "Name": "Flour", "Id": 2345, "Quantity": 2, "ShoppingCardId": "AXYN34523", "Category": "Grocery"}, { "Name": "Carrot", "Id": 3234, "Quantity": 1, "ShoppingCardId": "AXYN34523", "Category": "Vegetable"}]' -H "Content-Type:application/json"
 ```
 
-You will receive a response that gives the total grocery bill amount.
+You will receive a response like below that gives the total grocery bill amount.
+
+```bash
+Order is accepted; total grocery bill amount is + 240.0
+```
 
 
 

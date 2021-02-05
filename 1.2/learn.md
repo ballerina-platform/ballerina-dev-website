@@ -29,8 +29,8 @@ redirect_from:
    <p>Download Ballerina, set the tools up, and take the Quick Tour.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
+   <li><a href="/1.2/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
+    <li><a href="/1.2/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
    </ul>
 
 </div>
@@ -40,7 +40,7 @@ redirect_from:
     <p>Try out the Ballerina By Examples and use the Playground.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/by-example" class="cGreenLinkArrow">Ballerina By Examples</a></li>
+   <li><a href="/1.2/learn/by-example" class="cGreenLinkArrow">Ballerina By Examples</a></li>
      <li><a href="https://play.ballerina.io/" class="cGreenLinkArrow">Try Ballerina</a></li>
    </ul>
 
@@ -52,14 +52,14 @@ redirect_from:
 
    <ul class="cLearnLandingLinks">
    <!--<li><a href="/learn/installing-ballerina//" class="cGreenLinkArrow">Ballerina User Guide</a></li>-->
-   <li><a href="/learn/using-the-cli-tools/" class="cGreenLinkArrow">Ballerina CLI Tools</a></li>
-   <li><a href="/learn/structuring-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
-    <li><a href="/learn/deployment/docker/" class="cGreenLinkArrow">Deployment</a></li>
-    <li><a href="/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
-    <li><a href="/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
-    <li><a href="/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
-    <li><a href="/learn/testing-ballerina-code/testing-quick-start" class="cGreenLinkArrow">Testing Ballerina Code</a></li>
-    <li><a href="/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
+   <li><a href="/1.2/learn/using-the-cli-tools/" class="cGreenLinkArrow">Ballerina CLI Tools</a></li>
+   <li><a href="/1.2/learn/structuring-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
+    <li><a href="/1.2/learn/deployment/docker/" class="cGreenLinkArrow">Deployment</a></li>
+    <li><a href="/1.2/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
+    <li><a href="/1.2/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
+    <li><a href="/1.2/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
+    <li><a href="/1.2/learn/testing-ballerina-code/testing-quick-start" class="cGreenLinkArrow">Testing Ballerina Code</a></li>
+    <li><a href="/1.2/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
    </ul>
 
 </div>
@@ -69,7 +69,7 @@ redirect_from:
    <p>Master Ballerina by reading through the reference materials.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">Standard Library (API Documentation)</a></li>
+   <li><a href="/1.2/learn/api-docs/ballerina/" class="cGreenLinkArrow">Standard Library (API Documentation)</a></li>
    <li><a href="/spec/" class="cGreenLinkArrow">Language Specification</a></li>
     <!--<li><a href="/learn/style-guide/" class="cGreenLinkArrow">Style Guide</a></li>
     <li><a href="/learn/cli-commands/" class="cGreenLinkArrow">CLI Guide</a></li>-->

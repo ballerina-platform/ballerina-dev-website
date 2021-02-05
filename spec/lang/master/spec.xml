@@ -4053,7 +4053,6 @@ class="grammar"><dfn>const-expr</dfn> :=
    | <abbr>xml-template-expr</abbr>
    | <abbr>raw-template-expr</abbr>
    | <abbr>structural-constructor-expr</abbr>
-   | <abbr>error-constructor-expr</abbr>
    | <abbr>constant-reference-expr</abbr>
    | <abbr>type-cast-expr</abbr>
    | <abbr>unary-expr</abbr>

@@ -455,7 +455,7 @@ function loadPriceInfo() returns table<PriceInfo> {
 
 Follow the steps below to try out the above language integrated query example.
 
-1. [Download and install](/swan-lake/learn/installing-ballerina/#installing-ballerina-via-installers) Ballerina.
+1. [Download and install](/learn/installing-ballerina/#installing-ballerina-via-installers) Ballerina.
 
 2. Copy the Ballerina code above and create an `order_service.bal` file.
 

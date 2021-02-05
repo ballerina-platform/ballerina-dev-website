@@ -4,8 +4,8 @@ title: Docker Deployment
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/docker-deployment
 redirect_from:
-  - /v1-2/learn/by-example/docker-deployment
-  - /v1-2/learn/by-example/docker-deployment.html
+  - /vswan-lake/learn/by-example/docker-deployment
+  - /vswan-lake/learn/by-example/docker-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,23 +13,25 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">docker</span><span class="p">;</span>
+
+<span class="c1">//Adding the `@docker:Expose{}` annotation to a listener endpoint exposes the endpoint port.</span>
 <span class="nd">@docker:Expose {</span><span class="p">}</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="c1">//Adding the `@docker:Config{}` annotation to a service modifies the generated Docker image and Dockerfile.</span>
+<span class="c1">//This sample generates a Docker image as `helloworld:v1.0.0`.</span>
 <span class="nd">@docker:Config {</span>
+    <span class="c1">//Docker image name should be helloworld.</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;helloworld&quot;</span><span class="p">,</span>
+    <span class="c1">//Docker image version should be v1.0.</span>
     <span class="nx">tag</span><span class="p">:</span> <span class="s">&quot;v1.0&quot;</span>
 <span class="p">}</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/helloWorld&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">outboundEP</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Hello World from Docker ! \n&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="kd">service</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World from Docker! \n&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">responseResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseResult</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -45,7 +47,7 @@ redirect_from:
                             <p><p>Ballerina supports generating Docker images, Dockerfile based on annotations.
 A single Ballerina module is mapped to a single Docker Image.
 Docker should be configured to run the sample.<br/><br/>
-For more information, see the <a href="https://ballerina.io/learn/deployment/docker/">Docker Deployment Guide</a>.</p>
+For more information, see the <a href="https://ballerina.io/swan-lake/learn/deployment/docker/">Docker Deployment Guide</a>.</p>
 </p>
 
                         </td>
@@ -53,16 +55,16 @@ For more information, see the <a href="https://ballerina.io/learn/deployment/doc
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="testerina-group-tests.html">
+                                    <a class="prev" href="testerina-mocking-objects.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Group Tests</p>
+                                        <p>Object Mocking</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="kubernetes-deployment.html">
+                                    <a class="next" href="c2c-deployment.html">
                                         <span>NEXT ></span>
-                                        <p>Kubernetes Deployment</p>
+                                        <p>Code to Cloud Deployment</p>
                                     </a>
                                 </div>
                                 
@@ -78,15 +80,13 @@ For more information, see the <a href="https://ballerina.io/learn/deployment/doc
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-docker/tree/ballerina-1.2.x/docker-extension-examples/examples/docker-deployment"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
-                                        <!--<li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=dfc5f0045a00466a4a41c47eed85e215&file=docker_deployment.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>-->
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -196,17 +196,12 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    tag: &quot;v1.0&quot;
 }
-@http:ServiceConfig {
-    basePath: &quot;/helloWorld&quot;
-}
-service helloWorld on helloWorldEP {
-    resource function sayHello(http:Caller outboundEP, http:Request request) {
-        http:Response response = new;
-        response.setTextPayload(&quot;Hello World from Docker ! \n&quot;);
-        var responseResult = outboundEP-&gt;respond(response);
+service http:Service /helloWorld on helloWorldEP {
+    resource function get sayHello(http:Caller caller) {
+        var responseResult = caller-&gt;respond(&quot;Hello World from Docker! \n&quot;);
         if (responseResult is error) {
             error err = responseResult;
-            log:printError(&quot;Error sending response&quot;, err);
+            log:printError(&quot;Error sending response&quot;, err = err);
         }
     }
 }
@@ -262,7 +257,7 @@ service helloWorld on helloWorldEP {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Docker image and Dockerfile.
-$ ballerina build docker_deployment.bal
+$ bal build docker_deployment.bal
 Compiling source
 	docker_deployment.bal
 Generating executables
@@ -362,7 +357,7 @@ Hello World from Docker!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -4,49 +4,37 @@ title: Task Service Appointment
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/task-service-appointment
 redirect_from:
-  - /v1-2/learn/by-example/task-service-appointment
-  - /v1-2/learn/by-example/task-service-appointment.html
+  - /vswan-lake/learn/by-example/task-service-appointment
+  - /vswan-lake/learn/by-example/task-service-appointment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+
+<span class="c1">// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration) record of the task listener.</span>
 <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentConfiguration</span> <span class="nx">appointmentConfiguration</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">appointmentDetails</span><span class="p">:</span> <span class="s">&quot;* * * * * ?&quot;</span><span class="p">,</span>
-    <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="c1">// This CRON expression will schedule the appointment every second.</span>
+    <span class="nx">cronExpression</span><span class="p">:</span> <span class="s">&quot;* * * * * ?&quot;</span><span class="p">,</span>
+    <span class="c1">// Number of recurrences will limit the number of times the timer runs.</span>
+    <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">};</span>
-<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kd">service</span> <span class="nx">appointmentService</span> <span class="nx">on</span> <span class="nx">appointment</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">// Initialize the listener using the pre-defined configurations.</span>
+<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// Creating a service bound to the task listener.</span>
+<span class="kd">service</span> <span class="nx">on</span> <span class="nx">appointment</span> <span class="p">{</span>
+    <span class="c1">// This resource triggers when the appointment is due.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">reminderCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span><span class="p">,</span> <span class="nx">reminderCount</span><span class="p">);</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">task_service_appointment</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">28</span><span class="p">,</span><span class="mi">259</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">28</span><span class="p">,</span><span class="mi">260</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">0</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mo">004</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mo">004</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="mo">005</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="mo">006</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">34</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">34</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">6</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mo">003</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">7</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span><span class="mo">006</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span><span class="mo">006</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">8</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="mo">006</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="mo">007</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">9</span>
 </pre></div>
 
             </div>
@@ -56,11 +44,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Task Service Appointment</h2>
-                            <p><p>Task Appointment Services are used to schedule and execute tasks.
- An appointment should have an <code>appointmentData</code> field. It can be either a
- <code>string</code> representing a CRON expression or an <code>AppointmentData</code> record.
- An optional <code>noOfRecurrences</code> field can be used to provide the maximum
- number of times the appointment should run before shutting down.</p>
+                            <p><p>A task appointment service can be used to schedule an appointment. The task listener can be provided with an
+ appointment configuration that should have a <code>cronExpression</code> field. This is a <code>string</code> representing a
+ CRON expression. There is an optional
+ <code>noOfRecurrences</code> field that can be used to provide the maximum number of times
+ the appointment should run before shutting down.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/">Task module</a>.</p>
 </p>
 
                         </td>
@@ -93,11 +83,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/task-service-appointment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-service-appointment/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -132,6 +122,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -140,7 +132,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/task;
 </code></pre></div>
 
@@ -161,10 +153,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Task Appointment configuration record of the Task Listener.
- Task Appointment can either have a CRON expression (<code>string</code>) or an
- <code>AppointmentData</code> record for the <code>appointmentData</code> field. Optionally, a
- <code>noOfRecurrences</code> can be provided to limit the number of executions.</p>
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration"><code>task:AppointmentConfiguration</code></a> record of the task listener.</p>
 
                                         </div>
                                     </div>
@@ -175,7 +164,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    appointmentDetails: &quot;* * * * * ?&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    cronExpression: &quot;* * * * * ?&quot;,
 </code></pre></div>
 
                                 </td>
@@ -183,7 +172,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This cron expression will schedule the appointment every second.</p>
+                                            <p>This CRON expression will schedule the appointment every second.</p>
 
                                         </div>
                                     </div>
@@ -194,7 +183,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    noOfRecurrences: 10
+                                    <div class="highlight"><pre><code class=language-ballerina>    noOfRecurrences: 5
 };
 </code></pre></div>
 
@@ -222,7 +211,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the listener using pre defined configurations.</p>
+                                            <p>Initialize the listener using the pre-defined configurations.</p>
 
                                         </div>
                                     </div>
@@ -233,7 +222,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int reminderCount = 0;
 </code></pre></div>
 
                                 </td>
@@ -245,7 +234,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service appointmentService on appointment {
+                                    <div class="highlight"><pre><code class=language-ballerina>service on appointment {
 </code></pre></div>
 
                                 </td>
@@ -253,7 +242,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creating a service on the task Listener.</p>
+                                            <p>Creating a service bound to the task listener.</p>
 
                                         </div>
                                     </div>
@@ -263,13 +252,11 @@ import ballerina/task;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
-        log:printInfo(&quot;Cleaning up...&quot;);
-        log:printInfo(count.toString());
-        count = count + 1;
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onTrigger() {
+        reminderCount += 1;
+        io:println(&quot;Schedule is due - Reminder: &quot;, reminderCount);
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -281,6 +268,18 @@ import ballerina/task;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -302,28 +301,13 @@ import ballerina/task;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run task_service_appointment.bal
-2019-09-06 13:35:28,259 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:28,260 INFO  [ballerina/log] - 0
-2019-09-06 13:35:29,004 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:29,004 INFO  [ballerina/log] - 1
-2019-09-06 13:35:30,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:30,003 INFO  [ballerina/log] - 2
-2019-09-06 13:35:31,005 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:31,006 INFO  [ballerina/log] - 3
-2019-09-06 13:35:32,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:32,003 INFO  [ballerina/log] - 4
-2019-09-06 13:35:33,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:33,003 INFO  [ballerina/log] - 5
-2019-09-06 13:35:34,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:34,003 INFO  [ballerina/log] - 6
-2019-09-06 13:35:35,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:35,003 INFO  [ballerina/log] - 7
-2019-09-06 13:35:36,006 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:36,006 INFO  [ballerina/log] - 8
-2019-09-06 13:35:37,006 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:37,007 INFO  [ballerina/log] - 9
+# `.bal` file and execute the `bal run` command below.
+bal run task_service_appointment.bal
+Schedule is due - Reminder: 1
+Schedule is due - Reminder: 2
+Schedule is due - Reminder: 3
+Schedule is due - Reminder: 4
+Schedule is due - Reminder: 5
 </code></pre></div>
 
                                 </td>
@@ -331,8 +315,7 @@ ballerina run task_service_appointment.bal
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>onTrigger()</code> function is triggered every two seconds starting from the
- 0th second of a minute. The sample will print logs once every two seconds.</p>
+                                            <p>The <code>onTrigger()</code> function is triggered every second.</p>
 
                                         </div>
                                     </div>
@@ -359,7 +342,7 @@ ballerina run task_service_appointment.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

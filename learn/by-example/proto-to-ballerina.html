@@ -4,30 +4,13 @@ title: Proto To Ballerina
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/proto-to-ballerina
 redirect_from:
-  - /v1-2/learn/by-example/proto-to-ballerina
-  - /v1-2/learn/by-example/proto-to-ballerina.html
+  - /vswan-lake/learn/by-example/proto-to-ballerina
+  - /vswan-lake/learn/by-example/proto-to-ballerina.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="nx">syntax</span> <span class="p">=</span> <span class="s">&quot;proto3&quot;</span><span class="p">;</span><span class="kd">service</span> <span class="nx">helloWorld</span> <span class="p">{</span>
-    <span class="nx">rpc</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">HelloRequest</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">HelloResponse</span><span class="p">);</span>
-    <span class="nx">rpc</span> <span class="nx">bye</span><span class="p">(</span><span class="nx">ByeRequest</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">ByeResponse</span><span class="p">);</span>
-<span class="p">}</span><span class="kt">message</span> <span class="nx">HelloRequest</span> <span class="p">{</span>
-	<span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">message</span> <span class="nx">HelloResponse</span> <span class="p">{</span>
-	<span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">message</span> <span class="nx">ByeRequest</span> <span class="p">{</span>
-	<span class="kt">string</span> <span class="nx">greet</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">message</span> <span class="nx">ByeResponse</span> <span class="p">{</span>
-	<span class="kt">string</span> <span class="nx">say</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">tools</span> <span class="nx">distribution</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="nx">mock</span> <span class="kd">service</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">grpc</span> <span class="o">--</span><span class="nx">input</span> <span class="nx">proto_to_ballerina</span><span class="p">.</span><span class="nx">proto</span> <span class="o">--</span><span class="nx">mode</span> <span class="kd">service</span> <span class="o">--</span><span class="nx">output</span> <span class="kd">service</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">tools</span> <span class="nx">distribution</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">endpoint</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">stub</span> <span class="nx">file</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">grpc</span> <span class="o">--</span><span class="nx">input</span> <span class="nx">proto_to_ballerina</span><span class="p">.</span><span class="nx">proto</span> <span class="o">--</span><span class="nx">mode</span> <span class="nx">client</span> <span class="o">--</span><span class="nx">output</span> <span class="nx">client</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">tools</span> <span class="nx">distribution</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="nx">stub</span> <span class="nx">file</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">grpc</span> <span class="o">--</span><span class="nx">input</span> <span class="nx">proto_to_ballerina</span><span class="p">.</span><span class="nx">proto</span>
+                <div class="highlight"><pre>
 </pre></div>
 
             </div>
@@ -48,7 +31,10 @@ redirect_from:
  the Ballerina client/service and the stub files are generated inside <code>temp</code> directory in the current location.
  This path must be a project directory.
  <code>--mode</code> The mode (client or server) to generate code samples.
- If no value is specified for this parameter, only the stub file will be generated.</p>
+ If no value is specified for this parameter, only the stub file will be generated.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/grpc/latest/grpc/">GRPC module</a> and
+ <a href="https://ballerina.io/swan-lake/learn/how-to-generate-code-for-protocol-buffers/">How to generate Ballerina code for Protocol Buffer Definition</a>.</p>
 </p>
 
                         </td>
@@ -81,11 +67,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/proto-to-ballerina/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/proto-to-ballerina/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -190,7 +176,7 @@ message ByeResponse {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the mock service.
-ballerina grpc --input proto_to_ballerina.proto --mode service --output service
+bal grpc --input proto_to_ballerina.proto --mode service --output service
 </code></pre></div>
 
                                 </td>
@@ -203,7 +189,7 @@ ballerina grpc --input proto_to_ballerina.proto --mode service --output service
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the client endpoint and the stub file.
-ballerina grpc --input proto_to_ballerina.proto --mode client --output client
+bal grpc --input proto_to_ballerina.proto --mode client --output client
 </code></pre></div>
 
                                 </td>
@@ -216,7 +202,7 @@ ballerina grpc --input proto_to_ballerina.proto --mode client --output client
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the stub file.
-ballerina grpc --input proto_to_ballerina.proto
+bal grpc --input proto_to_ballerina.proto
 </code></pre></div>
 
                                 </td>
@@ -244,7 +230,7 @@ ballerina grpc --input proto_to_ballerina.proto
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

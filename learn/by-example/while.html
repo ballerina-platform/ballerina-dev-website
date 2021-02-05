@@ -4,43 +4,43 @@ title: While
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/while
 redirect_from:
-  - /v1-2/learn/by-example/while
-  - /v1-2/learn/by-example/while.html
+  - /vswan-lake/learn/by-example/while
+  - /vswan-lake/learn/by-example/while.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// This is a basic `while` loop.</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
         <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kt">int</span> <span class="nx">j</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">j</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>
-        <span class="nx">j</span> <span class="p">=</span> <span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">string</span> <span class="nx">input</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Enter age: (q to exit): &quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">input</span> <span class="o">==</span> <span class="s">&quot;q&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// The `break` statement can be used to break the loop.</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="kt">int</span> <span class="nx">k</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">k</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">k</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">k</span> <span class="p">=</span> <span class="nx">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nx">value</span> <span class="p">=</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">age</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid value, try again.&quot;</span><span class="p">);</span>
+            <span class="c1">// The `continue` statement can be used to move to the</span>
+            <span class="c1">// next loop iteration immediately.</span>
             <span class="k">continue</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
-        <span class="nx">k</span> <span class="p">=</span> <span class="nx">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Enter name: &quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="p">((</span><span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot; can&quot;</span> <span class="p">:</span> <span class="s">&quot; cannot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; vote!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="k">while</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">0</span>
-<span class="mi">1</span>
-<span class="mi">2</span>
-<span class="mi">0</span>
-<span class="mi">1</span>
-<span class="mi">2</span>
-<span class="mi">3</span>
-<span class="mi">4</span>
+
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -84,15 +84,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/while/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=fd1a9ce1e9e5f779f879c5c26990258c&file=while.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/while/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -110,8 +106,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -182,10 +176,9 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int j = 0;
-    while (j &lt; 5) {
-        io:println(j);
-        j = j + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (true) {
+        string input = io:readln(&quot;Enter age: (q to exit): &quot;);
+        if (input == &quot;q&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -197,10 +190,14 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (j == 3) {
-            break;
+                                    <div class="highlight"><pre><code class=language-ballerina>            break;
         }
-    }
+        var value = int:fromString(input);
+        int age;
+        if (value is int) {
+            age = value;
+        } else {
+            io:println(&quot;Invalid value, try again.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -216,26 +213,14 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int k = 0;
-    while (k &lt; 5) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (k &lt; 3) {
-            k = k + 1;
-            continue;
+                                    <div class="highlight"><pre><code class=language-ballerina>            continue;
         }
+        string name = io:readln(&quot;Enter name: &quot;);
+        io:println(name + ((age &gt;= 18) ? &quot; can&quot; : &quot; cannot&quot;) + &quot; vote!&quot;);
+    }
 </code></pre></div>
 
                                 </td>
@@ -255,10 +240,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(k);
-        k = k + 1;
-    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -284,16 +266,20 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-ballerina run while.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run while.bal
 0
 1
 2
-0
-1
-2
-3
-4
+Enter age: (q to exit): 10b
+Invalid value, try again.
+Enter age: (q to exit): 15
+Enter name: Jack
+Jack cannot vote!
+Enter age: (q to exit): 19
+Enter name: Jane
+Jane can vote!
+Enter age: (q to exit): q
 </code></pre></div>
 
                                 </td>
@@ -321,7 +307,7 @@ ballerina run while.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

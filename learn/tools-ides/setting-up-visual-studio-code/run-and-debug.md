@@ -1,25 +1,19 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Run and Debug
-permalink: /learn/setting-up-visual-studio-code/run-and-debug/
+permalink: /learn/getting-started/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug
 intro: The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug
-  - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug/
-  - /learn/tools-ides/vscode-plugin/run-and-debug/
-  - /learn/tools-ides/vscode-plugin/run-and-debug
-  - /v1-2/learn/vscode-plugin/run-and-debug/
-  - /v1-2/learn/vscode-plugin/run-and-debug
-  - /learn/vscode-plugin/run-and-debug/
-  - /learn/vscode-plugin/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
-  - /learn/setting-up-visual-studio-code/run-and-debug
-  - /learn/run-and-debug
-  - /learn/run-and-debug/
-  - /learn/getting-started/run-and-debug/
-  - /learn/getting-started/run-and-debug
+  - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug
+  - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug/
+  - /swan-lake/learn/vscode-plugin/run-and-debug/
+  - /swan-lake/learn/vscode-plugin/run-and-debug
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-and-debug
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
+  - /swan-lake/learn/setting-up-visual-studio-code/run-and-debug
+  - /swan-lake/learn/run-and-debug
+  - /swan-lake/learn/run-and-debug/
 ---
 
 ## Starting a Debug Session
@@ -35,7 +29,7 @@ Follow the steps below to start a debug session.
 
 You view the output in the **DEBUG CONSOLE**.
 
-![Run and debug](/learn/images/run-and-debug.gif)
+![Run and debug](/swan-lake/learn/images/run-and-debug.gif)
 
 For more information on debugging your code using VS Code, go to [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
@@ -47,5 +41,5 @@ For more information on debugging your code using VS Code, go to [VS Code Docume
 
 ## What's Next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Graphical View](/learn/vscode-plugin/graphical-editor).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin).
+ - For information on the next capability of the VS Code Ballerina extension, see [Graphical View](/swan-lake/learn/vscode-plugin/graphical-editor).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/swan-lake/learn/vscode-plugin).

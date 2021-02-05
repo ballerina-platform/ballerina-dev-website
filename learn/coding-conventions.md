@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Coding Conventions
 description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
 keywords: ballerina, programming language, ballerina style guide
@@ -7,11 +7,9 @@ permalink: /learn/coding-conventions/
 active: coding-conventions
 intro: This Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
 redirect_from:
-  - /learn/style-guide
-  - /learn/style-guide/
-  - /v1-2/learn/style-guide
-  - /v1-2/learn/style-guide/
-  - /learn/coding-conventions
+  - /swan-lake/learn/style-guide
+  - /swan-lake/learn/style-guide/
+  - /swan-lake/learn/coding-conventions
 ---
 
 > You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
@@ -67,16 +65,19 @@ map<string> names = {};
 
 ```ballerina
 [string, int, boolean] tupleVar = ["", 0, false];
-    
+
 int[] arrayOfInteger = [1, 2, 3, 4];
-    
+
 map<string> stringMap = {one: st1, two: st2, three: st3};
+
+Person personRecord = {name: "marcus", id: 0};
+
+function foo(string name, int id) {
+}
     
-Person personRecord = {name:"marcus", id: 0};
-    
-function foo(string name, int id) {}
-    
-service hello on ep1, ep2 {...}
+service hello on ep1, ep2 {
+    ...
+}
 ```
 
 ## Blank Lines
@@ -88,19 +89,22 @@ Separate both statements and top-level definitions by zero or one blank lines.
 ```ballerina
 import ballerina/http;
 import ballerina/io;
-    
+
 const string CITY = "Colombo";
 const int CITY_NO = 1;
-    
+
 function getName() returns string {
     string firstName = "john";
     string lastName = "doe";
-        
+
     return firstName + lastName;
 }
-    
-function setName(string name) {}
-function setAge(int age) {}
+
+function setName(string name) {
+}
+
+function setAge(int age) {
+}
 ```
   
 > **Note:** You can configure tools and plugins to change the number of minimum and maximum blank lines used when formatting. 
@@ -140,17 +144,19 @@ function setName(string name)
 ```ballerina
 
 function func1() {
-    if (true) {}
+    if (true) {
+    }
 }
 
 ```
 
-* If a block is empty, do not keep spaces in between the opening and closing braces.
+* If an inline block is empty, do not keep spaces in between the opening and closing braces.
   
 **Example,**
 
 ```ballerina
-function func1() {}
+function func1() {
+}
 ``` 
 
 * Indent all the statements inside a block to be at the same level.
@@ -175,9 +181,11 @@ match a {
 
 ```ballerina
 [string, int] tupleVar = ["", 0];
-  
-function setValue(string value) {...}
-  
+
+function setValue(string value) {
+    ...
+}
+
 setValue("value");
 ```
 
@@ -283,25 +291,20 @@ table<Employee> employee = table {
 
 ## Top-Level Definitions
 
-For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
+For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/swan-lake/learn/style-guide/definitions).
 
 ## Operators, Keywords, and Types
 
-For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/learn/style-guide/operators_keywords_and_types).
+For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/swan-lake/learn/style-guide/operators_keywords_and_types).
 
 ## Statements
 
-For style guidelines on statements such as if, match, transaction etc., see [Statements](/learn/style-guide/statements).
+For style guidelines on statements such as if, match, transaction, etc., see [Statements](/swan-lake/learn/style-guide/statements).
 
 ## Expressions
 
-For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/learn/style-guide/expressions).
+For style guidelines on function invocation, literals, tuple, type casting, etc. see [Expressions](/swan-lake/learn/style-guide/expressions).
 
 ## Annotations, Documentation, and Comments
 
-For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
-
-<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
-
-
-<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/swan-lake/learn/style-guide/annotations_documentation_and_comments).

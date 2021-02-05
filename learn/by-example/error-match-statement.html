@@ -4,59 +4,74 @@ title: Error Match
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/error-match-statement
 redirect_from:
-  - /v1-2/learn/by-example/error-match-statement
-  - /v1-2/learn/by-example/error-match-statement.html
+  - /vswan-lake/learn/by-example/error-match-statement
+  - /vswan-lake/learn/by-example/error-match-statement.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;;</span><span class="kd">const</span> <span class="nx">INVALID_ID</span> <span class="p">=</span> <span class="s">&quot;Invalid ID&quot;</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">InvalidIdError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">INVALID_ID</span><span class="p">,</span> <span class="nx">InvalidIdDetail</span><span class="p">&gt;;</span><span class="nx">type</span> <span class="nx">Foo</span> <span class="nx">record</span> <span class="p">{|</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">Foo</span><span class="p">&gt;;</span>
+
+<span class="nx">type</span> <span class="nx">InvalidIdError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">InvalidIdDetail</span><span class="p">&gt;;</span>
+
+<span class="nx">type</span> <span class="nx">Foo</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
     <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">fatal</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">InvalidIdDetail</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">InvalidIdDetail</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
     <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">id</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">v1</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Sample String&quot;</span><span class="p">,</span> <span class="s">&quot;Sample String 2&quot;</span><span class="p">];</span>
     <span class="nx">Foo</span> <span class="nx">v2</span> <span class="p">=</span> <span class="p">{</span><span class="kt">message</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">:</span> <span class="kc">false</span><span class="p">};</span>
+    <span class="nx">InvalidIdError</span> <span class="nx">e3</span> <span class="p">=</span> <span class="nx">error</span> <span class="nx">InvalidIdError</span><span class="p">(</span><span class="s">&quot;Invalid Error&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="s">&quot;33456&quot;</span><span class="p">);</span>
+    <span class="nx">SampleError</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">error</span> <span class="nx">SampleError</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Fatal&quot;</span><span class="p">,</span>
+                                       <span class="nx">fatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
     <span class="nx">error</span> <span class="nx">e1</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Generic Error&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Failed&quot;</span><span class="p">);</span>
-    <span class="nx">SampleError</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Fatal&quot;</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
-    <span class="nx">InvalidIdError</span> <span class="nx">e3</span> <span class="p">=</span> <span class="nx">InvalidIdError</span><span class="p">(</span><span class="nx">id</span> <span class="p">=</span> <span class="s">&quot;33456&quot;</span><span class="p">);</span>    <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">v1</span><span class="p">);</span>
+
+    <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">v1</span><span class="p">);</span>
     <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">v2</span><span class="p">);</span>
     <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">e1</span><span class="p">);</span>
     <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">e2</span><span class="p">);</span>
     <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">e3</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">basicMatch</span><span class="p">(</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">basicMatch</span><span class="p">(</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">v</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">tVar1</span><span class="p">,</span> <span class="nx">tVar2</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="p">[</span><span class="k">var</span> <span class="nx">tVar1</span><span class="p">,</span> <span class="k">var</span> <span class="nx">tVar2</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched a value with a tuple shape&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">var</span> <span class="p">{</span><span class="kt">message</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">}</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="p">{</span><span class="kt">message</span><span class="p">:</span> <span class="k">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">:</span> <span class="k">var</span> <span class="nx">b</span><span class="p">}</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched a value with a record shape&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">InvalidIdError</span><span class="p">(</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched `InvalidError` id=&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+        <span class="c1">// If the &#39;v&#39; variable contains an `error` values of the shape that matches the</span>
+        <span class="c1">// `InvalidIdError`, it will be matched to the `InvalidIdError` indirect</span>
+        <span class="c1">// error match pattern.</span>
+        <span class="nx">error</span> <span class="nx">InvalidIdError</span><span class="p">(</span><span class="nx">id</span> <span class="p">=</span> <span class="k">var</span> <span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched `InvalidError` id=&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="kt">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// If a rest binding pattern is used, the error details that are not</span>
+        <span class="c1">// matched will be recorded in a map.</span>
+        <span class="nx">error</span> <span class="nx">SampleError</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="k">var</span> <span class="nx">a</span><span class="p">,</span> <span class="o">...</span><span class="k">var</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched an error value : &quot;</span><span class="p">,</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;reason: %s, message: %s&quot;</span><span class="p">,</span> <span class="nx">reason</span><span class="p">,</span> <span class="kt">message</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;message: %s, rest detail: %s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
         <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="kt">message</span><span class="p">,</span> <span class="o">...</span><span class="nx">rest</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// If the `v` variable contains an `error` value, it will be matched</span>
+        <span class="c1">// to this pattern and the reason string and the detail record will be</span>
+        <span class="c1">// destructed within the pattern block.</span>
+        <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Generic Error&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="k">var</span> <span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched an error value : &quot;</span><span class="p">,</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;reason: %s, rest detail: %s&quot;</span><span class="p">,</span> <span class="nx">reason</span><span class="p">,</span> <span class="nx">rest</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;message: %s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">error_match_statement</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Matched</span> <span class="nx">a</span> <span class="nx">value</span> <span class="nx">with</span> <span class="nx">a</span> <span class="nx">tuple</span> <span class="nx">shape</span>
-<span class="nx">Matched</span> <span class="nx">a</span> <span class="nx">value</span> <span class="nx">with</span> <span class="nx">a</span> <span class="nx">record</span> <span class="nx">shape</span>
-<span class="nx">Matched</span> <span class="nx">an</span> <span class="nx">error</span> <span class="nx">value</span> <span class="p">:</span> <span class="nx">reason</span><span class="p">:</span> <span class="nx">Generic</span> <span class="nx">Error</span><span class="p">,</span> <span class="kt">message</span><span class="p">:</span> <span class="nx">Failed</span>
-<span class="nx">Matched</span> <span class="nx">an</span> <span class="nx">error</span> <span class="nx">value</span> <span class="p">:</span> <span class="nx">reason</span><span class="p">:</span> <span class="nx">Sample</span> <span class="nx">Error</span><span class="p">,</span> <span class="nx">rest</span> <span class="nx">detail</span><span class="p">:</span> <span class="nx">fatal</span><span class="p">=</span><span class="kc">true</span>
-<span class="nx">Matched</span> <span class="s">`InvalidError`</span> <span class="nx">id</span><span class="p">=</span><span class="mi">33456</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -66,10 +81,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Error Match</h2>
-                            <p><p>The <code>match</code> statement in Ballerina only supports value-based match patterns. There are static and structured
- match patterns that can be used with the match clauses. Structured match patterns will take structured
- binding patterns for matching. Error binding pattern is one of the structured binding patterns that can be used
- with the <code>match</code> statement.</p>
+                            <p><p>The match statement in Ballerina will support value-based match patterns only. The value will be checked
+ for the &ldquo;isLike&rdquo; relationship with the pattern to match during runtime.
+ The match pattern clauses can also have additional type guard conditions as strong match conditions.</p>
 </p>
 
                         </td>
@@ -77,9 +91,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="record-match-statement.html">
+                                    <a class="prev" href="mapping-match-statement.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Record Match</p>
+                                        <p>Mapping Match</p>
                                     </a>
                                 </div>
                                  
@@ -102,15 +116,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/error-match-statement/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b5556f8d1cfc9522d2b13416e1fd34be&file=error_match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/error-match-statement/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -171,7 +181,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type SampleError error&lt;string, Foo&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type SampleError error&lt;Foo&gt;;
 </code></pre></div>
 
                                 </td>
@@ -183,8 +193,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>const INVALID_ID = &quot;Invalid ID&quot;;
-type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type InvalidIdError error&lt;InvalidIdDetail&gt;;
 </code></pre></div>
 
                                 </td>
@@ -231,9 +240,10 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     [string, string] v1 = [&quot;Sample String&quot;, &quot;Sample String 2&quot;];
     Foo v2 = {message: &quot;A&quot;, fatal: false};
+    InvalidIdError e3 = error InvalidIdError(&quot;Invalid Error&quot;, id = &quot;33456&quot;);
+    SampleError e2 = error SampleError(&quot;Sample Error&quot;, message = &quot;Fatal&quot;,
+                                       fatal = true);
     error e1 = error(&quot;Generic Error&quot;, message = &quot;Failed&quot;);
-    SampleError e2 = error(&quot;Sample Error&quot;, message = &quot;Fatal&quot;, fatal = true);
-    InvalidIdError e3 = InvalidIdError(id = &quot;33456&quot;);
 </code></pre></div>
 
                                 </td>
@@ -264,10 +274,10 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function basicMatch(any|error v) {
     match v {
-        var [tVar1, tVar2] =&gt; {
+        [var tVar1, var tVar2] =&gt; {
             io:println(&quot;Matched a value with a tuple shape&quot;);
         }
-        var {message, fatal} =&gt; {
+        {message: var a, fatal: var b} =&gt; {
             io:println(&quot;Matched a value with a record shape&quot;);
         }
 </code></pre></div>
@@ -281,8 +291,8 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var InvalidIdError(id = id) =&gt; {
-            io:println(&quot;Matched `InvalidError` id=&quot;, id);
+                                    <div class="highlight"><pre><code class=language-ballerina>        error InvalidIdError(id = var a) =&gt; {
+            io:println(&quot;Matched `InvalidError` id=&quot;, a);
         }
 </code></pre></div>
 
@@ -291,8 +301,8 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the variable &lsquo;v&rsquo; contains an <code>error</code> values of shape that matches
- <code>InvalidIdError</code> it will be matched to <code>InvalidIdError</code> indirect
+                                            <p>If the &lsquo;v&rsquo; variable contains an <code>error</code> values of the shape that matches the
+ <code>InvalidIdError</code>, it will be matched to the <code>InvalidIdError</code> indirect
  error match pattern.</p>
 
                                         </div>
@@ -304,9 +314,9 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var error(reason, message = message) =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        error SampleError(&quot;Sample Error&quot;, message = var a, ...var b) =&gt; {
             io:println(&quot;Matched an error value : &quot;,
-            io:sprintf(&quot;reason: %s, message: %s&quot;, reason, message));
+            io:sprintf(&quot;message: %s, rest detail: %s&quot;, a, b));
         }
 </code></pre></div>
 
@@ -315,9 +325,8 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the variable <code>v</code> contains an <code>error</code> value, it will be matched
- to this pattern and the reason string and the detail record will be
- destructed within the pattern block.</p>
+                                            <p>If a rest binding pattern is used, the error details that are not
+ matched will be recorded in a map.</p>
 
                                         </div>
                                     </div>
@@ -328,9 +337,9 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var error(reason, message = message, ...rest) =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        error(&quot;Generic Error&quot;, message = var a) =&gt; {
             io:println(&quot;Matched an error value : &quot;,
-            io:sprintf(&quot;reason: %s, rest detail: %s&quot;, reason, rest));
+            io:sprintf(&quot;message: %s&quot;, a));
         }
     }
 }
@@ -341,8 +350,9 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If a rest binding pattern is used, the error details that are not
- matched will be recorded in a map.</p>
+                                            <p>If the <code>v</code> variable contains an <code>error</code> value, it will be matched
+ to this pattern and the reason string and the detail record will be
+ destructed within the pattern block.</p>
 
                                         </div>
                                     </div>
@@ -367,12 +377,12 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run error_match_statement.bal
+# `.bal` file, and execute the `bal run` command.
+$ bal run error_match_statement.bal
 Matched a value with a tuple shape
 Matched a value with a record shape
-Matched an error value : reason: Generic Error, message: Failed
-Matched an error value : reason: Sample Error, rest detail: fatal=true
+Matched an error value : message: Failed
+Matched an error value : message: Fatal, rest detail: {&quot;fatal&quot;:true}
 Matched `InvalidError` id=33456
 </code></pre></div>
 
@@ -401,7 +411,7 @@ Matched `InvalidError` id=33456
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

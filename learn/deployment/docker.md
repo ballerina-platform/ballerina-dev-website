@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Docker
 description: See how the Ballerina deployment in Docker works
 keywords: ballerina, programming language, services, cloud, docker
@@ -7,13 +7,13 @@ permalink: /learn/deployment/docker/
 active: docker
 intro: Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud. 
 redirect_from:
-  - /learn/deployment/docker
-  - /learn/deploying-ballerina-programs-in-the-cloud
-  - /learn/deploying-ballerina-programs-in-the-cloud/
-  - /learn/deployment/
+  - /swan-lake/learn/deployment/docker
+  - /swan-lake/learn/deploying-ballerina-programs-in-the-cloud
+  - /swan-lake/learn/deploying-ballerina-programs-in-the-cloud/
+  - /swan-lake/learn/deployment/
 ---
 
-To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, youhave to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings. 
+To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, you have to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings.
 
 The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing the corresponding sample source code. 
 
@@ -44,13 +44,12 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 import ballerina/http;
 import ballerina/docker;
- 
+
 @docker:Config {}
-service hello on new http:Listener(9090){
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /hello on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller) {
+        caller->respond("Hello World!");
+    }
 }
 
 ```
@@ -59,7 +58,7 @@ service hello on new http:Listener(9090){
 
 1. Compile the `hello_world_docker.bal` file.
 
-    ```ballerina
+    ```bash
     > ballerina build hello_world_docker.bal 
     Compiling source
       hello_world_docker.bal
@@ -92,23 +91,29 @@ service hello on new http:Listener(9090){
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
+   
+    WORKDIR /home/ballerina
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY hello_world_docker.jar /home/ballerina/jars/ 
+    ...
 
     RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
-    WORKDIR /home/ballerina
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
 
     COPY hello_world_docker.jar /home/ballerina
 
     USER ballerina
 
-    CMD java -jar hello_world_docker.jar
+    CMD java -Xdiag -cp "hello_world_docker.jar:jars/*" '$_init'
 
     ```
 
@@ -188,11 +193,10 @@ import ballerina/docker;
    username: "$env{DOCKER_USERNAME}",
    password: "$env{DOCKER_PASSWORD}"
 }
-service hello on new http:Listener(9090){
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /hello on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller) {
+        caller->respond("Hello World!");
+    }
 }
 ```
 
@@ -244,7 +248,7 @@ In this sample, the following properties are set in the `@docker:Config` annotat
 
 4. Log into [Docker Hub](https://hub.docker.com/) and verify that the image is pushed.
 
-    ![Docker Hub](/learn/images/docker-hub.png)
+    ![Docker Hub](/swan-lake/learn/images/docker-hub.png)
 
 ### Running a Ballerina HTTPS Service in a Docker Container
 
@@ -278,11 +282,10 @@ listener http:Listener helloWorldEP = new(9095, {
 @docker:Config {
    name: "https-helloworld"
 }
-service hello on helloWorldEP {
- 
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
-      check caller->respond("Hello World!");
-  }
+service http:Service /helloWorld on helloWorldEP {
+    resource function get sayHello(http:Caller caller) {
+        caller->respond("Hello World!");
+    }
 }
 ```
 
@@ -325,25 +328,30 @@ service hello on helloWorldEP {
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
-    RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
     WORKDIR /home/ballerina
-
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY https_service_in_docker.jar /home/ballerina/jars/ 
+    ...
     COPY https_service_in_docker.jar /home/ballerina
     COPY ballerinaKeystore.p12 ./ballerinaKeystore.p12
 
+    RUN addgroup troupe \
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
+
     EXPOSE  9095
     USER ballerina
-
-    CMD java -jar https_service_in_docker.jar
+    
+    CMD java -Xdiag -cp "https_service_in_docker.jar:jars/*" '$_init'
 
     ```
 
@@ -419,9 +427,9 @@ listener http:Listener helloEP = new(9090);
        { sourceFile: "./name.txt", target: "/home/ballerina/name.txt" }
    ]
 }
-service hello on helloEP {
+service /hello on helloEP {
  
-   resource function greet(http:Caller caller, http:Request request) returns error? {
+   resource function get greet(http:Caller caller) returns error? {
        http:Response response = new;
        string payload = readFile("./name.txt");
        response.setTextPayload("Hello " + <@untainted> payload + "\n");
@@ -442,9 +450,9 @@ function readFile(string filePath) returns  string {
 }
 ```
 
-This sample sends a greeting to the caller by getting the name from a text file. When this is run in a container, you need to copy the `name.txt` file into the Docker image. The `@docker:CopyFiles` annotation is used for this and you can give multiple files by following the syntax below.
-
 `name.txt`
+
+This sample sends a greeting to the caller by getting the name from a text file. When this is run in a container, you need to copy the `name.txt` file into the Docker image. The `@docker:CopyFiles` annotation is used for this and you can give multiple files by following the syntax below.
 
 ```ballerina
 @docker:CopyFiles {
@@ -455,7 +463,7 @@ This sample sends a greeting to the caller by getting the name from a text file.
 }
 ```
 
->**Note:** In addition to the above, if you want to copy driver files such as JDBC, you can create a Ballerina project, add following entires to its `Ballerina.toml` file, and change the path to the JDBC driver appropriately.
+>**Note:** In addition to the above, if you want to copy driver files such as JDBC, you can create a Ballerina project, add the following entries to its `Ballerina.toml` file, and change the path to the JDBC driver appropriately.
 
 `Ballerina.toml`
 
@@ -483,7 +491,7 @@ target = "java8"
 
 2. Compile the `copy_file.bal` file.
 
-    ```bash
+    ```ballerina
     > ballerina build copy_file.bal 
     Compiling source
       copy_file.bal
@@ -517,25 +525,30 @@ target = "java8"
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
-    RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
     WORKDIR /home/ballerina
-
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY copy_file.jar /home/ballerina/jars/ 
+    ...
     COPY copy_file.jar /home/ballerina
     COPY name.txt /home/ballerina/name.txt
 
+    RUN addgroup troupe \
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
+
     EXPOSE  9090
     USER ballerina
-
-    CMD java -jar copy_file.jar
+   
+    CMD java -Xdiag -cp "copy_file.jar:jars/*" '$_init'
     ```
 
 3. Verify that the Docker image is created.
@@ -582,7 +595,7 @@ target = "java8"
 
 ### Using a Custom Base Image to Build Ballerina Docker Images
 
-Ballerina ships a base image (e.g., `ballerina/jre8:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
+Ballerina ships a base image (e.g., `ballerina/jre11:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
 
 #### Setting Up the Prerequisites
 
@@ -598,23 +611,23 @@ import ballerina/docker;
  
 @docker:Config {
    name: "helloworld_custom_baseimage",
-   baseImage: "openjdk:8-jre-alpine"
+   baseImage: "openjdk:11-jre-slim"
 }
-service hello on new http:Listener(9090){
+service /hello on new http:Listener(9090){
  
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+  resource function get sayHello(http:Caller caller) returns error? {
       check caller->respond("Hello World!");
   }
 }
 ```
 
-> **Note:** This sample uses `openjdk:8-jre-alpine` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
+> **Note:** This sample uses `openjdk:11-jre-slim` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
 
 #### Steps to Run
 
 1.  Compile the `base_image.bal` file.
 
-    ```bash
+    ```ballerina
     > ballerina build base_image.bal 
     Compiling source
       base_image.bal
@@ -648,16 +661,21 @@ service hello on new http:Listener(9090){
 
     ```
     # Auto Generated Dockerfile
-    FROM openjdk:8-jre-alpine
+    FROM openjdk:11-jre-slim
 
     LABEL maintainer="dev@ballerina.io"
-
+     
     WORKDIR /home/ballerina
-
+    
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY base_image.jar /home/ballerina/jars/ 
+    ...
     COPY base_image.jar /home/ballerina
 
     EXPOSE  9090
-    CMD java -jar base_image.jar
+    CMD java -Xdiag -cp "base_image.jar:jars/*" '$_init'
     ```
 
 2. Verify that the Docker image is created.
@@ -724,11 +742,11 @@ import ballerina/docker;
  
 @docker:Config {
    name: "custome_cmd",
-   cmd: "CMD java -jar ${APP} --b7a.http.accesslog.console=true"
+   cmd:    cmd: "CMD java -Xdiag -cp \"${APP}:jars/*\" '$_init' --b7a.http.accesslog.console=true"
 }
-service hello on new http:Listener(9090){
+service /hello on new http:Listener(9090){
  
-  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+  resource function get sayHello(http:Caller caller) returns error? {
       check caller->respond("Hello World!");
   }
 }
@@ -740,7 +758,7 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
 
 1. Compile the `base_image.bal` file.
 
-    ```bash
+    ```ballerina
     > ballerina build docker_cmd.bal
     Compiling source
       docker_cmd.bal
@@ -774,24 +792,31 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
-    RUN addgroup troupe \
-        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-        && apk add --update --no-cache bash \
-        && chown -R ballerina:troupe /usr/bin/java \
-        && rm -rf /var/cache/apk/*
-
     WORKDIR /home/ballerina
+   
+    COPY ballerina-lang.float-1.0.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.__internal-0.1.0.jar /home/ballerina/jars/ 
+    COPY ballerina-lang.int-1.1.0.jar /home/ballerina/jars/ 
+    COPY docker_cmd.jar /home/ballerina/jars/ 
+    ...
+    COPY docker_cmd.jar /home/ballerina 
+   
+    RUN addgroup troupe \
+    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+    && apk add --update --no-cache bash \
+    && chown -R ballerina:troupe /usr/bin/java \
+    && rm -rf /var/cache/apk/*
 
     COPY docker_cmd.jar /home/ballerina
 
     EXPOSE  9090
     USER ballerina
-
-    CMD java -jar docker_cmd.jar --b7a.http.accesslog.console=true
+    
+    CMD java -Xdiag -cp "docker_cmd.jar:jars/*" '$_init' --b7a.http.accesslog.console=true
     ```
 
 2. Verify that the Docker image is created.
@@ -845,264 +870,6 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
 
     > docker rmi 08611185ed10
     Untagged: custome_cmd:latest
-    ```
-
-### Creating Multiple Docker Images Corresponding to Modules of a Ballerina Project
-
-This use case shows how to add the Docker annotation to a Ballerina project to create the corresponding Docker images.
-
-### Setting Up the Prerequisites
-
-You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
-
-#### Sample Source Code
-
-1. Ballerina project to call the restaurant:
-
-    ```ballerina
-    > ballerina new restaurant
-    Created new Ballerina project at restaurant
-
-    Next:
-        Move into the project directory and use `ballerina add <module-name>` to
-        add a new Ballerina module.
-    ```
-
-2. The two modules to call and order pizzas and burgers:
-
-    ```ballerina
-    > ballerina add pizza
-    Added new ballerina module at 'src/pizza'
-
-    > ballerina add burger 
-    Added new ballerina module at 'src/burger'
-    ```
-
-3. Source code of `src/pizza` for the order:
-
-    `pizza_menu.bal`
-
-    ```ballerina
-    import ballerina/http;
-    import ballerina/docker;
-    
-    @docker:Config {
-      name: "pizza"
-    }
-    service pizza on new http:Listener(9090){
-    
-      resource function menu(http:Caller caller,http:Request request) returns error? {
-          check result = caller->respond("Pizza Menu");
-      }
-    }
-    ```
-
-4. Source code of `src/burger` for the order:
-
-    `burger_menu.bal`
-
-    ```ballerina
-    import ballerina/http;
-    import ballerina/docker;
-    
-    @docker:Config {
-      name: "burger"
-    }
-    service burger on new http:Listener(8080){
-    
-      resource function menu(http:Caller caller,http:Request request) returns error? {
-          check result = caller->respond("Burger Menu");
-      }
-    }
-    ```
-
-#### Steps to Run
-
-1. Compile the Ballerina project.
-
-    ```bash
-    > ballerina build -a
-    Compiling source
-      lakmal/burger:0.1.0
-      lakmal/pizza:0.1.0
-
-    Creating balos
-      target/balo/burger-2020r1-any-0.1.0.balo
-      target/balo/pizza-2020r1-any-0.1.0.balo
-
-    Running Tests
-      lakmal/burger:0.1.0
-    [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-    I'm the before suite function!
-    I'm the before function!
-    I'm in test function!
-    I'm the after function!
-    I'm the after suite function!
-    [ballerina/http] stopped HTTP/WS listener 0.0.0.0:8080
-
-      [pass] testFunction
-
-      1 passing
-      0 failing
-      0 skipped
-
-      lakmal/pizza:0.1.0
-    [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-    I'm the before suite function!
-    I'm the before function!
-    I'm in test function!
-    I'm the after function!
-    I'm the after suite function!
-    [ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090
-
-      [pass] testFunction
-
-      1 passing
-      0 failing
-      0 skipped
-
-
-    Generating executables
-      target/bin/burger.jar
-      target/bin/pizza.jar
-
-    Generating docker artifacts...
-      @docker 		 - complete 2/2 
-
-      Run the following command to start a Docker container:
-      docker run -d -p 8080:8080 burger:latest
-
-
-    Generating docker artifacts...
-      @docker 		 - complete 2/2 
-
-      Run the following command to start a Docker container:
-      docker run -d -p 9090:9090 pizza:latest
-    ```
-
-    The artifact files below will be generated with the build process.
-
-    ```bash
-    > tree
-    .
-    ├── Ballerina.lock
-    ├── Ballerina.toml
-    ├── src
-    │   ├── burger
-    │   │   ├── Module.md
-    │   │   ├── burger_menu.bal
-    │   │   ├── main.bal
-    │   │   ├── resources
-    │   │   └── tests
-    │   │       ├── main_test.bal
-    │   │       └── resources
-    │   └── pizza
-    │       ├── Module.md
-    │       ├── main.bal
-    │       ├── pizza_menu.bal
-    │       ├── resources
-    │       └── tests
-    │           ├── main_test.bal
-    │           └── resources
-    └── target
-        ├── balo
-        │   ├── burger-2020r1-any-0.1.0.balo
-        │   └── pizza-2020r1-any-0.1.0.balo
-        ├── bin
-        │   ├── burger.jar
-        │   └── pizza.jar
-        ├── caches
-        │   ├── bir_cache
-        │   │   └── lakmal
-        │   │       ├── burger
-        │   │       │   └── 0.1.0
-        │   │       │       └── burger.bir
-        │   │       └── pizza
-        │   │           └── 0.1.0
-        │   │               └── pizza.bir
-        │   ├── jar_cache
-        │   │   └── lakmal
-        │   │       ├── burger
-        │   │       │   └── 0.1.0
-        │   │       │       ├── lakmal-burger-0.1.0-testable.jar
-        │   │       │       └── lakmal-burger-0.1.0.jar
-        │   │       └── pizza
-        │   │           └── 0.1.0
-        │   │               ├── lakmal-pizza-0.1.0-testable.jar
-        │   │               └── lakmal-pizza-0.1.0.jar
-        │   └── json_cache
-        │       └── lakmal
-        │           ├── burger
-        │           │   └── 0.1.0
-        │           │       └── test_suit.json
-        │           └── pizza
-        │               └── 0.1.0
-        │                   └── test_suit.json
-        └── docker
-            ├── burger
-            │   └── Dockerfile
-            └── pizza
-                └── Dockerfile
-
-    34 directories, 24 files
-    ```
-
-2. Verify that the Docker image is created.
-
-    ```bash
-    > docker images
-    REPOSITORY       TAG           IMAGE ID            CREATED             SIZE
-    pizza            latest        72d12aa57bc1        2 minutes ago       134MB
-    burger           latest        d3facfd62996        2 minutes ago       134MB
-    ```
-
-3. Run the Docker image as a container (use the command below printed in step 1).
-
-    ```bash
-    > docker run -d -p 8080:8080 burger:latest
-    1d3b98286a45c2feeae607719c1a58d1c6b9daa57889cff37894cb42490d15de
-
-    > docker run -d -p 9090:9090 pizza:latest
-    c6bfd238515265fb2909d74c3d862830712019c0681f75e7400e7a90833ce84a
-    ```
-
-4. Verify that the Docker container is running.
-
-    ```bash
-    > docker ps
-    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-    c6bfd2385152        pizza:latest        "/bin/sh -c 'java -j…"   15 seconds ago      Up 14 seconds       0.0.0.0:9090->9090/tcp   romantic_lovelace
-    1d3b98286a45        burger:latest       "/bin/sh -c 'java -j…"   47 seconds ago      Up 46 seconds       0.0.0.0:8080->8080/tcp   priceless_rhodes
-    ```
-
-5. Access the pizza service and burger service with the cURL command below.
-
-    ```bash
-    > curl http://localhost:9090/pizza/menu
-    Pizza Menu
-
-    > curl http://localhost:8080/burger/menu
-    Burger Menu
-    ```
-
-6. Clean up the created artifacts.
-
-    ```bash
-    > docker kill c6bfd2385152
-    C6bfd2385152
-    > docker kill 1d3b98286a45
-    1d3b98286a45
-
-    > docker rm c6bfd2385152
-    C6bfd2385152
-    > docker rm 1d3b98286a45
-    1d3b98286a45
-
-
-    > docker rmi 72d12aa57bc1
-    Untagged: pizza:latest
-    > docker rmi d3facfd62996
-    Untagged: burger:latest
     ```
 
 ## Troubleshooting

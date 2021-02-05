@@ -4,41 +4,55 @@ title: Shift Expressions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/shift-expressions
 redirect_from:
-  - /v1-2/learn/by-example/shift-expressions
-  - /v1-2/learn/by-example/shift-expressions.html
+  - /vswan-lake/learn/by-example/shift-expressions
+  - /vswan-lake/learn/by-example/shift-expressions.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// `&lt;&lt;` performs a left shift. The bits shifted in on the right, in place</span>
+    <span class="c1">// of the bits shifted to the left, are `0`.</span>
+    <span class="c1">// The type of the result of a left shift is always `int`.</span>
     <span class="kt">int</span> <span class="nx">res1</span> <span class="p">=</span> <span class="nx">a</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 1 &lt;&lt; 2: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">128</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 1 &lt;&lt; 2: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
+
+    <span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">128</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">res2</span> <span class="p">=</span> <span class="nx">b</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned8` 128 &lt;&lt; 3: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>
-    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Signed16</span> <span class="nx">c</span> <span class="p">=</span> <span class="o">-</span><span class="mi">32700</span><span class="p">;</span>
+
+    <span class="c1">// `&gt;&gt;` performs a signed right shift. The bits shifted in on the left, in place</span>
+    <span class="c1">// of the bits shifted to the right, are the same as the most significant bit.</span>
+    <span class="c1">// If the value to be shifted is of a signed subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is `int`.</span>
+    <span class="kt">int</span><span class="p">:</span><span class="nx">Signed16</span> <span class="nx">c</span> <span class="p">=</span> <span class="o">-</span><span class="mi">32700</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">res3</span> <span class="p">=</span> <span class="nx">c</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Signed16` -32700 &gt;&gt; 2: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">);</span>
-    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">d</span> <span class="p">=</span> <span class="mi">255</span><span class="p">;</span>
+
+    <span class="c1">// If the value to be shifted is of an unsigned subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is the same unsigned subtype of `int`.</span>
+    <span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">d</span> <span class="p">=</span> <span class="mi">255</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">e</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">res4</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">&gt;&gt;</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned8</span> <span class="nx">res4</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">&gt;&gt;</span> <span class="nx">e</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned8` 255 &gt;&gt; 4: &quot;</span><span class="p">,</span> <span class="nx">res4</span><span class="p">);</span>
-    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Signed32</span> <span class="nx">f</span> <span class="p">=</span> <span class="mi">123167</span><span class="p">;</span>
+
+    <span class="c1">// `&gt;&gt;&gt;` performs an unsigned right shift. The bits shifted in on the left, in place</span>
+    <span class="c1">// of the bits shifted to the right, are `0`.</span>
+    <span class="c1">// If the value to be shifted is of a signed subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is `int`.</span>
+    <span class="kt">int</span><span class="p">:</span><span class="nx">Signed32</span> <span class="nx">f</span> <span class="p">=</span> <span class="mi">123167</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">res5</span> <span class="p">=</span> <span class="nx">f</span> <span class="o">&gt;&gt;</span><span class="p">&gt;</span> <span class="mi">3</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Signed32` 123167 &gt;&gt;&gt; 3: &quot;</span><span class="p">,</span> <span class="nx">res5</span><span class="p">);</span>
-    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned16</span> <span class="nx">g</span> <span class="p">=</span> <span class="mi">32001</span><span class="p">;</span>
-    <span class="err">&#39;</span><span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned16</span> <span class="nx">res6</span> <span class="p">=</span> <span class="nx">g</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="c1">// If the value to be shifted is of an unsigned subtype of `int`, the type of</span>
+    <span class="c1">// the result of the signed right shift is the same unsigned subtype of `int`.</span>
+    <span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned16</span> <span class="nx">g</span> <span class="p">=</span> <span class="mi">32001</span><span class="p">;</span>
+    <span class="kt">int</span><span class="p">:</span><span class="nx">Unsigned16</span> <span class="nx">res6</span> <span class="p">=</span> <span class="nx">g</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int:Unsigned16` 32001 &gt;&gt;&gt; 2: &quot;</span><span class="p">,</span> <span class="nx">res6</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">shift_expressions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="s">`int`</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">4</span>
-<span class="s">`int:Unsigned8`</span> <span class="mi">128</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">1024</span>
-<span class="s">`int:Signed16`</span> <span class="o">-</span><span class="mi">32700</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">:</span> <span class="o">-</span><span class="mi">8175</span>
-<span class="s">`int:Unsigned8`</span> <span class="mi">255</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">15</span>
-<span class="s">`int:Signed32`</span> <span class="mi">123167</span> <span class="o">&gt;&gt;</span><span class="p">&gt;</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">15395</span>
-<span class="s">`int:Unsigned16`</span> <span class="mi">32001</span> <span class="o">&gt;&gt;</span><span class="p">&gt;</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">8000</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -84,15 +98,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/shift-expressions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e3ae07ee4b7f7fed3fe8484d7a553fa5&file=shift_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/shift-expressions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -136,7 +146,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;int;
 </code></pre></div>
 
                                 </td>
@@ -183,7 +192,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    &#39;int:Unsigned8 b = 128;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int:Unsigned8 b = 128;
     int res2 = b &lt;&lt; 3;
     io:println(&quot;`int:Unsigned8` 128 &lt;&lt; 3: &quot;, res2);
 </code></pre></div>
@@ -197,7 +206,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    &#39;int:Signed16 c = -32700;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int:Signed16 c = -32700;
     int res3 = c &gt;&gt; 2;
     io:println(&quot;`int:Signed16` -32700 &gt;&gt; 2: &quot;, res3);
 </code></pre></div>
@@ -221,9 +230,9 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    &#39;int:Unsigned8 d = 255;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int:Unsigned8 d = 255;
     int e = 4;
-    &#39;int:Unsigned8 res4 = d &gt;&gt; e;
+    int:Unsigned8 res4 = d &gt;&gt; e;
     io:println(&quot;`int:Unsigned8` 255 &gt;&gt; 4: &quot;, res4);
 </code></pre></div>
 
@@ -244,7 +253,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    &#39;int:Signed32 f = 123167;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int:Signed32 f = 123167;
     int res5 = f &gt;&gt;&gt; 3;
     io:println(&quot;`int:Signed32` 123167 &gt;&gt;&gt; 3: &quot;, res5);
 </code></pre></div>
@@ -268,8 +277,8 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    &#39;int:Unsigned16 g = 32001;
-    &#39;int:Unsigned16 res6 = g &gt;&gt; 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int:Unsigned16 g = 32001;
+    int:Unsigned16 res6 = g &gt;&gt; 2;
     io:println(&quot;`int:Unsigned16` 32001 &gt;&gt;&gt; 2: &quot;, res6);
 }
 </code></pre></div>
@@ -305,8 +314,8 @@ import ballerina/lang.&#39;int;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run shift_expressions.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run shift_expressions.bal
 `int` 1 &lt;&lt; 2: 4
 `int:Unsigned8` 128 &lt;&lt; 3: 1024
 `int:Signed16` -32700 &gt;&gt; 2: -8175
@@ -340,7 +349,7 @@ ballerina run shift_expressions.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

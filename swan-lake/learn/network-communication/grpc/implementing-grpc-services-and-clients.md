@@ -10,7 +10,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients
 ---
 
-## Implementing a gRPC Serivce
+## Implementing a gRPC Service
 
 Execute the `bal new service` command to create a Ballerina package to implement the service. You view the output below.
 
@@ -36,7 +36,7 @@ remote function add(grpc:Caller caller, AddRequest value) {
 }
 ```
 
-The implementation of the `add` service function  can be completed as follows.
+The implementation of the `add` service function can be completed as follows.
 
 ```ballerina
 remote function add(grpc:Caller caller,
@@ -48,7 +48,7 @@ remote function add(grpc:Caller caller,
 }
 ```
 
-The implementaion uses the two `send` and `complete` remote function calls from the `caller` object. The `caller` represents the actual client that is sending requests to the service. Therefore, this object will be used to respond to the client. 
+The implementation uses the two `send` and `complete` remote function calls from the `caller` object. The `caller` represents the actual client that is sending requests to the service. Therefore, this object will be used to respond to the client. 
 
 The `send` remote function can be called more than once because of the streaming functionality available with gRPC. After sending multiple calls, the completion of this session is notified by calling the `complete` remote function. In this situation, the `add` invocation only consists of a single return value to the client, and thereby, after a single `send` invocation, the call gets completed immediately.
 

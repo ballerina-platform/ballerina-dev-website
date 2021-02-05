@@ -7,19 +7,19 @@ intro: The VS Code Ballerina extension brings in language intelligence to enhanc
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/
-  - /learn/tools-ides/vscode-plugin/language-intelligence
-  - /learn/tools-ides/vscode-plugin/language-intelligence/
+  - /1.2/learn/tools-ides/vscode-plugin/language-intelligence
+  - /1.2/learn/tools-ides/vscode-plugin/language-intelligence/
   - /v1-2/learn/vscode-plugin/language-intelligence/
   - /v1-2/learn/vscode-plugin/language-intelligence
-  - /learn/vscode-plugin/language-intelligence/
-  - /learn/vscode-plugin/language-intelligence/
-  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence
-  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
-  - /learn/setting-up-visual-studio-code/language-intelligence
-  - /learn/language-intelligence
-  - /learn/language-intelligence/
-  - /learn/getting-started/language-intelligence
-  - /learn/getting-started/language-intelligence/
+  - /1.2/learn/vscode-plugin/language-intelligence/
+  - /1.2/learn/vscode-plugin/language-intelligence/
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/language-intelligence
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
+  - /1.2/learn/setting-up-visual-studio-code/language-intelligence
+  - /1.2/learn/language-intelligence
+  - /1.2/learn/language-intelligence/
+  - /1.2/learn/getting-started/language-intelligence
+  - /1.2/learn/getting-started/language-intelligence/
 ---
 
 ## Semantic and Syntactic Diagnostics

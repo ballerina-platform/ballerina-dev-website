@@ -7,9 +7,9 @@ intro: The sections below include the coding conventions with respect to express
 redirect_from:
   - /v1-2/learn/style-guide/expressions/
   - /v1-2/learn/style-guide/expressions
-  - /learn/style-guide/expressions
-  - /learn/style-guide/expressions/
-  - /learn/coding-conventions/expressions
+  - /1.2/learn/style-guide/expressions
+  - /1.2/learn/style-guide/expressions/
+  - /1.2/learn/coding-conventions/expressions
 ---
 
 ## Function Invocation

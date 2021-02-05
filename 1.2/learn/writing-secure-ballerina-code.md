@@ -7,11 +7,11 @@ permalink: /1.2/learn/writing-secure-ballerina-code/
 active: writing-secure-ballerina-code
 intro: The sections below include information on the different security features and controls available within Ballerina. Also, they provide guidelines on writing secure Ballerina programs.
 redirect_from:
-  - /learn/how-to-write-secure-ballerina-code
-  - /learn/how-to-write-secure-ballerina-code/
+  - /1.2/learn/how-to-write-secure-ballerina-code
+  - /1.2/learn/how-to-write-secure-ballerina-code/
   - /v1-2/learn/how-to-write-secure-ballerina-code
   - /v1-2/learn/how-to-write-secure-ballerina-code/
-  - /learn/writing-secure-ballerina-code
+  - /1.2/learn/writing-secure-ballerina-code
 ---
 
 ## Secure by Design

@@ -8,14 +8,14 @@ active: installing-ballerina
 intro: The sections below include information about installing Ballerina.
 redirect_from:
   - /v1-2/learn/getting-started
-  - /learn/getting-started
-  - /learn/getting-started/
-  - /learn/installing-ballerina
-  - /learn/installing-ballerina/#installing-from-source
+  - /1.2/learn/getting-started
+  - /1.2/learn/getting-started/
+  - /1.2/learn/installing-ballerina
+  - /1.2/learn/installing-ballerina/#installing-from-source
   - /v1-2/learn/installing-ballerina
   - /v1-2/learn/installing-ballerina/
-  - /learn/getting-started/installing-ballerina/
-  - /learn/getting-started/installing-ballerina
+  - /1.2/learn/getting-started/installing-ballerina/
+  - /1.2/learn/getting-started/installing-ballerina
 ---
 
 ## Installing Ballerina via Installers

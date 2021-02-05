@@ -7,12 +7,12 @@ permalink: /1.2/learn/running-ballerina-code/
 active: running-ballerina-code
 intro: The sections below include information on running Ballerina programs.
 redirect_from:
-  - /learn/how-to-deploy-and-run-ballerina-programs
-  - /learn/how-to-deploy-and-run-ballerina-programs/
-  - /learn/how-to-run-ballerina-programs/
+  - /1.2/learn/how-to-deploy-and-run-ballerina-programs
+  - /1.2/learn/how-to-deploy-and-run-ballerina-programs/
+  - /1.2/learn/how-to-run-ballerina-programs/
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
-  - /learn/running-ballerina-code
+  - /1.2/learn/running-ballerina-code
 ---
 
 ## Understanding the Structure

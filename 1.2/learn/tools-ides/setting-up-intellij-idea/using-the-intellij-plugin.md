@@ -9,17 +9,17 @@ redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
   - /v1-2/learn/intellij-plugin/using-the-intellij-plugin
   - /v1-2/learn/intellij-plugin/using-the-intellij-plugin/
-  - /learn/set-up-ballerina-sdk/
-  - /learn/set-up-ballerina-sdk
-  - /learn/intellij-plugin/using-the-intellij-plugin/
-  - /learn/intellij-plugin/using-the-intellij-plugin
-  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
-  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
-  - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
-  - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
-  - /learn/setting-up-intellij-idea/using-the-intellij-plugin
-  - /learn/using-the-intellij-plugin
-  - /learn/using-the-intellij-plugin/
+  - /1.2/learn/set-up-ballerina-sdk/
+  - /1.2/learn/set-up-ballerina-sdk
+  - /1.2/learn/intellij-plugin/using-the-intellij-plugin/
+  - /1.2/learn/intellij-plugin/using-the-intellij-plugin
+  - /1.2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
+  - /1.2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
+  - /1.2/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
+  - /1.2/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
+  - /1.2/learn/setting-up-intellij-idea/using-the-intellij-plugin
+  - /1.2/learn/using-the-intellij-plugin
+  - /1.2/learn/using-the-intellij-plugin/
 ---
 
 ## Creating a New Ballerina Project

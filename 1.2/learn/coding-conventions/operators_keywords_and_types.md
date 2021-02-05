@@ -7,9 +7,9 @@ intro: The sections below include the coding conventions with respect to operato
 redirect_from:
   - /v1-2/learn/style-guide/operators_keywords_and_types/
   - /v1-2/learn/style-guide/operators_keywords_and_types
-  - /learn/style-guide/operators_keywords_and_types
-  - /learn/style-guide/operators_keywords_and_types/
-  - /learn/coding-conventions/operators_keywords_and_types
+  - /1.2/learn/style-guide/operators_keywords_and_types
+  - /1.2/learn/style-guide/operators_keywords_and_types/
+  - /1.2/learn/coding-conventions/operators_keywords_and_types
 ---
 
 ## Keywords and Types

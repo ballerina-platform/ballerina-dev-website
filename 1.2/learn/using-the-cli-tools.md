@@ -9,9 +9,9 @@ intro: The Ballerina Tool is your one-stop-shop for all the things you do in Bal
 redirect_from:
   - /v1-2/learn/cli-commands
   - /v1-2/learn/cli-commands/
-  - /learn/cli-commands/
-  - /learn/cli-commands
-  - /learn/using-the-cli-tools
+  - /1.2/learn/cli-commands/
+  - /1.2/learn/cli-commands
+  - /1.2/learn/using-the-cli-tools
 ---
 
 ## Using the Ballerina Tool

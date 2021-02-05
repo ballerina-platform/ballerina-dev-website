@@ -9,17 +9,17 @@ redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer/
   - /v1-2/learn/vscode-plugin/documentation-viewer/
   - /v1-2/learn/vscode-plugin/documentation-viewer
-  - /learn/tools-ides/vscode-plugin/documentation-viewer/
-  - /learn/tools-ides/vscode-plugin/documentation-viewer
-  - /learn/vscode-plugin/documentation-viewer/
-  - /learn/vscode-plugin/documentation-viewer
-  - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer
-  - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/
-  - /learn/setting-up-visual-studio-code/documentation-viewer
-  - /learn/documentation-viewer
-  - /learn/documentation-viewer/
-  - /learn/getting-started/documentation-viewer
-  - /learn/getting-started/documentation-viewer/
+  - /1.2/learn/tools-ides/vscode-plugin/documentation-viewer/
+  - /1.2/learn/tools-ides/vscode-plugin/documentation-viewer
+  - /1.2/learn/vscode-plugin/documentation-viewer/
+  - /1.2/learn/vscode-plugin/documentation-viewer
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer
+  - /1.2/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/
+  - /1.2/learn/setting-up-visual-studio-code/documentation-viewer
+  - /1.2/learn/documentation-viewer
+  - /1.2/learn/documentation-viewer/
+  - /1.2/learn/getting-started/documentation-viewer
+  - /1.2/learn/getting-started/documentation-viewer/
 ---
 
 ## Launching the Documentation Viewer

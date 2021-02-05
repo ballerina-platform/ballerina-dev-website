@@ -7,11 +7,11 @@ permalink: /1.2/learn/publishing-modules-to-ballerina-central/
 active: publishing-modules-to-ballerina-central
 intro: The sections below include information about publishing modules to Ballerina Central.
 redirect_from:
-  - /learn/how-to-publish-modules
-  - /learn/how-to-publish-modules/
+  - /1.2/learn/how-to-publish-modules
+  - /1.2/learn/how-to-publish-modules/
   - /v1-2/learn/how-to-publish-modules
   - /v1-2/learn/how-to-publish-modules/
-  - /learn/publishing-modules-to-ballerina-central
+  - /1.2/learn/publishing-modules-to-ballerina-central
 ---
 
 ## The CLI Command

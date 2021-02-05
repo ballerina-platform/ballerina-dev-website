@@ -7,15 +7,15 @@ intro: The IntelliJ Ballerina plugin provides the Ballerina development capabili
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/
-  - /learn/tools-ides/intellij-plugin/
-  - /learn/tools-ides/intellij-plugin
-  - /learn/intellij-plugin
-  - /learn/intellij-plugin/
+  - /1.2/learn/tools-ides/intellij-plugin/
+  - /1.2/learn/tools-ides/intellij-plugin
+  - /1.2/learn/intellij-plugin
+  - /1.2/learn/intellij-plugin/
   - /v1-2/learn/intellij-plugin
   - /v1-2/learn/intellij-plugin/
-  - /learn/tools-ides/setting-up-intellij-idea
-  - /learn/tools-ides/setting-up-intellij-idea/
-  - /learn/setting-up-intellij-idea
+  - /1.2/learn/tools-ides/setting-up-intellij-idea
+  - /1.2/learn/tools-ides/setting-up-intellij-idea/
+  - /1.2/learn/setting-up-intellij-idea
 ---
 
 ## Setting Up the Prerequisites

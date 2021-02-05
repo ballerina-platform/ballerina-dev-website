@@ -7,11 +7,11 @@ permalink: /1.2/learn/testing-ballerina-code/
 active: testing-ballerina-code
 intro: Ballerina has a built-in test framework named Testerina. Testerina enables developers to write testable code. The test framework provides a set of building blocks to help write tests and a set of tools to help test. 
 redirect_from:
-  - /learn/how-to-test-ballerina-code
-  - /learn/how-to-test-ballerina-code/
+  - /1.2/learn/how-to-test-ballerina-code
+  - /1.2/learn/how-to-test-ballerina-code/
   - /v1-2/learn/how-to-test-ballerina-code
   - /v1-2/learn/how-to-test-ballerina-code/
-  - /learn/testing-ballerina-code
+  - /1.2/learn/testing-ballerina-code
 ---
 
 ## Writing and Running Tests 

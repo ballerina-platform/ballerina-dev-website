@@ -7,10 +7,10 @@ intro: The sections below include the coding conventions with respect to top-lev
 redirect_from:
   - /v1-2/learn/style-guide/definitions/
   - /v1-2/learn/style-guide/definitions
-  - /learn/style-guide/definitions
-  - /learn/style-guide/definitions/
-  - /learn/coding-conventions/definitions
-  - /learn/coding-conventions/top-level-definitions
+  - /1.2/learn/style-guide/definitions
+  - /1.2/learn/style-guide/definitions/
+  - /1.2/learn/coding-conventions/definitions
+  - /1.2/learn/coding-conventions/top-level-definitions
 ---
 
 ## General Practices

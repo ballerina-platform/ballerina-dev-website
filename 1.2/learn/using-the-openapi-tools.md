@@ -9,9 +9,9 @@ intro: OpenAPI Specification is a specification that creates a RESTFUL contract 
 redirect_from:
   - /v1-2/learn/how-to-use-openapi-tools
   - /v1-2/learn/how-to-use-openapi-tools/
-  - /learn/how-to-use-openapi-tools
-  - /learn/how-to-use-openapi-tools/
-  - /learn/using-the-openapi-tools
+  - /1.2/learn/how-to-use-openapi-tools
+  - /1.2/learn/how-to-use-openapi-tools/
+  - /1.2/learn/using-the-openapi-tools
 ---
 
 ## Using the Capabilities of the OpenAPI Tools

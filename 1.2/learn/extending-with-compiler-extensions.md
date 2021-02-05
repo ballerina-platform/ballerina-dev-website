@@ -7,11 +7,11 @@ permalink: /1.2/learn/extending-with-compiler-extensions/
 active: extending-with-compiler-extensions
 intro: The sections below include information about extending with compiler extensions.
 redirect_from:
-  - /learn/how-to-extend-ballerina
-  - /learn/how-to-extend-ballerina/
+  - /1.2/learn/how-to-extend-ballerina
+  - /1.2/learn/how-to-extend-ballerina/
   - /v1-2/learn/how-to-extend-ballerina
   - /v1-2/learn/how-to-extend-ballerina/
-  - /learn/extending-with-compiler-extensions
+  - /1.2/learn/extending-with-compiler-extensions
 ---
 
 ## Annotations

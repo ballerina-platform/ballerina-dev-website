@@ -4,88 +4,132 @@ title: Streams
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/streams
 redirect_from:
-  - /v1-2/learn/by-example/streams
-  - /v1-2/learn/by-example/streams.html
+  - /vswan-lake/learn/by-example/streams
+  - /vswan-lake/learn/by-example/streams.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">OddNumberGenerator</span> <span class="nx">object</span> <span class="p">{</span>
+
+<span class="c1">//Defines a class called `OddNumberGenerator`. Each class has its own next() method,</span>
+<span class="c1">//which gets invoked when the stream&#39;s `next()` function gets called.</span>
+<span class="nx">class</span> <span class="nx">OddNumberGenerator</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
     
-    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="k">return</span> <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="nx">self</span><span class="p">.</span><span class="nx">i</span><span class="p">};</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">ResultValue</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">ResultValue</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">StudentValue</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">StudentValue</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="nx">Student</span> <span class="nx">value</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">FullName</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">FullName</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Subscription</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">Subscription</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">OddNumberGenerator</span> <span class="nx">oddGen</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">oddNumberStream</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;(</span><span class="nx">oddGen</span><span class="p">);</span>    <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="nx">oddNumber</span> <span class="p">=</span> <span class="nx">oddNumberStream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">oddNumber</span> <span class="nx">is</span> <span class="nx">ResultValue</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//Creating a stream passing an OddNumberGenerator class to the stream constructor</span>
+    <span class="k">var</span> <span class="nx">oddNumberStream</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;(</span><span class="nx">oddGen</span><span class="p">);</span>
+
+    <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="nx">oddNumber</span> <span class="p">=</span> <span class="nx">oddNumberStream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">oddNumber</span> <span class="nx">is</span> <span class="nx">ResultValue</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retrieved odd number: &quot;</span><span class="p">,</span> <span class="nx">oddNumber</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Filter records and map them to a different type :&quot;</span><span class="p">);</span>    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Filter records and map them to a different type :&quot;</span><span class="p">);</span>
+
+    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>
+
+    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>
+
+    <span class="c1">//Iterable types can be converted to a stream.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">studentStream</span> <span class="p">=</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Subscription</span><span class="p">&gt;</span> <span class="nx">subscriptionStream</span> <span class="p">=</span> <span class="nx">studentStream</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="p">&gt;</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}).</span><span class="err">&#39;</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Subscription</span> <span class="p">{</span>
-        <span class="nx">Subscription</span> <span class="nx">subscription</span> <span class="p">=</span> <span class="p">{</span>
-            <span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
-            <span class="nx">lastName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
-            <span class="nx">score</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span><span class="p">,</span>
-            <span class="nx">degree</span><span class="p">:</span> <span class="s">&quot;Bachelor of Medicine&quot;</span>
-        <span class="p">};</span>
-        <span class="k">return</span> <span class="nx">subscription</span><span class="p">;</span>
-    <span class="p">});</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Calculate the average score of the subscribed students: &quot;</span><span class="p">);</span>
-    <span class="kt">float</span><span class="err">?</span> <span class="nx">avg</span> <span class="p">=</span> <span class="nx">subscriptionStream</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">float</span> <span class="nx">accum</span><span class="p">,</span> <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
+
+    <span class="c1">//The `filter` and `map` functions return streams and work lazily.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Subscription</span><span class="p">&gt;</span> <span class="nx">subscriptionStream</span> <span class="p">=</span>
+        <span class="nx">studentStream</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="p">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}).</span><span class="err">&#39;</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Subscription</span> <span class="p">{</span>
+            <span class="nx">Subscription</span> <span class="nx">subscription</span> <span class="p">=</span> <span class="p">{</span>
+                <span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
+                <span class="nx">lastName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
+                <span class="nx">score</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span><span class="p">,</span>
+                <span class="nx">degree</span><span class="p">:</span> <span class="s">&quot;Bachelor of Medicine&quot;</span>
+            <span class="p">};</span>
+            <span class="k">return</span> <span class="nx">subscription</span><span class="p">;</span>
+        <span class="p">});</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Calculate the average score of the subscribed students: &quot;</span><span class="p">);</span>
+    <span class="c1">//The `reduce` function reduces the stream to a single value.</span>
+    <span class="kt">float</span><span class="err">?</span> <span class="nx">avg</span> <span class="p">=</span> <span class="nx">subscriptionStream</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span>
+                    <span class="kd">function</span> <span class="p">(</span><span class="kt">float</span> <span class="nx">accum</span><span class="p">,</span> <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">accum</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="o">/</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mf">0.0</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">avg</span> <span class="nx">is</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">},</span> <span class="mf">0.0</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">avg</span> <span class="nx">is</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Average: &quot;</span><span class="p">,</span> <span class="nx">avg</span><span class="p">);</span>
     <span class="p">}</span>
-       <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">studentStream2</span> <span class="p">=</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Calls next method manually and get the next iteration value: &quot;</span><span class="p">);</span>
+
+    <span class="c1">//A stream can be iterated at most for once. Hence, another stream gets created from the record list.</span>
+       <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">studentStream2</span> <span class="p">=</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Calls next method manually and get the next iteration value: &quot;</span><span class="p">);</span>
+    <span class="c1">//Calls the `next()` operation to retrieve the data from the stream.</span>
     <span class="nx">record</span> <span class="p">{|</span><span class="nx">Student</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="nx">student</span> <span class="p">=</span> <span class="nx">studentStream2</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">student</span> <span class="nx">is</span> <span class="nx">StudentValue</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Use foreach method to loop through the rest of the stream: &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Use foreach method to loop through the rest of the stream: &quot;</span><span class="p">);</span>
+
+    <span class="c1">//If there is any error during the iteration of the</span>
+    <span class="c1">// studentList2 stream, the result stream will terminate and return the error.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">studentStream2</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="s">&quot; has a score of &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="s">&quot; has a score of &quot;</span><span class="p">,</span>
+                    <span class="nx">student</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
     <span class="p">});</span>
+
+    <span class="c1">//Check and handle the error during the iteration of the stream.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ForEach operation on the stream failed: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">studentStream3</span> <span class="p">=</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">studentStream3</span> <span class="p">=</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
     <span class="k">var</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="nx">studentStream3</span><span class="p">.</span><span class="nx">iterator</span><span class="p">();</span>
+
+    <span class="c1">//Calls the `next()` operation on the iterator to retrieve the next data from the stream.</span>
     <span class="nx">record</span> <span class="p">{|</span><span class="nx">Student</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="nx">nextStudent</span> <span class="p">=</span> <span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">nextStudent</span> <span class="nx">is</span> <span class="nx">StudentValue</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">nextStudent</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">streams</span><span class="p">.</span><span class="nx">balRetrieved</span> <span class="nx">odd</span> <span class="nx">number</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">Filter</span> <span class="nx">records</span> <span class="nx">and</span> <span class="kt">map</span> <span class="nx">them</span> <span class="nx">to</span> <span class="nx">a</span> <span class="nx">different</span> <span class="nx">type</span> <span class="p">:</span>
-<span class="nx">Calculate</span> <span class="nx">the</span> <span class="nx">average</span> <span class="nx">score</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">subscribed</span> <span class="nx">students</span><span class="p">:</span> 
-<span class="nx">Average</span><span class="p">:</span> <span class="mf">0.8999999999999999</span>
-<span class="nx">Calls</span> <span class="nx">next</span> <span class="nx">method</span> <span class="nx">manually</span> <span class="nx">and</span> <span class="nx">get</span> <span class="nx">the</span> <span class="nx">next</span> <span class="nx">iteration</span> <span class="nx">value</span><span class="p">:</span> 
-<span class="nx">firstName</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">George</span> <span class="nx">score</span><span class="p">=</span><span class="mf">1.5</span>
-<span class="nx">Use</span> <span class="nx">foreach</span> <span class="nx">method</span> <span class="nx">to</span> <span class="nx">loop</span> <span class="nx">through</span> <span class="nx">the</span> <span class="nx">rest</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">stream</span><span class="p">:</span> 
-<span class="nx">Student</span> <span class="nx">Ranjan</span> <span class="nx">has</span> <span class="nx">a</span> <span class="nx">score</span> <span class="nx">of</span> <span class="mf">0.9</span>
-<span class="nx">Student</span> <span class="nx">John</span> <span class="nx">has</span> <span class="nx">a</span> <span class="nx">score</span> <span class="nx">of</span> <span class="mf">1.2</span>
-<span class="nx">firstName</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">George</span> <span class="nx">score</span><span class="p">=</span><span class="mf">1.5</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -101,7 +145,9 @@ redirect_from:
  A stream can be iterated over at most once.
  A stream has a <code>next()</code> method; a stream&rsquo;s iterator works by calling this method.
  The stream type provides methods similar to lists such as <code>map</code>, <code>foreach</code>, <code>filter</code>, <code>reduce</code>, and <code>iterator</code>.
- The stream type does not provide a length method. This is a preview feature.</p>
+ The stream type does not provide a length method. This is a preview feature.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/lang.stream/latest/lang.stream/">lang.stream module</a>.</p>
 </p>
 
                         </td>
@@ -134,15 +180,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/streams/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=43acccf240034eca71029a63b3dbad28&file=streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/streams/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -235,14 +277,14 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type OddNumberGenerator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class OddNumberGenerator {
     int i = 1;
     
-    public function next() returns record {|int value;|}|error? {
+    public isolated function next() returns record {|int value;|}|error? {
         self.i += 2;
         return {value: self.i};
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -250,7 +292,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an object called <code>OddNumberGenerator</code>. Each object has its own next() method,
+                                            <p>Defines a class called <code>OddNumberGenerator</code>. Each class has its own next() method,
 which gets invoked when the stream&rsquo;s <code>next()</code> function gets called.</p>
 
                                         </div>
@@ -359,7 +401,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creating a stream passing an OddNumberGenerator object to the stream constructor</p>
+                                            <p>Creating a stream passing an OddNumberGenerator class to the stream constructor</p>
 
                                         </div>
                                     </div>
@@ -453,17 +495,18 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Subscription&gt; subscriptionStream = studentStream.filter(function (Student student) returns boolean {
-        return student.score &gt; 1;
-    }).&#39;map(function (Student student) returns Subscription {
-        Subscription subscription = {
-            firstName: student.firstName,
-            lastName: student.lastName,
-            score: student.score,
-            degree: &quot;Bachelor of Medicine&quot;
-        };
-        return subscription;
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Subscription&gt; subscriptionStream =
+        studentStream.filter(function (Student student) returns boolean {
+            return student.score &gt; 1;
+        }).&#39;map(function (Student student) returns Subscription {
+            Subscription subscription = {
+                firstName: student.firstName,
+                lastName: student.lastName,
+                score: student.score,
+                degree: &quot;Bachelor of Medicine&quot;
+            };
+            return subscription;
+        });
 </code></pre></div>
 
                                 </td>
@@ -494,7 +537,8 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    float? avg = subscriptionStream.reduce(function (float accum, Student student) returns float {
+                                    <div class="highlight"><pre><code class=language-ballerina>    float? avg = subscriptionStream.reduce(
+                    function (float accum, Student student) returns float {
         return accum + &lt;float&gt;student.score / studentList.length();
     }, 0.0);
 </code></pre></div>
@@ -595,7 +639,8 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    error? e = studentStream2.forEach(function (Student student) {
-        io:println(&quot;Student &quot;, student.firstName, &quot; has a score of &quot;, student.score);
+        io:println(&quot;Student &quot;, student.firstName, &quot; has a score of &quot;,
+                    student.score);
     });
 </code></pre></div>
 
@@ -691,8 +736,8 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run streams.bal
+# `.bal` file and execute the `bal run` command below.
+bal run streams.bal
 </code></pre></div>
 
                                 </td>
@@ -709,11 +754,11 @@ Filter records and map them to a different type :
 Calculate the average score of the subscribed students: 
 Average: 0.8999999999999999
 Calls next method manually and get the next iteration value: 
-firstName=Alex lastName=George score=1.5
-Use foreach method to loop through the rest of the stream: 
+{&quot;firstName&quot;:&quot;Alex&quot;,&quot;lastName&quot;:&quot;George&quot;,&quot;score&quot;:1.5}
+Use foreach method to loop through the rest of the stream:
 Student Ranjan has a score of 0.9
 Student John has a score of 1.2
-firstName=Alex lastName=George score=1.5
+{&quot;firstName&quot;:&quot;Alex&quot;,&quot;lastName&quot;:&quot;George&quot;,&quot;score&quot;:1.5}
 </code></pre></div>
 
                                 </td>
@@ -741,7 +786,7 @@ firstName=Alex lastName=George score=1.5
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

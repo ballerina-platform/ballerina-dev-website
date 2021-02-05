@@ -4,29 +4,37 @@ title: Java Arrays
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/java-arrays
 redirect_from:
-  - /v1-2/learn/by-example/java-arrays
-  - /v1-2/learn/by-example/java-arrays.html
+  - /vswan-lake/learn/by-example/java-arrays
+  - /vswan-lake/learn/by-example/java-arrays.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">arrays</span> <span class="k">as</span> <span class="nx">jarrays</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">regex</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jballerina</span><span class="p">.</span><span class="nx">java</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">arrays</span> <span class="k">as</span> <span class="nx">jarrays</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">regex</span><span class="p">)</span>
+                                    <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;split&quot;</span><span class="p">,</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java/lang/String&quot;</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java/lang/String&quot;</span>
+<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Convert Ballerina strings to Java strings before passing to Java methods.</span>
     <span class="nx">handle</span> <span class="nx">helloString</span> <span class="p">=</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Hello world&quot;</span><span class="p">);</span>
     <span class="nx">handle</span> <span class="nx">regex</span> <span class="p">=</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
-    <span class="nx">handle</span> <span class="nx">words</span> <span class="p">=</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">helloString</span><span class="p">,</span> <span class="nx">regex</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">numWords</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">getLength</span><span class="p">(</span><span class="nx">words</span><span class="p">);</span>
+
+    <span class="c1">// Invoke an external method, implemented in Java.</span>
+    <span class="nx">handle</span> <span class="nx">words</span> <span class="p">=</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">helloString</span><span class="p">,</span> <span class="nx">regex</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">numWords</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">getLength</span><span class="p">(</span><span class="nx">words</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">numWords</span><span class="p">);</span>
+
+    <span class="c1">// Access an array element, pass the handle that refers to the Java array instance as the first argument.</span>
     <span class="nx">handle</span> <span class="nx">secondWord</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">get</span><span class="p">(</span><span class="nx">words</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">secondWord</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">java_arrays</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">2</span>
-<span class="nx">world</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -37,7 +45,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Java Arrays</h2>
                             <p><p>Java arrays are represented by the <code>handle</code> type in Ballerina. They can be manipulated using the
- <code>getArrayElement</code>, <code>setArrayElement</code> and <code>getArrayLength</code> methods provided by the <code>ballerina/java</code> module.</p>
+ <code>get</code>, <code>set</code>, and <code>getLength</code> methods provided by the <code>ballerina/java.arrays</code> module.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/java.arrays/latest/java.arrays/">java.arrays module</a></p>
 </p>
 
                         </td>
@@ -70,15 +80,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/java-arrays/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=7de8fcc61efcc1b248195c953d8d70b5&file=java_arrays.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/java-arrays/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -120,8 +126,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/java;
-import ballerina/java.arrays as jarrays;
+import ballerina/jballerina.java;
+import ballerinax/java.arrays as jarrays;
 </code></pre></div>
 
                                 </td>
@@ -133,9 +139,10 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function splitString(handle receiver, handle regex) returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function splitString(handle receiver, handle regex)
+                                    returns handle = @java:Method {
     name: &quot;split&quot;,
-    class: &quot;java/lang/String&quot;
+    &#39;class: &quot;java/lang/String&quot;
 } external;
 </code></pre></div>
 
@@ -247,8 +254,8 @@ import ballerina/java.arrays as jarrays;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command below.
-ballerina run java_arrays.bal
+# `.bal` file and use the `bal run` command below.
+bal run java_arrays.bal
 2
 world
 </code></pre></div>
@@ -278,7 +285,7 @@ world
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

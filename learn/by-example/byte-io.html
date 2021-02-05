@@ -1,67 +1,38 @@
 ---
 layout: ballerina-example-page
-title: Byte I/O
+title: Read/Write Bytes
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/byte-io
 redirect_from:
-  - /v1-2/learn/by-example/byte-io
-  - /v1-2/learn/by-example/byte-io.html
+  - /vswan-lake/learn/by-example/byte-io
+  - /vswan-lake/learn/by-example/byte-io.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">src</span><span class="p">,</span>
-              <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dst</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">byte</span><span class="p">[]|</span><span class="nx">io</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">dst</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">result2</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="nx">result2</span><span class="p">;</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">result2</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+    <span class="c1">// Initialize the image paths.</span>
+    <span class="kt">string</span> <span class="nx">imagePath</span> <span class="p">=</span> <span class="s">&quot;./files/ballerina.jpg&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">imageCopyPath1</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy1.jpg&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">imageCopyPath2</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy2.jpg&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Read the file content as a byte array using the given file path.</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">bytes</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBytes</span><span class="p">(</span><span class="nx">imagePath</span><span class="p">);</span>
+    <span class="c1">// Write the already-read content to the given destination file.</span>
+    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteBytes</span><span class="p">(</span><span class="nx">imageCopyPath1</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Successfully copied the image as a byte array.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Read the file as a stream of blocks. The default block size is 4KB.</span>
+    <span class="c1">// Here, the default size is overridden by the value 2KB.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">io</span><span class="p">:</span><span class="nx">Block</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">blockStream</span> <span class="p">=</span> <span class="nx">check</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="nx">imagePath</span><span class="p">,</span> <span class="mi">2048</span><span class="p">);</span>
+    <span class="c1">// If the file reading was successful, then,</span>
+    <span class="c1">// the content will be written to the given destination file using the given stream.</span>
+    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteBlocksFromStream</span><span class="p">(</span><span class="nx">imageCopyPath2</span><span class="p">,</span> <span class="nx">blockStream</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Successfully copied the image as a stream.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">|</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
-        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">close</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">;</span>
-    <span class="p">}</span> <span class="nx">channelResult</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">channelResult</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-    <span class="kt">string</span> <span class="nx">srcPath</span> <span class="p">=</span> <span class="s">&quot;./files/ballerina.jpg&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">dstPath</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy.jpg&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">srcCh</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">srcPath</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dstCh</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">dstPath</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Start to copy files from &quot;</span> <span class="o">+</span> <span class="nx">srcPath</span> <span class="o">+</span> <span class="s">&quot; to &quot;</span> <span class="o">+</span> <span class="nx">dstPath</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">srcCh</span><span class="p">,</span> <span class="nx">dstCh</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while performing copy &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File copy completed. The copied file is located at &quot;</span> <span class="o">+</span>
-                    <span class="nx">dstPath</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">close</span><span class="p">(</span><span class="nx">srcCh</span><span class="p">);</span>
-    <span class="nx">close</span><span class="p">(</span><span class="nx">dstCh</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">byte_io</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Start</span> <span class="nx">to</span> <span class="nx">copy</span> <span class="nx">files</span> <span class="nx">from</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">ballerina</span><span class="p">.</span><span class="nx">jpg</span> <span class="nx">to</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">ballerinaCopy</span><span class="p">.</span><span class="nx">jpg</span>
-<span class="nx">File</span> <span class="nx">copy</span> <span class="nx">completed</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">copied</span> <span class="nx">file</span> <span class="nx">could</span> <span class="nx">be</span> <span class="nx">located</span> <span class="nx">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">ballerinaCopy</span><span class="p">.</span><span class="nx">jpg</span>
 </pre></div>
 
             </div>
@@ -70,8 +41,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Byte I/O</h2>
-                            <p><p>This example demonstrates how bytes can be read and written through the I/O API.</p>
+                            <h2>Read/Write Bytes</h2>
+                            <p><p>This example demonstrates how bytes can be read and written through the I/O APIs.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/io/latest/io/">IO module</a>.</p>
 </p>
 
                         </td>
@@ -79,16 +52,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="locks.html">
+                                    <a class="prev" href="java-exceptions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Lock</p>
+                                        <p>Java Exceptions</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="data-io.html">
+                                    <a class="next" href="text-io.html">
                                         <span>NEXT ></span>
-                                        <p>Data I/O</p>
+                                        <p>Read/Write Text</p>
                                     </a>
                                 </div>
                                 
@@ -104,11 +77,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/byte-io/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/byte-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -141,14 +114,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -158,134 +123,10 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function copy(io:ReadableByteChannel src,
-              io:WritableByteChannel dst) returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Copies the content from the source channel to a destination channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    while (true) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The below example shows how to read all the content from
- the source and copy it to the destination.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        byte[]|io:Error result = src.read(1000);
-        if (result is io:EofError) {
-            break;
-        } else if (result is error) {
-            return &lt;@untained&gt;result;
-        } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The operation attempts to read a maximum of 1000 bytes and returns
- with the available content, which could be &lt; 1000.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            int i = 0;
-            while (i &lt; result.length()) {
-                var result2 = dst.write(result, i);
-                if (result2 is error) {
-                    return result2;
-                } else {
-                    i = i + result2;
-                }
-            }
-        }
-    }
-    return;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The operation writes the given content into the channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
-    abstract object {
-        public function close() returns error?;
-    } channelResult = ch;
-    var cr = channelResult.close();
-    if (cr is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes a given readable or writable byte channel.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -294,8 +135,6 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
-    string srcPath = &quot;./files/ballerina.jpg&quot;;
-    string dstPath = &quot;./files/ballerinaCopy.jpg&quot;;
 </code></pre></div>
 
                                 </td>
@@ -307,7 +146,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableByteChannel srcCh = check io:openReadableFile(srcPath);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string imagePath = &quot;./files/ballerina.jpg&quot;;
+    string imageCopyPath1 = &quot;./files/ballerinaCopy1.jpg&quot;;
+    string imageCopyPath2 = &quot;./files/ballerinaCopy2.jpg&quot;;
 </code></pre></div>
 
                                 </td>
@@ -315,7 +156,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the readable byte channel.</p>
+                                            <p>Initialize the image paths.</p>
 
                                         </div>
                                     </div>
@@ -326,8 +167,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableByteChannel dstCh = check io:openWritableFile(dstPath);
-    io:println(&quot;Start to copy files from &quot; + srcPath + &quot; to &quot; + dstPath);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] bytes = check io:fileReadBytes(imagePath);
 </code></pre></div>
 
                                 </td>
@@ -335,7 +175,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the writable byte channel.</p>
+                                            <p>Read the file content as a byte array using the given file path.</p>
 
                                         </div>
                                     </div>
@@ -346,13 +186,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var result = copy(srcCh, dstCh);
-    if (result is error) {
-        log:printError(&quot;error occurred while performing copy &quot;, result);
-    } else {
-        io:println(&quot;File copy completed. The copied file is located at &quot; +
-                    dstPath);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteBytes(imageCopyPath1, bytes);
+    io:println(&quot;Successfully copied the image as a byte array.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -360,7 +195,28 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Copies the source byte channel to the target byte channel.</p>
+                                            <p>Write the already-read content to the given destination file.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;io:Block, io:Error?&gt; blockStream = check
+    io:fileReadBlocksAsStream(imagePath, 2048);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Read the file as a stream of blocks. The default block size is 4KB.
+ Here, the default size is overridden by the value 2KB.</p>
 
                                         </div>
                                     </div>
@@ -371,8 +227,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    close(srcCh);
-    close(dstCh);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteBlocksFromStream(imageCopyPath2, blockStream);
+    io:println(&quot;Successfully copied the image as a stream.&quot;);
 }
 </code></pre></div>
 
@@ -381,7 +237,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes the connections.</p>
+                                            <p>If the file reading was successful, then,
+ the content will be written to the given destination file using the given stream.</p>
 
                                         </div>
                                     </div>
@@ -397,6 +254,10 @@ import ballerina/log;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -404,12 +265,28 @@ import ballerina/log;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run byte_io.bal
-Start to copy files from ./files/ballerina.jpg to ./files/ballerinaCopy.jpg
-File copy completed. The copied file could be located in ./files/ballerinaCopy.jpg
+# `.bal` file, and execute the `bal run` command below.
+# Note that to run this examples successfully, you should place an image in the `files` directory as follows.
+# tree .
+# ├── files
+# │   └── ballerina.jpeg
+# └── bytes_io.bal
+bal run bytes_io.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Successfully copied the image as a byte array.
+Successfully copied the image as a stream.
 </code></pre></div>
 
                                 </td>
@@ -437,7 +314,7 @@ File copy completed. The copied file could be located in ./files/ballerinaCopy.j
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

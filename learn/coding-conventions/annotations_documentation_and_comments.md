@@ -1,15 +1,13 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Annotations, Documentation and Comments
 permalink: /learn/coding-conventions/annotations_documentation_and_comments/
 active: annotations_documentation_and_comments
 intro: The sections below include the coding conventions with respect to annotations, documentation, and comments.
 redirect_from:
-  - /v1-2/learn/style-guide/annotations_documentation_and_comments/
-  - /v1-2/learn/style-guide/annotations_documentation_and_comments
-  - /learn/style-guide/annotations_documentation_and_comments/
-  - /learn/style-guide/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments
+  - /swan-lake/learn/style-guide/annotations_documentation_and_comments/
+  - /swan-lake/learn/style-guide/annotations_documentation_and_comments
+  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments
 ---
 
 ## Annotations
@@ -34,7 +32,7 @@ service greetingService on new http:Listener(8080) {
 }
 ```
 
-* Each annotation attribute (i.e., key-value pairs) should block indent on its own line..
+* Each annotation attribute (i.e., key-value pairs) should block indent on its own line.
   
 **Example,**
   

@@ -4,23 +4,18 @@ title: Secured Unary
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/grpc-secured-unary
 redirect_from:
-  - /v1-2/learn/by-example/grpc-secured-unary
-  - /v1-2/learn/by-example/grpc-secured-unary.html
+  - /vswan-lake/learn/by-example/grpc-secured-unary
+  - /vswan-lake/learn/by-example/grpc-secured-unary.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="nx">syntax</span> <span class="p">=</span> <span class="s">&quot;proto3&quot;</span><span class="p">;</span>
-<span class="kn">import</span> <span class="s">&quot;google/protobuf/wrappers.proto&quot;</span><span class="p">;</span>
-<span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="p">{</span>
-	<span class="nx">rpc</span> <span class="nx">hello</span> <span class="p">(</span><span class="nx">google</span><span class="p">.</span><span class="nx">protobuf</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">)</span>
-			<span class="nx">returns</span> <span class="p">(</span><span class="nx">google</span><span class="p">.</span><span class="nx">protobuf</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">new</span> <span class="nx">Protocol</span> <span class="nx">Buffers</span> <span class="nx">definition</span> <span class="nx">file</span> <span class="s">`grpc_secured_unary.proto`</span> <span class="nx">and</span> <span class="nx">add</span> <span class="kd">service</span> <span class="nx">definition</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">Run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">command</span> <span class="nx">in</span> <span class="nx">Ballerina</span> <span class="nx">tools</span> <span class="nx">distribution</span> <span class="k">for</span> <span class="nx">stub</span> <span class="nx">generation</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">grpc</span> <span class="o">--</span><span class="nx">input</span> <span class="nx">grpc_secured_unary</span><span class="p">.</span><span class="nx">proto</span>  <span class="o">--</span><span class="nx">output</span> <span class="nx">stubs</span><span class="err">#</span> <span class="nx">Once</span> <span class="nx">you</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">command</span><span class="p">,</span> <span class="s">`grpc_secured_unary_pb.bal`</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">generated</span> <span class="nx">inside</span> <span class="nx">stubs</span> <span class="nx">directory</span><span class="p">.</span><span class="err">#</span> <span class="nx">Please</span> <span class="nx">refer</span> <span class="nx">example</span> <span class="s">`Proto To Ballerina`</span> <span class="nx">to</span> <span class="nx">get</span> <span class="nx">information</span> <span class="nx">on</span> <span class="nx">how</span> <span class="nx">to</span> <span class="nx">use</span> <span class="nx">Ballerina</span> <span class="nx">Protocol</span> <span class="nx">Buffers</span> <span class="nx">tool</span><span class="p">.</span>
+                <div class="highlight"><pre><span class="c1">// This is the server implementation of the secured connection (HTTPS) scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// The server endpoint configuration with the SSL configurations.</span>
 <span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
@@ -30,52 +25,135 @@ redirect_from:
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span><span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
-        <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
-        <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                           <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server send response : &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in sending completed notification to caller&quot;</span><span class="p">,</span>
-                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nd">@grpc:ServiceDescriptor {</span>
+    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
+    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">HelloWorldStringCaller</span> <span class="nx">caller</span><span class="p">,</span>
+                            <span class="nx">ContextString</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Invoked the hello RPC call.&quot;</span><span class="p">);</span>
+        <span class="c1">// Reads the request content.</span>
+        <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">request</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+        <span class="c1">// Set up the response message and send it.</span>
+        <span class="nx">ContextString</span> <span class="nx">responseMessage</span> <span class="p">=</span> <span class="p">{</span><span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">headers</span><span class="p">:</span> <span class="p">{}};</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">responseMessage</span><span class="p">);</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">and</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">inside</span> <span class="nx">it</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">Copy</span> <span class="nx">generated</span> <span class="nx">stub</span> <span class="nx">file</span> <span class="s">`grpc_secured_unary_pb.bal`</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">module</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">For</span> <span class="nx">example</span><span class="p">,</span> <span class="k">if</span> <span class="nx">you</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">named</span> <span class="s">`service`</span><span class="p">,</span> <span class="nx">copy</span> <span class="nx">the</span> <span class="nx">stub</span> <span class="nx">file</span> <span class="nx">to</span> <span class="nx">the</span> <span class="s">`service`</span> <span class="nx">module</span><span class="p">.</span><span class="err">#</span> <span class="nx">Add</span> <span class="nx">new</span> <span class="nx">Ballerina</span> <span class="nx">file</span> <span class="s">`grpc_secured_unary.bal`</span> <span class="nx">inside</span> <span class="nx">the</span> <span class="s">`service`</span> <span class="nx">module</span> <span class="nx">and</span> <span class="nx">add</span> <span class="kd">service</span> <span class="nx">implementation</span><span class="p">.</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">build</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="kd">service</span><span class="err">&#39;</span> <span class="nx">module</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">build</span> <span class="kd">service</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">target</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="kd">service</span><span class="p">.</span><span class="nx">jar</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">HelloWorldStringCaller</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">send</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="nx">ContextString</span> <span class="nx">response</span><span class="p">)</span>
+                                    <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendError</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">response</span><span class="p">)</span>
+                                <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">complete</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// The context record includes the message payload and headers.</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextString</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">content</span><span class="p">;</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="c1">// This is the client implementation of the secured connection (HTTPS) scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">HelloWorldBlockingClient</span> <span class="nx">helloWorldBlockingEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The client endpoint configuration with the SSL configurations.</span>
+    <span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span>
+        <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
     <span class="p">});</span>
-    <span class="k">var</span> <span class="nx">unionResp</span> <span class="p">=</span> <span class="nx">helloWorldBlockingEp</span><span class="o">-&gt;</span><span class="nx">hello</span><span class="p">(</span><span class="s">&quot;WSO2&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">unionResp</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">unionResp</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                         <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">unionResp</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="p">[</span><span class="nx">result</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span> <span class="nx">unionResp</span><span class="p">;</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client Got Response : &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="nx">ContextString</span> <span class="nx">requestMessage</span> <span class="p">=</span> <span class="p">{</span><span class="nx">content</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span><span class="p">,</span> <span class="nx">headers</span><span class="p">:</span> <span class="p">{}};</span>
+    <span class="c1">// Executing the unary call.</span>
+    <span class="nx">ContextString</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">helloContext</span><span class="p">(</span><span class="nx">requestMessage</span><span class="p">);</span>
+    <span class="c1">// Print the content.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">HelloWorldClient</span> <span class="p">{</span>
+
+    <span class="o">*</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">AbstractClientEndpoint</span><span class="p">;</span>
+
+    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">grpcClient</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">url</span><span class="p">,</span>
+                <span class="nx">grpc</span><span class="p">:</span><span class="nx">ClientConfiguration</span><span class="err">?</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">())</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="c1">// Initialize client endpoint.</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
+        <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="p">.</span><span class="nx">initStub</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span>
+                                        <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span> <span class="nx">getDescriptorMap</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">and</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">inside</span> <span class="nx">it</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">Copy</span> <span class="nx">generated</span> <span class="nx">stub</span> <span class="nx">file</span> <span class="s">`grpc_secured_unary_pb.bal`</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">module</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">For</span> <span class="nx">example</span><span class="p">,</span> <span class="k">if</span> <span class="nx">you</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">named</span> <span class="s">`client`</span><span class="p">,</span> <span class="nx">copy</span> <span class="nx">the</span> <span class="nx">stub</span> <span class="nx">file</span> <span class="nx">to</span> <span class="nx">the</span> <span class="s">`client`</span> <span class="nx">module</span><span class="p">.</span><span class="err">#</span> <span class="nx">Add</span> <span class="nx">new</span> <span class="nx">Ballerina</span> <span class="nx">file</span> <span class="s">`grpc_secured_unary_client.bal`</span> <span class="nx">inside</span> <span class="nx">the</span> <span class="s">`client`</span> <span class="nx">module</span> <span class="nx">and</span> <span class="nx">add</span> <span class="nx">client</span> <span class="nx">implementation</span><span class="p">.</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">build</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="nx">client</span><span class="err">&#39;</span> <span class="nx">module</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">build</span> <span class="nx">client</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">the</span> <span class="nx">path</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">directory</span> <span class="nx">using</span> <span class="nx">the</span> <span class="o">--</span><span class="s">`b7a.home`</span> <span class="nx">parameter</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">target</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">client</span><span class="p">.</span><span class="nx">jar</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="nx">ContextString</span> <span class="nx">req</span><span class="p">)</span>
+                                    <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">{};</span>
+        <span class="kt">string</span> <span class="kt">message</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">req</span> <span class="nx">is</span> <span class="nx">ContextString</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">message</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+            <span class="nx">headers</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="kt">message</span> <span class="p">=</span> <span class="nx">req</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="o">-&gt;</span><span class="nx">executeSimpleRPC</span><span class="p">(</span>
+                                        <span class="s">&quot;HelloWorld/hello&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+        <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;][</span><span class="nx">result</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">helloContext</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="nx">ContextString</span> <span class="nx">req</span><span class="p">)</span>
+                                <span class="nx">returns</span> <span class="p">(</span><span class="nx">ContextString</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">{};</span>
+        <span class="kt">string</span> <span class="kt">message</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">req</span> <span class="nx">is</span> <span class="nx">ContextString</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">message</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+            <span class="nx">headers</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="kt">message</span> <span class="p">=</span> <span class="nx">req</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="o">-&gt;</span><span class="nx">executeSimpleRPC</span><span class="p">(</span>
+                                        <span class="s">&quot;HelloWorld/hello&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+        <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;][</span><span class="nx">result</span><span class="p">,</span> <span class="nx">respHeaders</span><span class="p">]</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">content</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span> <span class="nx">headers</span><span class="p">:</span> <span class="nx">respHeaders</span><span class="p">};</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// The context record includes the message payload and headers.</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextString</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">content</span><span class="p">;</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
+<span class="p">|};</span>
 </pre></div>
 
             </div>
@@ -86,7 +164,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Secured Unary</h2>
                             <p><p>The gRPC Server Connector is used to expose gRPC services over HTTP/2.
- This sample demonstrates how a gRPC secured unary service interacts with a gRPC secured blocking client.</p>
+ This sample demonstrates how a gRPC secured unary service interacts with a gRPC secured blocking client.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/grpc/latest/grpc/">GRPC module</a>.</p>
 </p>
 
                         </td>
@@ -119,11 +199,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/grpc-secured-unary/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/grpc-secured-unary/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -198,7 +278,7 @@ service HelloWorld {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Create new Protocol Buffers definition file `grpc_secured_unary.proto` and add service definition.
-# Run the following command in Ballerina tools distribution for stub generation.
+# Run the command below in Ballerina tools distribution for stub generation.
 ballerina grpc --input grpc_secured_unary.proto  --output stubs
 </code></pre></div>
 
@@ -258,6 +338,30 @@ ballerina grpc --input grpc_secured_unary.proto  --output stubs
                         
                             
                                 
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -288,7 +392,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the server implementation for the secured connection (HTTPS) scenario.</p>
+                                            <p>This is the server implementation of the secured connection (HTTPS) scenario.</p>
 
                                         </div>
                                     </div>
@@ -316,7 +420,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Server endpoint configuration with the SSL configurations.</p>
+                                            <p>The server endpoint configuration with the SSL configurations.</p>
 
                                         </div>
                                     </div>
@@ -327,10 +431,14 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorld on ep {
-    resource function hello(grpc:Caller caller, string name) {
-        log:printInfo(&quot;Server received hello from &quot; + name);
-        string message = &quot;Hello &quot; + name;
+                                    <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
+service &quot;HelloWorld&quot; on ep {
+    remote function hello(HelloWorldStringCaller caller,
+                            ContextString request) {
+        log:print(&quot;Invoked the hello RPC call.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -342,7 +450,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        grpc:Error? err = caller-&gt;send(message);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string message = &quot;Hello &quot; + request.content;
 </code></pre></div>
 
                                 </td>
@@ -350,7 +458,30 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send a response message to the caller.</p>
+                                            <p>Reads the request content.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        ContextString responseMessage = {content: message, headers: {}};
+        checkpanic caller-&gt;send(responseMessage);
+        checkpanic caller-&gt;complete();
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Set up the response message and send it.</p>
 
                                         </div>
                                     </div>
@@ -361,12 +492,81 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (err is grpc:Error) {
-            log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
-                                           + &lt;string&gt;err.detail()[&quot;message&quot;]);
-        } else {
-            log:printInfo(&quot;Server send response : &quot; + message);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>public client class HelloWorldStringCaller {
+    private grpc:Caller caller;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function init(grpc:Caller caller) {
+        self.caller = caller;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function getId() returns int {
+        return self.caller.getId();
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function send(string|ContextString response)
+                                    returns grpc:Error? {
+        return self.caller-&gt;send(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendError(grpc:Error response)
+                                returns grpc:Error? {
+        return self.caller-&gt;sendError(response);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function complete() returns grpc:Error? {
+        return self.caller-&gt;complete();
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -378,13 +578,10 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        grpc:Error? result = caller-&gt;complete();
-        if (result is grpc:Error) {
-            log:printError(&quot;Error in sending completed notification to caller&quot;,
-                err = result);
-        }
-    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextString record {|
+    string content;
+    map&lt;string|string[]&gt; headers;
+|};
 </code></pre></div>
 
                                 </td>
@@ -392,7 +589,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send the <code>completed</code> notification to the caller.</p>
+                                            <p>The context record includes the message payload and headers.</p>
 
                                         </div>
                                     </div>
@@ -454,8 +651,8 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the following command to build the &#39;service&#39; module.
-ballerina build service
+                                    <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;service&#39; module.
+bal build service
 </code></pre></div>
 
                                 </td>
@@ -467,8 +664,8 @@ ballerina build service
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by passing Ballerina home path as a system property.
-ballerina run target/bin/service.jar --b7a.home=&lt;ballerina_home_path&gt;
+                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the command below by passing Ballerina home path as a system property.
+bal run target/bin/service.jar --b7a.home=&lt;ballerina_home_path&gt;
 </code></pre></div>
 
                                 </td>
@@ -480,6 +677,54 @@ ballerina run target/bin/service.jar --b7a.home=&lt;ballerina_home_path&gt;
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -536,7 +781,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main (string... args) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -548,14 +793,17 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    HelloWorldBlockingClient helloWorldBlockingEp = new (&quot;https://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>    HelloWorldClient ep = check
+        new (&quot;https://localhost:9090&quot;, {
             secureSocket: {
                 trustStore: {
-                    path: config:getAsString(&quot;b7a.home&quot;) + &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                    path: config:getAsString(&quot;b7a.home&quot;) +
+                            &quot;/bre/security/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
     });
+    ContextString requestMessage = {content: &quot;WSO2&quot;, headers: {}};
 </code></pre></div>
 
                                 </td>
@@ -563,7 +811,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Client endpoint configuration with SSL configurations.</p>
+                                            <p>The client endpoint configuration with the SSL configurations.</p>
 
                                         </div>
                                     </div>
@@ -573,16 +821,27 @@ import ballerina/io;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var unionResp = helloWorldBlockingEp-&gt;hello(&quot;WSO2&quot;);
-    if (unionResp is grpc:Error) {
-        io:println(&quot;Error from Connector: &quot; + unionResp.reason() + &quot; - &quot;
-                                         + &lt;string&gt;unionResp.detail()[&quot;message&quot;]);
-    } else {
-        string result;
-        [result, _] = unionResp;
-        io:println(&quot;Client Got Response : &quot; + result);
-    }
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    ContextString result = check ep-&gt;helloContext(requestMessage);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Executing the unary call.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(result.content);
 }
 </code></pre></div>
 
@@ -591,7 +850,186 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Executes unary blocking secured call.</p>
+                                            <p>Print the content.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public client class HelloWorldClient {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    *grpc:AbstractClientEndpoint;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    private grpc:Client grpcClient;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function init(string url,
+                grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.grpcClient = check new(url, config);
+        grpc:Error? result = self.grpcClient.initStub(self,
+                                        ROOT_DESCRIPTOR, getDescriptorMap());
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize client endpoint.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function hello(string|ContextString req)
+                                    returns (string|grpc:Error) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;string|string[]&gt; headers = {};
+        string message;
+        if (req is ContextString) {
+            message = req.content;
+            headers = req.headers;
+        } else {
+            message = req;
+        }
+        var payload = check self.grpcClient-&gt;executeSimpleRPC(
+                                        &quot;HelloWorld/hello&quot;, message, headers);
+        [anydata, map&lt;string|string[]&gt;][result, _] = payload;
+        return result.toString();
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function helloContext(string|ContextString req)
+                                returns (ContextString|grpc:Error) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;string|string[]&gt; headers = {};
+        string message;
+        if (req is ContextString) {
+            message = req.content;
+            headers = req.headers;
+        } else {
+            message = req;
+        }
+        var payload = check self.grpcClient-&gt;executeSimpleRPC(
+                                        &quot;HelloWorld/hello&quot;, message, headers);
+        [anydata, map&lt;string|string[]&gt;][result, respHeaders] = payload;
+        return {content: result.toString(), headers: respHeaders};
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextString record {|
+    string content;
+    map&lt;string|string[]&gt; headers;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The context record includes the message payload and headers.</p>
 
                                         </div>
                                     </div>
@@ -653,8 +1091,8 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the following command to build the &#39;client&#39; module.
-ballerina build client
+                                    <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;client&#39; module.
+bal build client
 </code></pre></div>
 
                                 </td>
@@ -666,8 +1104,8 @@ ballerina build client
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the client, execute the below command by passing the path to the Ballerina home directory using the --`b7a.home` parameter.
-ballerina run target/bin/client.jar --b7a.home=&lt;ballerina_home_path&gt;
+                                    <div class="highlight"><pre><code class=shell-session># To run the client, execute the command below by passing the path to the Ballerina home directory using the --`b7a.home` parameter.
+bal run target/bin/client.jar --b7a.home=&lt;ballerina_home_path&gt;
 </code></pre></div>
 
                                 </td>
@@ -695,7 +1133,7 @@ ballerina run target/bin/client.jar --b7a.home=&lt;ballerina_home_path&gt;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

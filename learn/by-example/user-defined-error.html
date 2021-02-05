@@ -4,81 +4,116 @@ title: User-defined Error Types
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/user-defined-error
 redirect_from:
-  - /v1-2/learn/by-example/user-defined-error
-  - /v1-2/learn/by-example/user-defined-error.html
+  - /vswan-lake/learn/by-example/user-defined-error
+  - /vswan-lake/learn/by-example/user-defined-error.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kd">const</span> <span class="nx">INVALID_ACC_TYPE</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountType&quot;</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Define an open record to represent the error details.</span>
+<span class="c1">// This record can have fields of `anydata|reaonly` types.</span>
+<span class="c1">// i.e., it should be a subtype of `map&lt;anydata|readonly&gt;`.</span>
 <span class="nx">type</span> <span class="nx">InvalidAccountTypeErrorData</span> <span class="nx">record</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
-    <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">accountType</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="nx">type</span> <span class="nx">InvalidAccountTypeError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">INVALID_ACC_TYPE</span><span class="p">,</span> <span class="nx">InvalidAccountTypeErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">getTypeId</span><span class="p">(</span><span class="kt">string</span> <span class="nx">accountType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">InvalidAccountTypeError</span> <span class="p">{</span>
+
+<span class="c1">// User-defined `error` type.</span>
+<span class="nx">type</span> <span class="nx">InvalidAccountTypeError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">InvalidAccountTypeErrorData</span><span class="p">&gt;;</span>
+
+<span class="kd">function</span> <span class="nx">getTypeId</span><span class="p">(</span><span class="kt">string</span> <span class="nx">accountType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">InvalidAccountTypeError</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">accountType</span> <span class="p">{</span>
         <span class="s">&quot;checking&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
         <span class="s">&quot;savings&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nx">InvalidAccountTypeError</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">InvalidAccountTypeError</span><span class="p">(</span><span class="nx">accountType</span> <span class="p">=</span> <span class="nx">accountType</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">AccountNotFoundErrorData</span> <span class="nx">record</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
-    <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
+
+    <span class="c1">// To construct an error value of the user-defined error type</span>
+    <span class="c1">// `InvalidAccountTypeError`, the type name is used as the error constructor.</span>
+    <span class="c1">// The first argument to the error constructor is the error message,</span>
+    <span class="c1">// and the error constructor takes a second optional argument as the error cause.</span>
+    <span class="c1">// The error details can be provided as named arguments.</span>
+    <span class="k">return</span> <span class="nx">error</span> <span class="nx">InvalidAccountTypeError</span><span class="p">(</span><span class="s">&quot;Invalid account type&quot;</span><span class="p">,</span>
+                                    <span class="nx">accountType</span> <span class="p">=</span> <span class="nx">accountType</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">AccountErrorData</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">accountID</span><span class="p">;</span>
-<span class="p">};</span><span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">ACCOUNT_NOT_FOUND</span><span class="p">|</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">AccountNotFoundErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">AccountNotFoundError</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">AccountTransferErrorData</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">fromAccountId</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">toAccountId</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// To distinctly identify different errors and handle them appropriately,</span>
+<span class="c1">// distinct errors can be used.</span>
+<span class="c1">// Distinct types are similar to nominal types and can be used to create</span>
+<span class="c1">// distinct type hierarchies.</span>
+<span class="c1">// `InvalidAccountIdError` and `AccountNotFoundError` are subtypes of AccountError.</span>
+<span class="nx">type</span> <span class="nx">AccountError</span> <span class="nx">distinct</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">AccountErrorData</span><span class="p">&gt;;</span>
+<span class="nx">type</span> <span class="nx">InvalidAccountIdError</span> <span class="nx">distinct</span> <span class="nx">AccountError</span><span class="p">;</span>
+<span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">distinct</span> <span class="nx">AccountError</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">AccountError</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">AccountNotFoundError</span> <span class="nx">accountNotFoundError</span> <span class="p">=</span>
-                                            <span class="nx">error</span><span class="p">(</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">accountNotFoundError</span><span class="p">;</span>
+        <span class="c1">// Return an `InvalidAccountIdError` if the `accountID` is less than zero.</span>
+        <span class="k">return</span> <span class="nx">error</span> <span class="nx">InvalidAccountIdError</span><span class="p">(</span><span class="s">&quot;Invalid account Id&quot;</span><span class="p">,</span>
+                                      <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">AccountNotFoundError</span> <span class="nx">accountNotFoundError</span> <span class="p">=</span>
-                                            <span class="nx">error</span><span class="p">(</span><span class="nx">ACCOUNT_NOT_FOUND</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">accountNotFoundError</span><span class="p">;</span>
+        <span class="c1">// Return an `AccountNotFoundError` if the `accountID` is greater than hundred.</span>
+        <span class="k">return</span> <span class="nx">error</span> <span class="nx">AccountNotFoundError</span><span class="p">(</span><span class="s">&quot;Account not found&quot;</span><span class="p">,</span>
+                                          <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="c1">// Return a value if the `accountID` is in between zero and hundred inclusive.</span>
     <span class="k">return</span> <span class="mi">600</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">type</span> <span class="nx">InquiryFailedErrorData</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">string</span> <span class="kt">message</span><span class="p">;</span>
-    <span class="nx">error</span> <span class="nx">cause</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">accountID</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">AccountInquiryFailed</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">InquiryFailedErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">transferToAccount</span><span class="p">(</span><span class="kt">int</span> <span class="nx">fromAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">toAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">amount</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">AccountInquiryFailed</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">balance</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="nx">fromAccountId</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">balance</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">AccountInquiryFailed</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;AccountInquiryFailed&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">balance</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">cause</span> <span class="p">=</span> <span class="nx">balance</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">fromAccountId</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">AccountTransferError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">AccountTransferErrorData</span><span class="p">&gt;;</span>
+
+<span class="kd">function</span> <span class="nx">transferToAccount</span><span class="p">(</span><span class="kt">int</span> <span class="nx">fromAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">toAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">amount</span><span class="p">)</span>
+                            <span class="nx">returns</span> <span class="nx">AccountTransferError</span><span class="err">?</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="nx">fromAccountId</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Create a new error with the error returned from `getAccountBalance()` as the cause.</span>
+        <span class="k">return</span> <span class="nx">error</span> <span class="nx">AccountTransferError</span><span class="p">(</span><span class="s">&quot;Account transfer failed&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span>
+                                    <span class="nx">fromAccountId</span> <span class="p">=</span> <span class="nx">fromAccountId</span><span class="p">,</span>
+                                    <span class="nx">toAccountId</span> <span class="p">=</span> <span class="nx">toAccountId</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="p">}</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Perform transfer</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">InvalidAccountTypeError</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getTypeId</span><span class="p">(</span><span class="s">&quot;Joined&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account type ID: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span>
                    <span class="s">&quot;, Account type: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="nx">accountType</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="c1">// If the `result` is an `int`, then print the value.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result2</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account Balance: &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">);</span>
+    <span class="c1">// Type test expressions can be used to identify `distinct` errors.</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result2</span> <span class="nx">is</span> <span class="nx">InvalidAccountIdError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid account number: Please try again!&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span>
                     <span class="s">&quot;, Account ID: &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="nx">accountID</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">var</span> <span class="nx">result3</span> <span class="p">=</span> <span class="nx">transferToAccount</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result3</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transfer success: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span>
-                    <span class="s">&quot;, Message: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">,</span>
-                    <span class="s">&quot;, Cause: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="nx">cause</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">user_defined_error</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">InvalidAccountType</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">type</span><span class="p">:</span> <span class="nx">Joined</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">InvalidAccountID</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">ID</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">AccountInquiryFailed</span><span class="p">,</span> <span class="nx">Message</span><span class="p">:</span> <span class="nx">InvalidAccountID</span><span class="p">,</span> <span class="nx">Cause</span><span class="p">:</span> <span class="nx">error</span> <span class="nx">InvalidAccountID</span> <span class="nx">accountID</span><span class="p">=</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">var</span> <span class="nx">result3</span> <span class="p">=</span> <span class="nx">transferToAccount</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result3</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Print the mandatory error detail fields (i.e., message and cause).</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span>
+                    <span class="s">&quot;, Cause: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">cause</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transfer success&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -89,13 +124,12 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>User-defined Error Types</h2>
                             <p><p>Ballerina allows defining custom error types to match
- the errors being modeled. User defined error types in Ballerina should have
- a reason type which is a subtype of <code>string</code>, and a detail type which
- is a subtype of
- <code>record {| string message?; error cause?; (anydata|error)...; |}</code>.</p>
+ the errors being modeled. User defined error types in Ballerina could have an optional
+ type parameter specifying the error detail type,
+ which should be a subtype of <code>map&lt;anydata|readonly&gt;</code>.</p>
 
-<p>The nature of the default error detail record is that each field is optional
- and can contain additional <code>anydata|error</code> fields as required.</p>
+<p>When the detail type is absent from an error type definition the detail type
+ defaults to <code>map&lt;anydata|readonly&gt;</code>.</p>
 </p>
 
                         </td>
@@ -110,9 +144,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="workers.html">
+                                    <a class="next" href="error-handling-in-single-place.html">
                                         <span>NEXT ></span>
-                                        <p>Workers</p>
+                                        <p>Error Handling In Single Place</p>
                                     </a>
                                 </div>
                                 
@@ -128,15 +162,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/user-defined-error/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=59a6281138da9ebe3a657e07841fd144&file=user_defined_error.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/user-defined-error/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -199,12 +229,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -222,24 +246,10 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>const INVALID_ACC_TYPE = &quot;InvalidAccountType&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type InvalidAccountTypeErrorData record {
-    string message?;
-    error cause?;
     string accountType;
 };
 </code></pre></div>
@@ -249,8 +259,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define a record to represent the error details.
- This record can have fields of <code>anydata|error</code> types and should be a subtype of the built-in error&rsquo;s detail type.</p>
+                                            <p>Define an open record to represent the error details.
+ This record can have fields of <code>anydata|reaonly</code> types.
+ i.e., it should be a subtype of <code>map&lt;anydata|readonly&gt;</code>.</p>
 
                                         </div>
                                     </div>
@@ -261,7 +272,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type InvalidAccountTypeError error&lt;INVALID_ACC_TYPE, InvalidAccountTypeErrorData&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type InvalidAccountTypeError error&lt;InvalidAccountTypeErrorData&gt;;
 </code></pre></div>
 
                                 </td>
@@ -269,7 +280,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>User-defined <code>error</code> with a <code>constant</code> reason.</p>
+                                            <p>User-defined <code>error</code> type.</p>
 
                                         </div>
                                     </div>
@@ -296,8 +307,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    InvalidAccountTypeError e = InvalidAccountTypeError(accountType = accountType);
-    return e;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return error InvalidAccountTypeError(&quot;Invalid account type&quot;,
+                                    accountType = accountType);
 }
 </code></pre></div>
 
@@ -306,8 +317,11 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>When a constant reason is used in the error definition the error type name can be used as the error constructor,
- and the error details can be provided as named arguments, without specifying the reason.</p>
+                                            <p>To construct an error value of the user-defined error type
+ <code>InvalidAccountTypeError</code>, the type name is used as the error constructor.
+ The first argument to the error constructor is the error message,
+ and the error constructor takes a second optional argument as the error cause.
+ The error details can be provided as named arguments.</p>
 
                                         </div>
                                     </div>
@@ -318,9 +332,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type AccountNotFoundErrorData record {
-    string message?;
-    error cause?;
+                                    <div class="highlight"><pre><code class=language-ballerina>type AccountErrorData record {
     int accountID;
 };
 </code></pre></div>
@@ -334,8 +346,10 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
-const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type AccountTransferErrorData record {
+    int fromAccountId;
+    int toAccountId;
+};
 </code></pre></div>
 
                                 </td>
@@ -347,7 +361,9 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type AccountNotFoundError error&lt;ACCOUNT_NOT_FOUND|INVALID_ACCOUNT_ID, AccountNotFoundErrorData&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type AccountError distinct error&lt;AccountErrorData&gt;;
+type InvalidAccountIdError distinct AccountError;
+type AccountNotFoundError distinct AccountError;
 </code></pre></div>
 
                                 </td>
@@ -355,7 +371,11 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define an <code>error</code> type where error reason must be either <code>ACCOUNT_NOT_FOUND</code> or <code>INVALID_ACCOUNT_ID</code>.</p>
+                                            <p>To distinctly identify different errors and handle them appropriately,
+ distinct errors can be used.
+ Distinct types are similar to nominal types and can be used to create
+ distinct type hierarchies.
+ <code>InvalidAccountIdError</code> and <code>AccountNotFoundError</code> are subtypes of AccountError.</p>
 
                                         </div>
                                     </div>
@@ -366,7 +386,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function getAccountBalance(int accountID) returns int|AccountNotFoundError {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAccountBalance(int accountID) returns int|AccountError {
     if (accountID &lt; 0) {
 </code></pre></div>
 
@@ -379,9 +399,8 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        AccountNotFoundError accountNotFoundError =
-                                            error(INVALID_ACCOUNT_ID, accountID = accountID);
-        return accountNotFoundError;
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error InvalidAccountIdError(&quot;Invalid account Id&quot;,
+                                      accountID = accountID);
     } else if (accountID &gt; 100) {
 </code></pre></div>
 
@@ -390,8 +409,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Return an error with &ldquo;InvalidAccountID&rdquo; as the reason if the <code>accountID</code> is less than zero.
- The default error constructor can be used to construct the error value.</p>
+                                            <p>Return an <code>InvalidAccountIdError</code> if the <code>accountID</code> is less than zero.</p>
 
                                         </div>
                                     </div>
@@ -402,9 +420,8 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        AccountNotFoundError accountNotFoundError =
-                                            error(ACCOUNT_NOT_FOUND, accountID = accountID);
-        return accountNotFoundError;
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error AccountNotFoundError(&quot;Account not found&quot;,
+                                          accountID = accountID);
     }
 </code></pre></div>
 
@@ -413,7 +430,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Return an error with &ldquo;AccountNotFound&rdquo; as the reason if the <code>accountID</code> is greater than hundred.</p>
+                                            <p>Return an <code>AccountNotFoundError</code> if the <code>accountID</code> is greater than hundred.</p>
 
                                         </div>
                                     </div>
@@ -441,33 +458,10 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type InquiryFailedErrorData record {|
-    string message;
-    error cause;
-    int accountID;
-|};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Error detail type where <code>message</code> and <code>cause</code> are mandatory.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type AccountInquiryFailed error&lt;string, InquiryFailedErrorData&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type AccountTransferError error&lt;AccountTransferErrorData&gt;;
 </code></pre></div>
 
                                 </td>
@@ -479,9 +473,10 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function transferToAccount(int fromAccountId, int toAccountId, int amount) returns int|AccountInquiryFailed {
-    var balance = getAccountBalance(fromAccountId);
-    if (balance is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function transferToAccount(int fromAccountId, int toAccountId, int amount)
+                            returns AccountTransferError? {
+    var result = getAccountBalance(fromAccountId);
+    if (result is error) {
 </code></pre></div>
 
                                 </td>
@@ -493,8 +488,9 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        AccountInquiryFailed e = error(&quot;AccountInquiryFailed&quot;, message = balance.reason(), cause = balance, accountID = fromAccountId);
-        return e;
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error AccountTransferError(&quot;Account transfer failed&quot;, result,
+                                    fromAccountId = fromAccountId,
+                                    toAccountId = toAccountId);
     } else {
 </code></pre></div>
 
@@ -503,7 +499,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new error, with the error returned from <code>getAccountBalance()</code> as the cause.</p>
+                                            <p>Create a new error with the error returned from <code>getAccountBalance()</code> as the cause.</p>
 
                                         </div>
                                     </div>
@@ -515,6 +511,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    }
+}
 </code></pre></div>
 
                                 </td>
@@ -533,25 +530,12 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return 0;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     int|InvalidAccountTypeError result = getTypeId(&quot;Joined&quot;);
     if (result is int) {
         io:println(&quot;Account type ID: &quot;, result);
     } else {
-        io:println(&quot;Error: &quot;, result.reason(),
+        io:println(&quot;Error: &quot;, result.message(),
                    &quot;, Account type: &quot;, result.detail().accountType);
     }
 </code></pre></div>
@@ -597,8 +581,10 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
-        io:println(&quot;Error: &quot;, result2.reason(),
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else if (result2 is InvalidAccountIdError) {
+        io:println(&quot;Invalid account number: Please try again!&quot;);
+    } else {
+        io:println(&quot;Error: &quot;, result2.message(),
                     &quot;, Account ID: &quot;, result2.detail().accountID);
     }
 </code></pre></div>
@@ -608,7 +594,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If an error is returned, print the reason and the account ID from the detail record.</p>
+                                            <p>Type test expressions can be used to identify <code>distinct</code> errors.</p>
 
                                         </div>
                                     </div>
@@ -620,9 +606,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var result3 = transferToAccount(-1, 90, 1000);
-    if (result3 is int) {
-        io:println(&quot;Transfer success: &quot;, result3);
-    } else {
+    if (result3 is error) {
 </code></pre></div>
 
                                 </td>
@@ -634,9 +618,10 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Error: &quot;, result3.reason(),
-                    &quot;, Message: &quot;, result3.detail().message,
-                    &quot;, Cause: &quot;, result3.detail().cause);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Error: &quot;, result3.message(),
+                    &quot;, Cause: &quot;, result3.cause());
+    } else {
+        io:println(&quot;Transfer success&quot;);
     }
 }
 </code></pre></div>
@@ -646,7 +631,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Print the mandatory error detail fields message and cause.</p>
+                                            <p>Print the mandatory error detail fields (i.e., message and cause).</p>
 
                                         </div>
                                     </div>
@@ -671,11 +656,11 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run user_defined_error.bal
-Error: InvalidAccountType, Account type: Joined
-Error: InvalidAccountID, Account ID: -1
-Error: AccountInquiryFailed, Message: InvalidAccountID, Cause: error InvalidAccountID accountID=-1
+# `.bal` file, and execute the `bal run` command below.
+bal run user_defined_error.bal
+Error: Invalid account type, Account type: Joined
+Invalid account number: Please try again!
+Error: Account transfer failed, Cause: error InvalidAccountIdError (&quot;Invalid account Id&quot;,accountID=-1)
 </code></pre></div>
 
                                 </td>
@@ -703,7 +688,7 @@ Error: AccountInquiryFailed, Message: InvalidAccountID, Cause: error InvalidAcco
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

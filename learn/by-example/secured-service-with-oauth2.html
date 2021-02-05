@@ -4,45 +4,58 @@ title: Secured Service with OAuth2
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/secured-service-with-oauth2
 redirect_from:
-  - /v1-2/learn/by-example/secured-service-with-oauth2
-  - /v1-2/learn/by-example/secured-service-with-oauth2.html
+  - /vswan-lake/learn/by-example/secured-service-with-oauth2
+  - /vswan-lake/learn/by-example/secured-service-with-oauth2.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">InboundOAuth2Provider</span> <span class="nx">oauth2Provider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
-    <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9095/oauth2/token/introspect&quot;</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">oauth2Handler</span><span class="p">]</span>
-    <span class="p">},</span>
+
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span><span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// The service can be secured with OAuth2 authentication and can be authorized</span>
+<span class="c1">// optionally. OAuth2 authentication can be enabled by setting the</span>
+<span class="c1">// `http:OAuth2IntrospectionConfig` configurations.</span>
+<span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
+<span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
+<span class="c1">// configurations.</span>
+<span class="nd">@http:ServiceConfig {</span>
+    <span class="nx">auth</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">oauth2IntrospectionConfig</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9999/oauth2/token/introspect&quot;</span><span class="p">,</span>
+                <span class="nx">tokenTypeHint</span><span class="p">:</span> <span class="s">&quot;access_token&quot;</span><span class="p">,</span>
+                <span class="nx">scopeKey</span><span class="p">:</span> <span class="s">&quot;scp&quot;</span><span class="p">,</span>
+                <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
         <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">securedEP</span> <span class="p">{</span>
+
+    <span class="c1">// It is optional to override the authentication and authorization</span>
+    <span class="c1">// configurations at the resource levels. Otherwise, the service auth</span>
+    <span class="c1">// configurations will be applied automatically to the resources as well.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">bar</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span>
-<span class="err">#</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_service_with_oauth2</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">k</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Authorization: Bearer YWRtaW46MTIz&quot;</span> \
-<span class="nx">https</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!!!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -52,14 +65,19 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Secured Service with OAuth2</h2>
-                            <p><p>A service can be secured using OAuth2 and optionally by enforcing
- authorization. The OAuth2 auth provider verifies the token against the
- configured introspection server. The result returned from the introspection
- server is used for token expiration, authorization etc.
+                            <p><p>An HTTP service/resource can be secured using OAuth2 and by enforcing
+ authorization optionally. Then, it validates the OAuth2 token sent in the
+ <code>Authorization</code> header against the provided configurations. This calls the
+ configured introspection endpoint to validate.<br/>
  Ballerina uses the concept of scopes for authorization. A resource declared
- in a service can be bound to one/more scope(s). The scopes are included in
- the introspection response and the scopes of the resource are compared
- against those for at least one match between the two sets.</p>
+ in a service can be bound to one/more scope(s). The scope can be included
+ in the introspection response using a custom claim attribute. That custom
+ claim attribute is also can be configured as the <code>scopeKey</code>.<br/>
+ In the authorization phase, the scopes of the service/resource are compared
+ against the scope included in the introspection response for at least one
+ match between the two sets.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/oauth2/latest/oauth2/">OAuth2 module</a>.</p>
 </p>
 
                         </td>
@@ -74,9 +92,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="secured-service-with-ldap.html">
+                                    <a class="next" href="secured-client-with-basic-auth.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Service with LDAP</p>
+                                        <p>Secured Client with Basic Auth</p>
                                     </a>
                                 </div>
                                 
@@ -92,11 +110,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/secured-service-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-service-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -123,10 +141,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -136,9 +150,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/config;
-import ballerina/log;
-import ballerina/oauth2;
 </code></pre></div>
 
                                 </td>
@@ -147,79 +158,13 @@ import ballerina/oauth2;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new ({
-    url: &quot;https://localhost:9095/oauth2/token/introspect&quot;
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates an inbound OAuth2 authentication provider with the relevant
- configurations of the introspection server.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler oauth2Handler = new (oauth2Provider);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a Bearer Auth handler with the created OAuth2 provider.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, {
-    auth: {
-        authHandlers: [oauth2Handler]
-    },
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The endpoint used here is the <code>http:Listener</code>. The OAuth2 handler is
- set to this endpoint using the <code>authHandlers</code> attribute.
- It is optional to override the authentication and authorization at the
- service and resource levels.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
         keyStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
+            path: &quot;../resources/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -229,9 +174,46 @@ import ballerina/oauth2;
                                 </td>
                                 <td class="docs">
                                     
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
+    auth: [
+        {
+            oauth2IntrospectionConfig: {
+                url: &quot;https://localhost:9999/oauth2/token/introspect&quot;,
+                tokenTypeHint: &quot;access_token&quot;,
+                scopeKey: &quot;scp&quot;,
+                clientConfig: {
+                    secureSocket: {
+                        trustStore: {
+                            path: &quot;../resources/ballerinaTruststore.p12&quot;,
+                            password: &quot;ballerina&quot;
+                        }
+                    }
+                }
+            },
+            scopes: [&quot;hello&quot;]
+        }
+    ]
+}
+service /foo on securedEP {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The secure hello world sample uses HTTPS.</p>
+                                            <p>The service can be secured with OAuth2 authentication and can be authorized
+ optionally. OAuth2 authentication can be enabled by setting the
+ <code>http:OAuth2IntrospectionConfig</code> configurations.
+ Authorization is based on scopes. A scope maps to one or more groups.
+ Authorization can be enabled by setting the <code>string|string[]</code> type
+ configurations.</p>
 
                                         </div>
                                     </div>
@@ -239,21 +221,26 @@ import ballerina/oauth2;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>service hello on ep {
-    resource function sayHello(http:Caller caller, http:Request req) {
-        error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
-        if (result is error) {
-            log:printError(&quot;Error in responding to caller&quot;, result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get bar() returns string {
+        return &quot;Hello, World!&quot;;
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>It is optional to override the authentication and authorization
+ configurations at the resource levels. Otherwise, the service auth
+ configurations will be applied automatically to the resources as well.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -274,51 +261,17 @@ import ballerina/oauth2;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by passing Ballerina home path
-# as a system property.
-ballerina run secured_service_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the keystore path. A sample keystore file is
+# available in the distribution.
+# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaKeystore.p12)
+bal run secured_service_with_oauth2.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR hover-enable cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl -k -H &quot;Authorization: Bearer YWRtaW46MTIz&quot; \
-https://localhost:9090/hello/sayHello
-Hello, World!!!
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Start the introspection server on 9095 with the <code>/oauth2/token/introspect</code>
- resource path and invoke the service using cURL. Note that it is required
- to provide the correct bearer authentication header with the cURL command.
- It will get validated against the introspection server.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -342,7 +295,7 @@ Hello, World!!!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

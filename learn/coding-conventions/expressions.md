@@ -1,15 +1,13 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Expressions
 active: expressions
 permalink: /learn/coding-conventions/expressions/
 intro: The sections below include the coding conventions with respect to expressions.
 redirect_from:
-  - /v1-2/learn/style-guide/expressions/
-  - /v1-2/learn/style-guide/expressions
-  - /learn/style-guide/expressions
-  - /learn/style-guide/expressions/
-  - /learn/coding-conventions/expressions
+  - /swan-lake/learn/style-guide/expressions/
+  - /swan-lake/learn/style-guide/expressions
+  - /swan-lake/learn/coding-conventions/expressions
 ---
 
 ## Function Invocation
@@ -90,7 +88,7 @@ Person p = {
 
 ## Map Literal
 
-* For Map literals, follow the same formatting guidelines as [record literals](/learn/style-guide/expressions#record-literal). 
+* For Map literals, follow the same formatting guidelines as [record literals](/swan-lake/learn/style-guide/expressions#record-literal). 
   
 **Example,**
 
@@ -180,7 +178,7 @@ string name = <string>json.name;
 
 ## Table Literal
 
-* Follow [record literals](/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
+* Follow [record literals](/swan-lake/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
   
 **Example,**
   
@@ -218,9 +216,8 @@ table<Employee> employee4 = table {
     ]
 }
 ```
-
+  
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
-  

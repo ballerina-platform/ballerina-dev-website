@@ -79,7 +79,7 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 `ballerina dist update`|Update to the latest patch version of the active distribution
 `ballerina dist pull jballerina-<JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
 
-For more information, see [Keeping Ballerina Up to Date](/learn/keeping-ballerina-up-to-date/).
+For more information, see [Keeping Ballerina Up to Date](/1.2/learn/keeping-ballerina-up-to-date/).
   
 ## Building from Source
 
@@ -146,5 +146,5 @@ Once you have successfully installed Ballerina, click the links below to set up 
 
 >**Tip:** To get help when you work with Ballerina, see [Community](/community).
 
-- [Setting up Visual Studio Code](/learn/vscode-plugin/)
-- [Setting up IntelliJ IDEA](/learn/intellij-plugin/)
+- [Setting up Visual Studio Code](/1.2/learn/vscode-plugin/)
+- [Setting up IntelliJ IDEA](/1.2/learn/intellij-plugin/)

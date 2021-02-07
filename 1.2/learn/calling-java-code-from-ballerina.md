@@ -19,7 +19,7 @@ redirect_from:
 ## Ballerina Bindings to Java code
 Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram. 
 
-<img src="/learn/images/interoperability-diagram.png" alt="Ballerina bindings to Java code" width="300" height="350">
+<img src="/1.2/learn/images/interoperability-diagram.png" alt="Ballerina bindings to Java code" width="300" height="350">
 
 This guide teaches you how to write those bindings manually as well as how to generate those bindings automatically but first, let's look at why you want to call Java from Ballerina. 
 
@@ -82,7 +82,7 @@ You can see them in the imported class list. We encourage you to generate Baller
 Now, we'll create an environment for our Ballerina program. 
 
 ### Step 2 - Setting Up the Ballerina Project
-This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/). 
+This section assumes that you have already read [Structuring Ballerina Code](/1.2/learn/structuring-ballerina-code/). 
 
 #### Creating a Ballerina Project
 ```sh
@@ -565,7 +565,7 @@ function read() returns int|IOException {
 >**Note:** If a Java exception class is generated as a Ballerina binding object, it would follow the naming convention `JException` or `JError`. For instance, the binding object's name for `java.io.FileNotFoundException` would be as `JFileNotFoundException`.
 
 ## Packaging Java Libraries with Ballerina Programs
-This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/). When you compile a Ballerina program with`ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with`ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
+This section assumes that you have already read [Structuring Ballerina Code](/1.2/learn/structuring-ballerina-code/). When you compile a Ballerina program with`ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with`ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 
 There are two kinds of Ballerina projects: 
 1. Produces executable programs 

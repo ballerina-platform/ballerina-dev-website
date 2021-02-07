@@ -283,23 +283,23 @@ table<Employee> employee = table {
 
 ## Top-Level Definitions
 
-For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
+For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/1.2/learn/style-guide/definitions).
 
 ## Operators, Keywords, and Types
 
-For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/learn/style-guide/operators_keywords_and_types).
+For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/1.2/learn/style-guide/operators_keywords_and_types).
 
 ## Statements
 
-For style guidelines on statements such as if, match, transaction etc., see [Statements](/learn/style-guide/statements).
+For style guidelines on statements such as if, match, transaction etc., see [Statements](/1.2/learn/style-guide/statements).
 
 ## Expressions
 
-For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/learn/style-guide/expressions).
+For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/1.2/learn/style-guide/expressions).
 
 ## Annotations, Documentation, and Comments
 
-For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
+For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/1.2/learn/style-guide/annotations_documentation_and_comments).
 
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 

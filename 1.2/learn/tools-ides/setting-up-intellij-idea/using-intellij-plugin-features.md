@@ -35,15 +35,15 @@ Follow the steps below to run the main function of a Ballerina file.
 
 1. Click the green color icon located near the main function.
 
-    ![Click the Run Application icon](/learn/images/run-application-icon.png)
+    ![Click the Run Application icon](/1.2/learn/images/run-application-icon.png)
 
 2. Click the corresponding **Run <FILE_NAME>** command.
 
-    ![Click the Run command](/learn/images/select-run-command.png)
+    ![Click the Run command](/1.2/learn/images/select-run-command.png)
 
 This executes the main function of the Ballerina file and displays the output in the **Run** window.
 
-![Output of running the main function](/learn/images/output-of-main-function.png)
+![Output of running the main function](/1.2/learn/images/output-of-main-function.png)
 
 > **Tip:** Alternatively, you can right-click on the name of the file and run the main method of it.
 
@@ -57,7 +57,7 @@ Follow the steps below to run a service of a Ballerina file.
 
 This starts the service and displays the output in the **Run** window. If you have multiple services in the Ballerina file, this starts all of them.
 
-![Output of running a service](/learn/images/output-of-ballerina-service.png)
+![Output of running a service](/1.2/learn/images/output-of-ballerina-service.png)
 
 > **Tip:** Alternatively, you can right-click on the name of the file and run the service(s) of it.
 
@@ -66,7 +66,7 @@ This starts the service and displays the output in the **Run** window. If you ha
 
 You can debug Ballerina main/service programs with a few clicks.
 
-![Debug Ballerina programs](/learn/images/debug-ballerina-intellij.gif)
+![Debug Ballerina programs](/1.2/learn/images/debug-ballerina-intellij.gif)
 
 ### Troubleshooting
 - Stepping over code lines in non-blocking paths (eg: action invocations) will not pause VM on the next line
@@ -80,13 +80,13 @@ The underlying language semantics of Ballerina were designed by modeling how ind
 
 To view the sequence diagram of a Ballerina file, click the (![design view icon](https://raw.githubusercontent.com/ballerina-platform/ballerina-lang/2fd0bdd4e7d081adf23901ed65eca32623d81889/tool-plugins/vscode/docs/show-diagram-icon.png)) in the top right corner of the IDE window as shown in the below example.
 
-![HTTP circuit breaker sequence diagram](/learn/images/circuit-breaker-sequence-diagram.gif)
+![HTTP circuit breaker sequence diagram](/1.2/learn/images/circuit-breaker-sequence-diagram.gif)
 
 ## Importing Modules on the Fly
 
 You can add import declarations to your Ballerina programs on the fly. When you select the module name from the lookup list, the module declaration will be added automatically.
 
-![Import modules on the fly](/learn/images/import-modules-on-the-fly.gif)
+![Import modules on the fly](/1.2/learn/images/import-modules-on-the-fly.gif)
 
 ## Importing Unambiguous Modules 
 
@@ -98,25 +98,25 @@ When you copy and paste Ballerina code to IntelliJ, this feature allows you to i
 >2. Click **Ballerina** and then click **Auto Import**.
 >3. Select the **Add unambiguous imports on the fly** checkbox and click **OK**.
 
-![Import unambiguous modules](/learn/images/import-unambiguous-modules.gif)
+![Import unambiguous modules](/1.2/learn/images/import-unambiguous-modules.gif)
 
 ## Formatting Ballerina Codes
 
 You can reformat the Ballerina codes by pressing the **Ctrl+Alt+L** keys.
 
-![Formatting Ballerina codes](/learn/images/format-code.gif)
+![Formatting Ballerina codes](/1.2/learn/images/format-code.gif)
 
 ## Viewing Documentation
 
 You can view the documentation of a function, remote function, etc., by pressing the **Ctrl+Q** keys or by hovering over the element while pressing the **Ctrl** key.
 
-![Viewing documentation](/learn/images/view-documentation.gif)
+![Viewing documentation](/1.2/learn/images/view-documentation.gif)
 
 ## Adding Annotation Fields via Suggestions
 
 You can add annotation fields to your code using the annotation field names that are suggested inside annotation attachments.
 
-![Adding annotation fields via suggestions](/learn/images/annotation-field-suggestion.gif)
+![Adding annotation fields via suggestions](/1.2/learn/images/annotation-field-suggestion.gif)
 
 ## Using File Templates
 
@@ -126,25 +126,25 @@ Three types of Ballerina file templates are available.
 2. **Ballerina Service** - contains a sample service
 3. **Empty File** - contains an empty file
 
-![Using file templates](/learn/images/file-templates.gif)
+![Using file templates](/1.2/learn/images/file-templates.gif)
 
 ## Using Code Snippet Templates
 
 Code snippet templates contain boilerplate codes and allows you to write your code efficiently. 
 
-![Using code snippet templates](/learn/images/code-snippet-templates.gif)
+![Using code snippet templates](/1.2/learn/images/code-snippet-templates.gif)
 
 ## Checking Spellings
 
 The spell-checker is enabled for all identifiers. You can rename all of the definitions and references as well.
 
-![Checking spellings](/learn/images/check-spellings.gif)
+![Checking spellings](/1.2/learn/images/check-spellings.gif)
 
 ## Analyzing Semantics
 
 The Ballerina IDEA plugin provides capabilities to diagnose and analyze the semantics of your Ballerina programs through the Ballerina Language Server.
 
-![Analyzing semantics](/learn/images/analyzing-semantics.gif)
+![Analyzing semantics](/1.2/learn/images/analyzing-semantics.gif)
 
 ## Code Folding
 
@@ -159,15 +159,15 @@ You expand/collapse the following Ballerina code segments using the icons in the
 - markdown documentation
 - multiline comments
  
-![Code folding](/learn/images/code-folding.gif)
+![Code folding](/1.2/learn/images/code-folding.gif)
 
 ## Go to Definition
 
-This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
+This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/1.2/learn/api-docs/ballerina/).
 
-![Go to definition](/learn/images/go-to-definition-intellij.gif)
+![Go to definition](/1.2/learn/images/go-to-definition-intellij.gif)
 
 ## What's Next?
 
-- For more information on the IntelliJ IDEA Ballerina plugin, see [IntelliJ IDEA Ballerina Plugin](/learn/intellij-plugin).
-- For information on all the tools and IDEs that are supported by Ballerina, see [Setting up Ballerina](/learn/installing-ballerina/).
+- For more information on the IntelliJ IDEA Ballerina plugin, see [IntelliJ IDEA Ballerina Plugin](/1.2/learn/intellij-plugin).
+- For information on all the tools and IDEs that are supported by Ballerina, see [Setting up Ballerina](/1.2/learn/installing-ballerina/).

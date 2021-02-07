@@ -14,10 +14,10 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Creates a new [WebSocket Async client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient) with the backend URL and assigns a callback service.</span>
+    <span class="c1">// Creates a new [WebSocket Async client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient) with the backend URL and assigns a callback service.</span>
     <span class="nx">websocket</span><span class="p">:</span><span class="nx">AsyncClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">,</span>
                                           <span class="nx">new</span> <span class="nx">ClientService</span><span class="p">());</span>
-    <span class="c1">// Writes a text message to the server using [writeString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString).</span>
+    <span class="c1">// Writes a text message to the server using [writeString](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString).</span>
     <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Prints the error.</span>
@@ -49,7 +49,7 @@ redirect_from:
                             <h2>Async Client Endpoint</h2>
                             <p><p>The WebSocket Async client can be used to connect to and interact with a WebSocket server in an asynchronous.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
 </p>
 
                         </td>
@@ -163,7 +163,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient">WebSocket Async client</a> with the backend URL and assigns a callback service.</p>
+                                            <p>Creates a new <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient">WebSocket Async client</a> with the backend URL and assigns a callback service.</p>
 
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString">writeString</a>.</p>
+                                            <p>Writes a text message to the server using <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString">writeString</a>.</p>
 
                                         </div>
                                     </div>

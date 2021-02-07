@@ -17,7 +17,7 @@ redirect_from:
 ---
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/quick-tour" target="_blank">
+<a class="cBoxLink" href="/learn/getting-started/quick-tour/" target="_blank">
 
 <h2>Get Started</h2>
 

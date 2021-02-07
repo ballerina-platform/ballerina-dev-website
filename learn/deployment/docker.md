@@ -248,7 +248,7 @@ In this sample, the following properties are set in the `@docker:Config` annotat
 
 4. Log into [Docker Hub](https://hub.docker.com/) and verify that the image is pushed.
 
-    ![Docker Hub](/swan-lake/learn/images/docker-hub.png)
+    ![Docker Hub](/learn/images/docker-hub.png)
 
 ### Running a Ballerina HTTPS Service in a Docker Container
 

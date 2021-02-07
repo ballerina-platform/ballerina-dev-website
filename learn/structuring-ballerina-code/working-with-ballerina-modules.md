@@ -14,7 +14,7 @@ redirect_from:
 
 ## Creating Ballerina Modules
 
-A [package](/swan-lake/learn/structuring-ballerina-code/#working-with-ballerina-packages/) is a collection of related modules that are versioned and distributed as a single unit.
+A [package](/learn/structuring-ballerina-code/#working-with-ballerina-packages/) is a collection of related modules that are versioned and distributed as a single unit.
 
 A module name can contain one or more Ballerina identifiers separated by dots (.):
 

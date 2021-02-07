@@ -92,7 +92,7 @@ $ bal test --test-report
 
 A sample view of the test report is shown below.
 
-![Sample Test Report](/swan-lake/learn/images/test-report.gif)
+![Sample Test Report](/learn/images/test-report.gif)
 
 ## Code Coverage Report
 
@@ -116,4 +116,4 @@ $ bal test --code-coverage
 
 A sample view of the code coverage report is shown below.
 
-![Sample Code Coverage](/swan-lake/learn/images/code-cov.gif)
+![Sample Code Coverage](/learn/images/code-cov.gif)

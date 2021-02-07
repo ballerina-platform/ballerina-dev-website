@@ -10,9 +10,9 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/data-binding
 ---
 
-In the [HTTP GET scenarios](/swan-lake/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method of the [`http:Client`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/HttpClient), which is the [`http:Response`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 
+In the [HTTP GET scenarios](/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method of the [`http:Client`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/HttpClient), which is the [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 
 
-In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method will return the error value of the [`http:ClientError`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/errors#ClientError) type. 
+In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method will return the error value of the [`http:ClientError`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/errors#ClientError) type. 
 
 ## Using JSON and XML in Data Binding
 
@@ -109,9 +109,9 @@ City/State/Country: San Jose, CA, United States
 ## What's Next?
 
 For other use cases of HTTP clients, see the topics below.
-- [Multipart Message Handling](/swan-lake/learn/network-communication/http/multipart-message-handling)
-- [Data Streaming](/swan-lake/learn/network-communication/http/data-streaming)
-- [Communication Resiliency](/swan-lake/learn/network-communication/http/communication-resiliency)
-- [Secure Communication](/swan-lake/learn/network-communication/http/secure-communication)
+- [Multipart Message Handling](/learn/network-communication/http/multipart-message-handling)
+- [Data Streaming](/learn/network-communication/http/data-streaming)
+- [Communication Resiliency](/learn/network-communication/http/communication-resiliency)
+- [Secure Communication](/learn/network-communication/http/secure-communication)
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

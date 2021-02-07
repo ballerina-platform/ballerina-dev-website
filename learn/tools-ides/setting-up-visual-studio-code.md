@@ -5,8 +5,8 @@ permalink: /learn/getting-started/setting-up-visual-studio-code/
 active: setting-up-visual-studio-code
 intro: The VS Code Ballerina extension provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code extension.
 redirect_from:
-  - /swan-lake/learn/tools-ides/vscode-plugin
-  - /swan-lake/learn/tools-ides/vscode-plugin/
+  - /learn/tools-ides/vscode-plugin
+  - /learn/tools-ides/vscode-plugin/
   - /swan-lake/learn/vscode-plugin
   - /swan-lake/learn/vscode-plugin/
   - /swan-lake/learn/tools-ides/setting-up-visual-studio-code
@@ -38,7 +38,7 @@ Follow the steps below to download and install the Ballerina VS Code extension.
 2. In the search bar, type "vsix" and click **Extensions: Install from VSIX...**.
 3. Browse and select the VSIX file of the extension you downloaded.
 
-![Install using the Command Palette of the editor](/swan-lake/learn/images/install-via-palette.gif)
+![Install using the Command Palette of the editor](/learn/images/install-via-palette.gif)
 
 ### Installing via the Command Line
 In a new Command Line tab, execute the below command.
@@ -51,8 +51,8 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 
-- [Language Intelligence](/swan-lake/learn/vscode-plugin/language-intelligence)
-- [Run and Debug](/swan-lake/learn/vscode-plugin/run-and-debug)
+- [Language Intelligence](/learn/vscode-plugin/language-intelligence)
+- [Run and Debug](/learn/vscode-plugin/run-and-debug)
 
 
 

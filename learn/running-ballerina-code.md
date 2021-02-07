@@ -17,9 +17,9 @@ redirect_from:
 
 A Ballerina application can have:
 
-1. A [`main()`](/swan-lake/learn/by-example/the-main-function.html) function that runs as a terminating process.
+1. A [`main()`](/learn/by-example/the-main-function.html) function that runs as a terminating process.
 
-2. A [`service`](/swan-lake/learn/by-example/hello-world-service.html), which is a hosted non-terminating process.
+2. A [`service`](/learn/by-example/hello-world-service.html), which is a hosted non-terminating process.
 
 Both of these are considered as entry points for program execution. 
 
@@ -53,7 +53,7 @@ $ bal run filename.jar
 ```
 
 ## Running a Package
-A package is a folder that manages modules as part of common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/swan-lake/learn/how-to-structure-ballerina-code) for in-depth structuring of packages.
+A package is a folder that manages modules as part of common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/learn/how-to-structure-ballerina-code) for in-depth structuring of packages.
 
 Running a ballerina package:
 ```bash
@@ -90,7 +90,7 @@ $ bal run main.jar
 A Ballerina runtime can be configured using configurable variables, which can be configured using `Config.toml` file. 
 `Config.toml` file may or may not provide configuration values for configurable variables that are used in the program. 
 Ballerina currently supports configurable variables of types `int`, `float`, `boolean`, `string`, `decimal` and the arrays of respective types. 
-See [Configurable BBE](/swan-lake/learn/by-example/configurable.html) for more details.
+See [Configurable BBE](/learn/by-example/configurable.html) for more details.
 
 Consider the following example, which uses configurable variables.
 

@@ -186,4 +186,4 @@ Contains the volume definitions of the application. No default volumes will be g
 
 ## Code to Cloud Samples
 
-For sample use cases of code to cloud, see [Code to Cloud Samples](/swan-lake/learn/deployment/code-to-cloud/samples).
+For sample use cases of code to cloud, see [Code to Cloud Samples](/learn/deployment/code-to-cloud/samples).

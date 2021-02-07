@@ -123,12 +123,12 @@ The above is the full ProtoBuf definition for the service.
 
 ## Implementing gRPC Services and Clients
 
-For instructions on implementing the above service and writing a client to invoke it, see [Implementing gRPC Services and Clients](/swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients/).
+For instructions on implementing the above service and writing a client to invoke it, see [Implementing gRPC Services and Clients](/learn/network-communication/grpc/implementing-grpc-services-and-clients/).
 
 
 ## Performing gRPC Streaming
 
-For instructions on this, see [Performing gRPC Streaming](/swan-lake/learn/network-communication/grpc/performing-grpc-streaming/).
+For instructions on this, see [Performing gRPC Streaming](/learn/network-communication/grpc/performing-grpc-streaming/).
 
 
 

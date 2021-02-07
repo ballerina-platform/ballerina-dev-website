@@ -50,7 +50,7 @@ In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is relea
 
 ## Installing Ballerina
 
-If you haven’t installed Ballerina yet, see [Installing Ballerina](/swan-lake/learn/installing-ballerina/) for the instructions.
+If you haven’t installed Ballerina yet, see [Installing Ballerina](/learn/installing-ballerina/) for the instructions.
 
 Once the installation is complete, you would see the directory structure below inside the installation directory.
 

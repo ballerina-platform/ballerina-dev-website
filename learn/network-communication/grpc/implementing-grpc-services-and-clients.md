@@ -122,7 +122,7 @@ public function main (string... args) {
 
 The `blockingEp` object contains the remote functions that correspond to the gRPC service methods. The diagram below shows the VS Code code assist in listing the methods. 
 
-![Admin Service Client Remote Functions List](/swan-lake/learn/images/grpc-service-functions-list.png)
+![Admin Service Client Remote Functions List](/learn/images/grpc-service-functions-list.png)
 
 Complet automatically-generated code in the `client` module of the `AdminService_sample_client.bal` file. The completed gRPC client code, which invokes all the methods defined in the service is as follows. 
 
@@ -187,7 +187,7 @@ Now, the client will establish a connection with the gRPC service, invoke the me
 
 ## What's Next?
 
-For information on gRPC streaming, see [Performing gRPC Streaming](/swan-lake/learn/network-communication/grpc/performing-grpc-streaming/).
+For information on gRPC streaming, see [Performing gRPC Streaming](/learn/network-communication/grpc/performing-grpc-streaming/).
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 

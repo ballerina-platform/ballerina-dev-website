@@ -17,7 +17,7 @@ redirect_from:
 
 The diagram below depicts an example implementation of a gRPC client and bi-directional streaming using Ballerina. It shows the `streaming calc service`, which contains the `sum` and `incrementalSum` methods to represent the client and bi-directional streaming operations respectively. 
 
-![Streaming Calc RPC Service](/swan-lake/learn/images/grpc-streaming-service.png)
+![Streaming Calc RPC Service](/learn/images/grpc-streaming-service.png)
 
 
 ## Creating the ProtoBuf Definition of the Service

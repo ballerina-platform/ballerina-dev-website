@@ -27,7 +27,7 @@ You can write a custom mock object and substitute it in place of the real object
 
 ***Example:***
 
-Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-ballerina-code/testing-quick-start) to define a test
+Let's make changes to the example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) to define a test
  double for the  `clientEndpont` object.
 
 >**Note:** Only the `get` function is implemented since it is the only function used in the sample. Attempting to call
@@ -70,7 +70,7 @@ Instead of creating a test double, you may also choose to create a default mock 
 
 ***Example:***
 
-The example in the [Quick Start](/swan-lake/learn/testing-ballerina-code/testing-quick-start) shows how the `get` function of the client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
+The example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) shows how the `get` function of the client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
 
 ***main.bal***
 
@@ -465,4 +465,4 @@ public function mockIntAdd(int a, int b) returns int {
 ## What's Next?
  
 Now, that you are aware of the details on writing tests, learn the different options that can be used when [Executing
- Tests](/swan-lake/learn/testing-ballerina-code/executing-tests).
+ Tests](/learn/testing-ballerina-code/executing-tests).

@@ -7,12 +7,12 @@ intro: The VS Code Ballerina extension provides the Ballerina development capabi
 redirect_from:
   - /learn/tools-ides/vscode-plugin
   - /learn/tools-ides/vscode-plugin/
-  - /swan-lake/learn/vscode-plugin
-  - /swan-lake/learn/vscode-plugin/
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/
-  - /swan-lake/learn/setting-up-visual-studio-code
-  - /swan-lake/learn/setting-up-visual-studio-code/
+  - /learn/vscode-plugin
+  - /learn/vscode-plugin/
+  - /learn/tools-ides/setting-up-visual-studio-code
+  - /learn/tools-ides/setting-up-visual-studio-code/
+  - /learn/setting-up-visual-studio-code
+  - /learn/setting-up-visual-studio-code/
 ---
 
 ## Downloading VS Code 
@@ -51,8 +51,8 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 
-- [Language Intelligence](/learn/vscode-plugin/language-intelligence)
-- [Run and Debug](/learn/vscode-plugin/run-and-debug)
+- [Language Intelligence](/learn/getting-started/setting-up-visual-studio-code/language-intelligence/)
+- [Run and Debug](/learn/getting-started/setting-up-visual-studio-code/run-and-debug)
 
 
 

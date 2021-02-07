@@ -5,17 +5,17 @@ permalink: /learn/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
 intro: The sections below include information to start using the IntelliJ Ballerina plugin after installing it.
 redirect_from:
-  - /swan-lake/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
-  - /swan-lake/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
-  - /swan-lake/learn/intellij-plugin/using-the-intellij-plugin
-  - /swan-lake/learn/intellij-plugin/using-the-intellij-plugin/
-  - /swan-lake/learn/set-up-ballerina-sdk/
-  - /swan-lake/learn/set-up-ballerina-sdk
-  - /swan-lake/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
-  - /swan-lake/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
-  - /swan-lake/learn/setting-up-intellij-idea/using-the-intellij-plugin
-  - /swan-lake/learn/using-the-intellij-plugin
-  - /swan-lake/learn/using-the-intellij-plugin/
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
+  - /learn/intellij-plugin/using-the-intellij-plugin
+  - /learn/intellij-plugin/using-the-intellij-plugin/
+  - /learn/set-up-ballerina-sdk/
+  - /learn/set-up-ballerina-sdk
+  - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
+  - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
+  - /learn/setting-up-intellij-idea/using-the-intellij-plugin
+  - /learn/using-the-intellij-plugin
+  - /learn/using-the-intellij-plugin/
 ---
 
 ## Creating a New Ballerina Project

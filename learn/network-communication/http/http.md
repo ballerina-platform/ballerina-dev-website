@@ -7,7 +7,7 @@ permalink: /learn/network-communication/http/
 active: http
 intro: The topics below explain how to process HTTP requests and responses using Ballerina. It provides in-depth details on how HTTP clients are created and how their functionality can be used effectively.  
 redirect_from:
-  - /swan-lake/learn/network-communication/http
+  - /learn/network-communication/http
 ---
 
 ## Creating HTTP Clients

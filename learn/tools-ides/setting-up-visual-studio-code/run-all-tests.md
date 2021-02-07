@@ -5,15 +5,15 @@ permalink: /learn/getting-started/setting-up-visual-studio-code/run-all-tests/
 active: run-all-tests
 intro: This option allows you to run all the tests that belong to multiple modules of your project. 
 redirect_from:
-  - /swan-lake/learn/tools-ides/vscode-plugin/run-all-tests
-  - /swan-lake/learn/tools-ides/vscode-plugin/run-all-tests/
-  - /swan-lake/learn/vscode-plugin/run-all-tests/
-  - /swan-lake/learn/vscode-plugin/run-all-tests
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-all-tests
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
-  - /swan-lake/learn/setting-up-visual-studio-code/run-all-tests
-  - /swan-lake/learn/run-all-tests
-  - /swan-lake/learn/run-all-tests/
+  - /learn/tools-ides/vscode-plugin/run-all-tests
+  - /learn/tools-ides/vscode-plugin/run-all-tests/
+  - /learn/vscode-plugin/run-all-tests/
+  - /learn/vscode-plugin/run-all-tests
+  - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests
+  - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
+  - /learn/setting-up-visual-studio-code/run-all-tests
+  - /learn/run-all-tests
+  - /learn/run-all-tests/
 ---
 
 ## Running All Tests 

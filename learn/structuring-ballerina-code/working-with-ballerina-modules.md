@@ -7,9 +7,9 @@ permalink: /learn/structuring-ballerina-code/working-with-ballerina-modules/
 active: working-with-ballerina-modules
 intro: Ballerina modules allow you to organize the code further in a package namespace. 
 redirect_from:
-  - /swan-lake/learn/how-to-structure-ballerina-code
-  - /swan-lake/learn/how-to-structure-ballerina-code/
-  - /swan-lake/learn/structuring-ballerina-code
+  - /learn/how-to-structure-ballerina-code
+  - /learn/how-to-structure-ballerina-code/
+  - /learn/structuring-ballerina-code
 --- 
 
 ## Creating Ballerina Modules

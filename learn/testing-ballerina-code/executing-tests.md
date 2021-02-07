@@ -7,7 +7,7 @@ permalink: /learn/testing-ballerina-code/executing-tests/
 active: executing-tests
 intro: The sections below include information about executing tests in Ballerina.
 redirect_from:
-  - /swan-lake/learn/testing-ballerina-code/executing-tests
+  - /learn/testing-ballerina-code/executing-tests
 ---
 
 ## Executing Tests Using CLI Commands

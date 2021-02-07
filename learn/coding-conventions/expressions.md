@@ -5,9 +5,9 @@ active: expressions
 permalink: /learn/coding-conventions/expressions/
 intro: The sections below include the coding conventions with respect to expressions.
 redirect_from:
-  - /swan-lake/learn/style-guide/expressions/
-  - /swan-lake/learn/style-guide/expressions
-  - /swan-lake/learn/coding-conventions/expressions
+  - /learn/style-guide/expressions/
+  - /learn/style-guide/expressions
+  - /learn/coding-conventions/expressions
 ---
 
 ## Function Invocation

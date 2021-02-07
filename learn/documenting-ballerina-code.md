@@ -7,9 +7,9 @@ permalink: /learn/documenting-ballerina-code/
 active: documenting-ballerina-code
 intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
 redirect_from:
-  - /swan-lake/learn/how-to-document-ballerina-code
-  - /swan-lake/learn/how-to-document-ballerina-code/
-  - /swan-lake/learn/documenting-ballerina-code
+  - /learn/how-to-document-ballerina-code
+  - /learn/how-to-document-ballerina-code/
+  - /learn/documenting-ballerina-code
 ---
 
 ## Generating Documentation for Modules

@@ -7,9 +7,9 @@ permalink: /learn/security/authentication-and-authorization/
 active: authentication-and-authorization
 intro: Ballerina HTTP services/clients can be configured to enforce authentication and authorization.
 redirect_from:
-- /swan-lake/learn/authentication-and-authorization
-- /swan-lake/learn/authentication-and-authorization/
-- /swan-lake/learn/security/authentication-and-authorization
+- /learn/authentication-and-authorization
+- /learn/authentication-and-authorization/
+- /learn/security/authentication-and-authorization
 ---
 
 ### HTTP Listener Authentication and Authorization

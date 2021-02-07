@@ -7,7 +7,7 @@ permalink: /learn/network-communication/http/data-streaming/
 active: data-streaming
 intro: HTTP data streaming can be attained using chunked transfer encoding.  
 redirect_from:
-  - /swan-lake/learn/network-communication/http/data-streaming
+  - /learn/network-communication/http/data-streaming
 ---
 
 ## Data Streaming Modes

@@ -5,15 +5,15 @@ permalink: /learn/getting-started/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug
 intro: The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
 redirect_from:
-  - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug
-  - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug/
-  - /swan-lake/learn/vscode-plugin/run-and-debug/
-  - /swan-lake/learn/vscode-plugin/run-and-debug
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-and-debug
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
-  - /swan-lake/learn/setting-up-visual-studio-code/run-and-debug
-  - /swan-lake/learn/run-and-debug
-  - /swan-lake/learn/run-and-debug/
+  - /learn/tools-ides/vscode-plugin/run-and-debug
+  - /learn/tools-ides/vscode-plugin/run-and-debug/
+  - /learn/vscode-plugin/run-and-debug/
+  - /learn/vscode-plugin/run-and-debug
+  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug
+  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
+  - /learn/setting-up-visual-studio-code/run-and-debug
+  - /learn/run-and-debug
+  - /learn/run-and-debug/
 ---
 
 ## Starting a Debug Session

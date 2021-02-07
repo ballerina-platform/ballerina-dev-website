@@ -7,9 +7,9 @@ permalink: /learn/keeping-ballerina-up-to-date/
 active: keeping-ballerina-up-to-date
 intro: This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases.
 redirect_from:
-  - /swan-lake/learn/how-to-keep-ballerina-up-to-date
-  - /swan-lake/learn/how-to-keep-ballerina-up-to-date/
-  - /swan-lake/learn/keeping-ballerina-up-to-date
+  - /learn/how-to-keep-ballerina-up-to-date
+  - /learn/how-to-keep-ballerina-up-to-date/
+  - /learn/keeping-ballerina-up-to-date
 ---
 
 ### Understanding Ballerina Distributions 

@@ -5,13 +5,13 @@ permalink: /learn/setting-up-intellij-idea/
 active: setting-up-intellij-idea
 intro: The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. The below sections include instructions on how to download, install, and use the features of the IntelliJ plugin.
 redirect_from:
-  - /swan-lake/learn/tools-ides/intellij-plugin
-  - /swan-lake/learn/tools-ides/intellij-plugin/
-  - /swan-lake/learn/intellij-plugin
-  - /swan-lake/learn/intellij-plugin/
-  - /swan-lake/learn/tools-ides/setting-up-intellij-idea
-  - /swan-lake/learn/tools-ides/setting-up-intellij-idea/
-  - /swan-lake/learn/setting-up-intellij-idea
+  - /learn/tools-ides/intellij-plugin
+  - /learn/tools-ides/intellij-plugin/
+  - /learn/intellij-plugin
+  - /learn/intellij-plugin/
+  - /learn/tools-ides/setting-up-intellij-idea
+  - /learn/tools-ides/setting-up-intellij-idea/
+  - /learn/setting-up-intellij-idea
 redirect_to:
   - /swan-lake/page-not-available
 ---

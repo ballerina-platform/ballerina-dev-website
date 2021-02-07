@@ -5,9 +5,9 @@ active: statements
 permalink: /learn/coding-conventions/statements/
 intro: The sections below include the coding conventions with respect to statements.
 redirect_from:
-  - /swan-lake/learn/style-guide/statements/
-  - /swan-lake/learn/style-guide/statements
-  - /swan-lake/learn/coding-conventions/statements
+  - /learn/style-guide/statements/
+  - /learn/style-guide/statements
+  - /learn/coding-conventions/statements
 
 ---
 

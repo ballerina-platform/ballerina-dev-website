@@ -7,7 +7,7 @@ permalink: /learn/testing-ballerina-code/writing-tests/
 active: writing-tests
 intro: The sections below include information about writing tests in Ballerina.
 redirect_from:
-  - /swan-lake/learn/testing-ballerina-code/writing-tests
+  - /learn/testing-ballerina-code/writing-tests
 ---
 
 ## Project Structure

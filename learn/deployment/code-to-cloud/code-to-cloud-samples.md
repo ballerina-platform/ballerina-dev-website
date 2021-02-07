@@ -7,7 +7,7 @@ permalink: /learn/deployment/code-to-cloud/samples/
 active: samples
 intro: The below are a few sample use cases of Ballerina code to cloud.
 redirect_from:
-  - /swan-lake/learn/deployment/code-to-cloud/samples
+  - /learn/deployment/code-to-cloud/samples
 ---
 
 ## Hello World Sample

@@ -7,10 +7,10 @@ permalink: /learn/getting-started/installing-ballerina/
 active: installing-ballerina
 intro: The sections below include information about installing Ballerina.
 redirect_from:
-  - /swan-lake/learn/installing-ballerina
-  - /swan-lake/learn/installing-ballerina/
-  - /swan-lake/learn/installing-ballerina/#installing-from-source
-  - /swan-lake/learn/installing-ballerina/#installing-from-source/
+  - /learn/installing-ballerina
+  - /learn/installing-ballerina/
+  - /learn/installing-ballerina/#installing-from-source
+  - /learn/installing-ballerina/#installing-from-source/
 ---
 
 ## Installing Ballerina via Installers

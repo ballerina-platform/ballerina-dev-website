@@ -5,10 +5,10 @@ active: definitions
 permalink: /learn/coding-conventions/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.
 redirect_from:
-  - /swan-lake/learn/style-guide/definitions/
-  - /swan-lake/learn/style-guide/definitions
-  - /swan-lake/learn/coding-conventions/definitions
-  - /swan-lake/learn/coding-conventions/top-level-definitions
+  - /learn/style-guide/definitions/
+  - /learn/style-guide/definitions
+  - /learn/coding-conventions/definitions
+  - /learn/coding-conventions/top-level-definitions
 ---
 
 ## General Practices

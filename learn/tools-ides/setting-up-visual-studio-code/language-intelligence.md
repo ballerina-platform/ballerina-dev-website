@@ -5,15 +5,15 @@ permalink: /learn/getting-started/setting-up-visual-studio-code/language-intelli
 active: language-intelligence
 intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency. Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 redirect_from:
-  - /swan-lake/learn/tools-ides/vscode-plugin/language-intelligence
-  - /swan-lake/learn/tools-ides/vscode-plugin/language-intelligence/
-  - /swan-lake/learn/vscode-plugin/language-intelligence/
-  - /swan-lake/learn/vscode-plugin/language-intelligence
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/language-intelligence
-  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
-  - /swan-lake/learn/setting-up-visual-studio-code/language-intelligence
-  - /swan-lake/learn/language-intelligence
-  - /swan-lake/learn/language-intelligence/
+  - /learn/tools-ides/vscode-plugin/language-intelligence
+  - /learn/tools-ides/vscode-plugin/language-intelligence/
+  - /learn/vscode-plugin/language-intelligence/
+  - /learn/vscode-plugin/language-intelligence
+  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence
+  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
+  - /learn/setting-up-visual-studio-code/language-intelligence
+  - /learn/language-intelligence
+  - /learn/language-intelligence/
 ---
 
 ## Semantic and Syntactic Diagnostics

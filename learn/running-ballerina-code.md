@@ -7,10 +7,10 @@ permalink: /learn/running-ballerina-code/
 active: running-ballerina-code
 intro: The sections below include information on running Ballerina programs.
 redirect_from:
-  - /swan-lake/learn/how-to-deploy-and-run-ballerina-programs
-  - /swan-lake/learn/how-to-run-ballerina-programs/
-  - /swan-lake/learn/how-to-deploy-and-run-ballerina-programs/
-  - /swan-lake/learn/running-ballerina-code
+  - /learn/how-to-deploy-and-run-ballerina-programs
+  - /learn/how-to-run-ballerina-programs/
+  - /learn/how-to-deploy-and-run-ballerina-programs/
+  - /learn/running-ballerina-code
 ---
 
 ## Understanding the Structure

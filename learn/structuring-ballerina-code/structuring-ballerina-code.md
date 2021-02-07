@@ -7,9 +7,9 @@ permalink: /learn/structuring-ballerina-code/
 active: structuring-ballerina-code
 intro: The below are everything you need to know about using Ballerina packages to structure your code. It also introduces the package-related commands in the `ballerina` command-line tool.
 redirect_from:
-  - /swan-lake/learn/how-to-structure-ballerina-code
-  - /swan-lake/learn/how-to-structure-ballerina-code/
-  - /swan-lake/learn/structuring-ballerina-code
+  - /learn/how-to-structure-ballerina-code
+  - /learn/how-to-structure-ballerina-code/
+  - /learn/structuring-ballerina-code
 ---
 
 ## Organizing Your Code

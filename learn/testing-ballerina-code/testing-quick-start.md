@@ -7,11 +7,11 @@ permalink: /learn/testing-ballerina-code/testing-quick-start/
 active: testing-quick-start
 intro: The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 redirect_from:
-  - /swan-lake/learn/how-to-test-ballerina-code/
-  - /swan-lake/learn/how-to-test-ballerina-code
-  - /swan-lake/learn/testing-ballerina-code/testing-quick-start
-  - /swan-lake/learn/testing-ballerina-code/
-  - /swan-lake/learn/testing-ballerina-code
+  - /learn/how-to-test-ballerina-code/
+  - /learn/how-to-test-ballerina-code
+  - /learn/testing-ballerina-code/testing-quick-start
+  - /learn/testing-ballerina-code/
+  - /learn/testing-ballerina-code
 ---
 
 ## Writing a Simple Function
@@ -19,7 +19,7 @@ redirect_from:
 To get started, let's write a simple Ballerina function and test it.
 
 1. First, let’s create a Ballerina package. Use the `bal new` command to create the package.
-For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
+For more information on the command, see [Structuring Ballerina Code](/learn/structuring-ballerina-code/).
 
     A **tests** directory needs to be created to store the test files. In this example, the ***main_test.bal*** test file needs to be
     added within a tests directory. 
@@ -129,4 +129,4 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 ## What's Next?
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
- features in the [Writing Tests](/swan-lake/learn/testing-ballerina-code/writing-tests) section.
+ features in the [Writing Tests](/learn/testing-ballerina-code/writing-tests) section.

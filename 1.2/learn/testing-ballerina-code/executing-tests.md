@@ -82,7 +82,7 @@ $ ballerina test --test-report --all
 
 A sample view of the test report is shown below.
 
-![Sample Test Report](/learn/images/test-report.gif)
+![Sample Test Report](/1.2/learn/images/test-report.gif)
 
 ## Code Coverage Report
 
@@ -104,4 +104,4 @@ $ ballerina test --code-coverage --all
 
 A sample view of the code coverage report is shown below.
 
-![Sample Code Coverage](/learn/images/code-cov.gif)
+![Sample Code Coverage](/1.2/learn/images/code-cov.gif)

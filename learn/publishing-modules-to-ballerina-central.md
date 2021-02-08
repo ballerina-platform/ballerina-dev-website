@@ -7,9 +7,9 @@ permalink: /learn/publishing-packages-to-ballerina-central/
 active: publishing-packages-to-ballerina-central
 intro: The sections below include information about publishing packages to Ballerina Central.
 redirect_from:
-  - /swan-lake/learn/how-to-publish-packages
-  - /swan-lake/learn/how-to-publish-packages/
-  - /swan-lake/learn/publishing-packages-to-ballerina-central
+  - /learn/how-to-publish-packages
+  - /learn/how-to-publish-packages/
+  - /learn/publishing-packages-to-ballerina-central
 ---
 
 ## The CLI Command

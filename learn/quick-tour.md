@@ -7,10 +7,10 @@ permalink: /learn/getting-started/quick-tour/
 active: quick-tour
 intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
-  - /swan-lake/learn/quick-tour
-  - /swan-lake/learn/quick-tour/
-  - /swan-lake/learn/getting-started/
-  - /swan-lake/learn/getting-started
+  - /learn/quick-tour
+  - /learn/quick-tour/
+  - /learn/getting-started/
+  - /learn/getting-started
 ---
 
 ## Installing Ballerina
@@ -122,7 +122,7 @@ Hello Ballerina!
 
 Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
 
-* Go through the [Ballerina by Examples](/swan-lake/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
+* Go through the [Ballerina by Examples](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
 * Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues.
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 

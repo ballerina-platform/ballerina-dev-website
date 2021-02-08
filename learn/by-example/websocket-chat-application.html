@@ -28,7 +28,7 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span><span class="nx">chat</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">[</span><span class="kt">string</span> <span class="nx">name</span><span class="p">](</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span>
                          <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">|</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">UpgradeError</span> <span class="p">{</span>
-        <span class="c1">// Retrieve query parameters from the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request).</span>
+        <span class="c1">// Retrieve query parameters from the [http:Request](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request).</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">queryParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParams</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(!</span><span class="nx">queryParams</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="nx">AGE</span><span class="p">))</span> <span class="p">{</span>
             <span class="c1">// Cancel the handshake by sending an UpgradeError</span>
@@ -110,7 +110,7 @@ redirect_from:
                             <h2>Chat Application</h2>
                             <p><p>This example explains how to write a simple chat application using Ballerina.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
 </p>
 
                         </td>
@@ -278,7 +278,7 @@ string nameValue = &quot;&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Retrieve query parameters from the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request">http:Request</a>.</p>
+                                            <p>Retrieve query parameters from the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request">http:Request</a>.</p>
 
                                         </div>
                                     </div>

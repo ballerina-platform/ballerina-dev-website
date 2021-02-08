@@ -7,9 +7,9 @@ permalink: /learn/documenting-ballerina-code/
 active: documenting-ballerina-code
 intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
 redirect_from:
-  - /swan-lake/learn/how-to-document-ballerina-code
-  - /swan-lake/learn/how-to-document-ballerina-code/
-  - /swan-lake/learn/documenting-ballerina-code
+  - /learn/how-to-document-ballerina-code
+  - /learn/how-to-document-ballerina-code/
+  - /learn/documenting-ballerina-code
 ---
 
 ## Generating Documentation for Modules
@@ -126,7 +126,7 @@ A typical package structure of a Ballerina package is like this:
 
 The `bal doc` command will read the `Package.md` and `Module.md` files and prepend them to the generated HTML file.
 
-Check [HTTP module documentation](/swan-lake/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
+Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
 ## Generating Ballerina Documentation

@@ -7,10 +7,10 @@ permalink: /learn/getting-started/installing-ballerina/
 active: installing-ballerina
 intro: The sections below include information about installing Ballerina.
 redirect_from:
-  - /swan-lake/learn/installing-ballerina
-  - /swan-lake/learn/installing-ballerina/
-  - /swan-lake/learn/installing-ballerina/#installing-from-source
-  - /swan-lake/learn/installing-ballerina/#installing-from-source/
+  - /learn/installing-ballerina
+  - /learn/installing-ballerina/
+  - /learn/installing-ballerina/#installing-from-source
+  - /learn/installing-ballerina/#installing-from-source/
 ---
 
 ## Installing Ballerina via Installers
@@ -135,5 +135,5 @@ Once you have successfully installed Ballerina, click the links below to set up 
 
 >**Tip:** To get help when you work with Ballerina, see [Community](/community).
 
-- [Setting up Visual Studio Code](/swan-lake/learn/vscode-plugin/)
-- [Setting up IntelliJ IDEA](/swan-lake/learn/intellij-plugin/)
+- [Setting up Visual Studio Code](/learn/vscode-plugin/)
+- [Setting up IntelliJ IDEA](/learn/intellij-plugin/)

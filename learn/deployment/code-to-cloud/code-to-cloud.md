@@ -7,7 +7,7 @@ permalink: /learn/deployment/code-to-cloud/
 active: code-to-cloud
 intro: Ballerina Code to Cloud is designed to allow developers to write code without thinking about the deployment platform. 
 redirect_from:
-  - /swan-lake/learn/deployment/code-to-cloud
+  - /learn/deployment/code-to-cloud
 ---
 
 This greatly simplifies the experience of developing and deploying Ballerina code in the cloud. It also enables using cloud native technologies easily without in-depth knowledge.
@@ -186,4 +186,4 @@ Contains the volume definitions of the application. No default volumes will be g
 
 ## Code to Cloud Samples
 
-For sample use cases of code to cloud, see [Code to Cloud Samples](/swan-lake/learn/deployment/code-to-cloud/samples).
+For sample use cases of code to cloud, see [Code to Cloud Samples](/learn/deployment/code-to-cloud/samples).

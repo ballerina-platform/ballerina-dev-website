@@ -17,8 +17,8 @@ redirect_from:
 ## Installing Ballerina
 
 1. [Download](https://ballerina.io/downloads) Ballerina based on the Operating System you are using. 
-1. Follow the instructions given on the [Getting Started](/learn/getting-started) page to set it up. 
-1. Follow the instructions given on the [Visual Studio Code Plugin](/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
+1. Follow the instructions given on the [Getting Started](/1.2/learn/getting-started) page to set it up. 
+1. Follow the instructions given on the [Visual Studio Code Plugin](/1.2/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/1.2/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
 
 ## Writing a Service, Running It, and Invoking It
 
@@ -180,7 +180,7 @@ This should print out the sunrise/sunset details.
 
 Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
 
-* Go through the [Ballerina by Examples](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
+* Go through the [Ballerina by Examples](/1.2/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
 * Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues.
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 

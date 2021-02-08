@@ -7,9 +7,9 @@ permalink: /learn/keeping-ballerina-up-to-date/
 active: keeping-ballerina-up-to-date
 intro: This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases.
 redirect_from:
-  - /swan-lake/learn/how-to-keep-ballerina-up-to-date
-  - /swan-lake/learn/how-to-keep-ballerina-up-to-date/
-  - /swan-lake/learn/keeping-ballerina-up-to-date
+  - /learn/how-to-keep-ballerina-up-to-date
+  - /learn/how-to-keep-ballerina-up-to-date/
+  - /learn/keeping-ballerina-up-to-date
 ---
 
 ### Understanding Ballerina Distributions 
@@ -50,7 +50,7 @@ In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is relea
 
 ## Installing Ballerina
 
-If you haven’t installed Ballerina yet, see [Installing Ballerina](/swan-lake/learn/installing-ballerina/) for the instructions.
+If you haven’t installed Ballerina yet, see [Installing Ballerina](/learn/installing-ballerina/) for the instructions.
 
 Once the installation is complete, you would see the directory structure below inside the installation directory.
 

@@ -496,7 +496,7 @@ $ docker run -d -p 9411:9411 openzipkin/zipkin
 ```
 
 4. Go to <http://localhost:9411/zipkin/> and load the web UI of the Zipkin to make sure it is functioning
-properly. The sample Zipkin dashboard for the hello world sample in the [Quick Start](/learn/quick-tour) is shown below.
+properly. The sample Zipkin dashboard for the hello world sample in the [Quick Start](/1.2/learn/quick-tour) is shown below.
 
 ![Zipkin Sample](../images/zipkin-sample.png "Zipkin Sample")
 

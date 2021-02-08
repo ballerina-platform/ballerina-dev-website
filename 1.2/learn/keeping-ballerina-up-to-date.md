@@ -14,7 +14,7 @@ redirect_from:
   - /1.2/learn/keeping-ballerina-up-to-date
 ---
 
-If you haven’t installed Ballerina yet, see the [Installing Ballerina](/learn/installing-ballerina/).
+If you haven’t installed Ballerina yet, see the [Installing Ballerina](/1.2/learn/installing-ballerina/).
 
 ## Terminology
 
@@ -65,7 +65,7 @@ This channel gives you access to feature releases of Ballerina distributions. Ba
 
 Now that you are familiar with the terminology, let’s look at how you can keep your Ballerina distributions up to date.
 
-- The first step is to install Ballerina. Visit our [installation guide](/learn/installing-ballerina/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
+- The first step is to install Ballerina. Visit our [installation guide](/1.2/learn/installing-ballerina/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
 
 ```sh
 .

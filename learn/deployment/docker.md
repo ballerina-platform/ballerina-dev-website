@@ -7,10 +7,10 @@ permalink: /learn/deployment/docker/
 active: docker
 intro: Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud. 
 redirect_from:
-  - /swan-lake/learn/deployment/docker
-  - /swan-lake/learn/deploying-ballerina-programs-in-the-cloud
-  - /swan-lake/learn/deploying-ballerina-programs-in-the-cloud/
-  - /swan-lake/learn/deployment/
+  - /learn/deployment/docker
+  - /learn/deploying-ballerina-programs-in-the-cloud
+  - /learn/deploying-ballerina-programs-in-the-cloud/
+  - /learn/deployment/
 ---
 
 To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, you have to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings.
@@ -248,7 +248,7 @@ In this sample, the following properties are set in the `@docker:Config` annotat
 
 4. Log into [Docker Hub](https://hub.docker.com/) and verify that the image is pushed.
 
-    ![Docker Hub](/swan-lake/learn/images/docker-hub.png)
+    ![Docker Hub](/learn/images/docker-hub.png)
 
 ### Running a Ballerina HTTPS Service in a Docker Container
 

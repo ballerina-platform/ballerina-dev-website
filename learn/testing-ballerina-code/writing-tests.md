@@ -7,7 +7,7 @@ permalink: /learn/testing-ballerina-code/writing-tests/
 active: writing-tests
 intro: The sections below include information about writing tests in Ballerina.
 redirect_from:
-  - /swan-lake/learn/testing-ballerina-code/writing-tests
+  - /learn/testing-ballerina-code/writing-tests
 ---
 
 ## Project Structure
@@ -643,7 +643,7 @@ Configurations for testing can be provided using configurable variables. The val
 variables can be provided in a file named `Config.toml` located in the tests directory.
 
 For information on using configurable variables, see
- [Configurable Variables](/swan-lake/learn/by-example/configurable.html).
+ [Configurable Variables](/learn/by-example/configurable.html).
 
 
 ## What's Next?
@@ -652,4 +652,4 @@ For information on using configurable variables, see
  The mocking support in Ballerina will allow you to unit test your code without needing to set up mock backends by
  allowing you to control what the client objects return without actually sending requests to backends.
 
-To learn about the mocking API, see [Mocking](/swan-lake/learn/testing-ballerina-code/mocking).
+To learn about the mocking API, see [Mocking](/learn/testing-ballerina-code/mocking).

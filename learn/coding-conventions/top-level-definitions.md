@@ -5,10 +5,10 @@ active: definitions
 permalink: /learn/coding-conventions/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.
 redirect_from:
-  - /swan-lake/learn/style-guide/definitions/
-  - /swan-lake/learn/style-guide/definitions
-  - /swan-lake/learn/coding-conventions/definitions
-  - /swan-lake/learn/coding-conventions/top-level-definitions
+  - /learn/style-guide/definitions/
+  - /learn/style-guide/definitions
+  - /learn/coding-conventions/definitions
+  - /learn/coding-conventions/top-level-definitions
 ---
 
 ## General Practices
@@ -133,7 +133,7 @@ service hello on new http:Listener(9090) {
 ```
 
 * When formatting resource functions and function definitions, block indent each element and
-  follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/top-level-definitions#function-definition).
+  follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
   
 **Example,**
 
@@ -157,7 +157,7 @@ service hello on ep1, ep2 {
 
 * Block indent each field definition and each function definition on their own line.
 * Init function should be placed before all the other functions. 
-* For function definitions in the object definition, follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/top-level-definitions#function-definition).
+* For function definitions in the object definition, follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
 
 **Example,**
 

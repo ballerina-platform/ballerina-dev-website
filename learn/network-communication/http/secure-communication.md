@@ -7,12 +7,12 @@ permalink: /learn/network-communication/http/secure-communication/
 active: secure-communication
 intro: Ballerina’s HTTP client supports numerous secure communication features such as Transport Level Security (TLS) and mutual authentication.   
 redirect_from:
-  - /swan-lake/learn/network-communication/http/secure-communication
+  - /learn/network-communication/http/secure-communication
 ---
 
 ## TLS
 
-The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the trust store location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration). 
+The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the trust store location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration). 
 
 ### Communicating with an HTTPS Endpoint
 
@@ -118,12 +118,12 @@ public function main() returns @tainted error? {
 }
 ```
 
-For more information on Ballerina’s authentication/authorization features, see the [auth module](/swan-lake/learn/api-docs/ballerina/#/ballerina/auth/1.0.6).
+For more information on Ballerina’s authentication/authorization features, see the [auth module](/learn/api-docs/ballerina/#/ballerina/auth/1.0.6).
 
 ## What's Next?
 
 For other use cases of HTTP clients, see the topics below.
-- [Multipart Message Handling](/swan-lake/learn/network-communication/http/multipart-message-handling)
-- [Data Binding](/swan-lake/learn/network-communication/http/data-binding)
-- [Data Streaming](/swan-lake/learn/network-communication/http/data-streaming)
-- [Communication Resiliency](/swan-lake/learn/network-communication/http/communication-resiliency)
+- [Multipart Message Handling](/learn/network-communication/http/multipart-message-handling)
+- [Data Binding](/learn/network-communication/http/data-binding)
+- [Data Streaming](/learn/network-communication/http/data-streaming)
+- [Communication Resiliency](/learn/network-communication/http/communication-resiliency)

@@ -90,7 +90,7 @@ Person p = {
 
 ## Map Literal
 
-* For Map literals, follow the same formatting guidelines as [record literals](/learn/style-guide/expressions#record-literal). 
+* For Map literals, follow the same formatting guidelines as [record literals](/1.2/learn/style-guide/expressions#record-literal). 
   
 **Example,**
 
@@ -180,7 +180,7 @@ string name = <string>json.name;
 
 ## Table Literal
 
-* Follow [record literals](/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
+* Follow [record literals](/1.2/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
   
 **Example,**
   

@@ -7,14 +7,14 @@ permalink: /learn/network-communication/http/communication-resiliency/
 active: communication-resiliency
 intro: The HTTP client supports multiple communication resiliency options out of the box.  
 redirect_from:
-  - /swan-lake/learn/network-communication/http/communication-resiliency
+  - /learn/network-communication/http/communication-resiliency
 ---
 
 These features allow you to handle and recover from unexpected communication scenarios gracefully. 
 
 ## Retry
 
-The HTTP client can be configured with a retry configuration using the [`retryConfig`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/RetryConfig) property in the [HTTP client configuration](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration) to retry sending the same request to the endpoint in the case of a failure. This follows an exponential backoff algorithm to execute the retry requests. 
+The HTTP client can be configured with a retry configuration using the [`retryConfig`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/RetryConfig) property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration) to retry sending the same request to the endpoint in the case of a failure. This follows an exponential backoff algorithm to execute the retry requests. 
 
 The `retry_demo.bal` below shows an HTTP client configured with a retry configuration. 
 
@@ -49,25 +49,25 @@ If the requests keep failing continuously and adding more stress to the backend 
 
 As a solution for this, you can have an intermediary between the service client and the backend service that acts as a circuit breaker. In this manner, when the backend service is healthy, the requests originated from the client go through the circuit breaker and the backend service will successfully return the response to the client through the circuit breaker. This is called the `closed` state in the circuit breaker, which is depicted by the diagram below. 
 
-![Circuit Breaker Closed State](/swan-lake/learn/images/circuit-breaker-closed-state.png)
+![Circuit Breaker Closed State](/learn/images/circuit-breaker-closed-state.png)
 
 ### Circuit Breaker 'Open' State
 
 If the circuit breaker detects that the backend service is repeatedly failing, it can stop forwarding the client requests to the backend service and fail the requests immediately by returning with a specific error message to the client. In this situation, the circuit breaker is in the `open` state, which is depicted by the diagram below. 
 
-![Circuit Breaker Open State](/swan-lake/learn/images/circuit-breaker-open-state.png)
+![Circuit Breaker Open State](/learn/images/circuit-breaker-open-state.png)
 
 ### Circuit Breaker 'Half-Open' State
 
 While the circuit breaker is in the `open` state and after a specific timeout since it was in this state, the circuit breaker will allow some requests from the client to be passed to the backend service. This is called the `half-open` state, which is depicted by the diagram below. 
 
-![Circuit Breaker Half-Open State](/swan-lake/learn/images/circuit-breaker-half-open-state.png)
+![Circuit Breaker Half-Open State](/learn/images/circuit-breaker-half-open-state.png)
 
 If the requests sent to the backend service are successful in this state, it will go back to the `closed` state, and all the requests will flow again to the backend service. If the requests sent to the backend in the `half-open` state fails, the circuit breaker will again go back to the `open` state.
 
 ### Circuit Breaker Client Configuration
 
-The circuit breaker pattern can be used in Ballerina HTTP clients by using its [client configuration](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/CircuitBreakerConfig). This contains the configuration properties below. 
+The circuit breaker pattern can be used in Ballerina HTTP clients by using its [client configuration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/CircuitBreakerConfig). This contains the configuration properties below. 
 
 - `rollingWindow`: A rolling window is used to calculate the statistics for backend service errors. 
 - `timeWindowInMillis`: The size of the rolling time window (in milliseconds).
@@ -110,7 +110,7 @@ Otherwise, in the case of 20% requests failure in the rolling window, the circui
 
 ## Load Balancing and Failover
 
-In the event of load balancing requests to multiple remote endpoints, Ballerina has the [`http:LoadBalanceClient`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/LoadBalanceClient) to provide a list of endpoints, and optionally an implementation of the algorithm to select the endpoint to distribute the traffic. The default load balancer rule is to use a round-robin strategy to distribute the load. 
+In the event of load balancing requests to multiple remote endpoints, Ballerina has the [`http:LoadBalanceClient`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/LoadBalanceClient) to provide a list of endpoints, and optionally an implementation of the algorithm to select the endpoint to distribute the traffic. The default load balancer rule is to use a round-robin strategy to distribute the load. 
 
 ### HTTP Client-Side Load Balancing
 
@@ -136,11 +136,11 @@ public function main() returns @tainted error? {
 
 In the above code, the three hosts configured using the `targets` property provide the list of base URLs used for the load balancing requests. 
 
-For more detailed configuration options, see the [http:LoadBalanceClientConfiguration](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/LoadBalanceClientConfiguration).
+For more detailed configuration options, see the [http:LoadBalanceClientConfiguration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/LoadBalanceClientConfiguration).
 
 ## Handling Failover Scenarios
 
-Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
+Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
 
 The `fail_over_load-balancer_demo.bal` example below shows this in action. 
 
@@ -162,12 +162,12 @@ public function main() returns @tainted error? {
 }
 ```
 
-For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/FailoverClientConfiguration). 
+For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/FailoverClientConfiguration). 
 
 ## What's Next?
 
 For other use cases of HTTP clients, see the topics below.
-- [Multipart Message Handling](/swan-lake/learn/network-communication/http/multipart-message-handling)
-- [Data Binding](/swan-lake/learn/network-communication/http/data-binding)
-- [Data Streaming](/swan-lake/learn/network-communication/http/data-streaming)
-- [Secure Communication](/swan-lake/learn/network-communication/http/secure-communication)
+- [Multipart Message Handling](/learn/network-communication/http/multipart-message-handling)
+- [Data Binding](/learn/network-communication/http/data-binding)
+- [Data Streaming](/learn/network-communication/http/data-streaming)
+- [Secure Communication](/learn/network-communication/http/secure-communication)

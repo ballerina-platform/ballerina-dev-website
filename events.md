@@ -14,6 +14,20 @@ redirect_from:
 
 <h2>Upcoming Events</h2>	
 <table class="cEventTable cConferencesList" style="width:100%;">
+   <tr class="event-expiry" style="display:none" data-expiry="February 23, 2021 12:00:00">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">February 23, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit">	
+            <h4>Ballerina Community Call</h4>	
+         </a>	
+         <h5></h5>	
+         <b></b>
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">More Info</a></td>	
+   </tr>
    <tr class="event-expiry" style="display:none" data-expiry="June 16, 2021 12:00:00">	
       <td class="cEventDateContainer">	
          <span class="cEventDate">June 15 - 16, 2021</span>	

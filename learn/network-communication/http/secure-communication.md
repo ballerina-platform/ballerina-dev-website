@@ -87,7 +87,7 @@ Payload: {
 
 In [Communicating with an HTTPS Endpoint](#communicating-with-an-https-endpoint), the server is authenticated using the certificate provided to the client, and the secure communication is started based on this information. In the mutual SSL scenario, the client gets the chance to authenticate itself with the remote server as well. 
 
-This is done by additionally providing a key store. This is done via the `secureSocket.keyStore` property in the [HTTP client configuration](Communicating with an HTTPS Endpoint). It will contain your private key and the certificates that will be used used in the authentication done by the remote server. 
+This is done by additionally providing a key store. This is done via the `secureSocket.keyStore` property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration). It will contain your private key and the certificates that will be used used in the authentication done by the remote server. 
 
 The `mutual_authentication_demo.bal` example below shows an HTTP client configured for mutual authentication. 
 

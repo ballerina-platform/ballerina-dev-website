@@ -51,11 +51,11 @@ Hello, World!
                               <p>Ballerina services come with built-in concurrency. Every request to a resource method is handled in a separate strand (Ballerina concurrency unit), which gives implicit concurrent behavior to a service.</p>
                               <p>Some protocols supported out-of-the-box include:</p>
                               <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/https-listener.html">HTTPS</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-1-1-to-2-0-protocol-switch.html">HTTP 2.0</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/grpc-unary-blocking.html">gRPC</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/nats-basic-client.html">NATS</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/https-listener.html">HTTPS</a></li>
+                                 <!--<li><a class="cGreenLinkArrow" href="/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a></li>-->
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/http-1-1-to-2-0-protocol-switch.html">HTTP 2.0</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/grpc-unary-blocking.html">gRPC</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/nats-basic-client.html">NATS</a></li>
                               </ul>
                            </div>
                         </div>
@@ -289,20 +289,20 @@ if result is error {
                                        <td style="width:200px"><strong>Client</strong></td>
                                     </tr>
                                     <tr>
-                                       <td><a href="https://ballerina.io/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>
-                                       <td><a href="https://ballerina.io/learn/by-example/secured-client-with-basic-auth.html">Basic Auth</a></td>
+                                       <td><a href="/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>
+                                       <td><a href="/learn/by-example/secured-client-with-basic-auth.html">Basic Auth</a></td>
                                     </tr>
                                     <tr>
-                                       <td><a href="https://ballerina.io/learn/by-example/secured-service-with-jwt-auth.html">JWT</a></td>
-                                       <td><a href="https://ballerina.io/learn/by-example/secured-client-with-jwt-auth.html">JWT</a></td>
+                                       <td><a href="/learn/by-example/secured-service-with-jwt-auth.html">JWT</a></td>
+                                       <td><a href="/learn/by-example/secured-client-with-jwt-auth.html">JWT</a></td>
                                     </tr>
                                     <tr>
-                                       <td><a href="https://ballerina.io/learn/by-example/secured-service-with-oauth2.html">OAuth2</a></td>
-                                       <td><a href="https://ballerina.io/learn/by-example/secured-client-with-oauth2.html">OAuth2</a></td>
+                                       <td><a href="/learn/by-example/secured-service-with-oauth2.html">OAuth2</a></td>
+                                       <td><a href="/learn/by-example/secured-client-with-oauth2.html">OAuth2</a></td>
                                     </tr>
                                  </tbody>
                               </table>
-                              <p><em>Ballerina ensures security by default</em>. Its built-in <a href="https://ballerina.io/learn/by-example/taint-checking.html?utm_source=infoq&amp;utm_medium=article&amp;utm_campaign=network_in_the_language_article_infoq_feb20">taint analyzer</a> makes sure that malicious, untrusted data doesn’t propagate through the system. If untrusted data is passed to a security-sensitive parameter, a compiler error is generated. You can then redesign the program to erect a safe wall around the dangerous input.</p>
+                              <p><em>Ballerina ensures security by default</em>. Its built-in <a href="/learn/by-example/taint-checking.html?utm_source=infoq&amp;utm_medium=article&amp;utm_campaign=network_in_the_language_article_infoq_feb20">taint analyzer</a> makes sure that malicious, untrusted data doesn’t propagate through the system. If untrusted data is passed to a security-sensitive parameter, a compiler error is generated. You can then redesign the program to erect a safe wall around the dangerous input.</p>
                            </div>
                         </div>
                      </div>
@@ -329,7 +329,7 @@ if result is error {
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
                               <ul class="cInlinelinklist">
-                                 <li><a href="https://ballerina.io/learn/how-to-observe-ballerina-code">How to Observe Ballerina Services</a></li>
+                                 <li><a href="/learn/how-to-observe-ballerina-code">How to Observe Ballerina Services</a></li>
                               </ul>
                            </div>
                         </div>

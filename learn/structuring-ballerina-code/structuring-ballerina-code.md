@@ -94,8 +94,8 @@ Follow the steps below to write a simple program in a Ballerina package, which p
         helloworld
         No tests found
     
-    Creating balo
-        target/balo/examples-helloworld-any-0.1.0.balo
+    Creating the BALA file
+        target/bala/examples-helloworld-any-0.1.0.bala
     
     Generating executable
         target/bin/helloworld.jar

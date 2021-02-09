@@ -1,25 +1,19 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Language Intelligence
-permalink: /learn/setting-up-visual-studio-code/language-intelligence/
+permalink: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence
 intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency. Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
-  - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/
   - /learn/tools-ides/vscode-plugin/language-intelligence
   - /learn/tools-ides/vscode-plugin/language-intelligence/
-  - /v1-2/learn/vscode-plugin/language-intelligence/
-  - /v1-2/learn/vscode-plugin/language-intelligence
   - /learn/vscode-plugin/language-intelligence/
-  - /learn/vscode-plugin/language-intelligence/
+  - /learn/vscode-plugin/language-intelligence
   - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence
   - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
   - /learn/setting-up-visual-studio-code/language-intelligence
   - /learn/language-intelligence
   - /learn/language-intelligence/
-  - /learn/getting-started/language-intelligence
-  - /learn/getting-started/language-intelligence/
 ---
 
 ## Semantic and Syntactic Diagnostics
@@ -32,7 +26,7 @@ When there are syntax or semantic errors in your code, you will be notified with
 
 ## Suggestions and Auto-Completion
 
-The extension provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs etc.,).
+The extension provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs, etc.,).
 
 ![Suggestions and auto completion](/learn/images/suggestions.gif)
 
@@ -42,13 +36,19 @@ The extension provides you with suggestions on keywords, variables, and code sni
 
 These allow you to perform the below tasks easily based on the diagnostics and the current scope where the cursor resides. 
 
-- Add documentation for an entity such as a function, service, resource, object, record etc.,
+- Add documentation for an entity such as a function, service, resource, object, record, etc.,
 - Add documentation for all the available entities in the current file
 - Add missing imports 
 - Create variable definitions
 - Create an undefined function
+- Map the record types automatically
 
-For example, you can add documentation for a function as shown below.
+For example, you can use the automatic data mapping code action as shown below.
+ > **Note**: By default, the automatic data mapping code action is disabled. To enable it, click **Settings**, select **Ballerina** from **Extensions**, and select the **Data Mapper: Enabled** checkbox. (If you are using macOS, you can go to **Settings** by pressing `Cmd` + `,`.)
+
+ ![Code actions](/learn/images/data-mapper-code-action.gif)
+
+For another example, you can add documentation for a function as shown below.
 
  ![Code actions](/learn/images/code-actions.gif)
 
@@ -62,9 +62,9 @@ For example, you can add documentation for a function as shown below.
  
  > **Tip**: Likewise, if you hover over an entity name of an object or a record, you can view the description of the object/record as well as descriptions of its fields.
 
-## Go to definition
+## Go to Definition
 
-This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
+This option allows you to view the definition of a selected variable, function, an object, etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
 
 ![Go to definition](/learn/images/go-to-definition-vscode.gif)
 

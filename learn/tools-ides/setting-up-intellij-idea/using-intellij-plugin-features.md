@@ -1,17 +1,13 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Using the features of the IntelliJ plugin
 permalink: /learn/setting-up-intellij-idea/using-intellij-plugin-features/
 active: using-intellij-plugin-features
 intro: The sections below include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 redirect_from:
-  - /v1-2/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
-  - /v1-2/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
   - /learn/tools-ides/intellij-plugin/using-intellij-plugin-features
   - /learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
-  - /v1-2/learn/intellij-plugin/using-intellij-plugin-features/
-  - /v1-2/learn/intellij-plugin/using-intellij-plugin-features
-  - /learn/intellij-plugin/using-intellij-plugin-features/
+  - /learn/intellij-plugin/using-intellij-plugin-features
   - /learn/intellij-plugin/using-intellij-plugin-features/
   - /learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features
   - /learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features/

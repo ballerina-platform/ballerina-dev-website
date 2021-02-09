@@ -1,16 +1,12 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Run all Tests
-permalink: /learn/setting-up-visual-studio-code/run-all-tests/
+permalink: /learn/getting-started/setting-up-visual-studio-code/run-all-tests/
 active: run-all-tests
 intro: This option allows you to run all the tests that belong to multiple modules of your project. 
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests
-  - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests/
   - /learn/tools-ides/vscode-plugin/run-all-tests
   - /learn/tools-ides/vscode-plugin/run-all-tests/
-  - /v1-2/learn/vscode-plugin/run-all-tests/
-  - /v1-2/learn/vscode-plugin/run-all-tests
   - /learn/vscode-plugin/run-all-tests/
   - /learn/vscode-plugin/run-all-tests
   - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests
@@ -18,8 +14,6 @@ redirect_from:
   - /learn/setting-up-visual-studio-code/run-all-tests
   - /learn/run-all-tests
   - /learn/run-all-tests/
-  - /learn/getting-started/run-all-tests
-  - /learn/getting-started/run-all-tests/
 ---
 
 ## Running All Tests 

@@ -1,99 +1,131 @@
 ---
 layout: ballerina-example-page
-title: MySQL DDL and DML Operations
+title: DDL and DML Operations
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/mysql-execute-operation
 redirect_from:
-  - /v1-2/learn/by-example/mysql-execute-operation
-  - /v1-2/learn/by-example/mysql-execute-operation.html
+  - /vswan-lake/learn/by-example/mysql-execute-operation
+  - /vswan-lake/learn/by-example/mysql-execute-operation.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
+
+<span class="c1">// Username and password of the MySQL database. This is used in the below</span>
+<span class="c1">// examples when initializing the MySQL connector. You need to change these</span>
+<span class="c1">// based on your setup if you try locally.</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
-<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE_EXEC&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Initialize the client without any database to create the database.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
+    <span class="c1">// Create database if it does not exist. If any error occurred,</span>
+    <span class="c1">// the error will be returned.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS &quot;</span> <span class="o">+</span> <span class="nx">dbName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database created. &quot;</span><span class="p">);</span>
+    <span class="c1">// Close the MySQL client.</span>
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span>
     <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
+    <span class="c1">// Execute dropping the table. The `sql:ExecutionResult` is returned upon</span>
+    <span class="c1">// successful execution. An error will be returned in case of a failure.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS Customers&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Drop table executed. &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Drop table executed. &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+
+    <span class="c1">// Similarly, to drop a table, the `create` table query is executed.</span>
+    <span class="c1">// Here, the `customerId` is an auto-generated column.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS Customers&quot;</span> <span class="o">+</span>
         <span class="s">&quot;(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300)&quot;</span> <span class="o">+</span>
         <span class="s">&quot;,lastName  VARCHAR(300), registrationID INTEGER,&quot;</span> <span class="o">+</span>
         <span class="s">&quot;creditLimit DOUBLE, country  VARCHAR(300), PRIMARY KEY (customerId))&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Insert sample data into the table. The result will have</span>
+    <span class="c1">// `affectedRowCount` and `lastInsertedId` with the auto-generated ID of</span>
+    <span class="c1">// the last row.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO Customers (firstName,&quot;</span> <span class="o">+</span>
         <span class="s">&quot;lastName,registrationID,creditLimit, country) VALUES (&#39;Peter&#39;, &quot;</span> <span class="o">+</span>
         <span class="s">&quot;&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;</span><span class="p">);</span>
-    <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="err">?</span> <span class="nx">generatedId</span> <span class="p">=</span> <span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rows affected: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated Customer ID: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">);</span>
-        <span class="nx">generatedId</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">generatedId</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">query</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">` ${generatedId}`</span><span class="p">;</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;Update Customers set creditLimit = 15000.5 &quot;</span><span class="o">+</span>
-        <span class="s">&quot;where customerId =&quot;</span> <span class="o">+</span> <span class="nx">generatedId</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rows affected: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated Customer ID: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Create a parameterized query.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">updateQuery</span> <span class="p">=</span>
+        <span class="s">`Update Customers set creditLimit = 15000.5</span>
+<span class="s">        where customerId = ${generatedId}`</span><span class="p">;</span>
+
+    <span class="c1">// Update the record with the auto-generated ID.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">updateQuery</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Updated Row count: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="err">?</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occured: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Empty result&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;Delete from Customers where customerId = &quot;</span><span class="o">+</span>
-        <span class="nx">generatedId</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Delete the record with the auto-generated ID.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">deleteQuery</span> <span class="p">=</span>
+            <span class="s">`Delete from Customers where customerId = ${generatedId}`</span><span class="p">;</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
+                <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">deleteQuery</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Deleted Row count: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occured: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Empty result&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize the database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeDatabase</span><span class="p">();</span>
+
     <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// Initialize the MySQL client to be used for the rest of the DDL</span>
+        <span class="c1">// and DML operations.</span>
         <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span>
             <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="nx">dbName</span><span class="p">);</span>
+
         <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient</span> <span class="nx">is</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//  Initialize a table and insert data.</span>
             <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">initResult</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
+
             <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Update a record.</span>
                 <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
+                <span class="c1">// Delete a record.</span>
                 <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
+
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table initialization failed!&quot;</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
             <span class="p">}</span>
+            <span class="c1">// Close the MySQL client.</span>
             <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Table initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_execute_operation</span><span class="p">.</span><span class="nx">balDatabase</span> <span class="nx">created</span><span class="p">.</span>
-<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">.</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span>
-<span class="nx">Rows</span> <span class="nx">affected</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Generated</span> <span class="nx">Customer</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Updated</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Deleted</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Sample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -102,12 +134,15 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>MySQL DDL and DML Operations</h2>
+                            <h2>DDL and DML Operations</h2>
                             <p><p>This example demonstrates how to use the JDBC client with the DDL and  DML
- operations. Note that the MySQL database driver JAR should be placed in
- the<code>&lt;BALLERINA_HOME&gt;/bre/lib/distributions/jballerina-&lt;VERSION&gt;/bre/lib</code> directory. The MySQL connector uses database
+ operations. Note that the MySQL database driver JAR should be defined in the <code>Ballerina.toml</code> file as a dependency.
+ See <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerinax/mysql/latest/mysql/">MySQL module</a> for sample configuration.
+ The MySQL connector uses database
  properties from MySQL version 8.0.x onwards. Therefore, it is
- recommended to use a MySQL driver version greater than 8.0.x.</p>
+ recommended to use a MySQL driver version greater than 8.0.x.<br><br>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerinax/mysql/latest/mysql/">MySQL module</a>.</p>
 </p>
 
                         </td>
@@ -117,14 +152,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="mysql-complex-type-queries.html">
                                         <span>< PREVIOUS</span>
-                                        <p>MySQL Query with Complex Types</p>
+                                        <p>Query with Complex Types</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="local-transactions.html">
+                                    <a class="next" href="mysql-batch-execute-operation.html">
                                         <span>NEXT ></span>
-                                        <p>Local Transactions</p>
+                                        <p>Batch Execute Operations</p>
                                     </a>
                                 </div>
                                 
@@ -140,11 +175,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/mysql-execute-operation/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-execute-operation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -207,6 +242,24 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -216,8 +269,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
@@ -231,7 +284,7 @@ import ballerina/sql;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
 string dbPassword = &quot;Test@123&quot;;
-string dbName = &quot;MYSQL_BBE_EXEC&quot;;
+string dbName = &quot;MYSQL_BBE&quot;;
 </code></pre></div>
 
                                 </td>
@@ -283,7 +336,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecuteResult? result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
         check mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS &quot; + dbName);
     io:println(&quot;Database created. &quot;);
 </code></pre></div>
@@ -306,7 +359,6 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
-}
 </code></pre></div>
 
                                 </td>
@@ -318,6 +370,18 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -338,11 +402,9 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecuteResult? result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
         check mysqlClient-&gt;execute(&quot;DROP TABLE IF EXISTS Customers&quot;);
-    if (result is sql:ExecuteResult) {
-        io:println(&quot;Drop table executed. &quot;, result);
-    }
+    io:println(&quot;Drop table executed. &quot;, result);
 </code></pre></div>
 
                                 </td>
@@ -350,7 +412,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Execute dropping the table. The <code>sql:ExecuteResult</code> is returned upon
+                                            <p>Execute dropping the table. The <code>sql:ExecutionResult</code> is returned upon
  successful execution. An error will be returned in case of a failure.</p>
 
                                         </div>
@@ -388,7 +450,6 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                                     <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(&quot;INSERT INTO Customers (firstName,&quot; +
         &quot;lastName,registrationID,creditLimit, country) VALUES (&#39;Peter&#39;, &quot; +
         &quot;&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;);
-    int|string? generatedId = ();
 </code></pre></div>
 
                                 </td>
@@ -409,12 +470,9 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is sql:ExecuteResult) {
-        io:println(&quot;Rows affected: &quot;, result.affectedRowCount);
-        io:println(&quot;Generated Customer ID: &quot;, result.lastInsertId);
-        generatedId = result.lastInsertId;
-    }
-    return generatedId;
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Rows affected: &quot;, result.affectedRowCount);
+    io:println(&quot;Generated Customer ID: &quot;, result.lastInsertId);
+    return result.lastInsertId;
 }
 </code></pre></div>
 
@@ -439,18 +497,29 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string query = string ` ${generatedId}`;
-    sql:ExecuteResult|sql:Error? result =
-        mysqlClient-&gt;execute(&quot;Update Customers set creditLimit = 15000.5 &quot;+
-        &quot;where customerId =&quot; + generatedId.toString());
-    if (result is sql:ExecuteResult) {
-        io:println(&quot;Updated Row count: &quot;, result?.affectedRowCount);
-    } else if (result is sql:Error) {
-        io:println(&quot;Error occured: &quot;, result);
-    } else {
-        io:println(&quot;Empty result&quot;);
-    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery updateQuery =
+        `Update Customers set creditLimit = 15000.5
+        where customerId = ${generatedId}`;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a parameterized query.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult|sql:Error result =
+        mysqlClient-&gt;execute(updateQuery);
 </code></pre></div>
 
                                 </td>
@@ -462,6 +531,23 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is sql:ExecutionResult) {
+        io:println(&quot;Updated Row count: &quot;, result?.affectedRowCount);
+    } else {
+        io:println(&quot;Error occurred: &quot;, result);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -481,17 +567,10 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecuteResult|sql:Error? result =
-        mysqlClient-&gt;execute(&quot;Delete from Customers where customerId = &quot;+
-        generatedId.toString());
-    if (result is sql:ExecuteResult) {
-        io:println(&quot;Deleted Row count: &quot;, result.affectedRowCount);
-    } else if (result is sql:Error) {
-        io:println(&quot;Error occured: &quot;, result);
-    } else {
-        io:println(&quot;Empty result&quot;);
-    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery deleteQuery =
+            `Delete from Customers where customerId = ${generatedId}`;
+    sql:ExecutionResult|sql:Error result =
+                mysqlClient-&gt;execute(deleteQuery);
 </code></pre></div>
 
                                 </td>
@@ -503,6 +582,23 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is sql:ExecutionResult) {
+        io:println(&quot;Deleted Row count: &quot;, result.affectedRowCount);
+    } else {
+        io:println(&quot;Error occurred: &quot;, result);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -523,7 +619,6 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:Error? err = initializeDatabase();
-    if (err is ()) {
 </code></pre></div>
 
                                 </td>
@@ -539,12 +634,23 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (err is ()) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
             password = dbPassword, database = dbName);
-        if (mysqlClient is mysql:Client) {
 </code></pre></div>
 
                                 </td>
@@ -561,11 +667,22 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (mysqlClient is mysql:Client) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            int|string|sql:Error? initResult = initializeTable(mysqlClient);
-            if (initResult is int) {
 </code></pre></div>
 
                                 </td>
@@ -577,6 +694,18 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (initResult is int) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -604,10 +733,6 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                deleteRecord(mysqlClient, initResult);
-                io:println(&quot;Sample executed successfully!&quot;);
-            } else if (initResult is sql:Error) {
-                io:println(&quot;Customer table initialization failed!&quot;, initResult);
-            }
 </code></pre></div>
 
                                 </td>
@@ -623,17 +748,25 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                io:println(&quot;Sample executed successfully!&quot;);
+            } else if (initResult is sql:Error) {
+                io:println(&quot;Customer table initialization failed!&quot;, initResult);
+            }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            sql:Error? e = mysqlClient.close();
-        } else {
-            io:println(&quot;Table initialization failed!!&quot;, mysqlClient);
-        }
-    } else {
-        io:println(&quot;Database initialization failed!!&quot;, err);
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -645,6 +778,24 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
+            io:println(&quot;Table initialization failed!!&quot;, mysqlClient);
+        }
+    } else {
+        io:println(&quot;Database initialization failed!!&quot;, err);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -670,8 +821,8 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run mysql_execute_operation.bal
+# `.bal` file and execute the `bal run` command below.
+bal run mysql_execute_operation.bal
 </code></pre></div>
 
                                 </td>
@@ -684,7 +835,7 @@ ballerina run mysql_execute_operation.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Database created.
-Drop table executed. affectedRowCount=0 lastInsertId=
+Drop table executed. {&quot;affectedRowCount&quot;:0,&quot;lastInsertId&quot;:null}
 Rows affected: 1
 Generated Customer ID: 1
 Updated Row count: 1
@@ -717,7 +868,7 @@ Sample executed successfully!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

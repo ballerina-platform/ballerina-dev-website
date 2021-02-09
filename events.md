@@ -13,22 +13,7 @@ redirect_from:
 <!--<h2>No upcoming events</h2><br/>-->
 
 <h2>Upcoming Events</h2>	
-<table class="cEventTable cConferencesList" style="width:100%;">	
-   <tr class="event-expiry" style="display:none" data-expiry="February 5, 2021 12:00:00">	
-      <td class="cEventDateContainer">	
-         <span class="cEventDate">February 5, 2021</span>	
-         <p class="cEventLocation">Online</p>	
-      </td>	
-      <td class="cEventDetail">	
-         <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
-            <h4>Lunch & Learn</h4>	
-         </a>	
-         <h5>Ballerina: OS Cloud-native Programming Language</h5>	
-         <b>Caludio Guidi,</b> Jolie Evangelist and Project Co-Leader<br/>	
-         <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
-      </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
-   </tr>	
+<table class="cEventTable cConferencesList" style="width:100%;">
    <tr class="event-expiry" style="display:none" data-expiry="February 23, 2021 12:00:00">	
       <td class="cEventDateContainer">	
          <span class="cEventDate">February 23, 2021</span>	
@@ -57,10 +42,40 @@ redirect_from:
       </td>	
       <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
    </tr>
+   <tr class="event-expiry" style="display:none" data-expiry="April 30, 2021 12:00:00">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">April 27 - 30, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/">	
+            <h4>GIDS Live</h4>	
+         </a>	
+         <h5>Cloud Native Middleware as a Programming Language</h5>
+         <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
+         <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/sessions" target="_blank">More Info</a></td>	
+   </tr>	
 </table>
 
 <h2>Past Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
+   <tr class="event-expiry" style="display:none" data-expiry="February 5, 2021 12:00:00">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">February 5, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
+            <h4>Lunch & Learn</h4>	
+         </a>	
+         <h5>Ballerina: OS Cloud-native Programming Language</h5>	
+         <b>Caludio Guidi,</b> Jolie Evangelist and Project Co-Leader<br/>	
+         <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+   </tr>	
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
          <span class="cEventDate">December 2 - 4, 2020</span>

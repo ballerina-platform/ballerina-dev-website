@@ -4,71 +4,39 @@ title: Secured Client with Basic Auth
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/secured-client-with-basic-auth
 redirect_from:
-  - /v1-2/learn/by-example/secured-client-with-basic-auth
-  - /v1-2/learn/by-example/secured-client-with-basic-auth.html
+  - /vswan-lake/learn/by-example/secured-client-with-basic-auth
+  - /vswan-lake/learn/by-example/secured-client-with-basic-auth.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">auth</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">auth</span><span class="p">:</span><span class="nx">OutboundBasicAuthProvider</span> <span class="nx">outboundBasicAuthProvider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
-    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;tom&quot;</span><span class="p">,</span>
-    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">outboundBasicAuthHandler</span> <span class="p">=</span>
-                                            <span class="nx">new</span> <span class="p">(</span><span class="nx">outboundBasicAuthProvider</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
+
+<span class="c1">// Defines the HTTP client to call the Basic auth secured APIs.</span>
+<span class="c1">// The client is enriched with the `Authorization: Basic &lt;token&gt;` header by</span>
+<span class="c1">// passing the `http:CredentialsConfig` for the `auth` configuration of the</span>
+<span class="c1">// client.</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">outboundBasicAuthHandler</span>
+        <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;alice&quot;</span><span class="p">,</span>
+        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;123&quot;</span>
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello/sayHello&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Send a `GET` request to the specified endpoint.</span>
+    <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/foo/bar&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">((</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span>
-                                        <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">test</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">first</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">sample</span> <span class="kd">service</span> <span class="nx">by</span> <span class="nx">executing</span> <span class="nx">the</span> <span class="nx">below</span>
-<span class="err">#</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">specifying</span> <span class="nx">the</span> <span class="nx">configuration</span> <span class="nx">file</span> <span class="nx">name</span> <span class="nx">and</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span>
-<span class="err">#</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_service_with_basic_auth</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">file</span><span class="p">=</span><span class="nx">sample</span><span class="o">-</span><span class="nx">users</span><span class="p">.</span><span class="nx">toml</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">Then</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">by</span> <span class="nx">executing</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span>
-<span class="err">#</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_client_with_basic_auth</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
-<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!!!</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">auth</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">auth</span><span class="p">:</span><span class="nx">InboundBasicAuthProvider</span> <span class="nx">inboundBasicAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">inboundBasicAuthHandler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">inboundBasicAuthProvider</span><span class="p">);</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">inboundBasicAuthHandler</span><span class="p">],</span>
-        <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span><span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -80,15 +48,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Secured Client with Basic Auth</h2>
-                            <p><p>A client, which is secured with Basic authentication should be used to
- connect to a service, which is secured with Basic authentication.
- The <code>auth:OutboundBasicAuthProvider</code> is initialized with the <code>username</code> and
- <code>password</code> and the <code>http:BasicAuthHandler</code> is initialized by providing
- the created <code>auth:OutboundBasicAuthProvider</code>. An additional <code>auth</code> field is
- added to the HTTP  client endpoint initialization in order to secure the
- simple HTTP client endpoint.
- The <code>authHandler</code> field is defined inside the <code>auth</code> field with the value of
- it being the reference of the created <code>http:BearerAuthHandler</code>.</p>
+                            <p><p>A client, which is secured with Basic auth can be used to connect to
+ a secured service.<br/>
+ The client is enriched with the <code>Authorization: Basic &lt;token&gt;</code> header by
+ passing the <code>http:CredentialsConfig</code> for the <code>auth</code> configuration of the
+ client.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/auth/latest/auth/">Auth module</a>.</p>
 </p>
 
                         </td>
@@ -96,16 +62,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-service-with-ldap.html">
+                                    <a class="prev" href="secured-service-with-oauth2.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Service with LDAP</p>
+                                        <p>Secured Service with OAuth2</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="secured-client-with-jwt-auth.html">
+                                    <a class="next" href="secured-client-with-bearer-token-auth.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Client with JWT Auth</p>
+                                        <p>Secured Client with Bearer Token Auth</p>
                                     </a>
                                 </div>
                                 
@@ -121,11 +87,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/secured-client-with-basic-auth/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-client-with-basic-auth/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -152,10 +118,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -164,9 +126,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/auth;
-import ballerina/config;
-import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -179,59 +139,14 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>auth:OutboundBasicAuthProvider outboundBasicAuthProvider = new ({
-    username: &quot;tom&quot;,
-    password: &quot;1234&quot;
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the Basic Auth client endpoint to call the backend services.
- Basic Authentication is enabled by creating an
- <code>auth:OutboundBasicAuthProvider</code> with the <code>username</code> and <code>password</code>
- passed as a record.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:BasicAuthHandler outboundBasicAuthHandler =
-                                            new (outboundBasicAuthProvider);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a Basic Auth handler with the created Basic Auth provider.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client httpEndpoint = new (&quot;https://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client securedEP = check new(&quot;https://localhost:9090&quot;, {
     auth: {
-        authHandler: outboundBasicAuthHandler
+        username: &quot;alice&quot;,
+        password: &quot;123&quot;
     },
     secureSocket: {
         trustStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
+            path: &quot;../resources/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -240,6 +155,16 @@ import ballerina/log;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the HTTP client to call the Basic auth secured APIs.
+ The client is enriched with the <code>Authorization: Basic &lt;token&gt;</code> header by
+ passing the <code>http:CredentialsConfig</code> for the <code>auth</code> configuration of the
+ client.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -259,13 +184,11 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var response = httpEndpoint-&gt;get(&quot;/hello/sayHello&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var response = securedEP-&gt;get(&quot;/foo/bar&quot;);
     if (response is http:Response) {
-        var result = response.getTextPayload();
-        log:printInfo((result is error) ? &quot;Failed to retrieve payload.&quot;
-                                        : result);
-    } else {
-        log:printError(&quot;Failed to call the endpoint.&quot;, response);
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError(&quot;Failed to call the endpoint.&quot;, err = response);
     }
 }
 </code></pre></div>
@@ -291,152 +214,22 @@ import ballerina/log;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
                         <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To test the client, first start the sample service by executing the below
-# command by specifying the configuration file name and passing Ballerina home
-# path as a system property.
-ballerina run secured_service_with_basic_auth.bal --b7a.config.file=sample-users.toml --b7a.home=&lt;ballerina_home_path&gt;
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
                             
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Then start the client by executing the below command by passing Ballerina home
-# path as a system property.
-ballerina run secured_client_with_basic_auth.bal --b7a.home=&lt;ballerina_home_path&gt;
-INFO  [ballerina/log] - Hello, World!!!
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/auth;
-import ballerina/config;
-import ballerina/http;
-import ballerina/log;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
-http:BasicAuthHandler inboundBasicAuthHandler = new (inboundBasicAuthProvider);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the sample backend service, which is secured with Basic Auth
- authentication.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, config = {
-    auth: {
-        authHandlers: [inboundBasicAuthHandler],
-        scopes: [&quot;hello&quot;]
-    },
-    secureSocket: {
-        keyStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>service hello on ep {
-    resource function sayHello(http:Caller caller, http:Request req) {
-        error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
-        if (result is error) {
-            log:printError(&quot;Error in responding to caller&quot;, result);
-        }
-    }
-}
+                                    <div class="highlight"><pre><code class=shell-session># Before testing this sample, first start a sample service secured with Basic Auth.
+# To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the keystore path. A sample keystore file is
+# available in the distribution.
+# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaKeystore.p12)
+bal run secured_client_with_basic_auth.bal
+time = 2021-01-20 20:04:13,261 level = INFO  module = &quot;&quot; message = &quot;200&quot;
 </code></pre></div>
 
                                 </td>
@@ -464,7 +257,7 @@ http:BasicAuthHandler inboundBasicAuthHandler = new (inboundBasicAuthProvider);
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

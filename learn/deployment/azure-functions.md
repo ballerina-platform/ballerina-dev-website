@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Azure Functions
 description: See how the Ballerina deployment in Azure Functions works
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions
@@ -10,19 +10,19 @@ redirect_from:
   - /learn/deployment/azure-functions
 ---
 
-This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation. 
+This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation.
 
 ## Triggers and Bindings
 
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows to output data from the function out to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
-- HTTP [trigger](/learn/api-docs/ballerina/azure.functions/annotations.html#HTTPTrigger) and [output](/learn/api-docs/ballerina/azure.functions/annotations.html#HTTPOutput) binding
-- Queue [trigger](/learn/api-docs/ballerina/azure.functions/annotations.html#QueueTrigger) and [output](/learn/api-docs/ballerina/azure.functions/annotations.html#QueueOutput) binding
-- Blob [trigger](/learn/api-docs/ballerina/azure.functions/annotations.html#BlobTrigger), [input](/learn/api-docs/ballerina/azure.functions/annotations.html#BlobInput) binding, and [output](/learn/api-docs/ballerina/azure.functions/annotations.html#BlobOutput) binding
-- Twilio SMS [output](/learn/api-docs/ballerina/azure.functions/annotations.html#TwilioSmsOutput) binding
-- CosmosDB [trigger](/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBTrigger), [input](/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBInput) binding, and [output](/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBOutput) binding
-- Timer [trigger](/learn/api-docs/ballerina/azure.functions/annotations.html#TimerTrigger)
+- HTTP [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#HTTPTrigger) and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#HTTPOutput) binding
+- Queue [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#QueueTrigger) and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#QueueOutput) binding
+- Blob [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobTrigger), [input](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobInput) binding, and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobOutput) binding
+- Twilio SMS [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#TwilioSmsOutput) binding
+- CosmosDB [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBTrigger), [input](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBInput) binding, and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBOutput) binding
+- Timer [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#TimerTrigger)
 
 ## Writing a Function
 
@@ -41,14 +41,14 @@ public function fromHttpToQueue(af:Context ctx,
 }
 ```
 
-The first parameter with the [Context](/learn/api-docs/ballerina/azure.functions/objects/Context.html) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the parameter list of the function. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you also declare that you will be having a queue output binding by the usage of the `QueueOutput` annotation with a string result by defining a `StringOutputBinding` parameter. Also, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation. This HTTP output binding can also be given by defining as a parameter as well with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. 
+The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functions/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare that you will have a queue output binding by using the `QueueOutput` annotation with a string result by defining a `StringOutputBinding` parameter. Also, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation. This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. 
 
 ## Building the Function
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
-$ ballerina build functions.bal 
+$ bal build functions.bal 
 Compiling source
 	functions.bal
 
@@ -65,7 +65,7 @@ Generating executables
 In order to deploy a Ballerina function in Azure Functions, the following prerequisites must be met.
 
 * Create an Azure [Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements:
-   - Runtime stack - `Java`
+   - Runtime stack - `Java 11`
    - Hosting operating system - `Windows` (default; Linux is not supported in Azure for custom handlers at the moment)
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 

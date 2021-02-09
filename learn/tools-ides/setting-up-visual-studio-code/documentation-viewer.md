@@ -1,16 +1,12 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Documentation Viewer
-permalink: /learn/setting-up-visual-studio-code/documentation-viewer/
+permalink: /learn/getting-started/setting-up-visual-studio-code/documentation-viewer/
 active: documentation-viewer
 intro: The VS Code Ballerina extension is shipped with a Documentation Viewer. You can add documentation for the functions and other public entities in your module for the reference of other users of it. 
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer
-  - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer/
-  - /v1-2/learn/vscode-plugin/documentation-viewer/
-  - /v1-2/learn/vscode-plugin/documentation-viewer
-  - /learn/tools-ides/vscode-plugin/documentation-viewer/
   - /learn/tools-ides/vscode-plugin/documentation-viewer
+  - /learn/tools-ides/vscode-plugin/documentation-viewer/
   - /learn/vscode-plugin/documentation-viewer/
   - /learn/vscode-plugin/documentation-viewer
   - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer
@@ -18,8 +14,6 @@ redirect_from:
   - /learn/setting-up-visual-studio-code/documentation-viewer
   - /learn/documentation-viewer
   - /learn/documentation-viewer/
-  - /learn/getting-started/documentation-viewer
-  - /learn/getting-started/documentation-viewer/
 ---
 
 ## Launching the Documentation Viewer

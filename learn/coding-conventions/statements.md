@@ -1,15 +1,14 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Statements
 active: statements
 permalink: /learn/coding-conventions/statements/
 intro: The sections below include the coding conventions with respect to statements.
 redirect_from:
-  - /v1-2/learn/style-guide/statements/
-  - /v1-2/learn/style-guide/statements
-  - /learn/style-guide/statements
   - /learn/style-guide/statements/
+  - /learn/style-guide/statements
   - /learn/coding-conventions/statements
+
 ---
 
 ## If Statement
@@ -40,7 +39,7 @@ if true {
 * Keep the `else` and `else if` keywords in the same line with the matching `if` or `else if` block's
   closing brace separated only by a single space.
 
-### Empty Block
+### Empty block
 
 * Do not have any empty `if`, `else if`, or `else` blocks.
 * If empty, add an empty line between the opening and closing braces.

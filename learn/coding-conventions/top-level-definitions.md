@@ -1,14 +1,12 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Top-Level Definitions
 active: definitions
 permalink: /learn/coding-conventions/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.
 redirect_from:
-  - /v1-2/learn/style-guide/definitions/
-  - /v1-2/learn/style-guide/definitions
-  - /learn/style-guide/definitions
   - /learn/style-guide/definitions/
+  - /learn/style-guide/definitions
   - /learn/coding-conventions/definitions
   - /learn/coding-conventions/top-level-definitions
 ---
@@ -48,6 +46,13 @@ service hello on ep1 {
         
 ```
 
+- [Imports](#imports)
+- [Function Definition](#function-definition)
+- [Service Definition](#service-definition)
+- [Object Definition](#object-definition)
+- [Record Definition](#record-definition)
+- [Referencing Record or Abstract Object](#referencing-record-or-abstract-object)
+
 ## Imports
 
 * Do not keep spaces between the organization name, divider `/`, and module name.
@@ -66,7 +71,8 @@ import ballerina/http;
 **Example,**
 
 ```ballerina
-function func1() {}
+function func1() {
+}
 ```
  
 * If the function has an object attached to it, do not keep spaces around the Dot `.`. Also, keep a single space between the `function` keyword and the name of the object.
@@ -74,7 +80,8 @@ function func1() {}
 **Example,**
 
 ```ballerina
-function Person.getName() {}
+function Person.getName() {
+}
 ```
 
 * If the function needs to be split into new lines due to it exceeding the max line length,
@@ -125,18 +132,19 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-* When formatting resource functions and function definitions, block indent each element and follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions/#function-definition).
-
+* When formatting resource functions and function definitions, block indent each element and
+  follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
+  
 **Example,**
 
 ```ballerina
 service hello on ep1, ep2 {
-    resource function sayHello(http:Caller caller, http:Request req) returns error? {
+    resource function sayHelloPath hello(http:Caller caller, http:Request req) returns error? {
         http:Response res = new;
         res.setPayload(self.getGreeting());
         _ = caller->respond(res);
     }
-        
+
     function getGreeting() returns string {
         return "Hello";
     }
@@ -149,8 +157,7 @@ service hello on ep1, ep2 {
 
 * Block indent each field definition and each function definition on their own line.
 * Init function should be placed before all the other functions. 
-* For function definitions in the object definition, follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions/#function-definition).
-
+* For function definitions in the object definition, follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
 
 **Example,**
 
@@ -158,8 +165,8 @@ service hello on ep1, ep2 {
 type Person object {
     // Object field definitions.
     public boolean isMarried = false;
-      int age;
-      string name;
+    int age;
+    string name;
   
     // Object init function.
     function __init(string name, int age = 0) {

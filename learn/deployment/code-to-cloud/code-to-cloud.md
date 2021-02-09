@@ -38,8 +38,8 @@ Ballerina encourages to have one microservice per package. In order to adhere to
 │   └── module
 │       └── entry.bal                             
 └── target
-    ├── balo
-    │   └── module-0.0.1.balo
+    ├── bala
+    │   └── module-0.0.1.bala
     ├── bin
     │   └── module.jar
     ├── caches

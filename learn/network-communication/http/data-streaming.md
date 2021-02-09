@@ -20,7 +20,7 @@ In Ballerina, the clients automatically switch between the chunked or non-chunke
 
 ## Creating the Input Data Channel
 
-To use the HTTP streaming feature effectively, you need to create an HTTP request with a streaming input data channel. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](swan-lake/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
+To use the HTTP streaming feature effectively, you need to create an HTTP request with a streaming input data channel. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
 
 Therefore, you should use a streaming data channel by using an API such as the [`io:openReadableFile`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#openReadableFile), which returns a [`ReadableByteChannel`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/classes/ReadableByteChannel). This streaming data channel can be used in places that accept streaming channels such as the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object’s [`setByteStream`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setByteStream). 
 

@@ -127,22 +127,23 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/learn/running-ballerina-code">Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
+<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/swan-lake/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
+<td class="cDescription">Format Ballerina source files as per the <a href="/learn/coding-conventions">Coding Conventions</a>.</td>
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -152,7 +153,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">format</td>
-<td class="cDescription">Format Ballerina source files as per the <a href="/swan-lake/learn/coding-conventions">Coding Conventions</a>.</td>
+<td class="cDescription">Format Ballerina source files as per the <a href="/learn/coding-conventions">Coding Conventions</a>.</td>
 </tr>
 </table>
 
@@ -163,7 +164,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/swan-lake/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -183,7 +184,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-packages-to-ballerina-central">Publishing Packages to Ballerina Central</a>.
+<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/learn/publishing-packages-to-ballerina-central">Publishing Packages to Ballerina Central</a>.
 </td>
 </tr>
 <tr>
@@ -205,11 +206,11 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a>.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">openapi</td>
-<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/swan-lake/learn/using-the-openapi-tools">Using the OpenAPI Tools</a>.</td>
+<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/using-the-openapi-tools">Using the OpenAPI Tools</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">version</td>
@@ -217,7 +218,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>
-<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/swan-lake/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
+<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">help</td>
@@ -231,12 +232,12 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <table class="cComandTable">
 <tr>
 <td class="cCommand">dist</td>
-<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
+<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">update</td>
-<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
+<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/keeping-ballerina-up-to-date/">Keeping Ballerina Up to Date</a>.
 </td>
 </tr>
 </table>

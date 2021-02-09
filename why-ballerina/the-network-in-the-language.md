@@ -166,7 +166,7 @@ public function main() returns error? {
                               <h3 id="get-started">Get Started</h3>
                               <p>The sequence diagram below is generated from a sample Salesforce integration microservice.</p>
                               <img src="/img/why-pages/the-network-in-the-language-1.png" alt="Salesforce integration microservice Ballerina sequence diagram">
-                              <p>To start generating a sequence diagram from your Ballerina code, download the <a href="https://ballerina.io/learn/vscode-plugin/graphical-editor">VSCode plugin and launch the graphical editor</a>.</p>
+                              <p>To start generating a sequence diagram from your Ballerina code, download the <a href="/learn/vscode-plugin/graphical-editor">VSCode plugin and launch the graphical editor</a>.</p>
                               <div class="cQUOTE">
                                  <p>"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful," stated.</p>
                                  <p class="cName">Christian Posta, field CTO, solo.io.</p>
@@ -196,11 +196,11 @@ public function main() returns error? {
                               <h3 id="get-started">Get Started</h3>
                               <p>Ballerina helps developers write resilient, robust programs with out-of-the-box support for techniques such as:</p>
                               <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-circuit-breaker.html">Circuit Breaker</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-load-balancer.html">Load Balancing</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-failover.html">Failover</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-retry.html">Retry</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-timeout.html">Timeout</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/http-circuit-breaker.html">Circuit Breaker</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/http-load-balancer.html">Load Balancing</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/http-failover.html">Failover</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/http-retry.html">Retry</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/http-timeout.html">Timeout</a></li>
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>The code snippet below shows how you can easily configure a circuit breaker to handle network-related errors in the Ballerina HTTP client object.</p>
@@ -241,12 +241,12 @@ public function main() returns error? {
                               <h2 id="async-network-protocol">Error Handling</h2>
                               <p>Due to the inherent unreliability of networks, errors are an expected part of network programming. That’s why in Ballerina errors are explicitly checked rather than thrown as exceptions. It’s impossible to ignore errors by design because of Ballerina’s comprehensive error handling capabilities:</p>
                               <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/error-handling.html">Error Handling</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/check.html">Check</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/panic.html">Panic</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/checkpanic.html">Check Panic</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/trap.html">Trap</a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/user-defined-error.html">User-defined Error Types</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/error-handling.html">Error Handling</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/check.html">Check</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/panic.html">Panic</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/checkpanic.html">Check Panic</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/trap.html">Trap</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/user-defined-error.html">User-defined Error Types</a></li>
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
@@ -280,7 +280,7 @@ if result is error {
                         <div role="main">
                            <div class="section">
                               <h2 id="services">Network Data Safety</h2>
-                              <p>Distributed systems work by sharing data between different components. Network security plays a crucial role because all these communications happen over the network. Ballerina provides built-in libraries to <a href="https://ballerina.io/learn/by-example/crypto.html">implement transport-level security and cryptography to protect data</a>.</p>
+                              <p>Distributed systems work by sharing data between different components. Network security plays a crucial role because all these communications happen over the network. Ballerina provides built-in libraries to <a href="/learn/by-example/crypto.html">implement transport-level security and cryptography to protect data</a>.</p>
                               <p>Identity and access management also plays a critical role in microservice-based applications. Ballerina supports out-of-the-box protection for services as well as clients by using basic-auth, OAuth and JWT. The following BBEs show how to secure services and clients by enforcing authorization.</p>
                               <table class="docutils">
                                  <tbody>
@@ -329,7 +329,7 @@ if result is error {
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
                               <ul class="cInlinelinklist">
-                                 <li><a href="/learn/how-to-observe-ballerina-code">How to Observe Ballerina Services</a></li>
+                                 <li><a href="/learn/observing-ballerina-code">Observing Ballerina Code</a></li>
                               </ul>
                            </div>
                         </div>

@@ -4,14 +4,17 @@ title: CORS
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/http-cors
 redirect_from:
-  - /v1-2/learn/by-example/http-cors
-  - /v1-2/learn/by-example/http-cors.html
+  - /vswan-lake/learn/by-example/http-cors
+  - /vswan-lake/learn/by-example/http-cors.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// Service-level [CORS config](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CorsConfig) applies</span>
+<span class="c1">// globally to each `resource`.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">cors</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">allowOrigins</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://www.m3.com&quot;</span><span class="p">,</span> <span class="s">&quot;http://www.hello.com&quot;</span><span class="p">],</span>
@@ -21,53 +24,39 @@ redirect_from:
         <span class="nx">maxAge</span><span class="p">:</span> <span class="mi">84900</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">crossOriginService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">crossOriginService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Resource-level [CORS config](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CorsConfig)</span>
+    <span class="c1">// overrides the service-level CORS headers.</span>
     <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/company&quot;</span><span class="p">,</span>
         <span class="nx">cors</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">allowOrigins</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://www.bbc.com&quot;</span><span class="p">],</span>
             <span class="nx">allowCredentials</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="nx">allowHeaders</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;X-Content-Type-Options&quot;</span><span class="p">,</span> <span class="s">&quot;X-PINGOTHER&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">companyInfo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">company</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;middleware&quot;</span><span class="p">};</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/lang&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">langInfo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Since there are no resource-level CORS configs defined here, the global</span>
+    <span class="c1">// service-level CORS configs will be applied to this resource.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">lang</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;lang&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_cors</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9092</span><span class="err">#</span> <span class="nx">Run</span> <span class="nx">this</span> <span class="nx">curl</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">send</span> <span class="nx">a</span> <span class="nx">CORS</span> <span class="nx">simple</span> <span class="nx">request</span><span class="p">.</span> 
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="s">&quot;http://localhost:9092/crossOriginService/company&quot;</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Origin:http://www.bbc.com&quot;</span><span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
-<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Origin</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//www.bbc.com</span>
-<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Credentials</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">&lt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">21</span>
-<span class="p">{</span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;middleware&quot;</span><span class="p">}</span><span class="err">#</span> <span class="nx">Run</span> <span class="nx">this</span> <span class="nx">curl</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">send</span> <span class="nx">a</span> <span class="nx">CORS</span> <span class="nx">preflight</span> <span class="nx">request</span><span class="p">.</span> 
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="s">&quot;http://localhost:9092/crossOriginService/lang&quot;</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">OPTIONS</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Origin:http://www.m3.com&quot;</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Access-Control-Request-Method:POST&quot;</span><span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Origin</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//www.m3.com</span>
-<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Methods</span><span class="p">:</span> <span class="nx">POST</span>
-<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Max</span><span class="o">-</span><span class="nx">Age</span><span class="p">:</span> <span class="mi">84900</span>
-<span class="p">&lt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -78,8 +67,10 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>CORS</h2>
                             <p><p>This sample demonstrates the Ballerina server connector CORS configuration.
-CORS headers can be applied in both the service-level and the resource-level. Service-level CORS headers apply to all the resources
-unless there are headers configured at the resource-level. Ballerina CORS supports both simple and pre-flight requests.</p>
+ CORS headers can be applied in both the service-level and the resource-level. Service-level CORS headers apply to all the resources
+ unless there are headers configured at the resource-level. Ballerina CORS supports both simple and pre-flight requests.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -112,11 +103,11 @@ unless there are headers configured at the resource-level. Ballerina CORS suppor
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/http-cors/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-cors/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -173,7 +164,7 @@ import ballerina/log;
         maxAge: 84900
     }
 }
-service crossOriginService on new http:Listener(9092) {
+service /crossOriginService on new http:Listener(9092) {
 </code></pre></div>
 
                                 </td>
@@ -181,7 +172,8 @@ service crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Service-level CORS headers apply globally to each <code>resource</code>.</p>
+                                            <p>Service-level <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CorsConfig">CORS config</a> applies
+ globally to each <code>resource</code>.</p>
 
                                         </div>
                                     </div>
@@ -193,21 +185,19 @@ service crossOriginService on new http:Listener(9092) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;GET&quot;],
-        path: &quot;/company&quot;,
         cors: {
             allowOrigins: [&quot;http://www.bbc.com&quot;],
             allowCredentials: true,
             allowHeaders: [&quot;X-Content-Type-Options&quot;, &quot;X-PINGOTHER&quot;]
         }
     }
-    resource function companyInfo(http:Caller caller, http:Request req) {
+    resource function get company(http:Caller caller, http:Request req) {
         http:Response res = new;
         json responseJson = {&quot;type&quot;: &quot;middleware&quot;};
         res.setJsonPayload(responseJson);
         var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), err = result);
         }
     }
 </code></pre></div>
@@ -217,7 +207,8 @@ service crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Resource-level CORS headers override the service-level CORS headers.</p>
+                                            <p>Resource-level <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CorsConfig">CORS config</a>
+ overrides the service-level CORS headers.</p>
 
                                         </div>
                                     </div>
@@ -228,17 +219,13 @@ service crossOriginService on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        methods: [&quot;POST&quot;],
-        path: &quot;/lang&quot;
-    }
-    resource function langInfo(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post lang(http:Caller caller, http:Request req) {
         http:Response res = new;
         json responseJson = {&quot;lang&quot;: &quot;Ballerina&quot;};
         res.setJsonPayload(responseJson);
         var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), err = result);
         }
     }
 }
@@ -249,8 +236,8 @@ service crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since there are no resource-level CORS headers defined here, the global
-service-level CORS headers are applied to this resource.</p>
+                                            <p>Since there are no resource-level CORS configs defined here, the global
+ service-level CORS configs will be applied to this resource.</p>
 
                                         </div>
                                     </div>
@@ -275,8 +262,8 @@ service-level CORS headers are applied to this resource.</p>
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command below.
-ballerina run http_cors.bal
+# `.bal` file and use the `bal run` command below.
+bal run http_cors.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
 
@@ -298,14 +285,6 @@ ballerina run http_cors.bal
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -314,38 +293,23 @@ ballerina run http_cors.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run this curl command to send a CORS simple request. 
+                                    <div class="highlight"><pre><code class=shell-session># Run the cURL command below to send a CORS simple request. 
 curl -v &quot;http://localhost:9092/crossOriginService/company&quot; -H &quot;Origin:http://www.bbc.com&quot;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>&lt; HTTP/1.1 200 OK
-&lt; Content-Type: application/json
-&lt; Access-Control-Allow-Origin: http://www.bbc.com
-&lt; Access-Control-Allow-Credentials: true
-&lt; Content-Length: 21
-{&quot;type&quot;:&quot;middleware&quot;}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run this curl command to send a CORS preflight request. 
-curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H &quot;Origin:http://www.m3.com&quot; -H &quot;Access-Control-Request-Method:POST&quot;
+&gt; GET /crossOriginService/company HTTP/1.1
+&gt; Host: localhost:9092
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt; Origin:http://www.bbc.com
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; content-type: application/json
+&lt; access-control-allow-origin: http://www.bbc.com
+&lt; access-control-allow-credentials: true
+&lt; content-length: 21
+&lt; server: ballerina
+&lt;
+* Connection #0 to host localhost left intact
+{&quot;type&quot;:&quot;middleware&quot;}* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -357,11 +321,24 @@ curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H 
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>&lt; HTTP/1.1 200 OK
-&lt; Access-Control-Allow-Origin: http://www.m3.com
-&lt; Access-Control-Allow-Methods: POST
-&lt; Access-Control-Max-Age: 84900
-&lt; Content-Length: 0
+                                    <div class="highlight"><pre><code class=shell-session># Run the cURL command below to send a CORS preflight request. 
+curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H &quot;Origin:http://www.m3.com&quot; -H &quot;Access-Control-Request-Method:POST&quot;
+&gt; OPTIONS /crossOriginService/lang HTTP/1.1
+&gt; Host: localhost:9092
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt; Origin:http://www.m3.com
+&gt; Access-Control-Request-Method:POST
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; access-control-allow-origin: http://www.m3.com
+&lt; access-control-max-age: 84900
+&lt; access-control-allow-methods: POST
+&lt; content-length: 0
+&lt; server: ballerina
+&lt;
+* Connection #0 to host localhost left intact
+* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -389,7 +366,7 @@ curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H 
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

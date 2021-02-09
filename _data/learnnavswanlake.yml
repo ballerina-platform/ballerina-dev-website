@@ -16,101 +16,108 @@
   url: '#' 
   sublinks:
     - title: Using the CLI Tools
-      url: /swan-lake/learn/using-the-cli-tools/ 
+      url: /learn/using-the-cli-tools/ 
       active: using-the-cli-tools
     - title: Keeping Ballerina Up To Date
-      url: /swan-lake/learn/keeping-ballerina-up-to-date
+      url: /learn/keeping-ballerina-up-to-date
       active: keeping-ballerina-up-to-date
     - title: Using the OpenAPI Tools
-      url: /swan-lake/learn/using-the-openapi-tools/
+      url: /learn/using-the-openapi-tools/
       active: using-the-openapi-tools
     - title: Generating Ballerina Code for Protocol Buffer Definitions
-      url: /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions
+      url: /learn/generating-ballerina-code-for-protocol-buffer-definitions
       active: generating-ballerina-code-for-protocol-buffer-definitions
 
 - title: Code Organization 
   url: '#'
   sublinks:
     - title: Structuring Ballerina Code
-      url: /swan-lake/learn/structuring-ballerina-code/
+      url: /learn/structuring-ballerina-code/
       active: structuring-ballerina-code
     - title: Documenting Ballerina Code
-      url: /swan-lake/learn/documenting-ballerina-code/
+      url: /learn/documenting-ballerina-code/
       active: documenting-ballerina-code
     - title: Coding Conventions
-      url: /swan-lake/learn/coding-conventions/
+      url: /learn/coding-conventions/
       active: coding-conventions
     - title: Running Ballerina Code
-      url: /swan-lake/learn/running-ballerina-code/
+      url: /learn/running-ballerina-code/
       active: running-ballerina-code
     - title: Publishing Packages to Ballerina Central
-      url: /swan-lake/learn/publishing-packages-to-ballerina-central
+      url: /learn/publishing-packages-to-ballerina-central
       active: publishing-packages-to-ballerina-central
 
 - title: Network Communication
   url: '#' 
   sublinks:
     - title: HTTP
-      url: /swan-lake/learn/network-communication/http/
+      url: /learn/network-communication/http/
       active: http
     - title: gRPC
-      url: /swan-lake/learn/network-communication/grpc/
+      url: /learn/network-communication/grpc/
       active: grpc
+
+- title: Data and Events Processing 
+  url: '#' 
+  sublinks:
+    - title: Using Language-Integrated Queries
+      url: /learn/data-and-events-processing/using-language-integrated-queries/
+      active: using-language-integrated-queries
 
 - title: Deployment
   url: '#' 
   sublinks:
     - title: Code to Cloud
-      url: /swan-lake/learn/deployment/code-to-cloud/
+      url: /learn/deployment/code-to-cloud/
       active: code-to-cloud
     - title: Docker
-      url: /swan-lake/learn/deployment/docker/
+      url: /learn/deployment/docker/
       active: docker
     - title: AWS Lambda
-      url: /swan-lake/learn/deployment/aws-lambda/
+      url: /learn/deployment/aws-lambda/
       active: aws-lambda
     - title: Azure Functions
-      url: /swan-lake/learn/deployment/azure-functions/
+      url: /learn/deployment/azure-functions/
       active: azure-functions
 
 - title: Observability
   url: '#' 
   sublinks:
     - title: Observing Ballerina Code
-      url: /swan-lake/learn/observing-ballerina-code
+      url: /learn/observing-ballerina-code
       active: observing-ballerina-code
 
 - title: Interoperability
   url: '#' 
   sublinks:
     - title: Calling Java Code from Ballerina
-      url: /swan-lake/learn/calling-java-code-from-ballerina/
+      url: /learn/calling-java-code-from-ballerina/
       active: calling-java-code-from-ballerina
 
 - title: Security
   url: '#' 
   sublinks:
     - title: Writing Secure Ballerina Code
-      url: /swan-lake/learn/security/writing-secure-ballerina-code
+      url: /learn/security/writing-secure-ballerina-code
       active: writing-secure-ballerina-code
     - title: Authentication and Authorization
-      url: /swan-lake/learn/authentication-and-authorization
+      url: /learn/authentication-and-authorization
       active: authentication-and-authorization
 
 - title: Testing Ballerina Code
   url: '#' 
   sublinks:
     - title: Quick Start
-      url: /swan-lake/learn/testing-ballerina-code/testing-quick-start
+      url: /learn/testing-ballerina-code/testing-quick-start
       active: testing-quick-start
     - title: Writing Tests
-      url: /swan-lake/learn/testing-ballerina-code/writing-tests
+      url: /learn/testing-ballerina-code/writing-tests
       active: writing-tests
     - title: Mocking
-      url: /swan-lake/learn/testing-ballerina-code/mocking
+      url: /learn/testing-ballerina-code/mocking
       active: mocking
     - title: Executing Tests
-      url: /swan-lake/learn/testing-ballerina-code/executing-tests
+      url: /learn/testing-ballerina-code/executing-tests
       active: executing-tests
 
 #- title: Extending Ballerina

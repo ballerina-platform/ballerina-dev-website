@@ -4,8 +4,8 @@ title: Counter-Based Metrics
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/counter-metrics
 redirect_from:
-  - /v1-2/learn/by-example/counter-metrics
-  - /v1-2/learn/by-example/counter-metrics.html
+  - /vswan-lake/learn/by-example/counter-metrics
+  - /vswan-lake/learn/by-example/counter-metrics.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,67 +14,62 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">prometheus</span> <span class="k">as</span> <span class="nx">_</span><span class="p">;</span>
+
+<span class="c1">//Create a counter as a global variable in the service with the optional field description.</span>
 <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">globalCounter</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;total_orders&quot;</span><span class="p">,</span>
                                     <span class="nx">desc</span> <span class="p">=</span> <span class="s">&quot;Total quantity required&quot;</span><span class="p">);</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/online-store-service&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">onlineStoreService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/make-order&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">makeOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="kd">service</span> <span class="o">/</span><span class="nx">onlineStoreService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">makeOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Incrementing the global counter defined with the default value 1.</span>
         <span class="nx">globalCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+
+        <span class="c1">//Create a counter with simply a name.</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">localCounter</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
         <span class="nx">localCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+        <span class="c1">//Increment the value of the counter by 20.</span>
         <span class="nx">localCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+
+        <span class="c1">//Create a counter with optional fields description, and tags.</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">registeredCounter</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;total_product_order_quantity&quot;</span><span class="p">,</span>
             <span class="nx">desc</span> <span class="p">=</span> <span class="s">&quot;Total quantity required&quot;</span><span class="p">,</span>
             <span class="nx">tags</span> <span class="p">=</span> <span class="p">{</span><span class="nx">prodName</span><span class="p">:</span> <span class="s">&quot;HeadPhone&quot;</span><span class="p">,</span> <span class="nx">prodType</span><span class="p">:</span> <span class="s">&quot;Electronics&quot;</span><span class="p">});</span>
+
+        <span class="c1">//Register the counter instance, therefore it is stored in the global registry and can be reported to the</span>
+        <span class="c1">//metrics server such as Prometheus. Additionally, this operation will register to the global registry for the</span>
+        <span class="c1">//first invocation and will throw an error if there is already a registration of different metrics instance</span>
+        <span class="c1">//or type. Subsequent invocations of register() will simply retrieve the stored metrics instance</span>
+        <span class="c1">//for the provided name and tags fields, and use that instance for the subsequent operations on the</span>
+        <span class="c1">//counter instance.</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering counter&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering counter&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">//Increase the amount of the registered counter instance by amount 10.</span>
         <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+        <span class="c1">//Get the value of the counter instances.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Global Counter = &quot;</span><span class="p">,</span> <span class="nx">globalCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local Counter = &quot;</span><span class="p">,</span> <span class="nx">localCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Registered Counter = &quot;</span><span class="p">,</span> <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">//Send reponse to the client.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// Use a util method to set a string payload.</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Processed!&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Send the response back to the caller.</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span>  <span class="nx">below</span> <span class="nx">with</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">observability</span><span class="p">.</span><span class="nx">enabled</span><span class="p">=</span><span class="kc">true</span><span class="err">&#39;</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">counter_metrics</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">observability</span><span class="p">.</span><span class="nx">enabled</span><span class="p">=</span><span class="kc">true</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
-<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">Prometheus</span> <span class="nx">HTTP</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
-<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">publishing</span> <span class="nx">tracers</span> <span class="nx">to</span> <span class="nx">Jaeger</span> <span class="nx">on</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">5775</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">Global</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">1</span>
-<span class="nx">Local</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">21</span>
-<span class="nx">Registered</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="o">------------------------------------------</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">Global</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">2</span>
-<span class="nx">Local</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">21</span>
-<span class="nx">Registered</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">20</span>
-<span class="o">------------------------------------------</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">Global</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">3</span>
-<span class="nx">Local</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">21</span>
-<span class="nx">Registered</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">30</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -84,11 +79,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Counter-Based Metrics</h2>
-                            <p><p>Ballerina supports Observability out of the box, and Metrics is one of the three important aspect of the
- Observability. To observe Ballerina code, the &lsquo;&ndash;b7a.observability.enabled=true&rsquo; property should be given when starting the service.
- The developers can define and use metrics to measure their own logic. A counter is one type of metric that is
- supported by default in Ballerina, and it is a cumulative metric that represents a single monotonically increasing
- counter whose value can only increase or be reset to zero.</p>
+                            <p><p>Ballerina supports Observability out of the box and Metrics is one of the three important aspects of
+ Observability. To observe Ballerina code, the <code>--observability-included</code> build time flag should be given along with the
+ <code>Config.toml</code> file when starting the service. The <code>Config.toml</code> file contains the required runtime configurations related to observability.
+ You can define and use metrics to measure your own logic. A counter is one type of the metrics that is
+ supported by default in Ballerina, and it is a cumulative metric that represents a single monotonically-increasing
+ counter whose value can only increase or be reset to zero.<br/><br/>
+ For more information about configs and observing applications, see <a href="https://ballerina.io/learn/observing-ballerina-code/">How to Observe Ballerina Services</a>.</p>
 </p>
 
                         </td>
@@ -121,11 +118,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -184,6 +181,7 @@ redirect_from:
 import ballerina/io;
 import ballerina/log;
 import ballerina/observe;
+import ballerinax/prometheus as _;
 </code></pre></div>
 
                                 </td>
@@ -204,29 +202,7 @@ import ballerina/observe;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a counter as a global variable in the service with optional field description.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/online-store-service&quot;
-}
-service onlineStoreService on new http:Listener(9090) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Make sure you start the service with &lsquo;&ndash;b7a.observability.enabled=true&rsquo;, or metrics enabled.</p>
+                                            <p>Create a counter as a global variable in the service with the optional field description.</p>
 
                                         </div>
                                     </div>
@@ -237,10 +213,19 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        path: &quot;/make-order&quot;
-    }
-    resource function makeOrder(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /onlineStoreService on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get makeOrder(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -333,7 +318,7 @@ service onlineStoreService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        error? result = registeredCounter.register();
         if (result is error) {
-            log:printError(&quot;Error in registering counter&quot;, result);
+            log:printError(&quot;Error in registering counter&quot;, err = result);
         }
 </code></pre></div>
 
@@ -440,7 +425,7 @@ counter instance.</p>
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, result);
+            log:printError(&quot;Error sending response&quot;, err = result);
         }
     }
 }
@@ -467,6 +452,10 @@ counter instance.</p>
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -474,13 +463,23 @@ counter instance.</p>
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command  below with the &#39;--b7a.observability.enabled=true&#39; property.
-ballerina run counter_metrics.bal --b7a.observability.enabled=true
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
+# `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
+BALCONFIGFILE=Config.toml bal run --observability-included counter_metrics.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-ballerina: started publishing tracers to Jaeger on localhost:5775
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ------------------------------------------
 Global Counter = 1
@@ -521,11 +520,11 @@ Registered Counter = 30
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/online-store-service/make-order
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/onlineStoreService/makeOrder
 Order Processed!
-curl http://localhost:9090/online-store-service/make-order
+curl http://localhost:9090/onlineStoreService/makeOrder
 Order Processed!
-curl http://localhost:9090/online-store-service/make-order
+curl http://localhost:9090/onlineStoreService/makeOrder
 Order Processed!
 </code></pre></div>
 
@@ -534,7 +533,7 @@ Order Processed!
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke the service using cURL three times.</p>
+                                            <p>Invoke the service three times using the cURL command below.</p>
 
                                         </div>
                                     </div>
@@ -561,7 +560,7 @@ Order Processed!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

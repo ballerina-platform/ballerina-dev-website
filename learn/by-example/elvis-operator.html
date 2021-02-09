@@ -4,23 +4,31 @@ title: Elvis
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/elvis-operator
 redirect_from:
-  - /v1-2/learn/by-example/elvis-operator
-  - /v1-2/learn/by-example/elvis-operator.html
+  - /vswan-lake/learn/by-example/elvis-operator
+  - /vswan-lake/learn/by-example/elvis-operator.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">string</span><span class="err">?</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">();</span>
-    <span class="kt">string</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">x</span> <span class="nx">is</span> <span class="kt">string</span> <span class="err">?</span> <span class="s">&quot;value is string: &quot;</span> <span class="o">+</span> <span class="nx">x</span> <span class="p">:</span> <span class="s">&quot;value is nil&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The output from the type-guard: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">elvisOutput</span> <span class="p">=</span> <span class="nx">x</span> <span class="err">?</span><span class="p">:</span> <span class="s">&quot;value is nil&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The output from the elvis operator: &quot;</span> <span class="o">+</span> <span class="nx">elvisOutput</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">elvis_operator</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">The</span> <span class="nx">output</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">type</span><span class="o">-</span><span class="nx">guard</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">is</span> <span class="kc">nil</span>
-<span class="nx">The</span> <span class="nx">output</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">elvis</span> <span class="nx">operator</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">is</span> <span class="kc">nil</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">string</span><span class="err">?</span> <span class="nx">input</span> <span class="p">=</span> <span class="p">();</span>
+
+    <span class="c1">// You can use a type-guard with a conditional expression to check if a value is nil</span>
+    <span class="c1">// and if so, provide a new value or else use the input value itself.</span>
+    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">input</span> <span class="nx">is</span> <span class="p">()</span> <span class="err">?</span> <span class="s">&quot;John Doe&quot;</span> <span class="p">:</span> <span class="nx">input</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+
+    <span class="c1">// You can achieve the same using the Elvis operator as follows.</span>
+    <span class="c1">// Here, it implicitly returns the value `input` if it&#39;s not nil.</span>
+    <span class="nx">name</span> <span class="p">=</span> <span class="nx">input</span> <span class="err">?</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+
+    <span class="nx">input</span> <span class="p">=</span> <span class="s">&quot;Bill Lambert&quot;</span><span class="p">;</span>
+    <span class="nx">name</span> <span class="p">=</span> <span class="nx">input</span> <span class="err">?</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -67,15 +75,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/elvis-operator/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5dda8fda1affee112d746832d0d3271b&file=elvis_operator.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/elvis-operator/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -93,6 +97,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -123,7 +129,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    string? x = ();
+    string? input = ();
 </code></pre></div>
 
                                 </td>
@@ -135,8 +141,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string output = x is string ? &quot;value is string: &quot; + x : &quot;value is nil&quot;;
-    io:println(&quot;The output from the type-guard: &quot; + output);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string name = input is () ? &quot;John Doe&quot; : input;
+    io:println(&quot;Name: &quot;, name);
 </code></pre></div>
 
                                 </td>
@@ -144,9 +150,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If you need to get the value of <code>x</code> if it is a <code>string</code>, or assign some
- other <code>string</code> value if <code>x</code> is <code>()</code>, you can do it using the type-guard
- as follows.</p>
+                                            <p>You can use a type-guard with a conditional expression to check if a value is nil
+ and if so, provide a new value or else use the input value itself.</p>
 
                                         </div>
                                     </div>
@@ -156,10 +161,9 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string elvisOutput = x ?: &quot;value is nil&quot;;
-    io:println(&quot;The output from the elvis operator: &quot; + elvisOutput);
-}
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    name = input ?: &quot;John Doe&quot;;
+    io:println(&quot;Name: &quot; + name);
 </code></pre></div>
 
                                 </td>
@@ -167,10 +171,26 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can achieve the same using the elvis operator as follows.</p>
+                                            <p>You can achieve the same using the Elvis operator as follows.
+ Here, it implicitly returns the value <code>input</code> if it&rsquo;s not nil.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    input = &quot;Bill Lambert&quot;;
+    name = input ?: &quot;John Doe&quot;;
+    io:println(&quot;Name: &quot; + name);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -192,10 +212,11 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run elvis_operator.bal
-The output from the type-guard: value is nil
-The output from the elvis operator: value is nil
+# `.bal` file, and execute the `bal run` command below.
+bal run elvis_operator.bal
+Name: John Doe
+Name: John Doe
+Name: Bill Lambert
 </code></pre></div>
 
                                 </td>
@@ -223,7 +244,7 @@ The output from the elvis operator: value is nil
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

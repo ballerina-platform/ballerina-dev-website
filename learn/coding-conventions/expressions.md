@@ -1,14 +1,12 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Expressions
 active: expressions
 permalink: /learn/coding-conventions/expressions/
 intro: The sections below include the coding conventions with respect to expressions.
 redirect_from:
-  - /v1-2/learn/style-guide/expressions/
-  - /v1-2/learn/style-guide/expressions
-  - /learn/style-guide/expressions
   - /learn/style-guide/expressions/
+  - /learn/style-guide/expressions
   - /learn/coding-conventions/expressions
 ---
 
@@ -218,9 +216,8 @@ table<Employee> employee4 = table {
     ]
 }
 ```
-
+  
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
-  

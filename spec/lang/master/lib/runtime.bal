@@ -14,6 +14,12 @@
 // specific language governing permissions and limitations
 // under the License.
 
+# Sleep for `seconds`.
+# + seconds - a decimal giving the length of time to sleep in seconds
+# The function will do nothing for the specified period of time before returning.
+# This will cause the current strand to yield.
+public isolated function sleep(decimal seconds) = external; 
+
 # A listener that is dynamically registered with a module.
 public type DynamicListener object {
    public function 'start() returns error?;
@@ -47,4 +53,4 @@ public type StackFrame readonly & object {
 # Return a stack trace for the current call stack.
 # + return - an array representing the current call stack
 # The first member of the array represents the top of the call stack.
-public function getStackTrace() returns StackFrame[] = external;
+public isolated function getStackTrace() returns StackFrame[] = external;

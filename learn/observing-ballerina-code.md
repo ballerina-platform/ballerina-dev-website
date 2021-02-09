@@ -1,16 +1,14 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Observing Ballerina Code
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs
 permalink: /learn/observing-ballerina-code/
 active: observing-ballerina-code
-intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs. 
+intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs.
 redirect_from:
   - /learn/how-to-observe-ballerina-code
   - /learn/how-to-observe-ballerina-code/
-  - /v1-2/learn/how-to-observe-ballerina-code
-  - /v1-2/learn/how-to-observe-ballerina-code/
   - /learn/how-to-observe-ballerina-services/
   - /learn/how-to-observe-ballerina-services
   - /learn/observing-ballerina-code
@@ -28,22 +26,21 @@ This guide focuses on enabling Ballerina service observability with some of its 
 [Prometheus] and [Grafana] are used for metrics monitoring, and [Jaeger] is used for distributed tracing. 
 Ballerina logs can be fed to any external log monitoring system like [Elastic Stack] to perform log monitoring and analysis.
 
-
 ## Observing a Ballerina Service
 
 Follow the steps below to observe a sample Ballerina service.
 
-### Step 1 - Setting Up the Prerequisites
+### Step 1 - Setting up the Prerequisites
 
 Make sure you have already installed [Docker](https://www.docker.com/) to set up external products such as Jaeger,
 Prometheus, etc. You can follow [Docker documentation](https://docs.docker.com/install/) to install Docker.
 
 ### Step 2 - Installing and Configuring the External Systems
 
-* Setup Prometheus for collecting metrics information by following section on [Setting up Prometheus](#prometheus)
-* Setup Grafana to visualize metrics by following section on [Setting up Grafana](#grafana)
-* Setup Jaeger analyze tracing as mentioned in section [Setting up Jaeger](#jaeger-server)
-* Setup Elastic Stack only if you are interested in analysing logs by following section on [Setting up Elastic Stack](#elastic-stack)
+* Set up Prometheus for collecting metrics information by following the section on [Setting up Prometheus](#setting-up-prometheus)
+* Set up Grafana to visualize metrics by following the section on [Setting up Grafana](#setting-up-grafana)
+* Set up Jaeger analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
+* Set up Elastic Stack only if you are interested in analysing logs by following the section on [Setting up Elastic Stack](#setting-up-elastic-stack)
 
 ### Step 3 - Creating a 'Hello World' Ballerina Service
  
@@ -52,13 +49,14 @@ Create a Service as shown below and save it as `hello_world_service.bal`.
 ```ballerina
 import ballerina/http;
 import ballerina/log;
+import ballerinax/prometheus as _;
+import ballerinax/jaeger as _;
 
-service hello on new http:Listener(9090) {
+service /hello on new http:Listener(9090) {
     
-    resource function sayHello (http:Caller caller, http:Request req) returns error? {
-        log:printInfo("This is a test Info log");
+    resource function get sayHello(http:Caller caller, http:Request req) returns error? {
+        log:print("This is a test Info log");
         log:printError("This is a test Error log");
-        log:printWarn("This is a test Warn log");
         http:Response res = new;
         res.setPayload("Hello, World!");
         check caller->respond(res);
@@ -69,70 +67,61 @@ service hello on new http:Listener(9090) {
 
 ### Step 4 - Observing the 'Hello World' Ballerina Service
 
-Observability is disabled by default and can be enabled by using the `--b7a.observability.enabled=true` flag or updating the configurations.
-
-When Ballerina observability is enabled, Ballerina runtime exposes internal metrics via an HTTP endpoint for metrics
-monitoring and tracers will be published to Jaeger. Prometheus should be configured to scrape metrics from
-the metrics HTTP endpoint in Ballerina.
-
-Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
-pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
-
-#### Starting the Service Using a Flag
-
-The Ballerina service is observable with default settings when the `--b7a.observability.enabled=true` flag is used along with the Ballerina
-`run` command to start the service.
-This lets you collect the distributed tracing information with Jaeger and metrics information with Prometheus.
-
-```bash
-$ ballerina run hello_world_service.bal --b7a.observability.enabled=true
-
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
-ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-ballerina: started publishing tracers to Jaeger on localhost:5775
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-```
-
-Redirect the standard output to a file if you want to monitor logs.
-
-For example:
-
-```bash
-$ nohup ballerina run hello_world_service.bal --b7a.observability.enabled=true > ballerina.log &
-```
-
-#### Starting the Service Using a Configuration File
-
-Observability of Ballerina service can also be enabled from the configuration. Create a configuration file such as `ballerina.conf` and add configuration below that starts metrics monitoring and distributed tracing with default 
-settings.
+By default, observability is not included in the executable created by Ballerina. It can be added
+by using the --observability-included build flag or by adding the following section to the `Ballerina.toml` file.
 
 ```toml
-[b7a.observability.metrics]
-# Flag to enable Metrics
-enabled=true
+[build-options]
+observabilityIncluded=true
+```
 
-[b7a.observability.tracing]
-# Flag to enable Tracing
+To include the Prometheus and Jaeger extensions into the executable, the
+`ballerinax/prometheus` and `ballerinax/jaeger` modules need to be imported in your Ballerina code.
+
+```ballerina
+import ballerinax/prometheus as _;
+import ballerinax/jaeger as _;
+```
+
+Observability is disabled by default at runtime as well and it can be enabled by adding
+the following runtime configurations to the `Config.toml` file.
+
+```toml
+[ballerina.observe]
 enabled=true
 ```
 
-The created configuration file can be passed to the Ballerina program with `--b7a.config.file` option along with
+Alternatively, you can enable metrics and tracing selectively using the following configurations as well.
+
+```toml
+[ballerina.observe]
+metricsEnabled=true
+tracingEnabled=true
+```
+
+The created configuration file can be passed to the Ballerina program with the `BALCONFIGFILE` environment variable along with
 the path of the configuration file.
 
 ```bash
-$ ballerina run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf
+$ BALCONFIGFILE=<path-to-conf>/Config.toml bal run --observability-included hello_world_service.bal
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-ballerina: started publishing tracers to Jaeger on localhost:5775
+ballerina: started publishing traces to Jaeger on localhost:6831
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
-Redirect the standard output to a file if you want to monitor logs.
+By default, when Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint for
+metrics monitoring and traces will be published to Jaeger. Prometheus should be configured to scrape metrics from
+the metrics HTTP endpoint in Ballerina.
 
-For example:
+Ballerina logs are logged on the console. Therefore, the logs need to be redirected to a file, which can then be
+pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
+
+Therefore, redirect the standard output to a file if you want to monitor logs.
+
 ```bash
-$ nohup ballerina run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf > ballerina.log &
+$ BALCONFIGFILE=<path-to-conf>/Config.toml nohup bal run --observability-included hello_world_service.bal > ballerina.log &
 ```
 
 ### Step 5 - Sending Few Requests
@@ -177,11 +166,11 @@ This section focuses on the Ballerina configurations that are available for metr
 and the sample configuration is provided below.
 
 ```toml
-[b7a.observability.metrics]
-enabled=true
-reporter="prometheus"
+[ballerina.observe]
+metricsEnabled=true
+metricsReporter="prometheus"
 
-[b7a.observability.metrics.prometheus]
+[ballerinax.prometheus]
 port=9797
 host="0.0.0.0"
 ```
@@ -190,20 +179,21 @@ The descriptions of each configuration above are provided below with possible al
 
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
-b7a.observability.metrics. enabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
-b7a.observability.metrics. reporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | prometheus | prometheus or if any custom implementation, then name of the reporter.
-b7a.observability.metrics. prometheus.port | The value of the port to which the service '/metrics' will bind. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
-b7a.observability.metrics. prometheus.host | The name of the host in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
+ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
+ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | prometheus | prometheus or if any custom implementation, the name of the reporter.
+ballerinax.prometheus. port | The value of the port in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
+ballerinax.prometheus. host | The name of the host in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
 
 ### Setting Up the External Systems for Metrics
 There are mainly two systems involved in collecting and visualizing the metrics. [Prometheus] is used to collect the
 metrics from the Ballerina service and [Grafana] can connect to Prometheus and visualize the metrics in the dashboard.
 
 #### Setting Up Prometheus
-
 [Prometheus] is used as the monitoring system, which pulls out the metrics collected from the Ballerina service
-'/metrics'. This section focuses on the quick installation of Prometheus with Docker, and configure it to collect metrics from Ballerina service with default configurations. Below provided steps needs to be followed to configure 
-Prometheus. There are many other ways to install the Prometheus and you can find possible options from
+'/metrics'. This section focuses on the quick installation of Prometheus with Docker and configures it to collect metrics from the Ballerina service with default configurations. Follow the steps below to configure 
+Prometheus. 
+
+>**Tip:** There are many other ways to install the Prometheus and you can find possible options from
 [installation guide](https://prometheus.io/docs/prometheus/latest/installation/).
 
 1. Create a `prometheus.yml` file in the `/tmp/` directory.
@@ -224,19 +214,21 @@ scrape_configs:
 Here the targets `'a.b.c.d:9797'` should contain the host and port of the `/metrics` service that's exposed from 
 Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
 port (default `9797`).
-For more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
+If you need more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
 
-3. Start the Prometheus server in a Docker container with the command below.
+If your Ballerina service is running on localhost and Prometheus in a Docker container,
+add the target as `host.docker.internal:9797` to access the localhost from Docker.
+
+3.  Start the Prometheus server in a Docker container with the command below.
 
 ```bash
 $ docker run -p 19090:9090 -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
 ```
     
-4. Go to <http://localhost:19090/> and check whether you can see the Prometheus graph.
+4.  Go to <http://localhost:19090/> and check whether you can see the Prometheus graph.
 Ballerina metrics should appear in Prometheus graph's metrics list when Ballerina service is started.
 
 #### Setting Up Grafana
-
 Let’s use [Grafana] to visualize metrics in a dashboard. For this, we need to install Grafana, and configure
 Prometheus as a data source. Follow the steps below to configure Grafana.
 
@@ -270,7 +262,7 @@ Ballerina SQL Client Metrics Dashboard Panel will be as below.
 ## Distributed Tracing
 
 Tracing provides information regarding the roundtrip of a service invocation based on the concept of spans, which are
-structured in a hierarchy based on the cause and effect concept. Tracers propagate across several services that can be
+structured in a hierarchy based on the cause and effect concept. A trace can spread across several services that can be
 deployed in several nodes, depicting a high-level view of interconnections among services as well, hence coining the
 term distributed tracing.
 
@@ -284,195 +276,75 @@ microservices.
 
 * Identify service bottlenecks - The user can monitor the latencies and identify when a service invocation slows down,
 pinpoint where the slowing down happens (by looking at the span latencies) and take action to improve the latency.
-* Error identification - If an error occurs during the service invocation, it will show up in the list of tracers.
+* Error identification - If an error occurs during the service invocation, it will show up in the list of traces.
 The user can easily identify where the error occurred and information of the error will be attached to the relevant
 span as metadata.
 
 Ballerina supports [OpenTracing](http://opentracing.io/) standards by default. This means that Ballerina services
-can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/), and
-[Zipkin](https://zipkin.io/). Jaeger is the default tracer of Ballerina.
+can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/). Jaeger is the default
+tracer of Ballerina.
 
 Semantic tags used by Ballerina also follow the [semantic conventions defined in OpenTracing
 specification.](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)
 
 ### Configuring Advanced Tracing for Ballerina
 
-Tracing can be enabled in Ballerina with `--b7a.observability.enabled=true` flag as mentioned in the [Getting Started](#getting-started) section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.
+Tracing can be enabled in Ballerina with the few configurations as mentioned in the
+[Observing a Ballerina Service](#observing-a-ballerina-service).
+This section mainly focuses on the configuration options with the description and possible values.
 
-The sample configuration that enables tracing, and uses Jaeger as the sample tracer as provided below.
+The sample configuration that enables tracing and uses Jaeger as the tracer as provided below.
 
 ```toml
-[b7a.observability.tracing]
-enabled=true
-name="jaeger"
+[ballerina.observe]
+tracingEnabled=true
+tracingProvider="jaeger"
 ```
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
 Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
-b7a.observability.tracing.enabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
-b7a.observability.tracing.name | Tracer name which implements tracer interface. | jaeger | jaeger or zipkin
+ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
+ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | jaeger | jaeger or the name of the tracer of any custom implementation.
 
 #### Using the Jaeger Client
 Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
 the Jaeger.
 
 ```toml
-[b7a.observability.tracing]
-enabled=true
-name="jaeger"
+[ballerina.observe]
+tracingEnabled=true
+tracingProvider="jaeger"
 
-[b7a.observability.tracing.jaeger.sampler]
-type="const"
-param=1.0
-
-[b7a.observability.tracing.jaeger.reporter]
-hostname="localhost"
-port=5775
-
-[b7a.observability.tracing.jaeger.reporter.flush.interval]
-ms=2000
-
-[b7a.observability.tracing.jaeger.reporter.max.buffer]
-spans=1000
+[ballerinax.jaeger]
+agentHostname="localhost"
+agentPort=6831
+samplerType="const"
+samplerParam=1.0
+reporterFlushInterval=2000
+reporterBufferSize=1000
 ```
 
-The below table provides the descriptions of each configuration option and possible values that can be assigned.
+The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
-b7a.observability.tracing. jaeger.reporter.hostname | Hostname of the Jaeger server | localhost | IP or hostname of the Jaeger server. If it is running on the same node as Ballerina, it can be localhost. 
-b7a.observability.tracing. jaeger.reporter.port | Port of the Jaeger server | 5775 | The port to which the Jaeger server is listening.
-b7a.observability.tracing. jaeger.sampler.type | Type of the sampling methods used in the Jaeger tracer. | const | `const`, `probabilistic`, or `ratelimiting`.
-b7a.observability.tracing. jaeger.sampler.param | It is a floating value. Based on the sampler type, the effect of the sampler param varies | 1.0 | For `const` `0` (no sampling) or `1` (sample all spans), for `probabilistic` `0.0` to `1.0`, for `ratelimiting` any positive integer (rate per second).
-b7a.observability.tracing. jaeger.reporter.flush.interval.ms | Jaeger client will be sending the spans to the server at this interval. | 2000 | Any positive integer value.
-b7a.observability.tracing. jaeger.reporter.max.buffer.spans | Queue size of the Jaeger client. | 2000 | Any positive integer value.
-
-#### Using the Zipkin Client
-The tracing of Ballerina service can be done via Zipkin as well, but the required dependencies are not included in
-default Ballerina distribution. Follow the steps below to add the required dependencies to the Ballerina distribution.
-
-1. Go to [ballerina-observability](https://github.com/ballerina-platform/ballerina-observability) and clone
-the GitHub repository in any preferred location.
-
-2. Make sure you have installed [Apache Maven](http://maven.apache.org/).
-
-3. Open the command line and build the repository by using [Apache Maven](http://maven.apache.org/) with the command below while being in the root project directory `ballerina-observability`.
-
-```bash
-$ mvn clean install
-```
-
-4. Go to the path - `ballerina-observability/tracing-extensions/modules/ballerina-zipkin-extension/target/` and
-extract `distribution.zip`.
-
-5. Copy all the JAR files inside the `distribution.zip` to 'bre/lib' directory in the Ballerina distribution.
-
-6. Add following configuration to the `Ballerina.toml` of your module. 
-
-```toml
-[platform]
-target = "java8"
-
-    [[platform.libraries]]
-    artifactId = "ballerina-zipkin-extension"
-    version = "1.0.0-rc1-SNAPSHOT"
-    path = "/<absolute_path_to>/ballerina-zipkin-extension-1.0.0-rc1-SNAPSHOT.jar"
-    groupId = "org.ballerinalang"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "brave-opentracing"
-    version = "4.17.1"
-    path = "/<absolute_path_to>/brave-4.17.1.jar"
-    groupId = "io.opentracing.brave"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "brave"
-    version = "0.29.0"
-    path = "/<absolute_path_to>/brave-opentracing-0.29.0.jar"
-    groupId = "io.zipkin.brave"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-reporter"
-    version = "2.6.1"
-    path = "/<absolute_path_to>/zipkin-2.6.1.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-reporter-2.5.0.jar"
-    groupId = "io.zipkin.zipkin2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-sender-okhttp3"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-sender-okhttp3-2.5.0.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-sender-urlconnection"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-sender-urlconnection-2.5.0.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "kotlin-stdlib"
-    version = "1.3.31"
-    path = "/<absolute_path_to>/kotlin-stdlib-1.3.31.jar"
-    groupId = "org.jetbrains.kotlin"
-    modules = ["yourModuleName"]
-```
-
-7. Change the following configuration name to Zipkin. This ensures that all tracers are sent to Zipkin instead
-of the default Jaeger tracer.
-
-```toml
-[b7a.observability.tracing]
-name="zipkin"
-```
-
-8. The following configuration is a sample configuration option available for Zipkin tracer.
-
-```toml
-[b7a.observability.tracing.zipkin.reporter]
-hostname="localhost"
-port=9411
-
-[b7a.observability.tracing.zipkin.reporter.api]
-context="/api/v2/spans"
-version="v2"
-
-[b7a.observability.tracing.zipkin.reporter.compression]
-enabled=true
-```
-
-The table below provides the descriptions of each configuration option and possible values that can be assigned. 
-
-Configuration Key | Description | Default Value | Possible Values 
---- | --- | --- | --- 
-b7a.observability.tracing.zipkin. reporter.hostname | Hostname of the Zipkin server | localhost | IP or hostname of the Zipkin server. If it is running on the same node as Ballerina, it can be localhost. 
-b7a.observability.tracing.zipkin. reporter.port | Port of the Zipkin server | 9411 | The port that the Zipkin server is listening to.
-b7a.observability.tracing.zipkin. reporter.api.context | API context of the Zipkin server | `/api/v2/spans` | The API context of the Zipkin API. For V1 API, the context will be `/api/v1/spans`, and for V2 API, the context will be `/api/v2/spans` for default Zipkin server.
-b7a.observability.tracing.zipkin. reporter.api.version | API version of the Zipkin API | v2 | v1 or v2.
-b7a.observability.tracing.zipkin. reporter.compression.enabled | Enable the compression for the spans request | true | true or false.
+ballerina.observe. agentHostname | Hostname of the Jaeger agent | localhost | IP or hostname of the Jaeger agent. If it is running on the same node as Ballerina, it can be localhost. 
+ballerina.observe. agentPort | Port of the Jaeger agent | 6831 | The port on which the Jaeger agent is listening.
+ballerina.observe. samplerType | Type of the sampling methods used in the Jaeger tracer. | const | `const`, `probabilistic`, or `ratelimiting`.
+ballerina.observe. samplerParam | It is a floating value. Based on the sampler type, the effect of the sampler param varies | 1.0 | For `const` `0` (no sampling) or `1` (sample all spans), for `probabilistic` `0.0` to `1.0`, for `ratelimiting` any positive integer (rate per second).
+ballerina.observe. reporterFlushInterval | The Jaeger client will be sending the spans to the agent at this interval. | 2000 | Any positive integer value.
+ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
 ### Setting Up the External Systems for Tracing
-Ballerina by default supports Jaerger and Zipkin for distributed tracing. This section focuses on configuring the
-Jaeger and Zipkin with Dockers as a quick installation.
+By default, Ballerina supports Jaeger for distributed tracing. This section focuses on configuring the
+Jaeger with Docker as a quick installation.
 
 #### Setting Up the Jaeger Server
 Jaeger is the default distributed tracing system that is supported. There are many possible ways to deploy Jaeger and you can find more information on this [link](https://www.jaegertracing.io/docs/deployment/). Here we focus on all in one deployment with Docker.
 
-1. Install Jaeger via Docker and start the Docker container by executing the command below.
+1. Install Jaeger via Docker and start the Docker container by executing command below.
 
 ```bash
 $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16686:16686 -p14268:14268 jaegertracing/all-in-one:latest
@@ -484,32 +356,16 @@ The image below is the sample tracing information you can see from Jaeger.
 
 ![Jaeger Tracing Dashboard](../images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
 
-#### Setting Up the Zipkin Server
-Similar to Jaeger, Zipkin is another distributed tracing system that is supported by the Ballerina. There are many
-different configurations and deployment exist for Zipkin, please go to [link](https://github.com/openzipkin/zipkin)
-for more information. Here we focus on all in one deployment with Docker.
-
-3. Install Zipkin via Docker and start the Docker container by executing following command.
-
-```bash
-$ docker run -d -p 9411:9411 openzipkin/zipkin
-```
-
-4. Go to <http://localhost:9411/zipkin/> and load the web UI of the Zipkin to make sure it is functioning
-properly. The sample Zipkin dashboard for the hello world sample in the [Quick Start](/learn/quick-tour) is shown below.
-
-![Zipkin Sample](../images/zipkin-sample.png "Zipkin Sample")
-
 ## Distributed Logging
 Ballerina distributed logging and analysis is supported by Elastic Stack. Ballerina has a log module for logging in to the console. In order to monitor the logs, the Ballerina standard output needs to be redirected to a file.
 
 This can be done by running the Ballerina service as below.
 
 ```bash
-$ nohup ballerina run hello_world_service.bal > ballerina.log &
+$ nohup bal run hello_world_service.bal > ballerina.log &
 ```
 
-You can view the logs with command below.
+You can view the logs with the command below.
 
 ```bash
 $ tail -f ~/wso2-ballerina/workspace/ballerina.log

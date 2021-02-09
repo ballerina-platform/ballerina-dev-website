@@ -1,25 +1,19 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Graphical View
-permalink: /learn/setting-up-visual-studio-code/graphical-editor/
+permalink: /learn/getting-started/setting-up-visual-studio-code/graphical-editor/
 active: graphical-editor
 intro: A rich set of visualization tools will immensely enhance your development experience especially in the integration space. The Graphical Editor of the VS Code Ballerina extension allows you to design your integration scenario graphically. Thus, by using it, you can visualize your code in a sequence diagram, which presents the endpoint interactions and parallel invocations that happen in the code. The sections below discuss how to use the Graphical Editor and explore its capabilities.
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor
-  - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor/
+  - /learn/tools-ides/vscode-plugin/graphical-editor
+  - /learn/tools-ides/vscode-plugin/graphical-editor/
   - /learn/vscode-plugin/graphical-editor
   - /learn/vscode-plugin/graphical-editor/
-  - /v1-2/learn/vscode-plugin/graphical-editor/
-  - /v1-2/learn/vscode-plugin/graphical-editor
-  - /learn/tools-ides/vscode-plugin/graphical-editor/
-  - /learn/tools-ides/vscode-plugin/graphical-editor
   - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor
   - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
   - /learn/setting-up-visual-studio-code/graphical-editor
   - /learn/graphical-editor
   - /learn/graphical-editor/
-  - /learn/getting-started/graphical-editor/
-  - /learn/getting-started/graphical-editor
 ---
 
 ## Launching the Graphical View

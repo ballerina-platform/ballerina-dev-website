@@ -26,28 +26,29 @@ redirect_from:
                               <h3 id="get-started">Get Started</h3>
                               <p>Here’s a simple Hello World service to get you started:</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
-
-listener http:Listener helloWorldEP = new(9090);
  
-service hello on helloWorldEP {
+service / on new http:Listener(9090) {
 
-   resource function sayHello(http:Caller caller, http:Request request) returns error? {
-       check caller->respond("Hello World!");
-   }
+    resource function get greeting() returns string {
+        return "Hello World!";
+    }
+
 }
 </code></pre>
-                              <p>The Ballerina source file can compile into an executable jar:</p>
-                              <pre class="highlight"><code class="cBasicCode hljs">$ bal build hello.bal
+                              <p>The Ballerina source file is compiled and executed in the following manner:</p>
+                              <pre class="highlight"><code class="cBasicCode hljs">$ bal run hello.bal
+
 Compiling source
-    hello.bal
-Generating executables
-    Hello.jar
-$ java -jar hello.jar
+        hello.bal
+
+Running executable
+
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+
 $ curl http://localhost:9090/hello/sayHello
 Hello, World!
 </code></pre>
-                              <p>Ballerina services come with built-in concurrency. Every request to a resource method is handled in a separate strand (Ballerina concurrent unit), which gives implicit concurrent behavior to a service.</p>
+                              <p>Ballerina services come with built-in concurrency. Every request to a resource method is handled in a separate strand (Ballerina concurrency unit), which gives implicit concurrent behavior to a service.</p>
                               <p>Some protocols supported out-of-the-box include:</p>
                               <ul class="cInlinelinklist">
                                  <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/https-listener.html">HTTPS</a></li>
@@ -78,18 +79,16 @@ Hello, World!
                            <div class="section">
                               <h2 id="async-network-protocol">Async Network Protocol</h2>
                               <p>In the request-response paradigm, network communication is done by blocking calls, but blocking a thread to a network call is very expensive. That’s why other languages supported async I/O and developers have to implement async/await by using callback-based code techniques.</p>
-                              <p>On the other hand, Ballerina’s request-response protocols are implicitly non-blocking and will take care of asynchronous invocation.</p>
+                              <p>On the other hand, Ballerina’s request-response protocols are implicitly non-blocking and will take care of asynchronous invocations.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>The code snippet below shows a call to a simple HTTP GET request endpoint:</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-
-   http:Client clientEP = new ("http://www.mocky.io");
-   http:Response resp = check clientEP->get("/v2/5ae082123200006b00510c3d/");
-   string payload = check resp.getTextPayload();
-   io:println(payload);
+    http:Client clientEP = check new ("http://www.mocky.io");
+    string payload = <string> check clientEP->get("/v2/5ae082123200006b00510c3d/", targetType = string);
+    io:println(payload);
 }
                               </code></pre>
                               <p>The above “get” operation is seemingly a blocking operation for the developer, but internally it does an asynchronous execution using non-blocking I/O, where the current execution thread is released to the operating system to be used by others. After the I/O operation is done, the program execution automatically resumes from where it was suspended. This pattern gives the developer a much more convenient programming model than handling non-blocking I/O manually while providing maximum performance efficiency. </p>
@@ -117,28 +116,29 @@ public function main() returns @tainted error? {
                               <p>Client objects allow workers to send network messages that follow a certain protocol to a remote process. The remote methods of the client object correspond to distinct network messages defined by the protocol for the role played by the client object.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>The following sample illustrates sending out a tweet by invoking tweet remote method in the twitter client object.</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/config;
-import ballerina/log;
-import wso2/twitter;
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/io;
+import ballerinax/twitter;
+
+configurable string clientId = ?;
+configurable string clientSecret = ?;
+configurable string accessToken = ?;
+configurable string accessTokenSecret = ?;
+
 // Twitter package defines this type of endpoint
 // that incorporates the twitter API.
 // We need to initialize it with OAuth data from apps.twitter.com.
 // Instead of providing this confidential data in the code
-// we read it from a toml file.
+// we read it from a configuration file.
 twitter:Client twitterClient = new ({
-   clientId: config:getAsString("clientId"),
-   clientSecret: config:getAsString("clientSecret"),
-   accessToken: config:getAsString("accessToken"),
-   accessTokenSecret: config:getAsString("accessTokenSecret"),
-   clientConfig: {}
+    clientId: clientId,
+    clientSecret: clientSecret,
+    accessToken: accessToken,
+    accessTokenSecret: accessTokenSecret,
+    clientConfig: {}
 });
-public function main() {
-   twitter:Status|error status = twitterClient->tweet("Hello World!");
-   if (status is error) {
-       log:printError("Tweet Failed", status);
-   } else {
-       log:printInfo("Tweeted: " + <@untainted>status.id.toString());
-   }
+public function main() returns error? {
+    twitter:Status status = check twitterClient->tweet("Hello World!");
+    io:println("Tweeted: ", <@untainted>status.id);
 }
  </code></pre>
                            </div>
@@ -204,7 +204,7 @@ public function main() {
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>The code snippet below shows how you can easily configure a circuit breaker to handle network-related errors in the Ballerina HTTP client object.</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client backendClientEP = new("http://localhost:8080", {
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client backendClientEP = check new("http://localhost:8080", {
        circuitBreaker: {
            rollingWindow: {
                timeWindowInMillis: 10000,
@@ -250,12 +250,12 @@ public function main() {
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">twitter:Status|error status = twitterClient->tweet("Hello World!");
-   if (status is error) {
-       log:printError("Tweet Failed", status);
-   } else {
-       log:printInfo("Tweeted: " + <@untainted>status.id.toString());
-   }
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">twitter:Status|error result = twitterClient->tweet("Hello World!");
+if result is error {
+    io:println("Tweet failed: ", result);
+} else {
+    io:println("Tweeted: ", <@untainted>status.id);
+}
 
 </code></pre>
                               <p>The <code class="highlighter-rouge cBasicCode">tweet</code> remote method can return the expected <code class="highlighter-rouge cBasicCode">twitter:Status</code> value or an error due to network unreliability. Ballerina supports union types so the <code class="highlighter-rouge cBasicCode">status</code> variable can be either <code class="highlighter-rouge cBasicCode">twitter:Status</code> or <code class="highlighter-rouge cBasicCode">error</code> type. Also the Ballerina IDE tools support type guard where it guides developers to handle errors and values correctly in the if-else block.</p>

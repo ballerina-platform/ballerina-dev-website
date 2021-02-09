@@ -65,9 +65,9 @@ redirect_from:
                               <p>In a similar manner, a database client is used to model a remote database server in order to interact using its remote methods to carry out database operations.</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">public function lookupAccountTx(jdbc:Client db, boolean clearTx) 
                                 returns @tainted error? {
-   var result = check db->select("SELECT * FROM AccountTx", Account);
+   var result = db->query("SELECT * FROM AccountTx", Account);
    if clearTx {
-       _ = check db->update("DELETE FROM AccountTx");
+       _ = check db->execute("DELETE FROM AccountTx");
    }
 }
 </code></pre>

@@ -1,20 +1,20 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: AWS Lambda
 description: See how the Ballerina deployment in AWS Lambda works
 keywords: ballerina, programming language, serverless, cloud, AWS, Lambda
 permalink: /learn/deployment/aws-lambda/
-intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
 active: aws-lambda
+intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
 redirect_from:
   - /learn/deployment/aws-lambda
 ---
 
-Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. 
+Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 
 
 ## Writing a Function
 
-The following code presents a few examples on how to expose functions in AWS Lambda, which contain a generic `json` event input and other functions, which provide the event information using domain-specific event types.
+The following Ballerina code gives an example on how to expose a function in AWS Lambda, which generates a SHA256 hash from the given input. 
 
 ```ballerina
 import ballerinax/awslambda;
@@ -24,55 +24,28 @@ import ballerina/crypto;
 public function hash(awslambda:Context ctx, json input) returns json|error {
     return crypto:hashSha256(input.toJsonString().toBytes()).toBase16();
 }
-
-@awslambda:Function
-public function notifySQS(awslambda:Context ctx, awslambda:SQSEvent event) returns json {
-    return event.Records[0].body;
-}
-
-@awslambda:Function
-public function notifyS3(awslambda:Context ctx, awslambda:S3Event event) returns json {
-    return event.Records[0].s3.'object.key;
-}
-
-@awslambda:Function
-public function notifyDynamoDB(awslambda:Context ctx, awslambda:DynamoDBEvent event) returns json {
-    return event.Records[0].dynamodb.Keys.toString();
-}
-
-@awslambda:Function
-public function notifySES(awslambda:Context ctx, awslambda:SESEvent event) returns json {
-    return event.Records[0].ses.mail.commonHeaders.subject;
-}
-
-@awslambda:Function
-public function apigwRequest(awslambda:Context ctx, awslambda:APIGatewayProxyRequest request) {
-    io:println("Path: ", request.path);
-}
 ```
 
-The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/#/awslambda/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
-The second parameter contains the input request data. This input value will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). 
-
-
-The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response, or else in an error situation, the function will return an `error` value, which provides information on the error to the system. You can also provide functions, which do not return anything at all, which implicitly signals a successful execution without a returning result.
+The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response, or else in an error situation, the function will return an `error` value, which provides information on the error to the system.
 
 ## Building the Function
 
 The AWS Lambda functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
-$ ballerina build functions.bal 
+$ bal build functions.bal 
 Compiling source
 	functions.bal
 
 Generating executables
 	functions.jar
-	@awslambda:Function: echo, uuid, ctxinfo, notifySQS, notifyS3, notifyDynamoDB, notifySES, apigwRequest
+	@awslambda:Function: hash
 
-	Run the following command to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.<FUNCTION_NAME> --runtime provided --role <LAMBDA_ROLE_ARN> --layers arn:aws:lambda:<REGION_ID>:141896495686:layer:ballerina:2
+	Run the following commands to deploy each Ballerina AWS Lambda function:
+	aws lambda create-function --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.<FUNCTION_NAME> --runtime provided --role <LAMBDA_ROLE_ARN> --timeout 10 --memory-size 1024
+	aws lambda update-function-configuration --function-name <FUNCTION_NAME> --layers arn:aws:lambda:<REGION_ID>:134633749276:layer:ballerina-jre11:1
 
 	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
 	aws lambda update-function-code --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip
@@ -80,12 +53,12 @@ Generating executables
 
 ## Deploying the Function
 
-Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. An [AWS Lambda Role ](https://console.aws.amazon.com/iam/home?#/roles) for the user must be created with the `AWSLambdaBasicExecutionRole` permission in order to deploy the AWS Lambda functions. The created AWS Lambda Role ARN is required when deploying the functions through the CLI. 
+Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. An [AWS Lambda Role](https://console.aws.amazon.com/iam/home?#/roles) for the user must be created with the `AWSLambdaBasicExecutionRole` permission in order to deploy the AWS Lambda functions. The created AWS Lambda Role ARN is required when deploying the functions through the CLI.
 
 A sample execution to deploy the hash function as an AWS Lambda is shown below. 
 
 ```bash
-$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2
+$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1
 {
     "FunctionName": "hash",
     "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:function:hash",
@@ -105,7 +78,7 @@ $ aws lambda create-function --function-name hash --zip-file fileb://aws-balleri
     "RevisionId": "d5400f01-f3b8-478b-9269-73c44f4537aa",
     "Layers": [
         {
-            "Arn": "arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2",
+            "Arn": "arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1",
             "CodeSize": 697
         }
     ]
@@ -129,4 +102,4 @@ $ cat response.txt
 
 ## What's Next?
 
-For more information on how to connect external event sources such as Amazon DynamoDB and Amazon S3 to Lambda Functions, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
+In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).

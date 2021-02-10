@@ -41,5 +41,4 @@ For more information on debugging your code using VS Code, go to [VS Code Docume
 
 ## What's Next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Graphical View](/learn/vscode-plugin/graphical-editor).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin).

@@ -4,50 +4,36 @@ title: Task Service Timer
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/task-service-timer
 redirect_from:
-  - /v1-2/learn/by-example/task-service-timer
-  - /v1-2/learn/by-example/task-service-timer.html
+  - /vswan-lake/learn/by-example/task-service-timer
+  - /vswan-lake/learn/by-example/task-service-timer.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+
+<span class="c1">// The [`task:TimerConfiguration`](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/TimerConfiguration) record to configure the task listener.</span>
 <span class="nx">task</span><span class="p">:</span><span class="nx">TimerConfiguration</span> <span class="nx">timerConfiguration</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
     <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="c1">// Number of recurrences will limit the number of times the timer runs.</span>
     <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">};</span>
-<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">timerConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kd">service</span> <span class="nx">timerService</span> <span class="nx">on</span> <span class="nx">timer</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">// Initializes the listener using the configurations defined above.</span>
+<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">timerConfiguration</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// Creating a service bound to the task listener.</span>
+<span class="kd">service</span> <span class="nx">on</span> <span class="nx">timer</span> <span class="p">{</span>
+    <span class="c1">// This resource triggers when the timer goes off.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MyCounter: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">task_service_timer</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span><span class="mi">298</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span><span class="mi">299</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">0</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="mi">288</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="mi">289</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="mi">287</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="mi">289</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="mi">288</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="mi">289</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="mi">287</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="mi">288</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span><span class="mi">287</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span><span class="mi">287</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="mi">287</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="mi">288</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">6</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">24</span><span class="p">,</span><span class="mi">287</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">24</span><span class="p">,</span><span class="mi">287</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">7</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="mi">288</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="mi">289</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">8</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span><span class="mi">285</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Cleaning</span> <span class="nx">up</span><span class="o">...</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">06</span> <span class="mi">13</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span><span class="mi">286</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="mi">9</span>
 </pre></div>
 
             </div>
@@ -57,13 +43,15 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Task Service Timer</h2>
-                            <p><p>Task Timer Services are used to execute tasks periodically. A timer should
- have an <code>intervalInMillis</code> specified and an <code>initialDelayInMillis</code> if
+                            <p><p>A task timer service can be used to execute tasks periodically. The task listener can be provided with a
+ timer configuration that should have an <code>intervalInMillis</code> field specified and an <code>initialDelayInMillis</code> field if
  needed. The delay specifies the initial delay before the task is executed
  for the first time. Thereafter, the timer triggers at the provided interval.
  The <code>onTrigger()</code> resource is called when the timer triggers. An optional
  <code>noOfRecurrences</code> field can be used to provide the maximum number of times
- the Timer should run before shutting down.</p>
+ the timer should run before shutting down.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/">Task module</a>.</p>
 </p>
 
                         </td>
@@ -78,9 +66,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xslt-transformation.html">
+                                    <a class="next" href="uuid.html">
                                         <span>NEXT ></span>
-                                        <p>XSLT Transformation</p>
+                                        <p>UUID</p>
                                     </a>
                                 </div>
                                 
@@ -96,11 +84,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/task-service-timer/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-service-timer/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -141,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/task;
 </code></pre></div>
 
@@ -164,7 +152,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The Task Timer configuration record to configure the Task Listener.</p>
+                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/TimerConfiguration"><code>task:TimerConfiguration</code></a> record to configure the task listener.</p>
 
                                         </div>
                                     </div>
@@ -203,7 +191,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the listener using the above defined configurations.</p>
+                                            <p>Initializes the listener using the configurations defined above.</p>
 
                                         </div>
                                     </div>
@@ -226,7 +214,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service timerService on timer {
+                                    <div class="highlight"><pre><code class=language-ballerina>service on timer {
 </code></pre></div>
 
                                 </td>
@@ -234,7 +222,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creating a service on the task Listener.</p>
+                                            <p>Creating a service bound to the task listener.</p>
 
                                         </div>
                                     </div>
@@ -245,10 +233,9 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
-        log:printInfo(&quot;Cleaning up...&quot;);
-        log:printInfo(count.toString());
-        count = count + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onTrigger() {
+        count += 1;
+        io:println(&quot;MyCounter: &quot;, count);
     }
 }
 </code></pre></div>
@@ -283,28 +270,18 @@ import ballerina/task;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run task_service_timer.bal
-2019-09-06 13:37:17,298 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:17,299 INFO  [ballerina/log] - 0
-2019-09-06 13:37:18,288 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:18,289 INFO  [ballerina/log] - 1
-2019-09-06 13:37:19,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:19,289 INFO  [ballerina/log] - 2
-2019-09-06 13:37:20,288 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:20,289 INFO  [ballerina/log] - 3
-2019-09-06 13:37:21,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:21,288 INFO  [ballerina/log] - 4
-2019-09-06 13:37:22,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:22,287 INFO  [ballerina/log] - 5
-2019-09-06 13:37:23,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:23,288 INFO  [ballerina/log] - 6
-2019-09-06 13:37:24,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:24,287 INFO  [ballerina/log] - 7
-2019-09-06 13:37:25,288 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:25,289 INFO  [ballerina/log] - 8
-2019-09-06 13:37:26,285 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:26,286 INFO  [ballerina/log] - 9
+# `.bal` file and execute the `bal run` command below.
+bal run task_service_timer.bal
+MyCounter: 1
+MyCounter: 2
+MyCounter: 3
+MyCounter: 4
+MyCounter: 5
+MyCounter: 6
+MyCounter: 7
+MyCounter: 8
+MyCounter: 9
+MyCounter: 10
 </code></pre></div>
 
                                 </td>
@@ -339,7 +316,7 @@ ballerina run task_service_timer.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

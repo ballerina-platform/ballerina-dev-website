@@ -4,34 +4,48 @@ title: Functions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/functions
 redirect_from:
-  - /v1-2/learn/by-example/functions
-  - /v1-2/learn/by-example/functions.html
+  - /vswan-lake/learn/by-example/functions
+  - /vswan-lake/learn/by-example/functions.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function takes a `string` argument. However, it does not return a value.</span>
 <span class="kd">function</span> <span class="nx">printValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function takes in two `int` values as arguments and returns their</span>
+<span class="c1">// sum as an integer.</span>
 <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">t</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">t</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// A public function named `main` is considered as a default entry point of a</span>
+<span class="c1">// Ballerina program.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Call the `printValue()` function that prints the value provided.</span>
     <span class="nx">printValue</span><span class="p">(</span><span class="s">&quot;This is a sample text&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Call the `add()` function to retrieve the result of adding two given values.</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+    <span class="c1">// Print the result.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+    <span class="c1">// Ballerina does not allow ignoring the return value of a function</span>
+    <span class="c1">// invocation implicitly unless the return type is `()`. A return value can be ignored</span>
+    <span class="c1">// using `_` if the value may never be an `error` (i.e., the return type of the</span>
+    <span class="c1">// function does not contain `error`).</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">This</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">sample</span> <span class="nx">text</span>
-<span class="mi">11</span>
-<span class="nx">Hello</span> <span class="nx">World</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -41,8 +55,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Functions</h2>
-                            <p><p>Functions operate in the same way as in any other language. It is a mechanism to create a reusable unit of
- functionality within a program.</p>
+                            <p><p>A function is a mechanism to create a reusable unit of functionality within a program.</p>
 </p>
 
                         </td>
@@ -75,15 +88,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=93bbe4761dcb504f5d5838adc880a777&file=functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -313,8 +322,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run functions.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run functions.bal
 This is a sample text
 11
 Hello World
@@ -345,7 +354,7 @@ Hello World
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

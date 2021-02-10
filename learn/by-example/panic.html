@@ -4,42 +4,47 @@ title: Panic
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/panic
 redirect_from:
-  - /v1-2/learn/by-example/panic
-  - /v1-2/learn/by-example/panic.html
+  - /vswan-lake/learn/by-example/panic
+  - /vswan-lake/learn/by-example/panic.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Record</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Record</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">readRecord</span><span class="p">(</span><span class="nx">Record</span><span class="err">?</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">readRecord</span><span class="p">(</span><span class="nx">Record</span><span class="err">?</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="nx">Record</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Record ID: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="s">&quot;, value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Record is nil&quot;</span><span class="p">);</span>
-        <span class="nx">panic</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="c1">// Panics if `value` is `()`.</span>
+        <span class="nx">panic</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Record is nil&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Record</span> <span class="nx">r1</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;record1&quot;</span>
     <span class="p">};</span>
     <span class="nx">readRecord</span><span class="p">(</span><span class="nx">r1</span><span class="p">);</span>
+
+    <span class="c1">// `r2` is `()`.</span>
     <span class="nx">Record</span><span class="err">?</span> <span class="nx">r2</span> <span class="p">=</span> <span class="p">();</span>
+    <span class="c1">// Since `r2` is `()`, `readRecord()` will panic.</span>
     <span class="nx">readRecord</span><span class="p">(</span><span class="nx">r2</span><span class="p">);</span>
+
+    <span class="c1">// The following lines of code will not be executed.</span>
     <span class="nx">Record</span> <span class="nx">r3</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;record3&quot;</span>
     <span class="p">};</span>
     <span class="nx">readRecord</span><span class="p">(</span><span class="nx">r3</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">panic</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Record</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">record1</span>
-<span class="nx">error</span><span class="p">:</span> <span class="nx">Record</span> <span class="nx">is</span> <span class="kc">nil</span>
-        <span class="nx">at</span> <span class="nx">panic</span><span class="p">:</span><span class="nx">readRecord</span><span class="p">(</span><span class="nx">panic</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">13</span><span class="p">)</span>
-           <span class="nx">panic</span><span class="p">:</span><span class="nx">main</span><span class="p">(</span><span class="nx">panic</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">28</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -51,10 +56,10 @@ redirect_from:
                             <h2>Panic</h2>
                             <p><p>In Ballerina, panic indicates abnormal completion and usually implies that something unexpected has occurred
  (i.e., something that should not have occurred during the normal operation). A panic causes
- the call stack to unwind until it is trapped, or if not trapped results in the termination of the program.</p>
+ the call stack to unwind until it is trapped, or if not trapped, results in the termination of the program. <br/></p>
 
 <p>Ballerina discourages the use of <code>panic</code> to handle program-related
- errors such as &ldquo;header not found&rdquo;, &ldquo;data mismatch&rdquo;, etc.). However,
+ errors (such as &ldquo;header not found&rdquo;, &ldquo;data mismatch&rdquo;, etc.). However,
  <code>panic</code> can be used in scenarios such as &ldquo;Connection Closed/Timeout&rdquo; and &ldquo;OutOfMemory&rdquo;
  where the program cannot handle the error by itself.</p>
 </p>
@@ -89,15 +94,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/panic/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c2b7dfd78ac04199c64e935288bfcc1a&file=panic.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/panic/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -182,8 +183,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        error err = error(&quot;Record is nil&quot;);
-        panic err;
+                                    <div class="highlight"><pre><code class=language-ballerina>        panic error(&quot;Record is nil&quot;);
     }
 }
 </code></pre></div>
@@ -297,12 +297,12 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run panic.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run panic.bal
 Record ID: 1, value: record1
 error: Record is nil
         at panic:readRecord(panic.bal:13)
-           panic:main(panic.bal:28)
+           panic:main(panic.bal:27)
 </code></pre></div>
 
                                 </td>
@@ -330,7 +330,7 @@ error: Record is nil
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

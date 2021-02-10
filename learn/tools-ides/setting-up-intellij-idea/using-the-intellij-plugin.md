@@ -1,20 +1,16 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Using the IntelliJ Ballerina Plugin
 permalink: /learn/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
 intro: The sections below include information to start using the IntelliJ Ballerina plugin after installing it.
 redirect_from:
-  - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
-  - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
-  - /v1-2/learn/intellij-plugin/using-the-intellij-plugin
-  - /v1-2/learn/intellij-plugin/using-the-intellij-plugin/
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
+  - /learn/intellij-plugin/using-the-intellij-plugin
+  - /learn/intellij-plugin/using-the-intellij-plugin/
   - /learn/set-up-ballerina-sdk/
   - /learn/set-up-ballerina-sdk
-  - /learn/intellij-plugin/using-the-intellij-plugin/
-  - /learn/intellij-plugin/using-the-intellij-plugin
-  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
-  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
   - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
   - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
   - /learn/setting-up-intellij-idea/using-the-intellij-plugin
@@ -89,7 +85,7 @@ Now, you have successfully created a new Ballerina file with a **main** function
 
 ## Configuring the Plugin Settings
 
-### Ballerina Home Auto Detection
+### 'Ballerina Home' Auto Detection
 
 In order to automatically detect the Ballerina Home that is being used (without setting up a Ballerina SDK), enable the **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Ballerina Home Auto Detection** option.
 

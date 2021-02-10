@@ -4,22 +4,24 @@ title: Hello World Client
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/hello-world-client
 redirect_from:
-  - /v1-2/learn/by-example/hello-world-client
-  - /v1-2/learn/by-example/hello-world-client.html
+  - /vswan-lake/learn/by-example/hello-world-client
+  - /vswan-lake/learn/by-example/hello-world-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v2/5ae082123200006b00510c3d/&quot;</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+    <span class="c1">// Create an HTTP client to interact with a remote endpoint.</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
+    <span class="c1">// Send a GET request to the server and expect a text payload.</span>
+    <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span>
+        <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v2/5ae082123200006b00510c3d/&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+    <span class="c1">// Log the retrieved text payload.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">hello_world_client</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Hello</span> <span class="nx">World</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -63,15 +65,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/hello-world-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6c2d7dd1da9278876746a74e60084885&file=hello_world_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -89,8 +87,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -135,7 +131,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client clientEP = new (&quot;http://www.mocky.io&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client clientEP = check new (&quot;http://www.mocky.io&quot;);
 </code></pre></div>
 
                                 </td>
@@ -154,7 +150,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response resp = check clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string payload = &lt;string&gt; check
+        clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;, targetType = string);
 </code></pre></div>
 
                                 </td>
@@ -162,26 +159,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send a GET request to the server.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string payload = check resp.getTextPayload();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Retrieve the text payload from the response.</p>
+                                            <p>Send a GET request to the server and expect a text payload.</p>
 
                                         </div>
                                     </div>
@@ -226,8 +204,8 @@ import ballerina/io;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run hello_world_client.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run hello_world_client.bal
 Hello World
 </code></pre></div>
 
@@ -256,7 +234,7 @@ Hello World
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

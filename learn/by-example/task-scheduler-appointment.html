@@ -4,59 +4,52 @@ title: Task Scheduler Appointment
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/task-scheduler-appointment
 redirect_from:
-  - /v1-2/learn/by-example/task-scheduler-appointment
-  - /v1-2/learn/by-example/task-scheduler-appointment.html
+  - /vswan-lake/learn/by-example/task-scheduler-appointment
+  - /vswan-lake/learn/by-example/task-scheduler-appointment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span><span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentData</span> <span class="nx">appointmentData</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">seconds</span><span class="p">:</span> <span class="s">&quot;0/2&quot;</span><span class="p">,</span>
-        <span class="nx">minutes</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">hours</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">daysOfMonth</span><span class="p">:</span> <span class="s">&quot;?&quot;</span><span class="p">,</span>
-        <span class="nx">months</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">daysOfWeek</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
-        <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;*&quot;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+    <span class="c1">// The [`task:AppointmentConfiguration`](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration) record of the task scheduler.</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentConfiguration</span> <span class="nx">appointmentConfiguration</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// This CRON expression will schedule the appointment every two second.</span>
+        <span class="nx">cronExpression</span><span class="p">:</span> <span class="s">&quot;0/2 * * ? * * *&quot;</span>
     <span class="p">};</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">appointmentDetails</span><span class="p">:</span> <span class="nx">appointmentData</span><span class="p">});</span>
-    <span class="k">var</span> <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">appointmentService</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service.&quot;</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">startResult</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">startResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting the task is failed.&quot;</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while cancelling the task&quot;</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
+
+    <span class="c1">// Creates an appointment using the given configuration.</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span>
+
+    <span class="c1">// Attaches the service to the scheduler.</span>
+    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">appointmentService</span><span class="p">);</span>
+
+    <span class="c1">// Starts the scheduler.</span>
+    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+
+    <span class="c1">// Cancels the appointment.</span>
+    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment cancelled.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">appointmentService</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">reminderCount</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">reminderCount</span> <span class="p">=</span> <span class="nx">reminderCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span> <span class="o">+</span> <span class="nx">reminderCount</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="p">}</span>
+
+<span class="c1">// Creating a service on the task listener.</span>
+<span class="kd">service</span> <span class="nx">object</span> <span class="p">{}</span> <span class="nx">appointmentService</span> <span class="p">=</span> <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="c1">// This resource is triggered when the appointment is due.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">reminderCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span><span class="p">,</span> <span class="nx">reminderCount</span><span class="p">);</span>
     <span class="p">}</span>
+
 <span class="p">};</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">task_scheduler_appointment</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">2</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">4</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">5</span>
-<span class="nx">Appointment</span> <span class="nx">cancelled</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -66,14 +59,15 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Task Scheduler Appointment</h2>
-                            <p><p>A Task Scheduler can be used to schedule an Appointment. An appointment should
- have an <code>appointmentData</code> field. It can be either a <code>string</code> representing a
- CRON expression or an <code>AppointmentData</code> record. There is an optional
- <code>noOfRecurrences</code> field that can be used to provide the maximum number of times
- the appointment should run before shutting down.
- A service can be attached to the Scheduler using the <code>attach()</code> function.
- Then the Scheduler can be started using <code>start()</code> method. When the scheduler
- needs to be cancelled, <code>stop()</code> method can be called.</p>
+                            <p><p>A <code>task:Scheduler</code> can be used to schedule an appointment. An appointment configuration should
+ have a <code>cronExpression</code> field. It is a <code>string</code> representing a
+ CRON expression. There is an optional <code>noOfRecurrences</code> field that can be used to
+ provide the maximum number of times the appointment should run before shutting down.<br/><br/>
+ A service can be attached to the scheduler using the <code>attach()</code> method.
+ Then, the scheduler can be started using the <code>start()</code> method. When the scheduler
+ needs to be cancelled, the <code>stop()</code> method can be called.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/">Task module</a>.</p>
 </p>
 
                         </td>
@@ -81,9 +75,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="file.html">
+                                    <a class="prev" href="random.html">
                                         <span>< PREVIOUS</span>
-                                        <p>File</p>
+                                        <p>Random</p>
                                     </a>
                                 </div>
                                  
@@ -106,11 +100,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/task-scheduler-appointment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-scheduler-appointment/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -151,6 +145,12 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -160,7 +160,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/task;
 </code></pre></div>
 
@@ -185,7 +185,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -197,14 +197,26 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:AppointmentData appointmentData = {
-        seconds: &quot;0/2&quot;,
-        minutes: &quot;*&quot;,
-        hours: &quot;*&quot;,
-        daysOfMonth: &quot;?&quot;,
-        months: &quot;*&quot;,
-        daysOfWeek: &quot;*&quot;,
-        year: &quot;*&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:AppointmentConfiguration appointmentConfiguration = {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration"><code>task:AppointmentConfiguration</code></a> record of the task scheduler.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        cronExpression: &quot;0/2 * * ? * * *&quot;
     };
 </code></pre></div>
 
@@ -213,7 +225,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The Appointment data record provides the appointment configurations.</p>
+                                            <p>This CRON expression will schedule the appointment every two second.</p>
 
                                         </div>
                                     </div>
@@ -224,7 +236,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler appointment = new ({appointmentDetails: appointmentData});
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler appointment = check new (appointmentConfiguration);
 </code></pre></div>
 
                                 </td>
@@ -232,7 +244,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an Appointment using the configurations.</p>
+                                            <p>Creates an appointment using the given configuration.</p>
 
                                         </div>
                                     </div>
@@ -243,11 +255,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var attachResult = appointment.attach(appointmentService);
-    if (attachResult is error) {
-        io:println(&quot;Error attaching the service.&quot;);
-        return;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check appointment.attach(appointmentService);
 </code></pre></div>
 
                                 </td>
@@ -255,7 +263,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attach the service to the scheduler and exit if there is an error.</p>
+                                            <p>Attaches the service to the scheduler.</p>
 
                                         </div>
                                     </div>
@@ -266,11 +274,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var startResult = appointment.start();
-    if (startResult is error) {
-        io:println(&quot;Starting the task is failed.&quot;);
-        return;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check appointment.start();
 </code></pre></div>
 
                                 </td>
@@ -278,7 +282,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Start the scheduler and exit if there is an error.</p>
+                                            <p>Starts the scheduler.</p>
 
                                         </div>
                                     </div>
@@ -289,7 +293,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(10000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(9);
 </code></pre></div>
 
                                 </td>
@@ -301,21 +305,47 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var result = appointment.stop();
-    if (result is error) {
-        io:println(&quot;Error occurred while cancelling the task&quot;);
-        return;
-    }
-    io:println(&quot;Appointment cancelled.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check appointment.stop();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Cancels the appointment.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Appointment cancelled.&quot;);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service object {} appointmentService = service object {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Cancel the appointment.</p>
+                                            <p>Creating a service on the task listener.</p>
 
                                         </div>
                                     </div>
@@ -326,7 +356,10 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service appointmentService = service {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onTrigger() {
+        reminderCount += 1;
+        io:println(&quot;Schedule is due - Reminder: &quot;, reminderCount);
+    }
 </code></pre></div>
 
                                 </td>
@@ -334,7 +367,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creating a service on the task Listener.</p>
+                                            <p>This resource is triggered when the appointment is due.</p>
 
                                         </div>
                                     </div>
@@ -342,27 +375,14 @@ import ballerina/task;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
-        if (reminderCount &lt; 5) {
-            reminderCount = reminderCount + 1;
-            io:println(&quot;Schedule is due - Reminder: &quot; + reminderCount.toString());
-        }
-    }
-};
+                                    <div class="highlight"><pre><code class=language-ballerina>};
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This resource triggers when the appointment is due.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -384,8 +404,8 @@ import ballerina/task;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run task_scheduler_appointment.bal
+# `.bal` file and execute the `bal run` command below.
+bal run task_scheduler_appointment.bal
 Schedule is due - Reminder: 1
 Schedule is due - Reminder: 2
 Schedule is due - Reminder: 3
@@ -428,7 +448,7 @@ Appointment cancelled.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

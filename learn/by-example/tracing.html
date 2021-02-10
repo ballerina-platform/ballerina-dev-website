@@ -4,8 +4,8 @@ title: Distributed Tracing
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/tracing
 redirect_from:
-  - /v1-2/learn/by-example/tracing
-  - /v1-2/learn/by-example/tracing.html
+  - /vswan-lake/learn/by-example/tracing
+  - /vswan-lake/learn/by-example/tracing.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,46 +13,64 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9234</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
-                                <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">jaeger</span> <span class="k">as</span> <span class="nx">_</span><span class="p">;</span>
+
+<span class="c1">// Simple `Hello` HTTP Service</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9234</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Resource functions are invoked with the HTTP caller and the</span>
+    <span class="c1">// incoming request as arguments.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+        <span class="c1">//Start a child span attaching to the generated system span.</span>
         <span class="kt">int</span> <span class="nx">spanId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">observe</span><span class="p">:</span><span class="nx">startSpan</span><span class="p">(</span><span class="s">&quot;MyFirstLogicSpan&quot;</span><span class="p">);</span>
+
+        <span class="c1">//Start a new root span without attaching to the system span.</span>
         <span class="kt">int</span> <span class="nx">rootParentSpanId</span> <span class="p">=</span> <span class="nx">observe</span><span class="p">:</span><span class="nx">startRootSpan</span><span class="p">(</span><span class="s">&quot;MyRootParentSpan&quot;</span><span class="p">);</span>
-        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+        <span class="c1">// Some actual logic will go here, and for example, we have introduced some delay with the sleep.</span>
+        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="c1">//Start a new child span for the `MyRootParentSpan` span.</span>
         <span class="kt">int</span> <span class="nx">childSpanId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">observe</span><span class="p">:</span><span class="nx">startSpan</span><span class="p">(</span><span class="s">&quot;MyRootChildSpan&quot;</span><span class="p">,</span> <span class="p">(),</span>
                                                             <span class="nx">rootParentSpanId</span><span class="p">);</span>
-        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+        <span class="c1">// Some actual logic will go here, and for example, we have introduced some delay with the sleep.</span>
+        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="c1">//Finish the `MyRootChildSpan` span.</span>
         <span class="nx">error</span><span class="p">? result = observe:finishSpan(</span><span class="nx">childSpanId</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+        <span class="c1">// Some actual logic will go here, and for example, we have introduced some delay with the sleep.</span>
+        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="c1">//Finish the `MyRootParentSpan` span.</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">observe</span><span class="p">:</span><span class="nx">finishSpan</span><span class="p">(</span><span class="nx">rootParentSpanId</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+        <span class="c1">//Some actual logic will go here, and for example, we have introduced some delay with the sleep.</span>
+        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="c1">//Finish the created child `MyFirstLogicSpan` span, which was attached to the system trace.</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">observe</span><span class="p">:</span><span class="nx">finishSpan</span><span class="p">(</span><span class="nx">spanId</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
+        <span class="c1">//Use a util method to set a string payload.</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
-        <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>        <span class="k">return</span> <span class="p">();</span>
+
+        <span class="c1">//Send the response back to the caller.</span>
+        <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Jaeger</span> <span class="nx">is</span> <span class="nx">the</span> <span class="k">default</span> <span class="nx">tracing</span> <span class="nx">tool</span> <span class="nx">used</span> <span class="nx">in</span> <span class="nx">Ballerina</span><span class="p">.</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">Jaeger</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span><span class="p">.</span>
-<span class="nx">docker</span> <span class="nx">run</span> <span class="o">-</span><span class="nx">d</span> <span class="o">-</span><span class="nx">p5775</span><span class="p">:</span><span class="mi">5775</span><span class="o">/</span><span class="nx">udp</span> <span class="o">-</span><span class="nx">p6831</span><span class="p">:</span><span class="mi">6831</span><span class="o">/</span><span class="nx">udp</span> <span class="o">-</span><span class="nx">p6832</span><span class="p">:</span><span class="mi">6832</span><span class="o">/</span><span class="nx">udp</span> <span class="o">-</span><span class="nx">p5778</span><span class="p">:</span><span class="mi">5778</span> <span class="o">-</span><span class="nx">p16686</span><span class="p">:</span><span class="mi">16686</span> <span class="o">-</span><span class="nx">p14268</span><span class="p">:</span><span class="mi">14268</span> <span class="nx">jaegertracing</span><span class="o">/</span><span class="nx">all</span><span class="o">-</span><span class="nx">in</span><span class="o">-</span><span class="nx">one</span><span class="p">:</span><span class="nx">latest</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">with</span> <span class="err">&#39;</span><span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">observability</span><span class="p">.</span><span class="nx">enabled</span><span class="p">=</span><span class="kc">true</span><span class="err">&#39;</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tracing</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">observability</span><span class="p">.</span><span class="nx">enabled</span><span class="p">=</span><span class="kc">true</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
-<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">Prometheus</span> <span class="nx">HTTP</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
-<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">publishing</span> <span class="nx">tracers</span> <span class="nx">to</span> <span class="nx">Jaeger</span> <span class="nx">on</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">5775</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9234</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9234/hello/sayHello</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -62,10 +80,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Distributed Tracing</h2>
-                            <p><p>Ballerina supports Observability out of the box, and Tracing is one of the three important aspect of the
- Observability. To observe Ballerina code, the &lsquo;&ndash;b7a.observability.enabled=true&rsquo; property should be given when starting the service.
+                            <p><p>Ballerina supports Observability out of the box, and Tracing is one of the three important aspects of
+ Observability. To observe Ballerina code, the build time flag <code>--observability-included</code> should be given along with the
+ <code>Config.toml</code> file when starting the service. The <code>Config.toml</code> file contains the required runtime configurations related to observability.
  The developers can trace their code blocks and measure the time incurred during the actual runtime execution.
- They can choose the hook their measurement with the default trace created or can create a completely new trace.</p>
+ They can choose to hook their measurement with the default trace created or can create a completely new trace.<br/><br/>
+ For more information about configs and observing applications, see <a href="https://ballerina.io/learn/observing-ballerina-code/">How to Observe Ballerina Services</a>.</p>
 </p>
 
                         </td>
@@ -98,11 +118,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/tracing/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tracing/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -166,7 +186,8 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/observe;
-import ballerina/runtime;
+import ballerina/lang.runtime;
+import ballerinax/jaeger as _;
 </code></pre></div>
 
                                 </td>
@@ -178,7 +199,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service hello on new http:Listener(9234) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(9234) {
 </code></pre></div>
 
                                 </td>
@@ -186,7 +207,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Make sure you start the service with the &lsquo;&ndash;b7a.observability.enabled=true` property or with tracing enabled.</p>
+                                            <p>Simple <code>Hello</code> HTTP Service</p>
 
                                         </div>
                                     </div>
@@ -197,8 +218,8 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function sayHello(http:Caller caller, http:Request req)
-                                returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get sayHello(http:Caller caller, http:Request req)
+            returns error? {
         http:Response res = new;
 </code></pre></div>
 
@@ -207,7 +228,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke all resources with arguments of server connector and request.</p>
+                                            <p>Resource functions are invoked with the HTTP caller and the
+ incoming request as arguments.</p>
 
                                         </div>
                                     </div>
@@ -226,7 +248,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Start a child span attaching to the system span generated.</p>
+                                            <p>Start a child span attaching to the generated system span.</p>
 
                                         </div>
                                     </div>
@@ -256,7 +278,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1);
 </code></pre></div>
 
                                 </td>
@@ -264,7 +286,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Some actual logic will go here, and for example we have introduced some delay with sleep.</p>
+                                            <p>Some actual logic will go here, and for example, we have introduced some delay with the sleep.</p>
 
                                         </div>
                                     </div>
@@ -284,7 +306,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Start a new child span for the span <code>MyRootParentSpan</code>.</p>
+                                            <p>Start a new child span for the <code>MyRootParentSpan</code> span.</p>
 
                                         </div>
                                     </div>
@@ -295,7 +317,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1);
 </code></pre></div>
 
                                 </td>
@@ -303,7 +325,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Some actual logic will go here, and for example we have introduced some delay with sleep.</p>
+                                            <p>Some actual logic will go here, and for example, we have introduced some delay with the sleep.</p>
 
                                         </div>
                                     </div>
@@ -316,7 +338,7 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        error? result = observe:finishSpan(childSpanId);
         if (result is error) {
-            log:printError(&quot;Error in finishing span&quot;, result);
+            log:printError(&quot;Error in finishing span&quot;, err = result);
         }
 </code></pre></div>
 
@@ -325,7 +347,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Finish <code>MyRootChildSpan</code> span.</p>
+                                            <p>Finish the <code>MyRootChildSpan</code> span.</p>
 
                                         </div>
                                     </div>
@@ -336,7 +358,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1);
 </code></pre></div>
 
                                 </td>
@@ -344,7 +366,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Some actual logic will go here, and for example we have introduced some delay with sleep.</p>
+                                            <p>Some actual logic will go here, and for example, we have introduced some delay with the sleep.</p>
 
                                         </div>
                                     </div>
@@ -357,7 +379,7 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        result = observe:finishSpan(rootParentSpanId);
         if (result is error) {
-            log:printError(&quot;Error in finishing span&quot;, result);
+            log:printError(&quot;Error in finishing span&quot;, err = result);
         }
 </code></pre></div>
 
@@ -366,7 +388,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Finish <code>MyRootParentSpan</code> span.</p>
+                                            <p>Finish the <code>MyRootParentSpan</code> span.</p>
 
                                         </div>
                                     </div>
@@ -377,7 +399,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(1);
 </code></pre></div>
 
                                 </td>
@@ -385,7 +407,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Some actual logic will go here, and for example we have introduced some delay with sleep.</p>
+                                            <p>Some actual logic will go here, and for example, we have introduced some delay with the sleep.</p>
 
                                         </div>
                                     </div>
@@ -398,7 +420,7 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        result = observe:finishSpan(spanId);
         if (result is error) {
-            log:printError(&quot;Error in finishing span&quot;, result);
+            log:printError(&quot;Error in finishing span&quot;, err = result);
         }
 </code></pre></div>
 
@@ -407,7 +429,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Finish the created child span <code>MyFirstLogicSpan</code>, which was attached to the system trace.</p>
+                                            <p>Finish the created child <code>MyFirstLogicSpan</code> span, which was attached to the system trace.</p>
 
                                         </div>
                                     </div>
@@ -457,7 +479,7 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, result);
+            log:printError(&quot;Error sending response&quot;, err = result);
         }
 </code></pre></div>
 
@@ -493,6 +515,10 @@ import ballerina/runtime;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -513,13 +539,22 @@ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p1668
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command with &#39;--b7a.observability.enabled=true&#39; property.
-ballerina run tracing.bal --b7a.observability.enabled=true
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
-ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-ballerina: started publishing tracers to Jaeger on localhost:5775
+# `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
+BALCONFIGFILE=Config.toml bal run --observability-included tracing.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>ballerina: started publishing traces to Jaeger on localhost:6831
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9234
 </code></pre></div>
 
@@ -554,7 +589,7 @@ Hello, World!
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke the service using cURL.</p>
+                                            <p>Invoke the service using cURL and access Jaeger UI in <code>http://localhost:16686</code>.</p>
 
                                         </div>
                                     </div>
@@ -581,7 +616,7 @@ Hello, World!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

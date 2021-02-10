@@ -1,14 +1,12 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Operators, Keywords, and Types
 active: operators_keywords_and_types
 permalink: /learn/coding-conventions/operators_keywords_and_types/
 intro: The sections below include the coding conventions with respect to operators, keywords, and types.
 redirect_from:
-  - /v1-2/learn/style-guide/operators_keywords_and_types/
-  - /v1-2/learn/style-guide/operators_keywords_and_types
-  - /learn/style-guide/operators_keywords_and_types
   - /learn/style-guide/operators_keywords_and_types/
+  - /learn/style-guide/operators_keywords_and_types
   - /learn/coding-conventions/operators_keywords_and_types
 ---
 
@@ -104,7 +102,7 @@ name += lastName;
 io:println("john");
 http:Response res = new();
 ```
-  
+
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 
 

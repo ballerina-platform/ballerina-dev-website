@@ -1,0 +1,30 @@
+{
+  "modules": [],
+  "classes": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "Options",
+      "description": "Provides a set of configuration related to database.",
+      "moduleId": "java.jdbc",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.5.4"
+    }
+  ],
+  "constants": [],
+  "errors": [],
+  "types": [],
+  "clients": [
+    {
+      "id": "Client",
+      "description": "Represents a JDBC client.",
+      "moduleId": "java.jdbc",
+      "moduleOrgName": "ballerinax",
+      "moduleVersion": "0.5.4"
+    }
+  ],
+  "listeners": [],
+  "annotations": [],
+  "abstractObjects": [],
+  "enums": []
+}

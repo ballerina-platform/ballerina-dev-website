@@ -4,35 +4,27 @@ title: Anonymous Functions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/anonymous-functions
 redirect_from:
-  - /v1-2/learn/by-example/anonymous-functions
-  - /v1-2/learn/by-example/anonymous-functions.html
+  - /vswan-lake/learn/by-example/anonymous-functions
+  - /vswan-lake/learn/by-example/anonymous-functions.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">anonFunction</span> <span class="p">=</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Defines an anonymous function.</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">concat</span> <span class="p">=</span>
             <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
             <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
-    <span class="k">var</span> <span class="nx">anonFunction2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">,</span> <span class="kt">string</span><span class="o">...</span> <span class="nx">z</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-                            <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-                            <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">z</span> <span class="p">{</span>
-                                <span class="nx">value</span> <span class="o">+=</span> <span class="nx">item</span><span class="p">;</span>
-                            <span class="p">}</span>
-                            <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
-                        <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction2</span><span class="p">(</span><span class="s">&quot;Ballerina &quot;</span><span class="p">,</span> <span class="s">&quot;is &quot;</span><span class="p">,</span> <span class="s">&quot;an &quot;</span><span class="p">,</span> <span class="s">&quot;open &quot;</span><span class="p">,</span>
-     <span class="s">&quot;source &quot;</span><span class="p">,</span> <span class="s">&quot;programming &quot;</span><span class="p">,</span> <span class="s">&quot;language.&quot;</span><span class="p">));</span>
-    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">arrowExpr</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">arrowExpr</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_functions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Output</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">World</span><span class="p">.!!!</span>
-<span class="nx">Output</span><span class="p">:</span> <span class="nx">Ballerina</span> <span class="nx">is</span> <span class="nx">an</span> <span class="nx">open</span> <span class="nx">source</span> <span class="nx">programming</span> <span class="nx">language</span><span class="p">.</span>
-<span class="nx">Output</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">World</span><span class="p">.!!!</span>
+    <span class="c1">// Defines an anonymous function with `var`.</span>
+    <span class="k">var</span> <span class="nx">add</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">v2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+                  <span class="k">return</span> <span class="nx">v1</span> <span class="o">+</span> <span class="nx">v2</span><span class="p">;</span>
+              <span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Concat Result: &quot;</span><span class="p">,</span> <span class="nx">concat</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World!&quot;</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Add Result: &quot;</span><span class="p">,</span> <span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -42,7 +34,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Anonymous Functions</h2>
-                            <p><p>In Ballerina, anonymous functions are a syntactic shortcut for defining inline functions.
+                            <p><p>In Ballerina, anonymous functions provide a way of defining inline functions.
  The only difference between an anonymous function and a normal function definition is that
  an anonymous function does not have a name.</p>
 </p>
@@ -77,15 +69,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/anonymous-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
-                                        
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8ff5701910e5517c6a5e8f234ae8051e&file=anonymous_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/anonymous-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -103,8 +91,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -146,11 +132,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function (string, string) returns string anonFunction =
+                                    <div class="highlight"><pre><code class=language-ballerina>    function (string, string) returns string concat =
             function (string x, string y) returns string {
                 return x + y;
             };
-    io:println(&quot;Output: &quot;, anonFunction(&quot;Hello &quot;, &quot;World.!!!&quot;));
 </code></pre></div>
 
                                 </td>
@@ -168,36 +153,12 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var anonFunction2 = function (string x, string y, string... z) returns string {
-                            string value = x + y;
-                            foreach var item in z {
-                                value += item;
-                            }
-                            return value;
-                        };
-    io:println(&quot;Output: &quot;, anonFunction2(&quot;Ballerina &quot;, &quot;is &quot;, &quot;an &quot;, &quot;open &quot;,
-     &quot;source &quot;, &quot;programming &quot;, &quot;language.&quot;));
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines an anonymous function with <code>var</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function (string, string) returns string arrowExpr = (x, y) =&gt; x + y;
-    io:println(&quot;Output: &quot;, arrowExpr(&quot;Hello &quot;, &quot;World.!!!&quot;));
+                                    <div class="highlight"><pre><code class=language-ballerina>    var add = function (int v1, int v2) returns int {
+                  return v1 + v2;
+              };
+    io:println(&quot;Concat Result: &quot;, concat(&quot;Hello &quot;, &quot;World!&quot;));
+    io:println(&quot;Add Result: &quot;, add(5, 10));
 }
 </code></pre></div>
 
@@ -206,11 +167,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If an anonymous function contains only the return statement in the body,
- you can use the <code>arrow function expression</code> instead of the anonymous function.
- The types of the input parameters are inferred from the left-hand side.
- The return of the arrow function expression is determined by the
- evaluation of the expression on the right-hand side of the <code>=&gt;</code> symbol.</p>
+                                            <p>Defines an anonymous function with <code>var</code>.</p>
 
                                         </div>
                                     </div>
@@ -235,11 +192,10 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run anonymous_functions.bal
-Output: Hello World.!!!
-Output: Ballerina is an open source programming language.
-Output: Hello World.!!!
+# `.bal` file, and execute the `bal run` command.
+bal run anonymous_functions.bal
+Concat Result: Hello World!
+Add Result: 15
 </code></pre></div>
 
                                 </td>
@@ -267,7 +223,7 @@ Output: Hello World.!!!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

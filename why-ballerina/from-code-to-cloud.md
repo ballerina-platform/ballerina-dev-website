@@ -37,22 +37,19 @@ listener http:Listener helloWorldEP = new(9090);
 @docker:Config {
    name: "helloworld"
 }
-service hello on helloWorldEP {
- 
-resource function sayHello(http:Caller caller,
-http:Request request) {
-      var result = caller->respond("Hello World!");
-      if (result is error) {
-          log:printError("Error in responding ", err = result);
-      }
-  }
+service /hello on helloWorldEP {
+
+resource function get sayHello(http:Caller caller, http:Request req)
+            returns error? {
+        check caller->respond("Hello, World!");
+    }
 }
 </code></pre>
                               <p>Adding the <code class="highlighter-rouge cBasicCode">@docker:Config {}</code> annotation to a service generates the Dockerfile and a Docker image and adding the <code class="highlighter-rouge cBasicCode">@docker:Expose {}</code> annotation to the <code class="highlighter-rouge cBasicCode">listener</code> object exposes the endpoint port by allowing incoming traffic to the container.</p>
 
 <ul class="cInlinelinklist">
                                  <li>
-                                 <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) </a>
+                                 <a class="cGreenLinkArrow" href="/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) </a>
                                  </li>
                                  </ul>
 </div>
@@ -77,20 +74,16 @@ http:Request request) {
                            <div class="section">
                               <h2 id="client-objects-and-remote-methods">From Code to Kubernetes</h2>
                               <p><a href="https://kubernetes.io/">Kubernetes</a> is the preferred platform for running applications with multiple microservices in production. It can be used for automating deployment and scaling, and management of containerized applications. Kubernetes defines a set of unique building blocks that need to be defined as YAML files and deployed into the Kubernetes cluster.</p>
-                              <p>However, in many cases, creating these YAML files is out of a developer’s comfort zone. The Ballerina compiler can create these YAML files while compiling the source code, so you don’t have to! The code below shows the annotations you need to use to do this:</p>
+                              <p>However, in many cases, creating these YAML files is out of a developer’s comfort zone. The Ballerina compiler can create these YAML files while compiling the source code, so you don’t have to! The code below shows the build option you need to use to do this:</p>
                               <h3 id="get-started">Get Started</h3>
-                              <p>The following code snippet shows how Ballerina annotations can generate YAML files to deploy your code to Kubernetes.</p>
+                              <p>The following code snippet shows how Ballerina compiler can generate YAML files to deploy your code to Kubernetes.</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
-import ballerina/log;
-import ballerina/kubernetes;
- 
-@kubernetes:Service {
-   serviceType: "NodePort"
-}
-listener http:Listener helloWorldEP = new(9090);
- 
-@kubernetes:Deployment {
-   name: "helloworld"
+import ballerina/http;
+service /hello on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller, http:Request req)
+            returns error? {
+        check caller->respond("Hello, World!");
+    }
 }
 service hello on helloWorldEP {
  
@@ -103,16 +96,16 @@ http:Request request) {
   }
 }
 </code></pre>
-                              <p>Adding the <code class="highlighter-rouge cBasicCode">@kubernetes:Deployment{}</code> annotation to the Ballerina service will generate the Kubernetes Deployment YAML that is required to deploy our hello application into Kubernetes. Adding the <code class="highlighter-rouge cBasicCode">@kubernetes:Service{}</code> annotation will generate the Kubernetes Service YAML. In this scenario, we have set <code class="highlighter-rouge cBasicCode">serviceType</code> as <code class="highlighter-rouge cBasicCode">NodePort</code> to access the hello service via the nodeIP:Port.</p>
+                              <p>Building the source with <code class="highlighter-rouge cBasicCode">bal build --cloud=k8s</code> will generate the Kubernetes Deployment and Service YAML files that is required to deploy our hello application into Kubernetes.</p>
                     <ul class="cInlinelinklist">
                                  <li>
-                                 <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE</a>
+                                 <a class="cGreenLinkArrow" href="/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE</a>
                                  </li>
                                  </ul>
                             <p>If you are an OpenShift user follow the example below to deploy your application.</p>
                             <ul class="cInlinelinklist">
                                  <li>
-                                 <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE</a>
+                                 <a class="cGreenLinkArrow" href="/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE</a>
                                  </li>
                                  </ul>
                           </div>
@@ -152,11 +145,10 @@ listener http:Listener helloWorldEP = new(9090);
                               <p>
                                 <ul class="cInlinelinklist">
                                  <li>
-                                 <a class="cGreenLinkArrow" href="https://github.com/ballerinax/kubernetes/blob/master/samples/sample16">Istio Gateway and Virtual Service Generation </a>
+                                 <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/c2c-deployment.html">Code to Cloud Deployment BBE</a>
                                  </li>
                                  </ul>
-                              </p>
-                           </div>
+                          </div>
                         </div>
                      </div>
                   </div>
@@ -166,7 +158,7 @@ listener http:Listener helloWorldEP = new(9090);
       </div>
    </div>
 </div>
-<div class="row cBallerina-io-Gray-row  cGray cContentRows">
+<div class="row cBallerina-io-Gray-row cGray cContentRows">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
@@ -206,7 +198,7 @@ http:Request request) {
 
  <ul class="cInlinelinklist">
                                  <li>
-                                 <a class="cGreenLinkArrow"  href="https://ballerina.io/learn/by-example/knative-deployment.html">Knative Deployment BBE </a>
+                                 <a class="cGreenLinkArrow"  href="/learn/by-example/knative-deployment.html">Knative Deployment BBE </a>
                                  </li>
                                  </ul>
 </div>
@@ -232,7 +224,7 @@ http:Request request) {
                               <h2 id="async-network-protocol">From Code to AWS Lambda</h2>
                               <p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with <code class="highlighter-rouge cBasicCode">@awslambda:Function</code>, which should have the function signature <code class="highlighter-rouge cBasicCode">function (awslambda:Context, json) returns json|error</code>.</p>
 <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/aws-lambda-deployment.html">AWS Lambda Deployment BBE </a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/aws-lambda-deployment.html">AWS Lambda Deployment BBE </a></li>
                               </ul>
                            </div>
                         </div>
@@ -311,7 +303,7 @@ public function main() {
 </code></pre>
                            <p>Ballerina has many out-of-the-box SaaS connectors, which you can find in <a href="https://central.ballerina.io/">Ballerina Central</a>.</p>
                            <div class="cQUOTE">
-                              <p>"“We were attracted by Ballerina’s cloud native features, such as the automatic generation of Docker, Kubernetes, and Helm artifacts, as well as its small footprint and faster boot times. It is also capable of running as a Lambda function (serverless) in AWS. Together, these capabilities have enabled us to easily run microservices in containers at scale and integrate with CI/CD tools with less effort.</p>
+                              <p>"We were attracted by Ballerina’s cloud native features, such as the automatic generation of Docker, Kubernetes, and Helm artifacts, as well as its small footprint and faster boot times. It is also capable of running as a Lambda function (serverless) in AWS. Together, these capabilities have enabled us to easily run microservices in containers at scale and integrate with CI/CD tools with less effort."</p>
                               <p class="cName">Harsha Pulleti, integration architect and senior manager, Motorola</p>
                            </div>
                         </div>

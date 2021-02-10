@@ -17,7 +17,7 @@ redirect_from:
 ---
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/getting-started/quick-tour/" target="_blank">
+<a class="cBoxLink" href="/learn/getting-started/quick-tour/">
 
 <h2>Get Started</h2>
 
@@ -56,7 +56,7 @@ redirect_from:
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-  <a class="cBoxLink" href="/learn/using-the-cli-tools/" target="_blank">
+  <a class="cBoxLink" href="/learn/using-the-cli-tools/">
   <h2>User Guide</h2>
   <p>Learn about all the features of the language and its platform capabilities.</p>
   </a>

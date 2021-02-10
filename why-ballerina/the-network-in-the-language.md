@@ -87,7 +87,7 @@ import ballerina/io;
  
 public function main() returns @tainted error? {
     http:Client clientEP = check new ("http://www.mocky.io");
-    string payload = &lt;string&gt; check clientEP-&gt;get("/v2/5ae082123200006b00510c3d/", targetType = string);
+    string payload = <string> check clientEP->get("/v2/5ae082123200006b00510c3d/", targetType = string);
     io:println(payload);
 }
                               </code></pre>
@@ -137,8 +137,8 @@ twitter:Client twitterClient = new ({
     clientConfig: {}
 });
 public function main() returns error? {
-    twitter:Status status = check twitterClient-&gt;tweet("Hello World!");
-    io:println("Tweeted: ", &lt;@untainted&gt;status.id);
+    twitter:Status status = check twitterClient->tweet("Hello World!");
+    io:println("Tweeted: ", <@untainted>status.id);
 }
  </code></pre>
                            </div>
@@ -250,11 +250,11 @@ public function main() returns error? {
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">twitter:Status|error result = twitterClient-&gt;tweet("Hello World!");
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">twitter:Status|error result = twitterClient->tweet("Hello World!");
 if result is error {
     io:println("Tweet failed: ", result);
 } else {
-    io:println("Tweeted: ", &lt;@untainted&gt;status.id);
+    io:println("Tweeted: ", <@untainted>status.id);
 }
 
 </code></pre>

@@ -64,7 +64,7 @@ function versionSelectorValue(){
         //let ver = "v" + optionText.replace(".", "-");
         
         if(pathValue.indexOf(optionText) > -1){
-            $(option).attr("selected", "selected");
+            $(option).prop('selected', true);
             status = 1;
         }        
     });

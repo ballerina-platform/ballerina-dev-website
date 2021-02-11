@@ -1110,7 +1110,7 @@ public function main() {
 Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a reason, a detail, and stack trace. 
 
 The `reason`:
-- This is a string identifier for the category of error.
+- This is a string identifier for the error category.
 - In this case, the reason value is set to the fully-qualified Java class name of the exception.
     - **Unchecked:** Class name of of the thrown unchecked exception
     - **Checked:** Class name of the exception that is declared in the method signature

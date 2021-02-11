@@ -328,7 +328,7 @@ The following subsections explain how the `bindgen` tool works.
     - [Support for Java Casting](#support-for-java-casting)
     - [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)
 
->**Note:** The `bindgen` tool is still experimental. We are in the process of improving the generated code.
+>**Note:** The `bindgen` tool is still experimental and the generated code is being improved currently.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 

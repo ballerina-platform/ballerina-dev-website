@@ -20,7 +20,7 @@ jobs:
           name: Link Checker Report
           path:  ./link-checker/out.md
       - name: Fail if there were link errors
-        run: exit ${{ steps.lc.outputs.exit_code }}
+        run: if [[ $(grep -c ".*" ./link-checker/out.md) == "5" ]]; then echo "Success"; exit 0; else echo "Fail"; exit 1; fi
 
       #- name: SendGrid
         #uses: peter-evans/sendgrid-action@v1

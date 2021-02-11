@@ -15,7 +15,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
 
-<span class="c1">//[Client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client) endpoint.</span>
+<span class="c1">//[Client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client) endpoint.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9091/backEndService&quot;</span><span class="p">);</span>
 
 <span class="c1">//Service to test HTTP client remote functions with different payload types.</span>
@@ -24,26 +24,26 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">messageUsage</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                             <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="c1">//[GET](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function without any payload.</span>
+        <span class="c1">//[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function without any payload.</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[GET](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function with</span>
+        <span class="c1">//[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function with</span>
         <span class="c1">//the request given as a message.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">request</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function without any payload.</span>
+        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function without any payload.</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">());</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
+        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
         <span class="c1">//text as the payload.</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="s">&quot;Sample Text&quot;</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
+        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
         <span class="c1">//`xml` as the payload.</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="kt">xml</span> <span class="s">`&lt;yy&gt;Sample Xml&lt;/yy&gt;`</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
@@ -52,22 +52,22 @@ redirect_from:
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">});</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
+        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
         <span class="c1">//`byte[]` as the payload.</span>
         <span class="kt">string</span> <span class="nx">textVal</span> <span class="p">=</span> <span class="s">&quot;Sample Text&quot;</span><span class="p">;</span>
         <span class="nx">byte</span><span class="p">[]</span> <span class="nx">binaryValue</span> <span class="p">=</span> <span class="nx">textVal</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">binaryValue</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-         <span class="c1">//[Create a JSON body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).</span>
+         <span class="c1">//[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">part1</span><span class="p">.</span><span class="nx">setJson</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">});</span>
 
-        <span class="c1">//[Create a text body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).</span>
+        <span class="c1">//[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">part2</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function</span>
+        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function</span>
         <span class="c1">//with a body parts as the payload.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">part1</span><span class="p">,</span> <span class="nx">part2</span><span class="p">];</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">bodyParts</span><span class="p">);</span>
@@ -270,7 +270,7 @@ redirect_from:
                             <p><p>Ballerina supports different payload types to be used directly with HTTP client actions
 (eg: POST, PUT, DELETE etc..) and service respond calls.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -411,7 +411,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client">Client</a> endpoint.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client">Client</a> endpoint.</p>
 
                                         </div>
                                     </div>
@@ -463,7 +463,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">GET</a> remote function without any payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">GET</a> remote function without any payload.</p>
 
                                         </div>
                                     </div>
@@ -484,7 +484,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">GET</a> remote function with
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">GET</a> remote function with
 the request given as a message.</p>
 
                                         </div>
@@ -505,7 +505,7 @@ the request given as a message.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function without any payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function without any payload.</p>
 
                                         </div>
                                     </div>
@@ -525,7 +525,7 @@ the request given as a message.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
 text as the payload.</p>
 
                                         </div>
@@ -546,7 +546,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
 <code>xml</code> as the payload.</p>
 
                                         </div>
@@ -589,7 +589,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
 <code>byte[]</code> as the payload.</p>
 
                                         </div>
@@ -610,7 +610,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson">Create a JSON body part</a>.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson">Create a JSON body part</a>.</p>
 
                                         </div>
                                     </div>
@@ -630,7 +630,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText">Create a text body part</a>.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText">Create a text body part</a>.</p>
 
                                         </div>
                                     </div>
@@ -651,7 +651,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function
 with a body parts as the payload.</p>
 
                                         </div>

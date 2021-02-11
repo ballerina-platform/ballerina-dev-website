@@ -541,8 +541,7 @@ The `ballerina/java` module of the Ballerina standard library provides the `cast
 
 E.g., A Ballerina binding object instance mapping the `java.io.InputStream` Java class `inputStream` could be casted onto a Ballerina binding object mapping the `java.io.FileInputStream` Java class as follows.
 ```ballerina
-type FileInputStreamTypedesc typedesc<FileInputStream>;
-FileInputStream fileInputStream = <FileInputStream>check java:cast(inputStream, FileInputStreamTypedesc);
+FileInputStream fileInputStream = <FileInputStream>check java:cast(inputStream, typedesc<FileInputStream>);
 ```
 
 ### Java Exceptions to Ballerina Errors

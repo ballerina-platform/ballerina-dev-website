@@ -1,32 +1,30 @@
 ---
 layout: ballerina-example-page
-title: Byte Type
+title: Binary Message Client
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/byte-type
+permalink: /learn/by-example/websocket-binary-client
 redirect_from:
-  - /vswan-lake/learn/by-example/byte-type
-  - /vswan-lake/learn/by-example/byte-type.html
+  - /vswan-lake/learn/by-example/websocket-binary-client
+  - /vswan-lake/learn/by-example/websocket-binary-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Define a `byte` variable.</span>
-    <span class="nx">byte</span> <span class="nx">byteVal</span> <span class="p">=</span> <span class="mi">12</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteVal</span><span class="p">);</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client).</span>
+   <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Create a `byte` array using the list constructor.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">243</span><span class="p">];</span>
-    <span class="c1">// Create a `byte` array using the `base16` byte array literal.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray2</span> <span class="p">=</span> <span class="nx">base16</span> <span class="s">`aeeecdefabcd12345567888822`</span><span class="p">;</span>
-    <span class="c1">// Create a `byte` array using the `base64` byte array literal.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray3</span> <span class="p">=</span> <span class="nx">base64</span> <span class="s">`aGVsbG8gYmFsbGVyaW5hICEhIQ==`</span><span class="p">;</span>
+   <span class="c1">// Writes a binary message to the server using [writeBinaryMessage](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#writeBinaryMessage).</span>
+   <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">writeBinaryMessage</span><span class="p">(</span><span class="s">&quot;Binary message&quot;</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray1</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray2</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray3</span><span class="p">);</span>
+   <span class="c1">// Reads a binary message echoed from the server using [readBinaryMessage](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readBinaryMessage).</span>
+   <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readBinaryMessage</span><span class="p">();</span>
+   <span class="kt">string</span> <span class="nx">stringResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">byteResp</span><span class="p">);</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stringResp</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -36,10 +34,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Byte Type</h2>
-                            <p><p>The <code>byte</code> type is just shorthand for 0|1|2|&hellip;|255.
- Along with the general <code>byte</code> array there is also a special syntax to define <code>base16</code> and <code>base64</code> based arrays of
- bytes. This example demonstrates how <code>byte</code> and <code>byte</code> array can be used in Ballerina programs.</p>
+                            <h2>Binary Message Client</h2>
+                            <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server in a Synchronous manner.This example demonstrates how to read and write binary messages using ballerina websocket client<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
 </p>
 
                         </td>
@@ -47,16 +45,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="union-type.html">
+                                    <a class="prev" href="websocket-text-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Union Types</p>
+                                        <p>Text Message Client</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="optional-type.html">
+                                    <a class="next" href="websocket-async-text-client.html">
                                         <span>NEXT ></span>
-                                        <p>Optional Type</p>
+                                        <p>Async Text Message Client</p>
                                     </a>
                                 </div>
                                 
@@ -65,7 +63,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="byte-type">
+            <div class="example" id="websocket-binary-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -76,11 +74,11 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/byte-type/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-binary-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a3f3c4d52705b7a9af3d76127101dd77&file=byte_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cd7b1c1724beb19136fdcaa5485c2932&file=websocket_binary_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -109,10 +107,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -122,6 +116,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/lang.&#39;string;
+import ballerina/websocket;
 </code></pre></div>
 
                                 </td>
@@ -133,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -145,8 +141,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte byteVal = 12;
-    io:println(byteVal);
+                                    <div class="highlight"><pre><code class=language-ballerina>   websocket:Client wsClient = check new(&quot;ws://echo.websocket.org&quot;);
 </code></pre></div>
 
                                 </td>
@@ -154,7 +149,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define a <code>byte</code> variable.</p>
+                                            <p>Creates a new <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client">WebSocket client</a>.</p>
 
                                         </div>
                                     </div>
@@ -165,7 +160,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] byteArray1 = [5, 24, 56, 243];
+                                    <div class="highlight"><pre><code class=language-ballerina>   check wsClient-&gt;writeBinaryMessage(&quot;Binary message&quot;.toBytes());
 </code></pre></div>
 
                                 </td>
@@ -173,7 +168,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a <code>byte</code> array using the list constructor.</p>
+                                            <p>Writes a binary message to the server using <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#writeBinaryMessage">writeBinaryMessage</a>.</p>
 
                                         </div>
                                     </div>
@@ -182,54 +177,23 @@ redirect_from:
                             </tr>
                             
                             <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] byteArray2 = base16 `aeeecdefabcd12345567888822`;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a <code>byte</code> array using the <code>base16</code> byte array literal.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] byteArray3 = base64 `aGVsbG8gYmFsbGVyaW5hICEhIQ==`;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a <code>byte</code> array using the <code>base64</code> byte array literal.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(byteArray1);
-    io:println(byteArray2);
-    io:println(byteArray3);
+                                    <div class="highlight"><pre><code class=language-ballerina>   byte[] byteResp = check wsClient-&gt;readBinaryMessage();
+   string stringResp = check &#39;string:fromBytes(byteResp);
+   io:println(stringResp);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Reads a binary message echoed from the server using <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readBinaryMessage">readBinaryMessage</a>.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -242,6 +206,10 @@ redirect_from:
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -249,14 +217,22 @@ redirect_from:
                             
                             <tr class="cTR cOutputTr">
 
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and execute the `bal run` command below.
+bal run websocket_binary_client.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run byte_type.bal
-12
-[5,24,56,243]
-[174,238,205,239,171,205,18,52,85,103,136,136,34]
-[104,101,108,108,111,32,98,97,108,108,101,114,105,110,97,32,33,33,33]
+                                    <div class="highlight"><pre><code class=shell-session>Binary message
 </code></pre></div>
 
                                 </td>

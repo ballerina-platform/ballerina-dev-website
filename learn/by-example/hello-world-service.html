@@ -15,12 +15,11 @@ redirect_from:
 <span class="c1">// By default, Ballerina exposes an HTTP service via HTTP/1.1.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// Resource functions are invoked with the HTTP caller and the</span>
-    <span class="c1">// incoming request as arguments.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
-            <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="c1">// Send a response back to the caller.</span>
-        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+    <span class="c1">// The resource method is invoked by the GET request for the</span>
+    <span class="c1">// `/hello/sayHello` path. The returned string value</span>
+    <span class="c1">// eventually becomes the payload of the `http:Response`.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -67,6 +66,10 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-service/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=316482b16ea0192eb47011962015a069&file=hello_world_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -82,8 +85,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -129,29 +130,9 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get sayHello(http:Caller caller, http:Request req)
-            returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Resource functions are invoked with the HTTP caller and the
- incoming request as arguments.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;respond(&quot;Hello, World!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get sayHello() returns string {
+        return &quot;Hello, World!&quot;;
     }
 }
 </code></pre></div>
@@ -161,7 +142,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send a response back to the caller.</p>
+                                            <p>The resource method is invoked by the GET request for the
+ <code>/hello/sayHello</code> path. The returned string value
+ eventually becomes the payload of the <code>http:Response</code>.</p>
 
                                         </div>
                                     </div>

@@ -1110,13 +1110,14 @@ public function main() {
 Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a reason, a detail, and stack trace. 
 
 The `reason`:
-	* This is a string identifier for the category of error.
-	* In this case, the reason value is set to the fully-qualified Java class name of the exception. 
-		* Unchecked: Class name of of the thrown unchecked exception
-		* Checked: Class name of the exception that is declared in the method signature
+- This is a string identifier for the error category.
+- In this case, the reason value is set to the fully-qualified Java class name of the exception.
+    - **Unchecked:** Class name of of the thrown unchecked exception
+    - **Checked:** Class name of the exception that is declared in the method signature
+
 The `detail`:
-	* The `message` field is set to `e.getMessage()`.
-	* The `cause` field is set to the Ballerina error that represents this Java exception’s cause.
+- The `message` field is set to `e.getMessage()`.
+- The `cause` field is set to the Ballerina error that represents this Java exception’s cause.
 
 ### Null Safety
 Ballerina provides strict null safety compared to Java with optional types.  The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type. 

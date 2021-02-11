@@ -240,7 +240,7 @@ Next, we’ll handle the error using a type guard.
 ```ballerina
 if fileInputStream is FileNotFoundException {
 	// The type of fileInputStream is FileNotFoundException within this block
-       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
+       io:println("The file '" + filename + "' cannot be loaded. Reason: ", fileInputStream.reason());
 } else {
 	// The type of fileInputStream is FileInputStream within this block
 }
@@ -272,7 +272,7 @@ public function main(string... args) returns error? {
    string filename = args[0];
    FileInputStream | FileNotFoundException fileInputStream = newFileInputStream3(filename);
    if fileInputStream is FileNotFoundException {
-       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
+       io:println("The file '" + filename + "' cannot be loaded. Reason: ", fileInputStream.reason());
    } else {
        Yaml yaml = newYaml1();
        Object mapObj = yaml.load(fileInputStream);
@@ -327,12 +327,8 @@ The following subsections explain how the `bindgen` tool works.
     - [Support for Java Subtyping](#support-for-java-subtyping)
     - [Support for Java Casting](#support-for-java-casting)
     - [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)
-- [Packaging Java Libraries with Ballerina Programs](#packaging-java-libraries-with-ballerina-programs)
-    - [Ballerina FFI](#ballerina-ffi)
-        - [The External Function Body](#the-external-function-body)
-        - [The Handle Type](#the-handle-type)
 
->**Note:** The `bindgen` tool is still experimental. We are in the process of improving the generated code.*
+>**Note:** The `bindgen` tool is still experimental and the generated code is being improved currently.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
@@ -541,8 +537,7 @@ The `ballerina/java` module of the Ballerina standard library provides the `cast
 
 E.g., A Ballerina binding object instance mapping the `java.io.InputStream` Java class `inputStream` could be casted onto a Ballerina binding object mapping the `java.io.FileInputStream` Java class as follows.
 ```ballerina
-type FileInputStreamTypedesc typedesc<FileInputStream>;
-FileInputStream fileInputStream = <FileInputStream>check java:cast(inputStream, FileInputStreamTypedesc);
+FileInputStream fileInputStream = <FileInputStream>check java:cast(inputStream, typedesc<FileInputStream>);
 ```
 
 ### Java Exceptions to Ballerina Errors
@@ -554,7 +549,7 @@ E.g., The following `IOException` will be returned from the `read()` function in
 function read() returns int|IOException {
     int|error externalObj = java_io_FileInputStream_read(self.jObj);
     if (externalObj is error) {
-        IOException e = IOException(IOEXCEPTION, message = externalObj.message(), cause = externalObj);
+        IOException e = IOException(message = externalObj.reason(), cause = externalObj);
         return e;
     } else {
         return externalObj;
@@ -565,7 +560,9 @@ function read() returns int|IOException {
 >**Note:** If a Java exception class is generated as a Ballerina binding object, it would follow the naming convention `JException` or `JError`. For instance, the binding object's name for `java.io.FileNotFoundException` would be as `JFileNotFoundException`.
 
 ## Packaging Java Libraries with Ballerina Programs
-This section assumes that you have already read [Structuring Ballerina Code](/1.2/learn/structuring-ballerina-code/). When you compile a Ballerina program with`ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with`ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
+
+>**Tip:** As a prerequisite for this section, see [Structuring Ballerina Code](/1.2/learn/structuring-ballerina-code/). 
+When you compile a Ballerina program with `ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with `ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 
 There are two kinds of Ballerina projects: 
 1. Produces executable programs 
@@ -1130,13 +1127,14 @@ public function main() {
 Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a reason, a detail, and stack trace. 
 
 The `reason`:
-	* This is a string identifier for the category of error.
-	* In this case, the reason value is set to the fully-qualified Java class name of the exception. 
-		* Unchecked: Class name of of the thrown unchecked exception
-		* Checked: Class name of the exception that is declared in the method signature
+- This is a string identifier for the error category.
+- In this case, the reason value is set to the fully-qualified Java class name of the exception.
+    - **Unchecked:** Class name of of the thrown unchecked exception
+    - **Checked:** Class name of the exception that is declared in the method signature
+
 The `detail`:
-	* The `message` field is set to `e.getMessage()`.
-	* The `cause` field is set to the Ballerina error that represents this Java exception’s cause.
+- The `message` field is set to `e.getMessage()`.
+- The `cause` field is set to the Ballerina error that represents this Java exception’s cause.
 
 ### Null Safety
 Ballerina provides strict null safety compared to Java with optional types.  The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type. 

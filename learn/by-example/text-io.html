@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Read/Write Text
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/text-io
+permalink: /swan-lake/learn/by-example/text-io
 redirect_from:
   - /vswan-lake/learn/by-example/text-io
   - /vswan-lake/learn/by-example/text-io.html
@@ -36,7 +36,7 @@ redirect_from:
     <span class="c1">// Write the given stream of lines to a file.</span>
     <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteLinesFromStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">,</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">toStream</span><span class="p">());</span>
     <span class="c1">// If the write operation was successful, then, perform a read operation to read the lines as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">lineStream</span> <span class="p">=</span> <span class="nx">check</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">lineStream</span> <span class="p">=</span> <span class="nx">check</span>
                                     <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLinesAsStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">);</span>
     <span class="c1">// Loop through the stream and print the content.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">lineStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
@@ -92,6 +92,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/text-io/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9cf602819e667ea47f11551c2ffdc397&file=text_io.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -283,7 +287,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error?&gt; lineStream = check
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error&gt; lineStream = check
                                     io:fileReadLinesAsStream(textFilePath3);
 </code></pre></div>
 

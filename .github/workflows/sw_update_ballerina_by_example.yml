@@ -47,7 +47,7 @@ jobs:
           exit 1
         fi
 
-        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "false" "false"
+        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "false" "true"
 
     - name: Remove old examples file
       run: git rm -r swan-lake/learn/by-example

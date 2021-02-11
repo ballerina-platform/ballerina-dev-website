@@ -954,20 +954,24 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Async Client Endpoint",
-                "url": "websocket-async-client"
+                "name": "Text Message Client",
+                "url": "websocket-text-client"
+            },
+            {
+                "name": "Binary Message Client",
+                "url": "websocket-binary-client"
+            },
+            {
+                "name": "Async Text Message Client",
+                "url": "websocket-async-text-client"
+            },
+            {
+                "name": "Async Binary Message Client",
+                "url": "websocket-async-binary-client"
             },
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
-            },
-            {
-                "name": "Proxy Server",
-                "url": "websocket-proxy-server"
-            },
-            {
-                "name": "Chat Application",
-                "url": "websocket-chat-application"
             }
         ]
     },

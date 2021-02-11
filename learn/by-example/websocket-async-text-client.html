@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Async Text Message Client
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/websocket-async-text-client
+permalink: /learn/by-example/websocket-async-text-client
 redirect_from:
   - /vswan-lake/learn/by-example/websocket-async-text-client
   - /vswan-lake/learn/by-example/websocket-async-text-client.html
@@ -17,7 +17,7 @@ redirect_from:
     <span class="c1">// Creates a new [WebSocket Async client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient) with the backend URL and assigns a callback service.</span>
     <span class="nx">websocket</span><span class="p">:</span><span class="nx">AsyncClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">,</span>
                                           <span class="nx">new</span> <span class="nx">ClientService</span><span class="p">());</span>
-    <span class="c1">// Writes a text message to the server using [writeTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString).</span>
+    <span class="c1">// Writes a text message to the server using [writeTextMessage](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString).</span>
     <span class="nx">check</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -181,7 +181,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString">writeTextMessage</a>.</p>
+                                            <p>Writes a text message to the server using <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString">writeTextMessage</a>.</p>
 
                                         </div>
                                     </div>

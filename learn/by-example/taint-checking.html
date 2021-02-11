@@ -39,7 +39,7 @@ redirect_from:
     <span class="c1">// The call to `query` action results in a compile time error because untainted</span>
     <span class="c1">// data from `args[0]` is directly used in the SQL query string.</span>
     <span class="c1">// Users should rather use raw templates when providing SQL query parameters</span>
-    <span class="c1">// to make sure SQL injection attacks are not possible. For more information, see [Parameterized Query](https://ballerina.io/learn/by-example/jdbc-parameterized-query.html)</span>
+    <span class="c1">// to make sure SQL injection attacks are not possible. For more information, see [Parameterized Query](https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html)</span>
     <span class="c1">// support.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;SELECT name, favQuote from Student &quot;</span> <span class="o">+</span>
                                  <span class="s">&quot;WHERE registrationId = &quot;</span> <span class="o">+</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">());</span>
@@ -107,7 +107,7 @@ redirect_from:
 <p>A taint analysis mechanism is used to achieve this. As a result of the taint analysis mechanism, the Ballerina compiler
  identifies untrusted (tainted) data by observing how tainted data propagates through the program. If untrusted data
  is passed to a security sensitive parameter, a compile error is generated.<br/><br/>
- For more information, see <a href="https://ballerina.io/learn/how-to-write-secure-ballerina-code/">How to Write Secure Ballerina Programs</a>.</p>
+ For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-write-secure-ballerina-code/">How to Write Secure Ballerina Programs</a>.</p>
 </p>
 
                         </td>
@@ -148,7 +148,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=85a5d4cac6eb13904f4e536a644158ad&file=taint_checking.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=43ce416321e812c8b633fbc296b27cba&file=taint_checking.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -321,7 +321,7 @@ redirect_from:
 <p>The call to <code>query</code> action results in a compile time error because untainted
  data from <code>args[0]</code> is directly used in the SQL query string.
  Users should rather use raw templates when providing SQL query parameters
- to make sure SQL injection attacks are not possible. For more information, see <a href="https://ballerina.io/learn/by-example/jdbc-parameterized-query.html">Parameterized Query</a>
+ to make sure SQL injection attacks are not possible. For more information, see <a href="https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html">Parameterized Query</a>
  support.</p>
 
                                         </div>

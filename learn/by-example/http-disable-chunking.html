@@ -13,12 +13,12 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO),</span>
-<span class="c1">// [CHUNKING_ALWAYS](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS),</span>
-<span class="c1">// or [CHUNKING_NEVER](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER).</span>
+<span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO),</span>
+<span class="c1">// [CHUNKING_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS),</span>
+<span class="c1">// or [CHUNKING_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER).</span>
 <span class="c1">// In this example, it is set to `CHUNKING_NEVER`, which means that chunking never happens irrespective of how it is</span>
 <span class="c1">// specified in the request. When chunking is set to `CHUNKING_AUTO`, chunking is done as specified in the request.</span>
-<span class="c1">// [http1Settings](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings) annotation</span>
+<span class="c1">// [http1Settings](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings) annotation</span>
 <span class="c1">// provides the chunking-related configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
                                     <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span>
@@ -110,7 +110,7 @@ redirect_from:
                             <p><p>This sample demonstrates how to configure the chunking behavior of an HTTP client endpoint. By default, the HTTP client sends messages with the <code>content-length</code> header.
 If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -148,10 +148,6 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-disable-chunking/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=87507fa74efb07118a66c8c2b0cfd171&file=http_disable_chunking.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -228,12 +224,12 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO">CHUNKING_AUTO</a>,
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
- or <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER">CHUNKING_NEVER</a>.
+                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO">CHUNKING_AUTO</a>,
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
+ or <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER">CHUNKING_NEVER</a>.
  In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of how it is
  specified in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done as specified in the request.
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings">http1Settings</a> annotation
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings">http1Settings</a> annotation
  provides the chunking-related configurations.</p>
 
                                         </div>

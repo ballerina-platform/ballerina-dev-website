@@ -10,29 +10,48 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Return an error with &quot;InvalidAccountID&quot; as the reason if `accountID` is less than zero.</span>
         <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Return an error with &quot;AccountNotFound&quot; as the reason if `accountID` is greater than hundred.</span>
         <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="nx">ACCOUNT_NOT_FOUND</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="c1">// Return a value if `accountID` is in between zero and hundred inclusive.</span>
     <span class="k">return</span> <span class="mi">600</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Define an error of the generic `error` type using the default error constructor.</span>
+    <span class="c1">// The error reason must be the first and only positional argument to the default error constructor and the type of the </span>
+    <span class="c1">// value must be a subtype of `string`. Additional fields providing more details can be passed as named arguments to the constructor</span>
+    <span class="c1">// and the type of each of those must be a subtype of `anydata|error`.</span>
     <span class="nx">error</span> <span class="nx">simpleError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;SimpleErrorType&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Simple error occurred&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Print the error reason and the `message` field from the error detail.</span>
+    <span class="c1">// The `.reason()` and `.detail()` methods can be invoked on error values</span>
+    <span class="c1">// to retrieve the reason and details of the error.</span>
+    <span class="c1">// `message` is an optional field in the generic error `Detail` record.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">simpleError</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span>
-                <span class="s">&quot;, Message: &quot;</span><span class="p">,</span> <span class="nx">simpleError</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+                <span class="s">&quot;, Message: &quot;</span><span class="p">,</span> <span class="nx">simpleError</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="c1">// If the `result` is an `int`, then print the value.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account Balance: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="c1">// If an error is returned, print the reason and the account ID from the detail record.</span>
+    <span class="c1">// Each additional error detail field provided to the error constructor is available as a field in the error detail record.</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span>
                     <span class="s">&quot;, Account ID: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;accountID&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">error_handling</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">SimpleErrorType</span><span class="p">,</span> <span class="nx">Message</span><span class="p">:</span> <span class="nx">Simple</span> <span class="nx">error</span> <span class="nx">occurred</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">InvalidAccountID</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">ID</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -93,15 +112,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/error-handling/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=62d75e3122089911e0cb5272e06a5bec&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b85e0af0153a613a17aed82eb2e954ab&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -408,7 +427,7 @@ Error: InvalidAccountID, Account ID: -1
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

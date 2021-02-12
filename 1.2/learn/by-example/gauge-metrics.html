@@ -14,40 +14,77 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
+
+<span class="c1">//Create a gauge as a global variable in the service with optional field description,</span>
+<span class="c1">//and default statistics configurations = { timeWindow: 600000, buckets: 5,</span>
+<span class="c1">// percentiles: [0.33, 0.5, 0.66, 0.99] }.</span>
 <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">globalGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;global_gauge&quot;</span><span class="p">,</span> <span class="s">&quot;Global gauge defined&quot;</span><span class="p">);</span>
+
+<span class="c1">// Make sure you start the service with the &#39;--b7a.observability.enabled=true&#39; property or with metrics enabled.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/online-store-service&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">onlineStoreService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">onlineStoreService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/make-order&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">makeOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
+        <span class="c1">//Incrementing the global gauge defined by 15.0.</span>
         <span class="nx">globalGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mf">15.0</span><span class="p">);</span>
+        <span class="c1">//Log the current state of global gauge.</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">globalGauge</span><span class="p">);</span>
+
+
+        <span class="c1">//Create a gauge with simply a name, and default statistics configurations.</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">localGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
+        <span class="c1">//Increment the local gauge by default value 1.0.</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+        <span class="c1">//Increment the value of the gauge by 20.</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mf">20.0</span><span class="p">);</span>
+        <span class="c1">//Decrement the local gauge by default value 1.0.</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">decrement</span><span class="p">();</span>
+        <span class="c1">//Decrement the value of the gauge by 20.</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">decrement</span><span class="p">(</span><span class="mf">10.0</span><span class="p">);</span>
+        <span class="c1">//Log the current state of local gauge.</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">localGauge</span><span class="p">);</span>
+
+
+        <span class="c1">//Create a gauge with optional fields description, and tags defined.</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">registeredGaugeWithTags</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;registered_gauge_with_tags&quot;</span><span class="p">,</span>
             <span class="s">&quot;RegisteredGauge&quot;</span><span class="p">,</span>
             <span class="p">{</span><span class="nx">property</span><span class="p">:</span> <span class="s">&quot;gaugeProperty&quot;</span><span class="p">,</span> <span class="nx">gaugeType</span><span class="p">:</span> <span class="s">&quot;RegisterType&quot;</span><span class="p">});</span>
+
+        <span class="c1">//Register the gauge instance, therefore it is stored in the global registry and can be reported to the</span>
+        <span class="c1">//metrics server such as Prometheus. Additionally, this operation will register to the global registry for the</span>
+        <span class="c1">//first invocation and will throw an error if there is already a registration of different metrics instance</span>
+        <span class="c1">//or type. And subsequent invocations of register() will simply retrieve the stored metrics instance</span>
+        <span class="c1">//for the provided name and tags fields, and use that instance for the subsequent operations on the</span>
+        <span class="c1">//counter instance.</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering gauge&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">//Set the value of the gauge with the new value.</span>
         <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
         <span class="kt">float</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
         <span class="kt">float</span> <span class="nx">newValue</span> <span class="p">=</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">12</span><span class="p">;</span>
         <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">newValue</span><span class="p">);</span>
+        <span class="c1">//Log the current state of registered gauge with tags.</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">registeredGaugeWithTags</span><span class="p">);</span>
+
+
+        <span class="c1">//Create a gauge with statistics disabled by passing empty statistics config array.</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">StatisticConfig</span><span class="p">[]</span> <span class="nx">statsConfigs</span> <span class="p">=</span> <span class="p">[];</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gaugeWithNoStats</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;gauge_with_no_stats&quot;</span><span class="p">,</span>
                                         <span class="s">&quot;Some description&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="nx">statsConfigs</span><span class="p">);</span>
         <span class="nx">gaugeWithNoStats</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">gaugeWithNoStats</span><span class="p">);</span>
+
+
+        <span class="c1">//Create gauge with custom statistics config.</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">StatisticConfig</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
             <span class="nx">timeWindow</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
             <span class="nx">percentiles</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span>
@@ -61,29 +98,37 @@ redirect_from:
             <span class="nx">gaugeWithCustomStats</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mf">100.0</span> <span class="o">*</span> <span class="nx">i</span><span class="p">);</span>
             <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="nx">printGauge</span><span class="p">(</span><span class="nx">gaugeWithCustomStats</span><span class="p">);</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
+        <span class="c1">//Log the current state of registered gauge with tags.</span>
+        <span class="nx">printGauge</span><span class="p">(</span><span class="nx">gaugeWithCustomStats</span><span class="p">);</span>
+
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">//Send response to the client.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// Use a util method to set a string payload.</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Processed!&quot;</span><span class="p">);</span>
-        <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// Send the response back to the caller.</span>
+        <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">printGauge</span><span class="p">(</span><span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gauge</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">printGauge</span><span class="p">(</span><span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gauge</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Get the statistics snapshot of the gauge.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Gauge - &quot;</span> <span class="o">+</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; Snapshot: &quot;</span><span class="p">);</span>
     <span class="nx">observe</span><span class="p">:</span><span class="nx">Snapshot</span><span class="p">[]</span><span class="err">?</span> <span class="nx">snapshots</span> <span class="p">=</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">getSnapshot</span><span class="p">();</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">snapshotAsAJson</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">snapshots</span><span class="p">);</span>
     <span class="k">if</span> <span class="nx">snapshotAsAJson</span> <span class="nx">is</span> <span class="kt">json</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">snapshotAsAJson</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="p">}</span>
+    <span class="c1">//Get the current value of the gauge.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Gauge - &quot;</span><span class="p">,</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot; Current Value: &quot;</span>
         <span class="p">,</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
 <span class="p">}</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -131,9 +176,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/gauge-metrics/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -799,7 +844,7 @@ Order Processed!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

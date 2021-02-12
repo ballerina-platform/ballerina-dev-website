@@ -12,24 +12,38 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+
+<span class="c1">// JDBC Client for the first H2 database. Since this `Client`</span>
+<span class="c1">// participates in a distributed transaction, the `isXA` property should be true.</span>
 <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:h2:file:./xa-transactions/Testdb1&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span><span class="nx">isXA</span><span class="p">:</span> <span class="kc">true</span><span class="p">}</span>
 <span class="p">});</span>
+
+<span class="c1">// JDBC Client for the second H2 database. Since this endpoint</span>
+<span class="c1">// participates in a distributed transaction, the `isXA` property should be true.</span>
 <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:h2:file:./xa-transactions/Testdb2&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span><span class="nx">isXA</span><span class="p">:</span> <span class="kc">true</span><span class="p">}</span>
-<span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">});</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create the table named CUSTOMER in the first database.</span>
     <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE CUSTOMER (ID INTEGER &quot;</span> <span class="o">+</span>
                               <span class="s">&quot;AUTO_INCREMENT, NAME VARCHAR(30))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create CUSTOMER table&quot;</span><span class="p">);</span>
+    <span class="c1">// Create the table named SALARY in the second database.</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB2</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE SALARY (ID INT, VALUE FLOAT)&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create SALARY table&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Start the transaction.</span>
     <span class="nx">transaction</span> <span class="p">{</span>
+        <span class="c1">// This is the first remote function to participate in the transaction. It inserts</span>
+        <span class="c1">// the customer name to the first DB and gets the generated key.</span>
         <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(NAME) &quot;</span> <span class="o">+</span>
                               <span class="s">&quot;VALUES (&#39;Anne&#39;)&quot;</span><span class="p">);</span>
         <span class="kt">int</span> <span class="nx">key</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
@@ -42,6 +56,9 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Insert to student table failed: &quot;</span><span class="p">,</span>
                        <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">ret</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// This is the second remote function to participate in the transaction. It inserts the</span>
+        <span class="c1">// salary info to the second DB along with the key generated in the first DB.</span>
         <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB2</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY (ID, VALUE) VALUES (?, ?)&quot;</span><span class="p">,</span>
                               <span class="nx">key</span><span class="p">,</span> <span class="mi">2500</span><span class="p">);</span>
         <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Insert to SALARY table&quot;</span><span class="p">);</span>
@@ -52,31 +69,23 @@ redirect_from:
     <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Drop the tables created for this sample.</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE CUSTOMER&quot;</span><span class="p">);</span>
-    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop Table CUSTOMER&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB2</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE SALARY&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop Table CUSTOMER&quot;</span><span class="p">);</span>
+
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB2</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE SALARY&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop Table SALARY&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Function to handle the return value of the `update` remote function.</span>
 <span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">experimental</span> <span class="nx">xa_transactions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Create</span> <span class="nx">CUSTOMER</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Create</span> <span class="nx">SALARY</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">658</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Created</span> <span class="nx">transaction</span><span class="p">:</span> <span class="nx">ab7cc71e</span><span class="o">-</span><span class="mi">30</span><span class="nx">f0</span><span class="o">-</span><span class="mi">45</span><span class="nx">ac</span><span class="o">-</span><span class="mf">982e-01</span><span class="nx">e0a0e39875</span>
-<span class="nx">Inserted</span> <span class="nx">row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Generated</span> <span class="nx">key</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Insert</span> <span class="nx">to</span> <span class="nx">SALARY</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">672</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Running</span> <span class="mi">2</span><span class="o">-</span><span class="nx">phase</span> <span class="nx">commit</span> <span class="k">for</span> <span class="nx">transaction</span><span class="p">:</span> <span class="nx">ab7cc71e</span><span class="o">-</span><span class="mi">30</span><span class="nx">f0</span><span class="o">-</span><span class="mi">45</span><span class="nx">ac</span><span class="o">-</span><span class="mf">982e-01</span><span class="nx">e0a0e39875</span><span class="p">:</span><span class="err">$</span><span class="nx">anon</span><span class="err">$</span><span class="p">.</span><span class="err">$</span><span class="mi">0</span>
-<span class="nx">Transaction</span> <span class="nx">committed</span>
-<span class="nx">Drop</span> <span class="nx">Table</span> <span class="nx">CUSTOMER</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Drop</span> <span class="nx">Table</span> <span class="nx">SALARY</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">10.100.7.118</span><span class="p">:</span><span class="mi">52159</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">stopped</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">10.100.7.118</span><span class="p">:</span><span class="mi">52159</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -124,9 +133,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xa-transactions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -488,7 +497,7 @@ Drop Table SALARY status: 0
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

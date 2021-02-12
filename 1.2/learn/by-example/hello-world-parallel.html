@@ -11,23 +11,25 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Use one or more workers to define a function execution.</span>
+<span class="c1">// The function invocation starts all the workers.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World! #m&quot;</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World! #n&quot;</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w3</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World! #k&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">hello_world_parallel</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!</span> <span class="err">#</span><span class="nx">m</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!</span> <span class="err">#</span><span class="nx">k</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!</span> <span class="err">#</span><span class="nx">n</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -72,15 +74,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/hello-world-parallel/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d42bed6535b45a3b85c985c1fa8b82f9&file=hello_world_parallel.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f87892cf188e2152ee2715c30a3797a4&file=hello_world_parallel.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -228,7 +230,7 @@ Hello, World! #n
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

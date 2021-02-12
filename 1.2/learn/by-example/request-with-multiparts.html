@@ -12,16 +12,24 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+<span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/multiparts&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">multipartDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="c1">//Binds the listener to the service.</span>
+<span class="kd">service</span> <span class="nx">multipartDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/decode&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">multipartReceiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span>
                                         <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// Extracts bodyparts from the request.</span>
         <span class="k">var</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">bodyParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
             <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">part</span> <span class="nx">in</span> <span class="nx">bodyParts</span> <span class="p">{</span>
@@ -37,22 +45,35 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="nd">@http:ResourceConfig {</span>
+    <span class="p">}</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/encode&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">multipartSender</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Create a json body part.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">jsonBodyPart</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">jsonBodyPart</span><span class="p">.</span><span class="nx">setContentDisposition</span><span class="p">(</span>
                         <span class="nx">getContentDispositionForFormData</span><span class="p">(</span><span class="s">&quot;json part&quot;</span><span class="p">));</span>
         <span class="nx">jsonBodyPart</span><span class="p">.</span><span class="nx">setJson</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">});</span>
+        <span class="c1">//Create an `xml` body part as a file upload.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">xmlFilePart</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">xmlFilePart</span><span class="p">.</span><span class="nx">setContentDisposition</span><span class="p">(</span>
                        <span class="nx">getContentDispositionForFormData</span><span class="p">(</span><span class="s">&quot;xml file part&quot;</span><span class="p">));</span>
+        <span class="c1">// This file path is relative to where the ballerina is running.</span>
+        <span class="c1">// If your file is located outside, please</span>
+        <span class="c1">// give the absolute file path instead.</span>
         <span class="nx">xmlFilePart</span><span class="p">.</span><span class="nx">setFileAsEntityBody</span><span class="p">(</span><span class="s">&quot;./files/test.xml&quot;</span><span class="p">,</span>
                                         <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span><span class="p">);</span>
+        <span class="c1">// Create an array to hold all the body parts.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">jsonBodyPart</span><span class="p">,</span> <span class="nx">xmlFilePart</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// Set the body parts to the request.</span>
+        <span class="c1">// Here the content-type is set as multipart form data.</span>
+        <span class="c1">// This also works with any other multipart media type.</span>
+        <span class="c1">// eg:- `multipart/mixed`, `multipart/related` etc.</span>
+        <span class="c1">// You need to pass the content type that suit your requirement.</span>
         <span class="nx">request</span><span class="p">.</span><span class="nx">setBodyParts</span><span class="p">(</span><span class="nx">bodyParts</span><span class="p">,</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">returnResponse</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/multiparts/decode&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -72,11 +93,14 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// The content logic that handles the body parts vary based on your requirement.</span>
 <span class="kd">function</span> <span class="nx">handleContent</span><span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">bodyPart</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">getMediaType</span><span class="p">(</span><span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">());</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MediaType</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">baseType</span> <span class="p">=</span> <span class="nx">mediaType</span><span class="p">.</span><span class="nx">getBaseType</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span> <span class="o">||</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//Extracts `xml` data from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getXml</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -84,6 +108,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//Extracts `json` data from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
@@ -91,6 +116,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//Extracts text data from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
@@ -99,42 +125,15 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getContentDispositionForFormData</span><span class="p">(</span><span class="kt">string</span> <span class="nx">partName</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getContentDispositionForFormData</span><span class="p">(</span><span class="kt">string</span> <span class="nx">partName</span><span class="p">)</span>
                                     <span class="nx">returns</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">ContentDisposition</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">mime</span><span class="p">:</span><span class="nx">ContentDisposition</span> <span class="nx">contentDisposition</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">contentDisposition</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">partName</span><span class="p">;</span>
     <span class="nx">contentDisposition</span><span class="p">.</span><span class="nx">disposition</span> <span class="p">=</span> <span class="s">&quot;form-data&quot;</span><span class="p">;</span>
     <span class="k">return</span> <span class="nx">contentDisposition</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">request_with_multiparts</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">Start</span> <span class="nx">multipartDemoService</span>
-<span class="err">#</span> <span class="nx">The</span> <span class="nx">cURL</span> <span class="nx">command</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">you</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">execute</span> <span class="nx">to</span> <span class="nx">decode</span> <span class="nx">a</span> <span class="nx">multipart</span> <span class="nx">request</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">F</span> <span class="s">&quot;part1={\&quot;name\&quot;:\&quot;ballerina\&quot;};type=application/json&quot;</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/multiparts/decode -H &quot;Content-Type: multipart/mixed&quot; -H &#39;Expect:&#39;</span>
-<span class="o">--</span><span class="nx">ac4875939cf6b158</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">disposition</span><span class="p">:</span> <span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="nx">name</span><span class="p">=</span><span class="s">&quot;part1&quot;</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ballerina&quot;</span><span class="p">}</span>
-<span class="o">--</span><span class="nx">ac4875939cf6b158</span><span class="o">--</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">cURL</span> <span class="nx">command</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">you</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">execute</span> <span class="nx">to</span> <span class="nx">encode</span> <span class="nx">the</span> <span class="nx">parts</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">body</span> <span class="nx">and</span> <span class="nx">send</span> <span class="nx">a</span> <span class="nx">multipart</span> <span class="nx">request</span> <span class="nx">via</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="kd">service</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/multiparts/encode</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">multipart</span><span class="o">/</span><span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span> <span class="nx">boundary</span><span class="p">=</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Thu</span><span class="p">,</span> <span class="mi">14</span> <span class="nx">Jun</span> <span class="mi">2018</span> <span class="mi">15</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">21</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">0.982.1</span><span class="o">-</span><span class="nx">SNAPSHOT</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">398</span>
-<span class="p">&lt;</span>
-<span class="o">--</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">disposition</span><span class="p">:</span> <span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="nx">name</span><span class="p">=</span><span class="s">&quot;json part&quot;</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;wso2&quot;</span><span class="p">}</span>
-<span class="o">--</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">xml</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">disposition</span><span class="p">:</span> <span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="nx">name</span><span class="p">=</span><span class="s">&quot;xml file part&quot;</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">&lt;</span><span class="nx">ballerinalang</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nx">version</span><span class="p">&gt;</span><span class="mf">0.963</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">version</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nx">test</span><span class="p">&gt;</span><span class="nx">test</span> <span class="kt">xml</span> <span class="nx">file</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">used</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">file</span> <span class="nx">part</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">test</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">ballerinalang</span><span class="p">&gt;</span>
-<span class="o">--</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span><span class="o">--</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -179,9 +178,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/request-with-multiparts/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -774,7 +773,7 @@ content-id: 1
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

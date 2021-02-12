@@ -12,25 +12,40 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span>
 <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Execute dropping the table. The `sql:ExecuteResult` is returned upon</span>
+    <span class="c1">// successful execution. An error will be returned in case of a failure.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS Customers&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Drop table executed. &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="c1">// Similarly, to drop a table, the `create` table query is executed.</span>
+    <span class="c1">// Here, the `customerId` is an auto-generated column.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS Customers&quot;</span> <span class="o">+</span>
         <span class="s">&quot;(customerId INTEGER NOT NULL IDENTITY, firstName VARCHAR(300), &quot;</span> <span class="o">+</span>
         <span class="s">&quot;lastName VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE, &quot;</span> <span class="o">+</span>
         <span class="s">&quot;country VARCHAR(300), PRIMARY KEY (customerId))&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Insert sample data into the table. The result will have</span>
+    <span class="c1">// `affectedRowCount` and `lastInsertedId` with the auto-generated ID of</span>
+    <span class="c1">// the last row.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO Customers (firstName, &quot;</span> <span class="o">+</span>
         <span class="s">&quot;lastName,registrationID,creditLimit,country)&quot;</span> <span class="o">+</span>
-        <span class="s">&quot;VALUES (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="s">&quot;VALUES (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rows affected: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated Customer ID: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Update the record with the auto-generated ID.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;Update Customers set creditLimit = 15000.5 &quot;</span> <span class="o">+</span>
         <span class="s">&quot;where customerId = &quot;</span> <span class="o">+</span> <span class="nx">generatedId</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -41,7 +56,10 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Empty result&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">generatedId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Delete the record with the auto-generated ID.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;Delete from Customers where customerId = &quot;</span> <span class="o">+</span>
         <span class="nx">generatedId</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -52,31 +70,31 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Empty result&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize the JDBC client.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jdbcClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/customers&quot;</span><span class="p">,</span>
         <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="s">&quot;rootPass&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">jdbcClient</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Initialize a table and insert sample data.</span>
         <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">initResult</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Update a record.</span>
             <span class="nx">updateRecord</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
+            <span class="c1">// Delete a record.</span>
             <span class="nx">deleteRecord</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table initialization failed: &quot;</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
         <span class="p">}</span>
+        <span class="c1">// Close the JDBC client.</span>
         <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">jdbcClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Initialization failed!!&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jdbc2_execute_operation</span><span class="p">.</span><span class="nx">balDrop</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">.</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span>
-<span class="nx">Rows</span> <span class="nx">affected</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Generated</span> <span class="nx">Customer</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Updated</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Deleted</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Sample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -124,9 +142,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/jdbc2-execute-operation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -566,7 +584,7 @@ Sample executed successfully!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

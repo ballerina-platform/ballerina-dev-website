@@ -10,14 +10,22 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span> <span class="k">as</span> <span class="nx">console</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="c1">// This example imports a module. You can only refer to the public symbols of</span>
+<span class="c1">// an imported module.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
+
+<span class="c1">// Declare an explicit prefix.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span> <span class="k">as</span> <span class="nx">console</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Refer symbols of another module.</span>
+    <span class="c1">// `math:PI` is a qualified identifier. Note the usage of the module prefix.</span>
     <span class="kt">float</span> <span class="nx">piValue</span> <span class="p">=</span> <span class="nx">math</span><span class="p">:</span><span class="nx">PI</span><span class="p">;</span>
+
+    <span class="c1">// Use the explicit prefix `console` to invoke a function defined in the `ballerina/io` module.</span>
     <span class="nx">console</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">piValue</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">modules</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mf">3.141592653589793</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -30,8 +38,8 @@ redirect_from:
                             <p><p>Ballerina program files have the <code>.bal</code> extension and the file names do not have semantics.
  These source files can be grouped into modules. The code within a module can refer to any module-level symbol (name) declared
  in the same module. Module names can only contain alphanumerics, underscores, and periods and the maximum length is 256 characters.
- By default, the last element of the module name becomes an alias that is used to refer to the symbols of the imported module.
- If the module name has periods, then the word after the last period becomes the alias.</p>
+ By default, the last element of the module name becomes a prefix that is used to refer to the symbols of the imported module.
+ If the module name has periods, then the word after the last period becomes the prefix.</p>
 </p>
 
                         </td>
@@ -64,15 +72,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/modules/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e317431bcddc05fb934aeda861653b8a&file=modules.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=1d01b0cfc484081d14c58782b1285b09&file=modules.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -137,7 +145,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Declare an explicit alias.</p>
+                                            <p>Declare an explicit prefix.</p>
 
                                         </div>
                                     </div>
@@ -169,7 +177,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Refer symbols of another module.
- <code>math:PI</code> is a qualified identifier. Note the usage of the module alias.</p>
+ <code>math:PI</code> is a qualified identifier. Note the usage of the module prefix.</p>
 
                                         </div>
                                     </div>
@@ -189,7 +197,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Use the explicit alias <code>console</code> to invoke a function defined in the <code>ballerina/io</code> module.</p>
+                                            <p>Use the explicit prefix <code>console</code> to invoke a function defined in the <code>ballerina/io</code> module.</p>
 
                                         </div>
                                     </div>
@@ -244,7 +252,7 @@ ballerina run modules.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

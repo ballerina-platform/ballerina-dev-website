@@ -12,34 +12,45 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
+
+<span class="c1">// The `test` function acts as a variable function pointer in the `main` function.</span>
 <span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span> <span class="nx">x</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">s</span><span class="p">);</span>
-    <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">;</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">x</span> <span class="p">{</span>
             <span class="nx">f</span> <span class="o">+=</span> <span class="nx">item</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// The type of `y` within the else block would be `error`.</span>
         <span class="nx">panic</span> <span class="nx">y</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">f</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// A function pointer as a parameter. A function pointer can be invoked similar to how a normal function is invoked.</span>
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="nx">bar</span><span class="p">)</span>
              <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">bar</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// A function pointer as a return type.</span>
 <span class="kd">function</span> <span class="nx">getFunctionPointer</span><span class="p">()</span> <span class="nx">returns</span>
                     <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">test</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Value `test` will serve as a function pointer for the `foo` function.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">test</span><span class="p">));</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">getFunctionPointer</span><span class="p">()));</span>
-    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">getFunctionPointer</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">));</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">function_pointers</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Answer</span><span class="p">:</span> <span class="mf">280.0</span>
-<span class="nx">Answer</span><span class="p">:</span> <span class="mf">280.0</span>
-<span class="nx">Answer</span><span class="p">:</span> <span class="mf">280.0</span>
+
+    <span class="c1">// A function pointer as a variable.</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">getFunctionPointer</span><span class="p">();</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -85,15 +96,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/function-pointers/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4450c891b2edf9c29cedb7684e3461db&file=function_pointers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8cb94a21a859efd790be6fc0a9a0ed4e&file=function_pointers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -366,7 +377,7 @@ Answer: 280.0
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -11,38 +11,62 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Defines an abstract object called `Person`. It should only contain </span>
+<span class="c1">// fields and method declarations. An abstract object cannot have</span>
+<span class="c1">// an initializer or method definitions.</span>
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
-    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">);</span>
+
+    <span class="c1">// Method declarations can be within the object. However, the method cannot</span>
+    <span class="c1">// have a body.</span>
+    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">);</span>
 <span class="p">};</span>
+
+<span class="c1">// Defines a non-abstract object called `Employee`, which is structurally equivalent</span>
+<span class="c1">// to `Person`. A non-abstract object cannot have any methods</span>
+<span class="c1">// without a body.</span>
 <span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+
+    <span class="c1">// Non-abstract objects can have initializers.</span>
     <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">firstName</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">=</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Methods should have a body.</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// An abstract object type cannot be initialized. It does not have </span>
+    <span class="c1">// an implicit initial value.</span>
+
+    <span class="c1">// Initializes a value using the non-abstract object `Employee`,</span>
+    <span class="c1">// and then assigns the value to the abstract object type variable.</span>
     <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
     
-    <span class="nx">p</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">abstract_objects</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">John</span> <span class="nx">Doe</span>
-<span class="mi">50</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -86,15 +110,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/abstract-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=23df8de432342323ce06fd13ac99b5ab&file=abstract_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=03200516d6e43382afb38bed9caa54ba&file=abstract_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -410,7 +434,7 @@ John Doe
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -11,18 +11,29 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function accepts three `int` values, performs a calculation,</span>
+<span class="c1">// and returns the result as an integer.</span>
+<span class="c1">// All three parameters are required parameters.</span>
 <span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">c</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Call the `calculate()` function to retrieve the integer result.</span>
+    <span class="c1">// Arguments for required parameters can be passed as positional arguments.</span>
+    <span class="c1">// Positional arguments need to be passed in the expected order.</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">calculate</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+    <span class="c1">// Print the result.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+    <span class="c1">// Arguments for required parameters can also be passed as named arguments.</span>
+    <span class="c1">// All arguments after the first named argument need to be passed by name.</span>
+    <span class="c1">// Named arguments do not have to be specified in the order in which the parameters are defined.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">calculate</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nx">c</span> <span class="p">=</span> <span class="mi">7</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">6</span><span class="p">);</span>
+    <span class="c1">// Print the result.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functions_with_required_parameters</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">38</span>
-<span class="mi">38</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -66,15 +77,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions-with-required-parameters/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=1881a31d2224572372d99e22a73ddd2f&file=functions_with_required_parameters.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=53d9eaedad4a04f17fd0dbec8b1c9388&file=functions_with_required_parameters.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -288,7 +299,7 @@ ballerina run functions_with_required_parameters.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

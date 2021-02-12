@@ -10,26 +10,30 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The XML element. There can be only one root element.</span>
     <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
+
+    <span class="c1">// The XML text.</span>
     <span class="kt">xml</span> <span class="nx">x2</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x2</span><span class="p">);</span>
+
+    <span class="c1">// The XML comment.</span>
     <span class="kt">xml</span> <span class="nx">x3</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x3</span><span class="p">);</span>
+
+    <span class="c1">// The XML processing instructions.</span>
     <span class="kt">xml</span> <span class="nx">x4</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x4</span><span class="p">);</span>
+
+    <span class="c1">// Multiple XML items can be combined to form a sequence of XML. The resulting sequence is another XML on its own.</span>
     <span class="kt">xml</span> <span class="nx">x5</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span> <span class="o">+</span> <span class="nx">x3</span> <span class="o">+</span> <span class="nx">x4</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nResulting XML sequence:&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x5</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="kt">xml</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">The</span> <span class="nx">Lost</span> <span class="nx">World</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!</span>
-<span class="p">&lt;!</span><span class="o">--</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">a</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="err">?</span><span class="nx">target</span> <span class="nx">data</span><span class="err">?</span><span class="p">&gt;</span><span class="nx">Resulting</span> <span class="nx">XML</span> <span class="nx">sequence</span><span class="p">:</span>
-<span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">The</span> <span class="nx">Lost</span> <span class="nx">World</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!&lt;!</span><span class="o">--</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">a</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;&lt;</span><span class="err">?</span><span class="nx">target</span> <span class="nx">data</span><span class="err">?</span><span class="p">&gt;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -73,15 +77,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xml/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6de5b93e3189bfddca6515b326fbbb68&file=xml.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7e8c405bbaba03df4c147d672e7834b5&file=xml.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -312,7 +316,7 @@ Hello, world!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

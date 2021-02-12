@@ -11,50 +11,81 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// The in-scope variables can be accessed by the workers inside the `fork` block.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// These variables can be accessed by the forked workers.</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&quot;WSO2&quot;</span><span class="p">;</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bert&quot;</span><span class="p">,</span> <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;New York&quot;</span><span class="p">,</span> <span class="s">&quot;postcode&quot;</span><span class="p">:</span> <span class="s">&quot;10001&quot;</span><span class="p">};</span>    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bert&quot;</span><span class="p">,</span> <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;New York&quot;</span><span class="p">,</span> <span class="s">&quot;postcode&quot;</span><span class="p">:</span> <span class="s">&quot;10001&quot;</span><span class="p">};</span>
+
+    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
     <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;city&quot;</span><span class="p">];</span>
-    <span class="kt">string</span> <span class="nx">postcode</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;postcode&quot;</span><span class="p">];</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[value type variables] before fork: &quot;</span> <span class="o">+</span>
+    <span class="kt">string</span> <span class="nx">postcode</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;postcode&quot;</span><span class="p">];</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[value type variables] before fork: &quot;</span> <span class="o">+</span>
                    <span class="s">&quot;value of integer variable is [&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;] &quot;</span><span class="p">,</span>
-                   <span class="s">&quot;value of string variable is [&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[reference type variables] before fork: value &quot;</span> <span class="o">+</span>
+                   <span class="s">&quot;value of string variable is [&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[reference type variables] before fork: value &quot;</span> <span class="o">+</span>
       <span class="s">&quot;of name is [&quot;</span><span class="p">,</span> <span class="nx">name</span> <span class="p">,</span> <span class="s">&quot;] value of city is [&quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="s">&quot;] value of &quot;</span> <span class="o">+</span>
       <span class="s">&quot;postcode is [&quot;</span><span class="p">,</span> <span class="nx">postcode</span><span class="p">,</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Declares the `fork` block.</span>
     <span class="k">fork</span> <span class="p">{</span>
         <span class="kd">worker</span> <span class="nx">W1</span> <span class="p">{</span>
+            <span class="c1">// Changes the value of the integer variable `i` within the worker `W1`.</span>
             <span class="nx">i</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
-            <span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Moose&quot;</span><span class="p">;</span>            <span class="k">fork</span> <span class="p">{</span>
+            <span class="c1">// Changes the value of the `map` variable `m` within the worker `W1`.</span>
+            <span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Moose&quot;</span><span class="p">;</span>
+
+            <span class="k">fork</span> <span class="p">{</span>
                 <span class="kd">worker</span> <span class="nx">W3</span> <span class="p">{</span>
+                    <span class="c1">// Changes the value of the `map` variable `m` within </span>
+                    <span class="c1">// the worker `W3`.</span>
                     <span class="kt">string</span> <span class="nx">street</span> <span class="p">=</span> <span class="s">&quot;Wall Street&quot;</span><span class="p">;</span>
                     <span class="nx">m</span><span class="p">[</span><span class="s">&quot;street&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="nx">street</span><span class="p">;</span>
+
+                    <span class="c1">// Changes the value of the integer variable `i` within</span>
+                    <span class="c1">// the worker `W3`.</span>
                     <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
+
+            <span class="c1">// Waits for the worker `W3` to finish.</span>
             <span class="nx">wait</span> <span class="nx">W3</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="kd">worker</span> <span class="nx">W2</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="kd">worker</span> <span class="nx">W2</span> <span class="p">{</span>
+            <span class="c1">// Changes the value of the `string` variable `s` within the worker `W2`.</span>
             <span class="nx">s</span> <span class="p">=</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">;</span>
+            <span class="c1">// Changes the value of the `map` variable `m` within the worker `W2`.</span>
             <span class="nx">m</span><span class="p">[</span><span class="s">&quot;city&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Manhattan&quot;</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// Waits for both workers `W1` and `W2` to finish.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">W1</span><span class="p">,</span> <span class="nx">W2</span><span class="p">};</span>
+
+    <span class="c1">// Prints the values after the `fork` block to check if the values of the</span>
+    <span class="c1">// variables have changed.</span>
+
+    <span class="c1">// The value-type variables have changed since the original variables are passed in.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[value type variables] after fork: &quot;</span> <span class="o">+</span>
                <span class="s">&quot;value of integer variable is [&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;] &quot;</span><span class="p">,</span>
                <span class="s">&quot;value of string variable is [&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
+
+    <span class="c1">// The internal content of the reference-type variables have got updated </span>
+    <span class="c1">// since they are passed in as a reference to the workers.</span>
     <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
     <span class="nx">city</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;city&quot;</span><span class="p">];</span>
+    <span class="c1">// Gets the value of the new field added to the `map` variable `m` inside the worker `W3`.</span>
     <span class="kt">string</span> <span class="nx">street</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;street&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[reference type variables] after fork: &quot;</span> <span class="o">+</span>
                <span class="s">&quot;value of name is [&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span>
                <span class="s">&quot;] value of city is [&quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="s">&quot;] value of street is [&quot;</span><span class="p">,</span> <span class="nx">street</span><span class="p">,</span>
                <span class="s">&quot;] value of postcode is [&quot;</span><span class="p">,</span> <span class="nx">postcode</span><span class="p">,</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">fork_variable_access</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">value</span> <span class="nx">type</span> <span class="nx">variables</span><span class="p">]</span> <span class="nx">before</span> <span class="k">fork</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">integer</span> <span class="nx">variable</span> <span class="nx">is</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="nx">value</span> <span class="nx">of</span> <span class="kt">string</span> <span class="nx">variable</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">WSO2</span><span class="p">]</span>
-<span class="p">[</span><span class="nx">reference</span> <span class="nx">type</span> <span class="nx">variables</span><span class="p">]</span> <span class="nx">before</span> <span class="k">fork</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">name</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">Bert</span><span class="p">]</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">city</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">New</span> <span class="nx">York</span><span class="p">]</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">postcode</span> <span class="nx">is</span> <span class="p">[</span><span class="mi">10001</span><span class="p">]</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">value</span><span class="o">-</span><span class="nx">type</span> <span class="nx">variables</span> <span class="nx">have</span> <span class="nx">changed</span> <span class="nx">since</span> <span class="nx">the</span> <span class="nx">original</span> <span class="nx">variables</span> <span class="nx">are</span> <span class="nx">passed</span> <span class="nx">in</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">workers</span><span class="p">.</span>
-<span class="p">[</span><span class="nx">value</span> <span class="nx">type</span> <span class="nx">variables</span><span class="p">]</span> <span class="nx">after</span> <span class="k">fork</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">integer</span> <span class="nx">variable</span> <span class="nx">is</span> <span class="p">[</span><span class="mi">123</span><span class="p">]</span> <span class="nx">value</span> <span class="nx">of</span> <span class="kt">string</span> <span class="nx">variable</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">Ballerina</span><span class="p">]</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">content</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">reference</span><span class="o">-</span><span class="nx">type</span> <span class="nx">variables</span> <span class="nx">have</span> <span class="nx">got</span> <span class="nx">updated</span> <span class="nx">since</span> <span class="nx">they</span> <span class="nx">are</span> <span class="nx">passed</span> <span class="nx">in</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">reference</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">workers</span><span class="p">.</span>
-<span class="p">[</span><span class="nx">reference</span> <span class="nx">type</span> <span class="nx">variables</span><span class="p">]</span> <span class="nx">after</span> <span class="k">fork</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">name</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">Moose</span><span class="p">]</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">city</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">Manhattan</span><span class="p">]</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">street</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">Wall</span> <span class="nx">Street</span><span class="p">]</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">postcode</span> <span class="nx">is</span> <span class="p">[</span><span class="mi">10001</span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -102,15 +133,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/fork-variable-access/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=25604d9f7434e59da85bdf461c37d925&file=fork_variable_access.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0a01cff134603d2f7e76080bd54735ab&file=fork_variable_access.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -641,7 +672,7 @@ ballerina run fork_variable_access.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

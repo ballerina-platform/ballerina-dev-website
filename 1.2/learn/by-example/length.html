@@ -10,56 +10,78 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create an integer array with several integer elements.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
     <span class="kt">int</span> <span class="nx">length</span><span class="p">;</span>
+
+    <span class="c1">// Print the length of the created integer array. The length is</span>
+    <span class="c1">// retrieved using the `.length()` method.</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">intArray</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Integer array size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="c1">// Create a JSON array with several JSON elements.</span>
     <span class="kt">json</span><span class="p">[]</span> <span class="nx">jsonArray</span> <span class="p">=</span> <span class="p">[</span>
         <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">},</span>
         <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Neal&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">}</span>
     <span class="p">];</span>
+
+    <span class="c1">// Print the length of the created JSON array.</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">jsonArray</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JSON array size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="c1">// Create an `int`-constrained `map`.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">strMap</span> <span class="p">=</span> <span class="p">{};</span>
     <span class="nx">strMap</span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="nx">strMap</span><span class="p">[</span><span class="s">&quot;B&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="nx">strMap</span><span class="p">[</span><span class="s">&quot;C&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
+
+    <span class="c1">// Print the length of the created `map`.</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">strMap</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Map size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="c1">// Define a `string`.</span>
     <span class="kt">string</span> <span class="nx">myStr</span> <span class="p">=</span> <span class="s">&quot;My name is Peter Parker&quot;</span><span class="p">;</span>
     
+    <span class="c1">// Print the length of the string.</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">myStr</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;String size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="c1">// Create an XML element.</span>
     <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;</span>
 <span class="s">                    &lt;name&gt;Sherlock Holmes&lt;/name&gt;</span>
 <span class="s">                    &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;</span>
 <span class="s">                    &lt;!--Price: $10--&gt;</span>
 <span class="s">                  &lt;/book&gt;`</span><span class="p">;</span>
+
+    <span class="c1">// Print the number of content items in the XML element.</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x1</span><span class="o">/</span><span class="p">&lt;</span><span class="o">*</span><span class="p">&gt;).</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;XML child elements size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="c1">// Define a tuple with two members.</span>
     <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">tupleVar</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">];</span>
+
+    <span class="c1">// Print the size of the tuple (i.e., the number of members in the tuple).</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">tupleVar</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="c1">// Create a record of the `Student` type.</span>
     <span class="nx">Student</span> <span class="nx">stu</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">17</span><span class="p">};</span>
+
+    <span class="c1">// Print the number of fields in the created `Student` record.</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">stu</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Field size in `Student` record: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span><span class="o">...</span><span class="p">;</span>
-<span class="p">|};</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">length</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Integer</span> <span class="nx">array</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">JSON</span> <span class="nx">array</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">2</span>
-<span class="nx">Map</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">String</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">23</span>
-<span class="nx">XML</span> <span class="nx">child</span> <span class="nx">elements</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">2</span>
-<span class="nx">Tuple</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">2</span>
-<span class="nx">Field</span> <span class="nx">size</span> <span class="nx">in</span> <span class="s">`Student`</span> <span class="nx">record</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">|};</span>
 </pre></div>
 
             </div>
@@ -103,15 +125,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/length/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=eac562b4335b136f32724aa666e49f6d&file=length.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=5676adb95c8aeaa2b50b7f1ad90eb57d&file=length.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -551,7 +573,7 @@ Field size in `Student` record: 4
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

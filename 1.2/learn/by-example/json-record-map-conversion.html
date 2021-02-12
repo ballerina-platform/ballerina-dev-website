@@ -11,16 +11,22 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This is a Ballerina record definition.</span>
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Movie</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Movie</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">title</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">year</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">released</span><span class="p">;</span>
     <span class="nx">Person</span> <span class="nx">writer</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Movie</span> <span class="nx">theRevenant</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">title</span><span class="p">:</span> <span class="s">&quot;The Revenant&quot;</span><span class="p">,</span>
         <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;2015&quot;</span><span class="p">,</span>
@@ -31,11 +37,16 @@ redirect_from:
             <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
+    <span class="c1">// This example shows how you can convert a record to a JSON object.</span>
+    <span class="c1">// This conversion could return an error because it may not be possible</span>
+    <span class="c1">// to convert some data types that are defined in the record to JSON.</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">j</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">writer</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Similarly, you can convert a record to a map.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">movieMap</span> <span class="p">=</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">movieMap</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;)</span> <span class="p">{</span>
         <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">writer</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">movieMap</span><span class="p">[</span><span class="s">&quot;writer&quot;</span><span class="p">]);</span>
@@ -43,6 +54,10 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">writer</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// This example shows how you can convert a JSON object to a record.</span>
+    <span class="c1">// This conversion could return an error because the field names and </span>
+    <span class="c1">// types are unknown until they are evaluated at runtime.</span>
     <span class="kt">json</span> <span class="nx">inceptionJ</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">title</span><span class="p">:</span> <span class="s">&quot;Inception&quot;</span><span class="p">,</span>
         <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;2010&quot;</span><span class="p">,</span>
@@ -57,13 +72,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">inception</span> <span class="nx">is</span> <span class="nx">Movie</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">inception</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">json_record_map_conversion</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">{</span><span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;The Revenant&quot;</span><span class="p">,</span> <span class="s">&quot;year&quot;</span><span class="p">:</span><span class="s">&quot;2015&quot;</span><span class="p">,</span> <span class="s">&quot;released&quot;</span><span class="p">:</span><span class="s">&quot;08 Jan 2016&quot;</span><span class="p">,</span> <span class="s">&quot;writer&quot;</span><span class="p">:{</span><span class="s">&quot;fname&quot;</span><span class="p">:</span><span class="s">&quot;Michael&quot;</span><span class="p">,</span> <span class="s">&quot;lname&quot;</span><span class="p">:</span><span class="s">&quot;Punke&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">}}</span>
-<span class="nx">Punke</span>
-<span class="mi">30</span>
-<span class="nx">title</span><span class="p">=</span><span class="nx">Inception</span> <span class="nx">year</span><span class="p">=</span><span class="mi">2010</span> <span class="nx">released</span><span class="p">=</span><span class="mi">16</span> <span class="nx">Jul</span> <span class="mi">2010</span> <span class="nx">writer</span><span class="p">=</span><span class="nx">fname</span><span class="p">=</span><span class="nx">Christopher</span> <span class="nx">lname</span><span class="p">=</span><span class="nx">Nolan</span> <span class="nx">age</span><span class="p">=</span><span class="mi">30</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -108,15 +117,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/json-record-map-conversion/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=228742e84878e5bf345f3d87af6bdb4a&file=json_record_map_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0dcc1d69ea1067397ab561d46488cc8b&file=json_record_map_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -363,7 +372,7 @@ title=Inception year=2010 released=16 Jul 2010 writer=fname=Christopher lname=No
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

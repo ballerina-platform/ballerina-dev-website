@@ -11,18 +11,34 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
+
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="c1">// The `bootstrapServers` is the list of remote server endpoints of the</span>
+    <span class="c1">// Kafka brokers.</span>
     <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;basic-producer&quot;</span><span class="p">,</span>
     <span class="nx">acks</span><span class="p">:</span> <span class="s">&quot;all&quot;</span><span class="p">,</span>
     <span class="nx">retryCount</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="c1">// The `enableIdempotence` should set to `true` to make a producer</span>
+    <span class="c1">// transactional.</span>
     <span class="nx">enableIdempotence</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">// A `transactionalId` must be provided to make a producer transactional.</span>
     <span class="nx">transactionalId</span><span class="p">:</span> <span class="s">&quot;test-transactional-id&quot;</span>
-<span class="p">};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World Transaction Message&quot;</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">serializedMessage</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+
+    <span class="c1">// Here, we create a producer config with optional parameters.</span>
+    <span class="c1">// transactional.id - enable transactional message production.</span>
     <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">serializedMessage</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">transaction</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
             <span class="nx">partition</span> <span class="p">=</span> <span class="mi">0</span><span class="p">);</span>
@@ -35,13 +51,7 @@ redirect_from:
     <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">experimental</span> <span class="nx">kafka_message_producer_transactional</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">If</span> <span class="nx">the</span> <span class="nx">producer</span> <span class="nx">successfully</span> <span class="nx">sent</span> <span class="nx">the</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">printed</span>
-<span class="err">#</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Console</span><span class="p">.</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">26</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mi">129</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Created</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">6</span><span class="nx">cfac3a7</span><span class="o">-</span><span class="nx">a8a2</span><span class="o">-</span><span class="mi">4220</span><span class="o">-</span><span class="mi">944</span><span class="nx">e</span><span class="o">-</span><span class="nx">dfbd6d27910f</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">26</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mi">184</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Running</span> <span class="mi">2</span><span class="o">-</span><span class="nx">phase</span> <span class="nx">commit</span> <span class="k">for</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">6</span><span class="nx">cfac3a7</span><span class="o">-</span><span class="nx">a8a2</span><span class="o">-</span><span class="mi">4220</span><span class="o">-</span><span class="mi">944</span><span class="nx">e</span><span class="o">-</span><span class="nx">dfbd6d27910f</span><span class="p">:</span><span class="err">$</span><span class="nx">anon</span><span class="err">$</span><span class="p">.</span><span class="err">$</span><span class="mi">0</span>
-<span class="nx">Transaction</span> <span class="nx">committed</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -86,9 +96,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/kafka-producer-transactional/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -358,7 +368,7 @@ Transaction committed
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

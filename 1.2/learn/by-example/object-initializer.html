@@ -11,34 +11,48 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+<span class="c1">// Defines an object called `Person`. Each object has its own `__init()` method, which gets</span>
+<span class="c1">// invoked when creating the objects. You can place the logic for initializing the fields of the</span>
+<span class="c1">// object within the body of the `__init()` method.</span>
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
+
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">validateAge</span><span class="p">(</span><span class="nx">age</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">validateAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">validateAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">age</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">age</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">age</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">error</span> <span class="nx">invalidAge</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;The age should be between 0-100&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">error</span> <span class="nx">invalidAge</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;The age should be between 0-100&quot;</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">invalidAge</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Since the `__init()` method potentially returns an `error`, the `p1` variable should</span>
+    <span class="c1">// be of the type `Person|error`.</span>
     <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">p1</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// `p2` will be an error since the name does not conform to the expected format.</span>
     <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">p2</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">object_initializer</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">John</span>
-<span class="nx">The</span> <span class="nx">age</span> <span class="nx">should</span> <span class="nx">be</span> <span class="nx">between</span> <span class="mi">0</span><span class="o">-</span><span class="mi">100</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -84,15 +98,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/object-initializer/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6be67979e4af3e012a1e5d06a308861b&file=object_initializer.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2361c1586723f071b7f15e6f42f460fd&file=object_initializer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -335,7 +349,7 @@ The age should be between 0-100
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

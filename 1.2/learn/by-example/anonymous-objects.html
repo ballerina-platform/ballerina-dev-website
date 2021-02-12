@@ -10,40 +10,60 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="c1">// This is an anonymous object type descriptor. All the fields and</span>
+    <span class="c1">// methods are made public. This is done to allow the declaration of</span>
+    <span class="c1">// variables equivalent to this object type (since two public object types</span>
+    <span class="c1">// are considered unequivalent if either of the objects have</span>
+    <span class="c1">// any private members).</span>
     <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
-        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+
+        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="nx">city</span><span class="p">;</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="nx">country</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="nx">address</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// There is no difference in how objects of anonymous types are created.</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
         <span class="nx">address</span><span class="p">:</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">)</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
+
+    <span class="c1">// Since anonymous objects do not have a type name associated with them,</span>
+    <span class="c1">// the object descriptor itself has to be specified when declaring</span>
+    <span class="c1">// variables of an anonymous object type.</span>
     <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
-        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+
+        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="nx">city</span><span class="p">;</span>
             <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="nx">country</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
+    <span class="p">}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">);</span>
+
+    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">country</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_objects</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Colombo</span>
-<span class="nx">UK</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -88,15 +108,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/anonymous-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c4e861f0c165f7b6a7cd7932d9a23b10&file=anonymous_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=06f9e950e50feae67e06ec7d8cf3e1d5&file=anonymous_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -375,7 +395,7 @@ UK
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -12,47 +12,101 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Asynchronously calls the function named `sum()`.</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+    <span class="c1">// You can pass the value of the `future` variable</span>
+    <span class="c1">// and call its results later.</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">squarePlusCube</span><span class="p">(</span><span class="nx">f1</span><span class="p">);</span>
+    <span class="c1">// Waits for the future `f1` to finish.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;SQ + CB = &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+
+    <span class="c1">// Calls the `countInfinity()` function, which runs forever</span>
+    <span class="c1">// in asynchronous mode.</span>
     <span class="nx">future</span><span class="p">&lt;()&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">countInfinity</span><span class="p">();</span>
+
+    <span class="c1">// Cancels the asynchronous execution.</span>
     <span class="nx">f2</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Counting done in one second: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
+
+    <span class="c1">// Asynchronously invokes the action call `get()`.</span>
+    <span class="c1">// By default this async call runs on the same physical thread of the caller.</span>
+    <span class="c1">// `@strand` annotation allows the invocation to run parallel.</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">f3</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span> <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Waits for action call `f3` to finish.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f3</span><span class="p">;</span>
+    <span class="c1">// Prints the response payload of the action call if successful or prints the</span>
+    <span class="c1">// reason for the failure.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Asynchronously invokes the functions named `square()` and `greet()`.</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f4</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">square</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">f5</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">greet</span><span class="p">(</span><span class="s">&quot;Bert&quot;</span><span class="p">);</span>
+
+    <span class="c1">// You can wait for any one of the given futures to complete.</span>
+    <span class="c1">// In this example,`f4` will finish before `f5` since `runtime:sleep()` is called</span>
+    <span class="c1">// in the `greet()` function to delay its execution. The value returned</span>
+    <span class="c1">// by the future that finishes first will be taken as the result.</span>
     <span class="kt">int</span><span class="p">|</span><span class="kt">string</span> <span class="nx">anyResult</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f4</span><span class="p">|</span><span class="nx">f5</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">anyResult</span><span class="p">);</span>
+
+    <span class="c1">// Asynchronously invokes the functions named `sum()`, `cube()`, and `greet()`.</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f6</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f7</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">cube</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">f8</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">greet</span><span class="p">(</span><span class="s">&quot;Moose&quot;</span><span class="p">);</span>
+    <span class="c1">// A `runtime:sleep` is added to delay the execution.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+
+    <span class="c1">// You can wait for all the given futures to complete.</span>
+    <span class="c1">// The result of this `wait` action can be assigned to a map or a record.</span>
+    <span class="c1">// If the result is a map, it will contain the returned values from each</span>
+    <span class="c1">// future with the key as the name of the future (if a key is not provided).</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">resultMap</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">first_field</span><span class="p">:</span> <span class="nx">f6</span><span class="p">,</span> <span class="nx">second_field</span><span class="p">:</span> <span class="nx">f7</span><span class="p">,</span>
                                             <span class="nx">third_field</span><span class="p">:</span> <span class="nx">f8</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resultMap</span><span class="p">);</span>
+
+
+    <span class="c1">// If the result is a record, it will contain the returned values from each</span>
+    <span class="c1">// future with the field name as the name of the future (if a field name is</span>
+    <span class="c1">// not provided).</span>
     <span class="nx">record</span> <span class="p">{</span><span class="kt">int</span> <span class="nx">first_field</span><span class="p">;</span> <span class="kt">int</span> <span class="nx">second_field</span><span class="p">;</span> <span class="kt">string</span> <span class="nx">third_field</span><span class="p">;}</span> <span class="nx">rec</span> <span class="p">=</span>
                     <span class="nx">wait</span> <span class="p">{</span><span class="nx">first_field</span><span class="p">:</span> <span class="nx">f6</span><span class="p">,</span> <span class="nx">second_field</span><span class="p">:</span> <span class="nx">f7</span><span class="p">,</span> <span class="nx">third_field</span><span class="p">:</span> <span class="nx">f8</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;first field of record --&gt; &quot;</span><span class="p">,</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">first_field</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;second field of record --&gt; &quot;</span><span class="p">,</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">second_field</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;third field of record --&gt; &quot;</span><span class="p">,</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">third_field</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">cube</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">cube</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// A `runtime:sleep` is added to delay the execution.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
     <span class="k">return</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;!!&quot;</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">squarePlusCube</span><span class="p">(</span><span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">squarePlusCube</span><span class="p">(</span><span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">sq</span> <span class="p">=</span> <span class="nx">square</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
@@ -65,23 +119,16 @@ redirect_from:
         <span class="nx">sq</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="k">return</span> <span class="nx">sq</span> <span class="o">+</span> <span class="nx">cb</span><span class="p">;</span>
     <span class="p">}</span>
+    <span class="c1">// Waits for the worker `W2` to complete.</span>
     <span class="k">return</span> <span class="nx">wait</span> <span class="nx">w2</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">countInfinity</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">countInfinity</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
         <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">async</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">SQ</span> <span class="o">+</span> <span class="nx">CB</span> <span class="p">=</span> <span class="mi">737100</span>
-<span class="nx">Counting</span> <span class="nx">done</span> <span class="nx">in</span> <span class="nx">one</span> <span class="nx">second</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">args</span><span class="p">=</span><span class="nx">test</span><span class="p">=</span><span class="mi">123</span> <span class="nx">headers</span><span class="p">=</span><span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">proto</span><span class="p">=</span><span class="nx">https</span> <span class="nx">host</span><span class="p">=</span><span class="nx">postman</span><span class="o">-</span><span class="nx">echo</span><span class="p">.</span><span class="nx">com</span> <span class="nx">user</span><span class="o">-</span><span class="nx">agent</span><span class="p">=</span><span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.2.0</span> <span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">port</span><span class="p">=</span><span class="mi">80</span> <span class="nx">url</span><span class="p">=</span><span class="nx">https</span><span class="p">:</span><span class="c1">//postman-echo.com/get?test=123</span>
-<span class="mi">400</span>
-<span class="nx">first_field</span><span class="p">=</span><span class="mi">100</span> <span class="nx">second_field</span><span class="p">=</span><span class="mi">27</span> <span class="nx">third_field</span><span class="p">=</span><span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
-<span class="nx">first</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">100</span>
-<span class="nx">second</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">27</span>
-<span class="nx">third</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -126,15 +173,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/async/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=14c4c38e9ccf6cc8f48c6cca12ac300d&file=async.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=1801538d6d637f50194e76dd7318c930&file=async.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -746,7 +793,7 @@ third field of record --&gt; Hello Moose!!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

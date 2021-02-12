@@ -10,33 +10,41 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// This is a simple binding pattern, which involves only a single variable.</span>
     <span class="p">[</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">float</span><span class="p">]</span> <span class="nx">t</span> <span class="p">=</span> <span class="p">[</span><span class="kc">true</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Simple variable : &quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">);</span>
+
+    <span class="c1">// The same variable definition can be written using a tuple-binding pattern</span>
+    <span class="c1">// with separate variables.</span>
     <span class="p">[</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">float</span><span class="p">]</span> <span class="p">[</span><span class="nx">a1</span><span class="p">,</span> <span class="nx">a2</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="kc">true</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple variable : &quot;</span><span class="p">,</span> <span class="nx">a1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">a2</span><span class="p">);</span>
+
+    <span class="c1">// The binding patterns are recursive in nature. These examples show</span>
+    <span class="c1">// how to write complex recursive variable definitions.</span>
     <span class="p">[[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">],</span> <span class="kt">float</span><span class="p">]</span> <span class="p">[[</span><span class="nx">b1</span><span class="p">,</span> <span class="nx">b2</span><span class="p">],</span> <span class="nx">b3</span><span class="p">]</span> <span class="p">=</span> <span class="p">[[</span><span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mf">6.7</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple variable : &quot;</span><span class="p">,</span> <span class="nx">b1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">b2</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">b3</span><span class="p">);</span>    <span class="p">[[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">],</span> <span class="p">[</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">float</span><span class="p">]]</span> <span class="p">[[</span><span class="nx">c1</span><span class="p">,</span> <span class="nx">c2</span><span class="p">],</span> <span class="p">[</span><span class="nx">c3</span><span class="p">,</span> <span class="nx">c4</span><span class="p">]]</span> <span class="p">=</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple variable : &quot;</span><span class="p">,</span> <span class="nx">b1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">b2</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">b3</span><span class="p">);</span>
+
+    <span class="p">[[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">],</span> <span class="p">[</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">float</span><span class="p">]]</span> <span class="p">[[</span><span class="nx">c1</span><span class="p">,</span> <span class="nx">c2</span><span class="p">],</span> <span class="p">[</span><span class="nx">c3</span><span class="p">,</span> <span class="nx">c4</span><span class="p">]]</span> <span class="p">=</span>
                                               <span class="p">[[</span><span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="mi">34</span><span class="p">],</span> <span class="p">[</span><span class="kc">true</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">]];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple variable : &quot;</span><span class="p">,</span> <span class="nx">c1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">c2</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">c3</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">c4</span><span class="p">);</span>
+
+    <span class="c1">// Tuple variables can also be defined using tuple-type expressions.</span>
     <span class="p">[[</span><span class="kt">string</span><span class="p">,</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="p">[</span><span class="kt">boolean</span><span class="p">,</span> <span class="nx">byte</span><span class="p">]]],</span> <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="p">]]</span> <span class="nx">v1</span> <span class="p">=</span>
                                    <span class="p">[[</span><span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="kc">true</span><span class="p">,</span> <span class="mi">34</span><span class="p">]]],</span> <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">45</span><span class="p">]];</span>
     <span class="p">[[</span><span class="kt">string</span><span class="p">,</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="p">[</span><span class="kt">boolean</span><span class="p">,</span> <span class="nx">byte</span><span class="p">]]],</span>
                            <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="p">]]</span> <span class="p">[[</span><span class="nx">d1</span><span class="p">,</span> <span class="p">[</span><span class="nx">d2</span><span class="p">,</span> <span class="p">[</span><span class="nx">d3</span><span class="p">,</span> <span class="nx">d4</span><span class="p">]]],</span> <span class="p">[</span><span class="nx">d5</span><span class="p">,</span> <span class="nx">d6</span><span class="p">]]</span> <span class="p">=</span> <span class="nx">v1</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple variable : &quot;</span><span class="p">,</span>
                     <span class="nx">d1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">d2</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">d3</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">d4</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">d5</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">d6</span><span class="p">);</span>
+
+    <span class="c1">// Tuple variable definitions can also take union types.</span>
     <span class="p">[</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span><span class="p">,</span> <span class="p">[</span><span class="kt">string</span><span class="p">|</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="p">]]</span> <span class="p">[</span><span class="nx">g1</span><span class="p">,</span> <span class="p">[</span><span class="nx">g2</span><span class="p">,</span> <span class="nx">g3</span><span class="p">]]</span> <span class="p">=</span>
                                                     <span class="p">[</span><span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">456</span><span class="p">]];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple variable : &quot;</span><span class="p">,</span> <span class="nx">g1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">g2</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">g3</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tuple_type_binding_pattern</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Simple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="kc">true</span> <span class="mf">0.4</span>
-<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="kc">true</span> <span class="mf">0.4</span>
-<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mi">4</span> <span class="mf">6.7</span>
-<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mi">34</span> <span class="kc">true</span> <span class="mf">6.7</span>
-<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mi">3</span> <span class="kc">true</span> <span class="mi">34</span> <span class="mf">5.6</span> <span class="mi">45</span>
-<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mf">3.4</span> <span class="mi">456</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -81,15 +89,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/tuple-typed-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=7ca9bc9f7f4cca76b10834b6434dbf63&file=tuple_typed_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c2180af7e2ca528bed9790a87ef32e88&file=tuple_typed_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -327,7 +335,7 @@ Tuple variable : Ballerina 3.4 456
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

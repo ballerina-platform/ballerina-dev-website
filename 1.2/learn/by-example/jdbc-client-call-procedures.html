@@ -12,27 +12,39 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+
+<span class="c1">// Client for MySQL database. This client can be used with any JDBC</span>
+<span class="c1">// supported database by providing the corresponding JDBC URL.</span>
 <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">dbOptions</span><span class="p">:</span> <span class="p">{</span><span class="nx">useSSL</span><span class="p">:</span> <span class="kc">false</span><span class="p">}</span>
 <span class="p">});</span>
+
+<span class="c1">// This is the `type` created to represent a data row.</span>
 <span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create a table using the `update` remote function.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The update operation - Creating table and procedures:&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot;</span> <span class="o">+</span>
         <span class="s">&quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create student table&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Create the stored procedure with IN parameters.</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT, &quot;</span> <span class="o">+</span>
         <span class="s">&quot;IN pName VARCHAR(255)) &quot;</span> <span class="o">+</span>
         <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
         <span class="s">&quot;INSERT INTO student(age, name) VALUES (pAge, pName); &quot;</span> <span class="o">+</span>
         <span class="s">&quot;END&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with IN param creation&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Create the stored procedure with INOUT and OUT parameters.</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT, &quot;</span> <span class="o">+</span>
         <span class="s">&quot;OUT pCount INT) &quot;</span> <span class="o">+</span>
         <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
@@ -40,10 +52,16 @@ redirect_from:
         <span class="s">&quot;SELECT COUNT(*) INTO pCount FROM student &quot;</span> <span class="o">+</span>
         <span class="s">&quot;WHERE age = 20; &quot;</span> <span class="o">+</span>
         <span class="s">&quot;END&quot;</span><span class="p">);</span>
-    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with INOUT/OUT param creation&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE GETSTUDENTS() &quot;</span> <span class="o">+</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with INOUT/OUT param creation&quot;</span><span class="p">);</span>
+
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE GETSTUDENTS() &quot;</span> <span class="o">+</span>
         <span class="s">&quot;BEGIN SELECT * FROM student; END&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with result set return&quot;</span><span class="p">);</span>
+
+    <span class="c1">// The remote function `call` is used to invoke a stored procedure.</span>
+    <span class="c1">// Here the stored procedure with IN parameters is invoked.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe call operation - With IN params&quot;</span><span class="p">);</span>
+    <span class="c1">// Invoke the stored procedure with IN type parameters.</span>
     <span class="k">var</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;{CALL INSERTDATA(?,?)}&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;George&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure call failed: &quot;</span><span class="p">,</span>
@@ -51,7 +69,10 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call operation with IN params successful&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Here stored procedure with OUT and INOUT parameters is invoked.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe call operation - With INOUT/OUT params&quot;</span><span class="p">);</span>
+    <span class="c1">// Define the parameters for INOUT arguments.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Parameter</span> <span class="nx">pId</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">sqlType</span><span class="p">:</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">TYPE_INTEGER</span><span class="p">,</span>
         <span class="nx">value</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
@@ -61,6 +82,7 @@ redirect_from:
         <span class="nx">sqlType</span><span class="p">:</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">TYPE_INTEGER</span><span class="p">,</span>
         <span class="nx">direction</span><span class="p">:</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">DIRECTION_OUT</span>
     <span class="p">};</span>
+    <span class="c1">// Invoke the stored procedure.</span>
     <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;{CALL GETCOUNT(?,?)}&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="nx">pId</span><span class="p">,</span> <span class="nx">pCount</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure call failed: &quot;</span><span class="p">,</span>
@@ -70,10 +92,14 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student ID of the student with age of 20: &quot;</span><span class="p">,</span> <span class="nx">pId</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student count with age of 20: &quot;</span><span class="p">,</span> <span class="nx">pCount</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Invoke the stored procedure which returns data.</span>
     <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;{CALL GETSTUDENTS()}&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nx">Student</span><span class="p">]);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure call failed: &quot;</span><span class="p">,</span>
-                    <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">retCall</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;[]</span> <span class="p">{</span>
+                    <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">retCall</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;[]</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in students table:&quot;</span><span class="p">);</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">row</span> <span class="nx">in</span> <span class="nx">retCall</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
@@ -81,37 +107,30 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call operation is not returning data&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Drop the table and procedures.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe update operation - Drop the tables and procedures&quot;</span><span class="p">);</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE student&quot;</span><span class="p">);</span>
-    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table student&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE INSERTDATA&quot;</span><span class="p">);</span>
-    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop stored procedure INSERTDATA&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE GETCOUNT&quot;</span><span class="p">);</span>
-    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop stored procedure GETCOUNT&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE GETSTUDENTS&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table student&quot;</span><span class="p">);</span>
+
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE INSERTDATA&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop stored procedure INSERTDATA&quot;</span><span class="p">);</span>
+
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE GETCOUNT&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop stored procedure GETCOUNT&quot;</span><span class="p">);</span>
+
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE GETSTUDENTS&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop stored procedure GETSTUDENTS&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Function to handle the return value of the `update` remote function.</span>
 <span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">At</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jdbc_client_call_procedures</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">The</span> <span class="nx">update</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">Creating</span> <span class="nx">table</span> <span class="nx">and</span> <span class="nx">procedures</span><span class="p">:</span>
-<span class="nx">Create</span> <span class="nx">student</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">param</span> <span class="nx">creation</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">INOUT</span><span class="o">/</span><span class="nx">OUT</span> <span class="nx">param</span> <span class="nx">creation</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">result</span> <span class="nx">set</span> <span class="k">return</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span><span class="nx">The</span> <span class="nx">call</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">With</span> <span class="nx">IN</span> <span class="nx">params</span>
-<span class="nx">Call</span> <span class="nx">operation</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">params</span> <span class="nx">successfulThe</span> <span class="nx">call</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">With</span> <span class="nx">INOUT</span><span class="o">/</span><span class="nx">OUT</span> <span class="nx">params</span>
-<span class="nx">Call</span> <span class="nx">operation</span> <span class="nx">with</span> <span class="nx">INOUT</span> <span class="nx">and</span> <span class="nx">OUT</span> <span class="nx">params</span> <span class="nx">successful</span>
-<span class="nx">Student</span> <span class="nx">ID</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">student</span> <span class="nx">with</span> <span class="nx">age</span> <span class="nx">of</span> <span class="mi">20</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Student</span> <span class="nx">count</span> <span class="nx">with</span> <span class="nx">age</span> <span class="nx">of</span> <span class="mi">20</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Data</span> <span class="nx">in</span> <span class="nx">students</span> <span class="nx">table</span><span class="p">:</span>
-<span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">age</span><span class="p">=</span><span class="mi">20</span> <span class="nx">name</span><span class="p">=</span><span class="nx">GeorgeThe</span> <span class="nx">update</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">Drop</span> <span class="nx">the</span> <span class="nx">tables</span> <span class="nx">and</span> <span class="nx">procedures</span>
-<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">student</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Drop</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="nx">INSERTDATA</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Drop</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="nx">GETCOUNT</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Drop</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="nx">GETSTUDENTS</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -157,9 +176,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/jdbc-client-call-procedures/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -738,7 +757,7 @@ Drop stored procedure GETSTUDENTS status: 0
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

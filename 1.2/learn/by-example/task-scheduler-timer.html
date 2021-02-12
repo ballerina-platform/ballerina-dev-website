@@ -13,69 +13,89 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+
+<span class="c1">// Defines a custom record type to use in the timer.</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">maxAge</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The interval in which the timer should trigger.</span>
     <span class="kt">int</span> <span class="nx">intervalInMillis</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span>
+
+    <span class="c1">// Initializes the timer scheduler using the interval value.</span>
+    <span class="c1">// The delay will be equal to the interval as an initial delay is not provided.</span>
     <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="nx">intervalInMillis</span><span class="p">,</span>
         <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">});</span>
+
+    <span class="c1">// Define a person object</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxAge</span><span class="p">:</span> <span class="mi">10</span><span class="p">};</span>
+
+    <span class="c1">// Attaching the service to the timer. This will not start the timer.</span>
+    <span class="c1">// However, it will attach the service to the timer and also passes the</span>
+    <span class="c1">// person object into the `onTrigger()` resource</span>
     <span class="k">var</span> <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service1</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service1.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service2</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service2</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service2.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Starts the timer.</span>
     <span class="k">var</span> <span class="nx">startResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">startResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting the task is failed.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// While loop will stop the function from exiting until the service ends.</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Waits until the age of the person reaches the max age.</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+    <span class="c1">// Cancels the timer. This will stop the timer and all the services</span>
+    <span class="c1">// attached to it.</span>
     <span class="k">var</span> <span class="nx">stopResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">stopResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stopping the task is failed.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;End.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;End.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// The service, which will be attached to the timer.</span>
 <span class="kd">service</span> <span class="nx">service1</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+    <span class="c1">// The onTrigger resource, which will trigger when the timer runs off.</span>
+    <span class="c1">// The usage of the Person object being passed inside the function, which we</span>
+    <span class="c1">// attached with the timer.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; you are &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; years old now.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="kd">service</span> <span class="nx">service2</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">service</span> <span class="nx">service2</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; started schooling&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">task_scheduler_timer</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">1</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">2</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">3</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">4</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">5</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">6</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Sam</span> <span class="nx">started</span> <span class="nx">schooling</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">7</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">8</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">9</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">Hi</span> <span class="nx">Sam</span> <span class="nx">you</span> <span class="nx">are</span> <span class="mi">10</span> <span class="nx">years</span> <span class="nx">old</span> <span class="nx">now</span><span class="p">.</span>
-<span class="nx">End</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -124,9 +144,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/task-scheduler-timer/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -582,7 +602,7 @@ End.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

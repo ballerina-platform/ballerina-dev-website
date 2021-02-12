@@ -14,6 +14,11 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
+
+<span class="c1">// Define the OAuth2 client endpoint to call the backend services.</span>
+<span class="c1">// The OAuth2 authentication with client credentials grant type is enabled by</span>
+<span class="c1">// creating an `oauth2:OutboundOAuth2Provider` with the relevant configurations</span>
+<span class="c1">// passed as a record.</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
@@ -28,7 +33,9 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler1</span>
     <span class="p">},</span>
@@ -40,6 +47,13 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
+
+<span class="c1">// Defines the OAuth2 client endpoint to call the backend services.</span>
+<span class="c1">// The OAuth2 authentication with the password grant type is enabled by</span>
+<span class="c1">// creating an `oauth2:OutboundOAuth2Provider` with the relevant</span>
+<span class="c1">// configurations passed as a record. If the access token expires or</span>
+<span class="c1">// becomes invalid, then it will be automatically refreshed with the provided</span>
+<span class="c1">// `refreshConfig`.</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;&lt;Username for password grant authentication&gt;&quot;</span><span class="p">,</span>
@@ -68,7 +82,9 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler2</span>
     <span class="p">},</span>
@@ -80,6 +96,12 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
+
+<span class="c1">// Defines the OAuth2 client endpoint to call the backend services.</span>
+<span class="c1">// The OAuth2 authentication with direct token mode is enabled by creating</span>
+<span class="c1">// an `oauth2:OutboundOAuth2Provider` with the relevant configurations passed</span>
+<span class="c1">// as a record. If the `accessToken` is invalid or not provided, it will</span>
+<span class="c1">// be automatically refreshed with the provided `refreshConfig`.</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">accessToken</span><span class="p">:</span> <span class="s">&quot;&lt;Access token for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
@@ -98,7 +120,9 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler3</span>
     <span class="p">},</span>
@@ -109,7 +133,10 @@ redirect_from:
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">});</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Sends a `GET` request to the specified endpoint.</span>
     <span class="k">var</span> <span class="nx">response1</span> <span class="p">=</span> <span class="nx">clientEP1</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response1</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response1</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
@@ -121,6 +148,8 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP1.&quot;</span><span class="p">,</span> <span class="nx">response1</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Send a `GET` request to the specified endpoint.</span>
     <span class="k">var</span> <span class="nx">response2</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response2</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response2</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
@@ -132,6 +161,8 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP2.&quot;</span><span class="p">,</span> <span class="nx">response2</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Send a `GET` request to the specified endpoint.</span>
     <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response3</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
@@ -143,9 +174,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">test</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">configure</span> <span class="nx">the</span> <span class="nx">clients</span> <span class="nx">with</span> <span class="nx">required</span> <span class="nx">parameters</span> <span class="nx">and</span>
-<span class="err">#</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_client_with_oauth2</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span><span class="err">#</span> <span class="nx">This</span> <span class="nx">should</span> <span class="nx">log</span> <span class="nx">the</span> <span class="nx">JSON</span> <span class="nx">output</span> <span class="nx">returned</span> <span class="nx">by</span> <span class="nx">the</span> <span class="nx">REST</span> <span class="nx">endpoints</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -196,9 +225,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/secured-client-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -621,7 +650,7 @@ ballerina run secured_client_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -12,30 +12,39 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">file</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// In this example, the listener monitors any modifications done to a specific directoy.</span>
+<span class="c1">// Before running the example, change the value of the &#39;path&#39; field </span>
+<span class="c1">// to indicate the path of the directory that you want the listener to monitor.</span>
+<span class="c1">// As the recursive property is set to false,</span>
+<span class="c1">// the listener does not monitor the child directories of the main directory</span>
+<span class="c1">// that it listens to.</span>
 <span class="nx">listener</span> <span class="nx">file</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">inFolder</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/home/ballerina/fs-server-connector/observed-dir&quot;</span><span class="p">,</span>
     <span class="nx">recursive</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">});</span>
+
+<span class="c1">// The directory listener should have at least one of these predefined resources.</span>
 <span class="kd">service</span> <span class="nx">localObserver</span> <span class="nx">on</span> <span class="nx">inFolder</span> <span class="p">{</span>
+
+    <span class="c1">// This resource is invoked once a new file is created in the listening directory.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onCreate</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Create: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource is invoked once an existing file is deleted from the listening directory.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onDelete</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Delete: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource is invoked once an existing file is modified in the listening directory.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onModify</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Modify: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Before</span> <span class="nx">running</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">new</span> <span class="nx">file</span> <span class="nx">called</span> <span class="s">`test1.txt`</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">called</span> <span class="s">`observed-dir`</span> <span class="nx">and</span> <span class="nx">modify</span> <span class="nx">and</span> <span class="nx">delete</span> <span class="nx">it</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">directory_listener</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Create</span><span class="p">:</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">fs</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="kd">connector</span><span class="o">/</span><span class="nx">observed</span><span class="o">-</span><span class="nx">dir</span><span class="o">/</span><span class="nx">test1</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">Modify</span><span class="p">:</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">fs</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="kd">connector</span><span class="o">/</span><span class="nx">observed</span><span class="o">-</span><span class="nx">dir</span><span class="o">/</span><span class="nx">test1</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">Delete</span><span class="p">:</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">fs</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="kd">connector</span><span class="o">/</span><span class="nx">observed</span><span class="o">-</span><span class="nx">dir</span><span class="o">/</span><span class="nx">test1</span><span class="p">.</span><span class="nx">txt</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -78,9 +87,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/directory-listener/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -294,7 +303,7 @@ Delete: /home/ballerina/fs-server-connector/observed-dir/test1.txt
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

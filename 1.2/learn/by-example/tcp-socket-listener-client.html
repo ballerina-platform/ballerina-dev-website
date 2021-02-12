@@ -10,14 +10,19 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="c1">// This is the client implementation for the TCP socket with the attached callback service. Callback service is optional.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create a new socket client by providing the host, port, and callback service.</span>
     <span class="nx">socket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
         <span class="nx">port</span><span class="p">:</span> <span class="mi">61598</span>
     <span class="p">});</span>
     <span class="kt">string</span> <span class="nx">content</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina&quot;</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="c1">// Send desired content to the server using the write function.</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">arrayLength</span> <span class="p">=</span> <span class="nx">payloadByte</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">arrayLength</span><span class="p">)</span> <span class="p">{</span>
@@ -29,6 +34,7 @@ redirect_from:
             <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">payloadByte</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">writeResult</span><span class="p">,</span> <span class="nx">arrayLength</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+    <span class="c1">// Reading response from the server.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
         <span class="k">var</span> <span class="p">[</span><span class="nx">reply</span><span class="p">,</span> <span class="nx">length</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
@@ -51,29 +57,36 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Close the connection between the server and the client.</span>
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connection closed successfully.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tcp_socket_client</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Print</span> <span class="nx">the</span> <span class="nx">response</span> <span class="nx">that</span> <span class="nx">is</span> <span class="nx">obtained</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">server</span><span class="p">.</span>
-<span class="nx">Hello</span> <span class="nx">Ballerina</span> <span class="nx">back</span>
-<span class="nx">Client</span> <span class="nx">connection</span> <span class="nx">closed</span> <span class="nx">successfully</span><span class="p">.</span>
+<span class="p">}</span>
+
+<span class="c1">// This is the server implementation for the TCP socket.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span>
+
+<span class="c1">// Bind the service to the port.</span>
+<span class="c1">// The socket listener should have these four predefined resources.</span>
 <span class="kd">service</span> <span class="nx">echoServer</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">socket</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">61598</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This resource is invoked when the new client joins.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Client connected: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource is invoked once the content is received from the client.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onReadReady</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
             <span class="k">var</span> <span class="p">[</span><span class="nx">content</span><span class="p">,</span> <span class="nx">length</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">length</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Create a new `ReadableByteChannel` using the newly received content.</span>
                 <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">byteChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
@@ -83,6 +96,7 @@ redirect_from:
                     <span class="k">if</span> <span class="p">(</span><span class="nx">str</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                         <span class="kt">string</span> <span class="nx">reply</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">str</span> <span class="o">+</span> <span class="s">&quot; back&quot;</span><span class="p">;</span>
                         <span class="nx">byte</span><span class="p">[]</span> <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">reply</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+                        <span class="c1">// Send the reply to the `caller`.</span>
                         <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
                         <span class="kt">int</span> <span class="nx">arrayLength</span> <span class="p">=</span> <span class="nx">payloadByte</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
                         <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">arrayLength</span><span class="p">)</span> <span class="p">{</span>
@@ -109,15 +123,13 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// This resource is invoked for the error situation</span>
+    <span class="c1">// if it happens during the `onConnect` and `onReadReady`.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">er</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="nx">er</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tcp_socket_listener</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">socket</span> <span class="nx">listener</span> <span class="nx">starts</span> <span class="nx">listening</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">port</span> <span class="mi">61598</span> <span class="k">for</span> <span class="nx">incoming</span> <span class="nx">client</span> <span class="nx">requests</span><span class="p">.</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">socket</span> <span class="nx">listener</span> <span class="mi">615982019</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">429</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Client</span> <span class="nx">connected</span><span class="p">:</span> <span class="mi">504372137</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">467</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Number</span> <span class="nx">of</span> <span class="nx">bytes</span> <span class="nx">written</span><span class="p">:</span> <span class="mi">20</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">487</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Client</span> <span class="nx">left</span><span class="p">:</span> <span class="mi">504372137</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -162,9 +174,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/tcp-socket-listener-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -704,7 +716,7 @@ ballerina run tcp_socket_listener.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

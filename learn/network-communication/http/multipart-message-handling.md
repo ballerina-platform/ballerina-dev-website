@@ -61,7 +61,7 @@ The code above explicitly creates the MIME entity and sets it in the HTTP reques
 
 ## Setting the Body with Other Data Types
 
-The [`mime:Entity`](/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object contains functions for setting the body with other data types such as [binary](https://dev.ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setTextPayload), [XML](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setXmlPayload), and [JSON](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setJsonPayload) as well.
+The [`mime:Entity`](/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object contains functions for setting the body with other data types such as [binary](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setTextPayload), [XML](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setXmlPayload), and [JSON](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setJsonPayload) as well.
 
 A multipart message can be created by setting the body parts in the [`mime:Entity`](/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object using the [`setBodyParts`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setBodyParts) method. 
 

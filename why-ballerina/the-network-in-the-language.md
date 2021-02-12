@@ -289,16 +289,16 @@ if result is error {
                                        <td style="width:200px"><strong>Client</strong></td>
                                     </tr>
                                     <tr>
-                                       <td><a href="/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>
+                                       <td><a href="/learn/by-example/secured-service-with-basic-auth-ldap-user-store.html">Basic Auth</a></td>
                                        <td><a href="/learn/by-example/secured-client-with-basic-auth.html">Basic Auth</a></td>
                                     </tr>
                                     <tr>
                                        <td><a href="/learn/by-example/secured-service-with-jwt-auth.html">JWT</a></td>
-                                       <td><a href="/learn/by-example/secured-client-with-jwt-auth.html">JWT</a></td>
+                                       <td><a href="/learn/by-example/secured-client-with-self-signed-jwt-auth.html">JWT</a></td>
                                     </tr>
                                     <tr>
                                        <td><a href="/learn/by-example/secured-service-with-oauth2.html">OAuth2</a></td>
-                                       <td><a href="/learn/by-example/secured-client-with-oauth2.html">OAuth2</a></td>
+                                       <td><a href="/learn/by-example/secured-client-with-oauth2-client-credentials-grant-type.html">OAuth2</a></td>
                                     </tr>
                                  </tbody>
                               </table>

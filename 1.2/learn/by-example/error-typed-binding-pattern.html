@@ -10,45 +10,58 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">SampleErrorData</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">SampleErrorData</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
     <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">info</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">fatal</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">SampleErrorData</span><span class="p">&gt;;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">SampleErrorData</span><span class="p">&gt;;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// This error-type binding pattern will destructure an `error` of the type `SampleError`, and create two variables as follows:</span>
+    <span class="c1">// The value of the reason string in the`SampleError` will be set to a new `string` variable `reason`.</span>
+    <span class="c1">// The values in the detail mapping will be set to new variables `info` and `fatal`.</span>
     <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="nx">fatal</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span> <span class="o">+</span> <span class="nx">reason</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Info: &quot;</span><span class="p">,</span> <span class="nx">info</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Fatal: &quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">);</span>
+
+    <span class="c1">// The detail mapping can also be destructured using a rest parameter.</span>
+    <span class="c1">// `params` will be of the type `map&lt;anydata|error&gt;`, and will have the</span>
+    <span class="c1">// `info` and `fatal` fields.</span>
     <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonTwo</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span><span class="p">,</span> <span class="nx">reasonTwo</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Mapping: &quot;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+
+    <span class="c1">// When some error detail field names are provided rest parameter will only contain detail field that are not matched.</span>
     <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonThree</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="nx">info2</span><span class="p">,</span> <span class="o">...</span><span class="nx">filteredParams</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Mapping: &quot;</span><span class="p">,</span> <span class="nx">filteredParams</span><span class="p">);</span>
     
+    <span class="c1">// The underscore &#39;_&#39; sign can be used to ignore either the reason string or the detail mapping.</span>
     <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">detailMsg</span> <span class="p">=</span> <span class="nx">detailMsg</span><span class="p">,</span> <span class="nx">isFatal</span> <span class="p">=</span> <span class="nx">isFatal</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getRecordConstrainedError</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Message: &quot;</span><span class="p">,</span> <span class="nx">detailMsg</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">SampleError</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">SampleError</span> <span class="p">{</span>
     <span class="nx">SampleError</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="s">&quot;Detail Msg&quot;</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Foo</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Foo</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
     <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">detailMsg</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">isFatal</span><span class="p">;</span>
-<span class="p">|};</span><span class="kd">function</span> <span class="nx">getRecordConstrainedError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="kd">function</span> <span class="nx">getRecordConstrainedError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Some Error&quot;</span><span class="p">,</span> <span class="nx">detailMsg</span> <span class="p">=</span> <span class="s">&quot;Failed Message&quot;</span><span class="p">,</span> <span class="nx">isFatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">error_type_binding_pattern</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Reason</span> <span class="nx">String</span><span class="p">:</span> <span class="nx">Sample</span> <span class="nx">Error</span>
-<span class="nx">Info</span><span class="p">:</span> <span class="nx">Detail</span> <span class="nx">Msg</span>
-<span class="nx">Fatal</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">Reason</span> <span class="nx">String</span><span class="p">:</span> <span class="nx">Sample</span> <span class="nx">Error</span>
-<span class="nx">Detail</span> <span class="nx">Mapping</span><span class="p">:</span> <span class="nx">info</span><span class="p">=</span><span class="nx">Detail</span> <span class="nx">Msg</span> <span class="nx">fatal</span><span class="p">=</span><span class="kc">true</span>
-<span class="nx">Detail</span> <span class="nx">Mapping</span><span class="p">:</span> <span class="nx">fatal</span><span class="p">=</span><span class="kc">true</span>
-<span class="nx">Detail</span> <span class="nx">Message</span><span class="p">:</span> <span class="nx">Failed</span> <span class="nx">Message</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -92,15 +105,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/error-typed-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5f11cdaa9fc8f81711156678ecad6e54&file=error_typed_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=aafe31e3491fa86f26a1ec5c539fb2b9&file=error_typed_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -388,7 +401,7 @@ Detail Message: Failed Message
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

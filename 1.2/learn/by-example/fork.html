@@ -10,29 +10,39 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// The `fork` block allows you to spawn (fork) multiple workers</span>
+    <span class="c1">// within any execution flow of a Ballerina program.</span>
     <span class="k">fork</span> <span class="p">{</span>
         <span class="kd">worker</span> <span class="nx">w1</span> <span class="nx">returns</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
             <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1] i: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; s: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+            <span class="c1">// Return of worker `w1`.</span>
             <span class="k">return</span> <span class="p">[</span><span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">];</span>
-        <span class="p">}</span>        <span class="kd">worker</span> <span class="nx">w2</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="kd">worker</span> <span class="nx">w2</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
             <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="mf">10.344</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2] f: &quot;</span><span class="p">,</span> <span class="nx">f</span><span class="p">);</span>
+            <span class="c1">// Return of worker `w2`.</span>
             <span class="k">return</span> <span class="nx">f</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">// Workers are visible outside the `fork` as futures.</span>
+    <span class="c1">// The `wait` action will wait for both workers `w1` and `w2` to finish.</span>
     <span class="nx">record</span> <span class="p">{[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">w1</span><span class="p">;</span> <span class="kt">float</span> <span class="nx">w2</span><span class="p">;}</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
+
+    <span class="c1">// The resulting record contains returned values from each worker with</span>
+    <span class="c1">// the field name as the worker name (if a field name is not provided).</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">iW1</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w1</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">fW2</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[main] iW1: &quot;</span><span class="p">,</span> <span class="nx">iW1</span><span class="p">,</span> <span class="s">&quot; sW1: &quot;</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">,</span> <span class="s">&quot; fW2: &quot;</span><span class="p">,</span> <span class="nx">fW2</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="k">fork</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">w1</span><span class="p">]</span> <span class="nx">i</span><span class="p">:</span> <span class="mi">23</span> <span class="nx">s</span><span class="p">:</span> <span class="nx">Colombo</span>
-<span class="p">[</span><span class="nx">w2</span><span class="p">]</span> <span class="nx">f</span><span class="p">:</span> <span class="mf">10.344</span>
-<span class="p">[</span><span class="nx">main</span><span class="p">]</span> <span class="nx">iW1</span><span class="p">:</span> <span class="mi">23</span> <span class="nx">sW1</span><span class="p">:</span> <span class="nx">Colombo</span> <span class="nx">fW2</span><span class="p">:</span> <span class="mf">10.344</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -78,15 +88,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/fork/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b038b0b5ef4997e3167f452a9fef5766&file=fork.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=871a5687c7899eb45e4dc6d207a6dd7b&file=fork.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -321,7 +331,7 @@ ballerina run fork.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

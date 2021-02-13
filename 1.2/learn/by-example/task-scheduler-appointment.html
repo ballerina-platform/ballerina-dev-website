@@ -12,7 +12,12 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span><span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The Appointment data record provides the appointment configurations.</span>
     <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentData</span> <span class="nx">appointmentData</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">seconds</span><span class="p">:</span> <span class="s">&quot;0/2&quot;</span><span class="p">,</span>
         <span class="nx">minutes</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
@@ -22,17 +27,27 @@ redirect_from:
         <span class="nx">daysOfWeek</span><span class="p">:</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
         <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;*&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Create an Appointment using the configurations.</span>
     <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">appointmentDetails</span><span class="p">:</span> <span class="nx">appointmentData</span><span class="p">});</span>
+
+    <span class="c1">// Attach the service to the scheduler and exit if there is an error.</span>
     <span class="k">var</span> <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">appointmentService</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Start the scheduler and exit if there is an error.</span>
     <span class="k">var</span> <span class="nx">startResult</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">startResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting the task is failed.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+
+    <span class="c1">// Cancel the appointment.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while cancelling the task&quot;</span><span class="p">);</span>
@@ -40,7 +55,10 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment cancelled.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Creating a service on the task Listener.</span>
 <span class="kd">service</span> <span class="nx">appointmentService</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+    <span class="c1">// This resource triggers when the appointment is due.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">reminderCount</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">reminderCount</span> <span class="p">=</span> <span class="nx">reminderCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -48,15 +66,6 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">task_scheduler_appointment</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">2</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">4</span>
-<span class="nx">Schedule</span> <span class="nx">is</span> <span class="nx">due</span> <span class="o">-</span> <span class="nx">Reminder</span><span class="p">:</span> <span class="mi">5</span>
-<span class="nx">Appointment</span> <span class="nx">cancelled</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -106,9 +115,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/task-scheduler-appointment/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -428,7 +437,7 @@ Appointment cancelled.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

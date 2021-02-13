@@ -11,9 +11,15 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Gets an `XML` object, which needs to be transformed.</span>
     <span class="kt">xml</span> <span class="nx">sourceXml</span> <span class="p">=</span> <span class="nx">getXml</span><span class="p">();</span>
+    <span class="c1">// Gets an `XSL` style sheet represented in an XML object.</span>
     <span class="kt">xml</span> <span class="nx">xsl</span> <span class="p">=</span> <span class="nx">getXsl</span><span class="p">();</span>
+
+    <span class="c1">// Transforms the `XML` to another formats.</span>
     <span class="kt">xml</span><span class="p">|</span><span class="nx">error</span> <span class="nx">target</span> <span class="p">=</span> <span class="nx">xslt</span><span class="p">:</span><span class="nx">transform</span><span class="p">(</span><span class="nx">sourceXml</span><span class="p">,</span> <span class="nx">xsl</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transformed xml : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
@@ -21,6 +27,8 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Error : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Returns an `XML` object, which needs to be transformed.</span>
 <span class="kd">function</span> <span class="nx">getXml</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;samples&gt;</span>
 <span class="s">                    &lt;song&gt;</span>
@@ -37,6 +45,8 @@ redirect_from:
 <span class="s">                    &lt;/song&gt;</span>
 <span class="s">                &lt;/samples&gt;`</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Returns an `XSL` style sheet represented in an XML object.</span>
 <span class="kd">function</span> <span class="nx">getXsl</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
 <span class="s">                    &lt;xsl:template match=&quot;/&quot;&gt;</span>
@@ -106,9 +116,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xslt-transformation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -377,7 +387,7 @@ Transformed xml : &lt;html&gt;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

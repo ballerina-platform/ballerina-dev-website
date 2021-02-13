@@ -12,6 +12,9 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// Convert a `map&lt;json&gt;` value to an array of Strings.</span>
+<span class="c1">// Return the result as a tuple, which contains the headers and fields.</span>
 <span class="kd">function</span> <span class="nx">getFields</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">rec</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">[</span><span class="kt">string</span><span class="p">[],</span> <span class="kt">string</span><span class="p">[]]</span> <span class="p">{</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recordField</span> <span class="nx">in</span> <span class="nx">rec</span> <span class="p">{</span>
@@ -19,6 +22,8 @@ redirect_from:
     <span class="p">}</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">rec</span><span class="p">.</span><span class="nx">keys</span><span class="p">(),</span> <span class="nx">fields</span><span class="p">];</span>
 <span class="p">}</span>
+
+<span class="c1">// Writes `json` content to CSV.</span>
 <span class="kd">function</span> <span class="nx">writeCsv</span><span class="p">(</span><span class="kt">json</span><span class="p">[]</span> <span class="nx">content</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">csvch</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">recIndex</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -27,12 +32,16 @@ redirect_from:
         <span class="p">[</span><span class="kt">string</span><span class="p">[],</span> <span class="kt">string</span><span class="p">[]]</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getFields</span><span class="p">(&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span><span class="nx">content</span><span class="p">[</span><span class="nx">recIndex</span><span class="p">]);</span>
         <span class="k">var</span> <span class="p">[</span><span class="nx">headers</span><span class="p">,</span> <span class="nx">fields</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">recIndex</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//We ignore the result as this would mean a `nil` return</span>
             <span class="nx">check</span> <span class="nx">csvch</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">check</span> <span class="nx">csvch</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">fields</span><span class="p">);</span>
         <span class="nx">recIndex</span> <span class="p">=</span> <span class="nx">recIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The sample `json`, which will be written.</span>
     <span class="kt">json</span> <span class="nx">sample</span> <span class="p">=</span> <span class="p">{</span>
         <span class="s">&quot;employees&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s">&quot;employee&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -57,7 +66,10 @@ redirect_from:
             <span class="p">]</span>
         <span class="p">}</span>
     <span class="p">};</span>
+    <span class="c1">// Writes JSON into a CSV.</span>
     <span class="kt">string</span> <span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;./files/sample.csv&quot;</span><span class="p">;</span>
+    <span class="c1">// Specifies the JSON array, which should be transformed into CSV.</span>
+    <span class="c1">// Also, provides the location the CSV should be written.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">writeCsv</span><span class="p">(&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span><span class="nx">sample</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">employee</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while writing csv record :&quot;</span><span class="p">,</span>
@@ -66,10 +78,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;json record successfully transformed to a csv, file could&quot;</span> <span class="o">+</span>
                     <span class="s">&quot; be found in &quot;</span> <span class="o">+</span> <span class="nx">path</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">json_csv</span><span class="p">.</span><span class="nx">bal</span>
-<span class="kt">json</span> <span class="nx">record</span> <span class="nx">successfully</span> <span class="nx">transformed</span> <span class="nx">to</span> <span class="nx">a</span> <span class="nx">csv</span><span class="p">,</span> <span class="nx">file</span> <span class="nx">could</span> <span class="nx">be</span> <span class="nx">found</span> <span class="nx">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sample</span><span class="p">.</span><span class="nx">csv</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -112,9 +121,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/json-csv/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -393,7 +402,7 @@ json record successfully transformed to a csv, file could be found in ./files/sa
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

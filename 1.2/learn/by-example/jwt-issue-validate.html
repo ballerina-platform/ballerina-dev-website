@@ -14,26 +14,38 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">crypto</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Defines the keystore.</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">KeyStore</span> <span class="nx">keyStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
               <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Defines the JWT keystore configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtKeyStoreConfig</span> <span class="nx">keyStoreConfig</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="nx">keyStore</span><span class="p">,</span>
         <span class="nx">keyAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">keyPassword</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Defines the JWT header and sets the values.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtHeader</span> <span class="nx">header</span> <span class="p">=</span> <span class="p">{};</span>
     <span class="nx">header</span><span class="p">.</span><span class="nx">alg</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">RS256</span><span class="p">;</span>
     <span class="nx">header</span><span class="p">.</span><span class="nx">typ</span> <span class="p">=</span> <span class="s">&quot;JWT&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Defines the JWT payload and sets the values.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{};</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">sub</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">iss</span> <span class="p">=</span> <span class="s">&quot;wso2&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">jti</span> <span class="p">=</span> <span class="s">&quot;100078234ba23&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">aud</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerinaSamples&quot;</span><span class="p">];</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">exp</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">().</span><span class="nx">time</span><span class="o">/</span><span class="mi">1000</span> <span class="o">+</span> <span class="mi">600</span><span class="p">;</span>
+
+    <span class="c1">// Issues a JWT based on the provided header, payload and config.</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jwt</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">issueJwt</span><span class="p">(</span><span class="nx">header</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">keyStoreConfig</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">jwt</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span><span class="p">,</span> <span class="nx">jwt</span><span class="p">);</span>
@@ -41,11 +53,15 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while issuing the JWT: &quot;</span><span class="p">,</span>
                     <span class="nx">jwt</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Defines the truststore.</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">TrustStore</span> <span class="nx">trustStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
               <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// Defines the JWT validator configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
@@ -55,6 +71,8 @@ redirect_from:
             <span class="nx">trustStore</span><span class="p">:</span> <span class="nx">trustStore</span>
         <span class="p">}</span>
     <span class="p">};</span>
+
+    <span class="c1">// Validates the created JWT.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -62,11 +80,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
                     <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jwt_issue_validate</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
-<span class="nx">Issued</span> <span class="nx">JWT</span><span class="p">:</span> <span class="nx">eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ</span><span class="p">.</span><span class="nx">eyJzdWIiOiJKb2huIiwgImlzcyI6IndzbzIiLCAiZXhwIjoxNTg2NDM3MzgwLCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsiYmFsbGVyaW5hIiwgImJhbGxlcmluYVNhbXBsZXMiXX0</span><span class="p">.</span><span class="nx">H67rsDKLmZJacI1NKMlYl6cCROS</span><span class="o">-</span><span class="nx">rsLfW3Z2INvvDyHrntNau0P8FFoIc98D_c7UPe_L1_uV3no0nWweoWvzqQB8wfvduB6wKNxb1KGprIUF0ilxveQN1Vzab2Mvd7SJCJ19tf6OcKort38C7ES0am5vsm0495OyaNVDAq3ixFP8WRacQW53b0ELc25QCYJJBLhjFBdXLpnx1boSjgS2vhTrg8bY8zlkoV3pJULfHmjS3JX0a_FBqqeB1yQqbIp1RxGrWzGg4nA6kPjGC1GwYvxjcCVQjY5PWWsd9GAeCnnvmFE_Xy6Xenq5lfL2RWWO4H3yF8x_8hcLS9XidERGWQ</span>
-<span class="nx">Validated</span> <span class="nx">JWT</span> <span class="nx">Payload</span><span class="p">:</span> <span class="nx">iss</span><span class="p">=</span><span class="nx">wso2</span> <span class="nx">sub</span><span class="p">=</span><span class="nx">John</span> <span class="nx">aud</span><span class="p">=</span><span class="nx">ballerina</span> <span class="nx">ballerinaSamples</span> <span class="nx">jti</span><span class="p">=</span><span class="mi">100078234</span><span class="nx">ba23</span> <span class="nx">exp</span><span class="p">=</span><span class="mi">1586437380</span> <span class="nx">customClaims</span><span class="p">=</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -109,9 +123,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/jwt-issue-validate/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -425,7 +439,7 @@ Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=1000
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

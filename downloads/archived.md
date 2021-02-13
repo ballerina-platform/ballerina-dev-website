@@ -1,6 +1,6 @@
 ---
 layout: ballerina-landing-page
-title: Stable Archived Versions
+title: 1.2.x Archived Versions
 permalink: /downloads/archived/
 ---
 <script src="{{ "/js/download/archived_download.js" | prepend: site.baseurl }}"></script>
@@ -18,7 +18,7 @@ permalink: /downloads/archived/
         </div> -->
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers" id="archived-versions">
-                <h2>Stable Archived Versions</h2>
+                <h2>1.2.x Archived Versions</h2>
             </div>            
         </div>
     </div>

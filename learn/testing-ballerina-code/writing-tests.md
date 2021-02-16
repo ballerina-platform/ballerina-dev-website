@@ -8,6 +8,8 @@ active: writing-tests
 intro: The sections below include information about writing tests in Ballerina.
 redirect_from:
   - /learn/testing-ballerina-code/writing-tests
+  - /swan-lake/learn/testing-ballerina-code/writing-tests/
+  - /swan-lake/learn/testing-ballerina-code/writing-tests
 ---
 
 ## Project Structure

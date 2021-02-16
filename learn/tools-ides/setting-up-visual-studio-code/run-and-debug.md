@@ -14,6 +14,8 @@ redirect_from:
   - /learn/setting-up-visual-studio-code/run-and-debug
   - /learn/run-and-debug
   - /learn/run-and-debug/
+  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-and-debug/
+  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-and-debug
 ---
 
 ## Starting a Debug Session

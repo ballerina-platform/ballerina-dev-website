@@ -11,6 +11,8 @@ redirect_from:
   - /learn/installing-ballerina/
   - /learn/installing-ballerina/#installing-from-source
   - /learn/installing-ballerina/#installing-from-source/
+  - /swan-lake/learn/getting-started/installing-ballerina/
+  - /swan-lake/learn/getting-started/installing-ballerina
 ---
 
 ## Installing Ballerina via Installers

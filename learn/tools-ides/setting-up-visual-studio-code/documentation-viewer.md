@@ -14,6 +14,8 @@ redirect_from:
   - /learn/setting-up-visual-studio-code/documentation-viewer
   - /learn/documentation-viewer
   - /learn/documentation-viewer/
+  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/documentation-viewer/
+  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/documentation-viewer
 ---
 
 ## Launching the Documentation Viewer

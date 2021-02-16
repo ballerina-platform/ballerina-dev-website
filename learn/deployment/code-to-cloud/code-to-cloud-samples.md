@@ -8,6 +8,8 @@ active: samples
 intro: The below are a few sample use cases of Ballerina code to cloud.
 redirect_from:
   - /learn/deployment/code-to-cloud/samples
+  - /swan-lake/learn/deployment/code-to-cloud/samples/
+  - /swan-lake/learn/deployment/code-to-cloud/samples
 ---
 
 ## Hello World Sample

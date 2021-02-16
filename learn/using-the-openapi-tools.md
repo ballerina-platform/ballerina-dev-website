@@ -10,6 +10,8 @@ redirect_from:
   - /learn/how-to-use-openapi-tools/
   - /learn/how-to-use-openapi-tools
   - /learn/using-the-openapi-tools
+  - /swan-lake/learn/using-the-openapi-tools/
+  - /swan-lake/learn/using-the-openapi-tools
 ---
 
 ## Using the Capabilities of the OpenAPI Tools

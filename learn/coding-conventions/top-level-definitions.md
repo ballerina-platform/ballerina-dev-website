@@ -9,6 +9,8 @@ redirect_from:
   - /learn/style-guide/definitions
   - /learn/coding-conventions/definitions
   - /learn/coding-conventions/top-level-definitions
+  - /swan-lake/learn/coding-conventions/top-level-definitions/
+  - /swan-lake/learn/coding-conventions/top-level-definitions
 ---
 
 ## General Practices

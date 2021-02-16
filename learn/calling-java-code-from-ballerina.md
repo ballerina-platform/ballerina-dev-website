@@ -12,6 +12,8 @@ redirect_from:
   - /learn/how-to-call-java-code-from-ballerina/
   - /learn/how-to-call-java-code-from-ballerina
   - /learn/calling-java-code-from-ballerina
+  - /swan-lake/learn/calling-java-code-from-ballerina/
+  - /swan-lake/learn/calling-java-code-from-ballerina
 ---
 
 ## Ballerina Bindings to Java Code

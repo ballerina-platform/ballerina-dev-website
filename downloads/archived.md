@@ -1,7 +1,10 @@
 ---
 layout: ballerina-landing-page
 title: 1.2.x Archived Versions
-permalink: /downloads/archived/
+permalink: /downloads/1.2.x-archived/
+redirect_from:
+  - /downloads/archived/
+  - /downloads/archived
 ---
 <script src="{{ "/js/download/archived_download.js" | prepend: site.baseurl }}"></script>
 <link rel="stylesheet" href="/css/download-page.css" />

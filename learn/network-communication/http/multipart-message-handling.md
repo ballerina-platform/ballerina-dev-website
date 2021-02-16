@@ -8,6 +8,8 @@ active: multipart-message-handling
 intro: HTTP multipart messages can be created by using the Multipurpose Internet Mail Extensions (MIME) standard.  
 redirect_from:
   - /learn/network-communication/http/multipart-message-handling
+  - /swan-lake/learn/network-communication/http/multipart-message-handling/
+  - /swan-lake/learn/network-communication/http/multipart-message-handling
 ---
 
 You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object.

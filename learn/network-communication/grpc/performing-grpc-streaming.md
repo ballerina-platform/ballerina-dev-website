@@ -8,6 +8,8 @@ active: performing-grpc-streaming
 intro: The topics below demonstrates an example implementation of a gRPC client and bi-directional streaming using Ballerina.
 redirect_from:
   - /learn/network-communication/grpc/performing-grpc-streaming
+  - /swan-lake/learn/network-communication/grpc/performing-grpc-streaming/
+  - /swan-lake/learn/network-communication/grpc/performing-grpc-streaming
 ---
 
 >**Info:** gRPC supports both client and bi-directional streaming. In client streaming, the client writes a sequence of messages and sends them to the server via a stream. Once the client has finished writing the messages, it waits for the server to read them and return a response. In bi-directional streaming, the client and server each send a sequence of messages using read-write streams that operate independently allowing them to read and write in any order.

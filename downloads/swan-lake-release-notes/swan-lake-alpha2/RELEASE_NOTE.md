@@ -506,11 +506,9 @@ Added variable paging support. With this feature, the Ballerina variables, which
 
 1. Fixed the REPL expression output to output the `toBalString()` result.
 2. Improved the REPL parser to support some partial snippets such as the example cases below.
-
-- Template strings will allow continuing on new lines.
-- The CLI will wait for more input if the last character was an operator.
-- The CLI will not wait for unclosed double quotes.
-
+	  - Template strings will allow continuing on new lines.
+	  - The CLI will wait for more input if the last character was an operator.
+	  - The CLI will not wait for unclosed double quotes.
 3. Enable REPL to exit on `Ctrl+D`.
 
 #### Breaking Changes

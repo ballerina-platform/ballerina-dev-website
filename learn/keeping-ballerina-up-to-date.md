@@ -10,6 +10,8 @@ redirect_from:
   - /learn/how-to-keep-ballerina-up-to-date
   - /learn/how-to-keep-ballerina-up-to-date/
   - /learn/keeping-ballerina-up-to-date
+  - /swan-lake/learn/keeping-ballerina-up-to-date/
+  - /swan-lake/learn/keeping-ballerina-up-to-date
 ---
 
 ### Understanding Ballerina Distributions 

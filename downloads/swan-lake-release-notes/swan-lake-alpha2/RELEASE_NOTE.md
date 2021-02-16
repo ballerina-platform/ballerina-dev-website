@@ -42,7 +42,7 @@ You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to
 
 #### For Existing Users
 
-If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
 
 > `ballerina update`
 
@@ -77,19 +77,20 @@ The `match` statement now supports mapping and error binding patterns with `var`
 
 ```ballerina
 match v {
-    var {a, b} => {
+var  {a, b} => {
         // Matches mappings that contain at least fields `a` and `b`.
         // The values of these fields can be accessed via the variables 
         // `a` and `b` within this block.
-        io:println(a);
-    }
-    var {c: {x: a1, y: a2}, ...d} => {
-        // Matches mappings that have a field `c` where its value is 
-        // another mapping that contains at least the fields `x` and `y`.
-        // All of the remaining fields (if any) can be accessed via
-        // the new variable `d`.
-        int length = d.length();
-    }
+        io: println(a);
+}
+
+var {c:{x:a1, y:a2}, ...d} => {
+// Matches mappings that have a field `c` where its value is 
+// another mapping that contains at least the fields `x` and `y`.
+// All of the remaining fields (if any) can be accessed via
+// the new variable `d`.
+int length = d.length();
+}
 }
 ```
 
@@ -97,19 +98,20 @@ match v {
 
 ```ballerina
 match v {
-    var error(message, error(causeMessage)) => {
+var  error(message, error(causeMessage)) => {
         // Matches errors that have a cause. 
         // The messages of the matched error and the cause error
         // can be accessed via the variables `message` and 
         // `causeMessage` within this block.
-        io:println(causeMessage);
-    }
-    var error(a, code = matchedCode) => {
-        // Matches errors that have a detail entry with the key `code`.
-        // The `code` can be accessed using the `matchedCode` variable 
-        // within this block.
-        io:println(matchedCode);
-    }
+        io: println(causeMessage);
+}
+
+var error(a, code = matchedCode) => {
+    // Matches errors that have a detail entry with the key `code`.
+    // The `code` can be accessed using the `matchedCode` variable 
+    // within this block.
+    io: println(matchedCode);
+}
 }
 ```
 
@@ -138,9 +140,9 @@ it can be loaded as a configurable variable of a record type as follows.
 
 ```ballerina
 type AuthInfo record {
-  readonly string username;
-  string password;
-  string[] scopes?;
+    readonly string username;
+    string password;
+    string[] scopes?;
 };
 
 configurable AuthInfo & readonly testUserOne = ?;
@@ -191,6 +193,7 @@ it will be decrypted in the Ballerina code as follows.
 import ballerina/lang.config;
 
 configurable string password = ?;
+
 public function main() {
     string decryptedPassword = config:decryptString(password);
 }
@@ -206,10 +209,9 @@ This introduction enables manipulating the payload as a stream of `byte[]`. The 
 
 ```ballerina
 http:Request request = new;
-io:ReadableByteChannel byteChannel = check io:openReadableFile
-                                ("path/to/file.tmp");
-stream<io:Block, io:Error> byteStream = check byteChannel.blockStream(8196);
-request.setByteStream(byteStream);
+io:ReadableByteChannel byteChannel = check io:openReadableFile("path/to/file.tmp");
+stream<io:Block, io:Error> byteStream = check byteChannel.blockStream(8196);request.setByteStream
+(byteStream) ;
 
 http:Response response = new;
 stream<byte[], io:Error>|error str = response.getByteStream();
@@ -221,9 +223,8 @@ With the introduction of the `@http:Header` annotation, inbound request headers 
 
 ```ballerina
 service on helloEP {
-    resource function get hello(@http:Header {name:”Accept”} string? acceptHeader, 
-            http:Headers allHeaders) {
-        //...
+    resource function get hello(@http:Header {name: ”Accept”} string? acceptHeader, http:Headers allHeaders) {
+    //...
     }
 }
 ```
@@ -235,23 +236,20 @@ service on helloEP {
 This introduction enables manipulating the entity body as a stream of `byte[]`.
 
 ```ballerina
-function setByteStream(stream<byte[], io:Error> byteStream,
-        string contentType = "application/octet-stream") {
+function setByteStream(stream<byte[], io:Error> byteStream, string contentType = "application/octet-stream") {
 }
 
-function getByteStream(int arraySize = 8196) returns 
-        stream<byte[],  io:Error>|mime:ParserError {
+function getByteStream(int arraySize = 8196) returns stream<byte[], io:Error>|mime:ParserError {
 }
 
-function getBodyPartsAsStream(int arraySize = 8196) returns 
-        stream<byte[], io:Error>|mime:ParserError {
+function getBodyPartsAsStream(int arraySize = 8196) returns stream<byte[], io:Error>|mime:ParserError {
 
-// Sample
-byte[][] content = ["File Content".toBytes()];
-stream<byte[], io:Error> byteStream = content.toStream();
-mime:Entity entity = new;
-entity.setByteStream(byteStream);
-stream<byte[], io:Error>|mime:ParserError str = entity.getByteStream();
+    // Sample
+    byte[][] content = ["File Content".toBytes()];
+    stream<byte[], io:Error> byteStream = content.toStream();
+    mime:Entity entity = new;
+    entity.setByteStream(byteStream);
+    stream<byte[], io:Error>|mime:ParserError str = entity.getByteStream();
 ```
 
 #### WebSocket Module Improvements
@@ -261,7 +259,7 @@ Introduced the Sync client. This is the primary client of the WebSocket module. 
 **Reading and Writing Text Messages**
 
 ```ballerina
-websocket:Client wsClient = check new("ws://echo.websocket.org");
+websocket:Client wsClient = check new ("ws://echo.websocket.org");
 var err = wsClient->writeTextMessage("Text message");
 string textResp = check wsClient->readTextMessage();
 ```
@@ -269,7 +267,7 @@ string textResp = check wsClient->readTextMessage();
 **Reading and Writing Binary Messages**
 
 ```ballerina
-websocket:Client wsClient = check new("ws://echo.websocket.org");
+websocket:Client wsClient = check new ("ws://echo.websocket.org");
 var err = wsClient->writeBinaryMessage("Binary message".toBytes());
 byte[] byteResp = check wsClient->readBinaryMessage();
 ```
@@ -282,15 +280,13 @@ Ballerina GraphQL listeners can now be configured using the same configurations 
 import ballerina/graphql;
 
 graphql:ListenerConfiguration configs = {
-	// http listener configurations
+// http listener configurations
 };
-listener graphql:Listener graphqlListener = new(9090, configs);
+listener graphql:Listener graphqlListener = new (9090, configs);
 
-@graphql:ServiceConfigurration {
-    maxQueryDepth: 3
-}
-Service /graphql on graphqlListener {
-    // Service definition
+@graphql:ServiceConfigurration {maxQueryDepth: 3}
+ Service /graphql on graphqlListener {
+// Service definition
 }
 ```
 
@@ -299,42 +295,39 @@ Service /graphql on graphqlListener {
 Included functionality to the `websub:SubscriberService` to respond with user-defined custom payloads/header parameters in error scenarios.
 
 ```ballerina
-
 import ballerina/websub;
 
 listener websub:Listener subscriberListener = new (9001);
 
 service /subscriber on subscriberListener {
-    remote function onSubscriptionValidationDenied(websub:SubscriptionDeniedError msg) 
-                      returns websub:Acknowledgement? {
+    remote function onSubscriptionValidationDenied(websub:SubscriptionDeniedError msg) returns websub:Acknowledgement? {
         websub:Acknowledgement ack = {
-                  headers = { "Content-Encoding" :  "gzip" },
-                  body = { "message" :  "Successfully processed request" }
+            headers = {
+                        "Content-Encoding" : "gzip"
+                    },
+            body = {
+                     "message" : "Successfully processed request"
+                 }
         };
         return ack;
     }
 
-    remote function onSubscriptionVerification(websub:SubscriptionVerification msg)
-                        returns websub:SubscriptionVerificationSuccess|websub:SubscriptionVerificationError {
+    remote function onSubscriptionVerification(websub:SubscriptionVerification msg) returns 
+    websub:SubscriptionVerificationSuccess|websub:SubscriptionVerificationError {
         if (msg.hubTopic == "https://www.sample.topic") {
-            return error websub:SubscriptionVerificationError(
-                                 "Hub topic not supported", 
-                                  headers = { "Content-Encoding" :  "gzip" }, 
-                                  body = { "message" :  "Hub topic not supported" });
+            return error websub:SubscriptionVerificationError("Hub topic not supported", headers = 
+            {"Content-Encoding": "gzip"}, body = {"message": "Hub topic not supported"});
         } else {
             return {};
         }
-      }
+    }
 
-    remote function onEventNotification(websub:ContentDistributionMessage event) 
-                        returns websub:Acknowledgement|websub:SubscriptionDeletedError? {
-        return error websub:SubscriptionDeletedError(
-                             "Subscriber wants to unsubscribe",
-                             headers = { "Content-Encoding" :  "gzip" }, 
-                             body = {"message": "Unsubscribing from the topic"});
+    remote function onEventNotification(websub:ContentDistributionMessage event) returns websub:Acknowledgement|
+    websub:SubscriptionDeletedError? {
+        return error websub:SubscriptionDeletedError("Subscriber wants to unsubscribe", headers = 
+        {"Content-Encoding": "gzip"}, body = {"message": "Unsubscribing from the topic"});
     }
 }
-
 ```
 
 ##### WebSubHub Module Improvements
@@ -342,24 +335,18 @@ service /subscriber on subscriberListener {
 Included functionality to the `websubhub:Service` to respond with user-defined custom payloads/header parameters in error scenarios.
 
 ```ballerina
-
-Import ballerina/websubhub;
+import ballerina / websubhub;
 
 service /websubhub on websubhub:Listener(9091) {
 
-    remote function onRegisterTopic(websubhub:TopicRegistration message)
-                                returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError {
+    remote function onRegisterTopic(websubhub:TopicRegistration message) returns websubhub:TopicRegistrationSuccess|
+    websubhub:TopicRegistrationError {
         if (message.topic == "https://sub.topic.com") {
-            websubhub:TopicRegistrationSuccess successResult = {
-                body: <map<string>>{
-                       isSuccess: "true"
-                    }
-            };
+            websubhub:TopicRegistrationSuccess successResult = {body: <map<string>>{isSuccess: "true"}};
             return successResult;
         } else {
-           return error websubhub:TopicRegistrationError("Topic registration failed!",
-                        headers = { "Content-Encoding" :  "gzip" },
-                        body = { "hub.additional.details": "Feature is not supported in the hub"});
+            return error websubhub:TopicRegistrationError("Topic registration failed!", headers = 
+            {"Content-Encoding": "gzip"}, body = {"hub.additional.details": "Feature is not supported in the hub"});
         }
     }
 
@@ -371,7 +358,9 @@ service /websubhub on websubhub:Listener(9091) {
 Introduce a parameter of type `XmlWriteOptions` to specify the entity type and the document type declaration.
 
 ```ballerina
-public function fileWriteXml(@untainted string path, xml content, *XmlWriteOptions xmlOptions, FileWriteOption fileWriteOption = OVERWRITE) returns Error? {}
+public function fileWriteXml(@untainted string path, xml content, *XmlWriteOptions xmlOptions, FileWriteOption fileWriteOption = 
+                             OVERWRITE) returns Error? {
+}
 ```
 
 ##### Email Module Improvements
@@ -392,8 +381,8 @@ public type Message record {|
 ```ballerina
 public type Options record {|
     // … other fields
-   string body?;
-   mime:Entity|Attachment|(mime:Entity|Attachment)[] attachments?;
+    string body?;
+    mime:Entity|Attachment|(mime:Entity|Attachment)[] attachments?;
 |};
 ```
 
@@ -401,14 +390,14 @@ public type Options record {|
 
 - The `mail.smtp.ssl.checkserveridentity` custom property was passed as an entry in the `properties` to enable/disable the server certificate’s hostname verification. As the `properties` field is removed from the API, from this release onwards, the `verifyHostName` boolean field is introduced to the `secureSocket` record for all the configurations related to the Email module. 
 
-    This `email:SecureSocket` record change would appear as follows.
+This `email:SecureSocket` record change would appear as follows.
 
-    ```ballerina
-    public type SecureSocket record {|
-        // … other fields
-    boolean verifyHostname = true;
-    |};
-    ```
+```ballerina
+public type SecureSocket record {|
+// … other fields
+boolean verifyHostname = true;
+|};
+```
 
 ##### TCP Module Improvements
 
@@ -419,7 +408,6 @@ Introduced SSL/TLS-based communication to the TCP module using the `secureSocket
 A sample code is as follows.
 
 ```ballerina
-
 import ballerina/tcp;
 
 configurable string keyPath = ?;
@@ -451,7 +439,6 @@ public function main() returns error? {
 A sample code is as follows.
 
 ```ballerina
-
 configurable string keyPath = ?;
 configurable string certPath = ?;
 
@@ -528,7 +515,7 @@ Added variable paging support. With this feature, the Ballerina variables, which
 
 #### Breaking Changes
 
-1. Member access on a value of type `table` now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member of the `table` with the given key.
+- Member access on a value of type `table` now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member of the `table` with the given key.
 
 ```ballerina
 type Employee record {
@@ -538,18 +525,18 @@ type Employee record {
 
 public function main() {
     table<Employee> key(name) employeeTable = table [
-        {name: "Mike", id: 1234},
-        {name: "John", id: 4567}
-    ];
+            {name: "Mike", id: 1234},
+            {name: "John", id: 4567}
+        ];
 
-    Employee? emp1 = employeeTable["John"]; 
+    Employee? emp1 = employeeTable["John"];
     io:println(emp1); //{name: "John", id: 4567}
-    Employee? emp2 = employeeTable["Kate"]; 
+    Employee? emp2 = employeeTable["Kate"];
     boolean value2 = emp2 is (); //true
 }
 ```
 
-2. Iterating over `xml` in a `from` clause in query expressions now returns `xml` and iterating over `xml<T>` returns `T`.
+- Iterating over `xml` in a `from` clause in query expressions now returns `xml` and iterating over `xml<T>` returns `T`.
 
 ```ballerina
 xml authorList = xml `<authorList>
@@ -564,8 +551,9 @@ xml authorList = xml `<authorList>
                                  </authorList>`;
 
 xml authors = from xml y in authorList/<author>/<name>
-select y;
-io:println(authors); //<name>Sir Arthur Conan Doyle</name><name>Dan Brown</name>
+              select y;
+io:println
+(authors) ; //<name>Sir Arthur Conan Doyle</name><name>Dan Brown</name>
 ```
 
-3. The `readonly` and `value:Cloneable` values cannot be assigned to `any` since they contain an `error`.
+- The `readonly` and `value:Cloneable` values cannot be assigned to `any` since they contain an `error`.

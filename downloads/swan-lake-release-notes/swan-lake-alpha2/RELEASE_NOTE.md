@@ -482,7 +482,7 @@ service class EchoService {
 
 Added support to decode private keys from `.key` files and public keys from `.cert` files and update the APIs for decoding private/public keys. This enables reading private/public keys from PEM files.
 
-###### JWT Module Improvements
+##### JWT Module Improvements
 
 Extended the private key support for JWT signature generation and public cert support for JWT signature validation.
 

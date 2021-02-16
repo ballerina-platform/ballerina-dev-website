@@ -44,13 +44,11 @@ You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to
 
 If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
 
-> `ballerina update`
+> `bal update`
 
-From Swan Lake Alpha1 onwards, the `ballerina` command has to be issued as `bal`. Next, execute the command below to update to Swan Lake Alpha2.
+If you are using an **Update Tool version below 0.8.14**, execute the `ballerina update` command to update it. Next, execute the command below to update to Swan Lake Alpha2.
 
 > `bal dist pull slalpha2`
-
-However, if you are using a Ballerina version below 1.1.0, install via the [installers](/downloads/#swanlake).
 
 #### For New Users
 

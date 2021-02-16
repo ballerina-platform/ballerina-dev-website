@@ -7,6 +7,7 @@ permalink: /1.2/learn/
 redirect_from:
   - /v1-2/learn/tools-ides
   - /v1-2/learn/tools-ides/
+  - /1.2/
   - /1.2/learn
   - /v1-2/learn
   - /v1-2/learn/

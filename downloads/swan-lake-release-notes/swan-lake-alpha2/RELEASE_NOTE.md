@@ -394,8 +394,8 @@ This `email:SecureSocket` record change would appear as follows.
 
 ```ballerina
 public type SecureSocket record {|
-// ... other fields
-boolean verifyHostname = true;
+    // ... other fields
+    boolean verifyHostname = true;
 |};
 ```
 

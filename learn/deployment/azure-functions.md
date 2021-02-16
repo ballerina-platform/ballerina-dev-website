@@ -8,6 +8,8 @@ active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 redirect_from:
   - /learn/deployment/azure-functions
+  - /swan-lake/learn/deployment/azure-functions/
+  - /swan-lake/learn/deployment/azure-functions
 ---
 
 This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation.

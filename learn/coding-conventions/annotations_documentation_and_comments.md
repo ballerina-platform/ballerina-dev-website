@@ -8,6 +8,8 @@ redirect_from:
   - /learn/style-guide/annotations_documentation_and_comments/
   - /learn/style-guide/annotations_documentation_and_comments
   - /learn/coding-conventions/annotations_documentation_and_comments
+  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments/
+  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments
 ---
 
 ## Annotations

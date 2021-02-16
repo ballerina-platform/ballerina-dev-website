@@ -161,8 +161,8 @@ scopes = ["scope1"]
 
 [[Pkg.users]]
 username = "bob"
-password="password2"
-scopes=["scope1", "scope2"]
+password = "password2"
+scopes = ["scope1", "scope2"]
 
 [[Pkg.users]]
 username = "jack"

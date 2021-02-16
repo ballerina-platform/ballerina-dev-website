@@ -11,7 +11,7 @@ permalink: /learn-2/
 
 <h2>Get Started</h2>
 
-<p>Download Ballerina, install it, and set your development environment up.</p>
+<p>Install Ballerina and set your development environment up.</p>
 
 </a>
 
@@ -24,7 +24,7 @@ permalink: /learn-2/
 
 <h2>Ballerina by Example</h2>
 
-<p>Try out the Ballerina By Examples for a hands-on experience of the language and its key features.</p>
+<p>Obtain a hands-on experience of the language and its key features.</p>
 
 </a>
 
@@ -58,7 +58,7 @@ permalink: /learn-2/
 
 <a class="cBoxLink" href="/spec/">
 <h2>Language Specification</h2>
-<p>Master Ballerina by reading through the Language Specification by which the Ballerina platform is specified.</p>
+<p>Master Ballerina by getting to know how the platform is specified.</p>
 
 
 </a>

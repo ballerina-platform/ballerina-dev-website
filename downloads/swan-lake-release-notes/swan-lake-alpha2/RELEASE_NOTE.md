@@ -166,7 +166,7 @@ scopes = ["scope1", "scope2"]
 
 [[Pkg.users]]
 username = "jack"
-password="password3"
+password = "password3"
 ```
 
 it can be loaded as a configurable variable of a `table` type as follows.

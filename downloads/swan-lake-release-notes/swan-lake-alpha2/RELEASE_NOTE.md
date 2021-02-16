@@ -496,7 +496,7 @@ Extended the private key support for JWT signature generation and public cert su
 
 ##### Language Server
 
-Implemented renaming any symbol in the Language Server.
+Implemented renaming support in the language server. Now, VSCode users are able to select a symbol and rename all occurrences within the same module as well as across modules.
 
 ##### Debugger
 

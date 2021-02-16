@@ -132,8 +132,8 @@ password = "abcd"
 scopes = ["write"]
 
 [Pkg.testUserTwo]
-Username = “mary”
-Password = “test123”
+username = “mary”
+password = “test123”
 ```
 
 it can be loaded as a configurable variable of a record type as follows.

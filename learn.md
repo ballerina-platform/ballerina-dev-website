@@ -23,7 +23,7 @@ redirect_from:
 
 <h2>Get Started</h2>
 
-<p>Download Ballerina, install it, and set your development environment up.</p>
+<p>Install Ballerina and set your development environment up.</p>
 
 </a>
 
@@ -38,7 +38,7 @@ redirect_from:
 <img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
 <h2>Ballerina by Example</h2>
 
-<p>Try out the Ballerina By Examples for a hands-on experience of the language and its key features.</p>
+<p>Obtain a hands-on experience of the language and its key features.</p>
 
 </a>
 
@@ -51,7 +51,7 @@ redirect_from:
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 <h2>API Documentation</h2>
-<p>Learn the Ballerina standard library APIs and its components comprehensively.</p>
+<p>Learn the Ballerina standard library APIs comprehensively.</p>
 
 
 
@@ -67,7 +67,7 @@ redirect_from:
 
   <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
   <h2>User Guide</h2>
-  <p>Learn about all the features of the language and its platform capabilities.</p>
+  <p>Learn about all the features of the language and its capabilities.</p>
   </a>
 
 </div>
@@ -90,7 +90,7 @@ redirect_from:
 
 <img class="cLearnIcon" src="/img/Language-Specification-v1.png"/>
 <h2>Language Specification</h2>
-<p>Master Ballerina by reading through the Language Specification by which the Ballerina platform is specified.</p>
+<p>Master Ballerina by knowing how the platform is specified.</p>
 </a>
 
 </div>

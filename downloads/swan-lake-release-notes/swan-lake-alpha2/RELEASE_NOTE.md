@@ -156,8 +156,8 @@ For example, if the `Config.toml` file contains the following TOML table array,
 ```toml
 [[Pkg.users]]
 username = "alice"
-password="password1"
-scopes=["scope1"]
+password = "password1"
+scopes = ["scope1"]
 
 [[Pkg.users]]
 username = "bob"

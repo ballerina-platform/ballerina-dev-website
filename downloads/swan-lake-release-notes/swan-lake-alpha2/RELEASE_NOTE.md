@@ -177,7 +177,7 @@ configurable table<AuthInfo> key(username) & readonly users = ?;
 
 ##### Support for Decrypting String Values Using the New Config Lang Library
 
-The `bal encrypt` command can be used to encrypt the plain text values and specify those in the `Config.toml` file. Then, the `config:decryptString(<string variable>)` can be used to decrypt the configurable value. 
+The `bal encrypt` command can be used to encrypt plain text values and specify those in the `Config.toml` file. Then, the `config:decryptString()` function can be used to decrypt the configurable value. 
 
 For example, if the `Config.toml` file contains the following encrypted string value,
 

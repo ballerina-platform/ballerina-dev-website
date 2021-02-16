@@ -22,8 +22,6 @@ redirect_from:
   - /1.2/learn/by-guide/
   - /v1-2/learn/by-guide
   - /v1-2/learn/by-guide/
-  - /1.2/
-  - /1.2
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">

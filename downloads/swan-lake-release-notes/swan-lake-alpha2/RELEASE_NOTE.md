@@ -478,7 +478,7 @@ service class EchoService {
 
 - Returning `Datagram` from the `onDatagram` or `onBytes` remote methods also sends multiple datagrams if the size of the `byte[]` value provided (as the `data` field of the datagram) exceeds 8KB.
 
-###### Crypto Module Improvements
+##### Crypto Module Improvements
 
 Added support to decode private keys from `.key` files and public keys from `.cert` files and update the APIs for decoding private/public keys. This enables reading private/public keys from PEM files.
 

@@ -12,8 +12,7 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
 - [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Alpha1](#what-is-new-in-ballerina-swan-lake-alpha1)
     - [Language](#language)
-        -  [Support for Mapping and Error Binding Patterns in the Match Statement]
-        (#support-for-mapping-and-error-binding-patterns-in-the-match-statement)
+        -  [Support for Mapping and Error Binding Patterns in the Match Statement](#support-for-mapping-and-error-binding-patterns-in-the-match-statement)
     - [Runtime](#runtime)
         - [Support for Configurable Variables of Record and Table Types](#support-for-configurable-variables-of-record-and-table-types)
         - [Support for Decrypting String Values Using the New Config Lang Library](#support-for-decrypting-string-values-using-the-new-config-lang-library)
@@ -24,7 +23,7 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
         - [GraphQL Module Improvements](#graphql-module-improvements)
         - [WebSub Module Improvements](#websub-module-improvements)
         - [WebSubHub Module Improvements](#websubhub-module-improvements)
-        - [I/O Module Improvements](#i-/-o-module-improvements)
+        - [IO Module Improvements](#io-module-improvements)
         - [Email Module Improvements](#email-module-improvements)
         - [TCP Module Improvements](#tcp-module-improvements)
         - [UDP Module Improvements](#udp-module-improvements)
@@ -360,7 +359,7 @@ service /websubhub on websubhub:Listener(9091) {
 }
 ```
 
-##### I/O Module Improvements
+##### IO Module Improvements
 
 Introduce a parameter of type `XmlWriteOptions` to specify the entity type and the document type declaration.
 

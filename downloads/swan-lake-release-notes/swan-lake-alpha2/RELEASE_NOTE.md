@@ -75,20 +75,20 @@ The `match` statement now supports mapping and error binding patterns with `var`
 
 ```ballerina
 match v {
-var  {a, b} => {
-        // Matches mappings that contain at least fields `a` and `b`.
+    var  {a, b} => {
+        // Matches mappings that contain at least the fields `a` and `b`.
         // The values of these fields can be accessed via the variables 
         // `a` and `b` within this block.
-        io: println(a);
-}
+        io:println(a);
+    }
 
-var {c:{x:a1, y:a2}, ...d} => {
-// Matches mappings that have a field `c` where its value is 
-// another mapping that contains at least the fields `x` and `y`.
-// All of the remaining fields (if any) can be accessed via
-// the new variable `d`.
-int length = d.length();
-}
+    var {c: {x: a1, y: a2}, ...rest} => {
+        // Matches mappings that have a field `c` where its value is 
+        // another mapping that contains at least the fields `x` and `y`.
+        // All of the remaining fields (if any) can be accessed via
+        // the new variable `rest`.
+        int length = rest.length();
+    }
 }
 ```
 

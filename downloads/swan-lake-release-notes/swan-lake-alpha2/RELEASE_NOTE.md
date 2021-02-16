@@ -276,7 +276,7 @@ byte[] byteResp = check wsClient->readBinaryMessage();
 
 ###### GraphQL Module Improvements
 
-The Ballerina GraphQL listeners can now be secured using auth configurations. This configuration is the same as the listener configurations in the `http:Listener`. Additionally, a GraphQL service can be secured by defining a `maxQueryDepth` as an annotation to restrict the depth of a query before execution.
+Ballerina GraphQL listeners can now be configured using the same configurations as the listener configurations in the `http:Listener`. Additionally, a GraphQL service can be secured by defining a `maxQueryDepth` as an annotation to restrict the depth of a query before execution.
 
 ```ballerina
 import ballerina/graphql;

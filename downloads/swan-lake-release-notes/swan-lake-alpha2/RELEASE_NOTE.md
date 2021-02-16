@@ -96,20 +96,20 @@ match v {
 
 ```ballerina
 match v {
-var  error(message, error(causeMessage)) => {
+    var error(message, error(causeMessage)) => {
         // Matches errors that have a cause. 
         // The messages of the matched error and the cause error
         // can be accessed via the variables `message` and 
         // `causeMessage` within this block.
-        io: println(causeMessage);
-}
+        io:println(causeMessage);
+    }
 
-var error(a, code = matchedCode) => {
-    // Matches errors that have a detail entry with the key `code`.
-    // The `code` can be accessed using the `matchedCode` variable 
-    // within this block.
-    io: println(matchedCode);
-}
+    var error(a, code = matchedCode) => {
+        // Matches errors that have a detail entry with the key `code`.
+        // The `code` can be accessed using the `matchedCode` variable 
+        // within this block.
+        io:println(matchedCode);
+    }
 }
 ```
 

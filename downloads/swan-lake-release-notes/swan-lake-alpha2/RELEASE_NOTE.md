@@ -12,6 +12,30 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
 - [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Alpha1](#what-is-new-in-ballerina-swan-lake-alpha1)
     - [Language](#language)
+        -  [Support for Mapping and Error Binding Patterns in the Match Statement]
+        (#support-for-mapping-and-error-binding-patterns-in-the-match-statement)
+    - [Runtime](#runtime)
+        - [Support for Configurable Variables of Record and Table Types](#support-for-configurable-variables-of-record-and-table-types)
+        - [Support for Decrypting String Values Using the New Config Lang Library](#support-for-decrypting-string-values-using-the-new-config-lang-library)
+    - [Standard Library](#standard-library)
+        - [HTTP Module Improvements](#http-module-improvements)
+        - [MIME Module Improvements](#mime-module-improvements)
+        - [WebSocket Module Improvements](#websocket-module-improvements)
+        - [GraphQL Module Improvements](#graphql-module-improvements)
+        - [WebSub Module Improvements](#websub-module-improvements)
+        - [WebSubHub Module Improvements](#websubhub-module-improvements)
+        - [I/O Module Improvements](#i-/-o-module-improvements)
+        - [Email Module Improvements](#email-module-improvements)
+        - [TCP Module Improvements](#tcp-module-improvements)
+        - [UDP Module Improvements](#udp-module-improvements)
+        - [Crypto Module Improvements](#crypto-module-improvements)
+        - [JWT Module Improvements](#jwt-module-improvements)
+    - [Code to Cloud](#code-to-cloud)
+    - [Developer Tools](#developer-tools)
+        - [Language Server](#language-server)
+        - [Debugger](#debugger)
+        - [Ballerina Shell REPL - EXPERIMENTAL](#ballerina-shell-repl-experimental)
+    - [Breaking Changes](#breaking-changes)
 
 ### Updating Ballerina
 
@@ -264,7 +288,7 @@ Service /graphql on graphqlListener {
 }
 ```
 
-##### Websub Module Improvements
+##### WebSub Module Improvements
 
 Included functionality to the `websub:SubscriberService` to respond with user-defined custom payloads/header parameters in error scenarios.
 
@@ -307,7 +331,7 @@ service /subscriber on subscriberListener {
 
 ```
 
-##### Websubhub Module Improvements
+##### WebSubHub Module Improvements
 
 Included functionality to the `websubhub:Service` to respond with user-defined custom payloads/header parameters in error scenarios.
 
@@ -487,9 +511,14 @@ Added variable paging support. With this feature, the Ballerina variables, which
 
 ##### Ballerina Shell REPL [EXPERIMENTAL]
 
-- Fixed the REPL expression output to output the `toBalString()` result.
-- Improved the REPL parser to support some partial snippets.
-- Enable REPL to exit on `Ctrl+D`.
+1. Fixed the REPL expression output to output the `toBalString()` result.
+2. Improved the REPL parser to support some partial snippets such as the example cases below.
+
+- Template strings will allow continuing on new lines.
+- The CLI will wait for more input if the last character was an operator.
+- The CLI will not wait for unclosed double quotes.
+
+3. Enable REPL to exit on `Ctrl+D`.
 
 #### Breaking Changes
 

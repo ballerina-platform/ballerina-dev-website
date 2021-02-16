@@ -79,7 +79,7 @@ The `match` statement now supports mapping and error binding patterns with `var`
 match v {
     var {a, b} => {
         // Matches mappings that contain at least fields `a` and `b`.
-        // The values of this fields can be accessed via the variables 
+        // The values of these fields can be accessed via the variables 
         // `a` and `b` within this block.
         io:println(a);
     }
@@ -387,7 +387,7 @@ public type Message record {|
 |};
 ```
 
-- The above-mentioned `body` and `attachments` fields related changes are updated in the `email:Options` record as given below in order to facilitate the `sendEmail` method in the `email:SmtpClient`.
+- The above-mentioned changes related to the `body` and `attachments` fields are updated in the `email:Options` record as given below in order to facilitate the `sendEmail` method in the `email:SmtpClient`.
 
 ```ballerina
 public type Options record {|
@@ -399,7 +399,7 @@ public type Options record {|
 
 - Remove the `properties` field representing custom properties from all Email module related configuration records: `email:SmtpConfig`, `email:PopConfig`, `email:ImapConfig`, `email:PopListenerConfig`, and `email:ImapListenerConfig`.
 
-- The `mail.smtp.ssl.checkserveridentity` custom property was passed as an entry in `properties` to enable/disable server certificate’s hostname verification. As the `properties`field is removed from the API, from this release onwards, the `verifyHostName` boolean field is introduced to the `secureSocket` record for all the configurations related to the Email module. 
+- The `mail.smtp.ssl.checkserveridentity` custom property was passed as an entry in the `properties` to enable/disable the server certificate’s hostname verification. As the `properties` field is removed from the API, from this release onwards, the `verifyHostName` boolean field is introduced to the `secureSocket` record for all the configurations related to the Email module. 
 
     This `email:SecureSocket` record change would appear as follows.
 
@@ -487,9 +487,9 @@ service class EchoService {
 
 ##### UDP Module Improvements
 
-- The `sendDatagram` function will now send multiple datagrams if the size of the `byte[]` value provided as the `data` field of the datagram exceeds 8Kb.
+- The `sendDatagram` function will now send multiple datagrams if the size of the `byte[]` value provided as the `data` field of the datagram exceeds 8KB.
 
-- Returning `Datagram` from the `onDatagram` or `onBytes` remote methods also sends multiple datagrams if the size of the `byte[]` value provided as the `data` field of the datagram  exceeds 8Kb.
+- Returning `Datagram` from the `onDatagram` or `onBytes` remote methods also sends multiple datagrams if the size of the `byte[]` value provided (as the `data` field of the datagram) exceeds 8KB.
 
 ###### Crypto Module Improvements
 
@@ -528,7 +528,7 @@ Added variable paging support. With this feature, the Ballerina variables, which
 
 #### Breaking Changes
 
-1. Member access on a value of type `table`now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member of the `table` with the given key.
+1. Member access on a value of type `table` now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member of the `table` with the given key.
 
 ```ballerina
 type Employee record {
@@ -549,7 +549,7 @@ public function main() {
 }
 ```
 
-2. Iterating over `xml` in a `from` clause in query expressions now returns `xml` and iterating over `xml<T>` returns `T` .
+2. Iterating over `xml` in a `from` clause in query expressions now returns `xml` and iterating over `xml<T>` returns `T`.
 
 ```ballerina
 xml authorList = xml `<authorList>

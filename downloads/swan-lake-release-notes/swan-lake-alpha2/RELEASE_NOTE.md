@@ -185,7 +185,7 @@ For example, if the `Config.toml` file contains the following encrypted string v
 password = "@encrypted:{ODYUoKSw0xW31eoxa/s2ESdBNgk1gX77txBIgpLC6NQ=}"
 ```
 
-it will be decrypted in the Ballerina code as follows.
+it can be decrypted in the Ballerina code as follows.
 
 ```ballerina
 import ballerina/lang.config;

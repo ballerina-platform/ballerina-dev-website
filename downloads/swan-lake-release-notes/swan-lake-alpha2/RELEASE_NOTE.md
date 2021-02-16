@@ -58,7 +58,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 - Support for mapping and error binding patterns in the `match` statement
 - Support for configurable variables of `record` and `table` types
-- Support for decrypting string values using the new `config` lang library
+- Support for decrypting string values using the new `lang.config` lang library
 - Improvements to the HTTP, mime, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, TCP, UDP, crypto, and JWT standard library modules
 - The extension of the Ballerina package distribution file has been changed from `.balo` to `.bala`
 - Improvements to developer tools such as the language server and debugger.

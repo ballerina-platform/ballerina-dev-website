@@ -371,7 +371,7 @@ public function fileWriteXml(@untainted string path, xml content, *XmlWriteOptio
 
 ```ballerina
 public type Message record {|
-    // … other fields
+    // ... other fields
     mime:Entity|Attachment|(mime:Entity|Attachment)[] attachments?;
 |};
 ```
@@ -380,7 +380,7 @@ public type Message record {|
 
 ```ballerina
 public type Options record {|
-    // … other fields
+    // ... other fields
     string body?;
     mime:Entity|Attachment|(mime:Entity|Attachment)[] attachments?;
 |};
@@ -394,7 +394,7 @@ This `email:SecureSocket` record change would appear as follows.
 
 ```ballerina
 public type SecureSocket record {|
-// … other fields
+// ... other fields
 boolean verifyHostname = true;
 |};
 ```

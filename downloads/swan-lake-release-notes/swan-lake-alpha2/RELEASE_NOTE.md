@@ -10,7 +10,7 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
     - [For Existing Users](#for-existing-users)
     - [For New Users](#for-new-users)
 - [Highlights](#highlights)
-- [What is new in Ballerina Swan Lake Alpha1](#what-is-new-in-ballerina-swan-lake-alpha1)
+- [What is new in Ballerina Swan Lake Alpha2](#what-is-new-in-ballerina-swan-lake-alpha2)
     - [Language](#language)
         -  [Support for Mapping and Error Binding Patterns in the Match Statement](#support-for-mapping-and-error-binding-patterns-in-the-match-statement)
     - [Runtime](#runtime)

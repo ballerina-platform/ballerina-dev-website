@@ -280,7 +280,7 @@ Ballerina GraphQL listeners can now be configured using the same configurations 
 import ballerina/graphql;
 
 graphql:ListenerConfiguration configs = {
-// http listener configurations
+    // http listener configurations
 };
 listener graphql:Listener graphqlListener = new (9090, configs);
 

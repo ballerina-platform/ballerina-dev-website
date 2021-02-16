@@ -134,7 +134,7 @@ username = "mary"
 password = "test123"
 ```
 
-it can be loaded as a configurable variable of a record type as follows.
+it can be loaded as configurable variables of a record type as follows.
 
 ```ballerina
 type AuthInfo record {

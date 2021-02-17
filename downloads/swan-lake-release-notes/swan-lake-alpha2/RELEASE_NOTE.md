@@ -464,34 +464,36 @@ public function main() returns error? {
 A sample code is as follows.
 
 ```ballerina
+import ballerina/io;
+import ballerina/tcp;
+
 configurable string keyPath = ?;
 configurable string certPath = ?;
 
 service on new tcp:Listener(9002, secureSocket = {
-    certificate: {path: certPath},
-    privateKey: {path: keyPath},
-    protocol: {
-        name: "TLS",
-        versions: ["TLSv1.2", "TLSv1.1"]
-    },
-    ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-}) {
-
+        certificate: {path: certPath},
+        privateKey: {path: keyPath},
+        protocol: {
+            name: "TLS",
+            versions: ["TLSv1.2", "TLSv1.1"]
+        },
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+    }) {
+        
     isolated remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected to secureEchoServer: ", caller.remotePort);
         return new EchoService(caller);
     }
 }
-
 service class EchoService {
     tcp:Caller caller;
 
-    public isolated function init(Caller c) {
+    public isolated function init(tcp:Caller c) {
         self.caller = c;
     }
 
     remote function onBytes(readonly & byte[] data) returns (readonly & byte[])|tcp:Error? {
-        io:println("Echo: ", 'string:fromBytes(data));
+        io:println("Echo: ", string:fromBytes(data));
         return data;
     }
 }

@@ -25,12 +25,14 @@ redirect_from:
         <span class="nx">keyId</span><span class="p">:</span> <span class="s">&quot;5a0b754-895f-4279-8843-b745e11a57e9&quot;</span><span class="p">,</span>
         <span class="nx">customClaims</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;scp&quot;</span><span class="p">:</span> <span class="s">&quot;hello&quot;</span> <span class="p">},</span>
         <span class="nx">expTimeInSeconds</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
-        <span class="nx">keyStoreConfig</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">keyAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-            <span class="nx">keyPassword</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-            <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-                <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+        <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">keyAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+                <span class="nx">keyPassword</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+                <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
@@ -159,12 +161,14 @@ import ballerina/log;
         keyId: &quot;5a0b754-895f-4279-8843-b745e11a57e9&quot;,
         customClaims: { &quot;scp&quot;: &quot;hello&quot; },
         expTimeInSeconds: 3600,
-        keyStoreConfig: {
-            keyAlias: &quot;ballerina&quot;,
-            keyPassword: &quot;ballerina&quot;,
-            keyStore: {
-                path: &quot;../resources/ballerinaKeystore.p12&quot;,
-                password: &quot;ballerina&quot;
+        signatureConfig: {
+            config: {
+                keyAlias: &quot;ballerina&quot;,
+                keyPassword: &quot;ballerina&quot;,
+                keyStore: {
+                    path: &quot;../resources/ballerinaKeystore.p12&quot;,
+                    password: &quot;ballerina&quot;
+                }
             }
         }
     },

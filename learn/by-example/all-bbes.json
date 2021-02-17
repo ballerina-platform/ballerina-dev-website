@@ -8,7 +8,7 @@
                 "name": "Hello World Service",
                 "url": "hello-world-service",
                 "disablePlayground": true
-                
+
             },
             {
                 "name": "Hello World Main",
@@ -124,7 +124,8 @@
             },
             {
                 "name": "While",
-                "url": "while"
+                "url": "while",
+                "disablePlayground": true
             },
             {
                 "name": "Foreach",
@@ -230,7 +231,8 @@
             },
             {
                 "name": "Optional Type",
-                "url": "optional-type"
+                "url": "optional-type",
+                "disablePlayground": true
             },
             {
                 "name": "Anydata Type",
@@ -274,7 +276,8 @@
             },
             {
                 "name": "Configurable Variables",
-                "url": "configurable"
+                "url": "configurable",
+                "disablePlayground": true
             }
         ]
     },
@@ -622,12 +625,12 @@
         "samples": [
             {
                 "name": "Read/Write Bytes",
-                "url": "byte-io",
+                "url": "bytes-io",
                 "disablePlayground": true
             },
             {
-                "name": "Read/Write Text",
-                "url": "text-io",
+                "name": "Read/Write Strings",
+                "url": "strings-io",
                 "disablePlayground": true
             },
             {
@@ -722,11 +725,13 @@
             },
             {
                 "name": "Cryptographic Operations",
-                "url": "crypto"
+                "url": "crypto",
+                "disablePlayground": true
             },
             {
                 "name": "JWT Issue/Validate",
-                "url": "jwt-issue-validate"
+                "url": "jwt-issue-validate",
+                "disablePlayground": true
             },
             {
                 "name": "URL Encode/Decode Operations",
@@ -829,7 +834,8 @@
         "samples": [
             {
                 "name": "Local Transactions",
-                "url": "local-transactions"
+                "url": "local-transactions",
+                "disablePlayground": true
             },
             {
                 "name": "Local Transactions with handlers",
@@ -841,15 +847,18 @@
             },
             {
                 "name": "Retry Transactions",
-                "url": "retry-transactions"
+                "url": "retry-transactions",
+                "disablePlayground": true
             },
             {
                 "name": "Distributed Transactions",
-                "url": "distributed-transactions"
+                "url": "distributed-transactions",
+                "disablePlayground": true
             },
             {
                 "name": "XA Transactions",
-                "url": "xa-transactions"
+                "url": "xa-transactions",
+                "disablePlayground": true
             }
         ]
     },
@@ -888,18 +897,8 @@
                 "disablePlayground": true
             },
             {
-                "name": "HTTP Caching",
-                "url": "http-caching-client",
-                "disablePlayground": true
-            },
-            {
                 "name": "Disable Chunking",
                 "url": "http-disable-chunking",
-                "disablePlayground": true
-            },
-            {
-                "name": "Trace Logs",
-                "url": "http-trace-logs",
                 "disablePlayground": true
             },
             {
@@ -933,11 +932,6 @@
                 "disablePlayground": true
             },
             {
-                "name": "Access Logs",
-                "url": "http-access-logs",
-                "disablePlayground": true
-            },
-            {
                 "name": "Service Data Binding",
                 "url": "http-data-binding",
                 "disablePlayground": true
@@ -951,6 +945,10 @@
                 "name": "Handling Different Payload Types",
                 "url": "different-payload-types",
                 "disablePlayground": true
+            },
+            {
+                "name": "HTTP Streaming",
+                "url": "http-streaming"
             },
             {
                 "name": "HTTP Compression",
@@ -1224,17 +1222,17 @@
         "samples": [{	
                 "name": "Distributed Tracing",	
                 "url": "tracing",
-                "disablePlayground": true	
-            },	
-            {	
-                "name": "Counter-Based Metrics",	
+                "disablePlayground": true
+            },
+            {
+                "name": "Counter-Based Metrics",
                 "url": "counter-metrics",
-                "disablePlayground": true	
-            },	
-            {	
-                "name": "Gauge-Based Metrics",	
+                "disablePlayground": true
+            },
+            {
+                "name": "Gauge-Based Metrics",
                 "url": "gauge-metrics",
-                "disablePlayground": true	
+                "disablePlayground": true
             }	
         ]	
     },
@@ -1458,9 +1456,16 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Send and Receive Emails",
-                "url": "send-and-receive-emails",
-                "disablePlayground": true
+                "name": "Send Emails",
+                "url": "send-email"
+            },
+            {
+                "name": "Receive Emails using a client",
+                "url": "receive-email-using-client"
+            },
+            {
+                "name": "Receive Emails using a listener",
+                "url": "receive-email-using-listener"
             }
         ]
     }

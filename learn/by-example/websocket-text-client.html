@@ -1,37 +1,28 @@
 ---
 layout: ballerina-example-page
-title: Read/Write Bytes
+title: Text Message Client
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/byte-io
+permalink: /learn/by-example/websocket-text-client
 redirect_from:
-  - /vswan-lake/learn/by-example/byte-io
-  - /vswan-lake/learn/by-example/byte-io.html
+  - /vswan-lake/learn/by-example/websocket-text-client
+  - /vswan-lake/learn/by-example/websocket-text-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-    <span class="c1">// Initialize the image paths.</span>
-    <span class="kt">string</span> <span class="nx">imagePath</span> <span class="p">=</span> <span class="s">&quot;./files/ballerina.jpg&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">imageCopyPath1</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy1.jpg&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">imageCopyPath2</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy2.jpg&quot;</span><span class="p">;</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client).</span>
+   <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Read the file content as a byte array using the given file path.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">bytes</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBytes</span><span class="p">(</span><span class="nx">imagePath</span><span class="p">);</span>
-    <span class="c1">// Write the already-read content to the given destination file.</span>
-    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteBytes</span><span class="p">(</span><span class="nx">imageCopyPath1</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Successfully copied the image as a byte array.&quot;</span><span class="p">);</span>
+   <span class="c1">// Writes a text message to the server using [writeTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#writeTextMessage).</span>
+   <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Text message&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Read the file as a stream of blocks. The default block size is 4KB.</span>
-    <span class="c1">// Here, the default size is overridden by the value 2KB.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">io</span><span class="p">:</span><span class="nx">Block</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">blockStream</span> <span class="p">=</span> <span class="nx">check</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="nx">imagePath</span><span class="p">,</span> <span class="mi">2048</span><span class="p">);</span>
-    <span class="c1">// If the file reading was successful, then,</span>
-    <span class="c1">// the content will be written to the given destination file using the given stream.</span>
-    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteBlocksFromStream</span><span class="p">(</span><span class="nx">imageCopyPath2</span><span class="p">,</span> <span class="nx">blockStream</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Successfully copied the image as a stream.&quot;</span><span class="p">);</span>
+   <span class="c1">// Reads a text message echoed from the server using [readTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readTextMessage).</span>
+   <span class="kt">string</span> <span class="nx">textResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">textResp</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -41,10 +32,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Read/Write Bytes</h2>
-                            <p><p>This example demonstrates how bytes can be read and written through the I/O APIs.<br/><br/>
+                            <h2>Text Message Client</h2>
+                            <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server in a Synchronous manner. This example demonstrates how to read and write text messages using ballerina websocket client<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/io/latest/io/">IO module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
 </p>
 
                         </td>
@@ -52,16 +43,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="java-exceptions.html">
+                                    <a class="prev" href="graphql-resources-with-record-values.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Java Exceptions</p>
+                                        <p>GraphQL Resources with Record Values</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="text-io.html">
+                                    <a class="next" href="websocket-binary-client.html">
                                         <span>NEXT ></span>
-                                        <p>Read/Write Text</p>
+                                        <p>Binary Message Client</p>
                                     </a>
                                 </div>
                                 
@@ -70,7 +61,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="byte-io">
+            <div class="example" id="websocket-text-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -81,7 +72,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/byte-io/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-text-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -110,10 +101,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -123,6 +110,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/websocket;
 </code></pre></div>
 
                                 </td>
@@ -134,7 +122,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -146,9 +134,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string imagePath = &quot;./files/ballerina.jpg&quot;;
-    string imageCopyPath1 = &quot;./files/ballerinaCopy1.jpg&quot;;
-    string imageCopyPath2 = &quot;./files/ballerinaCopy2.jpg&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>   websocket:Client wsClient = check new(&quot;ws://echo.websocket.org&quot;);
 </code></pre></div>
 
                                 </td>
@@ -156,7 +142,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the image paths.</p>
+                                            <p>Creates a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client">WebSocket client</a>.</p>
 
                                         </div>
                                     </div>
@@ -167,7 +153,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] bytes = check io:fileReadBytes(imagePath);
+                                    <div class="highlight"><pre><code class=language-ballerina>   check wsClient-&gt;writeTextMessage(&quot;Text message&quot;);
 </code></pre></div>
 
                                 </td>
@@ -175,48 +161,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read the file content as a byte array using the given file path.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteBytes(imageCopyPath1, bytes);
-    io:println(&quot;Successfully copied the image as a byte array.&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Write the already-read content to the given destination file.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;io:Block, io:Error?&gt; blockStream = check
-    io:fileReadBlocksAsStream(imagePath, 2048);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Read the file as a stream of blocks. The default block size is 4KB.
- Here, the default size is overridden by the value 2KB.</p>
+                                            <p>Writes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#writeTextMessage">writeTextMessage</a>.</p>
 
                                         </div>
                                     </div>
@@ -227,8 +172,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteBlocksFromStream(imageCopyPath2, blockStream);
-    io:println(&quot;Successfully copied the image as a stream.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>   string textResp = check wsClient-&gt;readTextMessage();
+   io:println(textResp);
 }
 </code></pre></div>
 
@@ -237,8 +182,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the file reading was successful, then,
- the content will be written to the given destination file using the given stream.</p>
+                                            <p>Reads a text message echoed from the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readTextMessage">readTextMessage</a>.</p>
 
                                         </div>
                                     </div>
@@ -266,14 +210,9 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-# Note that to run this examples successfully, you should place an image in the `files` directory as follows.
-# tree .
-# ├── files
-# │   └── ballerina.jpeg
-# └── bytes_io.bal
-bal run bytes_io.bal
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and execute the `bal run` command below.
+bal run websocket_text_client.bal
 </code></pre></div>
 
                                 </td>
@@ -285,8 +224,7 @@ bal run bytes_io.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Successfully copied the image as a byte array.
-Successfully copied the image as a stream.
+                                    <div class="highlight"><pre><code class=shell-session>Text message
 </code></pre></div>
 
                                 </td>

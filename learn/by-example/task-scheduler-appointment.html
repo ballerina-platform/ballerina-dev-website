@@ -46,9 +46,10 @@ redirect_from:
     <span class="c1">// This resource is triggered when the appointment is due.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">reminderCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span><span class="p">,</span> <span class="nx">reminderCount</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">reminderCount</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span><span class="p">,</span> <span class="nx">reminderCount</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-
 <span class="p">};</span>
 </pre></div>
 
@@ -122,8 +123,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -355,11 +354,14 @@ import ballerina/task;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onTrigger() {
         reminderCount += 1;
-        io:println(&quot;Schedule is due - Reminder: &quot;, reminderCount);
+        if (reminderCount &lt;= 5) {
+            io:println(&quot;Schedule is due - Reminder: &quot;, reminderCount);
+        }
     }
+};
 </code></pre></div>
 
                                 </td>
@@ -371,18 +373,6 @@ import ballerina/task;
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

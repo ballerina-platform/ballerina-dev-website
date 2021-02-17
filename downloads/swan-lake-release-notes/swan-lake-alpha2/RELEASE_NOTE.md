@@ -436,9 +436,9 @@ Introduced SSL/TLS-based communication to the TCP module using the `secureSocket
 Sample code is as follows.
 
 ```ballerina
+import ballerina/io;
 import ballerina/tcp;
 
-configurable string keyPath = ?;
 configurable string certPath = ?;
 
 public function main() returns error? {
@@ -450,14 +450,11 @@ public function main() returns error? {
         },
         ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
     });
-
     string msg = "Hello Ballerina Echo from secure client";
     byte[] msgByteArray = msg.toBytes();
     check socketClient->writeBytes(msgByteArray);
-
     readonly & byte[] receivedData = check socketClient->readBytes();
-    test:assertEquals('string:fromBytes(receivedData), msg, "Found unexpected output");
-
+    io:println(string:fromBytes(receivedData));
     check socketClient->close();
 }
 ```

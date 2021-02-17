@@ -514,6 +514,8 @@ Added variable paging support. With this feature, the Ballerina variables, which
 - Member access on a value of type `table` now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member of the `table` with the given key.
 
 ```ballerina
+import ballerina/io;
+
 type Employee record {
     readonly string name;
     int id;
@@ -521,14 +523,13 @@ type Employee record {
 
 public function main() {
     table<Employee> key(name) employeeTable = table [
-            {name: "Mike", id: 1234},
-            {name: "John", id: 4567}
-        ];
-
+        {name: "Mike", id: 1234},
+        {name: "John", id: 4567}
+    ];
     Employee? emp1 = employeeTable["John"];
-    io:println(emp1); //{name: "John", id: 4567}
+    io:println(emp1); // {"name":"John","id":4567}
     Employee? emp2 = employeeTable["Kate"];
-    boolean value2 = emp2 is (); //true
+    io:println(emp2 is ()); // true
 }
 ```
 

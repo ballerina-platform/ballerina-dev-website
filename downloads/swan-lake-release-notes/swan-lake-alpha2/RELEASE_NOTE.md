@@ -208,8 +208,8 @@ This introduction enables manipulating the payload as a stream of `byte[]`. The 
 ```ballerina
 http:Request request = new;
 io:ReadableByteChannel byteChannel = check io:openReadableFile("path/to/file.tmp");
-stream<io:Block, io:Error> byteStream = check byteChannel.blockStream(8196);request.setByteStream
-(byteStream) ;
+stream<io:Block, io:Error> byteStream = check byteChannel.blockStream(8196);
+request.setByteStream(byteStream);
 
 http:Response response = new;
 stream<byte[], io:Error>|error str = response.getByteStream();

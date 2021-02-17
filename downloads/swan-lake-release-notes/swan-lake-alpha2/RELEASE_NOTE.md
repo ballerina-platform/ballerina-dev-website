@@ -374,7 +374,7 @@ public type Message record {|
 |};
 ```
 
-- The above-mentioned changes related to the `body` and `attachments` fields are updated in the `email:Options` record as given below in order to facilitate the `sendEmail` method in the `email:SmtpClient`.
+- The above-mentioned changes related to the `body` and `attachments` fields are updated in the `email:Options` record as given below in order to facilitate the same in the `sendEmail` method in the `email:SmtpClient`.
 
 ```ballerina
 public type Options record {|

@@ -502,7 +502,7 @@ service class EchoService {
 
 ##### UDP Module Improvements
 
-- The `sendDatagram` function will now send multiple datagrams if the size of the `byte[]` value provided as the `data` field of the datagram exceeds 8KB.
+- The `sendDatagram` method will now send multiple datagrams if the size of the `byte[]` value provided as the `data` field of the datagram exceeds 8KB.
 
 - Returning `Datagram` from the `onDatagram` or `onBytes` remote methods also sends multiple datagrams if the size of the `byte[]` value provided (as the `data` field of the datagram) exceeds 8KB.
 

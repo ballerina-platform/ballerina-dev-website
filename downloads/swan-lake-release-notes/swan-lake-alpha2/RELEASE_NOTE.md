@@ -336,21 +336,22 @@ service /subscriber on subscriberListener {
 Included functionality to the `websubhub:Service` to respond with user-defined custom payloads/header parameters in error scenarios.
 
 ```ballerina
-import ballerina / websubhub;
+import ballerina/websubhub;
 
-service /websubhub on websubhub:Listener(9091) {
-
-    remote function onRegisterTopic(websubhub:TopicRegistration message) returns websubhub:TopicRegistrationSuccess|
-    websubhub:TopicRegistrationError {
+service /websubhub on new websubhub:Listener(9091) {
+    remote function onRegisterTopic(websubhub:TopicRegistration message) 
+            returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError {
         if (message.topic == "https://sub.topic.com") {
             websubhub:TopicRegistrationSuccess successResult = {body: <map<string>>{isSuccess: "true"}};
             return successResult;
         } else {
-            return error websubhub:TopicRegistrationError("Topic registration failed!", headers = 
-            {"Content-Encoding": "gzip"}, body = {"hub.additional.details": "Feature is not supported in the hub"});
+            return error websubhub:TopicRegistrationError("Topic registration failed!", 
+                        headers = {"Content-Encoding": "gzip"}, 
+                        body = {"hub.additional.details": "Feature is not supported in the hub"});
         }
     }
 
+    // Other remote methods...
 }
 ```
 

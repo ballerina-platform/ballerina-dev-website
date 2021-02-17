@@ -5,14 +5,12 @@
 <h1>Redirecting&hellip;</h1>
 <script>
     let loc = window.location.href;
-    console.log(loc);
     var found = false;
     let regexExpr = /\/swan-lake\/learn\/api-docs\/ballerina\/#((\/[^\/]*)(\/[^\/]*)(\/[^\/]*)$)/;
 
     if (regexExpr.test(loc)) {
         const match = loc.match(regexExpr);
         loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]+match[3]+match[4] )
-        console.log(loc);
         found = true;
     }
     if (!found) {

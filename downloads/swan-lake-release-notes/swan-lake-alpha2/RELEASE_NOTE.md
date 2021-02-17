@@ -360,7 +360,37 @@ public function fileWriteXml(@untainted string path, xml content, *XmlWriteOptio
                              OVERWRITE) returns Error? {
 }
 ```
+**Example**
 
+```ballerina
+import ballerina/io;
+
+public function main() returns error? {
+    xml content = xml `<note>
+        <to>Tove</to>
+        <from>Jani</from>
+        <heading>Reminder</heading>
+        <body>Don't forget me this weekend!</body>
+        </note>`;
+    string publicId = "-//W3C//DTD HTML 4.01 Transitional//EN";
+    string systemId = "http://www.w3.org/TR/html4/loose.dtd";
+    var writeResult = io:fileWriteXml("./xmlFileWithDoc.xml", content, doctype = {
+        system: systemId,
+        'public: publicId
+    });
+}
+```
+
+**Output**
+```xml
+<!DOCTYPE note PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<note>
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Reminder</heading>
+    <body>Don't forget me this weekend!</body>
+</note>
+```
 ##### Email Module Improvements
 
 - Make the `body` field of the `email:Message` record optional. This enables sending an email only with the `htmlBody` without a text-typed body field.

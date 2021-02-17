@@ -1387,7 +1387,7 @@
                 "disablePlayground": true
             },
             {
-                "name": "UDP Connection oriented Client",
+                "name": "UDP Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "disablePlayground": true
             },
@@ -1460,11 +1460,11 @@
                 "url": "send-email"
             },
             {
-                "name": "Receive Emails using a client",
+                "name": "Receive Emails Using a Client",
                 "url": "receive-email-using-client"
             },
             {
-                "name": "Receive Emails using a listener",
+                "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener"
             }
         ]

@@ -514,6 +514,15 @@ Added support to decode private keys from `.key` files and public keys from `.ce
 
 Extended the private key support for JWT signature generation and public cert support for JWT signature validation.
 
+##### Log module improvements
+
+Introduced a configuration in the log module to set the output format to JSON. You need to add the entry below in the `Config.toml` file to set the output format to JSON.
+
+```toml
+[log]
+output_format = "json"
+```
+
 #### Code to Cloud
 
 - The `Kubernetes.toml` file is renamed to `Cloud.toml`. 

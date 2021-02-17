@@ -1,5 +1,12 @@
 {
-  "modules": [],
+  "modules": [
+    {
+      "id": "openapi",
+      "description": "",
+      "orgName": "ballerina",
+      "version": "2.0.6"
+    }
+  ],
   "classes": [],
   "functions": [],
   "records": [
@@ -8,7 +15,7 @@
       "description": "Service validation codee\n",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.4"
+      "moduleVersion": "2.0.6"
     }
   ],
   "constants": [],
@@ -22,7 +29,7 @@
       "description": "Annotation for additional OpenAPI information of a Ballerina service.",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.4"
+      "moduleVersion": "2.0.6"
     }
   ],
   "abstractObjects": [],

@@ -1,5 +1,12 @@
 var searchData = {
-  "modules": [],
+  "modules": [
+    {
+      "id": "jsonutils",
+      "description": "",
+      "orgName": "ballerina",
+      "version": "1.1.0-alpha3"
+    }
+  ],
   "classes": [],
   "functions": [
     {
@@ -7,14 +14,14 @@ var searchData = {
       "description": "Converts a table to its JSON representation.",
       "moduleId": "jsonutils",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "moduleVersion": "1.1.0-alpha3"
     },
     {
       "id": "fromXML",
       "description": "Converts an XML object to its JSON representation.",
       "moduleId": "jsonutils",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "moduleVersion": "1.1.0-alpha3"
     }
   ],
   "records": [
@@ -23,7 +30,7 @@ var searchData = {
       "description": "Provides configurations for converting XML to JSON.",
       "moduleId": "jsonutils",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.0.5"
+      "moduleVersion": "1.1.0-alpha3"
     }
   ],
   "constants": [],

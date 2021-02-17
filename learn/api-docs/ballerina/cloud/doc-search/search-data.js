@@ -1,5 +1,12 @@
 var searchData = {
-  "modules": [],
+  "modules": [
+    {
+      "id": "cloud",
+      "description": "",
+      "orgName": "ballerina",
+      "version": "1.0.0"
+    }
+  ],
   "classes": [],
   "functions": [],
   "records": [

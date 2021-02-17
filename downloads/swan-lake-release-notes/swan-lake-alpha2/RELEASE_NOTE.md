@@ -507,7 +507,7 @@ Added variable paging support. With this feature, the Ballerina variables, which
 	  - Template strings will allow continuing on new lines.
 	  - The CLI will wait for more input if the last character was an operator.
 	  - The CLI will not wait for unclosed double quotes.
-3. Enable REPL to exit on `Ctrl+D`.
+3. Enabled REPL to exit on `Ctrl+D`.
 
 #### Breaking Changes
 

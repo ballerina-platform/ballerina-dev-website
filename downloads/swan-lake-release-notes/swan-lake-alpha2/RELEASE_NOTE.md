@@ -478,7 +478,7 @@ service class EchoService {
 
 ##### Crypto Module Improvements
 
-Added support to decode private keys from `.key` files and public keys from `.cert` files and update the APIs for decoding private/public keys. This enables reading private/public keys from PEM files.
+Added support to decode private keys from `.key` files and public keys from `.cert` files and updated the APIs for decoding private/public keys. This enables reading private/public keys from PEM files.
 
 ##### JWT Module Improvements
 

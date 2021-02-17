@@ -18,8 +18,8 @@ redirect_from:
   - /1.2/learn/setting-up-visual-studio-code/run-all-tests
   - /1.2/learn/run-all-tests
   - /1.2/learn/run-all-tests/
-  - /1.2/learn/getting-started/run-all-tests
-  - /1.2/learn/getting-started/run-all-tests/
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/run-all-tests
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/run-all-tests/
 ---
 
 ## Running All Tests 

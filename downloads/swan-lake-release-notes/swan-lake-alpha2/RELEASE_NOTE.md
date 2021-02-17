@@ -393,7 +393,7 @@ public function main() returns error? {
 ```
 ##### Email Module Improvements
 
-- Make the `body` field of the `email:Message` record optional. This enables sending an email only with the `htmlBody` without a text-typed body field.
+- Make the `body` field of the `email:Message` record optional. This enables sending an email with only the `htmlBody` field set without a text-typed `body` field.
 
 - Add `mime:Entity` type to the union type of the `attachments` field in the `email:Message` record. That enables attaching a single MIME Entity as an attachment. This `email:Message` record change would appear as follows.
 

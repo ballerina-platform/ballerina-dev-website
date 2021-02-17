@@ -18,8 +18,8 @@ redirect_from:
   - /1.2/learn/setting-up-visual-studio-code/language-intelligence
   - /1.2/learn/language-intelligence
   - /1.2/learn/language-intelligence/
-  - /1.2/learn/getting-started/language-intelligence
-  - /1.2/learn/getting-started/language-intelligence/
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/language-intelligence
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/language-intelligence/
 ---
 
 ## Semantic and Syntactic Diagnostics

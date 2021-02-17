@@ -100,14 +100,18 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Taint Checking</h2>
-                            <p><p>Ballerina is designed to ensure that programs written in Ballerina are inherently secure. Ballerina programs
- are resilient to major security vulnerabilities including SQL injection, path manipulation, file manipulation,
- unauthorized file access, and unvalidated redirect (open redirect).<br/><br/></p>
+                            <p><p>Ballerina is designed to ensure that programs written in Ballerina are inherently secure.
+ With taint flow analysis (a.k.a taint checking), the Ballerina compiler identifies data flows, which may lead to
+ untrusted data being passed to security-sensitive areas of the program.<br/><br/></p>
 
-<p>A taint analysis mechanism is used to achieve this. As a result of the taint analysis mechanism, the Ballerina compiler
- identifies untrusted (tainted) data by observing how tainted data propagates through the program. If untrusted data
- is passed to a security sensitive parameter, a compile error is generated.<br/><br/>
- For more information, see <a href="https://ballerina.io/learn/how-to-write-secure-ballerina-code/">How to Write Secure Ballerina Programs</a>.</p>
+<p>By enabling taint analysis, Ballerina programs can be made resilient to major security vulnerabilities including
+ SQL injection, path manipulation, file manipulation, unauthorized file access,
+ and unvalidated redirect (open redirect).
+ For more information, see <a href="https://ballerina.io/learn/writing-secure-ballerina-code/">Writing Secure Ballerina Code</a>.<br/><br/></p>
+
+<p>Taint analysis is disabled by default and it can be enabled by providing the <code>--taint-check</code> option
+ to the Ballerina <code>run</code> or <code>build</code> commands. It can also be enabled for a project by adding the build option
+ <code>taintCheck = true</code> under the <code>[build-options]</code> section in the <code>Ballerina.toml</code> file.</p>
 </p>
 
                         </td>
@@ -148,7 +152,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=43ce416321e812c8b633fbc296b27cba&file=taint_checking.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=5bb06b10433a23ebeb7af9898c275dc3&file=taint_checking.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -590,7 +594,7 @@ redirect_from:
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
-bal run taint_checking.bal
+bal run --taint-check taint_checking.bal
 ERROR [taint_checking.bal:(32:34,33:69)] tainted value passed to untainted parameter &#39;sqlQuery&#39;
 ERROR [taint_checking.bal:(36:32,36:39)] tainted value passed to untainted parameter &#39;secureParameter&#39;
 ERROR [taint_checking.bal:(55:32,55:48)] tainted value passed to untainted parameter &#39;secureParameter&#39;

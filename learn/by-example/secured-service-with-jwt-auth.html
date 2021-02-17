@@ -33,12 +33,14 @@ redirect_from:
             <span class="nx">jwtValidatorConfig</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
                 <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-                <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-                    <span class="p">},</span>
-                    <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                        <span class="p">},</span>
+                        <span class="nx">certAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                    <span class="p">}</span>
                 <span class="p">},</span>
                 <span class="nx">scopeKey</span><span class="p">:</span> <span class="s">&quot;scp&quot;</span>
             <span class="p">},</span>
@@ -184,12 +186,14 @@ redirect_from:
             jwtValidatorConfig: {
                 issuer: &quot;wso2&quot;,
                 audience: &quot;ballerina&quot;,
-                trustStoreConfig: {
-                    trustStore: {
-                        path: &quot;../resources/ballerinaTruststore.p12&quot;,
-                        password: &quot;ballerina&quot;
-                    },
-                    certificateAlias: &quot;ballerina&quot;
+                signatureConfig: {
+                    trustStoreConfig: {
+                        trustStore: {
+                            path: &quot;../resources/ballerinaTruststore.p12&quot;,
+                            password: &quot;ballerina&quot;
+                        },
+                        certAlias: &quot;ballerina&quot;
+                    }
                 },
                 scopeKey: &quot;scp&quot;
             },

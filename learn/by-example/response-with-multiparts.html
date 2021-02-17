@@ -131,6 +131,22 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// [Extracts byte stream](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and saves it as a file.</span>
+        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getByteStream</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+            <span class="c1">//Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">? result = io:fileWriteBlocksFromStream(</span>
+                                    <span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while writing &quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">close</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing byte channel :&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -144,40 +160,11 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// Copies the content from the source channel to the destination channel.</span>
-<span class="kd">function</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dst</span><span class="p">)</span>
-                <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//Operation attempts to read a maximum of 1000 bytes.</span>
-        <span class="nx">byte</span><span class="p">[]|</span><span class="nx">io</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">//Writes the given content into the channel.</span>
-            <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">dst</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">result2</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="nx">result2</span><span class="p">;</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">result2</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">//Closes the byte channel.</span>
-<span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">|</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">object</span> <span class="p">{</span>
-        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">close</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">;</span>
-    <span class="p">}</span> <span class="nx">channelResult</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">channelResult</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="c1">//Closes the byte stream.</span>
+<span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">byteStream</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">byteStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the stream: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -742,8 +729,7 @@ vary based on your requirement.</p>
         } else {
             log:printError(&quot;Error in parsing text data&quot;, err = payload);
         }
-    }
-}
+    } else if (mime:APPLICATION_PDF == baseType) {
 </code></pre></div>
 
                                 </td>
@@ -755,6 +741,67 @@ vary based on your requirement.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getByteStream();
+        if (payload is stream&lt;byte[], io:Error&gt;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getByteStream">Extracts byte stream</a> from the body part and saves it as a file.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:Error? result = io:fileWriteBlocksFromStream(
+                                    &quot;./files/ReceivedFile.pdf&quot;, payload);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Writes the incoming stream to a file using <code>io:fileWriteBlocksFromStream</code> API by providing the file location to which the content should be written to.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
+                log:printError(&quot;Error occurred while writing &quot;,
+                                err = result);
+            }
+            close(payload);
+        } else {
+            log:printError(&quot;Error in parsing byte channel :&quot;, err = payload);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -787,90 +834,11 @@ vary based on your requirement.</p>
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function copy(io:ReadableByteChannel src, io:WritableByteChannel dst)
-                returns error? {
-    while (true) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Copies the content from the source channel to the destination channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        byte[]|io:Error result = src.read(1000);
-        if (result is io:EofError) {
-            break;
-        } else if (result is error) {
-            return &lt;@untainted&gt;result;
-        } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Operation attempts to read a maximum of 1000 bytes.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            int i = 0;
-            while (i &lt; result.length()) {
-                var result2 = dst.write(result, i);
-                if (result2 is error) {
-                    return result2;
-                } else {
-                    i = i + result2;
-                }
-            }
-        }
-    }
-    return;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Writes the given content into the channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
-    object {
-        public function close() returns error?;
-    } channelResult = ch;
-    var cr = channelResult.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>function close(stream&lt;byte[], io:Error&gt; byteStream) {
+    var cr = byteStream.close();
     if (cr is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, err = cr);
+        log:printError(&quot;Error occurred while closing the stream: &quot;, err = cr);
     }
 }
 </code></pre></div>
@@ -880,7 +848,7 @@ vary based on your requirement.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes the byte channel.</p>
+                                            <p>Closes the byte stream.</p>
 
                                         </div>
                                     </div>

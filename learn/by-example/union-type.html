@@ -19,7 +19,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">!</span><span class="nx">personTab</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;id &#39;&quot;</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s">&quot;&#39; not found&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">personTab</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nx">personTab</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="c1">// If the `id` is an int, lookup the `Person` by index</span>
         <span class="k">return</span> <span class="nx">personTab</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()[</span><span class="nx">id</span><span class="p">];</span>
@@ -104,7 +104,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=74de894cf83817e2c24e97503c1b6a79&file=union_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=26ee2d5958ad18eb91747c8c3faca0e1&file=union_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -188,7 +188,7 @@ redirect_from:
         if !personTab.hasKey(id) {
             return error(&quot;id &#39;&quot; + id + &quot;&#39; not found&quot;);
         }
-        return personTab[id];
+        return personTab.get(id);
     } else {
 </code></pre></div>
 

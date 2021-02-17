@@ -12,30 +12,23 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">udp</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="c1">// Bind the service to the port.</span>
 <span class="c1">// Optionally, you can provide the `remoteHost` and `remotePort` to</span>
 <span class="c1">// configure the listener as a connected listener, which only</span>
 <span class="c1">// reads and writes to the configured remote host.</span>
-<span class="c1">// udp:Listener(48829, remoteHost = &quot;www.remote-clinet.com&quot;, remotePort = 8080)</span>
-<span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">48829</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// udp:Listener(8080, remoteHost = &quot;www.remote-clinet.com&quot;, remotePort = 9090)</span>
+<span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// This remote method is invoked once the content is received from the client.</span>
     <span class="c1">// You may replace the `onBytes` method with `onDatagram`, which reads the data as</span>
     <span class="c1">// readonly &amp; udp:Datagram.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> 
-            <span class="nx">returns</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[])|</span><span class="nx">udp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received by listener: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onDatagram</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span> <span class="nx">datagram</span><span class="p">,</span>
+        <span class="nx">udp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span><span class="p">|</span><span class="nx">udp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received by listener: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">datagram</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
         <span class="c1">// Echo back the data to the same client.</span>
-        <span class="c1">// This is similar to calling `caller-&gt;sendBytes(data);`.</span>
-        <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// This remote method is invoked in an error situation</span>
-    <span class="c1">// if it happens during the `onBytes` and `onDatagram` methods.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">msg</span> <span class="p">=</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="c1">// This is similar to calling `caller-&gt;sendDatagram(data);`.</span>
+        <span class="k">return</span> <span class="nx">datagram</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -115,8 +108,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -127,7 +118,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/udp;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -139,7 +129,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service on new udp:Listener(48829) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service on new udp:Listener(8080) {
 </code></pre></div>
 
                                 </td>
@@ -151,7 +141,7 @@ import ballerina/log;
  Optionally, you can provide the <code>remoteHost</code> and <code>remotePort</code> to
  configure the listener as a connected listener, which only
  reads and writes to the configured remote host.
- udp:Listener(48829, remoteHost = &ldquo;www.remote-clinet.com&rdquo;, remotePort = 8080)</p>
+ udp:Listener(8080, remoteHost = &ldquo;www.remote-clinet.com&rdquo;, remotePort = 9090)</p>
 
                                         </div>
                                     </div>
@@ -162,9 +152,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onBytes(readonly &amp; byte[] data, udp:Caller caller) 
-            returns (readonly &amp; byte[])|udp:Error? {
-        io:println(&quot;Received by listener: &quot;, string:fromBytes(data));
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onDatagram(readonly &amp; udp:Datagram datagram,
+        udp:Caller caller) returns udp:Datagram|udp:Error? {
+        io:println(&quot;Received by listener: &quot;, string:fromBytes(datagram.data));
 </code></pre></div>
 
                                 </td>
@@ -184,30 +174,8 @@ import ballerina/log;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return data;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Echo back the data to the same client.
- This is similar to calling <code>caller-&gt;sendBytes(data);</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(readonly &amp; udp:Error err) {
-        log:printError(msg = err.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>        return datagram;
     }
 }
 </code></pre></div>
@@ -217,8 +185,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This remote method is invoked in an error situation
- if it happens during the <code>onBytes</code> and <code>onDatagram</code> methods.</p>
+                                            <p>Echo back the data to the same client.
+ This is similar to calling <code>caller-&gt;sendDatagram(data);</code>.</p>
 
                                         </div>
                                     </div>

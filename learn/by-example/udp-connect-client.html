@@ -22,7 +22,7 @@ redirect_from:
     <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
     <span class="c1">// udp:Client client = new (&quot;www.ballerina.com&quot;, 80,</span>
     <span class="c1">//                         localHost = &quot;localhost&quot;, timeoutInMillis = 2000);</span>
-    <span class="nx">udp</span><span class="p">:</span><span class="nx">ConnectClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">48829</span><span class="p">);</span>
+    <span class="nx">udp</span><span class="p">:</span><span class="nx">ConnectClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">);</span>
 
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
 
@@ -164,7 +164,7 @@ import ballerina/udp;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    udp:ConnectClient socketClient = check new(&quot;localhost&quot;, 48829);
+                                    <div class="highlight"><pre><code class=language-ballerina>    udp:ConnectClient socketClient = check new(&quot;localhost&quot;, 8080);
 </code></pre></div>
 
                                 </td>

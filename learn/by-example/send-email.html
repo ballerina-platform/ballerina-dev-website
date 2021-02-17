@@ -1,47 +1,55 @@
 ---
 layout: ballerina-example-page
-title: Read/Write Text
+title: Send Emails
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/text-io
+permalink: /learn/by-example/send-email
 redirect_from:
-  - /vswan-lake/learn/by-example/text-io
-  - /vswan-lake/learn/by-example/text-io.html
+  - /vswan-lake/learn/by-example/send-email
+  - /vswan-lake/learn/by-example/send-email.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-    <span class="c1">// Initialize the text path and the content.</span>
-    <span class="kt">string</span> <span class="nx">textFilePath1</span> <span class="p">=</span> <span class="s">&quot;./files/textfile1.txt&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">textFilePath2</span> <span class="p">=</span> <span class="s">&quot;./files/textfile2.txt&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">textFilePath3</span> <span class="p">=</span> <span class="s">&quot;./files/textfile3.txt&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">textContent</span> <span class="p">=</span> <span class="s">&quot;Ballerina is an open source programming language.&quot;</span><span class="p">;</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">lines</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;The Big Bang Theory&quot;</span><span class="p">,</span> <span class="s">&quot;F.R.I.E.N.D.S&quot;</span><span class="p">,</span>
-    <span class="s">&quot;Game of Thrones&quot;</span><span class="p">,</span> <span class="s">&quot;LOST&quot;</span><span class="p">];</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates an SMTP client with the connection parameters, host, username,</span>
+    <span class="c1">// and password. The default port number `465` is used over SSL with these</span>
+    <span class="c1">// configurations. `SmtpConfig` can be configured and passed to this</span>
+    <span class="c1">// client if the port or security is to be customized.</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;smtp.email.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;sender@email.com&quot;</span> <span class="p">,</span> <span class="s">&quot;pass123&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Write the given string to a file.</span>
-    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteString</span><span class="p">(</span><span class="nx">textFilePath1</span><span class="p">,</span> <span class="nx">textContent</span><span class="p">);</span>
-    <span class="c1">// If the write operation was successful, then, read the content as a string.</span>
-    <span class="kt">string</span> <span class="nx">readContent</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadString</span><span class="p">(</span><span class="nx">textFilePath1</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">readContent</span><span class="p">);</span>
+    <span class="c1">// Define the email that is required to be sent.</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span> <span class="nx">email</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// &quot;TO&quot;, &quot;CC&quot;, and &quot;BCC&quot; address lists are added as follows.</span>
+        <span class="c1">// Only the &quot;TO&quot; address list is mandatory out of these three.</span>
+        <span class="nx">to</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver2@email.com&quot;</span><span class="p">],</span>
+        <span class="nx">cc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver3@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver4@email.com&quot;</span><span class="p">],</span>
+        <span class="nx">bcc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver5@email.com&quot;</span><span class="p">],</span>
+        <span class="c1">// Subject of the email is added as follows. This field is mandatory.</span>
+        <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;Sample Email&quot;</span><span class="p">,</span>
+        <span class="c1">// Body content (text) of the email is added as follows.</span>
+        <span class="c1">// This field is optional.</span>
+        <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;This is a sample email.&quot;</span><span class="p">,</span>
+        <span class="c1">// Email author&#39;s address is added as follows. This field is mandatory.</span>
+        <span class="err">&#39;</span><span class="nx">from</span><span class="p">:</span> <span class="s">&quot;author@email.com&quot;</span><span class="p">,</span>
+        <span class="c1">// Email sender service address is added as follows.</span>
+        <span class="c1">// This field is optional. `Sender` is same as the `&#39;from` when the</span>
+        <span class="c1">// email author himself sends the email.</span>
+        <span class="nx">sender</span><span class="p">:</span> <span class="s">&quot;sender@email.com&quot;</span><span class="p">,</span>
+        <span class="c1">// List of recipients when replying to the email is added as follows.</span>
+        <span class="c1">// This field is optional. These addresses are required when the emails</span>
+        <span class="c1">// are to be replied to some other address(es) other than the sender or</span>
+        <span class="c1">// the author.</span>
+        <span class="nx">replyTo</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;replyTo1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;replyTo2@email.com&quot;</span><span class="p">]</span>
+    <span class="p">};</span>
 
-    <span class="c1">// Write the given array of lines to a file.</span>
-    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteLines</span><span class="p">(</span><span class="nx">textFilePath2</span><span class="p">,</span> <span class="nx">lines</span><span class="p">);</span>
-    <span class="c1">// If the write operation was successful, then, perform a read operation to read the lines as an array.</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">readLines</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLines</span><span class="p">(</span><span class="nx">textFilePath2</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">readLines</span><span class="p">);</span>
+    <span class="c1">// Send the email message with the client. The `sendEmail` method can be used</span>
+    <span class="c1">// instead, if the email is required to be sent with mandatory and optional</span>
+    <span class="c1">// parameters instead of configuring an `email:Message` record.</span>
+    <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">sendEmailMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
 
-    <span class="c1">// Write the given stream of lines to a file.</span>
-    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteLinesFromStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">,</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">toStream</span><span class="p">());</span>
-    <span class="c1">// If the write operation was successful, then, perform a read operation to read the lines as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">lineStream</span> <span class="p">=</span> <span class="nx">check</span>
-                                    <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLinesAsStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">);</span>
-    <span class="c1">// Loop through the stream and print the content.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">lineStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-                               <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
-                           <span class="p">});</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -51,10 +59,13 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Read/Write Text</h2>
-                            <p><p>This demonstrates how characters could be read and written through I/O APIs.<br/><br/>
+                            <h2>Send Emails</h2>
+                            <p><p>The Email Connector is used to send (with SMTP) emails
+ using the SSL or STARTTLS protocols. This sample
+ includes sending emails with default configurations
+ over SSL using the default ports.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/io/latest/io/">IO module</a>.</p>
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/email/latest/email/">Email module</a>.</p>
 </p>
 
                         </td>
@@ -62,16 +73,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="byte-io.html">
+                                    <a class="prev" href="secured-client-with-oauth2-direct-token-type.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Read/Write Bytes</p>
+                                        <p>Secured Client with OAuth2 Direct Token Type</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="csv-io.html">
+                                    <a class="next" href="receive-email-using-client.html">
                                         <span>NEXT ></span>
-                                        <p>Read/Write CSV</p>
+                                        <p>Receive Emails using a client</p>
                                     </a>
                                 </div>
                                 
@@ -80,7 +91,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="text-io">
+            <div class="example" id="send-email">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -91,7 +102,11 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/text-io/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/send-email/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8af6d56843aeb112834c19b4f0e02928&file=send_email.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -130,6 +145,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -138,7 +157,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/email;
 </code></pre></div>
 
                                 </td>
@@ -150,7 +169,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -162,12 +181,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string textFilePath1 = &quot;./files/textfile1.txt&quot;;
-    string textFilePath2 = &quot;./files/textfile2.txt&quot;;
-    string textFilePath3 = &quot;./files/textfile3.txt&quot;;
-    string textContent = &quot;Ballerina is an open source programming language.&quot;;
-    string[] lines = [&quot;The Big Bang Theory&quot;, &quot;F.R.I.E.N.D.S&quot;,
-    &quot;Game of Thrones&quot;, &quot;LOST&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:SmtpClient smtpClient = check new (&quot;smtp.email.com&quot;,
+        &quot;sender@email.com&quot; , &quot;pass123&quot;);
 </code></pre></div>
 
                                 </td>
@@ -175,7 +190,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the text path and the content.</p>
+                                            <p>Creates an SMTP client with the connection parameters, host, username,
+ and password. The default port number <code>465</code> is used over SSL with these
+ configurations. <code>SmtpConfig</code> can be configured and passed to this
+ client if the port or security is to be customized.</p>
 
                                         </div>
                                     </div>
@@ -186,7 +204,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteString(textFilePath1, textContent);
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Message email = {
 </code></pre></div>
 
                                 </td>
@@ -194,7 +212,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write the given string to a file.</p>
+                                            <p>Define the email that is required to be sent.</p>
 
                                         </div>
                                     </div>
@@ -205,8 +223,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string readContent = check io:fileReadString(textFilePath1);
-    io:println(readContent);
+                                    <div class="highlight"><pre><code class=language-ballerina>        to: [&quot;receiver1@email.com&quot;, &quot;receiver2@email.com&quot;],
+        cc: [&quot;receiver3@email.com&quot;, &quot;receiver4@email.com&quot;],
+        bcc: [&quot;receiver5@email.com&quot;],
 </code></pre></div>
 
                                 </td>
@@ -214,7 +233,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the write operation was successful, then, read the content as a string.</p>
+                                            <p>&ldquo;TO&rdquo;, &ldquo;CC&rdquo;, and &ldquo;BCC&rdquo; address lists are added as follows.
+ Only the &ldquo;TO&rdquo; address list is mandatory out of these three.</p>
 
                                         </div>
                                     </div>
@@ -225,7 +245,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteLines(textFilePath2, lines);
+                                    <div class="highlight"><pre><code class=language-ballerina>        subject: &quot;Sample Email&quot;,
 </code></pre></div>
 
                                 </td>
@@ -233,7 +253,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write the given array of lines to a file.</p>
+                                            <p>Subject of the email is added as follows. This field is mandatory.</p>
 
                                         </div>
                                     </div>
@@ -244,8 +264,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string[] readLines = check io:fileReadLines(textFilePath2);
-    io:println(readLines);
+                                    <div class="highlight"><pre><code class=language-ballerina>        body: &quot;This is a sample email.&quot;,
 </code></pre></div>
 
                                 </td>
@@ -253,7 +272,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the write operation was successful, then, perform a read operation to read the lines as an array.</p>
+                                            <p>Body content (text) of the email is added as follows.
+ This field is optional.</p>
 
                                         </div>
                                     </div>
@@ -264,7 +284,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteLinesFromStream(textFilePath3, lines.toStream());
+                                    <div class="highlight"><pre><code class=language-ballerina>        &#39;from: &quot;author@email.com&quot;,
 </code></pre></div>
 
                                 </td>
@@ -272,7 +292,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write the given stream of lines to a file.</p>
+                                            <p>Email author&rsquo;s address is added as follows. This field is mandatory.</p>
 
                                         </div>
                                     </div>
@@ -283,8 +303,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error?&gt; lineStream = check
-                                    io:fileReadLinesAsStream(textFilePath3);
+                                    <div class="highlight"><pre><code class=language-ballerina>        sender: &quot;sender@email.com&quot;,
 </code></pre></div>
 
                                 </td>
@@ -292,7 +311,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the write operation was successful, then, perform a read operation to read the lines as a stream.</p>
+                                            <p>Email sender service address is added as follows.
+ This field is optional. <code>Sender</code> is same as the <code>'from</code> when the
+ email author himself sends the email.</p>
 
                                         </div>
                                     </div>
@@ -301,23 +322,57 @@ redirect_from:
                             </tr>
                             
                             <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        replyTo: [&quot;replyTo1@email.com&quot;, &quot;replyTo2@email.com&quot;]
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>List of recipients when replying to the email is added as follows.
+ This field is optional. These addresses are required when the emails
+ are to be replied to some other address(es) other than the sender or
+ the author.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check smtpClient-&gt;sendEmailMessage(email);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Send the email message with the client. The <code>sendEmail</code> method can be used
+ instead, if the email is required to be sent with mandatory and optional
+ parameters instead of configuring an <code>email:Message</code> record.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = lineStream.forEach(function(string val) {
-                               io:println(val);
-                           });
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Loop through the stream and print the content.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -344,7 +399,7 @@ redirect_from:
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
-bal run text_io.bal
+bal run email.bal
 </code></pre></div>
 
                                 </td>
@@ -356,12 +411,7 @@ bal run text_io.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Ballerina is an open source programming language.
-[&quot;The Big Bang Theory&quot;,&quot;F.R.I.E.N.D.S&quot;,&quot;Game of Thrones&quot;,&quot;LOST&quot;]
-The Big Bang Theory
-F.R.I.E.N.D.S
-Game of Thrones
-LOST
+                                    <div class="highlight"><pre><code class=shell-session># Check the inbox to view the sent emails.
 </code></pre></div>
 
                                 </td>

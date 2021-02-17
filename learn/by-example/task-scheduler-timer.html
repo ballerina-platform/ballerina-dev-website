@@ -53,7 +53,9 @@ redirect_from:
     <span class="c1">// The onTrigger resource, which will be invoked when the timer is triggered.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">CounterContext</span> <span class="nx">ctx</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">ctx</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">count</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 
 <span class="p">};</span>
@@ -360,7 +362,9 @@ import ballerina/task;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onTrigger(CounterContext ctx) {
         ctx.count += 1;
-        io:println(ctx.name, &quot;: &quot;, ctx.count);
+        if (ctx.count &lt;= 5) {
+            io:println(ctx.name, &quot;: &quot;, ctx.count);
+        }
     }
 </code></pre></div>
 

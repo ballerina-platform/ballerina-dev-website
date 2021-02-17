@@ -215,7 +215,7 @@ http:Response response = new;
 stream<byte[], io:Error>|error str = response.getByteStream();
 ```
 
-###### Introduced a Header Parameter to the Resource Signature
+###### Introduced the `http:Header` Annotation to Bind Headers in an Inbound Request
 
 With the introduction of the `@http:Header` annotation, inbound request headers can be retrieved by binding them to a resource method parameter. Individual headers can be accessed as `string` or `string[]` types while a parameter of type `http:Headers` can be used to access all headers. 
 

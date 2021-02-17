@@ -221,7 +221,7 @@ With the introduction of the `@http:Header` annotation, inbound request headers 
 
 ```ballerina
 service on helloEP {
-    resource function get hello(@http:Header {name: ”Accept”} string? acceptHeader, http:Headers allHeaders) {
+    resource function get hello(@http:Header {name: "Accept"} string? acceptHeader, http:Headers allHeaders) {
     //...
     }
 }

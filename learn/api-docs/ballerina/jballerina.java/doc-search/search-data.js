@@ -53,13 +53,6 @@ var searchData = {
       "moduleVersion": "0.9.0"
     },
     {
-      "id": "jObjToString",
-      "description": "Returns the string representation of a Java object stored in a handle reference.",
-      "moduleId": "jballerina.java",
-      "moduleOrgName": "ballerina",
-      "moduleVersion": "0.9.0"
-    },
-    {
       "id": "toString",
       "description": "Returns a Ballerina `string` representation of the Java object referred by the `handle`.",
       "moduleId": "jballerina.java",

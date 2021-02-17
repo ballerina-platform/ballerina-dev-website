@@ -1,5 +1,12 @@
 var searchData = {
-  "modules": [],
+  "modules": [
+    {
+      "id": "awslambda",
+      "description": "",
+      "orgName": "ballerinax",
+      "version": "0.0.0"
+    }
+  ],
   "classes": [
     {
       "id": "Context",

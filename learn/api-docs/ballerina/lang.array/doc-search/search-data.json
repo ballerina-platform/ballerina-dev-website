@@ -183,6 +183,13 @@
   "errors": [],
   "types": [
     {
+      "id": "ErrorType",
+      "description": "A type parameter that is a subtype of `error`.",
+      "moduleId": "lang.array",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "1.1.0"
+    },
+    {
       "id": "OrderedType",
       "description": "Any ordered type is a subtype of this.",
       "moduleId": "lang.array",

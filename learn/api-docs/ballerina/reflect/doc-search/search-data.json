@@ -1,5 +1,12 @@
 {
-  "modules": [],
+  "modules": [
+    {
+      "id": "reflect",
+      "description": "",
+      "orgName": "ballerina",
+      "version": "0.6.0-alpha3"
+    }
+  ],
   "classes": [],
   "functions": [
     {
@@ -7,14 +14,14 @@
       "description": "Function to retrieve the resource\u0027s annotation.",
       "moduleId": "reflect",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
+      "moduleVersion": "0.6.0-alpha3"
     },
     {
       "id": "getServiceAnnotations",
       "description": "Function to retrieve the service\u0027s annotation.",
       "moduleId": "reflect",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
+      "moduleVersion": "0.6.0-alpha3"
     }
   ],
   "records": [],

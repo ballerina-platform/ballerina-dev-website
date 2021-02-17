@@ -248,6 +248,7 @@ function getBodyPartsAsStream(int arraySize = 8196) returns stream<byte[], io:Er
     mime:Entity entity = new;
     entity.setByteStream(byteStream);
     stream<byte[], io:Error>|mime:ParserError str = entity.getByteStream();
+}
 ```
 
 #### WebSocket Module Improvements

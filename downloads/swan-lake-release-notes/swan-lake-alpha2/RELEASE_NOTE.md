@@ -511,7 +511,7 @@ Added variable paging support. With this feature, the Ballerina variables, which
 
 #### Breaking Changes
 
-- Member access on a value of type `table` now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member of the `table` with the given key.
+- Member access on a value of type `table` now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member in the `table` value with the given key.
 
 ```ballerina
 import ballerina/io;

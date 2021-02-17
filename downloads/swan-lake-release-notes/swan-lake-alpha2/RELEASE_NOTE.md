@@ -301,30 +301,32 @@ listener websub:Listener subscriberListener = new (9001);
 service /subscriber on subscriberListener {
     remote function onSubscriptionValidationDenied(websub:SubscriptionDeniedError msg) returns websub:Acknowledgement? {
         websub:Acknowledgement ack = {
-            headers = {
-                        "Content-Encoding" : "gzip"
-                    },
-            body = {
-                     "message" : "Successfully processed request"
-                 }
+            headers: {
+                "Content-Encoding": "gzip"
+            },
+            body: {
+                "message": "Successfully processed request"
+            }
         };
         return ack;
     }
 
     remote function onSubscriptionVerification(websub:SubscriptionVerification msg) returns 
-    websub:SubscriptionVerificationSuccess|websub:SubscriptionVerificationError {
+            websub:SubscriptionVerificationSuccess|websub:SubscriptionVerificationError {
         if (msg.hubTopic == "https://www.sample.topic") {
-            return error websub:SubscriptionVerificationError("Hub topic not supported", headers = 
-            {"Content-Encoding": "gzip"}, body = {"message": "Hub topic not supported"});
+            return error websub:SubscriptionVerificationError("Hub topic not supported", 
+                                                              headers = {"Content-Encoding": "gzip"}, 
+                                                              body = {"message": "Hub topic not supported"});
         } else {
             return {};
         }
     }
 
     remote function onEventNotification(websub:ContentDistributionMessage event) returns websub:Acknowledgement|
-    websub:SubscriptionDeletedError? {
-        return error websub:SubscriptionDeletedError("Subscriber wants to unsubscribe", headers = 
-        {"Content-Encoding": "gzip"}, body = {"message": "Unsubscribing from the topic"});
+            websub:SubscriptionDeletedError? {
+        return error websub:SubscriptionDeletedError("Subscriber wants to unsubscribe", 
+                                                     headers = {"Content-Encoding": "gzip"}, 
+                                                     body = {"message": "Unsubscribing from the topic"});
     }
 }
 ```

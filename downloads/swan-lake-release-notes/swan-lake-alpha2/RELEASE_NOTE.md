@@ -535,21 +535,23 @@ public function main() {
 - Iterating over `xml` in a `from` clause in query expressions now returns `xml` and iterating over `xml<T>` returns `T`.
 
 ```ballerina
-xml authorList = xml `<authorList>
-                                      <author>
-                                          <name>Sir Arthur Conan Doyle</name>
-                                          <country>UK</country>
-                                      </author>
-                                     <author>
-                                        <name>Dan Brown</name>
-                                        <country>US</country>
-                                     </author>
-                                 </authorList>`;
+import ballerina/io;
 
-xml authors = from xml y in authorList/<author>/<name>
-              select y;
-io:println
-(authors) ; //<name>Sir Arthur Conan Doyle</name><name>Dan Brown</name>
+public function main() {
+    xml authorList = xml `<authorList>
+                            <author>
+                                <name>Sir Arthur Conan Doyle</name>
+                                <country>UK</country>
+                            </author>
+                            <author>
+                                <name>Dan Brown</name>
+                                <country>US</country>
+                            </author>
+                        </authorList>`;
+    xml authors = from xml y in authorList/<author>/<name>
+                  select y;
+    io:println(authors); //<name>Sir Arthur Conan Doyle</name><name>Dan Brown</name>
+}
 ```
 
 - Variables of types `readonly` and `value:Cloneable` cannot be assigned to `any` since they may contain values of type `error`.

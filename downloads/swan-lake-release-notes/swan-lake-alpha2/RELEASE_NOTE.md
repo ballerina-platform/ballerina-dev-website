@@ -403,7 +403,7 @@ Introduced SSL/TLS-based communication to the TCP module using the `secureSocket
 
 ###### TCP Client with `secureSocket`
 
-A sample code is as follows.
+Sample code is as follows.
 
 ```ballerina
 import ballerina/tcp;

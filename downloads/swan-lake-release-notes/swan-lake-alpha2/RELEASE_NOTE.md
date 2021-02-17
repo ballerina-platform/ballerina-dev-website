@@ -61,7 +61,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Support for decrypting string values using the new `lang.config` lang library
 - Improvements to the HTTP, mime, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, TCP, UDP, crypto, and JWT standard library modules
 - The extension of the Ballerina package distribution file has been changed from `.balo` to `.bala`
-- Improvements to developer tools such as the language server and debugger.
+- Improvements to developer tools such as the language server and debugger
 
 ### What is new in Ballerina Swan Lake Alpha2
 

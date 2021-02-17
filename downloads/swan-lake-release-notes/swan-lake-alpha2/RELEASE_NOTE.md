@@ -552,4 +552,4 @@ io:println
 (authors) ; //<name>Sir Arthur Conan Doyle</name><name>Dan Brown</name>
 ```
 
-- The `readonly` and `value:Cloneable` values cannot be assigned to `any` since they contain an `error`.
+- Variables of types `readonly` and `value:Cloneable` cannot be assigned to `any` since they may contain values of type `error`.

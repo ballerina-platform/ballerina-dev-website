@@ -520,7 +520,7 @@ Introduced a configuration in the log module to set the output format to JSON. Y
 
 ```toml
 [log]
-output_format = "json"
+format = "json"
 ```
 
 #### Code to Cloud

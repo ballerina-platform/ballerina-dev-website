@@ -6,12 +6,16 @@
 <script>
     let loc = window.location.href;
     var found = false;
-    let regexExpr = /\/swan-lake\/learn\/api-docs\/ballerina\/#((\/[^\/]*)(\/[^\/]*)(\/[^\/]*)$)/;
-
+    let regexExpr = /\/swan-lake\/learn\/api-docs\/ballerina\/#((\/[^\/]*)(\/[^\/]*)?(\/[^\/]*)?$)/;
     if (regexExpr.test(loc)) {
         const match = loc.match(regexExpr);
-        loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]+match[3]+match[4] )
+        if (match[3] != null) {
+            loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]+match[3]+match[4]);
+        } else {
+            loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]);
+        }
         found = true;
+        console.log(loc);
     }
     if (!found) {
         loc = window.location.href.replace("swan-lake/learn/api-docs/ballerina", "learn/api-docs/ballerina");

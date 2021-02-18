@@ -18,8 +18,8 @@ redirect_from:
   - /1.2/learn/setting-up-visual-studio-code/graphical-editor
   - /1.2/learn/graphical-editor
   - /1.2/learn/graphical-editor/
-  - /1.2/learn/getting-started/graphical-editor/
-  - /1.2/learn/getting-started/graphical-editor
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/graphical-editor/
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/graphical-editor
 ---
 
 ## Launching the Graphical View

@@ -37,7 +37,7 @@ redirect_from:
     <span class="c1">//</span>
     <span class="c1">// ```</span>
     <span class="c1">// [log]</span>
-    <span class="c1">// output_format = &quot;json&quot;</span>
+    <span class="c1">// format = &quot;json&quot;</span>
     <span class="c1">// ```</span>
 <span class="p">}</span>
 </pre></div>
@@ -92,7 +92,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=870c80560a9d6b736db5373a74c20070&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bb4090a97b9ae500cb5be4b00d0fa29e&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -250,7 +250,7 @@ redirect_from:
                                             <p>To set the output format to JSON, place the entry given below in the <code>Config.toml</code> file.</p>
 
 <pre><code> [log]
- output_format = &quot;json&quot;
+ format = &quot;json&quot;
 </code></pre>
 
                                         </div>
@@ -300,7 +300,7 @@ time = 2020-12-15 17:54:53,105 level = ERROR module = &quot;&quot; message = &qu
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the `output_format` is set to &quot;json&quot;, the log output will be as follows.
+                                    <div class="highlight"><pre><code class=shell-session># If the `format` is set to &quot;json&quot;, the log output will be as follows.
 {&quot;time&quot;: &quot;2021-02-05 10:52:52,437&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;}
 {&quot;time&quot;: &quot;2021-02-05 10:52:52,465&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log&quot;}
 {&quot;time&quot;: &quot;2021-02-05 10:52:52,472&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315, &quot;successful&quot;: true}

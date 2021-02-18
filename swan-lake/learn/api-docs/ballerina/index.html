@@ -15,7 +15,6 @@
             loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]);
         }
         found = true;
-        console.log(loc);
     }
     if (!found) {
         loc = window.location.href.replace("swan-lake/learn/api-docs/ballerina", "learn/api-docs/ballerina");

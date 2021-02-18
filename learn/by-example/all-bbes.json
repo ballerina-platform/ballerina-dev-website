@@ -808,6 +808,12 @@
                 "disablePlayground": true
             },
             {
+                "name": "Docker Deployment Without Annotations",
+                "url": "docker-deployment-without-annotations",
+                "githubLink": "https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment-without-annotations",
+                "disablePlayground": true
+            },
+            {
                 "name": "Code to Cloud Deployment",
                 "url": "c2c-deployment",
                 "githubLink": "https://github.com/ballerina-platform/module-ballerina-c2c/tree/master/c2c-extension-examples/examples/c2c-deployment",
@@ -1002,27 +1008,28 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Text Message Client",
+                "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
                 "disablePlayground": true
             },
             {
-                "name": "Binary Message Client",
-                "url": "websocket-binary-client",
-                "disablePlayground": true
-            },
-            {
-                "name": "Async Text Message Client",
+                "name": "Handle Text Messages with Async Client",
                 "url": "websocket-async-text-client",
                 "disablePlayground": true
             },
             {
-                "name": "Async Binary Message Client",
+                "name": "Handle Binary Messages with Client",
+                "url": "websocket-binary-client",
+                "disablePlayground": true
+            },
+
+            {
+                "name": "Handle Binary Messages with Async Client",
                 "url": "websocket-async-binary-client",
                 "disablePlayground": true
             },
             {
-                "name": "Basic Server Functionalities",
+                "name": "Listener Functionalities",
                 "url": "websocket-basic-sample",
                 "disablePlayground": true
             }
@@ -1387,7 +1394,7 @@
                 "disablePlayground": true
             },
             {
-                "name": "UDP Connection oriented Client",
+                "name": "UDP Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "disablePlayground": true
             },
@@ -1460,11 +1467,11 @@
                 "url": "send-email"
             },
             {
-                "name": "Receive Emails using a client",
+                "name": "Receive Emails Using a Client",
                 "url": "receive-email-using-client"
             },
             {
-                "name": "Receive Emails using a listener",
+                "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener"
             }
         ]

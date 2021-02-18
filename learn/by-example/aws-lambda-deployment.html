@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: AWS Lambda Deployment
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /learn/by-example/aws-lambda-deployment
 redirect_from:
-  - /vswan-lake/learn/by-example/aws-lambda-deployment
-  - /vswan-lake/learn/by-example/aws-lambda-deployment.html
+  - /swan-lake/learn/by-example/aws-lambda-deployment
+  - /swan-lake/learn/by-example/aws-lambda-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -409,7 +410,7 @@ Compiling source
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
+	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 </code></pre></div>
 
                                 </td>
@@ -436,11 +437,11 @@ Compiling source
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the AWS CLI commands to create and publish the functions; and set your respective AWS $LAMBDA_ROLE_ARN, $REGION_ID, and $FUNCTION_NAME values; following are some examples:-
 $ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
+ --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 $ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
+ --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 $ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1 --memory-size 512 --timeout 10
+ --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 </code></pre></div>
 
                                 </td>
@@ -453,7 +454,8 @@ $ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ball
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Invoke the functions
-$ aws lambda invoke --function-name echo --payload &#39;{&quot;MESSAGE&quot;:&quot;HELLO&quot;}&#39; echo-response.txt
+$ echo &#39;{&quot;MESSAGE&quot;:&quot;HELLO&quot;}&#39; &gt; input.json
+$ aws lambda invoke --function-name echo --payload fileb://input.json echo-response.txt
 {
     &quot;ExecutedVersion&quot;: &quot;$LATEST&quot;, 
     &quot;StatusCode&quot;: 200

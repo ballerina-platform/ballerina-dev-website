@@ -9,8 +9,10 @@
     let regexExpr = /\/swan-lake\/learn\/api-docs\/ballerina\/#((\/[^\/]*)(\/[^\/]*)?(\/[^\/]*)?$)/;
     if (regexExpr.test(loc)) {
         const match = loc.match(regexExpr);
-        if (match[3] != null) {
+        if (match[3] != null && match[4] != null) {
             loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]+match[3]+match[4]);
+        } else if (match[3] != null && match[4] == null) {
+            loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]+match[3]);
         } else {
             loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]);
         }

@@ -1,7 +1,7 @@
 # This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/link-checker).
 
 on: [pull_request]
-name: Link Checker 
+name: Link Checker 1 
 jobs:
   linkChecker:
     runs-on: ubuntu-latest

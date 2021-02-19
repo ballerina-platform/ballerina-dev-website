@@ -1,20 +1,18 @@
 # This is the config of the spell checker GitHub Action (i.e., https://github.com/marketplace/actions/check-spelling).
 
-on: [push]
+on: [pull_request]
 name: Spell Checker
 jobs:
   spellChecker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.0.0
+        with:
+          fetch-depth: 2
       - name: Build the site
         uses: shafreenAnfar/jekyll-build-action@v5
       - name: Check spelling
         uses: check-spelling/check-spelling@0.0.16-alpha
-      - uses: actions/checkout@v2.0.0
-        with:
-          fetch-depth: 2
-      - uses: ./
         with:
           bucket: .github/actions
           project: spelling

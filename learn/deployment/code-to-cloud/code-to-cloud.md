@@ -36,24 +36,16 @@ Ballerina encourages to have one microservice per package. In order to adhere to
 ├── Cloud.toml                               
 ├── Ballerina.lock
 ├── Ballerina.toml
-├── src
-│   └── module
-│       └── entry.bal                             
+├── entry.bal                          
 └── target
     ├── bala
     │   └── module-0.0.1.bala
     ├── bin
-    │   └── module.jar
-    ├── caches
-    │   ├── bir_cache\
-    │   └── jar_cache\
-    |
+    │   └── <module>.jar
     ├── docker
-    │   └── module
     │       └── Dockerfile                        
     └── kubernetes
-        └── module
-            └── c2c-sample-module-0.0.1.yaml 
+            └── <module>-0.0.1.yaml 
 ```
 
 ***Cloud.toml***

@@ -25,7 +25,6 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
         - [WebSubHub Module Improvements](#websubhub-module-improvements)
         - [IO Module Improvements](#io-module-improvements)
         - [Email Module Improvements](#email-module-improvements)
-        - [TCP Module Improvements](#tcp-module-improvements)
         - [UDP Module Improvements](#udp-module-improvements)
         - [Crypto Module Improvements](#crypto-module-improvements)
         - [JWT Module Improvements](#jwt-module-improvements)
@@ -59,7 +58,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Support for mapping and error binding patterns in the `match` statement
 - Support for configurable variables of `record` and `table` types
 - Support for decrypting string values using the new `lang.config` lang library
-- Improvements to the HTTP, MIME, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, TCP, UDP, crypto, and JWT standard library modules
+- Improvements to the HTTP, MIME, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, UDP, crypto, and JWT standard library modules
 - The extension of the Ballerina package distribution file has been changed from `.balo` to `.bala`
 - Improvements to developer tools such as the Language Server and debugger
 
@@ -420,78 +419,6 @@ public type SecureSocket record {|
     // ... other fields
     boolean verifyHostname = true;
 |};
-```
-
-##### TCP Module Improvements
-
-Introduced SSL/TLS-based communication to the TCP module using the `secureSocket` record configuration in both the client and the listener.
-
-###### TCP Client with `secureSocket`
-
-Sample code is as follows.
-
-```ballerina
-import ballerina/io;
-import ballerina/tcp;
-
-configurable string certPath = ?;
-
-public function main() returns error? {
-    tcp:Client socketClient = check new ("localhost", 9002, secureSocket = {
-        certificate: {path: certPath},
-        protocol: {
-            name: "TLS",
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-    });
-    string msg = "Hello Ballerina Echo from secure client";
-    byte[] msgByteArray = msg.toBytes();
-    check socketClient->writeBytes(msgByteArray);
-    readonly & byte[] receivedData = check socketClient->readBytes();
-    io:println(string:fromBytes(receivedData));
-    check socketClient->close();
-}
-```
-
-###### TCP Listener with `secureSocket`
-
-A sample code is as follows.
-
-```ballerina
-import ballerina/io;
-import ballerina/tcp;
-
-configurable string keyPath = ?;
-configurable string certPath = ?;
-
-service on new tcp:Listener(9002, secureSocket = {
-        certificate: {path: certPath},
-        privateKey: {path: keyPath},
-        protocol: {
-            name: "TLS",
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-    }) {
-        
-    isolated remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
-        io:println("Client connected to secureEchoServer: ", caller.remotePort);
-        return new EchoService(caller);
-    }
-}
-service class EchoService {
-    tcp:Caller caller;
-
-    public isolated function init(tcp:Caller c) {
-        self.caller = c;
-    }
-
-    remote function onBytes(readonly & byte[] data) returns (readonly & byte[])|tcp:Error? {
-        io:println("Echo: ", string:fromBytes(data));
-        return data;
-    }
-}
 ```
 
 ##### UDP Module Improvements

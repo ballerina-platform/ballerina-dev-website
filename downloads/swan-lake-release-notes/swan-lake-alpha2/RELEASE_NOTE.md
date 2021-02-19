@@ -59,7 +59,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Support for mapping and error binding patterns in the `match` statement
 - Support for configurable variables of `record` and `table` types
 - Support for decrypting string values using the new `lang.config` lang library
-- Improvements to the HTTP, mime, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, TCP, UDP, crypto, and JWT standard library modules
+- Improvements to the HTTP, MIME, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, TCP, UDP, crypto, and JWT standard library modules
 - The extension of the Ballerina package distribution file has been changed from `.balo` to `.bala`
 - Improvements to developer tools such as the Language Server and debugger
 
@@ -234,21 +234,12 @@ service on helloEP {
 This introduction enables manipulating the entity body as a stream of `byte[]`.
 
 ```ballerina
-function setByteStream(stream<byte[], io:Error> byteStream, string contentType = "application/octet-stream") {
-}
+function setByteStream(stream<byte[], io:Error> byteStream, string contentType = "application/octet-stream")
 
-function getByteStream(int arraySize = 8196) returns stream<byte[], io:Error>|mime:ParserError {
-}
+function getByteStream(int arraySize = 8196) returns stream<byte[], io:Error>|mime:ParserError
 
-function getBodyPartsAsStream(int arraySize = 8196) returns stream<byte[], io:Error>|mime:ParserError {
+function getBodyPartsAsStream(int arraySize = 8196) returns stream<byte[], io:Error>|mime:ParserError
 
-    // Sample
-    byte[][] content = ["File Content".toBytes()];
-    stream<byte[], io:Error> byteStream = content.toStream();
-    mime:Entity entity = new;
-    entity.setByteStream(byteStream);
-    stream<byte[], io:Error>|mime:ParserError str = entity.getByteStream();
-}
 ```
 
 #### WebSocket Module Improvements

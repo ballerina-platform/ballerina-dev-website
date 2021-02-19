@@ -229,7 +229,7 @@ service on helloEP {
 
 ##### MIME Module Improvements
 
-###### Introduced Byte Stream Manipulation Functions to the `mime:Entity` Class
+###### Introduced Byte Stream Manipulation Methods to the `mime:Entity` Class
 
 This introduction enables manipulating the entity body as a stream of `byte[]`.
 

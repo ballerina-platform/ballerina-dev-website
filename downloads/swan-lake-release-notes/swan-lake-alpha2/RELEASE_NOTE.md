@@ -527,7 +527,7 @@ format = "json"
 
 ##### Language Server
 
-Implemented renaming support in the language server. Now, VSCode users are able to select a symbol and rename all occurrences within the same module as well as across modules.
+Implemented renaming support in the Language Server. Now, VSCode users are able to select a symbol and rename all occurrences within the same module as well as across modules.
 
 ##### Debugger
 
@@ -535,12 +535,12 @@ Added variable paging support. With this feature, the Ballerina variables, which
 
 ##### Ballerina Shell REPL [EXPERIMENTAL]
 
-1. Fixed the REPL expression output to output the `toBalString()` result.
-2. Improved the REPL parser to support some partial snippets such as the example cases below.
-	  - Template strings will allow continuing on new lines.
-	  - The CLI will wait for more input if the last character was an operator.
-	  - The CLI will not wait for unclosed double quotes.
-3. Enabled REPL to exit on `Ctrl+D`.
+- Fixed the REPL expression output to output the `toBalString()` result.
+- Improved the REPL parser to support some partial snippets such as the example cases below.
+	-  Template strings will allow continuing on new lines.
+	- The CLI will wait for more input if the last character was an operator.
+	- The CLI will not wait for unclosed double quotes.
+- Enabled REPL to exit on `Ctrl+D`.
 
 #### Breaking Changes
 

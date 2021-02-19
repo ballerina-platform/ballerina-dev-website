@@ -36,7 +36,7 @@ jobs:
     - name: Copy newly generated API Docs
       run: |
         VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
-        SHORT_VERSION="`echo $VERSION | sed 's/swan-lake-preview/slp/g'`"
+        SHORT_VERSION="`jq -r '.short-version' _data/swanlake-latest/metadata.json`"
 
         cp -r ballerina-${VERSION}/distributions/ballerina-${SHORT_VERSION}/docs learn/api-docs/ballerina
 

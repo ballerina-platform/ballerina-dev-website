@@ -274,8 +274,8 @@ graphql:ListenerConfiguration configs = {
 };
 listener graphql:Listener graphqlListener = new (9090, configs);
 
-@graphql:ServiceConfigurration {maxQueryDepth: 3}
- service /graphql on graphqlListener {
+@graphql:ServiceConfiguration {maxQueryDepth: 3}
+service /graphql on graphqlListener {
     // Service definition
 }
 ```

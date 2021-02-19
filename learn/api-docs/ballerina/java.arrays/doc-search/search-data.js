@@ -4,7 +4,7 @@ var searchData = {
       "id": "java.arrays",
       "description": "",
       "orgName": "ballerinax",
-      "version": "0.10.0-alpha3"
+      "version": "0.10.0-alpha4"
     }
   ],
   "classes": [],
@@ -14,42 +14,42 @@ var searchData = {
       "description": "Returns a Ballerina array for a handle that holds a Java array.",
       "moduleId": "java.arrays",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "get",
       "description": "Returns a `handle`, which refers to the element at the specified index in the given Java array.",
       "moduleId": "java.arrays",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "getLength",
       "description": "Returns the length of the given Java array.",
       "moduleId": "java.arrays",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "newInstance",
       "description": "Returns a new Java array instance with the specified element type and dimensions.",
       "moduleId": "java.arrays",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "set",
       "description": "Replaces the indexed element at the specified index in the given Java array with the specified element.",
       "moduleId": "java.arrays",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "toHandle",
       "description": "Returns a handle value representation for a Ballerina array.",
       "moduleId": "java.arrays",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     }
   ],
   "records": [],

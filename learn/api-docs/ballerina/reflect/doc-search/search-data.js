@@ -4,7 +4,7 @@ var searchData = {
       "id": "reflect",
       "description": "",
       "orgName": "ballerina",
-      "version": "0.6.0-alpha3"
+      "version": "0.6.0-alpha4"
     }
   ],
   "classes": [],
@@ -14,14 +14,14 @@ var searchData = {
       "description": "Function to retrieve the resource\u0027s annotation.",
       "moduleId": "reflect",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.0-alpha3"
+      "moduleVersion": "0.6.0-alpha4"
     },
     {
       "id": "getServiceAnnotations",
       "description": "Function to retrieve the service\u0027s annotation.",
       "moduleId": "reflect",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.6.0-alpha3"
+      "moduleVersion": "0.6.0-alpha4"
     }
   ],
   "records": [],

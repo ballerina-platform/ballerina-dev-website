@@ -4,7 +4,7 @@ var searchData = {
       "id": "oauth2",
       "description": "",
       "orgName": "ballerina",
-      "version": "1.1.0-alpha3"
+      "version": "1.1.0-alpha4"
     }
   ],
   "classes": [
@@ -13,14 +13,14 @@ var searchData = {
       "description": "Represents the client OAuth2 provider, which generates OAuth2 tokens.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "ListenerOAuth2Provider",
       "description": "Represents the inbound OAuth2 provider, which calls the introspection server, validates the received credentials,\nand performs authentication and authorization.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "functions": [],
@@ -30,56 +30,56 @@ var searchData = {
       "description": "Represents the configurations of the client used to call the introspection endpoint.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "ClientCredentialsGrantConfig",
       "description": "The data structure, which is used to configure the OAuth2 client credentials grant type.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "DirectTokenConfig",
       "description": "The data structure, which can be used to pass the configurations for refreshing the access token directly.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "IntrospectionConfig",
       "description": "Represents the introspection server configurations.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "IntrospectionResponse",
       "description": "Represents the introspection server response.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "PasswordGrantConfig",
       "description": "The data structure, which is used to configure the OAuth2 password grant type.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "RefreshConfig",
       "description": "The data structure, which can be used to pass the configurations for refreshing the access token of\nthe password grant type.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "SecureSocket",
       "description": "Represents the SSL/TLS configurations.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "constants": [],
@@ -89,14 +89,14 @@ var searchData = {
       "description": "Represents the OAuth2 error type with details.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "OAuth2Error",
       "description": "Represents the OAuth2 distinct error.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "types": [
@@ -105,7 +105,7 @@ var searchData = {
       "description": "Represents the grant type configurations supported for OAuth2.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "clients": [],
@@ -118,14 +118,14 @@ var searchData = {
       "description": "Represents HTTP versions.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "HttpVersion",
       "description": "Represents HTTP versions.",
       "moduleId": "oauth2",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ]
 };

@@ -4,7 +4,7 @@ var searchData = {
       "id": "task",
       "description": "",
       "orgName": "ballerina",
-      "version": "1.2.0-alpha3"
+      "version": "1.2.0-alpha4"
     }
   ],
   "classes": [
@@ -13,7 +13,7 @@ var searchData = {
       "description": "Represents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "functions": [],
@@ -23,14 +23,14 @@ var searchData = {
       "description": "Configurations related to an appointment, which are used to define the behavior of an appointment when initializing\nthe `task:Listener`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "TimerConfiguration",
       "description": "Configurations related to a timer, which are used to define the behavior of a timer when initializing the\n`task:Listener`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "constants": [
@@ -39,63 +39,63 @@ var searchData = {
       "description": "The value of this constant is `doNothing`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "FIRE_AND_PROCEED",
       "description": "The value of this constant is `fireAndProceed`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "FIRE_NEXT_WITH_EXISTING_COUNT",
       "description": "The value of this constant is `fireNextWithExistingCount`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "FIRE_NEXT_WITH_REMAINING_COUNT",
       "description": "The value of this constant is `fireNextWithRemainingCount`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "FIRE_NOW",
       "description": "The value of this constant is `fireNow`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "FIRE_NOW_WITH_EXISTING_COUNT",
       "description": "The value of this constant is `fireNowWithExistingCount`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "FIRE_NOW_WITH_REMAINING_COUNT",
       "description": "The value of this constant is `fireNowWithRemainingCount`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "IGNORE_POLICY",
       "description": "The value of this constant is `ignorePolicy`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "SMART_POLICY",
       "description": "The value of this constant is `smartPolicy`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "errors": [
@@ -104,21 +104,21 @@ var searchData = {
       "description": "Represents the Union error type of the ballerina/task module.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "ListenerError",
       "description": "Error type specific to the `task:Listener` object functions.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "SchedulerError",
       "description": "Error type specific to the `task:Scheduler` object functions.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "types": [
@@ -127,28 +127,28 @@ var searchData = {
       "description": "Possible types of parameters that can be passed into the `AppointmentTaskPolicy`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "OneTimeTaskPolicy",
       "description": "Possible types of parameters that can be passed into the `OneTimeTaskPolicy`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "RecurringTaskPolicy",
       "description": "Possible types of parameters that can be passed into the `RecurringTaskPolicy`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "TimerMisfirePolicy",
       "description": "Possible types of parameters that can be passed into the `TimerTaskPolicy`.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "clients": [],
@@ -158,7 +158,7 @@ var searchData = {
       "description": "Represents a ballerina task listener, which can be used to schedule and execute tasks periodically.",
       "moduleId": "task",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "annotations": [],

@@ -4,7 +4,7 @@ var searchData = {
       "id": "uuid",
       "description": "",
       "orgName": "ballerina",
-      "version": "0.10.0-alpha3"
+      "version": "0.10.0-alpha4"
     }
   ],
   "classes": [],
@@ -14,105 +14,105 @@ var searchData = {
       "description": "Returns a UUID of type 1 as a UUID record.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "createType1AsString",
       "description": "Returns a UUID of type 1 as a string.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "createType3AsRecord",
       "description": "Returns a UUID of type 3 as a UUID record.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "createType3AsString",
       "description": "Returns a UUID of type 3 as a string.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "createType4AsRecord",
       "description": "Returns a UUID of type 4 as a UUID record.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "createType4AsString",
       "description": "Returns a UUID of type 4 as a string.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "createType5AsRecord",
       "description": "Returns a UUID of type 5 as a UUID record.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "createType5AsString",
       "description": "Returns a UUID of type 5 as a string.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "getVersion",
       "description": "Detect RFC version of a UUID.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "nilAsRecord",
       "description": "Returns a nil UUID as a UUID record.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "nilAsString",
       "description": "Returns a nil UUID as a string.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "toBytes",
       "description": "Convert to an array of bytes.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "toRecord",
       "description": "Convert to UUID record.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "toString",
       "description": "Convert to UUID string.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "validate",
       "description": "Test a string to see if it is a valid UUID.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     }
   ],
   "records": [],
@@ -123,7 +123,7 @@ var searchData = {
       "description": "Represents UUID module related errors.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     }
   ],
   "types": [
@@ -132,7 +132,7 @@ var searchData = {
       "description": "Represents a UUID.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     }
   ],
   "clients": [],
@@ -145,14 +145,14 @@ var searchData = {
       "description": "Represents UUIDs strings of well known namespace IDs.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     },
     {
       "id": "Version",
       "description": "Represents the UUID versions.",
       "moduleId": "uuid",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.10.0-alpha3"
+      "moduleVersion": "0.10.0-alpha4"
     }
   ]
 };

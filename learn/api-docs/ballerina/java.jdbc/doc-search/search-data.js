@@ -4,7 +4,7 @@ var searchData = {
       "id": "java.jdbc",
       "description": "",
       "orgName": "ballerinax",
-      "version": "0.6.0-alpha3"
+      "version": "0.6.0-alpha4"
     }
   ],
   "classes": [],
@@ -15,7 +15,7 @@ var searchData = {
       "description": "Provides a set of configuration related to database.",
       "moduleId": "java.jdbc",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.0-alpha3"
+      "moduleVersion": "0.6.0-alpha4"
     }
   ],
   "constants": [],
@@ -27,7 +27,7 @@ var searchData = {
       "description": "Represents a JDBC client.",
       "moduleId": "java.jdbc",
       "moduleOrgName": "ballerinax",
-      "moduleVersion": "0.6.0-alpha3"
+      "moduleVersion": "0.6.0-alpha4"
     }
   ],
   "listeners": [],

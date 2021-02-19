@@ -4,7 +4,7 @@ var searchData = {
       "id": "auth",
       "description": "",
       "orgName": "ballerina",
-      "version": "1.1.0-alpha3"
+      "version": "1.1.0-alpha4"
     }
   ],
   "classes": [
@@ -13,14 +13,14 @@ var searchData = {
       "description": "Represents the client Basic Auth provider.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "ListenerLdapUserStoreBasicAuthProvider",
       "description": "Represents the LDAP based listener Basic Auth provider.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "functions": [
@@ -29,7 +29,7 @@ var searchData = {
       "description": "Extracts the username and the password from the base64-encoded `username:password` value.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "records": [
@@ -38,28 +38,28 @@ var searchData = {
       "description": "Represents credentials for Basic Auth authentication.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "LdapUserStoreConfig",
       "description": "Represents the configurations that are required for an LDAP user store.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "SecureSocket",
       "description": "Configures the SSL/TLS options to be used for LDAP communication.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "UserDetails",
       "description": "Represents the details of the authenticated user.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "constants": [
@@ -68,35 +68,35 @@ var searchData = {
       "description": "Prefix used to denote special configuration values.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "CONFIG_PREFIX_SHA256",
       "description": "Prefix used to denote that the config value is a SHA-256 hash.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "CONFIG_PREFIX_SHA384",
       "description": "Prefix used to denote that the config value is a SHA-384 hash.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "CONFIG_PREFIX_SHA512",
       "description": "Prefix used to denote that the config value is a SHA-512 hash.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "DEFAULT_CHARSET",
       "description": "Default charset to be used with password hashing.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "errors": [
@@ -105,14 +105,14 @@ var searchData = {
       "description": "Represents the Auth error.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     },
     {
       "id": "Error",
       "description": "Represents the Auth module related error.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "types": [],
@@ -125,7 +125,7 @@ var searchData = {
       "description": "Represents the listener Basic Auth provider, which could be used to authenticate credentials.",
       "moduleId": "auth",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.1.0-alpha3"
+      "moduleVersion": "1.1.0-alpha4"
     }
   ],
   "enums": []

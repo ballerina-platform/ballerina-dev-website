@@ -4,7 +4,7 @@ var searchData = {
       "id": "websocket",
       "description": "",
       "orgName": "ballerina",
-      "version": "1.2.0-alpha3"
+      "version": "1.2.0-alpha4"
     }
   ],
   "classes": [
@@ -13,7 +13,7 @@ var searchData = {
       "description": "",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "functions": [],
@@ -23,77 +23,77 @@ var searchData = {
       "description": "Configurations for the WebSocket client.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "CommonWebSocketClientConfiguration",
       "description": "Common client configurations for WebSocket clients.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "ListenerConfiguration",
       "description": "Provides a set of configurations for HTTP service endpoints.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "ListenerHttp1Settings",
       "description": "Provides settings related to HTTP/1.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "ListenerSecureSocket",
       "description": "Configures the SSL/TLS options to be used for HTTP service.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "Local",
       "description": "Presents a read-only view of the local address.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "Remote",
       "description": "Presents a read-only view of the remote address.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "RequestLimitConfigs",
       "description": "Provides inbound request URI, total header and entity body size threshold configurations.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WebSocketFailoverClientConfiguration",
       "description": "Configurations for the WebSocket client endpoint.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WebSocketRetryConfig",
       "description": "Retry configurations for WebSocket.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WSServiceConfig",
       "description": "Configurations for a WebSocket service.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "constants": [
@@ -102,49 +102,49 @@ var searchData = {
       "description": "Represents the Authorization header name.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "KEEPALIVE_ALWAYS",
       "description": "Keeps the connection alive irrespective of the `connection` header value }\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "KEEPALIVE_AUTO",
       "description": "Decides to keep the connection alive or not based on the `connection` header of the client request }\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "KEEPALIVE_NEVER",
       "description": "Closes the connection irrespective of the `connection` header value }\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "REQUEST_METHOD",
       "description": "Constant for the request method reference.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "RESOURCE_NAME",
       "description": "Constant for the resource name reference.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "SERVICE_NAME",
       "description": "Constant for the service name reference.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "errors": [
@@ -153,84 +153,84 @@ var searchData = {
       "description": "The union of all the WebSocket related errors\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "HandshakeTimedOut",
       "description": "Raised when the initial WebSocket handshake timed out\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "ReadTimedOutError",
       "description": "Raised when the client creation fails\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "UpgradeError",
       "description": "Raised when the websocket upgrade is not accepted\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsConnectionClosureError",
       "description": "Raised during failures in connection closure\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsConnectionError",
       "description": "Raised during connection failures\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsGenericClientError",
       "description": "Raised when the client creation fails\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsGenericError",
       "description": "Raised for errors not captured by the specific errors\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsInvalidContinuationFrameError",
       "description": "Raised when an out of order/invalid continuation frame is received\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsInvalidHandshakeError",
       "description": "Raised during the handshake when the WebSocket upgrade fails\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsPayloadTooBigError",
       "description": "Raised when receiving a frame with a payload exceeding the maximum size\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WsProtocolError",
       "description": "Raised when the other side breaks the protocol\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "types": [
@@ -239,7 +239,7 @@ var searchData = {
       "description": "Defines the possible values for the keep-alive configuration in service and client endpoints.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "clients": [
@@ -248,28 +248,28 @@ var searchData = {
       "description": "Represents a WebSocket client endpoint.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "Caller",
       "description": "Represents a WebSocket caller.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "Client",
       "description": "Represents a WebSocket synchronous client endpoint.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "WebSocketFailoverClient",
       "description": "A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "listeners": [
@@ -278,7 +278,7 @@ var searchData = {
       "description": "This is used for creating Websocket server endpoints.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "annotations": [
@@ -287,7 +287,7 @@ var searchData = {
       "description": "The annotation which is used to configure a WebSocket service.",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "abstractObjects": [
@@ -296,21 +296,21 @@ var searchData = {
       "description": "The Websocket Sync client service type\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "Service",
       "description": "The Websocket service type\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     },
     {
       "id": "UpgradeService",
       "description": "The Websocket upgrade service type\n",
       "moduleId": "websocket",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "1.2.0-alpha3"
+      "moduleVersion": "1.2.0-alpha4"
     }
   ],
   "enums": []

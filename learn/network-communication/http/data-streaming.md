@@ -20,13 +20,13 @@ In Ballerina, the clients automatically switch between the chunked or non-chunke
 - [`ALWAYS:`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/constants#CHUNKING_ALWAYS): The client will always use chunking to stream the payload to the remote endpoint. 
 - [`NEVER:`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/constants#CHUNKING_NEVER): The client will never use chunking, and it will fully read in the payload to memory and send out the request. 
 
-## Creating the Input Data Channel
+## Creating the Input Data Stream
 
-To use the HTTP streaming feature effectively, you need to create an HTTP request with a streaming input data channel. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
+To use the HTTP streaming feature effectively, you need to create an HTTP request with a stream of byte[]. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
 
-Therefore, you should use a streaming data channel by using an API such as the [`io:openReadableFile`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#openReadableFile), which returns a [`ReadableByteChannel`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/classes/ReadableByteChannel). This streaming data channel can be used in places that accept streaming channels such as the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object’s [`setByteStream`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setByteStream). 
+Therefore, you should use a stream of byte[] by using an API such as the [`io:fileReadBlocksAsStream`](/learn/api-docs/ballerina/#/ballerina/io/0.6.0-alpha4/io/functions#fileReadBlocksAsStream), which returns a `stream<byte[], io:Error>`. This stream can be used in places that accept a stream of byte[] such as the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object’s [`setByteStream`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setByteStream). 
 
-The `data_streaming.bal` example below opens a file with a streaming data channel and uses it to create an HTTP request to stream its data to a remote endpoint.
+The `data_streaming.bal` example below opens a file with a stream and uses it to create an HTTP request to stream its data to a remote endpoint.
 
 >**Info:** Since the code below uses the default HTTP client configurations, if the input file is larger than 8KB, it will automatically stream the content to the remote endpoint using chunked transfer encoding. 
 
@@ -40,7 +40,7 @@ import ballerina/io;
 public function main() returns @tainted error? {
    http:Client clientEp = new("http://httpbin.org");
    http:Request req = new;
-   req.setByteChannel(check io:openReadableFile("/home/laf/input.jpeg"));
+   req.setByteStream(check io:fileReadBlocksAsStream("/home/laf/input.jpeg"));
    http:Response resp = <http:Response> check clientEp->post("/post",
                                                req);
    io:println(resp.getTextPayload());

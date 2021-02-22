@@ -7,7 +7,7 @@ permalink: /learn-2/
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<a class="cBoxLink" href="/swan-lake/learn/getting-started/">
+<a class="cBoxLink" href="/learn/getting-started/">
 
 <h2>Get Started</h2>
 

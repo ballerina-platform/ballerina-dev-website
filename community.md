@@ -103,7 +103,7 @@ Getting a language established is like getting a new religion going. If you like
 - Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io">Ballerina Central</a> so that the whole community can benefit from your work. 
 - Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog">community-driven Tech Blog</a>. 
 - Buzz us on <a href="mailto:contact@ballerina.io">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
-- Download any file of the [Ballerina logo](https://github.com/ballerina-platform/ballerina-dev-website/tree/master/ballerina-logos) to use for content or swag.
+- Download any file of the <a href="https://github.com/ballerina-platform/ballerina-dev-website/tree/master/ballerina-logos" target="_blank">Ballerina logo</a> to use for content or swag.
 
 
 <!-- ## Want to be kept up-to-date?
@@ -119,7 +119,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 ## Contribute to Ballerina
 
-Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contribution Guide</a>. Happy contributing! 
+Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" target="_blank">Contribution Guide</a>. Happy contributing! 
 
 <style>
 .nav > li.cVersionItem {

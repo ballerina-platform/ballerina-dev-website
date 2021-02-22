@@ -2324,7 +2324,7 @@ var searchData = {
     },
     {
       "id": "createReadableChannel",
-      "description": "",
+      "description": "Creates an in-memory channel, which will be a reference stream of bytes.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.6.0-alpha4"
@@ -2457,28 +2457,28 @@ var searchData = {
     },
     {
       "id": "openReadableCsvFile",
-      "description": "",
+      "description": "Retrieves a readable CSV channel from a given file path.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.6.0-alpha4"
     },
     {
       "id": "openReadableFile",
-      "description": "",
+      "description": "Retrieves a `ReadableByteChannel` from a given file path.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.6.0-alpha4"
     },
     {
       "id": "openWritableCsvFile",
-      "description": "",
+      "description": "Retrieves a writable CSV channel from a given file path.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.6.0-alpha4"
     },
     {
       "id": "openWritableFile",
-      "description": "",
+      "description": "Retrieves a `WritableByteChannel` from a given file path.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.6.0-alpha4"
@@ -9498,7 +9498,7 @@ var searchData = {
     },
     {
       "id": "ConfigurationError",
-      "description": "",
+      "description": "This will get returned if there is an invalid configuration.",
       "moduleId": "io",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.6.0-alpha4"

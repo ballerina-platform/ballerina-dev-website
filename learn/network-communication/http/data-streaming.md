@@ -24,7 +24,7 @@ In Ballerina, the clients automatically switch between the chunked or non-chunke
 
 To use the HTTP streaming feature effectively, you need to create an HTTP request with a stream of byte[]. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](/learn/api-docs/ballerina/#/ballerina/io/0.5.6/io/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
 
-Therefore, you should use a stream of byte[] by using an API such as the [`io:fileReadBlocksAsStream`](/learn/api-docs/ballerina/#/ballerina/io/0.6.0-alpha4/io/functions#fileReadBlocksAsStream), which returns a `stream<byte[], Error>`. This stream can be used in places that accept a stream of byte[] such as the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object’s [`setByteStream`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setByteStream). 
+Therefore, you should use a stream of byte[] by using an API such as the [`io:fileReadBlocksAsStream`](/learn/api-docs/ballerina/#/ballerina/io/0.6.0-alpha4/io/functions#fileReadBlocksAsStream), which returns a `stream<byte[], io:Error>`. This stream can be used in places that accept a stream of byte[] such as the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object’s [`setByteStream`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request#setByteStream). 
 
 The `data_streaming.bal` example below opens a file with a stream and uses it to create an HTTP request to stream its data to a remote endpoint.
 

@@ -13,7 +13,7 @@ jobs:
         id: lc
         uses: lycheeverse/lychee-action@v1.0.4
         with:
-          args: /learn/** /1.2/** /_site/** --exclude twitter.com --exclude novacodecamp.org --exclude %7B%7B%20site.dist_server%20%7D%7D --verbose --base-url https://dev.ballerina.io *.md *.html
+          args: /learn/** /1.2/** /_site/** --exclude twitter.com --exclude novacodecamp.org --exclude %7B%7B%20site.dist_server%20%7D%7D --exclude %7B%7B%20site.plugin_vscode_repo%20%7D%7D --verbose --base-url https://dev.ballerina.io *.md *.html
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:

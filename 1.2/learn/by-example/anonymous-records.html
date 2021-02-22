@@ -10,37 +10,54 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="c1">// This is an anonymous record type descriptor.</span>
     <span class="nx">record</span> <span class="p">{|</span>
         <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
     <span class="p">|}</span> <span class="nx">address</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// There is no difference in how we create normal records vs.</span>
+    <span class="c1">// how we create anonymous records.</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
         <span class="nx">address</span><span class="p">:</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">}</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
+
+    <span class="c1">// Since anonymous records do not have a type name associated with them,</span>
+    <span class="c1">// the record descriptor itself has to be specified when declaring</span>
+    <span class="c1">// variables of an anonymous record type.</span>
     <span class="nx">record</span> <span class="p">{|</span>
         <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-    <span class="p">|}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;UK&quot;</span><span class="p">};</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
+    <span class="p">|}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;UK&quot;</span><span class="p">};</span>
+
+    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>
+
+    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">fields</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function accepts any record with `anydata`-typed fields.</span>
+<span class="c1">// Anonymous record types are implicitly public.</span>
 <span class="kd">function</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">anydataRecord</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">anydata</span><span class="p">[]</span> <span class="p">{</span>
-    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recField</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
+    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recField</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
         <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">recField</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_records</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">25</span> <span class="nx">address</span><span class="p">=</span><span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">20</span> <span class="nx">address</span><span class="p">=</span><span class="nx">city</span><span class="p">=</span><span class="nx">London</span> <span class="nx">country</span><span class="p">=</span><span class="nx">UK</span>
-<span class="nx">John</span> <span class="nx">Doe</span> <span class="mi">25</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -85,15 +102,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/anonymous-records/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=96e9a1e0f0924ef3ccba738f5be48174&file=anonymous_records.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=fa08308907c1a376f598a72aab50f5f2&file=anonymous_records.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -373,7 +390,7 @@ John Doe 25 city=Colombo country=Sri Lanka
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

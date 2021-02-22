@@ -10,6 +10,8 @@ redirect_from:
   - /learn/cli-commands
   - /learn/cli-commands/
   - /learn/using-the-cli-tools
+  - /swan-lake/learn/using-the-cli-tools/
+  - /swan-lake/learn/using-the-cli-tools
 ---
 
 ## Using the Ballerina Tool

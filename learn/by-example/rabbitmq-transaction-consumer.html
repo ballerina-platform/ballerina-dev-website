@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Transactional Consumer
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /learn/by-example/rabbitmq-transaction-consumer
 redirect_from:
-  - /vswan-lake/learn/by-example/rabbitmq-transaction-consumer
-  - /vswan-lake/learn/by-example/rabbitmq-transaction-consumer.html
+  - /swan-lake/learn/by-example/rabbitmq-transaction-consumer
+  - /swan-lake/learn/by-example/rabbitmq-transaction-consumer.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -63,7 +64,7 @@ redirect_from:
  Messages will not be re-queued in the case of a rollback
  automatically unless negatively acknowledged by the user.
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/rabbitmq/latest/rabbitmq/">RabbitMQ module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/rabbitmq/*">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -327,7 +328,7 @@ import ballerinax/rabbitmq;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 192.168.1.2:51642
-[ballerina/rabbitmq] Consumer service started for queue MyQueue
+[ballerinax/rabbitmq] Consumer service started for queue MyQueue
 time = 2021-01-18 15:15:36,514 level = INFO  module = &quot;&quot; message = &quot;The message received: Hello from Ballerina&quot;
 </code></pre></div>
 

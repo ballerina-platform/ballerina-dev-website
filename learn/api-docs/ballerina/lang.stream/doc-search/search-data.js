@@ -61,16 +61,15 @@ var searchData = {
   ],
   "records": [],
   "constants": [],
-  "errors": [
+  "errors": [],
+  "types": [
     {
       "id": "ErrorType",
       "description": "A type parameter that is a subtype of `error`.",
       "moduleId": "lang.stream",
       "moduleOrgName": "ballerina",
       "moduleVersion": "0.4.0"
-    }
-  ],
-  "types": [
+    },
     {
       "id": "Type",
       "description": "A type parameter that is a subtype of `any|error`.",

@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Log
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: BBE on how to log messages in Ballerina at different log levels including 'ERROR' and 'INFO'.
+keywords: ballerina, ballerina by examples, bbe, log, level
 permalink: /learn/by-example/log-api
 redirect_from:
-  - /vswan-lake/learn/by-example/log-api
-  - /vswan-lake/learn/by-example/log-api.html
+  - /swan-lake/learn/by-example/log-api
+  - /swan-lake/learn/by-example/log-api.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -29,8 +30,15 @@ redirect_from:
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">,</span>
         <span class="nx">id</span> <span class="p">=</span> <span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">845315</span><span class="p">;},</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Optionally an error can be passed to the printError function.</span>
+    <span class="c1">// Optionally, an error can be passed to the `printError` function.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log with cause&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
+
+    <span class="c1">// To set the output format to JSON, place the entry given below in the `Config.toml` file.</span>
+    <span class="c1">//</span>
+    <span class="c1">// ```</span>
+    <span class="c1">// [log]</span>
+    <span class="c1">// format = &quot;json&quot;</span>
+    <span class="c1">// ```</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -84,7 +92,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=444e9bb989c31007d29cc127a6d77ab3&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bb4090a97b9ae500cb5be4b00d0fa29e&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -102,6 +110,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -209,9 +219,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    log:printError(&quot;error log with cause&quot;, err = e, id = 845315, name = &quot;foo&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -219,7 +228,30 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Optionally an error can be passed to the printError function.</p>
+                                            <p>Optionally, an error can be passed to the <code>printError</code> function.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>To set the output format to JSON, place the entry given below in the <code>Config.toml</code> file.</p>
+
+<pre><code> [log]
+ format = &quot;json&quot;
+</code></pre>
 
                                         </div>
                                     </div>
@@ -235,6 +267,10 @@ redirect_from:
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -242,7 +278,7 @@ redirect_from:
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># As shown in the output, both `INFO` and `ERROR` level logs are logged.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
@@ -253,6 +289,24 @@ time = 2020-12-15 17:54:53,098 level = INFO  module = &quot;&quot; message = &qu
 time = 2020-12-15 17:54:53,100 level = INFO  module = &quot;&quot; message = &quot;info log&quot; name = &quot;foo&quot; id = 845315
 time = 2020-12-15 17:54:53,103 level = ERROR module = &quot;&quot; message = &quot;error log&quot; name = &quot;foo&quot; id = 845315
 time = 2020-12-15 17:54:53,105 level = ERROR module = &quot;&quot; message = &quot;error log with cause&quot; error = &quot;something went wrong!&quot; name = &quot;foo&quot; id = 845315
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># If the `format` is set to &quot;json&quot;, the log output will be as follows.
+{&quot;time&quot;: &quot;2021-02-05 10:52:52,437&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;}
+{&quot;time&quot;: &quot;2021-02-05 10:52:52,465&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log&quot;}
+{&quot;time&quot;: &quot;2021-02-05 10:52:52,472&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315, &quot;successful&quot;: true}
+{&quot;time&quot;: &quot;2021-02-05 10:52:52,474&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315}
+{&quot;time&quot;: &quot;2021-02-05 10:52:52,475&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315}
+{&quot;time&quot;: &quot;2021-02-05 10:52:52,478&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log with cause&quot;, &quot;error&quot;: &quot;something went wrong!&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315}
 </code></pre></div>
 
                                 </td>

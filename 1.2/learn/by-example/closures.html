@@ -10,7 +10,12 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="kt">int</span> <span class="nx">globalA</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nx">globalA</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// A basic example in which an anonymous function with an `if` block accesses its outer scope</span>
+<span class="c1">// variables.</span>
 <span class="kd">function</span> <span class="nx">basicClosure</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">foo</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
@@ -22,14 +27,21 @@ redirect_from:
     <span class="p">};</span>
     <span class="k">return</span> <span class="nx">foo</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// An example function with multiple levels of anonymous functions in which the</span>
+<span class="c1">// innermost anonymous function has access to all of its outer scope variables.</span>
 <span class="kd">function</span> <span class="nx">multilevelClosure</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">func1</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
+        <span class="c1">// The variable `a` defined in the outer scope is modified.</span>
+        <span class="c1">// The original value of `a` will be changed to `10`.</span>
         <span class="nx">a</span> <span class="p">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">8</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">func2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="nx">c</span> <span class="p">=</span> <span class="mi">7</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">func3</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">z</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+                <span class="c1">// The variable `b` defined in the `func1` function is modified.</span>
+                <span class="c1">// The original value of `b` will be changed to `24`.</span>
                 <span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
                 <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="nx">z</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span><span class="p">;</span>
             <span class="p">};</span>
@@ -39,6 +51,9 @@ redirect_from:
     <span class="p">};</span>
     <span class="k">return</span> <span class="nx">func1</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// An Example to represent how function pointers are passed with closures</span>
+<span class="c1">// so that the inner scope anonymous function can access the outer scope variables.</span>
 <span class="kd">function</span> <span class="nx">functionPointers</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="nx">returns</span>
                     <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
@@ -46,23 +61,28 @@ redirect_from:
             <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span><span class="p">;</span>
         <span class="p">};</span>
     <span class="p">};</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Invokes the function that shows basic closure support.</span>
     <span class="k">var</span> <span class="nx">foo</span> <span class="p">=</span> <span class="nx">basicClosure</span><span class="p">();</span>
     <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">result1</span><span class="p">);</span>
+
+    <span class="c1">// The function invocation that represents multiple levels of anonymous functions</span>
+    <span class="c1">// with closure support.</span>
     <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">multilevelClosure</span><span class="p">();</span>
     <span class="kt">int</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">bar</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">);</span>
+
+    <span class="c1">// This function invocation shows how function pointers with closures</span>
+    <span class="c1">// are passed around.</span>
     <span class="k">var</span> <span class="nx">baz1</span> <span class="p">=</span> <span class="nx">functionPointers</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">baz2</span> <span class="p">=</span> <span class="nx">baz1</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">result3</span> <span class="p">=</span> <span class="nx">baz2</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">closures</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Answer</span><span class="p">:</span> <span class="mi">48</span>
-<span class="nx">Answer</span><span class="p">:</span> <span class="mi">72</span>
-<span class="nx">Answer</span><span class="p">:</span> <span class="mi">15</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -107,15 +127,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/closures/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=47d8d6c839d3f0c254e57f568cd0162a&file=closures.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=39ed99e087f19b79abb8b827b82edfd4&file=closures.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -444,7 +464,7 @@ Answer: 15
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

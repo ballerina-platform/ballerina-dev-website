@@ -8,6 +8,8 @@ active: samples
 intro: The below are a few sample use cases of Ballerina code to cloud.
 redirect_from:
   - /learn/deployment/code-to-cloud/samples
+  - /swan-lake/learn/deployment/code-to-cloud/samples/
+  - /swan-lake/learn/deployment/code-to-cloud/samples
 ---
 
 ## Hello World Sample
@@ -24,18 +26,12 @@ redirect_from:
 
     ```ballerina
     import ballerina/http;
-    import ballerina/log;
 
     listener http:Listener helloEP = new(9090);
 
     service /helloWorld on helloEP {
-        resource function get sayHello(http:Caller caller, http:Request request) {
-            http:Response response = new;
-            response.setTextPayload("Hello, World from service helloWorld ! ");
-            var responseResult = caller->respond(response);
-            if (responseResult is error) {
-                log:printError("error responding back to client.", err = responseResult);
-            }
+        resource function get sayHello() retunrs string {   
+            return "Hello, World from service helloWorld ! ";   
         }
     }
     ```
@@ -287,18 +283,12 @@ Auto-scaling policies allow the container to scale seamlessly without overloadin
 
     ```ballerina
     import ballerina/http;
-    import ballerina/log;   
 
     listener http:Listener helloEP = new(9090);
 
     service /helloWorld on helloEP {
-        resource function get sayHello(http:Caller caller, http:Request request) {
-            http:Response response = new;
-            response.setTextPayload("Hello, World from service helloWorld ! ");
-            var responseResult = caller->respond(response);
-            if (responseResult is error) {
-                log:printError("error responding back to client.", err = responseResult);
-            }
+        resource function get sayHello() returns string {   
+            return "Hello, World from service helloWorld ! ";
         }
     }
     ```

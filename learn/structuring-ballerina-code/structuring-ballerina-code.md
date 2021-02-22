@@ -10,6 +10,8 @@ redirect_from:
   - /learn/how-to-structure-ballerina-code
   - /learn/how-to-structure-ballerina-code/
   - /learn/structuring-ballerina-code
+  - /swan-lake/learn/structuring-ballerina-code/
+  - /swan-lake/learn/structuring-ballerina-code
 ---
 
 ## Organizing Your Code

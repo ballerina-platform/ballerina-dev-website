@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Azure Functions
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /learn/by-example/azure-functions-deployment
 redirect_from:
-  - /vswan-lake/learn/by-example/azure-functions-deployment
-  - /vswan-lake/learn/by-example/azure-functions-deployment.html
+  - /swan-lake/learn/by-example/azure-functions-deployment
+  - /swan-lake/learn/by-example/azure-functions-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -146,7 +147,6 @@ redirect_from:
 <span class="s">    returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">                                 databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
 <span class="s">    json entry = { id: uuid:createType1AsString(), name: &quot;</span><span class="nx">Saman</span><span class="s">&quot;, country: &quot;</span><span class="nx">Sri</span> <span class="nx">Lanka</span><span class="s">&quot; };</span>
-<span class="s">    string entryString = entry is error ? entry.toString() : entry.toString();</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entry</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
 <span class="s">}</span>
@@ -158,8 +158,8 @@ redirect_from:
 <span class="s">        returns @af:CosmosDBOutput { </span>
 <span class="s">            connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">            databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
-<span class="s">    json entry = [{ id: system:createType1AsString(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">A</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; },</span>
-<span class="s">                  { id: system:createType1AsString(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">B</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; }];</span>
+<span class="s">    json entry = [{ id: uuid:createType1AsString(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">A</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; },</span>
+<span class="s">                  { id: uuid:createType1AsString(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">B</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; }];</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entries</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
 <span class="s">}</span>
@@ -623,7 +623,6 @@ public function httpTriggerCosmosDBOutput1(
     returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
                                  databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
     json entry = { id: uuid:createType1AsString(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
-    string entryString = entry is error ? entry.toString() : entry.toString();
     hb.payload = &quot;Adding entry: &quot; + entry.toString();
     return entry;
 }
@@ -652,8 +651,8 @@ public function httpTriggerCosmosDBOutput2(
         returns @af:CosmosDBOutput { 
             connectionStringSetting: &quot;CosmosDBConnection&quot;, 
             databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
-    json entry = [{ id: system:createType1AsString(), name: &quot;John Doe A&quot;, country: &quot;USA&quot; },
-                  { id: system:createType1AsString(), name: &quot;John Doe B&quot;, country: &quot;USA&quot; }];
+    json entry = [{ id: uuid:createType1AsString(), name: &quot;John Doe A&quot;, country: &quot;USA&quot; },
+                  { id: uuid:createType1AsString(), name: &quot;John Doe B&quot;, country: &quot;USA&quot; }];
     hb.payload = &quot;Adding entries: &quot; + entry.toString();
     return entry;
 }

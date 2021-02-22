@@ -10,31 +10,60 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Country</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Country</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">Capital</span> <span class="nx">capital</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Capital</span> <span class="nx">record</span> <span class="p">{|</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Capital</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">personAge</span><span class="p">;</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">otherDetails</span> <span class="p">=</span> <span class="p">{};</span>
+    <span class="c1">// This record destructure binding pattern will destructure a `record` of the type `Person` and assign the values</span>
+    <span class="c1">// to three variable references as follows:</span>
+    <span class="c1">// The value of the field `name` in the `Person` record will be assigned to the variable `firstName`.</span>
+    <span class="c1">// The value of the field `age` in the `Person` record will be assigned to the variable `personAge`.</span>
+    <span class="c1">// `...otherDetails` is a rest parameter. Since `Person` is an open record, the remaining field values that have</span>
+    <span class="c1">// not been matched in the record binding pattern will be assigned as a `map&lt;anydata|error&gt;` to the variable</span>
+    <span class="c1">// `otherDetails`.</span>
     <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">personAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherDetails</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">personAge</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">);</span>
+
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="c1">// If no variable name is given for a field, the value of the field will be assigned to a variable reference of the</span>
+    <span class="c1">// same name as the field.</span>
+    <span class="c1">// i.e., {name, age} is same as {name: name, age: age}.</span>
+    <span class="c1">// Since a rest parameter is not given, all remaining fields are ignored.</span>
     <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">countryName</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+
+    <span class="kt">string</span> <span class="nx">countryName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">capitalName</span><span class="p">;</span>
+    <span class="c1">// Binding patterns are recursive in nature. `capital`, which is a field of type `Capital` in `Country` can also be</span>
+    <span class="c1">// destructured as follows:</span>
     <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span><span class="p">}}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country Name: &quot;</span><span class="p">,</span> <span class="nx">countryName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital Name: &quot;</span><span class="p">,</span> <span class="nx">capitalName</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
@@ -42,20 +71,13 @@ redirect_from:
         <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span>
     <span class="p">};</span>
     <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getCountry</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Country</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getCountry</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Country</span> <span class="p">{</span>
     <span class="nx">Capital</span> <span class="nx">capital</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">};</span>
     <span class="nx">Country</span> <span class="nx">country</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="nx">capital</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">country</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_destructure_binding_pattern</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Name</span><span class="p">:</span> <span class="nx">Peter</span>
-<span class="nx">Age</span><span class="p">:</span> <span class="mi">28</span>
-<span class="nx">Other</span> <span class="nx">Details</span><span class="p">:</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span> <span class="nx">occupation</span><span class="p">=</span><span class="nx">Software</span> <span class="nx">Engineer</span>
-<span class="nx">Name</span><span class="p">:</span> <span class="nx">Peter</span>
-<span class="nx">Age</span><span class="p">:</span> <span class="mi">28</span>
-<span class="nx">Country</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">Sri</span> <span class="nx">Lanka</span>
-<span class="nx">Capital</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">Colombo</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -100,15 +122,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/record-destructure-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=717e1fd60af21b1cc756f93fdc160386&file=record_destructure_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bc4c9edab1a10af62a92a1ae504e559b&file=record_destructure_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -431,7 +453,7 @@ Capital Name: Colombo
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

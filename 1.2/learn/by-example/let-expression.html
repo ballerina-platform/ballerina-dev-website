@@ -10,50 +10,68 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// This is a simple let expression, which involves only a single</span>
+    <span class="c1">// variable declaration.</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">let</span> <span class="kt">int</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">1</span> <span class="nx">in</span> <span class="nx">b</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;a: &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+
+    <span class="c1">// Declare multiple variables in a let expression.</span>
     <span class="kt">string</span> <span class="nx">greeting</span> <span class="p">=</span> <span class="nx">let</span> <span class="kt">string</span> <span class="nx">hello</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span><span class="p">,</span>
                           <span class="kt">string</span> <span class="nx">ballerina</span> <span class="p">=</span> <span class="s">&quot;Ballerina!&quot;</span>
                       <span class="nx">in</span> <span class="nx">hello</span> <span class="o">+</span> <span class="nx">ballerina</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;greeting: &quot;</span><span class="p">,</span> <span class="nx">greeting</span><span class="p">);</span>
+
+    <span class="c1">// The scope of a variable declared in a let expression is from</span>
+    <span class="c1">// the point of declaration to the end of the let expression.</span>
     <span class="kt">int</span> <span class="nx">three</span> <span class="p">=</span> <span class="nx">let</span> <span class="kt">int</span> <span class="nx">one</span> <span class="p">=</span> <span class="nx">getInt</span><span class="p">(),</span> <span class="kt">int</span> <span class="nx">two</span> <span class="p">=</span> <span class="nx">one</span> <span class="o">+</span> <span class="nx">one</span> <span class="nx">in</span> <span class="nx">one</span> <span class="o">+</span> <span class="nx">two</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;three: &quot;</span><span class="p">,</span> <span class="nx">three</span><span class="p">);</span>
+
+    <span class="c1">// Declare variables using the keyword `var` in a let expression.</span>
     <span class="kt">int</span> <span class="nx">length</span> <span class="p">=</span> <span class="nx">let</span> <span class="k">var</span> <span class="nx">num</span> <span class="p">=</span> <span class="mi">10</span><span class="p">,</span> <span class="k">var</span> <span class="nx">txt</span> <span class="p">=</span> <span class="s">&quot;four&quot;</span> <span class="nx">in</span> <span class="nx">num</span> <span class="o">+</span> <span class="nx">txt</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;length: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;length: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">];</span>
+    <span class="c1">// Let variable declarations can include binding patterns.</span>
     <span class="kt">int</span> <span class="nx">tupleBindingResult</span> <span class="p">=</span> <span class="nx">let</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="p">[</span><span class="nx">d1</span><span class="p">,</span> <span class="nx">d2</span><span class="p">]</span> <span class="p">=</span> <span class="nx">v1</span><span class="p">,</span>
                                  <span class="kt">int</span> <span class="nx">d3</span> <span class="p">=</span> <span class="nx">d1</span> <span class="o">+</span> <span class="nx">d2</span>
                              <span class="nx">in</span>  <span class="nx">d3</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;tuple binding result: &quot;</span><span class="p">,</span> <span class="nx">tupleBindingResult</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="nx">let</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;tuple binding result: &quot;</span><span class="p">,</span> <span class="nx">tupleBindingResult</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="nx">let</span> <span class="nx">Person</span> <span class="p">{</span>
                     <span class="nx">name</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span>
                     <span class="nx">age</span><span class="p">:</span> <span class="nx">personAge</span><span class="p">,</span>
                     <span class="o">...</span><span class="nx">otherDetails</span>
               <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">()</span>
               <span class="nx">in</span> <span class="nx">personAge</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>    <span class="k">var</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="nx">let</span> <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">()</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+
+    <span class="k">var</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="nx">let</span> <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">()</span>
                     <span class="nx">in</span> <span class="nx">params</span><span class="p">[</span><span class="s">&quot;fatal&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;fatal: &quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">getInt</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="mi">1</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">getInt</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>
     <span class="nx">age</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
     <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">,</span>
     <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Lawyer&quot;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;SampleError&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Detail message&quot;</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">let_expression</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">a</span><span class="p">:</span> <span class="mi">2</span>
-<span class="nx">greeting</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
-<span class="nx">three</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">length</span><span class="p">:</span> <span class="mi">14</span>
-<span class="nx">tuple</span> <span class="nx">binding</span> <span class="nx">result</span><span class="p">:</span> <span class="mi">60</span>
-<span class="nx">age</span><span class="p">:</span> <span class="mi">31</span>
-<span class="nx">fatal</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -96,15 +114,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/let-expression/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=027bca74c9fe09a725ded8cde06c6f59&file=let_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e8910b2ce44951cc91d0904851ab14c0&file=let_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -443,7 +461,7 @@ fatal: true
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

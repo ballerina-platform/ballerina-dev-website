@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Code to Cloud Deployment
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /learn/by-example/c2c-deployment
 redirect_from:
-  - /vswan-lake/learn/by-example/c2c-deployment
-  - /vswan-lake/learn/by-example/c2c-deployment.html
+  - /swan-lake/learn/by-example/c2c-deployment
+  - /swan-lake/learn/by-example/c2c-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -36,7 +37,7 @@ redirect_from:
                             <p><p>Ballerina supports generating Docker and Kubernetes artifacts from code without any additional configuration.
  This simplifies the experience of developing and deploying Ballerina code in the cloud.
  Code to cloud builds the containers and required artifacts by deriving the required values from the code.
- If you want to override the default values taken by the compiler, you can use a <code>Kubernetes.toml</code> file. <br/><br/>
+ If you want to override the default values taken by the compiler, you can use a <code>Cloud.toml</code> file. <br/><br/>
  For more information, see <a href="/learn/deployment/code-to-cloud">Code to Cloud Deployment</a>.</p>
 </p>
 
@@ -45,9 +46,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="docker-deployment.html">
+                                    <a class="prev" href="docker-deployment-without-annotations.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Docker Deployment</p>
+                                        <p>Docker Deployment Without Annotations</p>
                                     </a>
                                 </div>
                                  
@@ -255,6 +256,10 @@ import ballerina/log;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -263,8 +268,8 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Before you build the package, we are going to override some of the default values taken by the compiler, In order to
-do this you need to create a filed named `Kubernetes.toml` in package directory and paste the following content into it.
+                                    <div class="highlight"><pre><code class=shell-session># Before you build the package, we are going to override some of the default values taken by the compiler,
+In order to do this you need to create a filed named `Cloud.toml` in package directory and paste the following content into it.
 All the supported key value properties can be found in the Code to cloud deployment guide.
 </code></pre></div>
 
@@ -292,6 +297,19 @@ tag=&quot;v0.1.0&quot;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Additionally, if you are using minikube, you could execute the following command to reuse the Docker daemon from minikube.
+$ eval $(minikube docker-env)
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Now let&#39;s build the ballerina package.
 </code></pre></div>
 
@@ -304,8 +322,7 @@ tag=&quot;v0.1.0&quot;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Note that the `bal build` command should be executed on the package. Code to cloud generates only one container
-per package.
+                                    <div class="highlight"><pre><code class=shell-session># Note that the `bal build` command should be executed on the package. Code to cloud generates only one container per package.
 $ bal build
 </code></pre></div>
 
@@ -331,8 +348,8 @@ $ bal build
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/hello-2020r2-any-0.1.0.balo
+                                    <div class="highlight"><pre><code class=shell-session>Creating balas
+        target/bala/hello-2020r2-any-0.1.0.bala
 </code></pre></div>
 
                                 </td>
@@ -410,7 +427,7 @@ $ bal build
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>        Execute the below command to deploy the Kubernetes artifacts:
-        kubectl apply -f /home/wso2/test/c2c-slp6/target/kubernetes/hello
+        kubectl apply -f /home/wso2/project/target/kubernetes/hello-0.1.0
 </code></pre></div>
 
                                 </td>
@@ -502,7 +519,7 @@ Hello, World from service helloWorld !
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Lets try executing Kubernetes service now.
-$ kubectl apply -f /home/wso2/test/c2c-slp6/target/kubernetes/hello
+$ kubectl apply -f /home/wso2/project/target/kubernetes/hello-0.1.0
 service/helloep-svc created
 deployment.apps/wso2-hello-0--deployment created
 horizontalpodautoscaler.autoscaling/wso2-hello-0--hpa created

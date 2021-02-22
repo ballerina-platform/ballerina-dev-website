@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
-title: UDP Connection oriented Client
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+title: UDP Connection-Oriented Client
+description: This Ballerina sample demonstrates how to send data to a connected server.
+keywords: ballerina, ballerina by example, bbe, socket, udp
 permalink: /learn/by-example/udp-connect-client
 redirect_from:
-  - /vswan-lake/learn/by-example/udp-connect-client
-  - /vswan-lake/learn/by-example/udp-connect-client.html
+  - /swan-lake/learn/by-example/udp-connect-client
+  - /swan-lake/learn/by-example/udp-connect-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -22,7 +23,7 @@ redirect_from:
     <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
     <span class="c1">// udp:Client client = new (&quot;www.ballerina.com&quot;, 80,</span>
     <span class="c1">//                         localHost = &quot;localhost&quot;, timeoutInMillis = 2000);</span>
-    <span class="nx">udp</span><span class="p">:</span><span class="nx">ConnectClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">48829</span><span class="p">);</span>
+    <span class="nx">udp</span><span class="p">:</span><span class="nx">ConnectClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">);</span>
 
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
 
@@ -46,7 +47,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>UDP Connection oriented Client</h2>
+                            <h2>UDP Connection-Oriented Client</h2>
                             <p><p>The ConnectClient is configured so that it only receives data from,
  and sends data to, the given remote peer address. Once connected,
  data may not be received from or sent to any other address.
@@ -164,7 +165,7 @@ import ballerina/udp;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    udp:ConnectClient socketClient = check new(&quot;localhost&quot;, 48829);
+                                    <div class="highlight"><pre><code class=language-ballerina>    udp:ConnectClient socketClient = check new(&quot;localhost&quot;, 8080);
 </code></pre></div>
 
                                 </td>

@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Handling Different Payload Types
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: BBE on how to use different payload types directly with HTTP client actions in Ballerina.
+keywords: ballerina, ballerina by example, bbe, http, payload types, client
 permalink: /learn/by-example/different-payload-types
 redirect_from:
-  - /vswan-lake/learn/by-example/different-payload-types
-  - /vswan-lake/learn/by-example/different-payload-types.html
+  - /swan-lake/learn/by-example/different-payload-types
+  - /swan-lake/learn/by-example/different-payload-types.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -59,23 +60,37 @@ redirect_from:
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">binaryValue</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-         <span class="c1">//[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).</span>
-        <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">part1</span><span class="p">.</span><span class="nx">setJson</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">});</span>
+        <span class="c1">//Get a byte stream to a given file.</span>
+        <span class="k">var</span> <span class="nx">bStream</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="s">&quot;./files/logo.png&quot;</span><span class="p">);</span>
 
-        <span class="c1">//[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).</span>
-        <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">part2</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">bStream</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+            <span class="c1">//Make a POST request with a byte stream as the payload. Since the file path is static `&lt;@untainted&gt;` is used to denote that the byte stream is trusted.</span>
+            <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/image&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bStream</span><span class="p">);</span>
+            <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function</span>
-        <span class="c1">//with a body parts as the payload.</span>
-        <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">part1</span><span class="p">,</span> <span class="nx">part2</span><span class="p">];</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">bodyParts</span><span class="p">);</span>
-        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+            <span class="c1">//[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).</span>
+            <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+            <span class="nx">part1</span><span class="p">.</span><span class="nx">setJson</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">});</span>
 
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span>
-                                <span class="s">&quot;Client actions successfully executed!&quot;</span><span class="p">);</span>
-        <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="c1">//[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).</span>
+            <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+            <span class="nx">part2</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+
+            <span class="c1">//Make a POST request with body parts as the payload.</span>
+            <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">part1</span><span class="p">,</span> <span class="nx">part2</span><span class="p">];</span>
+            <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">bodyParts</span><span class="p">);</span>
+            <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span>
+                    <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Client actions successfully executed!&quot;</span><span class="p">);</span>
+            <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bStream</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+            <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -285,9 +300,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-compression.html">
+                                    <a class="next" href="http-streaming.html">
                                         <span>NEXT ></span>
-                                        <p>HTTP Compression</p>
+                                        <p>HTTP Streaming</p>
                                     </a>
                                 </div>
                                 
@@ -325,6 +340,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -597,8 +618,59 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity part1 = new;
-        part1.setJson({&quot;name&quot;: &quot;Jane&quot;});
+                                    <div class="highlight"><pre><code class=language-ballerina>        var bStream = io:fileReadBlocksAsStream(&quot;./files/logo.png&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get a byte stream to a given file.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (bStream is stream&lt;byte[], io:Error&gt;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            response = clientEP-&gt;post(&quot;/image&quot;, &lt;@untainted&gt;bStream);
+            handleResponse(response);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Make a POST request with a byte stream as the payload. Since the file path is static <code>&lt;@untainted&gt;</code> is used to denote that the byte stream is trusted.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            mime:Entity part1 = new;
+            part1.setJson({&quot;name&quot;: &quot;Jane&quot;});
 </code></pre></div>
 
                                 </td>
@@ -617,8 +689,8 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity part2 = new;
-        part2.setText(&quot;Hello&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            mime:Entity part2 = new;
+            part2.setText(&quot;Hello&quot;);
 </code></pre></div>
 
                                 </td>
@@ -637,9 +709,9 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity[] bodyParts = [part1, part2];
-        response = clientEP-&gt;post(&quot;/echo&quot;, bodyParts);
-        handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>            mime:Entity[] bodyParts = [part1, part2];
+            response = clientEP-&gt;post(&quot;/echo&quot;, bodyParts);
+            handleResponse(response);
 </code></pre></div>
 
                                 </td>
@@ -647,8 +719,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function
-with a body parts as the payload.</p>
+                                            <p>Make a POST request with body parts as the payload.</p>
 
                                         </div>
                                     </div>
@@ -659,9 +730,16 @@ with a body parts as the payload.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(
-                                &quot;Client actions successfully executed!&quot;);
-        handleError(result);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result =
+                    caller-&gt;respond(&quot;Client actions successfully executed!&quot;);
+            handleError(result);
+        } else {
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload(&lt;@untainted&gt;bStream.message());
+            var result = caller-&gt;respond(res);
+            handleError(result);
+        }
     }
 }
 </code></pre></div>
@@ -1011,6 +1089,7 @@ time = 2020-12-15 17:41:04,062 level = INFO  module = &quot;&quot; message = &qu
 time = 2020-12-15 17:41:04,206 level = INFO  module = &quot;&quot; message = &quot;Xml data: &lt;yy&gt;Sample Xml&lt;/yy&gt;&quot;
 time = 2020-12-15 17:41:04,224 level = INFO  module = &quot;&quot; message = &quot;Json data: {&quot;name&quot;:&quot;apple&quot;, &quot;color&quot;:&quot;red&quot;}&quot;
 time = 2020-12-15 17:41:04,232 level = INFO  module = &quot;&quot; message = &quot;Response contains binary data: Sample Text&quot;
+time = 2020-12-15 17:41:04,256 level = INFO  module = &quot;&quot; message = &quot;Response contains an image&quot;
 time = 2020-12-15 17:41:04,275 level = INFO  module = &quot;&quot; message = &quot;Response contains body parts: &quot;
 time = 2020-12-15 17:41:04,280 level = INFO  module = &quot;&quot; message = &quot;Json Part: {&quot;name&quot;:&quot;Jane&quot;}&quot;
 time = 2020-12-15 17:41:04,281 level = INFO  module = &quot;&quot; message = &quot;Text Part: Hello&quot;

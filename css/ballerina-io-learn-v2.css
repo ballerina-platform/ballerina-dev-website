@@ -132,8 +132,9 @@ nav.cLeftNavContainer {
         padding: 30px;
         background-color: #f7f7f7;
         display: inline-block;
-        min-height: 260px;
+        min-height: 375px;
         border: 1px solid #f7f7f7;
+        text-align: center;
     }
 
     .cBoxLink:hover {
@@ -144,7 +145,7 @@ nav.cLeftNavContainer {
         color: #20b6b0;
         border-color: transparent;
         background-color: transparent;
-    background-image: url("/img/go-bg-green.svg") !important;
+    /* background-image: url("/img/go-bg-green.svg") !important; */
     border-bottom: none;
     background-repeat: no-repeat;
     width: 100%;
@@ -278,6 +279,9 @@ color: #fff !important;
     padding: 0;
 }
 
+.cLearnIcon {
+	width: 120px;
+}
 
   
   /* Chrome 29+ */

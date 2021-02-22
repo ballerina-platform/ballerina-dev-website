@@ -12,7 +12,9 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">weatherEPConfig</span> <span class="p">=</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">weatherEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">followRedirects</span><span class="p">:</span> <span class="p">{</span><span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">maxCount</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
@@ -22,63 +24,81 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
+
+<span class="c1">//Service is invoked using `basePath` value &quot;/hbr&quot;.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hbr&quot;</span>
-<span class="p">}</span><span class="kd">service</span> <span class="nx">headerBasedRouting</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">service</span> <span class="nx">headerBasedRouting</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// `http:resourceConfig{}` annotation with &#39;GET&#39; method declares the</span>
+    <span class="c1">// HTTP method.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/route&quot;</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hbrResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hbrResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">weatherEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://samples.openweathermap.org&quot;</span><span class="p">,</span>
                                      <span class="nx">weatherEPConfig</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">locationEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
+        <span class="c1">// Create a new outbound request to handle client call.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">newRequest</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">// Check whether `x-type` header exists in the request.</span>
         <span class="k">if</span> <span class="p">(!</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="kt">json</span> <span class="nx">errMsg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;&#39;x-type&#39; header is not found&quot;</span><span class="p">};</span>
-            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errMsg</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errMsg</span><span class="p">);</span>
+
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">);</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="c1">//`getHeader()` returns header value of the specified header name.</span>
+        <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">);</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">nameString</span> <span class="o">==</span> <span class="s">&quot;location&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//`post()` remote function represents the &#39;POST&#39; operation</span>
+            <span class="c1">// of the HTTP client.</span>
+            <span class="c1">// Route payload to the relevant service.</span>
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">locationEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/v2/5adddd66300000bd2a4b2912&quot;</span><span class="p">,</span>
-                                        <span class="nx">newRequest</span><span class="p">);</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                                        <span class="nx">newRequest</span><span class="p">);</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">//`get()` remote function can be used to make an http GET call.</span>
             <span class="nx">response</span> <span class="p">=</span>
                 <span class="nx">weatherEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;</span><span class="p">,</span>
-                                 <span class="nx">newRequest</span><span class="p">);</span>        <span class="p">}</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                                 <span class="nx">newRequest</span><span class="p">);</span>
+
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// `respond()` sends back the inbound clientResponse to the caller</span>
+            <span class="c1">// if no error occurs.</span>
+
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span>  <span class="nx">below</span> <span class="nx">along</span> <span class="nx">with</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">config</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">header_based_routing</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hbr/route -H &quot;x-type:location&quot;</span>
-<span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Colombo,Sri Lanka&quot;</span><span class="p">,</span>
-    <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">556.49</span><span class="p">,</span>
-    <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">257.76</span><span class="p">,</span>
-    <span class="s">&quot;altitude&quot;</span><span class="p">:</span> <span class="mi">230</span>
-<span class="p">}</span><span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hbr/route -H &quot;x-type:weather&quot;</span>
-<span class="p">{</span><span class="s">&quot;coord&quot;</span><span class="p">:{</span><span class="s">&quot;lon&quot;</span><span class="p">:</span><span class="mf">139.01</span><span class="p">,</span><span class="s">&quot;lat&quot;</span><span class="p">:</span><span class="mf">35.02</span><span class="p">},</span><span class="s">&quot;weather&quot;</span><span class="p">:[{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span>
-<span class="s">&quot;main&quot;</span><span class="p">:</span><span class="s">&quot;Clear&quot;</span><span class="p">,</span><span class="s">&quot;description&quot;</span><span class="p">:</span><span class="s">&quot;clear sky&quot;</span><span class="p">,</span><span class="s">&quot;icon&quot;</span><span class="p">:</span><span class="s">&quot;01n&quot;</span><span class="p">}],</span>
-<span class="s">&quot;base&quot;</span><span class="p">:</span><span class="s">&quot;stations&quot;</span><span class="p">,</span><span class="s">&quot;main&quot;</span><span class="p">:{</span><span class="s">&quot;temp&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span><span class="s">&quot;pressure&quot;</span><span class="p">:</span><span class="mf">1013.75</span><span class="p">,</span>
-<span class="s">&quot;humidity&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="s">&quot;temp_min&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span><span class="s">&quot;temp_max&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span>
-<span class="s">&quot;sea_level&quot;</span><span class="p">:</span><span class="mf">1023.22</span><span class="p">,</span><span class="s">&quot;grnd_level&quot;</span><span class="p">:</span><span class="mf">1013.75</span><span class="p">},</span>
-<span class="s">&quot;wind&quot;</span><span class="p">:{</span><span class="s">&quot;speed&quot;</span><span class="p">:</span><span class="mf">5.52</span><span class="p">,</span><span class="s">&quot;deg&quot;</span><span class="p">:</span><span class="mi">311</span><span class="p">},</span><span class="s">&quot;clouds&quot;</span><span class="p">:{</span><span class="s">&quot;all&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>
-<span class="s">&quot;dt&quot;</span><span class="p">:</span><span class="mi">1485792967</span><span class="p">,</span><span class="s">&quot;sys&quot;</span><span class="p">:{</span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="mf">0.0025</span><span class="p">,</span><span class="s">&quot;country&quot;</span><span class="p">:</span><span class="s">&quot;JP&quot;</span><span class="p">,</span>
-<span class="s">&quot;sunrise&quot;</span><span class="p">:</span><span class="mi">1485726240</span><span class="p">,</span><span class="s">&quot;sunset&quot;</span><span class="p">:</span><span class="mi">1485763863</span><span class="p">},</span>
-<span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">1907296</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Tawarano&quot;</span><span class="p">,</span><span class="s">&quot;cod&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -121,9 +141,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/header-based-routing/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -661,7 +681,7 @@ ballerina run header_based_routing.bal --b7a.home=&lt;ballerina_home_path&gt;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

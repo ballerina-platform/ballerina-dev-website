@@ -1,5 +1,12 @@
 var searchData = {
-  "modules": [],
+  "modules": [
+    {
+      "id": "azure_functions",
+      "description": "",
+      "orgName": "ballerinax",
+      "version": "1.0.0"
+    }
+  ],
   "classes": [
     {
       "id": "Context",

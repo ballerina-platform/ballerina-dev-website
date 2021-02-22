@@ -10,6 +10,8 @@ redirect_from:
   - /learn/how-to-generate-code-for-protocol-buffers
   - /learn/how-to-generate-code-for-protocol-buffers/
   - /learn/generating-ballerina-code-for-protocol-buffer-definitions
+  - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions/
+  - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions
   
 ---
 

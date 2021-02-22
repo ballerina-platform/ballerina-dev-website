@@ -39,7 +39,7 @@ jobs:
         cd ballerina-release
 
         BALLERINA_VERSION="`jq -r '.version' ../_data/swanlake-latest/metadata.json`"
-        SHORT_VERSION="`echo $BALLERINA_VERSION | sed 's/swan-lake-preview/slp/g'`"
+        SHORT_VERSION="`jq -r '."short-version"' ../_data/swanlake-latest/metadata.json`"
 
         curl http://dist-dev.ballerina.io/downloads/$BALLERINA_VERSION/ballerina-$BALLERINA_VERSION.zip --output ballerina.zip
 
@@ -47,13 +47,13 @@ jobs:
           exit 1
         fi
 
-        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "false" "true"
+        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "true" "true"
 
     - name: Remove old examples file
-      run: git rm -r swan-lake/learn/by-example
+      run: git rm -r learn/by-example
 
     - name: Copy newly generated examples file
-      run: cp -r ballerina-release/by-example swan-lake/learn/
+      run: cp -r ballerina-release/by-example learn/
 
     - name: Push changes for new BBEs
       run: |
@@ -63,7 +63,7 @@ jobs:
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
         
-        git add swan-lake/learn/by-example
+        git add learn/by-example
         git commit --allow-empty -m 'Update Ballerina Swan Lake by examples'
         
         git push --set-upstream origin automate-bbes-$GITHUB_SHA

@@ -14,6 +14,8 @@ redirect_from:
   - /learn/setting-up-visual-studio-code/language-intelligence
   - /learn/language-intelligence
   - /learn/language-intelligence/
+  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/language-intelligence/
+  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/language-intelligence
 ---
 
 ## Semantic and Syntactic Diagnostics

@@ -10,7 +10,10 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Defines a `map` of `string` values.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">words</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">a</span><span class="p">:</span> <span class="s">&quot;ant&quot;</span><span class="p">,</span>
         <span class="nx">b</span><span class="p">:</span> <span class="s">&quot;bear&quot;</span><span class="p">,</span>
@@ -18,20 +21,42 @@ redirect_from:
         <span class="nx">d</span><span class="p">:</span> <span class="s">&quot;dear&quot;</span><span class="p">,</span>
         <span class="nx">e</span><span class="p">:</span> <span class="s">&quot;elephant&quot;</span>
     <span class="p">};</span>
+
+    <span class="c1">// The `length()` function returns the number of elements in the container.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Number of elements in &#39;words&#39;: &quot;</span><span class="p">,</span> <span class="nx">words</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+
+    <span class="c1">// The `map()` function applies the given function to each item of the container</span>
+    <span class="c1">// and returns a new container of the same type and length.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">animals</span> <span class="p">=</span> <span class="nx">words</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="nx">toUpper</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">animals</span><span class="p">);</span>
+
+    <span class="c1">// Defines an array of `int` values.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">];</span>
+
+    <span class="c1">// The `filter()` function returns a new container of the same type with</span>
+    <span class="c1">// all the elements that satisfy the input predicate function.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">positive</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Positive numbers: &quot;</span><span class="p">,</span> <span class="nx">positive</span><span class="p">);</span>
+
+    <span class="c1">// The `forEach()` function executes a specified function once for each of</span>
+    <span class="c1">// the elements in the container.</span>
     <span class="nx">numbers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
     <span class="p">});</span>
+
+    <span class="c1">// The `reduce()` function uses the given combining function to produce</span>
+    <span class="c1">// a single value. The combining function takes the combined value so far</span>
+    <span class="c1">// and an element of the container and returns a new combined value.</span>
     <span class="kt">int</span> <span class="nx">total</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total: &quot;</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">totalWithInitialValue</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total with initial value: &quot;</span><span class="p">,</span> <span class="nx">totalWithInitialValue</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nExecution Order:-&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total: &quot;</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">totalWithInitialValue</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total with initial value: &quot;</span><span class="p">,</span> <span class="nx">totalWithInitialValue</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nExecution Order:-&quot;</span><span class="p">);</span>
+    <span class="c1">// The `forEach()` function applies the given function to each item of the container.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">colors</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">],</span> <span class="nx">price</span><span class="p">:</span> <span class="mi">5</span><span class="p">};</span>
     <span class="nx">j</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">json</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
@@ -39,29 +64,17 @@ redirect_from:
         <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;-- foreach operation&#39;s value: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
-    <span class="p">});}</span><span class="kd">function</span> <span class="nx">toUpper</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="p">});</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">toUpper</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accumulator</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accumulator</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">currentValue</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functional_iteration</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Number</span> <span class="nx">of</span> <span class="nx">elements</span> <span class="nx">in</span> <span class="err">&#39;</span><span class="nx">words</span><span class="err">&#39;</span><span class="p">:</span> <span class="mi">5</span>
-<span class="nx">a</span><span class="p">=</span><span class="nx">ANT</span> <span class="nx">b</span><span class="p">=</span><span class="nx">BEAR</span> <span class="nx">c</span><span class="p">=</span><span class="nx">CAT</span> <span class="nx">d</span><span class="p">=</span><span class="nx">DEAR</span> <span class="nx">e</span><span class="p">=</span><span class="nx">ELEPHANT</span>
-<span class="nx">Positive</span> <span class="nx">numbers</span><span class="p">:</span> <span class="mi">2</span> <span class="mi">7</span> <span class="mi">12</span>
-<span class="o">-</span><span class="mi">5</span>
-<span class="o">-</span><span class="mi">3</span>
-<span class="mi">2</span>
-<span class="mi">7</span>
-<span class="mi">12</span>
-<span class="nx">Total</span><span class="p">:</span> <span class="mi">13</span>
-<span class="nx">Total</span> <span class="nx">with</span> <span class="nx">initial</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">18</span><span class="nx">Execution</span> <span class="nx">Order</span><span class="p">:</span><span class="o">-</span>
-<span class="o">-</span> <span class="kt">map</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">apple</span>
-<span class="o">-</span> <span class="kt">map</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">red</span> <span class="nx">green</span>
-<span class="o">-</span> <span class="kt">map</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">5</span>
-<span class="o">--</span> <span class="nx">foreach</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">apple</span>
-<span class="o">--</span> <span class="nx">foreach</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">red</span> <span class="nx">green</span>
-<span class="o">--</span> <span class="nx">foreach</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -105,15 +118,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functional-iteration/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b1676f5daa486883dedff97cee0fec40&file=functional_iteration.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0ba4f549db0f0ac4909157f9509e6d45&file=functional_iteration.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -511,7 +524,7 @@ Total with initial value: 18
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

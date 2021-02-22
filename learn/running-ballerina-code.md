@@ -11,6 +11,8 @@ redirect_from:
   - /learn/how-to-run-ballerina-programs/
   - /learn/how-to-deploy-and-run-ballerina-programs/
   - /learn/running-ballerina-code
+  - /swan-lake/learn/running-ballerina-code/
+  - /swan-lake/learn/running-ballerina-code
 ---
 
 ## Understanding the Structure

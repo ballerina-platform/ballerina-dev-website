@@ -8,6 +8,8 @@ active: executing-tests
 intro: The sections below include information about executing tests in Ballerina.
 redirect_from:
   - /learn/testing-ballerina-code/executing-tests
+  - /swan-lake/learn/testing-ballerina-code/executing-tests/
+  - /swan-lake/learn/testing-ballerina-code/executing-tests
 ---
 
 ## Executing Tests Using CLI Commands

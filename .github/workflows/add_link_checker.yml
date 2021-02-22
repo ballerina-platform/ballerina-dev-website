@@ -1,7 +1,7 @@
 # This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/link-checker).
 
 on: [pull_request]
-name: Link Checker Example Command
+name: Link Checker 
 jobs:
   linkChecker:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
         id: lc
         uses: peter-evans/link-checker@v1
         with:
-          args: -r learn swan-lake -x 1.0 1.1 https?:// -d ./_site 
+          args: -r learn 1.2 -x 1.0 1.1 https?:// -d ./_site 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:

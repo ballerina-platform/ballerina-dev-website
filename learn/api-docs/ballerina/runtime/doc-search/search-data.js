@@ -1,5 +1,12 @@
 var searchData = {
-  "modules": [],
+  "modules": [
+    {
+      "id": "runtime",
+      "description": "",
+      "orgName": "ballerina",
+      "version": "0.6.0-alpha4"
+    }
+  ],
   "classes": [],
   "functions": [
     {
@@ -7,7 +14,7 @@ var searchData = {
       "description": "Returns the `runtime:InvocationContext` instance.",
       "moduleId": "runtime",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
+      "moduleVersion": "0.6.0-alpha4"
     }
   ],
   "records": [
@@ -16,7 +23,7 @@ var searchData = {
       "description": "Represents the `runtime:InvocationContext`.",
       "moduleId": "runtime",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "0.5.5"
+      "moduleVersion": "0.6.0-alpha4"
     }
   ],
   "constants": [],

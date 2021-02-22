@@ -10,17 +10,21 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span><span class="err">?</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">();</span>
+
+    <span class="c1">// If you need to get the value of `x` if it is a `string`, or assign some</span>
+    <span class="c1">// other `string` value if `x` is `()`, you can do it using the type-guard</span>
+    <span class="c1">// as follows.</span>
     <span class="kt">string</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">x</span> <span class="nx">is</span> <span class="kt">string</span> <span class="err">?</span> <span class="s">&quot;value is string: &quot;</span> <span class="o">+</span> <span class="nx">x</span> <span class="p">:</span> <span class="s">&quot;value is nil&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The output from the type-guard: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">);</span>
+
+    <span class="c1">// You can achieve the same using the elvis operator as follows.</span>
     <span class="kt">string</span> <span class="nx">elvisOutput</span> <span class="p">=</span> <span class="nx">x</span> <span class="err">?</span><span class="p">:</span> <span class="s">&quot;value is nil&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The output from the elvis operator: &quot;</span> <span class="o">+</span> <span class="nx">elvisOutput</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">elvis_operator</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">The</span> <span class="nx">output</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">type</span><span class="o">-</span><span class="nx">guard</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">is</span> <span class="kc">nil</span>
-<span class="nx">The</span> <span class="nx">output</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">elvis</span> <span class="nx">operator</span><span class="p">:</span> <span class="nx">value</span> <span class="nx">is</span> <span class="kc">nil</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -67,15 +71,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/elvis-operator/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5dda8fda1affee112d746832d0d3271b&file=elvis_operator.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8cdf46dab05ef865fee83f1e96710959&file=elvis_operator.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -223,7 +227,7 @@ The output from the elvis operator: value is nil
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Hello World Service
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /learn/by-example/hello-world-service
 redirect_from:
-  - /vswan-lake/learn/by-example/hello-world-service
-  - /vswan-lake/learn/by-example/hello-world-service.html
+  - /swan-lake/learn/by-example/hello-world-service
+  - /swan-lake/learn/by-example/hello-world-service.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,12 +14,12 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
 <span class="c1">// By default, Ballerina exposes an HTTP service via HTTP/1.1.</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// The resource method is invoked by the GET request for the</span>
-    <span class="c1">// `/hello/sayHello` path. The returned string value</span>
+    <span class="c1">// `/greeting` path. The returned string value</span>
     <span class="c1">// eventually becomes the payload of the `http:Response`.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -108,7 +109,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -127,7 +128,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get sayHello() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting() returns string {
         return &quot;Hello, World!&quot;;
     }
 }
@@ -139,7 +140,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The resource method is invoked by the GET request for the
- <code>/hello/sayHello</code> path. The returned string value
+ <code>/greeting</code> path. The returned string value
  eventually becomes the payload of the <code>http:Response</code>.</p>
 
                                         </div>
@@ -192,7 +193,7 @@ bal run hello_world_service.bal
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/hello/sayHello
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/greeting
 Hello, World!
 </code></pre></div>
 

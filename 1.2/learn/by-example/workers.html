@@ -11,9 +11,18 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// In Ballerina, each function consists of one or more workers, which are </span>
+<span class="c1">// independent execution paths called strands. If explicit workers are</span>
+<span class="c1">// not mentioned within worker blocks, the function code will belong to a</span>
+<span class="c1">// single implicit default worker. The default worker in each function wil be</span>
+<span class="c1">// executed in the same strand as the caller function.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution started&quot;</span><span class="p">);</span>
+
+    <span class="c1">// This block belongs to the worker `w1`.</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
+        <span class="c1">// Calculates the sum(n).</span>
         <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">10000000</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="nx">n</span> <span class="p">{</span>
@@ -21,10 +30,16 @@ redirect_from:
         <span class="p">}</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sum of first &quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="s">&quot; positive numbers = &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// By default workers run on the same physical thread of the parent strand.</span>
+    <span class="c1">// By adding `@strand` annotation, this worker&#39;s strand is allowed to run</span>
+    <span class="c1">// on any available physical thread.</span>
     <span class="nd">@strand {</span>
         <span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span>
     <span class="p">}</span>
+    <span class="c1">// This block belongs to the worker `w2`.</span>
     <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
+        <span class="c1">// Calculates the sum(n^2).</span>
         <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">10000000</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="nx">n</span> <span class="p">{</span>
@@ -33,14 +48,12 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sum of squares of first &quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span>
             <span class="s">&quot; positive numbers = &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">workers</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Worker</span> <span class="nx">execution</span> <span class="nx">started</span>
-<span class="nx">sum</span> <span class="nx">of</span> <span class="nx">first</span> <span class="mi">10000000</span> <span class="nx">positive</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="mi">50000005000000</span>
-<span class="nx">sum</span> <span class="nx">of</span> <span class="nx">squares</span> <span class="nx">of</span> <span class="nx">first</span> <span class="mi">10000000</span> <span class="nx">positive</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="mi">1291990006563070912</span>
-<span class="nx">Worker</span> <span class="nx">execution</span> <span class="nx">finished</span>
+
+    <span class="c1">// Waits for both workers to finish.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -87,15 +100,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/workers/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2807b8c6105939c88a872addbd42f6d0&file=workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d9a9d9d82d177bac2984e83f78a1315f&file=workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -367,7 +380,7 @@ Worker execution finished
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

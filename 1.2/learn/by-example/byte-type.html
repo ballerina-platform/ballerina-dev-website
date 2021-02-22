@@ -10,29 +10,33 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Define a `byte` variable.</span>
     <span class="nx">byte</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">12</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
+    <span class="c1">// Create a `byte` array using the list constructor.</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">arr1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">243</span><span class="p">];</span>
+    <span class="c1">// Create a `byte` array using the `base16` byte array literal.</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">arr2</span> <span class="p">=</span> <span class="nx">base16</span> <span class="s">`aeeecdefabcd12345567888822`</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">arr3</span> <span class="p">=</span> <span class="nx">base64</span> <span class="s">`aGVsbG8gYmFsbGVyaW5hICEhIQ==`</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr1</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr2</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr2</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr3</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr3</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>    <span class="nx">byte</span><span class="p">[][]</span> <span class="nx">arr4</span> <span class="p">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">213</span><span class="p">],</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">99</span><span class="p">]];</span>
+    <span class="c1">// Create a `byte` array using the `base64` byte array literal.</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">arr3</span> <span class="p">=</span> <span class="nx">base64</span> <span class="s">`aGVsbG8gYmFsbGVyaW5hICEhIQ==`</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr1</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr2</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr2</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr3</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr3</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+
+    <span class="nx">byte</span><span class="p">[][]</span> <span class="nx">arr4</span> <span class="p">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">213</span><span class="p">],</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">99</span><span class="p">]];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr4</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arr4</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">length</span><span class="p">());</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">byte_type</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">12</span>
-<span class="mi">4</span>
-<span class="mi">24</span>
-<span class="mi">13</span>
-<span class="mi">205</span>
-<span class="mi">19</span>
-<span class="mi">108</span>
-<span class="mi">3</span>
-<span class="mi">6</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -77,15 +81,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/byte-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=dc52c8deb0622fc1dd5c2f414ad5a314&file=byte_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e1b6cc264874f7baa81a80ff63b074e9&file=byte_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -339,7 +343,7 @@ ballerina run byte_type.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

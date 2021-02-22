@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: UDP Connectionless Client
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This Ballerina sample demonstrates how to send data to a remote UDP server.
+keywords: ballerina, ballerina by example, bbe, socket, udp
 permalink: /learn/by-example/udp-client
 redirect_from:
-  - /vswan-lake/learn/by-example/udp-client
-  - /vswan-lake/learn/by-example/udp-client.html
+  - /swan-lake/learn/by-example/udp-client
+  - /swan-lake/learn/by-example/udp-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -24,7 +25,7 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
     <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span> <span class="nx">datagram</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">remoteHost</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
-        <span class="nx">remotePort</span> <span class="p">:</span> <span class="mi">48829</span><span class="p">,</span>
+        <span class="nx">remotePort</span> <span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
         <span class="nx">data</span> <span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span>
     <span class="p">};</span>
 
@@ -71,7 +72,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="udp-connect-client.html">
                                         <span>NEXT ></span>
-                                        <p>UDP Connection oriented Client</p>
+                                        <p>UDP Connection-Oriented Client</p>
                                     </a>
                                 </div>
                                 
@@ -183,7 +184,7 @@ import ballerina/udp;
                                     <div class="highlight"><pre><code class=language-ballerina>    string msg = &quot;Hello Ballerina echo&quot;;
     udp:Datagram datagram = {
         remoteHost: &quot;localhost&quot;,
-        remotePort : 48829,
+        remotePort : 8080,
         data : msg.toBytes()
     };
 </code></pre></div>

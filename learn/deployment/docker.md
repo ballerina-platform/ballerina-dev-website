@@ -11,6 +11,8 @@ redirect_from:
   - /learn/deploying-ballerina-programs-in-the-cloud
   - /learn/deploying-ballerina-programs-in-the-cloud/
   - /learn/deployment/
+  - /swan-lake/learn/deployment/docker/
+  - /swan-lake/learn/deployment/docker
 ---
 
 To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, you have to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings.

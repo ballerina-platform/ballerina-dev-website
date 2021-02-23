@@ -22,3 +22,5 @@ For information, see [HTTP Clients](/learn/network-communication/http/http-clien
 
 For information, see [HTTP Services](/learn/network-communication/http/http-services/).
 
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+

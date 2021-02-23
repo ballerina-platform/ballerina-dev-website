@@ -337,43 +337,43 @@ function print(any|error val) {
 Record type inclusion now copies the rest descriptor from the included type to the including type. The including type may override the rest descriptor. 
 
 ```ballerina
-type Congifuration record {|
+type Configuration record {|
     int id;
     decimal...;
 |};
 
-type DefaultCongifuration record {|
+type DefaultConfiguration record {|
     // The rest descriptor is also copied.
-    *Congifuration;
+    *Configuration;
     boolean active;
 |};
 
-DefaultCongifuration config = {
+DefaultConfiguration config = {
     id: 1000,
     active: true,
     // Additional fields of type `decimal` can be specified since the rest descriptor
-    // is copied from `Congifuration`.
+    // is copied from `Configuration`.
     "factor": 1.0,
     "index": 0.0
 };
 ```
 
-The rest descriptor of the `DefaultCongifuration` is of type `decimal`.
+The rest descriptor of the `DefaultConfiguration` is of type `decimal`.
 
 ```ballerina
-type Congifuration record {|
+type Configuration record {|
     int id;
     decimal...;
 |};
 
-type InclusiveCongifuration record {
-    // Since `InclusiveCongifuration` is an inclusive record type descriptor the 
-    // `anydata` rest descriptor overrides the rest descriptor from `Congifuration`.
-    *Congifuration;
+type InclusiveConfiguration record {
+    // Since `InclusiveConfiguration` is an inclusive record type descriptor the 
+    // `anydata` rest descriptor overrides the rest descriptor from `Configuration`.
+    *Configuration;
     boolean active;
 };
 
-InclusiveCongifuration inclusiveConfig = {
+InclusiveConfiguration inclusiveConfig = {
     id: 1002,
     active: true,
     // Additional fields of type `anydata` can be specified since the rest descriptor
@@ -382,16 +382,16 @@ InclusiveCongifuration inclusiveConfig = {
     "owner": "admin"
 };
 
-type ExclusiveCongifuration record {|
-    // The record type descriptor of  `ExclusiveCongifuration` overrides the rest 
-    // descriptor from `Congifuration`, making the rest descriptor of `ExclusiveCongifuration` 
+type ExclusiveConfiguration record {|
+    // The record type descriptor of  `ExclusiveConfiguration` overrides the rest 
+    // descriptor from `Configuration`, making the rest descriptor of `ExclusiveConfiguration` 
     // be of type `boolean`.
-    *Congifuration;
+    *Configuration;
     boolean active;
     boolean...;
 |};
 
-ExclusiveCongifuration exclusiveConfig = {
+ExclusiveConfiguration exclusiveConfig = {
     id: 1003,
     active: false,
     // Additional fields of type `boolean` can be specified since the rest descriptor is overridden.
@@ -399,7 +399,7 @@ ExclusiveCongifuration exclusiveConfig = {
 };
 ```
 
-The rest descriptor type of the `InclusiveCongifuration` is `anydata` and that of the `ExclusiveCongifuration` is `boolean`. The including records override the rest descriptor from the included record.
+The rest descriptor type of the `InclusiveConfiguration` is `anydata` and that of the `ExclusiveConfiguration` is `boolean`. The including records override the rest descriptor from the included record.
 
 ##### Improved Listener Declaration  
 

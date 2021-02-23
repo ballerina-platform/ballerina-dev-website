@@ -56,6 +56,9 @@
     - title: gRPC
       url: /learn/network-communication/grpc/
       active: grpc
+    - title: WebSocket
+      url: /learn/network-communication/websocket/
+      active: websocket
 
 - title: Data and Events Processing 
   url: '#' 

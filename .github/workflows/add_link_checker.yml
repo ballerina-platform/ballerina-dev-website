@@ -1,7 +1,7 @@
 # This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/lychee-link-checker-action).
 
 on: [pull_request]
-name: Link Checker 2 
+name: Link Checker 
 jobs:
   linkChecker:
     runs-on: ubuntu-latest

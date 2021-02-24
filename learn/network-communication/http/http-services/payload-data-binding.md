@@ -1,0 +1,50 @@
+---
+layout: ballerina-left-nav-pages-swanlake
+title: Payload Data Binding
+description: The HTTP service resource payloads can be directly data bound to the resource function parameters. 
+keywords: ballerina, cli, command line interface, programming language
+permalink: /learn/network-communication/http/http-services/payload-data-binding/
+active: payload-data-binding
+intro: The HTTP service resource payloads can be directly data bound to the resource function parameters.
+redirect_from:
+  - /learn/network-communication/http/http-services/payload-data-binding
+  - /swan-lake/learn/network-communication/http/http-services/payload-data-binding/
+  - /swan-lake/learn/network-communication/http/http-services/payload-data-binding
+---
+
+## Using the Annotation
+
+To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
+
+## Example
+
+An example of payload data binding is shown below.
+
+```ballerina
+import ballerina/http;
+ 
+service / on new http:Listener(8080) {
+ 
+   resource function post upload/[string name](
+                                  @http:Payload {} byte[] payload)
+                                  returns string {
+       return string `'${name}' uploaded with ${payload.length()} bytes`;
+   }
+ 
+}
+```
+
+## Execution
+
+The execution of the service and its invocation is shown below.
+
+```bash
+$ bal run demo.bal
+ 
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+
+$ curl -d "XXXXXX" http://localhost:8080/upload/file1
+'file1' uploaded with 6 bytes
+```
+
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

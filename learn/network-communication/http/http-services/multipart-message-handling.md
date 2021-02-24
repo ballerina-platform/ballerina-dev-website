@@ -1,0 +1,59 @@
+---
+layout: ballerina-left-nav-pages-swanlake
+title: Multipart Message Handling
+description: You can carry out multipart message handling in Ballerina HTTP services. 
+keywords: ballerina, cli, command line interface, programming language
+permalink: /learn/network-communication/http/http-services/multipart-message-handling/
+active: multipart-message-handling
+intro: You can carry out multipart message handling in Ballerina HTTP services.
+redirect_from:
+  - /learn/network-communication/http/http-services/multipart-message-handling
+  - /swan-lake/learn/network-communication/http/http-services/multipart-message-handling/
+  - /swan-lake/learn/network-communication/http/http-services/multipart-message-handling
+---
+
+## Using MIME Entities
+
+As used in the HTTP [client API](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client), similarly, multipart messages can be created in service resources by using the Multipurpose Internet Mail Extensions (MIME) standard. You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response) object. 
+
+A MIME entity in Ballerina is represented using the [`mime:Entity`](/learn/api-docs/ballerina/#/ballerina/mime/1.0.6/mime/classes/Entity) object. 
+
+## Example
+
+The example below shows how to set a text payload in the response using a MIME entity.
+
+>**Info:** The code below explicitly creates the MIME entity and sets it in the HTTP response. The same operation happens if you use the [`setTextPayload`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response#setTextPayload) method in the [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response) object. These functions are effectively helper functions to set the MIME entities in the HTTP response for often-used content types. 
+
+```ballerina
+import ballerina/mime;
+import ballerina/http;
+ 
+service / on new http:Listener(8080) {
+ 
+   resource function get greeting(http:Caller caller) returns error? {
+       mime:Entity entity = new;
+       entity.setText("Hello!", "text/plain");
+       http:Response resp = new;
+       resp.setEntity(entity);
+       check caller->respond(resp);
+   }
+ 
+}
+```
+
+## Execution
+
+The execution of the service and its invocation is shown below.
+
+```bash
+$ bal run demo.bal
+ 
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+
+$ curl http://localhost:8080/greeting
+Hello!
+```
+
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+
+

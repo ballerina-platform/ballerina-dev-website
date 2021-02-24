@@ -54,6 +54,14 @@ $ curl http://localhost:8080/greeting
 Hello!
 ```
 
+## What's Next?
+
+For other use cases of HTTP services, see the topics below.
+
+- [Payload Data Binding](/learn/network-communication/http/http-services/payload-data-binding/)
+- [Extended Request/Response Access](/learn/network-communication/http/http-services/extended-request-response-access/)
+- [Secure Communication](/learn/network-communication/http/http-services/secure-communication/)
+
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 
 

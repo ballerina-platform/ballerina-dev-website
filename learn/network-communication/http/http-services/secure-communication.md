@@ -56,4 +56,12 @@ $ curl -k https://localhost:8443/greeting
 Hello!
 ```
 
+## What's Next?
+
+For other use cases of HTTP services, see the topics below.
+
+- [Payload Data Binding](/learn/network-communication/http/http-services/payload-data-binding/)
+- [Extended Request/Response Access](/learn/network-communication/http/http-services/extended-request-response-access/)
+- [Multipart Message Handling](/learn/network-communication/http/http-services/multipart-message-handling/)
+
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

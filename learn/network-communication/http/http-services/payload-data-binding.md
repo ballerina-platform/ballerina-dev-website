@@ -47,4 +47,12 @@ $ curl -d "XXXXXX" http://localhost:8080/upload/file1
 'file1' uploaded with 6 bytes
 ```
 
+## What's Next?
+
+For other use cases of HTTP services, see the topics below.
+
+- [Extended Request/Response Access](/learn/network-communication/http/http-services/extended-request-response-access/)
+- [Multipart Message Handling](/learn/network-communication/http/http-services/multipart-message-handling/)
+- [Secure Communication](/learn/network-communication/http/http-services/secure-communication/)
+
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

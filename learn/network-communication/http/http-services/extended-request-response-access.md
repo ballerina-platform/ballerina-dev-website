@@ -107,3 +107,10 @@ $ curl -v -d "Jack" http://localhost:8080/greeting
 Hello, Jack!
 ```
 
+## What's Next?
+
+For other use cases of HTTP services, see the topics below.
+
+- [Payload Data Binding](/learn/network-communication/http/http-services/payload-data-binding/)
+- [Multipart Message Handling](/learn/network-communication/http/http-services/multipart-message-handling/)
+- [Secure Communication](/learn/network-communication/http/http-services/secure-communication/)

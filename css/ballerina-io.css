@@ -53,7 +53,7 @@ a:hover {
 }
 
 .wy-breadcrumbs li {
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .wy-breadcrumbs li a:hover {

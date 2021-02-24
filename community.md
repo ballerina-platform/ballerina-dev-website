@@ -55,6 +55,8 @@ The Ballerina team is now hosting monthly recorded Community Calls! These are in
 
 - Be notified about the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform" target="_blank">details of the upcoming community calls</a>.
 
+- Check out the recordings of all our <a href="https://www.youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU">past community calls</a>.
+
 - Get involved in our next Community Call by <a href="https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform" target="_blank">submitting a discussion topic or requesting to do your own quick demo</a>.
 
 ## Seek help

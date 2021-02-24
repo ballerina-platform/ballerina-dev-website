@@ -10,12 +10,17 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Defines an anonymous function.</span>
     <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">anonFunction</span> <span class="p">=</span>
             <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
             <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
+
+    <span class="c1">// Defines an anonymous function with `var`.</span>
     <span class="k">var</span> <span class="nx">anonFunction2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">,</span> <span class="kt">string</span><span class="o">...</span> <span class="nx">z</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                             <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
                             <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">z</span> <span class="p">{</span>
@@ -25,14 +30,15 @@ redirect_from:
                         <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction2</span><span class="p">(</span><span class="s">&quot;Ballerina &quot;</span><span class="p">,</span> <span class="s">&quot;is &quot;</span><span class="p">,</span> <span class="s">&quot;an &quot;</span><span class="p">,</span> <span class="s">&quot;open &quot;</span><span class="p">,</span>
      <span class="s">&quot;source &quot;</span><span class="p">,</span> <span class="s">&quot;programming &quot;</span><span class="p">,</span> <span class="s">&quot;language.&quot;</span><span class="p">));</span>
+
+    <span class="c1">// If an anonymous function contains only the return statement in the body,</span>
+    <span class="c1">// you can use the `arrow function expression` instead of the anonymous function.</span>
+    <span class="c1">// The types of the input parameters are inferred from the left-hand side.</span>
+    <span class="c1">// The return of the arrow function expression is determined by the</span>
+    <span class="c1">// evaluation of the expression on the right-hand side of the `=&gt;` symbol.</span>
     <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">arrowExpr</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">arrowExpr</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_functions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Output</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">World</span><span class="p">.!!!</span>
-<span class="nx">Output</span><span class="p">:</span> <span class="nx">Ballerina</span> <span class="nx">is</span> <span class="nx">an</span> <span class="nx">open</span> <span class="nx">source</span> <span class="nx">programming</span> <span class="nx">language</span><span class="p">.</span>
-<span class="nx">Output</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">World</span><span class="p">.!!!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -77,15 +83,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/anonymous-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8ff5701910e5517c6a5e8f234ae8051e&file=anonymous_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cdece3858acada797762f42ab4bd137f&file=anonymous_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -267,7 +273,7 @@ Output: Hello World.!!!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

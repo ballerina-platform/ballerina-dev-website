@@ -1,5 +1,12 @@
 var searchData = {
-  "modules": [],
+  "modules": [
+    {
+      "id": "openapi",
+      "description": "",
+      "orgName": "ballerina",
+      "version": "2.0.7"
+    }
+  ],
   "classes": [],
   "functions": [],
   "records": [
@@ -8,7 +15,7 @@ var searchData = {
       "description": "Service validation codee\n",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.4"
+      "moduleVersion": "2.0.7"
     }
   ],
   "constants": [],
@@ -22,7 +29,7 @@ var searchData = {
       "description": "Annotation for additional OpenAPI information of a Ballerina service.",
       "moduleId": "openapi",
       "moduleOrgName": "ballerina",
-      "moduleVersion": "2.0.4"
+      "moduleVersion": "2.0.7"
     }
   ],
   "abstractObjects": [],

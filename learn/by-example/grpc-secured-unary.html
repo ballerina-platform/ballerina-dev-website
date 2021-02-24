@@ -1,17 +1,17 @@
 ---
 layout: ballerina-example-page
 title: Secured Unary
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This Ballerina by Example has a gRPC unary service and a blocking client. The client sends and receives messages in a secured connection.
+keywords: ballerina, ballerina by example, bbe, grpc, unary blocking, secure connection, tls
 permalink: /learn/by-example/grpc-secured-unary
 redirect_from:
-  - /vswan-lake/learn/by-example/grpc-secured-unary
-  - /vswan-lake/learn/by-example/grpc-secured-unary.html
+  - /swan-lake/learn/by-example/grpc-secured-unary
+  - /swan-lake/learn/by-example/grpc-secured-unary.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="c1">// This is the server implementation of the secured connection (HTTPS) scenario.</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
@@ -20,8 +20,7 @@ redirect_from:
     <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -76,7 +75,6 @@ redirect_from:
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
 <span class="p">|};</span>
 <span class="c1">// This is the client implementation of the secured connection (HTTPS) scenario.</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
@@ -86,8 +84,7 @@ redirect_from:
         <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                            <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -382,8 +379,7 @@ ballerina grpc --input grpc_secured_unary.proto  --output stubs
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
-import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/log;
 </code></pre></div>
 
@@ -407,8 +403,7 @@ import ballerina/log;
     host: &quot;localhost&quot;,
     secureSocket: {
         keyStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
+            path: &quot;../resources/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -664,8 +659,8 @@ bal build service
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the command below by passing Ballerina home path as a system property.
-bal run target/bin/service.jar --b7a.home=&lt;ballerina_home_path&gt;
+                                    <div class="highlight"><pre><code class=shell-session># Run the service using the command below.
+bal run target/bin/service.jar
 </code></pre></div>
 
                                 </td>
@@ -760,8 +755,7 @@ bal run target/bin/service.jar --b7a.home=&lt;ballerina_home_path&gt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
-import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/io;
 </code></pre></div>
 
@@ -797,8 +791,7 @@ import ballerina/io;
         new (&quot;https://localhost:9090&quot;, {
             secureSocket: {
                 trustStore: {
-                    path: config:getAsString(&quot;b7a.home&quot;) +
-                            &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                    path: &quot;../resources/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
@@ -1104,8 +1097,8 @@ bal build client
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the client, execute the command below by passing the path to the Ballerina home directory using the --`b7a.home` parameter.
-bal run target/bin/client.jar --b7a.home=&lt;ballerina_home_path&gt;
+                                    <div class="highlight"><pre><code class=shell-session># Run the client using the command below.
+bal run target/bin/client.jar
 </code></pre></div>
 
                                 </td>

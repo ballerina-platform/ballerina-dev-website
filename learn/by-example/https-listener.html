@@ -1,17 +1,17 @@
 ---
 layout: ballerina-example-page
 title: HTTPS Listener
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: BBE on how to use the Ballerina HTTPS Listener to connect or interact with an HTTPS client.
+keywords: ballerina, ballerina by example, bbe, ssl, https, https listener
 permalink: /learn/by-example/https-listener
 redirect_from:
-  - /vswan-lake/learn/by-example/https-listener
-  - /vswan-lake/learn/by-example/https-listener.html
+  - /swan-lake/learn/by-example/https-listener
+  - /swan-lake/learn/by-example/https-listener.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="c1">// An HTTP endpoint can be configured to communicate through HTTPS as well.</span>
@@ -21,8 +21,7 @@ redirect_from:
 <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -61,9 +60,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-trace-logs.html">
+                                    <a class="prev" href="http-disable-chunking.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Trace Logs</p>
+                                        <p>Disable Chunking</p>
                                     </a>
                                 </div>
                                  
@@ -129,8 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
-import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -146,8 +144,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
+            path: &quot;../resources/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -255,7 +252,9 @@ import ballerina/log;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command along with the Ballerina home path as a config.
-bal run https_listener.bal --b7a.home=&lt;ballerina_home_path&gt;
+# (You may need to change the keystore path, a sample keystore file is available in the distribution.
+# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaKeystore.p12)
+bal run https_listener.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
 </code></pre></div>
 

@@ -10,55 +10,72 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">final</span> <span class="nx">Employee</span> <span class="nx">globalEmployee</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2102</span><span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">final</span> <span class="nx">Employee</span> <span class="nx">globalEmployee</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2102</span><span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The `==` and `!=` are used with the values of compatible `anydata|error` types and serves as deep value equality checks.</span>
     <span class="kt">int</span> <span class="nx">i1</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">i2</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">isEqual</span> <span class="p">=</span> <span class="nx">i1</span> <span class="o">==</span> <span class="nx">i2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i1</span><span class="p">,</span> <span class="s">&quot; == &quot;</span><span class="p">,</span> <span class="nx">i2</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isEqual</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">i3</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i1</span><span class="p">,</span> <span class="s">&quot; == &quot;</span><span class="p">,</span> <span class="nx">i2</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isEqual</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">i3</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">isNotEqual</span> <span class="p">=</span> <span class="nx">i1</span> <span class="o">!=</span> <span class="nx">i3</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i1</span><span class="p">,</span> <span class="s">&quot; != &quot;</span><span class="p">,</span> <span class="nx">i3</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isNotEqual</span><span class="p">);</span>    <span class="p">[</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]</span> <span class="nx">t1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">false</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i1</span><span class="p">,</span> <span class="s">&quot; != &quot;</span><span class="p">,</span> <span class="nx">i3</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isNotEqual</span><span class="p">);</span>
+
+    <span class="p">[</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]</span> <span class="nx">t1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">false</span><span class="p">];</span>
     <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]</span> <span class="nx">t2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">false</span><span class="p">];</span>
     <span class="nx">isEqual</span> <span class="p">=</span> <span class="nx">t1</span> <span class="o">==</span> <span class="nx">t2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="s">&quot; == &quot;</span><span class="p">,</span> <span class="nx">t2</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isEqual</span><span class="p">);</span>    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]</span> <span class="nx">t3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="s">&quot; == &quot;</span><span class="p">,</span> <span class="nx">t2</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isEqual</span><span class="p">);</span>
+
+    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]</span> <span class="nx">t3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
     <span class="nx">isNotEqual</span> <span class="p">=</span> <span class="nx">t1</span> <span class="o">!=</span> <span class="nx">t3</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="s">&quot; != &quot;</span><span class="p">,</span> <span class="nx">t3</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isNotEqual</span><span class="p">);</span>    <span class="nx">Employee</span> <span class="nx">e1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1100</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="s">&quot; != &quot;</span><span class="p">,</span> <span class="nx">t3</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isNotEqual</span><span class="p">);</span>
+
+    <span class="nx">Employee</span> <span class="nx">e1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1100</span><span class="p">};</span>
     <span class="nx">Employee</span> <span class="nx">e2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1100</span><span class="p">};</span>
     <span class="nx">isNotEqual</span> <span class="p">=</span> <span class="nx">e1</span> <span class="o">!=</span> <span class="nx">e2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e1</span><span class="p">,</span> <span class="s">&quot; != &quot;</span><span class="p">,</span> <span class="nx">e2</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isNotEqual</span><span class="p">);</span>    <span class="nx">Employee</span> <span class="nx">e3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1100</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e1</span><span class="p">,</span> <span class="s">&quot; != &quot;</span><span class="p">,</span> <span class="nx">e2</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isNotEqual</span><span class="p">);</span>
+
+    <span class="nx">Employee</span> <span class="nx">e3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1100</span><span class="p">};</span>
     <span class="nx">isEqual</span> <span class="p">=</span> <span class="nx">e1</span> <span class="o">==</span> <span class="nx">e3</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e1</span><span class="p">,</span> <span class="s">&quot; == &quot;</span><span class="p">,</span> <span class="nx">e3</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">isEqual</span><span class="p">);</span>
+
+    <span class="c1">// The `===` and `!==` are used with values of compatible types and serves as reference equality checks.</span>
     <span class="nx">Employee</span> <span class="nx">e4</span> <span class="p">=</span> <span class="nx">getGlobalEmployee</span><span class="p">();</span>
     <span class="nx">Person</span> <span class="nx">e5</span> <span class="p">=</span> <span class="nx">getGlobalEmployee</span><span class="p">();</span>
     <span class="kt">boolean</span> <span class="nx">isRefEqual</span> <span class="p">=</span> <span class="nx">e4</span> <span class="o">==</span><span class="p">=</span> <span class="nx">e5</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;e4 === e5 is &quot;</span><span class="p">,</span> <span class="nx">isRefEqual</span><span class="p">);</span>    <span class="nx">e4</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2102</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;e4 === e5 is &quot;</span><span class="p">,</span> <span class="nx">isRefEqual</span><span class="p">);</span>
+
+    <span class="nx">e4</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2102</span><span class="p">};</span>
     <span class="kt">boolean</span> <span class="nx">isNotRefEqual</span> <span class="p">=</span> <span class="nx">e4</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">e5</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;e4 !== e5 is &quot;</span><span class="p">,</span> <span class="nx">isNotRefEqual</span><span class="p">);</span>
+
+    <span class="c1">// `===` for non-reference types is the same as `==`.</span>
     <span class="kt">float</span> <span class="nx">f1</span> <span class="p">=</span> <span class="mf">1.1</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">f2</span> <span class="p">=</span> <span class="mf">1.1</span><span class="p">;</span>
     <span class="nx">isRefEqual</span> <span class="p">=</span> <span class="nx">f1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">f2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;f1 === f2 is &quot;</span><span class="p">,</span> <span class="nx">isRefEqual</span><span class="p">);</span>    <span class="nx">f2</span> <span class="p">=</span> <span class="mf">12.1</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;f1 === f2 is &quot;</span><span class="p">,</span> <span class="nx">isRefEqual</span><span class="p">);</span>
+
+    <span class="nx">f2</span> <span class="p">=</span> <span class="mf">12.1</span><span class="p">;</span>
     <span class="nx">isNotRefEqual</span> <span class="p">=</span> <span class="nx">f1</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">f2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;f1 !== f2 is &quot;</span><span class="p">,</span> <span class="nx">isNotRefEqual</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getGlobalEmployee</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getGlobalEmployee</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">globalEmployee</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">equality</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">==</span> <span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">!=</span> <span class="mi">11</span> <span class="mf">1.0</span> <span class="kc">true</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">!=</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">==</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Anne</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
-<span class="nx">e4</span> <span class="o">==</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">e4</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">f1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">f1</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -104,15 +121,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/equality/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=21aeacc60ef1405f25e36a307b13e179&file=equality.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=162346ec58d620ef2051a2e78a1b737b&file=equality.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -470,7 +487,7 @@ f1 !== f2 is true
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

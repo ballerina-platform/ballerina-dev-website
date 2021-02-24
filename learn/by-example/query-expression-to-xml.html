@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: XML From Query Expression
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: Ballerina By Example on creating an XML using a Ballerina query expression.
+keywords: ballerina by example, query, query expression, xml, iterable, iterate
 permalink: /learn/by-example/query-expression-to-xml
 redirect_from:
-  - /vswan-lake/learn/by-example/query-expression-to-xml
-  - /vswan-lake/learn/by-example/query-expression-to-xml.html
+  - /swan-lake/learn/by-example/query-expression-to-xml
+  - /swan-lake/learn/by-example/query-expression-to-xml.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -42,7 +43,7 @@ redirect_from:
         <span class="nx">limit</span> <span class="mi">2</span>
         <span class="c1">// The `select` clause is evaluated for each iteration.</span>
         <span class="c1">// The emitted values are concatenated to form the `xml` result.</span>
-        <span class="nx">select</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">&gt;</span> <span class="nx">studentName</span><span class="p">;</span>
+        <span class="nx">select</span> <span class="nx">studentName</span><span class="p">;</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
 <span class="p">}</span>
@@ -95,6 +96,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-expression-to-xml/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4ed5e31a9fe5adb6781dd96963139d33&file=query_expression_to_xml.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -236,7 +241,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        select &lt;xml&gt; studentName;
+                                    <div class="highlight"><pre><code class=language-ballerina>        select studentName;
 </code></pre></div>
 
                                 </td>

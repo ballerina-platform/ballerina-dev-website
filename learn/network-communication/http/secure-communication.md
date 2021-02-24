@@ -8,6 +8,8 @@ active: secure-communication
 intro: Ballerina’s HTTP client supports numerous secure communication features such as Transport Level Security (TLS) and mutual authentication.   
 redirect_from:
   - /learn/network-communication/http/secure-communication
+  - /swan-lake/learn/network-communication/http/secure-communication/
+  - /swan-lake/learn/network-communication/http/secure-communication
 ---
 
 ## TLS

@@ -10,34 +10,47 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Defines the type of `a` as a pair that consists of an `int` and a `string`.</span>
     <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">aint</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="nx">aint</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">astr</span><span class="p">;</span>
+    <span class="c1">// Defines a tuple of variable names on the left with a variable reference of which the type is a tuple.</span>
+    <span class="c1">// The assignment statement assigns values of the tuple on the right to the variables on the left.</span>
+    <span class="c1">// In Ballerina, this is referred to as tuple destructuring.</span>
     <span class="p">[</span><span class="nx">aint</span><span class="p">,</span> <span class="nx">astr</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">aint</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">astr</span><span class="p">);</span>
+
+    <span class="c1">// You can declare and assign values with `var` like this.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">aint1</span><span class="p">,</span> <span class="nx">astr1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
+
+    <span class="c1">// Invokes a function that returns a tuple.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">q</span><span class="p">,</span> <span class="nx">r</span><span class="p">]</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;06/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span> <span class="nx">q</span><span class="p">,</span> <span class="s">&quot; remainder=&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">);</span>
+
+    <span class="c1">// To ignore a value in a tuple, use `_`.</span>
+    <span class="c1">// This ignores the second return value.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">q1</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">57</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;57/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span> <span class="nx">q1</span><span class="p">);</span>    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">returnValue</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;57/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span> <span class="nx">q1</span><span class="p">);</span>
+
+    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">returnValue</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="c1">// This ignores the first value of a tuple.</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">r1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;09/10: &quot;</span><span class="p">,</span> <span class="s">&quot;remainder=&quot;</span><span class="p">,</span> <span class="nx">r1</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// This function returns a tuple of two integers.</span>
 <span class="kd">function</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="kt">int</span> <span class="nx">d</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">([</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">q</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">r</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">q</span><span class="p">,</span> <span class="nx">r</span><span class="p">];</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tuple_type</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">10</span> <span class="nx">John</span>
-<span class="mi">10</span>
-<span class="nx">John</span>
-<span class="mo">06</span><span class="o">/</span><span class="mi">10</span><span class="p">:</span> <span class="nx">quotient</span><span class="p">=</span><span class="mi">0</span> <span class="nx">remainder</span><span class="p">=</span><span class="mi">6</span>
-<span class="mi">57</span><span class="o">/</span><span class="mi">10</span><span class="p">:</span> <span class="nx">quotient</span><span class="p">=</span><span class="mi">5</span>
-<span class="mi">09</span><span class="o">/</span><span class="mi">10</span><span class="p">:</span> <span class="nx">remainder</span><span class="p">=</span><span class="mi">9</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -81,15 +94,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/tuple-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3086278734b7a82b32ad5b2fad9ff01a&file=tuple_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=eff28514204130c489921aab6ecdc917&file=tuple_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -383,7 +396,7 @@ John
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

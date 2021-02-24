@@ -10,36 +10,62 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create an `anydata`-typed `map` with two entries.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span><span class="p">};</span>
+
+    <span class="c1">// Call `.cloneReadOnly()` on the map `m1` and assign the returned value to another variable.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m2</span> <span class="p">=</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+
+    <span class="c1">// Reference equality checks for `m1` and `m2` should evaluate to false due to a clone being created</span>
+    <span class="c1">// since `m1` is not an immutable value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 === m2: &quot;</span><span class="p">,</span> <span class="nx">m1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m2</span><span class="p">);</span>
+
+    <span class="c1">// Check if `m1` is immutable. This evaluates to false since no changes are done to</span>
+    <span class="c1">// the original value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 is immutable: &quot;</span><span class="p">,</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="c1">// Check if `m2` is immutable. This evaluates to true since the returned clone is</span>
+    <span class="c1">// marked as immutable.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m2 is immutable: &quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+
+    <span class="c1">// Attempt to add an entry to the `map` and trap the panic if it results in a panic.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">updateResult</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">addEntryToMap</span><span class="p">(</span><span class="nx">m2</span><span class="p">,</span> <span class="s">&quot;intValTwo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">updateResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// An error should occur since `m2` is frozen.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on update: &quot;</span><span class="p">,</span>
                    <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">updateResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Now call `.cloneReadOnly()` on the immutable value `m2`.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m3</span> <span class="p">=</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+
+    <span class="c1">// Reference equality checks for `m2` and `m3` should evaluate to true due to no clones being created</span>
+    <span class="c1">// since `m2` is already an immutable value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m2 === m3: &quot;</span><span class="p">,</span> <span class="nx">m2</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m3</span><span class="p">);</span>
+
+    <span class="c1">// An `is` check for a frozen value becomes an `is like` check.</span>
+    <span class="c1">// In other words, storage type is not considered.</span>
+    <span class="c1">// Define a `map` of the constraint type `string` or `int`, but with</span>
+    <span class="c1">// values of the type `string` only.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m5</span> <span class="p">=</span> <span class="p">{</span><span class="nx">valueType</span><span class="p">:</span> <span class="s">&quot;map&quot;</span><span class="p">,</span> <span class="nx">constraint</span><span class="p">:</span> <span class="s">&quot;string&quot;</span><span class="p">};</span>
+    <span class="c1">// Make the map immutable. The resultant value would only</span>
+    <span class="c1">// contain values of the type `string` and no values can now be</span>
+    <span class="c1">// added to the map.</span>
     <span class="k">var</span> <span class="nx">frozenVal</span> <span class="p">=</span> <span class="nx">m5</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+    <span class="c1">// Checking if the frozen value is of the type `map&lt;string&gt;` thus</span>
+    <span class="c1">// evaluates to `true`.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">frozenVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;frozenVal is map&lt;string&gt;&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Function to add an entry to a `map`.</span>
 <span class="kd">function</span> <span class="nx">addEntryToMap</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">key</span><span class="p">,</span> <span class="kt">string</span><span class="p">|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">m</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">immutable_values</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">m1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m2</span><span class="p">:</span> <span class="kc">false</span>
-<span class="nx">m1</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">false</span>
-<span class="nx">m2</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">Error</span> <span class="nx">occurred</span> <span class="nx">on</span> <span class="nx">update</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="kt">map</span> <span class="nx">insertion</span><span class="p">:</span> <span class="nx">modification</span> <span class="nx">not</span> <span class="nx">allowed</span> <span class="nx">on</span> <span class="nx">readonly</span> <span class="nx">value</span>
-<span class="nx">m2</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m3</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">frozenVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -92,15 +118,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/immutable-values/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e2faa0374e4fede7fb3032d3f76e5b6b&file=immutable_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f156b8a2e6420d7ef72816cb7405979d&file=immutable_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -495,7 +521,7 @@ frozenVal is map&lt;string&gt;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

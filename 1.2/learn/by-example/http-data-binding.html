@@ -11,18 +11,25 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">Name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">Grade</span><span class="p">;</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">Marks</span><span class="p">;</span>
-<span class="p">};</span><span class="nd">@http:ServiceConfig {</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nd">@http:ServiceConfig {</span><span class="p">}</span>
 <span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//The `body` annotation represents the entity body of the inbound request.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;orderDetails&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                <span class="kt">json</span> <span class="nx">orderDetails</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Accesses the JSON field values.</span>
         <span class="k">var</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">orderDetails</span><span class="p">.</span><span class="nx">Details</span><span class="p">;</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">details</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
@@ -36,19 +43,27 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">//Binds the XML payload of the inbound request to the `store` variable.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;store&quot;</span><span class="p">,</span>
         <span class="nx">consumes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;application/xml&quot;</span><span class="p">]</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindXML</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span> <span class="kt">xml</span> <span class="nx">store</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Accesses the XML content.</span>
         <span class="kt">xml</span> <span class="nx">city</span> <span class="p">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">selectDescendants</span><span class="p">(</span><span class="s">&quot;{http://www.test.com}city&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">city</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">city</span><span class="p">);</span>
+
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="c1">//Binds the JSON payload to a custom record. The payload&#39;s content should</span>
+    <span class="c1">//match the record.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;student&quot;</span><span class="p">,</span>
@@ -56,29 +71,19 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindStruct</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                  <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Accesses the fields of the `Student` record.</span>
         <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span><span class="p">});</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span><span class="p">});</span>
+
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_data_binding</span><span class="p">.</span><span class="nx">bal</span>
-<span class="err">#</span><span class="nx">Service</span> <span class="nx">deployment</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="s">`bindJson`</span> <span class="kd">resource</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">HTTP</span> <span class="nx">request</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { &quot;ID&quot;: &quot;77999&quot;, &quot;Name&quot;: &quot;XYZ&quot;} , &quot;Location&quot;: { &quot;No&quot;: &quot;01&quot;, &quot;City&quot;: &quot;Colombo&quot;}}&#39; -H &quot;Content-Type:application/json&quot;</span>
-<span class="err">#</span> <span class="nx">Server</span> <span class="nx">response</span><span class="p">:</span>
-<span class="p">{</span><span class="s">&quot;ID&quot;</span><span class="p">:</span><span class="s">&quot;77999&quot;</span><span class="p">,</span> <span class="s">&quot;Name&quot;</span><span class="p">:</span><span class="s">&quot;XYZ&quot;</span><span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="s">`bindXML`</span> <span class="kd">resource</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">HTTP</span> <span class="nx">request</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;</span>
-<span class="err">#</span> <span class="nx">Server</span> <span class="nx">response</span><span class="p">:</span>
-<span class="p">&lt;</span><span class="nx">h</span><span class="p">:</span><span class="nx">city</span> <span class="nx">xmlns</span><span class="p">:</span><span class="nx">h</span><span class="p">=</span><span class="s">&quot;http://www.test.com&quot;</span><span class="p">&gt;</span><span class="mi">94</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">h</span><span class="p">:</span><span class="nx">city</span><span class="p">&gt;</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="s">`bindStruct`</span> <span class="kd">resource</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">HTTP</span> <span class="nx">request</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;</span>
-<span class="err">#</span> <span class="nx">Server</span> <span class="nx">response</span><span class="p">:</span>
-<span class="p">{</span><span class="s">&quot;Name&quot;</span><span class="p">:</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Grade&quot;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s">&quot;English&quot;</span><span class="p">:</span><span class="s">&quot;85&quot;</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -123,9 +128,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/http-data-binding/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -511,7 +516,7 @@ curl -v http://localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

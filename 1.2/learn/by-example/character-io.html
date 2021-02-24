@@ -12,50 +12,67 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="c1">// This function reads content from a file,</span>
+<span class="c1">// appends the additional `string`, and writes the content.</span>
 <span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">sc</span><span class="p">,</span>
                  <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">dc</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
     <span class="kt">string</span> <span class="nx">intermediateCharacterString</span> <span class="p">=</span> <span class="s">&quot; my name is &quot;</span><span class="p">;</span>
+    <span class="c1">// Reads the characters from the source channel.</span>
     <span class="kt">string</span> <span class="nx">greetingText</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sc</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sc</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+    <span class="c1">// Writes the characters to the destination channel.</span>
     <span class="k">var</span> <span class="nx">writeCharResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dc</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">greetingText</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">writeCharResult1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dc</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">intermediateCharacterString</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">writeCharResult2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dc</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Closes the readable character channel.</span>
 <span class="kd">function</span> <span class="nx">closeRc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Closes the writable character channel.</span>
 <span class="kd">function</span> <span class="nx">closeWc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+    <span class="c1">// This example uses the &lt;BALLERINA_LANG&gt;/examples/character-io/files/sample.txt file as the </span>
+    <span class="c1">// source file, which includes the text &quot;Hello Ballerina!!&quot;.</span>
+    <span class="c1">// You can replace this with the file path of a preferred text file. </span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">readableFieldResult</span> <span class="p">=</span>
                                 <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="s">&quot;./files/sample.txt&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">sourceChannel</span> <span class="p">=</span>
                                 <span class="nx">new</span> <span class="p">(</span><span class="nx">readableFieldResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+
+    <span class="c1">// This example creates the &lt;BALLERINA_LANG&gt;/examples/character-io/files/sampleResponse.txt</span>
+    <span class="c1">// destination file and writes the text &quot;Hello my name is Ballerina!!&quot;&quot;.  </span>
+    <span class="c1">// You can replace this with the file path of a preferred text file.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">writableFileResult</span> <span class="p">=</span>
                 <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
                                 <span class="nx">new</span> <span class="p">(</span><span class="nx">writableFileResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Started to process the file.&quot;</span><span class="p">);</span>
+    <span class="c1">// Processes the given `string`.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">,</span> <span class="nx">destinationChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while processing chars &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File processing complete.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="c1">// Closes the readable channel.</span>
     <span class="nx">closeRc</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">);</span>
+    <span class="c1">// Closes the writable channel.</span>
     <span class="nx">closeWc</span><span class="p">(</span><span class="nx">destinationChannel</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">character_io</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Started</span> <span class="nx">to</span> <span class="nx">process</span> <span class="nx">the</span> <span class="nx">file</span><span class="p">.</span>
-<span class="nx">File</span> <span class="nx">processing</span> <span class="nx">complete</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -98,9 +115,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/character-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -448,7 +465,7 @@ File processing complete.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

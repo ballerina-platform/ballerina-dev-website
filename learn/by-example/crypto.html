@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Cryptographic Operations
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: BBE on how to perform different cryptographic operations in Ballerina such as hashing, HMAC generation, checksum generation, encryption, decryption, digitally signing data and verifying digitally signed data.
+keywords: ballerina, ballerina by example, bbe, crypto, hash, hmac, sign, encrypt decrypt
 permalink: /learn/by-example/crypto
 redirect_from:
-  - /vswan-lake/learn/by-example/crypto
-  - /vswan-lake/learn/by-example/crypto.html
+  - /swan-lake/learn/by-example/crypto
+  - /swan-lake/learn/by-example/crypto.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -53,42 +54,57 @@ redirect_from:
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">keyArr</span> <span class="p">=</span> <span class="nx">key</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
     <span class="c1">// HMAC generation for input value using MD5 hashing algorithm, and printing HMAC value using Hex encoding.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacMd5</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacMd5</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded HMAC with MD5: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
     <span class="c1">// HMAC generation for input value using SHA1 hashing algorithm, and printing HMAC value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha1</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha1</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded HMAC with SHA1: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
     <span class="c1">// HMAC generation for input value using SHA256 hashing algorithm, and printing HMAC value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha256</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha256</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded HMAC with SHA256: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
     <span class="c1">// HMAC generation for input value using SHA384 hashing algorithm, and printing HMAC value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha384</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha384</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded HMAC with SHA384: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
     <span class="c1">// HMAC generation for input value using SHA512 hashing algorithm, and printing HMAC value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha512</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha512</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded HMAC with SHA512: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">decodeKeys</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">[</span><span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span><span class="p">]|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="c1">// Obtaining reference to a RSA private key by a key file.</span>
+    <span class="kt">string</span> <span class="nx">keyFile</span> <span class="p">=</span> <span class="s">&quot;../resources/private.key&quot;</span><span class="p">;</span>
+    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span> <span class="nx">privateKey</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPrivateKeyFromKeyFile</span><span class="p">(</span><span class="nx">keyFile</span><span class="p">);</span>
+
+    <span class="c1">// Obtaining reference to a RSA private key by a encrypted key file.</span>
+    <span class="kt">string</span> <span class="nx">encryptedKeyFile</span> <span class="p">=</span> <span class="s">&quot;../resources/encrypted-private.key&quot;</span><span class="p">;</span>
+    <span class="nx">privateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPrivateKeyFromKeyFile</span><span class="p">(</span><span class="nx">keyFile</span><span class="p">,</span>
+                                                             <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+
     <span class="c1">// Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">KeyStore</span> <span class="nx">keyStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
-    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span> <span class="nx">privateKey</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodePrivateKey</span><span class="p">(</span><span class="nx">keyStore</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+    <span class="nx">privateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPrivateKeyFromKeyStore</span><span class="p">(</span><span class="nx">keyStore</span><span class="p">,</span>
+                                                   <span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Obtaining reference to a RSA public key by a cert file.</span>
+    <span class="kt">string</span> <span class="nx">certFile</span> <span class="p">=</span> <span class="s">&quot;../resources/public.crt&quot;</span><span class="p">;</span>
+    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span> <span class="nx">publicKey</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPublicKeyFromCertFile</span><span class="p">(</span><span class="nx">certFile</span><span class="p">);</span>
 
     <span class="c1">// Obtaining reference to a RSA public key stored within a PKCS#12 or PFX format archive file.</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">TrustStore</span> <span class="nx">trustStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
-    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span> <span class="nx">publicKey</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodePublicKey</span><span class="p">(</span><span class="nx">trustStore</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+    <span class="nx">publicKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPublicKeyFromTrustStore</span><span class="p">(</span><span class="nx">trustStore</span><span class="p">,</span>
+                                                              <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="p">[</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">];</span>
 <span class="p">}</span>
@@ -290,6 +306,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -613,7 +635,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = crypto:hmacMd5(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = check crypto:hmacMd5(inputArr, keyArr);
     io:println(&quot;Hex encoded HMAC with MD5: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -633,7 +655,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha1(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha1(inputArr, keyArr);
     io:println(&quot;Base64 encoded HMAC with SHA1: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -653,7 +675,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha256(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha256(inputArr, keyArr);
     io:println(&quot;Hex encoded HMAC with SHA256: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -673,7 +695,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha384(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha384(inputArr, keyArr);
     io:println(&quot;Base64 encoded HMAC with SHA384: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -693,7 +715,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha512(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha512(inputArr, keyArr);
     io:println(&quot;Hex encoded HMAC with SHA512: &quot; + output.toBase16());
 }
 </code></pre></div>
@@ -726,12 +748,54 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string keyFile = &quot;../resources/private.key&quot;;
+    crypto:PrivateKey privateKey =
+        check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Obtaining reference to a RSA private key by a key file.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string encryptedKeyFile = &quot;../resources/encrypted-private.key&quot;;
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile,
+                                                             &quot;ballerina&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Obtaining reference to a RSA private key by a encrypted key file.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    crypto:KeyStore keyStore = {
         path: &quot;../resources/ballerinaKeystore.p12&quot;,
         password: &quot;ballerina&quot;
     };
-    crypto:PrivateKey privateKey =
-        check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore,
+                                                   &quot;ballerina&quot;, &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>
@@ -750,12 +814,33 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string certFile = &quot;../resources/public.crt&quot;;
+    crypto:PublicKey publicKey =
+        check crypto:decodeRsaPublicKeyFromCertFile(certFile);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Obtaining reference to a RSA public key by a cert file.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    crypto:TrustStore trustStore = {
         path: &quot;../resources/ballerinaTruststore.p12&quot;,
         password: &quot;ballerina&quot;
     };
-    crypto:PublicKey publicKey =
-        check crypto:decodePublicKey(trustStore, &quot;ballerina&quot;);
+    publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore,
+                                                              &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>

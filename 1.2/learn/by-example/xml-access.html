@@ -10,7 +10,11 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// The XML element with nested children.</span>
     <span class="kt">xml</span> <span class="nx">bookXML</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;</span>
 <span class="s">                &lt;name&gt;Sherlock Holmes&lt;/name&gt;</span>
 <span class="s">                &lt;author&gt;</span>
@@ -22,35 +26,33 @@ redirect_from:
 <span class="s">                &lt;!--Price: $10--&gt;</span>
 <span class="s">                &lt;/book&gt;`</span><span class="p">;</span>
     
+    <span class="c1">// You can access child XML items using XML step expressions.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">author</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">fname</span><span class="p">&gt;);</span>
+
+    <span class="c1">// Accessing a non-existing child will return an empty `xml` sequence.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">ISBN</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">code</span><span class="p">&gt;);</span>
+
+    <span class="c1">// You can also retrieve attributes of the resulting child XML.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">author</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">fname</span><span class="p">&gt;.</span><span class="nx">title</span><span class="p">);</span>
+
+    <span class="c1">// You can match descendant elements using the following stepping access syntax.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="cm">/**/</span><span class="p">&lt;</span><span class="nx">fname</span><span class="p">&gt;);</span>
+
+    <span class="c1">// Select all the children elements using the below syntax.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/*</span><span class="p">);</span>
+
+    <span class="c1">// Select all children elements using the bellow syntax.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="o">*</span><span class="p">&gt;);</span>
+
+    <span class="c1">// Select all the children belonging to a specific namespace.</span>
     <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/a&quot;</span> <span class="k">as</span> <span class="nx">bar</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="o">*</span><span class="p">&gt;</span><span class="o">/*</span><span class="p">);</span>    <span class="kt">xml</span> <span class="nx">seq</span> <span class="p">=</span> <span class="nx">bookXML</span><span class="o">/*</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="o">*</span><span class="p">&gt;</span><span class="o">/*</span><span class="p">);</span>
+
+    <span class="kt">xml</span> <span class="nx">seq</span> <span class="p">=</span> <span class="nx">bookXML</span><span class="o">/*</span><span class="p">;</span>
+    <span class="c1">// XML sequences can be filtered using XML filter expressions.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">seq</span><span class="p">.&lt;</span><span class="nx">name</span><span class="p">&gt;);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">seq</span><span class="p">.&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span><span class="p">&gt;);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="kt">xml</span><span class="o">-</span><span class="nx">access</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">&lt;</span><span class="nx">fname</span> <span class="nx">title</span><span class="p">=</span><span class="s">&quot;Sir&quot;</span><span class="p">&gt;</span><span class="nx">Arthur</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">fname</span><span class="p">&gt;</span><span class="nx">Sir</span>
-<span class="p">&lt;</span><span class="nx">fname</span> <span class="nx">title</span><span class="p">=</span><span class="s">&quot;Sir&quot;</span><span class="p">&gt;</span><span class="nx">Arthur</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">fname</span><span class="p">&gt;</span>                <span class="p">&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Sherlock</span> <span class="nx">Holmes</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nx">author</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nx">fname</span> <span class="nx">title</span><span class="p">=</span><span class="s">&quot;Sir&quot;</span><span class="p">&gt;</span><span class="nx">Arthur</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">fname</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nx">mname</span><span class="p">&gt;</span><span class="nx">Conan</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">mname</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nx">lname</span><span class="p">&gt;</span><span class="nx">Doyle</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">lname</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="o">/</span><span class="nx">author</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span> <span class="nx">xmlns</span><span class="p">:</span><span class="nx">bar</span><span class="p">=</span><span class="s">&quot;http://ballerina.com/a&quot;</span><span class="p">&gt;</span><span class="mi">2019</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span><span class="p">&gt;</span>
-                <span class="p">&lt;!</span><span class="o">--</span><span class="nx">Price</span><span class="p">:</span> <span class="err">$</span><span class="mi">10</span><span class="o">--</span><span class="p">&gt;&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Sherlock</span> <span class="nx">Holmes</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;&lt;</span><span class="nx">author</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nx">fname</span> <span class="nx">title</span><span class="p">=</span><span class="s">&quot;Sir&quot;</span><span class="p">&gt;</span><span class="nx">Arthur</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">fname</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nx">mname</span><span class="p">&gt;</span><span class="nx">Conan</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">mname</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nx">lname</span><span class="p">&gt;</span><span class="nx">Doyle</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">lname</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="o">/</span><span class="nx">author</span><span class="p">&gt;&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span> <span class="nx">xmlns</span><span class="p">:</span><span class="nx">bar</span><span class="p">=</span><span class="s">&quot;http://ballerina.com/a&quot;</span><span class="p">&gt;</span><span class="mi">2019</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span><span class="p">&gt;</span>
-<span class="mi">2019</span>
-<span class="p">&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Sherlock</span> <span class="nx">Holmes</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span> <span class="nx">xmlns</span><span class="p">:</span><span class="nx">bar</span><span class="p">=</span><span class="s">&quot;http://ballerina.com/a&quot;</span><span class="p">&gt;</span><span class="mi">2019</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span><span class="p">&gt;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -94,15 +96,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xml-access/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e097c814aaa85c69c28f70433b77121c&file=xml_access.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ffa30dd14d46a2ceb621934e038d66c0&file=xml_access.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -480,7 +482,7 @@ ballerina run xml-access.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
-title: Async Client Endpoint
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/websocket-async-client
+title: Handle Text Messages with Client
+description: This BBE demonstrates how a WebSocket client can be used to connect to and interact with a WebSocket server using Ballerina.
+keywords: ballerina, ballerina by example, bbe, websocket, sync, client
+permalink: /learn/by-example/websocket-text-client
 redirect_from:
-  - /vswan-lake/learn/by-example/websocket-async-client
-  - /vswan-lake/learn/by-example/websocket-async-client.html
+  - /swan-lake/learn/by-example/websocket-text-client
+  - /swan-lake/learn/by-example/websocket-text-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,30 +14,16 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Creates a new [WebSocket Async client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient) with the backend URL and assigns a callback service.</span>
-    <span class="nx">websocket</span><span class="p">:</span><span class="nx">AsyncClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">,</span>
-                                          <span class="nx">new</span> <span class="nx">ClientService</span><span class="p">());</span>
-    <span class="c1">// Writes a text message to the server using [writeString](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString).</span>
-    <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Prints the error.</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client).</span>
+   <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">);</span>
 
-<span class="c1">// The client callback service, which handles backend responses.</span>
-<span class="kd">service</span> <span class="nx">class</span> <span class="nx">ClientService</span> <span class="p">{</span>
-    <span class="o">*</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">;</span>
-    <span class="c1">// This remote function is triggered when a new text message is</span>
-    <span class="c1">// received from the remote backend.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTextMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// This is triggered if an error occurs.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-    <span class="p">}</span>
+   <span class="c1">// Writes a text message to the server using [writeTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#writeTextMessage).</span>
+   <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Text message&quot;</span><span class="p">);</span>
+
+   <span class="c1">// Reads a text message echoed from the server using [readTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readTextMessage).</span>
+   <span class="kt">string</span> <span class="nx">textResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">textResp</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -46,10 +33,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Async Client Endpoint</h2>
-                            <p><p>The WebSocket Async client can be used to connect to and interact with a WebSocket server in an asynchronous.<br/><br/>
+                            <h2>Handle Text Messages with Client</h2>
+                            <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server in a Synchronous manner. This example demonstrates how to read and write text messages using ballerina websocket client<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/">WebSocket module</a>.</p>
 </p>
 
                         </td>
@@ -64,9 +51,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websocket-basic-sample.html">
+                                    <a class="next" href="websocket-async-text-client.html">
                                         <span>NEXT ></span>
-                                        <p>Basic Server Functionalities</p>
+                                        <p>Handle Text Messages with Async Client</p>
                                     </a>
                                 </div>
                                 
@@ -75,7 +62,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="websocket-async-client">
+            <div class="example" id="websocket-text-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -86,7 +73,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-async-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-text-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -104,12 +91,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -142,7 +123,7 @@ import ballerina/websocket;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns websocket:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -154,8 +135,7 @@ import ballerina/websocket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    websocket:AsyncClient wsClientEp = check new (&quot;ws://echo.websocket.org&quot;,
-                                          new ClientService());
+                                    <div class="highlight"><pre><code class=language-ballerina>   websocket:Client wsClient = check new(&quot;ws://echo.websocket.org&quot;);
 </code></pre></div>
 
                                 </td>
@@ -163,7 +143,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a new <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient">WebSocket Async client</a> with the backend URL and assigns a callback service.</p>
+                                            <p>Creates a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client">WebSocket client</a>.</p>
 
                                         </div>
                                     </div>
@@ -174,8 +154,7 @@ import ballerina/websocket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var err = wsClientEp-&gt;writeTextMessage(&quot;Hello World!&quot;);
-    if (err is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>   check wsClient-&gt;writeTextMessage(&quot;Text message&quot;);
 </code></pre></div>
 
                                 </td>
@@ -183,70 +162,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes a text message to the server using <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString">writeString</a>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(err);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Prints the error.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service class ClientService {
-    *websocket:Service;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The client callback service, which handles backend responses.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onTextMessage(websocket:Caller conn, string text) {
-        io:println(text);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This remote function is triggered when a new text message is
- received from the remote backend.</p>
+                                            <p>Writes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#writeTextMessage">writeTextMessage</a>.</p>
 
                                         </div>
                                     </div>
@@ -257,9 +173,8 @@ import ballerina/websocket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(websocket:Caller conn, error err) {
-        io:println(err);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>   string textResp = check wsClient-&gt;readTextMessage();
+   io:println(textResp);
 }
 </code></pre></div>
 
@@ -268,7 +183,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is triggered if an error occurs.</p>
+                                            <p>Reads a text message echoed from the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readTextMessage">readTextMessage</a>.</p>
 
                                         </div>
                                     </div>
@@ -298,7 +213,7 @@ import ballerina/websocket;
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command below.
-bal run websocket_async_client.bal
+bal run websocket_text_client.bal
 </code></pre></div>
 
                                 </td>
@@ -310,7 +225,7 @@ bal run websocket_async_client.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Hello World!
+                                    <div class="highlight"><pre><code class=shell-session>Text message
 </code></pre></div>
 
                                 </td>

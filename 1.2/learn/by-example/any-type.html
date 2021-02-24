@@ -10,34 +10,49 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lname</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lname</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">fname</span> <span class="p">=</span> <span class="nx">fname</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">lname</span> <span class="p">=</span> <span class="nx">lname</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">fname</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lname</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
+
+<span class="c1">// This function returns a value of the `any` type.</span>
 <span class="kd">function</span> <span class="nx">getValue</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;cat&quot;</span><span class="p">;</span>
     <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// In this example, the variable named `a` of the `any` type holds</span>
+    <span class="c1">// a `Person` object.</span>
     <span class="kt">any</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Before anything useful can be done with `a`, it is required to ascertain</span>
+    <span class="c1">// its type. A type cast or a type guard can be used for this.</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span><span class="nx">a</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full name: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full name: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;First name: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">fname</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Variables of type `any` can hold values of any type except for `error`.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">ia</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
     <span class="kt">any</span> <span class="nx">ar</span> <span class="p">=</span> <span class="nx">ia</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ar</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">getValue</span><span class="p">());</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">any_type</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Full</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">John</span> <span class="nx">Doe</span>
-<span class="nx">First</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">John</span>
-<span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">6</span>
-<span class="nx">cat</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ar</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">getValue</span><span class="p">());</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -83,15 +98,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/any-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0759ea00e0acb7c460448efc04b372e0&file=any_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f71cc3ae4f1ea3913bf447a0e9cba10f&file=any_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -366,7 +381,7 @@ cat
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

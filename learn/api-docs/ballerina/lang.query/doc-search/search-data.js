@@ -14,6 +14,13 @@ var searchData = {
   "errors": [],
   "types": [
     {
+      "id": "ErrorType",
+      "description": "A type parameter that is a subtype of `error`.",
+      "moduleId": "lang.query",
+      "moduleOrgName": "ballerina",
+      "moduleVersion": "0.0.1"
+    },
+    {
       "id": "Type",
       "description": "A type parameter that is a subtype of `any|error`.",
       "moduleId": "lang.query",

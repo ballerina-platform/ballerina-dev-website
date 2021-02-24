@@ -12,26 +12,50 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span><span class="kd">function</span> <span class="nx">simpleQuery</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">simpleQuery</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Simple Query -------&quot;</span><span class="p">);</span>
+    <span class="c1">// Select the rows in the database table via the query remote operation.</span>
+    <span class="c1">// The result is returned as a stream and the elements of the stream can</span>
+    <span class="c1">// be either a record or an error.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from Customers&quot;</span><span class="p">);</span>
+
+    <span class="c1">// If there is any error during the execution of the SQL query or</span>
+    <span class="c1">// iteration of the result stream, the result stream will terminate and</span>
+    <span class="c1">// return the error.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer first name: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">[</span><span class="s">&quot;FIRSTNAME&quot;</span><span class="p">]);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer last name: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">[</span><span class="s">&quot;LASTNAME&quot;</span><span class="p">]);</span>
     <span class="p">});</span>
+    <span class="c1">// Check and handle the error during the SQL query</span>
+    <span class="c1">// or iteration of the result stream.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ForEach operation on the stream failed!&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// In general cases, the stream will be closed automatically</span>
+    <span class="c1">// when the stream is fully consumed or any error is encountered.</span>
+    <span class="c1">// However, in case if the stream is not fully consumed, the stream</span>
+    <span class="c1">// should be closed specifically.</span>
     <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Simple Query -------&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">countRows</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">countRows</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Count Total Rows -------&quot;</span><span class="p">);</span>
+    <span class="c1">// The result of the count operation is provided as a record stream.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select count(*) as total from Customers&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Since the above count query will return only a single row,</span>
+    <span class="c1">// the `next()` operation is sufficient to retrieve the data.</span>
     <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+
+    <span class="c1">// Check the result and retrieve the value for total.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|})</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total rows in customer table : &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="p">[</span><span class="s">&quot;TOTAL&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -39,9 +63,16 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table is empty&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="c1">// Close the stream.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Count Total Rows -------&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Define a record to load the query result schema as shown below in the</span>
+<span class="c1">// &#39;typedQuery&#39; function. In this example, all columns of the customer table</span>
+<span class="c1">// will be loaded. Therefore, the `Customer` record will be created with all</span>
+<span class="c1">// the columns. The column name of the result and the defined field name of</span>
+<span class="c1">// the record will be matched case insensitively.</span>
 <span class="nx">type</span> <span class="nx">Customer</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">customerId</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
@@ -49,21 +80,33 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">registrationId</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">creditLimit</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-<span class="p">|};</span><span class="kd">function</span> <span class="nx">typedQuery</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">|};</span>
+
+<span class="kd">function</span> <span class="nx">typedQuery</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Query With Type Description -------&quot;</span><span class="p">);</span>
+    <span class="c1">// The result is returned as a Customer record stream and the elements</span>
+    <span class="c1">// of the stream can be either a Customer record or an error.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from Customers&quot;</span><span class="p">,</span> <span class="nx">Customer</span><span class="p">);</span>
+
+    <span class="c1">// Cast the generic record type to the Customer stream type.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">customerStream</span> <span class="p">=</span>
         <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream</span><span class="p">;</span>
+
+    <span class="c1">// Iterate the customer stream.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">customerStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">Customer</span> <span class="nx">customer</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">customer</span><span class="p">);</span>
     <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Close the stream.</span>
     <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Query With Type Description -------&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">//Initialize the database table with sample data.</span>
 <span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS Customers&quot;</span><span class="p">);</span>
@@ -77,7 +120,10 @@ redirect_from:
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO Customers (firstName, &quot;</span> <span class="o">+</span>
         <span class="s">&quot;lastName,registrationID,creditLimit,country) VALUES (&#39;Dan&#39;, &#39;Brown&#39;,&quot;</span> <span class="o">+</span>
         <span class="s">&quot;2, 10000, &#39;UK&#39;)&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize the JDBC client.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jdbcClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/customers&quot;</span><span class="p">,</span>
         <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="s">&quot;rootPass&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">jdbcClient</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
@@ -85,34 +131,19 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table initialization failed!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Execute the select queries in different options.</span>
             <span class="nx">simpleQuery</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
             <span class="nx">countRows</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
             <span class="nx">typedQuery</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Queried the database successfully!&quot;</span><span class="p">);</span>
         <span class="p">}</span>
+        <span class="c1">// Close the JDBC client.</span>
         <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">jdbcClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Initialization failed!!&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jdbc2_query_operation</span><span class="p">.</span><span class="nx">bal</span><span class="o">------</span> <span class="nx">Start</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
-<span class="nx">Full</span> <span class="nx">Customer</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Peter</span>
-<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Stuart</span>
-<span class="nx">Full</span> <span class="nx">Customer</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">UK</span>
-<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Dan</span>
-<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Brown</span>
-<span class="o">------</span> <span class="nx">End</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
-<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
-<span class="nx">Total</span> <span class="nx">rows</span> <span class="nx">in</span> <span class="nx">customer</span> <span class="nx">table</span> <span class="p">:</span> <span class="mi">2</span>
-<span class="o">------</span> <span class="nx">End</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
-<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
-<span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">country</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">country</span><span class="p">=</span><span class="nx">UK</span>
-<span class="o">------</span> <span class="nx">End</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
-<span class="nx">Queried</span> <span class="nx">the</span> <span class="nx">database</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -160,9 +191,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/jdbc2-query-operation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -774,7 +805,7 @@ Queried the database successfully!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

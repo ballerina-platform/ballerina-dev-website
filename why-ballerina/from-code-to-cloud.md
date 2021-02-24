@@ -97,7 +97,7 @@ http:Request request) {
 }
 </code></pre>
                               <p>Building the source with <code class="highlighter-rouge cBasicCode">bal build --cloud=k8s</code> will generate the Kubernetes Deployment and Service YAML files that is required to deploy our hello application into Kubernetes.</p>
-                    <ul class="cInlinelinklist">
+                    <!--<ul class="cInlinelinklist">
                                  <li>
                                  <a class="cGreenLinkArrow" href="/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE</a>
                                  </li>
@@ -107,7 +107,7 @@ http:Request request) {
                                  <li>
                                  <a class="cGreenLinkArrow" href="/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE</a>
                                  </li>
-                                 </ul>
+                                 </ul>-->
                           </div>
                         </div>
                      </div>
@@ -147,7 +147,7 @@ listener http:Listener helloWorldEP = new(9090);
                                  <li>
                                  <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/c2c-deployment.html">Code to Cloud Deployment BBE</a>
                                  </li>
-                                 </ul>
+                                 </ul></p>
                           </div>
                         </div>
                      </div>
@@ -196,11 +196,11 @@ http:Request request) {
                            
                            
 
- <ul class="cInlinelinklist">
+ <!--<ul class="cInlinelinklist">
                                  <li>
                                  <a class="cGreenLinkArrow"  href="/learn/by-example/knative-deployment.html">Knative Deployment BBE </a>
                                  </li>
-                                 </ul>
+                                 </ul>-->
 </div>
                         </div>
                      </div>

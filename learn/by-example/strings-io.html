@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
-title: Read/Write Text
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/text-io
+title: Read/Write Strings
+description: 
+keywords: 
+permalink: /learn/by-example/strings-io
 redirect_from:
-  - /vswan-lake/learn/by-example/text-io
-  - /vswan-lake/learn/by-example/text-io.html
+  - /swan-lake/learn/by-example/strings-io
+  - /swan-lake/learn/by-example/strings-io.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -36,7 +37,7 @@ redirect_from:
     <span class="c1">// Write the given stream of lines to a file.</span>
     <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteLinesFromStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">,</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">toStream</span><span class="p">());</span>
     <span class="c1">// If the write operation was successful, then, perform a read operation to read the lines as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">lineStream</span> <span class="p">=</span> <span class="nx">check</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">lineStream</span> <span class="p">=</span> <span class="nx">check</span>
                                     <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLinesAsStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">);</span>
     <span class="c1">// Loop through the stream and print the content.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">lineStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
@@ -51,8 +52,8 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Read/Write Text</h2>
-                            <p><p>This demonstrates how characters could be read and written through I/O APIs.<br/><br/>
+                            <h2>Read/Write Strings</h2>
+                            <p><p>This demonstrates how string could be read and written through I/O APIs.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/io/latest/io/">IO module</a>.</p>
 </p>
@@ -62,7 +63,7 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="byte-io.html">
+                                    <a class="prev" href="bytes-io.html">
                                         <span>< PREVIOUS</span>
                                         <p>Read/Write Bytes</p>
                                     </a>
@@ -80,7 +81,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="text-io">
+            <div class="example" id="strings-io">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -91,7 +92,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/text-io/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/strings-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -283,7 +284,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error?&gt; lineStream = check
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error&gt; lineStream = check
                                     io:fileReadLinesAsStream(textFilePath3);
 </code></pre></div>
 

@@ -11,21 +11,53 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;error occurred&quot;</span><span class="p">);</span>
+
+    <span class="c1">// The Ballerina log API provides functions to log at five levels, which are</span>
+    <span class="c1">// `DEBUG`, `ERROR`, `INFO`, `TRACE`, and `WARN`. By default, all log</span>
+    <span class="c1">// messages are logged to the console at the `INFO` level. In addition to</span>
+    <span class="c1">// these log levels, there are 2 additional levels named `OFF` and `ALL`.</span>
+    <span class="c1">// `OFF` turns off logging and `ALL` enables all the log levels. The log</span>
+    <span class="c1">// level can be configured via a Ballerina configuration file or CLI</span>
+    <span class="c1">// parameters.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="s">&quot;debug log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log with cause&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printTrace</span><span class="p">(</span><span class="s">&quot;trace log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printWarn</span><span class="p">(</span><span class="s">&quot;warn log&quot;</span><span class="p">);</span>
+    <span class="c1">// To set the log level of the API, use the following CLI parameter: &lt;br&gt;</span>
+    <span class="c1">// `--b7a.log.level=[LOG_LEVEL]`</span>
+    <span class="c1">//</span>
+    <span class="c1">// To configure using a configuration file, place the entry given below in</span>
+    <span class="c1">// the file:</span>
+    <span class="c1">//</span>
+    <span class="c1">// ```</span>
+    <span class="c1">// [b7a.log]</span>
+    <span class="c1">// level=&quot;[LOG_LEVEL]&quot;</span>
+    <span class="c1">// ```</span>
+
+    <span class="c1">// Each module can also be assigned its own log level. To assign a</span>
+    <span class="c1">// log level to a module, provide the following configuration</span>
+    <span class="c1">// `&lt;MODULE_NAME&gt;.loglevel`.</span>
+    <span class="c1">//</span>
+    <span class="c1">// E.g., `--foo.loglevel=DEBUG`</span>
     <span class="nx">Fruit</span> <span class="nx">apple</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Apple&quot;</span><span class="p">);</span>
-    <span class="nx">Fruit</span> <span class="nx">orange</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Orange&quot;</span><span class="p">);</span>    <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="s">&quot;Name of the fruit is Strawberry.&quot;</span><span class="p">);</span>
+    <span class="nx">Fruit</span> <span class="nx">orange</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Orange&quot;</span><span class="p">);</span>
+
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="s">&quot;Name of the fruit is Strawberry.&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Names of the fruits are %s, %s.&quot;</span><span class="p">,</span> <span class="nx">apple</span><span class="p">.</span><span class="nx">getName</span><span class="p">(),</span> <span class="nx">orange</span><span class="p">.</span><span class="nx">getName</span><span class="p">()));</span>
+    <span class="c1">// Logic constructing log messages with expensive operations can alternatively be passed as a function</span>
+    <span class="c1">// pointer implementation. The function will be executed if and only if that particular log level is enabled.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Name of the fruit is is %s&quot;</span><span class="p">,</span> <span class="nx">apple</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
     <span class="p">});</span>
-<span class="p">}</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Fruit</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Fruit</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
@@ -33,24 +65,7 @@ redirect_from:
     <span class="kd">function</span> <span class="nx">getName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="err">#</span> <span class="nx">As</span> <span class="nx">shown</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">only</span> <span class="nx">the</span> <span class="s">`INFO`</span> <span class="nx">and</span> <span class="nx">higher</span> <span class="nx">level</span> <span class="nx">logs</span> <span class="nx">are</span> <span class="nx">logged</span> <span class="nx">by</span> <span class="k">default</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">log_api</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">334</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">340</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span> <span class="nx">with</span> <span class="nx">cause</span> <span class="p">:</span> <span class="nx">error</span> <span class="nx">error</span> <span class="nx">occurred</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">341</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">info</span> <span class="nx">log</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">342</span> <span class="nx">WARN</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">warn</span> <span class="nx">log</span><span class="err">#</span> <span class="nx">If</span> <span class="nx">the</span> <span class="nx">log</span> <span class="nx">level</span> <span class="nx">is</span> <span class="nx">set</span> <span class="nx">to</span> <span class="s">`TRACE`</span><span class="p">,</span> <span class="nx">logs</span> <span class="nx">of</span> <span class="nx">all</span> <span class="nx">log</span> <span class="nx">levels</span> <span class="nx">are</span> <span class="nx">logged</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">log_api</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">level</span><span class="p">=</span><span class="nx">TRACE</span> 
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">411</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">debug</span> <span class="nx">log</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">415</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">416</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span> <span class="nx">with</span> <span class="nx">cause</span> <span class="p">:</span> <span class="nx">error</span> <span class="nx">error</span> <span class="nx">occurred</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">416</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">info</span> <span class="nx">log</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">417</span> <span class="nx">TRACE</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">trace</span> <span class="nx">log</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">421</span> <span class="nx">WARN</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">warn</span> <span class="nx">log</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">946</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Name</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">fruit</span> <span class="nx">is</span> <span class="nx">Strawberry</span><span class="p">.</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">947</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Names</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">fruits</span> <span class="nx">are</span> <span class="nx">Apple</span><span class="p">,</span> <span class="nx">Orange</span><span class="p">.</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">947</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Name</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">fruit</span> <span class="nx">is</span> <span class="nx">is</span> <span class="nx">Apple</span><span class="p">.</span>
+<span class="p">};</span>
 </pre></div>
 
             </div>
@@ -94,15 +109,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/log-api/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e9c0ad57448f2c1c9bbdb023a7827ba6&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=94da815b712a1d9eeadca28c013255da&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -380,7 +395,7 @@ ballerina run log_api.bal --b7a.log.level=TRACE
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

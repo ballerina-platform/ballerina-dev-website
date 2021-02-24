@@ -13,76 +13,106 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">decimal</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">float</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">empNo</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="c1">// This function attempts to convert an `anydata` record `Employee` to an `anydata` record `Person`.</span>
 <span class="kd">function</span> <span class="nx">convertEmployeeToPerson</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">emp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Attempts to create a new value of the type `Person` from the `Employee`-typed `emp` value without changing</span>
+    <span class="c1">// the inherent type of `emp`.</span>
     <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// If the conversion is successful, this prints the `name` field.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on conversion&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// This function attempts to convert an `anydata` constrained map to an `anydata` record `Person`.</span>
+<span class="c1">// The conversion would return an error if an incompatible value is found.</span>
 <span class="kd">function</span> <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Attempts to create a new value of the type `Person` from the `map&lt;anydata&gt;` typed `m` value without changing</span>
+    <span class="c1">// the inherent type of `m`.</span>
     <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// If the conversion is successful, this prints the `name` field.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;anydata&gt; to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on conversion: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// This function creates numeric values from string values.</span>
 <span class="kd">function</span> <span class="nx">createNumericValues</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="s">&quot;45&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">s2</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">s3</span> <span class="p">=</span> <span class="s">&quot;12.3&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">s4</span> <span class="p">=</span> <span class="s">&quot;8&quot;</span><span class="p">;</span>
+
+    <span class="c1">// The `fromString()` method in the `ballerina/lang.int` module returns the integer value represented by a</span>
+    <span class="c1">// given string if there is a valid representation, else returns an `error`.</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">s1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
-    <span class="p">}</span>    <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">s2</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">s2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// The `fromString()` method in the `ballerina/lang.float` module returns the float value represented by a given</span>
+    <span class="c1">// string if there is a valid representation, else returns an `error`.</span>
     <span class="kt">float</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res2</span> <span class="p">=</span> <span class="p">&#39;float:fromString(</span><span class="nx">s3</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res2</span> <span class="nx">is</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;float value: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
     <span class="p">}</span>
+
+    <span class="c1">// The `fromString()` method in the `ballerina/lang.decimal` module returns the decimal value represented by a given</span>
+    <span class="c1">// string if there is a valid representation, else returns an `error`.</span>
     <span class="nx">decimal</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res3</span> <span class="p">=</span> <span class="p">&#39;decimal:fromString(</span><span class="nx">s4</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res3</span> <span class="nx">is</span> <span class="nx">decimal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;decimal value: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Attempts to convert an `anydata`-typed record to another `anydata`-typed record.</span>
     <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jack Sparrow&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">100</span><span class="p">};</span>
     <span class="nx">convertEmployeeToPerson</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
+
+    <span class="c1">// Attempts to convert an `anydata` constrained map to an `anydata`-typed record.</span>
+    <span class="c1">// This conversion would be successful since all the expected elements are present.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Hector Barbossa&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">100</span><span class="p">};</span>
     <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+
+    <span class="c1">// This conversion would not be successful since all the required elements are not</span>
+    <span class="c1">// present in the map.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">n</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Elizabeth Swann&quot;</span><span class="p">};</span>
     <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+
+    <span class="c1">// Attempts to convert strings to numeric types.</span>
     <span class="nx">createNumericValues</span><span class="p">();</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">program</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">type_conversion</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Employee</span> <span class="nx">to</span> <span class="nx">Person</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Jack</span> <span class="nx">Sparrow</span>
-<span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">to</span> <span class="nx">Person</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Hector</span> <span class="nx">Barbossa</span>
-<span class="nx">Error</span> <span class="nx">occurred</span> <span class="nx">on</span> <span class="nx">conversion</span><span class="p">:</span> <span class="kt">message</span><span class="p">=</span><span class="err">&#39;</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span><span class="err">&#39;</span> <span class="nx">value</span> <span class="nx">cannot</span> <span class="nx">be</span> <span class="nx">converted</span> <span class="nx">to</span> <span class="err">&#39;</span><span class="nx">Person</span><span class="err">&#39;</span>
-<span class="kt">int</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">45</span>
-<span class="nx">error</span><span class="p">:</span> <span class="kt">message</span><span class="p">=</span><span class="err">&#39;</span><span class="kt">string</span><span class="err">&#39;</span> <span class="nx">value</span> <span class="err">&#39;</span><span class="nx">abc</span><span class="err">&#39;</span> <span class="nx">cannot</span> <span class="nx">be</span> <span class="nx">converted</span> <span class="nx">to</span> <span class="err">&#39;</span><span class="kt">int</span><span class="err">&#39;</span>
-<span class="kt">float</span> <span class="nx">value</span><span class="p">:</span> <span class="mf">12.3</span>
-<span class="nx">decimal</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">8</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -127,15 +157,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/type-conversion/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e398609b8b7bc9d89be20217e10980bb&file=type_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c02398fe094340c8a6e1012ce23c02de&file=type_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -633,7 +663,7 @@ decimal value: 8
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

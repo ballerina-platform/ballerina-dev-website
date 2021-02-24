@@ -10,6 +10,8 @@ redirect_from:
   - /learn/how-to-keep-ballerina-up-to-date
   - /learn/how-to-keep-ballerina-up-to-date/
   - /learn/keeping-ballerina-up-to-date
+  - /swan-lake/learn/keeping-ballerina-up-to-date/
+  - /swan-lake/learn/keeping-ballerina-up-to-date
 ---
 
 ### Understanding Ballerina Distributions 
@@ -22,7 +24,7 @@ Ballerina distribution is a term, which refers to these jBallerina and nBallerin
 
 ### Getting to know the Release Channels
 
-Ballerina distributions are released via two different release channels at the moment. One is the stable 1.x release channel and the other one is the Swan Lake release channel.
+Ballerina distributions are released via two different release channels at the moment. One is the Swan Lake release channel and the other one is the 1.x release channel.
 
 Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
 
@@ -44,7 +46,7 @@ These are feature releases of Ballerina distributions. Ballerina programs that y
 
 #### Release Maintenance
 
-In the 1.x stable release channel, a minor release 1.x.0 is maintained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
+In the 1.x release channel, a minor release 1.x.0 is maintained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
 
 In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
 

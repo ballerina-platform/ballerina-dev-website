@@ -8,6 +8,8 @@ active: aws-lambda
 intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
 redirect_from:
   - /learn/deployment/aws-lambda
+  - /swan-lake/learn/deployment/aws-lambda/
+  - /swan-lake/learn/deployment/aws-lambda
 ---
 
 Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 
@@ -43,12 +45,12 @@ Generating executables
 	functions.jar
 	@awslambda:Function: hash
 
-	Run the following commands to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.<FUNCTION_NAME> --runtime provided --role <LAMBDA_ROLE_ARN> --timeout 10 --memory-size 1024
-	aws lambda update-function-configuration --function-name <FUNCTION_NAME> --layers arn:aws:lambda:<REGION_ID>:134633749276:layer:ballerina-jre11:1
+        Run the following command to deploy each Ballerina AWS Lambda function:
+        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb:///aws-ballerina-lambda-functions.zip --handler function.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 
-	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
-	aws lambda update-function-code --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip
+        Run the following command to re-deploy an updated Ballerina AWS Lambda function:
+        aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
+        function.jar
 ```
 
 ## Deploying the Function
@@ -58,7 +60,7 @@ Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer
 A sample execution to deploy the hash function as an AWS Lambda is shown below. 
 
 ```bash
-$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1
+$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
 {
     "FunctionName": "hash",
     "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:function:hash",
@@ -78,7 +80,7 @@ $ aws lambda create-function --function-name hash --zip-file fileb://aws-balleri
     "RevisionId": "d5400f01-f3b8-478b-9269-73c44f4537aa",
     "Layers": [
         {
-            "Arn": "arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:1",
+            "Arn": "arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6",
             "CodeSize": 697
         }
     ]
@@ -90,7 +92,8 @@ $ aws lambda create-function --function-name hash --zip-file fileb://aws-balleri
 The deployed AWS Lambda function can be tested by invoking it directly using the CLI. 
 
 ```bash
-$ aws lambda invoke --function-name hash --payload '{"x":5}' response.txt 
+$ echo '{"x":5}' > input.json
+$ aws lambda invoke --function-name hash --payload fileb://input.json response.txt 
 {
     "StatusCode": 200,
     "ExecutedVersion": "$LATEST"

@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Bidirectional Streaming
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This Ballerina by Example has a gRPC streaming service and a non-blocking streaming client. Both the client and the server sends a stream of messages to each other.
+keywords: ballerina, ballerina by example, bbe, grpc, bidirectional streaming
 permalink: /learn/by-example/grpc-bidirectional-streaming
 redirect_from:
-  - /vswan-lake/learn/by-example/grpc-bidirectional-streaming
-  - /vswan-lake/learn/by-example/grpc-bidirectional-streaming.html
+  - /swan-lake/learn/by-example/grpc-bidirectional-streaming
+  - /swan-lake/learn/by-example/grpc-bidirectional-streaming.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -21,8 +22,8 @@ redirect_from:
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;Chat&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
-                            <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
+                            <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Invoke the chat RPC&quot;</span><span class="p">);</span>
         <span class="kt">string</span><span class="p">[]</span> <span class="nx">responses</span> <span class="p">=</span> <span class="p">[];</span>
         <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -36,45 +37,6 @@ redirect_from:
         <span class="k">return</span> <span class="nx">responses</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
-
-<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">ChatStringCaller</span> <span class="p">{</span>
-    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">;</span>
-
-    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">send</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="nx">ContextString</span> <span class="nx">response</span><span class="p">)</span>
-                                <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendError</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">response</span><span class="p">)</span>
-                                        <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">complete</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-
-<span class="c1">// The context record includes the message payload and headers.</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextString</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">content</span><span class="p">;</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
-<span class="p">|};</span>
-
-<span class="c1">// The context record includes the message payload and headers.</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextChatMessage</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">&gt;</span> <span class="nx">content</span><span class="p">;</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
-<span class="p">|};</span>
 
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">ChatMessage</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
@@ -97,19 +59,17 @@ redirect_from:
         <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">:</span> <span class="s">&quot;Hello&quot;</span><span class="p">}</span>
     <span class="p">];</span>
     <span class="nx">foreach</span> <span class="nx">ChatMessage</span> <span class="nx">msg</span> <span class="nx">in</span> <span class="nx">messages</span> <span class="p">{</span>
-        <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">sendChatMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="c1">// Once all the messages are sent, the client sends the message to notify the server about the completion.</span>
     <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="c1">// Receives the server stream response iteratively.</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
     <span class="k">while</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;][</span><span class="nx">value</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span>
-            <span class="p">&lt;[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]&gt;</span> <span class="nx">result</span><span class="p">;</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(&lt;[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]&gt;</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+        <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -123,7 +83,7 @@ redirect_from:
     <span class="nx">grpc</span><span class="p">:</span><span class="nx">ClientConfiguration</span><span class="err">?</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">())</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">// Initialize the client endpoint.</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
-        <span class="nx">checkpanic</span> <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="p">.</span><span class="nx">initStub</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
+        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="p">.</span><span class="nx">initStub</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
         <span class="nx">getDescriptorMap</span><span class="p">());</span>
     <span class="p">}</span>
 
@@ -141,17 +101,31 @@ redirect_from:
         <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span> <span class="p">=</span> <span class="nx">sClient</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">send</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendChatMessage</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span>
+    <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">receive</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">anydata</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendContextChatMessage</span><span class="p">(</span><span class="nx">ContextChatMessage</span> <span class="kt">message</span><span class="p">)</span>
+    <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendError</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">response</span><span class="p">)</span>
-                                <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">receiveString</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]</span> <span class="p">[</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">headers</span><span class="p">]</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">receiveContextString</span><span class="p">()</span> <span class="nx">returns</span>
+    <span class="nx">ContextString</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]</span> <span class="p">[</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">headers</span><span class="p">]</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">content</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span> <span class="nx">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendError</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">response</span><span class="p">)</span> <span class="nx">returns</span>
+    <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -159,6 +133,18 @@ redirect_from:
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// The context record includes the message payload and headers.</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextString</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">content</span><span class="p">;</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="c1">// The context record includes the message payload and headers.</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextChatMessage</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="nx">ChatMessage</span> <span class="nx">content</span><span class="p">;</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
+<span class="p">|};</span>
 
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">ChatMessage</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
@@ -354,38 +340,6 @@ ballerina grpc --input grpc_bidirectional_streaming.proto  --output stubs
                         
                             
                                 
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -443,8 +397,8 @@ import ballerina/log;
     descMap: getDescriptorMap()
 }
 service &quot;Chat&quot; on ep {
-    remote function chat(stream&lt;ChatMessage, error&gt; clientStream)
-                            returns stream&lt;string&gt; {
+    remote function chat(stream&lt;ChatMessage, grpc:Error?&gt; clientStream)
+                            returns stream&lt;string, grpc:Error?&gt; {
         log:print(&quot;Invoke the chat RPC&quot;);
         string[] responses = [];
         int i = 0;
@@ -493,136 +447,6 @@ service &quot;Chat&quot; on ep {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Once the client sends a notification to indicate the end of the stream, &lsquo;grpc:EOS&rsquo; is returned by the stream.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public client class ChatStringCaller {
-    private grpc:Caller caller;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public function init(grpc:Caller caller) {
-        self.caller = caller;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function getId() returns int {
-        return self.caller.getId();
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function send(string|ContextString response)
-                                returns grpc:Error? {
-        return self.caller-&gt;send(&lt;anydata&gt;response);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendError(grpc:Error response)
-                                        returns grpc:Error? {
-        return self.caller-&gt;sendError(response);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function complete() returns grpc:Error? {
-        return self.caller-&gt;complete();
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextString record {|
-    stream&lt;string&gt; content;
-    map&lt;string[]&gt; headers;
-|};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The context record includes the message payload and headers.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextChatMessage record {|
-    stream&lt;ChatMessage&gt; content;
-    map&lt;string[]&gt; headers;
-|};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The context record includes the message payload and headers.</p>
 
                                         </div>
                                     </div>
@@ -808,6 +632,18 @@ bal run target/bin/service.jar
                         
                             
                                 
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -904,7 +740,7 @@ import ballerina/io;
         {name: &quot;John&quot;, message: &quot;Hello&quot;}
     ];
     foreach ChatMessage msg in messages {
-        check streamingClient-&gt;send(msg);
+        check streamingClient-&gt;sendChatMessage(msg);
     }
 </code></pre></div>
 
@@ -943,14 +779,12 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var result = streamingClient-&gt;receive();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = streamingClient-&gt;receiveString();
     while !(result is grpc:EOS) {
         if !(result is grpc:Error) {
-            [anydata, map&lt;string|string[]&gt;][value, _] =
-            &lt;[anydata, map&lt;string|string[]&gt;]&gt; result;
-            io:println(&lt;[anydata, map&lt;string|string[]&gt;]&gt; result);
+            io:println(result);
         }
-        result = streamingClient-&gt;receive();
+        result = streamingClient-&gt;receiveString();
     }
 }
 </code></pre></div>
@@ -1021,7 +855,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        self.grpcClient = check new(url, config);
-        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
+        check self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
         getDescriptorMap());
     }
 </code></pre></div>
@@ -1086,19 +920,9 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function send(ChatMessage message) returns grpc:Error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return self.sClient-&gt;send(message);
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendChatMessage(ChatMessage message) returns
+    grpc:Error? {
+        return self.sClient-&gt;send(message);
     }
 </code></pre></div>
 
@@ -1111,8 +935,9 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function receive() returns anydata|grpc:Error {
-        return self.sClient-&gt;receive();
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendContextChatMessage(ContextChatMessage message)
+    returns grpc:Error? {
+        return self.sClient-&gt;send(message);
     }
 </code></pre></div>
 
@@ -1125,8 +950,41 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendError(grpc:Error response)
-                                returns grpc:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function receiveString() returns string|grpc:Error {
+        [anydata, map&lt;string|string[]&gt;] [payload, headers] =
+        check self.sClient-&gt;receive();
+        return payload.toString();
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function receiveContextString() returns
+    ContextString|grpc:Error {
+        [anydata, map&lt;string|string[]&gt;] [payload, headers] =
+        check self.sClient-&gt;receive();
+        return {content: payload.toString(), headers: headers};
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendError(grpc:Error response) returns
+    grpc:Error? {
         return self.sClient-&gt;sendError(response);
     }
 </code></pre></div>
@@ -1148,6 +1006,50 @@ import ballerina/io;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextString record {|
+    string content;
+    map&lt;string|string[]&gt; headers;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The context record includes the message payload and headers.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextChatMessage record {|
+    ChatMessage content;
+    map&lt;string|string[]&gt; headers;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The context record includes the message payload and headers.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>

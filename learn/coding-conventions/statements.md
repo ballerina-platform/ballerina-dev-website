@@ -8,6 +8,8 @@ redirect_from:
   - /learn/style-guide/statements/
   - /learn/style-guide/statements
   - /learn/coding-conventions/statements
+  - /swan-lake/learn/coding-conventions/statements/
+  - /swan-lake/learn/coding-conventions/statements
 
 ---
 

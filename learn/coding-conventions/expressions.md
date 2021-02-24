@@ -8,6 +8,8 @@ redirect_from:
   - /learn/style-guide/expressions/
   - /learn/style-guide/expressions
   - /learn/coding-conventions/expressions
+  - /swan-lake/learn/coding-conventions/expressions/
+  - /swan-lake/learn/coding-conventions/expressions
 ---
 
 ## Function Invocation

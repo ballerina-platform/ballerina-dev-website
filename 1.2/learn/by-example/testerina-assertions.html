@@ -11,6 +11,9 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
+
+<span class="c1">// The `assertEquals()` function allows you to compare primitive types (e.g., int) against composite objects.</span>
+<span class="c1">// Compares values of the type `int`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertIntEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">answer</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -19,6 +22,8 @@ redirect_from:
     <span class="nx">answer</span> <span class="p">=</span> <span class="nx">intAdd</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">answer</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;int values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares values of the type `float`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertFloatEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">float</span> <span class="nx">a</span> <span class="p">=</span> <span class="mf">10.000</span><span class="p">;</span>
@@ -26,6 +31,8 @@ redirect_from:
     <span class="kt">float</span> <span class="nx">answer</span> <span class="p">=</span> <span class="nx">floatAdd</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">answer</span><span class="p">,</span> <span class="mf">30.050</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;float values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares values of the type `string`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertStringEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">a</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
@@ -33,90 +40,118 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">concatenated</span> <span class="p">=</span> <span class="nx">stringConcat</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">concatenated</span><span class="p">,</span> <span class="s">&quot;JohnDoe&quot;</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;string values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares values of the type `json`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertJsonEquals</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">json</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
+    <span class="kt">json</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="nx">address</span><span class="p">:{</span><span class="nx">city</span><span class="p">:</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span><span class="s">&quot;Sri Lanka&quot;</span><span class="p">}};</span>
+    <span class="kt">json</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="nx">address</span><span class="p">:{</span><span class="nx">city</span><span class="p">:</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span><span class="s">&quot;Sri Lanka&quot;</span><span class="p">}};</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;JSON values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares values of the type `xml`.</span>
+<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="kd">function</span> <span class="nx">testAssertXmlEquals</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x2</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x3</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x4</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span> <span class="o">+</span> <span class="nx">x3</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x5</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">x4</span><span class="p">,</span> <span class="nx">x5</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;XML values not equal&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Compares values of the type `boolean`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertBooleanEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">boolean</span> <span class="nx">x</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">y</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;boolean values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares values of the type `string[]`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertStringArrayEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">];</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">];</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;string array values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares values of the type `int[]`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertIntArrayEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;int array values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares values of the type `float[]`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertFloatArrayEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">float</span><span class="p">[]</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">];</span>
     <span class="kt">float</span><span class="p">[]</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">];</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;float array values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares distinct values of the type `string`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertNotEqualsString</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">s2</span> <span class="p">=</span> <span class="s">&quot;def&quot;</span><span class="p">;</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertNotEquals</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;string values are equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares distinct values of the type `json`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertNotEqualsJson</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">json</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span><span class="p">};</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertNotEquals</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;JSON values are equal&quot;</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="nx">address</span><span class="p">:{</span><span class="nx">city</span><span class="p">:</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span><span class="s">&quot;Sri Lanka&quot;</span><span class="p">}};</span>
+    <span class="kt">json</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;John Doe New&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="nx">address</span><span class="p">:{</span><span class="nx">city</span><span class="p">:</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span><span class="s">&quot;Sri Lanka&quot;</span><span class="p">}};</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertNotEquals</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;JSON values are equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Compares distinct values of the type `xml`.</span>
+<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="kd">function</span> <span class="nx">testAssertNotEqualsXml</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x2</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x3</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x4</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertNotEquals</span><span class="p">(</span><span class="nx">x3</span><span class="p">,</span> <span class="nx">x4</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;XML values are equal&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Asserts `true`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertTrue</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">boolean</span> <span class="nx">value</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;AssertTrue failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Asserts `false`.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertFalse</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">boolean</span> <span class="nx">value</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertFalse</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;AssertFalse failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// A test-example, which is failing intentionally.</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertFail</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertFail</span><span class="p">(</span><span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;AssertFailed&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">floatAdd</span><span class="p">(</span><span class="kt">float</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">float</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">floatAdd</span><span class="p">(</span><span class="kt">float</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">float</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">stringConcat</span><span class="p">(</span><span class="kt">string</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">stringConcat</span><span class="p">(</span><span class="kt">string</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">For</span> <span class="nx">the</span> <span class="nx">moment</span> <span class="s">`ballerina test`</span> <span class="nx">works</span> <span class="nx">only</span> <span class="nx">in</span> <span class="nx">projects</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">test_module</span>
-<span class="nx">Compiling</span> <span class="nx">source</span>
-        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
-        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">test_module</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">tests</span>
-    <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFail</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFalse</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertTrue</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotEqualsJson</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotEqualsString</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFloatArrayEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntArrayEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertStringArrayEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertBooleanEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertJsonEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertStringEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFloatEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntEquals</span>        <span class="mi">13</span> <span class="nx">passing</span>
-        <span class="mi">0</span> <span class="nx">failing</span>
-        <span class="mi">0</span> <span class="nx">skipped</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -163,9 +198,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/testerina-assertions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -185,6 +220,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -319,8 +358,8 @@ function testAssertStringEquals() {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testAssertJsonEquals() {
-    json a = {&quot;name&quot;: &quot;Ballerina&quot;};
-    json b = {&quot;name&quot;: &quot;Ballerina&quot;};
+    json a = {name:&quot;John Doe&quot;, age:25, address:{city:&quot;Colombo&quot;, country:&quot;Sri Lanka&quot;}};
+    json b = {name:&quot;John Doe&quot;, age:25, address:{city:&quot;Colombo&quot;, country:&quot;Sri Lanka&quot;}};
     test:assertEquals(a, b, msg = &quot;JSON values not equal&quot;);
 }
 </code></pre></div>
@@ -331,6 +370,33 @@ function testAssertJsonEquals() {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Compares values of the type <code>json</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+function testAssertXmlEquals() {
+    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
+    xml x2 = xml `Hello, world!`;
+    xml x3 = xml `&lt;!--I am a comment--&gt;`;
+    xml x4 = x1 + x2 + x3;
+    xml x5 = xml `&lt;book&gt;The Lost World&lt;/book&gt;` + xml `Hello, world!` + xml `&lt;!--I am a comment--&gt;`;
+    test:assertEquals(x4, x5, msg = &quot;XML values not equal&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Compares values of the type <code>xml</code>.</p>
 
                                         </div>
                                     </div>
@@ -463,9 +529,9 @@ function testAssertNotEqualsString() {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testAssertNotEqualsJson() {
-    json s1 = {&quot;a&quot;: &quot;b&quot;};
-    json s2 = {&quot;a&quot;: &quot;c&quot;};
-    test:assertNotEquals(s1, s2, msg = &quot;JSON values are equal&quot;);
+    json a = {name:&quot;John Doe&quot;, age:25, address:{city:&quot;Colombo&quot;, country:&quot;Sri Lanka&quot;}};
+    json b = {name:&quot;John Doe New&quot;, age:25, address:{city:&quot;Colombo&quot;, country:&quot;Sri Lanka&quot;}};
+    test:assertNotEquals(a, b, msg = &quot;JSON values are equal&quot;);
 }
 </code></pre></div>
 
@@ -475,6 +541,32 @@ function testAssertNotEqualsJson() {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Compares distinct values of the type <code>json</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
+function testAssertNotEqualsXml() {
+    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
+    xml x2 = xml `Hello, world!`;
+    xml x3 = x1 + x2;
+    xml x4 = xml `&lt;book&gt;The Lost World&lt;/book&gt;` + xml `Hello, world!` + xml `&lt;!--I am a comment--&gt;`;
+    test:assertNotEquals(x3, x4, msg = &quot;XML values are equal&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Compares distinct values of the type <code>xml</code>.</p>
 
                                         </div>
                                     </div>
@@ -668,19 +760,21 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testAssertFail
-        [pass] testAssertFalse
-        [pass] testAssertTrue
-        [pass] testAssertNotEqualsJson
-        [pass] testAssertNotEqualsString
-        [pass] testAssertFloatArrayEquals
-        [pass] testAssertIntArrayEquals
-        [pass] testAssertStringArrayEquals
-        [pass] testAssertBooleanEquals
-        [pass] testAssertJsonEquals
-        [pass] testAssertStringEquals
-        [pass] testAssertFloatEquals
-        [pass] testAssertIntEquals
+                                    <div class="highlight"><pre><code class=shell-session>	[pass] testAssertFail
+	[pass] testAssertFalse
+	[pass] testAssertTrue
+	[pass] testAssertNotEqualsXml
+	[pass] testAssertNotEqualsJson
+	[pass] testAssertNotEqualsString
+	[pass] testAssertFloatArrayEquals
+	[pass] testAssertIntArrayEquals
+	[pass] testAssertStringArrayEquals
+	[pass] testAssertBooleanEquals
+	[pass] testAssertXmlEquals
+	[pass] testAssertJsonEquals
+	[pass] testAssertStringEquals
+	[pass] testAssertFloatEquals
+	[pass] testAssertIntEquals
 </code></pre></div>
 
                                 </td>
@@ -692,9 +786,9 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        13 passing
-        0 failing
-        0 skipped
+                                    <div class="highlight"><pre><code class=shell-session>	15 passing
+	0 failing
+	0 skipped
 </code></pre></div>
 
                                 </td>
@@ -722,7 +816,7 @@ Compiling source
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

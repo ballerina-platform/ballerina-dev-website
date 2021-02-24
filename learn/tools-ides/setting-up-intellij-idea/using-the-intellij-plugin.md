@@ -16,6 +16,8 @@ redirect_from:
   - /learn/setting-up-intellij-idea/using-the-intellij-plugin
   - /learn/using-the-intellij-plugin
   - /learn/using-the-intellij-plugin/
+  - /swan-lake/learn/setting-up-intellij-idea/using-the-intellij-plugin/
+  - /swan-lake/learn/setting-up-intellij-idea/using-the-intellij-plugin
 ---
 
 ## Creating a New Ballerina Project

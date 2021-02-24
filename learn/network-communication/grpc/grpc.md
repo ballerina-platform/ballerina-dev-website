@@ -8,6 +8,8 @@ active: grpc
 intro: gRPC is an open-source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina. 
 redirect_from:
   - /learn/network-communication/grpc
+  - /swan-lake/learn/network-communication/grpc/
+  - /swan-lake/learn/network-communication/grpc
 ---
 
 ## Defining the Interface of the Service
@@ -16,7 +18,7 @@ In an RPC service, the first step is to define the interface of the service. Thi
 
 For example, the diagram below shows a sample RPC service, which contains the actions to do some computational operations, store them, and return a custom type. 
 
-<img src="/swan-lake/learn/images/grpc-admin-service.png" alt="Admin RPC Service" width="300" height="400">
+<img src="/learn/images/grpc-admin-service.png" alt="Admin RPC Service" width="300" height="400">
 
 ### Creating the Proto File
 

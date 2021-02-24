@@ -280,8 +280,8 @@ if result is error {
                         <div role="main">
                            <div class="section">
                               <h2 id="services">Network Data Safety</h2>
-                              <p>Distributed systems work by sharing data between different components. Network security plays a crucial role because all these communications happen over the network. Ballerina provides built-in libraries to <a href="/learn/by-example/crypto.html">implement transport-level security and cryptography to protect data</a>.</p>
-                              <p>Identity and access management also plays a critical role in microservice-based applications. Ballerina supports out-of-the-box protection for services as well as clients by using basic-auth, OAuth and JWT. The following BBEs show how to secure services and clients by enforcing authorization.</p>
+                              <p>Distributed systems work by sharing data between different components. Network security plays a crucial role because all these communications happen over the network. Ballerina provides built-in libraries to implement transport-level security and <a href="/learn/by-example/crypto.html">cryptography</a> to protect data.</p>
+                              <p>Identity and access management also plays a critical role in microservice-based applications. Ballerina supports out-of-the-box protection for services as well as clients by using Basic-auth, OAuth2 and JWT. The following BBEs show how to secure services and clients by enforcing authorization.</p>
                               <table class="docutils">
                                  <tbody>
                                     <tr>
@@ -289,16 +289,23 @@ if result is error {
                                        <td style="width:200px"><strong>Client</strong></td>
                                     </tr>
                                     <tr>
-                                       <td><a href="/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>
+                                       <td><a href="/learn/by-example/secured-service-with-basic-auth-ldap-user-store.html">Basic Auth - LDAP User Store</a></td>
                                        <td><a href="/learn/by-example/secured-client-with-basic-auth.html">Basic Auth</a></td>
                                     </tr>
                                     <tr>
-                                       <td><a href="/learn/by-example/secured-service-with-jwt-auth.html">JWT</a></td>
-                                       <td><a href="/learn/by-example/secured-client-with-jwt-auth.html">JWT</a></td>
+                                       <td><a href="/learn/by-example/secured-service-with-jwt-auth.html">JWT Auth</a></td>
+                                       <td>
+                                            <a href="/learn/by-example/secured-client-with-self-signed-jwt-auth.html">Self Singed JWT Auth</a><br/>
+                                            <a href="/learn/by-example/secured-client-with-bearer-token-auth.html">Bearer Token Auth</a>
+                                       </td>
                                     </tr>
                                     <tr>
                                        <td><a href="/learn/by-example/secured-service-with-oauth2.html">OAuth2</a></td>
-                                       <td><a href="/learn/by-example/secured-client-with-oauth2.html">OAuth2</a></td>
+                                       <td>
+                                            <a href="/learn/by-example/secured-client-with-oauth2-client-credentials-grant-type.html">OAuth2 - Client Credentials Grant Type</a><br/>
+                                            <a href="/learn/by-example/secured-client-with-oauth2-password-grant-type.html">OAuth2 - Password Grant Type</a><br/>
+                                            <a href="/learn/by-example/secured-client-with-oauth2-direct-token-type.html">OAuth2 - Direct Token Type</a>
+                                       </td>
                                     </tr>
                                  </tbody>
                               </table>

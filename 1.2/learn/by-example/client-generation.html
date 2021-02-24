@@ -13,15 +13,21 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">openapi</span><span class="p">;</span>
+
+<span class="c1">// Add the `@openapi:ClientEndpoint` annotation to the listener that is to be used for client generation.</span>
 <span class="err">@</span><span class="nx">openapi</span><span class="p">:</span><span class="nx">ClientEndpoint</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+
+<span class="c1">// Add the `@openapi:ClientConfig {generate: true}` annotation to the service to enable client generation for it.</span>
 <span class="nd">@openapi:ClientConfig {</span>
     <span class="nx">generate</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/sample&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">Hello</span> <span class="nx">on</span> <span class="nx">helloEp</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">Hello</span> <span class="nx">on</span> <span class="nx">helloEp</span> <span class="p">{</span>
+
+    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
     <span class="p">}</span>
@@ -31,13 +37,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina build`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">build</span> <span class="nx">client_generation</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Compiling</span> <span class="nx">source</span>
-        <span class="nx">client_generation</span><span class="p">.</span><span class="nx">bal</span> 
-<span class="nx">Generating</span> <span class="nx">executables</span>
-        <span class="nx">client_generation</span><span class="p">.</span><span class="nx">jar</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -83,9 +83,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/client-generation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -250,7 +250,7 @@ Generating executables
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

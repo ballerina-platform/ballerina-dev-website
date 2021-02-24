@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Anydata Type
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /learn/by-example/anydata-type
 redirect_from:
-  - /vswan-lake/learn/by-example/anydata-type
-  - /vswan-lake/learn/by-example/anydata-type.html
+  - /swan-lake/learn/by-example/anydata-type
+  - /swan-lake/learn/by-example/anydata-type.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -40,11 +41,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Anydata Type</h2>
-                            <p>The <code>anydata</code> type consists of plain data (a simple value, sequence value, or structured value that does not contain behavioral members at any depth).
- Thus, the <code>anydata</code> type is equivalent to the below. <pre><code>()|boolean|int|float|decimal|string|xml|anydata[]|map&lt;anydata&gt;|table&lt;map&lt;anydata&gt;&gt;</code></pre></p>
- <p>Although <code>json</code> and <code>byte</code> are not explicitly mentioned, they are subsets of the aforementioned union.
- The same is true for a record of which the type of each individual field is a subtype of <code>anydata</code> (including the rest field in open records).</p>
-
+                            <p><p>The <code>anydata</code> type consists of plain data (a simple value, sequence value, or structured value that does not contain behavioral members at any depth).
+ Thus, the <code>anydata</code> type is the union of <code>()</code>, <code>boolean</code>, <code>int</code>, <code>float</code>, <code>decimal</code>, <code>string</code>, <code>xml</code>, <code>anydata[]</code>, <code>map&lt;anydata&gt;</code>, and <code>table&lt;map&lt;anydata&gt;&gt;</code>.
+ Although <code>json</code> and <code>byte</code> are not explicitly mentioned, they are subsets of the aforementioned union.
+ The same is true for a record of which the type of each individual field is a subtype of <code>anydata</code>(including the rest field in open records).</p>
+</p>
 
                         </td>
                         <td class="cRightTD">
@@ -81,6 +82,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/anydata-type/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0850c8396c1893f9ca117ce3b1191820&file=anydata_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

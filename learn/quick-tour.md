@@ -11,6 +11,8 @@ redirect_from:
   - /learn/quick-tour/
   - /learn/getting-started/
   - /learn/getting-started
+  - /swan-lake/learn/getting-started/quick-tour/
+  - /swan-lake/learn/getting-started/quick-tour
 ---
 
 ## Installing Ballerina

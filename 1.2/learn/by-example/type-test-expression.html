@@ -10,10 +10,16 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">any</span> <span class="nx">a</span> <span class="p">=</span> <span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Checks whether the actual value of the `any` type variable is a `string`.</span>
     <span class="kt">boolean</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">a</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is &#39;a&#39; a string? &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+
+    <span class="c1">// The type test can be used as a condition of an `if` statement.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;a&#39; is an int with value: &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -21,51 +27,61 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;a&#39; is not an int or string, with value: &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// The type test can be used to find the runtime type of union type variables.</span>
     <span class="nx">Student</span> <span class="nx">alex</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span> <span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">};</span>
     <span class="nx">Student</span><span class="p">|</span><span class="nx">Person</span><span class="p">|</span><span class="nx">Vehicle</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">alex</span><span class="p">;</span>
+
+    <span class="c1">// Type of `x` is `Student`. Therefore, the `if` check will pass.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is a student&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is not a student&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Type of `x` is `Student`. However, it is structurally equivalent to `Person`.</span>
+    <span class="c1">// Therefore, the `if` check will pass.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is a person&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is not a person&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Type of `x` is Student. However, it is not structurally equivalent to `Vehicle`.</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">is</span> <span class="nx">Vehicle</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is a vehicle&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is not a vehicle&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// The type test expression can be used with any expression.</span>
     <span class="kt">boolean</span> <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Does foo return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
     <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Does foo return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Vehicle</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Vehicle</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">brand</span><span class="p">;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="kt">string</span> <span class="nx">t</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="kt">string</span> <span class="nx">t</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">t</span> <span class="o">==</span> <span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">};</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">t</span> <span class="o">==</span> <span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">&lt;</span><span class="nx">Vehicle</span><span class="p">&gt;{</span><span class="nx">brand</span><span class="p">:</span> <span class="s">&quot;Honda&quot;</span><span class="p">};</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="s">&quot;invalid type&quot;</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">type_test_expression</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Is</span> <span class="sc">&#39;a&#39;</span> <span class="nx">a</span> <span class="kt">string</span><span class="err">?</span> <span class="kc">true</span>
-<span class="sc">&#39;a&#39;</span> <span class="nx">is</span> <span class="nx">a</span> <span class="kt">string</span> <span class="nx">with</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!</span>
-<span class="nx">Alex</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">student</span>
-<span class="nx">Alex</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">person</span>
-<span class="nx">Alex</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">a</span> <span class="nx">vehicle</span>
-<span class="nx">Does</span> <span class="nx">foo</span> <span class="k">return</span> <span class="nx">a</span> <span class="nx">student</span><span class="err">?</span> <span class="kc">true</span>
-<span class="nx">Does</span> <span class="nx">foo</span> <span class="k">return</span> <span class="nx">a</span> <span class="nx">student</span><span class="err">?</span> <span class="kc">false</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -109,15 +125,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/type-test-expression/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=58d09bd9466b88034edd5cc3418bf687&file=type_test_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f5dc59eef6bd1ecb01331988cc2e1ec5&file=type_test_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -465,7 +481,7 @@ Does foo return a student? false
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

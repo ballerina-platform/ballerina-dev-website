@@ -8,6 +8,8 @@ active: implementing-grpc-services-and-clients
 intro: The topics below explain how to implement a gRPC service and write a client to invoke it. 
 redirect_from:
   - /learn/network-communication/grpc/implementing-grpc-services-and-clients
+  - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients/
+  - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients
 ---
 
 ## Implementing a gRPC Service

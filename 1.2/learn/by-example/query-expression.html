@@ -10,35 +10,56 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span>
+
+<span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">expectedGradYear</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>
+
+    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>
+
+    <span class="c1">//The `from` clause works similarly to a `foreach` statement.</span>
+    <span class="c1">//It can be used to iterate any iterable value.</span>
+    <span class="c1">//The `outputStudentList` is the result of the `query` expression.</span>
     <span class="nx">Report</span><span class="p">[]</span> <span class="nx">reportList</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+       <span class="c1">//The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.</span>
+       <span class="c1">//It can refer to variables bound by the from clause.</span>
+       <span class="c1">//When the `where` condition evaluates to false, the iteration skips following the clauses.</span>
        <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+       <span class="c1">//The `let` clause binds the variables.</span>
        <span class="nx">let</span> <span class="kt">string</span> <span class="nx">degreeName</span> <span class="p">=</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
        <span class="kt">int</span> <span class="nx">graduationYear</span> <span class="p">=</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
+       <span class="c1">//The `select` clause is evaluated for each iteration.</span>
+       <span class="c1">//The result of the query expression is a list(`reportList`) whose members are the result of the `select` clause.</span>
        <span class="nx">select</span> <span class="p">{</span>
               <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
               <span class="nx">degree</span><span class="p">:</span> <span class="nx">degreeName</span><span class="p">,</span>
               <span class="nx">expectedGradYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
-       <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
+       <span class="p">};</span>
+
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_expression</span><span class="p">.</span><span class="nx">balname</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">expectedGradYear</span><span class="p">=</span><span class="mi">2025</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">expectedGradYear</span><span class="p">=</span><span class="mi">2027</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -85,15 +106,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/query-expression/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=db5b8db85d991bb0eeef401cf1354e20&file=query_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8991ebf8e7610e9487bd427a7772a303&file=query_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -402,7 +423,7 @@ name=John degree=Bachelor of Medicine expectedGradYear=2027
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

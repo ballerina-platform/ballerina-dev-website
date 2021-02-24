@@ -11,34 +11,66 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Creates an SMTP client with the connection parameters, host, username,</span>
+    <span class="c1">// and password. Default port number `465` is used over SSL with these</span>
+    <span class="c1">// configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;smtp.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;sender@email.com&quot;</span>
         <span class="p">,</span> <span class="s">&quot;pass123&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Define the email that is required to be sent.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">email</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="c1">// &quot;TO&quot;, &quot;CC&quot; and &quot;BCC&quot; address lists are added as follows.</span>
+        <span class="c1">// Only &quot;TO&quot; address list is mandatory out of these three.</span>
         <span class="nx">to</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver2@email.com&quot;</span><span class="p">],</span>
         <span class="nx">cc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver3@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;receiver4@email.com&quot;</span><span class="p">],</span>
         <span class="nx">bcc</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;receiver5@email.com&quot;</span><span class="p">],</span>
+        <span class="c1">// Subject of the email is added as follows. This field is mandatory.</span>
         <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;Sample Email&quot;</span><span class="p">,</span>
+        <span class="c1">// Body content of the email is added as follows.</span>
+        <span class="c1">// This field is mandatory.</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;This is a sample email.&quot;</span><span class="p">,</span>
+        <span class="c1">// Email author&#39;s address is added as follows. This field is mandatory.</span>
         <span class="err">&#39;</span><span class="nx">from</span><span class="p">:</span> <span class="s">&quot;author@email.com&quot;</span><span class="p">,</span>
+        <span class="c1">// Email sender service address is added as follows.</span>
+        <span class="c1">// This field is optional. `Sender` is same as the `&#39;from` when the</span>
+        <span class="c1">// email author himself sends the email.</span>
         <span class="nx">sender</span><span class="p">:</span> <span class="s">&quot;sender@email.com&quot;</span><span class="p">,</span>
+        <span class="c1">// List of recipients when replying to the email is added as follows.</span>
+        <span class="c1">// This field is optional. These addresses are required when the emails</span>
+        <span class="c1">// are to be replied to some other address(es) other than the sender or</span>
+        <span class="c1">// the author.</span>
         <span class="nx">replyTo</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;replyTo1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;replyTo2@email.com&quot;</span><span class="p">]</span>
     <span class="p">};</span>
+
+    <span class="c1">// Send the email with the client.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while sending the email: &quot;</span>
             <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
-    <span class="p">}}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">send_email</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Check</span> <span class="nx">the</span> <span class="nx">inbox</span> <span class="nx">to</span> <span class="nx">view</span> <span class="nx">the</span> <span class="nx">email</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create the client with the connection parameters, host, username, and</span>
+    <span class="c1">// password. An error is received in failure. Default port number `995` is</span>
+    <span class="c1">// used over SSL with these configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">popClient</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Read the first unseen email received by the POP3 server. Nil is</span>
+        <span class="c1">// returned when there are no new unseen emails. In error cases an</span>
+        <span class="c1">// error is returned.</span>
         <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+        <span class="c1">// When no emails are available in the server, nil is returned.</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -49,17 +81,25 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while creating client: &quot;</span>
             <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">popClient</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">receive_email</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Subject</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">body</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">email</span> <span class="nx">would</span> <span class="nx">be</span> <span class="nx">printed</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create the client with the connection parameters, host, username, and</span>
+    <span class="c1">// password. An error is received in failure. Default port number `993` is</span>
+    <span class="c1">// used over SSL with these configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">imapClient</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Read the first unseen email received by the IMAP4 server. Nil is</span>
+        <span class="c1">// returned when there are no new unseen emails. In error cases an</span>
+        <span class="c1">// error is returned.</span>
         <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Subject: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">subject</span><span class="p">);</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Email Body: &quot;</span><span class="p">,</span> <span class="nx">emailResponse</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+        <span class="c1">// When no emails are available in the server, nil is returned.</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -70,9 +110,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while creating client: &quot;</span>
             <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">imapClient</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">receive_email</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Subject</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">body</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">email</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">printed</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -118,9 +156,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/send-and-receive-emails/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -823,7 +861,7 @@ ballerina run receive_email.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

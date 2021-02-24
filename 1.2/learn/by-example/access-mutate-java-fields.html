@@ -12,17 +12,19 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+
+<span class="c1">// Define a Ballerina function which will act as a Java field getter.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">pi</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">=</span> <span class="nd">@java:FieldGet {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;PI&quot;</span><span class="p">,</span>
     <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java/lang/Math&quot;</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">float</span> <span class="nx">r</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="c1">// If a field is an instance field, the receiver instance has to be provided as the first parameter.</span>
     <span class="kt">float</span> <span class="nx">l</span> <span class="p">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nx">r</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">l</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">access_mutate_java_fields</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mf">25.132741228718345</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -68,15 +70,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/access-mutate-java-fields/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a11dee092f34b4a31c93ad1b4941dae8&file=access_mutate_java_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=efe6462a649d5a3d2bed68894d833645&file=access_mutate_java_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -224,7 +226,7 @@ ballerina run access_mutate_java_fields.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

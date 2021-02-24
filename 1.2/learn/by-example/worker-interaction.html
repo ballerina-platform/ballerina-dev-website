@@ -12,63 +12,87 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+
+<span class="c1">// Workers interact with each other by sending and receiving messages.</span>
+<span class="c1">// Ballerina validates every worker interaction (send and receive)</span>
+<span class="c1">// to avoid deadlocks.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
         <span class="kt">float</span> <span class="nx">k</span> <span class="p">=</span> <span class="mf">2.34</span><span class="p">;</span>
+
+        <span class="c1">// Sends messages asynchronously to the worker `w2`. This message contains a</span>
+        <span class="c1">// tuple value with the member types `int` and `float`.</span>
         <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">]</span> <span class="nx">t1</span> <span class="p">=</span> <span class="p">[</span><span class="nx">i</span><span class="p">,</span> <span class="nx">k</span><span class="p">];</span>
         <span class="nx">t1</span> <span class="o">-&gt;</span> <span class="nx">w2</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1 -&gt; w2] i: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; k: &quot;</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
+
+        <span class="c1">// Receives a message from the worker `w2`. This message contains `</span>
+        <span class="c1">// a `json`-typed value.</span>
         <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{};</span>
         <span class="nx">j</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w2</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">jStr</span> <span class="p">=</span> <span class="nx">j</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1 &lt;- w2] j: &quot;</span><span class="p">,</span> <span class="nx">jStr</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1 -&gt;&gt; w2] i: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
+
+        <span class="c1">// Sends messages synchronously to the worker `w2`. The worker `w1` will wait</span>
+        <span class="c1">// until the worker `w2` receives the message.</span>
         <span class="p">()</span> <span class="nx">send</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">-&gt;</span><span class="p">&gt;</span> <span class="nx">w2</span><span class="p">;</span>
+
+        <span class="c1">// The synchronous sending returns `nil` if the message was successfully sent or</span>
+        <span class="c1">// returns an error or panics based on the receiving worker&#39;s state.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1 -&gt;&gt; w2] successful!!&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Sends messages asynchronously to the worker `w3`.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1 -&gt; w3] k: &quot;</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
         <span class="nx">k</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">;</span>
         <span class="nx">k</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">;</span>
-        <span class="nx">k</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">;</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Waiting for worker w3 to fetch messages..&quot;</span><span class="p">);</span>
+        <span class="nx">k</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">;</span>
+
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Waiting for worker w3 to fetch messages..&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Flushes all messages sent asynchronously to the worker `w3`. The worker</span>
+        <span class="c1">// will halt at this point until all messages are sent or until the worker `w3`</span>
+        <span class="c1">// fails.</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">flushResult</span> <span class="p">=</span> <span class="nx">flush</span> <span class="nx">w3</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1 -&gt; w3] Flushed!!&quot;</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
+        <span class="c1">// Receives a message from the worker `w1`.</span>
         <span class="kt">int</span> <span class="nx">iw</span><span class="p">;</span>
         <span class="kt">float</span> <span class="nx">kw</span><span class="p">;</span>
         <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">]</span> <span class="nx">vW1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">];</span>
         <span class="nx">vW1</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="p">[</span><span class="nx">iw</span><span class="p">,</span> <span class="nx">kw</span><span class="p">]</span> <span class="p">=</span> <span class="nx">vW1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 &lt;- w1] iw: &quot;</span><span class="p">,</span> <span class="nx">iw</span><span class="p">,</span> <span class="s">&quot; kw: &quot;</span><span class="p">,</span> <span class="nx">kw</span><span class="p">);</span>
+
+        <span class="c1">// Sends a message asynchronously to the worker `w1`.</span>
         <span class="kt">json</span> <span class="nx">jw</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 -&gt; w1] jw: &quot;</span><span class="p">,</span> <span class="nx">jw</span><span class="p">);</span>
         <span class="nx">jw</span> <span class="o">-&gt;</span> <span class="nx">w1</span><span class="p">;</span>
+
+        <span class="c1">// Receives the message sent synchronously from the worker `w1`</span>
         <span class="kt">int</span> <span class="nx">lw</span><span class="p">;</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
         <span class="nx">lw</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 &lt;- w1] lw: &quot;</span><span class="p">,</span> <span class="nx">lw</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="kd">worker</span> <span class="nx">w3</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">worker</span> <span class="nx">w3</span> <span class="p">{</span>
         <span class="kt">float</span> <span class="nx">mw</span><span class="p">;</span>
+
+        <span class="c1">// Receives messages from the worker `w1` after a certain time.</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
         <span class="nx">mw</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="nx">mw</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="nx">mw</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w3 &lt;- w1] mw: &quot;</span><span class="p">,</span> <span class="nx">mw</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Waits for the worker `w1`to finish.</span>
     <span class="nx">wait</span> <span class="nx">w1</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">worker_interaction</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">i</span><span class="p">:</span> <span class="mi">100</span> <span class="nx">k</span><span class="p">:</span> <span class="mf">2.34</span>
-<span class="p">[</span><span class="nx">w2</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">iw</span><span class="p">:</span> <span class="mi">100</span> <span class="nx">kw</span><span class="p">:</span> <span class="mf">2.34</span>
-<span class="p">[</span><span class="nx">w2</span> <span class="o">-&gt;</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">jw</span><span class="p">:</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Ballerina</span>
-<span class="p">[</span><span class="nx">w1</span> <span class="o">&lt;-</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">j</span><span class="p">:</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Ballerina</span>
-<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span><span class="p">&gt;</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">i</span><span class="p">:</span> <span class="mi">100</span>
-<span class="p">[</span><span class="nx">w2</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">lw</span><span class="p">:</span> <span class="mi">100</span>
-<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span><span class="p">&gt;</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">successful</span><span class="p">!!</span>
-<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">]</span> <span class="nx">k</span><span class="p">:</span> <span class="mf">2.34</span>
-<span class="nx">Waiting</span> <span class="k">for</span> <span class="kd">worker</span> <span class="nx">w3</span> <span class="nx">to</span> <span class="nx">fetch</span> <span class="nx">messages</span><span class="p">..</span>
-<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">]</span> <span class="nx">Flushed</span><span class="p">!!</span>
-<span class="p">[</span><span class="nx">w3</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">mw</span><span class="p">:</span> <span class="mf">2.34</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -116,15 +140,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/worker-interaction/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ce7d76ade393cae8a48fd908aa83da01&file=worker_interaction.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b6fca70cd3dae0e5d6ee4ac23100796e&file=worker_interaction.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -554,7 +578,7 @@ Waiting for worker w3 to fetch messages..
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

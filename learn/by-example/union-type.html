@@ -1,11 +1,12 @@
 ---
 layout: ballerina-example-page
 title: Union Types
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /learn/by-example/union-type
 redirect_from:
-  - /vswan-lake/learn/by-example/union-type
-  - /vswan-lake/learn/by-example/union-type.html
+  - /swan-lake/learn/by-example/union-type
+  - /swan-lake/learn/by-example/union-type.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -19,7 +20,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">!</span><span class="nx">personTab</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;id &#39;&quot;</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s">&quot;&#39; not found&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">personTab</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nx">personTab</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="c1">// If the `id` is an int, lookup the `Person` by index</span>
         <span class="k">return</span> <span class="nx">personTab</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()[</span><span class="nx">id</span><span class="p">];</span>
@@ -103,6 +104,10 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/union-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2d15d82310f99c67642dce84052a922d&file=union_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -184,7 +189,7 @@ redirect_from:
         if !personTab.hasKey(id) {
             return error(&quot;id &#39;&quot; + id + &quot;&#39; not found&quot;);
         }
-        return personTab[id];
+        return personTab.get(id);
     } else {
 </code></pre></div>
 

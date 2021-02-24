@@ -12,30 +12,54 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+
+<span class="c1">// Let&#39;s create a Ballerina function to call the static method `randomUUID` in `java.util.UUID` class.</span>
+<span class="c1">// Here the `name` field is optional if the Ballerina function name is equal to the Java counterpart.</span>
+<span class="c1">// This method returns a handle value referring to a `java.util.UUID` instance.</span>
 <span class="kd">function</span> <span class="nx">createRandomUUID</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;randomUUID&quot;</span><span class="p">,</span>
     <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.UUID&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="c1">// The class `java.util.ArrayDeque` is a resizable array that allows you to add or remove an element from both sides.</span>
+<span class="c1">// Here `newArrayDeque` function is linked with the default constructor of the `java.util.ArrayDeque` class.</span>
 <span class="kd">function</span> <span class="nx">newArrayDeque</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
     <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="c1">// The `offer` Ballerina function is linked with the instance method `offer` in `java.util.ArrayDeque` class.</span>
+<span class="c1">// This function inserts the element `e` at the end of the queue referred by the parameter `receiver`.</span>
 <span class="kd">function</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="c1">// The `poll` Ballerina function is linked with the instance method `poll` in `java.util.ArrayDeque` class.</span>
+<span class="c1">// This function removes the head element of the queue referred by the parameter `receiver`.</span>
 <span class="kd">function</span> <span class="nx">poll</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create a random UUID instance by invoking the `createRandomUUID` Ballerina function.</span>
+    <span class="c1">// This function demonstrates how you can invoke Java static function in Ballerina.</span>
     <span class="k">var</span> <span class="nx">uuid</span> <span class="p">=</span> <span class="nx">createRandomUUID</span><span class="p">();</span>
+
+    <span class="c1">// Create a new `java.util.ArrayDeque` instance.</span>
     <span class="k">var</span> <span class="nx">arrayDeque</span> <span class="p">=</span> <span class="nx">newArrayDeque</span><span class="p">();</span>
+
+    <span class="c1">// Ballerina strings are different from Java strings. The `fromString` function in `ballerina/java` module converts</span>
+    <span class="c1">// a Ballerina string value to a Java String representation. Java String is a reference type; hence,</span>
+    <span class="c1">// this method returns a handle value referring to the created to Java string.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">));</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Jane&quot;</span><span class="p">));</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Peter&quot;</span><span class="p">));</span>    <span class="k">var</span> <span class="nx">nextInLineHandle</span> <span class="p">=</span> <span class="nx">poll</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Peter&quot;</span><span class="p">));</span>
+
+    <span class="k">var</span> <span class="nx">nextInLineHandle</span> <span class="p">=</span> <span class="nx">poll</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">);</span>
+    <span class="c1">// The `toString` function in `ballerina/java` module creates a Ballerina string</span>
+    <span class="c1">// representation of the Java reference value.</span>
     <span class="kt">string</span><span class="p">? nextInLine = java:toString(</span><span class="nx">nextInLineHandle</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">nextInLine</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">invoke</span><span class="o">-</span><span class="nx">java</span><span class="o">-</span><span class="nx">methods</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">John</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -79,15 +103,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/invoke-java-methods/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=599031cd077882f6780560f915e31792&file=invoke_java_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=65e9d5946fee4a7aea7519c20abe4732&file=invoke_java_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -391,7 +415,7 @@ John
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -18,8 +18,8 @@ redirect_from:
   - /1.2/learn/setting-up-visual-studio-code/documentation-viewer
   - /1.2/learn/documentation-viewer
   - /1.2/learn/documentation-viewer/
-  - /1.2/learn/getting-started/documentation-viewer
-  - /1.2/learn/getting-started/documentation-viewer/
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/documentation-viewer
+  - /1.2/learn/getting-started/setting-up-visual-studio-code/documentation-viewer/
 ---
 
 ## Launching the Documentation Viewer

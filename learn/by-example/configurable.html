@@ -1,16 +1,24 @@
 ---
 layout: ballerina-example-page
 title: Configurable Variables
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: Configurable variables in Ballerina provide configuration of module-level variables from various sources such as files and environment variables at the program execution.
+keywords: ballerina, ballerina by example, bbe, configurable, configurable variable, config management, configuration
 permalink: /learn/by-example/configurable
 redirect_from:
-  - /vswan-lake/learn/by-example/configurable
-  - /vswan-lake/learn/by-example/configurable.html
+  - /swan-lake/learn/by-example/configurable
+  - /swan-lake/learn/by-example/configurable.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">UserInfo</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="nx">readonly</span> <span class="kt">string</span> <span class="nx">username</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">password</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="nx">type</span> <span class="nx">UserTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">UserInfo</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
 
 <span class="c1">// `configurable` variables can be initialized with the `?` expression.</span>
 <span class="c1">// A value must be supplied for such variables in a `Config.toml` file.</span>
@@ -30,12 +38,19 @@ redirect_from:
 <span class="c1">// provided for it in the `Config.toml` file.</span>
 <span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">protocol</span> <span class="p">=</span> <span class="s">&quot;http&quot;</span><span class="p">;</span>
 
+<span class="c1">// A `configurable` variable named `admin` of the `UserInfo &amp; readonly` record type is initialized.</span>
+<span class="nx">configurable</span> <span class="nx">UserInfo</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">admin</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
+<span class="c1">// A `configurable` variable named `users` of the `table&lt;(UserInfo &amp; readonly)&gt; key(username)` table type is initialized.</span>
+<span class="nx">configurable</span> <span class="nx">UserTable</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">users</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
+
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;host: &quot;</span><span class="p">,</span> <span class="nx">hostName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;port: &quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;protocol: &quot;</span><span class="p">,</span> <span class="nx">protocol</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;maximum payload (in MB): &quot;</span><span class="p">,</span> <span class="nx">maxPayload</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;remote enabled: &quot;</span><span class="p">,</span> <span class="nx">enableRemote</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;admin details: &quot;</span><span class="p">,</span> <span class="nx">admin</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;users: &quot;</span><span class="p">,</span> <span class="nx">users</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -58,7 +73,8 @@ redirect_from:
 
 <p>The configuration file must be in the TOML(v0.4) format.
  Ballerina currently supports configurable variables of types <code>int</code>, <code>float</code>,
- <code>boolean</code>, <code>string</code>, <code>decimal</code> and the arrays of respective types.</p>
+ <code>boolean</code>, <code>string</code>, <code>decimal</code>, the arrays of the respective types, record, and
+ table.</p>
 </p>
 
                         </td>
@@ -124,6 +140,14 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -133,6 +157,33 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type UserInfo record {|
+    readonly string username;
+    string password;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type UserTable table&lt;UserInfo&gt; key(username);
 </code></pre></div>
 
                                 </td>
@@ -207,6 +258,44 @@ configurable float maxPayload = 1.0;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>configurable UserInfo &amp; readonly admin = ?;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>configurable</code> variable named <code>admin</code> of the <code>UserInfo &amp; readonly</code> record type is initialized.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>configurable UserTable &amp; readonly users = ?;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>configurable</code> variable named <code>users</code> of the <code>table&lt;(UserInfo &amp; readonly)&gt; key(username)</code> table type is initialized.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code">
@@ -216,6 +305,8 @@ configurable float maxPayload = 1.0;
     io:println(&quot;protocol: &quot;, protocol);
     io:println(&quot;maximum payload (in MB): &quot;, maxPayload);
     io:println(&quot;remote enabled: &quot;, enableRemote);
+    io:println(&quot;admin details: &quot;, admin);
+    io:println(&quot;users: &quot;, users);
 }
 </code></pre></div>
 
@@ -272,6 +363,18 @@ configurable float maxPayload = 1.0;
 # port = 9090
 # enableRemote = false
 # maxPayload = 0.321
+# 
+# [admin]
+# username = &quot;admin&quot;
+# password = &quot;password&quot;
+# 
+# [[users]]
+# username = &quot;John&quot;
+# password=&quot;abc123&quot;
+# 
+# [[users]]
+# username = &quot;Bob&quot;
+# password=&quot;cde456&quot;
 </code></pre></div>
 
                                 </td>
@@ -302,6 +405,8 @@ port: 9090
 protocol: http
 maximum payload (in MB): 0.321
 remote enabled: false
+admin details: {&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;password&quot;}
+users: [{&quot;username&quot;:&quot;John&quot;,&quot;password&quot;:&quot;abc123&quot;},{&quot;username&quot;:&quot;Bob&quot;,&quot;password&quot;:&quot;cde456&quot;}]
 </code></pre></div>
 
                                 </td>

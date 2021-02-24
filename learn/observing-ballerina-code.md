@@ -12,6 +12,8 @@ redirect_from:
   - /learn/how-to-observe-ballerina-services/
   - /learn/how-to-observe-ballerina-services
   - /learn/observing-ballerina-code
+  - /swan-lake/learn/observing-ballerina-code/
+  - /swan-lake/learn/observing-ballerina-code
 ---
 
 ## Providing Observability in Ballerina

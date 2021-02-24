@@ -9,6 +9,8 @@ active: mocking
 intro: Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
 redirect_from:
   - /learn/testing-ballerina-code/mocking
+  - /swan-lake/learn/testing-ballerina-code/mocking/
+  - /swan-lake/learn/testing-ballerina-code/mocking
 ---
 
 ## Mocking Objects

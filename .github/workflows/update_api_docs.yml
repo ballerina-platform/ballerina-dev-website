@@ -35,15 +35,15 @@ jobs:
          VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
          mv ./ballerina-$VERSION/distributions/jballerina-$VERSION/docs ./ballerina-release/apiDocRedirectionModifier/
          cd ballerina-release/apiDocRedirectionModifier 
-         ./redirection.sh ./docs v1-2 /learn/api-docs/ballerina/ target
+         ./redirection.sh ./docs v1-2 1.2/learn/api-docs/ballerina/ target
 
     - name: Remove old API Docs
-      run: git rm -r learn/api-docs/ballerina
+      run: git rm -r 1.2/learn/api-docs/ballerina
 
     - name: Copy newly generated API Docs
       run: |
         VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
-        cp -r ballerina-release/apiDocRedirectionModifier/target learn/api-docs/ballerina
+        cp -r ballerina-release/apiDocRedirectionModifier/target 1.2/learn/api-docs/ballerina
 
     - name: Push changes for new API Docs
       run: |
@@ -53,7 +53,7 @@ jobs:
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
         
-        git add learn/api-docs/ballerina
+        git add 1.2/learn/api-docs/ballerina
         git commit --allow-empty -m 'Update API Docs'
         
         git push --set-upstream origin automate-apidoc-$GITHUB_SHA

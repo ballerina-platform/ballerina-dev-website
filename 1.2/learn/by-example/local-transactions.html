@@ -12,60 +12,86 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+
+<span class="c1">// JDBC Client for H2 database.</span>
 <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/testdb&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span>
-<span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">});</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create the tables that are required for the transaction.</span>
     <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE CUSTOMER (ID INTEGER, NAME &quot;</span> <span class="o">+</span>
                               <span class="s">&quot;VARCHAR(30))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create CUSTOMER table&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Populate table with data.</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE SALARY (ID INTEGER, MON_SALARY FLOAT)&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create SALARY table&quot;</span><span class="p">);</span>
+
+    <span class="c1">// This is a `transaction` block. If you do not explicitly `abort` or</span>
+    <span class="c1">// `retry` a returned error, the transaction will be automatically</span>
+    <span class="c1">// retried until the retry count is reached and aborted.</span>
+    <span class="c1">// The retry count that is given via `retries` is the number of times the</span>
+    <span class="c1">// transaction is retried before it being aborted and the default value is 3.</span>
     <span class="nx">transaction</span> <span class="nx">with</span> <span class="nx">retries</span> <span class="p">=</span> <span class="mi">4</span> <span class="p">{</span>
+        <span class="c1">// Any transacted action within the `transaction` block may return</span>
+        <span class="c1">// errors such as backend DB errors, connection pool errors etc.</span>
+        <span class="c1">// The user can decide whether to `abort` or `retry` based on the</span>
+        <span class="c1">// returned error.</span>
+        <span class="c1">// This is the first remote function participant of the transaction.</span>
         <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(ID,NAME) &quot;</span> <span class="o">+</span>
                                      <span class="s">&quot;VALUES (1, &#39;Anne&#39;)&quot;</span><span class="p">);</span>
+        <span class="c1">// This is the second remote function participant of the transaction.</span>
         <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY (ID, MON_SALARY) &quot;</span> <span class="o">+</span>
                              <span class="s">&quot;VALUES (1, 2500)&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Inserted count: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
+            <span class="c1">// If the transaction is forced to abort, it will roll back the transaction</span>
+            <span class="c1">// and exit the transaction block without retrying.</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">abort</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// If the transaction is forced to retry, it will roll back the transaction,</span>
+            <span class="c1">// go to the `onretry` block, and retry from the beginning until the defined</span>
+            <span class="c1">// retry count is reached.</span>
             <span class="nx">retry</span><span class="p">;</span>
         <span class="p">}</span>
+    <span class="c1">// The end curly bracket marks the end of the transaction and the transaction will</span>
+    <span class="c1">// be committed or rolled back at this point.</span>
     <span class="p">}</span> <span class="nx">onretry</span> <span class="p">{</span>
+        <span class="c1">// The `onretry` block will be executed whenever the transaction is retried until it</span>
+        <span class="c1">// reaches the retry count. A transaction could be retried if it fails due to an</span>
+        <span class="c1">// exception or throw statement or from an explicit retry statement.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retrying transaction&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="nx">committed</span> <span class="p">{</span>
+        <span class="c1">// Any action that needs to be performed after the transaction is</span>
+        <span class="c1">// committed should be added here.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
+        <span class="c1">// If the transaction is aborted, any action that needs to perform after</span>
+        <span class="c1">// the abortion should be added here.</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Drop the tables.</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE CUSTOMER&quot;</span><span class="p">);</span>
-    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table CUSTOMER&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE SALARY&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table CUSTOMER&quot;</span><span class="p">);</span>
+
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE SALARY&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table SALARY&quot;</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Function to handle the return value of the `update` remote function.</span>
 <span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Before</span> <span class="nx">running</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">change</span> <span class="nx">the</span> <span class="nx">H2</span> <span class="nx">DB</span> <span class="nx">connection</span> <span class="nx">properties</span> <span class="k">as</span> <span class="nx">required</span><span class="p">.</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">experimental</span> <span class="nx">local_transactions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">172.17.0.1</span><span class="p">:</span><span class="mi">49479</span>
-<span class="nx">Create</span> <span class="nx">CUSTOMER</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Create</span> <span class="nx">SALARY</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">18</span> <span class="mi">12</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span><span class="mi">983</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Created</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">17130</span><span class="nx">bbc</span><span class="o">-</span><span class="mf">28e0</span><span class="o">-</span><span class="mi">414</span><span class="nx">d</span><span class="o">-</span><span class="nx">b0a0</span><span class="o">-</span><span class="nx">e20efccdacec</span>
-<span class="nx">Inserted</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">18</span> <span class="mi">12</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span><span class="mi">999</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Running</span> <span class="mi">2</span><span class="o">-</span><span class="nx">phase</span> <span class="nx">commit</span> <span class="k">for</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">17130</span><span class="nx">bbc</span><span class="o">-</span><span class="mf">28e0</span><span class="o">-</span><span class="mi">414</span><span class="nx">d</span><span class="o">-</span><span class="nx">b0a0</span><span class="o">-</span><span class="nx">e20efccdacec</span><span class="p">:</span><span class="err">$</span><span class="nx">anon</span><span class="err">$</span><span class="p">.</span><span class="err">$</span><span class="mi">0</span>
-<span class="nx">Transaction</span> <span class="nx">committed</span>
-<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">CUSTOMER</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">SALARY</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">192.168.1.3</span><span class="p">:</span><span class="mi">63458</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">stopped</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">192.168.1.3</span><span class="p">:</span><span class="mi">63458</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -114,9 +140,9 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/local-transactions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
@@ -595,7 +621,7 @@ Drop table SALARY status: 0
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -8,6 +8,8 @@ active: communication-resiliency
 intro: The HTTP client supports multiple communication resiliency options out of the box.  
 redirect_from:
   - /learn/network-communication/http/communication-resiliency
+  - /swan-lake/learn/network-communication/http/communication-resiliency/
+  - /swan-lake/learn/network-communication/http/communication-resiliency
 ---
 
 These features allow you to handle and recover from unexpected communication scenarios gracefully. 

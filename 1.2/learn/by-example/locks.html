@@ -11,24 +11,39 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kt">int</span> <span class="nx">counter</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="c1">// The `counter` variable will be shared among multiple workers.</span>
+<span class="kt">int</span> <span class="nx">counter</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">process</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;final counter value - &quot;</span><span class="p">,</span> <span class="nx">counter</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;final count field value - &quot;</span><span class="p">,</span> <span class="nx">counterObj</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Counter</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">update</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Counter</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">update</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="mi">1000</span> <span class="p">{</span>
             <span class="nx">lock</span> <span class="p">{</span>
+                <span class="c1">// Locks the `count` field variable and increments the `count`.</span>
+                <span class="c1">// The `count` field of the same object instance will be locked.</span>
                 <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
-<span class="nx">Counter</span> <span class="nx">counterObj</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span><span class="kd">function</span> <span class="nx">process</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// The `counterObj` object instance will be shared among multiple workers.</span>
+<span class="nx">Counter</span> <span class="nx">counterObj</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">process</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="nx">counterObj</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
+        <span class="c1">// Locks the shared `counter` variable and increments the `counter`.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="mi">1000</span> <span class="p">{</span>
             <span class="nx">lock</span> <span class="p">{</span>
+                <span class="c1">// Locks the shared `counter` variable and increments the `counter`.</span>
                 <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -37,6 +52,7 @@ redirect_from:
         <span class="nx">counterObj</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="mi">1000</span> <span class="p">{</span>
             <span class="nx">lock</span> <span class="p">{</span>
+                <span class="c1">// Locks the shared `counter` variable and increments the `counter`.</span>
                 <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -45,6 +61,7 @@ redirect_from:
         <span class="nx">counterObj</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="mi">1000</span> <span class="p">{</span>
             <span class="nx">lock</span> <span class="p">{</span>
+                <span class="c1">// Locks the shared `counter` variable and increments the `counter`.</span>
                 <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -53,16 +70,14 @@ redirect_from:
         <span class="nx">counterObj</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="mi">1000</span> <span class="p">{</span>
             <span class="nx">lock</span> <span class="p">{</span>
+                <span class="c1">// Locks the shared `counter` variable and increments the `counter`.</span>
                 <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
+    <span class="c1">// Waits for all workers to complete.</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">,</span> <span class="nx">w3</span><span class="p">,</span> <span class="nx">w4</span><span class="p">};</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">locks</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">final</span> <span class="nx">counter</span> <span class="nx">value</span> <span class="o">-</span> <span class="mi">4000</span>
-<span class="nx">final</span> <span class="nx">count</span> <span class="nx">field</span> <span class="nx">value</span> <span class="o">-</span> <span class="mi">4000</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -110,15 +125,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
+                                        <li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/locks/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2f62ca82ec02fc3a17f4f82e84c95086&file=locks.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=917d58a7c4234eddeea9ab91e9a84d87&file=locks.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -489,7 +504,7 @@ final count field value - 4000
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

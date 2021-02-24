@@ -1,0 +1,575 @@
+---
+layout: ballerina-example-page
+title: HTTP Streaming
+description: This BBE demonstrates the input and the output streaming capability in Ballerina.
+keywords: ballerina, ballerina by example, bbe, http, streaming
+permalink: /learn/by-example/http-streaming
+redirect_from:
+  - /swan-lake/learn/by-example/http-streaming
+  - /swan-lake/learn/by-example/http-streaming.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
+
+<span class="c1">// Creates an endpoint for the [client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client).</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+<span class="kd">service</span> <span class="o">/</span><span class="p">&#39;stream on new http:Listener(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">fileupload</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                                         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+        <span class="c1">//[Sets the file](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setFileAsPayload) as the request payload.</span>
+        <span class="nx">request</span><span class="p">.</span><span class="nx">setFileAsPayload</span><span class="p">(</span><span class="s">&quot;./files/BallerinaLang.pdf&quot;</span><span class="p">,</span>
+            <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span><span class="p">);</span>
+
+        <span class="c1">//Sends the request to the client with the file content.</span>
+        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/stream/receiver&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">res</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending data to the client &quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
+            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while while sending response to the caller&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">receiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                                        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="c1">//[Retrieve the byte stream](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getByteStream).</span>
+        <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">streamer</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getByteStream</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">streamer</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+            <span class="c1">//Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">? result = io:fileWriteBlocksFromStream(</span>
+                                    <span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">,</span> <span class="nx">streamer</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while writing &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;File Received!&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">close</span><span class="p">(</span><span class="nx">streamer</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">streamer</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending response&quot;</span><span class="p">,</span>
+                           <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//Sets the error to the response.</span>
+<span class="kd">function</span> <span class="nx">setError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">//Closes the byte stream.</span>
+<span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">byteStream</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">byteStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the stream: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>HTTP Streaming</h2>
+                            <p><p>Ballerina supports HTTP input and output streaming capability based on the Ballerina <code>stream</code> type.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="different-payload-types.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Handling Different Payload Types</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-compression.html">
+                                        <span>NEXT ></span>
+                                        <p>HTTP Compression</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="http-streaming">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-streaming/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d4ac813512c985747301f990e016f7e9&file=http_streaming.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+import ballerina/io;
+import ballerina/log;
+import ballerina/mime;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = check new (&quot;http://localhost:9090&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creates an endpoint for the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client">client</a>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service /&#39;stream on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get fileupload(http:Caller caller,
+                                         http:Request clientRequest) {
+        http:Request request = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        request.setFileAsPayload(&quot;./files/BallerinaLang.pdf&quot;,
+            contentType = mime:APPLICATION_PDF);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setFileAsPayload">Sets the file</a> as the request payload.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Sends the request to the client with the file content.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
+        if (clientResponse is http:Response) {
+            res = clientResponse;
+        } else {
+            log:printError(&quot;Error occurred while sending data to the client &quot;,
+                            err = &lt;error&gt;clientResponse);
+            setError(res, &lt;error&gt;clientResponse);
+        }
+        var result = caller-&gt;respond(res);
+        if (result is error) {
+            log:printError(&quot;Error while while sending response to the caller&quot;,
+                            err = result);
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post receiver(http:Caller caller,
+                                        http:Request request) {
+        http:Response res = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        stream&lt;byte[], io:Error&gt;|error streamer = request.getByteStream();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getByteStream">Retrieve the byte stream</a>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (streamer is stream&lt;byte[], io:Error&gt;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:Error? result = io:fileWriteBlocksFromStream(
+                                    &quot;./files/ReceivedFile.pdf&quot;, streamer);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Writes the incoming stream to a file using <code>io:fileWriteBlocksFromStream</code> API by providing the file location to which the content should be written to.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
+                log:printError(&quot;error occurred while writing &quot;, err = result);
+                setError(res, result);
+            } else {
+                res.setPayload(&quot;File Received!&quot;);
+            }
+            close(streamer);
+        } else {
+            setError(res, streamer);
+        }
+        var result = caller-&gt;respond(res);
+        if (result is error) {
+           log:printError(&quot;Error occurred while sending response&quot;,
+                           err = result);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function setError(http:Response res, error err) {
+    res.statusCode = 500;
+    res.setPayload(&lt;@untainted&gt;err.message());
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Sets the error to the response.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>function close(stream&lt;byte[], io:Error&gt; byteStream) {
+    var cr = byteStream.close();
+    if (cr is error) {
+        log:printError(&quot;Error occurred while closing the stream: &quot;, err = cr);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Closes the byte stream.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and use the `bal run` command below.
+bal run http_streaming.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>#Send a request to the streaming service.
+curl -X GET http://localhost:9090/stream/fileupload
+File Received!
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

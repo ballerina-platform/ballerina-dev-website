@@ -30,7 +30,7 @@ The example below implements an HTTP service resource to broadcast a message to 
 
 1. Create a `ws_connection_creation.bal` file with the content below.
 
-   >**Info:** In the code below, the first service is bound to an HTTP listener. The provided request implementation at `/ws` signals to the system that it is executing an HTTP upgrade to the WebSocket protocol. After the protocol upgrade is done, the `WsService` service will assume the functionality of a WebSocket service. 
+   >**Info:** In the code below, the first service is bound to an WebSocket listener. The provided request implementation at `/ws` signals to the system that it is executing an HTTP upgrade to the WebSocket protocol. After the protocol upgrade is done, the `WsService` service will assume the functionality of a WebSocket service. 
 
    ```ballerina
    import ballerina/http;
@@ -121,7 +121,7 @@ The example below shows the usage of this by updating the [`/ws` service](#conne
 
    ```ballerina
    @websocket:ServiceConfig {
-      subProtocols: ["xml", "json"],
+      subProtocols: ["mqtt", "json"],
       idleTimeoutInSeconds: 120
    }
    service /ws on new websocket:Listener(8080) {

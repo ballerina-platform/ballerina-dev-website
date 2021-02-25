@@ -3,13 +3,13 @@ layout: ballerina-left-nav-pages-swanlake
 title: Data Streaming
 description: HTTP data streaming can be attained using chunked transfer encoding.
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/http/data-streaming/
+permalink: /learn/network-communication/http/http-clients/data-streaming/
 active: data-streaming
 intro: HTTP data streaming can be attained using chunked transfer encoding.  
 redirect_from:
-  - /learn/network-communication/http/data-streaming
-  - /swan-lake/learn/network-communication/http/data-streaming/
-  - /swan-lake/learn/network-communication/http/data-streaming
+  - /learn/network-communication/http/http-clients/data-streaming
+  - /swan-lake/learn/network-communication/http/http-clients/data-streaming/
+  - /swan-lake/learn/network-communication/http/http-clients/data-streaming
 ---
 
 ## Data Streaming Modes

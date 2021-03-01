@@ -98,7 +98,7 @@ let redirections = {
     "/learn/by-example/readonly-objects-and-fields.html":"/learn/by-example/readonly-objects.html",
     "/learn/by-example/secured-service-with-ldap.html":"/learn/by-example/secured-service-with-basic-auth-ldap-user-store.html",
     "/learn/by-example/secured-client-with-jwt-auth.html":"/learn/by-example/secured-client-with-self-signed-jwt-auth.html",
-    "/learn/by-example/secured-client-with-oauth2.html":"/learn/by-example/secured-client-with-oauth2-client-credentials-grant-type.html"
+    "/learn/by-example/secured-client-with-oauth2.html":"/learn/by-example/secured-client-with-oauth2-client-credentials-grant-type.html",
 
     // API Docs not available.
 
@@ -106,34 +106,6 @@ let redirections = {
     "/1.2/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
     "/1.1/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
     "/1.0/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
-
---------------------------
-    "/1.1/learn/coding-conventions/annotations_documentation_and_comments":"/1.1/learn/style-guide/annotations_documentation_and_comments",
-    "/1.0/learn/coding-conventions/annotations_documentation_and_comments/":"/1.0/learn/style-guide/annotations_documentation_and_comments",
-    "/1.1/learn/coding-conventions/top-level-definitions":"/1.1/learn/style-guide/definitions",
-    "/1.0/learn/coding-conventions/top-level-definitions/":"/1.0/learn/style-guide/definitions",
-    "/1.1/learn/coding-conventions/expressions":"/1.1/learn/style-guide/expressions",
-    "/1.0/learn/coding-conventions/expressions/":"/1.0/learn/style-guide/expressions",
-    "/1.1/learn/coding-conventions/operators_keywords_and_types":"/1.1/learn/style-guide/operators_keywords_and_types",
-    "/1.0/learn/coding-conventions/operators_keywords_and_types/":"/1.0/learn/style-guide/operators_keywords_and_types",
-    "/1.1/learn/coding-conventions/statements":"/1.1/learn/style-guide/statements",
-    "/1.0/learn/coding-conventions/statements/":"/1.0/learn/style-guide/statements",
-    "/1.1/learn/getting-started/quick-tour/":"/1.1/learn/quick-tour",
-    "/1.0/learn/getting-started/quick-tour/":"/1.0/learn/quick-tour",
-    "/1.1/learn/getting-started/installing-ballerina/":"/1.1/learn/installing-ballerina/",
-    "/1.0/learn/getting-started/installing-ballerina/":"/1.0/learn/installing-ballerina/",
-    "/1.1/learn/getting-started/setting-up-visual-studio-code/":"/1.1/learn/setting-up-visual-studio-code",
-    "/1.0/learn/getting-started/setting-up-visual-studio-code/":"/1.0/learn/setting-up-visual-studio-code",
-    "/1.1/learn/getting-started/setting-up-visual-studio-code/documentation-viewer/":"/1.1/learn/setting-up-visual-studio-code/documentation-viewer/",
-    "/1.0/learn/getting-started/setting-up-visual-studio-code/documentation-viewer/":"/1.0/learn/setting-up-visual-studio-code/documentation-viewer/",
-    "/1.1/learn/getting-started/setting-up-visual-studio-code/graphical-editor/":"/1.1/learn/setting-up-visual-studio-code/graphical-editor/",
-    "/1.0/learn/getting-started/setting-up-visual-studio-code/graphical-editor/":"/1.0/learn/setting-up-visual-studio-code/graphical-editor/",
-    "/1.1/learn/getting-started/setting-up-visual-studio-code/language-intelligence/":"/1.1/learn/setting-up-visual-studio-code/language-intelligence/",
-    "/1.0/learn/getting-started/setting-up-visual-studio-code/language-intelligence/":"/1.0/learn/setting-up-visual-studio-code/language-intelligence/",
-    "/1.1/learn/getting-started/setting-up-visual-studio-code/run-all-tests/":"/1.1/learn/setting-up-visual-studio-code/run-all-tests/",
-    "/1.0/learn/getting-started/setting-up-visual-studio-code/run-all-tests/":"/1.0/learn/setting-up-visual-studio-code/run-all-tests/",
-    "/1.1/learn/getting-started/setting-up-visual-studio-code/run-and-debug/":"/1.1/learn/setting-up-visual-studio-code/run-and-debug/",
-    "/1.0/learn/getting-started/setting-up-visual-studio-code/run-and-debug/":"/1.0/learn/setting-up-visual-studio-code/run-and-debug/",
 
 
 

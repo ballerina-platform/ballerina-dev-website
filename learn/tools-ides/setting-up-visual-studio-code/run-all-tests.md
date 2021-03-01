@@ -17,6 +17,8 @@ redirect_from:
   - /learn/run-all-tests/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-all-tests/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-all-tests
+redirect_to:
+ - /page-not-available
 ---
 
 ## Running All Tests 

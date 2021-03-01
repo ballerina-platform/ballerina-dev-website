@@ -17,6 +17,8 @@ redirect_from:
   - /learn/graphical-editor/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/graphical-editor/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/graphical-editor
+redirect_to:
+ - /page-not-available
 ---
 
 ## Launching the Graphical View

@@ -1,14 +1,8 @@
 let redirections = {
     // "/SOURCE (BROKEN) URL without trailing slash":"/DESTINATION (CORRECT) URL with slash"
 
-    // Learn pages not available.
+    // Learn pages not available
 
-    "/1.0/learn/faqs":"/1.0/learn/",
-    "/1.0/learn/faqs/":"/1.0/learn/",
-    "/1.0/learn/faq":"/1.0/learn/",
-    "/1.0/learn/faq/":"/1.0/learn/",
-    "/1.0/learn/by-guide":"/1.0/learn/",
-    "/1.0/learn/by-guide/":"/1.0/learn/",
     "/1.0/learn/keeping-ballerina-up-to-date":"/page-not-available.html",
     "/1.1/learn/calling-java-code-from-ballerina":"/page-not-available.html",
     "/1.0/learn/calling-java-code-from-ballerina":"/page-not-available.html",
@@ -84,17 +78,9 @@ let redirections = {
 
     // BBE Updates
 
-    "/1.1/learn/by-example/awslambda-deployment.html":"/1.1/learn/by-example/aws-lambda-deployment.html",
-    "/1.0/learn/by-example/awslambda-deployment.html":"/1.0/learn/by-example/aws-lambda-deployment.html",
     "/learn/by-example/objects.html":"/learn/by-example/class-definition.html",
-    "/1.1/learn/by-example/class-definition.html":"1.1/learn/by-example/objects.html",
-    "/1.0/learn/by-example/class-definition.html":"1.0/learn/by-example/objects.html",
     "/learn/by-example/abstract-objects.html":"/learn/by-example/object-type.html",
-    "/1.1/learn/by-example/object-type.html":"/1.1/learn/by-example/abstract-objects.html",
-    "/1.0/learn/by-example/object-type.html":"/1.0/learn/by-example/abstract-objects.html",
     "/learn/by-example/anonymous-objects.html":"/learn/by-example/object-constructor-expression.html",
-    "/1.1/learn/by-example/object-constructor-expression.html":"/1.1/learn/by-example/anonymous-objects.html",
-    "/1.0/learn/by-example/object-constructor-expression.html":"/1.0/learn/by-example/anonymous-objects.html",
     "/learn/by-example/readonly-objects-and-fields.html":"/learn/by-example/readonly-objects.html",
     "/learn/by-example/secured-service-with-ldap.html":"/learn/by-example/secured-service-with-basic-auth-ldap-user-store.html",
     "/learn/by-example/secured-client-with-jwt-auth.html":"/learn/by-example/secured-client-with-self-signed-jwt-auth.html",

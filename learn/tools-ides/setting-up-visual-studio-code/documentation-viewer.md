@@ -12,6 +12,7 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer
   - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/
   - /learn/setting-up-visual-studio-code/documentation-viewer
+  - /learn/setting-up-visual-studio-code/documentation-viewer/
   - /learn/documentation-viewer
   - /learn/documentation-viewer/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/documentation-viewer/

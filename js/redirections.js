@@ -1,111 +1,61 @@
 let redirections = {
     // "/SOURCE (BROKEN) URL without trailing slash":"/DESTINATION (CORRECT) URL with slash"
  
-    "/1.1/learn/tools-ides/setting-up-visual-studio-code":"/1.1/learn/vscode-plugin/",
+    //"/1.1/learn/tools-ides/setting-up-visual-studio-code":"/1.1/learn/vscode-plugin/",
     "/1.1/learn/setting-up-visual-studio-code":"/1.1/learn/vscode-plugin/",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code":"/1.0/learn/vscode-plugin/",
     "/1.0/learn/setting-up-visual-studio-code":"/1.0/learn/vscode-plugin/",
-<<<<<<< HEAD
-    "/0.991/learn/tools-ides/setting-up-visual-studio-code":"/0.991/learn/vscode-plugin/",
-    "/0.991/learn/setting-up-visual-studio-code":"/0.991/learn/vscode-plugin/",
-=======
     "/learn/setting-up-visual-studio-code/language-intelligence":"/learn/vscode-plugin/language-intelligence/",
     "/learn/tools-ides/setting-up-visual-studio-code/language-intelligence":"/learn/vscode-plugin/language-intelligence/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-visual-studio-code/language-intelligence":"/1.1/learn/vscode-plugin/language-intelligence/",
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/language-intelligence":"/1.1/learn/vscode-plugin/language-intelligence/",
     "/1.0/learn/setting-up-visual-studio-code/language-intelligence/":"/1.0/learn/vscode-plugin/language-intelligence",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code/language-intelligence/":"/1.0/learn/vscode-plugin/language-intelligence",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-visual-studio-code/language-intelligence/":"/0.991/learn/vscode-plugin/language-intelligence",
-    "/0.991/learn/tools-ides/setting-up-visual-studio-code/language-intelligence/":"/0.991/learn/vscode-plugin/language-intelligence",
-=======
     "/learn/setting-up-visual-studio-code/run-and-debug":"/learn/vscode-plugin/run-and-debug/",
     "/learn/tools-ides/setting-up-visual-studio-code/run-and-debug":"/learn/vscode-plugin/run-and-debug/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-visual-studio-code/run-and-debug":"/1.1/learn/vscode-plugin/run-and-debug/",
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/run-and-debug":"/1.1/learn/vscode-plugin/run-and-debug/",
     "/1.0/learn/setting-up-visual-studio-code/run-and-debug/":"/1.0/learn/vscode-plugin/run-and-debug",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/":"/1.0/learn/vscode-plugin/run-and-debug",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-visual-studio-code/run-and-debug/":"/0.991/learn/vscode-plugin/run-and-debug",
-    "/0.991/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/":"/0.991/learn/vscode-plugin/run-and-debug",
-=======
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-visual-studio-code/graphical-editor":"/1.1/learn/vscode-plugin/graphical-editor/",
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/graphical-editor":"/1.1/learn/vscode-plugin/graphical-editor/",
     "/1.0/learn/setting-up-visual-studio-code/graphical-editor/":"/1.0/learn/setting-up-visual-studio-code/graphical-editor",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code/graphical-editor/":"/1.0/learn/vscode-plugin/graphical-editor",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-visual-studio-code/graphical-editor/":"/0.991/learn/vscode-plugin/graphical-editor",
-    "/0.991/learn/tools-ides/setting-up-visual-studio-code/graphical-editor/":"/0.991/learn/vscode-plugin/graphical-editor",
-=======
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-visual-studio-code/graphical-editor":"/1.1/learn/vscode-plugin/graphical-editor/",
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/graphical-editor":"/1.1/learn/vscode-plugin/graphical-editor/",
     "/1.0/learn/setting-up-visual-studio-code/graphical-editor/":"/1.0/learn/vscode-plugin/graphical-editor",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code/graphical-editor/":"/1.0/learn/vscode-plugin/graphical-editor",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-visual-studio-code/graphical-editor/":"/0.991/learn/vscode-plugin/graphical-editor",
-    "/0.991/learn/tools-ides/setting-up-visual-studio-code/graphical-editor/":"/0.991/learn/vscode-plugin/graphical-editor",
-=======
     "/learn/setting-up-visual-studio-code/documentation-viewer":"/learn/vscode-plugin/documentation-viewer/",
     "/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer":"/learn/vscode-plugin/documentation-viewer/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-visual-studio-code/documentation-viewer":"/1.1/learn/vscode-plugin/documentation-viewer/",
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer":"/1.1/learn/vscode-plugin/documentation-viewer/",
     "/1.0/learn/setting-up-visual-studio-code/documentation-viewer/":"/1.0/learn/vscode-plugin/documentation-viewer",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/":"/1.0/learn/vscode-plugin/documentation-viewer",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-visual-studio-code/documentation-viewer/":"/0.991/learn/vscode-plugin/documentation-viewer",
-    "/0.991/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/":"/0.991/learn/vscode-plugin/documentation-viewer",
-=======
     "/learn/setting-up-visual-studio-code/run-all-tests":"/learn/vscode-plugin/run-all-tests/",
     "/learn/tools-ides/setting-up-visual-studio-code/run-all-tests":"/learn/vscode-plugin/run-all-tests/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-visual-studio-code/run-all-tests":"/1.1/learn/vscode-plugin/run-all-tests/",
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/run-all-tests":"/1.1/learn/vscode-plugin/run-all-tests/",
     "/1.0/learn/setting-up-visual-studio-code/run-all-tests/":"/1.0/learn/vscode-plugin/run-all-tests",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code/run-all-tests/":"/1.0/learn/vscode-plugin/run-all-tests",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-visual-studio-code/run-all-tests/":"/0.991/learn/vscode-plugin/run-all-tests",
-    "/0.991/learn/tools-ides/setting-up-visual-studio-code/run-all-tests/":"/0.991/learn/vscode-plugin/run-all-tests",
-=======
     "/learn/tools-ides/setting-up-intellij-idea":"/learn/intellij-plugin/",
     "/learn/setting-up-intellij-idea":"/learn/intellij-plugin/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/tools-ides/setting-up-intellij-idea":"/1.1/learn/intellij-plugin/",
     "/1.1/learn/setting-up-intellij-idea":"/1.1/learn/intellij-plugin/",
     "/1.0/learn/tools-ides/setting-up-intellij-idea":"/1.0/learn/intellij-plugin/",
     "/1.0/learn/setting-up-intellij-idea":"/1.0/learn/intellij-plugin/",
-<<<<<<< HEAD
-    "/0.991/learn/tools-ides/setting-up-intellij-idea":"/0.991/learn/intellij-plugin/",
-    "/0.991/learn/setting-up-intellij-idea":"/0.991/learn/intellij-plugin/",
-=======
     "/learn/setting-up-intellij-idea/using-the-intellij-plugin":"/learn/intellij-plugin/using-the-intellij-plugin/",
     "/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin":"/learn/intellij-plugin/using-the-intellij-plugin/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-intellij-idea/using-the-intellij-plugin":"/1.1/learn/intellij-plugin/using-the-intellij-plugin/",
     "/1.1/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin":"/1.1/learn/intellij-plugin/using-the-intellij-plugin/",
     "/1.0/learn/setting-up-intellij-idea/using-the-intellij-plugin/":"/1.0/learn/intellij-plugin/using-the-intellij-plugin",
     "/1.0/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/":"/1.0/learn/intellij-plugin/using-the-intellij-plugin",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-intellij-idea/using-the-intellij-plugin/":"/0.991/learn/intellij-plugin/using-the-intellij-plugin",
-    "/0.991/learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/":"/0.991/learn/intellij-plugin/using-the-intellij-plugin",
-=======
     "/learn/setting-up-intellij-idea/using-intellij-plugin-features":"/learn/intellij-plugin/using-intellij-plugin-features/",
     "/learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features":"/learn/intellij-plugin/using-intellij-plugin-features/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/setting-up-intellij-idea/using-intellij-plugin-features":"/1.1/learn/intellij-plugin/using-intellij-plugin-features/",
     "/1.1/learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features":"/1.1/learn/intellij-plugin/using-intellij-plugin-features/",
     "/1.0/learn/setting-up-intellij-idea/using-intellij-plugin-features/":"/1.0/learn/intellij-plugin/using-intellij-plugin-features",
     "/1.0/learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features/":"/1.0/learn/intellij-plugin/using-intellij-plugin-features",
-<<<<<<< HEAD
-    "/0.991/learn/setting-up-intellij-idea/using-intellij-plugin-features/":"/0.991/learn/intellij-plugin/using-intellij-plugin-features",
-    "/0.991/learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features/":"/0.991/learn/intellij-plugin/using-intellij-plugin-features",
-=======
     "/learn/using-the-cli-tools":"/learn/cli-commands/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/using-the-cli-tools":"/1.1/learn/cli-commands/",
     "/1.0/learn/using-the-cli-tools":"/1.0/learn/cli-commands/",
     "/1.2/learn/keeping-ballerina-up-to-date":"/1.2/learn/how-to-keep-ballerina-up-to-date",
@@ -113,24 +63,6 @@ let redirections = {
     "/1.0/learn/keeping-ballerina-up-to-date":"/page-not-available.html",
     "/1.1/learn/using-the-openapi-tools":"/1.1/learn/how-to-use-openapi-tools",
     "/1.0/learn/using-the-openapi-tools":"/1.0/learn/how-to-use-openapi-tools/",
-<<<<<<< HEAD
-    "/0.991/learn/using-the-openapi-tools":"/page-not-available.html",
-    "/1.1/learn/generating-ballerina-code-for-protocol-buffer-definitions":"/1.1/learn/how-to-generate-code-for-protocol-buffers/",
-    "/1.0/learn/generating-ballerina-code-for-protocol-buffer-definitions":"/1.0/learn/how-to-generate-code-for-protocol-buffers/",
-    "/0.991/learn/generating-ballerina-code-for-protocol-buffer-definitions":"/page-not-available.html",
-    "/1.1/learn/structuring-ballerina-code":"/1.1/learn/how-to-structure-ballerina-code/",
-    "/1.0/learn/structuring-ballerina-code":"/1.0/learn/how-to-structure-ballerina-code",
-    "/0.991/learn/structuring-ballerina-code":"/0.991/learn/how-to-structure-ballerina-code/",
-    "/1.1/learn/documenting-ballerina-code":"/1.1/learn/how-to-document-ballerina-code/",
-    "/1.0/learn/documenting-ballerina-code":"/1.0/learn/how-to-document-ballerina-code/",
-    "/0.991/learn/documenting-ballerina-code":"/0.991/learn/how-to-document-ballerina-code",
-    "/1.1/learn/coding-conventions/":"/1.1/learn/style-guide/",
-    "/1.0/learn/coding-conventions":"/1.0/learn/style-guide/",
-    "/0.991/learn/coding-conventions":"/0.991/learn/style-guide/",
-    "/1.1/learn/running-ballerina-code":"/1.1/learn/how-to-deploy-and-run-ballerina-programs/",
-    "/1.0/learn/running-ballerina-code":"/1.0/learn/how-to-deploy-and-run-ballerina-programs/",
-    "/0.991/learn/running-ballerina-code":"/0.991/learn/how-to-run-ballerina-programs/",
-=======
     "/learn/generating-ballerina-code-for-protocol-buffer-definitions":"/learn/how-to-generate-code-for-protocol-buffers/",
     "/1.1/learn/generating-ballerina-code-for-protocol-buffer-definitions":"/1.1/learn/how-to-generate-code-for-protocol-buffers/",
     "/1.0/learn/generating-ballerina-code-for-protocol-buffer-definitions":"/1.0/learn/how-to-generate-code-for-protocol-buffers/",
@@ -150,38 +82,21 @@ let redirections = {
     "/1.2/learn/deploying-ballerina-programs-in-the-cloud":"/1.2/learn/deployment/docker",
     "/learn/how-to-deploy-and-run-ballerina-programs":"/learn/deployment/docker",
     "/learn/deploying-ballerina-programs-in-the-cloud":"/learn/deployment/docker",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/deployment/docker":"/1.1/learn/how-to-deploy-and-run-ballerina-programs/",
     "/1.0/learn/deployment/docker":"/1.0/learn/how-to-deploy-and-run-ballerina-programs/",
     "/1.1/learn/deployment/kubernetes":"/1.1/learn/how-to-deploy-and-run-ballerina-programs/",
     "/1.0/learn/deployment/kubernetes":"/1.0/learn/how-to-deploy-and-run-ballerina-programs/",
     "/1.1/learn/deploying-ballerina-programs-in-the-cloud":"/1.1/learn/how-to-deploy-and-run-ballerina-programs/",
     "/1.0/learn/deploying-ballerina-programs-in-the-cloud":"/1.0/learn/how-to-deploy-and-run-ballerina-programs/",
-<<<<<<< HEAD
-    "/0.991/learn/deploying-ballerina-programs-in-the-cloud":"/0.991/learn/how-to-deploy-and-run-ballerina-programs/",
-    "/1.1/learn/publishing-modules-to-ballerina-central":"/1.1/learn/how-to-publish-modules/",
-    "/1.0/learn/publishing-modules-to-ballerina-central":"/1.0/learn/how-to-publish-modules/",
-    "/0.991/learn/publishing-modules-to-ballerina-central":"/0.991/learn/how-to-publish-modules/",
-=======
     "/learn/publishing-modules-to-ballerina-central":"/learn/how-to-publish-modules/",
     "/1.1/learn/publishing-modules-to-ballerina-central":"/1.1/learn/how-to-publish-modules/",
     "/1.0/learn/publishing-modules-to-ballerina-central":"/1.0/learn/how-to-publish-modules/",
     "/learn/how-to-observe-ballerina-code/":"/learn/observing-ballerina-code",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/swan-lake/learn/how-to-observe-ballerina-code/":"/1.1/swan-lake/learn/observing-ballerina-code",
     "/1.0/swan-lake/learn/how-to-observe-ballerina-code/":"/1.0/swan-lake/learn/observing-ballerina-code",
     "/learn/calling-java-code-from-ballerina":"/1.1/page-not-available.html/",
     "/1.1/learn/calling-java-code-from-ballerina":"/page-not-available.html",
     "/1.0/learn/calling-java-code-from-ballerina":"/page-not-available.html",
-<<<<<<< HEAD
-    "/0.991/learn/calling-java-code-from-ballerina":"/page-not-available.html",
-    "/1.1/learn/writing-secure-ballerina-code":"/1.1/learn/how-to-write-secure-ballerina-code/",
-    "/1.0/learn/writing-secure-ballerina-code":"/1.0/learn/how-to-write-secure-ballerina-code/",
-    "/0.991/learn/writing-secure-ballerina-code":"/0.991/learn/how-to-write-secure-ballerina-code/",
-    "/1.1/learn/testing-ballerina-code":"/1.1/learn/how-to-test-ballerina-code/",
-    "/1.0/learn/testing-ballerina-code":"/1.0/learn/how-to-test-ballerina-code/",
-    "/0.991/learn/testing-ballerina-code":"/0.991/learn/how-to-test-ballerina-code/",
-=======
     "/learn/writing-secure-ballerina-code":"/learn/how-to-write-secure-ballerina-code/",
     "/1.1/learn/writing-secure-ballerina-code":"/1.1/learn/how-to-write-secure-ballerina-code/",
     "/1.0/learn/writing-secure-ballerina-code":"/1.0/learn/how-to-write-secure-ballerina-code/",
@@ -190,34 +105,22 @@ let redirections = {
     "/1.1/learn/testing-ballerina-code":"/1.1/learn/how-to-test-ballerina-code/",
     "/1.0/learn/testing-ballerina-code":"/1.0/learn/how-to-test-ballerina-code/",
     "/learn/extending-with-compiler-extensions":"/learn/how-to-extend-ballerina/",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/extending-with-compiler-extensions":"/1.1/learn/how-to-extend-ballerina/",
     "/1.0/learn/extending-with-compiler-extensions":"/1.0/learn/how-to-extend-ballerina/",
     "/learn/by-example/documentation.html":"/1.2/learn/by-example/basic-documentation.html",
     "/1.2/learn/by-example/documentation.html":"/1.2/learn/by-example/basic-documentation.html",
     "/1.1/learn/coding-conventions/annotations_documentation_and_comments":"/1.1/learn/style-guide/annotations_documentation_and_comments",
     "/1.0/learn/coding-conventions/annotations_documentation_and_comments/":"/1.0/learn/style-guide/annotations_documentation_and_comments",
-<<<<<<< HEAD
-    "/0.991/learn/coding-conventions/annotations_documentation_and_comments/":"/0.991/learn/style-guide/annotations_documentation_and_comments",
-=======
     "/learn/coding-conventions/top-level-definitions":"/learn/style-guide/definitions",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/coding-conventions/top-level-definitions":"/1.1/learn/style-guide/definitions",
     "/1.0/learn/coding-conventions/top-level-definitions/":"/1.0/learn/style-guide/definitions",
     "/learn/coding-conventions/expressions":"/learn/style-guide/expressions",
     "/1.1/learn/coding-conventions/expressions":"/1.1/learn/style-guide/expressions",
     "/1.0/learn/coding-conventions/expressions/":"/1.0/learn/style-guide/expressions",
-<<<<<<< HEAD
-    "/0.991/learn/coding-conventions/expressions/":"/0.991/learn/style-guide/expressions",
-    "/1.1/learn/coding-conventions/operators_keywords_and_types":"/1.1/learn/style-guide/operators_keywords_and_types",
-    "/1.0/learn/coding-conventions/operators_keywords_and_types/":"/1.0/learn/style-guide/operators_keywords_and_types",
-    "/0.991/learn/coding-conventions/operators_keywords_and_types/":"/0.991/learn/style-guide/operators_keywords_and_types",
-=======
     "/learn/coding-conventions/operators_keywords_and_types":"/learn/style-guide/operators_keywords_and_types",
     "/1.1/learn/coding-conventions/operators_keywords_and_types":"/1.1/learn/style-guide/operators_keywords_and_types",
     "/1.0/learn/coding-conventions/operators_keywords_and_types/":"/1.0/learn/style-guide/operators_keywords_and_types",
     "/learn/coding-conventions/statements":"/learn/style-guide/statements",
->>>>>>> 33642d4dc5272037387b09bd937ab95ba58d335c
     "/1.1/learn/coding-conventions/statements":"/1.1/learn/style-guide/statements",
     "/1.0/learn/coding-conventions/statements/":"/1.0/learn/style-guide/statements",
     "/1.1/learn/testing-ballerina-code/testing-quick-start":"/page-not-available.html",

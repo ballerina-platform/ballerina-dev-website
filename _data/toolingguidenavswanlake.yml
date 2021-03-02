@@ -1,0 +1,40 @@
+
+- title: Using the VS Code Plugin
+  url: /learn/tooling-guide/setting-up-visual-studio-code/ 
+  active: setting-up-visual-studio-code
+
+- title: Using the CLI Tools
+  url: /learn/tooling-guide/using-the-cli-tools/ 
+  active: using-the-cli-tools
+  
+  #sublinks:
+    #- title: Language Intelligence
+      #url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+      #active: language-intelligence
+    #- title: Run and Debug
+      #url: /learn/getting-started/setting-up-visual-studio-code/run-and-debug 
+      #active: run-and-debug
+    #- title: Graphical View
+      #url: /learn/getting-started/setting-up-visual-studio-code/graphical-editor
+      #active: graphical-editor
+    #- title: Documentation Viewer
+      #url: /learn/getting-started/setting-up-visual-studio-code/documentation-viewer
+      #active: documentation-viewer
+    #- title: Run All Tests
+      #url: /learn/getting-started/setting-up-visual-studio-code/run-all-tests
+      #active: run-all-tests
+
+
+
+ 
+
+
+   
+
+      
+
+
+
+
+
+

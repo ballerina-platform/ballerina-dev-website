@@ -3,7 +3,7 @@ layout: ballerina-learn-landing-page
 title: Let’s learn Ballerina!
 description: Learn and master the Ballerina programming language through setting up, Ballerina by examples, the standard library or API documentation, and how to guides.
 keywords: ballerina, learn, documentation, docs, programming language
-permalink: /learn/
+permalink: /learn-2/
 redirect_from:
   - /swan-lake/learn/tools-ides
   - /swan-lake/learn/tools-ides/
@@ -16,22 +16,19 @@ redirect_from:
   - /swan-lake/learn
 ---
 
-<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/getting-started/quick-tour/">
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-<img class="cLearnIcon" src="/img/Get-Started-v1.png"/>
+<a class="cBoxLink" href="/lang-guide/Ballerina_Language_Presentation-2021-01-29.pdf" target="_blank">
 
-<h2>Get Started</h2>
-
-<p>Install Ballerina and set your development environment up.</p>
-
+<img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
+<h2>Language Guide</h2>
+<p>Learn about all the details of the Ballerina language.</p>
 </a>
 
-  
-</div>-->
+</div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/getting-started/setting-up-visual-studio-code/">
+<a class="cBoxLink" href="/learn/using-the-vs-code-extension/" target="_blank">
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 
@@ -43,7 +40,16 @@ redirect_from:
 
   
 </div>
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
+  <a class="cBoxLink" href="/learn/structuring-ballerina-code/" target="_blank">
+
+  <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
+  <h2>User Guide</h2>
+  <p>Learn about all the features of the language and its capabilities.</p>
+  </a>
+
+</div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 <a class="cBoxLink" href="/learn/by-example/" target="_blank">
@@ -74,30 +80,7 @@ redirect_from:
 </div>
 
 <!--<div class="clearfix"></div>-->
-
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-
-  <a class="cBoxLink" href="/learn/using-the-cli-tools/">
-
-  <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
-  <h2>User Guide</h2>
-  <p>Learn about all the features of the language and its capabilities.</p>
-  </a>
-
-</div>
-
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-
-<a class="cBoxLink" href="/lang-guide/Ballerina_Language_Presentation-2021-01-29.pdf" target="_blank">
-
-<img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
-<h2>Language Guide</h2>
-<p>Learn about all the details of the Ballerina language.</p>
-</a>
-
-</div>
  
-
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
 <a class="cBoxLink" href="/spec/" target="_blank">

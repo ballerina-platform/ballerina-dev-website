@@ -1,9 +1,9 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: Generating Ballerina Code for Protocol Buffer Definitions
 description: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for the Protocol Buffer definition.
 keywords: ballerina, protocol buffers, programming language
-permalink: /learn/generating-ballerina-code-for-protocol-buffer-definitions/
+permalink: /learn/using-the-cli-tools/generating-ballerina-code-for-protocol-buffer-definitions/
 active: generating-ballerina-code-for-protocol-buffer-definitions
 intro: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions.
 redirect_from:
@@ -12,6 +12,7 @@ redirect_from:
   - /learn/generating-ballerina-code-for-protocol-buffer-definitions
   - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions/
   - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions
+  - /learn/using-the cli-tools/generating-ballerina-code-for-protocol-buffer-definitions
   
 ---
 

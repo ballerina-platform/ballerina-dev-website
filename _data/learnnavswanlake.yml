@@ -12,21 +12,21 @@
     #   url: /learn/setting-up-intellij-idea/
     #   active: setting-up-intellij-idea
 
-- title: Ballerina CLI Tools
-  url: '#' 
-  sublinks:
-    - title: Using the CLI Tools
-      url: /learn/using-the-cli-tools/ 
-      active: using-the-cli-tools
-    - title: Keeping Ballerina Up To Date
-      url: /learn/keeping-ballerina-up-to-date
-      active: keeping-ballerina-up-to-date
-    - title: Using the OpenAPI Tools
-      url: /learn/using-the-openapi-tools/
-      active: using-the-openapi-tools
-    - title: Generating Ballerina Code for Protocol Buffer Definitions
-      url: /learn/generating-ballerina-code-for-protocol-buffer-definitions
-      active: generating-ballerina-code-for-protocol-buffer-definitions
+#- title: Ballerina CLI Tools
+  #url: '#' 
+  #sublinks:
+    #- title: Using the CLI Tools
+      #url: /learn/using-the-cli-tools/ 
+      #active: using-the-cli-tools
+    #- title: Keeping Ballerina Up To Date
+      #url: /learn/keeping-ballerina-up-to-date
+      #active: keeping-ballerina-up-to-date
+    #- title: Using the OpenAPI Tools
+      #url: /learn/using-the-openapi-tools/
+      #active: using-the-openapi-tools
+    #- title: Generating Ballerina Code for Protocol Buffer Definitions
+      #url: /learn/generating-ballerina-code-for-protocol-buffer-definitions
+      #active: generating-ballerina-code-for-protocol-buffer-definitions
 
 - title: Code Organization 
   url: '#'

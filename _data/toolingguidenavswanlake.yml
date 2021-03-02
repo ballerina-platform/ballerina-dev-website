@@ -1,22 +1,23 @@
 
-- title: Using the VS Code Plugin
-  url: /learn/tooling-guide/setting-up-visual-studio-code/ 
-  active: setting-up-visual-studio-code
+- title: Using the VS Code Extension
+  url: /learn/using-the-vs-code-extension/ 
+  active: using-the-vs-code-extension
 
-- title: Using the CLI Tools
-  url: /learn/tooling-guide/using-the-cli-tools/ 
-  active: using-the-cli-tools
-  
-  #sublinks:
-    #- title: Language Intelligence
-      #url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      #active: language-intelligence
-    #- title: Run and Debug
-      #url: /learn/getting-started/setting-up-visual-studio-code/run-and-debug 
-      #active: run-and-debug
-    #- title: Graphical View
-      #url: /learn/getting-started/setting-up-visual-studio-code/graphical-editor
-      #active: graphical-editor
+- title: Using the CLI Tools 
+  url: '#'
+  sublinks:
+    - title: Using the Core Commands
+      url: /learn/using-the-cli-tools/using-the-core-commands 
+      active: using-the-core-commands
+    - title: Keeping Ballerina Up To Date
+      url: /learn/using-the-cli-tools/keeping-ballerina-up-to-date/ 
+      active: keeping-ballerina-up-to-date
+    - title: Using the OpenAPI Tools
+      url: /learn/using-the-cli-tools/using-the-openapi-tools/ 
+      active: using-the-openapi-tools
+    - title: Generating Ballerina Code for Protocol Buffer Definitions
+      url: /learn/using-the-cli-tools/generating-ballerina-code-for-protocol-buffer-definitions/
+      active: generating-ballerina-code-for-protocol-buffer-definitions
     #- title: Documentation Viewer
       #url: /learn/getting-started/setting-up-visual-studio-code/documentation-viewer
       #active: documentation-viewer

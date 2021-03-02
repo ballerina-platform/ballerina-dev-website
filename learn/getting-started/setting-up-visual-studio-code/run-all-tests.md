@@ -12,10 +12,13 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests
   - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
   - /learn/setting-up-visual-studio-code/run-all-tests
+  - /learn/setting-up-visual-studio-code/run-all-tests/
   - /learn/run-all-tests
   - /learn/run-all-tests/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-all-tests/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-all-tests
+redirect_to:
+ - /page-not-available
 ---
 
 ## Running All Tests 

@@ -12,10 +12,13 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor
   - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
   - /learn/setting-up-visual-studio-code/graphical-editor
+  - /learn/setting-up-visual-studio-code/graphical-editor/
   - /learn/graphical-editor
   - /learn/graphical-editor/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/graphical-editor/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/graphical-editor
+redirect_to:
+ - /page-not-available
 ---
 
 ## Launching the Graphical View

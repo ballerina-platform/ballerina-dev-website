@@ -13,7 +13,7 @@ redirect_from:
   - /learn/using-the-cli-tools
   - /swan-lake/learn/using-the-cli-tools/
   - /swan-lake/learn/using-the-cli-tools
-  - /learn/using-the cli-tools/core-commands
+  - /learn/using-the-cli-tools/using-the-cli-commands
 ---
 
 ## Using the Ballerina Tool

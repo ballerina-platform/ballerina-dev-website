@@ -6,9 +6,9 @@
 - title: Using the CLI Tools 
   url: '#'
   sublinks:
-    - title: Using the Core Commands
-      url: /learn/using-the-cli-tools/using-the-core-commands 
-      active: using-the-core-commands
+    - title: Using the CLI Commands
+      url: /learn/using-the-cli-tools/using-the-cli-commands 
+      active: using-the-cli-commands
     - title: Keeping Ballerina Up To Date
       url: /learn/using-the-cli-tools/keeping-ballerina-up-to-date/ 
       active: keeping-ballerina-up-to-date
@@ -18,9 +18,9 @@
     - title: Generating Ballerina Code for Protocol Buffer Definitions
       url: /learn/using-the-cli-tools/generating-ballerina-code-for-protocol-buffer-definitions/
       active: generating-ballerina-code-for-protocol-buffer-definitions
-    #- title: Documentation Viewer
-      #url: /learn/getting-started/setting-up-visual-studio-code/documentation-viewer
-      #active: documentation-viewer
+    - title: Using the BindGen Tool
+      url: /learn/using-the-cli-tools/using-the-bindgen-tool/
+      active: using-the-bindgen-tool
     #- title: Run All Tests
       #url: /learn/getting-started/setting-up-visual-studio-code/run-all-tests
       #active: run-all-tests

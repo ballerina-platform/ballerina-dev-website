@@ -1,5 +1,5 @@
 ---
-layout: ballerina-tooling-guide-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Setting Up Visual Studio Code
 permalink: /learn/getting-started/setting-up-visual-studio-code/
 active: setting-up-visual-studio-code

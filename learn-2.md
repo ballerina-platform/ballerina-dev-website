@@ -6,10 +6,22 @@ keywords: ballerina, learn, documentation, docs, programming language
 permalink: /learn-2/
 ---
 
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
+<!--<div class="col-sm-6 col-md-6 cLearnPageContentCol">
 <a class="cBoxLink" href="/learn/getting-started/">
 
 <h2>Get Started</h2>
+
+<p>Install Ballerina and set your development environment up.</p>
+
+</a>
+
+  
+</div>-->
+
+<div class="col-sm-6 col-md-6 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/getting-started/">
+
+<h2>Tooling Guide</h2>
 
 <p>Install Ballerina and set your development environment up.</p>
 

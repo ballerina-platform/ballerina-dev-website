@@ -86,7 +86,7 @@ let redirections = {
     "/learn/by-example/secured-client-with-jwt-auth.html":"/learn/by-example/secured-client-with-self-signed-jwt-auth.html",
     "/learn/by-example/secured-client-with-oauth2.html":"/learn/by-example/secured-client-with-oauth2-client-credentials-grant-type.html",
 
-    // API Docs not available.
+    // API Docs not available
 
     "/learn/api-docs/ballerina/*/objects/*":"/learn/api-docs/ballerina/*/classes/*",
     "/1.2/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",

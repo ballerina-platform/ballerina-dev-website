@@ -31,7 +31,7 @@ redirect_from:
 </div>-->
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/tooling-guide/setting-up-visual-studio-code/">
+<a class="cBoxLink" href="/learn/getting-started/setting-up-visual-studio-code/">
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 

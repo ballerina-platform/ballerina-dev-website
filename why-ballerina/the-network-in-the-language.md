@@ -26,7 +26,7 @@ redirect_from:
                               <h3 id="get-started">Get Started</h3>
                               <p>Here’s a simple Hello World service to get you started:</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
- 
+
 service / on new http:Listener(9090) {
 
     resource function get greeting() returns string {
@@ -45,7 +45,7 @@ Running executable
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 
-$ curl http://localhost:9090/hello/sayHello
+$ curl http://localhost:9090/greeting
 Hello, World!
 </code></pre>
                               <p>Ballerina services come with built-in concurrency. Every request to a resource method is handled in a separate strand (Ballerina concurrency unit), which gives implicit concurrent behavior to a service.</p>
@@ -84,7 +84,7 @@ Hello, World!
                               <p>The code snippet below shows a call to a simple HTTP GET request endpoint:</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
 import ballerina/io;
- 
+
 public function main() returns @tainted error? {
     http:Client clientEP = check new ("http://www.mocky.io");
     string payload = &lt;string&gt; check clientEP-&gt;get("/v2/5ae082123200006b00510c3d/", targetType = string);

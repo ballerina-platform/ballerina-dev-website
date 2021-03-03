@@ -3,7 +3,7 @@ layout: ballerina-learn-landing-page
 title: Let’s learn Ballerina!
 description: Learn and master the Ballerina programming language through setting up, Ballerina by examples, the standard library or API documentation, and how to guides.
 keywords: ballerina, learn, documentation, docs, programming language
-permalink: /learn/
+permalink: /learn-old/
 redirect_from:
   - /swan-lake/learn/tools-ides
   - /swan-lake/learn/tools-ides/

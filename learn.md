@@ -15,31 +15,6 @@ redirect_from:
   - /swan-lake/learn/by-guide/
   - /swan-lake/learn
 ---
-
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-
-<a class="cBoxLink" href="/lang-guide/Ballerina_Language_Presentation-2021-01-29.pdf" target="_blank">
-
-<img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
-<h2>Language Guide</h2>
-<p>Learn about all the details of the Ballerina language.</p>
-</a>
-
-</div>
-
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/tooling-guide/" target="_blank">
-
-<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
-
-<h2>Tooling Guide</h2>
-
-<p>Learn about the VSCode plugin and other cli tools of the platform.</p>
-
-</a>
-
-  
-</div>
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
   <a class="cBoxLink" href="/learn/structuring-ballerina-code/" target="_blank">
@@ -61,8 +36,6 @@ redirect_from:
 <p>Obtain a hands-on experience of the language and its key features.</p>
 
 </a>
-
-  
 </div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
@@ -78,6 +51,69 @@ redirect_from:
 </a>
 
 </div>
+
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/tooling-guide/" target="_blank">
+
+<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
+
+<h2>Tooling Guide</h2>
+
+<p>Learn about the VSCode plugin and other cli tools of the platform.</p>
+
+</a>
+
+  
+</div>
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">-->
+
+<a class="cBoxLink" href="/lang-guide/Ballerina_Language_Presentation-2021-01-29.pdf" target="_blank">
+
+<img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
+<h2>Language Guide</h2>
+<p>Learn about all the details of the Ballerina language.</p>
+</a>
+
+</div>
+
+<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+
+  <a class="cBoxLink" href="/learn/structuring-ballerina-code/" target="_blank">
+
+  <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
+  <h2>User Guide</h2>
+  <p>Learn about all the features of the language and its capabilities.</p>
+  </a>
+
+</div>-->
+
+<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/by-example/" target="_blank">
+
+
+<img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
+<h2>Ballerina by Example</h2>
+
+<p>Obtain a hands-on experience of the language and its key features.</p>
+
+</a>
+
+  
+</div>-->
+
+<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/api-docs/ballerina" target="_blank">
+
+
+<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
+<h2>API Documentation</h2>
+<p>Learn the Ballerina standard library APIs comprehensively.</p>
+
+
+
+</a>
+
+</div>-->
 
 <!--<div class="clearfix"></div>-->
  

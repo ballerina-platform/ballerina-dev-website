@@ -1,10 +1,10 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
-title: Generating Ballerina Code for Protocol Buffer Definitions
+title: gRPC
 description: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for the Protocol Buffer definition.
 keywords: ballerina, protocol buffers, programming language
-permalink: /learn/using-the-cli-tools/generating-ballerina-code-for-protocol-buffer-definitions/
-active: generating-ballerina-code-for-protocol-buffer-definitions
+permalink: /learn/tooling-guide/using-the-cli-tools/grpc
+active: grpc
 intro: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions.
 redirect_from:
   - /learn/how-to-generate-code-for-protocol-buffers
@@ -12,7 +12,7 @@ redirect_from:
   - /learn/generating-ballerina-code-for-protocol-buffer-definitions
   - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions/
   - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions
-  - /learn/using-the cli-tools/generating-ballerina-code-for-protocol-buffer-definitions
+  - /learn/tooling-guide/using-the cli-tools/grpc
   
 ---
 

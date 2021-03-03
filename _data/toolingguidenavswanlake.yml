@@ -1,29 +1,49 @@
 
 - title: VS Code Extension
-  url: /learn/tooling-guide/vs-code-extension/ 
-  active: vs-code-extension
-
-- title: Using the CLI Tools 
   url: '#'
   sublinks:
-    - title: Using the CLI Commands
-      url: /learn/using-the-cli-tools/using-the-cli-commands 
-      active: using-the-cli-commands
-    - title: Keeping Ballerina Up To Date
-      url: /learn/using-the-cli-tools/keeping-ballerina-up-to-date/ 
-      active: keeping-ballerina-up-to-date
-    - title: Using the OpenAPI Tools
-      url: /learn/using-the-cli-tools/using-the-openapi-tools/ 
-      active: using-the-openapi-tools
-    - title: Generating Ballerina Code for Protocol Buffer Definitions
-      url: /learn/using-the-cli-tools/generating-ballerina-code-for-protocol-buffer-definitions/
-      active: generating-ballerina-code-for-protocol-buffer-definitions
-    - title: Using the BindGen Tool
-      url: /learn/using-the-cli-tools/using-the-bindgen-tool/
-      active: using-the-bindgen-tool
-    #- title: Run All Tests
-      #url: /learn/getting-started/setting-up-visual-studio-code/run-all-tests
-      #active: run-all-tests
+    - title: Installing VS Code
+      url: /learn/tooling-guide/vs-code-extension/installing-vs-code/ 
+      active: installing-vs-code
+    - title: Language Support
+      url: /learn/tooling-guide/vs-code-extension/language-support/ 
+      active: language-support
+    - title: VS Code Commands
+      url: /learn/tooling-guide/vs-code-extension/vs-code-commands/ 
+      active: vs-code-commands
+    - title: Run and Debug
+      url: /learn/tooling-guide/vs-code-extension/run-and-debug/ 
+      active: run-and-debug
+    - title: Configurations
+      url: /learn/tooling-guide/vs-code-extension/configurations/ 
+      active: configurations
+    - title: Low Code
+      url: /learn/tooling-guide/vs-code-extension/low-code/ 
+      active: low-code
+
+- title: CLI Tools 
+  url: '#'
+  sublinks:
+    - title: CLI Commands
+      url: /learn/tooling-guide/cli-tools/cli-commands 
+      active: cli-commands
+    - title: Update Tool
+      url: /learn/tooling-guide/cli-tools/update-tool/ 
+      active: update-tool
+    - title: OpenAPI 
+      url: /learn/tooling-guide/cli-tools/openapi/ 
+      active: openapi
+    - title: gRPC
+      url: /learn/tooling-guide/cli-tools/grpc/
+      active: grpc
+    - title: BindGen Tool
+      url: /learn/tooling-guide/cli-tools/bindgen-tool/
+      active: bindgen-tool
+
+- title: Ballerina Shell
+  url: /learn/tooling-guide/ballerina-shell/ 
+  active: ballerina-shell
+    
 
 
 

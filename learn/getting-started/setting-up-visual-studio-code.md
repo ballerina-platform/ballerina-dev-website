@@ -15,7 +15,6 @@ redirect_from:
   - /learn/setting-up-visual-studio-code/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code
-  - /learn/getting-started/setting-up-visual-studio-code
 ---
 
 ## Downloading VS Code 

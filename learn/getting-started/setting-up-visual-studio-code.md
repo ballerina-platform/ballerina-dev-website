@@ -52,10 +52,7 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 ## Using the Extension
 
-The sections below include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
-
-- [Language Intelligence](/learn/getting-started/setting-up-visual-studio-code/language-intelligence/)
-- [Run and Debug](/learn/getting-started/setting-up-visual-studio-code/run-and-debug)
+For information, see [Using the VS Code Extension](/learn/tooling-guide/using-the-vs-code-extension/).
 
 
 

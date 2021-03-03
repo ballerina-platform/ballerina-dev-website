@@ -28,7 +28,7 @@ redirect_from:
 </div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/tooling-guide/using-the-vscode-extension/" target="_blank">
+<a class="cBoxLink" href="/learn/tooling-guide/using-the-vs-code-extension/" target="_blank">
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 

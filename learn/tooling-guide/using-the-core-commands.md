@@ -1,17 +1,19 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
-title: Using the CLI Tools
+title: Using the CLI Commands
 description: Learn all the command line interface (CLI) commands you need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/tooling-guide/using-the-cli-tools/
-active: using-the-cli-tools
+permalink: /learn/using-the-cli-tools/using-the-cli-commands/
+active: using-the-cli-commands
 intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /learn/cli-commands
   - /learn/cli-commands/
+  - /learn/using-the-cli-tools/
   - /learn/using-the-cli-tools
   - /swan-lake/learn/using-the-cli-tools/
   - /swan-lake/learn/using-the-cli-tools
+  - /learn/using-the-cli-tools/using-the-cli-commands
 ---
 
 ## Using the Ballerina Tool

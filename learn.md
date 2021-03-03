@@ -16,7 +16,7 @@ redirect_from:
   - /swan-lake/learn
 ---
 
-<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 <a class="cBoxLink" href="/learn/getting-started/quick-tour/">
 
 <img class="cLearnIcon" src="/img/Get-Started-v1.png"/>
@@ -24,20 +24,6 @@ redirect_from:
 <h2>Get Started</h2>
 
 <p>Install Ballerina and set your development environment up.</p>
-
-</a>
-
-  
-</div>-->
-
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/getting-started/setting-up-visual-studio-code/">
-
-<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
-
-<h2>Tooling Guide</h2>
-
-<p>Learn about the VSCode plugin and other cli tools of the platform.</p>
 
 </a>
 
@@ -77,7 +63,7 @@ redirect_from:
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-  <a class="cBoxLink" href="/learn/using-the-cli-tools/">
+  <a class="cBoxLink" href="/learn/structuring-ballerina-code/">
 
   <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
   <h2>User Guide</h2>

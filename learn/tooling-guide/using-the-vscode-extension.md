@@ -1,8 +1,8 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: Using the VS Code Extension
-permalink: /learn/tooling-guide/using-the-vs-code-extension/
-active: using-the-vs-code-extension
+permalink: /learn/tooling-guide/using-the-vscode-extension/
+active: using-the-vscode-extension
 intro: The VS Code Ballerina extension provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code extension.
 redirect_from: /learn/using-the-vs-code-extension
 ---

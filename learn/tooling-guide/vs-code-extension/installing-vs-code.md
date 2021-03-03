@@ -53,9 +53,7 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 ```
 > **Tip**: In the above command, `<BALLERINA_EXTENSION-DIRECTORY>` refers to the path of the Ballerina extension directory (i.e., the VSIX file) you downloaded.
 
-## Using the Extension
 
-For information, see [Using the VS Code Extension](/learn/tooling-guide/using-the-vs-code-extension/).
 
 
 

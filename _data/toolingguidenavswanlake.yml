@@ -3,7 +3,7 @@
   url: /learn/tooling-guide/vs-code-extension/ 
   active: vs-code-extension
 
-- title: Using the CLI Tools 
+- title: CLI Tools 
   url: '#'
   sublinks:
     - title: CLI Commands

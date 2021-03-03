@@ -1,8 +1,8 @@
 ---
-layout: ballerina-getting-started-left-nav-pages-swanlake
-title: Setting Up Visual Studio Code
-permalink: /learn/setting-up-visual-studio-code/
-active: setting-up-visual-studio-code
+layout: ballerina-tooling-guide-left-nav-pages-swanlake
+title: Installing VS Code
+permalink: /learn/tooling-guide/vs-code-extension/installing-vs-code/
+active: installing-vs-code
 intro: The VS Code Ballerina extension provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code extension.
 redirect_from:
   - /learn/tools-ides/vscode-plugin
@@ -16,6 +16,9 @@ redirect_from:
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code
   - /learn/setting-up-visual-studio-code
+  - /learn/tooling-guide/
+  - /learn/tooling-guide
+  - /learn/tooling-guide/vs-code-extension/installing-vs-code
 ---
 
 ## Downloading VS Code 

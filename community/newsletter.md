@@ -9,14 +9,14 @@ permalink: /community/newsletter/
 This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-1/">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="">Latest Ballerina Newsletter</a></li>
 </ul>
 
 <div class="col-sm-12 col-md-12" style="padding:0;">
 <h2 id="past-issues">Past issues </h2>
 
 <ul class="cInlinelinklist cPastIssues">
-    <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-5">2021-1</a>March 3, 2021</li>
+    <li><a class="cGreenLinkArrow" href="">2021-1</a>March 3, 2021</li>
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-5">2020-5</a>December 3, 2020</li>
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-4">2020-4</a>October 15, 2020</li>
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-3">2020-3</a>August 27, 2020</li>

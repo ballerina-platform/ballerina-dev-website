@@ -14,6 +14,7 @@ redirect_from:
   - /swan-lake/learn/structuring-ballerina-code/working-with-ballerina-modules
   - /learn/structuring-ballerina-code/working-with-ballerina-modules/
   - /learn/structuring-ballerina-code/working-with-ballerina-modules
+  - /learn/user-guide/structuring-ballerina-code/working-with-ballerina-modules
 --- 
 
 ## Creating Ballerina Modules

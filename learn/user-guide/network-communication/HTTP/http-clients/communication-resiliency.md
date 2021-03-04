@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/http-clients/xscommunication-resiliency
   - /learn/network-communication/http/http-clients/communication-resiliency/
   - /learn/network-communication/http/http-clients/communication-resiliency
+  - /learn/user-guide/network-communication/http/http-clients/communication-resiliency
 ---
 
 These features allow you to handle and recover from unexpected communication scenarios gracefully. 

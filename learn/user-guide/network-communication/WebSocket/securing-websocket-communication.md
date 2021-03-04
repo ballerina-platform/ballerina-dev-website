@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/websocket/securing-websocket-communication
   - /learn/network-communication/websocket/securing-websocket-communication/
   - /learn/network-communication/websocket/securing-websocket-communication
+  - /learn/user-guide/network-communication/websocket/securing-websocket-communication
 ---
 
 ## Configuring a Secure Socket 

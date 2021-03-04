@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/http-services
   - /learn/network-communication/http/http-services/
   - /learn/network-communication/http/http-services
+  - /learn/user-guide/network-communication/http/http-services
 ---
 
 ## Structuring an HTTP Service

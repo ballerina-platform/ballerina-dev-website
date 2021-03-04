@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/http-services/secure-communication
   - /learn/network-communication/http/http-services/secure-communication/
   - /learn/network-communication/http/http-services/secure-communication/
+  - /learn/user-guide/network-communication/http/http-services/secure-communication
 ---
 
 ## Configuring Secure Communication

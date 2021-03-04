@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/testing-ballerina-code/executing-tests
   - /learn/testing-ballerina-code/executing-tests/
   - /learn/testing-ballerina-code/executing-tests
+  - /learn/user-guide/testing-ballerina-code/executing-tests
 ---
 
 ## Executing Tests Using CLI Commands

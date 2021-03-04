@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/http-services/multipart-message-handling
   - /learn/network-communication/http/http-services/multipart-message-handling/
   - /learn/network-communication/http/http-services/multipart-message-handling
+  - /learn/user-guide/network-communication/http/http-services/multipart-message-handling
 ---
 
 ## Using MIME Entities

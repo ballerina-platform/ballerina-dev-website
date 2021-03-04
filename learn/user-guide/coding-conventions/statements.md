@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/coding-conventions/statements
   - /learn/coding-conventions/statements/
   - /learn/coding-conventions/statements
+  - /learn/user-guide/coding-conventions/statements
 
 ---
 

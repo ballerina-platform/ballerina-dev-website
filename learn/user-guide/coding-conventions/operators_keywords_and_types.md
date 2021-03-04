@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/coding-conventions/operators_keywords_and_types
   - /learn/coding-conventions/operators_keywords_and_types/
   - /learn/coding-conventions/operators_keywords_and_types
+  - /learn/user-guide/coding-conventions/operators_keywords_and_types
 ---
 
 ## Keywords and Types

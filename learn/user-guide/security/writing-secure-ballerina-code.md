@@ -18,6 +18,7 @@ redirect_from:
   - /swan-lake/learn/security/writing-secure-ballerina-code
   - /learn/security/writing-secure-ballerina-code/
   - /learn/security/writing-secure-ballerina-code
+  - /learn/user-guide/security/writing-secure-ballerina-code
 ---
 
 ## Securing by Design

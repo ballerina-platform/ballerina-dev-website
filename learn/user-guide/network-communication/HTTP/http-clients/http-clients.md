@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http/http-clients
   - /learn/network-communication/http/http-clients/
   - /learn/network-communication/http/http-clients
+  - /learn/user-guide/network-communication/http/http-clients
 ---
 
 ## Creating HTTP Clients

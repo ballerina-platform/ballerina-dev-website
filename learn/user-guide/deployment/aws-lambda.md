@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/deployment/aws-lambda
   - /learn/deployment/aws-lambda/
   - /learn/deployment/aws-lambda
+  - /learn/user-guide/deployment/aws-lambda
 ---
 
 Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 

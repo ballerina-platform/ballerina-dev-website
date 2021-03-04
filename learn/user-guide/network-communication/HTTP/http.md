@@ -14,6 +14,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/http
   - /learn/network-communication/http/
   - /learn/network-communication/http
+  - /learn/user-guide/network-communication/http
 ---
 
 ## Working with HTTP Clients

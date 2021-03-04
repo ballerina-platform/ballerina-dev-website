@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/deployment/azure-functions
   - /learn/deployment/azure-functions/
   - /learn/deployment/azure-functions
+  - /learn/user-guide/deployment/azure-functions
 ---
 
 This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation.

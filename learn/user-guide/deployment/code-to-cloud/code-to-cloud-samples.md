@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/deployment/code-to-cloud/samples
   - /learn/deployment/code-to-cloud/samples/
   - /learn/deployment/code-to-cloud/samples
+  - /learn/user-guide/deployment/code-to-cloud/samples
 ---
 
 ## Hello World Sample

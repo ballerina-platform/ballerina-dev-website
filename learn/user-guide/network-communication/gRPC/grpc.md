@@ -12,6 +12,7 @@ redirect_from:
   - /swan-lake/learn/network-communication/grpc
   - /learn/network-communication/grpc/
   - /learn/network-communication/grpc
+  - /learn/user-guide/network-communication/grpc
 ---
 
 ## Defining the Interface of the Service

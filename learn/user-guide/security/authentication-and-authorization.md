@@ -14,6 +14,7 @@ redirect_from:
 - /swan-lake/learn/security/authentication-and-authorization
 - /learn/security/authentication-and-authorization/
 - /learn/security/authentication-and-authorization
+- /learn/user-guide/security/authentication-and-authorization
 ---
 
 ### HTTP Listener Authentication and Authorization

@@ -14,6 +14,7 @@ redirect_from:
   - /swan-lake/learn/data-and-events-processing/using-language-integrated-queries
   - /learn/data-and-events-processing/using-language-integrated-queries/
   - /learn/data-and-events-processing/using-language-integrated-queries
+  - /learn/user-guide/data-and-events-processing/using-language-integrated-queries
 ---
 
 ## Using Language-Integrated Queries

@@ -1,10 +1,10 @@
 ---
-layout: ballerina-getting-started-left-nav-pages-swanlake
-title: Quick Tour
+layout: ballerina-left-nav-pages-swanlake
+title: Getting Started
 description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
 permalink: /learn/user-guide/getting-started/
-active: quick-tour
+active: getting-started
 intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
   - /learn/quick-tour

@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/websocket
   - /swan-lake/learn/network-communication/websocket/
   - /swan-lake/learn/network-communication/websocket
+  - /learn/network-communication/websocket/
+  - /learn/network-communication/websocket
 ---
 
 ## Upgrading the WebSocket 

@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/http/http-services
   - /swan-lake/learn/network-communication/http/http-services/
   - /swan-lake/learn/network-communication/http/http-services
+  - /learn/network-communication/http/http-services/
+  - /learn/network-communication/http/http-services
 ---
 
 ## Structuring an HTTP Service

@@ -11,6 +11,8 @@ redirect_from:
   - /learn/testing-ballerina-code/mocking
   - /swan-lake/learn/testing-ballerina-code/mocking/
   - /swan-lake/learn/testing-ballerina-code/mocking
+  - /learn/testing-ballerina-code/mocking/
+  - /learn/testing-ballerina-code/mocking
 ---
 
 ## Mocking Objects

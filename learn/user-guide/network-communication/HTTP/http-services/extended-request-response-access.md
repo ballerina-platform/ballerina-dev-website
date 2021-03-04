@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/http/http-services/extended-request-response-access
   - /swan-lake/learn/network-communication/http/http-services/extended-request-response-access/
   - /swan-lake/learn/network-communication/http/http-services/extended-request-response-access
+  - /learn/network-communication/http/http-services/extended-request-response-access/
+  - /learn/network-communication/http/http-services/extended-request-response-access
 ---
 
 ## Interacting With the Remote Client

@@ -12,6 +12,8 @@ redirect_from:
   - /learn/publishing-packages-to-ballerina-central
   - /swan-lake/learn/publishing-packages-to-ballerina-central/
   - /swan-lake/learn/publishing-packages-to-ballerina-central
+  - /learn/publishing-packages-to-ballerina-central/
+  - /learn/publishing-packages-to-ballerina-central
 ---
 
 ## The CLI Command

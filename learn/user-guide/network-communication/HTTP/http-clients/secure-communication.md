@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/secure-communication
   - /swan-lake/learn/network-communication/http/http-clients/secure-communication/
   - /swan-lake/learn/network-communication/http/http-clients/secure-communication
+  - /learn/network-communication/http/http-clients/secure-communication/
+  - /learn/network-communication/http/http-clients/secure-communication
 ---
 
 ## TLS

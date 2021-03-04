@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/http/http-services/payload-data-binding
   - /swan-lake/learn/network-communication/http/http-services/payload-data-binding/
   - /swan-lake/learn/network-communication/http/http-services/payload-data-binding
+  - /learn/network-communication/http/http-services/payload-data-binding/
+  - /learn/network-communication/http/http-services/payload-data-binding
 ---
 
 ## Using the Annotation

@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/websocket/using-primary-events
   - /swan-lake/learn/network-communication/websocket/securing-websocket-communication/
   - /swan-lake/learn/network-communication/websocket/securing-websocket-communication
+  - /learn/network-communication/websocket/securing-websocket-communication/
+  - /learn/network-communication/websocket/securing-websocket-communication
 ---
 
 ## Configuring a Secure Socket 

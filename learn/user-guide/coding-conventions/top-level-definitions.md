@@ -11,6 +11,8 @@ redirect_from:
   - /learn/coding-conventions/top-level-definitions
   - /swan-lake/learn/coding-conventions/top-level-definitions/
   - /swan-lake/learn/coding-conventions/top-level-definitions
+  - /learn/coding-conventions/top-level-definitions/
+  - /learn/coding-conventions/top-level-definitions
 ---
 
 ## General Practices

@@ -12,6 +12,8 @@ redirect_from:
   - /learn/documenting-ballerina-code
   - /swan-lake/learn/documenting-ballerina-code/
   - /swan-lake/learn/documenting-ballerina-code
+  - /learn/documenting-ballerina-code/
+  - /learn/documenting-ballerina-code
 ---
 
 ## Generating Documentation for Modules

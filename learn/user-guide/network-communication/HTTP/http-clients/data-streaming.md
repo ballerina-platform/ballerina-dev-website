@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/data-streaming
   - /swan-lake/learn/network-communication/http/http-clients/data-streaming/
   - /swan-lake/learn/network-communication/http/http-clients/data-streaming
+  - /learn/network-communication/http/http-clients/data-streaming/
+  - /learn/network-communication/http/http-clients/data-streaming
 ---
 
 ## Data Streaming Modes

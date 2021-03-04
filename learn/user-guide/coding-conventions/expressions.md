@@ -10,6 +10,8 @@ redirect_from:
   - /learn/coding-conventions/expressions
   - /swan-lake/learn/coding-conventions/expressions/
   - /swan-lake/learn/coding-conventions/expressions
+  - /learn/coding-conventions/expressions/
+  - /learn/coding-conventions/expressions
 ---
 
 ## Function Invocation

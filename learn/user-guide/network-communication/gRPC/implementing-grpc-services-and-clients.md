@@ -10,6 +10,8 @@ redirect_from:
   - /learn/network-communication/grpc/implementing-grpc-services-and-clients
   - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients/
   - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients
+  - /learn/network-communication/grpc/implementing-grpc-services-and-clients/
+  - /learn/network-communication/grpc/implementing-grpc-services-and-clients
 ---
 
 ## Implementing a gRPC Service

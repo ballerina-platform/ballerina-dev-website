@@ -10,6 +10,8 @@ redirect_from:
   - /learn/deployment/code-to-cloud
   - /swan-lake/learn/deployment/code-to-cloud/
   - /swan-lake/learn/deployment/code-to-cloud
+  - /learn/deployment/code-to-cloud/
+  - /learn/deployment/code-to-cloud
 ---
 
 This greatly simplifies the experience of developing and deploying Ballerina code in the cloud. It also enables using cloud native technologies easily without in-depth knowledge.

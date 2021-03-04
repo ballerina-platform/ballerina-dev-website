@@ -13,6 +13,8 @@ redirect_from:
   - /learn/running-ballerina-code
   - /swan-lake/learn/running-ballerina-code/
   - /swan-lake/learn/running-ballerina-code
+  - /learn/running-ballerina-code/
+  - /learn/running-ballerina-code
 ---
 
 ## Understanding the Structure

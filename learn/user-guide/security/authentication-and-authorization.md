@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Authentication and Authorization
 description: Ballerina HTTP services/clients can be configured to enforce authentication and authorization.
 keywords: ballerina, programming language, security, secure ballerina code, authorization, authentication
-permalink: /learn/security/authentication-and-authorization/
+permalink: /learn/user-guide/security/authentication-and-authorization/
 active: authentication-and-authorization
 intro: Ballerina HTTP services/clients can be configured to enforce authentication and authorization.
 redirect_from:

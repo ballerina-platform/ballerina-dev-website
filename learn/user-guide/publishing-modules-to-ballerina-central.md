@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Publishing Packages to Ballerina Central
 description: Learn how to use the CLI tool in the Ballerina programming language to push packages to Ballerina Central.
 keywords: ballerina, programming language, ballerina central, ballerina packages
-permalink: /learn/publishing-packages-to-ballerina-central/
+permalink: /learn/user-guide/publishing-packages-to-ballerina-central/
 active: publishing-packages-to-ballerina-central
 intro: The sections below include information about publishing packages to Ballerina Central.
 redirect_from:

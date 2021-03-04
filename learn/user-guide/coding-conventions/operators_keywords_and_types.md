@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-pages-swanlake
 title: Operators, Keywords, and Types
 active: operators_keywords_and_types
-permalink: /learn/coding-conventions/operators_keywords_and_types/
+permalink: /learn/user-guide/coding-conventions/operators_keywords_and_types/
 intro: The sections below include the coding conventions with respect to operators, keywords, and types.
 redirect_from:
   - /learn/style-guide/operators_keywords_and_types/

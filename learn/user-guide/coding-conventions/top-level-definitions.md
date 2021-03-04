@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-pages-swanlake
 title: Top-Level Definitions
 active: definitions
-permalink: /learn/coding-conventions/top-level-definitions/
+permalink: /learn/user-guide/coding-conventions/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.
 redirect_from:
   - /learn/style-guide/definitions/

@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: gRPC
 description: gRPC is an open-source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina.
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/grpc/
+permalink: /learn/user-guide/network-communication/grpc/
 active: grpc
 intro: gRPC is an open-source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina. 
 redirect_from:

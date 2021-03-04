@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Using Language-Integrated Queries
 description: Language integrated queries specify the logic in SQL-like syntax to process data and events. They are easy to write and understand due to the simplicity of the syntax. The sections below will explore Ballerina’s first-class support for writing queries that process data with examples.
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/data-and-events-processing/using-language-integrated-queries/
+permalink: /learn/user-guide/data-and-events-processing/using-language-integrated-queries/
 active: using-language-integrated-queries
 intro: Language integrated queries specify the logic in SQL-like syntax to process data and events. They are easy to write and understand due to the simplicity of the syntax. The sections below will explore Ballerina’s first-class support for writing queries that process data with examples.
 redirect_from:

@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Multipart Message Handling
 description: You can carry out multipart message handling in Ballerina HTTP services. 
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/http/http-services/multipart-message-handling/
+permalink: /learn/user-guide/network-communication/http/http-services/multipart-message-handling/
 active: multipart-message-handling
 intro: You can carry out multipart message handling in Ballerina HTTP services.
 redirect_from:

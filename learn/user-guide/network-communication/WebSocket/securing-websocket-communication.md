@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Securing WebSocket Communication
 description: Whenever possible, you should use WebSocket with TLS. This makes sure that your data communication is secure through the network. 
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/websocket/securing-websocket-communication/
+permalink: /learn/user-guide/network-communication/websocket/securing-websocket-communication/
 active: securing-websocket-communication
 intro: Whenever possible, you should use WebSocket with TLS. This makes sure that your data communication is secure through the network. 
 redirect_from:

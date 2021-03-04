@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Multipart Message Handling
 description: HTTP multipart messages can be created by using the Multipurpose Internet Mail Extensions (MIME) standard. 
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/http/http-clients/multipart-message-handling/
+permalink: /learn/user-guide/network-communication/http/http-clients/multipart-message-handling/
 active: multipart-message-handling
 intro: HTTP multipart messages can be created by using the Multipurpose Internet Mail Extensions (MIME) standard.  
 redirect_from:

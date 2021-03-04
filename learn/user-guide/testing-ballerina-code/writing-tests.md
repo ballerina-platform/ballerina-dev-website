@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Writing Tests
 description: Learn how to use Ballerina's built-in test framework to write tests. The test framework provides a set of annotations and assertions to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/writing-tests/
+permalink: /learn/user-guide/testing-ballerina-code/writing-tests/
 active: writing-tests
 intro: The sections below include information about writing tests in Ballerina.
 redirect_from:

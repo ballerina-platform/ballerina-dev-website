@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Working With Ballerina Modules
 description: Ballerina modules allow you to organize the code further in a package namespace.
 keywords: ballerina, programming language, ballerina modules, structure code
-permalink: /learn/structuring-ballerina-code/working-with-ballerina-modules/
+permalink: /learn/user-guide/structuring-ballerina-code/working-with-ballerina-modules/
 active: working-with-ballerina-modules
 intro: Ballerina modules allow you to organize the code further in a package namespace. 
 redirect_from:

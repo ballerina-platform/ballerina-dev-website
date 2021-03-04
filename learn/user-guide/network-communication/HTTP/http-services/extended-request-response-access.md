@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Extended Request/Response Access
 description: The service resources have the functionality of handling request and response data manually  without binding them to resource parameters or the return value.  
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/http/http-services/extended-request-response-access/
+permalink: /learn/user-guide/network-communication/http/http-services/extended-request-response-access/
 active: extended-request-response-access
 intro: The service resources have the functionality of handling request and response data manually  without binding them to resource parameters or the return value. 
 redirect_from:

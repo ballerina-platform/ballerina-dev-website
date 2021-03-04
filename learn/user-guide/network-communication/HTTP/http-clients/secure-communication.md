@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Secure Communication
 description: TBallerina’s HTTP client supports numerous secure communication features such as Transport Level Security (TLS) and mutual authentication. 
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/http/http-clients/secure-communication/
+permalink: /learn/user-guide/network-communication/http/http-clients/secure-communication/
 active: secure-communication
 intro: Ballerina’s HTTP client supports numerous secure communication features such as Transport Level Security (TLS) and mutual authentication.   
 redirect_from:

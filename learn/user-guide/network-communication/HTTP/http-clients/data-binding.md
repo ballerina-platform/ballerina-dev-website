@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Data Binding
 description: The sections below explain the how to perform data binding with HTTP clients.
 keywords: ballerina, cli, command line interface, programming language
-permalink: /learn/network-communication/http/http-clients/data-binding/
+permalink: /learn/user-guide/network-communication/http/http-clients/data-binding/
 active: data-binding
 intro: The sections below explain the how to perform data binding with HTTP clients.  
 redirect_from:

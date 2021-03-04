@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Quick Start
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/testing-quick-start/
+permalink: /learn/user-guide/testing-ballerina-code/testing-quick-start/
 active: testing-quick-start
 intro: The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 redirect_from:

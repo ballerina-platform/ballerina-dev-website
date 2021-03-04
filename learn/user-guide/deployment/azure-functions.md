@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Azure Functions
 description: See how the Ballerina deployment in Azure Functions works
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions
-permalink: /learn/deployment/azure-functions/
+permalink: /learn/user-guide/deployment/azure-functions/
 active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 redirect_from:

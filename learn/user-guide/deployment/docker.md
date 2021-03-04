@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Docker
 description: See how the Ballerina deployment in Docker works
 keywords: ballerina, programming language, services, cloud, docker
-permalink: /learn/deployment/docker/
+permalink: /learn/user-guide/deployment/docker/
 active: docker
 intro: Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud. 
 redirect_from:

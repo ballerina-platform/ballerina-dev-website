@@ -1,11 +1,11 @@
 
 - title: Getting Started
-    url: /learn/user-guide/getting-started/
-    active: getting-started
+  url: /learn/user-guide/getting-started/
+  active: getting-started
   
 - title: Installation Options
-    url: /learn/user-guide/installation-options/
-    active: installation-options
+  url: /learn/user-guide/installation-options/
+  active: installation-options
 
 - title: Code Organization 
   url: '#'

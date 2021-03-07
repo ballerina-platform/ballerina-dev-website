@@ -16,11 +16,67 @@ redirect_from:
   - /learn/getting-started/
   - /learn/getting-started
   - /learn/user-guide/getting-started
+  - /learn/
+  - /learn
 ---
 
 ## Installing Ballerina
 
 [Download](/downloads) Ballerina based on the operating system you are using and install it. 
+
+<link rel="stylesheet" href="/css/download-page.css">
+<script src="/js/download-page.js"></script>
+<div class="clearfix"></div>
+<div class="row cDownloads">
+   <div class="container">
+      <div class=" ">
+         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+            <h3 class="cWindows">Windows</h3>
+            <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}">
+               <div class="cSize">Installer  msi <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
+            </a>
+            <ul class="cDiwnloadSubLinks">
+               <li><a id="packWindowsMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.md5">md5</a></li>
+               <li><a id="packWindowsSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.sha1">SHA-1</a></li>
+               <li><a id="packWindowsAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.asc">asc</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+            <h3 class="cLinux">Linux </h3>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
+               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}">
+                  <div class="cSize">deb  <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.linux-installer-size }}</span></div>
+               </a>
+               <ul class="cDiwnloadSubLinks">
+                  <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.md5">md5</a></li>
+                  <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
+                  <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.asc">asc</a></li>
+               </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
+               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.rpm-installer }}">
+                  <div class="cSize">rpm  <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.rpm-installer-size }}</span></div>
+               </a>
+               <ul class="cDiwnloadSubLinks">
+                  <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.md5">md5</a></li>
+                  <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.sha1">SHA-1</a></li>
+                  <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.asc">asc</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+            <h3 class="cMac">macOS</h3>
+            <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
+               <div class="cSize">Installer pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
+            </a>
+            <ul class="cDiwnloadSubLinks">
+               <li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.md5">md5</a></li>
+               <li><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.sha1">SHA-1</a></li>
+               <li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.asc">asc</a></li>
+            </ul>
+         </div>
+         </div></div></div> 
 
 Let's create a Ballerina HTTP service and also an HTTP client to invoke it.
 

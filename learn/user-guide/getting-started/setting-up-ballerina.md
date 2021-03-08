@@ -24,7 +24,21 @@ redirect_from:
 
 ## Trying Ballerina in the Playground
 
-You can use the [Ballerina Playground](https://play.ballerina.io/) to write Ballerina programs without installing anything.
+You can use the Ballerina Playground to write Ballerina programs without installing anything.
+
+<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/home-page.css"/>
+<div class="row cBallerinaIntroSection">
+   <div class="container">
+      <div class="col-sm-12 col-md-12 cTopLayer">
+         <div class="col-sm-12 col-md-4 cMainCTAContainer">
+            <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="https://play.ballerina.io">
+               Try Ballerina
+               <p>Try without installing <br>in interactive playground</p>
+            </a>
+         </div>
+   </div></div></div>
+<div class="clearfix"></div>
 
 ## Downloading Ballerina
 

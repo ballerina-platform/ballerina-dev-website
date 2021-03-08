@@ -16,24 +16,47 @@ $(function () {
         $('h2').html("");
         
         let text = $('#searchText').val();
-        if (text != null && text != "") {
+        let searchVersion = $('#searchVersion').val();
+        let previousVersion = "/1.2";
+        
+        if (text != null && text != "" && searchVersion != null && searchVersion != "") {
 
+            let resultSet = 0;
             searched = contentSearch.search(text);
-            searched.forEach(function (searchtxt) {
+            let isLatest = $("#searchVersion option:selected").attr("data-value") === "latest";
 
+            searched.forEach(function (searchtxt) {
+    
                 let refObj = JSON.parse(searchtxt.ref);
                 let searchDescFull = refObj.summary;
                 let searchDesc = searchDescFull;
-
-                $('.searchStatus').html("");
-                $('h2').html("Search Results");
-                $('#searchResult').append('<li><h3><a href="' + refObj.page + '">' + refObj.name + '</a></h3>' +
-                    '<p><a href="' + refObj.page + '"> https://ballerina.io' + refObj.page + '</a></p>'
-                    + '<p>' + searchDesc +
-                    '</p></li>');
+                let pagePath = refObj.page;
+                
+                if(isLatest){
+                    if(!pagePath.startsWith(previousVersion)){
+                        resultSet = 1;
+        
+                        $('.searchStatus').html("");
+                        $('h2').html("Search Results");
+                        $('#searchResult').append('<li><h3><a href="' + refObj.page + '">' + refObj.name + '</a></h3>' +
+                            '<p><a href="' + refObj.page + '"> https://ballerina.io' + refObj.page + '</a></p>'
+                            + '<p>' + searchDesc +
+                            '</p></li>');
+                    }
+                }else if(pagePath.startsWith(previousVersion)){
+                    resultSet = 1;
+    
+                    $('.searchStatus').html("");
+                    $('h2').html("Search Results");
+                    $('#searchResult').append('<li><h3><a href="' + refObj.page + '">' + refObj.name + '</a></h3>' +
+                        '<p><a href="' + refObj.page + '"> https://ballerina.io' + refObj.page + '</a></p>'
+                        + '<p>' + searchDesc +
+                        '</p></li>');
+                }
+    
             });
-
-            if (searched.length <= 0) {
+    
+            if (searched.length <= 0 || resultSet != 1) {
                 $('.searchStatus').html("");
                 $('h2').html("");
                 $('#searchResult').append('<li><h3><a>Oops!</a></h3>' +

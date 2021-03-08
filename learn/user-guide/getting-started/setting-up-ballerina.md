@@ -1,10 +1,10 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Getting Started
+title: Setting up Ballerina
 description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
-permalink: /learn/user-guide/getting-started/
-active: getting-started
+permalink: /learn/user-guide/getting-started/setting-up-ballerina/
+active: setting-up-ballerina
 intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
   - /learn/quick-tour
@@ -16,8 +16,10 @@ redirect_from:
   - /learn/getting-started/
   - /learn/getting-started
   - /learn/user-guide/getting-started
+  - /learn/user-guide/getting-started/
   - /learn/user-guide/
   - /learn/user-guide
+  - /learn/user-guide/getting-started/setting-up-ballerina
 ---
 
 ## Downloading Ballerina
@@ -85,7 +87,7 @@ For more download options, see [Downloads](/download).
 
 Double-click on the package file you downloaded above to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution.
 
-For more installation options, see [Installation Options](/learn/user-guide/installation-options/).
+For more installation options, see [Installation Options](/learn/user-guide/getting-started/installation-options/).
 
 ## Updating Ballerina
 
@@ -99,7 +101,7 @@ For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-to
 
 ## Installing the VSCode Extension
 
-Ballerina provides an extension to try out its development capabilities in Visual Stusio Code. For instructions on installing it, see []
+Ballerina provides an extension to try out its development capabilities in Visual Stusio Code. For instructions on setting it up, see [Installing the VS Code Extension](/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/).
 
 
 ## Writing Your First Ballerina Program

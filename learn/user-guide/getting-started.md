@@ -16,8 +16,8 @@ redirect_from:
   - /learn/getting-started/
   - /learn/getting-started
   - /learn/user-guide/getting-started
-  - /learn/
-  - /learn
+  - /learn/user-guide/
+  - /learn/user-guide
 ---
 
 ## Installing Ballerina

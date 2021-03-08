@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Installation Options
 description: Get started with the Ballerina programming language by following these instructions on installing and setting up Ballerina.
 keywords: ballerina, installing ballerina, programming language, ballerina installation
-permalink: /learn/user-guide/getting-started/installation-options/
+permalink: /learn/user-guide/getting-started/setting-up-ballerina/installation-options/
 active: installation-options
 intro: The sections below include information about installing Ballerina.
 redirect_from:
@@ -15,7 +15,9 @@ redirect_from:
   - /swan-lake/learn/getting-started/installing-ballerina
   - /learn/getting-started/installing-ballerina/
   - /learn/getting-started/installing-ballerina
+  - /learn/user-guide/getting-started/installation-options/
   - /learn/user-guide/getting-started/installation-options
+  - /learn/user-guide/getting-started/setting-up-ballerina/installation-options
 ---
 
 ## Installing Ballerina via Installers
@@ -136,9 +138,8 @@ To remove:
 
 ## What's Next?
 
-Once you have successfully installed Ballerina, click the links below to set up your IDE.
+Once you have successfully installed Ballerina, now you can [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).
 
 >**Tip:** To get help when you work with Ballerina, see [Community](/community).
 
-- [Setting up Visual Studio Code](/learn/vscode-plugin/)
-- [Setting up IntelliJ IDEA](/learn/intellij-plugin/)
+

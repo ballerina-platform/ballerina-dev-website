@@ -20,7 +20,7 @@ redirect_from:
   - /learn/user-guide
 ---
 
-## Installing Ballerina
+## Downloading Ballerina
 
 [Download](/downloads) Ballerina based on the operating system you are using and install it. 
 
@@ -77,6 +77,32 @@ redirect_from:
             </ul>
          </div>
          </div></div></div> 
+
+
+For more download options, see [Downloads](/download).
+
+## Installing Ballerina
+
+Double-click on the package file you downloaded above to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution.
+
+For more installation options, see [Installation Options](/learn/user-guide/installation-options/).
+
+## Updating Ballerina
+
+Once you install Ballerina, you can use the Update Tool to update it to the latest version. For this, execute the command below in a new CLI tab.
+
+`bal dist pull slalpha2`
+
+>**Info:** You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
+
+For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-tool/).
+
+## Installing the VSCode Extension
+
+Ballerina provides an extension to try out its development capabilities in Visual Stusio Code. For instructions on installing it, see []
+
+
+## Writing Your First Ballerina Program
 
 Let's create a Ballerina HTTP service and also an HTTP client to invoke it.
 

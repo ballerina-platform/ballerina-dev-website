@@ -14,6 +14,8 @@ redirect_from:
   - /swan-lake/learn/using-the-cli-tools/
   - /swan-lake/learn/using-the-cli-tools
   - /learn/tooling-guide/cli-tools/cli-commands
+  - /learn/tooling-guide/cli-tools/
+  - /learn/tooling-guide/cli-tools
 ---
 
 ## Using the Ballerina Tool

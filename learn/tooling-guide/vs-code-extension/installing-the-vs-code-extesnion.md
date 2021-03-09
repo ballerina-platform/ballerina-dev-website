@@ -18,6 +18,8 @@ redirect_from:
   - /learn/setting-up-visual-studio-code
   - /learn/tooling-guide/
   - /learn/tooling-guide
+  - /learn/tooling-guide/vs-code-extension/
+  - /learn/tooling-guide/vs-code-extension
   - /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension
 ---
 

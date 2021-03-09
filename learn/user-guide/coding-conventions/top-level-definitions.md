@@ -79,15 +79,6 @@ import ballerina/http;
 function func1() {
 }
 ```
- 
-* If the function has an object attached to it, do not keep spaces around the Dot `.`. Also, keep a single space between the `function` keyword and the name of the object.
-
-**Example,**
-
-```ballerina
-function Person.getName() {
-}
-```
 
 * If the function needs to be split into new lines due to it exceeding the max line length,
   - can break lines from the parameter list by moving a parameter value only to a 
@@ -132,62 +123,57 @@ function getAddress(int value, string name) returns
 **Example,**
 
 ```ballerina
-service hello on new http:Listener(9090) {
+service / on new http:Listener(9090) {
   ...
 }
 ```
 
-* When formatting resource functions and function definitions, block indent each element and
+* When formatting service-level function definitions, block indent each element and
   follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
   
 **Example,**
 
 ```ballerina
-service hello on ep1, ep2 {
-    resource function sayHelloPath hello(http:Caller caller, http:Request req) returns error? {
-        http:Response res = new;
-        res.setPayload(self.getGreeting());
-        _ = caller->respond(res);
-    }
+import ballerina/http;
 
-    function getGreeting() returns string {
-        return "Hello";
+service / on new http:Listener(9090) {
+
+    resource function get greeting() returns string {
+        return "Hello, World!";
     }
+    
 }
 ```
 
 * Block indent each function definition, resource definition, and field definition inside a service definition.
  
-## Object Definition
+## Class Definition
 
 * Block indent each field definition and each function definition on their own line.
 * Init function should be placed before all the other functions. 
-* For function definitions in the object definition, follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
+* For function definitions in the class definition, follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
 
 **Example,**
 
 ```ballerina
-type Person object {
-    // Object field definitions.
+class Person {
     public boolean isMarried = false;
     int age;
     string name;
-  
-    // Object init function.
-    function __init(string name, int age = 0) {
+
+    function init(string name, int age = 0) {
         self.age = age;
         self.name = name;
     }
-  
-    // Object function definitions.
+
     function getName() returns string {
         return self.name;
     }
-  
+
     function setIsMarried(boolean isMarried) {
         self.isMarried = isMarried;
     }
-      
+
     function getIsMarried() returns boolean {
         return self.isMarried;
     }
@@ -213,7 +199,7 @@ type Person record {|
 |}
 ```
 
-## Referencing Record or Abstract Object 
+## Referencing Record or Object 
 * Do not keep spaces between the `*`, the abstract object name, or the record name.
   
 **Example,**
@@ -237,24 +223,24 @@ type User record {
 };
 
 // or
-type Person abstract object {
+type Person object {
     string name;
-  
+
     // Object function definitions.
     function getName() returns string;
 };
 
-type Employee object {
-    *Person; // Reference to Person abstract object.
+class Employee {
+    *Person; // Reference to Person object type.
 
-    function __init() {
-          self.name = "asd";
-      }
+    function init() {
+        self.name = "John Doe";
+    }
 
     function getName() returns string {
-          return self.name;
+        return self.name;
     }
-};
+}
 ```
 
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>

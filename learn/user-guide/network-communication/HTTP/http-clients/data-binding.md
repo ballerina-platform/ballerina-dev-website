@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/data-binding/
   - /learn/network-communication/http/http-clients/data-binding
   - /learn/user-guide/network-communication/http/http-clients/data-binding
+  - /learn/network-communication/http/data-binding/
+  - /learn/network-communication/http/data-binding
 ---
 
 In the [HTTP GET scenarios](/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method of the [`http:Client`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/HttpClient), which is the [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 

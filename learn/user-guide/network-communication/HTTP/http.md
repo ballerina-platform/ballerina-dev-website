@@ -15,6 +15,8 @@ redirect_from:
   - /learn/network-communication/http/
   - /learn/network-communication/http
   - /learn/user-guide/network-communication/http
+  - /learn/user-guide/network-communication/
+  - /learn/user-guide/network-communication
 ---
 
 ## Working with HTTP Clients

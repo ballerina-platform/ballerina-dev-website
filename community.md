@@ -100,7 +100,8 @@ Hit a bump on the road? Report an issue in the relevant repo out of the GitHub r
 
 Getting a language established is like getting a new religion going. If you like the experience so far, help us to spread the word.
 
-- Start by starring the <a href="https://github.com/ballerina-platform/ballerina-lang" target="_blank">Ballerina GitHub repo</a>. Thank you!
+- Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues. Thank you!
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div> 
 - Follow us on Twitter: <a href="https://twitter.com/ballerinalang" target="_blank">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
 - Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io" target="_blank">Ballerina Central</a> so that the whole community can benefit from your work. 
 - Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog" target="_blank">community-driven Tech Blog</a>. 

@@ -1,0 +1,61 @@
+
+- title: VS Code Extension
+  url: '#'
+  sublinks:
+    - title: Installing the VS Code Extension
+      url: /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/ 
+      active: installing-vs-code
+    - title: Language Support
+      url: /learn/tooling-guide/vs-code-extension/language-support/ 
+      active: language-support
+    #- title: VS Code Commands
+      #url: /learn/tooling-guide/vs-code-extension/vs-code-commands/ 
+      #active: vs-code-commands
+    - title: Run and Debug
+      url: /learn/tooling-guide/vs-code-extension/run-and-debug/ 
+      active: run-and-debug
+    #- title: Configurations
+      #url: /learn/tooling-guide/vs-code-extension/configurations/ 
+      #active: configurations
+    #- title: Low Code
+      #url: /learn/tooling-guide/vs-code-extension/low-code/ 
+      #active: low-code
+
+- title: CLI Tools 
+  url: '#'
+  sublinks:
+    - title: CLI Commands
+      url: /learn/tooling-guide/cli-tools/cli-commands 
+      active: cli-commands
+    - title: Update Tool
+      url: /learn/tooling-guide/cli-tools/update-tool/ 
+      active: update-tool
+    - title: OpenAPI 
+      url: /learn/tooling-guide/cli-tools/openapi/ 
+      active: openapi
+    - title: gRPC
+      url: /learn/tooling-guide/cli-tools/grpc/
+      active: grpc
+    #- title: BindGen Tool
+      #url: /learn/tooling-guide/cli-tools/bindgen-tool/
+      #active: bindgen-tool
+
+#- title: Ballerina Shell
+  #url: /learn/tooling-guide/ballerina-shell/ 
+  #active: ballerina-shell
+    
+
+
+
+ 
+
+
+   
+
+      
+
+
+
+
+
+

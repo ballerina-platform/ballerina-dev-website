@@ -277,7 +277,7 @@ pre code {
 }
 
 
-.cWindows , .cLinux , .cMac {
+.cWindows , .cLinux , .cMac, .cVSCode {
     
     background-repeat: no-repeat;
     padding-left: 40px;
@@ -293,6 +293,9 @@ pre code {
 }
 .cMac {
     background-image: url("/img/downloads/mac.svg");
+}
+.cVSCode {
+    background-image: url("/img/downloads/vs-code.svg");
 }
 
 @media screen and (max-width: 991px) {

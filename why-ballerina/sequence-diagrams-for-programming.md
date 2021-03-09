@@ -26,7 +26,7 @@ redirect_from:
                               <p><img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Sequence Diagrams for Programming"></p>
                               <p>In Ballerina services, the entry point is the service resource function. The actor who invokes the service resource is shown as the “caller”. The “Default” participant is the resource function itself, showing the operations in its lifeline. From the resource function, further function calls are shown in its lifeline and their internal operations are expanded and merged to the same sequence diagram to show their operations as well.</p>
                               <h3 id="get-started">Get Started</h3>
-                              <p>The Ballerina IDE plugin (for example, the <a href="/learn/getting-started/setting-up-visual-studio-code/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="/learn/getting-started/setting-up-visual-studio-code/graphical-editor">download the VSCode plugin and launch the graphical editor</a>.</p>
+                              <p>The Ballerina IDE plugin (for example, the <a href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/">download the VSCode plugin and launch the graphical editor</a>.</p>
                            </div>
                         </div>
                      </div>

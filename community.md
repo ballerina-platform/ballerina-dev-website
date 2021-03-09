@@ -20,7 +20,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com" targ
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-5/" target="_blank">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-1/" target="_blank">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues" target="_blank">Past newsletter issues</a></li>
 
 </ul>
@@ -54,6 +54,8 @@ The Ballerina team is now hosting monthly recorded Community Calls! These are in
 - Get information on the <a href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">past and upcoming calls</a>. 
 
 - Be notified about the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform" target="_blank">details of the upcoming community calls</a>.
+
+- Check out the recordings of all our <a href="https://www.youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU">past community calls</a>.
 
 - Get involved in our next Community Call by <a href="https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform" target="_blank">submitting a discussion topic or requesting to do your own quick demo</a>.
 
@@ -98,7 +100,8 @@ Hit a bump on the road? Report an issue in the relevant repo out of the GitHub r
 
 Getting a language established is like getting a new religion going. If you like the experience so far, help us to spread the word.
 
-- Start by starring the <a href="https://github.com/ballerina-platform/ballerina-lang" target="_blank">Ballerina GitHub repo</a>. Thank you!
+- Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues. Thank you!
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div> 
 - Follow us on Twitter: <a href="https://twitter.com/ballerinalang" target="_blank">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
 - Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io" target="_blank">Ballerina Central</a> so that the whole community can benefit from your work. 
 - Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog" target="_blank">community-driven Tech Blog</a>. 

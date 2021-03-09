@@ -221,7 +221,7 @@ Separate both statements and top level definitions by zero or one blank lines.
   ```  
 * However, if you cannot add the type-casting expression or statement with the constrained type in a single line 
   due to it exceeding the max line length, 
-    - move the casting type with the operators to a new line.
+    - Move the casting type with the operators to a new line.
   
       Example,
       ```ballerina
@@ -229,16 +229,21 @@ Separate both statements and top level definitions by zero or one blank lines.
           <string>json.name;
       ```
   
-    - keep the constrained type on the same line by splitting the statement from a point before the constraint type.
+    - Keep the full constrained type name on the same line.
       
       Example,
+      
+      **Do's**
       ```ballerina
       map<int|string> registry = {
           name: "marcus"
       };
-      
-      table<Employee> employee = table {
-          {key id, name, address}
+      ```
+      **Don'ts**
+      ```ballerina
+      map
+      <int|string> registry = {
+          name: "marcus"
       };
       ```
 

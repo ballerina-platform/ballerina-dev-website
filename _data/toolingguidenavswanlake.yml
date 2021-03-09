@@ -2,8 +2,8 @@
 - title: VS Code Extension
   url: '#'
   sublinks:
-    - title: Installing VS Code
-      url: /learn/tooling-guide/vs-code-extension/installing-vs-code/ 
+    - title: Installing the VS Code Extension
+      url: /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/ 
       active: installing-vs-code
     - title: Language Support
       url: /learn/tooling-guide/vs-code-extension/language-support/ 

@@ -1,10 +1,10 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Getting Started
+title: Setting up Ballerina
 description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
-permalink: /learn/user-guide/getting-started/
-active: getting-started
+permalink: /learn/user-guide/getting-started/setting-up-ballerina/
+active: setting-up-ballerina
 intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
   - /learn/quick-tour
@@ -16,11 +16,31 @@ redirect_from:
   - /learn/getting-started/
   - /learn/getting-started
   - /learn/user-guide/getting-started
-  - /learn/
-  - /learn
+  - /learn/user-guide/getting-started/
+  - /learn/user-guide/
+  - /learn/user-guide
+  - /learn/user-guide/getting-started/setting-up-ballerina
 ---
 
-## Installing Ballerina
+## Trying Ballerina in the Playground
+
+You can use the Ballerina Playground to write Ballerina programs without installing anything.
+
+<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/home-page.css"/>
+<div class="row cBallerinaIntroSection">
+   <div class="container">
+      <div class="col-sm-12 col-md-12 cTopLayer">
+         <div class="col-sm-12 col-md-4 cMainCTAContainer">
+            <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="https://play.ballerina.io">
+               Try Ballerina
+               <p>Try without installing <br>in interactive playground</p>
+            </a>
+         </div>
+   </div></div></div>
+<div class="clearfix"></div>
+
+## Downloading Ballerina
 
 [Download](/downloads) Ballerina based on the operating system you are using and install it. 
 
@@ -78,113 +98,30 @@ redirect_from:
          </div>
          </div></div></div> 
 
-Let's create a Ballerina HTTP service and also an HTTP client to invoke it.
 
-## Writing a simple Service
+For more download options, see [Downloads](/download).
 
-Write a simple HTTP service as shown below in a file with the `.bal` extension.
+## Installing Ballerina
 
-***hello_service.bal***
-```ballerina
-import ballerina/http;
+Double-click on the package file you downloaded above to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution.
 
-# A service representing a network-accessible API
-# bound to port `9090`.
-service /hello on new http:Listener(9090) {
+For more installation options, see [Installation Options](/learn/user-guide/getting-started/installation-options/).
 
-    # A resource representing an invokable API method
-    # accessible at `/hello/sayHello`.
-    #
-    # + return - A string payload which eventually becomes 
-    #            the payload of the response
-    resource function get sayHello() returns string {
-        return "Hello Ballerina!";
-    }
-}
-```
+## Updating Ballerina
 
-## Running the Service
+Once you have Ballerina installed, you can use the Update Tool to update it to the latest version. For this, execute the command below in a new CLI tab.
 
-In the CLI, navigate to the location in which you have the `hello_service.bal` file and run the service by executing the command below.
+`bal dist pull slalpha2`
 
-```bash
-bal run hello_service.bal
-```
+>**Info:** You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
 
-You get the following output.
+For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-tool/).
 
-```bash
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-```
+## Installing the VSCode Extension
 
-This means your service is up and running. 
-
-> **Note:** You can test the service by invoking it using an already-available HTTP client. For example, execute the command below in a new CLI tab to use [cURL](https://curl.haxx.se/download.html) as the client.
-
-```bash
-curl http://localhost:9090/hello/sayHello
-```
-
-You get the following response.
-
-```bash
-Hello Ballerina!
-```
-
-Alternatively, you can create a Ballerina HTTP client and use that to invoke the service as follows.
-
-## Creating an HTTP Client to Invoke the Service
-
-A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
-
-Create a Ballerina client as a Ballerina program with a `main` function as follows to invoke the `hello` service.   
-
-> **Note**: Returning `error?` from the `main` function allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
-
-***hello_client.bal***
-```ballerina
-import ballerina/http;
-import ballerina/io;
-
-public function main() returns @tainted error? {
-    // Add the relevant endpoint URL to perform the invocation.
-    http:Client helloClient = check new("http://localhost:9090/hello");
-
-    // Perform a `GET` request to the `hello` service. If successful, 
-    // the remote call would return an `http:Response` or the payload 
-    // (if the `targetType` defaultable parameter is configured).
-    // Otherwise an `error` on failure.
-    http:Response helloResp = <http:Response> check helloClient->get("/sayHello");
-
-    // Retrieve the payload as a `string` and print it if the 
-    // response of the remote call is successful.
-    io:println(check helloResp.getTextPayload());
-}
-```
-
-## Invoking the Service Using the Client 
-
-In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `hello` service.
-
-> **Tip:** Make sure the `hello` service is [up and running](#running-the-service).
-
-```bash
-bal run hello_client.bal
-```
-
-This would produce the following output.
-
-
-```bash
-Hello Ballerina!
-```
+Ballerina provides an extension to try out its development capabilities in Visual Stusio Code. For instructions on setting it up, see [Installing the VS Code Extension](/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/).
 
 ## What's Next?
 
-Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
+Now, that your environment for Ballerina is all set up and running, let's [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/). 
 
-* Go through the [Ballerina by Examples](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
-* Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues.
-<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
-
-<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

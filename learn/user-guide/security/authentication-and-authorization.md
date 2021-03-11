@@ -25,16 +25,16 @@ The Ballerina HTTP listener can be configured to authenticate and authorize the 
 - JWT authentication
 - OAuth2 authentication
 
-The following example represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting  `http:LdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
+The following example represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting  `http:FileUserStoreConfigWithScopes`, `http:LdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:FileUserStoreConfig`, `http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
 
 ```ballerina
 import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        keyStore: {
-            path: "/path/to/ballerinaKeystore.p12",
-            password: "ballerina"
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
         }
     }
 });
@@ -60,9 +60,9 @@ import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        keyStore: {
-            path: "/path/to/ballerinaKeystore.p12",
-            password: "ballerina"
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
         }
     }
 });
@@ -85,6 +85,112 @@ Also, the security enforcement that is done for the service using the `http:Serv
 > **Note:** It is required to use HTTPS when enforcing authentication and authorization checks to ensure the confidentiality of sensitive authentication data.
 
 #### Basic Auth
+
+##### File User Store
+
+Ballerina supports File user store Basic Authentication and Authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:FileUserStoreConfigWithScopes` record as an element. If the `fileUserStoreConfig` field is assigned with the `http:FileUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
+
+The `http:FileUserStoreConfig` configurations is kept blank for future improvements and backward compatibility.
+
+The file user store is defined in `Config.toml` as follows:
+```toml
+[[auth.users]]
+username="alice"
+password="password1"
+scopes=["scope1"]
+
+[[auth.users]]
+username="bob"
+password="password2"
+scopes=["scope2", "scope3"]
+
+[[auth.users]]
+username="eve"
+password="password3"
+```
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+@http:ServiceConfig {
+    auth: [
+        {
+            fileUserStoreConfig: {},
+            scopes: ["hello"]
+        }
+    ]
+}
+service /foo on securedEP {
+    resource function get bar() returns string {
+        return "Hello, World!";
+    }
+}
+```
+
+When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur:
+
+```
+curl -k -v https://localhost:9090/foo/bar
+
+> GET /foo/bar HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.47.0
+> Accept: */*
+> 
+< HTTP/1.1 401 Unauthorized
+< content-length: 0
+< server: ballerina
+< content-type: text/plain
+< 
+```
+
+When a request is made with valid authentication information, if the authenticated user does not have the required permission, an authorization failure will occur.
+
+```
+curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
+
+> GET /foo/bar HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.47.0
+> Accept: */*
+> Authorization: Basic <token>
+>
+
+< HTTP/1.1 403 Forbidden
+< content-length: 0
+< server: ballerina
+< content-type: text/plain
+<
+```
+
+When a request is made with valid authentication information, if the authenticated user has the required permission, this will result in a successful invocation.
+
+```
+curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
+
+> GET /hello HTTP/1.1
+> Host: localhost:9091
+> User-Agent: curl/7.47.0
+> Accept: */*
+> Authorization: Basic <token>
+>
+
+< HTTP/1.1 200 OK
+< content-length: 13
+< server: ballerina
+< content-type: text/plain
+<
+Hello, World!
+```
 
 ##### LDAP User Store
 
@@ -109,18 +215,19 @@ The `http:LdapUserStoreConfig` configurations include:
 * `membershipAttribute` - Define the attribute that contains the distinguished names (DN) of user objects that are in a group
 * `userRolesCacheEnabled` -  To indicate whether to cache the role list of a user
 * `connectionPoolingEnabled` - Define whether LDAP connection pooling is enabled
-* `connectionTimeoutInMillis` - Timeout in making the initial LDAP connection
-* `readTimeoutInMillis` -  Read timeout in milliseconds for LDAP operations
-* `secureClientSocket` - The SSL configurations for the LDAP client socket. This needs to be configured in order to communicate through LDAPs
+* `connectionTimeout` - Connection timeout (in seconds) in making the initial LDAP connection
+* `readTimeout` - Reading timeout (in seconds) for LDAP operations
+* `secureSocket` - The SSL configurations for the LDAP client socket. This needs to be configured in order to communicate through LDAPs
+    * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
 
 ```ballerina
 import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        keyStore: {
-            path: "/path/to/ballerinaKeystore.p12",
-            password: "ballerina"
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
         }
     }
 });
@@ -146,8 +253,8 @@ listener http:Listener securedEP = new(9090, config = {
                 membershipAttribute: "member",
                 userRolesCacheEnabled: true,
                 connectionPoolingEnabled: false,
-                connectionTimeoutInMillis: 5000,
-                readTimeoutInMillis: 60000
+                connectionTimeout: 5000,
+                readTimeout: 60000
             },
             scopes: ["hello"]
         }
@@ -224,26 +331,26 @@ The `http:JwtValidatorConfig` configurations include:
 
 * `issuer` - Expected issuer, which is mapped to `iss`
 * `audience` - Expected audience, which is mapped to `aud`
-* `clockSkewInSeconds` - Clock skew in seconds that can be used to avoid token validation failures due to clock synchronization problems
-* `trustStoreConfig` - JWT trust store configurations
-    * `trustStore` - Trust store used for signature verification
-    * `certificateAlias` - Token-signed public key certificate alias
-* `jwksConfig` - JWKs configurations
-    * `url` - URL of the JWKs endpoint
-    * `cacheConfig` - Configurations related to the cache, which are used to store preloaded JWKs information
-    * `clientConfig` - HTTP client configurations, which call the JWKs endpoint
-* `cacheConfig` - Configurations related to the cache, which are used to store the parsed JWT information
-
-> **Note:** For demonstration purposes, the `ballerinaTruststore.p12` included with the Ballerina runtime is used. In a production deployment, the truststore should only contain the public key certificates of the trusted JWT issuers.
+* `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
+* `signatureConfig` - JWT signature configurations
+    * `jwksConfig` - JWKs configurations
+        * `url` - URL of the JWKs endpoint
+        * `cacheConfig` - Configurations related to the cache, which are used to store preloaded JWKs information
+        * `clientConfig` - HTTP client configurations, which call the JWKs endpoint
+    * `certFile` - Public certificate file
+    * `trustStoreConfig` - JWT trust store configurations
+        * `trustStore` - Trust store used for signature verification
+        * `certificateAlias` - Token-signed public key certificate alias
+* `cacheConfig` - Configurations related to the cache used to store parsed JWT information
 
 ```ballerina
 import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        keyStore: {
-            path: "/path/to/ballerinaKeystore.p12",
-            password: "ballerina"
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
         }
     }
 });
@@ -254,12 +361,8 @@ listener http:Listener securedEP = new(9090, config = {
             jwtValidatorConfig: {
                 issuer: "wso2",
                 audience: "ballerina",
-                trustStoreConfig: {
-                    trustStore: {
-                        path: "/path/to/ballerinaTruststore.p12",
-                        password: "ballerina"
-                    },
-                    certificateAlias: "ballerina"
+                signatureConfig: {
+                    certFile: "/path/to/public.crt"
                 },
                 scopeKey: "scp"
             },
@@ -340,17 +443,26 @@ The `http:OAuth2IntrospectionConfig` configurations include:
 * `tokenTypeHint` - A hint about the type of the token submitted for introspection
 * `optionalParams` - Map of optional parameters used for the introspection endpoint
 * `cacheConfig` - Configurations for the cache used to store the OAuth2 token and other related information
-* `defaultTokenExpTimeInSeconds` - Expiration time of the tokens if introspection response does not contain an `exp` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if introspection response does not contain an `exp` field
 * `clientConfig` - HTTP client configurations, which call the introspection server
+    * `httpVersion` - The HTTP version of the client
+    * `customHeaders` - The list of custom HTTP headers
+    * `customPayload` - The list of custom HTTP payload parameters
+    * `auth` - The client auth configurations
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+    * `secureSocket` - SSL/TLS related configurations
+        * `disable` - Disable SSL validation
+        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
 
 ```ballerina
 import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        keyStore: {
-            path: "/path/to/ballerinaKeystore.p12",
-            password: "ballerina"
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
         }
     }
 });
@@ -364,10 +476,7 @@ listener http:Listener securedEP = new(9090, config = {
                 scopeKey: "scp",
                 clientConfig: {
                     secureSocket: {
-                        trustStore: {
-                            path: "/path/to/ballerinaTruststore.p12",
-                            password: "ballerina"
-                        }
+                        cert: "/path/to/public.crt"
                     }
                 }
             },
@@ -460,10 +569,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         // ...
     },
     secureSocket: {
-        trustStore: {
-            path: "/path/to/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "/path/to/public.crt"
     }
 });
 ```
@@ -487,10 +593,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         password: "123"
     },
     secureSocket: {
-        trustStore: {
-            path: "/path/to/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "/path/to/public.crt"
     }
 });
 
@@ -514,18 +617,23 @@ The `http:JwtIssuerConfig` configurations include:
 * `username` - JWT username, which is mapped to `sub`
 * `issuer` - JWT issuer, which is mapped to `iss`
 * `audience` - JWT audience, which is mapped to `aud`
-* `keyId` - JWT key ID, which is mapped to `kid`
+* `jwtId` - JWT ID, which is mapped to `jti`
+* `keyId` - JWT key ID, which is mapped `kid`
 * `customClaims` - Map of custom claims
-* `expTimeInSeconds` - Expiry time in seconds
-* `signingAlgorithm` - Cryptographic signing algorithm for JWS
-    * `jwt:RS256` - The RSA-SHA256 algorithm
-    * `jwt:RS384` - The RSA-SHA384 algorithm
-    * `jwt:RS512` - The RSA-SHA512 algorithm
-    * `jwt:NONE` - Unsecured JWTs (no signing)
-* `keyStoreConfig` - JWT key store configurations
-    * `keyStore` - Keystore to be used in JWT signing
-    * `keyAlias` - Signing key alias
-    * `keyPassword` - Signing key password
+* `expTime` - Expiry time in seconds
+* `signatureConfig` - JWT signature configurations
+    * `algorithm` - Cryptographic signing algorithm for JWS
+        * `jwt:RS256` - The RSA-SHA256 algorithm
+        * `jwt:RS384` - The RSA-SHA384 algorithm
+        * `jwt:RS512` - The RSA-SHA512 algorithm
+        * `jwt:NONE` - Unsecured JWTs (no signing)
+    * `config` - Key store configurations or private key configurations
+        * `keyStore` - Keystore to be used in JWT signing
+        * `keyAlias` - Signing key alias
+        * `keyPassword` - Signing key password
+            * --- OR ---
+        * `keyFile` - Private key to be used in JWT signing
+        * `keyPassword` - Password of the private key, if encrypted
 
 ```ballerina
 import ballerina/http;
@@ -536,23 +644,19 @@ http:Client securedEP = check new("https://localhost:9090", {
         username: "wso2",
         issuer: "ballerina",
         audience: ["ballerina", "ballerina.org", "ballerina.io"],
+        jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
         keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
         customClaims: { "scp": "hello" },
-        expTimeInSeconds: 3600,
-        keyStoreConfig: {
-            keyAlias: "ballerina",
-            keyPassword: "ballerina",
-            keyStore: {
-                path: "/path/to/ballerinaKeystore.p12",
-                password: "ballerina"
+        expTime: 3600,
+        signatureConfig: {
+            algorithm: jwt:RS256,
+            config: {
+                keyFile: "/path/to/private.key",
             }
         }
     },
     secureSocket: {
-        trustStore: {
-            path: "/path/to/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "/path/to/public.crt"
     }
 });
 
@@ -585,10 +689,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
     },
     secureSocket: {
-        trustStore: {
-            path: "/path/to/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "/path/to/public.crt"
     }
 });
 
@@ -615,13 +716,22 @@ The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 * `clientId` - Client ID for the client credentials grant authentication
 * `clientSecret` - Client secret for the client credentials grant authentication
 * `scopes` - Scope(s) of the access request
-* `defaultTokenExpInSeconds` - Expiration time of the tokens if the authorization server response does not contain an `expires_in` field
-* `clockSkewInSeconds` - Clock skew in seconds that can be used to avoid token validation failures due to clock synchronization problems
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if authorization server response does not contain an `expires_in` field
+* `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
     * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
 * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
+    * `httpVersion` - The HTTP version of the client
+    * `customHeaders` - The list of custom HTTP headers
+    * `customPayload` - The list of custom HTTP payload parameters
+    * `auth` - The client auth configurations
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+    * `secureSocket` - SSL/TLS related configurations
+        * `disable` - Disable SSL validation
+        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
 
 ```ballerina
 import ballerina/http;
@@ -635,18 +745,12 @@ http:Client securedEP = check new("https://localhost:9090", {
         scopes: ["hello"],
         clientConfig: {
             secureSocket: {
-                trustStore: {
-                    path: "/path/to/ballerinaTruststore.p12",
-                    password: "ballerina"
-                }
+                cert: "/path/to/public.crt"
             }
         }
     },
     secureSocket: {
-        trustStore: {
-            path: "/path/to/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "/path/to/public.crt"
     }
 });
 
@@ -679,13 +783,22 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
         * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
         * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
     * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
-* `defaultTokenExpInSeconds` - Expiration time of the tokens if the authorization server response does not contain an `expires_in` field
-* `clockSkewInSeconds` - Clock skew in seconds that can be used to avoid token validation failures due to clock synchronization problems
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if authorization server response does not contain an `expires_in` field
+* `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
     * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
 * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
+    * `httpVersion` - The HTTP version of the client
+    * `customHeaders` - The list of custom HTTP headers
+    * `customPayload` - The list of custom HTTP payload parameters
+    * `auth` - The client auth configurations
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+    * `secureSocket` - SSL/TLS related configurations
+        * `disable` - Disable SSL validation
+        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
 
 ```ballerina
 import ballerina/http;
@@ -704,27 +817,18 @@ http:Client securedEP = check new("https://localhost:9090", {
             scopes: ["hello"],
             clientConfig: {
                 secureSocket: {
-                    trustStore: {
-                        path: "/path/to/ballerinaTruststore.p12",
-                        password: "ballerina"
-                    }
+                    cert: "/path/to/public.crt"
                 }
             }
         },
         clientConfig: {
             secureSocket: {
-                trustStore: {
-                    path: "/path/to/ballerinaTruststore.p12",
-                    password: "ballerina"
-                }
+                cert: "/path/to/public.crt"
             }
         }
     },
     secureSocket: {
-        trustStore: {
-            path: "/path/to/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "/path/to/public.crt"
     }
 });
 
@@ -748,13 +852,22 @@ The `http:OAuth2DirectTokenConfig` configurations include:
 * `clientId` - Client ID for authentication against the authorization endpoint
 * `clientSecret` - Client secret for authentication against the authorization endpoint
 * `scopes` - Scope(s) of the access request
-* `defaultTokenExpInSeconds` - Expiration time of the tokens if authorization server response does not contain an `expires_in` field
-* `clockSkewInSeconds` - Clock skew in seconds that can be used to avoid token validation failures due to clock synchronization problems
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if authorization server response does not contain an `expires_in` field
+* `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
     * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
 * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
+    * `httpVersion` - The HTTP version of the client
+    * `customHeaders` - The list of custom HTTP headers
+    * `customPayload` - The list of custom HTTP payload parameters
+    * `auth` - The client auth configurations
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+    * `secureSocket` - SSL/TLS related configurations
+        * `disable` - Disable SSL validation
+        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
 
 ```ballerina
 import ballerina/http;
@@ -769,18 +882,12 @@ http:Client securedEP = check new("https://localhost:9090", {
         scopes: ["hello"],
         clientConfig: {
             secureSocket: {
-                trustStore: {
-                    path: "/path/to/ballerinaTruststore.p12",
-                    password: "ballerina"
-                }
+                cert: "/path/to/public.crt"
             }
         }
     },
     secureSocket: {
-        trustStore: {
-            path: "/path/to/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "/path/to/public.crt"
     }
 });
 

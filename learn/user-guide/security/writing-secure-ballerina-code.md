@@ -19,6 +19,8 @@ redirect_from:
   - /learn/security/writing-secure-ballerina-code/
   - /learn/security/writing-secure-ballerina-code
   - /learn/user-guide/security/writing-secure-ballerina-code
+  - /learn/user-guide/security/
+  - /learn/user-guide/security
 ---
 
 ## Securing by Design

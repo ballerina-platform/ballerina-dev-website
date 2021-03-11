@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/data-streaming/
   - /learn/network-communication/http/http-clients/data-streaming
   - /learn/user-guide/network-communication/http/http-clients/data-streaming
+  - /learn/network-communication/http/data-streaming/
+  - /learn/network-communication/http/data-streaming
 ---
 
 ## Data Streaming Modes

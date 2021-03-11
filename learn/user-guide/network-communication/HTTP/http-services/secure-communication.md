@@ -17,7 +17,7 @@ redirect_from:
 
 ## Configuring Secure Communication
 
-This is done by providing an optional [`ListenerConfiguration`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ListenerConfiguration) instance when creating the [`http:Listener`](learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/listeners/Listener) client and providing the secure socket configurations. 
+This is done by providing an optional [`ListenerConfiguration`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ListenerConfiguration) instance when creating the [`http:Listener`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/listeners/Listener) client and providing the secure socket configurations. 
 
 ## Example
 

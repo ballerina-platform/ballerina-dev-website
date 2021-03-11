@@ -18,33 +18,19 @@ redirect_from:
 ## Annotations
 * Do not have spaces around the `@` symbol.
 * Indent annotations to align them with the starting position of the owner (statement or definition).
-  
-**Example,**
-
-```ballerina
-// Service annotations are indented to align it with the starting position of the service.
-@http:ServiceConfig {
-    ...
-}
-service greetingService on new http:Listener(8080) {
-    // Resource annotation is indented to align it with the starting position of the resource.
-    @http:ResourceConfig {
-      ...
-    }
-    resource function hello(http:Caller caller, http:Request req) returns error? {
-        ...
-    }
-}
-```
-
 * Each annotation attribute (i.e., key-value pairs) should block indent on its own line.
-  
+
 **Example,**
-  
+
 ```ballerina
-@http:ServiceConfig {
-    basePath: "greet",
-    methods: ["GET"]
+// Function annotations are aligned with the starting position of the function.
+@test:Config {
+    before: beforeFunc,
+    after: afterFunc
+}
+function testFunction() {
+    io:println("I'm in test function!");
+    test:assertTrue(true, msg = "Failed!");
 }
 ```
 
@@ -54,7 +40,7 @@ service greetingService on new http:Listener(8080) {
 **Example,**
 
 ```ballerina
-@http:ServiceConfig {}
+@test:Config {}
 ```
 
 * If you are annotating a parameter or a return type, the annotation should be added inline to the parameter or the return type.
@@ -63,12 +49,12 @@ service greetingService on new http:Listener(8080) {
   
 ```ballerina
 // Parameter annotation.
-public function secureFunction1(@sensitive string secureInName, @sensitive int secureInId, string insecureIn) {
+public function secureFunction1(@untainted string secureInName, @untainted int secureInId, string insecureIn) {
     ...
 }
   
-public function secureFunction2(@sensitive string secureInName,
-    @sensitive int secureInId, string insecureIn) {
+public function secureFunction2(@untainted string secureInName,
+    @untainted int secureInId, string insecureIn) {
     ...
 }
   
@@ -179,14 +165,12 @@ function getValue(int value) returns int {
 function getValue(int value) returns int {...}
 
 # Description.
-@http:ServiceConfig {...}
-service greet on new http:Listener(8080) {
+service / on new http:Listener(8080) {
     # Description.
     #
     # + caller - Parameter description.
     # + request - Parameter description.
-    @http:ResourceConfig {...}
-    resource function sayHello(http:Caller caller, http:Request request) {...}
+    resource function get greeting(http:Caller caller, http:Request request) {...}
 }
 ```
 

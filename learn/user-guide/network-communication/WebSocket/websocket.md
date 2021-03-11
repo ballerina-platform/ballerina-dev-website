@@ -53,7 +53,7 @@ The connection creation state is achieved when the WebSocket client establishes 
 remote function onOpen(websocket:Caller caller);
 ```
 
-This remote function provides an instance of a [`websocket:Caller`](learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/clients/Caller) object, which can be used to communicate back with the WebSocket client. This saves the caller object when the connection is created so whenever the application wants to send messages to the connected clients, it can use the stored caller objects to do so.
+This remote function provides an instance of a [`websocket:Caller`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/clients/Caller) object, which can be used to communicate back with the WebSocket client. This saves the caller object when the connection is created so whenever the application wants to send messages to the connected clients, it can use the stored caller objects to do so.
 
 #### Connection Creation Example
 

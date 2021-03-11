@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/communication-resiliency/
   - /learn/network-communication/http/http-clients/communication-resiliency
   - /learn/user-guide/network-communication/http/http-clients/communication-resiliency
+  - /learn/network-communication/http/communication-resiliency/
+  - /learn/network-communication/http/communication-resiliency
 ---
 
 These features allow you to handle and recover from unexpected communication scenarios gracefully. 

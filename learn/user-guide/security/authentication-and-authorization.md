@@ -166,7 +166,6 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
 > Accept: */*
 > Authorization: Basic <token>
 >
-
 < HTTP/1.1 403 Forbidden
 < content-length: 0
 < server: ballerina
@@ -185,7 +184,6 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 > Accept: */*
 > Authorization: Basic <token>
 >
-
 < HTTP/1.1 200 OK
 < content-length: 13
 < server: ballerina
@@ -297,7 +295,6 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
 > Accept: */*
 > Authorization: Basic <token>
 >
-
 < HTTP/1.1 403 Forbidden
 < content-length: 0
 < server: ballerina
@@ -316,7 +313,6 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 > Accept: */*
 > Authorization: Basic <token>
 >
-
 < HTTP/1.1 200 OK
 < content-length: 13
 < server: ballerina
@@ -342,7 +338,7 @@ The `http:JwtValidatorConfig` configurations include:
     * `certFile` - Public certificate file
     * `trustStoreConfig` - JWT TrustStore configurations
         * `trustStore` - TrustStore used for signature verification
-        * `certificateAlias` - Token-signed public key certificate alias
+        * `certAlias` - Token-signed public key certificate alias
 * `cacheConfig` - Configurations related to the cache, which are used to store parsed JWT information
 
 ```ballerina
@@ -407,7 +403,6 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
 > Accept: */*
 > Authorization: Bearer <token>
 >
-
 < HTTP/1.1 403 Forbidden
 < content-length: 0
 < server: ballerina
@@ -426,7 +421,6 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 > Accept: */*
 > Authorization: Bearer <token>
 >
-
 < HTTP/1.1 200 OK
 < content-length: 13
 < server: ballerina
@@ -451,7 +445,6 @@ The `http:OAuth2IntrospectionConfig` configurations include:
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
-        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
     * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
@@ -503,7 +496,6 @@ curl -k -v https://localhost:9090/foo/bar
 > User-Agent: curl/7.47.0
 > Accept: */*
 > 
-
 < HTTP/1.1 401 Unauthorized
 < content-length: 0
 < server: ballerina
@@ -522,7 +514,6 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
 > Accept: */*
 > Authorization: Bearer <token>
 >
-
 < HTTP/1.1 403 Forbidden
 < content-length: 0
 < server: ballerina
@@ -541,7 +532,6 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 > Accept: */*
 > Authorization: Bearer <token>
 >
-
 < HTTP/1.1 200 OK
 < content-length: 13
 < server: ballerina

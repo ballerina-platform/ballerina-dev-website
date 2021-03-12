@@ -209,6 +209,9 @@ button.navbar-toggle {
     color: #20b6b0;
 }
 
+.cVersionItem {
+	display: none !important;
+}
 
 
 @media screen and (max-width: 991px) {

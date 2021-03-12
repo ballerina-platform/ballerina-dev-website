@@ -290,7 +290,7 @@ if result is error {
                                     </tr>
                                     <tr>
                                        <td>
-                                            <a href="/learn/by-example/http-service-with-basic-auth-file-user-store.html">Basic Auth - File User Store</a>
+                                            <a href="/learn/by-example/http-service-with-basic-auth-file-user-store.html">Basic Auth - File User Store</a><br/>
                                             <a href="/learn/by-example/http-service-with-basic-auth-ldap-user-store.html">Basic Auth - LDAP User Store</a>
                                        </td>
                                        <td><a href="/learn/by-example/http-client-with-basic-auth.html">Basic Auth</a></td>

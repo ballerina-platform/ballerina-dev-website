@@ -277,7 +277,7 @@ http:Request request) {
                            <p>Ballerina provides a simple workflow to connect and integrate with these SaaS services. For example, the following code snippet shows how to initialize and send out a tweet with the Twitter SaaS service:</p>
                            <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/config;
 import ballerina/log;
-import wso2/twitter;
+import ballerinax/twitter;
 // Twitter package defines this type of endpoint
 // that incorporates the twitter API.
 // We need to initialize it with OAuth data from apps.twitter.com.

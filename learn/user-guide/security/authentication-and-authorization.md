@@ -196,7 +196,7 @@ Hello, World!
 
 ##### LDAP User Store
 
-Ballerina supports LDAP user store Basic Authentication and Authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:LdapUserStoreConfigWithScopes` record as an element. If the `ldapUserStoreConfig` field is assigned with the `http:LdapUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
+Ballerina supports LDAP user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:LdapUserStoreConfigWithScopes` record as an element. If the `ldapUserStoreConfig` field is assigned with the `http:LdapUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
 The `http:LdapUserStoreConfig` configurations include:
 
@@ -269,7 +269,7 @@ service /foo on securedEP {
 }
 ```
 
-When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur:
+When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
 curl -k -v https://localhost:9090/foo/bar
@@ -327,21 +327,21 @@ Hello, World!
 
 #### JWT Auth
 
-Ballerina supports JWT Authentication and Authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:JwtValidatorConfigWithScopes` record as an element. If the `jwtValidatorConfig` field is assigned with the `http:JwtValidatorConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
+Ballerina supports JWT authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:JwtValidatorConfigWithScopes` record as an element. If the `jwtValidatorConfig` field is assigned with the `http:JwtValidatorConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
 The `http:JwtValidatorConfig` configurations include:
 
-* `issuer` - Expected issuer, which is mapped to `iss`
-* `audience` - Expected audience, which is mapped to `aud`
+* `issuer` - Expected issuer, which is mapped to the `iss`
+* `audience` - Expected audience, which is mapped to the `aud`
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
 * `signatureConfig` - JWT signature configurations
-    * `jwksConfig` - JWKs configurations
-        * `url` - URL of the JWKs endpoint
+    * `jwksConfig` - JWKS configurations
+        * `url` - URL of the JWKS endpoint
         * `cacheConfig` - Configurations related to the cache, which are used to store preloaded JWKs information
         * `clientConfig` - HTTP client configurations, which call the JWKs endpoint
     * `certFile` - Public certificate file
-    * `trustStoreConfig` - JWT trust store configurations
-        * `trustStore` - Trust store used for signature verification
+    * `trustStoreConfig` - JWT TrustStore configurations
+        * `trustStore` - TrustStore used for signature verification
         * `certificateAlias` - Token-signed public key certificate alias
 * `cacheConfig` - Configurations related to the cache, which are used to store parsed JWT information
 
@@ -379,7 +379,7 @@ service /foo on securedEP {
 }
 ```
 
-When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur:
+When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
 curl -k -v https://localhost:9090/foo/bar
@@ -437,7 +437,7 @@ Hello, World!
 
 #### OAuth2
 
-Ballerina supports OAuth2 Authentication and Authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, the user can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
+Ballerina supports OAuth2 authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, the user can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
 The `http:OAuth2IntrospectionConfig` configurations include:
 
@@ -493,7 +493,7 @@ service /foo on securedEP {
 }
 ```
 
-When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur:
+When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
 curl -k -v https://localhost:9090/foo/bar
@@ -616,9 +616,9 @@ Ballerina supports self-signed JWT Authentication for clients. The `auth` field 
 
 The `http:JwtIssuerConfig` configurations include:
 
-* `username` - JWT username, which is mapped to `sub`
-* `issuer` - JWT issuer, which is mapped to `iss`
-* `audience` - JWT audience, which is mapped to `aud`
+* `username` - JWT username, which is mapped to the `sub`
+* `issuer` - JWT issuer, which is mapped to the `iss`
+* `audience` - JWT audience, which is mapped to the `aud`
 * `jwtId` - JWT ID, which is mapped to the `jti`
 * `keyId` - JWT key ID, which is mapped to the `kid`
 * `customClaims` - Map of custom claims
@@ -629,14 +629,13 @@ The `http:JwtIssuerConfig` configurations include:
         * `jwt:RS384` - The RSA-SHA384 algorithm
         * `jwt:RS512` - The RSA-SHA512 algorithm
         * `jwt:NONE` - Unsecured JWTs (no signing)
-    * `config` - Keystore configurations or private key configurations
-        * `keyStore` - Keystore to be used in JWT signing
+    * `config` - KeyStore configurations or private key configurations
+        * `keyStore` - KeyStore to be used in JWT signing
         * `keyAlias` - Signing key alias
         * `keyPassword` - Signing key password
             * --- OR ---
         * `keyFile` - Private key to be used in JWT signing
-        * `keyPassword` - Password of the private key 
-        (if encrypted)
+        * `keyPassword` - Password of the private key (if encrypted)
 
 ```ballerina
 import ballerina/http;

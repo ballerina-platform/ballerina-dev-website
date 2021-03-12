@@ -51,7 +51,7 @@ Hello, World!
                               <p>Ballerina services come with built-in concurrency. Every request to a resource method is handled in a separate strand (Ballerina concurrency unit), which gives implicit concurrent behavior to a service.</p>
                               <p>Some protocols supported out-of-the-box include:</p>
                               <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/https-listener.html">HTTPS</a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/https-listener.html">HTTP</a></li>
                                  <!--<li><a class="cGreenLinkArrow" href="/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a></li>-->
                                  <li><a class="cGreenLinkArrow" href="/learn/by-example/http-1-1-to-2-0-protocol-switch.html">HTTP 2.0</a></li>
                                  <li><a class="cGreenLinkArrow" href="/learn/by-example/grpc-unary-blocking.html">gRPC</a></li>
@@ -87,7 +87,7 @@ import ballerina/io;
 
 public function main() returns @tainted error? {
     http:Client clientEP = check new ("http://www.mocky.io");
-    string payload = &lt;string&gt; check clientEP-&gt;get("/v2/5ae082123200006b00510c3d/", targetType = string);
+    string payload = check clientEP-&gt;get("/v2/5ae082123200006b00510c3d/", targetType = string);
     io:println(payload);
 }
                               </code></pre>

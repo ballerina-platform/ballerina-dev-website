@@ -27,7 +27,7 @@ The Ballerina HTTP listener can be configured to authenticate and authorize the 
 - JWT authentication
 - OAuth2 authentication
 
-The following example represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting  `http:FileUserStoreConfigWithScopes`, `http:LdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:FileUserStoreConfig`, `http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
+The example below represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting of   `http:FileUserStoreConfigWithScopes`, `http:LdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:FileUserStoreConfig`, `http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
 
 ```ballerina
 import ballerina/http;
@@ -90,11 +90,11 @@ Also, the security enforcement that is done for the service using the `http:Serv
 
 ##### File User Store
 
-Ballerina supports File user store Basic Authentication and Authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:FileUserStoreConfigWithScopes` record as an element. If the `fileUserStoreConfig` field is assigned with the `http:FileUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
+Ballerina supports the file user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:FileUserStoreConfigWithScopes` record as an element. If the `fileUserStoreConfig` field is assigned with the `http:FileUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
-The `http:FileUserStoreConfig` configurations is kept blank for future improvements and backward compatibility.
+The `http:FileUserStoreConfig` configurations are kept blank for future improvements and backward compatibility.
 
-The file user store is defined in `Config.toml` as follows:
+The file user store is defined in the `Config.toml` as follows:
 ```toml
 [[auth.users]]
 username="alice"
@@ -138,7 +138,7 @@ service /foo on securedEP {
 }
 ```
 
-When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur:
+When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
 curl -k -v https://localhost:9090/foo/bar
@@ -217,10 +217,10 @@ The `http:LdapUserStoreConfig` configurations include:
 * `membershipAttribute` - Define the attribute that contains the distinguished names (DN) of user objects that are in a group
 * `userRolesCacheEnabled` -  To indicate whether to cache the role list of a user
 * `connectionPoolingEnabled` - Define whether LDAP connection pooling is enabled
-* `connectionTimeout` - Connection timeout (in seconds) in making the initial LDAP connection
+* `connectionTimeout` - Connection timeout (in seconds) when making the initial LDAP connection
 * `readTimeout` - Reading timeout (in seconds) for LDAP operations
 * `secureSocket` - The SSL configurations for the LDAP client socket. This needs to be configured in order to communicate through LDAPs
-    * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
+    * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
 
 ```ballerina
 import ballerina/http;
@@ -343,7 +343,7 @@ The `http:JwtValidatorConfig` configurations include:
     * `trustStoreConfig` - JWT trust store configurations
         * `trustStore` - Trust store used for signature verification
         * `certificateAlias` - Token-signed public key certificate alias
-* `cacheConfig` - Configurations related to the cache used to store parsed JWT information
+* `cacheConfig` - Configurations related to the cache, which are used to store parsed JWT information
 
 ```ballerina
 import ballerina/http;
@@ -445,17 +445,17 @@ The `http:OAuth2IntrospectionConfig` configurations include:
 * `tokenTypeHint` - A hint about the type of the token submitted for introspection
 * `optionalParams` - Map of optional parameters used for the introspection endpoint
 * `cacheConfig` - Configurations for the cache used to store the OAuth2 token and other related information
-* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if introspection response does not contain an `exp` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the introspection response does not contain an `exp` field
 * `clientConfig` - HTTP client configurations, which call the introspection server
     * `httpVersion` - The HTTP version of the client
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
         * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
-    * `secureSocket` - SSL/TLS related configurations
+    * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
-        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
-        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
+        * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with the `crypto:KeyStore` or a combination of the certificate and private key of the client
 
 ```ballerina
 import ballerina/http;
@@ -619,8 +619,8 @@ The `http:JwtIssuerConfig` configurations include:
 * `username` - JWT username, which is mapped to `sub`
 * `issuer` - JWT issuer, which is mapped to `iss`
 * `audience` - JWT audience, which is mapped to `aud`
-* `jwtId` - JWT ID, which is mapped to `jti`
-* `keyId` - JWT key ID, which is mapped `kid`
+* `jwtId` - JWT ID, which is mapped to the `jti`
+* `keyId` - JWT key ID, which is mapped to the `kid`
 * `customClaims` - Map of custom claims
 * `expTime` - Expiry time in seconds
 * `signatureConfig` - JWT signature configurations
@@ -629,13 +629,14 @@ The `http:JwtIssuerConfig` configurations include:
         * `jwt:RS384` - The RSA-SHA384 algorithm
         * `jwt:RS512` - The RSA-SHA512 algorithm
         * `jwt:NONE` - Unsecured JWTs (no signing)
-    * `config` - Key store configurations or private key configurations
+    * `config` - Keystore configurations or private key configurations
         * `keyStore` - Keystore to be used in JWT signing
         * `keyAlias` - Signing key alias
         * `keyPassword` - Signing key password
             * --- OR ---
         * `keyFile` - Private key to be used in JWT signing
-        * `keyPassword` - Password of the private key, if encrypted
+        * `keyPassword` - Password of the private key 
+        (if encrypted)
 
 ```ballerina
 import ballerina/http;
@@ -718,7 +719,7 @@ The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 * `clientId` - Client ID for the client credentials grant authentication
 * `clientSecret` - Client secret for the client credentials grant authentication
 * `scopes` - Scope(s) of the access request
-* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if authorization server response does not contain an `expires_in` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the authorization server response does not contain an `expires_in` field
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
@@ -730,10 +731,10 @@ The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
         * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
-    * `secureSocket` - SSL/TLS related configurations
+    * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
-        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
-        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
+        * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with the `crypto:KeyStore` or a combination of the certificate and private key of the client
 
 ```ballerina
 import ballerina/http;
@@ -785,7 +786,7 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
         * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
         * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
     * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
-* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if authorization server response does not contain an `expires_in` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the authorization server response does not contain an `expires_in` field
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
@@ -797,10 +798,10 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
         * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
-    * `secureSocket` - SSL/TLS related configurations
+    * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
-        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
-        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
+        * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with the `crypto:KeyStore` or a combination of the certificate and private key of the client
 
 ```ballerina
 import ballerina/http;
@@ -854,7 +855,7 @@ The `http:OAuth2DirectTokenConfig` configurations include:
 * `clientId` - Client ID for authentication against the authorization endpoint
 * `clientSecret` - Client secret for authentication against the authorization endpoint
 * `scopes` - Scope(s) of the access request
-* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if authorization server response does not contain an `expires_in` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the authorization server response does not contain an `expires_in` field
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
 * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
@@ -866,10 +867,10 @@ The `http:OAuth2DirectTokenConfig` configurations include:
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
         * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
-    * `secureSocket` - SSL/TLS related configurations
+    * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
-        * `cert` - Configurations associated with `crypto:TrustStore` or single certificate file that the client trusts
-        * `key` - Configurations associated with `crypto:KeyStore` or combination of certificate and private key of the client
+        * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with the `crypto:KeyStore` or a combination of certificate and private key of the client
 
 ```ballerina
 import ballerina/http;

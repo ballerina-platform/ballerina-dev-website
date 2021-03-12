@@ -140,7 +140,7 @@
    },
    {
       "version": "swan-lake-alpha1",
-      "release-date": "2021-01-23",
+      "release-date": "2021-01-27",
       "windows-installer": "ballerina-windows-installer-x64-swan-lake-alpha1.msi",
       "windows-installer-size": "155mb",
       "linux-installer": "ballerina-linux-installer-x64-swan-lake-alpha1.deb",

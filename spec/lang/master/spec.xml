@@ -6675,6 +6675,11 @@ class="grammar"><dfn>xml-step-expr</dfn> := <abbr>expression</abbr> <abbr>xml-st
    | <code>.</code> <abbr>method-name</abbr> <code>(</code> <abbr>arg-list</abbr> <code>)</code>
 </pre>
 <p>
+The production for xml-step-expr is ambiguous with the productions for
+member-access-expr and method-call-expr: this must be resolved by preferring the
+parse that includes as much as possible in the xml-step-expr.
+</p>
+<p>
 The static type of the expression must be a subtype of xml.
 </p>
 <p>
@@ -9485,6 +9490,10 @@ inferred from the static type of <code>expression</code>; if the module-var-decl
 includes <code>final</code>, the precise type is used, and otherwise the broad
 type is used. If the typed-binding-pattern specifies a type-descriptor, then
 that type-descriptor provides the contextually expected type for action-or-expr.
+</p>
+<p>
+If the module-init-var-decl includes <code>public</code>, then the
+typed-binding-pattern must not use <code>var</code>.
 </p>
 <p>
 If a module-init-var-decl includes an isolated-qual, then the variable declared

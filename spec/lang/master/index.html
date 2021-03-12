@@ -7141,6 +7141,11 @@ similar to a location path in XPath.
    | <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
 <p>
+The production for xml-step-expr is ambiguous with the productions for
+member-access-expr and method-call-expr: this must be resolved by preferring the
+parse that includes as much as possible in the xml-step-expr.
+</p>
+<p>
 The static type of the expression must be a subtype of xml.
 </p>
 <p>
@@ -9893,6 +9898,10 @@ inferred from the static type of <code>expression</code>; if the module-var-decl
 includes <code>final</code>, the precise type is used, and otherwise the broad
 type is used. If the typed-binding-pattern specifies a type-descriptor, then
 that type-descriptor provides the contextually expected type for action-or-expr.
+</p>
+<p>
+If the module-init-var-decl includes <code>public</code>, then the
+typed-binding-pattern must not use <code>var</code>.
 </p>
 <p>
 If a module-init-var-decl includes an isolated-qual, then the variable declared

@@ -29,7 +29,7 @@ import ballerina/http;
 service / on new http:Listener(8080) {
  
    resource function post upload/[string name](
-                                  @http:Payload {} byte[] payload)
+                                  @http:Payload byte[] payload)
                                   returns string {
        return string `'${name}' uploaded with ${payload.length()} bytes`;
    }

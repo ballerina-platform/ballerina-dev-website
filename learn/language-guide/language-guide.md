@@ -1,11 +1,11 @@
 ---
 layout: ballerina-inner-page
 title: Language Guide
-description: The sections below describes the Swan Lake version of the Ballerina language by exploring how Ballerina provides the basic functionalities common to most programming languages, what makes Ballerina distinctive, and a deep-dive into its significant features.
+description: The sections below describe the Swan Lake version of the Ballerina language by exploring how Ballerina provides the basic functionalities common to most programming languages, what makes Ballerina distinctive, and a deep-dive into its significant features.
 keywords: ballerina, language guide, programming language
 permalink: /learn/language-guide/
 active: quick-tour
-intro: The sections below describes the Swan Lake version of the Ballerina language by exploring how Ballerina provides the basic functionalities common to most programming languages, what makes Ballerina distinctive, and a deep-dive into its significant features.
+intro: The sections below describe the Swan Lake version of the Ballerina language by exploring how Ballerina provides the basic functionalities common to most programming languages, what makes Ballerina distinctive, and a deep-dive into its significant features.
 redirect_from:
   - /learn/language-guide
 ---
@@ -16,7 +16,7 @@ redirect_from:
 
 ## Language Introduction Slides
 
-> For information, see [The Ballerina Programming Language Slides](/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf) below.
+> For the slides, see [The Ballerina Programming Language presentation](/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf) below.
 
 <div class="clearfix">
 

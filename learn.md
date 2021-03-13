@@ -67,7 +67,7 @@ redirect_from:
 </div>
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-<a class="cBoxLink" href="/learn/language-guide/" target="_blank">
+<a class="cBoxLink" href="" target="_blank">
 
 <img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
 <h2>Language Guide</h2>

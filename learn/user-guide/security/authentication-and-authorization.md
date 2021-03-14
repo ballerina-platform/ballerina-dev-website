@@ -19,7 +19,7 @@ redirect_from:
 - /learn/user-guide/authentication-and-authorization
 ---
 
-### HTTP Listener Authentication and Authorization
+## HTTP Listener Authentication and Authorization
 
 The Ballerina HTTP listener can be configured to authenticate and authorize the inbound requests. Ballerina has built-in support for the following listener authentication mechanisms.
 
@@ -86,9 +86,9 @@ Also, the security enforcement that is done for the service using the `http:Serv
 
 > **Note:** It is required to use HTTPS when enforcing authentication and authorization checks to ensure the confidentiality of sensitive authentication data.
 
-#### Basic Auth
+### Basic Auth
 
-##### File User Store
+#### File User Store
 
 Ballerina supports the file user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:FileUserStoreConfigWithScopes` record as an element. If the `fileUserStoreConfig` field is assigned with the `http:FileUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -192,7 +192,7 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
-##### LDAP User Store
+#### LDAP User Store
 
 Ballerina supports LDAP user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:LdapUserStoreConfigWithScopes` record as an element. If the `ldapUserStoreConfig` field is assigned with the `http:LdapUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -321,7 +321,7 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
-#### JWT Auth
+### JWT Auth
 
 Ballerina supports JWT authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:JwtValidatorConfigWithScopes` record as an element. If the `jwtValidatorConfig` field is assigned with the `http:JwtValidatorConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -429,7 +429,7 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 Hello, World!
 ```
 
-#### OAuth2
+### OAuth2
 
 Ballerina supports OAuth2 authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, the user can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -542,7 +542,7 @@ Hello, World!
 
 ---
 
-### HTTP Client Authentication
+## HTTP Client Authentication
 
 The Ballerina HTTP client can be configured to send authentication information to the endpoint being invoked. Ballerina has built-in support for the following client authentication mechanisms.
 
@@ -566,7 +566,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 });
 ```
 
-#### Basic Auth
+### Basic Auth
 
 Ballerina supports Basic Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:CredentialsConfig` record.
 
@@ -600,7 +600,7 @@ public function main() {
 }
 ```
 
-#### Self-Signed JWT Auth
+### Self-Signed JWT Auth
 
 Ballerina supports self-signed JWT Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:JwtIssuerConfig` record.
 
@@ -663,8 +663,7 @@ public function main() {
 }
 ```
 
-
-#### Bearer Token Auth
+### Bearer Token Auth
 
 Ballerina supports Bearer Token Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:BearerTokenConfig` record.
 
@@ -696,11 +695,11 @@ public function main() {
 }
 ```
 
-#### OAuth2
+### OAuth2
 
 Ballerina supports Basic Authentication for clients. It supports the Client Credentials grant type, Password grant type, and Direct Token type, in which, the credentials can be provided manually and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2DirectTokenConfig` records.
 
-##### Client Credentials Grant Type
+#### Client Credentials Grant Type
 
 The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 
@@ -757,7 +756,7 @@ public function main() {
 }
 ```
 
-##### Password Grant Type
+#### Password Grant Type
 
 The `http:OAuth2PasswordGrantConfig` configurations include:
 
@@ -835,7 +834,7 @@ public function main() {
 }
 ```
 
-##### Direct Token Type
+#### Direct Token Type
 
 The `http:OAuth2DirectTokenConfig` configurations include:
 

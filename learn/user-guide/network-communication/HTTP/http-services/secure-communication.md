@@ -15,7 +15,7 @@ redirect_from:
   - /learn/user-guide/network-communication/http/http-services/secure-communication
 ---
 
-## Configure Secure Communication
+## Configuring Secure Communication
 
 This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ListenerConfiguration) instance when creating the [`http:Listener`](/learn/api-docs/ballerina/#/ballerina/http/latest/http/listeners/Listener).
 

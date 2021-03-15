@@ -17,7 +17,7 @@ redirect_from:
   - /learn/network-communication/http/secure-communication
 ---
 
-## Configure Secure Communication
+## Configuring Secure Communication
 
 The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientConfiguration) instance when creating the [`http:Client`](/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client).
 

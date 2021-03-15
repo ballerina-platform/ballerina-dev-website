@@ -861,7 +861,7 @@ public function main() {
 
 ### OAuth2
 
-Ballerina supports Basic Authentication for clients. It supports the Client Credentials grant type, Password grant type, and Refresh Token grant type, in which, the credentials can be provided manually and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2RefreshTokenGrantConfig` records.
+Ballerina supports Basic Authentication for clients. It supports the client credentials grant type, password grant type, and refresh token grant type, in which, the credentials can be provided manually, and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2RefreshTokenGrantConfig` records.
 
 #### Client Credentials Grant Type
 

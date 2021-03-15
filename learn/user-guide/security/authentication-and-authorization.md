@@ -19,7 +19,7 @@ redirect_from:
 - /learn/user-guide/authentication-and-authorization
 ---
 
-### HTTP Listener Authentication and Authorization
+## HTTP Listener Authentication and Authorization
 
 The Ballerina HTTP listener can be configured to authenticate and authorize the inbound requests. Ballerina has built-in support for the following listener authentication mechanisms.
 
@@ -86,9 +86,9 @@ Also, the security enforcement that is done for the service using the `http:Serv
 
 > **Note:** It is required to use HTTPS when enforcing authentication and authorization checks to ensure the confidentiality of sensitive authentication data.
 
-#### Basic Auth
+### Basic Auth
 
-##### File User Store
+#### File User Store
 
 Ballerina supports the file user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:FileUserStoreConfigWithScopes` record as an element. If the `fileUserStoreConfig` field is assigned with the `http:FileUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -192,7 +192,40 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
-##### LDAP User Store
+##### Imperative Method
+
+There is an imperative method to handle authentication and authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new;
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        auth:UserDetails|http:Unauthorized authn = handler.authenticate(header);
+        if (authn is http:Unauthorized) {
+            return authn;
+        }
+        http:Forbidden? authz = handler.authorize(<auth:UserDetails> authn, ["write", "update"]);
+        if (authz is http:Forbidden) {
+            return authz;
+        }
+        return "Hello, World!";
+    }
+}
+```
+
+#### LDAP User Store
 
 Ballerina supports LDAP user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:LdapUserStoreConfigWithScopes` record as an element. If the `ldapUserStoreConfig` field is assigned with the `http:LdapUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -321,7 +354,60 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
-#### JWT Auth
+##### Imperative Method
+
+There is an imperative method to handle authentication and authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new({
+    domainName: "ballerina.io",
+    connectionUrl: "ldap://localhost:20000",
+    connectionName: "uid=admin,ou=system",
+    connectionPassword: "secret",
+    userSearchBase: "ou=Users,dc=ballerina,dc=io",
+    userEntryObjectClass: "identityPerson",
+    userNameAttribute: "uid",
+    userNameSearchFilter: "(&(objectClass=person)(uid=?))",
+    userNameListFilter: "(objectClass=person)",
+    groupSearchBase: ["ou=Groups,dc=ballerina,dc=io"],
+    groupEntryObjectClass: "groupOfNames",
+    groupNameAttribute: "cn",
+    groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
+    groupNameListFilter: "(objectClass=groupOfNames)",
+    membershipAttribute: "member",
+    userRolesCacheEnabled: true,
+    connectionPoolingEnabled: false,
+    connectionTimeout: 5000,
+    readTimeout: 60000
+});
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        auth:UserDetails|http:Unauthorized authn = handler.authenticate(header);
+        if (authn is http:Unauthorized) {
+            return authn;
+        }
+        http:Forbidden? authz = handler.authorize(<auth:UserDetails> authn, ["write", "update"]);
+        if (authz is http:Forbidden) {
+            return authz;
+        }
+        return "Hello, World!";
+    }
+}
+```
+
+### JWT Auth
 
 Ballerina supports JWT authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:JwtValidatorConfigWithScopes` record as an element. If the `jwtValidatorConfig` field is assigned with the `http:JwtValidatorConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -429,7 +515,47 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 Hello, World!
 ```
 
-#### OAuth2
+##### Imperative Method
+
+There is an imperative method to handle authentication and authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new({
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    },
+    scopeKey: "scp"
+});
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        jwt:Payload|http:Unauthorized authn = handler.authenticate(header);
+        if (authn is http:Unauthorized) {
+            return authn;
+        }
+        http:Forbidden? authz = handler.authorize(<jwt:Payload> authn, ["write", "update"]);
+        if (authz is http:Forbidden) {
+            return authz;
+        }
+        return "Hello, World!";
+    }
+}
+```
+
+### OAuth2
 
 Ballerina supports OAuth2 authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, the user can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -540,9 +666,47 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 Hello, World!
 ```
 
+##### Imperative Method
+
+There is an imperative method to handle authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new({
+    url: "https://localhost:9999/oauth2/token/introspect",
+    tokenTypeHint: "access_token",
+    scopeKey: "scp",
+    clientConfig: {
+        secureSocket: {
+            cert: "/path/to/public.crt"
+        }
+    }
+});
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(header, ["write", "update"]);
+        if (auth is http:Unauthorized || auth is http:Forbidden) {
+            return auth;
+        }
+        return "Hello, World!";
+    }
+}
+```
+
 ---
 
-### HTTP Client Authentication
+## HTTP Client Authentication
 
 The Ballerina HTTP client can be configured to send authentication information to the endpoint being invoked. Ballerina has built-in support for the following client authentication mechanisms.
 
@@ -550,7 +714,7 @@ The Ballerina HTTP client can be configured to send authentication information t
 - JWT authentication
 - OAuth2 authentication
 
-The following example represents how an HTTP client can be configured to call a secured endpoint.  The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:CredentialsConfig`, `http:BearerTokenConfig`, `http:JwtIssuerConfig`, `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, and `http:OAuth2DirectTokenConfig` records.
+The following example represents how an HTTP client can be configured to call a secured endpoint.  The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:CredentialsConfig`, `http:BearerTokenConfig`, `http:JwtIssuerConfig`, `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, and `http:OAuth2RefreshTokenGrantConfig` records.
 
 ```ballerina
 import ballerina/http;
@@ -566,7 +730,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 });
 ```
 
-#### Basic Auth
+### Basic Auth
 
 Ballerina supports Basic Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:CredentialsConfig` record.
 
@@ -600,7 +764,7 @@ public function main() {
 }
 ```
 
-#### Self-Signed JWT Auth
+### Self-Signed JWT Auth
 
 Ballerina supports self-signed JWT Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:JwtIssuerConfig` record.
 
@@ -663,8 +827,7 @@ public function main() {
 }
 ```
 
-
-#### Bearer Token Auth
+### Bearer Token Auth
 
 Ballerina supports Bearer Token Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:BearerTokenConfig` record.
 
@@ -696,11 +859,11 @@ public function main() {
 }
 ```
 
-#### OAuth2
+### OAuth2
 
-Ballerina supports Basic Authentication for clients. It supports the Client Credentials grant type, Password grant type, and Direct Token type, in which, the credentials can be provided manually and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2DirectTokenConfig` records.
+Ballerina supports Basic Authentication for clients. It supports the client credentials grant type, password grant type, and refresh token grant type, in which, the credentials can be provided manually, and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2RefreshTokenGrantConfig` records.
 
-##### Client Credentials Grant Type
+#### Client Credentials Grant Type
 
 The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 
@@ -719,7 +882,7 @@ The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
-        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
     * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
@@ -757,7 +920,7 @@ public function main() {
 }
 ```
 
-##### Password Grant Type
+#### Password Grant Type
 
 The `http:OAuth2PasswordGrantConfig` configurations include:
 
@@ -786,7 +949,7 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
-        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
     * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
@@ -835,9 +998,9 @@ public function main() {
 }
 ```
 
-##### Direct Token Type
+#### Refresh Token Grant Type
 
-The `http:OAuth2DirectTokenConfig` configurations include:
+The `http:OAuth2RefreshTokenGrantConfig` configurations include:
 
 * `refreshUrl` - Refresh token URL for the refresh token server
 * `refreshToken` - Refresh token for the refresh token server
@@ -855,7 +1018,7 @@ The `http:OAuth2DirectTokenConfig` configurations include:
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
-        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
     * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts

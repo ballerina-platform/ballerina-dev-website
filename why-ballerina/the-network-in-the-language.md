@@ -307,7 +307,7 @@ if result is error {
                                        <td>
                                             <a href="/learn/by-example/http-client-with-oauth2-client-credentials-grant-type.html">OAuth2 - Client Credentials Grant Type</a><br/>
                                             <a href="/learn/by-example/http-client-with-oauth2-password-grant-type.html">OAuth2 - Password Grant Type</a><br/>
-                                            <a href="/learn/by-example/http-client-with-oauth2-direct-token-type.html">OAuth2 - Direct Token Type</a>
+                                            <a href="/learn/by-example/http-client-with-oauth2-refresh-token-grant-type.html">OAuth2 - Refresh Token Grant Type</a>
                                        </td>
                                     </tr>
                                  </tbody>

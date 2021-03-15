@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Listener Secure Communication
+title: Secure Communication
 description: The HTTP listener can be configured to enable transport security to restrict to HTTPS clients for communication. 
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/secure-communication/

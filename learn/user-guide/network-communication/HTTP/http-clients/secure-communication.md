@@ -29,11 +29,10 @@ The `tls_demo.bal` example below shows a scenario of communicating with an HTTPS
 ```ballerina
 import ballerina/io;
 import ballerina/http;
-import ballerina/config;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new ("https://httpbin.org");
-   http:Response resp = <http:Response> check clientEp->get("/get");
+   http:Client clientEp = check new ("https://httpbin.org");
+   http:Response resp = check clientEp->get("/get");
    io:println("Payload: ", resp.getJsonPayload());
 }
 ```

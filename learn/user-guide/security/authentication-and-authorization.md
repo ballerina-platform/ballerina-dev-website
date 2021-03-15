@@ -714,7 +714,7 @@ The Ballerina HTTP client can be configured to send authentication information t
 - JWT authentication
 - OAuth2 authentication
 
-The following example represents how an HTTP client can be configured to call a secured endpoint.  The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:CredentialsConfig`, `http:BearerTokenConfig`, `http:JwtIssuerConfig`, `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, and `http:OAuth2DirectTokenConfig` records.
+The following example represents how an HTTP client can be configured to call a secured endpoint.  The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:CredentialsConfig`, `http:BearerTokenConfig`, `http:JwtIssuerConfig`, `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, and `http:OAuth2RefreshTokenGrantConfig` records.
 
 ```ballerina
 import ballerina/http;
@@ -861,7 +861,7 @@ public function main() {
 
 ### OAuth2
 
-Ballerina supports Basic Authentication for clients. It supports the Client Credentials grant type, Password grant type, and Direct Token type, in which, the credentials can be provided manually and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2DirectTokenConfig` records.
+Ballerina supports Basic Authentication for clients. It supports the Client Credentials grant type, Password grant type, and Refresh Token grant type, in which, the credentials can be provided manually and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2RefreshTokenGrantConfig` records.
 
 #### Client Credentials Grant Type
 
@@ -882,7 +882,7 @@ The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
-        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
     * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
@@ -949,7 +949,7 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
-        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
     * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
@@ -998,9 +998,9 @@ public function main() {
 }
 ```
 
-#### Direct Token Type
+#### Refresh Token Grant Type
 
-The `http:OAuth2DirectTokenConfig` configurations include:
+The `http:OAuth2RefreshTokenGrantConfig` configurations include:
 
 * `refreshUrl` - Refresh token URL for the refresh token server
 * `refreshToken` - Refresh token for the refresh token server
@@ -1018,7 +1018,7 @@ The `http:OAuth2DirectTokenConfig` configurations include:
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
-        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:DirectTokenConfig`
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
     * `secureSocket` - SSL/TLS-related configurations
         * `disable` - Disable SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts

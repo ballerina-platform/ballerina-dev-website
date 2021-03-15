@@ -192,6 +192,39 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
+##### Imperative Method
+
+There is an imperative method to handle authentication and authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new;
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        auth:UserDetails|http:Unauthorized authn = handler.authenticate(header);
+        if (authn is http:Unauthorized) {
+            return authn;
+        }
+        http:Forbidden? authz = handler.authorize(<auth:UserDetails> authn, ["write", "update"]);
+        if (authz is http:Forbidden) {
+            return authz;
+        }
+        return "Hello, World!";
+    }
+}
+```
+
 #### LDAP User Store
 
 Ballerina supports LDAP user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:LdapUserStoreConfigWithScopes` record as an element. If the `ldapUserStoreConfig` field is assigned with the `http:LdapUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
@@ -321,6 +354,59 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
+##### Imperative Method
+
+There is an imperative method to handle authentication and authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new({
+    domainName: "ballerina.io",
+    connectionUrl: "ldap://localhost:20000",
+    connectionName: "uid=admin,ou=system",
+    connectionPassword: "secret",
+    userSearchBase: "ou=Users,dc=ballerina,dc=io",
+    userEntryObjectClass: "identityPerson",
+    userNameAttribute: "uid",
+    userNameSearchFilter: "(&(objectClass=person)(uid=?))",
+    userNameListFilter: "(objectClass=person)",
+    groupSearchBase: ["ou=Groups,dc=ballerina,dc=io"],
+    groupEntryObjectClass: "groupOfNames",
+    groupNameAttribute: "cn",
+    groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
+    groupNameListFilter: "(objectClass=groupOfNames)",
+    membershipAttribute: "member",
+    userRolesCacheEnabled: true,
+    connectionPoolingEnabled: false,
+    connectionTimeout: 5000,
+    readTimeout: 60000
+});
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        auth:UserDetails|http:Unauthorized authn = handler.authenticate(header);
+        if (authn is http:Unauthorized) {
+            return authn;
+        }
+        http:Forbidden? authz = handler.authorize(<auth:UserDetails> authn, ["write", "update"]);
+        if (authz is http:Forbidden) {
+            return authz;
+        }
+        return "Hello, World!";
+    }
+}
+```
+
 ### JWT Auth
 
 Ballerina supports JWT authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:JwtValidatorConfigWithScopes` record as an element. If the `jwtValidatorConfig` field is assigned with the `http:JwtValidatorConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
@@ -427,6 +513,46 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 < content-type: text/plain
 <
 Hello, World!
+```
+
+##### Imperative Method
+
+There is an imperative method to handle authentication and authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new({
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    },
+    scopeKey: "scp"
+});
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        jwt:Payload|http:Unauthorized authn = handler.authenticate(header);
+        if (authn is http:Unauthorized) {
+            return authn;
+        }
+        http:Forbidden? authz = handler.authorize(<jwt:Payload> authn, ["write", "update"]);
+        if (authz is http:Forbidden) {
+            return authz;
+        }
+        return "Hello, World!";
+    }
+}
 ```
 
 ### OAuth2
@@ -538,6 +664,44 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 < content-type: text/plain
 <
 Hello, World!
+```
+
+##### Imperative Method
+
+There is an imperative method to handle authorization as follows:
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener securedEP = new(9090, config = {
+    secureSocket: {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+
+ListenerFileUserStoreBasicAuthHandler handler = new({
+    url: "https://localhost:9999/oauth2/token/introspect",
+    tokenTypeHint: "access_token",
+    scopeKey: "scp",
+    clientConfig: {
+        secureSocket: {
+            cert: "/path/to/public.crt"
+        }
+    }
+});
+
+service /foo on securedEP {
+    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+        oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(header, ["write", "update"]);
+        if (auth is http:Unauthorized || auth is http:Forbidden) {
+            return auth;
+        }
+        return "Hello, World!";
+    }
+}
 ```
 
 ---

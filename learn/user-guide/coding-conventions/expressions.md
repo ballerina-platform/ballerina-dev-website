@@ -124,8 +124,8 @@ map<string> mapOfString2 = {
 **Example,**
 
 ```ballerina
-(string, int) tuple = 
-(nameOfEmployee, ageOfTheEmployee);
+[string, int] tuple = 
+    [nameOfEmployee, ageOfTheEmployee];
 ```
 
 ## Array Literal

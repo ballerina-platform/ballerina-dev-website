@@ -20,17 +20,17 @@ redirect_from:
 An HTTP client in Ballerina is created by instantiating an `http:Client` object while providing the host and client configurations. The client configuration has a default value of `{}`, and the default values of its fields can be found in the `http:ClientConfiguration` record definition.
 
 ```ballerina
-http:Client clientEp = new("http://example.com");
+http:Client|error clientEp = new("http://example.com");
 ```
 
 The `clientEp` instance above represents a client created for the `example.com` host through the HTTP protocol. In the default configuration, a connection pooling configuration is attached, which means a single-client object is backed by a pool of network connections to the host.
 
 ```ballerina
-http:Client clientEp = new("http://example.com", {
+http:Client|error clientEp = new("http://example.com", {
                            poolConfig: {
                                maxActiveConnections: 100, // default -1
                                maxIdleConnections: 10,    // default 100
-                               waitTimeInMillis: 10000    // default 30000
+                               waitTime: 10    // default 30
                            }
                        });
 ```
@@ -55,8 +55,8 @@ import ballerina/io;
 import ballerina/http;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new("http://httpbin.org");
-   http:Response resp = <http:Response> check clientEp->get("/get");
+   http:Client clientEp = check new("http://httpbin.org");
+   http:Response resp = check clientEp->get("/get");
    io:println("Content Type: ", resp.getContentType());
    io:println("Payload: ", resp.getJsonPayload());
    io:println("Status Code: ", resp.statusCode);
@@ -87,12 +87,11 @@ import ballerina/io;
 import ballerina/http;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new ("http://httpbin.org");
+   http:Client clientEp = check new ("http://httpbin.org");
    http:Request req = new;
    req.setTextPayload("Hello!");
    req.setHeader("x-user", "Jack");
-   http:Response resp = <http:Response> check clientEp->post("/post",
-                                              req);
+   http:Response resp = check clientEp->post("/post", req);
    io:println("Payload: ", resp.getJsonPayload());
 }
 ```

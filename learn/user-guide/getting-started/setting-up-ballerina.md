@@ -28,6 +28,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
 
 <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/home-page.css"/>
+<style>a.cMobileLogo img {display: block;}</style>
 <div class="row cBallerinaIntroSection">
    <div class="container">
       <div class="col-sm-12 col-md-12 cTopLayer">

@@ -32,7 +32,7 @@ import ballerina/http;
  
 public function main() returns error? {
    http:Client clientEp = check new ("https://httpbin.org");
-   http:Response resp = <http:Response> check clientEp->get("/get");
+   http:Response resp = check clientEp->get("/get");
    io:println("Payload: ", resp.getJsonPayload());
 }
 ```

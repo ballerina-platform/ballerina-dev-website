@@ -22,7 +22,7 @@ redirect_from:
     <span class="c1">// Optionally, you can provide the interface that the socket needs to bind </span>
     <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
     <span class="c1">// udp:Client client = new (&quot;www.ballerina.com&quot;, 80,</span>
-    <span class="c1">//                         localHost = &quot;localhost&quot;, timeoutInMillis = 2000);</span>
+    <span class="c1">//                         localHost = &quot;localhost&quot;, timeout = 5);</span>
     <span class="nx">udp</span><span class="p">:</span><span class="nx">ConnectClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">);</span>
 
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
@@ -54,7 +54,7 @@ redirect_from:
  The client remains connected until it is explicitly disconnected or until it is closed.
  This sample demonstrates how to send data to a connected server and print the echoed response.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/udp/">UDP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/udp/">UDP module</a>.</p>
 </p>
 
                         </td>
@@ -178,7 +178,7 @@ import ballerina/udp;
  Optionally, you can provide the interface that the socket needs to bind
  and the timeout in milliseconds, which specifies the read timeout value.
  udp:Client client = new (&ldquo;www.ballerina.com&rdquo;, 80,
-                         localHost = &ldquo;localhost&rdquo;, timeoutInMillis = 2000);</p>
+                         localHost = &ldquo;localhost&rdquo;, timeout = 5);</p>
 
                                         </div>
                                     </div>

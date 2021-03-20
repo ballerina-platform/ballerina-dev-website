@@ -24,52 +24,50 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">call</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">all</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
-                                                    <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-        <span class="c1">// The `string` typedesc is being passed to the `get` [client remote function](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get)</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">all</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+        <span class="c1">// The `string` typedesc is being passed to the `get` [client remote function](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get)</span>
         <span class="c1">// as the `targetType` expecting the payload to be bound to a string value.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
-                        <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/getString&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+                        <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/String&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
 
-        <span class="c1">// The return type of the client remote action is the union of `string`|`xml`|`json`|`map&lt;json&gt;`|`byte[]`|</span>
-        <span class="c1">// `record`|`record[]`|`http:Response` or `http:ClientError`.</span>
+        <span class="c1">// In this instance, The return type of the client remote action is `string` or `http:ClientError`.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// It implies that the [payload type](https://docs.central.ballerina.io/ballerina/http/latest/http/types#Payload)</span>
+            <span class="c1">// is string.</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;String payload: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
 
-        <span class="c1">// If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/types#Payload)</span>
-        <span class="c1">// is string.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;String payload: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">checkpanic</span> <span class="nx">result</span><span class="p">);</span>
-
         <span class="c1">// Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.</span>
-        <span class="kt">json</span> <span class="nx">jsonPayload</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
-                                    <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/getJson&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>
+        <span class="kt">json</span> <span class="nx">jsonPayload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                        <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/Json&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">json</span><span class="p">);</span>
 
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Json payload: &quot;</span> <span class="o">+</span> <span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Json payload: &quot;</span> <span class="o">+</span> <span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
 
         <span class="c1">// Since only the `named types` or `built-in types` can be passed as function parameters,  `Map` or `Array`</span>
         <span class="c1">// types have to be defined beforehand. Here, the type `MapJson` is passed instead of `map&lt;json&gt;`.</span>
         <span class="c1">// Same can be done for `byte[]` or `Person[]` as well.</span>
-        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">value</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
-                                <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/getJson&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">MapJson</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">check</span> <span class="nx">value</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                        <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/Json&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="nx">MapJson</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">check</span> <span class="nx">value</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 
         <span class="c1">// A `record` and `record[]` are also possible types for data binding.</span>
-        <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
-                            <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/getPerson&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Person name: &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+        <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                            <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/person&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Person name: &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 
         <span class="c1">// When the complete response is expected, the default value of the `targetType` will be applied.</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span>  <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
-                                            <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/getResponse&quot;</span><span class="p">);</span>
-        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span>  <span class="nx">check</span> <span class="nx">backendClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/backend/Response&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="err">&#39;</span><span class="mi">5</span><span class="nx">xx</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/get5XX&quot;</span><span class="p">,</span> <span class="s">&quot;want 500&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="err">&#39;</span><span class="mi">5</span><span class="nx">xx</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="kt">json</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                        <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/5XX&quot;</span><span class="p">,</span> <span class="s">&quot;want 500&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">json</span><span class="p">);</span>
         <span class="c1">// When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the</span>
-        <span class="c1">// backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#RemoteServerError)</span>
+        <span class="c1">// backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/http/errors#RemoteServerError)</span>
         <span class="c1">// including the error message and status code.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -79,17 +77,18 @@ redirect_from:
                 <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="p">}</span>
             <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">resp</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">json</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="err">&#39;</span><span class="mi">4</span><span class="nx">xx</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="err">&#39;</span><span class="mi">4</span><span class="nx">xx</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="kt">json</span> <span class="p">{</span>
         <span class="c1">// When the data binding is expected to happen and if the client remote function gets a 4XX response from the</span>
-        <span class="c1">// backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#ClientRequestError)</span>
+        <span class="c1">// backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/http/errors#ClientRequestError)</span>
         <span class="c1">// including the error message and status code.</span>
-        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/err&quot;</span><span class="p">,</span> <span class="s">&quot;want 400&quot;</span><span class="p">,</span> <span class="kt">json</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">backendClient</span><span class="o">-&gt;</span>
+                        <span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/err&quot;</span><span class="p">,</span> <span class="s">&quot;want 400&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">json</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientRequestError</span><span class="p">)</span> <span class="p">{</span>
@@ -98,45 +97,36 @@ redirect_from:
                 <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="p">}</span>
             <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">resp</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">json</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">backend</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">getString</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Hello ballerina!!!!&quot;</span><span class="p">);</span>
-        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="err">&#39;</span><span class="nx">String</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hello ballerina!!!!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">getJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">({</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="nx">values</span><span class="p">:</span> <span class="p">{</span><span class="nx">a</span><span class="p">:</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">}}});</span>
-        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="err">&#39;</span><span class="nx">Json</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="nx">values</span><span class="p">:</span> <span class="p">{</span><span class="nx">a</span><span class="p">:</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">}}};</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">getPerson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">({</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">15</span><span class="p">});</span>
-        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">person</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="o">*</span><span class="nx">http</span><span class="p">:</span><span class="nx">Ok</span><span class="p">;</span> <span class="nx">Person</span> <span class="nx">body</span><span class="p">;|}</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">15</span><span class="p">}};</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">getResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">({</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;data-binding-done&quot;</span><span class="p">});</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s">&quot;x-fact&quot;</span><span class="p">,</span> <span class="s">&quot;backend-payload&quot;</span><span class="p">);</span>
-        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="err">&#39;</span><span class="nx">Response</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Ok</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">body</span><span class="p">:</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;data-binding-done&quot;</span><span class="p">},</span>
+            <span class="nx">headers</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;x-fact&quot;</span><span class="p">:</span><span class="s">&quot;backend-payload&quot;</span><span class="p">}</span>
+        <span class="p">};</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">get5XX</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">501</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;data-binding-failed-with-501&quot;</span><span class="p">);</span>
-        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="err">&#39;</span><span class="mi">5</span><span class="nx">XX</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">NotImplemented</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="s">&quot;data-binding-failed-with-501&quot;</span><span class="p">};</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -156,7 +146,7 @@ redirect_from:
  client remote operation. Since the default <code>targetType</code> is <code>http:Response</code>, the user still has the option to access
  the complete response to explore more.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -319,8 +309,7 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get all(http:Caller caller, http:Request request)
-                                                    returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get all() returns http:Response|error {
 </code></pre></div>
 
                                 </td>
@@ -333,7 +322,7 @@ type Person record {|
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = backendClient-&gt;
-                        get(&quot;/backend/getString&quot;, targetType = string);
+                        get(&quot;/backend/String&quot;, targetType = string);
 </code></pre></div>
 
                                 </td>
@@ -341,7 +330,7 @@ type Person record {|
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>string</code> typedesc is being passed to the <code>get</code> <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">client remote function</a>
+                                            <p>The <code>string</code> typedesc is being passed to the <code>get</code> <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get">client remote function</a>
  as the <code>targetType</code> expecting the payload to be bound to a string value.</p>
 
                                         </div>
@@ -356,7 +345,7 @@ type Person record {|
                                     <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error: &quot; + result.message());
             return result;
-        }
+        } else {
 </code></pre></div>
 
                                 </td>
@@ -364,8 +353,7 @@ type Person record {|
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The return type of the client remote action is the union of <code>string</code>|<code>xml</code>|<code>json</code>|<code>map&lt;json&gt;</code>|<code>byte[]</code>|
- <code>record</code>|<code>record[]</code>|<code>http:Response</code> or <code>http:ClientError</code>.</p>
+                                            <p>In this instance, The return type of the client remote action is <code>string</code> or <code>http:ClientError</code>.</p>
 
                                         </div>
                                     </div>
@@ -376,7 +364,8 @@ type Person record {|
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:print(&quot;String payload: &quot; + &lt;string&gt; checkpanic result);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;String payload: &quot; + result);
+        }
 </code></pre></div>
 
                                 </td>
@@ -384,7 +373,7 @@ type Person record {|
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the type test of the error becomes false, it implies that the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/types#Payload">payload type</a>
+                                            <p>It implies that the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/types#Payload">payload type</a>
  is string.</p>
 
                                         </div>
@@ -396,8 +385,8 @@ type Person record {|
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        json jsonPayload = &lt;json&gt; check backendClient-&gt;
-                                    post(&quot;/backend/getJson&quot;, &quot;foo&quot;, json);
+                                    <div class="highlight"><pre><code class=language-ballerina>        json jsonPayload = check backendClient-&gt;
+                        post(&quot;/backend/Json&quot;, &quot;foo&quot;, targetType = json);
 </code></pre></div>
 
                                 </td>
@@ -416,7 +405,7 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:print(&quot;Json payload: &quot; + jsonPayload.toJsonString());
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot;Json payload: &quot; + jsonPayload.toJsonString());
 </code></pre></div>
 
                                 </td>
@@ -428,9 +417,9 @@ type Person record {|
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;json&gt; value = &lt;map&lt;json&gt;&gt; check backendClient-&gt;
-                                post(&quot;/backend/getJson&quot;, &quot;foo&quot;, MapJson);
-        log:print(check value.id);
+                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;json&gt; value = check backendClient-&gt;
+                        post(&quot;/backend/Json&quot;, &quot;foo&quot;, targetType = MapJson);
+        log:printInfo(check value.id);
 </code></pre></div>
 
                                 </td>
@@ -451,9 +440,9 @@ type Person record {|
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        Person person = &lt;Person&gt; check backendClient-&gt;
-                            get(&quot;/backend/getPerson&quot;, targetType = Person);
-        log:print(&quot;Person name: &quot; + person.name);
+                                    <div class="highlight"><pre><code class=language-ballerina>        Person person = check backendClient-&gt;
+                            get(&quot;/backend/person&quot;, targetType = Person);
+        log:printInfo(&quot;Person name: &quot; + person.name);
 </code></pre></div>
 
                                 </td>
@@ -472,9 +461,8 @@ type Person record {|
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res =  &lt;http:Response&gt; check backendClient-&gt;
-                                            get(&quot;/backend/getResponse&quot;);
-        check caller-&gt;respond(&lt;@untainted&gt;res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res =  check backendClient-&gt;get(&quot;/backend/Response&quot;);
+        return res;
     }
 </code></pre></div>
 
@@ -494,8 +482,9 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get &#39;5xx(http:Caller caller, http:Request request) {
-        var res = backendClient-&gt;post(&quot;/backend/get5XX&quot;, &quot;want 500&quot;, json);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get &#39;5xx() returns http:Response|json {
+        var res = backendClient-&gt;
+                        post(&quot;/backend/5XX&quot;, &quot;want 500&quot;, targetType = json);
 </code></pre></div>
 
                                 </td>
@@ -515,9 +504,9 @@ type Person record {|
                 resp.statusCode = 500;
             }
             resp.setPayload(&lt;@untainted&gt;res.message());
-            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;resp);
+            return resp;
         } else {
-            var responseToCaller = caller-&gt;respond(&lt;@untainted json&gt;res);
+            return res;
         }
     }
 </code></pre></div>
@@ -528,7 +517,7 @@ type Person record {|
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>When the data binding is expected to happen and if the <code>post</code> remote function gets a 5XX response from the
- backend, the response will be returned as an <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#RemoteServerError">http:RemoteServerError</a>
+ backend, the response will be returned as an <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/errors#RemoteServerError">http:RemoteServerError</a>
  including the error message and status code.</p>
 
                                         </div>
@@ -540,7 +529,7 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get &#39;4xx(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get &#39;4xx() returns http:Response|json {
 </code></pre></div>
 
                                 </td>
@@ -552,7 +541,8 @@ type Person record {|
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var res = backendClient-&gt;post(&quot;/backend/err&quot;, &quot;want 400&quot;, json);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var res = backendClient-&gt;
+                        post(&quot;/backend/err&quot;, &quot;want 400&quot;, targetType = json);
         if (res is error) {
             http:Response resp = new;
             if (res is http:ClientRequestError) {
@@ -561,9 +551,9 @@ type Person record {|
                 resp.statusCode = 500;
             }
             resp.setPayload(&lt;@untainted&gt;res.message());
-            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;resp);
+            return resp;
         } else {
-            var responseToCaller = caller-&gt;respond(&lt;@untainted json&gt;res);
+            return res;
         }
     }
 }
@@ -575,7 +565,7 @@ type Person record {|
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>When the data binding is expected to happen and if the client remote function gets a 4XX response from the
- backend, the response will be returned as an <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#ClientRequestError">http:ClientRequestError</a>
+ backend, the response will be returned as an <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/errors#ClientRequestError">http:ClientRequestError</a>
  including the error message and status code.</p>
 
                                         </div>
@@ -599,10 +589,8 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get getString(http:Caller caller, http:Request req) {
-        http:Response response = new;
-        response.setTextPayload(&quot;Hello ballerina!!!!&quot;);
-        checkpanic caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get &#39;String() returns string {
+        return &quot;Hello ballerina!!!!&quot;;
     }
 </code></pre></div>
 
@@ -615,10 +603,8 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post getJson(http:Caller caller, http:Request req) {
-        http:Response response = new;
-        response.setJsonPayload({id: &quot;Ballerina&quot;, values: {a: {x: &quot;b&quot;}}});
-        checkpanic caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post &#39;Json() returns json {
+        return {id: &quot;Ballerina&quot;, values: {a: {x: &quot;b&quot;}}};
     }
 </code></pre></div>
 
@@ -631,10 +617,8 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get getPerson(http:Caller caller, http:Request req) {
-        http:Response response = new;
-        response.setJsonPayload({name: &quot;Smith&quot;, age: 15});
-        checkpanic caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get person() returns record {|*http:Ok; Person body;|} {
+        return {body: {name: &quot;Smith&quot;, age: 15}};
     }
 </code></pre></div>
 
@@ -647,11 +631,11 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get getResponse(http:Caller caller, http:Request req) {
-        http:Response response = new;
-        response.setJsonPayload({id: &quot;data-binding-done&quot;});
-        response.setHeader(&quot;x-fact&quot;, &quot;backend-payload&quot;);
-        checkpanic caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get &#39;Response() returns http:Ok {
+        return {
+            body: {id: &quot;data-binding-done&quot;},
+            headers: {&quot;x-fact&quot;:&quot;backend-payload&quot;}
+        };
     }
 </code></pre></div>
 
@@ -664,11 +648,8 @@ type Person record {|
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post get5XX(http:Caller caller, http:Request req) {
-        http:Response response = new;
-        response.statusCode = 501;
-        response.setTextPayload(&quot;data-binding-failed-with-501&quot;);
-        checkpanic caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post &#39;5XX() returns http:NotImplemented {
+        return {body:&quot;data-binding-failed-with-501&quot;};
     }
 }
 </code></pre></div>

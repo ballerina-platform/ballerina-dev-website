@@ -1,12 +1,12 @@
 ---
 layout: ballerina-example-page
-title: Secured Service with OAuth2
-description: BBE on how to secure HTTP service with OAuth2 in Ballerina.
-keywords: ballerina, ballerina by example, http, auth, oauth2, introspection
-permalink: /learn/by-example/secured-service-with-oauth2
+title: HTTP Service with Basic Auth File User Store
+description: BBE on how to secure HTTP service with Basic auth in Ballerina.
+keywords: ballerina, ballerina by example, http, auth, basic auth
+permalink: /learn/by-example/http-service-with-basic-auth-file-user-store
 redirect_from:
-  - /swan-lake/learn/by-example/secured-service-with-oauth2
-  - /swan-lake/learn/by-example/secured-service-with-oauth2.html
+  - /swan-lake/learn/by-example/http-service-with-basic-auth-file-user-store
+  - /swan-lake/learn/by-example/http-service-with-basic-auth-file-user-store.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -15,35 +15,23 @@ redirect_from:
 
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+        <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
+            <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="c1">// The service can be secured with OAuth2 authentication and can be authorized</span>
-<span class="c1">// optionally. OAuth2 authentication can be enabled by setting the</span>
-<span class="c1">// `http:OAuth2IntrospectionConfig` configurations.</span>
+<span class="c1">// The service can be secured with Basic auth and can be authorized optionally.</span>
+<span class="c1">// Using Basic auth with the file user store can be enabled by setting the</span>
+<span class="c1">// `http:FileUserStoreConfig` configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
 <span class="c1">// configurations.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="nx">oauth2IntrospectionConfig</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9999/oauth2/token/introspect&quot;</span><span class="p">,</span>
-                <span class="nx">tokenTypeHint</span><span class="p">:</span> <span class="s">&quot;access_token&quot;</span><span class="p">,</span>
-                <span class="nx">scopeKey</span><span class="p">:</span> <span class="s">&quot;scp&quot;</span><span class="p">,</span>
-                <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">},</span>
+            <span class="nx">fileUserStoreConfig</span><span class="p">:</span> <span class="p">{},</span>
             <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">]</span>
@@ -65,20 +53,21 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Secured Service with OAuth2</h2>
-                            <p><p>An HTTP service/resource can be secured using OAuth2 and by enforcing
- authorization optionally. Then, it validates the OAuth2 token sent in the
- <code>Authorization</code> header against the provided configurations. This calls the
- configured introspection endpoint to validate.<br/>
+                            <h2>HTTP Service with Basic Auth File User Store</h2>
+                            <p><p>An HTTP service/resource can be secured using Basic auth and optionally by
+ enforcing authorization. Then, it validates the Basic auth token sent in the
+ <code>Authorization</code> header against the provided configurations. This reads data
+ from a file, which has a TOML format. This stores the usernames, passwords
+ for authentication, and scopes for authorization.<br/>
  Ballerina uses the concept of scopes for authorization. A resource declared
- in a service can be bound to one/more scope(s). The scope can be included
- in the introspection response using a custom claim attribute. That custom
- claim attribute is also can be configured as the <code>scopeKey</code>.<br/>
+ in a service can be bound to one/more scope(s).<br/>
  In the authorization phase, the scopes of the service/resource are compared
- against the scope included in the introspection response for at least one
- match between the two sets.<br/><br/>
+ against the scope included in the user store for at least one match between
+ the two sets.<br/>
+ <code>Config.toml</code> has defined three users - Alice, Bob and Eve. Each user has a
+ password and optionally assigned scopes as an array.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/oauth2/latest/oauth2/">OAuth2 module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/auth/latest/auth/">Auth module</a>.</p>
 </p>
 
                         </td>
@@ -86,16 +75,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-service-with-jwt-auth.html">
+                                    <a class="prev" href="udp-listener.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Service with JWT Auth</p>
+                                        <p>UDP Listener</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="secured-client-with-basic-auth.html">
+                                    <a class="next" href="http-service-with-basic-auth-ldap-user-store.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Client with Basic Auth</p>
+                                        <p>HTTP Service with Basic Auth LDAP User Store</p>
                                     </a>
                                 </div>
                                 
@@ -104,7 +93,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="secured-service-with-oauth2">
+            <div class="example" id="http-service-with-basic-auth-file-user-store">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -115,7 +104,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-service-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-service-with-basic-auth-file-user-store/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -164,9 +153,9 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        keyStore: {
-            path: &quot;../resources/ballerinaKeystore.p12&quot;,
-            password: &quot;ballerina&quot;
+        key: {
+            certFile: &quot;../resource/path/to/public.crt&quot;,
+            keyFile: &quot;../resource/path/to/private.key&quot;
         }
     }
 });
@@ -184,19 +173,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     auth: [
         {
-            oauth2IntrospectionConfig: {
-                url: &quot;https://localhost:9999/oauth2/token/introspect&quot;,
-                tokenTypeHint: &quot;access_token&quot;,
-                scopeKey: &quot;scp&quot;,
-                clientConfig: {
-                    secureSocket: {
-                        trustStore: {
-                            path: &quot;../resources/ballerinaTruststore.p12&quot;,
-                            password: &quot;ballerina&quot;
-                        }
-                    }
-                }
-            },
+            fileUserStoreConfig: {},
             scopes: [&quot;hello&quot;]
         }
     ]
@@ -209,9 +186,9 @@ service /foo on securedEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The service can be secured with OAuth2 authentication and can be authorized
- optionally. OAuth2 authentication can be enabled by setting the
- <code>http:OAuth2IntrospectionConfig</code> configurations.
+                                            <p>The service can be secured with Basic auth and can be authorized optionally.
+ Using Basic auth with the file user store can be enabled by setting the
+ <code>http:FileUserStoreConfig</code> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type
  configurations.</p>
@@ -254,6 +231,81 @@ service /foo on securedEP {
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>[[auth.users]]
+username=&quot;alice&quot;
+password=&quot;password1&quot;
+scopes=[&quot;scope1&quot;]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>[[auth.users]]
+username=&quot;bob&quot;
+password=&quot;password2&quot;
+scopes=[&quot;scope2&quot;, &quot;scope3&quot;]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>[[auth.users]]
+username=&quot;eve&quot;
+password=&quot;password3&quot;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -264,10 +316,19 @@ service /foo on securedEP {
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
-# (You may need to change the keystore path. A sample keystore file is
-# available in the distribution.
-# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaKeystore.p12)
-bal run secured_service_with_oauth2.bal
+# Ensure that the `Config.toml` file is populated correctly with the user
+# information. If required, user passwords can be encrypted using the
+# `ballerina encrypt` configuration encryption command.
+echo &#39;[[&quot;auth.users&quot;]]
+username=&quot;alice&quot;
+password=&quot;password1&quot;
+scopes=[&quot;scope1&quot;]
+[[&quot;auth.users&quot;]]
+username=&quot;bob&quot;
+password=&quot;password2&quot;
+scopes=[&quot;scope2&quot;, &quot;scope3&quot;]&#39; &gt; Config.toml
+# (You may need to change the certificate file path and private key file path.)
+bal run http_service_with_basic_auth_file_user_store.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 

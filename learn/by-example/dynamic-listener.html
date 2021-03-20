@@ -24,7 +24,7 @@ redirect_from:
         <span class="k">var</span> <span class="nx">respondResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">respondResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when responding.&quot;</span><span class="p">,</span> 
-                <span class="nx">err</span> <span class="p">=</span> <span class="nx">respondResult</span><span class="p">);</span>
+                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">respondResult</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -40,11 +40,11 @@ redirect_from:
         <span class="c1">// Handle the errors at the end.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">respondResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when responding.&quot;</span><span class="p">,</span> 
-                <span class="nx">err</span> <span class="p">=</span> <span class="nx">respondResult</span><span class="p">);</span>
+                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">respondResult</span><span class="p">);</span>
         <span class="p">}</span> 
         <span class="k">if</span> <span class="p">(</span><span class="nx">stopResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when stopping the listener. &quot;</span><span class="p">,</span> 
-                <span class="nx">err</span> <span class="p">=</span> <span class="nx">stopResult</span><span class="p">);</span>
+                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">stopResult</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -213,7 +213,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>        var respondResult = caller-&gt;respond(&quot;Hello, World!&quot;);
         if (respondResult is error) {
             log:printError(&quot;Error occurred when responding.&quot;, 
-                err = respondResult);
+                &#39;error = respondResult);
         }
     }
 </code></pre></div>
@@ -313,11 +313,11 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (respondResult is error) {
             log:printError(&quot;Error occurred when responding.&quot;, 
-                err = respondResult);
+                &#39;error = respondResult);
         } 
         if (stopResult is error) {
             log:printError(&quot;Error occurred when stopping the listener. &quot;, 
-                err = stopResult);
+                &#39;error = stopResult);
         }
     }
 };

@@ -1,12 +1,12 @@
 ---
 layout: ballerina-example-page
-title: Task Scheduler Appointment
-description: BBE on how to create a task dynamically as an appointment using cron expression in Ballerina.
-keywords: ballerina, ballerina by examples, bbe, task, scheduler, appointment
-permalink: /learn/by-example/task-scheduler-appointment
+title: Task One-time Job Execution
+description: BBE on how to schedule the one-time job execution in Ballerina.
+keywords: ballerina, ballerina by examples, bbe, task, job
+permalink: /learn/by-example/task-one-time-job-execution
 redirect_from:
-  - /swan-lake/learn/by-example/task-scheduler-appointment
-  - /swan-lake/learn/by-example/task-scheduler-appointment.html
+  - /swan-lake/learn/by-example/task-one-time-job-execution
+  - /swan-lake/learn/by-example/task-one-time-job-execution.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,44 +14,39 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
 
-<span class="kt">int</span> <span class="nx">reminderCount</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="c1">// Creating a job to be executed by the scheduler.</span>
+<span class="nx">class</span> <span class="nx">Job</span> <span class="p">{</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">task</span><span class="p">:</span><span class="nx">Job</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
 
-    <span class="c1">// The [`task:AppointmentConfiguration`](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration) record of the task scheduler.</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentConfiguration</span> <span class="nx">appointmentConfiguration</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="c1">// This CRON expression will schedule the appointment every two second.</span>
-        <span class="nx">cronExpression</span><span class="p">:</span> <span class="s">&quot;0/2 * * ? * * *&quot;</span>
-    <span class="p">};</span>
+    <span class="c1">// Get executed by the scheduler when the scheduled trigger fires.</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">execute</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MyCounter: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">i</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    <span class="c1">// Creates an appointment using the given configuration.</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span>
-
-    <span class="c1">// Attaches the service to the scheduler.</span>
-    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">appointmentService</span><span class="p">);</span>
-
-    <span class="c1">// Starts the scheduler.</span>
-    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
-
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-
-    <span class="c1">// Cancels the appointment.</span>
-    <span class="nx">check</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment cancelled.&quot;</span><span class="p">);</span>
+    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// Creating a service on the task listener.</span>
-<span class="kd">service</span> <span class="nx">object</span> <span class="p">{}</span> <span class="nx">appointmentService</span> <span class="p">=</span> <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="c1">// This resource is triggered when the appointment is due.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">reminderCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">reminderCount</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span><span class="p">,</span> <span class="nx">reminderCount</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">};</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Get the current time.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">currentUtc</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcNow</span><span class="p">();</span>
+    <span class="c1">// Increase the time by three seconds to get the specified time for scheduling the job.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">newTime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcAddSeconds</span><span class="p">(</span><span class="nx">currentUtc</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="c1">// Get the `time:Civil` for the given time.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Civil</span> <span class="nx">time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToCivil</span><span class="p">(</span><span class="nx">newTime</span><span class="p">);</span>
+
+    <span class="c1">// Schedule the one-time job at the specified time.</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleOneTimeJob</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nx">time</span><span class="p">);</span>
+
+    <span class="c1">// Wait for five seconds.</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -60,16 +55,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Task Scheduler Appointment</h2>
-                            <p><p>A <code>task:Scheduler</code> can be used to schedule an appointment. An appointment configuration should
- have a <code>cronExpression</code> field. It is a <code>string</code> representing a
- CRON expression. There is an optional <code>noOfRecurrences</code> field that can be used to
- provide the maximum number of times the appointment should run before shutting down.<br/><br/>
- A service can be attached to the scheduler using the <code>attach()</code> method.
- Then, the scheduler can be started using the <code>start()</code> method. When the scheduler
- needs to be cancelled, the <code>stop()</code> method can be called.<br/><br/>
+                            <h2>Task One-time Job Execution</h2>
+                            <p><p>A  <code>task:scheduleOneTimeJob()</code> can be used to execute Ballerina jobs at a specific time.
+ The <code>task:Job</code> and time should be specified to schedule the job.
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/">Task module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/task/latest/task/">Task module</a>.</p>
 </p>
 
                         </td>
@@ -77,16 +67,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="random.html">
+                                    <a class="prev" href="task-frequency-job-execution.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Random</p>
+                                        <p>Task Frequency Job Execution</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="task-scheduler-timer.html">
+                                    <a class="next" href="uuid.html">
                                         <span>NEXT ></span>
-                                        <p>Task Scheduler Timer</p>
+                                        <p>UUID</p>
                                     </a>
                                 </div>
                                 
@@ -95,7 +85,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="task-scheduler-appointment">
+            <div class="example" id="task-one-time-job-execution">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -106,7 +96,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-scheduler-appointment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-one-time-job-execution/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -147,10 +137,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -162,6 +148,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.runtime;
 import ballerina/task;
+import ballerina/time;
 </code></pre></div>
 
                                 </td>
@@ -170,10 +157,67 @@ import ballerina/task;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Job {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creating a job to be executed by the scheduler.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>int reminderCount = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    *task:Job;
+    int i = 1;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function execute() {
+        self.i += 1;
+        io:println(&quot;MyCounter: &quot;, self.i);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get executed by the scheduler when the scheduled trigger fires.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function init(int i) {
+        self.i = i;
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -197,7 +241,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:AppointmentConfiguration appointmentConfiguration = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Utc currentUtc = time:utcNow();
 </code></pre></div>
 
                                 </td>
@@ -205,7 +249,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/AppointmentConfiguration"><code>task:AppointmentConfiguration</code></a> record of the task scheduler.</p>
+                                            <p>Get the current time.</p>
 
                                         </div>
                                     </div>
@@ -216,8 +260,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        cronExpression: &quot;0/2 * * ? * * *&quot;
-    };
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
 </code></pre></div>
 
                                 </td>
@@ -225,7 +268,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This CRON expression will schedule the appointment every two second.</p>
+                                            <p>Increase the time by three seconds to get the specified time for scheduling the job.</p>
 
                                         </div>
                                     </div>
@@ -236,7 +279,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler appointment = check new (appointmentConfiguration);
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Civil time = time:utcToCivil(newTime);
 </code></pre></div>
 
                                 </td>
@@ -244,7 +287,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an appointment using the given configuration.</p>
+                                            <p>Get the <code>time:Civil</code> for the given time.</p>
 
                                         </div>
                                     </div>
@@ -255,7 +298,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check appointment.attach(appointmentService);
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:JobId result = check task:scheduleOneTimeJob(new Job(0), time);
 </code></pre></div>
 
                                 </td>
@@ -263,89 +306,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attaches the service to the scheduler.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check appointment.start();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Starts the scheduler.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(9);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check appointment.stop();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Cancels the appointment.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Appointment cancelled.&quot;);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service object {} appointmentService = service object {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creating a service on the task listener.</p>
+                                            <p>Schedule the one-time job at the specified time.</p>
 
                                         </div>
                                     </div>
@@ -356,13 +317,8 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onTrigger() {
-        reminderCount += 1;
-        if (reminderCount &lt;= 5) {
-            io:println(&quot;Schedule is due - Reminder: &quot;, reminderCount);
-        }
-    }
-};
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(5);
+}
 </code></pre></div>
 
                                 </td>
@@ -370,7 +326,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource is triggered when the appointment is due.</p>
+                                            <p>Wait for five seconds.</p>
 
                                         </div>
                                     </div>
@@ -391,31 +347,17 @@ import ballerina/task;
 
                         <table class="cBBE-body">
                             
-                            <tr class="cTR hover-enable cOutputTr">
+                            <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run task_scheduler_appointment.bal
-Schedule is due - Reminder: 1
-Schedule is due - Reminder: 2
-Schedule is due - Reminder: 3
-Schedule is due - Reminder: 4
-Schedule is due - Reminder: 5
-Appointment cancelled.
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run task_one_time_job_execution.bal
+MyCounter: 1
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This example demonstrates an Appointment, which is used to send a reminder
- every 2 seconds up to 5 reminders. When the reminder count reaches 5,
- the task scheduler will stop running.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>

@@ -46,7 +46,7 @@ redirect_from:
         <span class="c1">//counter instance.</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering counter&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering counter&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="c1">//Increase the amount of the registered counter instance by amount 10.</span>
@@ -67,7 +67,7 @@ redirect_from:
         <span class="c1">// Send the response back to the caller.</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -319,7 +319,7 @@ import ballerinax/prometheus as _;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        error? result = registeredCounter.register();
         if (result is error) {
-            log:printError(&quot;Error in registering counter&quot;, err = result);
+            log:printError(&quot;Error in registering counter&quot;, &#39;error = result);
         }
 </code></pre></div>
 
@@ -426,7 +426,7 @@ counter instance.</p>
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
+            log:printError(&quot;Error sending response&quot;, &#39;error = result);
         }
     }
 }

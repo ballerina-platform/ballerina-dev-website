@@ -84,7 +84,7 @@ public function main() returns @tainted error? {
     // the remote call would return an `http:Response` or the payload 
     // (if the `targetType` defaultable parameter is configured).
     // Otherwise an `error` on failure.
-    http:Response helloResp = <http:Response> check helloClient->get("/sayHello");
+    http:Response helloResp = check helloClient->get("/sayHello");
 
     // Retrieve the payload as a `string` and print it if the 
     // response of the remote call is successful.

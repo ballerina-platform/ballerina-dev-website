@@ -48,15 +48,15 @@ redirect_from:
     <span class="nx">match</span> <span class="nx">a</span> <span class="p">{</span>
         <span class="c1">// This pattern check is for a tuple of three members of any type.</span>
         <span class="p">[</span><span class="k">var</span> <span class="nx">s</span><span class="p">,</span> <span class="k">var</span> <span class="nx">i</span><span class="p">,</span> <span class="k">var</span> <span class="nx">b</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with three vars : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with three vars : &quot;</span><span class="p">,</span> <span class="kt">string</span> <span class="s">`${a.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// This pattern check is for a tuple of two members of any type.</span>
         <span class="p">[</span><span class="k">var</span> <span class="nx">s</span><span class="p">,</span> <span class="k">var</span> <span class="nx">i</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with two vars : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with two vars : &quot;</span><span class="p">,</span> <span class="kt">string</span> <span class="s">`${a.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// This pattern check is for a single variable, which can be of type `any`. This has to be the last pattern.</span>
         <span class="k">var</span> <span class="nx">s</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with single var : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with single var : &quot;</span><span class="p">,</span> <span class="kt">string</span> <span class="s">`${a.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -68,23 +68,24 @@ redirect_from:
     <span class="nx">match</span> <span class="nx">b</span> <span class="p">{</span>
         <span class="c1">// This pattern check is for a tuple of two members of the types `string` and `int` respectively.</span>
         <span class="p">[</span><span class="k">var</span> <span class="nx">s</span><span class="p">,</span> <span class="k">var</span> <span class="nx">i</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;</span><span class="p">,</span>
+            <span class="kt">string</span> <span class="s">`${b.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// This pattern check is for a tuple of two members where the first member is of the type `float`.</span>
         <span class="p">[</span><span class="k">var</span> <span class="nx">s</span><span class="p">,</span> <span class="k">var</span> <span class="nx">i</span><span class="p">]</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;s&#39; is float : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;s&#39; is float : &quot;</span><span class="p">,</span> <span class="kt">string</span> <span class="s">`${b.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// This pattern check is for a tuple of two members, in which the second member is of the type `int`.</span>
         <span class="p">[</span><span class="k">var</span> <span class="nx">s</span><span class="p">,</span> <span class="k">var</span> <span class="nx">i</span><span class="p">]</span> <span class="k">if</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;i&#39; is int : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;i&#39; is int : &quot;</span><span class="p">,</span> <span class="kt">string</span> <span class="s">`${b.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// This pattern check is for a tuple of two members without any match guard.</span>
         <span class="p">[</span><span class="k">var</span> <span class="nx">s</span><span class="p">,</span> <span class="k">var</span> <span class="nx">i</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;No type guard : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;No type guard : &quot;</span><span class="p">,</span> <span class="kt">string</span> <span class="s">`${b.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// This pattern check is for a single variable of the type `float`.</span>
         <span class="k">var</span> <span class="nx">s</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is float only : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is float only : &quot;</span><span class="p">,</span> <span class="kt">string</span> <span class="s">`${b.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
 
     <span class="p">}</span>
@@ -141,7 +142,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8700a92ebc692732fdc61c8c73e29e39&file=tuple_match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e1a3d01ea8a9e87f7132345c6841b82f&file=tuple_match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -328,7 +329,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        [var s, var i, var b] =&gt; {
-            io:println(&quot;Matched with three vars : &quot;, io:sprintf(&quot;%s&quot;, a));
+            io:println(&quot;Matched with three vars : &quot;, string `${a.toString()}`);
         }
 </code></pre></div>
 
@@ -349,7 +350,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        [var s, var i] =&gt; {
-            io:println(&quot;Matched with two vars : &quot;, io:sprintf(&quot;%s&quot;, a));
+            io:println(&quot;Matched with two vars : &quot;, string `${a.toString()}`);
         }
 </code></pre></div>
 
@@ -370,7 +371,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var s =&gt; {
-            io:println(&quot;Matched with single var : &quot;, io:sprintf(&quot;%s&quot;, a));
+            io:println(&quot;Matched with single var : &quot;, string `${a.toString()}`);
         }
     }
 }
@@ -415,7 +416,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        [var s, var i] if (s is string &amp;&amp; i is int) =&gt; {
-            io:println(&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;, io:sprintf(&quot;%s&quot;, b));
+            io:println(&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;,
+            string `${b.toString()}`);
         }
 </code></pre></div>
 
@@ -436,7 +438,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        [var s, var i] if s is float =&gt; {
-            io:println(&quot;Only &#39;s&#39; is float : &quot;, io:sprintf(&quot;%s&quot;, b));
+            io:println(&quot;Only &#39;s&#39; is float : &quot;, string `${b.toString()}`);
         }
 </code></pre></div>
 
@@ -457,7 +459,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        [var s, var i] if i is int =&gt; {
-            io:println(&quot;Only &#39;i&#39; is int : &quot;, io:sprintf(&quot;%s&quot;, b));
+            io:println(&quot;Only &#39;i&#39; is int : &quot;, string `${b.toString()}`);
         }
 </code></pre></div>
 
@@ -478,7 +480,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        [var s, var i] =&gt; {
-            io:println(&quot;No type guard : &quot;, io:sprintf(&quot;%s&quot;, b));
+            io:println(&quot;No type guard : &quot;, string `${b.toString()}`);
         }
 </code></pre></div>
 
@@ -499,7 +501,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var s if s is float =&gt; {
-            io:println(&quot;&#39;s&#39; is float only : &quot;, io:sprintf(&quot;%s&quot;, b));
+            io:println(&quot;&#39;s&#39; is float only : &quot;, string `${b.toString()}`);
         }
 </code></pre></div>
 

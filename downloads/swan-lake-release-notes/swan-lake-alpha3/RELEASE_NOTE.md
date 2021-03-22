@@ -2,8 +2,6 @@
 layout: ballerina-blank-page
 title: Release Note
 ---
-This is the third alpha in a series of planned alphas and betas leading up to the Ballerina Swan Lake GA release.
-
 ### Overview of Ballerina Swan Lake Alpha3
 
 The Ballerina Swan Lake Alpha3 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha2 release of Ballerina Swan Lake.
@@ -46,9 +44,9 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ##### Support for Module-level Variables with List, Mapping, and Error Binding Patterns
 
-Variable declarations with a list, mapping, and error binding patterns are now allowed at the module level. Unlike simple variables, these variables must be initialized in the declaration.
+Variable declarations with list, mapping, or error binding patterns are now allowed at the module level. Unlike simple variables, these variables must be initialized in the declaration.
 
-Also, these variable declarations cannot contain an `isolated` or `configurable` qualifier.
+Also, these variable declarations cannot contain the `isolated` or `configurable` qualifier.
 
 ```ballerina
 type Person record {|
@@ -130,7 +128,7 @@ function process(function func, int v1, int v2) returns int {
 }
 ```
 
-##### Improved lang library functions
+##### New Lang Library Functions
 
 ###### New `xml:text()` function
 
@@ -156,10 +154,6 @@ BError createError(Module module, String errorTypeName, BString message, BError 
 ```
 The `createDistinctError` API has been deprecated and should not be used to create distinct errors. The new `createError` API can be used instead.
 
-##### Configurable Variables
-
-Improved error messages are introduced for configurable variables by including more information and the relevant `Config.toml` line numbers.
-
 ##### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
@@ -170,7 +164,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 ###### Introduced additional log levels and log functions
 
-There are 4 log levels: `DEBUG`, `ERROR`, `INFO`, and `WARN` and their respective functions: `printDebug`, `printError`, `printInfo`, and `printWarn`. To set the global log level, place the entry given below in the `Config.toml` file:
+Introduced 2 additional log levels: `DEBUG` and `WARN`. The  `printDebug` and `printWarn` functions in the `ballerina/log` module can be used to publish logs at the respective log levels. The `print` function was renamed to `printInfo`.
+
+To set the global log level, place the entry given below in the `Config.toml` file:
 ```toml
 [log] 
 level = "[LOG_LEVEL]"
@@ -278,7 +274,7 @@ task:Error? result = task:resumeJob(id);
 ```ballerina
 import ballerina/task;
 
-task:Error? result = task:getRunningJobs();
+task:JobId[] jobIds = task:getRunningJobs();
 ```
 
 ##### Time Package Updates
@@ -323,9 +319,9 @@ import ballerina/xmldata;
 json|xmldata:Error j = xmldata:toJson(xml `foo`);
 ```
 
-##### Remove `jsonutils`, `xmlutils`, `runtime`, and `reflect` Packages
+##### Removed `jsonutils`, `xmlutils`, `runtime`, and `reflect` Packages
 
-The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages are removed from Standard Libraries.
+The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from Standard Library.
 
 The XML/JSON conversation APIs in `jsonutils` and `xmltutils` packages are now supported by the `xmldata` package.
 

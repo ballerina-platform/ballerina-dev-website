@@ -145,16 +145,16 @@ View the tracing information on Jaeger via <http://localhost:16686/> and view me
 dashboard on <http://localhost:3000/>.
 
 Sample view of Jaeger dashboard for hello_world_service.bal is shown below. 
-![Jaeger Sample Dashboard](../images/jaeger-sample-dashboard.png "Jaeger Sample Dashboard")
+![Jaeger Sample Dashboard](/learn/images/jaeger-sample-dashboard.png "Jaeger Sample Dashboard")
 
 Sample view of Grafana dashboard for hello_world_service.bal is shown below. 
-![Grafana Sample Dashboard](../images/grafana-sample-hello-world-service-stats.png "Grafana HelloWorld Service Sample Dashboard")
+![Grafana Sample Dashboard](/learn/images/grafana-sample-hello-world-service-stats.png "Grafana HelloWorld Service Sample Dashboard")
 
 ### Step 7 - Visualizing the Logs
  
 If you have configured log analytics, view the logs in Kibana via <http://localhost:5601>
 
-![Kibana Sample Dashboard](../images/kibana-sample-dashboard.png "Kibana Sample Dashboard")
+![Kibana Sample Dashboard](/learn/images/kibana-sample-dashboard.png "Kibana Sample Dashboard")
 
 ## Monitoring Metrics
 Metrics help to monitor the runtime behavior of a service. Therefore, metrics are a vital part of monitoring
@@ -250,19 +250,19 @@ For more information, go to [Grafana in Docker Hub](https://hub.docker.com/r/gra
 
 4. Add Prometheus as a data source with `Browser` access configuration as provided below.
 
-![Grafana Prometheus Datasource](../images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
+![Grafana Prometheus Datasource](/learn/images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
 
 5. Import the Grafana dashboard designed to visualize Ballerina metrics from [https://grafana.com/dashboards/5841](https://grafana.com/dashboards/5841).
 This dashboard consists of service and client invocation level metrics in near real-time view. 
 
 Ballerina HTTP Service Metrics Dashboard Panel will be as below.
-![Ballerina Service Metrics](../images/grafana-ballerina-metrics-1.png "Ballerina Sample Service Metrics Dashboard")
+![Ballerina Service Metrics](/learn/images/grafana-ballerina-metrics-1.png "Ballerina Sample Service Metrics Dashboard")
 
 Ballerina HTTP Client Metrics Dashboard Panel will be as below.
-![Ballerina Client Metrics](../images/grafana-ballerina-metrics-3.png "Ballerina Sample Client Metrics Dashboard")
+![Ballerina Client Metrics](/learn/images/grafana-ballerina-metrics-3.png "Ballerina Sample Client Metrics Dashboard")
 
 Ballerina SQL Client Metrics Dashboard Panel will be as below.
-![Ballerina SQL Client Metrics](../images/grafana-ballerina-metrics-2.png "Ballerina Sample SQL Client Metrics Dashboard")
+![Ballerina SQL Client Metrics](/learn/images/grafana-ballerina-metrics-2.png "Ballerina Sample SQL Client Metrics Dashboard")
 
 ## Distributed Tracing
 
@@ -359,7 +359,7 @@ $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16
 
 The image below is the sample tracing information you can see from Jaeger.
 
-![Jaeger Tracing Dashboard](../images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
+![Jaeger Tracing Dashboard](/learn/images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
 
 ## Distributed Logging
 Ballerina distributed logging and analysis is supported by Elastic Stack. Ballerina has a log module for logging in to the console. In order to monitor the logs, the Ballerina standard output needs to be redirected to a file.

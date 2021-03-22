@@ -1,12 +1,12 @@
 ---
 layout: ballerina-example-page
-title: Secured Client with Self Signed JWT Auth
+title: HTTP Client with Self Signed JWT Auth
 description: BBE on how to secure HTTP client with self-signed JWT auth in Ballerina.
 keywords: ballerina, ballerina by example, http, auth, jwt auth
-permalink: /learn/by-example/secured-client-with-self-signed-jwt-auth
+permalink: /learn/by-example/http-client-with-self-signed-jwt-auth
 redirect_from:
-  - /swan-lake/learn/by-example/secured-client-with-self-signed-jwt-auth
-  - /swan-lake/learn/by-example/secured-client-with-self-signed-jwt-auth.html
+  - /swan-lake/learn/by-example/http-client-with-self-signed-jwt-auth
+  - /swan-lake/learn/by-example/http-client-with-self-signed-jwt-auth.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -25,23 +25,15 @@ redirect_from:
         <span class="nx">audience</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina.org&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">],</span>
         <span class="nx">keyId</span><span class="p">:</span> <span class="s">&quot;5a0b754-895f-4279-8843-b745e11a57e9&quot;</span><span class="p">,</span>
         <span class="nx">customClaims</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;scp&quot;</span><span class="p">:</span> <span class="s">&quot;hello&quot;</span> <span class="p">},</span>
-        <span class="nx">expTimeInSeconds</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
+        <span class="nx">expTime</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
         <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">keyAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-                <span class="nx">keyPassword</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-                <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-                    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-                <span class="p">}</span>
+                <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
+        <span class="nx">cert</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
 
@@ -49,9 +41,9 @@ redirect_from:
     <span class="c1">// Send a `GET` request to the specified endpoint.</span>
     <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/foo/bar&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -62,14 +54,14 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Secured Client with Self Signed JWT Auth</h2>
+                            <h2>HTTP Client with Self Signed JWT Auth</h2>
                             <p><p>A client, which is secured with self-signed JWT can be used to connect to
  a secured service.<br/>
  The client is enriched with the <code>Authorization: Bearer &lt;token&gt;</code> header by
  passing the <code>http:JwtIssuerConfig</code> to the <code>auth</code> configuration of the
  client. A self-signed JWT is issued before the request is sent.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/oauth2/latest/oauth2/">OAuth2 module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/oauth2/">OAuth2 module</a>.</p>
 </p>
 
                         </td>
@@ -77,16 +69,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-client-with-bearer-token-auth.html">
+                                    <a class="prev" href="http-client-with-bearer-token-auth.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Client with Bearer Token Auth</p>
+                                        <p>HTTP Client with Bearer Token Auth</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="secured-client-with-oauth2-client-credentials-grant-type.html">
+                                    <a class="next" href="http-client-with-oauth2-client-credentials-grant-type.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Client with OAuth2 Client Credentials Grant Type</p>
+                                        <p>HTTP Client with OAuth2 Client Credentials Grant Type</p>
                                     </a>
                                 </div>
                                 
@@ -95,7 +87,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="secured-client-with-self-signed-jwt-auth">
+            <div class="example" id="http-client-with-self-signed-jwt-auth">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -106,7 +98,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-client-with-self-signed-jwt-auth/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-client-with-self-signed-jwt-auth/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -161,23 +153,15 @@ import ballerina/log;
         audience: [&quot;ballerina&quot;, &quot;ballerina.org&quot;, &quot;ballerina.io&quot;],
         keyId: &quot;5a0b754-895f-4279-8843-b745e11a57e9&quot;,
         customClaims: { &quot;scp&quot;: &quot;hello&quot; },
-        expTimeInSeconds: 3600,
+        expTime: 3600,
         signatureConfig: {
             config: {
-                keyAlias: &quot;ballerina&quot;,
-                keyPassword: &quot;ballerina&quot;,
-                keyStore: {
-                    path: &quot;../resources/ballerinaKeystore.p12&quot;,
-                    password: &quot;ballerina&quot;
-                }
+                keyFile: &quot;../resource/path/to/private.key&quot;
             }
         }
     },
     secureSocket: {
-        trustStore: {
-            path: &quot;../resources/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
+        cert: &quot;../resource/path/to/public.crt&quot;
     }
 });
 </code></pre></div>
@@ -215,9 +199,9 @@ import ballerina/log;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    var response = securedEP-&gt;get(&quot;/foo/bar&quot;);
     if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
-        log:printError(&quot;Failed to call the endpoint.&quot;, err = response);
+        log:printInfo(response.statusCode.toString());
+    } else {
+        log:printError(&quot;Failed to call the endpoint.&quot;, &#39;error = response);
     }
 }
 </code></pre></div>
@@ -254,10 +238,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># Before testing this sample, first start a sample service secured with JWT Auth.
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
-# (You may need to change the keystore path. A sample keystore file is
-# available in the distribution.
-# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaKeystore.p12)
-bal run secured_client_with_self_signed_jwt_auth.bal
+# (You may need to change the trusted certificate file path and private key file path.)
+bal run http_client_with_self_signed_jwt_auth.bal
 time = 2021-01-20 20:04:13,261 level = INFO  module = &quot;&quot; message = &quot;200&quot;
 </code></pre></div>
 

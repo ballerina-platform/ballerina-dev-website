@@ -24,7 +24,7 @@ redirect_from:
     <span class="c1">// Read the first unseen email received by the POP3 server. `()` is</span>
     <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
     <span class="c1">// error is returned.</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">receiveEmailMessage</span><span class="p">();</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">receiveMessage</span><span class="p">();</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;POP client received an email.&quot;</span><span class="p">);</span>
@@ -35,6 +35,9 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
+    <span class="c1">// Closes the POP3 store which would close the TCP connection.</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">closeStatus</span> <span class="p">=</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
+
     <span class="c1">// Create the client with the connection parameters, host, username, and</span>
     <span class="c1">// password. An error is received in a failure. The default port number</span>
     <span class="c1">// `993` is used over SSL with these configurations.</span>
@@ -44,7 +47,7 @@ redirect_from:
     <span class="c1">// Read the first unseen email received by the IMAP4 server. `()` is</span>
     <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
     <span class="c1">// error is returned.</span>
-    <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">receiveEmailMessage</span><span class="p">();</span>
+    <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">receiveMessage</span><span class="p">();</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">emailResponse</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;IMAP client received an email.&quot;</span><span class="p">);</span>
@@ -54,6 +57,9 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+
+    <span class="c1">// Closes the IMAP store which would close the TCP connection.</span>
+    <span class="nx">closeStatus</span> <span class="p">=</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -70,7 +76,7 @@ redirect_from:
  emails with default configurations over SSL using the default
  ports.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/email/latest/email/">Email module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/email/latest/email/">Email module</a>.</p>
 </p>
 
                         </td>
@@ -111,7 +117,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8bd9533e7131ae87cae1701c6f3ec712&file=receive_email_using_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=87fdc4cdf3a0bee11ef488ffc4c91de3&file=receive_email_using_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -129,6 +135,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -207,7 +217,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    email:Message? emailResponse = check popClient-&gt;receiveEmailMessage();
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Message? emailResponse = check popClient-&gt;receiveMessage();
 </code></pre></div>
 
                                 </td>
@@ -264,6 +274,25 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Error? closeStatus = popClient-&gt;close();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Closes the POP3 store which would close the TCP connection.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    email:ImapClient imapClient = check new (&quot;imap.email.com&quot;,
         &quot;reader@email.com&quot;, &quot;pass456&quot;);
 </code></pre></div>
@@ -286,7 +315,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    emailResponse = check imapClient-&gt;receiveEmailMessage();
+                                    <div class="highlight"><pre><code class=language-ballerina>    emailResponse = check imapClient-&gt;receiveMessage();
 </code></pre></div>
 
                                 </td>
@@ -333,6 +362,25 @@ import ballerina/io;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>When no emails are available in the server, <code>()</code> is returned.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeStatus = imapClient-&gt;close();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Closes the IMAP store which would close the TCP connection.</p>
 
                                         </div>
                                     </div>

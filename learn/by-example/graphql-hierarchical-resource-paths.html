@@ -1,25 +1,32 @@
 ---
 layout: ballerina-example-page
-title: GraphQL Resources with Scalar Values
-description: A GraphQL service enpoint written in Ballerina
+title: Resources with Hierarchical Resource Paths
+description: A GraphQL service endpoint written in Ballerina
 keywords: ballerina, ballerina by example, bbe, graphql, graphql service
-permalink: /learn/by-example/graphql-resources-with-scalar-values
+permalink: /learn/by-example/graphql-hierarchical-resource-paths
 redirect_from:
-  - /swan-lake/learn/by-example/graphql-resources-with-scalar-values
-  - /swan-lake/learn/by-example/graphql-resources-with-scalar-values.html
+  - /swan-lake/learn/by-example/graphql-hierarchical-resource-paths
+  - /swan-lake/learn/by-example/graphql-hierarchical-resource-paths.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 
-<span class="c1">// The `graphql:Service` exposes a GraphQL service on the provided port.</span>
+<span class="c1">// This service has multiple resources with hierarchical resource paths.</span>
+<span class="c1">// There are two resources under the `profile` path. Therefore, a type named</span>
+<span class="c1">// `profile`, which has two fields (`quote`, and `name`) will be created when the</span>
+<span class="c1">// GraphQL schema is generated for this service.</span>
 <span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// A resource function inside a `graphql:Service` represents a resolver.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greet</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// This resource provides a quote for the provided ID.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="o">/</span><span class="nx">quote</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;I am the one who knocks!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
 
-        <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="c1">// This resource returns the name for the provided ID.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="o">/</span><span class="nx">name</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Walter White&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -30,12 +37,14 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>GraphQL Resources with Scalar Values</h2>
-                            <p><p>In Ballerina GraphQL, a service represents the GraphQL endpoint.
- Each resource function inside the service represents a resolver function for a field in the root Query type.<br/><br/>
+                            <h2>Resources with Hierarchical Resource Paths</h2>
+                            <p><p>The resources in Ballerina GraphQL services can have hierarchical resource paths. When a hierarchical
+ resource is found, a new GraphQL type will be created for each intermediate path, which will have its
+ sub paths as fields.<br/><br/>
  For more information on the underlying package, see the
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/graphql/latest/graphql/">GraphQL package</a>.<br/><br/>
- This example shows a simple GraphQL endpoint that has a single field in the root Query type, which returns a string.</p>
+ <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/graphql/">GraphQL package</a>.<br/><br/>
+ This example shows a GraphQL endpoint, which has a <code>profile</code> field of type <code>Person</code>.
+ A GraphQL client can query this service to retrieve specific fields or subfields of the <code>Person</code> object.</p>
 </p>
 
                         </td>
@@ -43,16 +52,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-2-0-server-push.html">
+                                    <a class="prev" href="graphql-resources-with-record-values.html">
                                         <span>< PREVIOUS</span>
-                                        <p>HTTP 2.0 Server Push</p>
+                                        <p>Resources with Record Values</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="graphql-resources-with-record-values.html">
+                                    <a class="next" href="websocket-text-client.html">
                                         <span>NEXT ></span>
-                                        <p>GraphQL Resources with Record Values</p>
+                                        <p>Handle Text Messages with Client</p>
                                     </a>
                                 </div>
                                 
@@ -61,7 +70,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="graphql-resources-with-scalar-values">
+            <div class="example" id="graphql-hierarchical-resource-paths">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -72,7 +81,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-resources-with-scalar-values/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-hierarchical-resource-paths/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -127,7 +136,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>graphql:Service</code> exposes a GraphQL service on the provided port.</p>
+                                            <p>This service has multiple resources with hierarchical resource paths.
+ There are two resources under the <code>profile</code> path. Therefore, a type named
+ <code>profile</code>, which has two fields (<code>quote</code>, and <code>name</code>) will be created when the
+ GraphQL schema is generated for this service.</p>
 
                                         </div>
                                     </div>
@@ -138,7 +150,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greet(string name) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get profile/quote() returns string {
+        return &quot;I am the one who knocks!&quot;;
+    }
 </code></pre></div>
 
                                 </td>
@@ -146,7 +160,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A resource function inside a <code>graphql:Service</code> represents a resolver.</p>
+                                            <p>This resource provides a quote for the provided ID.</p>
 
                                         </div>
                                     </div>
@@ -154,16 +168,24 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;Hello, &quot; + name;
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get profile/name() returns string {
+        return &quot;Walter White&quot;;
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resource returns the name for the provided ID.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -188,7 +210,7 @@ redirect_from:
 # `.bal` file, and issue the `bal run` command below.
 # Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
 # log will be printed.
-bal run graphql_resources_with_scalar_values.bal
+bal run graphql_hierarchical_resource_paths.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -215,8 +237,8 @@ bal run graphql_resources_with_scalar_values.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Invoke the GraphQL service with a cURL command.
-curl -XPOST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot; { greet (name: \&quot;Walter\&quot;) }&quot; }&#39; &#39;http://localhost:9090/graphql&#39;
-{&quot;data&quot;:{&quot;greet&quot;:&quot;Hello, Walter&quot;}}
+curl -XPOST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot;{ profile { quote } }&quot; }&#39; &#39;http://localhost:9090/graphql&#39;
+{&quot;data&quot;:{&quot;profile&quot;:{&quot;quote&quot;:&quot;I am the one who knocks!&quot;}}}
 </code></pre></div>
 
                                 </td>

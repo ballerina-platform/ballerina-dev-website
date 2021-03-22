@@ -12,19 +12,17 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">sample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// The `PathParam` and `QueryParam` parameters extract values from the request URI.</span>
     <span class="c1">// Path param is defined as a part of the resource path along with the type.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">path</span><span class="o">/</span><span class="p">[</span><span class="kt">string</span> <span class="nx">foo</span><span class="p">](</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                            <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Get the [QueryParam](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getQueryParamValue)</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">path</span><span class="o">/</span><span class="p">[</span><span class="kt">string</span> <span class="nx">foo</span><span class="p">](</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="c1">// Get the [QueryParam](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getQueryParamValue)</span>
         <span class="c1">// value for a given parameter key.</span>
         <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">);</span>
 
-        <span class="c1">// Get the [MatrixParams](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getMatrixParams).</span>
+        <span class="c1">// Get the [MatrixParams](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getMatrixParams).</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">pathMParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getMatrixParams</span><span class="p">(</span><span class="s">&quot;/sample/path&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">];</span>
         <span class="k">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">];</span>
@@ -41,15 +39,8 @@ redirect_from:
             <span class="s">&quot;queryParam&quot;</span><span class="p">:</span> <span class="nx">bar</span><span class="p">,</span>
             <span class="s">&quot;matrix&quot;</span><span class="p">:</span> <span class="nx">matrixJson</span>
         <span class="p">};</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// A util method to set the JSON payload to the response message.</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">responseJson</span><span class="p">);</span>
-        <span class="c1">// Send a response to the client.</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="c1">// Send a response with the JSON payload to the client.</span>
+        <span class="k">return</span> <span class="nx">responseJson</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -63,7 +54,7 @@ redirect_from:
                             <h2>Query Path Matrix Param</h2>
                             <p><p>Ballerina supports extracting values using the <code>PathParam</code>, <code>QueryParam</code> and <code>MatrixParam</code> parameters.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -133,10 +124,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -146,7 +133,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -170,8 +156,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get path/[string foo](http:Caller caller,
-                                            http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get path/[string foo](http:Request req) returns json {
 </code></pre></div>
 
                                 </td>
@@ -199,7 +184,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getQueryParamValue">QueryParam</a>
+                                            <p>Get the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getQueryParamValue">QueryParam</a>
  value for a given parameter key.</p>
 
                                         </div>
@@ -227,7 +212,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getMatrixParams">MatrixParams</a>.</p>
+                                            <p>Get the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getMatrixParams">MatrixParams</a>.</p>
 
                                         </div>
                                     </div>
@@ -243,7 +228,6 @@ import ballerina/log;
             &quot;queryParam&quot;: bar,
             &quot;matrix&quot;: matrixJson
         };
-        http:Response res = new;
 </code></pre></div>
 
                                 </td>
@@ -261,54 +245,21 @@ import ballerina/log;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        res.setJsonPayload(&lt;@untainted&gt;responseJson);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A util method to set the JSON payload to the response message.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send a response to the client.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
-            log:printError(&quot;Error when responding&quot;, err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        return responseJson;
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Send a response with the JSON payload to the client.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>

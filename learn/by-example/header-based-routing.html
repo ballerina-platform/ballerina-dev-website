@@ -17,75 +17,54 @@ redirect_from:
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">weatherEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">followRedirects</span><span class="p">:</span> <span class="p">{</span><span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">maxCount</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
+        <span class="nx">cert</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 
 <span class="c1">//Service is invoked using `basePath` value &quot;/hbr&quot;.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">hbr</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">route</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">route</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                    <span class="nd">@http:Header{name:&quot;x-type&quot;} string nameString) {</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">weatherEP</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span>
                                     <span class="s">&quot;http://samples.openweathermap.org&quot;</span><span class="p">,</span>
                                      <span class="nx">weatherEPConfig</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">locationEP</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
         <span class="c1">// Create a new outbound request to handle client call.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">newRequest</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-
-        <span class="c1">//[getHeader()](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getHeader) returns header value of the specified header name.</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">headerValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;x-type&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">headerValue</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="kt">json</span> <span class="nx">errMsg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;&#39;x-type&#39; header is not found&quot;</span><span class="p">};</span>
-            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errMsg</span><span class="p">);</span>
-
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">headerValue</span><span class="p">;</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">PayloadType</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">nameString</span> <span class="o">==</span> <span class="s">&quot;location&quot;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[post()](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function represents the &#39;POST&#39; operation</span>
+            <span class="c1">//[post()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function represents the &#39;POST&#39; operation</span>
             <span class="c1">// of the HTTP client.</span>
             <span class="c1">// Route payload to the relevant service.</span>
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">locationEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/v2/5adddd66300000bd2a4b2912&quot;</span><span class="p">,</span>
                                         <span class="nx">newRequest</span><span class="p">);</span>
 
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">//[get()](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function can be used to make an http GET call.</span>
+            <span class="c1">//[get()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote function can be used to make an http GET call.</span>
             <span class="nx">response</span> <span class="p">=</span>
-                <span class="nx">weatherEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;</span><span class="p">,</span>
-                                 <span class="nx">newRequest</span><span class="p">);</span>
+                <span class="nx">weatherEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;</span><span class="p">);</span>
 
         <span class="p">}</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// [respond()](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#respond) sends back the inbound clientResponse to the caller</span>
+            <span class="c1">// [respond()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#respond) sends back the inbound clientResponse to the caller</span>
             <span class="c1">// if no error occurs.</span>
 
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
 
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -101,7 +80,7 @@ redirect_from:
                             <h2>Header-Based Routing</h2>
                             <p><p>The Header-Based Router service reads a particular Header of a request and routes it to a specific recipient based on the Header value.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -187,14 +166,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -219,10 +190,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration weatherEPConfig = {
     followRedirects: {enabled: true, maxCount: 5},
     secureSocket: {
-        trustStore: {
-            path: &quot;../resources/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
+        cert: &quot;../resource/path/to/public.crt&quot;
     }
 };
 </code></pre></div>
@@ -255,7 +223,8 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get route(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get route(http:Caller caller,
+                    @http:Header{name:&quot;x-type&quot;} string nameString) {
         http:Client weatherEP = checkpanic new (
                                     &quot;http://samples.openweathermap.org&quot;,
                                      weatherEPConfig);
@@ -272,6 +241,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        http:Request newRequest = new;
+        http:Response|error response;
+        if (nameString == &quot;location&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -290,72 +261,6 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error headerValue = req.getHeader(&quot;x-type&quot;);
-        if (headerValue is error) {
-            http:Response errorResponse = new;
-            errorResponse.statusCode = 500;
-            json errMsg = {&quot;error&quot;: &quot;&#39;x-type&#39; header is not found&quot;};
-            errorResponse.setPayload(errMsg);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getHeader">getHeader()</a> returns header value of the specified header name.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(errorResponse);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
-            }
-            return;
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string nameString = checkpanic headerValue;
-        http:Response|http:PayloadType|error response;
-        if (nameString == &quot;location&quot;) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            response = locationEP-&gt;post(&quot;/v2/5adddd66300000bd2a4b2912&quot;,
                                         newRequest);
 </code></pre></div>
@@ -365,7 +270,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">post()</a> remote function represents the &lsquo;POST&rsquo; operation
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post">post()</a> remote function represents the &lsquo;POST&rsquo; operation
  of the HTTP client.
  Route payload to the relevant service.</p>
 
@@ -391,8 +296,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            response =
-                weatherEP-&gt;get(&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;,
-                                 newRequest);
+                weatherEP-&gt;get(&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -400,7 +304,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">get()</a> remote function can be used to make an http GET call.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get">get()</a> remote function can be used to make an http GET call.</p>
 
                                         </div>
                                     </div>
@@ -441,7 +345,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#respond">respond()</a> sends back the inbound clientResponse to the caller
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#respond">respond()</a> sends back the inbound clientResponse to the caller
  if no error occurs.</p>
 
                                         </div>
@@ -466,7 +370,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
+                log:printError(&quot;Error sending response&quot;, &#39;error = result);
             }
 </code></pre></div>
 
@@ -482,7 +386,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>        } else {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
-            errorResponse.setPayload((&lt;@untainted error&gt;response).message());
+            errorResponse.setPayload(&lt;@untainted&gt;response.message());
             var result = caller-&gt;respond(errorResponse);
 </code></pre></div>
 
@@ -496,7 +400,7 @@ import ballerina/log;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
+                log:printError(&quot;Error sending response&quot;, &#39;error = result);
             }
         }
     }
@@ -528,8 +432,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command  below along with the
 # Ballerina home path as a config.
-# (You may need to change the truststore path, a sample truststore file is available in the distribution.
-# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaTruststore.p12)
+# (You may need to change the trusted certificate file path.)
 bal run header_based_routing.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>

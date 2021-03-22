@@ -776,10 +776,6 @@ service class EchoService {
 
 - All the timeout configurations are converted to accept decimal values and the time unit is in seconds.
 
-##### Bug Fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Swan+Lake+Alpha3%22).
-
 #### Code to Cloud
 
 - Removed Docker annotation support.

@@ -772,7 +772,7 @@ service class EchoService {
 
 - Renamed the `ConnectionConfig` record to `ConnectionConfiguration`. 
 
-###### Common Standard Library Updates
+##### Common Standard Library Updates
 
 - All the timeout configurations are converted to accept decimal values and the time unit is in seconds.
 

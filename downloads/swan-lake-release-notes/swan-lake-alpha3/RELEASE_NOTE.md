@@ -15,6 +15,7 @@ The Ballerina Swan Lake Alpha3 release includes the language features planned fo
     - [Runtime](#runtime)
     - [Standard Library](#standard-library)
     - [Code to Cloud](#code-to-cloud)
+    - [Ballerina Packages](#ballerina-packages)
     - [Developer Tools](#developer-tools)
     - [Breaking Changes](#breaking-changes)
 
@@ -787,8 +788,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22).
 
-#### Developer Tools
-#### Ballerina Packages
+### Ballerina Packages
 
 #### Introduced Local Repository Support
 
@@ -820,7 +820,7 @@ repository = "local"
 - New and init commands
   - Introduced creation of the `Pacakge.md` file for a library template. Passing the `--template lib` flag will create the `Package.md` file in addition to the `Ballerina.toml` file and the source BAL files.
 - Push command
-  - Introduced pushing to the local repository. Passing `--repository=local` will push the Ballerina archive (.bala) to the local repository. For information about local repository support, see the [Ballerina Packages Changelist](<link>).
+  - Introduced pushing to the local repository. Passing `--repository=local` will push the Ballerina archive (.bala) to the local repository. For information about local repository support, see the [Ballerina Packages Changelist](#ballerina-packages).
 - Run `bal help <command>` to get more information on the command changes.
 
 - CLI Auto Completion

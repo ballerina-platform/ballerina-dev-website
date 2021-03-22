@@ -2,9 +2,11 @@
 layout: ballerina-blank-page
 title: Release Note
 ---
+This is the third alpha in a series of planned alphas and betas leading up to the Ballerina Swan Lake GA release.
+
 ### Overview of Ballerina Swan Lake Alpha3
 
-The Ballerina Swan Lake release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha2 release of Ballerina Swan Lake.
+The Ballerina Swan Lake Alpha3 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha2 release of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -44,7 +46,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ##### Support for Module-level Variables with List, Mapping, and Error Binding Patterns
 
-Variable declarations with list, mapping, and error binding patterns are now allowed at module level. Unlike simple variables, these variables must be initialized in the declaration.
+Variable declarations with a list, mapping, and error binding patterns are now allowed at the module level. Unlike simple variables, these variables must be initialized in the declaration.
 
 Also, these variable declarations cannot contain an `isolated` or `configurable` qualifier.
 
@@ -787,9 +789,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 ##### Bug Fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake Alpha3 of the repositories below.
-
-- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22) 
+To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22).
 
 #### Developer Tools
 #### Ballerina Packages

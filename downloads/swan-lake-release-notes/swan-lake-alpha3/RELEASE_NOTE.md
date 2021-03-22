@@ -4,7 +4,7 @@ title: Release Note
 ---
 ### Overview of Ballerina Swan Lake Alpha3
 
-This Alpha3 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha2 release of Ballerina Swan Lake.
+The Ballerina Swan Lake release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha2 release of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -119,7 +119,7 @@ public function main() {
 
 function process(function func, int v1, int v2) returns int {
     // A function of type `function` cannot be called directly.
-    // A function value assigned to a `function` typed variable 
+    // A function value assigned to a `function`-typed variable
     // can only be called after the type is narrowed to the relevant type.
     if (func is function (int, int) returns int) {
         return func(v1, v2);
@@ -146,7 +146,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 #### Runtime
 
-##### JAVA Runtime API
+##### New runtime Java API to create errors
 
 A new runtime Java API is introduced to create errors.
 ```java
@@ -156,8 +156,8 @@ The `createDistinctError` API has been deprecated and should not be used to crea
 
 ##### Configurable Variables
 
-Improved error messages are introduced for configurable variables by including more information and the relevant
- `Config.toml` line numbers.
+Improved error messages are introduced for configurable variables by including more information and the relevant `Config.toml` line numbers.
+
 ##### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
@@ -166,7 +166,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 ##### Log Package Updates
 
-###### Introduce additional log levels and log functions
+###### Introduced additional log levels and log functions
 
 There are 4 log levels: `DEBUG`, `ERROR`, `INFO`, and `WARN` and their respective functions: `printDebug`, `printError`, `printInfo`, and `printWarn`. To set the global log level, place the entry given below in the `Config.toml` file:
 ```toml
@@ -783,14 +783,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 #### Code to Cloud
 
+- Removed Docker annotation support.
+
 ##### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Alpha3 of the repositories below.
 
-- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22)
-- [Docker](https://github.com/ballerina-platform/module-ballerina-docker/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22)
-- [AWS Lambda](https://github.com/ballerina-platform/module-ballerinax-aws.lambda/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22)
-- [Azure Functions](https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22) 
+- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22) 
 
 #### Developer Tools
 #### Ballerina Packages
@@ -880,8 +879,6 @@ bal openapi -i <ballerina file> --json
 To view bug fixes, see the GitHub milestone for Swan Lake Alpha3 of the repositories below.
 
 - [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
-- [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
-- [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha%22) 
 
 ##### Language Server
 - The Ballerina Language Server now supports telemetry-based crash reporting. This was enabled through the LSP protocol's [telemetry events](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#telemetry_event). If you wish to disable Ballerina Telemetry, uncheck the **Ballerina: Enable Telemetry** setting from VSCode.

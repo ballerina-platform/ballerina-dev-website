@@ -16,35 +16,34 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
 
-<span class="c1">//[Client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client) endpoint.</span>
+<span class="c1">//[Client](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client) endpoint.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9091/backEndService&quot;</span><span class="p">);</span>
 
 <span class="c1">//Service to test HTTP client remote functions with different payload types.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">actionService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">messageUsage</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                            <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-
-        <span class="c1">//[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function without any payload.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">messageUsage</span><span class="p">()</span>
+            <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
+        <span class="c1">//[GET](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote function without any payload.</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function with</span>
+        <span class="c1">//[GET](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote function with</span>
         <span class="c1">//the request given as a message.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;/greeting&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function without any payload.</span>
+        <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function without any payload.</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">());</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
+        <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/http`/clients/Client#post) remote function with</span>
         <span class="c1">//text as the payload.</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="s">&quot;Sample Text&quot;</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
+        <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function with</span>
         <span class="c1">//`xml` as the payload.</span>
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="kt">xml</span> <span class="s">`&lt;yy&gt;Sample Xml&lt;/yy&gt;`</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
@@ -53,7 +52,7 @@ redirect_from:
         <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">});</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="c1">//[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with</span>
+        <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function with</span>
         <span class="c1">//`byte[]` as the payload.</span>
         <span class="kt">string</span> <span class="nx">textVal</span> <span class="p">=</span> <span class="s">&quot;Sample Text&quot;</span><span class="p">;</span>
         <span class="nx">byte</span><span class="p">[]</span> <span class="nx">binaryValue</span> <span class="p">=</span> <span class="nx">textVal</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
@@ -68,11 +67,11 @@ redirect_from:
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/image&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bStream</span><span class="p">);</span>
             <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-            <span class="c1">//[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).</span>
+            <span class="c1">//[Create a JSON body part](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setJson).</span>
             <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">part1</span><span class="p">.</span><span class="nx">setJson</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">});</span>
 
-            <span class="c1">//[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).</span>
+            <span class="c1">//[Create a text body part](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setText).</span>
             <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">part2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">part2</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
 
@@ -81,15 +80,9 @@ redirect_from:
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">bodyParts</span><span class="p">);</span>
             <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span>
-                    <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Client actions successfully executed!&quot;</span><span class="p">);</span>
-            <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="k">return</span> <span class="s">&quot;Client actions successfully executed!&quot;</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bStream</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-            <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="nx">bStream</span><span class="p">.</span><span class="kt">message</span><span class="p">()};</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -97,11 +90,8 @@ redirect_from:
 <span class="c1">//Back end service that send out different payload types as response.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">backEndService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9091</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hello&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
@@ -171,7 +161,7 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">//Handle response data received from HTTP client remote functions.</span>
-<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">PayloadType</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">//Print the content type of the received data.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;content-type&quot;</span><span class="p">))</span> <span class="p">{</span>
@@ -179,51 +169,52 @@ redirect_from:
             <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Text data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Text data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span>
+                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getXmlPayload</span><span class="p">();</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="kt">string</span> <span class="nx">strValue</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Xml data: &quot;</span> <span class="o">+</span> <span class="nx">strValue</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Xml data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing xml data&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing xml data&quot;</span><span class="p">,</span>
+                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Json data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Json data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing json data&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing json data&quot;</span><span class="p">,</span>
+                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_OCTET_STREAM</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Response contains binary data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains binary data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing binary data&quot;</span><span class="p">,</span>
-                                    <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Response contains body parts: &quot;</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains body parts: &quot;</span><span class="p">);</span>
                 <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
                     <span class="nx">handleBodyParts</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing multipart data&quot;</span><span class="p">,</span>
-                                    <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">IMAGE_PNG</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Response contains an image&quot;</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains an image&quot;</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Entity body is not available&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Entity body is not available&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -237,7 +228,7 @@ redirect_from:
 
 <span class="kd">function</span> <span class="nx">handleError</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -258,17 +249,17 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Json Part: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Json Part: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+            <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Text Part: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Text Part: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -285,7 +276,7 @@ redirect_from:
                             <p><p>Ballerina supports different payload types to be used directly with HTTP client actions
 (eg: POST, PUT, DELETE etc..) and service respond calls.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -428,7 +419,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client">Client</a> endpoint.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client">Client</a> endpoint.</p>
 
                                         </div>
                                     </div>
@@ -458,8 +449,8 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default messageUsage(http:Caller caller,
-                                            http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default messageUsage()
+            returns string|http:InternalServerError {
 </code></pre></div>
 
                                 </td>
@@ -480,7 +471,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">GET</a> remote function without any payload.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get">GET</a> remote function without any payload.</p>
 
                                         </div>
                                     </div>
@@ -492,7 +483,7 @@ import ballerina/mime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        http:Request request = new;
-        response = clientEP-&gt;get(&quot;/greeting&quot;, message = request);
+        response = clientEP-&gt;execute(&quot;GET&quot;, &quot;/greeting&quot;, request);
         handleResponse(response);
 </code></pre></div>
 
@@ -501,7 +492,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get">GET</a> remote function with
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get">GET</a> remote function with
 the request given as a message.</p>
 
                                         </div>
@@ -522,7 +513,7 @@ the request given as a message.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function without any payload.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post">POST</a> remote function without any payload.</p>
 
                                         </div>
                                     </div>
@@ -542,7 +533,7 @@ the request given as a message.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http`/clients/Client#post">POST</a> remote function with
 text as the payload.</p>
 
                                         </div>
@@ -563,7 +554,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
 <code>xml</code> as the payload.</p>
 
                                         </div>
@@ -606,7 +597,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post">POST</a> remote function with
 <code>byte[]</code> as the payload.</p>
 
                                         </div>
@@ -678,7 +669,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson">Create a JSON body part</a>.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setJson">Create a JSON body part</a>.</p>
 
                                         </div>
                                     </div>
@@ -698,7 +689,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText">Create a text body part</a>.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setText">Create a text body part</a>.</p>
 
                                         </div>
                                     </div>
@@ -730,15 +721,9 @@ text as the payload.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            var result =
-                    caller-&gt;respond(&quot;Client actions successfully executed!&quot;);
-            handleError(result);
+                                    <div class="highlight"><pre><code class=language-ballerina>            return &quot;Client actions successfully executed!&quot;;
         } else {
-            http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt;bStream.message());
-            var result = caller-&gt;respond(res);
-            handleError(result);
+            return {body:bStream.message()};
         }
     }
 }
@@ -772,11 +757,8 @@ text as the payload.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting(http:Caller caller, http:Request req) {
-        error? result = caller-&gt;respond(&quot;Hello&quot;);
-        if (result is error) {
-            log:printError(&quot;Error in responding to caller&quot;, err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting() returns string {
+        return &quot;Hello&quot;;
     }
 </code></pre></div>
 
@@ -875,7 +857,7 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|http:PayloadType|error response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
     if (response is http:Response) {
 </code></pre></div>
 
@@ -900,51 +882,52 @@ text as the payload.</p>
             if (mime:TEXT_PLAIN == baseType) {
                 var payload = response.getTextPayload();
                 if (payload is string) {
-                    log:print(&quot;Text data: &quot; + payload);
+                    log:printInfo(&quot;Text data: &quot; + payload);
                 } else {
-                    log:printError(&quot;Error in parsing text data&quot;, err = payload);
+                    log:printError(&quot;Error in parsing text data&quot;,
+                                                    &#39;error = payload);
                 }
             } else if (mime:APPLICATION_XML == baseType) {
                 var payload = response.getXmlPayload();
                 if (payload is xml) {
-                    string strValue = io:sprintf(&quot;%s&quot;, payload);
-                    log:print(&quot;Xml data: &quot; + strValue);
+                    log:printInfo(&quot;Xml data: &quot; + payload.toString());
                 } else {
-                    log:printError(&quot;Error in parsing xml data&quot;, err = payload);
+                    log:printError(&quot;Error in parsing xml data&quot;,
+                                                    &#39;error = payload);
                 }
             } else if (mime:APPLICATION_JSON == baseType) {
                 var payload = response.getJsonPayload();
                 if (payload is json) {
-                    log:print(&quot;Json data: &quot; + payload.toJsonString());
+                    log:printInfo(&quot;Json data: &quot; + payload.toJsonString());
                 } else {
-                    log:printError(&quot;Error in parsing json data&quot;, err = payload);
+                    log:printError(&quot;Error in parsing json data&quot;,
+                                                    &#39;error = payload);
                 }
             } else if (mime:APPLICATION_OCTET_STREAM == baseType) {
                 var payload = response.getTextPayload();
                 if (payload is string) {
-                    log:print(&quot;Response contains binary data: &quot; + payload);
+                    log:printInfo(&quot;Response contains binary data: &quot; + payload);
                 } else {
                     log:printError(&quot;Error in parsing binary data&quot;,
-                                    err = payload);
+                                                    &#39;error = payload);
                 }
             } else if (mime:MULTIPART_FORM_DATA == baseType) {
-                log:print(&quot;Response contains body parts: &quot;);
+                log:printInfo(&quot;Response contains body parts: &quot;);
                 var payload = response.getBodyParts();
                 if (payload is mime:Entity[]) {
                     handleBodyParts(payload);
                 } else {
                     log:printError(&quot;Error in parsing multipart data&quot;,
-                                    err = payload);
+                                                    &#39;error = payload);
                 }
             } else if (mime:IMAGE_PNG == baseType) {
-                log:print(&quot;Response contains an image&quot;);
+                log:printInfo(&quot;Response contains an image&quot;);
             }
         } else {
-            log:print(&quot;Entity body is not available&quot;);
+            log:printInfo(&quot;Entity body is not available&quot;);
         }
     } else {
-        error err = &lt;error&gt;response;
-        log:printError(err.message(), err = err);
+        log:printError(response.message(), &#39;error = response);
     }
 }
 </code></pre></div>
@@ -985,7 +968,7 @@ text as the payload.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function handleError(error? result) {
     if (result is error) {
-        log:printError(result.message(), err = result);
+        log:printError(result.message(), &#39;error = result);
     }
 }
 </code></pre></div>
@@ -1031,17 +1014,17 @@ text as the payload.</p>
         if (mime:APPLICATION_JSON == baseType) {
             var payload = bodyPart.getJson();
             if (payload is json) {
-                log:print(&quot;Json Part: &quot; + payload.toJsonString());
+                log:printInfo(&quot;Json Part: &quot; + payload.toJsonString());
             } else {
-                log:printError(payload.message(), err = payload);
+                log:printError(payload.message(), &#39;error = payload);
             }
         }
         if (mime:TEXT_PLAIN == baseType) {
-                var payload = bodyPart.getText();
+            var payload = bodyPart.getText();
             if (payload is string) {
-                log:print(&quot;Text Part: &quot; + payload);
+                log:printInfo(&quot;Text Part: &quot; + payload);
             } else {
-                log:printError(payload.message(), err = payload);
+                log:printError(payload.message(), &#39;error = payload);
             }
         }
     }
@@ -1077,7 +1060,9 @@ text as the payload.</p>
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># In the directory, which contains the `.bal` file, create a directory named `files`,
+# and add an image file named `logo.png` in it.
+# To start the service, navigate to the directory that contains the
 # `.bal` file and use the `bal run` command below.
 bal run different_payload_types.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9091
@@ -1093,6 +1078,33 @@ time = 2020-12-15 17:41:04,256 level = INFO  module = &quot;&quot; message = &qu
 time = 2020-12-15 17:41:04,275 level = INFO  module = &quot;&quot; message = &quot;Response contains body parts: &quot;
 time = 2020-12-15 17:41:04,280 level = INFO  module = &quot;&quot; message = &quot;Json Part: {&quot;name&quot;:&quot;Jane&quot;}&quot;
 time = 2020-12-15 17:41:04,281 level = INFO  module = &quot;&quot; message = &quot;Text Part: Hello&quot;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>#Send a request to the action service
+curl -X GET http://localhost:9090/actionService/messageUsage
+Client actions successfully executed!
 </code></pre></div>
 
                                 </td>

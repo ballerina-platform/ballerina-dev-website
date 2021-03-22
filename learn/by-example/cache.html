@@ -24,8 +24,8 @@ redirect_from:
     <span class="nx">cache</span><span class="p">:</span><span class="nx">Cache</span> <span class="nx">cache</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
         <span class="nx">capacity</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
         <span class="nx">evictionFactor</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-        <span class="nx">defaultMaxAgeInSeconds</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">cleanupIntervalInSeconds</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="nx">defaultMaxAge</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nx">cleanupInterval</span><span class="p">:</span> <span class="mi">3</span>
     <span class="p">});</span>
 
     <span class="c1">// Adds a new entry to the cache.</span>
@@ -76,7 +76,7 @@ redirect_from:
  LRU algorithm based eviction policy. The caching implementation can be customized by providing different
  storage mechanisms and eviction policies. <br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/cache/latest/cache/">Cache module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/cache/latest/cache/">Cache module</a>.</p>
 </p>
 
                         </td>
@@ -117,7 +117,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3a06b709ebe9b3b57a5f96f8f4265ed4&file=cache.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6b1cbfc25758ea7a37ed68eca8efe543&file=cache.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -199,8 +199,8 @@ import ballerina/lang.runtime;
                                     <div class="highlight"><pre><code class=language-ballerina>    cache:Cache cache = new({
         capacity: 10,
         evictionFactor: 0.2,
-        defaultMaxAgeInSeconds: 2,
-        cleanupIntervalInSeconds: 3
+        defaultMaxAge: 2,
+        cleanupInterval: 3
     });
 </code></pre></div>
 

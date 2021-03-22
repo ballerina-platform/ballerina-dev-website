@@ -175,7 +175,7 @@ level = "[LOG_LEVEL]"
 Each module can also be assigned its own log level. To assign a log level to a module, provide the following entry in the `Config.toml` file:
 ```toml
 [[log.modules]] 
-name = "[MODULE_NAME]" 
+name = "[ORG_NAME]/[MODULE_NAME]"
 level = "[LOG_LEVEL]"
 ```
 
@@ -194,7 +194,7 @@ import ballerina/task;
 task:Error? output = task:configureWorkerPool(6, 7000);
 ```
 
-- Schedules the Ballerina job at a specified time.
+- Schedules the job at a specified time.
 ```ballerina
 import ballerina/task;
 import ballerina/time;
@@ -221,7 +221,7 @@ time:Civil time = {
 task:Error|task:JobId id = task:scheduleOneTimeJob(new MyJob(), time);
 ```
 
-- Schedules the recurring Ballerina job according to the given duration.
+- Schedules the recurring job according to the given duration.
 ```ballerina
 import ballerina/task;
 
@@ -321,7 +321,7 @@ json|xmldata:Error j = xmldata:toJson(xml `foo`);
 
 ##### Removed `jsonutils`, `xmlutils`, `runtime`, and `reflect` Packages
 
-The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from Standard Library.
+The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from Standard Libraries.
 
 The XML/JSON conversation APIs in `jsonutils` and `xmltutils` packages are now supported by the `xmldata` package.
 

@@ -340,6 +340,7 @@ The XML/JSON conversation APIs in `jsonutils` and `xmltutils` packages are now s
 ##### HTTP Package Updates
 
 - Changed the return types of the client methods to depend on the `targetType` argument. The default `targetType` is `http:Response`.
+
 ```ballerina 
 http:Client myClient = check new ("http://localhost:9090”);
 http:Response response = check myClient->post("/backend/getResponse", "want response");
@@ -355,7 +356,7 @@ map<string|string[]> accHeaders = { "Accept" : "application/json" };
 var response = myclient->get("/some/endpoint", accHeaders);
 ```
 
-- Introduced header map and media type as optional arguments for entity body client remote methods (POST, PUT, PATCH, DELETE, EXECUTE).
+- Introduced header map and media type as optional arguments for entity-body client remote methods (POST, PUT, PATCH, DELETE, EXECUTE).
 
 ```ballerina
 http:Client myClient = check new ("http://localhost:9090”);
@@ -453,11 +454,10 @@ resource function get profile/name/first(int id) returns string? {
 ##### Email Package Updates
 
 - Enabled read/listen for multiple emails in a single TCP connection.
-Each POP3 or IMAP client/listener creation initiates the connection.
-Then, the email sending, receiving, or listening operations can be performed many times.
-Finally the client/listener has to be closed.
+    
+    Each POP3 or IMAP client/listener creation initiates the connection. Then, the email sending, receiving, or listening operations can be performed many times. Finally, the client/listener has to be closed.
 
-POP3 Client example
+**POP3 Client Example**
 
 ```ballerina
 email:PopClient popClient = check new ("pop.email.com", "reader@email.com","pass456");
@@ -467,7 +467,7 @@ check popClient->close();
 
 A similar format is used in the IMAP client. 
 
-POP3 Service example
+**POP3 Service Example**
 
 ```ballerina
 service object {} emailObserver = service object {
@@ -818,7 +818,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 #### Introduced Local Repository Support
 
-- Apart from the Ballerina Central remote repository, you can now push packages to the local repository which can be found at `<user-home>/.ballerina/repositories/local`. Refer the section on changes to CLI commands for information regarding pushing to the local repository.
+- Apart from the Ballerina Central remote repository, you can now push packages to the local repository which can be found at `<user-home>/.ballerina/repositories/local`. Refer to the section on changes to CLI commands for information regarding pushing to the local repository.
 - To use a package from the local repository, the 'repository' has to be specified in the TOML table of the relevant dependency in the `Dependencies.toml` file.
 
 E.g., to test a developed package before pushing it to Ballerina Central, build and push it to the local repository using the `push` command and add it to the `Dependencies.toml` file of the depending package as shown below.
@@ -862,8 +862,10 @@ repository = "local"
     ```shell
     echo "source <(bal completion bash)" >> ~/.bashrc
     ```
+
   - Installing On Mac Bash
     - Set up auto-completion permanently in the bash shell.
+
     ```shell
     echo "$(bal completion bash)" >> ~/.bash_profile
     ```

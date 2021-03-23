@@ -454,11 +454,10 @@ resource function get profile/name/first(int id) returns string? {
 ##### Email Package Updates
 
 - Enabled read/listen for multiple emails in a single TCP connection.
-Each POP3 or IMAP client/listener creation initiates the connection.
-Then, the email sending, receiving, or listening operations can be performed many times.
-Finally, the client/listener has to be closed.
+    
+    Each POP3 or IMAP client/listener creation initiates the connection. Then, the email sending, receiving, or listening operations can be performed many times. Finally, the client/listener has to be closed.
 
-POP3 Client example
+**POP3 Client Example**
 
 ```ballerina
 email:PopClient popClient = check new ("pop.email.com", "reader@email.com","pass456");
@@ -468,7 +467,7 @@ check popClient->close();
 
 A similar format is used in the IMAP client. 
 
-POP3 Service example
+**POP3 Service Example**
 
 ```ballerina
 service object {} emailObserver = service object {
@@ -902,8 +901,6 @@ bal openapi -i <ballerina file> --json
 - Moved the standard library API documentation out to [Ballerina Central Docs](https://docs.central.ballerina.io) from the Ballerina Website.
 
 To view bug fixes, see the GitHub milestone for Swan Lake Alpha3 of the repositories below.
-
-- [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 
 ##### Language Server
 - The Ballerina Language Server now supports telemetry-based crash reporting. This was enabled through the LSP protocol's [telemetry events](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#telemetry_event). If you wish to disable Ballerina Telemetry, uncheck the **Ballerina: Enable Telemetry** setting from VSCode.

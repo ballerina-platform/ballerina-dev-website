@@ -189,6 +189,7 @@ level = "[LOG_LEVEL]"
 The module has been revamped by removing the `Scheduler` and `Listener` classes and introducing the following functions to schedule and manage the job either one-time or periodically.
 
 - Configures the scheduler worker pool with the worker count and max waiting time.
+
 ```ballerina
 import ballerina/task;
 
@@ -196,6 +197,7 @@ task:Error? output = task:configureWorkerPool(6, 7000);
 ```
 
 - Schedules the job at a specified time.
+
 ```ballerina
 import ballerina/task;
 import ballerina/time;
@@ -223,6 +225,7 @@ task:Error|task:JobId id = task:scheduleOneTimeJob(new MyJob(), time);
 ```
 
 - Schedules the recurring job according to the given duration.
+
 ```ballerina
 import ballerina/task;
 
@@ -237,6 +240,7 @@ task:Error|task:JobId id = task:scheduleJobRecurByFrequency(new MyJob(), 1);
 ```
 
 - Unschedules the particular job.
+
 ```ballerina
 import ballerina/task;
 
@@ -244,6 +248,7 @@ task:Error? result = task:unscheduleJob(id);
 ```
 
 - Pauses all the jobs.
+
 ```ballerina
 import ballerina/task;
 
@@ -251,6 +256,7 @@ task:Error? result = task:pauseAllJobs();
 ```
 
 - Resumes all the jobs.
+
 ```ballerina
 import ballerina/task;
 
@@ -258,6 +264,7 @@ task:Error? result = task:resumeAllJobs();
 ```
 
 - Pauses the particular job.
+
 ```ballerina
 import ballerina/task;
 
@@ -265,6 +272,7 @@ task:Error? result = task:pauseJob(id);
 ```
 
 - Resumes the particular job.
+
 ```ballerina
 import ballerina/task;
 
@@ -272,6 +280,7 @@ task:Error? result = task:resumeJob(id);
 ```
 
 - Gets all the running jobs.
+
 ```ballerina
 import ballerina/task;
 
@@ -303,6 +312,7 @@ This object type had the common APIs for the cache eviction functionalities to i
 A new module is added to convert data in XML format to JSON format and vice-versa.
 
 - Converts a JSON object to an XML representation.
+
 ```ballerina
 import ballerina/xmldata;
 
@@ -314,6 +324,7 @@ xml|xmldata:Error x = xmldata:fromJson(data);
 ```
 
 - Converts an XML value to its JSON representation.
+
 ```ballerina
 import ballerina/xmldata;
 
@@ -329,6 +340,7 @@ The XML/JSON conversation APIs in `jsonutils` and `xmltutils` packages are now s
 ##### HTTP Package Updates
 
 - Changed the return types of the client methods to depend on the `targetType` argument. The default `targetType` is `http:Response`.
+
 ```ballerina 
 http:Client myClient = check new ("http://localhost:9090”);
 http:Response response = check myClient->post("/backend/getResponse", "want response");
@@ -337,13 +349,15 @@ xml xmlPayload = check myClient->post("/backend/getXml", "want xml", targetType 
 ```
 
 - Introduced a header map as an optional argument for non-entity-body client remote methods (GET, HEAD, OPTIONS). 
+
 ```ballerina
 http:Client myClient = check new ("http://localhost:9090”);
 map<string|string[]> accHeaders = { "Accept" : "application/json" };
 var response = myclient->get("/some/endpoint", accHeaders);
 ```
 
-- Introduced header map and media type as optional arguments for entity body client remote methods (POST, PUT, PATCH, DELETE, EXECUTE).
+- Introduced header map and media type as optional arguments for entity-body client remote methods (POST, PUT, PATCH, DELETE, EXECUTE).
+
 ```ballerina
 http:Client myClient = check new ("http://localhost:9090”);
 json payload = {}; 
@@ -352,6 +366,7 @@ var response = myclient->post("/some/endpoint", payload, headers = accHeaders);
 ```
 
 - Improved the data types of outbound request/response payloads which can be set directly.  
+
 ```ballerina
 type RequestMessage Request|string|xml|json[]|byte[]|int|float|decimal|boolean|map<json>|table<map<json>>|
                       table<map<json>>[]|mime:Entity[]|stream<byte[], io:Error>|();
@@ -370,6 +385,7 @@ type ResponseMessage Response|string|xml|json[]|byte[]|int|float|decimal|boolean
 The bearer token, Basic Auth, JWT, and OAuth2 support have been introduced with the WebSocket client declarative authentication.
 
 - Introduced HTTP cookie support for the WebSocket client.
+
 ```ballerina
 http:Cookie cookie = new ("username", "name");
 http:Cookie[] httpCookies = [cookie];
@@ -385,11 +401,13 @@ websocket:Client wsClient = check new ("ws://localhost:21316/ws", config = clien
 
 - Introduced support to send text, binary, and pong messages by returning them from the remote methods. 
 Text/binary data can now be sent to the peer by returning a `string` or a `byte[]` value from the `onTextMessage` and `onBinaryMessage` remote methods. Also, a pong frame can be sent to the peer by returning a `byte[]` value from the `onPing` remote method.
+
 ```ballerina
 remote function onTextMessage(string text) returns string {
     return "Hello World!";
 }
 ```
+
 ```ballerina
 remote function onPing(byte[] pingData) returns byte[] {
     return pingData;
@@ -402,6 +420,7 @@ remote function onPing(byte[] pingData) returns byte[] {
 
 - Added the support for hierarchical resource paths.
 The Ballerina GraphQL resources now can have hierarchical resource paths. Each intermediate resource path then maps to a new type in the generated schema.
+
 ```ballerina
 import ballerina/graphql;
 
@@ -423,6 +442,7 @@ service /graphql on new Listener(9104) {
 - Supported resource functions to return optional types. 
 
 The Ballerina GraphQL resources now can return optional types. 
+
 ```ballerina
 resource function get profile/name/first(int id) returns string? {
     if id == 0 {
@@ -434,11 +454,11 @@ resource function get profile/name/first(int id) returns string? {
 ##### Email Package Updates
 
 - Enabled read/listen for multiple emails in a single TCP connection.
-Each POP3 or IMAP client/listener creation initiates the connection.
-Then, the email sending, receiving, or listening operations can be performed many times.
-Finally the client/listener has to be closed.
+    
+    Each POP3 or IMAP client/listener creation initiates the connection. Then, the email sending, receiving, or listening operations can be performed many times. Finally, the client/listener has to be closed.
 
-POP3 Client example
+**POP3 Client Example**
+
 ```ballerina
 email:PopClient popClient = check new ("pop.email.com", "reader@email.com","pass456");
 email:Message? emailResponse = check popClient->receiveMessage();
@@ -447,7 +467,8 @@ check popClient->close();
 
 A similar format is used in the IMAP client. 
 
-POP3 Service example
+**POP3 Service Example**
+
 ```ballerina
 service object {} emailObserver = service object {
    remote function onMessage(Message emailMessage) {
@@ -492,6 +513,7 @@ email:Message|email:Error? email = popClient->receiveMessage(timeout = 2);
 ##### WebSub Package Updates
 
 - Introduced a websub-listener configuration for the websub-listener.
+
 ```ballerina
 import ballerina/websub;
 
@@ -513,6 +535,7 @@ service /subscriber on new websub:Listener(9090, configs) {
 ##### WebSubHub Package Updates
 
 - Included HTTP Headers parameter into the WebSub Hub API.
+
 ```ballerina
 import ballerina/websubhub;
 import ballerina/http;
@@ -529,6 +552,7 @@ service /websubhub on new websubhub:Listener(9090) {
 ```
 
 - Introduced pre-initialized constant responses to be used in the `websubhub:Service` implementation.
+
 ```ballerina
 import ballerina/websubhub;
 
@@ -544,7 +568,8 @@ service /websubhub on new websubhub:Listener(9090) {
 }
 ```
 
-Initializing the `websubhub:HubClient` with the client configurations.
+- Initializing the `websubhub:HubClient` with the client configurations.
+
 ```ballerina
 import ballerina/websubhub;
 
@@ -566,7 +591,8 @@ websubhub:ContentDistributionMessage msg = {content: "This is sample content del
 var publishResponse = hubClientEP->notifyContentDistribution(msg);
 ```
 
-- Introduced an websubhub-listener configuration to configure a websubhub listener. 
+- Introduced the websubhub-listener configuration to configure a websubhub listener.
+
 ```ballerina
 import ballerina/websubhub;
 
@@ -589,6 +615,7 @@ service /hub on new websubhub:Listener(9090, configs) {
 ##### Security Updates
 
 - Renamed the `ballerina/encoding` module as `ballerina/url` and updated the APIs.
+
 ```ballerina
 import ballerina/url;
 
@@ -598,7 +625,8 @@ string|url:Error decoded = url:decode("http%3A%2F%2Flocalhost%3A9090", "UTF-8");
 
 - The Ballerina HTTP listener can be configured to authenticate and authorize the inbound requests with a Basic Auth file user store.
 
-- Improved client and listener `SecureSocket` APIs of HTTP, GRPC, WebSocket, GraphQL, WebSub, WebSubHub, TCP, Email, NATS, STAN and RabbitMQ modules.
+- Improved client and listener `SecureSocket` APIs of HTTP, gRPC, WebSocket, GraphQL, WebSub, WebSubHub, TCP, Email, NATS, STAN, and RabbitMQ modules.
+
 ```ballerina
 public type ListenerSecureSocket record {|
    crypto:KeyStore|CertKey key;
@@ -671,6 +699,7 @@ public enum CertValidationType {
 ##### TCP Package Updates
 
 - Introduced SSL/TLS support for both the client and listener.
+
 ```ballerina
 import ballerina/tcp;
 
@@ -728,6 +757,7 @@ service class EchoService {
 ```
 
 - Included a `tcp:Caller` as an optional parameter in the `onBytes()` method.
+
 ```ballerina
 service class EchoService {
   
@@ -788,7 +818,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://githu
 
 #### Introduced Local Repository Support
 
-- Apart from the Ballerina Central remote repository, you can now push packages to the local repository which can be found at `<user-home>/.ballerina/repositories/local`. Refer the section on changes to CLI commands for information regarding pushing to the local repository.
+- Apart from the Ballerina Central remote repository, you can now push packages to the local repository which can be found at `<user-home>/.ballerina/repositories/local`. Refer to the section on changes to CLI commands for information regarding pushing to the local repository.
 - To use a package from the local repository, the 'repository' has to be specified in the TOML table of the relevant dependency in the `Dependencies.toml` file.
 
 E.g., to test a developed package before pushing it to Ballerina Central, build and push it to the local repository using the `push` command and add it to the `Dependencies.toml` file of the depending package as shown below.
@@ -832,8 +862,10 @@ repository = "local"
     ```shell
     echo "source <(bal completion bash)" >> ~/.bashrc
     ```
+
   - Installing On Mac Bash
     - Set up auto-completion permanently in the bash shell.
+
     ```shell
     echo "$(bal completion bash)" >> ~/.bash_profile
     ```
@@ -841,7 +873,7 @@ repository = "local"
 #### Test Framework
 
 - Moved the Project Test Suite execution to a single JVM. Changed from running each Test Suite in a JVM instance. This improves the user experience when debugging tests. It no longer prompts to debug each test suite of a project.
-- Support for seamless integration of CICD tools by adding inbuilt path fixes to the Jacoco XML generated for Ballerina packages.
+- Support for seamless integration of CICD tools by adding inbuilt path fixes to the JaCoCo XML generated for Ballerina packages.
 
 #### Debugger
 
@@ -861,16 +893,12 @@ bal openapi -i <ballerina file> --json
 
 #### Bindgen Tool
 
-- Improve the generated bindings with the use of distinct type classes.
-- Improve the internal mechanism used to generate the bindings. Previous handlebars based implementation is now changed to a syntax tree based implementation.
+- Improved the generated bindings with the use of distinct type classes.
+- Improved the internal mechanism used to generate the bindings. Previous handlebars-based implementation is now changed to a syntax-tree-based implementation.
 
 #### Documentation
 
 - Moved the standard library API documentation out to [Ballerina Central Docs](https://docs.central.ballerina.io) from the Ballerina Website.
-
-To view bug fixes, see the GitHub milestone for Swan Lake Alpha3 of the repositories below.
-
-- [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 
 ##### Language Server
 - The Ballerina Language Server now supports telemetry-based crash reporting. This was enabled through the LSP protocol's [telemetry events](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#telemetry_event). If you wish to disable Ballerina Telemetry, uncheck the **Ballerina: Enable Telemetry** setting from VSCode.

@@ -792,18 +792,6 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Docker Deployment",
-                "url": "docker-deployment",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment",
-                "disablePlayground": true
-            },
-            {
-                "name": "Docker Deployment Without Annotations",
-                "url": "docker-deployment-without-annotations",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-docker/tree/master/docker-extension-examples/examples/docker-deployment-without-annotations",
-                "disablePlayground": true
-            },
-            {
                 "name": "Code to Cloud Deployment",
                 "url": "c2c-deployment",
                 "githubLink": "https://github.com/ballerina-platform/module-ballerina-c2c/tree/master/c2c-extension-examples/examples/c2c-deployment",
@@ -1044,7 +1032,7 @@
     {
         "title": "WebSub",
         "column": 1,
-        "category": "Working with WebSub Protocol",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Websub Subscriber Service",

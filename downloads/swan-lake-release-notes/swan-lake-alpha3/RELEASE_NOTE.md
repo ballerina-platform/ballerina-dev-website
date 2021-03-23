@@ -591,7 +591,7 @@ websubhub:ContentDistributionMessage msg = {content: "This is sample content del
 var publishResponse = hubClientEP->notifyContentDistribution(msg);
 ```
 
-- Introduced a `websubhub-listener` configuration to configure a websubhub listener.
+- Introduced the websubhub-listener configuration to configure a websubhub listener.
 
 ```ballerina
 import ballerina/websubhub;

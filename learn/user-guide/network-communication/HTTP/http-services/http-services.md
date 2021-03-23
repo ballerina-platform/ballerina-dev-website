@@ -35,7 +35,7 @@ The elements of the service are as follows.
 
   The `.` special name is used to represent the service itself in a resource. Thus, requests that are directly sent to the base path will be dispatched to this resource. 
 
-  **Return type:** this is an optional return type, which can be of type [`anydata`](/learn/by-example/anydata-type.html) or [`http:Response`]((/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response)). An anydata return value would be returned with an HTTP status code 200 OK.
+  **Return type:** this is an optional return type, which can be of type [`anydata`](/learn/by-example/anydata-type.html) or [`http:Response`]((/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response)). An anydata return value would be returned with an HTTP status code 200 OK.
 
 The full source code for the `hello` service above is shown below. 
 

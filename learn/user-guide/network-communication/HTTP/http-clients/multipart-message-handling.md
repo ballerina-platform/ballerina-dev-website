@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/multipart-message-handling/
   - /learn/network-communication/http/http-clients/multipart-message-handling
   - /learn/user-guide/network-communication/http/http-clients/multipart-message-handling
+  - /learn/network-communication/http/multipart-message-handling/
+  - /learn/network-communication/http/multipart-message-handling
 ---
 
 You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) object.
@@ -30,13 +32,12 @@ import ballerina/mime;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new("http://httpbin.org");
+   http:Client clientEp = check new("http://httpbin.org");
    http:Request req = new;
    mime:Entity entity = new;
    entity.setText("Hello!", "text/plain");
    req.setEntity(entity);
-   http:Response resp = <http:Response> check clientEp->post(
-                                              "/post", req);
+   http:Response resp = check clientEp->post("/post", req);
    io:println(resp.getTextPayload());
 } 
 ```
@@ -86,7 +87,7 @@ import ballerina/mime;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-  http:Client clientEp = new("http://httpbin.org");
+  http:Client clientEp = check new("http://httpbin.org");
   http:Request req = new;
   mime:Entity mpEntity = new;
   mime:Entity textEntity = new;
@@ -100,8 +101,7 @@ public function main() returns @tainted error? {
   imageEntity.setContentDisposition(contentDisp);
   mpEntity.setBodyParts([textEntity, imageEntity], mime:MULTIPART_MIXED);
   req.setEntity(mpEntity);
-  http:Response resp = <http:Response> check clientEp->post(
-                                             "/post", req);
+  http:Response resp = check clientEp->post("/post", req);
   io:println(resp.getTextPayload());
 }
 ```
@@ -120,9 +120,8 @@ import ballerina/mime;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new("http://httpbin.org");
-   http:Response resp = <http:Response> check clientEp->get(
-                                        "/image/jpeg");
+   http:Client clientEp = check new("http://httpbin.org");
+   http:Response resp = check clientEp->get("/image/jpeg");
    mime:Entity entity = check resp.getEntity();
    io:println("Content Type: ", entity.getContentType());
    io:println("Content Length: ", entity.getContentLength());

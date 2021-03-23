@@ -14,33 +14,31 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="c1">// The code outside the named workers belong to an implicit </span>
+<span class="c1">// The code outside the named workers belongs to an implicit </span>
 <span class="c1">// default worker. The default worker in each function wil be </span>
 <span class="c1">// executed in the same strand as the caller function.</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution started&quot;</span><span class="p">);</span>
 
     <span class="c1">// This block belongs to the `w1` worker.</span>
-    <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=2*3&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 1 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
-        <span class="p">}</span>
+    <span class="kd">worker</span> <span class="nx">w1</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
+        <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=2*3&quot;</span><span class="p">,</span>
+                                                         <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 1 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=5*7&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 2 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
-        <span class="p">}</span>
+    <span class="kd">worker</span> <span class="nx">w2</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
+        <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=5*7&quot;</span><span class="p">,</span>
+                                                         <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 2 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="c1">// Waits for both workers to finish.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
+    <span class="c1">// Wait for both workers to finish.</span>
+    <span class="nx">record</span><span class="p">{</span><span class="nx">error</span><span class="err">?</span> <span class="nx">w1</span><span class="p">;</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">w2</span><span class="p">;}</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -98,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ace05dffb8349841229f79e851a4986b&file=workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=121db430b83a841697c1d3926ba326b6&file=workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -150,7 +148,7 @@ import ballerina/http;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     io:println(&quot;Worker execution started&quot;);
 </code></pre></div>
 
@@ -159,7 +157,7 @@ import ballerina/http;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The code outside the named workers belong to an implicit
+                                            <p>The code outside the named workers belongs to an implicit
  default worker. The default worker in each function wil be
  executed in the same strand as the caller function.</p>
 
@@ -172,12 +170,11 @@ import ballerina/http;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    worker w1 {
-        http:Client httpClient = checkpanic new (&quot;https://api.mathjs.org&quot;);
-        var response = httpClient-&gt;get(&quot;/v4/?expr=2*3&quot;);
-        if response is http:Response {
-            io:println(&quot;Worker 1 response: &quot;, response.getTextPayload());
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w1 returns error? {
+        http:Client httpClient = check new (&quot;https://api.mathjs.org&quot;);
+        string response = &lt;string&gt; check httpClient-&gt;get(&quot;/v4/?expr=2*3&quot;,
+                                                         targetType = string);
+        io:println(&quot;Worker 1 response: &quot;, response);
     }
 </code></pre></div>
 
@@ -197,12 +194,11 @@ import ballerina/http;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
-        http:Client httpClient = checkpanic new (&quot;https://api.mathjs.org&quot;);
-        var response = httpClient-&gt;get(&quot;/v4/?expr=5*7&quot;);
-        if response is http:Response {
-            io:println(&quot;Worker 2 response: &quot;, response.getTextPayload());
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w2 returns error? {
+        http:Client httpClient = check new (&quot;https://api.mathjs.org&quot;);
+        string response = &lt;string&gt; check httpClient-&gt;get(&quot;/v4/?expr=5*7&quot;,
+                                                         targetType = string);
+        io:println(&quot;Worker 2 response: &quot;, response);
     }
 </code></pre></div>
 
@@ -215,7 +211,7 @@ import ballerina/http;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = wait {w1, w2};
+                                    <div class="highlight"><pre><code class=language-ballerina>    record{error? w1; error? w2;} result = wait {w1, w2};
 </code></pre></div>
 
                                 </td>
@@ -223,7 +219,7 @@ import ballerina/http;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits for both workers to finish.</p>
+                                            <p>Wait for both workers to finish.</p>
 
                                         </div>
                                     </div>
@@ -234,7 +230,7 @@ import ballerina/http;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Worker execution finished&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Worker execution finished: &quot;, result);
 }
 </code></pre></div>
 
@@ -266,7 +262,7 @@ bal run workers.bal
 Worker execution started
 Worker 2 response: 35
 Worker 1 response: 6
-Worker execution finished
+Worker execution finished: {&quot;w1&quot;:null,&quot;w2&quot;:null}
 </code></pre></div>
 
                                 </td>

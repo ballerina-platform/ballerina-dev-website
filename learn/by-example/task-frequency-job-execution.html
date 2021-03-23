@@ -1,0 +1,463 @@
+---
+layout: ballerina-example-page
+title: Task Frequency Job Execution
+description: BBE on how to schedule the frequency job execution in Ballerina.
+keywords: ballerina, ballerina by examples, bbe, task, job
+permalink: /learn/by-example/task-frequency-job-execution
+redirect_from:
+  - /swan-lake/learn/by-example/task-frequency-job-execution
+  - /swan-lake/learn/by-example/task-frequency-job-execution.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
+
+<span class="c1">// Creating a job to be executed by the scheduler.</span>
+<span class="nx">class</span> <span class="nx">Job</span> <span class="p">{</span>
+
+    <span class="o">*</span><span class="nx">task</span><span class="p">:</span><span class="nx">Job</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// Get executed by the scheduler when the scheduled trigger fires.</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">execute</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MyCounter: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">i</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+    <span class="c1">// Get the current time.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">currentUtc</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcNow</span><span class="p">();</span>
+    <span class="c1">// Increase the time by three seconds to set the starting delay for the scheduling job.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">newTime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcAddSeconds</span><span class="p">(</span><span class="nx">currentUtc</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="c1">// Get the `time:Civil` for the given time.</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Civil</span> <span class="nx">time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToCivil</span><span class="p">(</span><span class="nx">newTime</span><span class="p">);</span>
+
+    <span class="c1">// Schedule the task to execute the job every second.</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">id</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleJobRecurByFrequency</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                        <span class="mi">1</span><span class="p">,</span> <span class="nx">startTime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">);</span>
+
+    <span class="c1">// Wait for twelve seconds.</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+
+    <span class="c1">// UnSchedule the job.</span>
+    <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">unscheduleJob</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Task Frequency Job Execution</h2>
+                            <p><p>A  <code>task:scheduleJobRecurByFrequency()</code> can be used to execute Ballerina jobs periodically.
+ The <code>task:Job</code> and interval should be specified and optional configurations are start time,
+ end time, and maximum count.
+ For more information on the underlying module,
+ see the <a href="https://docs.central.ballerina.io/ballerina/task/latest/task/">Task module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="random.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Random</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="task-one-time-job-execution.html">
+                                        <span>NEXT ></span>
+                                        <p>Task One-time Job Execution</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="task-frequency-job-execution">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-frequency-job-execution/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/lang.runtime;
+import ballerina/task;
+import ballerina/time;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Job {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creating a job to be executed by the scheduler.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    *task:Job;
+    int i = 1;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function execute() {
+        self.i += 1;
+        io:println(&quot;MyCounter: &quot;, self.i);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get executed by the scheduler when the scheduled trigger fires.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function init(int i) {
+        self.i = i;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Utc currentUtc = time:utcNow();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get the current time.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Increase the time by three seconds to set the starting delay for the scheduling job.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Civil time = time:utcToCivil(newTime);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get the <code>time:Civil</code> for the given time.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:JobId id = check task:scheduleJobRecurByFrequency(new Job(0),
+                                        1, startTime = time);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Schedule the task to execute the job every second.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(12);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Wait for twelve seconds.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check task:unscheduleJob(id);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>UnSchedule the job.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run task_frequency_job_execution.bal
+MyCounter: 1
+MyCounter: 2
+MyCounter: 3
+MyCounter: 4
+MyCounter: 5
+MyCounter: 6
+MyCounter: 7
+MyCounter: 8
+MyCounter: 9
+MyCounter: 10
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

@@ -209,6 +209,9 @@ button.navbar-toggle {
     color: #20b6b0;
 }
 
+.cVersionItem {
+	display: none !important;
+}
 
 
 @media screen and (max-width: 991px) {
@@ -219,5 +222,31 @@ button.navbar-toggle {
         width: 100%;
         float: left;
         margin-left: 5px;
+    }
+    .cBallerina-io-Home-main-download-button.cPlayButton {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 744px) {
+    #navbar {
+        border: 1px solid #c0c0c0;
+    }
+    .cVersionContainer {
+        width: 100%;
+        float: left;
+        margin-left: 5px;
+    }
+    .cBallerina-io-Home-main-download-button.cPlayButton {
+        margin-right: 20px;
+    }
+    .cMainCTAContainer {
+        display: inline-block;
+    }
+    a.cBallerina-io-Home-main-download-button {
+            width: 100%;
+    }
+    .cBallerina-io-Home-main-download-button.cPlayButton {
+        margin-right: 0;
     }
 }

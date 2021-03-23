@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/data-streaming/
   - /learn/network-communication/http/http-clients/data-streaming
   - /learn/user-guide/network-communication/http/http-clients/data-streaming
+  - /learn/network-communication/http/data-streaming/
+  - /learn/network-communication/http/data-streaming
 ---
 
 ## Data Streaming Modes
@@ -36,16 +38,14 @@ The `data_streaming.bal` example below opens a file with a stream and uses it to
 **data_streaming.bal**
 
 ```ballerina
-
 import ballerina/http;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new("http://httpbin.org");
+   http:Client clientEp = check new("http://httpbin.org");
    http:Request req = new;
    req.setByteStream(check io:fileReadBlocksAsStream("/home/laf/input.jpeg"));
-   http:Response resp = <http:Response> check clientEp->post("/post",
-                                               req);
+   http:Response resp = check clientEp->post("/post", req);
    io:println(resp.getTextPayload());
 }
 ```

@@ -17,6 +17,8 @@ redirect_from:
   - /learn/testing-ballerina-code/testing-quick-start/
   - /learn/testing-ballerina-code/testing-quick-start
   - /learn/user-guide/testing-ballerina-code/testing-quick-start
+  - /learn/user-guide/testing-ballerina-code/
+  - /learn/user-guide/testing-ballerina-code
 ---
 
 ## Writing a Simple Function

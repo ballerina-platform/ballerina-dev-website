@@ -124,8 +124,8 @@ map<string> mapOfString2 = {
 **Example,**
 
 ```ballerina
-(string, int) tuple = 
-(nameOfEmployee, ageOfTheEmployee);
+[string, int] tuple = 
+    [nameOfEmployee, ageOfTheEmployee];
 ```
 
 ## Array Literal
@@ -188,37 +188,22 @@ string name = <string>json.name;
 **Example,**
   
 ```ballerina
-table<Employee> employee1 = table {
-    {key id, name, address}
+type Employee record {
+    readonly int id;
+    string name;
+    float salary;
 };
-      
-table<Employee> employee2 = table {
-    {
-        key id,
-        name,
-        address
-    },
-    [{"1", "test", "No:123 hty RD"}, {"1", "john", "No:123"}]
-};
-      
-table<Employee> employee3 = table {
-    {id, name, address},
-    [
-        {"1", "john", "No:123"},
-        {"2", "jane", "No:342"}
-    ]
- };
 
-table<Employee> employee4 = table {
-    {id, name, address},
-    [
-        {
-            "1",
-            "john",
-            "No:123"
-        },
-        {"2", "jane", "No:342"}
-    ]
+type EmployeeTable table<Employee> key(id);
+
+public function main() {
+
+    EmployeeTable employeeTab = table [
+            {id: 1, name: "John", salary: 300.50},
+            {id: 2, name: "Bella", salary: 500.50},
+            {id: 3, name: "Peter", salary: 750.0}
+        ];
+
 }
 ```
   

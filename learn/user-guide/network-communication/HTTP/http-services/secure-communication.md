@@ -17,47 +17,55 @@ redirect_from:
 
 ## Configuring Secure Communication
 
-This is done by providing an optional [`ListenerConfiguration`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ListenerConfiguration) instance when creating the [`http:Listener`](learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/listeners/Listener) client and providing the secure socket configurations. 
+This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ListenerConfiguration) instance when creating the [`http:Listener`](/learn/api-docs/ballerina/#/ballerina/http/latest/http/listeners/Listener).
 
-## Example
+## Example of HTTPS Endpoint configured Public Certificate and Private Key
 
-The example below shows how an HTTPS service is configured. 
+The example below shows how an HTTPS service is configured with public certificate and private key.
 
 ```ballerina
 import ballerina/http;
-import ballerina/os;
  
-http:ListenerConfiguration listenerConf = {
+http:ListenerConfiguration conf = {
    secureSocket: {
-       keyStore: {
-           path: os:getEnv("BAL_HOME") +
-                 "/bre/security/ballerinaKeystore.p12",
-           password: "ballerina"
+       key: {
+           certFile: "/path/to/public.crt"
+           keyFile: "/path/to/private.key",
        }
    }
 };
  
-service / on new http:Listener(8443, listenerConf) {
+service / on new http:Listener(8443, conf) {
     resource function get greeting() returns string {
         return "Hello!";
     }
 }
 ```
 
-## Execution
+## Example of HTTPS Endpoint configured KeyStore
 
-The execution of the service and its invocation is shown below.
+The example below shows how an HTTPS service is configured with KeyStore.
 
-```bash
-$ export BAL_HOME=`bal home`
-
-$ bal run demo.bal
-
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-
-$ curl -k https://localhost:8443/greeting
-Hello!
+```ballerina
+import ballerina/http;
+ 
+http:ListenerConfiguration conf = {
+   secureSocket: {
+       key: {
+           path: "/path/to/keystore.p12"
+           password: "password",
+       }
+   }
+};
+ 
+service / on new http:Listener(8443, conf) {
+    resource function get greeting() returns string {
+        return "Hello!";
+    }
+}
 ```
+
+For more information on Ballerina’s authentication/authorization features, see the [Authentication & Authorization](/learn/user-guide/security/authentication-and-authorization/).
 
 ## What's Next?
 

@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/data-binding/
   - /learn/network-communication/http/http-clients/data-binding
   - /learn/user-guide/network-communication/http/http-clients/data-binding
+  - /learn/network-communication/http/data-binding/
+  - /learn/network-communication/http/data-binding
 ---
 
 In the [HTTP GET scenarios](/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method of the [`http:Client`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/HttpClient), which is the [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 
@@ -30,10 +32,10 @@ import ballerina/http;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new("https://freegeoip.app");
-   json jp = <json> check clientEp->get("/json/", targetType = json);
+   http:Client clientEp = check new("https://freegeoip.app");
+   json jp = check clientEp->get("/json/", targetType = json);
    io:println("JSON Payload:\n", jp, "\n");
-   xml xp = <xml> check clientEp->get("/xml/", targetType = xml);
+   xml xp = check clientEp->get("/xml/", targetType = xml);
    io:println("XML Payload:\n", xp);
 }
 ```
@@ -87,8 +89,8 @@ type Location record {
 };
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new("https://freegeoip.app");
-   Location loc = <Location> check clientEp->get("/json/",
+   http:Client clientEp = check new("https://freegeoip.app");
+   Location loc = check clientEp->get("/json/",
                                    targetType = Location);
    io:println("IP: ", loc.ip);
    io:println("Latitude: ", loc.latitude);

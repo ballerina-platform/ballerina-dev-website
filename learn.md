@@ -39,7 +39,7 @@ redirect_from:
 </div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/api-docs/ballerina" target="_blank">
+<a class="cBoxLink" href="https://docs.central.ballerina.io" target="_blank">
 
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
@@ -53,7 +53,7 @@ redirect_from:
 </div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/tooling-guide/vs-code-extension/installing-vs-code/" target="_blank">
+<a class="cBoxLink" href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/" target="_blank">
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 
@@ -67,7 +67,7 @@ redirect_from:
 </div>
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-<a class="cBoxLink" href="/lang-guide/Ballerina_Language_Presentation-2021-01-29.pdf" target="_blank">
+<a class="cBoxLink" href="/learn/language-guide/" target="_blank">
 
 <img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
 <h2>Language Guide</h2>

@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2021-03-04</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2021-03-20</h1>
 <p>
 Primary contributors:
 </p>
@@ -531,8 +531,49 @@ mailing list.
 </li>
 </ul>
 </li>
-<li>10. <a href="#lang_library">Lang library</a><ul><li>10.1 <a href="#built-in_subtypes">Built-in subtypes</a>
-</li></ul>
+<li>10. <a href="#lang_library">Lang library</a><ul>
+<li>10.1 <a href="#section_10.1">Generic types</a>
+</li>
+<li>10.2 <a href="#built-in_subtypes">Built-in subtypes</a>
+</li>
+<li>10.3 <a href="#section_10.3">Lang library modules</a><ul>
+<li>10.3.1 <a href="#lang.array"><code>lang.array</code> module</a>
+</li>
+<li>10.3.2 <a href="#lang.boolean"><code>lang.boolean</code> module</a>
+</li>
+<li>10.3.3 <a href="#lang.decimal"><code>lang.decimal</code> module</a>
+</li>
+<li>10.3.4 <a href="#lang.error"><code>lang.error</code> module</a>
+</li>
+<li>10.3.5 <a href="#lang.float"><code>lang.float</code> module</a>
+</li>
+<li>10.3.6 <a href="#lang.future"><code>lang.future</code> module</a>
+</li>
+<li>10.3.7 <a href="#lang.int"><code>lang.int</code> module</a>
+</li>
+<li>10.3.8 <a href="#lang.map"><code>lang.map</code> module</a>
+</li>
+<li>10.3.9 <a href="#lang.object"><code>lang.object</code> module</a>
+</li>
+<li>10.3.10 <a href="#lang.stream"><code>lang.stream</code> module</a>
+</li>
+<li>10.3.11 <a href="#lang.string"><code>lang.string</code> module</a>
+</li>
+<li>10.3.12 <a href="#lang.table"><code>lang.table</code> module</a>
+</li>
+<li>10.3.13 <a href="#lang.typedesc"><code>lang.typedesc</code> module</a>
+</li>
+<li>10.3.14 <a href="#lang.xml"><code>lang.xml</code> module</a>
+</li>
+<li>10.3.15 <a href="#lang.transaction"><code>lang.transaction</code> module</a>
+</li>
+<li>10.3.16 <a href="#lang.runtime"><code>lang.runtime</code> module</a>
+</li>
+<li>10.3.17 <a href="#lang.value"><code>lang.value</code> module</a>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 <li>A. <a href="#references">References</a>
 </li>
@@ -2193,16 +2234,27 @@ The <code>type-reference</code> must reference a type described by a
 <code>record-type-descriptor</code>. The <code>field-descriptor</code>s and any
 <code>record-rest-descriptor</code> are included the type being defined; the
 meaning is the same as if they had been specified explicitly. For default
-values, the closure rather than the expression is copied in. An
-<code>individual-field-descriptor</code> in a
+values, the closure rather than the expression is copied in.
+It is an error for an <code>record-type-descriptor</code> to directly or
+indirectly include itself. An <code>individual-field-descriptor</code> in a
 <code>record-type-descriptor</code> can override an
 <code>individual-field-descriptor</code> of the same name in an included
 <code>record-type-descriptor</code>, provided the type declared for the field in
 the overriding field descriptor is a subtype of the type declared in the
-overridden field descriptor. It is an error for an
-<code>record-type-descriptor</code> to directly or indirectly include itself. A
-<code>record-rest-descriptor</code> in the including type overrides any
-<code>record-rest-descriptor</code> in the included type. For the purposes of
+overridden field descriptor. It is an error if a
+<code>record-type-descriptor</code> has two or more
+<code>record-type-inclusion</code>s that include an
+<code>individual-field-descriptor</code> with the same name, unless those
+<code>individual-field-descriptor</code>s are overridden by an
+<code>individual-field-descriptor</code> in the including
+<code>record-type-descriptor</code>. A <code>record-rest-descriptor</code> in
+the including type overrides any <code>record-rest-descriptor</code> in the
+included type. It is an error if a <code>record-type-descriptor</code> has two
+or more <code>record-type-inclusion</code>s that include different
+<code>record-rest-descriptor</code>s, unless those
+<code>record-rest-descriptor</code>s are overridden by an
+<code>record-rest-descriptor</code> in the including
+<code>record-type-descriptor</code>. For the purposes of
 resolving a <code>record-type-inclusion</code>, an including or included type
 that is an <code>inclusive-record-type-descriptor</code> is treated as if it
 were the equivalent <code>exclusive-record-type-descriptor</code> with an
@@ -2381,7 +2433,8 @@ an argument list as input and returns a value as output.
 <p>
 A param-name can be omitted from a required-param, defaultable-param,
 included-record-param or rest-param only when occuring in the function-signature
-of a function-type-descriptor.
+of a function-type-descriptor. The type-descriptor in a required-param or
+defaultable-param must not be <code>never</code>.
 </p>
 <p>
 The argument list passed to a function consists of zero or more arguments in order;
@@ -2475,14 +2528,19 @@ return <code>()</code>.
 <p>
 The value returned by a function will belong to the type specified in the
 return-type-descriptor. An empty return-type-descriptor is equivalent to
-<code>returns ()</code>.
+<code>returns ()</code>. The type-descriptor in a return-type-descriptor may be
+<code>never</code>.
 </p>
 <p>
 A return-type-descriptor may be depend on the param-list in the following way. A
 type-reference occurring in a return-type-descriptor can refer to a parameter
 name if the type of the parameter is a subtype of <code>typedesc</code>. If p is
 such a parameter, then a reference to p in the return-type-descriptor denotes
-the type that is the value of p. The return-type-descriptor thus denotes a
+the type that is the value of p. If the default value for p is
+<code>&lt;&gt;</code> and p occurs in the return-type-descriptor in a union p|T,
+then for every basic type B, either the intersection of B and T must be empty,
+or the intersection of typedesc&lt;B&gt; and the declared type of p must be
+empty, or both. The return-type-descriptor thus denotes a
 distinct set of shapes for each invocation of the function. A function-signature
 with a return-type-descriptor that uses a type-reference to refer to a parameter
 name in this way is said to be <em>dependently-typed</em>. Functions with
@@ -2685,10 +2743,11 @@ of a <code>remote-method-decl</code> must be distinct from the
 <code>object-type-descriptor</code>. However, a <code>method-decl</code> and a
 <code>remote-method-decl</code> can have the same name. A remote method cannot
 be called using the normal method call syntax. A remote method of a client
-object can only be invoked by a <code>client-remote-method-call-action</code>. A
-remote method of a service object is invoked by a listener object provided by a
-library module; Ballerina does not yet define a mechanism to allow such a
-library module to be implemented completely in Ballerina.
+object can only be invoked by a <code>client-remote-method-call-action</code>.
+The return type of the remote method of a client object must not be
+<code>never</code>. A remote method of a service object is invoked by a listener
+object provided by a library module; Ballerina does not yet define a mechanism
+to allow such a library module to be implemented completely in Ballerina.
 </p>
 
 </section>
@@ -2770,7 +2829,18 @@ the type declared for the field or method in the overriding descriptor is a
 subtype of the type declared in the overridden descriptor. An
 <code>object-field-descriptor</code> cannot override a <code>method-decl</code>,
 nor can a <code>method-decl</code> override an
-<code>object-field-descriptor</code>.
+<code>object-field-descriptor</code>. It is an error if an
+<code>object-type-descriptor</code> has two or more
+<code>object-type-inclusion</code>s that include an
+<code>object-field-descriptor</code> with the same name, unless those
+<code>object-field-descriptor</code>s are overridden by an
+<code>object-field-descriptor</code> in the including
+<code>object-type-descriptor</code>. It is an error if an
+<code>object-type-descriptor</code> has two or more
+<code>object-type-inclusion</code>s that include <code>method-decl</code>s with
+the same name but different <code>function-signature</code>s, unless those
+<code>method-decl</code>s are overridden by a <code>method-decl</code> in the
+including <code>object-type-descriptor</code>.
 </p>
 <p>
 An object-type-descriptor is always definite. The set of type-ids induced by an
@@ -2982,7 +3052,7 @@ function never returns. It can also be useful as a type parameter. For example,
 constituents, i.e. the empty xml value.
 </p>
 <p>
-Note that for anytype <code>T</code>, the type <code>T|never</code> is the same
+Note that for any type <code>T</code>, the type <code>T|never</code> is the same
 as <code>T</code>.
 </p>
 </section>
@@ -3413,7 +3483,7 @@ when and how a filler value can be constructed for a type descriptor.
 </tr>
 <tr>
 <td><code>decimal</code></td>
-<td><code>+0.0d</code></td>
+<td><code>+0d</code></td>
 <td></td>
 </tr>
 <tr>
@@ -4100,13 +4170,35 @@ descriptor.</li>
 </pre>
 <p>
 A typed-binding-pattern combines a type-descriptor and a binding-pattern, and is
-used to create the variables occurring in the binding-pattern. If var is used
-instead of a type-descriptor, it means the type is inferred. How the type is
-inferred depends on the context of the typed-binding-pattern. An
-inferable-type-descriptor is an inferable context for a type descriptor, which
-means that <code>*</code> can be used with the type descriptor to infer
-the length of an array.
+used to create the variables occurring in the binding-pattern. If
+<code>var</code> is used instead of a type-descriptor, it means the type is
+inferred.
 </p>
+<p>
+There are two ways in which a typed-binding-pattern can be used.
+</p>
+<ul>
+<li>
+<em>Single use</em>. In the language syntax, this kind of use of a
+typed-binding-pattern is usually followed by <code>=</code> (the only case where
+it is not followed by <code>=</code> is when it follows <code>on fail</code>).
+The typed-binding-pattern is matched once against the result of evaluating an
+expression. When <code>var</code> is used, the type is inferred from the static
+type of the expression (in the <code>on fail</code> case there can be multiple
+expressions from which it is inferred); in this case, it is an error if the
+intersection of <code>error</code> and the inferred type is non-empty, the
+binding-pattern of the typed-binding-pattern is a capture-binding-pattern, and
+the variable referenced in the capture-binding-pattern is not used. It is an
+error if the type-descriptor in the typed-binding-pattern is
+<code>never</code>.</li>
+<li>
+<em>Iterative use</em>. In the language syntax, this kind of use of a
+typed-binding-pattern is followed by the <code>in</code> keyword. An iterator is
+created from the result of evaluating an expression, and the
+typed-binding-pattern is matched against each value returned by the iterator.
+When <code>var</code> is used, the type is inferred to be T, where the static
+type of the expression is an iterable type with value type T.</li>
+</ul>
 <p>
 The simplest and most common form of a typed-binding-pattern is for the binding
 pattern to consist of just a variable name. In this case, the variable is
@@ -4259,9 +4351,10 @@ associativity.
 <code>&lt;T&gt; x</code>
 <br>
 <code>typeof x</code>
+<br>
 <code>check x</code>
+<br>
 <code>checkpanic x</code>
-<code>trap x</code>
    </td>
    <td></td>
   </tr>
@@ -4364,6 +4457,8 @@ associativity.
 <code>let x = y in z</code>
 <br>
 <code>from x in y select z</code>
+<br>
+<code>trap x</code>
    </td>
    <td>right</td>
   </tr>
@@ -4396,6 +4491,13 @@ if the evaluation of an expression at runtime completes normally, then the
 resulting value will belong to the static type. A type is also computed for
 check-fail abrupt completion, which will be a (possibly empty) subtype of error;
 however, for panic abrupt completion, no type is computed.
+</p>
+<p>
+It is an error if the static type of an expression is <code>never</code>, except
+in cases where the expression is one that this specification explicitly permits
+to have static type <code>never</code> and the expression occurs in a context
+where this specification explicitly permits an expression with static type
+<code>never</code> to occur.
 </p>
 <p>
 The detailed rules for the static typing of expressions are quite elaborate and
@@ -5751,7 +5853,8 @@ list will be used to bind the parameters of the function before the body of the
 function is executed. If the function terminates normally, then the result of
 the function-call-expr is the return value of the function; otherwise the
 function-call-expr completes abruptly with a panic. The static type of the
-function-call-expr is the return type of the function type.
+function-call-expr is the return type of the function type; this type is
+permitted to be <code>never</code>.
 </p>
 <p>
 The function-reference must refer to a variable with function type. The type
@@ -5845,9 +5948,9 @@ of <code>&lt;&gt;</code> was specified be <var>t</var>. Let the type of
 the function be <var>R</var>, which will have references to <var>t</var>. Let
 the contextually expected type for the function-call-expr be <var>C</var>. Then
 the default value is found by unifying <var>C</var> and <var>R</var>: the
-default value is a typedesc value representing a type descriptor <var>S</var>
-that is a subtype of <var>T</var>, such that <var>R</var> with <var>S</var>
-substituted for <var>t</var> is equivalent to <var>C</var>.</li>
+default value is a typedesc value that describes the maximal type <var>S</var>,
+such that <var>S</var> is a subtype of <var>T</var>, and <var>R</var> with
+<var>S</var> substituted for <var>t</var> is a subtype of <var>C</var>.</li>
 </ul>
 </li>
 <li>If the parameter is an included-record-param, then a new mapping value is
@@ -5880,7 +5983,9 @@ variable and then the function called by using a reference to the variable.
 <p>
 A <code>method-call-expr</code> either calls an object's method, calls an
 object's field where the type of the field is a function or calls a function in
-the lang library. The evaluation of the method-call-expr starts by evaluating
+the lang library. The static type of the method-call-expr is the return type of
+the function type of the function that is called; this type is permitted to be
+<code>never</code>. The evaluation of the method-call-expr starts by evaluating
 <code>expression</code> resulting in some value <var>v</var>. There is no
 contextually expected type for <code>expression</code>.
 </p>
@@ -6654,7 +6759,7 @@ result of trap-exp is e</li>
 </ul>
 </li>
 <li>If type of <code>expr</code> is T, then type of <code>trap expr</code> is
-T|error.</li>
+T|error. It is permitted for T to be <code>never</code>.</li>
 </ul>
 </section>
 
@@ -7102,6 +7207,11 @@ similar to a location path in XPath.
    | <code>[</code> <a href="#expression"><span class="ntref">expression</span></a> <code>]</code>
    | <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
+<p>
+The production for xml-step-expr is ambiguous with the productions for
+member-access-expr and method-call-expr: this must be resolved by preferring the
+parse that includes as much as possible in the xml-step-expr.
+</p>
 <p>
 The static type of the expression must be a subtype of xml.
 </p>
@@ -7572,7 +7682,8 @@ invocation to be executed on a new strand. The arguments for the function or
 method call are evaluation on the current strand. A start-action returns a value
 of basic type future immediately. If the static type of the call expression or
 action <code><var>C</var></code> is T, then the static type of <code>start
-<var>C</var></code> is future&lt;T&gt;.
+<var>C</var></code> is future&lt;T&gt;; it is permitted for T to be
+<code>never</code>.
 </p>
 
 
@@ -8064,9 +8175,7 @@ error if the static types do not guarantee the success of the match. If the
 typed-binding-pattern uses <code>var</code>, then the type of the variables is
 inferred from the static type of the action-or-expr; if the
 local-init-var-decl-stmt includes final, the precise type is used, and otherwise
-the broad type is used; if the intersection of <code>error</code> and the
-inferred type of a variable is non-empty, then it is an error if the variable is
-not used. If the typed-binding-pattern specifies a
+the broad type is used. If the typed-binding-pattern specifies a
 type-descriptor, then that type-descriptor provides the contextually expected
 type for action-or-expr.
 </p>
@@ -8083,7 +8192,8 @@ A local variable declared <code>local-no-init-var-decl-stmt</code> must be
 definitely assigned at each point that the variable is referenced. This means
 that the compiler must be able to verify that the local variable will have been
 assigned before that point. If <code>final</code> is specified, then the
-variable must not be assigned more than once.
+variable must not be assigned more than once. The <code>type-descriptor</code>
+must not be <code>never</code>.
 </p>
 </section>
 <section>
@@ -8557,9 +8667,8 @@ the static type of an action in an action-stmt is not nil.
 </pre>
 <p>
 A call-stmt is executed by evaluating call-expr as an expression and discarding
-the resulting value, which must be nil. It is a compile-time error if the static
-type of the call-expr in an call-stmt is not a subtype of nil. Note that
-<code>never</code> is a subtype of nil.
+the resulting value, which must be nil. The static type of the call-expr in an
+call-stmt must be a subtype of nil; it is permitted to be <code>never</code>.
 </p>
 </section>
 <section>
@@ -9854,10 +9963,12 @@ keyword to appear more than once in <code>module-init-var-quals</code>. If the
 typed-binding-pattern uses <code>var</code>, then the type of the variables is
 inferred from the static type of <code>expression</code>; if the module-var-decl
 includes <code>final</code>, the precise type is used, and otherwise the broad
-type is used; if the intersection of <code>error</code> and the inferred type of
-a variable is non-empty, then it is an error if the variable is not used.
-If the typed-binding-pattern specifies a type-descriptor, then
+type is used. If the typed-binding-pattern specifies a type-descriptor, then
 that type-descriptor provides the contextually expected type for action-or-expr.
+</p>
+<p>
+If the module-init-var-decl includes <code>public</code>, then the
+typed-binding-pattern must not use <code>var</code>.
 </p>
 <p>
 If a module-init-var-decl includes an isolated-qual, then the variable declared
@@ -9888,7 +9999,8 @@ a subtype of <code>anydata</code>.
 A module variable declared with <code>module-no-init-var-decl</code> must be
 initialized in the module's <code>init</code> function. It must be definitely
 assigned at each point that the variable is referenced. If <code>final</code> is
-specified, then the variable must not be assigned more than once.
+specified, then the variable must not be assigned more than once. The
+<code>type-descriptor</code> must not be <code>never</code>.
 </p>
 
 </section>
@@ -9916,9 +10028,10 @@ that references this constant.
 If type-descriptor is present, then it provides the contextually expected type
 for the interpretation of const-expr. It is a compile-time error if the static
 type of const-expr is not a subtype of that type. The type-descriptor must
-specify a type that is a subtype of anydata. Note that the type-descriptor does
-not specify the type of the constant, although the type of the constant will all
-be a subtype of the type specified by the type-descriptor.
+specify a type that is a subtype of anydata and must not be <code>never</code>.
+Note that the type-descriptor does not specify the type of the constant,
+although the type of the constant will all be a subtype of the type specified by
+the type-descriptor.
 </p>
 </section>
 
@@ -10332,58 +10445,9 @@ Modules in the <code>ballerina</code> organization with a module name starting
 with <code>lang.</code> are reserved for use by this specification. These
 modules are called the <em>lang library</em>.
 </p>
-<p>
-The lang library comprises the following modules. With the exception of the
-<code>lang.value</code>, <code>lang.transaction</code> and
-<code>lang.runtime</code> modules, each corresponds to a basic type.
-</p>
-<ul>
-<li>
-<code><a href="./lib/array.bal" type="text/plain">lang.array</a></code> for
-basic type list</li>
-<li>
-<code><a href="./lib/boolean.bal" type="text/plain">lang.boolean</a></code> for
-basic type boolean</li>
-<li>
-<code><a href="./lib/decimal.bal" type="text/plain">lang.decimal</a></code>
-for basic type decimal</li>
-<li>
-<code><a href="./lib/error.bal" type="text/plain">lang.error</a></code> for
-basic type error</li>
-<li>
-<code><a href="./lib/float.bal" type="text/plain">lang.float</a></code> for
-basic type float</li>
-<li>
-<code><a href="./lib/future.bal" type="text/plain">lang.future</a></code>
-for basic type future</li>
-<li>
-<code><a href="./lib/int.bal" type="text/plain">lang.int</a></code> for
-basic type int</li>
-<li>
-<code><a href="./lib/map.bal" type="text/plain">lang.map</a></code> for
-basic type mapping</li>
-<li>
-<code><a href="./lib/object.bal" type="text/plain">lang.object</a></code>
-for basic type object</li>
-<li>
-<code><a href="./lib/stream.bal" type="text/plain">lang.stream</a></code>
-for basic type stream</li>
-<li>
-<code><a href="./lib/string.bal" type="text/plain">lang.string</a></code>
-for basic type string</li>
-<li>
-<code><a href="./lib/table.bal" type="text/plain">lang.table</a></code> for
-basic type table</li>
-<li>
-<code><a href="./lib/typedesc.bal" type="text/plain">lang.typedesc</a></code> for
-basic type typedesc</li>
-<li>
-<code><a href="./lib/xml.bal" type="text/plain">lang.xml</a></code> for
-basic type xml</li>
-<li><code><a href="./lib/runtime.bal" type="text/plain">lang.runtime</a></code></li>
-<li><code><a href="./lib/transaction.bal" type="text/plain">lang.transaction</a></code></li>
-<li><code><a href="./lib/value.bal" type="text/plain">lang.value</a></code></li>
-</ul>
+
+<section>
+<h3 id="section_10.1">10.1 Generic types</h3>
 <p>
 Modules in the lang library can make use generic typing. Since generic typing
 has not yet been added to Ballerina, the source code for the modules use an
@@ -10403,9 +10467,10 @@ the isolated qualifier.
 <strong>Note</strong> We plan to provide full support for generic types in
 a future version of this specification.
 </p>
+</section>
 
 <section>
-<h3 id="built-in_subtypes">10.1 Built-in subtypes</h3>
+<h3 id="built-in_subtypes">10.2 Built-in subtypes</h3>
 <p>
 A module in the lang library can provide types that are <em>built-in</em> in the
 sense that their meaning is defined by this specification. Each such built-in
@@ -10513,6 +10578,2093 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 </p>
 </section>
 
+<section>
+<h3 id="section_10.3">10.3 Lang library modules</h3>
+<p>
+The lang library consists of the following modules. With the exception of the
+<code>lang.value</code>, <code>lang.transaction</code> and
+<code>lang.runtime</code> modules, each corresponds to a basic type.
+</p>
+
+<section>
+<h4 id="lang.array">10.3.1 <code>lang.array</code> module</h4>
+
+<p>The <code>lang.array</code> module corresponds to basic type list.</p>
+
+<pre class="langlib">
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type1 any|error;
+
+# A type parameter that is a subtype of `anydata|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type PureType anydata|error;
+
+# Returns the number of members of an array.
+#
+# + arr - the array
+# + return - number of members in `arr`
+public isolated function length((any|error)[] arr) returns int = external;
+
+# Returns an iterator over an array.
+#
+# + arr - the array
+# + return - a new iterator object that will iterate over the members of `arr`.
+public isolated function iterator(Type[] arr) returns object {
+    public isolated function next() returns record {|
+        Type value;
+    |}?;
+} = external;
+
+# Returns a new array consisting of index and member pairs.
+#
+# + arr - the array
+# + return - array of index, member pairs
+public isolated function enumerate(Type[] arr) returns [int, Type][] = external;
+
+
+# Applies a function to each member of an array and returns an array of the results.
+#
+# + arr - the array
+# + func - a function to apply to each member
+# + return - new array containing result of applying `func` to each member of `arr` in order
+public isolated function 'map(Type[] arr, @isolatedParam function(Type val) returns Type1 func) returns Type1[] = external;
+
+# Applies a function to each member of an array.
+# The function `func` is applied to each member of array `arr` in order.
+#
+# + arr - the array
+# + func - a function to apply to each member
+public isolated function forEach(Type[] arr, @isolatedParam function(Type val) returns () func) returns () = external;
+
+# Selects the members from an array for which a function returns true.
+#
+# + arr - the array
+# + func - a predicate to apply to each member to test whether it should be selected
+# + return - new array only containing members of `arr` for which `func` evaluates to true
+public isolated function filter(Type[] arr, @isolatedParam function(Type val) returns boolean func) returns Type[] = external;
+
+# Combines the members of an array using a combining function.
+# The combining function takes the combined value so far and a member of the array,
+# and returns a new combined value.
+#
+# + arr - the array
+# + func - combining function
+# + initial - initial value for the first argument of combining function `func`
+# + return - result of combining the members of `arr` using `func`
+#
+# For example
+# ```
+# reduce([1, 2, 3], function (int total, int n) returns int { return total + n; }, 0)
+# ```
+# is the same as `sum(1, 2, 3)`.
+public isolated function reduce(Type[] arr, @isolatedParam function(Type1 accum, Type val) returns Type1 func, Type1 initial) returns Type1 = external;
+
+# Returns a slice of an array.
+#
+# + arr - the array
+# + startIndex - index of first member to include in the slice
+# + endIndex - index of first member not to include in the slice
+# + return - new array containing members of `arr` with index &gt;= `startIndex` and &lt; `endIndex` 
+public isolated function slice(Type[] arr, int startIndex, int endIndex = arr.length()) returns Type[] = external;
+
+# Removes a member of an array.
+#
+# + arr - the array
+# + index - index of member to be removed from `arr`
+# + return - the member of `arr` that was at `index`
+# This removes the member of `arr` with index `index` and returns it.
+# It panics if there is no such member.
+public isolated function remove(Type[] arr, int index) returns Type = external;
+
+# Removes all members of an array.
+# + arr - the array
+# Panics if any member cannot be removed.
+public isolated function removeAll((any|error)[] arr) returns () = external;
+
+# Changes the length of an array.
+# 
+# + arr - the array of which to change the length
+# + length - new length
+# `setLength(arr, 0)` is equivalent to `removeAll(arr)`.
+public isolated function setLength((any|error)[] arr, int length) returns () = external;
+
+# Returns the index of first member of `arr` that is equal to `val` if there is one.
+# Returns `()` if not found.
+# Equality is tested using `==`.
+#
+# + arr - the array
+# + val - member to search for
+# + startIndex - index to start the search from
+# + return - index of the member if found, else `()`
+public isolated function indexOf(PureType[] arr, PureType val, int startIndex = 0) returns int? = external;
+
+# Returns the index of last member of `arr` that is equal to `val` if there is one.
+# Returns `()` if not found.
+# Equality is tested using `==`.
+#
+# + arr - the array
+# + val - member to search for
+# + startIndex - index to start searching backwards from
+# + return - index of the member if found, else `()`
+public isolated function lastIndexOf(PureType[] arr, PureType val, int startIndex = arr.length() - 1) returns int? = external;
+
+# Reverses the order of the members of an array.
+#
+# + arr - the array to be reversed
+# + return - new array with the members of `arr` in reverse order
+public isolated function reverse(Type[] arr) returns Type[] = external;
+
+# Direction for `sort` function.
+public enum SortDirection {
+   ASCENDING = "ascending",
+   DESCENDING = "descending"
+}
+
+# Any ordered type is a subtype of this.
+public type OrderedType ()|boolean|int|float|decimal|string|OrderedType[];
+
+# Sorts an array.
+# If the member type of the array is not sorted, then the `key` function
+# must be specified.
+# Sorting works the same as with the `sort` clause of query expressions.
+#
+# + arr - the array to be sorted; 
+# + direction - direction in which to sort
+# + key - function that returns a key to use to sort the members
+# + return - new array consisting of the members of `arr` in sorted order
+public isolated function sort(Type[] arr, SortDirection direction = ASCENDING,
+        (isolated function(Type val) returns OrderedType)? key = ()) returns Type[] = external;
+
+
+# Removes and returns the last member of an array.
+# The array must not be empty.
+#
+# + arr - the array
+# + return - removed member
+public isolated function pop(Type[] arr) returns Type = external;
+
+# Adds values to the end of an array.
+#
+# + arr - the array
+# + vals - values to add to the end of the array
+public isolated function push(Type[] arr, Type... vals) returns () = external;
+
+
+# Removes and returns first member of an array.
+# The array must not be empty.
+#
+# + arr - the array
+# + return - the value that was the first member of the array
+public isolated function shift(Type[] arr) returns Type = external;
+
+# Adds values to the start of an array.
+# The values newly added to the array will be in the same order
+# as they are in `vals`.
+# 
+# + arr - the array
+# + vals - values to add to the start of the array
+public isolated function unshift(Type[] arr, Type... vals) returns () = external;
+
+
+# Returns the string that is the Base64 representation of an array of bytes.
+# The representation is the same as used by a Ballerina Base64Literal.
+# The result will contain only characters  `A..Z`, `a..z`, `0..9`, `+`, `/` and `=`.
+# There will be no whitespace in the returned string.
+#
+# + arr - the array
+# + return - Base64 string representation
+public isolated function toBase64(byte[] arr) returns string = external;
+
+# Returns the byte array that a string represents in Base64.
+# `str` must consist of the characters `A..Z`, `a..z`, `0..9`, `+`, `/`, `=`
+# and whitespace as allowed by a Ballerina Base64Literal.
+#
+# + str - Base64 string representation
+# + return - the byte array or error
+public isolated function fromBase64(string str) returns byte[]|error = external;
+
+# Returns the string that is the Base16 representation of an array of bytes.
+# The representation is the same as used by a Ballerina Base16Literal.
+# The result will contain only characters  `0..9`, `a..f`.
+# There will be no whitespace in the returned string.
+#
+# + arr - the array
+# + return - Base16 string representation
+public isolated function toBase16(byte[] arr) returns string = external;
+
+# Returns the byte array that a string represents in Base16.
+# `str` must consist of the characters `0..9`, `A..F`, `a..f`
+# and whitespace as allowed by a Ballerina Base16Literal.
+#
+# + str - Base16 string representation
+# + return - the byte array or error
+public isolated function fromBase16(string str) returns byte[]|error = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.boolean">10.3.2 <code>lang.boolean</code> module</h4>
+
+<p>The <code>lang.boolean</code> module corresponds to basic type boolean.</p>
+
+<pre class="langlib">
+
+# Converts a string to a boolean.
+# Returns the boolean of which `s` is a string representation.
+# The accepted representations are `true`, `false`
+# (in any combination of lower- and upper-case),
+# and also `1` for true and `0` for `false`.
+# This is the inverse of `value:toString` applied to a `boolean`.
+#
+# + s - string representing a boolean valie
+# + return - boolean that `s` represents, or an error if there is no such boolean
+public isolated function fromString(string s) returns boolean|error = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.decimal">10.3.3 <code>lang.decimal</code> module</h4>
+
+<p>The <code>lang.decimal</code> module corresponds to basic type decimal.</p>
+
+<pre class="langlib">
+
+# Sum of zero or more decimal values.
+#
+# + xs - decimal values to sum
+# + return - sum of all the `xs`; 0 if `xs` is empty
+public isolated function sum(decimal... xs) returns decimal = external;
+
+# Maximum of one or more decimal values.
+#
+# + x - first decimal value
+# + xs - other decimal values
+# + return - maximum value of `x` and all the `xs`
+public isolated function max(decimal x, decimal... xs) returns decimal = external;
+
+# Minimum of one or more decimal values
+#
+# + x - first decimal value
+# + xs - other decimal values
+# + return - minimum value of `x` and all the `xs`.
+public isolated function min(decimal x, decimal... xs) returns decimal = external;
+
+# IEEE abs operation.
+#
+# + x - decimal value to operate on
+# + return - absolute value of `x`
+public isolated function abs(decimal x) returns decimal = external;
+
+# Round a decimal to the closest integral value.
+# Returns the decimal value that is a mathematical integer and closest to `x`.
+# If there are two such values, choose the one that is even
+# (this is the round-to-nearest rounding mode, which is the default for IEEE
+# and for Ballerina).
+# Same as Java Math.rint method
+# Same as .NET Math.Round method
+# IEEE 754 roundToIntegralTiesToEven operation
+# Note that `&lt;int&gt;x` is the same as `&lt;int&gt;x.round()`
+#
+# + x - decimal value to operate on
+# + return - closest decimal value to `x` that is a mathematical integer
+public isolated function round(decimal x) returns decimal = external;
+
+# Rounds a decimal down to the closest integral value.
+#
+# + x - decimal value to operate on
+# + return - largest (closest to +∞) decimal value not greater than `x` that is a mathematical integer.
+public isolated function floor(decimal x) returns decimal = external;
+
+# Rounds a decimal up to the closest integral value.
+#
+# + x - decimal value to operate on
+# + return - smallest (closest to -∞) decimal value not less than `x` that is a mathematical integer
+public isolated function ceiling(decimal x) returns decimal = external;
+
+# Return the decimal value represented by `s`.
+# `s` must follow the syntax of DecimalFloatingPointNumber as defined by the Ballerina specification
+# with the following modifications
+# - the DecimalFloatingPointLiteral may have a leading `+` or `-` sign
+# - a FloatingPointTypeSuffix is not allowed
+# This is the inverse of `value:toString` applied to an `decimal`.
+#
+# + s - string representation of a decimal
+# + return - decimal representation of the argument or error
+public isolated function fromString(string s) returns decimal|error = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.error">10.3.4 <code>lang.error</code> module</h4>
+
+<p>The <code>lang.error</code> module corresponds to basic type error.</p>
+
+<pre class="langlib">
+
+
+# Type for value that can be cloned.
+# This is the same as in lang.value, but is copied here to avoid a dependency.
+
+type Cloneable readonly|xml|Cloneable[]|map&lt;Cloneable&gt;|table&lt;map&lt;Cloneable&gt;&gt;;
+
+# The type to which error detail records must belong.
+public type Detail record {|
+   Cloneable...;
+|};
+
+# A type parameter that is a subtype of error `Detail` record type.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type DetailType Detail;
+
+# Returns the error's message.
+#
+# + e - the error value
+# + return - error message
+public isolated function message(error e) returns string = external;
+
+# Returns the error's cause.
+#
+# + e - the error value
+# + return - error cause
+public isolated function cause(error e) returns error? = external;
+
+# Returns the error's detail record.
+# The returned value will be immutable.
+# + e - the error value
+# + return - error detail value
+public isolated function detail(error&lt;DetailType&gt; e) returns readonly &amp; DetailType = external;
+
+# Type representing a stack frame.
+# A call stack is represented as an array of stack frames.
+# This type is also present in lang.runtime to avoid a dependency.
+public type StackFrame readonly &amp; object {
+   # Returns a string representing this StackFrame.
+   # This must not contain any newline characters.
+   # + return - a string
+   public function toString() returns string;
+};
+
+# Returns an array representing an error's stack trace.
+#
+# + e - the error value
+# + return - an array representing the stack trace of the error value
+# The first member of the array represents the top of the call stack.
+public isolated function stackTrace(error e) returns StackFrame[] = external;
+
+# Converts an error to a string.
+#
+# + e - the error to be converted to a string
+# + return - a string resulting from the conversion
+#
+# The details of the conversion are specified by the ToString abstract operation
+# defined in the Ballerina Language Specification, using the direct style.
+public isolated function toString(error e) returns string = external;
+
+# Converts an error to a string that describes the value in Ballerina syntax.
+# + e - the error to be converted to a string
+# + return - a string resulting from the conversion
+#
+# The details of the conversion are specified by the ToString abstract operation
+# defined in the Ballerina Language Specification, using the expression style.
+public isolated function toBalString(error e) returns string = external;
+
+# A type of error which can be retried.
+public type Retriable distinct error;
+
+# The RetryManager used by default.
+public class DefaultRetryManager {
+   private int count;
+   public function init(int count = 3) {
+     this.count = count;
+   }
+   public function shouldRetry(error e) returns boolean {
+      if e is Retriable &amp;&amp; count &gt;  0 {
+         count -= 1;
+         return true;
+      }
+      else {
+         return false;
+      }
+   }
+}
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.float">10.3.5 <code>lang.float</code> module</h4>
+
+<p>The <code>lang.float</code> module corresponds to basic type float.</p>
+
+<pre class="langlib">
+
+
+# The number π
+public const float PI = 3.141592653589793;
+# Euler's number
+public const float E =  2.718281828459045;
+# IEEE not-a-number value
+public const float NaN = 0.0/0.0;
+
+# IEEE positive infinity
+public const float Infinity = 1.0/0.0;
+
+# Tests whether a float is finite.
+# Exactly one of isFinite, isInfinite and IsNaN will be true for any float value
+#
+# + x - the float to be tested
+# + return - true if `x` is finite, i.e. neither NaN nor +∞ nor -∞
+public isolated function isFinite(float x) returns boolean = external;
+
+# Tests whether a float is infinite.
+# Exactly one of isFinite, isInfinite and IsNaN will be true for any float value
+#
+# + x - the float to be tested
+# + return - true if `x` is either +∞ or -∞
+public isolated function isInfinite(float x) returns boolean = external;
+
+# Tests whether a float is NaN.
+# Exactly one of isFinite, isInfinite and IsNaN will be true for any float value.
+#
+# + x - the float to be tested
+# + return - true if `x` is NaN
+public isolated function isNaN(float x) returns boolean = external;
+
+# Sum of zero or more float values.
+# Result is NaN if any arg is NaN
+#
+# + xs - float values to sum
+# + return - sum of all the `xs`, +0.0 if `xs` is empty
+public isolated function sum(float... xs) returns float = external;
+
+# Maximum of zero or more float values.
+# Result is -∞ if no args
+# NaN if any arg is NaN
+#
+# + xs - float values to operate on
+# + return - maximum value of all the `xs`
+public isolated function max(float... xs) returns float = external;
+
+# Minimum of zero or more float values.
+# Result is +∞ if no args
+# Result is NaN if any arg is NaN
+#
+# + xs - float values to operate on
+# + return - minimum value of all the `xs`
+public isolated function min(float... xs) returns float = external;
+
+# IEEE abs operation.
+#
+# + x - float value to operate on
+# + return - absolute value of `x`
+public isolated function abs(float x) returns float = external;
+
+# Round a float value to the closest integral value.
+# Returns the float value that is a mathematical integer and closest to `x`.
+# If there are two such values, choose the one that is even
+# (this is the round-to-nearest rounding mode, which is the default for IEEE and for Ballerina).
+# Same as Java Math.rint method
+# Same as .NET Math.Round method
+# IEEE roundToIntegralTiesToEven operation
+# Note that `&lt;int&gt;x` is the same as `&lt;int&gt;x.round()`
+#
+# + x - float value to operate on
+# + return - closest float value to `x` that is a mathematical integer
+public isolated function round(float x) returns float = external;
+
+# Rounds a float down to the closest integral value.
+#
+# + x - float value to operate on
+# + return - largest (closest to +∞) float value not greater than `x` that is a mathematical integer.
+public isolated function floor(float x) returns float = external;
+
+# Rounds a float up to the closest integral value.
+#
+# + x - float value to operate on
+# + return - smallest (closest to -∞) decimal value not less than `x` that is a mathematical integer
+public isolated function ceiling(float x) returns float = external;
+
+# Returns the square root of a float value.
+# Corresponds to IEEE squareRoot operation.
+#
+# + x - float value to operate on
+# + return - square root of `x`
+public isolated function sqrt(float x) returns float = external;
+
+# Returns the cube root of a float value.
+# Corresponds to IEEE rootn(x, 3) operation.
+#
+# + x - float value to operate on
+# + return - cube root of `x`
+public isolated function cbrt(float x) returns float = external;
+
+# Raises one float value to the power of another float values.
+# Corresponds to IEEE pow(x, y) operation.
+#
+# + x - base value
+# + y - the exponent
+# + return - `x` raised to the power of `y`
+public isolated function pow(float x, float y) returns float = external;
+
+# Returns the natural logarithm of a float value
+# Corresponds to IEEE log operation.
+#
+# + x - float value to operate on
+# + return - natural logarithm of `x`
+public isolated function log(float x) returns float = external;
+
+# Returns the base 10 logarithm of a float value.
+# Corresponds to IEEE log10 operation.
+#
+# + x - float value to operate on
+# + return - base 10 logarithm of `x`
+public isolated function log10(float x) returns float = external;
+
+# Raises Euler's number to a power.
+# Corresponds to IEEE exp operation.
+#
+# + x - float value to operate on
+# + return - Euler's number raised to the power `x`
+public isolated function exp(float x) returns float = external;
+
+# Returns the sine of a float value.
+# Corresponds to IEEE sin operation.
+#
+# + x - float value, specifying an angle in radians
+# + return - the sine of `x`
+public isolated function sin(float x) returns float = external;
+
+# Returns the cosine of a float value.
+# Corresponds to IEEE cos operation.
+#
+# + x - float value, specifying an angle in radians
+# + return - the cosine of `x`
+public isolated function cos(float x) returns float = external;
+
+# Returns the tangent of a float value.
+# Corresponds to IEEE tan operation
+#
+# + x - float value, specifying an angle in radians
+# + return - the tangent of `x`
+public isolated function tan(float x) returns float = external;
+
+# Returns the arccosine of a float value.
+# Corresponds to IEEE acos operation
+#
+# + x - float value to operate on
+# + return - the arccosine of `x` in radians
+public isolated function acos(float x) returns float = external;
+
+# Returns the arctangent of a float value.
+# Corresponds to IEEE atan operation.
+#
+# + x - float value to operate on
+# + return - the arctangent of `x` in radians
+public isolated function atan(float x) returns float = external;
+
+# Returns the arcsine of a float value.
+# Corresponds to IEEE asin operation.
+#
+# + x - float value to operate on
+# + return - the arcsine of `x` in radians
+public isolated function asin(float x) returns float = external;
+
+# Performs the 2-argument arctangent operation.
+# Corresponds IEEE atan2(y, x) operation.
+#
+# + y - the y-coordinate
+# + x - the x-coordinate
+# + return - the angle in radians from the positive x-axis to the point
+#   whose Cartesian coordinates are `(x, y)`
+public isolated function atan2(float y, float x) returns float = external;
+
+# Returns the hyperbolic sine of a float value.
+# Corresponds to IEEE sinh operation.
+#
+# + x - float value to operate on
+# + return - hyperbolic sine of `x`
+public isolated function sinh(float x) returns float = external;
+
+# Returns the hyperbolic cosine of a float value.
+# Corresponds to IEEE cosh operation.
+#
+# + x - float value to operate on
+# + return - hyperbolic cosine of `x`
+public isolated function cosh(float x) returns float = external;
+
+# Returns the hyperbolic tangent of a float value.
+# Corresponds to IEEE tanh operation.
+#
+# + x - float value to operate on
+# + return - hyperbolic tangent of `x`
+public isolated function tanh(float x) returns float = external;
+
+# Return the float value represented by `s`.
+# `s` must follow the syntax of DecimalFloatingPointNumber as defined by the Ballerina specification
+# with the following modifications
+# - the DecimalFloatingPointNumber may have a leading `+` or `-` sign
+# - `NaN` is allowed
+# - `Infinity` is allowed with an optional leading `+` or `-` sign
+# - a FloatingPointTypeSuffix is not allowed
+# This is the inverse of `value:toString` applied to an `float`.
+#
+# + s - string representation of a float
+# + return - float value or error
+public isolated function fromString(string s) returns float|error = external;
+
+# Returns a string that represents `x` as a hexadecimal floating point number.
+# The returned string will comply to the grammar of HexFloatingPointLiteral
+# in the Ballerina spec with the following modifications:
+# - it will have a leading `-` sign if negative
+# - positive infinity will be represented by `Infinity`
+# - negative infinity will be represented by `-Infinity`
+# - NaN will be represented by `NaN`
+# The representation includes `0x` for finite numbers.
+#
+# + x - float value
+# + return - hexadecimal floating point hex string representation
+public isolated function toHexString(float x) returns string = external;
+
+# Return the float value represented by `s`.
+# `s` must follow the syntax of HexFloatingPointLiteral as defined by the Ballerina specification
+# with the following modifications
+# - the HexFloatingPointLiteral may have a leading `+` or `-` sign
+# - `NaN` is allowed
+# - `Infinity` is allowed with an optional leading `+` or `-` sign
+#
+# + s - hexadecimal floating point hex string representation
+# + return - float value or error
+public isolated function fromHexString(string s) returns float|error = external;
+
+# Returns IEEE 64-bit binary floating point format representation of `x` as an int.
+#
+# + x - float value
+# + return - `x` bit pattern as an int
+public isolated function toBitsInt(float x) returns int = external;
+
+# Returns the float that is represented in IEEE 64-bit floating point by `x`.
+# All bit patterns that IEEE defines to be NaNs will all be mapped to the single float NaN value.
+#
+# + x - int value
+# + return - `x` bit pattern as a float
+public isolated function fromBitsInt(int x) returns float = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.future">10.3.6 <code>lang.future</code> module</h4>
+
+<p>The <code>lang.future</code> module corresponds to basic type future.</p>
+
+<pre class="langlib">
+
+# Requests cancellation of a future.
+# + f - the future to be cancelled
+# This sets the cancellation flag in the strand corresponding to `f`.
+# Each time that a strand yields, it will check the cancellation flag
+# and terminate abnormally if the flag is set.
+public isolated function cancel(future f) returns () = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.int">10.3.7 <code>lang.int</code> module</h4>
+
+<p>The <code>lang.int</code> module corresponds to basic type int.</p>
+
+<pre class="langlib">
+
+# Built-in subtype that allows signed integers that can be represented in 32 bits using two's complement.
+# This allows an int between -2^31 and 2^31 - 1 inclusive.
+# i.e. between -2,147,483,648 and 2,147,483,647 inclusive.
+@builtinSubtype
+public type Signed32 int;
+
+# Built-in subtype that allows non-negative integers that can be represented in 16 bits using two's complement.
+# This allows an int between -2^15 and 2^15 - 1 inclusive.
+# i.e. between -32,768 and 32,767 inclusive.
+@builtinSubtype
+public type Signed16 int;
+
+# Built-in subtype that allows non-negative integers that can be represented in 8 bits using two's complement.
+# This allows an int between -2^7 and 2^7 - 1 inclusive.
+# i.e. between -128 and 127 inclusive.
+@builtinSubtype
+public type Signed8 int;
+
+# Built-in subtype that allows non-negative integers that can be represented in 32 bits.
+# This allows an int between 0 and 2^32 - 1 inclusive,
+# i.e. between 0 and 4,294,967,295 inclusive.
+@builtinSubtype
+public type Unsigned32 int;
+
+# Built-in subtype that allows non-negative integers that can be represented in 16 bits.
+# This allows an int between 0 and 2^16 - 1 inclusive,
+# i.e. between 0 and 65,535 inclusive.
+@builtinSubtype
+public type Unsigned16 int;
+
+# Built-in subtype that allows non-negative integers that can be represented in 8 bits.
+# This allows an int between 0 and 2^8 - 1 inclusive,
+# i.e. between 0 and 255 inclusive.
+# This is the same as `byte`.
+@builtinSubtype
+public type Unsigned8 int;
+
+# Maximum value of type `int`.
+public const MAX_VALUE = 9223372036854775807;
+# Minimum value of type `int`.
+public const MIN_VALUE = -9223372036854775807 - 1; // -9223372036854775808 would overflow
+# Maximum value of type `Signed32`.
+public const SIGNED32_MAX_VALUE = 2147483647;
+# Minimum value of type `Signed32`.
+public const SIGNED32_MIN_VALUE = -2147483648;
+# Maximum value of type `Signed16`.
+public const SIGNED16_MAX_VALUE = 32767;
+# Minimum value of type `Signed16`.
+public const SIGNED16_MIN_VALUE = -32768;
+# Maximum value of type `Signed8`.
+public const SIGNED8_MAX_VALUE = 127;
+# Minimum value of type `Signed8`.
+public const SIGNED8_MIN_VALUE = -128;
+# Maximum value of type `Unsigned32`.
+public const UNSIGNED32_MAX_VALUE = 4294967295;
+# Maximum value of type `Unsigned16`.
+public const UNSIGNED16_MAX_VALUE = 65535;
+# Maximum value of type `Unsigned8`.
+public const UNSIGNED8_MAX_VALUE = 255;
+
+
+# Returns absolute value of an int.
+#
+# + n - int value to be operated on
+# + return - absolute value of `n`
+public isolated function abs(int n) returns int = external;
+
+# Returns sum of zero or more int values.
+#
+# + ns - int values to sum
+# + return - sum of all the `ns`; 0 is `ns` is empty
+public isolated function sum(int... ns) returns int = external;
+
+# Maximum of one or more int values.
+#
+# + n - first int value
+# + ns - other int values
+# + return - maximum value of value of `x` and all the `xs`
+public isolated function max(int n, int... ns) returns int = external;
+
+# Minimum of one or more int values
+#
+# + n - first int value
+# + ns - other int values
+# + return - minimum value of `n` and all the `ns`
+public isolated function min(int n, int... ns) returns int = external;
+
+# Returns the integer that `s` represents in decimal.
+# Returns error if `s` is not the decimal representation of an integer.
+# The first character may be `+` or `-`.
+# This is the inverse of `value:toString` applied to an `int`.
+#
+# + s - string representation of a integer value
+# + return - int representation of the argument or error
+public isolated function fromString(string s) returns int|error = external;
+
+# Returns representation of `n` as hexdecimal string.
+# There is no `0x` prefix. Lowercase letters a-f are used.
+# Negative numbers will have a `-` prefix. No sign for
+# non-negative numbers.
+#
+# + n - int value
+# + return - hexadecimal string representation of int value
+public isolated function toHexString(int n) returns string = external;
+
+# Returns the integer that `s` represents in hexadecimal.
+# Both uppercase A-F and lowercase a-f are allowed.
+# It may start with an optional `+` or `-` sign.
+# No `0x` or `0X` prefix is allowed.
+# Returns an error if the `s` is not in an allowed format.
+#
+# + s - hexadecimal string representation of int value
+# + return - int value or error
+public isolated function fromHexString(string s) returns int|error = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.map">10.3.8 <code>lang.map</code> module</h4>
+
+<p>The <code>lang.map</code> module corresponds to basic type mapping.</p>
+
+<pre class="langlib">
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type1 any|error;
+
+# Returns number of members of a map.
+#
+# + m - the map
+# + return - number of members in `m`
+public isolated function length(map&lt;any|error&gt; m) returns int = external;
+
+# Returns an iterator over a map.
+# The iterator will iterate over the members of the map not the keys.
+# The `entries` function can be used to iterate over the keys and members together.
+# The `keys` function can be used to iterator over just the keys.
+# 
+# + m - the map
+# + return - a new iterator object that will iterate over the members of `m`
+public isolated function iterator(map&lt;Type&gt; m) returns object {
+    public isolated function next() returns record {|
+        Type value;
+    |}?;
+} = external;
+
+# Returns the member of map `m` with key `k`.
+# This for use in a case where it is known that the map has a specific key,
+# and accordingly panics if `m` does not have a member with key `k`.
+#
+# + m - the map
+# + k - the key
+# + return - member with key `k`
+public isolated function get(map&lt;Type&gt; m, string k) returns Type = external;
+
+# Returns a map containing [key, member] pair as the value for each key.
+#
+# + m - the map
+# + return - a new map of [key, member] pairs
+public isolated function entries(map&lt;Type&gt; m) returns map&lt;[string, Type]&gt; = external;
+
+
+# Applies a function each member of a map and returns a map of the result.
+# The resulting map will have the same keys as the argument map.
+#
+# + m - the map
+# + func - a function to apply to each member
+# + return - new map containing result of applying function `func` to each member
+public isolated function 'map(map&lt;Type&gt; m, @isolatedParam function(Type val) returns Type1 func) returns map&lt;Type1&gt; = external;
+
+# Applies a function to each member of a map.
+# The function `func` is applied to each member of `m`.
+#
+# + m - the map
+# + func - a function to apply to each member
+public isolated function forEach(map&lt;Type&gt; m, @isolatedParam function(Type val) returns () func) returns () = external;
+
+# Selects the members from a map for which a function returns true.
+#
+# + m - the map
+# + func - a predicate to apply to each element to test whether it should be included
+# + return - new map containing members for which `func` evaluates to true
+public isolated function filter(map&lt;Type&gt; m, @isolatedParam function(Type val) returns boolean func) returns map&lt;Type&gt; = external;
+
+# Combines the members of a map using a combining function.
+# The combining function takes the combined value so far and a member of the map,
+# and returns a new combined value.
+#
+# + m - the map
+# + func - combining function
+# + initial - initial value for the first argument of combining function `func`
+# + return - result of combining the members of `m` using `func`
+public isolated function reduce(map&lt;Type&gt; m, @isolatedParam function(Type1 accum, Type val) returns Type1 func, Type1 initial) returns Type1 = external;
+
+# Removes a member of a map.
+#
+# + m - the map
+# + k - the key
+# + return - the member of `m` that had key `k`
+# This removes the member of `m` with key `k` and returns it.
+# It panics if there is no such member.
+public isolated function remove(map&lt;Type&gt; m, string k) returns Type = external;
+
+# Removes a member of a map with a given key, if the map has member with the key.
+#
+# + m - the map
+# + k - the key
+# + return - the member of `m` that had key `k`, or `()` if `m` does not have a key `k`
+# If `m` has a member with key `k`, it removes and returns it;
+# otherwise it returns `()`.
+public isolated function removeIfHasKey(map&lt;Type&gt; m, string k) returns Type? = external;
+
+# Removes all members of a map.
+# This panics if any member cannot be removed.
+#
+# + m - the map
+public isolated function removeAll(map&lt;any|error&gt; m) returns () = external;
+
+# Tests whether m has a member with key `k`.
+#
+# + m - the map
+# + k - the key
+# + return - true if m has a member with key `k`
+public isolated function hasKey(map&lt;Type&gt; m, string k) returns boolean = external;
+
+# Returns a list of all the keys of map `m`.
+#
+# + m - the map
+# + return - a new list of all keys
+public isolated function keys(map&lt;any|error&gt; m) returns string[] = external;
+
+# Returns a list of all the members of a map.
+#
+# + m - the map
+# + return - an array whose members are the members of `m`
+public isolated function toArray(map&lt;Type&gt; m) returns Type[] = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.object">10.3.9 <code>lang.object</code> module</h4>
+
+<p>The <code>lang.object</code> module corresponds to basic type object.</p>
+
+<pre class="langlib">
+
+# Distinct Iterable type.
+# An object can make itself iterable by using `*object:Iterable;`,
+# and then defining an `iterator` method.
+public type Iterable distinct object {
+    # Create a new iterator.
+    #
+    # + return - a new iterator object
+    public function iterator() returns abstract object {
+        public function next() returns record {| any|error value; |}|error?;
+    }
+}
+
+# Distinct RawTemplate type.
+# A raw template expression constructs an object belonging to this type.
+public type RawTemplate distinct object {
+    # An array of the strings containing the characters in BacktickString
+    # outside of interpolations, split at the interpolation points.
+    # The length of this array is one greater than
+    # the length of the `insertions` array.
+    public (readonly &amp; string[]) strings;
+    # An array containing the results of evaluating the
+    # interpolations in the BacktickString.
+    public (any|error)[] insertions;
+};
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.stream">10.3.10 <code>lang.stream</code> module</h4>
+
+<p>The <code>lang.stream</code> module corresponds to basic type stream.</p>
+
+<pre class="langlib">
+
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
+
+# A type parameter that is a subtype of `error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type ErrorType error;
+
+# A type parameter that is a subtype of `error?`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+# This represents the result type of an iterator.
+@typeParam
+type CompletionType error?;
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type1 any|error;
+
+# Returns an iterator over a stream.
+#
+# + stm - the stream
+# + return - a new iterator object that will iterate over the members of `stm`.
+public isolated function iterator(stream&lt;Type,CompletionType&gt; stm) returns object {
+    public isolated function next() returns record {|
+        Type value;
+    |}|CompletionType;
+} = external;
+
+# Closes a stream.
+# This releases any system resources being used by the stream.
+# Closing a stream that has already been closed has no efffect and returns `()`.
+#
+# + stm - the stream to close
+# + return - () if the close completed successfully, otherwise an error
+public isolated function close(stream&lt;Type,CompletionType&gt; stm) returns CompletionType? = external;
+
+
+# Applies a function to each member of a stream and returns a stream of the results.
+#
+# + stm - the stream
+# + func - a function to apply to each member
+# + return - new stream containing result of applying `func` to each member of `stm` in order
+public isolated function 'map(stream&lt;Type,CompletionType&gt; stm, @isolatedParam function(Type val) returns Type1 func)
+   returns stream&lt;Type1,CompletionType&gt; = external;
+
+# Applies a function to each member of a stream.
+# The function `func` is applied to each member of stream `stm` in order.
+#
+# + stm - the stream
+# + func - a function to apply to each member
+public isolated function forEach(stream&lt;Type,CompletionType&gt; stm, @isolatedParam function(Type val) returns () func) returns CompletionType = external;
+
+# Selects the members from a stream for which a function returns true.
+#
+# + stm - the stream
+# + func - a predicate to apply to each member to test whether it should be selected
+# + return - new stream only containing members of `stm` for which `func` evaluates to true
+public isolated function filter(stream&lt;Type,CompletionType&gt; stm, @isolatedParam function(Type val) returns boolean func)
+   returns stream&lt;Type,CompletionType&gt; = external;
+
+# Combines the members of a stream using a combining function.
+# The combining function takes the combined value so far and a member of the stream,
+# and returns a new combined value.
+#
+# + stm - the stream
+# + func - combining function
+# + initial - initial value for the first argument of combining function `func`
+# + return - result of combining the members of `stm` using `func`
+public isolated function reduce(stream&lt;Type,ErrorType?&gt; stm, @isolatedParam function(Type1 accum, Type val) returns Type1 func, Type1 initial)
+   returns Type1|ErrorType = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.string">10.3.11 <code>lang.string</code> module</h4>
+
+<p>The <code>lang.string</code> module corresponds to basic type string.</p>
+
+<pre class="langlib">
+
+# Built-in subtype of string containing strings of length 1.
+@builtinSubtype
+type Char string;
+
+# Returns the length of the string.
+#
+# + str - the string
+# + return - the number of characters (code points) in `str`
+public isolated function length(string str) returns int = external;
+
+# Returns an iterator over the string.
+# The iterator will yield the substrings of length 1 in order.
+#
+# + str - the string to be iterated over
+# + return - a new iterator object
+public isolated function iterator(string str) returns object {
+    public isolated function next() returns record {| Char value; |}?;
+} = external;
+
+# Concatenates zero or more strings.
+#
+# + strs - strings to be concatenated
+# + return - concatenation of all of the `strs`; empty string if `strs` is empty
+public isolated function concat(string... strs) returns string = external;
+
+# Returns the code point of a character in a string.
+#
+# + str - the string
+# + index - an index in `str`
+# + return - the Unicode code point of the character at `index` in `str`
+public isolated function getCodePoint(string str, int index) returns int = external;
+
+# Returns a substring of a string.
+#
+# + str - source string.
+# + startIndex - the starting index, inclusive
+# + endIndex - the ending index, exclusive
+# + return - substring consisting of characters with index &gt;= startIndex and &lt; endIndex
+public isolated function substring(string str, int startIndex, int endIndex = str.length()) returns string = external;
+
+# Lexicographically compares strings using their Unicode code points.
+# This orders strings in a consistent and well-defined way,
+# but the ordering will often not be consistent with cultural expectations
+# for sorted order.
+#
+# + str1 - the first string to be compared
+# + str2 - the second string to be compared
+# + return - an int that is less than, equal to or greater than zero,
+#    according as `str1` is less than, equal to or greater than `str2`
+public isolated function codePointCompare(string str1, string str2) returns int = external;
+
+# Joins zero or more strings together with a separator.
+#
+# + separator - separator string
+# + strs - strings to be joined
+# + return - a string consisting of all of `strs` concatenated in order
+#     with `separator` in between them
+public isolated function 'join(string separator, string... strs) returns string = external;
+
+# Finds the first occurrence of one string in another string.
+#
+# + str - the string in which to search
+# + substr - the string to search for
+# + startIndex - index to start searching from
+# + return - index of the first occurrence of `substr` in `str` that is &gt;= `startIndex`,
+#    or `()` if there is no such occurrence
+public isolated function indexOf(string str, string substr, int startIndex = 0) returns int? = external;
+
+# Finds the last occurrence of one string in another string.
+#
+# + str - the string in which to search
+# + substr - the string to search for
+# + startIndex - index to start searching backwards from
+# + return - index of the last occurrence of `substr` in `str` that is &lt;= `startIndex`,
+#    or `()` if there is no such occurrence
+public isolated function lastIndexOf(string str, string substr, int startIndex = str.length() - substr.length()) returns int? = external;
+
+# Tests whether a string includes another string.
+#
+# + str - the string in which to search
+# + substr - the string to search for
+# + startIndex - index to start searching from
+# + return - `true` if there is an occurrence of `substr` in `str` at an index &gt;= `startIndex`,
+#    or `false` otherwise
+public isolated function includes(string str, string substr, int startIndex = 0) returns boolean = external;
+
+# Tests whether a string starts with another string.
+#
+# + str - the string to be tested
+# + substr - the starting string
+# + return - true if `str` starts with `substr`; false otherwise
+public isolated function startsWith(string str, string substr) returns boolean = external;
+
+# Tests whether a string ends with another string.
+#
+# + str - the string to be tested
+# + substr - the ending string
+# + return - true if `str` ends with `substr`; false otherwise
+public isolated function endsWith(string str, string substr) returns boolean = external;
+
+
+# Converts occurrences of A-Z to a-z.
+# Other characters are left unchanged.
+#
+# + str - the string to be converted
+# + return - `str` with any occurrences of A-Z converted to a-z
+public isolated function toLowerAscii(string str) returns string = external;
+
+# Converts occurrences of a-z to A-Z.
+# Other characters are left unchanged.
+#
+# + str - the string to be converted
+# + return - `str` with any occurrences of a-z converted to A-Z
+public isolated function toUpperAscii(string str) returns string = external;
+
+
+# Tests whether two strings are the same, ignoring the case of ASCII characters.
+# A character in the range a-z is treated the same as the corresponding character in the range A-Z.
+#
+# + str1 - the first string to be compared
+# + str2 - the second string to be compared
+# + return - true if `str1` is the same as `str2`, treating upper-case and lower-case
+# ASCII letters as the same; false, otherwise
+public isolated function equalsIgnoreCaseAscii(string str1, string str2) returns boolean = external;
+
+# Removes ASCII white space characters from the start and end of a string.
+# The ASCII white space characters are 0x9...0xD, 0x20.
+#
+# + str - the string
+# + return - `str` with leading or trailing ASCII white space characters removed
+public isolated function trim(string str) returns string = external;
+
+# Represents `str` as an array of bytes using UTF-8.
+#
+# + str - the string
+# + return - UTF-8 byte array
+public isolated function toBytes(string str) returns byte[] = external;
+
+# Constructs a string from its UTF-8 representation in `bytes`.
+#
+# + bytes - UTF-8 byte array
+# + return - `bytes` converted to string or error
+public isolated function fromBytes(byte[] bytes) returns string|error = external;
+
+# Converts a string to an array of code points.
+#
+# + str - the string
+# + return - an array with a code point for each character of `str`
+public isolated function toCodePointInts(string str) returns int[] = external;
+
+# Converts a single character string to a code point.
+#
+# + ch - a single character string
+# + return - the code point of `ch`
+public isolated function toCodePointInt(Char ch) returns int = external;
+
+# Constructs a string from an array of code points.
+# An int is a valid code point if it is in the range 0 to 0x10FFFF inclusive,
+# but not in the range 0xD800 or 0xDFFF inclusive.
+#
+# + codePoints - an array of ints, each specifying a code point
+# + return - a string with a character for each code point in `codePoints`; or an error
+# if any member of `codePoints` is not a valid code point
+public isolated function fromCodePointInts(int[] codePoints) returns string|error = external;
+
+# Constructs a single character string from a code point.
+# An int is a valid code point if it is in the range 0 to 0x10FFFF inclusive,
+# but not in the range 0xD800 or 0xDFFF inclusive.
+#
+# + codePoint - an int specifying a code point
+# + return - a single character string whose code point is `codePoint`; or an error
+# if `codePoint` is not a valid code point
+public isolated function fromCodePointInt(int codePoint) returns Char|error = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.table">10.3.12 <code>lang.table</code> module</h4>
+
+<p>The <code>lang.table</code> module corresponds to basic type table.</p>
+
+<pre class="langlib">
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type1 any|error;
+
+# A type parameter that is a subtype of `anydata`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type KeyType anydata;
+
+# Returns number of members of a table.
+#
+# + t - the table
+# + return - number of members in `t`
+public isolated function length(table&lt;any|error&gt; t) returns int = external;
+
+# Returns an iterator over a table.
+# The iterator will iterate over the members of the table not the keys.
+# The `entries` function can be used to iterate over the keys and members together.
+# The `keys` function can be used to iterator over just the keys.
+# 
+# + t - the table
+# + return - a new iterator object that will iterate over the members of `t`
+public isolated function iterator(table&lt;Type&gt; t) returns object {
+    public isolated function next() returns record {|
+        Type value;
+    |}?;
+} = external;
+
+# Returns the member of table `t` with key `k`.
+# This for use in a case where it is known that the table has a specific key,
+# and accordingly panics if `t` does not have a member with key `k`.
+#
+# + t - the table
+# + k - the key
+# + return - member with key `k`
+public isolated function get(table&lt;Type&gt; key&lt;KeyType&gt; t, KeyType k) returns Type = external;
+
+# Adds a member `val` to table `t`, replacing any member with the same key value.
+# If `val` replaces an existing member, it will have the same position
+# in the order of the members as the existing member;
+# otherwise, it will be added as the last member.
+# It panics if `val` is inconsistent with the inherent type of `t`.
+public isolated function put(table&lt;Type&gt; t, Type val) = external;
+
+# Adds a member `val` to table `t`.
+# It will be added as the last member.
+# It panics if `val` has the same key as an existing member of `t`,
+# or if `val` is inconsistent with the inherent type of `t`.
+public isolated function add(table&lt;Type&gt; t, Type val) = external;
+
+
+# Applies a function each member of a table and returns a table of the result.
+#
+# + t - the table
+# + func - a function to apply to each member
+# + return - new table containing result of applying function `func` to each member
+public isolated function map(table&lt;Type&gt; t, @isolatedParam function(Type val) returns Type1 func)
+   returns table&lt;Type1&gt; key&lt;never&gt; = external;
+
+# Applies a function to each member of a table.
+# The function `func` is applied to each member of `t`.
+#
+# + t - the table
+# + func - a function to apply to each member
+public isolated function forEach(table&lt;Type&gt; t, @isolatedParam function(Type val) returns () func) returns () = external;
+
+# Selects the members from a table for which a function returns true.
+# The resulting table will have the same keys as the argument table.
+#
+# + t - the table
+# + func - a predicate to apply to each member to test whether it should be included
+# + return - new table containing members for which `func` evaluates to true
+public isolated function filter(table&lt;Type&gt; key&lt;KeyType&gt; t, @isolatedParam function(Type val) returns boolean func)
+   returns table&lt;Type&gt; key&lt;KeyType&gt; = external;
+
+# Combines the members of a table using a combining function.
+# The combining function takes the combined value so far and a member of the table,
+# and returns a new combined value.
+#
+# + t - the table
+# + func - combining function
+# + initial - initial value for the first argument of combining function `func`
+# + return - result of combining the members of `t` using `func`
+public isolated function reduce(table&lt;Type&gt; t, @isolatedParam function(Type1 accum, Type val) returns Type1 func, Type1 initial) returns Type1 = external;
+
+# Removes a member of a table.
+#
+# + t - the table
+# + k - the key
+# + return - the member of `t` that had key `k`
+# This removed the member of `t` with key `k` and returns it.
+# It panics if there is no such member.
+public isolated function remove(table&lt;Type&gt; key&lt;KeyType&gt; t, KeyType k) returns Type = external;
+
+# Removes a member of a table with a given key, if the table has member with the key.
+#
+# + t - the table
+# + k - the key
+# + return - the member of `t` that had key `k`, or `()` if `t` does not have a key `k`
+# If `t` has a member with key `k`, it removes and returns it;
+# otherwise it returns `()`.
+public isolated function removeIfHasKey(table&lt;Type&gt; key&lt;KeyType&gt; t, KeyType k) returns Type? = external;
+
+# Removes all members of a table.
+# This panics if any member cannot be removed.
+#
+# + t - the table
+public isolated function removeAll(table&lt;any|error&gt; t) returns () = external;
+
+# Tests whether `t` has a member with key `k`.
+#
+# + t - the table
+# + k - the key
+# + return - true if `t` has a member with key `k`
+public isolated function hasKey(table&lt;Type&gt; key&lt;KeyType&gt; t, KeyType k) returns boolean = external;
+
+# Returns a list of all the keys of table `t`.
+#
+# + t - the table
+# + return - a new list of all keys
+public isolated function keys(table&lt;any|error&gt; key&lt;KeyType&gt; t) returns KeyType[] = external;
+
+# Returns a list of all the members of a table.
+#
+# + t - the table
+# + return - an array whose members are the members of `t`
+public isolated function toArray(table&lt;Type&gt; t) returns Type[] = external;
+
+# Returns the next available integer key.
+# + t - the table with a key of type int
+# + return - an integer not yet used as a key
+# This is maximum used key value + 1, or 0 if no key used
+# XXX should it be 0, if the maximum used key value is &lt; 0?
+# Provides similar functionality to auto-increment
+public isolated function nextKey(table&lt;any|error&gt; key&lt;int&gt; t) returns int = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.typedesc">10.3.13 <code>lang.typedesc</code> module</h4>
+
+<p>The <code>lang.typedesc</code> module corresponds to basic type typedesc.</p>
+
+<pre class="langlib">
+
+# A record representing an identifier for a module.
+# This uniquely identifies a module within a program.
+public type ModuleId readonly &amp; record {|
+    # the organization
+    string organization;
+    # the module name
+    string name;
+    # platform-specified parts of the identifier
+    string[] platformParts;
+|};
+
+# A record representing a type-id.
+# A type-id uniquely identifies an occurrence of a distinct type descriptor
+# within a program.
+public type TypeId readonly &amp; record {|
+    # An identifier for the module.
+    ModuleId moduleId;
+    # An identifier within the module identified by `moduleId`.
+    # If it is a string, then it is the name of a type defined in the module.
+    # If it is an integer, then it is compiler-generated.
+    (string|int) localId;
+|};
+
+# Returns the type-ids induced by a typedesc value.
+# + t - the typedesc
+# + primaryOnly - if true, only the primary type-ids will be returned; otherwise,
+    all type-ids will be returned
+# + return - an array containing the type-ids induced by `t` or nil if `t` is not definite
+public isolated function typeIds(typedesc t, boolean primaryOnly = false) returns readonly &amp; TypeId[]?
+    = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.xml">10.3.14 <code>lang.xml</code> module</h4>
+
+<p>The <code>lang.xml</code> module corresponds to basic type xml.</p>
+
+<pre class="langlib">
+
+# The namespace URI bound to the `xml` prefix.
+public const string XML_NAMESPACE_URI = "http://www.w3.org/XML/1998/namespace";
+# The namespace URI bound to the `xmlns` prefix.
+public const string XMLNS_NAMESPACE_URI = "http://www.w3.org/2000/xmlns/";
+
+# The expanded name of the `xml:space` attribute.
+public const string space = "{http://www.w3.org/XML/1998/namespace}space";
+# The expanded name of the `xml:lang` attribute.
+public const string lang = "{http://www.w3.org/XML/1998/namespace}lang";
+# The expanded name of the `xml:base` attribute.
+public const string base = "{http://www.w3.org/XML/1998/namespace}base";
+
+# Type for singleton elements.
+# Built-in subtype of xml.
+@builtinSubtype
+public type Element xml;
+
+# Type for singleton processing instructions.
+# Built-in subtype of xml.
+@builtinSubtype
+public type ProcessingInstruction xml;
+
+# Type for singleton comments.
+# Built-in subtype of xml.
+@builtinSubtype
+public type Comment xml;
+
+# Type for zero or more text characters.
+# Built-in subtype of xml.
+# Adjacent xml text items are automatically concatenated,
+# so an xml sequence belongs to this type if it is a singleton test sequence
+# or the empty sequence.
+@builtinSubtype
+public type Text xml;
+
+# Returns number of xml items in `x`.
+#
+# + x - xml item
+# + return - number of XML items in `x`
+public isolated function length(xml x) returns int = external;
+
+# A type parameter that is a subtype of any singleton or empty xml sequence.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type ItemType Element|Comment|ProcessingInstruction|Text;
+# A type parameter that is a subtype of `xml`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type XmlType xml;
+
+# Returns an iterator over the xml items of `x`
+#
+# + x - xml sequence to iterate over
+# + return - iterator object
+# Each item is represented by an xml singleton.
+public isolated function iterator(xml&lt;ItemType&gt; x) returns object {
+    public isolated function next() returns record {| ItemType value; |}?;
+} = external;
+
+# Returns the item of `x` with index `i`.
+# This differs from `x[i]` in that it panics if
+# `x` does not have an item with index `i`.
+#
+# + x - the xml sequence 
+# + k - the index
+# + return - the item with index `i` in `x`
+public isolated function get(xml&lt;ItemType&gt; x, int i) returns ItemType = external;
+
+# Concatenates xml and string values.
+#
+# + xs - xml or string items to concatenate
+# + return - an xml sequence that is the concatenation of all the `xs`;
+#    an empty xml sequence if the `xs` are empty
+public isolated function concat((xml|string)... xs) returns xml = external;
+
+# Returns a string giving the expanded name of `elem`.
+#
+# + elem - xml element
+# + return - element name
+public isolated function getName(Element elem) returns string = external;
+
+# Change the name of element `elem` to `xName`.
+#
+# + elem - xml element
+# + xName - new expanded name
+public isolated function setName(Element elem, string xName) = external;
+
+# Returns the map representing the attributes of `elem`.
+# This includes namespace attributes.
+# The keys in the map are the expanded names of the attributes.
+#
+# + x - xml element
+# + return - attributes of `x`
+public isolated function getAttributes(Element x) returns map&lt;string&gt; = external;
+
+# Returns the children of `elem`.
+#
+# + elem - xml element
+# + return - children of `elem`
+public isolated function getChildren(Element elem) returns xml = external;
+
+# Sets the children of `elem` to `children`.
+# This panics if it would result in the element structure
+# becoming cyclic.
+#
+# + elem - xml element
+# + children - xml or string to set as children
+public isolated function setChildren(Element elem, xml|string children) = external;
+
+# Returns the descendants of `elem`.
+#
+# + elem - xml element
+# + return - descendants of `elem`
+# The descendants of an element are the children of the element
+# together with, for each of those children that is an element,
+# the descendants of that element, ordered so that
+# each element immediately precedes all its descendants.
+# The order of the items in the returned sequence will thus correspond
+# to the order in which the first character of the representation
+# of the item would occur in the representation of the element in XML syntax.
+public isolated function getDescendants(Element elem) returns xml = external;
+
+# Returns a string with the character data of an xml value.
+# + x - the xml value
+# + return - a string consisting of all the character data of `x`
+# The character data of an xml value is as follows:
+# * the character data of a text item is a string with one character for each
+#     character information item represented by the text item;
+# * the character data of an element item is the character data of its children;
+# * the character data of a comment item is the empty string;
+# * the character data of a processing instruction item is the empty string;
+# * the character data of an empty xml sequence is the empty string;
+# * the character data of the concatenation of two xml sequences x1 and x2 is the
+#    concatenation of the character data of x1 and the character data of x2.
+public isolated function data(xml x) returns string = external;
+
+# Returns the target part of the processing instruction.
+#
+# + x - xml processing instruction item
+# + return - target part of `x`
+public isolated function getTarget(ProcessingInstruction x) returns string = external;
+
+# Returns the content of a processing instruction or comment item.
+#
+# + x - xml item
+# + return - the content of `x`
+public isolated function getContent(ProcessingInstruction|Comment x) returns string = external;
+
+# Creates a new xml element item.
+#
+# + name - the name of the new element
+# + attributes - the attributes of the new element
+# + children - the children of the new element
+# + return - an xml sequence consisting of only a new xml element with name `name`,
+#   attributes `attributes`, and children `children`
+# The element's attribute map is a newly created map, into which any attributes specified
+# by the `attributes` map are copied.
+public isolated function createElement(string name, map&lt;string&gt; attributes = {}, xml children = xml``)
+    returns Element = external;
+
+# Creates a new xml processing instruction item.
+#
+# + target - the target part of the processing instruction to be constructed
+# + content - the content part of the processing instruction to be constructed
+# + return - an xml sequence consisting of a processing instruction with target `target`
+#     and content `content`
+public isolated function createProcessingInstruction(string target, string content)
+    returns ProcessingInstruction = external;
+
+# Creates a new xml comment item.
+#
+# + content - the content of the comment to be constructed.
+# + return - an xml sequence consisting of a comment with content `content`
+public isolated function createComment(string content) returns Comment = external;
+
+# Constructs an xml value of type Text.
+# + data - the character data of the Text item
+# + return - an xml sequence that is either empty or consists of one text item
+# The returned xml value will be empty when the length of `data` is zero.
+public isolated function createText(string data) returns Text = external;
+
+# Returns a subsequence of an xml value.
+#
+# + x - the xml value
+# + startIndex - start index, inclusive
+# + endIndex - end index, exclusive
+# + return - a subsequence of `x` consisting of items with index &gt;= startIndex and &lt; endIndex
+public isolated function slice(xml&lt;ItemType&gt; x, int startIndex, int endIndex = x.length())
+    returns xml&lt;ItemType&gt; = external;
+
+# Strips the insignificant parts of the an xml value.
+# Comment items, processing instruction items are considered insignificant.
+# After removal of comments and processing instructions, the text is grouped into
+# the biggest possible chunks (i.e. only elements cause division into multiple chunks)
+# and a chunk is considered insignificant if the entire chunk is whitespace.
+#
+# + x - the xml value
+# + return - `x` with insignificant parts removed
+public isolated function strip(xml x) returns xml = external;
+
+# Selects elements from an xml value.
+# If `nm` is `()`, selects all elements;
+# otherwise, selects only elements whose expanded name is `nm`.
+# 
+# + x - the xml value
+# + nm - the expanded name of the elements to be selected, or `()` for all elements
+# + return - an xml sequence consisting of all the element items in `x` whose expanded name is `nm`,
+#  or, if `nm` is `()`, all element items in `x`
+public isolated function elements(xml x, string? nm = ()) returns xml&lt;Element&gt; = external;
+
+# Returns the children of elements in an xml value.
+# When `x` is of type Element, it is equivalent to `getChildren`.
+# + x - xml value
+# + return - xml sequence containing the children of each element x concatenated in order
+# This is equivalent to `elements(x).map(getChildren)`.
+public isolated function children(xml x) returns xml = external;
+
+# Selects element children of an xml value
+# + x - the xml value
+# + nm - the expanded name of the elements to be selected, or `()` for all elements
+# + return - an xml sequence consisting of child elements of elements in `x`; if `nm`
+#  is `()`, returns a sequence of all such elements;
+#  otherwise, include only elements whose expanded name is `nm`
+# This is equivalent to `children(x).elements(nm)`.
+public isolated function elementChildren(xml x, string? nm = ()) returns xml&lt;Element&gt; = external;
+
+# Selects text items from an xml value.
+# + x - the xml value
+# return - an xml sequence consisting of the concatentation of the text items in `x`
+public isolated function text(xml x) returns Text = external;
+
+
+# Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
+# Each item is represented as a singleton value.
+#
+# + x - the xml value
+# + func - a function to apply to each child or `item`
+# + return - new xml value containing result of applying function `func` to each child or `item`
+public isolated function map(xml&lt;ItemType&gt; x, @isolatedParam function(ItemType item) returns XmlType func)
+    returns xml&lt;XmlType&gt; = external;
+
+# Applies a function to each item in an xml sequence.
+# Each item is represented as a singleton value.
+#
+# + x - the xml value
+# + func - a function to apply to each item in `x`
+public isolated function forEach(xml&lt;ItemType&gt; x, @isolatedParam function(ItemType item) returns () func)
+    = external;
+
+# Selects the items from an xml sequence for which a function returns true.
+# Each item is represented as a singleton value.
+#
+# + x - xml value
+# + func - a predicate to apply to each item to test whether it should be selected
+# + return - new xml sequence containing items in `x` for which `func` evaluates to true
+public isolated function filter(xml&lt;ItemType&gt; x, @isolatedParam function(ItemType item) returns boolean func)
+    returns xml = external;
+
+# Constructs an xml value from a string.
+# This parses the string using the `content` production of the
+# XML 1.0 Recommendation.
+#
+# + s - a string in XML format
+# + return - xml value resulting from parsing `s`, or an error
+public isolated function fromString(string s) returns xml|error = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.transaction">10.3.15 <code>lang.transaction</code> module</h4>
+
+<p>The <code>lang.transaction</code> module supports transactions.</p>
+
+<pre class="langlib">
+
+
+# Type of error returned by commit action.
+type Error distinct error;
+
+# Information about a transaction that does not change
+# after the transaction is started.
+type Info readonly &amp; record {|
+   # Unique identifier for the transaction branch
+   byte[] xid;
+   # The number of previous attempts in a sequence of retries
+   int retryNumber;
+   # Information about the previous attempt in a sequence of retries.
+   # This will be `()` if the `retryNumber` is 0.
+   Info? prevAttempt;
+   # The time at which the transaction was started.
+   Timestamp startTime;
+|};
+
+# An instant in time.
+public type Timestamp readonly &amp; object {
+    # Returns milliseconds since 1970-01-01T00:00:00Z, not including leap seconds
+    public function toMillisecondsInt() returns int;
+    # Returns a string representation of the timestamp in ISO 8601 format
+    public function toString() returns string;
+};
+
+# Returns information about the current transaction
+public transactional isolated function info() returns Info = external;
+
+# Returns information about the transaction with
+# the specified xid.
+public isolated function getInfo(byte[] xid) returns Info? = external;
+
+# Prevents the global transaction from committing successfully.
+# This ask the transaction manager that when it makes the decision
+# whether to commit or rollback, it should decide to rollback.
+#
+# + error - the error that caused the rollback or `()`, if there is none
+public transactional isolated function setRollbackOnly(error? e) = external;
+
+# Tells whether it is known that the transaction will be rolled back.
+# + return - true if it is known that the transaction manager will,
+# when it makes the decision whether to commit or rollback, decide
+# to rollback
+public transactional isolated function getRollbackOnly() returns boolean = external;
+
+# Associates some data with the current transaction branch.
+public transactional isolated function setData(readonly data) = external;
+
+# Retrieves data associated with the current transaction branch.
+# The data is set using `setData`.
+# + return - the data, or `()` if no data has been set.
+public transactional isolated function getData() returns readonly = external;
+
+# Type of a commit handler function.
+# + info - information about the transaction being committed
+public type CommitHandler isolated function(Info info);
+
+# Type of a rollback handler function.
+# + info - information about the transaction being committed
+# + cause - an error describing the cause of the rollback, if there is
+# + willRetry - true if the transaction will be retried, false otherwise
+public type RollbackHandler isolated function(Info info, error? cause, boolean willRetry);
+
+# Adds a handler to be called if and when the global transaction commits.
+#
+# + handler - the function to be called on commit
+public transactional isolated function onCommit(CommitHandler handler) = external;
+
+# Adds a handler to be called if and when the global transaction rolls back.
+#
+# + handler - the function to be called on rollback
+public transactional isolated function onRollback(RollbackHandler handler) = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.runtime">10.3.16 <code>lang.runtime</code> module</h4>
+
+<p>The <code>lang.runtime</code> module provides functions related to the
+language runtime that are not specific to a particular basic type.</p>
+
+<pre class="langlib">
+
+# Sleep for `seconds`.
+# + seconds - a decimal giving the length of time to sleep in seconds
+# The function will do nothing for the specified period of time before returning.
+# This will cause the current strand to yield.
+public isolated function sleep(decimal seconds) = external; 
+
+# A listener that is dynamically registered with a module.
+public type DynamicListener object {
+   public function 'start() returns error?;
+   public function gracefulStop() returns error?;
+   public function immediateStop() returns error?;
+};
+
+# Register a listener object with a module.
+# + listener - the listener object to be registered
+# The listener becomes a module listener of the module from which this
+# function is called.
+public isolated function registerListener(DynamicListener listener) = external;
+
+# Deregister a listener from a module.
+# + listener - the listener object to be unregistered
+# The `listener` ceases to be a module listener of the module from
+# which this function is called.
+public isolated function deregisterListener(DynamicListener listener) = external;
+
+
+# Type representing a stack frame.
+# A call stack is represented as an array of stack frames.
+# This type is also present in lang.error to avoid a dependency.
+public type StackFrame readonly &amp; object {
+   # Returns a string representing this StackFrame.
+   # This must not contain any newline characters.
+   # + return - a string
+   public function toString() returns string;
+};
+
+# Return a stack trace for the current call stack.
+# + return - an array representing the current call stack
+# The first member of the array represents the top of the call stack.
+public isolated function getStackTrace() returns StackFrame[] = external;
+</pre>
+
+</section>
+
+<section>
+<h4 id="lang.value">10.3.17 <code>lang.value</code> module</h4>
+
+<p>The <code>lang.value</code> module provides functions that work on values of
+more than one basic type..</p>
+
+<pre class="langlib">
+
+# The type of value to which `clone` and `cloneReadOnly` can be applied.
+public type Cloneable readonly|xml|Cloneable[]|map&lt;Cloneable&gt;|table&lt;map&lt;Cloneable&gt;&gt;;
+
+# A type parameter that is a subtype of `Cloneable`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type CloneableType Cloneable;
+
+# Returns a clone of `v`.
+# A clone is a deep copy that does not copy immutable subtrees.
+# A clone can therefore safely be used concurrently with the original.
+# It corresponds to the Clone(v) abstract operation,
+# defined in the Ballerina Language Specification.
+#
+# + v - source value
+# + return - clone of `v`
+public isolated function clone(CloneableType v) returns CloneableType = external;
+
+# Returns a clone of `v` that is read-only, i.e. immutable.
+# It corresponds to the ImmutableClone(v) abstract operation,
+# defined in the Ballerina Language Specification.
+#
+# + v - source value
+# + return - immutable clone of `v`
+public isolated function cloneReadOnly(CloneableType v) returns CloneableType &amp; readonly = external;
+
+# Constructs a value with a specified type by cloning another value.
+# + v - the value to be cloned
+# + t - the type for the cloned to be constructed
+# + return - a new value that belongs to type `t`, or an error if this cannot be done
+# 
+# When `v` is a structural value, the inherent type of the value to be constructed
+# comes from `t`. When `t` is a union, it must be possible to determine which
+# member of the union to use for the inherent type by following the same rules
+# that are used by list constructor expressions and mapping constructor expressions
+# with the contextually expected type. If not, then an error is returned.
+# The `cloneWithType` operation is recursively applied to each member of `v` using
+# the type descriptor that the inherent type requires for that member.
+# 
+# Like the Clone abstract operation, this does a deep copy, but differs in
+# the following respects:
+# - the inherent type of any structural values constructed comes from the specified
+#   type descriptor rather than the value being constructed
+# - the read-only bit of values and fields comes from the specified type descriptor
+# - the graph structure of `v` is not preserved; the result will always be a tree;
+#   an error will be returned if `v` has cycles
+# - immutable structural values are copied rather being returned as is; all
+#   structural values in the result will be mutable.
+# - numeric values can be converted using the NumericConvert abstract operation
+# - if a record type descriptor specifies default values, these will be used
+#   to supply any missing members
+public isolated function cloneWithType(anydata v, typedesc&lt;anydata&gt; t = &lt;&gt;) returns t|error = external;
+
+# Safely casts a value to a type.
+# This casts a value to a type in the same way as a type cast expression,
+# but returns an error if the cast cannot be done, rather than panicking.
+# + v - the value to be cast
+# + t - a typedesc for the type to which to cast it
+# return - `v` cast to the type described by `t`, or an error, if the cast cannot be done
+public isolated function ensureType(any|error v, typedesc&lt;any&gt; t = &lt;&gt;) returns t|error = external;
+
+# Performs a direct conversion of a value to a string.
+# The conversion is direct in the sense that when applied to a value that is already
+# a string it leaves the value unchanged.
+#
+# + v - the value to be converted to a string
+# + return - a string resulting from the conversion
+#
+# The details of the conversion are specified by the ToString abstract operation
+# defined in the Ballerina Language Specification, using the direct style.
+public isolated function toString(any v) returns string = external;
+
+# Converts a value to a string that describes the value in Ballerina syntax.
+# + v - the value to be converted to a string
+# + return - a string resulting from the conversion
+#
+# If `v` is anydata and does not have cycles, then the result will
+# conform to the grammar for a Ballerina expression and when evaluated
+# will result in a value that is == to v.
+#
+# The details of the conversion are specified by the ToString abstract operation
+# defined in the Ballerina Language Specification, using the expression style.
+public isolated function toBalString(any v) returns string = external;
+
+# Parses and evaluates a subset of Ballerina expression syntax.
+# + s - the string to be parsed and evaluated
+# return - the result of evaluating the parsed expression, or
+# an error if the string cannot be parsed
+# The subset of Ballerina expression syntax supported is that produced
+# by toBalString when applied to an anydata value.
+function fromBalString(string s) returns anydata|error = external;
+
+
+# Converts a value of type `anydata` to `json`.
+# This does a deep copy of `v` converting values that do
+# not belong to json into values that do.
+# A value of type `xml` is converted into a string as if
+# by the `toString` function.
+# A value of type `table` is converted into a list of
+# mappings one for each row.
+# The inherent type of arrays in the return value will be
+# `json[]` and of mappings will be `map&lt;json&gt;`.
+# A new copy is made of all structural values, including
+# immutable values.
+#
+# + v - anydata value
+# + return - representation of `v` as value of type json
+# This panics if `v` has cycles.
+public isolated function toJson(anydata v) returns json = external;
+
+# Returns the string that represents `v` in JSON format.
+# `v` is first converted to `json` as if by the `toJson` function.
+#
+# + v - anydata value
+# + return - string representation of `v` converted to `json`
+public isolated function toJsonString(anydata v) returns string = external;
+
+# Parses a string in JSON format and returns the the value that it represents.
+# Numbers in the JSON string are converted into Ballerina values of type
+# decimal except in the following two cases:
+# if the JSON number starts with `-` and is numerically equal to zero, then it is
+# converted into float value of `-0.0`;
+# otherwise, if the JSON number is syntactically an integer and is in the range representable
+# by a Ballerina int, then it is converted into a Ballerina int.
+# A JSON number is considered syntactically an integer if it contains neither
+# a decimal point nor an exponent.
+# 
+# Returns an error if the string cannot be parsed.
+#
+# + str - string in JSON format
+# + return - `str` parsed to json or error
+public isolated function fromJsonString(string str) returns json|error = external;
+
+# Subtype of `json` that allows only float numbers.
+public type JsonFloat ()|boolean|string|float|JsonFloat[]|map&lt;JsonFloat&gt;;
+
+# Parses a string in JSON format, using float to represent numbers.
+# Returns an error if the string cannot be parsed.
+#
+# + str - string in JSON format
+# + return - `str` parsed to json or error
+public isolated function fromJsonFloatString(string str) returns JsonFloat|error = external;
+
+# Subtype of `json` that allows only decimal numbers.
+public type JsonDecimal ()|boolean|string|decimal|JsonDecimal[]|map&lt;JsonDecimal&gt;;
+
+# Parses a string in JSON format, using decimal to represent numbers.
+# Returns an error if the string cannot be parsed.
+#
+# + str - string in JSON format
+# + return - `str` parsed to json or error
+public isolated function fromJsonDecimalString(string str) returns JsonDecimal|error = external;
+
+# Converts a value of type json to a user-specified type.
+# This works the same as `cloneWithType`,
+# except that it also does the inverse of the conversions done by `toJson`.
+#
+# + v - json value
+# + t - type to convert to
+# + return - value belonging to type `t` or error if this cannot be done
+public isolated function fromJsonWithType(json v, typedesc&lt;anydata&gt; t = &lt;&gt;)
+    returns t|error = external;
+
+# Converts a string in JSON format to a user-specified type.
+# This is a combination of `fromJsonString` followed by
+# `fromJsonWithType`.
+# + str - string in JSON format
+# + t - type to convert to
+# + return - value belonging to type `t` or error if this cannot be done
+public isolated function fromJsonStringWithType(string str, typedesc&lt;anydata&gt; t = &lt;&gt;)
+    returns t|error = external;
+    
+# Merges two json values.
+#
+# + j1 - json value
+# + j2 - json value
+# + return - the merge of `j1` with `j2` or an error if the merge fails
+#
+# The merge of `j1` with `j2` is defined as follows:
+# - if `j1` is `()`, then the result is `j2`
+# - if `j2` is `()`, then the result is `j1`
+# - if `j1` is a mapping and `j2` is a mapping, then for each entry [k, j] in j2,
+#   set `j1[k]` to the merge of `j1[k]` with `j`
+#     - if `j1[k]` is undefined, then set `j1[k]` to `j`
+#     - if any merge fails, then the merge of `j1` with `j2` fails
+#     - otherwise, the result is `j1`.
+# - otherwise, the merge fails
+# If the merge fails, then `j1` is unchanged.
+public isolated function mergeJson(json j1, json j2) returns json|error = external;
+</pre>
+
+</section>
+
+</section>
+
 </section>
 <section class="appendix">
 <h2 id="references">A. References</h2>
@@ -10598,6 +12750,7 @@ not work well with distinct error types.</li>
 <li>In message passing between workers, the function's default worker is now
 referenced using the <code>function</code> keyword rather than the
 <code>default</code> keyword.</li>
+<li>Make <code>trap</code> expression have lower precedence.</li>
 </ol>
 </section>
 <section>

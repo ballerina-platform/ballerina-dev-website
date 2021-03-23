@@ -39,7 +39,7 @@ jobs:
         cd ballerina-release
 
         BALLERINA_VERSION="`jq -r '.version' ../_data/swanlake-latest/metadata.json`"
-        SHORT_VERSION="`echo $BALLERINA_VERSION | sed 's/swan-lake-preview/slp/g'`"
+        SHORT_VERSION="`jq -r '."short-version"' ../_data/swanlake-latest/metadata.json`"
 
         curl http://dist-dev.ballerina.io/downloads/$BALLERINA_VERSION/ballerina-$BALLERINA_VERSION.zip --output ballerina.zip
 

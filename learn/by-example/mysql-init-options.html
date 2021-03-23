@@ -66,7 +66,7 @@ redirect_from:
             <span class="nx">mode</span><span class="p">:</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">SSL_PREFERRED</span>
 
         <span class="p">},</span>
-        <span class="nx">connectTimeoutInSeconds</span><span class="p">:</span> <span class="mi">10</span>
+        <span class="nx">connectTimeout</span><span class="p">:</span> <span class="mi">10</span>
     <span class="p">};</span>
     <span class="c1">// Initialize the MySQL client with MySQL database options.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient5</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span>
@@ -82,7 +82,7 @@ redirect_from:
         <span class="nx">maxOpenConnections</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
         <span class="c1">// Default max life time of a connection in the connection pool is</span>
         <span class="c1">// 1800 seconds (30 minutes).</span>
-        <span class="nx">maxConnectionLifeTimeInSeconds</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span>
+        <span class="nx">maxConnectionLifeTime</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span>
         <span class="c1">// Default minimum number of idle connections is 15.</span>
         <span class="nx">minIdleConnections</span><span class="p">:</span> <span class="mi">5</span>
 
@@ -139,11 +139,11 @@ redirect_from:
                             <p><p>This example demonstrates how to initialize the MySQL client with different
  initialization options. Note that, the MySQL database driver JAR should be
  defined in the <code>Ballerina.toml</code> file as a dependency.
- See <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerinax/mysql/latest/mysql/">MySQL module</a> for sample configuration.
+ See <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/mysql/">MySQL module</a> for sample configuration.
  The MySQL connector uses database properties from MySQL version 8.0.x onwards. Therefore, it is
  recommended to use a MySQL driver version greater than 8.0.x.<br><br>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerinax/mysql/latest/mysql/">MySQL module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/mysql/">MySQL module</a>.</p>
 </p>
 
                         </td>
@@ -463,7 +463,7 @@ string dbPassword = &quot;Test@123&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        },
-        connectTimeoutInSeconds: 10
+        connectTimeout: 10
     };
 </code></pre></div>
 
@@ -538,7 +538,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        maxConnectionLifeTimeInSeconds: 2000.0,
+                                    <div class="highlight"><pre><code class=language-ballerina>        maxConnectionLifeTime: 2000.0,
 </code></pre></div>
 
                                 </td>

@@ -101,7 +101,7 @@ redirect_from:
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">modifiedMarks</span> <span class="p">=</span> <span class="nx">marks</span><span class="p">.</span><span class="nx">entries</span><span class="p">().</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">([</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">pair</span><span class="p">)</span>
         <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
             <span class="k">var</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">score</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pair</span><span class="p">;</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s scored: %d&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">score</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`${name} scored: ${score}`</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">score</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">);</span>
@@ -131,7 +131,7 @@ redirect_from:
                             <p><p>The <code>map</code> type in Ballerina defines a mutable mapping from keys (that are strings) to values of the type specified as
  the map&rsquo;s constraint type.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/lang.map/latest/lang.map/">lang.map module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/lang.map/latest/lang.map/">lang.map module</a>.</p>
 </p>
 
                         </td>
@@ -172,7 +172,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2c63f950aadef4a69b1ff34fc09c3135&file=maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a42a11fb524dd1c0b146549a03aeaa94&file=maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -628,7 +628,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; modifiedMarks = marks.entries().map(function ([string, int] pair)
         returns int {
             var [name, score] = pair;
-            io:println(io:sprintf(&quot;%s scored: %d&quot;, name, score));
+            io:println(string `${name} scored: ${score}`);
             return score + 10;
         }
     );

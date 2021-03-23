@@ -25,13 +25,12 @@ redirect_from:
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
          <div class="cFeaturedVersion">
 
-            <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.version | capitalize_all }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
+            <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
             <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
-               <p>If you already have jBallerina installed, you can use the <a href="/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to update it to {{ site.data.swanlake-latest.metadata.version | capitalize_all }}. To do this, first, execute the command below to get the Update Tool updated to its latest version. </p>
-               <pre>ballerina update</pre>
-               <p>From now onwards, the `ballerina` command has to be issued as `bal`.
-               Next, execute the command below to update to {{ site.data.swanlake-latest.metadata.version | capitalize_all }}.</p>
-               <pre>bal dist pull {{ site.data.swanlake-latest.metadata.version | replace: "swan-lake-alpha1", "slalpha1" }}</pre>
+               <p>If you already have jBallerina installed, you can use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to update it to {{ site.data.swanlake-latest.metadata.display-version }}. To do this, first, execute the command below to get the Update Tool updated to its latest version. </p>
+               <pre>bal update</pre>
+               <p>If you are using an <strong>Update Tool version below 0.8.14</strong>, execute the `ballerina update` command to update it. Next, execute the command below to update to {{ site.data.swanlake-latest.metadata.display-version }}.</p>
+               <pre>bal dist pull {{ site.data.swanlake-latest.metadata.version | replace: "swan-lake-alpha", "slalpha" }}</pre>
                <p>For further details, see the <a href="/downloads/swan-lake-release-notes">Release Note</a>. </p>
             </div>
             <br>
@@ -44,7 +43,7 @@ redirect_from:
    <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
          <p>
-            If you are new to Ballerina, download a Ballerina distribution from below based on your operating system.  
+            If you are new to Ballerina, download a Ballerina distribution from below based on your operating system and <a href="/learn/getting-started/installing-ballerina/">install it</a>.  </p>
       </div>
    </div>
 </div>
@@ -90,7 +89,7 @@ redirect_from:
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
             <h3 class="cMac">macOS</h3>
             <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
-               <div class="cSize">Installer pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
+               <div class="cSize">Installer pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.macos-installer-size }}</span></div>
             </a>
             <ul class="cDiwnloadSubLinks">
                <li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.md5">md5</a></li>
@@ -101,10 +100,44 @@ redirect_from:
          
       </div>
       
+<div>
+</br>
+<div class="clearfix"></div>
+</div>
+</br>
+<div class="row">
+   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+      <p>
+         Next, download the Ballerina Visual Studio Code extension from below and <a href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/">install it</a>.</p>
    </div>
 </div>
-
+</div>
 </br>
+<div class="clearfix"></div>
+<div class="row cDownloads">
+<div class="container">
+   <div class=" ">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+         <h3 class="cVSCode">Visual Studio Code</h3>
+         <a id="packWindows" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha3/ballerina-swan-lake-alpha3.vsix" class="cGTMDownload cDownload cDownloadNew" data-download="downloads">
+            <div class="cSize">Extension  vsix <span id="packWindowsName">2.7mb</span></div>
+         </a>
+         <ul class="cDiwnloadSubLinks">
+            <li><a id="packWindowsMd5" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha3/ballerina-swan-lake-alpha3.vsix.md5">md5</a></li>
+            <li><a id="packWindowsSha1" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha3/ballerina-swan-lake-alpha3.vsix.sha1">SHA-1</a></li>
+            <li><a id="packWindowsAsc" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha3/ballerina-swan-lake-alpha3.vsix.asc">asc</a></li>
+         </ul>
+      </div>
+  
+
+
+      
+   </div>
+   
+<div>
+</br>
+<div class="clearfix"></div>
+
 <div class="clearfix"></div>
 <div class="row cDownloads">
    <div class="container">
@@ -118,34 +151,8 @@ redirect_from:
       </div>
    </div>
 </div>
+<div class="clearfix"></div>
 
-<div class="row">
-   <div class="container">
-      <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6">
-         <div class="cInstallers">
-            <h3 style="margin-bottom: 24px; margin-top: 40px;"></h3>
-            <div class="">
-               <table id="insPackages0">
-
-                  <tr>
-                     <td style="width: 50%">Visual Studio Code Plugin (vsix)</td>
-                     <td style="width: 1%; white-space: nowrap;"><a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix" class="cDownloadLinkIcon" target="_blank"><img src="/img/download-bg-green-fill.svg"></a></td>
-                     <td style="width: 1%; white-space: nowrap;"><a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.md5">md5</a></td>
-                     <td style="width: 1%; white-space: nowrap;"><a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.sha1">SHA-1</a></td>
-                     <td style="width: 1%; white-space: nowrap;"><a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.asc">asc</a></td>
-                  </tr>
-
-
-
-
-
-
-               </table>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
 <div class="row">
    <div class="container">
       <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6">
@@ -154,25 +161,9 @@ redirect_from:
             <div class="">
                <table id="insPackages0">
                   <tr>
-                     <!--<td style="width: 50%">Install the Visual Studio Code plugin <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" class="cDownloadLinkIcon" target="_blank"><img src="/img/download-bg-green-fill.svg"></a>-->
-                  
-                     <!--<td style="width: 25%; white-space: nowrap;">Install the Visual Studio Code Plugin (vsix) <a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.stable-latest.metadata.version }}/ballerina-{{ site.data.stable-latest.metadata.version }}.vsix" class="cGTMDownload cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.stable-latest.metadata.version }}.vsix"><img src="/img/download-bg-green-fill.svg"></a>-->
-
-                     <!--<td style="width: 1%"><a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.stable-latest.metadata.version }}/ballerina-{{ site.data.stable-latest.metadata.version }}.vsix" class="cGTMDownload cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.stable-latest.metadata.version }}.vsix"><img src="/img/download-bg-green-fill.svg"></a></td>-->
-
-
-                    <!--<td><a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.stable-latest.metadata.version }}/ballerina-{{ site.data.stable-latest.metadata.version }}.vsix.md5">md5</a> &nbsp;
-                    
-                    <a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.stable-latest.metadata.version }}/ballerina-{{ site.data.stable-latest.metadata.version }}.vsix.sha1">SHA-1</a> &nbsp;
-                    
-                    <a href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.stable-latest.metadata.version }}/ballerina-{{ site.data.stable-latest.metadata.version }}.vsix.asc">asc</a>
-                    
-                    </td>--> 
                     
                   </tr>
-                  <tr>
-                     <td style="width: 50%">Install on macOS using Homebrew <a href="/learn/getting-started/installing-ballerina/#installing-on-macos" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td>
-                  </tr>
+                 
                   <tr>
                      <td style="width: 50%">Install via the ZIP archive <a href="/learn/getting-started/installing-ballerina/#installing-via-the-ballerina-language-zip-file" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td>
                   </tr>
@@ -192,10 +183,10 @@ redirect_from:
    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
       <div class="cFeaturedVersion">
          <div class="cDownloadsHeader">
-            <p style="margin-top: 30px;">For setting up the VSCode Ballerina extension, see <a href="/learn/getting-started/setting-up-visual-studio-code/">Setting up Visual Studio Code</a>
+            <!--<p style="margin-top: 30px;">For setting up the VSCode Ballerina extension, see <a href="/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a>
                and for installation instructions, see <a href="/learn/getting-started/installing-ballerina/">Installing Ballerina</a>.
             </p>
-            </p>
+            </p>-->
 
 
 

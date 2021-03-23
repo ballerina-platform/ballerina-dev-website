@@ -211,7 +211,7 @@ ul#tree  {
 
 
     span.icon {
-        background-color: #20b6b0;
+        background-color: transparent;
         width: 14px;
         height: 14px; 
         display: inline-block;
@@ -223,6 +223,7 @@ ul#tree  {
 
     span.icon:hover {
         background-color: #464646;
+
     }
 
 
@@ -230,6 +231,7 @@ ul#tree  {
 
     span.icon.plus-icon {
     background-image: url("/img/plus.svg");
+    background-size: 8px;
     
 
 }
@@ -288,7 +290,7 @@ color: #fff !important;
   @media screen and (-webkit-min-device-pixel-ratio:0)
     and (min-resolution:.001dpcm) {
         span.icon {
-            background-color: #20b6b0;
+            background-color: transparent;
             width: 14px;
             height: 14px;
             display: inline-block;
@@ -306,3 +308,23 @@ color: #fff !important;
     );} 
   }
 
+
+
+  @-moz-document url-prefix() {
+    .abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon {
+        margin-right: 8px;
+        cursor: pointer;
+    }
+    
+    span.icon {
+        background-color: transparent;
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        margin-left: -23px;
+        background-size: 12px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+  }

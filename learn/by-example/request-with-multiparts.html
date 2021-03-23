@@ -20,28 +20,26 @@ redirect_from:
 <span class="c1">//Binds the listener to the service.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">multiparts</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">decode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span>
-                                        <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">decode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span><span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// [Extracts bodyparts](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getBodyParts) from the request.</span>
+        <span class="c1">// [Extracts bodyparts](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getBodyParts) from the request.</span>
         <span class="k">var</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
+
         <span class="k">if</span> <span class="p">(</span><span class="nx">bodyParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
             <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">part</span> <span class="nx">in</span> <span class="nx">bodyParts</span> <span class="p">{</span>
                 <span class="nx">handleContent</span><span class="p">(</span><span class="nx">part</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bodyParts</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">bodyParts</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error in decoding multiparts!&quot;</span><span class="p">);</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="s">&quot;Error in decoding multiparts!&quot;</span><span class="p">};</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">encode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">encode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
         <span class="c1">//Create a json body part.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">jsonBodyPart</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">jsonBodyPart</span><span class="p">.</span><span class="nx">setContentDisposition</span><span class="p">(</span>
@@ -59,7 +57,7 @@ redirect_from:
         <span class="c1">// Create an array to hold all the body parts.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">jsonBodyPart</span><span class="p">,</span> <span class="nx">xmlFilePart</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// [Set the body parts](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setBodyParts) to the request.</span>
+        <span class="c1">// [Set the body parts](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#setBodyParts) to the request.</span>
         <span class="c1">// Here the content-type is set as multipart form data.</span>
         <span class="c1">// This also works with any other multipart media type.</span>
         <span class="c1">// eg:- `multipart/mixed`, `multipart/related` etc.</span>
@@ -67,50 +65,40 @@ redirect_from:
         <span class="nx">request</span><span class="p">.</span><span class="nx">setBodyParts</span><span class="p">(</span><span class="nx">bodyParts</span><span class="p">,</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">returnResponse</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/multiparts/decode&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">returnResponse</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">returnResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error occurred while sending multipart &quot;</span> <span class="o">+</span>
-                                    <span class="s">&quot;request!&quot;</span><span class="p">);</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="s">&quot;Error occurred while sending multipart request!&quot;</span><span class="p">};</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// The content logic that handles the body parts vary based on your requirement.</span>
 <span class="kd">function</span> <span class="nx">handleContent</span><span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">bodyPart</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// [Get the media type](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/functions#getMediaType) from the body part retrieved from the request.</span>
+    <span class="c1">// [Get the media type](https://docs.central.ballerina.io/ballerina/mime/latest/mime/functions#getMediaType) from the body part retrieved from the request.</span>
     <span class="k">var</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">getMediaType</span><span class="p">(</span><span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">());</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MediaType</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">baseType</span> <span class="p">=</span> <span class="nx">mediaType</span><span class="p">.</span><span class="nx">getBaseType</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span> <span class="o">||</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts `xml` data](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getXml) from the body part.</span>
+            <span class="c1">//[Extracts `xml` data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getXml) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getXml</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts `json` data](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getJson) from the body part.</span>
+            <span class="c1">//[Extracts `json` data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getJson) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts text data](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getText) from the body part.</span>
+            <span class="c1">//[Extracts text data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getText) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
@@ -138,7 +126,7 @@ redirect_from:
  When you request multiparts from the HTTP inbound request, you get an array of body parts (an array of entities).
  You can loop through this array and handle the received body parts according to your requirement.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/">Mime module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/">Mime module</a>.</p>
 </p>
 
                         </td>
@@ -228,6 +216,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -281,8 +271,8 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post decode(http:Caller caller, http:Request
-                                        request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post decode(http:Request request)
+            returns http:Response|http:InternalServerError{
         http:Response response = new;
 </code></pre></div>
 
@@ -296,21 +286,6 @@ import ballerina/mime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var bodyParts = request.getBodyParts();
-        if (bodyParts is mime:Entity[]) {
-            foreach var part in bodyParts {
-                handleContent(part);
-            }
-            response.setPayload(&lt;@untainted&gt;bodyParts);
-        } else {
-            log:printError(bodyParts.message());
-            response.setPayload(&quot;Error in decoding multiparts!&quot;);
-            response.statusCode = 500;
-        }
-        var result = caller-&gt;respond(response);
-        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
-        }
-    }
 </code></pre></div>
 
                                 </td>
@@ -318,7 +293,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getBodyParts">Extracts bodyparts</a> from the request.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getBodyParts">Extracts bodyparts</a> from the request.</p>
 
                                         </div>
                                     </div>
@@ -329,7 +304,30 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get encode(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (bodyParts is mime:Entity[]) {
+            foreach var part in bodyParts {
+                handleContent(part);
+            }
+            response.setPayload(&lt;@untainted&gt;bodyParts);
+            return response;
+        } else {
+            log:printError(bodyParts.message());
+            return {body:&quot;Error in decoding multiparts!&quot;};
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get encode(http:Request req)
+            returns http:Response|http:InternalServerError {
 </code></pre></div>
 
                                 </td>
@@ -429,19 +427,9 @@ import ballerina/mime;
                                     <div class="highlight"><pre><code class=language-ballerina>        request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
         var returnResponse = clientEP-&gt;post(&quot;/multiparts/decode&quot;, request);
         if (returnResponse is http:Response) {
-            var result = caller-&gt;respond(&lt;@untainted&gt;returnResponse);
-            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
-            }
+            return returnResponse;
         } else {
-            http:Response response = new;
-            response.setPayload(&quot;Error occurred while sending multipart &quot; +
-                                    &quot;request!&quot;);
-            response.statusCode = 500;
-            var result = caller-&gt;respond(response);
-            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
-            }
+            return {body:&quot;Error occurred while sending multipart request!&quot;};
         }
     }
 }
@@ -452,7 +440,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setBodyParts">Set the body parts</a> to the request.
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#setBodyParts">Set the body parts</a> to the request.
  Here the content-type is set as multipart form data.
  This also works with any other multipart media type.
  eg:- <code>multipart/mixed</code>, <code>multipart/related</code> etc.
@@ -497,7 +485,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/functions#getMediaType">Get the media type</a> from the body part retrieved from the request.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/functions#getMediaType">Get the media type</a> from the body part retrieved from the request.</p>
 
                                         </div>
                                     </div>
@@ -510,7 +498,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getXml();
             if (payload is xml) {
-                log:print(payload.toString());
+                log:printInfo(payload.toString());
             } else {
                 log:printError(payload.message());
             }
@@ -522,7 +510,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getXml">Extracts <code>xml</code> data</a> from the body part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getXml">Extracts <code>xml</code> data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -535,7 +523,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getJson();
             if (payload is json) {
-                log:print(payload.toJsonString());
+                log:printInfo(payload.toJsonString());
             } else {
                 log:printError(payload.message());
             }
@@ -547,7 +535,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getJson">Extracts <code>json</code> data</a> from the body part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getJson">Extracts <code>json</code> data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -560,7 +548,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getText();
             if (payload is string) {
-                log:print(payload);
+                log:printInfo(payload);
             } else {
                 log:printError(payload.message());
             }
@@ -574,7 +562,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getText">Extracts text data</a> from the body part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getText">Extracts text data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -616,7 +604,9 @@ import ballerina/mime;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># In the directory, which contains the `.bal` file, create a directory named `file`,
+# and add an XML files named `test.xml` in it.
+# To start the service, navigate to the directory that contains the
 # `.bal` file and use the `bal run` command below.
 bal run request_with_multiparts.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090

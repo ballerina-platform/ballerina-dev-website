@@ -1,8 +1,8 @@
 ---
 layout: ballerina-example-page
 title: URL Encode/Decode Operations
-description: BBE on how to perform encoding/decoding content using different URL encoding mechanisms and algorithms in Ballerina.
-keywords: ballerina, ballerina by example, encoding, decoding, url encoding, url decoding
+description: BBE on how to perform encoding/decoding a URL or part of a URL.
+keywords: ballerina, ballerina by example, url encoding, url decoding
 permalink: /learn/by-example/url-encode-decode
 redirect_from:
   - /swan-lake/learn/by-example/url-encode-decode
@@ -11,32 +11,19 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">encoding</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">url</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">encodingValue</span> <span class="p">=</span> <span class="s">&quot;abc123!?$*&amp;()&#39;-=@~&quot;</span><span class="p">;</span>
-    <span class="c1">// Encoding a URL into a Base64-encoded string.</span>
-    <span class="kt">string</span> <span class="nx">urlEncodedValue</span> <span class="p">=</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">encodeBase64Url</span><span class="p">(</span><span class="nx">encodingValue</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 URL encoded value: &quot;</span><span class="p">,</span> <span class="nx">urlEncodedValue</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">value1</span> <span class="p">=</span> <span class="s">&quot;data=value&quot;</span><span class="p">;</span>
+    <span class="c1">// Encoding a URL component into a string.</span>
+    <span class="kt">string</span> <span class="nx">encoded</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">url</span><span class="p">:</span><span class="nx">encode</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URL encoded value: &quot;</span><span class="p">,</span> <span class="nx">encoded</span><span class="p">);</span>
 
-    <span class="kt">string</span> <span class="nx">decodingValue</span> <span class="p">=</span> <span class="s">&quot;YWJjMTIzIT8kKiYoKSctPUB-&quot;</span><span class="p">;</span>
-    <span class="c1">// Decoding a Base64 URL encoded string into a byte array.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">urlDecodedValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">decodeBase64Url</span><span class="p">(</span><span class="nx">decodingValue</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 URL decoded value: &quot;</span><span class="p">,</span>
-        <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">urlDecodedValue</span><span class="p">));</span>
-
-    <span class="kt">string</span> <span class="nx">encodingUriComp</span> <span class="p">=</span> <span class="s">&quot;data=value&quot;</span><span class="p">;</span>
-    <span class="c1">// Encoding a URI component into a string.</span>
-    <span class="kt">string</span> <span class="nx">encodedUriComponent</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">encodeUriComponent</span><span class="p">(</span><span class="nx">encodingUriComp</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URI encoded value: &quot;</span><span class="p">,</span> <span class="nx">encodedUriComponent</span><span class="p">);</span>
-
-    <span class="kt">string</span> <span class="nx">data</span> <span class="p">=</span> <span class="s">&quot;data%3Dvalue&quot;</span><span class="p">;</span>
-    <span class="c1">// Decoding an encoded URI component into a string.</span>
-    <span class="kt">string</span> <span class="nx">decodedUriComponent</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">encoding</span><span class="p">:</span><span class="nx">decodeUriComponent</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URI decoded value: &quot;</span><span class="p">,</span> <span class="nx">decodedUriComponent</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">value2</span> <span class="p">=</span> <span class="s">&quot;data%3Dvalue&quot;</span><span class="p">;</span>
+    <span class="c1">// Decoding an encoded URL component into a string.</span>
+    <span class="kt">string</span> <span class="nx">decoded</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">url</span><span class="p">:</span><span class="nx">decode</span><span class="p">(</span><span class="nx">value2</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URL decoded value: &quot;</span><span class="p">,</span> <span class="nx">decoded</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -47,9 +34,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>URL Encode/Decode Operations</h2>
-                            <p><p>Ballerina encoding API supports encoding/decoding content using different URL encoding mechanisms and algorithms.
+                            <p><p>Ballerina URL API supports encoding/decoding a URL or part of a URL.
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/encoding/latest/encoding/">Encoding module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/url/latest/url/">URL module</a>.</p>
 </p>
 
                         </td>
@@ -90,7 +77,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=fc423d2f0ed942a50ff4e5044790b48f&file=url_encode_decode.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4b2345dcd36f004109aae666c5f3cc1b&file=url_encode_decode.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -119,14 +106,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -135,7 +114,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/encoding;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/url;
 import ballerina/io;
 </code></pre></div>
 
@@ -149,7 +128,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-    string encodingValue = &quot;abc123!?$*&amp;()&#39;-=@~&quot;;
+    string value1 = &quot;data=value&quot;;
 </code></pre></div>
 
                                 </td>
@@ -161,8 +140,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string urlEncodedValue = encoding:encodeBase64Url(encodingValue.toBytes());
-    io:println(&quot;Base64 URL encoded value: &quot;, urlEncodedValue);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string encoded = check url:encode(value1, &quot;UTF-8&quot;);
+    io:println(&quot;URL encoded value: &quot;, encoded);
 </code></pre></div>
 
                                 </td>
@@ -170,7 +149,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encoding a URL into a Base64-encoded string.</p>
+                                            <p>Encoding a URL component into a string.</p>
 
                                         </div>
                                     </div>
@@ -181,73 +160,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string decodingValue = &quot;YWJjMTIzIT8kKiYoKSctPUB-&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] urlDecodedValue = check encoding:decodeBase64Url(decodingValue);
-    io:println(&quot;Base64 URL decoded value: &quot;,
-        check string:fromBytes(urlDecodedValue));
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Decoding a Base64 URL encoded string into a byte array.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string encodingUriComp = &quot;data=value&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string encodedUriComponent =
-        check encoding:encodeUriComponent(encodingUriComp, &quot;UTF-8&quot;);
-    io:println(&quot;URI encoded value: &quot;, encodedUriComponent);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Encoding a URI component into a string.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string data = &quot;data%3Dvalue&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string value2 = &quot;data%3Dvalue&quot;;
 </code></pre></div>
 
                                 </td>
@@ -259,9 +172,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string decodedUriComponent =
-        check encoding:decodeUriComponent(data, &quot;UTF-8&quot;);
-    io:println(&quot;URI decoded value: &quot;, decodedUriComponent);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string decoded = check url:decode(value2, &quot;UTF-8&quot;);
+    io:println(&quot;URL decoded value: &quot;, decoded);
 }
 </code></pre></div>
 
@@ -270,7 +182,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Decoding an encoded URI component into a string.</p>
+                                            <p>Decoding an encoded URL component into a string.</p>
 
                                         </div>
                                     </div>
@@ -297,10 +209,8 @@ import ballerina/io;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
 bal run url_encode_decode.bal
-Base64 URL encoded value: YWJjMTIzIT8kKiYoKSctPUB-
-Base64 URL decoded value: abc123!?$*&amp;()&#39;-=@~
-URI encoded value: data%3Dvalue
-URI decoded value: data=value
+URL encoded value: data%3Dvalue
+URL decoded value: data=value
 </code></pre></div>
 
                                 </td>

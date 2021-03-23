@@ -6,11 +6,11 @@ keywords: ballerina, community, ballerina community
 permalink: /community/
 ---
 
-The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
+The Ballerina community has been bootstrapped by <a href="https://wso2.com" target="_blank">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0" target="_blank">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
 ## Try out Ballerina
 
-[Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
+[Learn Ballerina](/learn) and try out writing Ballerina code on your own.
 
 
 ## Subscribe to the newsletter
@@ -20,8 +20,8 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-5/">Latest Ballerina Newsletter</a></li>
-<li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues">Past newsletter issues</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-1/" target="_blank">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues" target="_blank">Past newsletter issues</a></li>
 
 </ul>
 
@@ -51,11 +51,13 @@ Interested? Subscribe to it below:
 
 The Ballerina team is now hosting monthly recorded Community Calls! These are interactive meetings that will explore Ballerina use cases. These calls give you direct access to our Engineers and other community members to question or discuss about Ballerina and your projects.
 
-- Get information on the [past and upcoming calls](https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit).
+- Get information on the <a href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">past and upcoming calls</a>. 
 
-- Be notified about [details of the upcoming community calls](https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform).
+- Be notified about the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform" target="_blank">details of the upcoming community calls</a>.
 
-- Get involved in our next Community Call by [submitting a discussion topic or requesting to do your own quick demo](https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform).
+- Check out the recordings of all our <a href="https://www.youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU">past community calls</a>.
+
+- Get involved in our next Community Call by <a href="https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform" target="_blank">submitting a discussion topic or requesting to do your own quick demo</a>.
 
 ## Seek help
 
@@ -64,22 +66,22 @@ We are happy to help! Come engage with us on any channel that works for you.
 <div class="col-sm-12 col-md-12 cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
   <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
-      <a class="cCommunityIcons" href="https://twitter.com/ballerinalang"><img src="/img/twitter.svg"></a>
+      <a class="cCommunityIcons" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"></a>
       </div>
    </div>
    <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
-      <a class="cCommunityIcons" href="/community/slack"><img src="/img/slack.svg"></a>
+      <a class="cCommunityIcons" href="/community/slack" target="_blank"><img src="/img/slack.svg"></a>
       </div>
    </div>
       <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
-      <a class="cCommunityIcons" href="https://stackoverflow.com/questions/tagged/ballerina"><img src="/img/stackoverflow.svg"></a>
+      <a class="cCommunityIcons" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"></a>
       </div>
    </div>
    <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
-      <a class="cCommunityIcons" href="https://groups.google.com/forum/#!forum/ballerina-dev"><img src="/img/google-groups.svg"></a>
+      <a class="cCommunityIcons" href="https://groups.google.com/forum/#!forum/ballerina-dev" target="_blank"><img src="/img/google-groups.svg"></a>
       </div>
    </div>
 </div>
@@ -88,21 +90,24 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
 
-   - Compiler, runtime, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
-   - Standard Library: <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues">ballerina-standard-library</a> repo
-   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo
-   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo
-   - Security flaw: send an email to <a href="mailto:security@ballerina.io">security@ballerina.io</a>. For details, see the <a href="/security">security policy</a>.
+   - Compiler, runtime, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues" target="_blank">ballerina-lang</a> repo
+   - Standard Library: <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank">ballerina-standard-library</a> repo
+   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues" target="_blank">ballerina-spec</a> repo
+   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues" target="_blank">ballerina-dev-website</a> repo
+   - Security flaw: send an email to <a href="mailto:security@ballerina.io" target="_blank">security@ballerina.io</a>. For details, see the <a href="/security" target="_blank">security policy</a>.
 
 ## Help us grow 
 
 Getting a language established is like getting a new religion going. If you like the experience so far, help us to spread the word.
 
-- Start by starring the <a href="https://github.com/ballerina-platform/ballerina-lang">Ballerina GitHub repo</a>. Thank you!
-- Follow us on Twitter: <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
-- Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io">Ballerina Central</a> so that the whole community can benefit from your work. 
-- Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog">community-driven Tech Blog</a>. 
-- Buzz us on <a href="mailto:contact@ballerina.io">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
+- Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues. Thank you!
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div> 
+- Follow us on Twitter: <a href="https://twitter.com/ballerinalang" target="_blank">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
+- Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io" target="_blank">Ballerina Central</a> so that the whole community can benefit from your work. 
+- Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog" target="_blank">community-driven Tech Blog</a>. 
+- Buzz us on <a href="mailto:contact@ballerina.io" target="_blank">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
+- Download any file of the <a href="https://github.com/ballerina-platform/ballerina-dev-website/tree/master/ballerina-logos" target="_blank">Ballerina logo</a> to use for content or swag.
+
 
 <!-- ## Want to be kept up-to-date?
 
@@ -117,7 +122,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 ## Contribute to Ballerina
 
-Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contribution Guide</a>. Happy contributing! 
+Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" target="_blank">Contribution Guide</a>. Happy contributing! 
 
 <style>
 .nav > li.cVersionItem {

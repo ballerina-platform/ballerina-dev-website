@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page
 title: Transactional Producer
-description: BBE on how to transactionally produce messages using `kafka:Producer`.
+description: BBE on how to transactionally produce messages using `kafka&#58;Producer`.
 keywords: ballerina, ballerina by example, bbe, kafka, producer, transaction
 permalink: /learn/by-example/kafka-producer-transactional
 redirect_from:
@@ -45,7 +45,7 @@ redirect_from:
 
 <span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">sendProducerRecord</span><span class="p">({</span>
+        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
             <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
             <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">,</span>
             <span class="nx">partition</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
@@ -333,7 +333,7 @@ import ballerinax/kafka;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
     transaction {
-        var sendResult = kafkaProducer-&gt;sendProducerRecord({
+        var sendResult = kafkaProducer-&gt;send({
             topic: &quot;test-kafka-topic&quot;,
             value: message,
             partition: 0 });

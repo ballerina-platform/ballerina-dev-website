@@ -19,7 +19,7 @@ redirect_from:
 <span class="c1">// to avoid deadlocks.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="nx">w1val</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;2*3&quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nx">w1val</span> <span class="p">=</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;2*3&quot;</span><span class="p">);</span>
         <span class="c1">// Sends a message asynchronously to the worker `w2`.</span>
         <span class="nx">w1val</span> <span class="o">-&gt;</span> <span class="nx">w2</span><span class="p">;</span>
         <span class="c1">// Receives a message from the worker `w2`.</span>
@@ -37,7 +37,7 @@ redirect_from:
     <span class="c1">// A worker can have an explicit return type, or else, if a return type is not mentioned,</span>
     <span class="c1">// it is equivalent to returning ().</span>
     <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="nx">w2val</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;17*5&quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nx">w2val</span> <span class="p">=</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;17*5&quot;</span><span class="p">);</span>
         <span class="c1">// Receives a message from the worker `w1`.</span>
         <span class="kt">int</span> <span class="nx">w1val</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2] Message from w1: &quot;</span><span class="p">,</span> <span class="nx">w1val</span><span class="p">);</span>
@@ -45,19 +45,19 @@ redirect_from:
         <span class="nx">w1val</span> <span class="o">+</span> <span class="nx">w2val</span> <span class="o">-&gt;</span> <span class="nx">w1</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w3</span> <span class="p">{</span>
-        <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">w1val</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
-        <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">w2val</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nx">w1val</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nx">w2val</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w3] Messages from w1: &quot;</span><span class="p">,</span> <span class="nx">w1val</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">w2val</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="c1">// Waits for the worker `w1`to finish.</span>
     <span class="nx">wait</span> <span class="nx">w1</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">string</span> <span class="nx">expr</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted int|error {</span>
+<span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">string</span> <span class="nx">expr</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted int {</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span>
-        <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="kt">string</span> <span class="s">`/v4/?expr=${expr}`</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">check</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">checkpanic</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span>
+        <span class="kt">string</span> <span class="s">`/v4/?expr=${expr}`</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">checkpanic</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -115,7 +115,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=aa56e577029bf82c11c67988bf9f0101&file=worker_interaction.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f0a3b6ac6bc51c4d4819e9525fbb5f3e&file=worker_interaction.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -179,7 +179,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     worker w1 {
-        int w1val = checkpanic calculate(&quot;2*3&quot;);
+        int w1val = calculate(&quot;2*3&quot;);
 </code></pre></div>
 
                                 </td>
@@ -283,7 +283,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
-        int w2val = checkpanic calculate(&quot;17*5&quot;);
+        int w2val = calculate(&quot;17*5&quot;);
 </code></pre></div>
 
                                 </td>
@@ -326,8 +326,8 @@ import ballerina/io;
                                     <div class="highlight"><pre><code class=language-ballerina>        w1val + w2val -&gt; w1;
     }
     worker w3 {
-        int|error w1val = &lt;- w1;
-        int|error w2val = &lt;- w1;
+        int w1val = &lt;- w1;
+        int w2val = &lt;- w1;
         io:println(&quot;[w3] Messages from w1: &quot;, w1val, &quot;, &quot;, w2val);
     }
 </code></pre></div>
@@ -368,11 +368,11 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function calculate(string expr) returns @tainted int|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function calculate(string expr) returns @tainted int {
     http:Client httpClient = checkpanic new (&quot;https://api.mathjs.org&quot;);
-    string response = &lt;string&gt; check
-        httpClient-&gt;get(string `/v4/?expr=${expr}`, targetType = string);
-    return check int:fromString(response);
+    string response = &lt;string&gt; checkpanic httpClient-&gt;get(
+        string `/v4/?expr=${expr}`, targetType = string);
+    return checkpanic int:fromString(response);
 }
 </code></pre></div>
 

@@ -20,8 +20,8 @@ redirect_from:
             <span class="c1">// Retry configuration options.</span>
             <span class="nx">retryConfig</span><span class="p">:</span> <span class="p">{</span>
 
-                <span class="c1">// Initial retry interval in milliseconds.</span>
-                <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+                <span class="c1">// Initial retry interval in seconds.</span>
+                <span class="nx">interval</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
 
                 <span class="c1">// Number of retry attempts before giving up.</span>
                 <span class="nx">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
@@ -30,15 +30,15 @@ redirect_from:
                 <span class="c1">// the retry interval.</span>
                 <span class="nx">backOffFactor</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
 
-                <span class="c1">// Upper limit of the retry interval in milliseconds. If</span>
-                <span class="c1">// `intervalInMillis` into `backOffFactor` value exceeded</span>
-                <span class="c1">// `maxWaitIntervalInMillis` interval value,</span>
-                <span class="c1">// `maxWaitIntervalInMillis` will be considered as the retry</span>
+                <span class="c1">// Upper limit of the retry interval in seconds. If</span>
+                <span class="c1">// `interval` into `backOffFactor` value exceeded</span>
+                <span class="c1">// `maxWaitInterval` interval value,</span>
+                <span class="c1">// `maxWaitInterval` will be considered as the retry</span>
                 <span class="c1">// interval.</span>
-                <span class="nx">maxWaitIntervalInMillis</span><span class="p">:</span> <span class="mi">20000</span>
+                <span class="nx">maxWaitInterval</span><span class="p">:</span> <span class="mi">20</span>
 
             <span class="p">},</span>
-            <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
+            <span class="k">timeout</span><span class="p">:</span> <span class="mi">2</span>
         <span class="p">}</span>
     <span class="p">);</span>
 
@@ -58,7 +58,7 @@ redirect_from:
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
-                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -67,7 +67,7 @@ redirect_from:
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
-                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+                                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
 
@@ -84,14 +84,15 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Request received from the client to delayed service.&quot;</span><span class="p">);</span>
-            <span class="c1">// Delay the response by 5000 milliseconds to mimic network level delays.</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
+                <span class="s">&quot;Request received from the client to delayed service.&quot;</span><span class="p">);</span>
+            <span class="c1">// Delay the response by 5 seconds to mimic network level delays.</span>
             <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
                 <span class="s">&quot;Request received from the client to healthy service.&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
@@ -102,7 +103,7 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
-                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                        <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -116,7 +117,7 @@ redirect_from:
                             <h2>Retry</h2>
                             <p><p>The HTTP retry client tries sending over the same request to the backend service when there is a network level failure.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -270,7 +271,7 @@ import ballerina/lang.runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                intervalInMillis: 3000,
+                                    <div class="highlight"><pre><code class=language-ballerina>                interval: 3,
 </code></pre></div>
 
                                 </td>
@@ -278,7 +279,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initial retry interval in milliseconds.</p>
+                                            <p>Initial retry interval in seconds.</p>
 
                                         </div>
                                     </div>
@@ -328,7 +329,7 @@ import ballerina/lang.runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                maxWaitIntervalInMillis: 20000
+                                    <div class="highlight"><pre><code class=language-ballerina>                maxWaitInterval: 20
 </code></pre></div>
 
                                 </td>
@@ -336,10 +337,10 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Upper limit of the retry interval in milliseconds. If
- <code>intervalInMillis</code> into <code>backOffFactor</code> value exceeded
- <code>maxWaitIntervalInMillis</code> interval value,
- <code>maxWaitIntervalInMillis</code> will be considered as the retry
+                                            <p>Upper limit of the retry interval in seconds. If
+ <code>interval</code> into <code>backOffFactor</code> value exceeded
+ <code>maxWaitInterval</code> interval value,
+ <code>maxWaitInterval</code> will be considered as the retry
  interval.</p>
 
                                         </div>
@@ -352,7 +353,7 @@ import ballerina/lang.runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            },
-            timeoutInMillis: 2000
+            timeout: 2
         }
     );
 </code></pre></div>
@@ -414,7 +415,7 @@ import ballerina/lang.runtime;
             var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;backendResponse);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;,
-                                err = responseToCaller);
+                                &#39;error = responseToCaller);
             }
         } else {
             http:Response response = new;
@@ -423,7 +424,7 @@ import ballerina/lang.runtime;
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;,
-                                err = responseToCaller);
+                                &#39;error = responseToCaller);
             }
         }
 </code></pre></div>
@@ -495,7 +496,8 @@ import ballerina/lang.runtime;
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
         counter = counter + 1;
         if (counter % 4 != 0) {
-            log:print(&quot;Request received from the client to delayed service.&quot;);
+            log:printInfo(
+                &quot;Request received from the client to delayed service.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -515,7 +517,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Delay the response by 5000 milliseconds to mimic network level delays.</p>
+                                            <p>Delay the response by 5 seconds to mimic network level delays.</p>
 
                                         </div>
                                     </div>
@@ -529,7 +531,7 @@ import ballerina/lang.runtime;
                                     <div class="highlight"><pre><code class=language-ballerina>            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(responseToCaller);
         } else {
-            log:print(
+            log:printInfo(
                 &quot;Request received from the client to healthy service.&quot;);
             var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(responseToCaller);
@@ -550,7 +552,7 @@ import ballerina/lang.runtime;
                                     <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
         log:printError(&quot;Error sending response from mock service&quot;,
-                        err = result);
+                        &#39;error = result);
     }
 }
 </code></pre></div>

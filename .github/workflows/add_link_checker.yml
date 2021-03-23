@@ -1,4 +1,4 @@
-# This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/link-checker).
+# This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/lychee-link-checker-action).
 
 on: [pull_request]
 name: Link Checker 
@@ -9,24 +9,17 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the site
         uses: shafreenAnfar/jekyll-build-action@v5
-      - name: Link Checker
+      - name: Lychee link checker action
         id: lc
-        uses: peter-evans/link-checker@v1
+        uses: lycheeverse/lychee-action@v1.0.4
         with:
-          args: -r learn 1.2 -x 1.0 1.1 https?:// -d ./_site 
+          args: /learn/** /1.2/** /_site/** --exclude twitter.com --exclude novacodecamp.org --exclude %7B%7B%20site.dist_server%20%7D%7D --exclude %7B%7B%20site.plugin_vscode_repo%20%7D%7D --verbose --base-url https://dev.ballerina.io *.md *.html
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
           name: Link Checker Report
-          path:  ./link-checker/out.md
+          path:  ./lychee/out.md  
       - name: Fail if there were link errors
-        run: if [[ $(grep -c ".*" ./link-checker/out.md) == "5" ]]; then echo "Success"; exit 0; else echo "Fail"; exit 1; fi
-
-      #- name: SendGrid
-        #uses: peter-evans/sendgrid-action@v1
-        #env:
-          #SENDGRID_API_KEY: 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
-          #SCRIPT_FILEPATH: ./scripts/sendgrid.js
-
-
-
+        run: exit ${{ steps.lc.outputs.exit_code }}
+        
+        

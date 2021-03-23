@@ -77,20 +77,22 @@ redirect_from:
     <span class="kt">boolean</span> <span class="nx">contains</span> <span class="p">=</span> <span class="nx">statement</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s">&quot;Town&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Contains: &quot;</span><span class="p">,</span> <span class="nx">contains</span><span class="p">);</span>
 
-    <span class="c1">// Format a `string` according to the given format arguments.</span>
+    <span class="c1">// Format a `string` according to the given format arguments</span>
+    <span class="c1">// using string templates.</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Sam&quot;</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">marks</span> <span class="p">=</span> <span class="mi">90</span><span class="p">;</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">subjects</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">,</span> <span class="s">&quot;Science&quot;</span><span class="p">];</span>
     <span class="kt">float</span> <span class="nx">average</span> <span class="p">=</span> <span class="mf">71.5</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">s8</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s scored %d for %s and has an average of %.2f.&quot;</span><span class="p">,</span>
-     <span class="nx">name</span><span class="p">,</span> <span class="nx">marks</span><span class="p">,</span> <span class="nx">subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">average</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sprintf: &quot;</span><span class="p">,</span> <span class="nx">s8</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">s8</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${name} scored ${marks} for ${subjects[0]} and has an</span>
+<span class="s">                  average of ${average}`</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;String templates: &quot;</span><span class="p">,</span> <span class="nx">s8</span><span class="p">);</span>
 
     <span class="c1">// Member access is allowed with strings to access individual characters</span>
     <span class="c1">// of a string. Member access panics if the integer index is out of range.</span>
     <span class="kt">string</span> <span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">country</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Member Access: &quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -103,7 +105,7 @@ redirect_from:
                             <h2>String</h2>
                             <p><p>Ballerina contains a comprehensive set of functions to manipulate strings.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/lang.string/latest/lang.string/">lang.string module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/lang.string/latest/lang.string/">lang.string module</a>.</p>
 </p>
 
                         </td>
@@ -144,7 +146,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=37e4340d3d4df0c25b83e61839986655&file=strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=756cd9e77631651d501b1a735483f70f&file=strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -162,6 +164,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -515,9 +519,9 @@ redirect_from:
     int marks = 90;
     string[] subjects = [&quot;English&quot;, &quot;Science&quot;];
     float average = 71.5;
-    string s8 = io:sprintf(&quot;%s scored %d for %s and has an average of %.2f.&quot;,
-     name, marks, subjects[0], average);
-    io:println(&quot;Sprintf: &quot;, s8);
+    string s8 = string `${name} scored ${marks} for ${subjects[0]} and has an
+                  average of ${average}`;
+    io:println(&quot;String templates: &quot;, s8);
 </code></pre></div>
 
                                 </td>
@@ -525,7 +529,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Format a <code>string</code> according to the given format arguments.</p>
+                                            <p>Format a <code>string</code> according to the given format arguments
+ using string templates.</p>
 
                                         </div>
                                     </div>
@@ -535,11 +540,10 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string country = &quot;Sri Lanka&quot;;
     string c = country[4];
     io:println(&quot;Member Access: &quot;, c);
-}
 </code></pre></div>
 
                                 </td>
@@ -552,6 +556,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -587,7 +603,8 @@ Trim: Ballerina Programming Language
 HasSuffix: true
 HasPrefix: true
 Contains: true
-Sprintf: Sam scored 90 for English and has an average of 71.50.
+String templates: Sam scored 90 for English and has an
+                  average of 71.5
 Member Access: L
 </code></pre></div>
 

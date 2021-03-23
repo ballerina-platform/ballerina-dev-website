@@ -53,7 +53,7 @@ a:hover {
 }
 
 .wy-breadcrumbs li {
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .wy-breadcrumbs li a:hover {
@@ -1789,7 +1789,8 @@ ul, #toc {
 
 .wy-breadcrumbs li, .wy-breadcrumbs li a  , ul.wy-breadcrumbs  {
 	color: #22b7b1 !important;
-	font-size: 14px !important;
+	font-size: 11px !important;
+    text-transform: uppercase;
 }
 
 ul.wy-breadcrumbs {

@@ -12,41 +12,29 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO),</span>
-<span class="c1">// [CHUNKING_ALWAYS](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS),</span>
-<span class="c1">// or [CHUNKING_NEVER](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER).</span>
+<span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#CHUNKING_AUTO),</span>
+<span class="c1">// [CHUNKING_ALWAYS](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#CHUNKING_ALWAYS),</span>
+<span class="c1">// or [CHUNKING_NEVER](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#CHUNKING_NEVER).</span>
 <span class="c1">// In this example, it is set to `CHUNKING_NEVER`, which means that chunking never happens irrespective of how it is</span>
 <span class="c1">// specified in the request. When chunking is set to `CHUNKING_AUTO`, chunking is done as specified in the request.</span>
-<span class="c1">// [http1Settings](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings) annotation</span>
+<span class="c1">// [http1Settings](https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientHttp1Settings) annotation</span>
 <span class="c1">// provides the chunking-related configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
-                                    <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span>
-                                        <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}}</span>
-                                  <span class="p">);</span>
+                        <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span> <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}});</span>
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//Create a new outbound request and set the payload.</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">newReq</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">newReq</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
-        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo/&quot;</span><span class="p">,</span> <span class="nx">newReq</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
+        <span class="c1">//Invoke endpoint with along with a JSON payload.</span>
+        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo/&quot;</span><span class="p">,</span>
+                                                  <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">clientResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span>
                 <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;An error occurred while invoking the service.&quot;</span><span class="p">};</span>
-            <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">msg</span><span class="p">};</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -54,50 +42,35 @@ redirect_from:
 <span class="c1">// A sample backend, which responds according to the chunking behavior.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">echo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="p">.(</span><span class="nd">@http:Header{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;Content-length&quot;</span><span class="p">}</span> <span class="kt">string</span><span class="err">?</span> <span class="nx">cLen</span><span class="p">,</span>
+             <span class="nd">@http:Header{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">}</span> <span class="kt">string</span><span class="err">?</span> <span class="nx">traEncoding</span><span class="p">)</span>
+             <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="p">{</span>
 
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="kt">boolean</span> <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>
         <span class="c1">//Set the response according to the request headers.</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">conLength</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">conLength</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">conLength</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">traEncoding</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">traEncoding</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">value</span> <span class="p">=</span> <span class="nx">traEncoding</span><span class="p">;</span>
-                <span class="c1">//Perform data validation for transfer-encoding.</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;chunked&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;compress&quot;</span>
-                    <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;deflate&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;gzip&quot;</span>
-                    <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding contains invalid data&quot;</span><span class="p">);</span>
-                    <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
-                <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">cLen</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">cLen</span><span class="p">;</span>
+            <span class="c1">//Mark the `value` as trusted data and send out the JSON.</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">};</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">traEncoding</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">value</span> <span class="p">=</span> <span class="nx">traEncoding</span><span class="p">;</span>
+            <span class="c1">//Perform data validation for transfer-encoding.</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;chunked&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;compress&quot;</span>
+                <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;deflate&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;gzip&quot;</span>
+                <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Transfer-Encoding contains invalid data&quot;</span><span class="p">;</span>
+                <span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="nx">badRequest</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">value</span><span class="p">};</span>
+                <span class="k">return</span> <span class="nx">badRequest</span><span class="p">;</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Neither Transfer-Encoding nor &quot;</span>
-                            <span class="o">+</span> <span class="s">&quot;content-length header found&quot;</span><span class="p">;</span>
+                <span class="c1">//Mark the `value` as trusted data and send out the JSON.</span>
+                <span class="k">return</span> <span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">};</span>
             <span class="p">}</span>
         <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(!</span><span class="nx">validationErrorFound</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Since there is no validation error, mark the `value` as trusted data and set it to the response.</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">});</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from echo service&quot;</span><span class="p">,</span>
-                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Neither Transfer-Encoding nor content-length header found&quot;</span><span class="p">;</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="nx">badRequest</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">value</span><span class="p">};</span>
+        <span class="k">return</span> <span class="nx">badRequest</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">isValid</span><span class="p">(</span><span class="kt">boolean</span><span class="p">|</span><span class="nx">error</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">boolean</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -111,7 +84,7 @@ redirect_from:
                             <p><p>This sample demonstrates how to configure the chunking behavior of an HTTP client endpoint. By default, the HTTP client sends messages with the <code>content-length</code> header.
 If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -191,8 +164,6 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -202,7 +173,6 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -215,9 +185,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = check new (&quot;http://localhost:9090&quot;,
-                                    {http1Settings:
-                                        {chunking: http:CHUNKING_NEVER}}
-                                  );
+                        {http1Settings: {chunking: http:CHUNKING_NEVER}});
 </code></pre></div>
 
                                 </td>
@@ -225,12 +193,12 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO">CHUNKING_AUTO</a>,
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
- or <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER">CHUNKING_NEVER</a>.
+                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#CHUNKING_AUTO">CHUNKING_AUTO</a>,
+ <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
+ or <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#CHUNKING_NEVER">CHUNKING_NEVER</a>.
  In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of how it is
  specified in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done as specified in the request.
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings">http1Settings</a> annotation
+ <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientHttp1Settings">http1Settings</a> annotation
  provides the chunking-related configurations.</p>
 
                                         </div>
@@ -254,7 +222,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .() returns http:Response|http:InternalServerError {
 </code></pre></div>
 
                                 </td>
@@ -266,23 +234,14 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Request newReq = new;
-        newReq.setPayload({&quot;name&quot;: &quot;Ballerina&quot;});
-        var clientResponse = clientEndpoint-&gt;post(&quot;/echo/&quot;, newReq);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/echo/&quot;,
+                                                  {&quot;name&quot;: &quot;Ballerina&quot;});
         if (clientResponse is http:Response) {
-            var result = caller-&gt;respond(&lt;@untainted&gt;clientResponse);
-            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
-            }
+            return clientResponse;
         } else {
-            http:Response errorResponse = new;
             json msg =
                 {&quot;error&quot;: &quot;An error occurred while invoking the service.&quot;};
-            errorResponse.setPayload(msg);
-            var response = caller-&gt;respond(errorResponse);
-            if (response is error) {
-                log:printError(&quot;Error sending response&quot;, err = response);
-            }
+            return {body: msg};
         }
     }
 }
@@ -293,7 +252,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new outbound request and set the payload.</p>
+                                            <p>Invoke endpoint with along with a JSON payload.</p>
 
                                         </div>
                                     </div>
@@ -323,8 +282,9 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post .(http:Caller caller, http:Request req) {
-        string value;
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post .(@http:Header{name:&quot;Content-length&quot;} string? cLen,
+             @http:Header{name:&quot;Transfer-Encoding&quot;} string? traEncoding)
+             returns json|http:BadRequest {
 </code></pre></div>
 
                                 </td>
@@ -336,8 +296,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
-        boolean validationErrorFound = false;
+                                    <div class="highlight"><pre><code class=language-ballerina>        string value;
 </code></pre></div>
 
                                 </td>
@@ -349,13 +308,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string|error conLength = req.getHeader(&quot;content-length&quot;);
-        if (conLength is string) {
-            value = &quot;Length-&quot; + conLength;
-        } else {
-            string|error traEncoding = req.getHeader(&quot;Transfer-Encoding&quot;);
-            if (traEncoding is string) {
-                value = traEncoding;
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (cLen is string) {
+            value = &quot;Length-&quot; + cLen;
 </code></pre></div>
 
                                 </td>
@@ -374,18 +328,35 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                if (value != &quot;chunked&quot; &amp;&amp; value != &quot;compress&quot;
-                    &amp;&amp; value != &quot;deflate&quot; &amp;&amp; value != &quot;gzip&quot;
-                    &amp;&amp; value != &quot;identity&quot;) {
-                    res.statusCode = 400;
-                    res.setPayload(&quot;Transfer-Encoding contains invalid data&quot;);
-                    validationErrorFound = true;
-                }
-            } else {
-                value = &quot;Neither Transfer-Encoding nor &quot;
-                            + &quot;content-length header found&quot;;
-            }
+                                    <div class="highlight"><pre><code class=language-ballerina>            return {&quot;Outbound request content&quot;: &lt;@untainted&gt;value};
         }
+        if (traEncoding is string) {
+            value = traEncoding;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Mark the <code>value</code> as trusted data and send out the JSON.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (value != &quot;chunked&quot; &amp;&amp; value != &quot;compress&quot;
+                &amp;&amp; value != &quot;deflate&quot; &amp;&amp; value != &quot;gzip&quot;
+                &amp;&amp; value != &quot;identity&quot;) {
+                value = &quot;Transfer-Encoding contains invalid data&quot;;
+                http:BadRequest badRequest = {body: value};
+                return badRequest;
+            } else {
 </code></pre></div>
 
                                 </td>
@@ -401,28 +372,15 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (!validationErrorFound) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            res.setPayload({&quot;Outbound request content&quot;: &lt;@untainted&gt;value});
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>                return {&quot;Outbound request content&quot;: &lt;@untainted&gt;value};
+            }
         }
-        var result = caller-&gt;respond(res);
-        if (result is error) {
-           log:printError(&quot;Error sending response from echo service&quot;,
-                        err = result);
-        }
+        value = &quot;Neither Transfer-Encoding nor content-length header found&quot;;
+        http:BadRequest badRequest = {body: value};
+        return badRequest;
     }
 }
 </code></pre></div>
@@ -432,27 +390,10 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since there is no validation error, mark the <code>value</code> as trusted data and set it to the response.</p>
+                                            <p>Mark the <code>value</code> as trusted data and send out the JSON.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function isValid(boolean|error value) returns boolean {
-    if (value is boolean) {
-        return value;
-    }
-    return false;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

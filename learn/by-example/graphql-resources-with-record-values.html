@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page
-title: GraphQL Resources with Record Values
-description: A GraphQL service enpoint written in Ballerina
+title: Resources with Record Values
+description: A GraphQL service endpoint written in Ballerina
 keywords: ballerina, ballerina by example, bbe, graphql, graphql service
 permalink: /learn/by-example/graphql-resources-with-record-values
 redirect_from:
@@ -20,9 +20,9 @@ redirect_from:
 <span class="c1">// The `graphql:Service` exposes a GraphQL service on the provided HTTP listener.</span>
 <span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="nx">httpListener</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// Ballerina GraphQL resolvers can return `anydata` values with union of</span>
-    <span class="c1">// `error`s.</span>
-    <span class="c1">// Each field of the `Person` object can be queried by a GraphQL client.</span>
+    <span class="c1">// Ballerina GraphQL resolvers can return `anydata` values with a union of</span>
+    <span class="c1">// `error`s. Each field of the `Person` object can be queried by a GraphQL</span>
+    <span class="c1">// client.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">id</span> <span class="p">&lt;</span> <span class="nx">people</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
@@ -82,11 +82,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>GraphQL Resources with Record Values</h2>
+                            <h2>Resources with Record Values</h2>
                             <p><p>In Ballerina GraphQL, a service represents the GraphQL endpoint.
  Each resource function inside the service represents a resolver function for a field in the root Query type.<br/><br/>
  For more information on the underlying package, see the
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/graphql/latest/graphql/">GraphQL package</a>.<br/><br/>
+ <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/graphql/">GraphQL package</a>.<br/><br/>
  This example shows a GraphQL endpoint, which has a field <code>profile</code> of type <code>Person</code>.
  A GraphQL client can query on this service to retrieve specific fields or subfields of the <code>Person</code> object.</p>
 </p>
@@ -96,16 +96,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="graphql-resources-with-scalar-values.html">
+                                    <a class="prev" href="graphql-hello-world.html">
                                         <span>< PREVIOUS</span>
-                                        <p>GraphQL Resources with Scalar Values</p>
+                                        <p>Hello World</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websocket-text-client.html">
+                                    <a class="next" href="graphql-hierarchical-resource-paths.html">
                                         <span>NEXT ></span>
-                                        <p>Handle Text Messages with Client</p>
+                                        <p>Resources with Hierarchical Resource Paths</p>
                                     </a>
                                 </div>
                                 
@@ -225,9 +225,9 @@ import ballerina/http;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Ballerina GraphQL resolvers can return <code>anydata</code> values with union of
- <code>error</code>s.
- Each field of the <code>Person</code> object can be queried by a GraphQL client.</p>
+                                            <p>Ballerina GraphQL resolvers can return <code>anydata</code> values with a union of
+ <code>error</code>s. Each field of the <code>Person</code> object can be queried by a GraphQL
+ client.</p>
 
                                         </div>
                                     </div>

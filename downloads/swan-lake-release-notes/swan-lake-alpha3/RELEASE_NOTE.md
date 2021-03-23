@@ -591,7 +591,7 @@ websubhub:ContentDistributionMessage msg = {content: "This is sample content del
 var publishResponse = hubClientEP->notifyContentDistribution(msg);
 ```
 
-- Introduced an `websubhub-listener` configuration to configure a websubhub listener.
+- Introduced a `websubhub-listener` configuration to configure a websubhub listener.
 
 ```ballerina
 import ballerina/websubhub;
@@ -625,7 +625,7 @@ string|url:Error decoded = url:decode("http%3A%2F%2Flocalhost%3A9090", "UTF-8");
 
 - The Ballerina HTTP listener can be configured to authenticate and authorize the inbound requests with a Basic Auth file user store.
 
-- Improved client and listener `SecureSocket` APIs of HTTP, gRPC, WebSocket, GraphQL, WebSub, WebSubHub, TCP, Email, NATS, STAN and RabbitMQ modules.
+- Improved client and listener `SecureSocket` APIs of HTTP, gRPC, WebSocket, GraphQL, WebSub, WebSubHub, TCP, Email, NATS, STAN, and RabbitMQ modules.
 
 ```ballerina
 public type ListenerSecureSocket record {|
@@ -894,13 +894,11 @@ bal openapi -i <ballerina file> --json
 #### Bindgen Tool
 
 - Improved the generated bindings with the use of distinct type classes.
-- Improved the internal mechanism used to generate the bindings. Previous handlebars based implementation is now changed to a syntax tree based implementation.
+- Improved the internal mechanism used to generate the bindings. Previous handlebars-based implementation is now changed to a syntax-tree-based implementation.
 
 #### Documentation
 
 - Moved the standard library API documentation out to [Ballerina Central Docs](https://docs.central.ballerina.io) from the Ballerina Website.
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FDevTools).
 
 ##### Language Server
 - The Ballerina Language Server now supports telemetry-based crash reporting. This was enabled through the LSP protocol's [telemetry events](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#telemetry_event). If you wish to disable Ballerina Telemetry, uncheck the **Ballerina: Enable Telemetry** setting from VSCode.

@@ -568,7 +568,7 @@ service /websubhub on new websubhub:Listener(9090) {
 }
 ```
 
-Initializing the `websubhub:HubClient` with the client configurations.
+- Initializing the `websubhub:HubClient` with the client configurations.
 
 ```ballerina
 import ballerina/websubhub;
@@ -591,7 +591,7 @@ websubhub:ContentDistributionMessage msg = {content: "This is sample content del
 var publishResponse = hubClientEP->notifyContentDistribution(msg);
 ```
 
-- Introduced an websubhub-listener configuration to configure a websubhub listener. 
+- Introduced the websubhub-listener configuration to configure a websubhub listener.
 
 ```ballerina
 import ballerina/websubhub;
@@ -625,7 +625,7 @@ string|url:Error decoded = url:decode("http%3A%2F%2Flocalhost%3A9090", "UTF-8");
 
 - The Ballerina HTTP listener can be configured to authenticate and authorize the inbound requests with a Basic Auth file user store.
 
-- Improved client and listener `SecureSocket` APIs of HTTP, GRPC, WebSocket, GraphQL, WebSub, WebSubHub, TCP, Email, NATS, STAN, and RabbitMQ modules.
+- Improved client and listener `SecureSocket` APIs of HTTP, gRPC, WebSocket, GraphQL, WebSub, WebSubHub, TCP, Email, NATS, STAN, and RabbitMQ modules.
 
 ```ballerina
 public type ListenerSecureSocket record {|
@@ -873,7 +873,7 @@ repository = "local"
 #### Test Framework
 
 - Moved the Project Test Suite execution to a single JVM. Changed from running each Test Suite in a JVM instance. This improves the user experience when debugging tests. It no longer prompts to debug each test suite of a project.
-- Support for seamless integration of CICD tools by adding inbuilt path fixes to the Jacoco XML generated for Ballerina packages.
+- Support for seamless integration of CICD tools by adding inbuilt path fixes to the JaCoCo XML generated for Ballerina packages.
 
 #### Debugger
 
@@ -893,14 +893,12 @@ bal openapi -i <ballerina file> --json
 
 #### Bindgen Tool
 
-- Improve the generated bindings with the use of distinct type classes.
-- Improve the internal mechanism used to generate the bindings. Previous handlebars-based implementation is now changed to a syntax-tree-based implementation.
+- Improved the generated bindings with the use of distinct type classes.
+- Improved the internal mechanism used to generate the bindings. Previous handlebars-based implementation is now changed to a syntax-tree-based implementation.
 
 #### Documentation
 
 - Moved the standard library API documentation out to [Ballerina Central Docs](https://docs.central.ballerina.io) from the Ballerina Website.
-
-To view bug fixes, see the GitHub milestone for Swan Lake Alpha3 of the repositories below.
 
 ##### Language Server
 - The Ballerina Language Server now supports telemetry-based crash reporting. This was enabled through the LSP protocol's [telemetry events](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#telemetry_event). If you wish to disable Ballerina Telemetry, uncheck the **Ballerina: Enable Telemetry** setting from VSCode.

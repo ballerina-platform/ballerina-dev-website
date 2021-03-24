@@ -88,8 +88,5 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 
 For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).
 
-## Troubleshooting
-- Stepping over code lines in non-blocking paths (eg: action invocations) will not pause VM on the next line
-    - workaround: manually put a breakpoint to the next line
-- There are some cases where stepping over gives unexpected behavior
-    - E.g., when there are multiple workers and a wait expression waiting for them, even though it steps over to hit and pass the wait line in the source, the workers may not have finished the execution yet.
+
+

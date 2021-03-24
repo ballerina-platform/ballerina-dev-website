@@ -36,9 +36,7 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 ### Existing Limitations
 
-The below are the Ballerina expression types that are currently supported by the debugger expression evaluator and the existing limitations. 
-
-- Anonymous function, query and let expressions are currently not supported.
+- Anonymous function, query, and let expressions are currently not supported.
 - Qualified identifiers are not supported (hence, cannot evaluate imported module entities).
 - Function invocations with rest arguments are work-in-progress.
 - Constructor expressions (list, map, table) are work-in-progress.

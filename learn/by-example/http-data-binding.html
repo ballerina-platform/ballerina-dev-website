@@ -12,7 +12,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">Name</span><span class="p">;</span>
@@ -22,22 +21,17 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// The `orderDetails` parameter in [Payload annotation](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/Payload)</span>
+    <span class="c1">// The `orderDetails` parameter in [Payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/http/records/Payload)</span>
     <span class="c1">// represents the entity body of the inbound request.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
-                               <span class="nd">@http:Payload {} json orderDetails) {</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindJson</span><span class="p">(</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span> <span class="kt">json</span> <span class="nx">orderDetails</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="p">{</span>
         <span class="c1">//Accesses the JSON field values.</span>
         <span class="k">var</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">orderDetails</span><span class="p">.</span><span class="nx">Details</span><span class="p">;</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">details</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">details</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">details</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Details unavailable&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="s">&quot;Order Details unavailable&quot;</span><span class="p">};</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -45,17 +39,10 @@ redirect_from:
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">consumes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;application/xml&quot;</span><span class="p">]</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindXML</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
-                                    <span class="nd">@http:Payload {} xml store) {</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindXML</span><span class="p">(</span><span class="nd">@http:Payload xml store) returns xml {</span>
         <span class="c1">//Accesses the XML content.</span>
         <span class="kt">xml</span> <span class="nx">city</span> <span class="p">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">selectDescendants</span><span class="p">(</span><span class="s">&quot;{http://www.test.com}city&quot;</span><span class="p">);</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">city</span><span class="p">);</span>
-
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">city</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="c1">//Binds the JSON payload to a custom record. The payload&#39;s content should</span>
@@ -63,19 +50,13 @@ redirect_from:
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">consumes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;application/json&quot;</span><span class="p">]</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindStruct</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
-                                 <span class="nd">@http:Payload {} Student student) {</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindStruct</span><span class="p">(</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span> <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
         <span class="c1">//Accesses the fields of the `Student` record.</span>
         <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span><span class="p">});</span>
-
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span><span class="p">};</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -91,7 +72,7 @@ redirect_from:
  parameter name should be declared in the resource config under the <code>body</code> annotation. <code>string</code>, <code>json</code>, <code>xml</code>,
  <code>byte[]</code>, record, and record[] are supported as parameter types.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -165,10 +146,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -178,7 +155,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -218,8 +194,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post bindJson(http:Caller caller, http:Request req,
-                               @http:Payload {} json orderDetails) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post bindJson(@http:Payload json orderDetails)
+            returns json|http:BadRequest {
 </code></pre></div>
 
                                 </td>
@@ -227,7 +203,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>orderDetails</code> parameter in <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/Payload">Payload annotation</a>
+                                            <p>The <code>orderDetails</code> parameter in <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/Payload">Payload annotation</a>
  represents the entity body of the inbound request.</p>
 
                                         </div>
@@ -240,16 +216,11 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var details = orderDetails.Details;
-        http:Response res = new;
         if (details is json) {
-            res.setPayload(&lt;@untainted&gt;details);
+            return details;
         } else {
-            res.statusCode = 400;
-            res.setPayload(&quot;Order Details unavailable&quot;);
-        }
-        var result = caller-&gt;respond(res);
-        if (result is error) {
-            log:printError(result.message(), err = result);
+            http:BadRequest response = {body: &quot;Order Details unavailable&quot;};
+            return response;
         }
     }
 </code></pre></div>
@@ -273,8 +244,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         consumes: [&quot;application/xml&quot;]
     }
-    resource function post bindXML(http:Caller caller, http:Request req,
-                                    @http:Payload {} xml store) {
+    resource function post bindXML(@http:Payload xml store) returns xml {
 </code></pre></div>
 
                                 </td>
@@ -294,8 +264,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        xml city = store.selectDescendants(&quot;{http://www.test.com}city&quot;);
-        http:Response res = new;
-        res.setPayload(&lt;@untainted&gt;city);
+        return city;
+    }
 </code></pre></div>
 
                                 </td>
@@ -311,30 +281,14 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
-        if (result is error) {
-            log:printError(result.message(), err = result);
-        }
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         consumes: [&quot;application/json&quot;]
     }
-    resource function post bindStruct(http:Caller caller, http:Request req,
-                                 @http:Payload {} Student student) {
+    resource function post bindStruct(@http:Payload Student student)
+            returns json {
 </code></pre></div>
 
                                 </td>
@@ -353,12 +307,13 @@ match the record.</p>
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        string name = &lt;@untainted&gt;student.Name;
         int grade = &lt;@untainted&gt;student.Grade;
         string english = &lt;@untainted string&gt;student.Marks[&quot;English&quot;];
-        http:Response res = new;
-        res.setPayload({Name: name, Grade: grade, English: english});
+        return {Name: name, Grade: grade, English: english};
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -370,23 +325,6 @@ match the record.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
-        if (result is error) {
-            log:printError(result.message(), err = result);
-        }
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

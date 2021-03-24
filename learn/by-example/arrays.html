@@ -27,8 +27,6 @@ redirect_from:
     <span class="c1">// Arrays support several inbuilt functions such as `.reverse()`, `.pop()`, `.push()`, and `.removeAll()`.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">bReveresed</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reversed: &quot;</span><span class="p">,</span> <span class="nx">bReveresed</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reversed array and original array are the same: &quot;</span><span class="p">,</span>
-               <span class="nx">bReveresed</span> <span class="o">==</span><span class="p">=</span> <span class="nx">b</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">poppedValue</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
@@ -103,7 +101,7 @@ redirect_from:
  of the same type.
  A fixed length array can be created by specifying the length of the array at the time of declaration.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/lang.array/latest/lang.array/">lang.array module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/lang.array/latest/lang.array/">lang.array module</a>.</p>
 </p>
 
                         </td>
@@ -144,7 +142,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3b06a3f2075ae35bf97b3de19a7f8dac&file=arrays.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=98af9b1158a82a5d517cb1b7d224f2e8&file=arrays.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -271,8 +269,6 @@ import ballerina/lang.array;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] bReveresed = b.reverse();
     io:println(&quot;Reversed: &quot;, bReveresed);
-    io:println(&quot;Reversed array and original array are the same: &quot;,
-               bReveresed === b);
 </code></pre></div>
 
                                 </td>
@@ -537,13 +533,12 @@ bal run arrays.bal
 1
 8
 Reversed: [8,7,6,5,4,3,2,1]
-Reversed array and original array are the same: true
-Before pop: [8,7,6,5,4,3,2,1]
-Popped value: 1
-After pop: [8,7,6,5,4,3,2]
-Doubled: [16,14,12,10,8,6,4]
-Array sorted in ascending order: [2,3,4,5,6,7,8]
-Array sorted in descending order using a key: [4,3,2,8,7,6,5]
+Before pop: [1,2,3,4,5,6,7,8]
+Popped value: 8
+After pop: [1,2,3,4,5,6,7]
+Doubled: [2,4,6,8,10,12,14]
+Array sorted in ascending order: [1,2,3,4,5,6,7]
+Array sorted in descending order using a key: [4,3,2,1,7,6,5]
 23
 1000
 3

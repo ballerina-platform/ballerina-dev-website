@@ -74,8 +74,12 @@ redirect_from:
     <span class="c1">// We can do additional checks/verifications on the raw template.</span>
     <span class="c1">// Here we&#39;re just building a concrete string query from the</span>
     <span class="c1">// components.</span>
-    <span class="k">return</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s%s%s%s%s&quot;</span><span class="p">,</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                        <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="kt">string</span> <span class="nx">s0</span> <span class="p">=</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="nx">s2</span> <span class="p">=</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="nx">i0</span> <span class="p">=</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="nx">i1</span> <span class="p">=</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">return</span> <span class="kt">string</span> <span class="s">`${s0}${i0}${s1}${i1}${s2}`</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -132,7 +136,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=257c010c947ef5c48e036209b13fcd50&file=raw_template.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=922f4580015a72676e1a408fbc8dfb74&file=raw_template.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -412,8 +416,12 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return io:sprintf(&quot;%s%s%s%s%s&quot;, qu.strings[0], qu.insertions[0],
-                        qu.strings[1], qu.insertions[1], qu.strings[2]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s0 = qu.strings[0];
+    string s1 = qu.strings[1];
+    string s2 = qu.strings[2];
+    string i0 = qu.insertions[0];
+    int i1 = qu.insertions[1];
+    return string `${s0}${i0}${s1}${i1}${s2}`;
 }
 </code></pre></div>
 

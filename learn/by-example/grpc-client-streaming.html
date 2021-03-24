@@ -22,12 +22,12 @@ redirect_from:
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
                                     <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Connected sucessfully.&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Connected sucessfully.&quot;</span><span class="p">);</span>
         <span class="c1">// Read and process each message in the client stream.</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">isolated</span> <span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Greet received: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Greet received: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="p">});</span>
         <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;grpc:EOS&#39; is returned by the stream.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
@@ -37,7 +37,6 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// This is the client implementation for the client streaming scenario.</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -58,76 +57,6 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
 <span class="p">}</span>
-
-<span class="c1">// The client that used to invoke the RPC.</span>
-<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">HelloWorldClient</span> <span class="p">{</span>
-
-    <span class="o">*</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">AbstractClientEndpoint</span><span class="p">;</span>
-
-    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">grpcClient</span><span class="p">;</span>
-
-    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">url</span><span class="p">,</span>
-    <span class="nx">grpc</span><span class="p">:</span><span class="nx">ClientConfiguration</span><span class="err">?</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">())</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="c1">// Initialize the client endpoint.</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
-        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="p">.</span><span class="nx">initStub</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
-        <span class="nx">getDescriptorMap</span><span class="p">());</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">()</span>
-                    <span class="nx">returns</span> <span class="p">(</span><span class="nx">LotsOfGreetingsStreamingClient</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">sClient</span> <span class="p">=</span> <span class="nx">check</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">grpcClient</span><span class="o">-&gt;</span><span class="nx">executeClientStreaming</span><span class="p">(</span><span class="s">&quot;HelloWorld/lotsOfGreetings&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">new</span> <span class="nx">LotsOfGreetingsStreamingClient</span><span class="p">(</span><span class="nx">sClient</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// The streaming client, which is used to send the streaming messages.</span>
-<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">LotsOfGreetingsStreamingClient</span> <span class="p">{</span>
-    <span class="nx">private</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">sClient</span><span class="p">;</span>
-
-    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">sClient</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span> <span class="p">=</span> <span class="nx">sClient</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendstring</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendContextString</span><span class="p">(</span><span class="nx">ContextString</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span>
-    <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">receiveString</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
-        <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]</span> <span class="p">[</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">headers</span><span class="p">]</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
-        <span class="k">return</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">receiveContextString</span><span class="p">()</span> <span class="nx">returns</span>
-    <span class="nx">ContextString</span><span class="p">|</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
-        <span class="p">[</span><span class="nx">anydata</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;]</span> <span class="p">[</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">headers</span><span class="p">]</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">receive</span><span class="p">();</span>
-        <span class="k">return</span> <span class="p">{</span><span class="nx">content</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span> <span class="nx">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">};</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">sendError</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">response</span><span class="p">)</span> <span class="nx">returns</span>
-    <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">complete</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">sClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// The context record includes the message payload and headers.</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">ContextString</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">string</span> <span class="nx">content</span><span class="p">;</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">headers</span><span class="p">;</span>
-<span class="p">|};</span>
 </pre></div>
 
             </div>
@@ -141,7 +70,7 @@ redirect_from:
  This sample includes a gRPC client streaming service and non-blocking client. The client writes a sequence of messages and sends them to the server via a stream.
  Once the client has finished writing the messages, it waits for the server to read them and return a response.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/grpc/latest/grpc/">GRPC module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/grpc/latest/grpc/">GRPC module</a>.</p>
 </p>
 
                         </td>
@@ -253,8 +182,8 @@ service HelloWorld {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Create new Protocol Buffers definition file `grpc_client_streaming.proto` and add service definition.
-# Run the command below in Ballerina tools distribution for stub generation.
-ballerina grpc --input grpc_client_streaming.proto  --output stubs
+# Run the command below in the Ballerina tools distribution for stub generation.
+bal grpc --input grpc_client_streaming.proto  --output stubs
 </code></pre></div>
 
                                 </td>
@@ -366,9 +295,9 @@ import ballerina/log;
     descMap: getDescriptorMap()
 }
 service &quot;HelloWorld&quot; on ep {
-    remote function lotsOfGreetings(stream&lt;string, grpc:Error?&gt; clientStream)
+    remote function lotsOfGreetings(stream&lt;string, grpc:Error&gt; clientStream)
                                     returns string|error {
-        log:print(&quot;Connected sucessfully.&quot;);
+        log:printInfo(&quot;Connected sucessfully.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -381,7 +310,7 @@ service &quot;HelloWorld&quot; on ep {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        error? e = clientStream.forEach(isolated function(string name) {
-            log:print(&quot;Greet received: &quot; + name);
+            log:printInfo(&quot;Greet received: &quot; + name);
         });
 </code></pre></div>
 
@@ -450,9 +379,9 @@ service &quot;HelloWorld&quot; on ep {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Create a Ballerina project and a module inside it.
-# Copy generated stub file `grpc_client_streaming_pb.bal` to the module.
-# For example, if you create a module named `service`, copy the stub file to the `service` module.
+                                    <div class="highlight"><pre><code class=shell-session># Create a Ballerina package.
+# Copy the generated `grpc_client_streaming_pb.bal` stub file to the package.
+# For example, if you create a package named `service`, copy the stub file to the `service` package.
 </code></pre></div>
 
                                 </td>
@@ -464,7 +393,7 @@ service &quot;HelloWorld&quot; on ep {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Add new Ballerina file `grpc_client_streaming.bal` inside the `service` module and add service implementation.
+                                    <div class="highlight"><pre><code class=shell-session># Create a new `grpc_client_streaming.bal` Ballerina file inside the `service` package and add the service implementation.
 </code></pre></div>
 
                                 </td>
@@ -476,7 +405,7 @@ service &quot;HelloWorld&quot; on ep {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;service&#39; module.
+                                    <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;service&#39; package.
 bal build service
 </code></pre></div>
 
@@ -490,7 +419,7 @@ bal build service
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the service using the command below.
-bal run target/bin/service.jar
+bal run service/target/bin/service.jar
 </code></pre></div>
 
                                 </td>
@@ -502,70 +431,6 @@ bal run target/bin/service.jar
                         </table>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
                         
                             
                                 
@@ -613,8 +478,7 @@ bal run target/bin/service.jar
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
-import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -727,267 +591,12 @@ import ballerina/io;
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public client class HelloWorldClient {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The client that used to invoke the RPC.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    *grpc:AbstractClientEndpoint;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    private grpc:Client grpcClient;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function init(string url,
-    grpc:ClientConfiguration? config = ()) returns grpc:Error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        self.grpcClient = check new(url, config);
-        check self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
-        getDescriptorMap());
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Initialize the client endpoint.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function lotsOfGreetings()
-                    returns (LotsOfGreetingsStreamingClient|grpc:Error) {
-        grpc:StreamingClient sClient = check
-        self.grpcClient-&gt;executeClientStreaming(&quot;HelloWorld/lotsOfGreetings&quot;);
-        return new LotsOfGreetingsStreamingClient(sClient);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public client class LotsOfGreetingsStreamingClient {
-    private grpc:StreamingClient sClient;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The streaming client, which is used to send the streaming messages.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function init(grpc:StreamingClient sClient) {
-        self.sClient = sClient;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendstring(string message) returns grpc:Error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return self.sClient-&gt;send(message);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendContextString(ContextString message) returns
-    grpc:Error? {
-        return self.sClient-&gt;send(message);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function receiveString() returns string|grpc:Error {
-        [anydata, map&lt;string|string[]&gt;] [payload, headers] =
-        check self.sClient-&gt;receive();
-        return payload.toString();
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function receiveContextString() returns
-    ContextString|grpc:Error {
-        [anydata, map&lt;string|string[]&gt;] [payload, headers] =
-        check self.sClient-&gt;receive();
-        return {content: payload.toString(), headers: headers};
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function sendError(grpc:Error response) returns
-    grpc:Error? {
-        return self.sClient-&gt;sendError(response);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function complete() returns grpc:Error? {
-        return self.sClient-&gt;complete();
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type ContextString record {|
-    string content;
-    map&lt;string|string[]&gt; headers;
-|};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The context record includes the message payload and headers.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -1020,9 +629,9 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Create a Ballerina project and a module inside it.
-# Copy generated stub file `grpc_client_streaming_pb.bal` to the module.
-# For example, if you create a module named `client`, copy the stub file to the `client` module.
+                                    <div class="highlight"><pre><code class=shell-session># Create a Ballerina package.
+# Copy the generated `grpc_client_streaming_pb.bal` stub file to the package.
+# For example, if you create a package named `client`, copy the stub file to the `client` package.
 </code></pre></div>
 
                                 </td>
@@ -1034,7 +643,7 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Add new Ballerina file `grpc_client_streaming_client.bal` inside the `client` module and add client implementation.
+                                    <div class="highlight"><pre><code class=shell-session># Create a new `grpc_client_streaming_client.bal` Ballerina file inside the `client` package and add the client implementation.
 </code></pre></div>
 
                                 </td>
@@ -1046,7 +655,7 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;client&#39; module.
+                                    <div class="highlight"><pre><code class=shell-session># Execute the command below to build the &#39;client&#39; package.
 bal build client
 </code></pre></div>
 
@@ -1060,7 +669,7 @@ bal build client
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the client using the command below.
-bal run target/bin/client.jar
+bal run client/target/bin/client.jar
 </code></pre></div>
 
                                 </td>

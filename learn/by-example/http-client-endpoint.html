@@ -37,11 +37,12 @@ redirect_from:
     <span class="c1">// Initializes a request.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">req</span><span class="p">.</span><span class="nx">addHeader</span><span class="p">(</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">,</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">);</span>
-    <span class="c1">// The `get()`, `head()`, and `options()` can have the optional `message` parameter,</span>
-    <span class="c1">// which will be a request or a payload.</span>
-    <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
+    <span class="c1">// The `get()`, `head()`, and `options()` have the optional headers parameter to send out headers,</span>
+    <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get&quot;</span><span class="p">,</span>
+                            <span class="p">{</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">:</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">});</span>
+
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Get the content type](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getContentType) from the response.</span>
+        <span class="c1">// [Get the content type](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getContentType) from the response.</span>
         <span class="kt">string</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Content-Type: &quot;</span> <span class="o">+</span> <span class="nx">contentType</span><span class="p">);</span>
 
@@ -50,14 +51,14 @@ redirect_from:
 
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                            <span class="p">(&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
+                            <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">//The below function handles the response received from the remote HTTP endpoint.</span>
-<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">PayloadType</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Get the JSON payload](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getJsonPayload) from the response.</span>
+        <span class="c1">// [Get the JSON payload](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getJsonPayload) from the response.</span>
         <span class="k">var</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Prints the received `JSON` response.</span>
@@ -67,7 +68,7 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                            <span class="p">(&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
+                            <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -81,7 +82,7 @@ redirect_from:
                             <h2>Client Endpoint</h2>
                             <p><p>The HTTP Client Connector can be used to connect to and interact with an HTTP server.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -122,7 +123,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c4d1288f007fba532ff62428adfa4148&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9d2de0301eed7c75c5e93be48dad7f16&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -140,6 +141,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -369,8 +372,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;, req);
-    if (response is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;,
+                            {&quot;Sample-Name&quot;: &quot;http-client-connector&quot;});
 </code></pre></div>
 
                                 </td>
@@ -378,11 +381,22 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>get()</code>, <code>head()</code>, and <code>options()</code> can have the optional <code>message</code> parameter,
- which will be a request or a payload.</p>
+                                            <p>The <code>get()</code>, <code>head()</code>, and <code>options()</code> have the optional headers parameter to send out headers,</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (response is http:Response) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -399,7 +413,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getContentType">Get the content type</a> from the response.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getContentType">Get the content type</a> from the response.</p>
 
                                         </div>
                                     </div>
@@ -425,7 +439,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    } else {
         io:println(&quot;Error when calling the backend: &quot;,
-                            (&lt;error&gt;response).message());
+                            response.message());
     }
 }
 </code></pre></div>
@@ -439,7 +453,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|http:PayloadType|error response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
     if (response is http:Response) {
 </code></pre></div>
 
@@ -468,7 +482,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getJsonPayload">Get the JSON payload</a> from the response.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getJsonPayload">Get the JSON payload</a> from the response.</p>
 
                                         </div>
                                     </div>
@@ -485,7 +499,7 @@ import ballerina/io;
         }
     } else {
         io:println(&quot;Error when calling the backend: &quot;,
-                            (&lt;error&gt;response).message());
+                            response.message());
     }
 }
 </code></pre></div>

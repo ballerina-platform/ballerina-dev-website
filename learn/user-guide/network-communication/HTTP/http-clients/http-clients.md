@@ -39,13 +39,13 @@ The code above creates a client by providing an explicit client configuration, w
 
 ## Basic HTTP Requests
 
-After creating an HTTP client object, you can now execute HTTP requests through the [remote methods](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client). 
+After creating an HTTP client object, you can now execute HTTP requests through the [remote methods](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client). 
 
 The below are some of the remote methods that are most often used in the HTTP client object. 
 
 ### GET
 
-An HTTP GET request is executed by using the [`get`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) remote method in the HTTP client. This remote method takes in the request path as the first parameter, and the target type as the second parameter for data-binding operations. The default value of the target type is [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response). The remote method returns a union type consisting of [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response), [`http:PayloadType`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/types#PayloadType), and `error`. 
+An HTTP GET request is executed by using the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote method in the HTTP client. This remote method takes in the request path as the first parameter, and the target type as the second parameter for data-binding operations. The default value of the target type is [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response). The remote method returns a union type consisting of [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response), [`http:PayloadType`](https://docs.central.ballerina.io/ballerina/http/latest/http/types#PayloadType), and `error`. 
 
 The `client_demo_get.bal` below is an example of its usage.
 
@@ -73,11 +73,11 @@ Status Code: 200
 Header [date]: Fri, 11 Dec 2020 18:14:49 GMT
 ```
 
-The [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response) object can be used to access information such as the client response payload, [content type](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response#getContentType), [headers](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response#getHeader), and [cookies](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response#getCookies).
+The [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response) object can be used to access information such as the client response payload, [content type](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getContentType), [headers](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getHeader), and [cookies](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getCookies).
 
 ### POST
 
-An HTTP POST is executed using the [`post`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#post) remote method in the HTTP client. You can provide the request path as the first parameter. The second parameter is a value of the [`http:RequestMessage`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/types#RequestMessage), which is a union type of the [`http:Request`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Request) and other data-binding types such as XML, JSON, and other custom record types. The third parameter is the target type for providing the response data-binding type, similar to the result of the HTTP GET functionality. The default value of the target type is [`http:Response`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/classes/Response). 
+An HTTP POST is executed using the [`post`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote method in the HTTP client. You can provide the request path as the first parameter. The second parameter is a value of the [`http:RequestMessage`](https://docs.central.ballerina.io/ballerina/http/latest/http/types#RequestMessage), which is a union type of the [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request) and other data-binding types such as XML, JSON, and other custom record types. The third parameter is the target type for providing the response data-binding type, similar to the result of the HTTP GET functionality. The default value of the target type is [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response). 
 
 The `client_demo_post.bal` below is an example of its usage.
 
@@ -104,7 +104,7 @@ Payload: {"args":{},"data":"Hello!","files":{},"form":{},"headers":{"Content-Len
 
 ### EXECUTE
 
-Similar to the [`get`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#get) and [`post`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#post) remote methods above, there are other methods such as [`put`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#put), [`delete`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#delete), [`patch`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#patch), [`head`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#head), and [`options`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#options) to represent the HTTP methods. There is also a generic [`execute`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/Client#execute) remote method for users to specify the HTTP verb and execute the HTTP action. 
+Similar to the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) and [`post`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote methods above, there are other methods such as [`put`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#put), [`delete`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#delete), [`patch`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#patch), [`head`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#head), and [`options`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#options) to represent the HTTP methods. There is also a generic [`execute`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#execute) remote method for users to specify the HTTP verb and execute the HTTP action. 
 
 ## Multipart Message Handling
 

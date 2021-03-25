@@ -34,7 +34,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
 
 ```ballerina
-import ballerinax/azure.functions as af;
+import ballerinax/azure_functions as af;
 
 @af:Function
 public function fromHttpToQueue(af:Context ctx, 

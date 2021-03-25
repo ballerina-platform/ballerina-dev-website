@@ -82,7 +82,7 @@ The example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-sta
 ```ballerina
 import ballerina/io;
 import ballerina/http;
-import ballerina/stringutils;
+import ballerina/regex;
 
 http:Client clientEndpoint = check new("https://api.chucknorris.io/jokes/");
 
@@ -118,7 +118,7 @@ function getRandomJoke(string name, string category = "food") returns @tainted s
 
             if (payload is json) {
                 json joke = check payload.value;
-                replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+                replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
                 return replacedText;
             }
             

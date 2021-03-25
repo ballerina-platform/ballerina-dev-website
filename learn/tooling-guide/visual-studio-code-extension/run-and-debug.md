@@ -44,7 +44,3 @@ For more information on debugging your code using VS Code, go to [VS Code Docume
     - workaround: manually put a breakpoint to the next line
 - There are some cases where stepping over gives unexpected behavior
     - E.g., when there are multiple workers and a wait expression waiting for them, even though it steps over to hit and pass the wait line in the source, the workers may not have finished the execution yet.
-
-## What's Next?
-
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin).

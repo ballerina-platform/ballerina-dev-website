@@ -842,7 +842,7 @@ repository = "local"
   - Introduced pushing to the local repository. Passing `--repository=local` will push the Ballerina archive (.bala) to the local repository. For information about local repository support, see the [Ballerina Packages Changelist](#ballerina-packages).
 - Run `bal help <command>` to get more information on the command changes.
 
-- CLI Auto Completion
+- CLI Auto-Completion
   - Installing On Linux Bash
     - Set up auto-completion in the current bash shell.
   

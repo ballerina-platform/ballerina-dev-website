@@ -172,7 +172,8 @@
       "rpm-installer-size": "200mb",
       "other-artefacts": [
          "ballerina-swan-lake-alpha2.zip",
-         "ballerina-metrics-grafana-dashboard-prometheus.json"
+         "ballerina-metrics-grafana-dashboard-prometheus.json",
+         "ballerina-swan-lake-alpha2.vsix",
       ],
       "api-docs": "ballerina-api-docs-swan-lake-alpha2.zip",
       "release-notes": "ballerina-release-notes-swan-lake-alpha2.md"
@@ -192,7 +193,8 @@
       "rpm-installer-size": "206mb",
       "other-artefacts": [
          "ballerina-swan-lake-alpha3.zip",
-         "ballerina-metrics-grafana-dashboard-prometheus.json"
+         "ballerina-metrics-grafana-dashboard-prometheus.json",
+         "ballerina-swan-lake-alpha3.vsix",
       ],
       "api-docs": "ballerina-api-docs-swan-lake-alpha3.zip",
       "release-notes": "ballerina-release-notes-swan-lake-alpha3.md"

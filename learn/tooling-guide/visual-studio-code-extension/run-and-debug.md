@@ -20,6 +20,8 @@ redirect_from:
   - /learn/tooling-guide/vs-code-extension/run-and-debug
   - /learn/tooling-guide/vs-code-extension/run-and-debug/
   - /learn/tooling-guide/visual-studio-code-extension/run-and-debug
+  - /learn/getting-started/setting-up-visual-studio-code/run-and-debug/
+  - /learn/getting-started/setting-up-visual-studio-code/run-and-debug
 ---
 
 ## Starting a Debug Session

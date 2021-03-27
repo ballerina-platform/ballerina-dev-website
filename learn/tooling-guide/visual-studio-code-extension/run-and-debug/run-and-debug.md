@@ -52,15 +52,13 @@ Follow the steps below to start a debug session.
 
     You view the opened `launch.json` file. 
 
-4. Add/edit the relevant configurations for remote debugging (e.g., `debuggeeHost`, `debbuggeePort`) in the `launch.json` file.
+4. Add/edit the relevant configurations for debugging in the `launch.json` file.
 
 5. Add the debug points you require by clicking in front of the line numbers of the file you want to debug.
 
-## Debugging Types
+Then, you can start a program, test, or remote debug session as shown below.
 
-You can start a program, test, or remote debug session as shown below.
-
-## Starting a Program Debug Session
+### Starting a Program Debug Session
 
 1. Select **Ballerina Debug** from the drop down available in the upper left corner to start a program debugging session.
 
@@ -75,18 +73,7 @@ You can start a program, test, or remote debug session as shown below.
 
 1. Select **Ballerina Test** from the drop down available in the upper left corner to start a test debugging session.
 
-2. Execute one of the commands below to start debugging.
-
-    - Debugging Ballerina tests: `bal test --debug <DEBUGGEE_PORT>`
-    - Debugging Ballerina tests during the build: `bal build --debug <DEBUGGEE_PORT>`
-
-    The terminal will show the following log:
-
-    ```bash
-    Listening for transport dt_socket at address: 5005
-    ```
-
-3. Click the **Start Debugging** icon on the upper left corner to start debugging.
+2. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
     You view the output in the **DEBUG CONSOLE**.
 
@@ -97,10 +84,26 @@ You can start a program, test, or remote debug session as shown below.
 
 1. Select **Ballerina Remote** from the drop down available in the upper left corner to start a remote debugging session.
 
-2. Execute the command below to start debugging a package/single file.
+2. Open the Terminal and execute the Ballerina command, which you want to debug, out of the supported remote debugging commands below. 
 
-    - `bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>`
-      (E.g.,`bal run --debug 5005 hello-world/hello_world.bal`)
+    - Debugging a Ballerina package/ single file: 
+
+    ```bash
+    bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>
+    ```
+
+    - Debugging ballerina tests: 
+
+    ```bash
+    bal test --debug <DEBUGGEE_PORT> <PACKAGE_PATH>
+    ```
+
+    - Debugging ballerina tests during the build:  
+
+    ```bash 
+    bal build --debug <DEBUGGEE_PORT> <PACKAGE_PATH>
+    ```
+    
 
     The terminal will show the following log:
 
@@ -131,6 +134,30 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 >**Info** The Ballerina debugger is an open-source project and contributors are mostly welcome to get engaged with it via the [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang) GitHub repository. If you encounter any difficulties when using this feature, feel free to create an issue in it.
 
 <!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
+
+### Using Expression Evaluation
+
+Ballerina expression evaluator allows evaluating Ballerina variables and expressions at runtime allowing them to be viewed when the IDE is in the break mode.
+
+The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
+
+#### Using the Debug Console
+
+![Debugger Evaluation Console](/learn/images/debugger-evaluation-console.gif)
+
+#### Using the Watch Window
+
+![Debugger Watch Window](/learn/images/debugger-watch-window.gif)
+
+#### Existing Limitations
+
+The features below are currently not supported.
+
+- Anonymous function, query, let, and constructor expressions
+- Qualified identifiers (Hence, cannot evaluate imported module entities.)
+- Function invocations with rest arguments
+
+
 
 
 

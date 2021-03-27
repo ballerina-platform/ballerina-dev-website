@@ -24,35 +24,61 @@ redirect_from:
 
 ## Running Without Debugging
 
-Follow the steps below to run you program.
+Follow the steps below to run your program (without debugging).
 
-1. Click **Run** in the top menu, and then click **Run Without Debugging**.
-2. Select the **Environment**.
+1. On the VSCode editor, open the Ballerina program file you want to run.
+
+2. Click **Run** in the top menu, and then click **Run Without Debugging**.
+
+3. Select **Ballerina Debug** as the **Environment**.
+
+You view the program being executed in the **DEBUG CONSOLE** as shown below.
+
+![Run Without Debugging](/learn/images/run-without-debugging.gif)
+
+>**Info:** For more information on debugging your code using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
 ## Starting a Debug Session
 
-The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. Follow the steps below to start a debug session. 
+The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. 
 
-1. Click **Run** in the top menu, and click **Start Debugging**.
+Follow the steps below to start a debug session.
 
->**Tip:** Alternatively, press the **Control + Shift + D** keys (for Mac: **Command + Shift +D**) to launch the Debugger view.
+1. Open the folder, which includes the Ballerina program you want to debug and select the file.
 
-2. Click **create a launch.json** file and then select **Ballerina Debug**.
+2. Press the **Control + Shift + D** keys (for Mac: **Command + Shift +D**) to launch the Debugger view.
 
-You view the opened `launch.json` file. 
+3. Click **create a launch.json** file and then select **Ballerina Debug** as the **Environment**.
 
-3. Add/edit the relevant configurations for remote debugging (e.g., `debuggeeHost`, `debbuggeePort`) in the `launch.json` file.
+    You view the opened `launch.json` file. 
 
-4. Select the `.bal` file to be debugged (e.g., `main.bal`).
+4. Add/edit the relevant configurations for remote debugging (e.g., `debuggeeHost`, `debbuggeePort`) in the `launch.json` file.
 
-5. Add the debug points you require by clicking in front of the line numbers of the required file.
+5. Add the debug points you require by clicking in front of the line numbers of the file you want to debug.
 
-6. Open the terminal, and execute the `bal` command, depending on the debugging you want to perform.
+## Debugging Types
 
->**Info:** The below are the supported remote debugging commands in Ballerina.
-  - Debugging a ballerina package/ single file: `bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>`
-  - Debugging ballerina tests: `bal test --debug <DEBUGGEE_PORT>`
-  - Debugging ballerina tests during the build: `bal build --debug <DEBUGGEE_PORT>`
+You can start a program, test, or remote debug session as shown below.
+
+## Starting a Program Debug Session
+
+1. Select **Ballerina Debug** from the drop down available in the upper left corner to start a program debugging session.
+
+2. Click the **Start Debugging** icon on the upper left corner to start debugging.
+
+You view the output in the **DEBUG CONSOLE**.
+
+![Run and debug](/learn/images/run-and-debug.gif)
+
+
+### Starting a Test Debug Session
+
+1. Select **Ballerina Test** from the drop down available in the upper left corner to start a test debugging session.
+
+2. Execute one of the commands below to start debugging.
+
+  - Debugging Ballerina tests: `bal test --debug <DEBUGGEE_PORT>`
+  - Debugging Ballerina tests during the build: `bal build --debug <DEBUGGEE_PORT>`
 
 The terminal will show the following log:
 
@@ -60,15 +86,34 @@ The terminal will show the following log:
 Listening for transport dt_socket at address: 5005
 ```
 
-7. Select **Ballerina Remote** from the drop down available in the upper left corner.
-
-8. Click **Run** button in the upper left corner to start remote debugging.
+3. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
 You view the output in the **DEBUG CONSOLE**.
 
 ![Run and debug](/learn/images/run-and-debug.gif)
 
-For more information on debugging your code using VS Code, go to [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
+
+### Strating a Remote Debug Session
+
+ 1. Select **Ballerina Remote** from the drop down available in the upper left corner to start a remote debugging session.
+
+ 2. Execute the command below to start debugging a package/single file.
+
+  - `bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>`
+    (E.g.,`bal run --debug 5005 hello-world/hello_world.bal`)
+
+  The terminal will show the following log:
+
+  ```bash
+  Listening for transport dt_socket at address: 5005
+  ```
+
+3. Click the **Start Debugging** icon on the upper left corner to start debugging.
+
+You view the output in the **DEBUG CONSOLE**.
+
+![Run and debug](/learn/images/run-and-debug.gif)
+
 
 
 ## Using the Debugging Features
@@ -86,7 +131,7 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 
 >**Info** The Ballerina debugger is an open-source project and contributors are mostly welcome to get engaged with it via the [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang) GitHub repository. If you encounter any difficulties when using this feature, feel free to create an issue in it.
 
-For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).
+<!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
 
 
 

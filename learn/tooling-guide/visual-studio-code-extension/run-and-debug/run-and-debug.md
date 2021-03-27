@@ -66,9 +66,9 @@ You can start a program, test, or remote debug session as shown below.
 
 2. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
-You view the output in the **DEBUG CONSOLE**.
+    You view the output in the **DEBUG CONSOLE**.
 
-![Run and debug](/learn/images/run-and-debug.gif)
+    ![Run and debug](/learn/images/run-and-debug.gif)
 
 
 ### Starting a Test Debug Session
@@ -77,43 +77,42 @@ You view the output in the **DEBUG CONSOLE**.
 
 2. Execute one of the commands below to start debugging.
 
-  - Debugging Ballerina tests: `bal test --debug <DEBUGGEE_PORT>`
-  - Debugging Ballerina tests during the build: `bal build --debug <DEBUGGEE_PORT>`
+    - Debugging Ballerina tests: `bal test --debug <DEBUGGEE_PORT>`
+    - Debugging Ballerina tests during the build: `bal build --debug <DEBUGGEE_PORT>`
 
-The terminal will show the following log:
+    The terminal will show the following log:
 
-```bash
-Listening for transport dt_socket at address: 5005
-```
+    ```bash
+    Listening for transport dt_socket at address: 5005
+    ```
 
 3. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
-You view the output in the **DEBUG CONSOLE**.
+    You view the output in the **DEBUG CONSOLE**.
 
-![Run and debug](/learn/images/run-and-debug.gif)
+    ![Run and debug](/learn/images/run-and-debug.gif)
 
 
 ### Strating a Remote Debug Session
 
- 1. Select **Ballerina Remote** from the drop down available in the upper left corner to start a remote debugging session.
+1. Select **Ballerina Remote** from the drop down available in the upper left corner to start a remote debugging session.
 
- 2. Execute the command below to start debugging a package/single file.
+2. Execute the command below to start debugging a package/single file.
 
-  - `bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>`
-    (E.g.,`bal run --debug 5005 hello-world/hello_world.bal`)
+    - `bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>`
+      (E.g.,`bal run --debug 5005 hello-world/hello_world.bal`)
 
-  The terminal will show the following log:
+    The terminal will show the following log:
 
-  ```bash
-  Listening for transport dt_socket at address: 5005
-  ```
+    ```bash
+    Listening for transport dt_socket at address: 5005
+    ```
 
 3. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
-You view the output in the **DEBUG CONSOLE**.
+  You view the output in the **DEBUG CONSOLE**.
 
-![Run and debug](/learn/images/run-and-debug.gif)
-
+  ![Run and debug](/learn/images/run-and-debug.gif)
 
 
 ## Using the Debugging Features

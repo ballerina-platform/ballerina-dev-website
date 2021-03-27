@@ -36,13 +36,15 @@ You view the program being executed in the **DEBUG CONSOLE** as shown below.
 
 ![Run Without Debugging](/learn/images/run-without-debugging.gif)
 
+<img src="/learn/images/run-without-debugging.gif" alt="Run Without Debugging" width=300" height="200">
+
 >**Info:** For more information on debugging your code using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
 ## Starting a Debug Session
 
-The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. 
+The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. Follow the steps below to start a debug session.
 
-Follow the steps below to start a debug session.
+![Start Debug Session](/learn/images/start-debug-session.gif)
 
 1. Open the folder, which includes the Ballerina program you want to debug and select the file.
 
@@ -60,16 +62,20 @@ Then, you can start a program, test, or remote debug session as shown below.
 
 ### Starting a Program Debug Session
 
+Follow the steps below to start a program debug session.
+
 1. Select **Ballerina Debug** from the drop down available in the upper left corner to start a program debugging session.
 
 2. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
     You view the output in the **DEBUG CONSOLE**.
 
-    ![Run and debug](/learn/images/run-and-debug.gif)
+    ![Program Debug](/learn/images/program-debug.gif)
 
 
 ### Starting a Test Debug Session
+
+Follow the steps below to start a test debug session.
 
 1. Select **Ballerina Test** from the drop down available in the upper left corner to start a test debugging session.
 
@@ -77,10 +83,12 @@ Then, you can start a program, test, or remote debug session as shown below.
 
     You view the output in the **DEBUG CONSOLE**.
 
-    ![Run and debug](/learn/images/run-and-debug.gif)
+    ![Test Debug](/learn/images/test-debug.gif)
 
 
 ### Strating a Remote Debug Session
+
+Follow the steps below to start a remote debug session.
 
 1. Select **Ballerina Remote** from the drop down available in the upper left corner to start a remote debugging session.
 
@@ -113,9 +121,9 @@ Then, you can start a program, test, or remote debug session as shown below.
 
 3. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
-  You view the output in the **DEBUG CONSOLE**.
+    You view the output in the **DEBUG CONSOLE**.
 
-  ![Run and debug](/learn/images/run-and-debug.gif)
+    ![Remote Debug](/learn/images/remote-debug.gif)
 
 
 ## Using the Debugging Features

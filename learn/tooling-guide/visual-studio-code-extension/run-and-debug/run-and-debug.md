@@ -36,6 +36,8 @@ You view the program being executed in the **DEBUG CONSOLE** as shown below.
 
 ![Run Without Debugging](/learn/images/run-without-debugging.gif)
 
+<br/>
+
 >**Info:** For more information on debugging your code using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
 ## Starting a Debug Session
@@ -43,6 +45,8 @@ You view the program being executed in the **DEBUG CONSOLE** as shown below.
 The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. Follow the steps below to start a debug session.
 
 ![Start Debug Session](/learn/images/start-debug-session.gif)
+
+<br/>
 
 1. Open the folder, which includes the Ballerina program you want to debug and select the file.
 
@@ -58,6 +62,8 @@ The VS Code Ballerina extension gives you the same debugging experience as the c
 
 Then, you can start a program, test, or remote debug session as shown below.
 
+<br/>
+
 ### Starting a Program Debug Session
 
 Follow the steps below to start a program debug session.
@@ -70,6 +76,7 @@ Follow the steps below to start a program debug session.
 
     ![Program Debug](/learn/images/program-debug.gif)
 
+<br/>
 
 ### Starting a Test Debug Session
 
@@ -83,6 +90,7 @@ Follow the steps below to start a test debug session.
 
     ![Test Debug](/learn/images/test-debug.gif)
 
+<br/>
 
 ### Starting a Remote Debug Session
 
@@ -123,6 +131,7 @@ Follow the steps below to start a remote debug session.
 
     ![Remote Debug](/learn/images/remote-debug.gif)
 
+<br/>
 
 ## Using the Debugging Features
 
@@ -151,9 +160,13 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 ![Debugger Evaluation Console](/learn/images/debugger-evaluation-console.gif)
 
+<br/>
+
 #### Using the Watch Window
 
 ![Debugger Watch Window](/learn/images/debugger-watch-window.gif)
+
+<br/>
 
 #### Existing Limitations
 

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page
 title: Producer
-description: BBE on sending messages to a Kafka topic using a `kafka:Producer` object.
+description: BBE on sending messages to a Kafka topic using a `kafka&#58;Producer` object.
 keywords: ballerina, ballerina by example, bbe, kafka, producer
 permalink: /learn/by-example/kafka-producer
 redirect_from:
@@ -28,11 +28,11 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World, Ballerina&quot;</span><span class="p">;</span>
     <span class="c1">// Send the message to the Kafka topic</span>
-    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">sendProducerRecord</span><span class="p">({</span>
+    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
                                 <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
                                 <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span> <span class="p">});</span>
     <span class="c1">// Flush the sent messages</span>
-    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">flushRecords</span><span class="p">();</span>
+    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="err">&#39;</span><span class="nx">flush</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -212,7 +212,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check kafkaProducer-&gt;sendProducerRecord({
+                                    <div class="highlight"><pre><code class=language-ballerina>    check kafkaProducer-&gt;send({
                                 topic: &quot;test-kafka-topic&quot;,
                                 value: message.toBytes() });
 </code></pre></div>
@@ -233,7 +233,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check kafkaProducer-&gt;flushRecords();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check kafkaProducer-&gt;&#39;flush();
 }
 </code></pre></div>
 

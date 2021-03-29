@@ -12,14 +12,13 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">listenerEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 
-<span class="c1">// Since compression behavior of the service is set as [COMPRESSION_AUTO](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO),</span>
+<span class="c1">// Since compression behavior of the service is set as [COMPRESSION_AUTO](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_AUTO),</span>
 <span class="c1">// entity body compression is done according to the scheme indicated in the `Accept-Encoding` request header.</span>
 <span class="c1">// Compression is not performed when the header is not present or when the header value is &quot;identity&quot;.</span>
-<span class="c1">// [compression](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CompressionConfig) annotation</span>
+<span class="c1">// [compression](https://docs.central.ballerina.io/ballerina/http/latest/http/records/CompressionConfig) annotation</span>
 <span class="c1">// provides the related configurations.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">compression</span><span class="p">:</span> <span class="p">{</span>
@@ -28,16 +27,12 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">autoCompress</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">({</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Auto compression&quot;</span><span class="p">});</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Auto compression&quot;</span><span class="p">};</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// [COMPRESSION_ALWAYS](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS)</span>
+<span class="c1">// [COMPRESSION_ALWAYS](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS)</span>
 <span class="c1">// guarantees a compressed response entity body. Compression scheme is set to the</span>
 <span class="c1">// value indicated in Accept-Encoding request header. When a particular header is not present or the header</span>
 <span class="c1">// value is &quot;identity&quot;, encoding is done using the &quot;gzip&quot; scheme.</span>
@@ -54,29 +49,22 @@ redirect_from:
 
     <span class="c1">// Since compression is only constrained to &quot;text/plain&quot; MIME type,</span>
     <span class="c1">// `getJson` resource does not compress the response entity body.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">getJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Always but constrained by content-type&quot;</span><span class="p">};</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">getJson</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s">&quot;Type&quot;</span><span class="p">:</span> <span class="s">&quot;Always but constrained by content-type&quot;</span><span class="p">};</span>
     <span class="p">}</span>
     <span class="c1">// The response entity body is always compressed since MIME type has matched.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">getString</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Type : This is a string&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">getString</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Type : This is a string&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// The HTTP client can indicate the [compression](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/types#Compression)</span>
+<span class="c1">// The HTTP client can indicate the [compression](https://docs.central.ballerina.io/ballerina/http/latest/http/types#Compression)</span>
 <span class="c1">// behavior (&quot;AUTO&quot;, &quot;ALWAYS&quot;, &quot;NEVER&quot;) for content negotiation.</span>
 <span class="c1">// Depending on the compression option values, the `Accept-Encoding` header is sent along with the request.</span>
-<span class="c1">// In this example, the client compression behavior is set as [COMPRESSION_ALWAYS](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS). If you have not specified</span>
+<span class="c1">// In this example, the client compression behavior is set as [COMPRESSION_ALWAYS](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS). If you have not specified</span>
 <span class="c1">// an `Accept-Encoding` header, the client specifies it with &quot;deflate, gzip&quot;. Alternatively, the existing header is sent.</span>
-<span class="c1">// When compression is specified as [COMPRESSION_AUTO](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.</span>
-<span class="c1">// If the behavior is set as [COMPRESSION_NEVER](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.</span>
+<span class="c1">// When compression is specified as [COMPRESSION_AUTO](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.</span>
+<span class="c1">// If the behavior is set as [COMPRESSION_NEVER](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">compression</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">COMPRESSION_ALWAYS</span>
     <span class="p">}</span>
@@ -84,41 +72,25 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">passthrough</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="kt">json</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/echo&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="kt">json</span> <span class="nx">err</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;error occurred while invoking service&quot;</span><span class="p">};</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;error occurred while invoking service&quot;</span><span class="p">};</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO), which is the default value</span>
+<span class="c1">// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_AUTO), which is the default value</span>
 <span class="c1">// of the compression config.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">backend</span> <span class="nx">on</span> <span class="nx">listenerEndpoint</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;accept-encoding&quot;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;accept-encoding&quot;</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Backend response was encoded : &quot;</span> <span class="o">+</span>
-                                <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">);</span>
-            <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">echo</span><span class="p">(</span><span class="nd">@http:Header{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;accept-encoding&quot;</span><span class="p">}</span>
+            <span class="kt">string</span><span class="err">?</span> <span class="nx">accept</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">accept</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;Backend response was encoded : &quot;</span> <span class="o">+</span> <span class="nx">accept</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Accept-Encoding header is not present&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="k">return</span> <span class="s">&quot;Accept-Encoding header is not present&quot;</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -136,7 +108,7 @@ redirect_from:
  the particular header is not present or the header value is &ldquo;identity&rdquo;, the server does not perform any compression. Compression
  is disabled when the option is set to <code>COMPRESSION_NEVER</code>.&rdquo;<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -214,10 +186,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -227,7 +195,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -264,10 +231,10 @@ service /autoCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since compression behavior of the service is set as <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>,
+                                            <p>Since compression behavior of the service is set as <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>,
  entity body compression is done according to the scheme indicated in the <code>Accept-Encoding</code> request header.
  Compression is not performed when the header is not present or when the header value is &ldquo;identity&rdquo;.
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CompressionConfig">compression</a> annotation
+ <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/CompressionConfig">compression</a> annotation
  provides the related configurations.</p>
 
                                         </div>
@@ -279,22 +246,8 @@ service /autoCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
-        var result = caller-&gt;respond({&quot;Type&quot;: &quot;Auto compression&quot;});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .() returns json {
+        return {&quot;Type&quot;: &quot;Auto compression&quot;};
     }
 }
 </code></pre></div>
@@ -322,7 +275,7 @@ service /alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>
  guarantees a compressed response entity body. Compression scheme is set to the
  value indicated in Accept-Encoding request header. When a particular header is not present or the header
  value is &ldquo;identity&rdquo;, encoding is done using the &ldquo;gzip&rdquo; scheme.
@@ -339,12 +292,8 @@ service /alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default getJson(http:Caller caller, http:Request req) {
-        json msg = {&quot;Type&quot;: &quot;Always but constrained by content-type&quot;};
-        var result = caller-&gt;respond(msg);
-        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default getJson() returns json {
+        return {&quot;Type&quot;: &quot;Always but constrained by content-type&quot;};
     }
 </code></pre></div>
 
@@ -365,11 +314,8 @@ service /alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default getString(http:Caller caller, http:Request req) {
-        var result = caller-&gt;respond(&quot;Type : This is a string&quot;);
-        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default getString() returns string {
+        return &quot;Type : This is a string&quot;;
     }
 }
 </code></pre></div>
@@ -401,13 +347,13 @@ service /alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client can indicate the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/types#Compression">compression</a>
+                                            <p>The HTTP client can indicate the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/types#Compression">compression</a>
  behavior (&ldquo;AUTO&rdquo;, &ldquo;ALWAYS&rdquo;, &ldquo;NEVER&rdquo;) for content negotiation.
  Depending on the compression option values, the <code>Accept-Encoding</code> header is sent along with the request.
- In this example, the client compression behavior is set as <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>. If you have not specified
+ In this example, the client compression behavior is set as <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>. If you have not specified
  an <code>Accept-Encoding</code> header, the client specifies it with &ldquo;deflate, gzip&rdquo;. Alternatively, the existing header is sent.
- When compression is specified as <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, only the user-specified <code>Accept-Encoding</code> header is sent.
- If the behavior is set as <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_NEVER">COMPRESSION_NEVER</a>, the client makes sure not to send the <code>Accept-Encoding</code> header.</p>
+ When compression is specified as <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, only the user-specified <code>Accept-Encoding</code> header is sent.
+ If the behavior is set as <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_NEVER">COMPRESSION_NEVER</a>, the client makes sure not to send the <code>Accept-Encoding</code> header.</p>
 
                                         </div>
                                     </div>
@@ -430,19 +376,12 @@ service /alwaysCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Request req) returns http:Response|json {
         var response = clientEndpoint-&gt;post(&quot;/backend/echo&quot;, &lt;@untainted&gt;req);
         if (response is http:Response) {
-            var result = caller-&gt;respond(&lt;@untainted&gt;response);
-            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
-            }
+            return response;
         } else {
-            json err = {&quot;error&quot;: &quot;error occurred while invoking service&quot;};
-            var result = caller-&gt;respond(err);
-            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
-            }
+            return {&quot;error&quot;: &quot;error occurred while invoking service&quot;};
         }
     }
 }
@@ -456,41 +395,14 @@ service /alwaysCompress on listenerEndpoint {
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /backend on listenerEndpoint {
-    resource function &#39;default echo(http:Caller caller, http:Request req) {
-        http:Response res = new;
-        if (req.hasHeader(&quot;accept-encoding&quot;)) {
-            string|error value = req.getHeader(&quot;accept-encoding&quot;);
-            if (value is string) {
-                res.setPayload(&quot;Backend response was encoded : &quot; +
-                                &lt;@untainted&gt; value);
-            }
-        } else {
-            res.setPayload(&quot;Accept-Encoding header is not present&quot;);
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The compression behavior of the service is inferred by <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, which is the default value
- of the compression config.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
-        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
+                                    <div class="highlight"><pre><code class=language-ballerina>service /backend on listenerEndpoint {
+    resource function &#39;default echo(@http:Header{name:&quot;accept-encoding&quot;}
+            string? accept) returns string {
+        if (accept is string) {
+            return &quot;Backend response was encoded : &quot; + accept;
+        } else {
+            return &quot;Accept-Encoding header is not present&quot;;
         }
     }
 }
@@ -498,6 +410,14 @@ service /alwaysCompress on listenerEndpoint {
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The compression behavior of the service is inferred by <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/constants#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, which is the default value
+ of the compression config.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>

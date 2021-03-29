@@ -20,7 +20,7 @@ redirect_from:
     <span class="c1">// Optionally, you can provide the interface that the socket needs to bind </span>
     <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
     <span class="c1">// tcp:Client client = check new (&quot;localhost&quot;, 3000, localHost = &quot;localhost&quot;,</span>
-    <span class="c1">//                             timeoutInMillis = 2000);</span>
+    <span class="c1">//                             timeout = 5);</span>
     <span class="nx">tcp</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
 
     <span class="c1">// Send the desired content to the server.</span>
@@ -47,7 +47,7 @@ redirect_from:
                             <p><p>The TCP Client is used to connect to a remote TCP server.
  This sample demonstrates how the TCP client interacts with the TCP server.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/tcp/">TCP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/tcp/latest">TCP module</a>.</p>
 </p>
 
                         </td>
@@ -160,7 +160,7 @@ import ballerina/tcp;
  Optionally, you can provide the interface that the socket needs to bind
  and the timeout in milliseconds, which specifies the read timeout value.
  tcp:Client client = check new (&ldquo;localhost&rdquo;, 3000, localHost = &ldquo;localhost&rdquo;,
-                             timeoutInMillis = 2000);</p>
+                             timeout = 5);</p>
 
                                         </div>
                                     </div>

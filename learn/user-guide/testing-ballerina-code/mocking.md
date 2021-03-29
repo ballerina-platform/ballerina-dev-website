@@ -47,7 +47,7 @@ import ballerina/http;
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
 
-    remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:PayloadType|http:ClientError {
+    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
@@ -82,7 +82,7 @@ The example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-sta
 ```ballerina
 import ballerina/io;
 import ballerina/http;
-import ballerina/stringutils;
+import ballerina/regex;
 
 http:Client clientEndpoint = check new("https://api.chucknorris.io/jokes/");
 
@@ -118,7 +118,7 @@ function getRandomJoke(string name, string category = "food") returns @tainted s
 
             if (payload is json) {
                 json joke = check payload.value;
-                replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+                replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
                 return replacedText;
             }
             
@@ -289,7 +289,7 @@ function sendNotification(string[] emailIds) returns error? {
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient->sendEmailMessage(msg);
+    email:Error? response = smtpClient->sendMessage(msg);
     if (response is error) {
 	io:println("error while sending the email: " + response.message());
   	return response;
@@ -312,7 +312,7 @@ function testSendNotification() {
     smtpClient = test:mock(email:SmtpClient);
 
     // Stub to do nothing when the`send` function is invoked.
-    test:prepare(smtpClient).when("sendEmailMessage").doNothing();
+    test:prepare(smtpClient).when("sendMessage").doNothing();
 
     // Invoke the function to test and verify that no error occurred.
     test:assertEquals(sendNotification(emailIds), ());

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-landing-page
+layout: ballerina-no-git-inner-page
 title: Swan Lake Archived Versions
 permalink: /downloads/swan-lake-archived/
 ---

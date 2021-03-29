@@ -12,7 +12,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="c1">// HTTP version is set to 2.0.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">http2serviceClientEP</span> <span class="p">=</span>
@@ -20,9 +19,9 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">http11Service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Forward the [clientRequest](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request) to the `http2` service.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
+        <span class="c1">// Forward the [clientRequest](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request) to the `http2` service.</span>
         <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">http2serviceClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/http2service&quot;</span><span class="p">,</span>
                                                         <span class="nx">clientRequest</span><span class="p">);</span>
 
@@ -31,16 +30,13 @@ redirect_from:
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c1">// Handle the errors that are returned when invoking the</span>
-            <span class="c1">// [forward](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/HttpClient#forward) function.</span>
+            <span class="c1">// [forward](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/HttpClient#forward) function.</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;(&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+
         <span class="p">}</span>
         <span class="c1">// Send the response back to the caller.</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the response&quot;</span><span class="p">,</span>
-               <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
 
     <span class="p">}</span>
 <span class="p">}</span>
@@ -51,19 +47,12 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">http2service</span> <span class="nx">on</span> <span class="nx">http2serviceEP</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Construct the response message.</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;response from http2 service&quot;</span><span class="p">}};</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="c1">// Construct the response payload.</span>
+        <span class="kt">json</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;response&quot;</span><span class="p">:{</span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;response from http2 service&quot;</span><span class="p">}};</span>
 
         <span class="c1">// Send the response back to the caller (http11Service).</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the response&quot;</span><span class="p">,</span>
-                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -78,7 +67,7 @@ redirect_from:
                             <p><p>In this example, the Ballerina HTTP service receives a message over the HTTP/1.1 protocol and forwards it
  to another service over the HTTP/2.0 protocol.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -162,6 +151,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -171,7 +162,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -215,8 +205,8 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller,
-                                     http:Request clientRequest) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Request clientRequest)
+            returns http:Response {
 </code></pre></div>
 
                                 </td>
@@ -237,7 +227,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Forward the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request">clientRequest</a> to the <code>http2</code> service.</p>
+                                            <p>Forward the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request">clientRequest</a> to the <code>http2</code> service.</p>
 
                                         </div>
                                     </div>
@@ -264,8 +254,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            response.statusCode = 500;
-            response.setPayload(&lt;@untainted&gt;(&lt;error&gt;clientResponse).message());
-        }
+            response.setPayload(&lt;@untainted&gt;clientResponse.message());
 </code></pre></div>
 
                                 </td>
@@ -274,7 +263,7 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Handle the errors that are returned when invoking the
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/HttpClient#forward">forward</a> function.</p>
+ <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/HttpClient#forward">forward</a> function.</p>
 
                                         </div>
                                     </div>
@@ -282,14 +271,22 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&lt;@untainted&gt;response);
-        if (result is error) {
-           log:printError(&quot;Error occurred while sending the response&quot;,
-               err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        return response;
 </code></pre></div>
 
                                 </td>
@@ -353,8 +350,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller,
-                                    http:Request clientRequest) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .() returns json {
 </code></pre></div>
 
                                 </td>
@@ -366,9 +362,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response response = new;
-        json msg = {&quot;response&quot;: {&quot;message&quot;: &quot;response from http2 service&quot;}};
-        response.setPayload(msg);
+                                    <div class="highlight"><pre><code class=language-ballerina>        json response = {&quot;response&quot;:{&quot;message&quot;:&quot;response from http2 service&quot;}};
 </code></pre></div>
 
                                 </td>
@@ -376,7 +370,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Construct the response message.</p>
+                                            <p>Construct the response payload.</p>
 
                                         </div>
                                     </div>
@@ -387,11 +381,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(response);
-        if (result is error) {
-            log:printError(&quot;Error occurred while sending the response&quot;,
-                err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        return response;
     }
 }
 </code></pre></div>

@@ -46,10 +46,10 @@ redirect_from:
         <span class="nx">replyTo</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;replyTo1@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;replyTo2@email.com&quot;</span><span class="p">]</span>
     <span class="p">};</span>
 
-    <span class="c1">// Send the email message with the client. The `sendEmail` method can be used</span>
+    <span class="c1">// Send the email message with the client. The `send` method can be used</span>
     <span class="c1">// instead, if the email is required to be sent with mandatory and optional</span>
     <span class="c1">// parameters instead of configuring an `email:Message` record.</span>
-    <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">sendEmailMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">sendMessage</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -66,7 +66,7 @@ redirect_from:
  includes sending emails with default configurations
  over SSL using the default ports.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/email/latest/email/">Email module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/email/latest/email/">Email module</a>.</p>
 </p>
 
                         </td>
@@ -74,9 +74,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-client-with-oauth2-direct-token-type.html">
+                                    <a class="prev" href="http-client-with-oauth2-refresh-token-grant-type.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Client with OAuth2 Direct Token Type</p>
+                                        <p>HTTP Client with OAuth2 Refresh Token Grant Type</p>
                                     </a>
                                 </div>
                                  
@@ -107,7 +107,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a33ebc4e4e58cf94d7c8e14f8129a896&file=send_email.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3dc0a855ba19a451db793303ad7dcb84&file=send_email.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -348,7 +348,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check smtpClient-&gt;sendEmailMessage(email);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check smtpClient-&gt;sendMessage(email);
 </code></pre></div>
 
                                 </td>
@@ -356,7 +356,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send the email message with the client. The <code>sendEmail</code> method can be used
+                                            <p>Send the email message with the client. The <code>send</code> method can be used
  instead, if the email is required to be sent with mandatory and optional
  parameters instead of configuring an <code>email:Message</code> record.</p>
 

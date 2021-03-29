@@ -19,7 +19,7 @@ redirect_from:
     <span class="c1">// Create a new connectionless UDP client.</span>
     <span class="c1">// Optionally, you can provide the address that the socket needs to bind </span>
     <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
-    <span class="c1">// udp:Client client = new (localHost = &quot;localhost&quot;, timeoutInMillis = 2000);</span>
+    <span class="c1">// udp:Client client = new (localHost = &quot;localhost&quot;, timeout = 5);</span>
     <span class="nx">udp</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">;</span>
 
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
@@ -55,7 +55,7 @@ redirect_from:
  This sample demonstrates how to send a datagram to a remote server
  and print the echoed response.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/udp/">UDP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/udp/latest">UDP module</a>.</p>
 </p>
 
                         </td>
@@ -63,9 +63,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="tcp-listener.html">
+                                    <a class="prev" href="tcp-transport-security.html">
                                         <span>< PREVIOUS</span>
-                                        <p>TCP Listener</p>
+                                        <p>TCP Transport Security</p>
                                     </a>
                                 </div>
                                  
@@ -170,7 +170,7 @@ import ballerina/udp;
                                             <p>Create a new connectionless UDP client.
  Optionally, you can provide the address that the socket needs to bind
  and the timeout in milliseconds, which specifies the read timeout value.
- udp:Client client = new (localHost = &ldquo;localhost&rdquo;, timeoutInMillis = 2000);</p>
+ udp:Client client = new (localHost = &ldquo;localhost&rdquo;, timeout = 5);</p>
 
                                         </div>
                                     </div>

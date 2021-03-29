@@ -31,19 +31,19 @@ redirect_from:
     <span class="c1">// This resource is invoked once a new file is created in the listening directory.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onCreate</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Create: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This resource is invoked once an existing file is deleted from the listening directory.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onDelete</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Delete: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This resource is invoked once an existing file is modified in the listening directory.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onModify</span><span class="p">(</span><span class="nx">file</span><span class="p">:</span><span class="nx">FileEvent</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Modify: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -58,7 +58,7 @@ redirect_from:
                             <p><p>The <code>Directory Listener</code> is used to listen to a directory in the local file system.
  It notifies when new files are created in the directory or when the existing files are deleted or modified.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/file/latest/file/">File module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/file/latest/file/">File module</a>.</p>
 </p>
 
                         </td>
@@ -195,7 +195,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onCreate(file:FileEvent m) {
         string msg = &quot;Create: &quot; + m.name;
-        log:print(msg);
+        log:printInfo(msg);
     }
 </code></pre></div>
 
@@ -217,7 +217,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onDelete(file:FileEvent m) {
         string msg = &quot;Delete: &quot; + m.name;
-        log:print(msg);
+        log:printInfo(msg);
     }
 </code></pre></div>
 
@@ -239,7 +239,7 @@ import ballerina/log;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onModify(file:FileEvent m) {
         string msg = &quot;Modify: &quot; + m.name;
-        log:print(msg);
+        log:printInfo(msg);
     }
 }
 </code></pre></div>

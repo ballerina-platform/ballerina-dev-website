@@ -16,16 +16,15 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
 
-<span class="c1">// Creates an endpoint for the [client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client).</span>
+<span class="c1">// Creates an endpoint for the [client](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client).</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
 
 <span class="kd">service</span> <span class="o">/</span><span class="p">&#39;stream on new http:Listener(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">fileupload</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">fileupload</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
-        <span class="c1">//[Sets the file](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setFileAsPayload) as the request payload.</span>
+        <span class="c1">//[Sets the file](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#setFileAsPayload) as the request payload.</span>
         <span class="nx">request</span><span class="p">.</span><span class="nx">setFileAsPayload</span><span class="p">(</span><span class="s">&quot;./files/BallerinaLang.pdf&quot;</span><span class="p">,</span>
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span><span class="p">);</span>
 
@@ -37,20 +36,20 @@ redirect_from:
             <span class="nx">res</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending data to the client &quot;</span><span class="p">,</span>
-                            <span class="nx">err</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
-            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">);</span>
+                            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">);</span>
+            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">clientResponse</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while while sending response to the caller&quot;</span><span class="p">,</span>
-                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">receiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">//[Retrieve the byte stream](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getByteStream).</span>
+        <span class="c1">//[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getByteStream).</span>
         <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">streamer</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getByteStream</span><span class="p">();</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">streamer</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
@@ -59,7 +58,8 @@ redirect_from:
                                     <span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">,</span> <span class="nx">streamer</span><span class="p">);</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while writing &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while writing &quot;</span><span class="p">,</span>
+                                                        <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;File Received!&quot;</span><span class="p">);</span>
@@ -71,7 +71,7 @@ redirect_from:
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending response&quot;</span><span class="p">,</span>
-                           <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                           <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -86,7 +86,8 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">byteStream</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">byteStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the stream: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the stream: &quot;</span><span class="p">,</span>
+                            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -100,7 +101,7 @@ redirect_from:
                             <h2>HTTP Streaming</h2>
                             <p><p>Ballerina supports HTTP input and output streaming capability based on the Ballerina <code>stream</code> type.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -141,7 +142,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d4ac813512c985747301f990e016f7e9&file=http_streaming.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e27eafae6db689504f84f4ec933822ce&file=http_streaming.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -219,7 +220,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an endpoint for the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client">client</a>.</p>
+                                            <p>Creates an endpoint for the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client">client</a>.</p>
 
                                         </div>
                                     </div>
@@ -242,8 +243,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get fileupload(http:Caller caller,
-                                         http:Request clientRequest) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get fileupload(http:Caller caller) {
         http:Request request = new;
 </code></pre></div>
 
@@ -265,7 +265,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setFileAsPayload">Sets the file</a> as the request payload.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#setFileAsPayload">Sets the file</a> as the request payload.</p>
 
                                         </div>
                                     </div>
@@ -300,13 +300,13 @@ import ballerina/mime;
             res = clientResponse;
         } else {
             log:printError(&quot;Error occurred while sending data to the client &quot;,
-                            err = &lt;error&gt;clientResponse);
-            setError(res, &lt;error&gt;clientResponse);
+                            &#39;error = clientResponse);
+            setError(res, clientResponse);
         }
         var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Error while while sending response to the caller&quot;,
-                            err = result);
+                            &#39;error = result);
         }
     }
 </code></pre></div>
@@ -342,7 +342,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getByteStream">Retrieve the byte stream</a>.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getByteStream">Retrieve the byte stream</a>.</p>
 
                                         </div>
                                     </div>
@@ -386,7 +386,8 @@ import ballerina/mime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;error occurred while writing &quot;, err = result);
+                log:printError(&quot;error occurred while writing &quot;,
+                                                        &#39;error = result);
                 setError(res, result);
             } else {
                 res.setPayload(&quot;File Received!&quot;);
@@ -398,7 +399,7 @@ import ballerina/mime;
         var result = caller-&gt;respond(res);
         if (result is error) {
            log:printError(&quot;Error occurred while sending response&quot;,
-                           err = result);
+                           &#39;error = result);
         }
     }
 }
@@ -438,7 +439,8 @@ import ballerina/mime;
                                     <div class="highlight"><pre><code class=language-ballerina>function close(stream&lt;byte[], io:Error&gt; byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
-        log:printError(&quot;Error occurred while closing the stream: &quot;, err = cr);
+        log:printError(&quot;Error occurred while closing the stream: &quot;,
+                            &#39;error = cr);
     }
 }
 </code></pre></div>
@@ -472,7 +474,9 @@ import ballerina/mime;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># In the directory, which contains the `.bal` file, create a directory named `files`,
+# and add a PDF file named `BallerinaLang.pdf` in it.
+# To start the service, navigate to the directory that contains the
 # `.bal` file and use the `bal run` command below.
 bal run http_streaming.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090

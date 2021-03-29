@@ -36,8 +36,6 @@ You view the program being executed in the **DEBUG CONSOLE** as shown below.
 
 ![Run Without Debugging](/learn/images/run-without-debugging.gif)
 
-<img src="/learn/images/run-without-debugging.gif" alt="Run Without Debugging" width=300" height="200">
-
 >**Info:** For more information on debugging your code using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
 ## Starting a Debug Session
@@ -64,7 +62,7 @@ Then, you can start a program, test, or remote debug session as shown below.
 
 Follow the steps below to start a program debug session.
 
-1. Select **Ballerina Debug** from the drop down available in the upper left corner to start a program debugging session.
+1. Select **Ballerina Debug** from the drop-down available in the upper left corner to start a program debugging session.
 
 2. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
@@ -77,7 +75,7 @@ Follow the steps below to start a program debug session.
 
 Follow the steps below to start a test debug session.
 
-1. Select **Ballerina Test** from the drop down available in the upper left corner to start a test debugging session.
+1. Select **Ballerina Test** from the drop-down available in the upper left corner to start a test debugging session.
 
 2. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
@@ -86,11 +84,11 @@ Follow the steps below to start a test debug session.
     ![Test Debug](/learn/images/test-debug.gif)
 
 
-### Strating a Remote Debug Session
+### Starting a Remote Debug Session
 
 Follow the steps below to start a remote debug session.
 
-1. Select **Ballerina Remote** from the drop down available in the upper left corner to start a remote debugging session.
+1. Select **Ballerina Remote** from the drop-down available in the upper left corner to start a remote debugging session.
 
 2. Open the Terminal and execute the Ballerina command, which you want to debug, out of the supported remote debugging commands below. 
 
@@ -139,7 +137,7 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 - Strands
 - Expression Evaluation
 
->**Info** The Ballerina debugger is an open-source project and contributors are mostly welcome to get engaged with it via the [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang) GitHub repository. If you encounter any difficulties when using this feature, feel free to create an issue in it.
+>**Info** The Ballerina debugger is an open-source project and contributors are most welcome to get engaged with it via the [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang) GitHub repository. If you encounter any difficulties when using this feature, feel free to create an issue on it.
 
 <!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
 

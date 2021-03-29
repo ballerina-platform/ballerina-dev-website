@@ -22,19 +22,19 @@ This is done by importing the `ballerinax/azure.functions` module and simply ann
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows to output data from the function out to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
-- HTTP [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#HTTPTrigger) and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#HTTPOutput) binding
-- Queue [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#QueueTrigger) and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#QueueOutput) binding
-- Blob [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobTrigger), [input](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobInput) binding, and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobOutput) binding
-- Twilio SMS [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#TwilioSmsOutput) binding
-- CosmosDB [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBTrigger), [input](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBInput) binding, and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBOutput) binding
-- Timer [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#TimerTrigger)
+- HTTP [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#HTTPTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#HTTPOutput) binding
+- Queue [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#QueueTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#QueueOutput) binding
+- Blob [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobOutput) binding
+- Twilio SMS [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#TwilioSmsOutput) binding
+- CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBOutput) binding
+- Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#TimerTrigger)
 
 ## Writing a Function
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
 
 ```ballerina
-import ballerinax/azure.functions as af;
+import ballerinax/azure_functions as af;
 
 @af:Function
 public function fromHttpToQueue(af:Context ctx, 

@@ -25,7 +25,7 @@ The elements of the service are as follows.
 
 - **Service name:** the service name represents the base path of the HTTP service. This is an optional value. If it’s kept empty, the base path defaults to the value “/”. 
 
-- **Listener object:** provides an instance of the [`http:Listener`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/listeners/Listener) to bind to a specific host/port. 
+- **Listener object:** provides an instance of the [`http:Listener`](https://docs.central.ballerina.io/ballerina/http/latest/http/listeners/Listener) to bind to a specific host/port. 
 
 - **Resource:** a resource represents a specific subpath that can be accessed in relation to the service base path.
 

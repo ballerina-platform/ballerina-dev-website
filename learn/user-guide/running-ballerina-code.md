@@ -36,6 +36,7 @@ Source files and modules can contain zero or more entry points, and the runtime 
 - [Running a Package](#running-a-package)
 - [Configuring Your Ballerina Runtimes](#configuring-your-ballerina-runtimes)
   - [Ballerina Runtime Configurable Variables](#ballerina-runtime-configurable-variables)
+  - [Configuring Sensitive Data as configurable variables](#configuring-sensitive-data-as-configurable-variables)
 
 ## Running Standalone Source Code
 A single Ballerina source code file can be placed into any folder. 
@@ -177,3 +178,12 @@ User ID : 1001
 User Name : Jhone
 Married : true
 ```
+
+### Configuring Sensitive Data as configurable variables
+
+Ballerina provides support for configuring sensitive data using a different TOML file with the name 
+`Config-secrets.toml`. The values provided through the `Config-secrets.toml` are prioritised higher than normal 
+configuration.
+
+See [Securing Sensitive Data using configurable variables](/learn/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables) 
+for in-depth details.

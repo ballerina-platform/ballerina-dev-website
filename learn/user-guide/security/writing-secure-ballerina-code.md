@@ -122,3 +122,31 @@ function sanitizeSortColumn (string columnName) returns @untainted string {
 }
 // ...
 ```
+
+## Securing Sensitive Data using configurable variables
+
+A Ballerina runtime can be configured using configurable variables.
+See [Configurable BBE](/learn/by-example/configurable.html) for more details.
+
+Configuration values containing passwords or secrets should not be passed with normal configuration. 
+
+Such sensitive data can be passed to runtime using a different TOML file with the name `Config-secrets.toml`.
+The values provided through the `Config-secrets.toml` are prioritised higher than normal configuration.
+
+The TOML file that contains sensitive data can be located in the following ways: 
+
+- From an environment variable with the name `BAL_CONFIG_SECRET_FILE` that provides a path to the 
+  `Config-secrets.toml` file. 
+  
+- If not, the environment variable with the name `BAL_CONFIG_SECRET_DATA` that provides the content of 
+  the `Config-secrets.toml` file.
+  
+- If not, the `Config-secrets.toml` file is located in the current working directory by default.
+
+The configuration of sensitive data can be handled at the deployment of the Ballerina program.
+
+Consider a Kubernetes environment as an example.
+
+A Kubernetes secret can be used with a pod as files in a volume mounted on one or more of its containers or as 
+container environment variables. The `Config-secrets.toml` file can be stored as a secret resource in Kubernetes and 
+place in a volume mount when running a pod. The file path can be specified via an environment variable as above.

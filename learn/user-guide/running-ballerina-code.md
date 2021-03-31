@@ -93,10 +93,10 @@ $ bal run main.jar
 ### Ballerina Runtime Configurable Variables
 
 A Ballerina runtime can be configured using configurable variables.
-The values for `configurable` variables can be provided through command-line parameters and configuration files with
-loading and override precedence in the same order.
+The values for `configurable` variables can be provided through command-line parameters and configuration files.
+When loading the values to the configurable variables, command-line arguments get the higher precedence than the 
+configuration TOML files.
 
-You may or may not provide configuration values for configurable variables that are used in the program.
 See [Configurable BBE](/learn/by-example/configurable.html) for more details.
 
 Consider the following example, which uses configurable variables.
@@ -160,16 +160,16 @@ User Name : Jhone
 Married : true
 ```
 
-It is possible to provide the values for configurable variables through CLI arguments in the format of `-Ckey=value`.
-The key of a CLI argument can be specified as,
+It is possible to provide the values for configurable variables through command-line arguments in the format of `-Ckey=value`.
+The key of a command-line argument can be specified as,
 ```
 key:= [[org-name .] module-name .] variable
 ```
 The org-name and module-name is optional for the variable defined in the root module or in a single Ballerina file. 
-Currently, CLI-based configuration is supported for configurable variables of types `int`, `float`, `boolean`,
+Currently, command-line-based configuration is supported for configurable variables of types `int`, `float`, `boolean`,
 `string`, `decimal`, and `xml`.
 
-In the example, you can use the following command to pass values from the CLI.
+In the example, you can use the following command to pass values from the command-line.
 
 ```bash
 $ bal run main.bal -- -Cid=1001 -Cname=Jhone -Cmarried=true

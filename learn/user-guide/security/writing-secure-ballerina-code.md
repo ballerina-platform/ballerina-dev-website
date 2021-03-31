@@ -123,7 +123,7 @@ function sanitizeSortColumn (string columnName) returns @untainted string {
 // ...
 ```
 
-## Securing Sensitive Data using configurable variables
+## Securing Sensitive Data using Configurable Variables
 
 A Ballerina runtime can be configured using configurable variables.
 For more details, see [Configurable BBE](/learn/by-example/configurable.html).

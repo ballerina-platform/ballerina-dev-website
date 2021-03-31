@@ -36,8 +36,7 @@ Source files and modules can contain zero or more entry points, and the runtime 
 - [Running a Package](#running-a-package)
 - [Configuring Your Ballerina Runtimes](#configuring-your-ballerina-runtimes)
   - [Ballerina Runtime Configurable Variables](#ballerina-runtime-configurable-variables)
-  - [Configuring Sensitive Data as configurable variables](#configuring-sensitive-data-as-configurable-variables)
-
+  - [Configuring Sensitive Data as Configurable Variables](#configuring-sensitive-data-as-configurable-variables)
 ## Running Standalone Source Code
 A single Ballerina source code file can be placed into any folder. 
 
@@ -94,7 +93,7 @@ $ bal run main.jar
 ### Ballerina Runtime Configurable Variables
 
 A Ballerina runtime can be configured using configurable variables.
-The values for `configurable` variables can be provided through CLI parameters and configuration files with
+The values for `configurable` variables can be provided through command-line parameters and configuration files with
 loading and override precedence in the same order.
 
 You may or may not provide configuration values for configurable variables that are used in the program.
@@ -179,7 +178,7 @@ User Name : Jhone
 Married : true
 ```
 
-### Configuring Sensitive Data as configurable variables
+### Configuring Sensitive Data as Configurable Variables
 
 You can provide sensitive data to configurable variables through a separate TOML file and specify it using 
 `BAL_CONFIG_FILES` environment variable with higher priority.

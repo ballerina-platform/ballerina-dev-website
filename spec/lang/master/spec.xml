@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2021-03-20</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2021-03-30</h1>
 <p>
 Primary contributors:
 </p>
@@ -2764,7 +2764,7 @@ type
 
 <pre
 >    object {
-       public next() returns record {| T value; |}|C;
+       public function next() returns record {| T value; |}|C;
     }
 </pre>
 <p>
@@ -4272,7 +4272,8 @@ class="grammar"><dfn>string-template-expr</dfn> := <code>string</code> <abbr>Bac
 <p>
 A <code>string-template-expr</code> interpolates the results of evaluating
 expressions into a literal string. The static type of the expression in each
-interpolation must be a simple type and must not be nil. Within a
+interpolation must be a subtype of
+<code>boolean|int|float|decimal|string</code>. Within a
 <code>BacktickString</code>, every character that is not part of an
 <code>interpolation</code> is interpreted as a literal character. A
 string-template-expr is evaluated by evaluating the expression in each
@@ -10291,7 +10292,11 @@ public enum SortDirection {
    DESCENDING = "descending"
 }
 
-# Any ordered type is a subtype of this.
+# A type of which any ordered type must be a subtype.
+# Whether a type is an ordered type cannot be defined in
+# terms of being a subtype of a type, so being a subtype
+# of `OrderedType` is a necessary but not sufficient condition
+# for a type to be an ordered type.
 public type OrderedType ()|boolean|int|float|decimal|string|OrderedType[];
 
 # Sorts an array.
@@ -10370,6 +10375,16 @@ public isolated function toBase16(byte[] arr) returns string = external;
 # + str - Base16 string representation
 # + return - the byte array or error
 public isolated function fromBase16(string str) returns byte[]|error = external;
+
+# Returns a stream of the members of an array.
+#
+# + arr - the array
+# + returns - stream of members of the array
+# The returned stream will use an iterator over `arr` and
+# will therefore handle mutation of `arr` in the same way
+# as an iterator does.
+# Theutation of the `arr`
+public isolated function toStream(T[] arr) returns stream<T,()> = external;
 ]]></pre>
 
 </section>
@@ -11116,7 +11131,7 @@ public type Iterable distinct object {
     # Create a new iterator.
     #
     # + return - a new iterator object
-    public function iterator() returns abstract object {
+    public function iterator() returns object {
         public function next() returns record {| any|error value; |}|error?;
     }
 }

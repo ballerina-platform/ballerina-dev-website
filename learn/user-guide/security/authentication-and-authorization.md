@@ -755,7 +755,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = securedEP->get("/foo/bar");
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else if (response is http:ClientError) {
@@ -797,8 +797,8 @@ import ballerina/log;
 
 http:Client securedEP = check new("https://localhost:9090", {
     auth: {
-        username: "wso2",
-        issuer: "ballerina",
+        username: "ballerina",
+        issuer: "wso2",
         audience: ["ballerina", "ballerina.org", "ballerina.io"],
         jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
         keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
@@ -818,7 +818,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = securedEP->get("/foo/bar");
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else if (response is http:ClientError) {
@@ -850,7 +850,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = securedEP->get("/foo/bar");
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else if (response is http:ClientError) {
@@ -911,7 +911,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = securedEP->get("/foo/bar");
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else if (response is http:ClientError) {
@@ -989,7 +989,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = securedEP->get("/foo/bar");
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else if (response is http:ClientError) {
@@ -1048,7 +1048,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = securedEP->get("/foo/bar");
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else if (response is http:ClientError) {

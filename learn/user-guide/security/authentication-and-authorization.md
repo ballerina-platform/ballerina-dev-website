@@ -758,7 +758,7 @@ public function main() {
     http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
+    } else {
         log:printError("Failed to call the endpoint.", err = response);
     }
 }
@@ -821,7 +821,7 @@ public function main() {
     http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
+    } else {
         log:printError("Failed to call the endpoint.", err = response);
     }
 }
@@ -853,7 +853,7 @@ public function main() {
     http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
+    } else {
         log:printError("Failed to call the endpoint.", err = response);
     }
 }
@@ -914,7 +914,7 @@ public function main() {
     http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
+    } else {
         log:printError("Failed to call the endpoint.", err = response);
     }
 }
@@ -992,7 +992,7 @@ public function main() {
     http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
+    } else {
         log:printError("Failed to call the endpoint.", err = response);
     }
 }
@@ -1051,7 +1051,7 @@ public function main() {
     http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
+    } else {
         log:printError("Failed to call the endpoint.", err = response);
     }
 }

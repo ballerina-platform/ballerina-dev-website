@@ -759,7 +759,7 @@ public function main() {
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else {
-        log:printError("Failed to call the endpoint.", err = response);
+        log:printError("Failed to call the endpoint.", 'error = response);
     }
 }
 ```
@@ -822,7 +822,7 @@ public function main() {
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else {
-        log:printError("Failed to call the endpoint.", err = response);
+        log:printError("Failed to call the endpoint.", 'error = response);
     }
 }
 ```
@@ -854,7 +854,7 @@ public function main() {
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else {
-        log:printError("Failed to call the endpoint.", err = response);
+        log:printError("Failed to call the endpoint.", 'error = response);
     }
 }
 ```
@@ -915,7 +915,7 @@ public function main() {
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else {
-        log:printError("Failed to call the endpoint.", err = response);
+        log:printError("Failed to call the endpoint.", 'error = response);
     }
 }
 ```
@@ -993,7 +993,7 @@ public function main() {
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else {
-        log:printError("Failed to call the endpoint.", err = response);
+        log:printError("Failed to call the endpoint.", 'error = response);
     }
 }
 ```
@@ -1052,7 +1052,7 @@ public function main() {
     if (response is http:Response) {
         log:print(response.statusCode.toString());
     } else {
-        log:printError("Failed to call the endpoint.", err = response);
+        log:printError("Failed to call the endpoint.", 'error = response);
     }
 }
 ```

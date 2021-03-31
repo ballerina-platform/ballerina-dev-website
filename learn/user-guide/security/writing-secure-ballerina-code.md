@@ -131,7 +131,7 @@ For more details, see [Configurable BBE](/learn/by-example/configurable.html).
 Configuration values containing passwords or secrets should not be passed with the normal configuration.
 
 Such sensitive data can be passed to runtime using a different TOML file, and you can prioritize it higher than the
-normal configuration by prefixing the file path in `BAL_CONFIG_FILES` environment variable.
+normal configuration by prefixing the file path in the `BAL_CONFIG_FILES` environment variable.
 
 The configuration of sensitive data can be handled at the deployment of the Ballerina program.
 

@@ -29,7 +29,7 @@ To do this, first, execute the command below to get the update tool updated to i
 
 If you are using an **Update Tool version below 0.8.14**, execute the `ballerina update` command to update it. Next, execute the command below to update to Swan Lake Alpha4.
 
-> `bal dist pull slalpha3`
+> `bal dist pull slalpha4`
 
 ### Installing Ballerina
 

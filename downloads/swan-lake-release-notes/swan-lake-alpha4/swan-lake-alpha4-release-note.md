@@ -324,7 +324,7 @@ nats:Client client = check new(nats:DEFAULT_URL);
 
 ##### RabbitMQ Package Updates
 
- - The client and listener inits are updated.
+ - The  `init` methods of the client and listener are updated.
 
 ```ballerina
 rabbitmq:Client client = check new(host=”localhost”, port=9090);

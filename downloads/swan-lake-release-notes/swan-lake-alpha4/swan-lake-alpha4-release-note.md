@@ -223,7 +223,7 @@ io:print(`Hello ${val}!!!`);
 
 ##### MySQL Package Updates
 
-- Changed the previous SSLConfig Record to SecureSocket Record.
+- Changed the previous `SSLConfig` Record to `SecureSocket` Record.
 
 ```ballerina
 public type SecureSocket record {|

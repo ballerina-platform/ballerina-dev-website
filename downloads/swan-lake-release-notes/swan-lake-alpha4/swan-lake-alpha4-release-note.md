@@ -165,7 +165,7 @@ Configurable values can be provided in multiple TOML files using the `BAL_CONFIG
 
 The file locations can be specified in the environment variable using an OS-specific separator. The precedence order will be determined by the order in which the files are specified in the environment variable. If such an environment variable is not specified, the file located in the current directory with the file name `Config.toml` will be used.
 
-##### Providing TOML Content Through the Environment Variable
+##### Providing TOML Content via Environment Variables
 
 The configurable values can be provided using the `BAL_CONFIG_DATA` environment variable in which the content is expected to be in the TOML (v0.4) format.
 

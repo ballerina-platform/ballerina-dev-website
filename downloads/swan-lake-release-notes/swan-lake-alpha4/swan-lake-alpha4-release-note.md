@@ -129,7 +129,7 @@ Key syntax:
 key:= [[org-name .] module-name .] variable
 ```
 
-Command-line arguments are supported for configurable variables with boolean, int, float, decimal, string, and XML types.
+Command-line arguments are supported for configurable variables with `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
 
 Example usages:
 
@@ -340,17 +340,6 @@ rabbitmq:Client client = check new(”localhost”, 9090);
 #### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Alpha4%22+label%3AType%2FBug).
-
-### Code to Cloud Updates
-
-#### Bug Fixes
-
-To view bug fixes, see the GitHub milestone for Swan Lake Alpha4 of the repositories below.
-
-- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22)
-- [Docker](https://github.com/ballerina-platform/module-ballerina-docker/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22)
-- [AWS Lambda](https://github.com/ballerina-platform/module-ballerinax-aws.lambda/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22)
-- [Azure Functions](https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22) 
 
 ### Developer Tools Updates
 

@@ -198,7 +198,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
         string|time:Error emailDateTime = time:civilToEmailString(civil, "GMT");
         ```
 
-    - Converts a given email string to Civil.
+    - Converts a given email string to `time:Civil`.
 
         ```ballerina
         import ballerina/time; 

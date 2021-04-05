@@ -17,7 +17,7 @@ redirect_from:
 ---
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-  <a class="cBoxLink" href="/learn/user-guide/getting-started/" target="_blank">
+  <a class="cBoxLink" href="/learn/user-guide/getting-started/">
 
   <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
   <h2>User Guide</h2>
@@ -27,7 +27,7 @@ redirect_from:
 </div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/by-example/" target="_blank">
+<a class="cBoxLink" href="/learn/by-example/">
 
 
 <img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
@@ -53,7 +53,7 @@ redirect_from:
 </div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/" target="_blank">
+<a class="cBoxLink" href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/">
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 
@@ -67,7 +67,7 @@ redirect_from:
 </div>
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-<a class="cBoxLink" href="/learn/language-guide/" target="_blank">
+<a class="cBoxLink" href="/learn/language-guide/">
 
 <img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
 <h2>Language Guide</h2>

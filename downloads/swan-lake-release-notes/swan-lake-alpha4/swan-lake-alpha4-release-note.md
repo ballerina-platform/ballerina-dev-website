@@ -314,7 +314,7 @@ nats:Client client = check new(”http://google.com:9090”);
 
 ##### STAN Package Updates
 
- - The client and listener inits are updated.
+ - The `init` methods of the client and listener are updated.
 
 ```ballerina
 stan:Client client = check new(url=”http://localhost:9090”);

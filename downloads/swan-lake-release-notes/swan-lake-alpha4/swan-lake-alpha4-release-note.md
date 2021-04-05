@@ -255,7 +255,7 @@ json data = {
 xml?|Error x = xmldata:fromJson(data);
 ```
 
-#### Java.Arrays Package Updates
+##### Java.Arrays Package Updates
 
 The `java.arrays` package’s org and package names were renamed as `ballerina` and `jballerina.java.arrays`. 
 
@@ -361,5 +361,4 @@ To view bug fixes, see the GitHub milestone for Swan Lake Alpha4 of the reposito
 #### Language Server 
 
 To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
-
 

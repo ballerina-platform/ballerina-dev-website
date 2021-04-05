@@ -243,7 +243,7 @@ public type SecureSocket record {|
 
 - Changed the SSLMode value from `SSL_VERIFY_CERT` to `SSL_VERIFY_CA`.
 
-##### XML Data Package Updates
+##### XmlData Package Updates
 
 - API to convert a JSON to an XML has been supported by the `nil` return value.
 

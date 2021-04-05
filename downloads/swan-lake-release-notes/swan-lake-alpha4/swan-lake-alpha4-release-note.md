@@ -292,7 +292,7 @@ handle secondWord = arrays:get(input, 1);
 
  - The `SecureSocket` record is updated.
 
- - The `kafka:Producer`, `kafka:Consumer`, and `kafka:Listener` inits are updated.
+ - The `init` methods of the `kafka:Producer`, `kafka:Consumer`, and `kafka:Listener` classes are updated.
 
 ```ballerina
 kafka:Producer kafkaProducer = check new(kafka:DEFAULT_URL, config);

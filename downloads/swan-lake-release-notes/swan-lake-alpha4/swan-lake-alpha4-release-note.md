@@ -10,14 +10,10 @@ It introduces the new language features planned for the Swan Lake GA release and
 
 - [Updating Ballerina](#updating-ballerina)
 - [Installing Ballerina](#installing-ballerina)
-- [Highlights](#highlights)
 - [Language Updates](#language-updates)
 - [Runtime Updates](#runtime-updates)
 - [Standard Library Updates](#standard-library-updates)
-- [Code to Cloud Updates](#code-to-cloud-updates)
 - [Developer Tools Updates](#developer-tools-updates)
-- [Ballerina Packages Updates](ballerina-packages-updates)
-- [Breaking Changes](#breaking-changes)
 
 ### Updating Ballerina
 
@@ -34,8 +30,6 @@ If you are using an **Update Tool version below 0.8.14**, execute the `ballerina
 ### Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
-
-### Highlights
 
 ### Language Updates
 
@@ -110,6 +104,20 @@ The return types of the `lang.value:fromJsonFloatString` and `lang.value:fromJso
 #### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
+
+### Breaking Changes
+
+- A compilation error occurs if the inferred type of an unused variable that is declared with `var` includes a subtype of the `error` type.
+- The `error<*>` syntax has been removed.
+- Relational expressions are no longer supported with numeric values when the static types of the operands belong to different ordered types.
+- The `lang.array:indexOf` and `lang.array:lastIndexOf` lang library functions cannot be used with values that do not belong to `anydata`.
+- An object used as the iterable value in a `foreach` statement, `from` clause, or `join` clause must be a subtype of `object:Iterable`.
+- The `RawTemplate` type is distinct now.
+- The filler value of the `decimal` type is now `+0d`.
+- Completion type `C` in `stream<T, C>` has been changed from `error|never` to `error?`. `stream<T>` is equivalent to `stream<T, ()>`. `stream<T>` and `stream<T, error>` are assignable to `stream<T, error?>`.
+- Annotations with the `service` attach point cannot be used with service classes.
+- Checking keywords (`check` and `checkpanic`) are allowed in a statement only if the statement is a call statement (i.e., when the expression is a function or method call).
+- The precedence of the `trap` expression has been lowered.
 
 ### Runtime Updates
 
@@ -354,16 +362,4 @@ To view bug fixes, see the GitHub milestone for Swan Lake Alpha4 of the reposito
 
 To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
 
-### Breaking Changes
 
-- A compilation error occurs if the inferred type of an unused variable that is declared with `var` includes a subtype of the `error` type.
-- The `error<*>` syntax has been removed.
-- Relational expressions are no longer supported with numeric values when the static types of the operands belong to different ordered types.
-- The `lang.array:indexOf` and `lang.array:lastIndexOf` lang library functions cannot be used with values that do not belong to `anydata`.
-- An object used as the iterable value in a `foreach` statement, `from` clause, or `join` clause must be a subtype of `object:Iterable`.
-- The `RawTemplate` type is distinct now.
-- The filler value of the `decimal` type is now `+0d`.
-- Completion type `C` in `stream<T, C>` has been changed from `error|never` to `error?`. `stream<T>` is equivalent to `stream<T, ()>`. `stream<T>` and `stream<T, error>` are assignable to `stream<T, error?>`.
-- Annotations with the `service` attach point cannot be used with service classes.
-- Checking keywords (`check` and `checkpanic`) are allowed in a statement only if the statement is a call statement (i.e., when the expression is a function or method call).
-- The precedence of the `trap` expression has been lowered.

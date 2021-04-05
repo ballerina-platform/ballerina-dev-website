@@ -303,7 +303,7 @@ kafka:Producer kafkaProducer = check new(”localhost:9092”);
 
 ##### NATS Package Updates
 
- - The client and listener inits are updated.
+ - The `init` methods of the client and listener are updated.
 
 ```ballerina
 nats:Client client = check new(url=”http://google.com:9090”, ssl=config);

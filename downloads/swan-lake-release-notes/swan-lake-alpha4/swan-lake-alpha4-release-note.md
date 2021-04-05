@@ -189,7 +189,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
         string emailFormattedString = time:utcToEmailString(time:utcNow());
         ```
 
-    - Converts a given Civil to an email string.
+    - Converts a given `time:Civil` to an email string.
 
         ```ballerina
         import ballerina/time; 

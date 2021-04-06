@@ -105,7 +105,7 @@ The return types of the `lang.value:fromJsonFloatString` and `lang.value:fromJso
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-### Breaking Changes
+#### Breaking Changes
 
 - A compilation error occurs if the inferred type of an unused variable that is declared with `var` includes a subtype of the `error` type.
 - The `error<*>` syntax has been removed.

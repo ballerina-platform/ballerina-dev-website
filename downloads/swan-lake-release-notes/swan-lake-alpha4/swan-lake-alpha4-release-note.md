@@ -185,7 +185,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
 
 #### New Features
 
-##### Time Package
+##### `time` Package Updates
 
 - Introduced the following APIs to support email-typed string conversions:
 
@@ -216,7 +216,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
       
 #### Improvements
 
-##### I/O Package Updates
+##### `io` Package Updates
 
 - Improved the print APIs to support string templates.
 
@@ -229,7 +229,7 @@ io:print(`Hello ${val}!!!`);
 
 - Changed streaming APIs to be completed from `nil` return. 
 
-##### MySQL Package Updates
+##### `mysql` Package Updates
 
 - Changed the previous `SSLConfig` Record to `SecureSocket` Record.
 
@@ -243,7 +243,7 @@ public type SecureSocket record {|
 
 - Changed the SSLMode value from `SSL_VERIFY_CERT` to `SSL_VERIFY_CA`.
 
-##### XmlData Package Updates
+##### `xmldata` Package Updates
 
 - API to convert a JSON to an XML has been supported by the `nil` return value.
 
@@ -255,7 +255,7 @@ json data = {
 xml?|Error x = xmldata:fromJson(data);
 ```
 
-##### Java.Arrays Package Updates
+##### `java.arrays` Package Updates
 
 The `java.arrays` package’s org and package names were renamed as `ballerina` and `jballerina.java.arrays`. 
 
@@ -264,7 +264,7 @@ import ballerina/jballerina.java.arrays;
 handle secondWord = arrays:get(input, 1);
 ```
 
-##### WebSub Package Updates
+##### `websub` Package Updates
 
  - Add pre-built constants for WebSub common-responses.
 
@@ -296,7 +296,7 @@ handle secondWord = arrays:get(input, 1);
 
 ```
 
-##### Kafka Package Updates
+##### `kafka` Package Updates
 
  - The `SecureSocket` record is updated.
 
@@ -309,7 +309,7 @@ kafka:Producer kafkaProducer = check new(”localhost:9092”);
 // Same for listener and consumer initialization
 ```
 
-##### NATS Package Updates
+##### `nats` Package Updates
 
  - The `init` methods of the client and listener are updated.
 
@@ -320,7 +320,7 @@ nats:Client client = check new(”http://google.com:9090”);
 // Same for listener initialization
 ```
 
-##### STAN Package Updates
+##### `stan` Package Updates
 
  - The `init` methods of the client and listener are updated.
 
@@ -330,7 +330,7 @@ nats:Client client = check new(nats:DEFAULT_URL);
 // Same for listener initialization
 ```
 
-##### RabbitMQ Package Updates
+##### `rabbitmq` Package Updates
 
  - The  `init` methods of the client and listener are updated.
 

@@ -202,7 +202,7 @@
    {
       "version": "swan-lake-alpha4",
       "short-version": "slalpha4",
-      "display-version": "Swan",
+      "display-version": "Swan Lake Alpha4",
       "release-date": "2021-04-06",
       "windows-installer": "ballerina-windows-installer-x64-swan-lake-alpha4.msi",
       "windows-installer-size": "154mb",

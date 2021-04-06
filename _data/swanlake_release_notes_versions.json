@@ -174,7 +174,6 @@
          "ballerina-swan-lake-alpha2.zip",
          "ballerina-swan-lake-alpha2.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
-         
       ],
       "api-docs": "ballerina-api-docs-swan-lake-alpha2.zip",
       "release-notes": "ballerina-release-notes-swan-lake-alpha2.md"
@@ -196,9 +195,28 @@
          "ballerina-swan-lake-alpha3.zip",
          "ballerina-swan-lake-alpha3.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
-         
       ],
       "api-docs": "ballerina-api-docs-swan-lake-alpha3.zip",
       "release-notes": "ballerina-release-notes-swan-lake-alpha3.md"
+   },
+   {
+      "version": "swan-lake-alpha4",
+      "short-version": "slalpha4",
+      "display-version": "Swan",
+      "release-date": "2021-04-06",
+      "windows-installer": "ballerina-windows-installer-x64-swan-lake-alpha4.msi",
+      "windows-installer-size": "154mb",
+      "linux-installer": "ballerina-linux-installer-x64-swan-lake-alpha4.deb",
+      "linux-installer-size": "203mb",
+      "macos-installer": "ballerina-macos-installer-x64-swan-lake-alpha4.pkg",
+      "macos-installer-size": "239mb",
+      "rpm-installer": "ballerina-linux-installer-x64-swan-lake-alpha4.rpm",
+      "rpm-installer-size": "219mb",
+      "other-artefacts": [
+         "ballerina-swan-lake-alpha4.zip",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "api-docs": "ballerina-api-docs-swan-lake-alpha4.zip",
+      "release-notes": "ballerina-release-notes-swan-lake-alpha4.md"
    }
 ]

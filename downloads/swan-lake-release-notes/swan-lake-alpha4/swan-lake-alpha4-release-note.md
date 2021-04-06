@@ -147,7 +147,7 @@ Example usages:
 configurable int port = ?;
 ```
 
-If the configurable variable is defined in the default module or if you are using a single Ballerina file:
+If the configurable variable is defined in the default module or if a single Ballerina file is being used:
 
 ```bash
 bal run -- -Cport=9090

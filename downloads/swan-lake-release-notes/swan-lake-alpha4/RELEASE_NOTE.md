@@ -188,32 +188,32 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
 
 ##### `time` Package 
 
-- Introduced the following APIs to support email-typed string conversions:
+Introduced the following APIs to support email-typed string conversions:
 
-    - Converts a given UTC to an email string.
+- Converts a given UTC to an email string.
 
-        ```ballerina
-        import ballerina/time; 
+    ```ballerina
+    import ballerina/time; 
              
-        string emailFormattedString = time:utcToEmailString(time:utcNow());
-        ```
+    string emailFormattedString = time:utcToEmailString(time:utcNow());
+    ```
 
-    - Converts a given `time:Civil` to an email string.
+- Converts a given `time:Civil` to an email string.
 
-        ```ballerina
-        import ballerina/time; 
+    ```ballerina
+    import ballerina/time; 
        
-        time:Civil civil = check time:civilFromString("2021-04-12T23:20:50.520+05:30[Asia/Colombo]");
-        string|time:Error emailDateTime = time:civilToEmailString(civil, "GMT");
-        ```
+    time:Civil civil = check time:civilFromString("2021-04-12T23:20:50.520+05:30[Asia/Colombo]");
+    string|time:Error emailDateTime = time:civilToEmailString(civil, "GMT");
+    ```
 
-    - Converts a given email string to `time:Civil`.
+- Converts a given email string to `time:Civil`.
 
-        ```ballerina
-        import ballerina/time; 
+    ```ballerina
+    import ballerina/time; 
        
-        time:Civil|time:Error emailDateTime = time:civilFromEmailString("Wed, 10 Mar 2021 19:51:55 -0820");
-        ```
+    time:Civil|time:Error emailDateTime = time:civilFromEmailString("Wed, 10 Mar 2021 19:51:55 -0820");
+    ```
 
 ##### `io` Package 
 
@@ -244,7 +244,7 @@ public type SecureSocket record {|
 
 ##### `xmldata` Package 
 
-- API to convert a JSON to an XML has been supported by the `nil` return value.
+Updated the API to convert a JSON to an XML to be supported by the `nil` return value.
 
 ```ballerina
 import ballerina/xmldata;
@@ -256,7 +256,7 @@ xml?|Error x = xmldata:fromJson(data);
 
 ##### `java.arrays` Package 
 
-The `java.arrays` package’s org and package names were renamed as `ballerina` and `jballerina.java.arrays`. 
+Renamed the `java.arrays` package’s org and package names as `ballerina` and `jballerina.java.arrays`. 
 
 ```ballerina
 import ballerina/jballerina.java.arrays;
@@ -265,7 +265,7 @@ handle secondWord = arrays:get(input, 1);
 
 ##### `websub` Package 
 
- - Add pre-built constants for WebSub common-responses.
+Added pre-built constants for WebSub common-responses.
 
 ```ballerina
    @websub:SubscriberServiceConfig {
@@ -297,9 +297,9 @@ handle secondWord = arrays:get(input, 1);
 
 ##### `kafka` Package 
 
- - The `SecureSocket` record is updated.
+ - Updated the `SecureSocket` record.
 
- - The `init` methods of the `kafka:Producer`, `kafka:Consumer`, and `kafka:Listener` classes are updated.
+ - Updated the `init` methods of the `kafka:Producer`, `kafka:Consumer`, and `kafka:Listener` classes.
 
 ```ballerina
 kafka:Producer kafkaProducer = check new(kafka:DEFAULT_URL, config);
@@ -310,7 +310,7 @@ kafka:Producer kafkaProducer = check new(”localhost:9092”);
 
 ##### `nats` Package 
 
- - The `init` methods of the client and listener are updated.
+Updated the `init` methods of the client and listener.
 
 ```ballerina
 nats:Client client = check new(url=”http://google.com:9090”, ssl=config);
@@ -321,7 +321,7 @@ nats:Client client = check new(”http://google.com:9090”);
 
 ##### `stan` Package 
 
- - The `init` methods of the client and listener are updated.
+Updated the `init` methods of the client and listener.
 
 ```ballerina
 stan:Client client = check new(url=”http://localhost:9090”);
@@ -331,7 +331,7 @@ nats:Client client = check new(nats:DEFAULT_URL);
 
 ##### `rabbitmq` Package 
 
- - The  `init` methods of the client and listener are updated.
+ Updated the  `init` methods of the client and listener.
 
 ```ballerina
 rabbitmq:Client client = check new(host=”localhost”, port=9090);

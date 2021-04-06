@@ -1,23 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-US">
-<meta charset="utf-8">
-<title>Redirecting&hellip;</title>
-<h1>Redirecting&hellip;</h1>
-<script>
-    let loc = window.location.href;
-    let targetLoc = "https://docs.central.ballerina.io"
-    let regexExpr = /\/learn\/api-docs\/ballerina\/#((\/[^\/]*)(\/[^\/]*)?(\/[^\/]*)?(\/[^\/]*)?(\/[^\/]*)?(\/[^\/]*)?$)/;
-    if (regexExpr.test(loc)) {
-        const match = loc.match(regexExpr);
-        targetLoc = targetLoc + match[1];    
-        targetLoc = targetLoc.replace(match[4], "/latest");
-    }
-    var a = document.createElement('a');
-    var link = document.createTextNode("Click here if you are not redirected");
-    a.appendChild(link);
-    a.title = "Click here if you are not redirected";
-    a.href = targetLoc;
-    document.body.appendChild(a);
-    window.location.href = targetLoc;
-</script>
+<html lang="en">
+<head>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="root"></div>
+
+<script type="text/javascript" src="bundle.js"></script></body>
 </html>

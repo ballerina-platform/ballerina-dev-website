@@ -14,6 +14,8 @@ It introduces the new language features planned for the Swan Lake GA release and
 - [Runtime Updates](#runtime-updates)
 - [Standard Library Updates](#standard-library-updates)
 - [Developer Tools Updates](#developer-tools-updates)
+- [Security Updates](#security-updates)
+- [Observability Updates](#observability-updates)
 
 ### Updating Ballerina
 
@@ -341,10 +343,6 @@ rabbitmq:Client client = check new(”localhost”, 9090);
 // Same for listener initialization
 ```
 
-##### Security Updates
-
- - Removed encrypted passwords and hashed passwords support for Basic Auth file user store authentication.
-
 #### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Alpha4%22+label%3AType%2FBug).
@@ -361,4 +359,15 @@ To view bug fixes, see the GitHub milestone for Swan Lake Alpha4 of the reposito
 #### Language Server 
 
 To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
+
+### Security Updates
+
+Removed encrypted passwords and hashed passwords support for Basic Auth file user store authentication.
+
+### Observability Updates
+
+- Introduced the open-telemetry standard for Ballerina tracing instead of open-tracing
+- Updated the Jaeger extension to support open-telemetry
+
+
 

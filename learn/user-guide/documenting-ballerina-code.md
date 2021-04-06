@@ -131,7 +131,7 @@ A typical package structure of a Ballerina package is like this:
 
 The `bal doc` command will read the `Package.md` and `Module.md` files and prepend them to the generated HTML file.
 
-Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
+Check [HTTP module documentation](https://docs.central.ballerina.io/ballerina/http/latest) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
 ## Generating Ballerina Documentation

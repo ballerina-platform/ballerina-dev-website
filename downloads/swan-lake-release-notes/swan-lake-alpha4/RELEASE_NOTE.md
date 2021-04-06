@@ -57,31 +57,31 @@ public function main() {
 
 ##### Improvements to Dependently-Typed Lang Library Functions to Infer the Argument from the Contextually-Expected Type
 
-The `lang:value:ensureType` lang library function is now dependently-typed.
+- The `lang:value:ensureType` lang library function is now dependently-typed.
 
-The `typedesc` argument of the `lang.value:cloneWithType`, `lang.value:fromJsonWithType`, `lang.value:fromJsonStringWithType`, and `lang.value:ensureType` dependently-typed lang library functions will be inferred from the contextually-expected type if it is not passed as an argument.
+- The `typedesc` argument of the `lang.value:cloneWithType`, `lang.value:fromJsonWithType`, `lang.value:fromJsonStringWithType`, and `lang.value:ensureType` dependently-typed lang library functions will be inferred from the contextually-expected type if it is not passed as an argument.
 
-```ballerina
-import ballerina/io;
+    ```ballerina
+    import ballerina/io;
 
-type Person record {|
-    string name;
-    int age;
-|};
+    type Person record {|
+        string name;
+        int age;
+    |};
 
-public function main() {
-    map<anydata> anydataMap = {name: "Amy", age: 30};
+    public function main() {
+        map<anydata> anydataMap = {name: "Amy", age: 30};
 
-    // The `typedesc` argument is inferred to be `Person`
-    // based on the contextually expected type.
-    Person|error result = anydataMap.cloneWithType();
-    io:println(result is Person); // Prints `true`.
-}
-```
+        // The `typedesc` argument is inferred to be `Person`
+        // based on the contextually expected type.
+        Person|error result = anydataMap.cloneWithType();
+        io:println(result is Person); // Prints `true`.
+    }
+    ```
 
 ##### Improvements to the Return Type of `lang.value:cloneReadOnly`
 
-The return type of the `lang.value:cloneReadOnly` lang library function has been changed from the type of the value (`T`) to the intersection of the type and `readonly` (`T & readonly`).
+Changed the return type of the `lang.value:cloneReadOnly` lang library function from the type of the value (`T`) to the intersection of the type and `readonly` (`T & readonly`).
 
 ```ballerina
 type Person record {|
@@ -100,21 +100,21 @@ public function main() {
 
 ##### Changes to the Return Types of `lang.value:fromJsonFloatString` and `lang.value:fromJsonDecimalString`
 
-The return types of the `lang.value:fromJsonFloatString` and `lang.value:fromJsonDecimalString` lang library functions have been changed from `json` to `lang.value:JsonFloat` and `lang.value:JsonDecimal` respectively.
+Changed the return types of the `lang.value:fromJsonFloatString` and `lang.value:fromJsonDecimalString` lang library functions from `json` to `lang.value:JsonFloat` and `lang.value:JsonDecimal` respectively.
 
 #### Breaking Changes
 
 - A compilation error occurs if the inferred type of an unused variable that is declared with `var` includes a subtype of the `error` type.
-- The `error<*>` syntax has been removed.
-- Relational expressions are no longer supported with numeric values when the static types of the operands belong to different ordered types.
+- Removed the `error<*>` syntax.
+- Removed support for relational expressions with numeric values when the static types of the operands belong to different ordered types.
 - The `lang.array:indexOf` and `lang.array:lastIndexOf` lang library functions cannot be used with values that do not belong to `anydata`.
 - An object used as the iterable value in a `foreach` statement, `from` clause, or `join` clause must be a subtype of `object:Iterable`.
 - The `RawTemplate` type is distinct now.
 - The filler value of the `decimal` type is now `+0d`.
-- Completion type `C` in `stream<T, C>` has been changed from `error|never` to `error?`. `stream<T>` is equivalent to `stream<T, ()>`. `stream<T>` and `stream<T, error>` are assignable to `stream<T, error?>`.
+- Changed the completion type `C` in `stream<T, C>` from `error|never` to `error?`. `stream<T>` is equivalent to `stream<T, ()>`. `stream<T>` and `stream<T, error>` are assignable to `stream<T, error?>`.
 - Annotations with the `service` attach point cannot be used with service classes.
 - Checking keywords (`check` and `checkpanic`) are allowed in a statement only if the statement is a call statement (i.e., when the expression is a function or method call).
-- The precedence of the `trap` expression has been lowered.
+- Lowered the precedence of the `trap` expression.
 
 #### Bug Fixes
 
@@ -132,7 +132,7 @@ Configurable values can be provided with the built-in command-line option `-C`.
 -Ckey=value
 ```
 
-Key syntax:
+**Key Syntax:**
 
 ```bash
 key:= [[org-name .] module-name .] variable
@@ -140,33 +140,33 @@ key:= [[org-name .] module-name .] variable
 
 Command-line arguments are supported for configurable variables with `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
 
-Example usages:
-
 ```ballerina
 configurable int port = ?;
 ```
 
-If the configurable variable is defined in the default module or if a single Ballerina file is being used:
+**Example Usages:**
 
-```bash
-bal run -- -Cport=9090
-bal run program.bal -- -Cport=9090
-java -jar executable.jar -Cport=9090 
-```
+- If the configurable variable is defined in the default module or if a single Ballerina file is being used:
 
-If the configurable variable is defined in a different module of the same organization:
+    ```bash
+    bal run -- -Cport=9090
+    bal run program.bal -- -Cport=9090
+    java -jar executable.jar -Cport=9090 
+    ```
 
-```bash
-bal run -- -Cmodule-name.port=9090
-java -jar executable.jar -Cmodule-name.port=9090 
-```
+- If the configurable variable is defined in a different module of the same organization:
 
-If the configurable variable is defined in a module of a different organization.
+    ```bash
+    bal run -- -Cmodule-name.port=9090
+    java -jar executable.jar -Cmodule-name.port=9090 
+    ```
 
-```bash
-bal run -- -Corg-name.module-name.port=9090 
-java -jar executable.jar -Corg-name.module-name.port=9090 
-```
+- If the configurable variable is defined in a module of a different organization.
+
+    ```bash
+    bal run -- -Corg-name.module-name.port=9090 
+    java -jar executable.jar -Corg-name.module-name.port=9090 
+    ```
 
 ##### Locating Multiple TOML Files
 
@@ -188,32 +188,32 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
 
 ##### `time` Package 
 
-- Introduced the following APIs to support email-typed string conversions:
+Introduced the following APIs to support email-typed string conversions:
 
-    - Converts a given UTC to an email string.
+- Converts a given UTC to an email string.
 
-        ```ballerina
-        import ballerina/time; 
+```ballerina
+import ballerina/time; 
              
-        string emailFormattedString = time:utcToEmailString(time:utcNow());
-        ```
+string emailFormattedString = time:utcToEmailString(time:utcNow());
+```
 
-    - Converts a given `time:Civil` to an email string.
+- Converts a given `time:Civil` to an email string.
 
-        ```ballerina
-        import ballerina/time; 
+```ballerina
+import ballerina/time; 
        
-        time:Civil civil = check time:civilFromString("2021-04-12T23:20:50.520+05:30[Asia/Colombo]");
-        string|time:Error emailDateTime = time:civilToEmailString(civil, "GMT");
-        ```
+time:Civil civil = check time:civilFromString("2021-04-12T23:20:50.520+05:30[Asia/Colombo]");
+string|time:Error emailDateTime = time:civilToEmailString(civil, "GMT");
+```
 
-    - Converts a given email string to `time:Civil`.
+- Converts a given email string to `time:Civil`.
 
-        ```ballerina
-        import ballerina/time; 
+```ballerina
+import ballerina/time; 
        
-        time:Civil|time:Error emailDateTime = time:civilFromEmailString("Wed, 10 Mar 2021 19:51:55 -0820");
-        ```
+time:Civil|time:Error emailDateTime = time:civilFromEmailString("Wed, 10 Mar 2021 19:51:55 -0820");
+```
 
 ##### `io` Package 
 
@@ -244,7 +244,7 @@ public type SecureSocket record {|
 
 ##### `xmldata` Package 
 
-- API to convert a JSON to an XML has been supported by the `nil` return value.
+Updated the API to convert a JSON to an XML to be supported by the `nil` return value.
 
 ```ballerina
 import ballerina/xmldata;
@@ -256,7 +256,7 @@ xml?|Error x = xmldata:fromJson(data);
 
 ##### `java.arrays` Package 
 
-The `java.arrays` package’s org and package names were renamed as `ballerina` and `jballerina.java.arrays`. 
+Renamed the `java.arrays` package’s org and package names as `ballerina` and `jballerina.java.arrays`. 
 
 ```ballerina
 import ballerina/jballerina.java.arrays;
@@ -265,7 +265,7 @@ handle secondWord = arrays:get(input, 1);
 
 ##### `websub` Package 
 
- - Add pre-built constants for WebSub common-responses.
+Added pre-built constants for WebSub common-responses.
 
 ```ballerina
    @websub:SubscriberServiceConfig {
@@ -297,9 +297,9 @@ handle secondWord = arrays:get(input, 1);
 
 ##### `kafka` Package 
 
- - The `SecureSocket` record is updated.
+- Updated the `SecureSocket` record.
 
- - The `init` methods of the `kafka:Producer`, `kafka:Consumer`, and `kafka:Listener` classes are updated.
+- Updated the `init` methods of the `kafka:Producer`, `kafka:Consumer`, and `kafka:Listener` classes.
 
 ```ballerina
 kafka:Producer kafkaProducer = check new(kafka:DEFAULT_URL, config);
@@ -310,7 +310,7 @@ kafka:Producer kafkaProducer = check new(”localhost:9092”);
 
 ##### `nats` Package 
 
- - The `init` methods of the client and listener are updated.
+Updated the `init` methods of the client and listener.
 
 ```ballerina
 nats:Client client = check new(url=”http://google.com:9090”, ssl=config);
@@ -321,7 +321,7 @@ nats:Client client = check new(”http://google.com:9090”);
 
 ##### `stan` Package 
 
- - The `init` methods of the client and listener are updated.
+Updated the `init` methods of the client and listener.
 
 ```ballerina
 stan:Client client = check new(url=”http://localhost:9090”);
@@ -331,7 +331,7 @@ nats:Client client = check new(nats:DEFAULT_URL);
 
 ##### `rabbitmq` Package 
 
- - The  `init` methods of the client and listener are updated.
+Updated the  `init` methods of the client and listener.
 
 ```ballerina
 rabbitmq:Client client = check new(host=”localhost”, port=9090);
@@ -359,7 +359,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Alpha4 of the reposito
 
 #### Language Server 
 
-To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
+To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
 
 ### Observability Updates
 

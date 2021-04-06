@@ -34,9 +34,6 @@ redirect_from:
     <span class="c1">// Uses the `execute()` remote function for custom HTTP verbs.</span>
     <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;COPY&quot;</span><span class="p">,</span> <span class="s">&quot;/get&quot;</span><span class="p">,</span> <span class="s">&quot;CUSTOM: Hello World&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Initializes a request.</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">req</span><span class="p">.</span><span class="nx">addHeader</span><span class="p">(</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">,</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">);</span>
     <span class="c1">// The `get()`, `head()`, and `options()` have the optional headers parameter to send out headers,</span>
     <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get&quot;</span><span class="p">,</span>
                             <span class="p">{</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">:</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">});</span>
@@ -123,7 +120,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9d2de0301eed7c75c5e93be48dad7f16&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b4d33f8be32f3fabb2551a4c862fef49&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -141,8 +138,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -342,26 +337,6 @@ import ballerina/io;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Uses the <code>execute()</code> remote function for custom HTTP verbs.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Request req = new;
-    req.addHeader(&quot;Sample-Name&quot;, &quot;http-client-connector&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Initializes a request.</p>
 
                                         </div>
                                     </div>

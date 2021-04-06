@@ -40,7 +40,7 @@ redirect_from:
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span><span class="p">);</span>
         <span class="c1">// Creates an array to hold the child parts.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">childParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">childPart1</span><span class="p">,</span> <span class="nx">childPart2</span><span class="p">];</span>
-        <span class="c1">// [Sets the child parts](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setBodyParts) to the parent part.</span>
+        <span class="c1">// [Sets the child parts to the parent part](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setBodyParts).</span>
         <span class="nx">parentPart</span><span class="p">.</span><span class="nx">setBodyParts</span><span class="p">(</span><span class="nx">childParts</span><span class="p">,</span>
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_MIXED</span><span class="p">);</span>
         <span class="c1">// Creates an array to hold the parent part and set it to the response.</span>
@@ -62,7 +62,7 @@ redirect_from:
         <span class="k">var</span> <span class="nx">returnResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/multiparts/encode_out_response&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getBodyParts) from the response.</span>
+            <span class="c1">// [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getBodyParts)  from the response.</span>
             <span class="k">var</span> <span class="nx">parentParts</span> <span class="p">=</span> <span class="nx">returnResult</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">parentParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
                 <span class="c1">//Loops through body parts.</span>
@@ -125,9 +125,9 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Extracts byte stream](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and saves it as a file.</span>
+        <span class="c1">// [Extracts the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and saves it as a file.</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getByteStream</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;)</span> <span class="p">{</span>
             <span class="c1">//Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.</span>
             <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">? result = io:fileWriteBlocksFromStream(</span>
                                     <span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
@@ -155,7 +155,7 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">//Closes the byte stream.</span>
-<span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">byteStream</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">byteStream</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">byteStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the stream: &quot;</span><span class="p">,</span>
@@ -476,7 +476,7 @@ absolute file path instead.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setBodyParts">Sets the child parts </a>to the parent part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setBodyParts">Sets the child parts to the parent part</a>.</p>
 
                                         </div>
                                     </div>
@@ -674,7 +674,7 @@ vary based on your requirement.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p> <a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getXml">Extracts XML data</a> from the body part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getXml">Extracts XML data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -736,7 +736,7 @@ vary based on your requirement.</p>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getByteStream();
-        if (payload is stream&lt;byte[], io:Error&gt;) {
+        if (payload is stream&lt;byte[], io:Error?&gt;) {
 </code></pre></div>
 
                                 </td>
@@ -744,7 +744,7 @@ vary based on your requirement.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getByteStream">Extracts a byte stream</a> from the body part and saves it as a file.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getByteStream">Extracts the byte stream</a> from the body part and saves it as a file.</p>
 
                                         </div>
                                     </div>
@@ -823,7 +823,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function close(stream&lt;byte[], io:Error&gt; byteStream) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function close(stream&lt;byte[], io:Error?&gt; byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
         log:printError(&quot;Error occurred while closing the stream: &quot;,

@@ -62,7 +62,7 @@ redirect_from:
         <span class="c1">//Get a byte stream to a given file.</span>
         <span class="k">var</span> <span class="nx">bStream</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="s">&quot;./files/logo.png&quot;</span><span class="p">);</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nx">bStream</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">bStream</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;)</span> <span class="p">{</span>
             <span class="c1">//Make a POST request with a byte stream as the payload. Since the file path is static `&lt;@untainted&gt;` is used to denote that the byte stream is trusted.</span>
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/image&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bStream</span><span class="p">);</span>
             <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
@@ -628,7 +628,7 @@ text as the payload.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (bStream is stream&lt;byte[], io:Error&gt;) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (bStream is stream&lt;byte[], io:Error?&gt;) {
 </code></pre></div>
 
                                 </td>

@@ -15,15 +15,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-
 <span class="nd">@grpc:ServiceDescriptor {</span>
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfReplies</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span>
-                        <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">error</span><span class="p">|</span><span class="nx">never</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="p">{</span>
+                        <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="kt">string</span><span class="p">[]</span> <span class="nx">greets</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Hi&quot;</span><span class="p">,</span> <span class="s">&quot;Hey&quot;</span><span class="p">,</span> <span class="s">&quot;GM&quot;</span><span class="p">];</span>
         <span class="c1">// Create the array of responses by appending the received name.</span>
@@ -40,12 +38,12 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// The client endpoint configuration.</span>
-    <span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
-    <span class="c1">// Execute the streaming RPC call that registers</span>
-    <span class="c1">// the server message listener and gets the response as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">lotsOfReplies</span><span class="p">(</span><span class="s">&quot;WSO2&quot;</span><span class="p">);</span>
+<span class="c1">// The client endpoint configuration.</span>
+<span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Execute the streaming RPC call and gets the response as a stream.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">lotsOfReplies</span><span class="p">(</span><span class="s">&quot;WSO2&quot;</span><span class="p">);</span>
     <span class="c1">// Iterate through the stream and print the content.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
@@ -228,10 +226,6 @@ bal grpc --input grpc_server_streaming.proto  --output stubs
                         
                             
                                 
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -272,25 +266,13 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener grpc:Listener ep = new (9090);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service &quot;HelloWorld&quot; on ep {
+service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
     remote function lotsOfReplies(string name)
-                        returns stream&lt;string, error|never&gt;|error {
+                        returns stream&lt;string, error?&gt;|error {
         log:printInfo(&quot;Server received hello from &quot; + name);
         string[] greets = [&quot;Hi&quot;, &quot;Hey&quot;, &quot;GM&quot;];
 </code></pre></div>
@@ -481,22 +463,10 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main (string... args) returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    HelloWorldClient ep = check new(&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>HelloWorldClient ep = check new(&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -512,10 +482,22 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main () returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, grpc:Error&gt; result = check ep-&gt;lotsOfReplies(&quot;WSO2&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, grpc:Error?&gt; result = check ep-&gt;lotsOfReplies(&quot;WSO2&quot;);
 </code></pre></div>
 
                                 </td>
@@ -523,8 +505,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Execute the streaming RPC call that registers
- the server message listener and gets the response as a stream.</p>
+                                            <p>Execute the streaming RPC call and gets the response as a stream.</p>
 
                                         </div>
                                     </div>

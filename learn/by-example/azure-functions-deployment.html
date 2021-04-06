@@ -74,6 +74,16 @@ redirect_from:
 <span class="s">            bb?.value.toString();</span>
 <span class="s">}</span>
 
+<span class="s">// HTTP request to add a new blob</span>
+<span class="s">@af:Function</span>
+<span class="s">public function httpTriggerBlobOutput2(@af:HTTPTrigger { } af:HTTPRequest req,</span>
+<span class="s">        @af:BlobOutput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } af:BytesOutputBinding bb)</span>
+<span class="s">        returns @af:HTTPOutput string|error {</span>
+<span class="s">    bb.value = [65, 66, 67, 97, 98];</span>
+<span class="s">    return &quot;</span><span class="nx">Blob</span><span class="p">:</span> <span class="s">&quot; + req.query[&quot;</span><span class="nx">name</span><span class="s">&quot;].toString() + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; +</span>
+<span class="s">            bb?.value.toString();</span>
+<span class="s">}</span>
+
 <span class="s">// Sending an SMS</span>
 <span class="s">@af:Function</span>
 <span class="s">public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, </span>
@@ -286,6 +296,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -443,6 +455,32 @@ public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req,
         returns @af:HTTPOutput string|error {
     bb.value = req.body;
     return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Content: &quot; + 
+            bb?.value.toString();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>HTTP request to add a new blob</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function httpTriggerBlobOutput2(@af:HTTPTrigger { } af:HTTPRequest req,
+        @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; } af:BytesOutputBinding bb)
+        returns @af:HTTPOutput string|error {
+    bb.value = [65, 66, 67, 97, 98];
+    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Content: &quot; +
             bb?.value.toString();
 }
 </code></pre></div>
@@ -778,6 +816,10 @@ public function queuePopulationTimer(
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -920,6 +962,19 @@ Blob: input.txt Length: 6 Content: 65 66 67 68 69 10
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -d &quot;123456&quot; &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput?name=payload.txt&amp;code=&lt;auth_code&gt;&quot;
 Blob: payload.txt Content: 123456
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>curl -d &quot;123456&quot; &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput2?name=payload.txt&amp;code=&lt;auth_code&gt;&quot;
+Blob: payload.txt Content: 65 66 67 97 98
 </code></pre></div>
 
                                 </td>

@@ -13,7 +13,7 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jballerina</span><span class="p">.</span><span class="nx">java</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">arrays</span> <span class="k">as</span> <span class="nx">jarrays</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jballerina</span><span class="p">.</span><span class="nx">java</span><span class="p">.</span><span class="nx">arrays</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">regex</span><span class="p">)</span>
                                     <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
@@ -29,11 +29,11 @@ redirect_from:
     <span class="c1">// Invoke an external method, implemented in Java.</span>
     <span class="nx">handle</span> <span class="nx">words</span> <span class="p">=</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">helloString</span><span class="p">,</span> <span class="nx">regex</span><span class="p">);</span>
 
-    <span class="kt">int</span> <span class="nx">numWords</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">getLength</span><span class="p">(</span><span class="nx">words</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">numWords</span> <span class="p">=</span> <span class="nx">arrays</span><span class="p">:</span><span class="nx">getLength</span><span class="p">(</span><span class="nx">words</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">numWords</span><span class="p">);</span>
 
     <span class="c1">// Access an array element, pass the handle that refers to the Java array instance as the first argument.</span>
-    <span class="nx">handle</span> <span class="nx">secondWord</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">get</span><span class="p">(</span><span class="nx">words</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nx">handle</span> <span class="nx">secondWord</span> <span class="p">=</span> <span class="nx">arrays</span><span class="p">:</span><span class="nx">get</span><span class="p">(</span><span class="nx">words</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">secondWord</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -46,9 +46,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Java Arrays</h2>
                             <p><p>Java arrays are represented by the <code>handle</code> type in Ballerina. They can be manipulated using the
- <code>get</code>, <code>set</code>, and <code>getLength</code> methods provided by the <code>ballerina/java.arrays</code> module.<br/><br/>
+ <code>get</code>, <code>set</code>, and <code>getLength</code> methods provided by the <code>ballerina/jballerina.java.arrays</code> module.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/java.arrays/latest/java.arrays/">java.arrays module</a></p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/jballerina.java.arrays/latest/jballerina.java.arrays/">jballerina.java.arrays module</a></p>
 </p>
 
                         </td>
@@ -89,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3ee5ab2866970801e7b89d55529094cc&file=java_arrays.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=61fb65c251c2170bb7771f34dfb4e599&file=java_arrays.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -132,7 +132,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/jballerina.java;
-import ballerinax/java.arrays as jarrays;
+import ballerina/jballerina.java.arrays;
 </code></pre></div>
 
                                 </td>
@@ -211,7 +211,7 @@ import ballerinax/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int numWords = jarrays:getLength(words);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int numWords = arrays:getLength(words);
     io:println(numWords);
 </code></pre></div>
 
@@ -224,7 +224,7 @@ import ballerinax/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    handle secondWord = jarrays:get(words, 1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handle secondWord = arrays:get(words, 1);
     io:println(secondWord);
 }
 </code></pre></div>

@@ -63,9 +63,9 @@ redirect_from:
               <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
        <span class="p">};</span>
 
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">reportList</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Report</span> <span class="nx">report</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
+    <span class="p">});</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
@@ -121,7 +121,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d0a18692c0115cf1a419e0a8ab4421b1&file=query_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=dcfb0f57e55675797932a04396259883&file=query_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -377,9 +377,9 @@ the <code>select</code> clause.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var report in reportList {
-        io:println(report);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = reportList.forEach(function (Report report) {
+       io:println(report);
+    });
 }
 </code></pre></div>
 

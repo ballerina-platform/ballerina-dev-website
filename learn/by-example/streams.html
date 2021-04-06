@@ -76,7 +76,7 @@ redirect_from:
     <span class="c1">//The `filter` and `map` functions return streams and work lazily.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Subscription</span><span class="p">&gt;</span> <span class="nx">subscriptionStream</span> <span class="p">=</span>
         <span class="nx">studentStream</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="p">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="p">&gt;</span> <span class="mf">1.0</span><span class="p">;</span>
         <span class="p">}).</span><span class="err">&#39;</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Subscription</span> <span class="p">{</span>
             <span class="nx">Subscription</span> <span class="nx">subscription</span> <span class="p">=</span> <span class="p">{</span>
                 <span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
@@ -141,12 +141,16 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Streams</h2>
                             <p><p>The <code>stream</code> type represents a sequence that may be constructed lazily
- and is used to iterate over the sequence of values of type T with error type E.
- <code>stream&lt;T&gt;</code> is short for <code>stream&lt;T, never&gt;</code>.
+ and is used to iterate over the sequence of values.
+ A stream belongs to type stream<T,C> if all the values in the generated sequence
+ belong to T and if the completion value belongs to C; which is either nil,
+ indicating the generation of the sequence completed successfully, or an error.
+ <code>stream&lt;T&gt;</code> is equivalent to <code>stream&lt;T, ()&gt;</code>.
  A stream can be iterated over at most once.
- A stream has a <code>next()</code> method; a stream&rsquo;s iterator works by calling this method.
+ A stream has a <code>next()</code> method; a stream&rsquo;s iterator works by calling this method and
+ a <code>close</code> method which informs the stream that there will be no more <code>next</code> operations.
  The stream type provides methods similar to lists such as <code>map</code>, <code>foreach</code>, <code>filter</code>, <code>reduce</code>, and <code>iterator</code>.
- The stream type does not provide a length method. This is a preview feature.<br/><br/>
+ The stream type does not provide a length method. <br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/lang.stream/latest/lang.stream/">lang.stream module</a>.</p>
 </p>
@@ -189,7 +193,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ef1ed54fbc0bca36f66a9cbb5db7b19b&file=streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7fb81eb82cfc5808fad758e9f55dbd08&file=streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -502,7 +506,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Subscription&gt; subscriptionStream =
         studentStream.filter(function (Student student) returns boolean {
-            return student.score &gt; 1;
+            return student.score &gt; 1.0;
         }).&#39;map(function (Student student) returns Subscription {
             Subscription subscription = {
                 firstName: student.firstName,

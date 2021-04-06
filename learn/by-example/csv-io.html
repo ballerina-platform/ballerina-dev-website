@@ -27,20 +27,15 @@ redirect_from:
     <span class="kt">string</span><span class="p">[][]</span> <span class="nx">readCsv</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadCsv</span><span class="p">(</span><span class="nx">csvFilePath1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">readCsv</span><span class="p">);</span>
 
-    <span class="c1">// Read the previously written CSV from the &#39;csvFile1.csv&#39; file as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">csvStream1</span> <span class="p">=</span> <span class="nx">check</span>
-                                        <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadCsvAsStream</span><span class="p">(</span><span class="nx">csvFilePath1</span><span class="p">);</span>
-    <span class="c1">// Write the given streaming content to a CSV file.</span>
-    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteCsvFromStream</span><span class="p">(</span><span class="nx">csvFilePath2</span><span class="p">,</span> <span class="nx">csvStream1</span><span class="p">);</span>
-
-    <span class="c1">// Verify the streaming write operation by reading &#39;csvFile2.csv&#39; as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">csvStream2</span> <span class="p">=</span> <span class="nx">check</span>
+    <span class="c1">// Write the given content stream to a CSV file.</span>
+    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteCsvFromStream</span><span class="p">(</span><span class="nx">csvFilePath2</span><span class="p">,</span> <span class="nx">csvContent</span><span class="p">.</span><span class="nx">toStream</span><span class="p">());</span>
+    <span class="c1">// If the write operation was successful, then, perform a read operation to read the CSV content as a stream.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">csvStream</span> <span class="p">=</span> <span class="nx">check</span>
                                         <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadCsvAsStream</span><span class="p">(</span><span class="nx">csvFilePath2</span><span class="p">);</span>
     <span class="c1">// Loop through the stream and print the content.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">csvStream2</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">csvStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
                               <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
                           <span class="p">});</span>
-
 <span class="p">}</span>
 </pre></div>
 
@@ -108,10 +103,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -223,8 +214,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string[], io:Error&gt; csvStream1 = check
-                                        io:fileReadCsvAsStream(csvFilePath1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
 </code></pre></div>
 
                                 </td>
@@ -232,7 +222,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read the previously written CSV from the &lsquo;csvFile1.csv&rsquo; file as a stream.</p>
+                                            <p>Write the given content stream to a CSV file.</p>
 
                                         </div>
                                     </div>
@@ -243,26 +233,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteCsvFromStream(csvFilePath2, csvStream1);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Write the given streaming content to a CSV file.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string[], io:Error&gt; csvStream2 = check
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string[], io:Error?&gt; csvStream = check
                                         io:fileReadCsvAsStream(csvFilePath2);
 </code></pre></div>
 
@@ -271,7 +242,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Verify the streaming write operation by reading &lsquo;csvFile2.csv&rsquo; as a stream.</p>
+                                            <p>If the write operation was successful, then, perform a read operation to read the CSV content as a stream.</p>
 
                                         </div>
                                     </div>
@@ -281,10 +252,11 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = csvStream2.forEach(function(string[] val) {
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = csvStream.forEach(function(string[] val) {
                               io:println(val);
                           });
+}
 </code></pre></div>
 
                                 </td>
@@ -296,18 +268,6 @@ redirect_from:
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

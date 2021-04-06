@@ -16,8 +16,8 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">IssuerConfig</span> <span class="nx">issuerConfig</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
-        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+        <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
         <span class="nx">keyId</span><span class="p">:</span> <span class="s">&quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;</span><span class="p">,</span>
         <span class="nx">expTime</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
@@ -39,7 +39,7 @@ redirect_from:
 
     <span class="c1">// Defines the JWT validator configurations with certificate file configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">ValidatorConfig</span> <span class="nx">validatorConfig1</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
         <span class="nx">clockSkew</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
         <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
@@ -59,7 +59,7 @@ redirect_from:
 
     <span class="c1">// Defines the JWT validator configurations with JWKs configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">ValidatorConfig</span> <span class="nx">validatorConfig2</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
         <span class="nx">clockSkew</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
         <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
@@ -224,8 +224,8 @@ import ballerina/jwt;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     jwt:IssuerConfig issuerConfig = {
-        username: &quot;admin&quot;,
-        issuer: &quot;ballerina&quot;,
+        username: &quot;ballerina&quot;,
+        issuer: &quot;wso2&quot;,
         audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
         keyId: &quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;,
         expTime: 3600,
@@ -272,7 +272,7 @@ import ballerina/jwt;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    jwt:ValidatorConfig validatorConfig1 = {
-        issuer: &quot;ballerina&quot;,
+        issuer: &quot;wso2&quot;,
         audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
         clockSkew: 60,
         signatureConfig: {
@@ -324,7 +324,7 @@ import ballerina/jwt;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    jwt:ValidatorConfig validatorConfig2 = {
-        issuer: &quot;ballerina&quot;,
+        issuer: &quot;wso2&quot;,
         audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
         clockSkew: 60,
         signatureConfig: {

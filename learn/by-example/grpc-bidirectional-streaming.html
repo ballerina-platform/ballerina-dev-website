@@ -15,15 +15,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-
 <span class="nd">@grpc:ServiceDescriptor {</span>
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="s">&quot;Chat&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
-                            <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">|</span><span class="nx">never</span><span class="p">&gt;</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="s">&quot;Chat&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
+                            <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Invoke the chat RPC&quot;</span><span class="p">);</span>
         <span class="kt">string</span><span class="p">[]</span> <span class="nx">responses</span> <span class="p">=</span> <span class="p">[];</span>
         <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -33,17 +31,17 @@ redirect_from:
             <span class="nx">responses</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${chatMsg.message}: ${chatMsg.name}`</span><span class="p">;</span>
             <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">});</span>
-        <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;grpc:EOS&#39; is returned by the stream.</span>
+        <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;()&#39; is returned by the stream.</span>
         <span class="k">return</span> <span class="nx">responses</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// This is the client implementation of the bidirectional streaming scenario.</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Client endpoint configuration.</span>
-    <span class="nx">ChatClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+<span class="c1">// Client endpoint configuration.</span>
+<span class="nx">ChatClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Executes the RPC call and receives the customized streaming client.</span>
     <span class="nx">ChatStreamingClient</span> <span class="nx">streamingClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">chat</span><span class="p">();</span>
 
@@ -59,12 +57,10 @@ redirect_from:
     <span class="c1">// Once all the messages are sent, the client sends the message to notify the server about the completion.</span>
     <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="c1">// Receives the server stream response iteratively.</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
-    <span class="k">while</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">result</span> <span class="p">=</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
+    <span class="kt">string</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -249,10 +245,6 @@ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
                         
                             
                                 
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -293,25 +285,13 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener grpc:Listener ep = new (9090);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service &quot;Chat&quot; on ep {
-    remote function chat(stream&lt;ChatMessage, grpc:Error&gt; clientStream)
-                            returns stream&lt;string, grpc:Error|never&gt; {
+service &quot;Chat&quot; on new grpc:Listener(9090) {
+    remote function chat(stream&lt;ChatMessage, grpc:Error?&gt; clientStream)
+                            returns stream&lt;string, grpc:Error?&gt; {
         log:printInfo(&quot;Invoke the chat RPC&quot;);
         string[] responses = [];
         int i = 0;
@@ -359,7 +339,7 @@ service &quot;Chat&quot; on ep {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Once the client sends a notification to indicate the end of the stream, &lsquo;grpc:EOS&rsquo; is returned by the stream.</p>
+                                            <p>Once the client sends a notification to indicate the end of the stream, &lsquo;()&rsquo; is returned by the stream.</p>
 
                                         </div>
                                     </div>
@@ -494,8 +474,7 @@ bal run service/target/bin/service.jar
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
-import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -511,22 +490,10 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main (string... args) returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ChatClient ep = check new(&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>ChatClient ep = check new(&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -538,6 +505,18 @@ import ballerina/io;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main () returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -609,12 +588,10 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var result = streamingClient-&gt;receiveString();
-    while !(result is grpc:EOS) {
-        if !(result is grpc:Error) {
-            io:println(result);
-        }
-        result = streamingClient-&gt;receiveString();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? result = check streamingClient-&gt;receiveString();
+    while !(result is ()) {
+        io:println(result);
+        result = check streamingClient-&gt;receiveString();
     }
 }
 </code></pre></div>

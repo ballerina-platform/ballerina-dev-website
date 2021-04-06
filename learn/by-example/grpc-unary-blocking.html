@@ -15,13 +15,11 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-
 <span class="nd">@grpc:ServiceDescriptor {</span>
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">ContextString</span> <span class="nx">request</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">ContextString</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Invoked the hello RPC call.&quot;</span><span class="p">);</span>
         <span class="c1">// Reads the request content.</span>
@@ -41,8 +39,10 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+<span class="c1">// The client endpoint configuration.</span>
+<span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Setting the custom headers.</span>
     <span class="nx">ContextString</span> <span class="nx">requestMessage</span> <span class="p">=</span>
     <span class="p">{</span><span class="nx">content</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span><span class="p">,</span> <span class="nx">headers</span><span class="p">:</span> <span class="p">{</span><span class="nx">client_header_key</span><span class="p">:</span> <span class="s">&quot;0987654321&quot;</span><span class="p">}};</span>
@@ -234,10 +234,6 @@ bal grpc --input grpc_unary_blocking.proto  --output stubs
                         
                             
                                 
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -278,23 +274,11 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener grpc:Listener ep = new (9090);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service &quot;HelloWorld&quot; on ep {
+service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
     remote function hello(ContextString request) returns ContextString|error {
         log:printInfo(&quot;Invoked the hello RPC call.&quot;);
 </code></pre></div>
@@ -470,6 +454,10 @@ bal run service/target/bin/service.jar
                         
                             
                                 
+                            
+                        
+                            
+                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -507,11 +495,29 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>HelloWorldClient ep = check new(&quot;http://localhost:9090&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The client endpoint configuration.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main (string... args) returns error? {
-    HelloWorldClient ep = check new(&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main () returns error? {
 </code></pre></div>
 
                                 </td>

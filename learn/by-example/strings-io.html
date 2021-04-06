@@ -34,17 +34,13 @@ redirect_from:
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">readLines</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLines</span><span class="p">(</span><span class="nx">textFilePath2</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">readLines</span><span class="p">);</span>
 
-    <span class="c1">// Read the previously written lines from &#39;textFile2.txt&#39; as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">lineStream1</span> <span class="p">=</span> <span class="nx">check</span>
-                                    <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLinesAsStream</span><span class="p">(</span><span class="nx">textFilePath2</span><span class="p">);</span>
     <span class="c1">// Write the given stream of lines to a file.</span>
-    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteLinesFromStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">,</span> <span class="nx">lineStream1</span><span class="p">);</span>
-
-    <span class="c1">// Verify the streaming write operation by reading &#39;textFile3.txt&#39; as a stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">lineStream2</span> <span class="p">=</span> <span class="nx">check</span>
-                                    <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLinesAsStream</span><span class="p">(</span><span class="nx">textFilePath2</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteLinesFromStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">,</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">toStream</span><span class="p">());</span>
+    <span class="c1">// If the write operation was successful, then, perform a read operation to read the lines as a stream.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">lineStream</span> <span class="p">=</span> <span class="nx">check</span>
+                                    <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLinesAsStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">);</span>
     <span class="c1">// Loop through the stream and print the content.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">lineStream2</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">lineStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
                                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
                            <span class="p">});</span>
 <span class="p">}</span>
@@ -114,8 +110,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -271,27 +265,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error&gt; lineStream1 = check
-                                    io:fileReadLinesAsStream(textFilePath2);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Read the previously written lines from &lsquo;textFile2.txt&rsquo; as a stream.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteLinesFromStream(textFilePath3, lineStream1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteLinesFromStream(textFilePath3, lines.toStream());
 </code></pre></div>
 
                                 </td>
@@ -310,8 +284,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error&gt; lineStream2 = check
-                                    io:fileReadLinesAsStream(textFilePath2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;string, io:Error?&gt; lineStream = check
+                                    io:fileReadLinesAsStream(textFilePath3);
 </code></pre></div>
 
                                 </td>
@@ -319,7 +293,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Verify the streaming write operation by reading &lsquo;textFile3.txt&rsquo; as a stream.</p>
+                                            <p>If the write operation was successful, then, perform a read operation to read the lines as a stream.</p>
 
                                         </div>
                                     </div>
@@ -330,7 +304,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = lineStream2.forEach(function(string val) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = lineStream.forEach(function(string val) {
                                io:println(val);
                            });
 }

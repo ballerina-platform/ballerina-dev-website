@@ -54,8 +54,9 @@ redirect_from:
     <span class="c1">// Create an `anydata`-typed `map` with two entries.</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span><span class="p">};</span>
 
-    <span class="c1">// Call `.cloneReadOnly()` on the map `m1` and assign the returned value to another variable.</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m2</span> <span class="p">=</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+    <span class="c1">// Call `.cloneReadOnly()` on the map `m1` and assign the returned value to another variable</span>
+    <span class="c1">// of type `map&lt;string|int&gt; &amp; readonly`.</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">m2</span> <span class="p">=</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
 
     <span class="c1">// Reference equality checks for `m1` and `m2` should evaluate to false due to a clone being created</span>
     <span class="c1">// since `m1` is not an immutable value.</span>
@@ -78,7 +79,7 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// Now call `.cloneReadOnly()` on the immutable value `m2`.</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m3</span> <span class="p">=</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">m3</span> <span class="p">=</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
 
     <span class="c1">// Reference equality checks for `m2` and `m3` should evaluate to true due to no clones being created</span>
     <span class="c1">// since `m2` is already an immutable value.</span>
@@ -95,8 +96,8 @@ redirect_from:
     <span class="k">var</span> <span class="nx">immutableClonedVal</span> <span class="p">=</span> <span class="nx">m5</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
     <span class="c1">// Checking if the immutable value is of the type `map&lt;string&gt;`. Thus,</span>
     <span class="c1">// it evaluates to `true`.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">immutableClonedVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;immutableClonedVal is map&lt;string&gt;&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">immutableClonedVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="o">&amp;</span> <span class="nx">readonly</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;immutableClonedVal is map&lt;string&gt; &amp; readonly&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -119,8 +120,8 @@ redirect_from:
 
 <p>Ballerina also allows creating immutable or read-only clones of mutable values.<br/></p>
 
-<p>The <code>.cloneReadOnly()</code> method can be called on a value of the type <code>anydata</code> to create a clone of the value,
- which is immutable. No changes are done to the original value.
+<p>The <code>.cloneReadOnly()</code> method can be called on a value of the type <code>lang.value:Cloneable</code> to create a clone of
+ the value, which is immutable. No changes are done to the original value.
  Calling <code>.cloneReadOnly()</code> on structures would deeply clone the elements and mark them as immutable.
  Moreover, if the value is already an immutable value, <code>.cloneReadOnly()</code> returns the value itself (no cloning is
  done).<br/></p>
@@ -168,7 +169,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=7ddd7937d1f8ad88481d7a2ff8a2ed47&file=immutable_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0aaf478c92e5d10287e8625ae355b390&file=immutable_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -420,7 +421,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; m2 = m1.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; &amp; readonly m2 = m1.cloneReadOnly();
 </code></pre></div>
 
                                 </td>
@@ -428,7 +429,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call <code>.cloneReadOnly()</code> on the map <code>m1</code> and assign the returned value to another variable.</p>
+                                            <p>Call <code>.cloneReadOnly()</code> on the map <code>m1</code> and assign the returned value to another variable
+ of type <code>map&lt;string|int&gt; &amp; readonly</code>.</p>
 
                                         </div>
                                     </div>
@@ -540,7 +542,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; m3 = m2.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; &amp; readonly m3 = m2.cloneReadOnly();
 </code></pre></div>
 
                                 </td>
@@ -622,8 +624,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (immutableClonedVal is map&lt;string&gt;) {
-        io:println(&quot;immutableClonedVal is map&lt;string&gt;&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (immutableClonedVal is map&lt;string&gt; &amp; readonly) {
+        io:println(&quot;immutableClonedVal is map&lt;string&gt; &amp; readonly&quot;);
     }
 }
 </code></pre></div>
@@ -690,7 +692,7 @@ m1 is immutable: false
 m2 is immutable: true
 Error occurred on update: Invalid map insertion: modification not allowed on readonly value
 m2 === m3: true
-immutableClonedVal is map&lt;string&gt;
+immutableClonedVal is map&lt;string&gt; &amp; readonly
 </code></pre></div>
 
                                 </td>

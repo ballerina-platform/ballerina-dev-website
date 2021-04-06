@@ -27,7 +27,7 @@ redirect_from:
 
     <span class="c1">// Read the file as a stream of blocks. The default block size is 4KB.</span>
     <span class="c1">// Here, the default size is overridden by the value 2KB.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">io</span><span class="p">:</span><span class="nx">Block</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">blockStream</span> <span class="p">=</span> <span class="nx">check</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">io</span><span class="p">:</span><span class="nx">Block</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">blockStream</span> <span class="p">=</span> <span class="nx">check</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="nx">imagePath</span><span class="p">,</span> <span class="mi">2048</span><span class="p">);</span>
     <span class="c1">// If the file reading was successful, then,</span>
     <span class="c1">// the content will be written to the given destination file using the given stream.</span>
@@ -207,7 +207,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;io:Block, io:Error&gt; blockStream = check
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;io:Block, io:Error?&gt; blockStream = check
     io:fileReadBlocksAsStream(imagePath, 2048);
 </code></pre></div>
 

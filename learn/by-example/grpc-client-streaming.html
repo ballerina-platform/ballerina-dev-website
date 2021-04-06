@@ -15,45 +15,48 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-
 <span class="nd">@grpc:ServiceDescriptor {</span>
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
+<span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
                                     <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Connected sucessfully.&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Client connected successfully.&quot;</span><span class="p">);</span>
         <span class="c1">// Read and process each message in the client stream.</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">isolated</span> <span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Greet received: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="p">});</span>
-        <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;grpc:EOS&#39; is returned by the stream.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;()&#39; is returned by the stream.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
             <span class="k">return</span> <span class="s">&quot;Ack&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">//If the client sends an error to the server, the stream closes and returns the error</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Connection is closed by the client with Error&quot;</span><span class="p">,</span>
+                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+            <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// This is the client implementation for the client streaming scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// The client endpoint configuration.</span>
-    <span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+<span class="c1">// The client endpoint configuration.</span>
+<span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">requests</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Hi Sam&quot;</span><span class="p">,</span> <span class="s">&quot;Hey Sam&quot;</span><span class="p">,</span> <span class="s">&quot;GM Sam&quot;</span><span class="p">];</span>
     <span class="c1">// Execute the client-streaming RPC call and receive the streaming client.</span>
     <span class="nx">LotsOfGreetingsStreamingClient</span> <span class="nx">streamingClient</span> <span class="p">=</span> <span class="nx">check</span>
     <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">lotsOfGreetings</span><span class="p">();</span>
     <span class="c1">// Send multiple messages to the server.</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">greet</span> <span class="nx">in</span> <span class="nx">requests</span> <span class="p">{</span>
-        <span class="nx">checkpanic</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">sendstring</span><span class="p">(</span><span class="nx">greet</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">sendstring</span><span class="p">(</span><span class="nx">greet</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="c1">// Once all the messages are sent, the server notifies the caller with a `complete` message.</span>
-    <span class="nx">checkpanic</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
+    <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Completed successfully&quot;</span><span class="p">);</span>
-    <span class="nx">anydata</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
+    <span class="kt">string</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
 <span class="p">}</span>
@@ -278,26 +281,14 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener grpc:Listener ep = new (9090);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service &quot;HelloWorld&quot; on ep {
-    remote function lotsOfGreetings(stream&lt;string, grpc:Error&gt; clientStream)
+service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
+    remote function lotsOfGreetings(stream&lt;string, grpc:Error?&gt; clientStream)
                                     returns string|error {
-        log:printInfo(&quot;Connected sucessfully.&quot;);
+        log:printInfo(&quot;Client connected successfully.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -329,11 +320,32 @@ service &quot;HelloWorld&quot; on ep {
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (e is grpc:EOS) {
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (e is ()) {
             return &quot;Ack&quot;;
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Once the client sends a notification to indicate the end of the stream, &lsquo;()&rsquo; is returned by the stream.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printError(&quot;Connection is closed by the client with Error&quot;,
+                &#39;error = e);
+            return &quot;&quot;;
         }
-        return &quot;&quot;;
     }
 }
 </code></pre></div>
@@ -343,7 +355,7 @@ service &quot;HelloWorld&quot; on ep {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Once the client sends a notification to indicate the end of the stream, &lsquo;grpc:EOS&rsquo; is returned by the stream.</p>
+                                            <p>If the client sends an error to the server, the stream closes and returns the error</p>
 
                                         </div>
                                     </div>
@@ -494,23 +506,10 @@ bal run service/target/bin/service.jar
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main (string... args) returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    HelloWorldClient ep = check new(&quot;http://localhost:9090&quot;);
-    string[] requests = [&quot;Hi Sam&quot;, &quot;Hey Sam&quot;, &quot;GM Sam&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>HelloWorldClient ep = check new(&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -522,6 +521,19 @@ bal run service/target/bin/service.jar
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main () returns error? {
+    string[] requests = [&quot;Hi Sam&quot;, &quot;Hey Sam&quot;, &quot;GM Sam&quot;];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -550,7 +562,7 @@ bal run service/target/bin/service.jar
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    foreach var greet in requests {
-        checkpanic streamingClient-&gt;sendstring(greet);
+        check streamingClient-&gt;sendstring(greet);
     }
 </code></pre></div>
 
@@ -570,9 +582,9 @@ bal run service/target/bin/service.jar
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    checkpanic streamingClient-&gt;complete();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check streamingClient-&gt;complete();
     io:println(&quot;Completed successfully&quot;);
-    anydata response = checkpanic streamingClient-&gt;receiveString();
+    string? response = check streamingClient-&gt;receiveString();
     io:println(response);
 </code></pre></div>
 

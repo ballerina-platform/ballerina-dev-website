@@ -30,10 +30,9 @@ redirect_from:
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Executing the 2nd GET request&quot;</span><span class="p">);</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">req</span><span class="p">.</span><span class="nx">addHeader</span><span class="p">(</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">,</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">);</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">&gt;</span> <span class="nx">checkpanic</span> 
-        <span class="nx">clientEndpoint</span> <span class="o">-&gt;</span> <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
+        <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">&gt;</span> <span class="nx">checkpanic</span>
+        <span class="nx">clientEndpoint</span> <span class="o">-&gt;</span> <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">:</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">});</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
@@ -48,7 +47,7 @@ redirect_from:
         <span class="nx">to</span><span class="p">:</span> <span class="nx">emailIds</span><span class="p">,</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
     <span class="p">};</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">smtpClient</span> <span class="o">-&gt;</span> <span class="nx">sendEmailMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">smtpClient</span> <span class="o">-&gt;</span> <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error while sending the email: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
@@ -62,13 +61,13 @@ redirect_from:
 <span class="c1">// This is the test double of the `http:Client` object with the</span>
 <span class="c1">// implementation of the required functions.</span>
 <span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">MockHttpClient</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">,</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">RequestMessage</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">(),</span>
+    <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">,</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span><span class="err">?</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">(),</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">TargetType</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="nx">returns</span>
-    <span class="nd">@tainted http:Response|http:PayloadType|http:ClientError {</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -101,8 +100,8 @@ redirect_from:
     <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span>
     <span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/headers&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
     <span class="c1">// The object and record types should be denoted by the `test:ANY` constant.</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">,</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">ANY</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">404</span><span class="p">);</span>
 <span class="p">}</span>
@@ -127,7 +126,7 @@ redirect_from:
     <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span><span class="p">);</span>
     <span class="c1">// This stubs the `send` method of the `mockSmtpClient` to do nothing.</span>
     <span class="c1">// This is used for functions with an optional or no return type.</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">smtpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;sendEmailMessage&quot;</span><span class="p">).</span><span class="nx">doNothing</span><span class="p">();</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">smtpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;sendMessage&quot;</span><span class="p">).</span><span class="nx">doNothing</span><span class="p">();</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">emailIds</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;user1@test.com&quot;</span><span class="p">,</span> <span class="s">&quot;user2@test.com&quot;</span><span class="p">];</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">sendNotification</span><span class="p">(</span><span class="nx">emailIds</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="p">());</span>
@@ -300,10 +299,9 @@ email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    if (response.statusCode == 200) {
         io:println(&quot;Executing the 2nd GET request&quot;);
-        http:Request req = new;
-        req.addHeader(&quot;Sample-Name&quot;, &quot;http-client-connector&quot;);
-        response = &lt;http:Response&gt; checkpanic 
-        clientEndpoint -&gt; get(&quot;/get?test=123&quot;, req);
+        response = &lt;http:Response&gt; checkpanic
+        clientEndpoint -&gt; get(&quot;/get?test=123&quot;,
+            {&quot;Sample-Name&quot;: &quot;http-client-connector&quot;});
         io:println(&quot;Status code: &quot;, response.statusCode.toString());
     }
     return response;
@@ -326,7 +324,7 @@ email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;
         to: emailIds,
         body: &quot;&quot;
     };
-    email:Error? response = smtpClient -&gt; sendEmailMessage(msg);
+    email:Error? response = smtpClient -&gt; sendMessage(msg);
     if (response is error) {
         io:println(&quot;error while sending the email: &quot;, response.message());
         return response;
@@ -464,13 +462,13 @@ import ballerina/email;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public client class MockHttpClient {
-    remote function get(@untainted string path,
-    http:RequestMessage message = (),
+    remote isolated function get(@untainted string path,
+    map&lt;string|string[]&gt;? headers = (),
     http:TargetType targetType = http:Response) returns
-    @tainted http:Response|http:PayloadType|http:ClientError {
-        http:Response res = new;
-        res.statusCode = 500;
-        return res;
+    http:Response | http:ClientError {
+        http:Response response = new;
+        response.statusCode = 500;
+        return response;
     }
 }
 </code></pre></div>
@@ -629,8 +627,8 @@ function testReturnWithArgs() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;).withArguments(&quot;/get?test=123&quot;,
-    test:ANY).thenReturn(mockResponse);
+                                    <div class="highlight"><pre><code class=language-ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;).withArguments(&quot;/get?test=123&quot;)
+        .thenReturn(mockResponse);
     http:Response res = performGet();
     test:assertEquals(res.statusCode, 404);
 }
@@ -718,7 +716,7 @@ function testSendNotification() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    test:prepare(smtpClient).when(&quot;sendEmailMessage&quot;).doNothing();
+                                    <div class="highlight"><pre><code class=language-ballerina>    test:prepare(smtpClient).when(&quot;sendMessage&quot;).doNothing();
     string[] emailIds = [&quot;user1@test.com&quot;, &quot;user2@test.com&quot;];
     error? err = sendNotification(emailIds);
     test:assertEquals(err, ());
@@ -795,6 +793,10 @@ function testMemberVariable() {
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -821,21 +823,6 @@ Compiling source
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running Tests
-        ballerinatest/bbe_mocking:0.1.0
-Executing the 1st GET request
-Status code: 500
-Executing the 1st GET request
-Status code: 200
-Executing the 2nd GET request
-Status code: 200
-Executing the 1st GET request
-Status code: 200
-Executing the 2nd GET request
-Status code: 401
-Executing the 1st GET request
-Status code: 403
-Executing the 1st GET request
-Status code: 404
 </code></pre></div>
 
                                 </td>
@@ -847,12 +834,36 @@ Status code: 404
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testMemberVariable
-        [pass] testSendNotification
-        [pass] testReturnSequence
-        [pass] testReturnWithArgs
-        [pass] testReturn
-        [pass] testTestDouble
+                                    <div class="highlight"><pre><code class=shell-session>        ballerinatest/bbe_mocking:0.1.0
+Executing the 1st GET request
+Status code: 200
+Executing the 2nd GET request
+Status code: 200
+Executing the 1st GET request
+Status code: 200
+Executing the 2nd GET request
+Status code: 404
+Executing the 1st GET request
+Status code: 404
+Executing the 1st GET request
+Status code: 500
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>                [pass] testMemberVariable
+                [pass] testReturn
+                [pass] testReturnSequence
+                [pass] testReturnWithArgs
+                [pass] testSendNotification
+                [pass] testTestDouble
 </code></pre></div>
 
                                 </td>
@@ -864,9 +875,9 @@ Status code: 404
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        6 passing
-        0 failing
-        0 skipped
+                                    <div class="highlight"><pre><code class=shell-session>                6 passing
+                0 failing
+                0 skipped
 </code></pre></div>
 
                                 </td>

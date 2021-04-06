@@ -285,12 +285,9 @@ pinpoint where the slowing down happens (by looking at the span latencies) and t
 The user can easily identify where the error occurred and information of the error will be attached to the relevant
 span as metadata.
 
-Ballerina supports [OpenTracing](http://opentracing.io/) standards by default. This means that Ballerina services
+Ballerina supports [OpenTelemetry](https://opentelemetry.io/) standards by default. This means that Ballerina services
 can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/). Jaeger is the default
 tracer of Ballerina.
-
-Semantic tags used by Ballerina also follow the [semantic conventions defined in OpenTracing
-specification.](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)
 
 ### Configuring Advanced Tracing for Ballerina
 
@@ -352,7 +349,7 @@ Jaeger is the default distributed tracing system that is supported. There are ma
 1. Install Jaeger via Docker and start the Docker container by executing command below.
 
 ```bash
-$ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16686:16686 -p14268:14268 jaegertracing/all-in-one:latest
+$ docker run --rm -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
 ```
 
 2. Go to <http://localhost:16686> and load the web UI of the Jaeger to make sure it is functioning properly.

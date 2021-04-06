@@ -147,7 +147,7 @@ Example usages:
 configurable int port = ?;
 ```
 
-If the configurable variable is defined in the default module or if we are using a single Ballerina file:
+If the configurable variable is defined in the default module or if you are using a single Ballerina file:
 
 ```bash
 bal run -- -Cport=9090
@@ -184,8 +184,8 @@ The configurable values can be provided using the `BAL_CONFIG_DATA` environment 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
 ### Standard Library Updates
-
-#### New Features
+      
+#### Improvements
 
 ##### `time` Package 
 
@@ -215,8 +215,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
        
         time:Civil|time:Error emailDateTime = time:civilFromEmailString("Wed, 10 Mar 2021 19:51:55 -0820");
         ```
-      
-#### Improvements
 
 ##### `io` Package 
 

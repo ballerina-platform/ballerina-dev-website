@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2021-03-27</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2021-04-01</h1>
 <p>
 Primary contributors:
 </p>
@@ -3258,7 +3258,7 @@ type
 </p>
 
 <pre>    object {
-       public next() returns record {| T value; |}|C;
+       public function next() returns record {| T value; |}|C;
     }
 </pre>
 <p>
@@ -4797,7 +4797,8 @@ expressions.
 <p>
 A <code>string-template-expr</code> interpolates the results of evaluating
 expressions into a literal string. The static type of the expression in each
-interpolation must be a simple type and must not be nil. Within a
+interpolation must be a subtype of
+<code>boolean|int|float|decimal|string</code>. Within a
 <code>BacktickString</code>, every character that is not part of an
 <code>interpolation</code> is interpreted as a literal character. A
 string-template-expr is evaluated by evaluating the expression in each
@@ -10609,7 +10610,7 @@ type Type1 any|error;
 # Has the special semantic that when used in a declaration
 # all uses in the declaration must refer to same type.
 @typeParam
-type PureType anydata|error;
+type AnydataType anydata;
 
 # Returns the number of members of an array.
 #
@@ -10708,7 +10709,7 @@ public isolated function setLength((any|error)[] arr, int length) returns () = e
 # + val - member to search for
 # + startIndex - index to start the search from
 # + return - index of the member if found, else `()`
-public isolated function indexOf(PureType[] arr, PureType val, int startIndex = 0) returns int? = external;
+public isolated function indexOf(AnydataType[] arr, AnydataType val, int startIndex = 0) returns int? = external;
 
 # Returns the index of last member of `arr` that is equal to `val` if there is one.
 # Returns `()` if not found.
@@ -10718,7 +10719,7 @@ public isolated function indexOf(PureType[] arr, PureType val, int startIndex = 
 # + val - member to search for
 # + startIndex - index to start searching backwards from
 # + return - index of the member if found, else `()`
-public isolated function lastIndexOf(PureType[] arr, PureType val, int startIndex = arr.length() - 1) returns int? = external;
+public isolated function lastIndexOf(AnydataType[] arr, AnydataType val, int startIndex = arr.length() - 1) returns int? = external;
 
 # Reverses the order of the members of an array.
 #
@@ -11571,7 +11572,7 @@ public type Iterable distinct object {
     # Create a new iterator.
     #
     # + return - a new iterator object
-    public function iterator() returns abstract object {
+    public function iterator() returns object {
         public function next() returns record {| any|error value; |}|error?;
     }
 }

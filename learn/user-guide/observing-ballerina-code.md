@@ -349,7 +349,7 @@ Jaeger is the default distributed tracing system that is supported. There are ma
 1. Install Jaeger via Docker and start the Docker container by executing command below.
 
 ```bash
-$ docker run --rm -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
+$ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
 ```
 
 2. Go to <http://localhost:16686> and load the web UI of the Jaeger to make sure it is functioning properly.

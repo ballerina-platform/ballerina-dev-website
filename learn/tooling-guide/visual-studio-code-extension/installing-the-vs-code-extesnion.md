@@ -48,7 +48,7 @@ Download the Visual Studio Code Ballerina Extension from below.
               <div class="cSize">Extension  vsix <span id="packWindowsName">2.7mb</span></div>
         </a>
         <ul class="cDiwnloadSubLinks">
-            <li><a id="packWindowsMd5" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-swan-lake-alpha3.vsix.md5">md5</a></li>
+            <li><a id="packWindowsMd5" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.md5">md5</a></li>
             <li><a id="packWindowsSha1" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.sha1">SHA-1</a></li>
             <li><a id="packWindowsAsc" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.asc">asc</a></li>
         </ul>

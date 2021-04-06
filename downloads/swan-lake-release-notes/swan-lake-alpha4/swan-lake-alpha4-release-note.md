@@ -101,10 +101,6 @@ public function main() {
 
 The return types of the `lang.value:fromJsonFloatString` and `lang.value:fromJsonDecimalString` lang library functions have been changed from `json` to `lang.value:JsonFloat` and `lang.value:JsonDecimal` respectively.
 
-#### Bug Fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
-
 #### Breaking Changes
 
 - A compilation error occurs if the inferred type of an unused variable that is declared with `var` includes a subtype of the `error` type.
@@ -118,6 +114,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
 - Annotations with the `service` attach point cannot be used with service classes.
 - Checking keywords (`check` and `checkpanic`) are allowed in a statement only if the statement is a call statement (i.e., when the expression is a function or method call).
 - The precedence of the `trap` expression has been lowered.
+
+#### Bug Fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
 ### Runtime Updates
 

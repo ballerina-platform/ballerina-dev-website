@@ -21,27 +21,35 @@ redirect_from:
 <span class="nx">type</span> <span class="nx">UserTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">UserInfo</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
 
 <span class="c1">// `configurable` variables can be initialized with the `?` expression.</span>
-<span class="c1">// A value must be supplied for such variables in a `Config.toml` file.</span>
+<span class="c1">// A value must be supplied for such variables.</span>
 <span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">hostName</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
 <span class="nx">configurable</span> <span class="kt">int</span> <span class="nx">port</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
 
-<span class="c1">// A `configurable` variable can be initialized with an expression that is not `?`.</span>
-<span class="c1">// The `Config.toml` file does not have to specify a value for such a variable.</span>
-<span class="c1">// But if specified, the value in the `Config.toml` file overrides the value</span>
+<span class="c1">// A `configurable` variable can be initialized with an expression that is</span>
+<span class="c1">// not `?`. It is not mandatory to specify a value for such a variable.</span>
+<span class="c1">// However, if specified, the value provided at configuration overrides the value</span>
 <span class="c1">// specified as the initializer.</span>
 <span class="c1">// The values of the `enableRemote` and `maxPayload` variables here are</span>
-<span class="c1">// overridden by the values specified in the `Config.toml` file.</span>
+<span class="c1">// overridden by the values specified at configuration.</span>
 <span class="nx">configurable</span> <span class="kt">boolean</span> <span class="nx">enableRemote</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="nx">configurable</span> <span class="kt">float</span> <span class="nx">maxPayload</span> <span class="p">=</span> <span class="mf">1.0</span><span class="p">;</span>
 
-<span class="c1">// The value `http` is used to initialize the `protocol` variable since a value is not</span>
-<span class="c1">// provided for it in the `Config.toml` file.</span>
+<span class="c1">// The value `http` is used to initialize the `protocol` variable since a value</span>
+<span class="c1">// is not provided for it at configuration.</span>
 <span class="nx">configurable</span> <span class="kt">string</span> <span class="nx">protocol</span> <span class="p">=</span> <span class="s">&quot;http&quot;</span><span class="p">;</span>
 
-<span class="c1">// A `configurable` variable named `admin` of the `UserInfo &amp; readonly` record type is initialized.</span>
-<span class="nx">configurable</span> <span class="nx">UserInfo</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">admin</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
-<span class="c1">// A `configurable` variable named `users` of the `table&lt;(UserInfo &amp; readonly)&gt; key(username)` table type is initialized.</span>
-<span class="nx">configurable</span> <span class="nx">UserTable</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">users</span> <span class="p">=</span> <span class="err">?</span><span class="p">;</span>
+<span class="c1">// A `configurable` variable named `admin` of the `UserInfo &amp; readonly`</span>
+<span class="c1">// record type is initialized.</span>
+<span class="nx">configurable</span> <span class="nx">UserInfo</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">admin</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;password&quot;</span>
+<span class="p">};</span>
+<span class="c1">// A `configurable` variable named `users` of the</span>
+<span class="c1">// `table&lt;(UserInfo &amp; readonly)&gt; key(username)` table type is initialized.</span>
+<span class="nx">configurable</span> <span class="nx">UserTable</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">users</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[{</span>
+            <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;password&quot;</span>
+        <span class="p">}];</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;host: &quot;</span><span class="p">,</span> <span class="nx">hostName</span><span class="p">);</span>
@@ -61,21 +69,55 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Configurable Variables</h2>
-                            <p><p><code>configurable</code> variables allow configuration of module-level
+                            <p><p>Configurable variables allow configuration of module-level
  variables at the program execution. This enables initializing
  variables with values provided externally. The <code>configurable</code> keyword can
- be applied to a module-level variable declaration that contains an initializer.<br/></p>
+ be applied to a module-level variable declaration that contains an initializer.</p><br/>
 
-<p>The values for <code>configurable</code> variables can be provided in a file named
- <code>Config.toml</code>. The file location can be set through an environment variable with
- the name <code>BALCONFIGFILE</code>. If an environment variable is not specified, it is located
- in the current directory.</p>
+<p>The values for <code>configurable</code> variables can be provided through configuration files,
+ CLI parameters, and environment variables.
+ The precedence order for retrieving configurable values is as follows:</p>
 
-<p>The configuration file must be in the TOML(v0.4) format.
- Ballerina currently supports configurable variables of types <code>int</code>, <code>float</code>,
- <code>boolean</code>, <code>string</code>, <code>decimal</code>, the arrays of the respective types, record, and
- table.</p>
-</p>
+<ul>
+<li><p><strong> CLI Parameters with the following format:</strong></p>
+
+<pre><code>-Ckey=value
+</code></pre>
+
+<p> The key of a CLI parameter can be specified as,</p>
+
+<pre><code>key:= [[org-name .] module-name .] variable
+</code></pre>
+
+<p>The org-name and module-name is optional for the variable defined in the
+ root module or single Ballerina file. Currently, CLI-based configuration
+ is supported for configurable variables of types <code>int</code>, <code>float</code>, <code>boolean</code>,
+ <code>string</code>, <code>decimal</code>, and <code>xml</code>.</p>
+</li>
+</ul>
+<ul>
+<li><strong>Configuration files:</strong>
+
+ The values can be provided through configuration files in the TOML(v0.4) format.
+ The file location can be set through an environment variable with
+ the name <code>BAL_CONFIG_FILES</code>. It is possible to specify multiple configuration files
+ using the OS-specific separator.
+ The file precedence order will be as specified in the environment variable.
+ If an environment variable is not specified, it is located in the current directory
+ with the file name <code>Config.toml</code>.
+</li>
+</ul>
+<ul>
+<li><strong>Environment variables:</strong>
+
+ The values can be provided through an environment variable with the name
+ <code>BAL_CONFIG_DATA</code> in which the content is expected to be in the TOML(v0.4) format.</p>
+
+Currently, TOML-based configuration is supported for configurable variables of
+ types <code>int</code>, <code>float</code>, <code>boolean</code>, <code>string</code>, <code>decimal</code>, the arrays of the respective
+ types, record, and table.</li>
+</ul>
+
 
                         </td>
                         <td class="cRightTD">
@@ -205,7 +247,7 @@ configurable int port = ?;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p><code>configurable</code> variables can be initialized with the <code>?</code> expression.
- A value must be supplied for such variables in a <code>Config.toml</code> file.</p>
+ A value must be supplied for such variables.</p>
 
                                         </div>
                                     </div>
@@ -225,12 +267,12 @@ configurable float maxPayload = 1.0;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A <code>configurable</code> variable can be initialized with an expression that is not <code>?</code>.
- The <code>Config.toml</code> file does not have to specify a value for such a variable.
- But if specified, the value in the <code>Config.toml</code> file overrides the value
+                                            <p>A <code>configurable</code> variable can be initialized with an expression that is
+ not <code>?</code>. It is not mandatory to specify a value for such a variable.
+ However, if specified, the value provided at configuration overrides the value
  specified as the initializer.
  The values of the <code>enableRemote</code> and <code>maxPayload</code> variables here are
- overridden by the values specified in the <code>Config.toml</code> file.</p>
+ overridden by the values specified at configuration.</p>
 
                                         </div>
                                     </div>
@@ -249,8 +291,8 @@ configurable float maxPayload = 1.0;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The value <code>http</code> is used to initialize the <code>protocol</code> variable since a value is not
- provided for it in the <code>Config.toml</code> file.</p>
+                                            <p>The value <code>http</code> is used to initialize the <code>protocol</code> variable since a value
+ is not provided for it at configuration.</p>
 
                                         </div>
                                     </div>
@@ -261,7 +303,10 @@ configurable float maxPayload = 1.0;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>configurable UserInfo &amp; readonly admin = ?;
+                                    <div class="highlight"><pre><code class=language-ballerina>configurable UserInfo &amp; readonly admin = {
+    username: &quot;default&quot;,
+    password: &quot;password&quot;
+};
 </code></pre></div>
 
                                 </td>
@@ -269,7 +314,8 @@ configurable float maxPayload = 1.0;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A <code>configurable</code> variable named <code>admin</code> of the <code>UserInfo &amp; readonly</code> record type is initialized.</p>
+                                            <p>A <code>configurable</code> variable named <code>admin</code> of the <code>UserInfo &amp; readonly</code>
+ record type is initialized.</p>
 
                                         </div>
                                     </div>
@@ -280,7 +326,10 @@ configurable float maxPayload = 1.0;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>configurable UserTable &amp; readonly users = ?;
+                                    <div class="highlight"><pre><code class=language-ballerina>configurable UserTable &amp; readonly users = table [{
+            username: &quot;default&quot;,
+            password: &quot;password&quot;
+        }];
 </code></pre></div>
 
                                 </td>
@@ -288,7 +337,8 @@ configurable float maxPayload = 1.0;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A <code>configurable</code> variable named <code>users</code> of the <code>table&lt;(UserInfo &amp; readonly)&gt; key(username)</code> table type is initialized.</p>
+                                            <p>A <code>configurable</code> variable named <code>users</code> of the
+ <code>table&lt;(UserInfo &amp; readonly)&gt; key(username)</code> table type is initialized.</p>
 
                                         </div>
                                     </div>
@@ -371,7 +421,7 @@ maxPayload = 0.321
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>[admin]
 username = &quot;admin&quot;
-password = &quot;password&quot;
+password = &quot;admin-password&quot;
 </code></pre></div>
 
                                 </td>
@@ -428,6 +478,14 @@ password=&quot;cde456&quot;
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -455,11 +513,11 @@ password=&quot;cde456&quot;
 # port = 9090
 # enableRemote = false
 # maxPayload = 0.321
-# 
+#
 # [admin]
 # username = &quot;admin&quot;
-# password = &quot;password&quot;
-# 
+# password = &quot;admin-password&quot;
+#
 # [[users]]
 # username = &quot;John&quot;
 # password=&quot;abc123&quot;
@@ -490,15 +548,47 @@ password=&quot;cde456&quot;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run configurable.bal
 host: 192.0.1.2
 port: 9090
 protocol: http
 maximum payload (in MB): 0.321
 remote enabled: false
-admin details: {&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;password&quot;}
+admin details: {&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;admin-password&quot;}
 users: [{&quot;username&quot;:&quot;John&quot;,&quot;password&quot;:&quot;abc123&quot;},{&quot;username&quot;:&quot;Bob&quot;,&quot;password&quot;:&quot;cde456&quot;}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># A similar configuration can be given via CLI parameters in the
+# following format.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run configurable.bal -- -ChostName=192.168.1.1 -Cport=9091 -CenableRemote=false -CmaxPayload=0.456
+host: 192.168.1.1
+port: 9091
+protocol: http
+maximum payload (in MB): 0.456
+remote enabled: false
+admin details: {&quot;username&quot;:&quot;default&quot;,&quot;password&quot;:&quot;password&quot;}
+users: [{&quot;username&quot;:&quot;default&quot;,&quot;password&quot;:&quot;password&quot;}]
 </code></pre></div>
 
                                 </td>

@@ -12,7 +12,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 
 <span class="c1">// Create an endpoint with port 8080 for the mock backend services.</span>
@@ -21,9 +20,9 @@ redirect_from:
 <span class="c1">// Define the failover client endpoint to call the backend services.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">FailoverClient</span> <span class="nx">foBackendEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span>
 
-    <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="k">timeout</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="nx">failoverCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">501</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">],</span>
-    <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="nx">interval</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="c1">// Define a set of HTTP Clients that are targeted for failover.</span>
     <span class="nx">targets</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://nonexistentEP/mock1&quot;</span><span class="p">},</span>
@@ -34,27 +33,17 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">fo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">request</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span>
+            <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
 
         <span class="c1">// If `backendResponse` is an `http:Response`, it is sent back to the</span>
         <span class="c1">// client. If `backendResponse` is an `http:ClientError`, an internal</span>
         <span class="c1">// server error is returned to the client.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
-                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">backendResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
-                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">()};</span>
         <span class="p">}</span>
 
     <span class="p">}</span>
@@ -63,28 +52,19 @@ redirect_from:
 <span class="c1">// Define the sample service to mock connection timeouts and service outages.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">echo</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Delay the response for 30000 milliseconds to mimic network level</span>
-        <span class="c1">// delays.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="c1">// Delay the response for 30 seconds to mimic network level delays.</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
 
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;echo Resource is invoked&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
-                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="s">&quot;echo Resource is invoked&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Define the sample service to mock a healthy service.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">mock</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock Resource is Invoked.&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
-                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Mock Resource is Invoked.&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -99,7 +79,7 @@ redirect_from:
                             <p><p>Ballerina users can configure multiple HTTP clients in a given failover group.
  If one of the HTTP clients (dependencies) fails, Ballerina automatically fails over to another endpoint.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -194,7 +174,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 import ballerina/lang.runtime;
 </code></pre></div>
 
@@ -245,9 +224,9 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    timeoutInMillis: 5000,
+                                    <div class="highlight"><pre><code class=language-ballerina>    timeout: 5,
     failoverCodes: [501, 502, 503],
-    intervalInMillis: 5000,
+    interval: 5,
 </code></pre></div>
 
                                 </td>
@@ -295,8 +274,9 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request request) {
-        var backendResponse = foBackendEP-&gt;get(&quot;/&quot;, &lt;@untainted&gt;request);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .()
+            returns http:Response|http:InternalServerError {
+        var backendResponse = foBackendEP-&gt;get(&quot;/&quot;);
 </code></pre></div>
 
                                 </td>
@@ -309,20 +289,9 @@ import ballerina/lang.runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
-            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;backendResponse);
-            if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;,
-                                err = responseToCaller);
-            }
+            return backendResponse;
         } else {
-            http:Response response = new;
-            response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload((&lt;@untainted error&gt;backendResponse).message());
-            var responseToCaller = caller-&gt;respond(response);
-            if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;,
-                                err = responseToCaller);
-            }
+            return {body: backendResponse.message()};
         }
 </code></pre></div>
 
@@ -376,7 +345,7 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .() returns string {
 </code></pre></div>
 
                                 </td>
@@ -396,8 +365,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Delay the response for 30000 milliseconds to mimic network level
- delays.</p>
+                                            <p>Delay the response for 30 seconds to mimic network level delays.</p>
 
                                         </div>
                                     </div>
@@ -408,11 +376,7 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;echo Resource is invoked&quot;);
-        if (result is error) {
-            log:printError(&quot;Error sending response from mock service&quot;,
-                            err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;echo Resource is invoked&quot;;
     }
 }
 </code></pre></div>
@@ -445,12 +409,8 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request req) {
-        var result = caller-&gt;respond(&quot;Mock Resource is Invoked.&quot;);
-        if (result is error) {
-            log:printError(&quot;Error sending response from mock service&quot;,
-                            err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .() returns string {
+        return &quot;Mock Resource is Invoked.&quot;;
     }
 }
 </code></pre></div>

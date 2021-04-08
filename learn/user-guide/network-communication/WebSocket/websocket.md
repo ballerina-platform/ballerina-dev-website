@@ -53,7 +53,7 @@ The connection creation state is achieved when the WebSocket client establishes 
 remote function onOpen(websocket:Caller caller);
 ```
 
-This remote function provides an instance of a [`websocket:Caller`](learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/clients/Caller) object, which can be used to communicate back with the WebSocket client. This saves the caller object when the connection is created so whenever the application wants to send messages to the connected clients, it can use the stored caller objects to do so.
+This remote function provides an instance of a [`websocket:Caller`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/clients/Caller) object, which can be used to communicate back with the WebSocket client. This saves the caller object when the connection is created so whenever the application wants to send messages to the connected clients, it can use the stored caller objects to do so.
 
 #### Connection Creation Example
 
@@ -140,7 +140,7 @@ Sub-protocols are given in the WebSocket constructor’s second parameter, which
 
 The server-side will be configured to handle zero or multiple sub-protocols. The server will check the client’s sub-protocol list in the priority order to see if it is supported in the given service. If it finds a match, it will return this single first-matched protocol to the client.
 
-The server-side configuration of sub-protocols is done using the [`websocket:ServiceConfig`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/annotations#ServiceConfig) annotation using its `subProtocols` field.
+The server-side configuration of sub-protocols is done using the [`websocket:ServiceConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/websocket/annotations#ServiceConfig) annotation using its `subProtocols` field.
 
 #### Sub-Protocol Handling Example
 

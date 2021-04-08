@@ -19,11 +19,11 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">init</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Initiating transaction...&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Initiating transaction...&quot;</span><span class="p">);</span>
         <span class="c1">// When transaction statement starts, a distributed transaction context is created.</span>
         <span class="nx">transaction</span> <span class="p">{</span>
             <span class="c1">// Print the information about the current transaction.</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Started transaction: &quot;</span> <span class="o">+</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Started transaction: &quot;</span> <span class="o">+</span>
                           <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
 
             <span class="c1">// When a participant is called, the transaction context is propagated and</span>
@@ -36,7 +36,7 @@ redirect_from:
                 <span class="c1">// either a `notify commit` or `notify abort` will be sent to the participants.</span>
                 <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
                 <span class="k">if</span> <span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Transaction failed&quot;</span><span class="p">);</span>
                 <span class="p">}</span>
@@ -51,9 +51,9 @@ redirect_from:
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to client&quot;</span><span class="p">,</span>
-            <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">()});</span>
+            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Sent response back to client&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Sent response back to client&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -72,7 +72,7 @@ redirect_from:
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">req</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">bizReq</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">participantEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Got response from bizservice&quot;</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Got response from bizservice&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -80,7 +80,6 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="c1">// This is a participant in the distributed transaction. It will get invoked when it receives</span>
@@ -90,33 +89,31 @@ redirect_from:
     <span class="c1">// as a participant.</span>
     <span class="nx">transactional</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">update</span><span class="o">/</span><span class="nx">updateStockQuote</span>
                                      <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Received update stockquote request&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received update stockquote request&quot;</span><span class="p">);</span>
         <span class="c1">// Get the JSON payload.</span>
         <span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="nx">updateReq</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
 
         <span class="c1">// Generate the response.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">updateReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Update stock quote request received. &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;symbol:%s, price:%s&quot;</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">symbol</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Update stock quote request received. &quot;</span> <span class="o">+</span>
+                          <span class="nx">updateReq</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
             <span class="kt">json</span> <span class="nx">jsonRes</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;updating stock&quot;</span><span class="p">};</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonRes</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">updateReq</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Payload error occurred!&quot;</span><span class="p">,</span>
-            <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="nx">updateReq</span><span class="p">.</span><span class="kt">message</span><span class="p">()});</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Payload error occurred!&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">updateReq</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="c1">// Send the response back to the initiator.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to initiator&quot;</span><span class="p">,</span>
-            <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">()});</span>
+            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Sent response back to initiator&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Sent response back to initiator&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -237,7 +234,7 @@ import ballerina/lang.&#39;transaction as transactions;
                                     <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(8080) {
     resource function get init(http:Caller conn, http:Request req) {
         http:Response res = new;
-        log:print(&quot;Initiating transaction...&quot;);
+        log:printInfo(&quot;Initiating transaction...&quot;);
 </code></pre></div>
 
                                 </td>
@@ -275,7 +272,7 @@ import ballerina/lang.&#39;transaction as transactions;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            log:print(&quot;Started transaction: &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Started transaction: &quot; +
                           transactions:info().toString());
 </code></pre></div>
 
@@ -319,7 +316,7 @@ import ballerina/lang.&#39;transaction as transactions;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                var commitResult = commit;
                 if commitResult is () {
-                    log:print(&quot;Transaction committed&quot;);
+                    log:printInfo(&quot;Transaction committed&quot;);
                 } else {
                     log:printError(&quot;Transaction failed&quot;);
                 }
@@ -352,9 +349,9 @@ import ballerina/lang.&#39;transaction as transactions;
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = conn-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Could not send response back to client&quot;,
-            {&quot;error&quot;: result.message()});
+            &#39;error = result);
         } else {
-            log:print(&quot;Sent response back to client&quot;);
+            log:printInfo(&quot;Sent response back to client&quot;);
         }
     }
 }
@@ -421,7 +418,7 @@ import ballerina/lang.&#39;transaction as transactions;
                                     <div class="highlight"><pre><code class=language-ballerina>    http:Request req = new;
     req.setJsonPayload(bizReq);
     var result = participantEP-&gt;post(&quot;&quot;, req);
-    log:print(&quot;Got response from bizservice&quot;);
+    log:printInfo(&quot;Got response from bizservice&quot;);
     if (result is http:Response) {
         return result.statusCode == http:STATUS_OK;
     } else {
@@ -524,7 +521,6 @@ time = 2020-12-15 21:19:16,376 level = INFO  module = &quot;&quot; message = &qu
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -559,7 +555,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    transactional resource function post update/updateStockQuote
                                      (http:Caller conn, http:Request req) {
-        log:print(&quot;Received update stockquote request&quot;);
+        log:printInfo(&quot;Received update stockquote request&quot;);
 </code></pre></div>
 
                                 </td>
@@ -600,17 +596,15 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         if (updateReq is json) {
-            string msg = io:sprintf(&quot;Update stock quote request received. &quot; +
-                    &quot;symbol:%s, price:%s&quot;, updateReq.symbol, updateReq.price);
-            log:print(msg);
+            log:printInfo(&quot;Update stock quote request received. &quot; +
+                          updateReq.toJsonString());
             json jsonRes = {&quot;message&quot;: &quot;updating stock&quot;};
             res.statusCode = http:STATUS_OK;
             res.setJsonPayload(jsonRes);
         } else {
             res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
             res.setPayload(updateReq.message());
-            log:printError(&quot;Payload error occurred!&quot;,
-            {&quot;error&quot;: updateReq.message()});
+            log:printError(&quot;Payload error occurred!&quot;, &#39;error = updateReq);
         }
 </code></pre></div>
 
@@ -633,9 +627,9 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = conn-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Could not send response back to initiator&quot;,
-            {&quot;error&quot;: result.message()});
+            &#39;error = result);
         } else {
-            log:print(&quot;Sent response back to initiator&quot;);
+            log:printInfo(&quot;Sent response back to initiator&quot;);
         }
     }
 }
@@ -677,7 +671,7 @@ bal run participant.bal
 [ballerina/http] started HTTP/WS listener 192.168.1.18:37209
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8889
 time = 2020-12-15 21:19:16,287 level = INFO  module = &quot;&quot; message = &quot;Received update stockquote request&quot;
-time = 2020-12-15 21:19:16,292 level = INFO  module = &quot;&quot; message = &quot;Update stock quote request received. symbol:GOODS, price:100.0&quot;
+time = 2020-12-15 21:19:16,292 level = INFO  module = &quot;&quot; message = &quot;Update stock quote request received. {&quot;symbol&quot;:&quot;GOODS&quot;, &quot;price&quot;:100.0}&quot;
 time = 2020-12-15 21:19:16,313 level = INFO  module = &quot;&quot; message = &quot;Sent response back to initiator&quot;
 </code></pre></div>
 

@@ -17,7 +17,7 @@ redirect_from:
 
 ## Using the Annotation
 
-To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
+To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](https://docs.central.ballerina.io/ballerina/http/latest/http/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
 
 ## Example
 
@@ -29,7 +29,7 @@ import ballerina/http;
 service / on new http:Listener(8080) {
  
    resource function post upload/[string name](
-                                  @http:Payload {} byte[] payload)
+                                  @http:Payload byte[] payload)
                                   returns string {
        return string `'${name}' uploaded with ${payload.length()} bytes`;
    }

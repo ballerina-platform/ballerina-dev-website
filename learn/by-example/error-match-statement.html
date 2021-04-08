@@ -61,15 +61,15 @@ redirect_from:
         <span class="c1">// If a rest binding pattern is used, the error details that are not</span>
         <span class="c1">// matched will be recorded in a map.</span>
         <span class="nx">error</span> <span class="nx">SampleError</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="k">var</span> <span class="nx">a</span><span class="p">,</span> <span class="o">...</span><span class="k">var</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched an error value : &quot;</span><span class="p">,</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;message: %s, rest detail: %s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched an error value : &quot;</span><span class="p">,</span> <span class="kt">string</span>
+            <span class="s">`message: ${a is string ? a : &quot;&quot;}, rest detail: ${b.toString()}`</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="c1">// If the `v` variable contains an `error` value, it will be matched</span>
         <span class="c1">// to this pattern and the reason string and the detail record will be</span>
         <span class="c1">// destructed within the pattern block.</span>
         <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Generic Error&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="k">var</span> <span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched an error value : &quot;</span><span class="p">,</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;message: %s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+            <span class="kt">string</span> <span class="s">`message: ${a is string ? a : &quot;&quot;}`</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -125,7 +125,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f8a68cb178b59d49d645b385d77f640c&file=error_match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3b00a59d2d86dc12d27408cde00057ed&file=error_match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -320,8 +320,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        error SampleError(&quot;Sample Error&quot;, message = var a, ...var b) =&gt; {
-            io:println(&quot;Matched an error value : &quot;,
-            io:sprintf(&quot;message: %s, rest detail: %s&quot;, a, b));
+            io:println(&quot;Matched an error value : &quot;, string
+            `message: ${a is string ? a : &quot;&quot;}, rest detail: ${b.toString()}`);
         }
 </code></pre></div>
 
@@ -344,7 +344,7 @@ redirect_from:
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        error(&quot;Generic Error&quot;, message = var a) =&gt; {
             io:println(&quot;Matched an error value : &quot;,
-            io:sprintf(&quot;message: %s&quot;, a));
+            string `message: ${a is string ? a : &quot;&quot;}`);
         }
     }
 }

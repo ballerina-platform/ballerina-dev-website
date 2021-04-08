@@ -12,16 +12,15 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="c1">// `helloWorldEP` listener endpoint is configured to communicate through HTTPS.</span>
 <span class="c1">// It is configured to listen on port 9095. As this is an HTTPS Listener,</span>
-<span class="c1">// it is required to give the PKCS12 keystore file location and its password.</span>
+<span class="c1">// it is required to configure certificate file and private key file.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+        <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
+            <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -30,12 +29,9 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Send the response back to the `caller`.</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">hello</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="c1">// Send the response with the string payload back to the `caller`.</span>
+        <span class="k">return</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
@@ -43,14 +39,11 @@ redirect_from:
 
 <span class="c1">// This is a client endpoint configured to connect to the HTTPS service.</span>
 <span class="c1">// As this is a 1-way SSL connection, the client needs to provide</span>
-<span class="c1">// `trustStore` file `path` and its `password`.</span>
-<span class="c1">// [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.</span>
+<span class="c1">// `cert` file.</span>
+<span class="c1">// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resources/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
+        <span class="nx">cert</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 
@@ -62,10 +55,10 @@ redirect_from:
     <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/helloWorld/hello&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Log the retrieved text payload.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="c1">// If an error occurs when getting the response or binding payload, log the error.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">((&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -80,7 +73,7 @@ redirect_from:
                             <p><p>This example demonstrates how the Ballerina https client can be configured to connect to an https listener through 1-way SSL connection (i.e., the server is verified by the client).
  This example uses the Ballerina https listener to host a service and the https client sends requests for that listener.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -157,7 +150,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -171,9 +163,9 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
-        keyStore: {
-            path: &quot;../resources/ballerinaKeystore.p12&quot;,
-            password: &quot;ballerina&quot;
+        key: {
+            certFile: &quot;../resource/path/to/public.crt&quot;,
+            keyFile: &quot;../resource/path/to/private.key&quot;
         }
     }
 };
@@ -186,7 +178,7 @@ import ballerina/log;
                                         <div>
                                             <p><code>helloWorldEP</code> listener endpoint is configured to communicate through HTTPS.
  It is configured to listen on port 9095. As this is an HTTPS Listener,
- it is required to give the PKCS12 keystore file location and its password.</p>
+ it is required to configure certificate file and private key file.</p>
 
                                         </div>
                                     </div>
@@ -221,7 +213,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get hello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get hello() returns string {
 </code></pre></div>
 
                                 </td>
@@ -233,10 +225,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Hello World!&quot;);
-        if (result is error) {
-            log:printError(&quot;Failed to respond&quot;, err = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;Hello World!&quot;;
     }
 }
 </code></pre></div>
@@ -246,7 +235,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send the response back to the <code>caller</code>.</p>
+                                            <p>Send the response with the string payload back to the <code>caller</code>.</p>
 
                                         </div>
                                     </div>
@@ -272,8 +261,7 @@ import ballerina/log;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service and run the main function, navigate to the directory that contains the
 # `.bal` file and use the `bal run` command  below along with the Ballerina home path as a config.
-# (You may need to change the keystore path, a sample keystore file is available in the distribution.
-# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaKeystore.p12)
+# (You may need to change the certificate file path and private key file path.)
 bal run basic_https_listener.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
 </code></pre></div>
@@ -349,10 +337,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration clientEPConfig = {
     secureSocket: {
-        trustStore: {
-            path: &quot;../resources/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
+        cert: &quot;../resource/path/to/public.crt&quot;
     }
 };
 </code></pre></div>
@@ -364,8 +349,8 @@ import ballerina/log;
                                         <div>
                                             <p>This is a client endpoint configured to connect to the HTTPS service.
  As this is a 1-way SSL connection, the client needs to provide
- <code>trustStore</code> file <code>path</code> and its <code>password</code>.
- <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket">secureSocket</a> record provides the SSL related configurations.</p>
+ <code>cert</code> file.
+ <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientSecureSocket">secureSocket</a> record provides the SSL related configurations.</p>
 
                                         </div>
                                     </div>
@@ -428,7 +413,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:print(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(payload);
     } else {
 </code></pre></div>
 
@@ -448,7 +433,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:printError((&lt;error&gt;payload).message());
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printError(payload.message());
     }
 }
 </code></pre></div>
@@ -484,8 +469,7 @@ import ballerina/log;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service and run the main function, navigate to the directory that contains the
 # `.bal` file and use the `bal run` command  below along with the Ballerina home path as a config.
-# (You may need to change the truststore path, a sample truststore file is available in the distribution.
-# The file path is &lt;ballerina.home&gt;/examples/resources/ballerinaTruststore.p12)
+# (You may need to change the trusted certificate file path.)
 bal run https_client.bal
 time = 2021-01-21 21:41:54,225 level = INFO  module = &quot;&quot; message = &quot;Hello World!&quot;
 </code></pre></div>

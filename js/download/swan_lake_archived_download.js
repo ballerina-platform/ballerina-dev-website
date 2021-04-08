@@ -87,7 +87,7 @@ function updateReleasearchiveTable(allData) {
             }
 
             // temporary adding idea plugin. This needs to be retrieve from release_notes_versions json
-            allArtifact.push("ballerina-intellij-idea-plugin");
+            //allArtifact.push("ballerina-intellij-idea-plugin");
 
             var halfWayThough = Math.ceil(allArtifact.length / 2);
             item["lefttable"] = allArtifact.slice(0, halfWayThough);

@@ -37,7 +37,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">date_type</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">time_type</span><span class="p">;</span>
-    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">timestamp_type</span><span class="p">;</span>
+    <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">timestamp_type</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">datetime_type</span><span class="p">;</span>
 <span class="p">|};</span>
 
@@ -135,7 +135,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="c1">// Since the `rowType` is provided as a `DateTimeType`, the `resultStream`</span>
     <span class="c1">// will have `DateTimeType` records. The Date, Time, DateTime, and</span>
-    <span class="c1">// Timestamp fields of the database table can be mapped to time:Time,</span>
+    <span class="c1">// Timestamp fields of the database table can be mapped to time:Utc,</span>
     <span class="c1">// string, and int types in Ballerina.</span>
     <span class="nx">resultStream</span> <span class="p">=</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from DATE_TIME_TYPES&quot;</span><span class="p">,</span>
         <span class="nx">DateTimeType</span><span class="p">);</span>
@@ -228,7 +228,7 @@ redirect_from:
  Ballerina distribution. Therefore, it is not required to copy the driver JAR
  for the H2 database.<br><br>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/ballerina/jdbc/latest/jdbc/">JDBC module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/java.jdbc/">JDBC module</a>.</p>
 </p>
 
                         </td>
@@ -420,7 +420,7 @@ import ballerina/time;
     int row_id;
     string date_type;
     int time_type;
-    time:Time timestamp_type;
+    time:Utc timestamp_type;
     string datetime_type;
 |};
 </code></pre></div>
@@ -789,7 +789,7 @@ import ballerina/time;
                                         <div>
                                             <p>Since the <code>rowType</code> is provided as a <code>DateTimeType</code>, the <code>resultStream</code>
  will have <code>DateTimeType</code> records. The Date, Time, DateTime, and
- Timestamp fields of the database table can be mapped to time:Time,
+ Timestamp fields of the database table can be mapped to time:Utc,
  string, and int types in Ballerina.</p>
 
                                         </div>

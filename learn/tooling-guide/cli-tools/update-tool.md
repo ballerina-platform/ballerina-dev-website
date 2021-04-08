@@ -9,6 +9,7 @@ intro: This guide explains how to maintain your Ballerina installation up to dat
 redirect_from:
   - /learn/how-to-keep-ballerina-up-to-date
   - /learn/how-to-keep-ballerina-up-to-date/
+  - /learn/keeping-ballerina-up-to-date/
   - /learn/keeping-ballerina-up-to-date
   - /swan-lake/learn/keeping-ballerina-up-to-date/
   - /swan-lake/learn/keeping-ballerina-up-to-date

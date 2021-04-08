@@ -36,7 +36,7 @@ Source files and modules can contain zero or more entry points, and the runtime 
 - [Running a Package](#running-a-package)
 - [Configuring Your Ballerina Runtimes](#configuring-your-ballerina-runtimes)
   - [Ballerina Runtime Configurable Variables](#ballerina-runtime-configurable-variables)
-
+  - [Configuring Sensitive Data as Configurable Variables](#configuring-sensitive-data-as-configurable-variables)
 ## Running Standalone Source Code
 A single Ballerina source code file can be placed into any folder. 
 
@@ -92,9 +92,11 @@ $ bal run main.jar
 
 ### Ballerina Runtime Configurable Variables
 
-A Ballerina runtime can be configured using configurable variables, which can be configured using `Config.toml` file. 
-`Config.toml` file may or may not provide configuration values for configurable variables that are used in the program. 
-Ballerina currently supports configurable variables of types `int`, `float`, `boolean`, `string`, `decimal` and the arrays of respective types. 
+A Ballerina runtime can be configured using configurable variables.
+The values for `configurable` variables can be provided through command-line parameters and configuration files.
+When loading the values to the configurable variables, command-line arguments get the higher precedence than the 
+configuration TOML files.
+
 See [Configurable BBE](/learn/by-example/configurable.html) for more details.
 
 Consider the following example, which uses configurable variables.
@@ -113,15 +115,17 @@ public function main() {
 }
 ```
 
-`?` denotes that `id` is a required configuration, hence `Config.toml` file must contain a value for key `id`.
-If a default value assigned, the configuration is optional, hence `Config.toml` file may or may not contain a values for
-configurable variables `name` and `married`.
+`?` denotes that `id` is a required configuration. Hence, the configuration must specify a value for the `id` key.
+If a default value is assigned, the configuration is optional. Hence, the configuration may or may not contain values
+for the `name` and `married` configurable variables.
+
 Consider the below `Config.toml` file.
 ```toml
 id = 1001
 name = "Jhone"
 ```
- Since `Config.toml` file contains a value for key `name`, the program default
+
+Since the `Config.toml` file contains a value for the `name` key, the program default
 value will be overridden by the value in the `Config.toml` file.
 
 ```bash
@@ -131,13 +135,52 @@ User Name : Jhone
 Married : true
 ```
 
-When running a program with configurable values, Ballerina looks for a `Config.toml` file in the current working directory. 
-You can set the path to `Config.toml` file via environment variable `BALCONFIGFILE`.
+When running a program with configurable values, Ballerina locates the TOML files in the following ways:
+
+- From an environment variable with the name `BAL_CONFIG_FILES` that provides a list of paths to the TOML files
+  separated by the OS-specific separator. The file precedence order will be as 
+  specified in the environment variable.
+  
+- From an environment variable with the name `BAL_CONFIG_DATA` that contains the content of the configuration TOML 
+  file.
+  
+- If the above environment variables are not specified, the configuration file is located in the current directory
+  with the file name `Config.toml` by default.
+
+Currently, TOML-based configuration is supported for configurable variables of types `int`, `float`, `boolean`, 
+`string`, `decimal`, the arrays of the respective types, and table.
+
+In the example, you can set the path to the `Config.toml` file using the following command.
 
 ```bash
-$ export BALCONFIGPATH = <path>
+$ export BAL_CONFIG_FILES = <path>
 $ bal run main.bal
 User ID : 1001
 User Name : Jhone
 Married : true
 ```
+
+It is possible to provide the values for configurable variables through command-line arguments in the format of `-Ckey=value`.
+The key of a command-line argument can be specified as,
+```
+key:= [[org-name .] module-name .] variable
+```
+The org-name and module-name is optional for the variable defined in the root module or in a single Ballerina file. 
+Currently, command-line-based configuration is supported for configurable variables of types `int`, `float`, `boolean`,
+`string`, `decimal`, and `xml`.
+
+In the example, you can use the following command to pass values from the command-line.
+
+```bash
+$ bal run main.bal -- -Cid=1001 -Cname=Jhone -Cmarried=true
+User ID : 1001
+User Name : Jhone
+Married : true
+```
+
+### Configuring Sensitive Data as Configurable Variables
+
+You can provide sensitive data to configurable variables through a separate TOML file and specify it using 
+`BAL_CONFIG_FILES` environment variable with higher priority.
+
+For in-depth details, see [Securing Sensitive Data using configurable variables](/learn/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables).

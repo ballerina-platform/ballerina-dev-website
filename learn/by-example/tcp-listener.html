@@ -21,34 +21,29 @@ redirect_from:
     <span class="c1">// This remote method is invoked when the new client joins the server.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connected to echoServer: &quot;</span><span class="p">,</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">new</span> <span class="nx">EchoService</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">new</span> <span class="nx">EchoService</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">EchoService</span> <span class="p">{</span>
-    <span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">;</span>
-
-    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span> <span class="p">=</span> <span class="nx">c</span><span class="p">;</span>
-    <span class="p">}</span>
 
     <span class="c1">// This remote method is invoked once the content is received from the client.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> 
+        <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Echo: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
         <span class="c1">// Echo back the data to the same client which the data received from.</span>
-        <span class="nx">check</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This remote method is invoked in an error situation</span>
     <span class="c1">// if it happens during the `onConnect` and `onBytes` methods.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This remote method is invoked when the connection is closed.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client left: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="p">.</span><span class="nx">remoteHost</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">,</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client left&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -63,7 +58,7 @@ redirect_from:
                             <p><p>The TCP Listener is used to expose a TCP service over the TCP protocol.
  This sample demonstrates how the TCP socket listener service interacts with the TCP client.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/#/tcp/">TCP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/tcp/latest">TCP module</a>.</p>
 </p>
 
                         </td>
@@ -78,9 +73,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="udp-client.html">
+                                    <a class="next" href="tcp-transport-security.html">
                                         <span>NEXT ></span>
-                                        <p>UDP Connectionless Client</p>
+                                        <p>TCP Transport Security</p>
                                     </a>
                                 </div>
                                 
@@ -118,8 +113,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -180,7 +173,7 @@ import ballerina/tcp;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println(&quot;Client connected to echoServer: &quot;, caller.remotePort);
-        return new EchoService(caller);
+        return new EchoService();
     }
 }
 </code></pre></div>
@@ -202,21 +195,6 @@ import ballerina/tcp;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service class EchoService {
-    tcp:Caller caller;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public function init(tcp:Caller c) {
-        self.caller = c;
-    }
 </code></pre></div>
 
                                 </td>
@@ -228,7 +206,8 @@ import ballerina/tcp;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onBytes(readonly &amp; byte[] data) returns tcp:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onBytes(tcp:Caller caller, readonly &amp; byte[] data) 
+        returns tcp:Error? {
         io:println(&quot;Echo: &quot;, string:fromBytes(data));
 </code></pre></div>
 
@@ -248,7 +227,7 @@ import ballerina/tcp;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check self.caller-&gt;writeBytes(data);
+                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;writeBytes(data);
     }
 </code></pre></div>
 
@@ -268,8 +247,8 @@ import ballerina/tcp;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(readonly &amp; tcp:Error err) returns tcp:Error? {
-        log:printError(&quot;An error occurred&quot;, err = err);
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(tcp:Error err) returns tcp:Error? {
+        log:printError(&quot;An error occurred&quot;, &#39;error = err);
     }
 </code></pre></div>
 
@@ -291,8 +270,7 @@ import ballerina/tcp;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onClose() returns tcp:Error? {
-        io:println(&quot;Client left: &quot;, self.caller.remoteHost, &quot;/&quot;,
-            self.caller.remotePort);
+        io:println(&quot;Client left&quot;);
     }
 }
 </code></pre></div>
@@ -347,7 +325,7 @@ bal run tcp_listener.bal
                                     <div class="highlight"><pre><code class=shell-session># The tcp listener starts listening to the port 61598 for incoming client requests.
 Client connected to echoServer: 48735
 Echo: Hello Ballerina Echo from client
-Client left: localhost/48735
+Client left
 </code></pre></div>
 
                                 </td>

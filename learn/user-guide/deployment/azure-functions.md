@@ -22,19 +22,19 @@ This is done by importing the `ballerinax/azure.functions` module and simply ann
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows to output data from the function out to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
-- HTTP [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#HTTPTrigger) and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#HTTPOutput) binding
-- Queue [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#QueueTrigger) and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#QueueOutput) binding
-- Blob [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobTrigger), [input](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobInput) binding, and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#BlobOutput) binding
-- Twilio SMS [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#TwilioSmsOutput) binding
-- CosmosDB [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBTrigger), [input](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBInput) binding, and [output](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#CosmosDBOutput) binding
-- Timer [trigger](/learn/api-docs/ballerina/#/ballerinax/azure_functions/annotations#TimerTrigger)
+- HTTP [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#HTTPTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#HTTPOutput) binding
+- Queue [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#QueueTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#QueueOutput) binding
+- Blob [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobOutput) binding
+- Twilio SMS [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#TwilioSmsOutput) binding
+- CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBOutput) binding
+- Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#TimerTrigger)
 
 ## Writing a Function
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
 
 ```ballerina
-import ballerinax/azure.functions as af;
+import ballerinax/azure_functions as af;
 
 @af:Function
 public function fromHttpToQueue(af:Context ctx, 
@@ -116,6 +116,18 @@ The deployed Azure Function can be tested by invoking it using an HTTP client su
 ```bash
 $ curl -d "Hello!" https://functions1777.azurewebsites.net/api/fromHttpToQueue 
 Request: url=https://functions1777.azurewebsites.net/api/fromHttpToQueue method=POST query= headers=Accept=*/* Connection=Keep-Alive Content-Length=6 Content-Type=application/x-www-form-urlencoded Host=functions1777.azurewebsites.net Max-Forwards=9 User-Agent=curl/7.64.0 X-WAWS-Unencoded-URL=/api/fromHttpToQueue CLIENT-IP=10.0.128.31:47794 X-ARR-LOG-ID=c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID=functions1777 WAS-DEFAULT-HOSTNAME=functions1777.azurewebsites.net X-Original-URL=/api/fromHttpToQueue X-Forwarded-For=45.30.94.9:47450 X-ARR-SSL=2048|256|C=US, S=Washington, L=Redmond, O=Microsoft Corporation, OU=Microsoft IT, CN=Microsoft IT TLS CA 5|CN=*.azurewebsites.net X-Forwarded-Proto=https X-AppService-Proto=https X-Forwarded-TlsVersion=1.2 DISGUISED-HOST=functions1777.azurewebsites.net params= identities=[{"AuthenticationType":null,"IsAuthenticated":false,"Actor":null,"BootstrapContext":null,"Claims":[],"Label":null,"Name":null,"NameClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","RoleClaimType":"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"}] body=Hello!
+```
+
+>**Note:** Additionally, when you are using CosmosDB, follow the steps below to configure the connection string of the database manually via the `connectionStringSetting` field.
+1. Click the **Keys** tab of the Cosmos DB page.
+2. Copy the value of the `PRIMARY CONNECTION STRING`.
+3. Click the **Configuration** tab of the Function App page.
+4. Select **New Application Setting** and paste the data you copied above as the value. For the key, use the value of the `connectionStringSetting` key.   
+
+Example application setting is as follows.
+```
+Name - `CosmosDBConnection`
+Value - `AccountEndpoint=https://db-cosmos.documents.azure.com:443/;AccountKey=12345asda;`
 ```
 
 ## What's Next?

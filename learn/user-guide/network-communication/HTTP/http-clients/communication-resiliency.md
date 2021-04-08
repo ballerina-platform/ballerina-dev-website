@@ -13,13 +13,15 @@ redirect_from:
   - /learn/network-communication/http/http-clients/communication-resiliency/
   - /learn/network-communication/http/http-clients/communication-resiliency
   - /learn/user-guide/network-communication/http/http-clients/communication-resiliency
+  - /learn/network-communication/http/communication-resiliency/
+  - /learn/network-communication/http/communication-resiliency
 ---
 
 These features allow you to handle and recover from unexpected communication scenarios gracefully. 
 
 ## Retry
 
-The HTTP client can be configured with a retry configuration using the [`retryConfig`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/RetryConfig) property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/ClientConfiguration) to retry sending the same request to the endpoint in the case of a failure. This follows an exponential backoff algorithm to execute the retry requests. 
+The HTTP client can be configured with a retry configuration using the [`retryConfig`](https://docs.central.ballerina.io/ballerina/http/latest/http/records/RetryConfig) property in the [HTTP client configuration](https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientConfiguration) to retry sending the same request to the endpoint in the case of a failure. This follows an exponential backoff algorithm to execute the retry requests. 
 
 The `retry_demo.bal` below shows an HTTP client configured with a retry configuration. 
 
@@ -31,15 +33,14 @@ import ballerina/io;
 import ballerina/http;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new ("http://httpbin.org", {
+   http:Client clientEp = check new ("http://httpbin.org", {
        retryConfig: {
-           intervalInMillis: 3000,
+           interval: 3,
            count: 5,
            backOffFactor: 2.0,
-           maxWaitIntervalInMillis: 20000
+           maxWaitInterval: 20
        }});
-   http:Request req = new;
-   http:Response resp = <http:Response> check clientEp->get("/get");
+   http:Response resp = check clientEp->get("/get");
    io:println(resp.getTextPayload());
 }
 ```
@@ -72,14 +73,14 @@ If the requests sent to the backend service are successful in this state, it wil
 
 ### Circuit Breaker Client Configuration
 
-The circuit breaker pattern can be used in Ballerina HTTP clients by using its [client configuration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/CircuitBreakerConfig). This contains the configuration properties below. 
+The circuit breaker pattern can be used in Ballerina HTTP clients by using its [client configuration](https://docs.central.ballerina.io/ballerina/http/latest/http/records/CircuitBreakerConfig). This contains the configuration properties below. 
 
 - `rollingWindow`: A rolling window is used to calculate the statistics for backend service errors. 
-- `timeWindowInMillis`: The size of the rolling time window (in milliseconds).
-- `bucketSizeInMillis`: The time increment of each rolling window slide. New stats are collected in a bucket of this time duration. This information is added to the current time window at the completion of the bucket time period and the oldest bucket is removed from the window.
+- `timeWindow`: The size of the rolling time window (in seconds).
+- `bucketSize`: The time increment of each rolling window slide. New stats are collected in a bucket of this time duration. This information is added to the current time window at the completion of the bucket time period and the oldest bucket is removed from the window.
 - `requestVolumeThreshold`: The minimum number of requests that should be in the rolling window to trip the circuit. 
 - `failureThreshold`: The threshold for request failures. If this threshold exceeds, the circuit is tripped. This is calculated as the ratio between the failures and the total requests in the current rolling window of requests. 
-- `resetTimeInMillis`: The time period (in milliseconds) to wait in the open state before trying again to contact the backend service. 
+- `resetTime`: The time period (in seconds) to wait in the open state before trying again to contact the backend service. 
 - `statusCodes`: The HTTP status codes that are considered as request failures. 
 
 The `circuit_breaker_demo.bal` example below shows an HTTP client configured with a circuit breaker. 
@@ -91,22 +92,22 @@ import ballerina/http;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-   http:Client clientEp = new ("http://httpbin.org", {
+   http:Client clientEp = check new ("http://httpbin.org", {
            circuitBreaker: {
                rollingWindow: {
-                   timeWindowInMillis: 10000,
-                   bucketSizeInMillis: 2000,
+                   timeWindow: 10,
+                   bucketSize: 2,
                    requestVolumeThreshold: 5
                },
                failureThreshold: 0.2,
-               resetTimeInMillis: 10000,
+               resetTime: 10,
                statusCodes: [400, 404, 500]
            }
        }
    );
-   http:Request req = new;
-   http:Response resp = <http:Response> check clientEp->get("/get");
+   http:Response resp = check clientEp->get("/get");
    io:println(resp.getTextPayload());
+}
 ```
 
 In the above code, the HTTP client is configured with a circuit breaker configuration, which tracks a 10-second rolling window of request statistics and updates its information within 2-second intervals. By including a request volume threshold of 5, any fewer number of requests in the rolling window will not trigger the logic to trip the circuit. 
@@ -115,7 +116,7 @@ Otherwise, in the case of 20% requests failure in the rolling window, the circui
 
 ## Load Balancing and Failover
 
-In the event of load balancing requests to multiple remote endpoints, Ballerina has the [`http:LoadBalanceClient`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/LoadBalanceClient) to provide a list of endpoints, and optionally an implementation of the algorithm to select the endpoint to distribute the traffic. The default load balancer rule is to use a round-robin strategy to distribute the load. 
+In the event of load balancing requests to multiple remote endpoints, Ballerina has the [`http:LoadBalanceClient`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/LoadBalanceClient) to provide a list of endpoints, and optionally an implementation of the algorithm to select the endpoint to distribute the traffic. The default load balancer rule is to use a round-robin strategy to distribute the load. 
 
 ### HTTP Client-Side Load Balancing
 
@@ -128,24 +129,23 @@ import ballerina/http;
 import ballerina/io;
  
 public function main() returns @tainted error? {
-   http:LoadBalanceClient clientEp = new ({
+   http:LoadBalanceClient clientEp = check new ({
        targets: [{url: "http://httpbin.org"},
                  {url: "http://httpbin.com"},
                  {url: "http://httpbin.io"}]
    });
-   http:Request req = new;
-   http:Response resp = <http:Response> check clientEp->get("/get");
+   http:Response resp = check clientEp->get("/get");
    io:println(resp.getTextPayload());
 }
 ```
 
 In the above code, the three hosts configured using the `targets` property provide the list of base URLs used for the load balancing requests. 
 
-For more detailed configuration options, see the [http:LoadBalanceClientConfiguration](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/LoadBalanceClientConfiguration).
+For more detailed configuration options, see the [http:LoadBalanceClientConfiguration](https://docs.central.ballerina.io/ballerina/http/latest/http/records/LoadBalanceClientConfiguration).
 
 ## Handling Failover Scenarios
 
-Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
+Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
 
 The `fail_over_load-balancer_demo.bal` example below shows this in action. 
 
@@ -156,18 +156,17 @@ import ballerina/io;
 import ballerina/http;
  
 public function main() returns @tainted error? {
-  http:FailoverClient clientEp = new ({
+  http:FailoverClient clientEp = check new ({
       targets: [{url: "http://localhost:8080"},
                 {url: "http://httpbin.org"},
                 {url: "http://httpbin.com"}]
   });
-  http:Request req = new;
-  http:Response resp = <http:Response> check clientEp->get("/get");
+  http:Response resp = check clientEp->get("/get");
   io:println(resp.getTextPayload());
 }
 ```
 
-For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](/learn/api-docs/ballerina/#/ballerina/http/1.0.6/http/records/FailoverClientConfiguration). 
+For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/http/records/FailoverClientConfiguration). 
 
 ## What's Next?
 

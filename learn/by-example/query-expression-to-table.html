@@ -14,7 +14,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
-    <span class="nx">readonly</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
@@ -22,7 +22,7 @@ redirect_from:
 <span class="p">};</span>
 
 <span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
-    <span class="nx">readonly</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">graduationYear</span><span class="p">;</span>
@@ -148,7 +148,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f40d68aa8d5f7507ba8d8ce9dfa67cb4&file=query_expression_to_table.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=95377297cddf269d352f795180c3bf13&file=query_expression_to_table.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -224,7 +224,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Student record {
-    readonly id;
+    readonly int id;
     string firstName;
     string lastName;
     int intakeYear;
@@ -242,7 +242,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Report record {
-    readonly id;
+    readonly int id;
     string name;
     string degree;
     int graduationYear;

@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Structuring Ballerina Code
-description: The below are everything you need to know about using Ballerina packages to structure your code. It also introduces the package-related commands in the `ballerina` command-line tool.
+description: The below are everything you need to know about using Ballerina packages to structure your code. It also introduces the package-related commands in the `bal` command-line tool.
 keywords: ballerina, programming language, ballerina modules, structure code
 permalink: /learn/user-guide/structuring-ballerina-code/
 active: structuring-ballerina-code
-intro: The below are everything you need to know about using Ballerina packages to structure your code. It also introduces the package-related commands in the `ballerina` command-line tool.
+intro: The below are everything you need to know about using Ballerina packages to structure your code. It also introduces the package-related commands in the `bal` command-line tool.
 redirect_from:
   - /learn/how-to-structure-ballerina-code
   - /learn/how-to-structure-ballerina-code/

@@ -74,7 +74,6 @@ let redirections = {
     "/1.1/learn/by-example/http-client-data-binding.html":"/page-not-available.html",
     "/1.0/learn/by-example/http-client-data-binding.html":"/page-not-available.html",
     "/learn/by-example/http-filters.html":"/page-not-available",
-    "/learn/by-example/secured-service-with-basic-auth.html":"/page-not-available",
 
     // BBE Updates
 
@@ -82,9 +81,6 @@ let redirections = {
     "/learn/by-example/abstract-objects.html":"/learn/by-example/object-type.html",
     "/learn/by-example/anonymous-objects.html":"/learn/by-example/object-constructor-expression.html",
     "/learn/by-example/readonly-objects-and-fields.html":"/learn/by-example/readonly-objects.html",
-    "/learn/by-example/secured-service-with-ldap.html":"/learn/by-example/secured-service-with-basic-auth-ldap-user-store.html",
-    "/learn/by-example/secured-client-with-jwt-auth.html":"/learn/by-example/secured-client-with-self-signed-jwt-auth.html",
-    "/learn/by-example/secured-client-with-oauth2.html":"/learn/by-example/secured-client-with-oauth2-client-credentials-grant-type.html",
 
     // API Docs not available
 

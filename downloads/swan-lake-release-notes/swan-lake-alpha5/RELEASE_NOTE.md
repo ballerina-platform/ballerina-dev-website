@@ -13,9 +13,7 @@ It introduces the new language features planned for the Swan Lake GA release and
 - [Language Updates](#language-updates)
 - [Runtime Updates](#runtime-updates)
 - [Standard Library Updates](#standard-library-updates)
-- [Code to Cloud Updates](#code-to-cloud-updates)
 - [Developer Tools Updates](#developer-tools-updates)
-- [Ballerina Packages Updates](ballerina-packages-updates)
 
 ### Updating Ballerina
 
@@ -37,13 +35,13 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 #### New Features
 
-##### `lang.xml:data()` Lang Library Function
+##### The `lang.xml:data()` Lang Library Function
 
-The `lang.xml:data()`  lang library function has been introduced to get the character data from an `xml` value. This function returns the character data of an `xml:Text` value as a string. For an `xml:Element` value this returns the concatenation of the result of invoking this function over the children of the element. Calling `lang.xml:data()` on comments, processing instructions, and empty sequences returns an empty string.
+The `lang.xml:data()`  lang library function has been introduced to get the character data from an `xml` value. This function returns the character data of an `xml:Text` value as a string. For an `xml:Element` value, this returns the concatenation of the result of invoking this function over the children of the element. Calling `lang.xml:data()` on comments, processing instructions, and empty sequences returns an empty string.
 
-##### `lang.xml:getDescendants()` Lang Library Function
+##### The `lang.xml:getDescendants()` Lang Library Function
 
-The `lang.xml:getDescendants()` lang library function has been introduced to retrieve a sequence of the descendant elements for a given element, in document order.
+The `lang.xml:getDescendants()` lang library function has been introduced to retrieve a sequence of the descendant elements for a given element in document order.
 
 ##### Bitwise Operations as Constant Expressions
 
@@ -70,6 +68,7 @@ xml<xml:Text> x5 = xml `text ${interpolation}`;
 ```
 
 ##### Normalization of XML Attribute Values
+
 In XML template literals, character references within XML attribute values are now normalized to the referring character. For example, the value of the `e.attr` attribute in the following example is now `a&b`.
 
 ```ballerina
@@ -101,7 +100,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://githu
 ### Runtime Updates
 
 #### New Features
-
 
 ###### Support for Configurable Variables with Records Having Fields of Record Types
 
@@ -141,8 +139,8 @@ address.country.name="Sri Lanka"
 
 ```ballerina
 configurable Person[] & readonly personArray = ?;
-
 ```
+
 The  `Config.toml` would be as follows.
 
 ```toml
@@ -164,6 +162,7 @@ address.country.name="UK"
 ```ballerina
 configurable int[][] & readonly int2DArr = ?;
 ```
+
 The  `Config.toml` would be as follows.
 
 ```toml
@@ -172,11 +171,11 @@ int2DArr = [[1,2],[3,4]]
 
 ###### Support for Optional Module Name in TOML Syntax of Configurable Variables
 
-When providing values for the configurable variables, the module information should be provided in the `Config.toml` file according to the following specifications.
-
+When providing values for configurable variables, the module information should be provided in the `Config.toml` file according to the following specifications.
 
 * The org-name and module-name are optional for configurable variables defined in the root module of the program.
 * The org-name is optional only for configurable variables defined in the root package of the program.
+
 For example, consider a package with the organization name as `myOrg` and root module name as `main`. 
 
 The  `main.bal` would be as follows.
@@ -196,13 +195,15 @@ The`foo.bal` file of the `main.foo` module will be as follows.
 ```ballerina
 configurable string fooVar = ?;
 ```
+
 In the `mod.bal`, which is from another package with the organization name `importedOrg` and module name `mod`, 
 
 ```ballerina
 configurable string modVar = ?;
 ```
 
-The values can be provided in `Config.toml` as follows.
+the values can be provided in `Config.toml` as follows.
+
 ```toml
 mainVar = "variable from root module"
 [main.foo]
@@ -210,7 +211,9 @@ fooVar = "variable from non-root module of the root package"
 [importedOrg.mod]
 modVar = "variable from non-root package"
 ```
+
 #### Improvements
+
 ###### Improved Command-Line Argument Parsing
 
 The command-line arguments are now parsed into:
@@ -233,9 +236,10 @@ public function main(*Person person) {
 }
 ```
 
-```
+```bash
 bal run file.bal -- --name riyafa --score=99.9
 ```
+
 In the above example, `name` and `score` are options. `riyafa` and `99.9` are arguments of the option.
 
 **Operands**
@@ -252,13 +256,14 @@ public function main(int efficiency, string character, *Person person) {
 }
 ```
 
-```
+```bash
 bal run file.bal -- --name riyafa  100 --score=99.9 Good
 ```
 
 This example, which is the same as above includes `100`, which gets mapped to `efficiency`, and `Good`, which gets mapped to `character` as operands. 
 
-Both operand and option parameters can be of types int, float, decimal, string, array of any of these types and union of any of these types with nil. 
+Both operand and option parameters can be of types int, float, decimal, string, array of any of these types, and union of any of these types with nil. 
+
 Additionally, option parameters can be of types `boolean`, `boolean[]`, or `boolean?`.
 
 **Operand Arrays**
@@ -267,11 +272,13 @@ Additionally, option parameters can be of types `boolean`, `boolean[]`, or `bool
 
 If `scores` is an int array, then,
 
-```ballerina
+```bash
 bal run file.bal -- --scores=10 --scores=20 --scores=30
 ```
+
 This produces the following int array.
-```
+
+```bash
 [10, 20, 30]
 ```
 
@@ -279,11 +286,14 @@ This produces the following int array.
 
 When there’s an option of `boolean`, `boolean[]`, or `boolean?` type, it does not take an `option` argument. The presence of the option is considered to be `true` and the absence of it is considered to be false. 
 In the following example, suppose `results` is a boolean array.
-```
+
+```bash
 bal run file.bal -- --results --results --results
 ```
+
 This produces the following boolean array.
-```
+
+```bash
 [true, true, true]
 ```
 
@@ -296,6 +306,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://githu
 #### New Features
 
 ##### GraphQL Package
+
 - Added named fragment support
 - Added enum support
 - Added map support
@@ -335,77 +346,56 @@ Added compiler plugin validations for STAN services.
 Added compiler plugin validation for TCP services.
 
 #### Improvements
-##### `jballerina.java` Package Updates
-- Dependently-typed `java:cast` Function
+
+##### `jballerina.java` Package 
 
 The `java:cast` function is now a dependently-typed function. If the `typedesc` argument is not provided, it is inferred from the contextually-expected type.
-```bal
+
+```ballerina
 FileInputStream|error obj1 = java:cast(inputStream, FileInputStream);
 FileInputStream|error obj2 = java:cast(inputStream); // The second argument is inferred to be `FileInputStream`.
 ```
 
-##### File Package Updates
+##### File Package 
 
 - Changed the `path` field in the `ListenerConfig` from optional to mandatory.
 - Improved the compiler plugin validation for the service.
 
-##### Log Package Updates
+##### Log Package 
 
 - Changed the time format in the log output to RFC3339.
 - Added validation to check log levels in the `Config.toml` file.
 
-##### SQL Package Updates
+##### SQL Package 
+
 If return types of the SQL time-related data types are expected as records, then the type of those records will be validated now and should be as follows.
 
-- DATE -> time:Date
-- TIME -> time:TimeOfDay
-- TIME WITH TIME ZONE -> time:TimeOfDay
-- TIMESTAMP -> time:Civil
-- TIMESTAMP WITH TIME ZONE -> time:Civil
+- DATE -> `time:Date`
+- TIME -> `time:TimeOfDay`
+- TIME WITH TIME ZONE -> `time:TimeOfDay`
+- TIMESTAMP -> `time:Civil`
+- TIMESTAMP WITH TIME ZONE -> `time:Civil`
 
 ##### WebsubHub Package
+
 Added the `websubhub:ServiceConfig` annotation.
 
 #### Bug Fixes
-##### Log Package Bug fixes
+
+##### Log Package 
 
 Invalid characters are now escaped properly in log messages (https://github.com/ballerina-platform/ballerina-standard-library/issues/1192).
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Alpha5%22+label%3AType%2FBug).
 
-### Code to Cloud Updates
-
-#### New Features
-
-#### Improvements
-
-#### Bug Fixes
-
-To view bug fixes, see the GitHub milestone for Swan Lake Alpha5 of the repositories below.
-
-- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22)
-- [Docker](https://github.com/ballerina-platform/module-ballerina-docker/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22)
-- [AWS Lambda](https://github.com/ballerina-platform/module-ballerinax-aws.lambda/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22)
-- [Azure Functions](https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22) 
-
 ### Developer Tools Updates
 
-#### Language Server 
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
-
-#### New Features
-
-#### Improvements
-
 #### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Alpha5 of the repositories below.
 
-- [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
-- [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
-- [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha%22) 
+- [Dev Tools](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
 
-#### Ballerina Packages Updates
 
-### Breaking Changes
+

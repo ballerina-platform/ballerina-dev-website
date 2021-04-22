@@ -347,7 +347,7 @@ Added compiler plugin validation for TCP services.
 
 #### Improvements
 
-##### `jballerina.java` Package 
+##### jballerina.java Package 
 
 The `java:cast` function is now a dependently-typed function. If the `typedesc` argument is not provided, it is inferred from the contextually-expected type.
 

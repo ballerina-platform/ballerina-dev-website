@@ -189,7 +189,7 @@ public function main() {
 }
 ```
 
-The`foo.bal` file of the `main.foo` module will be as follows.
+The `foo.bal` file of the `main.foo` module will be as follows.
 
 
 ```ballerina
@@ -396,5 +396,4 @@ To view bug fixes, see the GitHub milestone for Swan Lake Alpha5 of the reposito
 
 - [Dev Tools](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
-
 

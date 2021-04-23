@@ -305,45 +305,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://githu
 
 #### New Features
 
+Added compiler plugin validation for services in the following packages: `http`, `grpc`, `websocket`, `websub`, `websubhub`, `graphql`, `kafka`, `rabbitmq`, `nats`, `stan`, `email`, `tcp`, `udp` and `file`
+
 ##### `graphql` Package
 
 - Added named fragment support
 - Added enum support
 - Added map support
-- Added compiler plugin validation for GraphQL services
-
-##### `email` Package
-Added compiler plugin validation for Email listener services.
-
-##### `udp` Package
-Added compiler plugin validation for UDP services.
-
-##### `http` Package
-Added compiler plugin validations for HTTP services.
-
-##### `websocket` Package
-Added compiler plugin validation for WebSocket services.
-
-##### `websub` Package
-Added compiler plugin validation for WebSub subscriber services.
-
-##### `websubhub` Package
-Added compiler plugin validation for WebSubHub services.
-
-##### `kafka` Package
-Added compiler plugin validations for Kafka services.
-
-##### `rabbitmq` Package
-Added compiler plugin validations for RabbitMQ services.
-
-##### `nats` Package
-Added compiler plugin validations for NATS services.
-
-##### `stan` Package
-Added compiler plugin validations for STAN services.
-
-##### `tcp` Package
-Added compiler plugin validation for TCP services.
 
 #### Improvements
 

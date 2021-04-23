@@ -305,49 +305,49 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://githu
 
 #### New Features
 
-##### GraphQL Package
+##### `graphql`` Package
 
 - Added named fragment support
 - Added enum support
 - Added map support
 - Added compiler plugin validation for GraphQL services
 
-##### Email Package
+##### `email` Package
 Added compiler plugin validation for Email listener services.
 
-##### UDP Package
+##### `udp` Package
 Added compiler plugin validation for UDP services.
 
-##### HTTP Package
+##### `http` Package
 Added compiler plugin validations for HTTP services.
 
-##### WebSocket Package
+##### `websocket` Package
 Added compiler plugin validation for WebSocket services.
 
-##### Websub Package
+##### `websub` Package
 Added compiler plugin validation for WebSub subscriber services.
 
-##### WebsubHub Package
+##### `websubhub` Package
 Added compiler plugin validation for WebSubHub services.
 
-##### Kafka Package
+##### `kafka` Package
 Added compiler plugin validations for Kafka services.
 
-##### RabbitMQ Package
+##### `rabbitmq` Package
 Added compiler plugin validations for RabbitMQ services.
 
-##### NATS Package
+##### `nats` Package
 Added compiler plugin validations for NATS services.
 
-##### STAN Package
+##### `stan` Package
 Added compiler plugin validations for STAN services.
 
-##### TCP Package
+##### `tcp` Package
 Added compiler plugin validation for TCP services.
 
 #### Improvements
 
-##### jballerina.java Package 
+##### `jballerina.java` Package 
 
 The `java:cast` function is now a dependently-typed function. If the `typedesc` argument is not provided, it is inferred from the contextually-expected type.
 
@@ -356,17 +356,17 @@ FileInputStream|error obj1 = java:cast(inputStream, FileInputStream);
 FileInputStream|error obj2 = java:cast(inputStream); // The second argument is inferred to be `FileInputStream`.
 ```
 
-##### File Package 
+##### `file` Package 
 
 - Changed the `path` field in the `ListenerConfig` from optional to mandatory.
 - Improved the compiler plugin validation for the service.
 
-##### Log Package 
+##### `log` Package 
 
 - Changed the time format in the log output to RFC3339.
 - Added validation to check log levels in the `Config.toml` file.
 
-##### SQL Package 
+##### `sql` Package 
 
 If return types of the SQL time-related data types are expected as records, then the type of those records will be validated now and should be as follows.
 
@@ -376,7 +376,7 @@ If return types of the SQL time-related data types are expected as records, then
 - TIMESTAMP -> `time:Civil`
 - TIMESTAMP WITH TIME ZONE -> `time:Civil`
 
-##### WebsubHub Package
+##### `websubhub` Package
 
 Added the `websubhub:ServiceConfig` annotation.
 
@@ -396,5 +396,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Alpha5 of the reposito
 
 - [Dev Tools](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
+
 
 

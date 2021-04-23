@@ -157,7 +157,7 @@ address.city="London"
 address.country.name="UK"
 ```
 
-###### Support for Configurable Variables with Multidimentional Arrays
+###### Support for Configurable Variables with Multidimensional Arrays
 
 ```ballerina
 configurable int[][] & readonly int2DArr = ?;
@@ -189,7 +189,7 @@ public function main() {
 }
 ```
 
-The`foo.bal` file of the `main.foo` module will be as follows.
+The `foo.bal` file of the `main.foo` module will be as follows.
 
 
 ```ballerina
@@ -262,7 +262,7 @@ bal run file.bal -- --name riyafa  100 --score=99.9 Good
 
 This example, which is the same as above includes `100`, which gets mapped to `efficiency`, and `Good`, which gets mapped to `character` as operands. 
 
-Both operand and option parameters can be of types int, float, decimal, string, array of any of these types, and union of any of these types with nil. 
+Both operand and option parameters can be of types `int`, `float`, `decimal`, `string`, array of any of these types, and union of any of these types with `nil`. 
 
 Additionally, option parameters can be of types `boolean`, `boolean[]`, or `boolean?`.
 

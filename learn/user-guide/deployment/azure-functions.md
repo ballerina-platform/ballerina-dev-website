@@ -22,12 +22,12 @@ This is done by importing the `ballerinax/azure.functions` module and simply ann
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows to output data from the function out to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
-- HTTP [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#HTTPTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#HTTPOutput) binding
-- Queue [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#QueueTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#QueueOutput) binding
-- Blob [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#BlobOutput) binding
-- Twilio SMS [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#TwilioSmsOutput) binding
-- CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#CosmosDBOutput) binding
-- Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/azure_functions/annotations#TimerTrigger)
+- HTTP [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPOutput) binding
+- Queue [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueOutput) binding
+- Blob [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobOutput) binding
+- Twilio SMS [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TwilioSmsOutput) binding
+- CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBOutput) binding
+- Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TimerTrigger)
 
 ## Writing a Function
 
@@ -96,7 +96,7 @@ Deployment endpoint responded with status code 202
   "is_readonly": true,
   "is_temp": false,
   "last_success_end_time": "2020-07-15T07:32:35.5311903Z",
-  "log_url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest/log",
+  "log_url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest
   "message": "Created via a push deployment",
   "progress": "",
   "provisioningState": null,

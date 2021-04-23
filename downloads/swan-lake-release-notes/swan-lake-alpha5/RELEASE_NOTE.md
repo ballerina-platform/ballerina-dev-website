@@ -101,7 +101,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://githu
 
 #### New Features
 
-###### Support for Configurable Variables with Records Having Fields of Record Types
+##### Support for Configurable Variables with Records Having Fields of Record Types
 
 ```ballerina
 public type Person readonly & record {
@@ -135,7 +135,7 @@ address.country.name="Sri Lanka"
 
 ```
 
-###### Support for Configurable Variables with Arrays Having Fields of Record Types
+##### Support for Configurable Variables with Arrays Having Fields of Record Types
 
 ```ballerina
 configurable Person[] & readonly personArray = ?;
@@ -157,7 +157,7 @@ address.city="London"
 address.country.name="UK"
 ```
 
-###### Support for Configurable Variables with Multidimensional Arrays
+##### Support for Configurable Variables with Multidimensional Arrays
 
 ```ballerina
 configurable int[][] & readonly int2DArr = ?;
@@ -169,7 +169,7 @@ The  `Config.toml` would be as follows.
 int2DArr = [[1,2],[3,4]]
 ```
 
-###### Support for Optional Module Name in TOML Syntax of Configurable Variables
+##### Support for Optional Module Name in TOML Syntax of Configurable Variables
 
 When providing values for configurable variables, the module information should be provided in the `Config.toml` file according to the following specifications.
 
@@ -214,7 +214,7 @@ modVar = "variable from non-root package"
 
 #### Improvements
 
-###### Improved Command-Line Argument Parsing
+##### Improved Command-Line Argument Parsing
 
 The command-line arguments are now parsed into:
 - options

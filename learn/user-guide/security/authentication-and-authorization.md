@@ -96,17 +96,17 @@ The `http:FileUserStoreConfig` configurations are kept blank for future improvem
 
 The file user store is defined in the `Config.toml` as follows:
 ```toml
-[[auth.users]]
+[[ballerina.auth.users]]
 username="alice"
 password="password1"
 scopes=["scope1"]
 
-[[auth.users]]
+[[ballerina.auth.users]]
 username="bob"
 password="password2"
 scopes=["scope2", "scope3"]
 
-[[auth.users]]
+[[ballerina.auth.users]]
 username="eve"
 password="password3"
 ```

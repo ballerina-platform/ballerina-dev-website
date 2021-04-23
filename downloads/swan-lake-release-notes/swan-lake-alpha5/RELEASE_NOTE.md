@@ -305,7 +305,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://githu
 
 #### New Features
 
-##### `graphql`` Package
+##### `graphql` Package
 
 - Added named fragment support
 - Added enum support

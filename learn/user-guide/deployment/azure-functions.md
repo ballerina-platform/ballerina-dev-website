@@ -96,7 +96,7 @@ Deployment endpoint responded with status code 202
   "is_readonly": true,
   "is_temp": false,
   "last_success_end_time": "2020-07-15T07:32:35.5311903Z",
-  "log_url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest
+  "log_url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest/log",
   "message": "Created via a push deployment",
   "progress": "",
   "provisioningState": null,

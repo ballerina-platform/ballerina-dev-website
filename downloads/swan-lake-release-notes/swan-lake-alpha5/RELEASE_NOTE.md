@@ -311,7 +311,7 @@ Added compiler plugin validation for services in the following packages: `http`,
 
 - Added named fragment support in GraphQL queries.
 - Added enum support
-- Added map support
+- Added map support for GraphQL fields.
 
 #### Improvements
 

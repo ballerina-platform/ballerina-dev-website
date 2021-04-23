@@ -262,7 +262,7 @@ bal run file.bal -- --name riyafa  100 --score=99.9 Good
 
 This example, which is the same as above includes `100`, which gets mapped to `efficiency`, and `Good`, which gets mapped to `character` as operands. 
 
-Both operand and option parameters can be of types int, float, decimal, string, array of any of these types, and union of any of these types with nil. 
+Both operand and option parameters can be of types `int`, `float`, `decimal`, `string`, array of any of these types, and union of any of these types with `nil`. 
 
 Additionally, option parameters can be of types `boolean`, `boolean[]`, or `boolean?`.
 
@@ -396,4 +396,3 @@ To view bug fixes, see the GitHub milestone for Swan Lake Alpha5 of the reposito
 
 - [Dev Tools](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
-

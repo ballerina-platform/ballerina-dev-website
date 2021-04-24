@@ -183,7 +183,7 @@ It is possible to figure out the package name from an import declaration because
 
 ## Declaring Dependencies in a Package
 
-When you add import declarations for required modules in your code and perform a build, the compiler automatically figures out the latest compatible versions of the required packages. Also, the compiler updates the `Ballerina.toml` file with those resolved dependencies. 
+When you add import declarations for required modules in your code and perform a build, the compiler automatically figures out the latest compatible versions of the required packages. Also, the compiler creates/updates the `Dependencies.toml` file with those resolved dependencies. 
 
 Build and run this example as follows.
 
@@ -213,24 +213,16 @@ $ bal run target/bin/winery.jar
 {"id":"W425478","name":"Échezeaux, Dom. de la Romanée-Conti","color":"Red","country":"France"}
 ```
 
-The `Ballerina.toml` file will now have the content below.
+The generated `Dependencies.toml` will have the content below.
 
 ```toml
-[package]
-org = "examples"
-name = "winery"
-version = "0.1.0"
-
-[build-options]
-observabilityIncluded = true
-
 [[dependency]]
 org = "ballerina"
 name = "io"
 version = "0.5.3”
 ```
 
-The compiler has added a dependency to the `ballerina/io` package in the `Ballerina.toml` file.
+The compiler has added a dependency to the `ballerina/io` package in the `Dependencies.toml` file.
 
 From the second build onwards, the compiler honors the version declared in the TOML file unless there are version conflicts. 
 

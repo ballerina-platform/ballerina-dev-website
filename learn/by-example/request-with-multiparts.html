@@ -23,7 +23,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">decode</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span><span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// [Extracts bodyparts](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getBodyParts) from the request.</span>
+        <span class="c1">// [Extracts bodyparts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts) from the request.</span>
         <span class="k">var</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">bodyParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
@@ -57,7 +57,7 @@ redirect_from:
         <span class="c1">// Create an array to hold all the body parts.</span>
         <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">jsonBodyPart</span><span class="p">,</span> <span class="nx">xmlFilePart</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// [Set the body parts](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#setBodyParts) to the request.</span>
+        <span class="c1">// [Set the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts) to the request.</span>
         <span class="c1">// Here the content-type is set as multipart form data.</span>
         <span class="c1">// This also works with any other multipart media type.</span>
         <span class="c1">// eg:- `multipart/mixed`, `multipart/related` etc.</span>
@@ -74,12 +74,12 @@ redirect_from:
 
 <span class="c1">// The content logic that handles the body parts vary based on your requirement.</span>
 <span class="kd">function</span> <span class="nx">handleContent</span><span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">bodyPart</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// [Get the media type](https://docs.central.ballerina.io/ballerina/mime/latest/mime/functions#getMediaType) from the body part retrieved from the request.</span>
+    <span class="c1">// [Get the media type](https://docs.central.ballerina.io/ballerina/mime/latest/functions#getMediaType) from the body part retrieved from the request.</span>
     <span class="k">var</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">getMediaType</span><span class="p">(</span><span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">());</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MediaType</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">baseType</span> <span class="p">=</span> <span class="nx">mediaType</span><span class="p">.</span><span class="nx">getBaseType</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span> <span class="o">||</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts `xml` data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getXml) from the body part.</span>
+            <span class="c1">//[Extracts `xml` data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getXml) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getXml</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -87,7 +87,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts `json` data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getJson) from the body part.</span>
+            <span class="c1">//[Extracts `json` data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getJson) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
@@ -95,7 +95,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//[Extracts text data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getText) from the body part.</span>
+            <span class="c1">//[Extracts text data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
@@ -126,7 +126,7 @@ redirect_from:
  When you request multiparts from the HTTP inbound request, you get an array of body parts (an array of entities).
  You can loop through this array and handle the received body parts according to your requirement.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/">Mime module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/mime/latest/">Mime module</a>.</p>
 </p>
 
                         </td>
@@ -293,7 +293,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getBodyParts">Extracts bodyparts</a> from the request.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts">Extracts bodyparts</a> from the request.</p>
 
                                         </div>
                                     </div>
@@ -440,7 +440,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#setBodyParts">Set the body parts</a> to the request.
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts">Set the body parts</a> to the request.
  Here the content-type is set as multipart form data.
  This also works with any other multipart media type.
  eg:- <code>multipart/mixed</code>, <code>multipart/related</code> etc.
@@ -485,7 +485,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/functions#getMediaType">Get the media type</a> from the body part retrieved from the request.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/functions#getMediaType">Get the media type</a> from the body part retrieved from the request.</p>
 
                                         </div>
                                     </div>
@@ -510,7 +510,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getXml">Extracts <code>xml</code> data</a> from the body part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getXml">Extracts <code>xml</code> data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -535,7 +535,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getJson">Extracts <code>json</code> data</a> from the body part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getJson">Extracts <code>json</code> data</a> from the body part.</p>
 
                                         </div>
                                     </div>
@@ -562,7 +562,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getText">Extracts text data</a> from the body part.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getText">Extracts text data</a> from the body part.</p>
 
                                         </div>
                                     </div>

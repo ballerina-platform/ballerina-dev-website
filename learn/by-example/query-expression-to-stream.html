@@ -60,9 +60,9 @@ redirect_from:
               <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
        <span class="p">};</span>
 
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportStream</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">reportStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Report</span> <span class="nx">report</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
+    <span class="p">});</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
@@ -121,7 +121,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3eb2f838cc386aeb7adc4212d129def8&file=query_expression_to_stream.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a4c75093a288cfbccc6640b9dd585d32&file=query_expression_to_stream.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -355,9 +355,9 @@ The result of the query expression is a stream (<code>reportStream</code>) whose
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var report in reportStream {
-        io:println(report);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = reportStream.forEach(function (Report report) {
+       io:println(report);
+    });
 }
 </code></pre></div>
 

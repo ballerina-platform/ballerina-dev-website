@@ -29,9 +29,10 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// The result of a range expression can also be used by assigning it to</span>
-    <span class="c1">// an object belonging to the abstract object type `Iterable&lt;int&gt;`.</span>
+    <span class="c1">// an object belonging to the type `Iterable&lt;int&gt;`.</span>
     <span class="nx">object</span> <span class="p">{</span>
-        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span>
+        <span class="o">*</span><span class="nx">object</span><span class="p">:</span><span class="nx">Iterable</span><span class="p">;</span>
+        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">iterator</span><span class="p">()</span> <span class="nx">returns</span>
             <span class="nx">object</span> <span class="p">{</span>
                 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">;</span>
             <span class="p">};</span>
@@ -39,7 +40,7 @@ redirect_from:
 
     <span class="nx">object</span> <span class="p">{</span>
             <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="nx">iterableObj</span><span class="p">.</span><span class="nx">__iterator</span><span class="p">();</span>
+    <span class="p">}</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="nx">iterableObj</span><span class="p">.</span><span class="nx">iterator</span><span class="p">();</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\niterable object for 25 ..&lt; 28&quot;</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
@@ -103,7 +104,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=06f52df04b0503545916465a3f8a9de6&file=range_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=08c79047d9257b547ebf305eb29f59aa&file=range_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -217,7 +218,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    object {
-        public function __iterator() returns
+        *object:Iterable;
+        public function iterator() returns
             object {
                 public function next() returns record {|int value;|}?;
             };
@@ -230,7 +232,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The result of a range expression can also be used by assigning it to
- an object belonging to the abstract object type <code>Iterable&lt;int&gt;</code>.</p>
+ an object belonging to the type <code>Iterable&lt;int&gt;</code>.</p>
 
                                         </div>
                                     </div>
@@ -243,7 +245,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    object {
             public function next() returns (record {|int value;|}?);
-    } iterator = iterableObj.__iterator();
+    } iterator = iterableObj.iterator();
 </code></pre></div>
 
                                 </td>

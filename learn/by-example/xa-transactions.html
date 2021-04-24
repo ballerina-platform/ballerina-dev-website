@@ -37,8 +37,8 @@ redirect_from:
                                  <span class="s">&quot;(ID INT, VALUE FLOAT)&quot;</span><span class="p">);</span>
 
     <span class="c1">// Populate the tables with the records.</span>
-    <span class="k">var</span> <span class="nx">e1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient1</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO EMPLOYEE(NAME) &quot;</span> <span class="o">+</span>
-                                      <span class="s">&quot;VALUES (&#39;Anne&#39;)&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">e1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient1</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO EMPLOYEE &quot;</span> <span class="o">+</span>
+                                      <span class="s">&quot;VALUES (1, &#39;Anne&#39;)&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient2</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY &quot;</span> <span class="o">+</span>
                                       <span class="s">&quot;VALUES (1, 25000.00)&quot;</span><span class="p">);</span>
 
@@ -49,7 +49,7 @@ redirect_from:
         <span class="k">var</span> <span class="nx">customer</span> <span class="p">=</span> <span class="nx">dbClient1</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE EMPLOYEE &quot;</span> <span class="o">+</span>
                                        <span class="s">&quot;SET NAME=&#39;Annie&#39; WHERE ID=1&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">salary</span> <span class="p">=</span> <span class="nx">dbClient2</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE SALARY &quot;</span> <span class="o">+</span>
-                                       <span class="s">&quot;SET SALARY=30000 WHERE ID=1&quot;</span><span class="p">);</span>
+                                       <span class="s">&quot;SET VALUE=30000 WHERE ID=1&quot;</span><span class="p">);</span>
 
         <span class="c1">// Return information about the current transaction.</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
@@ -61,8 +61,8 @@ redirect_from:
             <span class="c1">// Operations to be executed if the transaction is committed</span>
             <span class="c1">// successfully.</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Updated: &quot;</span><span class="p">,</span> <span class="nx">e1</span><span class="p">);</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Salary Updated: &quot;</span><span class="p">,</span> <span class="nx">e2</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Updated: &quot;</span><span class="p">,</span> <span class="nx">customer</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Salary Updated: &quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c1">// Operations to be executed if the transaction commit failed.</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction failed&quot;</span><span class="p">);</span>
@@ -301,8 +301,8 @@ import ballerina/lang.&#39;transaction as transactions;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var e1 = check dbClient1-&gt;execute(&quot;INSERT INTO EMPLOYEE(NAME) &quot; +
-                                      &quot;VALUES (&#39;Anne&#39;)&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var e1 = check dbClient1-&gt;execute(&quot;INSERT INTO EMPLOYEE &quot; +
+                                      &quot;VALUES (1, &#39;Anne&#39;)&quot;);
     var e2 = check dbClient2-&gt;execute(&quot;INSERT INTO SALARY &quot; +
                                       &quot;VALUES (1, 25000.00)&quot;);
 </code></pre></div>
@@ -345,7 +345,7 @@ import ballerina/lang.&#39;transaction as transactions;
                                     <div class="highlight"><pre><code class=language-ballerina>        var customer = dbClient1-&gt;execute(&quot;UPDATE EMPLOYEE &quot; +
                                        &quot;SET NAME=&#39;Annie&#39; WHERE ID=1&quot;);
         var salary = dbClient2-&gt;execute(&quot;UPDATE SALARY &quot; +
-                                       &quot;SET SALARY=30000 WHERE ID=1&quot;);
+                                       &quot;SET VALUE=30000 WHERE ID=1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -406,8 +406,8 @@ import ballerina/lang.&#39;transaction as transactions;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Transaction committed&quot;);
-            io:println(&quot;Employee Updated: &quot;, e1);
-            io:println(&quot;Salary Updated: &quot;, e2);
+            io:println(&quot;Employee Updated: &quot;, customer);
+            io:println(&quot;Salary Updated: &quot;, salary);
         } else {
 </code></pre></div>
 

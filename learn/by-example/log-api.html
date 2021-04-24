@@ -25,7 +25,7 @@ redirect_from:
     <span class="c1">// To set the global log level, place the entry given below in the Config.toml file:</span>
     <span class="c1">//</span>
     <span class="c1">// ```</span>
-    <span class="c1">// [log]</span>
+    <span class="c1">// [ballerina.log]</span>
     <span class="c1">// level = &quot;[LOG_LEVEL]&quot;</span>
     <span class="c1">// ```</span>
 
@@ -33,8 +33,8 @@ redirect_from:
     <span class="c1">// log level to a module, provide the following entry in the Config.toml file:</span>
     <span class="c1">//</span>
     <span class="c1">// ```</span>
-    <span class="c1">// [[log.modules]]</span>
-    <span class="c1">// name = &quot;[MODULE_NAME]&quot;</span>
+    <span class="c1">// [[ballerina.log.modules]]</span>
+    <span class="c1">// name = &quot;[ORG_NAME]/[MODULE_NAME]&quot;</span>
     <span class="c1">// level = &quot;[LOG_LEVEL]&quot;</span>
     <span class="c1">// ```</span>
 
@@ -59,7 +59,7 @@ redirect_from:
     <span class="c1">// To set the output format to JSON, place the entry given below in the `Config.toml` file.</span>
     <span class="c1">//</span>
     <span class="c1">// ```</span>
-    <span class="c1">// [log]</span>
+    <span class="c1">// [ballerina.log]</span>
     <span class="c1">// format = &quot;json&quot;</span>
     <span class="c1">// ```</span>
 <span class="p">}</span>
@@ -88,7 +88,7 @@ redirect_from:
                             <h2>Log</h2>
                             <p><p>The Ballerina Log API contains the application log handling functions.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/log/latest/log/">Log module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/log/latest/">Log module</a>.</p>
 </p>
 
                         </td>
@@ -129,7 +129,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6bc965875ca9913d95ae78ab46535078&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0263fb648a1d3507b64e927afaa3594a&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -239,7 +239,7 @@ redirect_from:
                                         <div>
                                             <p>To set the global log level, place the entry given below in the Config.toml file:</p>
 
-<pre><code> [log]
+<pre><code> [ballerina.log]
  level = &quot;[LOG_LEVEL]&quot;
 </code></pre>
 
@@ -261,8 +261,8 @@ redirect_from:
                                             <p>Each module can also be assigned its own log level. To assign a
  log level to a module, provide the following entry in the Config.toml file:</p>
 
-<pre><code> [[log.modules]]
- name = &quot;[MODULE_NAME]&quot;
+<pre><code> [[ballerina.log.modules]]
+ name = &quot;[ORG_NAME]/[MODULE_NAME]&quot;
  level = &quot;[LOG_LEVEL]&quot;
 </code></pre>
 
@@ -367,7 +367,7 @@ redirect_from:
                                         <div>
                                             <p>To set the output format to JSON, place the entry given below in the <code>Config.toml</code> file.</p>
 
-<pre><code> [log]
+<pre><code> [ballerina.log]
  format = &quot;json&quot;
 </code></pre>
 

@@ -17,7 +17,7 @@ redirect_from:
 
 ## Configuring Secure Communication
 
-This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ListenerConfiguration) instance when creating the [`http:Listener`](/learn/api-docs/ballerina/#/ballerina/http/latest/http/listeners/Listener).
+This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/records/ListenerConfiguration) instance when creating the [`http:Listener`](/learn/api-docs/ballerina/#/ballerina/http/latest/listeners/Listener).
 
 ## Example of HTTPS Endpoint configured Public Certificate and Private Key
 

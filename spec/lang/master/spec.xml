@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2021-04-01</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2021-04-22</h1>
 <p>
 Primary contributors:
 </p>
@@ -8567,18 +8567,17 @@ the function is isolated.</li>
 following a return statement must be an isolated expression; an assignment to a
 variable defined outside the lock statement is allowed only if left-hand side is
 just a variable name and the right hand side is an isolated expression. An
-assignment to the isolated variable is not subject to this constraint.
+assignment to the restricted variable is not subject to this constraint.
 </li>
 <li>Transferring values into the lock statement is constrained: a
 variable-reference-expr within the lock statement that refers to a variable or
 parameter defined outside the lock statement is allowed only if the
 variable-reference-expr occurs within an expression that is isolated. A
 variable-reference-expr that refers to the restricted variable is not subject to
-this constraint.
+this constraint. Within a non-isolated object, <code>self</code> behaves like a
+parameter.
 </li>
 </ul>
-<p>
-</p>
 
 </section>
 
@@ -9292,7 +9291,7 @@ The <code>attach-point</code> determines the second argument passed to the
 argument is nil; if it is a <code>string-literal</code>, then the argument is a
 string; otherwise, it is an <code>absolute-resource-path</code> and the argument
 is an array of strings, with one string for each
-<code>resource-path-segment</code>. Attaching service objects
+<code>resource-path-segment-name</code>. Attaching service objects
 <var>s</var><sub>1</sub>,...,<var>s</var><sub><var>n</var></sub> with absolute
 resource paths <var>p</var><sub>1</sub>,...,<var>p</var><sub><var>n</var></sub>
 is equivalent to attaching a single service object with <var>n</var>
@@ -9300,7 +9299,7 @@ is equivalent to attaching a single service object with <var>n</var>
 resource method has a path <var>p</var><sub>i</sub> (an
 <code>absolute-resource-path</code> is turned into a
 <code>relative-resource-path</code> with the same
-<code>resource-path-segment</code>s) and returns
+<code>resource-path-segment-name</code>s) and returns
 <var>s</var><sub><var>i</var></sub>.
 </p>
 <p>
@@ -9831,12 +9830,12 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>return</td>
-   <td>returns-type-descriptor</td>
+   <td>return-type-descriptor</td>
    <td>indirectly to type of function</td>
   </tr>
   <tr>
    <td>parameter</td>
-   <td>individual-param, rest-param</td>
+   <td>required-param, defaultable-param, included-record-param, rest-param</td>
    <td>indirectly to type of function</td>
   </tr>
   <tr>

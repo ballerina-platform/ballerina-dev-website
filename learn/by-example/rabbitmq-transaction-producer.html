@@ -15,7 +15,8 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Creates a ballerina RabbitMQ Client.</span>
-    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">newClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span>
+    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">newClient</span> <span class="p">=</span>
+            <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_HOST</span><span class="p">,</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_PORT</span><span class="p">);</span>
 
     <span class="c1">// Declares the queue.</span>
     <span class="nx">check</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">queueDeclare</span><span class="p">(</span><span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
@@ -41,7 +42,7 @@ redirect_from:
  Upon successful execution of the transaction block,
  the channel will commit and rollback in the case of any error.
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/rabbitmq/*">RabbitMQ module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/rabbitmq/latest">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -139,7 +140,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    rabbitmq:Client newClient = check new ({host: &quot;localhost&quot;, port: 5672});
+                                    <div class="highlight"><pre><code class=language-ballerina>    rabbitmq:Client newClient =
+            check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 </code></pre></div>
 
                                 </td>

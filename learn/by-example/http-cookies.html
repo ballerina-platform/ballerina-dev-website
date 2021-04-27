@@ -32,7 +32,7 @@ redirect_from:
                 <span class="c1">// Check the password value.</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">password</span> <span class="o">==</span> <span class="s">&quot;p@ssw0rd&quot;</span><span class="p">)</span> <span class="p">{</span>
 
-                    <span class="c1">// [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Cookie) by setting `name` as the `username`</span>
+                    <span class="c1">// [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie) by setting `name` as the `username`</span>
                     <span class="c1">// and `value` as the logged-in user&#39;s name.</span>
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
@@ -42,7 +42,7 @@ redirect_from:
 
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
-                    <span class="c1">// [Add the created cookie to the response](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#addCookie).</span>
+                    <span class="c1">// [Add the created cookie to the response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#addCookie).</span>
                     <span class="nx">response</span><span class="p">.</span><span class="nx">addCookie</span><span class="p">(</span><span class="nx">cookie</span><span class="p">);</span>
 
                     <span class="c1">// Set a message payload to inform that the login has</span>
@@ -56,7 +56,7 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">welcome</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="c1">// [Retrieve cookies from the request](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getCookies).</span>
+        <span class="c1">// [Retrieve cookies from the request](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getCookies).</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
 
         <span class="c1">// Get the cookie value of the `username`.</span>
@@ -84,7 +84,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// HTTP client configurations associated with [enabling cookies](https://docs.central.ballerina.io/ballerina/http/latest/http/records/CookieConfig).</span>
+<span class="c1">// HTTP client configurations associated with [enabling cookies](https://docs.central.ballerina.io/ballerina/http/latest/records/CookieConfig).</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">cookieConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span>
@@ -137,7 +137,7 @@ redirect_from:
                             <h2>HTTP Cookies</h2>
                             <p><p>This example demonstrates how to handle HTTP cookies in a Ballerina service and client.
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -385,7 +385,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Cookie">Create a new cookie</a> by setting <code>name</code> as the <code>username</code>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie">Create a new cookie</a> by setting <code>name</code> as the <code>username</code>
  and <code>value</code> as the logged-in user&rsquo;s name.</p>
 
                                         </div>
@@ -437,7 +437,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#addCookie">Add the created cookie to the response</a>.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#addCookie">Add the created cookie to the response</a>.</p>
 
                                         </div>
                                     </div>
@@ -494,7 +494,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getCookies">Retrieve cookies from the request</a>.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getCookies">Retrieve cookies from the request</a>.</p>
 
                                         </div>
                                     </div>
@@ -731,7 +731,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>HTTP client configurations associated with <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/CookieConfig">enabling cookies</a>.</p>
+                                            <p>HTTP client configurations associated with <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/CookieConfig">enabling cookies</a>.</p>
 
                                         </div>
                                     </div>

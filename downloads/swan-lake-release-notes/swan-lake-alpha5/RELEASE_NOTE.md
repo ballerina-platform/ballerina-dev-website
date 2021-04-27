@@ -342,8 +342,6 @@ Added the `websubhub:ServiceConfig` annotation.
 
 #### Bug Fixes
 
-##### `log` Package 
-
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Alpha5%22+label%3AType%2FBug).
 
 ### Developer Tools Updates

@@ -151,7 +151,7 @@ public function main() returns error? {
       </div>
    </div>
 </div>
-<div class="row cBallerina-io-Gray-row cGray cContentRows">
+<!--<div class="row cBallerina-io-Gray-row cGray cContentRows">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
@@ -160,7 +160,7 @@ public function main() returns error? {
                   <div class="wy-nav-content">
                      <div class="rst-content">
                         <div role="main">
-                           <!--<div class="section">
+                          <div class="section">
                               <h2 id="async-network-protocol">Sequence Diagrams</h2>
                               <p>The syntax and semantics of Ballerina’s abstractions for concurrency and network interaction were designed to closely correspond to sequence diagrams. This provides a visual model that shows how the program interacts using network messages.</p>
                               <h3 id="get-started">Get Started</h3>
@@ -171,7 +171,7 @@ public function main() returns error? {
                                  <p>"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful," stated.</p>
                                  <p class="cName">Christian Posta, field CTO, solo.io.</p>
                               </div>
-                           </div>-->
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -180,8 +180,8 @@ public function main() returns error? {
          </div>
       </div>
    </div>
-</div>
-<div class="row cBallerina-io-Gray-row cContentRows">
+</div>-->
+<div class="row cBallerina-io-Gray-row cGray cContentRows">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
@@ -228,7 +228,7 @@ public function main() returns error? {
       </div>
    </div>
 </div>
-<div class="row cBallerina-io-Gray-row cGray cContentRows">
+<div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
@@ -269,7 +269,7 @@ if result is error {
       </div>
    </div>
 </div>
-<div class="row cBallerina-io-Gray-row cContentRows">
+<div class="row cBallerina-io-Gray-row cGray cContentRows">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
@@ -323,7 +323,7 @@ if result is error {
       </div>
    </div>
 </div>
-<div class="row cBallerina-io-Gray-row cGray cContentRows">
+<div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">

@@ -26,7 +26,6 @@ redirect_from:
 <span class="c1">// in which all the subexpressions are isolated expressions, etc.</span>
 <span class="nx">isolated</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">cities</span> <span class="p">=</span> <span class="p">{};</span>
 
-
 <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">Coordinates</span> <span class="nx">coordinates</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">lock</span> <span class="p">{</span>
         <span class="c1">// An `isolated` variable can be accessed within a `lock` statement.</span>
@@ -35,12 +34,10 @@ redirect_from:
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">updatedCities</span> <span class="p">=</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
         <span class="c1">// Any values transferred into the `lock` statement also need to be</span>
         <span class="c1">// isolated expressions ensuring that the variable will continue</span>
         <span class="c1">// to be an isolated root.</span>
-        <span class="nx">updatedCities</span><span class="p">[</span><span class="nx">city</span><span class="p">]</span> <span class="p">=</span> <span class="nx">coordinates</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
-        <span class="nx">cities</span> <span class="p">=</span> <span class="nx">updatedCities</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+        <span class="nx">cities</span><span class="p">[</span><span class="nx">city</span><span class="p">]</span> <span class="p">=</span> <span class="nx">coordinates</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Added coordinates for &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">);</span>
@@ -62,7 +59,7 @@ redirect_from:
         <span class="c1">// A function/method call within a `lock` statement that accesses an</span>
         <span class="c1">// `isolated` variable should call a function/method that is</span>
         <span class="c1">// `isolated`.</span>
-        <span class="k">return</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="nx">cities</span><span class="p">.</span><span class="nx">clone</span><span class="p">());</span>
+        <span class="k">return</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="nx">cities</span><span class="p">).</span><span class="nx">clone</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -142,7 +139,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2f50835aa957bb670e0db164fe9ee91a&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=17a8078fa4be006f0b0b14f363d7c006&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -160,8 +157,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -286,23 +281,10 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;Coordinates&gt; updatedCities = cities.clone();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        updatedCities[city] = coordinates.clone();
-        cities = updatedCities.clone();
+                                    <div class="highlight"><pre><code class=language-ballerina>        cities[city] = coordinates.clone();
     }
 </code></pre></div>
 
@@ -388,7 +370,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return formatCoordinates(cities.clone());
+                                    <div class="highlight"><pre><code class=language-ballerina>        return formatCoordinates(cities).clone();
     }
 }
 </code></pre></div>

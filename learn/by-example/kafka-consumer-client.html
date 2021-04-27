@@ -11,15 +11,10 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfiguration</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="c1">// The `bootstrapServers` is the list of remote server endpoints of the</span>
-    <span class="c1">// Kafka brokers.</span>
-    <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
-
     <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;group-id&quot;</span><span class="p">,</span>
     <span class="nx">offsetReset</span><span class="p">:</span> <span class="s">&quot;earliest&quot;</span><span class="p">,</span>
     <span class="c1">// Subscribes to the topic `test-kafka-topic`.</span>
@@ -27,11 +22,11 @@ redirect_from:
 
 <span class="p">};</span>
 
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">consumerConfiguration</span><span class="p">);</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">consumerConfiguration</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Poll the consumer for messages.</span>
-    <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">consumer</span><span class="o">-&gt;</span><span class="nx">poll</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">consumer</span><span class="o">-&gt;</span><span class="nx">poll</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
         <span class="nx">byte</span><span class="p">[]</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
@@ -39,11 +34,11 @@ redirect_from:
 
         <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Prints the retrieved Kafka record.</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received Message: &quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received Message: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
 
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while converting message data&quot;</span><span class="p">,</span>
-                <span class="nx">err</span> <span class="p">=</span> <span class="kt">message</span><span class="p">);</span>
+                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -64,7 +59,7 @@ redirect_from:
  this example to work properly, an active Kafka broker should be present.
  <br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/*">Kafka module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -142,10 +137,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -154,8 +145,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerinax/kafka;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/kafka;
 import ballerina/log;
 </code></pre></div>
 
@@ -169,38 +159,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfiguration = {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>bootstrapServers</code> is the list of remote server endpoints of the
- Kafka brokers.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    groupId: &quot;group-id&quot;,
+    groupId: &quot;group-id&quot;,
     offsetReset: &quot;earliest&quot;,
 </code></pre></div>
 
@@ -244,7 +203,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Consumer consumer = checkpanic new (consumerConfiguration);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Consumer consumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
 </code></pre></div>
 
                                 </td>
@@ -268,7 +227,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    kafka:ConsumerRecord[] records = check consumer-&gt;poll(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    kafka:ConsumerRecord[] records = check consumer-&gt;poll(1);
 </code></pre></div>
 
                                 </td>
@@ -313,7 +272,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Received Message: &quot;, message);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Received Message: &quot; + message);
 </code></pre></div>
 
                                 </td>
@@ -334,7 +293,7 @@ import ballerina/log;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        } else {
             log:printError(&quot;Error occurred while converting message data&quot;,
-                err = message);
+                &#39;error = message);
         }
     }
 }

@@ -53,6 +53,7 @@ redirect_from:
 <span class="c1">// 2) It should only have the two fields `strings` and `insertions`&lt;br&gt;</span>
 <span class="c1">// 3) It should not have method declarations</span>
 <span class="nx">type</span> <span class="nx">Query</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">object</span><span class="p">:</span><span class="nx">RawTemplate</span><span class="p">;</span>
     <span class="c1">// The value space of the raw template type can be constrained to a certain</span>
     <span class="c1">// extent by selecting suitable types for the `strings` and `insertions`</span>
     <span class="c1">// fields. For example,&lt;br&gt;</span>
@@ -136,7 +137,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=922f4580015a72676e1a408fbc8dfb74&file=raw_template.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f952c73ff7124c90581f55618b26b9cd&file=raw_template.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -339,6 +340,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Query object {
+    *object:RawTemplate;
 </code></pre></div>
 
                                 </td>

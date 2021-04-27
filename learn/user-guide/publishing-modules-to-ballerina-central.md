@@ -19,7 +19,7 @@ redirect_from:
 
 ## The CLI Command
 
-Pushing a package uploads it to [Ballerina Central](https://swanlake.central.ballerina.io/).
+Pushing a package uploads it to [Ballerina Central](https://central.ballerina.io/).
 
 ``` bash
 $ cd myFirstPackage

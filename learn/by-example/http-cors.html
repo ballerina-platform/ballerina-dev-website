@@ -13,7 +13,7 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="c1">// Service-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/http/records/CorsConfig) applies</span>
+<span class="c1">// Service-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig) applies</span>
 <span class="c1">// globally to each `resource`.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">cors</span><span class="p">:</span> <span class="p">{</span>
@@ -26,7 +26,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">crossOriginService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// Resource-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/http/records/CorsConfig)</span>
+    <span class="c1">// Resource-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig)</span>
     <span class="c1">// overrides the service-level CORS headers.</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">cors</span><span class="p">:</span> <span class="p">{</span>
@@ -58,7 +58,7 @@ redirect_from:
  CORS headers can be applied in both the service-level and the resource-level. Service-level CORS headers apply to all the resources
  unless there are headers configured at the resource-level. Ballerina CORS supports both simple and pre-flight requests.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -159,7 +159,7 @@ service /crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Service-level <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/CorsConfig">CORS config</a> applies
+                                            <p>Service-level <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig">CORS config</a> applies
  globally to each <code>resource</code>.</p>
 
                                         </div>
@@ -188,7 +188,7 @@ service /crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Resource-level <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/CorsConfig">CORS config</a>
+                                            <p>Resource-level <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig">CORS config</a>
  overrides the service-level CORS headers.</p>
 
                                         </div>

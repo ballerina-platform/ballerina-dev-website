@@ -241,13 +241,13 @@ public function main(*Person person) {
 bal run file.bal -- --name Alice --score=99.9
 ```
 
-An array value is specified by repeatedly specifying the `option` parameter. In the example below, if `scores` is an int array, then,
+An array value is specified by repeatedly specifying the `option` parameter. In the example below, suppose `scores` is an int array.
 
 ```bash
 bal run file.bal -- --scores=10 --scores=20 --scores=30
 ```
 
-this produces the following int array.
+This produces the following int array.
 
 ```bash
 [10, 20, 30]

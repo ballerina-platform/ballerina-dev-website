@@ -220,9 +220,9 @@ The command-line arguments are now parsed into the following.
 - options and option arguments
 - operands 
 
-###### Options and Option Arguements
+###### Options and Option Arguments
 
-The record parameter is inlcuded as the last of the parameter specify options.
+The record parameter is included as the last of the parameter specify options.
 
 In the example below, `name` and `score` are options. `Alice` and `99.9` are arguments of the option. Both the operand and option parameters can be of types `int`, `float`, `decimal`, `string`, array of any of these types, and union of any of these types with `nil`.
 
@@ -284,10 +284,10 @@ public function main(int efficiency, string character, *Person person) {
 ```
 
 ```bash
-bal run file.bal -- --name riyafa  100 --score=99.9 Good
+bal run file.bal -- --name alice  100 --score=99.9 Good
 ```
 
->**Note:** If there is an operand parameter of type O[], then it cannot be followed by parameters of type O[], O?, and O x = d. Here, O stands for a type that is a subtype of one of string, float, or decimal. 
+>**Note:** If there is an operand parameter of type `O[]`, then it cannot be followed by parameters of type `O[]`, `O?`, and `O x = d`. Here, `O` stands for a type that is a subtype of one of `string`, `float`, or `decimal`. 
 
 #### Bug Fixes
 

@@ -217,13 +217,14 @@ modVar = "variable from non-root package"
 ##### Improved Command-Line Argument Parsing
 
 The command-line arguments are now parsed into:
-- options
-- option arguments
-- operands
+- options and option arguments
+- operands 
 
-**Options**
+###### Options and Option Arguements
 
-Included record parameter as the last of the parameter specify options.
+Included the record parameter as the last of the parameter specify options.
+
+In the example below, `name` and `score` are options. `Alice` and `99.9` are arguments of the option. Both operand and option parameters can be of types `int`, `float`, `decimal`, `string`, array of any of these types, and union of any of these types with `nil`.
 
 ```ballerina
 public type Person record {
@@ -237,14 +238,40 @@ public function main(*Person person) {
 ```
 
 ```bash
-bal run file.bal -- --name riyafa --score=99.9
+bal run file.bal -- --name Alice --score=99.9
 ```
 
-In the above example, `name` and `score` are options. `riyafa` and `99.9` are arguments of the option.
+An array value is specified by repeatedly specifying the `option` parameter. For example, if `scores` is an int array, then,
 
-**Operands**
+```bash
+bal run file.bal -- --scores=10 --scores=20 --scores=30
+```
 
-Other parameters that are not included records specify operands; for these parameters, the position is significant and the name is not.
+this produces the following int array.
+
+```bash
+[10, 20, 30]
+```
+
+>**Note:** Additionally, option parameters can be of types `boolean`, `boolean[]`, or `boolean?`. When there’s an option of `boolean`, `boolean[]`, or `boolean?` type, it does not take an `option` argument. The presence of the option is considered to be `true` and the absence of it is considered to be false. 
+
+In the following example, suppose `results` is a boolean array,
+
+```bash
+bal run file.bal -- --results --results --results
+```
+
+this produces the following boolean array.
+
+```bash
+[true, true, true]
+```
+
+###### Operands
+
+Other parameters that are not included records specify operands. For these parameters, the position is significant and the name is not.
+
+The example below, which is the same as above includes `100`, which gets mapped to `efficiency`, and `Good`, which gets mapped to `character`. 
 
 ```ballerina
 public type Person record {
@@ -260,42 +287,7 @@ public function main(int efficiency, string character, *Person person) {
 bal run file.bal -- --name riyafa  100 --score=99.9 Good
 ```
 
-This example, which is the same as above includes `100`, which gets mapped to `efficiency`, and `Good`, which gets mapped to `character` as operands. 
-
-Both operand and option parameters can be of types `int`, `float`, `decimal`, `string`, array of any of these types, and union of any of these types with `nil`. 
-
-Additionally, option parameters can be of types `boolean`, `boolean[]`, or `boolean?`.
-
-**Operand Arrays**
-
->**Note:** If there is an operand parameter of type O[], then it cannot be followed by parameters of type O[], O?, and O x = d. Here O stands for a type that is a subtype of one of string, float, or decimal. An array value is specified by repeatedly specifying the `option` parameter.
-
-If `scores` is an int array, then,
-
-```bash
-bal run file.bal -- --scores=10 --scores=20 --scores=30
-```
-
-This produces the following int array.
-
-```bash
-[10, 20, 30]
-```
-
-**Option Boolean Parameters**
-
-When there’s an option of `boolean`, `boolean[]`, or `boolean?` type, it does not take an `option` argument. The presence of the option is considered to be `true` and the absence of it is considered to be false. 
-In the following example, suppose `results` is a boolean array.
-
-```bash
-bal run file.bal -- --results --results --results
-```
-
-This produces the following boolean array.
-
-```bash
-[true, true, true]
-```
+>**Note:** If there is an operand parameter of type O[], then it cannot be followed by parameters of type O[], O?, and O x = d. Here O stands for a type that is a subtype of one of string, float, or decimal. 
 
 #### Bug Fixes
 
@@ -351,8 +343,6 @@ Added the `websubhub:ServiceConfig` annotation.
 #### Bug Fixes
 
 ##### `log` Package 
-
-Invalid characters are now [escaped properly in log messages](https://github.com/ballerina-platform/ballerina-standard-library/issues/1192).
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Alpha5%22+label%3AType%2FBug).
 

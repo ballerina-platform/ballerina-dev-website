@@ -214,6 +214,7 @@
       "rpm-installer-size": "219mb",
       "other-artefacts": [
          "ballerina-swan-lake-alpha4.zip",
+         "ballerina-swan-lake-alpha4.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "api-docs": "ballerina-api-docs-swan-lake-alpha4.zip",

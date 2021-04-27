@@ -216,15 +216,15 @@ modVar = "variable from non-root package"
 
 ##### Improved Command-Line Argument Parsing
 
-The command-line arguments are now parsed into:
+The command-line arguments are now parsed into the following.
 - options and option arguments
 - operands 
 
-###### Options and Option Arguements
+###### Options and Option Arguments
 
-Included the record parameter as the last of the parameter specify options.
+The record parameter is included as the last of the parameter specify options.
 
-In the example below, `name` and `score` are options. `Alice` and `99.9` are arguments of the option. Both operand and option parameters can be of types `int`, `float`, `decimal`, `string`, array of any of these types, and union of any of these types with `nil`.
+In the example below, `name` and `score` are options. `Alice` and `99.9` are arguments of the option. Both the operand and option parameters can be of types `int`, `float`, `decimal`, `string`, array of any of these types, and union of any of these types with `nil`.
 
 ```ballerina
 public type Person record {
@@ -241,7 +241,7 @@ public function main(*Person person) {
 bal run file.bal -- --name Alice --score=99.9
 ```
 
-An array value is specified by repeatedly specifying the `option` parameter. For example, if `scores` is an int array, then,
+An array value is specified by repeatedly specifying the `option` parameter. In the example below, if `scores` is an int array, then,
 
 ```bash
 bal run file.bal -- --scores=10 --scores=20 --scores=30
@@ -253,15 +253,15 @@ this produces the following int array.
 [10, 20, 30]
 ```
 
->**Note:** Additionally, option parameters can be of types `boolean`, `boolean[]`, or `boolean?`. When there’s an option of `boolean`, `boolean[]`, or `boolean?` type, it does not take an `option` argument. The presence of the option is considered to be `true` and the absence of it is considered to be false. 
+>**Note:** Additionally, option parameters can be of types `boolean`, `boolean[]`, or `boolean?`. When there’s an option of one of these types, it does not take an `option` argument. The presence of the option is considered to be `true` and the absence of it is considered to be false. 
 
-In the following example, suppose `results` is a boolean array,
+In the example below, suppose `results` is a boolean array.
 
 ```bash
 bal run file.bal -- --results --results --results
 ```
 
-this produces the following boolean array.
+This produces the following boolean array.
 
 ```bash
 [true, true, true]
@@ -271,7 +271,7 @@ this produces the following boolean array.
 
 Other parameters that are not included records specify operands. For these parameters, the position is significant and the name is not.
 
-The example below, which is the same as above includes `100`, which gets mapped to `efficiency`, and `Good`, which gets mapped to `character`. 
+In the example below, it includes the two operands `100` and `Good`, which get mapped to `efficiency` and `character` respectively.
 
 ```ballerina
 public type Person record {
@@ -284,10 +284,10 @@ public function main(int efficiency, string character, *Person person) {
 ```
 
 ```bash
-bal run file.bal -- --name riyafa  100 --score=99.9 Good
+bal run file.bal -- --name alice  100 --score=99.9 Good
 ```
 
->**Note:** If there is an operand parameter of type O[], then it cannot be followed by parameters of type O[], O?, and O x = d. Here O stands for a type that is a subtype of one of string, float, or decimal. 
+>**Note:** If there is an operand parameter of type `O[]`, then it cannot be followed by parameters of type `O[]`, `O?`, and `O x = d`. Here, `O` stands for a type that is a subtype of one of `string`, `float`, or `decimal`. 
 
 #### Bug Fixes
 

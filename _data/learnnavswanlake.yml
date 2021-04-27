@@ -58,9 +58,6 @@
     - title: Code to Cloud
       url: /learn/user-guide/deployment/code-to-cloud/
       active: code-to-cloud
-    - title: Docker
-      url: /learn/user-guide/deployment/docker/
-      active: docker
     - title: AWS Lambda
       url: /learn/user-guide/deployment/aws-lambda/
       active: aws-lambda

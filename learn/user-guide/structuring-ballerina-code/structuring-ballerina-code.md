@@ -67,7 +67,17 @@ Follow the steps below to write a simple program in a Ballerina package, which p
     observabilityIncluded = true
     ```
 
-    The above `Ballerina.toml` file represents an application package. The organization, name, and the version of the package are set with default values when building or running the package.
+    The above `Ballerina.toml` file represents an application package. The organization, name, and the version of the package are set with default values when building or running the package. You can change those by adding the entries below in the `Ballerina.toml` file.
+
+    ```toml
+    [package]
+    org = "examples"
+    name = "helloworld"
+    version = "0.1.0"
+
+    [build-options]
+    observabilityIncluded = true
+    ```
 
     **The `main.bal` File**
 
@@ -86,8 +96,6 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 3. Navigate to the created `helloworld` package directory.
 
 4. Execute the `bal build` command to build an executable of this file. You view the output below.
-
-    >**Info:** `examples` is the org name in the output below.
 
     ```bash
     Compiling source
@@ -110,7 +118,7 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
 >**Note:** You can have one or more Ballerina source files with the `.bal` extension at the root of your package directory. The variables, functions, types, and constants defined in one source file are visible to other files in the same directory because they are in the same namespace. 
 
-### Creating a library package
+### Creating a Library Package
 
 Executing `bal new helloworld --template lib` will create a library package. In addition to the 
 `Ballerina.toml` file and the source bal file, the `Package.md` file will be created.

@@ -226,4 +226,4 @@ The compiler has added a dependency to the `ballerina/io` package in the `Depend
 
 From the second build onwards, the compiler honors the version declared in the TOML file unless there are version conflicts. 
 
-You can also update the dependencies in the `Ballerina.toml` file. If you found a newer version of the `ballerina/io` package and you want to use it in your code, you can either delete the corresponding dependency declaration from the TOML file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build. 
+You can also update the dependencies in the `Dependencies.toml` file. If you found a newer version of the `ballerina/io` package and you want to use it in your code, you can either delete the corresponding dependency declaration from the TOML file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build. 

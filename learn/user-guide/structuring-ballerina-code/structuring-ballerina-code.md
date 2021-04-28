@@ -87,6 +87,8 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
 4. Execute the `bal build` command to build an executable of this file. You view the output below.
 
+    >**Info:** `examples` is the org name in the output below.
+
     ```bash
     Compiling source
 	    examples/helloworld:0.1.0

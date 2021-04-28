@@ -32,7 +32,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// The `transaction` block initiates the transaction.</span>
     <span class="nx">transaction</span> <span class="p">{</span>
         <span class="c1">// Register the rollback handler to the transaction context.</span>
@@ -58,7 +58,7 @@ redirect_from:
             <span class="nx">rollback</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant successfully executed.&quot;</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">commitRes</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+            <span class="k">var</span> <span class="nx">commitRes</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -81,7 +81,7 @@ redirect_from:
  system in a consistent state. This example demonstrates how to use
  transaction util methods and the various usages of them.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/lang.transaction/latest/lang.transaction/">Transactions module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/lang.transaction/latest/">Transactions module</a>.</p>
 </p>
 
                         </td>
@@ -122,7 +122,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=41dfec5c7b1866bd83bdd7de703261f9&file=local_transactions_with_handlers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7847937540266ac3789a83680f12a955&file=local_transactions_with_handlers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -246,7 +246,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -364,7 +364,7 @@ import ballerina/io;
             rollback;
         } else {
             io:println(&quot;Local participant successfully executed.&quot;);
-            var commitRes = commit;
+            var commitRes = check commit;
         }
     }
 }

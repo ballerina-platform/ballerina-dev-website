@@ -26,13 +26,12 @@ redirect_from:
 <span class="p">};</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
     <span class="c1">// Provide the relevant authentication configuration record to authenticate the producer.</span>
-    <span class="nx">authenticationConfiguration</span><span class="p">:</span> <span class="nx">authConfig</span>
+    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span>
 
 <span class="p">};</span>
 
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">producerConfigs</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
@@ -59,7 +58,7 @@ redirect_from:
  and it should be configured to use the SASL/PLAIN authentication mechanism.
  <br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/*">Kafka module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -228,7 +227,6 @@ import ballerinax/kafka;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>kafka:ProducerConfiguration producerConfigs = {
-    bootstrapServers: &quot;localhost:9092&quot;,
 </code></pre></div>
 
                                 </td>
@@ -240,7 +238,7 @@ import ballerinax/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    authenticationConfiguration: authConfig
+                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig
 </code></pre></div>
 
                                 </td>
@@ -271,7 +269,7 @@ import ballerinax/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
 </code></pre></div>
 
                                 </td>

@@ -45,7 +45,7 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
     // main.bal
     import ballerina/io;
     import ballerina/http;
-    import ballerina/stringutils;
+    import ballerina/regex;
 
     http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
@@ -60,7 +60,7 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
 
                 if (payload is json) {
                     json joke = check payload.value;
-                    string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+                    string replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
                     return replacedText;
                 }
             } else {

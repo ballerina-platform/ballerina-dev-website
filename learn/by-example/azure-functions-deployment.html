@@ -24,7 +24,7 @@ redirect_from:
 <span class="c1">// HTTP request to add data to a queue</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">fromHttpToQueue</span><span class="p">(</span><span class="nx">af</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
-            <span class="nd">@af:HTTPTrigger {</span><span class="p">}</span> <span class="nx">af</span><span class="p">:</span><span class="nx">HTTPRequest</span> <span class="nx">req</span><span class="p">,</span> 
+            <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">HTTPTrigger</span> <span class="nx">af</span><span class="p">:</span><span class="nx">HTTPRequest</span> <span class="nx">req</span><span class="p">,</span> 
             <span class="nd">@af:QueueOutput {</span> <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;queue1&quot;</span> <span class="p">}</span> <span class="nx">af</span><span class="p">:</span><span class="nx">StringOutputBinding</span> <span class="nx">msg</span><span class="p">)</span> 
             <span class="nx">returns</span> <span class="nd">@af:HTTPOutput af:HTTPBinding {</span>
     <span class="nx">msg</span><span class="p">.</span><span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
@@ -45,7 +45,7 @@ redirect_from:
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">fromBlobToQueue</span><span class="p">(</span><span class="nx">af</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
         <span class="nd">@af:BlobTrigger { path: &quot;bpath1/{</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } byte[] blobIn,</span>
-<span class="s">        @af:BindingName { } string name,</span>
+<span class="s">        @af:BindingName  string name,</span>
 <span class="s">        @af:QueueOutput { queueName: &quot;</span><span class="nx">queue3</span><span class="s">&quot; } af:StringOutputBinding outMsg) </span>
 <span class="s">        returns error? {</span>
 <span class="s">    outMsg.value = &quot;</span><span class="nx">Name</span><span class="p">:</span> <span class="s">&quot; + name + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; + blobIn.toString();</span>
@@ -53,7 +53,7 @@ redirect_from:
 
 <span class="s">// HTTP request to read a blob value</span>
 <span class="s">@af:Function</span>
-<span class="s">public function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req, </span>
+<span class="s">public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req, </span>
 <span class="s">                    @af:BlobInput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } byte[]? blobIn)</span>
 <span class="s">                    returns @af:HTTPOutput string {</span>
 <span class="s">    int length = 0;</span>
@@ -66,7 +66,7 @@ redirect_from:
 
 <span class="s">// HTTP request to add a new blob</span>
 <span class="s">@af:Function</span>
-<span class="s">public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req, </span>
+<span class="s">public function httpTriggerBlobOutput(@af:HTTPTrigger af:HTTPRequest req, </span>
 <span class="s">        @af:BlobOutput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } af:StringOutputBinding bb)</span>
 <span class="s">        returns @af:HTTPOutput string|error {</span>
 <span class="s">    bb.value = req.body;</span>
@@ -74,9 +74,19 @@ redirect_from:
 <span class="s">            bb?.value.toString();</span>
 <span class="s">}</span>
 
+<span class="s">// HTTP request to add a new blob</span>
+<span class="s">@af:Function</span>
+<span class="s">public function httpTriggerBlobOutput2(@af:HTTPTrigger af:HTTPRequest req,</span>
+<span class="s">        @af:BlobOutput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } af:BytesOutputBinding bb)</span>
+<span class="s">        returns @af:HTTPOutput string|error {</span>
+<span class="s">    bb.value = [65, 66, 67, 97, 98];</span>
+<span class="s">    return &quot;</span><span class="nx">Blob</span><span class="p">:</span> <span class="s">&quot; + req.query[&quot;</span><span class="nx">name</span><span class="s">&quot;].toString() + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; +</span>
+<span class="s">            bb?.value.toString();</span>
+<span class="s">}</span>
+
 <span class="s">// Sending an SMS</span>
 <span class="s">@af:Function</span>
-<span class="s">public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, </span>
+<span class="s">public function sendSMS(@af:HTTPTrigger af:HTTPRequest req, </span>
 <span class="s">                        @af:TwilioSmsOutput { fromNumber: &quot;</span><span class="o">+</span><span class="mi">12069845840</span><span class="s">&quot; } </span>
 <span class="s">                                              af:TwilioSmsOutputBinding tb)</span>
 <span class="s">                        returns @af:HTTPOutput string {</span>
@@ -111,7 +121,7 @@ redirect_from:
 <span class="s">// HTTP request to read CosmosDB records</span>
 <span class="s">@af:Function</span>
 <span class="s">public function httpTriggerCosmosDBInput1(</span>
-<span class="s">            @af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
+<span class="s">            @af:HTTPTrigger af:HTTPRequest httpReq, </span>
 <span class="s">            @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">                databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
 <span class="s">                id: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s">&quot;, partitionKey: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } json dbReq)</span>
@@ -121,7 +131,7 @@ redirect_from:
 
 <span class="s">@af:Function</span>
 <span class="s">public function httpTriggerCosmosDBInput2(</span>
-<span class="s">            @af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
+<span class="s">            @af:HTTPTrigger af:HTTPRequest httpReq, </span>
 <span class="s">            @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">                databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
 <span class="s">                id: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s">&quot;, partitionKey: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } Person? dbReq)</span>
@@ -143,7 +153,7 @@ redirect_from:
 <span class="s">// HTTP request to write records to CosmosDB</span>
 <span class="s">@af:Function</span>
 <span class="s">public function httpTriggerCosmosDBOutput1(</span>
-<span class="s">    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
+<span class="s">    @af:HTTPTrigger af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
 <span class="s">    returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">                                 databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
 <span class="s">    json entry = { id: uuid:createType1AsString(), name: &quot;</span><span class="nx">Saman</span><span class="s">&quot;, country: &quot;</span><span class="nx">Sri</span> <span class="nx">Lanka</span><span class="s">&quot; };</span>
@@ -153,7 +163,7 @@ redirect_from:
 
 <span class="s">@af:Function</span>
 <span class="s">public function httpTriggerCosmosDBOutput2(</span>
-<span class="s">        @af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
+<span class="s">        @af:HTTPTrigger af:HTTPRequest httpReq, </span>
 <span class="s">        @af:HTTPOutput af:HTTPBinding hb) </span>
 <span class="s">        returns @af:CosmosDBOutput { </span>
 <span class="s">            connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
@@ -166,7 +176,7 @@ redirect_from:
 
 <span class="s">@af:Function</span>
 <span class="s">public function httpTriggerCosmosDBOutput3(</span>
-<span class="s">                    @af:HTTPTrigger { } af:HTTPRequest httpReq) </span>
+<span class="s">                    @af:HTTPTrigger af:HTTPRequest httpReq) </span>
 <span class="s">                    returns @af:CosmosDBOutput { </span>
 <span class="s">                        connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
 <span class="s">                        databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } Person[] {</span>
@@ -286,6 +296,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -332,7 +344,7 @@ public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } strin
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromHttpToQueue(af:Context ctx, 
-            @af:HTTPTrigger {} af:HTTPRequest req, 
+            @af:HTTPTrigger af:HTTPRequest req, 
             @af:QueueOutput { queueName: &quot;queue1&quot; } af:StringOutputBinding msg) 
             returns @af:HTTPOutput af:HTTPBinding {
     msg.value = req.body;
@@ -385,7 +397,7 @@ public function fromQueueToQueue(af:Context ctx,
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromBlobToQueue(af:Context ctx, 
         @af:BlobTrigger { path: &quot;bpath1/{name}&quot; } byte[] blobIn,
-        @af:BindingName { } string name,
+        @af:BindingName  string name,
         @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) 
         returns error? {
     outMsg.value = &quot;Name: &quot; + name + &quot; Content: &quot; + blobIn.toString();
@@ -409,7 +421,7 @@ public function fromBlobToQueue(af:Context ctx,
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
-public function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req, 
+public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req, 
                     @af:BlobInput { path: &quot;bpath1/{Query.name}&quot; } byte[]? blobIn)
                     returns @af:HTTPOutput string {
     int length = 0;
@@ -438,7 +450,7 @@ public function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req,
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
-public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req, 
+public function httpTriggerBlobOutput(@af:HTTPTrigger af:HTTPRequest req, 
         @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; } af:StringOutputBinding bb)
         returns @af:HTTPOutput string|error {
     bb.value = req.body;
@@ -464,7 +476,33 @@ public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req,
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
-public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, 
+public function httpTriggerBlobOutput2(@af:HTTPTrigger af:HTTPRequest req,
+        @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; } af:BytesOutputBinding bb)
+        returns @af:HTTPOutput string|error {
+    bb.value = [65, 66, 67, 97, 98];
+    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Content: &quot; +
+            bb?.value.toString();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>HTTP request to add a new blob</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function sendSMS(@af:HTTPTrigger af:HTTPRequest req, 
                         @af:TwilioSmsOutput { fromNumber: &quot;+12069845840&quot; } 
                                               af:TwilioSmsOutputBinding tb)
                         returns @af:HTTPOutput string {
@@ -551,7 +589,7 @@ public function cosmosDBToQueue2(@af:CosmosDBTrigger {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBInput1(
-            @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+            @af:HTTPTrigger af:HTTPRequest httpReq, 
             @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
                 databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
                 id: &quot;{Query.id}&quot;, partitionKey: &quot;{Query.country}&quot; } json dbReq)
@@ -578,7 +616,7 @@ public function httpTriggerCosmosDBInput1(
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBInput2(
-            @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+            @af:HTTPTrigger af:HTTPRequest httpReq, 
             @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
                 databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
                 id: &quot;{Query.id}&quot;, partitionKey: &quot;{Query.country}&quot; } Person? dbReq)
@@ -619,7 +657,7 @@ public function httpTriggerCosmosDBInput3(
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBOutput1(
-    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
+    @af:HTTPTrigger af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
     returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
                                  databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
     json entry = { id: uuid:createType1AsString(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
@@ -646,7 +684,7 @@ public function httpTriggerCosmosDBOutput1(
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBOutput2(
-        @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+        @af:HTTPTrigger af:HTTPRequest httpReq, 
         @af:HTTPOutput af:HTTPBinding hb) 
         returns @af:CosmosDBOutput { 
             connectionStringSetting: &quot;CosmosDBConnection&quot;, 
@@ -669,7 +707,7 @@ public function httpTriggerCosmosDBOutput2(
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBOutput3(
-                    @af:HTTPTrigger { } af:HTTPRequest httpReq) 
+                    @af:HTTPTrigger af:HTTPRequest httpReq) 
                     returns @af:CosmosDBOutput { 
                         connectionStringSetting: &quot;CosmosDBConnection&quot;, 
                         databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } Person[] {
@@ -713,6 +751,10 @@ public function queuePopulationTimer(
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -920,6 +962,19 @@ Blob: input.txt Length: 6 Content: 65 66 67 68 69 10
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -d &quot;123456&quot; &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput?name=payload.txt&amp;code=&lt;auth_code&gt;&quot;
 Blob: payload.txt Content: 123456
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>curl -d &quot;123456&quot; &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput2?name=payload.txt&amp;code=&lt;auth_code&gt;&quot;
+Blob: payload.txt Content: 65 66 67 97 98
 </code></pre></div>
 
                                 </td>

@@ -23,6 +23,8 @@ redirect_from:
   - /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension
   - /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/
   - /learn/tooling-guide/visual-studio-code-extension/installing-the-vs-code-extension
+  - /learn/tooling-guide/visual-studio-code-extension/
+  - /learn/tooling-guide/visual-studio-code-extension
 ---
 
 ## Downloading VS Code 
@@ -42,13 +44,13 @@ Download the Visual Studio Code Ballerina Extension from below.
   <div class=" ">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
         <h3 class="cVSCode">Visual Studio Code</h3>
-        <a id="packWindows" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha2/ballerina-swan-lake-alpha2.vsix" class="cGTMDownload cDownload cDownloadNew" data-download="downloads">
+        <a id="packWindows" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix" class="cGTMDownload cDownload cDownloadNew" data-download="downloads">
               <div class="cSize">Extension  vsix <span id="packWindowsName">2.7mb</span></div>
         </a>
         <ul class="cDiwnloadSubLinks">
-            <li><a id="packWindowsMd5" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha2/ballerina-swan-lake-alpha2.vsix.md5">md5</a></li>
-            <li><a id="packWindowsSha1" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha2/ballerina-swan-lake-alpha2.vsix.sha1">SHA-1</a></li>
-            <li><a id="packWindowsAsc" href="https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha2/ballerina-swan-lake-alpha2.vsix.asc">asc</a></li>
+            <li><a id="packWindowsMd5" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.md5">md5</a></li>
+            <li><a id="packWindowsSha1" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.sha1">SHA-1</a></li>
+            <li><a id="packWindowsAsc" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.asc">asc</a></li>
         </ul>
 </div></div></div></div>
 

@@ -21,7 +21,7 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// The `orderDetails` parameter in [Payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/http/records/Payload)</span>
+    <span class="c1">// The `orderDetails` parameter in [Payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/records/Payload)</span>
     <span class="c1">// represents the entity body of the inbound request.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindJson</span><span class="p">(</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span> <span class="kt">json</span> <span class="nx">orderDetails</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="p">{</span>
@@ -72,7 +72,7 @@ redirect_from:
  parameter name should be declared in the resource config under the <code>body</code> annotation. <code>string</code>, <code>json</code>, <code>xml</code>,
  <code>byte[]</code>, record, and record[] are supported as parameter types.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -203,7 +203,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>orderDetails</code> parameter in <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/records/Payload">Payload annotation</a>
+                                            <p>The <code>orderDetails</code> parameter in <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/Payload">Payload annotation</a>
  represents the entity body of the inbound request.</p>
 
                                         </div>

@@ -67,7 +67,7 @@ redirect_from:
  <code>Config.toml</code> has defined three users - Alice, Bob and Eve. Each user has a
  password and optionally assigned scopes as an array.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/auth/latest/auth/">Auth module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">Auth module</a>.</p>
 </p>
 
                         </td>
@@ -257,7 +257,7 @@ service /foo on securedEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>[[auth.users]]
+                                    <div class="highlight"><pre><code class=language-ballerina>[[ballerina.auth.users]]
 username=&quot;alice&quot;
 password=&quot;password1&quot;
 scopes=[&quot;scope1&quot;]
@@ -272,7 +272,7 @@ scopes=[&quot;scope1&quot;]
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>[[auth.users]]
+                                    <div class="highlight"><pre><code class=language-ballerina>[[ballerina.auth.users]]
 username=&quot;bob&quot;
 password=&quot;password2&quot;
 scopes=[&quot;scope2&quot;, &quot;scope3&quot;]
@@ -287,7 +287,7 @@ scopes=[&quot;scope2&quot;, &quot;scope3&quot;]
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>[[auth.users]]
+                                    <div class="highlight"><pre><code class=language-ballerina>[[ballerina.auth.users]]
 username=&quot;eve&quot;
 password=&quot;password3&quot;
 </code></pre></div>
@@ -317,13 +317,12 @@ password=&quot;password3&quot;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
 # Ensure that the `Config.toml` file is populated correctly with the user
-# information. If required, user passwords can be encrypted using the
-# `ballerina encrypt` configuration encryption command.
-echo &#39;[[&quot;auth.users&quot;]]
+# information.
+echo &#39;[[&quot;ballerina.auth.users&quot;]]
 username=&quot;alice&quot;
 password=&quot;password1&quot;
 scopes=[&quot;scope1&quot;]
-[[&quot;auth.users&quot;]]
+[[&quot;ballerina.auth.users&quot;]]
 username=&quot;bob&quot;
 password=&quot;password2&quot;
 scopes=[&quot;scope2&quot;, &quot;scope3&quot;]&#39; &gt; Config.toml

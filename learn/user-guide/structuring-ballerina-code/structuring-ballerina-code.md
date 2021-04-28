@@ -63,6 +63,13 @@ Follow the steps below to write a simple program in a Ballerina package, which p
     This file identifies a directory as a Ballerina package. It will include the content below.
 
     ```toml
+    [build-options]
+    observabilityIncluded = true
+    ```
+
+    The above `Ballerina.toml` file represents an application package. The organization, name, and the version of the package are set with default values when building or running the package. You can change those by adding the entries below in the `Ballerina.toml` file.
+
+    ```toml
     [package]
     org = "examples"
     name = "helloworld"
@@ -71,8 +78,6 @@ Follow the steps below to write a simple program in a Ballerina package, which p
     [build-options]
     observabilityIncluded = true
     ```
-
-    The `[package]` table contains metadata about the generated package. The package name is `helloworld` and its current `0.1.0` version is in the `examples` organization. 
 
     **The `main.bal` File**
 
@@ -86,35 +91,54 @@ Follow the steps below to write a simple program in a Ballerina package, which p
     }
     ```
 
-    This function prints “Hello World!” in the console. 
+    This function prints `Hello World!` in the console. 
 
-3. Execute the `bal build` command to build an executable of this file. You view the output below.
+3. Navigate to the created `helloworld` package directory.
+
+4. Execute the `bal build` command to build an executable of this file. You view the output below.
 
     ```bash
     Compiling source
-        examples/helloworld:0.1.0
-    
-    Running Tests
-    
-        helloworld
-        No tests found
-    
-    Creating the BALA file
-        target/bala/examples-helloworld-any-0.1.0.bala
-    
+	    examples/helloworld:0.1.0
+
     Generating executable
-        target/bin/helloworld.jar
+	    target/bin/helloworld.jar
     ```
 
-4. Execute the `bal run` command to run the program. You view the output below.
+5. Execute the `bal run` command to run the program. You view the output below.
 
     ```bash
-   $ bal run target/bin/helloworld.jar
+    Compiling source
+	    examples/helloworld:0.1.0
+
+    Running executable
+
     Hello World!
     ```
 
 >**Note:** You can have one or more Ballerina source files with the `.bal` extension at the root of your package directory. The variables, functions, types, and constants defined in one source file are visible to other files in the same directory because they are in the same namespace. 
 
+### Creating a Library Package
+
+Executing `bal new helloworld --template lib` will create a library package. In addition to the 
+`Ballerina.toml` file and the source bal file, the `Package.md` file will be created.
+
+For lib packages, the `Ballerina.toml` file will include the content below.
+
+```toml
+[package]
+org = "examples"
+name = "helloworld"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
+```
+
+The `[package]` table contains metadata about the generated package. The package name is `helloworld` and its current `0.1.0` version is in the `examples` organization.
+
+Execute the `bal build -c` command to build the Ballerina archive of the package.
+ 
 ## Working with Ballerina Modules
 
 Now, that you successfully built and executed a Ballerina package, next, see [Ballerina modules](/learn/structuring-ballerina-code/working-with-ballerina-modules).  

@@ -32,7 +32,7 @@ redirect_from:
     <span class="nx">auth</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nx">oauth2IntrospectionConfig</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9999/oauth2/token/introspect&quot;</span><span class="p">,</span>
+                <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9443/oauth2/introspect&quot;</span><span class="p">,</span>
                 <span class="nx">tokenTypeHint</span><span class="p">:</span> <span class="s">&quot;access_token&quot;</span><span class="p">,</span>
                 <span class="nx">scopeKey</span><span class="p">:</span> <span class="s">&quot;scp&quot;</span><span class="p">,</span>
                 <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
@@ -75,7 +75,7 @@ redirect_from:
  against the scope included in the introspection response for at least one
  match between the two sets.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/oauth2/">OAuth2 module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">OAuth2 module</a>.</p>
 </p>
 
                         </td>
@@ -182,7 +182,7 @@ redirect_from:
     auth: [
         {
             oauth2IntrospectionConfig: {
-                url: &quot;https://localhost:9999/oauth2/token/introspect&quot;,
+                url: &quot;https://localhost:9443/oauth2/introspect&quot;,
                 tokenTypeHint: &quot;access_token&quot;,
                 scopeKey: &quot;scp&quot;,
                 clientConfig: {

@@ -21,7 +21,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="c1">// Attaches the service to the listener.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">transactionConsumer</span> <span class="nx">on</span>
-                    <span class="nx">new</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span><span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">})</span> <span class="p">{</span>
+    <span class="nx">new</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_HOST</span><span class="p">,</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_PORT</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// Gets triggered when a message is received by the queue.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span>
@@ -29,7 +29,7 @@ redirect_from:
 
         <span class="k">var</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
                        <span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
@@ -38,7 +38,7 @@ redirect_from:
         <span class="c1">// The acknowledgement gets committed upon successful execution of the transaction,</span>
         <span class="c1">// or will rollback otherwise.</span>
         <span class="nx">transaction</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
+            <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
                             <span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
@@ -64,7 +64,7 @@ redirect_from:
  Messages will not be re-queued in the case of a rollback
  automatically unless negatively acknowledged by the user.
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/rabbitmq/*">RabbitMQ module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/rabbitmq/latest">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -176,7 +176,7 @@ import ballerinax/rabbitmq;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service /transactionConsumer on
-                    new rabbitmq:Listener({host: &quot;localhost&quot;, port: 5672}) {
+    new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
 </code></pre></div>
 
                                 </td>
@@ -217,7 +217,7 @@ import ballerinax/rabbitmq;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var messageContent = &#39;string:fromBytes(message.content);
         if (messageContent is string) {
-            log:print(&quot;The message received: &quot; + messageContent);
+            log:printInfo(&quot;The message received: &quot; + messageContent);
         } else {
             log:printError(
                        &quot;Error occurred while retrieving the message content.&quot;);
@@ -234,7 +234,7 @@ import ballerinax/rabbitmq;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        transaction {
-            var result = caller-&gt;basicAck();
+            rabbitmq:Error? result = caller-&gt;basicAck();
             if (result is error) {
                 log:printError(
                             &quot;Error occurred while acknowledging the message.&quot;);

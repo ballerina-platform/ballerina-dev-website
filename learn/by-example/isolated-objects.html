@@ -74,7 +74,7 @@ redirect_from:
             <span class="c1">// access a `final` field of a type that is a subtype of</span>
             <span class="c1">// `readonly` or `isolated object {}`, can call another</span>
             <span class="c1">// function/method only if that function/method is `isolated`.</span>
-            <span class="k">return</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">cities</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">cities</span><span class="p">).</span><span class="nx">clone</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -159,7 +159,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee251edc28c42127e489f91fb46e42f9&file=isolated_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=349bfaba62d0e10f8d85482cc19d1e83&file=isolated_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -448,7 +448,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            return formatCoordinates(self.cities);
+                                    <div class="highlight"><pre><code class=language-ballerina>            return formatCoordinates(self.cities).clone();
         }
     }
 }

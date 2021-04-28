@@ -24,8 +24,8 @@ redirect_from:
     <span class="c1">// This remote method is invoked once the content is received from the client.</span>
     <span class="c1">// You may replace the `onBytes` method with `onDatagram`, which reads the data as</span>
     <span class="c1">// readonly &amp; udp:Datagram.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onDatagram</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span> <span class="nx">datagram</span><span class="p">,</span>
-        <span class="nx">udp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span><span class="p">|</span><span class="nx">udp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onDatagram</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span> <span class="nx">datagram</span><span class="p">)</span> 
+        <span class="nx">returns</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span><span class="p">|</span><span class="nx">udp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received by listener: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">datagram</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
         <span class="c1">// Echo back the data to the same client.</span>
         <span class="c1">// This is similar to calling `caller-&gt;sendDatagram(data);`.</span>
@@ -45,7 +45,7 @@ redirect_from:
  The UDP Client/ConnectClient is used to send data to a remote UDP server.
  This sample demonstrates the UDP socket listener.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/udp/">UDP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/udp/latest">UDP module</a>.</p>
 </p>
 
                         </td>
@@ -153,8 +153,8 @@ import ballerina/udp;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onDatagram(readonly &amp; udp:Datagram datagram,
-        udp:Caller caller) returns udp:Datagram|udp:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onDatagram(readonly &amp; udp:Datagram datagram) 
+        returns udp:Datagram|udp:Error? {
         io:println(&quot;Received by listener: &quot;, string:fromBytes(datagram.data));
 </code></pre></div>
 

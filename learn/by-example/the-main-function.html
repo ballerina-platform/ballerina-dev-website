@@ -47,9 +47,15 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>The Main Function</h2>
                             <p><p>A <code>public</code> function named <code>main</code> is considered as an entry point to a Ballerina program.
- The <code>main</code> function is data-binding and can have zero or more parameters whose types are subtypes of <code>anydata</code>,
+ The <code>main</code> function is data-binding and can have zero or more parameters whose types are
+ string, int, float, decimal or union of one of these types and nil.
  including any number of required/defaultable parameters and/or a single rest parameter.
- The <code>main</code> function could also return a value whose type is a subtype of <code>error?</code>.</p>
+ The main parameters except for the last parameters if it is a *record, represents operands
+ in the command line. The order of operands is significant.
+ The last parameter can be a *record that represents options in the command line.
+ The *record field types are same as that of the parameter types.
+ The order of option command line arguments are insignificant.
+ There can be required/defaultable parameters in the record.</p>
 </p>
 
                         </td>
@@ -90,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=53244497c3c713f8993b4eb970e3ecde&file=the_main_function.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=da5e9e96ba7236c648666fdf4ac9c796&file=the_main_function.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -265,7 +271,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name`. `18` would be set as the value for
 # `age` and `Freshman` would be set as the value for `year`.
-bal run the_main_function.bal Alice
+bal run the_main_function.bal -- Alice
 Name: Alice, Age: 18, Year: Freshman
 </code></pre></div>
 
@@ -280,8 +286,8 @@ Name: Alice, Age: 18, Year: Freshman
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
 # as the string argument for `name` and `20` as the integer value for
-# `age`. Both arguments are specified as positional arguments.
-bal run the_main_function.bal Alice 20
+# `age`. Both arguments are specified as operands.
+bal run the_main_function.bal -- Alice 20
 Name: Alice, Age: 20, Year: Freshman
 </code></pre></div>
 
@@ -295,9 +301,9 @@ Name: Alice, Age: 20, Year: Freshman
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
-# as the string argument for `name` and `Sophomore` as the string argument for
-# `year`. The value for `year` is specified as a named argument.
-bal run the_main_function.bal Alice -year=Sophomore
+# as the string argument for `name`, 18 as the `age` and `Sophomore` as the string
+# argument for `year`.
+bal run the_main_function.bal -- Alice 18 Sophomore
 Name: Alice, Age: 18, Year: Sophomore
 </code></pre></div>
 
@@ -312,8 +318,8 @@ Name: Alice, Age: 18, Year: Sophomore
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying values for
 # all parameters, including the rest parameter. All arguments are specified as
-# positional arguments.
-bal run the_main_function.bal Alice 20 Sophomore math physics
+# operands.
+bal run the_main_function.bal -- Alice 20 Sophomore math physics
 Name: Alice, Age: 20, Year: Sophomore, Module(s): [&quot;math&quot;,&quot;physics&quot;]
 </code></pre></div>
 
@@ -328,7 +334,7 @@ Name: Alice, Age: 20, Year: Sophomore, Module(s): [&quot;math&quot;,&quot;physic
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying an invalid 
 # string as the argument for `name`. The `error` returned would be printed.
-bal run the_main_function.bal Ali
+bal run the_main_function.bal -- Ali
 error: InvalidName {&quot;message&quot;:&quot;invalid length&quot;}
 </code></pre></div>
 

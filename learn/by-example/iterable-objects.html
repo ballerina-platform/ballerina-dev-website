@@ -13,38 +13,91 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// An object that is a subtype of `Iterator&lt;int&gt;`.</span>
+<span class="c1">// A class that is a subtype of `Iterator&lt;int, ()&gt;`.</span>
 <span class="nx">class</span> <span class="nx">ArrayIterator</span> <span class="p">{</span>
     <span class="nx">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="nx">integers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">];</span>
     <span class="nx">private</span> <span class="kt">int</span> <span class="nx">cursor</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 
     <span class="c1">// `next` method which generates the sequence of values of type `int`.</span>
-    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="p">&lt;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
-            <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span> <span class="nx">nextVal</span> <span class="p">=</span> <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">[</span><span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span><span class="p">]};</span>
+        <span class="k">if</span> <span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="p">&lt;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}</span> <span class="nx">nextVal</span> <span class="p">=</span> 
+                <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">[</span><span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span><span class="p">]};</span>
             <span class="k">return</span> <span class="nx">nextVal</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">//  An object that is a subtype of `Iterable&lt;int&gt;`.</span>
+<span class="c1">//  A class that is a subtype of `Iterable&lt;int, ()&gt;`.</span>
 <span class="nx">class</span> <span class="nx">IteratorGenerator</span> <span class="p">{</span>
-
-    <span class="c1">// The `__iterator()` method should return a new `Iterator&lt;T&gt;`.</span>
-    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">object</span> <span class="p">{</span>
-            <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">;}</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">object</span><span class="p">:</span><span class="nx">Iterable</span><span class="p">;</span>
+    <span class="c1">// The `iterator()` method should return a subtype of `Iterator&lt;int, ()&gt;`.</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">iterator</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">object</span> <span class="p">{</span>
+        <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}</span><span class="err">?</span><span class="p">;</span>
+        <span class="p">}</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">new</span> <span class="nx">ArrayIterator</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="c1">// A class that is a subtype of `Iterator&lt;int, error?&gt;`.</span>
+<span class="c1">// The `next` method of this class may return an error.</span>
+<span class="nx">class</span> <span class="nx">ArrayIteratorWithError</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="nx">integers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">45</span><span class="p">];</span>
+    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">cursor</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// `next` method which generates the sequence of values of type `int`.</span>
+    <span class="c1">// This method may return an `error` value.</span>
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}|</span><span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="p">&lt;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="nx">nextValue</span> <span class="p">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">[</span><span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span><span class="p">];</span>
+            <span class="k">if</span> <span class="nx">nextValue</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Negative value recieved&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}</span> <span class="nx">nextVal</span> <span class="p">=</span> <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="nx">nextValue</span><span class="p">};</span>
+            <span class="k">return</span> <span class="nx">nextVal</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// A class that is a subtype of `Iterable&lt;int, error?&gt;`.</span>
+<span class="c1">// The `next` method of the iterator object returned by this class </span>
+<span class="c1">// may return an error.</span>
+<span class="nx">class</span> <span class="nx">IteratorGeneratorWithError</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">object</span><span class="p">:</span><span class="nx">Iterable</span><span class="p">;</span>
+    <span class="c1">// The `iterator()` method should return a new `Iterator&lt;T, error?&gt;`.</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">iterator</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">object</span> <span class="p">{</span>
+        <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}|</span><span class="nx">error</span><span class="err">?</span><span class="p">;</span>
+       <span class="p">}</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">new</span> <span class="nx">ArrayIteratorWithError</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Elements of IteratorGenerator&quot;</span><span class="p">);</span>
     <span class="nx">IteratorGenerator</span> <span class="nx">itrGen</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">itrGen</span> <span class="p">{</span>
         <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Element &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Elements of IteratorGeneratorWithError&quot;</span><span class="p">);</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">IteratorGeneratorWithError</span> <span class="nx">itarableWithError</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+    <span class="c1">// An iterable object can be used in a query expression.</span>
+    <span class="kt">int</span><span class="p">[]|</span><span class="nx">error</span> <span class="nx">integers</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">itarableWithError</span> <span class="nx">select</span> <span class="nx">item</span><span class="p">;</span>
+    <span class="k">if</span> <span class="nx">integers</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
+        <span class="nx">panic</span> <span class="nx">integers</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">integers</span> <span class="p">{</span>
+            <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Element &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -56,11 +109,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Iterable Objects</h2>
-                            <p><p>An object can be made iterable as a sequence of values of type <code>T</code> by providing a method named <code>__iterator</code> which
- returns a value that is a subtype of <code>Iterator&lt;T&gt;</code>. We refer to this type as <code>Iterable&lt;T&gt;</code>. Any subtype
- of <code>abstract object {public next() returns record {| T value; |}?;}</code>, is called Iterator<T>. An iterable object can be
- iterated over using a <code>foreach</code> loop. In this example, <code>IteratorGenerator</code> is a subtype of <code>Iterable&lt;int&gt;</code> and
- <code>ArrayIterator</code> is a subtype of <code>Iterator&lt;int&gt;</code>.</p>
+                            <p><p>An object can be made iterable as a sequence of values of type <code>T</code> using type inclusion with <code>lang.object:Iterable</code>
+ and providing a method named <code>iterator</code> which returns an iterator that is a subtype of
+ <code>object { public isolated function next() returns record {| T value; |}|C;}</code> in which <code>C</code> is the completion type.
+ An iterable object is denoted as <code>Iterable&lt;T, C&gt;</code> and an iterator as <code>Iterator&lt;T, C&gt;</code>. An
+ iterable object which does not return an error in the next method can be iterated over using a <code>foreach</code> loop.
+ In this example, <code>IteratorGenerator</code> is a subtype of <code>Iterable&lt;int, ()&gt;</code> and <code>ArrayIterator</code> is a subtype
+ of <code>Iterator&lt;int, ()&gt;</code>.</p>
 </p>
 
                         </td>
@@ -101,7 +156,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=bae7f1ed541275f58435955095b1a42f&file=iterable_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=81611e80efcf892051a32f6c35a77427&file=iterable_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -119,6 +174,18 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -162,7 +229,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An object that is a subtype of <code>Iterator&lt;int&gt;</code>.</p>
+                                            <p>A class that is a subtype of <code>Iterator&lt;int, ()&gt;</code>.</p>
 
                                         </div>
                                     </div>
@@ -173,10 +240,11 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public function next() returns record {|int value;|}? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function next() returns record {| int value; |}? {
         self.cursor += 1;
-        if (self.cursor &lt; self.integers.length()) {
-            record {|int value;|} nextVal = {value: self.integers[self.cursor]};
+        if self.cursor &lt; self.integers.length() {
+            record {| int value; |} nextVal = 
+                {value: self.integers[self.cursor]};
             return nextVal;
         }
         return ();
@@ -201,6 +269,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>class IteratorGenerator {
+    *object:Iterable;
 </code></pre></div>
 
                                 </td>
@@ -208,7 +277,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An object that is a subtype of <code>Iterable&lt;int&gt;</code>.</p>
+                                            <p>A class that is a subtype of <code>Iterable&lt;int, ()&gt;</code>.</p>
 
                                         </div>
                                     </div>
@@ -219,8 +288,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public function __iterator() returns object {
-            public function next() returns record {|int value;|}?;} {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function iterator() returns object {
+        public isolated function next() returns record {| int value; |}?;
+        } {
         return new ArrayIterator();
     }
 }
@@ -231,7 +301,107 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>__iterator()</code> method should return a new <code>Iterator&lt;T&gt;</code>.</p>
+                                            <p>The <code>iterator()</code> method should return a subtype of <code>Iterator&lt;int, ()&gt;</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class ArrayIteratorWithError {
+    private int[] integers = [0, 12, 21, 45];
+    private int cursor = -1;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A class that is a subtype of <code>Iterator&lt;int, error?&gt;</code>.
+ The <code>next</code> method of this class may return an error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function next() returns record {| int value; |}|error? {
+        self.cursor += 1;
+        if self.cursor &lt; self.integers.length() {
+            int nextValue = self.integers[self.cursor];
+            if nextValue &lt; 0 {
+                return error(&quot;Negative value recieved&quot;);
+            }
+            record {| int value; |} nextVal = {value: nextValue};
+            return nextVal;
+        }
+        return ();
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>next</code> method which generates the sequence of values of type <code>int</code>.
+ This method may return an <code>error</code> value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class IteratorGeneratorWithError {
+    *object:Iterable;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A class that is a subtype of <code>Iterable&lt;int, error?&gt;</code>.
+ The <code>next</code> method of the iterator object returned by this class
+ may return an error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function iterator() returns object {
+        public isolated function next() returns record {| int value; |}|error?;
+       } {
+        return new ArrayIteratorWithError();
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>iterator()</code> method should return a new <code>Iterator&lt;T, error?&gt;</code>.</p>
 
                                         </div>
                                     </div>
@@ -241,19 +411,61 @@ redirect_from:
                             
                             <tr class="cTR">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    io:println(&quot;Elements of IteratorGenerator&quot;);
     IteratorGenerator itrGen = new;
     int i = 0;
     foreach var item in itrGen {
         i += 1;
         io:println(&quot;Element &quot;, i, &quot;: &quot;, item);
     }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Elements of IteratorGeneratorWithError&quot;);
+    i = 0;
+    IteratorGeneratorWithError itarableWithError = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[]|error integers = from var item in itarableWithError select item;
+    if integers is error {
+        panic integers;
+    } else {
+        foreach var item in integers {
+            i += 1;
+            io:println(&quot;Element &quot;, i, &quot;: &quot;, item);
+        }
+    }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An iterable object can be used in a query expression.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -277,6 +489,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run iterable_objects.bal
+Elements of IteratorGenerator
 Element 1: 0
 Element 2: 1
 Element 3: 1
@@ -287,6 +500,11 @@ Element 7: 8
 Element 8: 13
 Element 9: 21
 Element 10: 34
+Elements of IteratorGeneratorWithError
+Element 1: 0
+Element 2: 12
+Element 3: 21
+Element 4: 45
 </code></pre></div>
 
                                 </td>

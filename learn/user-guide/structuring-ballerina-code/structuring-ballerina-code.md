@@ -46,7 +46,11 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
 1. Get Ballerina [installed](/learn/installing-ballerina).
 
-2. In the CLI, execute the `bal new helloworld` command to create a new Ballerina package.
+2. In the CLI, execute the command below to create a new Ballerina package.
+
+    ```bash
+    bal new helloworld
+    ```
 
     This generates a package directory with the structure below. 
 
@@ -95,7 +99,13 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
 3. Navigate to the created `helloworld` package directory.
 
-4. Execute the `bal build` command to build an executable of this file. You view the output below.
+4. Execute the command below to build an executable of this file. You view the output below.
+
+    ```bash
+    bal build
+    ```
+
+    You view the output below.
 
     ```bash
     Compiling source
@@ -105,7 +115,13 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 	    target/bin/helloworld.jar
     ```
 
-5. Execute the `bal run` command to run the program. You view the output below.
+5. Execute the command below to run the program. You view the output below.
+
+    ```bash
+    bal run
+    ```
+
+    You view the output below.
 
     ```bash
     Compiling source
@@ -120,10 +136,15 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
 ### Creating a Library Package
 
-Executing `bal new helloworld --template lib` will create a library package. In addition to the 
-`Ballerina.toml` file and the source bal file, the `Package.md` file will be created.
+Execute the command below to create a library package.
 
-For lib packages, the `Ballerina.toml` file will include the content below.
+```bash
+bal new helloworld --template lib
+```
+
+In addition to the `Ballerina.toml` file and the source BAL file, the `Package.md` file will be created. For lib packages, the `Ballerina.toml` file will include the content below.
+
+>**Info:** The `[package]` table contains metadata about the generated package. The package name is `helloworld` and its current `0.1.0` version is in the `examples` organization.
 
 ```toml
 [package]
@@ -135,9 +156,11 @@ version = "0.1.0"
 observabilityIncluded = true
 ```
 
-The `[package]` table contains metadata about the generated package. The package name is `helloworld` and its current `0.1.0` version is in the `examples` organization.
+Execute the command below to build the Ballerina archive of the package.
 
-Execute the `bal build -c` command to build the Ballerina archive of the package.
+```bash
+bal build -c
+```
  
 ## Working with Ballerina Modules
 

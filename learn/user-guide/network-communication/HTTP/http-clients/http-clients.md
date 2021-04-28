@@ -19,6 +19,8 @@ redirect_from:
 
 An HTTP client in Ballerina is created by instantiating an `http:Client` object while providing the host and client configurations. The client configuration has a default value of `{}`, and the default values of its fields can be found in the `http:ClientConfiguration` record definition.
 
+>**Info:** The `error` is made union with the `http:Client` to get an error returned during its initialization.
+
 ```ballerina
 http:Client|error clientEp = new("http://example.com");
 ```

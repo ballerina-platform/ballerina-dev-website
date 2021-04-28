@@ -89,7 +89,7 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
     ```bash
     Compiling source
-	    praneesha/helloworld:0.1.0
+	    examples/helloworld:0.1.0
 
     Generating executable
 	    target/bin/helloworld.jar
@@ -99,7 +99,7 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
     ```bash
     Compiling source
-	    praneesha/helloworld:0.1.0
+	    examples/helloworld:0.1.0
 
     Running executable
 

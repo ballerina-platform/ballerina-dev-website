@@ -59,6 +59,7 @@ Generating executables
 ## Deploying the Function
 
 Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. An [AWS Lambda Role](https://console.aws.amazon.com/iam/home?#/roles) for the user must be created with the `AWSLambdaBasicExecutionRole` permission in order to deploy the AWS Lambda functions. The created AWS Lambda Role ARN is required when deploying the functions through the CLI.
+Additionally, you need to change the memory size and timeout according to the application requirements.
 
 A sample execution to deploy the hash function as an AWS Lambda is shown below. 
 
@@ -92,7 +93,8 @@ $ aws lambda create-function --function-name hash --zip-file fileb://aws-balleri
 
 ## Invoking the Function
 
-The deployed AWS Lambda function can be tested by invoking it directly using the CLI. 
+The deployed AWS Lambda function can be tested by invoking it directly using the CLI. Please note that the payload 
+should be a valid json object.
 
 ```bash
 $ echo '{"x":5}' > input.json

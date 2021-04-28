@@ -40,7 +40,10 @@ The second parameter with the `json` value contains the input request data. This
 The AWS Lambda functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
-$ bal build functions.bal 
+bal build functions.bal 
+```
+
+```bash
 Compiling source
 	functions.bal
 
@@ -59,12 +62,15 @@ Generating executables
 ## Deploying the Function
 
 Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. An [AWS Lambda Role](https://console.aws.amazon.com/iam/home?#/roles) for the user must be created with the `AWSLambdaBasicExecutionRole` permission in order to deploy the AWS Lambda functions. The created AWS Lambda Role ARN is required when deploying the functions through the CLI.
-Additionally, you need to change the memory size and timeout according to the application requirements.
 
 A sample execution to deploy the hash function as an AWS Lambda is shown below. 
 
+>**Info:** You need to change the memory size and timeout according to the application requirements.
+
 ```bash
-$ aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
+aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
+```
+```bash
 {
     "FunctionName": "hash",
     "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:function:hash",
@@ -93,18 +99,23 @@ $ aws lambda create-function --function-name hash --zip-file fileb://aws-balleri
 
 ## Invoking the Function
 
-The deployed AWS Lambda function can be tested by invoking it directly using the CLI. Please note that the payload 
-should be a valid json object.
+The deployed AWS Lambda function can be tested by invoking it directly using the CLI. 
+>**Info:** The payload should be a valid json object.
 
 ```bash
-$ echo '{"x":5}' > input.json
-$ aws lambda invoke --function-name hash --payload fileb://input.json response.txt 
+echo '{"x":5}' > input.json
+```
+```bash
+aws lambda invoke --function-name hash --payload fileb://input.json response.txt 
 {
     "StatusCode": 200,
     "ExecutedVersion": "$LATEST"
 }
-
-$ cat response.txt 
+```
+```bash
+cat response.txt 
+```
+```bash
 "dd9446a11b2021b753a5df48d11f339055375b59cd81d7559d36b652aaff849d"
 ```
 

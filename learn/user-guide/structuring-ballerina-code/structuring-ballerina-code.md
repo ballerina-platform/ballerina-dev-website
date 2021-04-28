@@ -89,16 +89,20 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
     ```bash
     Compiling source
-	    praneesha/test_new:0.1.0
+	    praneesha/helloworld:0.1.0
 
     Generating executable
-	    target/bin/test_new.jar
+	    target/bin/helloworld.jar
     ```
 
 5. Execute the `bal run` command to run the program. You view the output below.
 
     ```bash
-   $ bal run target/bin/helloworld.jar
+    Compiling source
+	    praneesha/helloworld:0.1.0
+
+    Running executable
+
     Hello World!
     ```
 

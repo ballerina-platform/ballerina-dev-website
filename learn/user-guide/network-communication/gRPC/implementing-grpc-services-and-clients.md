@@ -169,7 +169,7 @@ After completing the full code for both the client and the service, you can exec
    [ballerina/grpc] started HTTP/WS listener 0.0.0.0:9090
    ```
 
->**Info:** The gRPC service is up and running at port 9090.
+   >**Info:** The gRPC service is up and running at port 9090.
 
 2. Execute the `bal run client` command to run the client module, which will try to contact the active service. You view the output below.
 

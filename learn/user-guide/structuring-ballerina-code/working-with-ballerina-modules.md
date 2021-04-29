@@ -27,9 +27,15 @@ A module name can contain one or more Ballerina identifiers separated by dots (.
 
 The value of the first identifier of the modules belonging to the same package will always be the package name.
 
-For example, let’s create a package called `winery` to demonstrate Ballerina modules. This package exposes an API to list the available wine types and to get details about a particular wine. You can organize the source code with three modules named `winery`, `winery.model`, and `winery.storage`.
+## Creating the Package
 
->**Tip:** If you are still inside the previous `helloword` directory, use the `cd ..` command to go to the parent directory. Then, execute the `bal new winery` command to create the `winery` package. 
+Execute the command below to create a package called `winery` to demonstrate Ballerina modules. 
+
+>**Info:** This package exposes an API to list the available wine types and to get details about a particular wine. Inside that, you can organize the source code with three modules named `winery`, `winery.model`, and `winery.storage`.
+
+```bash
+bal new winery
+```
 
 The generated `winery` package will have the directory structure below. 
 
@@ -41,86 +47,123 @@ winery
 0 directories, 2 files
 ```
 
-### The Default Module
+## Updating the Default Module
 
 The `main.bal` file is at the root of the package directory. Similarly, you can have more source files at the root. Symbols such as functions, variables in one file are visible to other files because they are in the same namespace. 
 
-This namespace is called the default module of the package. The name of the default module is the same as the package name. Therefore in this example, the name of the default module is `winery`. 
+This namespace is called the default module of the package. The name of the default module is the same as the package name. Therefore in this example, the name of the default module is `winery`.
 
-### Other Modules
+Replace the content in the `main.bal` file at the root of the package with the function below to use it in the default module’s main function. 
+
+```ballerina
+import ballerina/io;
+import examples/winery.storage;
+import winery.model;
+
+public function main() {
+    model:Wine[] wines = storage:getWineList();
+    foreach var wine in wines {
+        io:println(wine);
+    }
+}
+```
+
+>**Note:** Notice the usage of the `examples` organization name in the second import declaration. The organization name is optional if the module is in the current package.
+
+## Creating the Other Modules
 
 The other modules of a package should be placed inside the `modules` directory of the package. Each top-level directory inside the `modules` directory will become a Ballerina module. 
 
-The module names are derived by combining the package name and the directory name. E.g., If the directory name is `storage`, then the module name will be `winery.storage`. 
+The module names are derived by combining the package name and the directory name. E.g., If the directory name is `model`, then the module name will be `winery.model`. 
 
-Navigate to the `winery` directory and execute the `bal add model` command to add the `winery.model` module. 
+## Creating the Second Module
 
->**Tip:** You need to provide the module name without the package name to the `add` command. 
+1. Navigate to the `winery` directory, and execute the command below to add the `winery.model` module. 
 
-```bash
-$ bal add model
-Added new bal module at ‘modules/model’
-$ tree
-.
-├── Ballerina.toml
-├── main.bal
-└── modules
-    └── model
-        └── model.bal
+    >**Tip:** You need to provide the module name without the package name in the `add` command. 
 
-2 directories, 3 files
-```
+    ```bash
+    bal add model
+    ```
 
-This creates the `modules` directory and places the `model` directory in it. This `modules/model` directory contains the `winery.model` module. 
+    You view the output below.
 
-Open the `modules/model/model.bal` file and add the content below to define the `Wine` record type. 
+    ```bash
+    Added new bal module at ‘modules/model’
+    ```
 
-```ballerina
-public type Wine record {
-   string id;
-   string name;
-   string color;
-   string country;
-};
-```
+    This creates the `modules` directory and places the `model` directory in it. This `modules/model` directory contains the `winery.model` module.  Now, the `winery` package will have the directory structure below. 
 
-Execute the `bal add storage` command to create another `winery.storage` module to retrieve a list of wines from a storage. 
+    ```bash
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    └── modules
+        └── model
+            └── model.bal
 
-```bash
-$ bal add storage
-Added new ballerina module at ‘modules/storage’
-$ tree
-.
-├── Ballerina.toml
-├── main.bal
-└── modules
-    ├── model
-    │   └── model.bal
-    └── storage
-        └── storage.bal
+    2 directories, 3 files
+    ```
 
-3 directories, 4 files	
-```
+2. Open the `modules/model/model.bal` file and add the content below to define the `Wine` record type. 
 
-Replace the content of the `storage.bal` file with the content below.
+    ```ballerina
+    public type Wine record {
+    string id;
+    string name;
+    string color;
+    string country;
+    };
+    ```
 
-```ballerina
-import winery.model;
+## Creating the Third Module
 
-public function getWineList() returns model:Wine[] {
-    return [{
-        id: "W125678",
-        name: "Corton-Charlemagne Grand Cru, Coche-Dury",
-        color: "White",
-        country: "France"
-    }, {
-        id: "W425478",
-        name: "Échezeaux, Dom. de la Romanée-Conti",
-        color: "Red",
-        country: "France"
-    }];
-}
-```
+1. Execute the command below to create another `winery.storage` module to retrieve a list of wines from a storage. 
+
+    ```bash
+    bal add storage
+    ```
+
+    You view the output below.
+
+    ```bash
+    Added new ballerina module at ‘modules/storage’
+    ```
+
+    Now, the `winery` package will have the directory structure below. 
+
+    ```bash
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    └── modules
+        ├── model
+        │   └── model.bal
+        └── storage
+            └── storage.bal
+
+    3 directories, 4 files	
+    ```
+
+2. Replace the content of the `storage.bal` file with the content below.
+
+    ```ballerina
+    import winery.model;
+
+    public function getWineList() returns model:Wine[] {
+        return [{
+            id: "W125678",
+            name: "Corton-Charlemagne Grand Cru, Coche-Dury",
+            color: "White",
+            country: "France"
+        }, {
+            id: "W425478",
+            name: "Échezeaux, Dom. de la Romanée-Conti",
+            color: "Red",
+            country: "France"
+        }];
+    }
+    ```
 
 Now, there are three modules in the `winery` package as follows.
 
@@ -153,23 +196,6 @@ Since the `import-prefix` is not given here, you can use `model` to refer to the
 ```ballerina
 model:Wine[] wines = [];
 ```
-
-Replace the content in the `main.bal` file at the root of the package with the function below to use it in the default module’s main function. 
-
-```ballerina
-import ballerina/io;
-import examples/winery.storage;
-import winery.model;
-
-public function main() {
-    model:Wine[] wines = storage:getWineList();
-    foreach var wine in wines {
-        io:println(wine);
-    }
-}
-```
-
->**Note:** Notice the usage of the `examples` organization name in the second import declaration. The organization name is optional if the module is in the current package.
 
 ### Importing Modules in Other Packages
 
@@ -226,4 +252,5 @@ The compiler has added a dependency to the `ballerina/io` package in the `Depend
 
 From the second build onwards, the compiler honors the version declared in the TOML file unless there are version conflicts. 
 
-You can also update the dependencies in the `Ballerina.toml` file. If you found a newer version of the `ballerina/io` package and you want to use it in your code, you can either delete the corresponding dependency declaration from the TOML file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build. 
+You can also update the dependencies in the `Dependencies.toml` file. If you found a newer version of the `ballerina/io` package and you want to use it in your code, you can either delete the corresponding dependency declaration from the TOML file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build. 
+

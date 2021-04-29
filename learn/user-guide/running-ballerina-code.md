@@ -48,13 +48,14 @@ If the source file contains at least one entry point, it can be executed using t
 $ bal run foo.bal
 ```
 
-You can compile a source file with an entry point into an executable jar.
+You can compile a source file with an entry point into an executable JAR.
     
 ```bash
 $ bal build [-o outputfilename.jar] foo.bal
 ```  
 
 You can run `.jar` files directly:
+
 ```bash
 $ bal run filename.jar
 ```
@@ -62,27 +63,30 @@ $ bal run filename.jar
 ## Running a Package
 A package is a folder that manages modules as part of common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/learn/how-to-structure-ballerina-code) for in-depth structuring of packages.
 
-Running a ballerina package:
+Running a Ballerina package:
+
 ```bash
 $ bal run myFirstPackage 
 $ bal run <ballerina-package-path>
 ```
 
-Building a ballerina package:
+Building a Ballerina package:
+
 ```bash
 $ bal build myFirstPackage
 $ bal build <ballerina-package-path>
 ```
 
-Alternatively you can `cd` into ballerina package and run:
+Alternatively, you can `cd` into the Ballerina package and run:
 
 ```bash    
 $ bal build
 ```
 
-Building a ballerina package will generate `.jar` inside `target/bin/` of the package directory.
+Building a Ballerina package will generate a `.jar` inside the `target/bin/` of the package directory.
 
 You can run the `.jar` file directly:
+
 ```bash
 $ bal run target/bin/testPackage.jar
 ```

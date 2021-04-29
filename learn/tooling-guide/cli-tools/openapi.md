@@ -23,7 +23,7 @@ The OpenAPI tools provide the following capabilities.
  2. Export the OpenAPI definition of a Ballerina service.
  3. Validate service implementation of a given OpenAPI Contract.
     
-The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generations. Code generation from OpenAPI to Ballerina can produce `ballerina service stubs` and `ballerina client stubs`.
+The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generations. Code generation from OpenAPI to Ballerina can produce service stubs and client stubs.
 
 The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.   
 
@@ -41,7 +41,7 @@ bal openapi -i <openapi-contract-path>
 
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
 
-This `-i <openapi-contract-path>` parameter of the command is mandatory. As an input, it will take the path to the OpenAPI contract file (i.e., `my-api.yaml` or `my-api.json`).
+The `-i <openapi-contract-path>` parameter is mandatory and it specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).
 
 You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional `--tags` and `--operations` commands.
 
@@ -88,7 +88,7 @@ If you need to document an OpenAPI contract for only one given service, then use
     bal openapi -i hello.yaml
 ```
 
-This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution path. It is not mandatory to run it from inside the Ballerina project.
+This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
 
 Output:
 
@@ -115,7 +115,7 @@ This command will generate the `helloworld-openapi.yaml` file that is related to
 
 ## OpenAPI Validator Compiler Plugin
 
-The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI Contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin will give the result as one or more compilation errors.
+The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin will give the result as one or more compilation errors.
 
 ### Annotation for Validator Plugin 
 

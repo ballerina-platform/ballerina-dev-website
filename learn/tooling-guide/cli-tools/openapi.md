@@ -45,7 +45,7 @@ The `-i <openapi-contract-path>` parameter is mandatory and it specifies the pat
 
 You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional `--tags` and `--operations` commands.
 
-`(-o|--output)` is an optional parameter. You can use this to give the output path for the generated files. If not, it will take the execution path as the output path.
+`(-o|--output)` is an optional parameter. You can use this to give the output path for the generated files. If not, it will take the path of the current directory as the output path.
 
 ##### Modes
 

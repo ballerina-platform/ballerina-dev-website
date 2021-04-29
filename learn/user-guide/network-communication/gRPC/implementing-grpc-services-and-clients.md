@@ -129,7 +129,7 @@ The `blockingEp` object contains the remote functions that correspond to the gRP
 
 ![Admin Service Client Remote Functions List](/learn/images/grpc-service-functions-list.png)
 
-Complet automatically-generated code in the `client` module of the `AdminService_sample_client.bal` file. The completed gRPC client code, which invokes all the methods defined in the service is as follows. 
+Complete the automatically-generated code in the `client` module of the `AdminService_sample_client.bal` file. The completed gRPC client code, which invokes all the methods defined in the service is as follows. 
 
 ```ballerina
 import ballerina/io;

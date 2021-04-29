@@ -99,7 +99,7 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 
 3. Navigate to the created `helloworld` package directory.
 
-4. Execute the command below to build an executable of this file. You view the output below.
+4. Execute the command below to build an executable of this file. 
 
     ```bash
     bal build
@@ -115,7 +115,7 @@ Follow the steps below to write a simple program in a Ballerina package, which p
 	    target/bin/helloworld.jar
     ```
 
-5. Execute the command below to run the program. You view the output below.
+5. Execute the command below to run the program. 
 
     ```bash
     bal run

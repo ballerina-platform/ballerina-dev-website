@@ -104,11 +104,11 @@ metricsEnabled=true
 tracingEnabled=true
 ```
 
-The created configuration file can be passed to the Ballerina program with the `BALCONFIGFILE` environment variable along with
+The created configuration file can be passed to the Ballerina program with the `BAL_CONFIG_FILES` environment variable along with
 the path of the configuration file.
 
 ```bash
-$ BALCONFIGFILE=<path-to-conf>/Config.toml bal run --observability-included hello_world_service.bal
+$ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included hello_world_service.bal
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
@@ -126,7 +126,7 @@ pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
 Therefore, redirect the standard output to a file if you want to monitor logs.
 
 ```bash
-$ BALCONFIGFILE=<path-to-conf>/Config.toml nohup bal run --observability-included hello_world_service.bal > ballerina.log &
+$ BAL_CONFIG_FILES=<path-to-conf>/Config.toml nohup bal run --observability-included hello_world_service.bal > ballerina.log &
 ```
 
 ### Step 5 - Sending Few Requests

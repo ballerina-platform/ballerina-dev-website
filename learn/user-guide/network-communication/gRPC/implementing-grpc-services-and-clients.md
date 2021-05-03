@@ -129,7 +129,7 @@ The `blockingEp` object contains the remote functions that correspond to the gRP
 
 ![Admin Service Client Remote Functions List](/learn/images/grpc-service-functions-list.png)
 
-Complet automatically-generated code in the `client` module of the `AdminService_sample_client.bal` file. The completed gRPC client code, which invokes all the methods defined in the service is as follows. 
+Complete the automatically-generated code in the `client` module of the `AdminService_sample_client.bal` file. The completed gRPC client code, which invokes all the methods defined in the service is as follows. 
 
 ```ballerina
 import ballerina/io;
@@ -169,7 +169,7 @@ After completing the full code for both the client and the service, you can exec
    [ballerina/grpc] started HTTP/WS listener 0.0.0.0:9090
    ```
 
->**Info:** The gRPC service is up and running at port 9090.
+   >**Info:** The gRPC service is up and running at port 9090.
 
 2. Execute the `bal run client` command to run the client module, which will try to contact the active service. You view the output below.
 

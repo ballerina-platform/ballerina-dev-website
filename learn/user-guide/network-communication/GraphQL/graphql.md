@@ -123,6 +123,35 @@ You can send the GraphQL query below to look up the exposed `name` field in the 
    name
 }
 ```
+## Executing the Simple GraphQL Service
+
+Execute the command below to run the Ballerina GraphQL service above.
+
+```bash
+bal run demo.bal
+```
+
+You view the output below.
+
+```
+Compiling source
+    demo.bal
+
+Running executable
+
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+```
+
+A GraphQL request can be executed by sending an HTTP request similar to the following.
+
+```bash
+curl -X POST -H "Content-type: application/json" -d '{"query":"{name}"}' http://localhost:8080/query
+{"data":{"name":"Jack"}}
+```
+
+The resource functions here can be provided with parameters to correlate with the GraphQL field parameters as well. Also, in the case of returning objects in fields, the resource method can return a service object to represent this. 
+
 
 Now, that you know the basics of how GraphQL works, for an actual implementation using Ballerina, which has GraphQL as part of its built-in language-level services support, see [Implementing GraphQL Services](/learn/user-guide/network-communication/graphql/implementing-graphql-services/).
 
+<style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

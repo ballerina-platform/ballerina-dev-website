@@ -62,7 +62,7 @@ The VS Code Ballerina extension gives you the same debugging experience as the c
 
 Then, you can start a program, test, or remote debug session as shown below.
 
->**Info:** The working directory will always be the package root if the user starts the debug session through VS Code. Users can use remote debugging for alternative working directories.
+>**Info:** If you launch the debug session through VS Code, the working directory will be the Ballerina package root. However, you can use remote debugging for alternative working directories.
 
 <br/>
 

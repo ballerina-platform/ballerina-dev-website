@@ -50,6 +50,8 @@ type Shipper {
 
 The code above is written in the GraphQL schema format used to define object types. GraphQL `Query` is a special object type, which must exist for the schema. This is basically the root-level object that will be used to query. Therefore, in GraphQL queries, you provide the fields inside the `Query` object to look up the required data. 
 
+## Writing the Queries
+
 Once you have the GraphQL service with the schema above, send the query below to get order details from your database.
 
 ```ballerina
@@ -61,4 +63,66 @@ Once you have the GraphQL service with the schema above, send the query below to
 }
 ```
 
-Here, we instruct our service to lookup the `order` field from the root query object and pass in ‘1’ as the value for parameter `id`. This field returns an object type, so we need to list all the fields we require from the object, which are `notes` and `date` above. If we need to only look up the date field, our GraphQL query would be as follows.
+In the above code, you instruct the service to look up the `order` field from the root query object and pass in ‘1’ as the value for parameter `id`. This field returns an object type, and thereby, you need to list all the fields required from the object, which are `notes` and `date` above. If you need to only look up the date field, the GraphQL query would be as follows.
+
+```ballerina
+{
+   order(id: 1) {
+       date
+   }
+}
+```
+
+You can drill into more fields and get their values as well. The query below, looks up the full order information including the customer and shipper information. 
+
+```ballerina
+{
+   orders(id: 2) {
+       notes,
+       date,
+       customer {
+           name,
+           address
+       },
+       shipper {
+           name,
+           phone
+       }
+   }
+}
+```
+
+## Writing a Simple GraphQL Service
+
+The code below (e.g., `demo.bal`) shows a simple GraphQL service written in Ballerina.
+
+```ballerina
+import ballerina/graphql;
+ 
+service graphql:Service /query on new graphql:Listener(8080) {
+ 
+   resource function get name() returns string {
+       return "Jack";
+   }
+ 
+}
+```
+
+The code above exposes a GraphQL service at the endpoint “http://localhost:8080/query”. Its GraphQL schema is similar to the following.
+
+```ballerina
+type Query {
+   name: String
+}
+```
+
+You can send the GraphQL query below to look up the exposed `name` field in the root query object. 
+ 
+```ballerina
+{
+   name
+}
+```
+
+Now, that you know the basics of how GraphQL works, for an actual implementation using Ballerina, which has GraphQL as part of its built-in language-level services support, see [Implementing GraphQL Services](/learn/user-guide/network-communication/graphql/implementing-graphql-services/).
+

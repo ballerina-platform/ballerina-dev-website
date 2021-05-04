@@ -2,11 +2,11 @@
   url: '#'
   sublinks:
     - title: Swan Lake Alpha 5 
-      url: /downloads/swan-lake-release-notes/swan-lake-alpha5/RELEASE_NOTE/
-      active: setting-up-ballerina
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha5
+      active: swan-lake-alpha5
     - title: Swan Lake Alpha 4 
-      url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
-      active: writing-your-first-ballerina-program
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha4
+      active: swan-lake-alpha4
 
 - title: 1.2 
   url: '#'

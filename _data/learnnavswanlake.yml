@@ -44,6 +44,9 @@
     - title: WebSocket
       url: /learn/user-guide/network-communication/websocket/
       active: websocket
+    - title: GraphQL
+      url: /learn/user-guide/network-communication/graphql/
+      active: graphql
 
 - title: Data and Events Processing 
   url: '#' 

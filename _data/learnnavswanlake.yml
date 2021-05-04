@@ -44,6 +44,9 @@
     - title: WebSocket
       url: /learn/user-guide/network-communication/websocket/
       active: websocket
+    - title: GraphQL
+      url: /learn/user-guide/network-communication/graphql/
+      active: graphql
 
 - title: Data and Events Processing 
   url: '#' 
@@ -58,9 +61,6 @@
     - title: Code to Cloud
       url: /learn/user-guide/deployment/code-to-cloud/
       active: code-to-cloud
-    - title: Docker
-      url: /learn/user-guide/deployment/docker/
-      active: docker
     - title: AWS Lambda
       url: /learn/user-guide/deployment/aws-lambda/
       active: aws-lambda

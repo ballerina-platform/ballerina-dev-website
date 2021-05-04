@@ -23,14 +23,14 @@ redirect_from:
     <span class="c1">// member represents the rest of the nanoseconds from the epoch as a</span>
     <span class="c1">// fraction.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">currentUtc</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcNow</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Current timestamp seconds: ${currentUtc[0]}s`</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Current timestamp nanoseconds as a</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Current timestamp seconds: ${currentUtc[0]}s`</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Current timestamp nanoseconds as a</span>
 <span class="s">    fraction: ${currentUtc[1]}s`</span><span class="p">);</span>
 
     <span class="c1">// Return seconds from some unspecified epoch. The returned `seconds` has</span>
     <span class="c1">// the nanoseconds precision which represents using the fractional part.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Seconds</span> <span class="nx">seconds</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">monotonicNow</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Seconds from an unspecified epoch: ${seconds}s`</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Seconds from an unspecified epoch: ${seconds}s`</span><span class="p">);</span>
 
     <span class="c1">// Returns a `time:Utc` from a given RFC 3339 timestamp</span>
     <span class="c1">// (e.g. `2007-12-03T10:15:30.00Z`).</span>
@@ -40,16 +40,16 @@ redirect_from:
     <span class="c1">// Returns the string representation of RFC 3339 timestamp</span>
     <span class="c1">// (e.g. `2007-12-03T10:15:30.00Z`) from a given `time:Utc`.</span>
     <span class="kt">string</span> <span class="nx">utcString1</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToString</span><span class="p">(</span><span class="nx">utc1</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`UTC string representation: ${utcString1}`</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`UTC string representation: ${utcString1}`</span><span class="p">);</span>
 
     <span class="c1">// Returns the difference of two `time:Utc` values as</span>
     <span class="c1">// seconds(`time:Seconds`).</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Seconds</span> <span class="nx">utcDiff</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcDiffSeconds</span><span class="p">(</span><span class="nx">currentUtc</span><span class="p">,</span> <span class="nx">utc1</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`UTC diff: ${utcDiff}`</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`UTC diff: ${utcDiff}`</span><span class="p">);</span>
 
     <span class="c1">// Check the given `time:Date` value is valid or not.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Date</span> <span class="nx">date</span> <span class="p">=</span> <span class="p">{</span><span class="nx">year</span><span class="p">:</span> <span class="mi">1994</span><span class="p">,</span> <span class="nx">month</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="nx">day</span><span class="p">:</span> <span class="mi">7</span><span class="p">};</span>
-    <span class="kt">boolean</span> <span class="nx">isValidDate</span> <span class="p">=</span> <span class="p">(</span><span class="nx">time</span><span class="p">:</span><span class="nx">dateValidate</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="nx">is</span> <span class="p">())</span><span class="err">?</span> <span class="kc">true</span><span class="p">:</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="kt">boolean</span> <span class="nx">isValidDate</span> <span class="p">=</span> <span class="p">(</span><span class="nx">time</span><span class="p">:</span><span class="nx">dateValidate</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="nx">is</span> <span class="p">())</span> <span class="err">?</span> <span class="kc">true</span> <span class="p">:</span> <span class="kc">false</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Is valid date: ${isValidDate}`</span><span class="p">);</span>
 
     <span class="c1">// Return the day of week as a number starting from 0 to 6 inclusive.</span>
@@ -93,7 +93,7 @@ redirect_from:
     <span class="c1">// Converts a given `time:Civil` value to a RFC 3339</span>
     <span class="c1">// timestamp(e.g. `2007-12-03T10:15:30.00Z`) formatted string.</span>
     <span class="kt">string</span> <span class="nx">civilString</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">civilToString</span><span class="p">(</span><span class="nx">civil3</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Civil string representation: ${civilString}`</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Civil string representation: ${civilString}`</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -107,7 +107,7 @@ redirect_from:
                             <p><p>The Ballerina time API provides operations to work with
  date and time.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/time/latest/time/">Time module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/time/latest/">Time module</a>.</p>
 </p>
 
                         </td>
@@ -148,7 +148,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c227e91f6fb5a833e2c5082d05f41b77&file=time.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d9ad403f50a7261b943e685da4f9ecca&file=time.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -227,8 +227,8 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    time:Utc currentUtc = time:utcNow();
-    io:println(string `Current timestamp seconds: ${currentUtc[0]}s`);
-    io:println(string `Current timestamp nanoseconds as a
+    io:println(`Current timestamp seconds: ${currentUtc[0]}s`);
+    io:println(`Current timestamp nanoseconds as a
     fraction: ${currentUtc[1]}s`);
 </code></pre></div>
 
@@ -255,7 +255,7 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    time:Seconds seconds = time:monotonicNow();
-    io:println(string `Seconds from an unspecified epoch: ${seconds}s`);
+    io:println(`Seconds from an unspecified epoch: ${seconds}s`);
 </code></pre></div>
 
                                 </td>
@@ -297,7 +297,7 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string utcString1 = time:utcToString(utc1);
-    io:println(string `UTC string representation: ${utcString1}`);
+    io:println(`UTC string representation: ${utcString1}`);
 </code></pre></div>
 
                                 </td>
@@ -318,7 +318,7 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    time:Seconds utcDiff = time:utcDiffSeconds(currentUtc, utc1);
-    io:println(string `UTC diff: ${utcDiff}`);
+    io:println(`UTC diff: ${utcDiff}`);
 </code></pre></div>
 
                                 </td>
@@ -339,7 +339,7 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    time:Date date = {year: 1994, month: 11, day: 7};
-    boolean isValidDate = (time:dateValidate(date) is ())? true: false;
+    boolean isValidDate = (time:dateValidate(date) is ()) ? true : false;
     io:println(string `Is valid date: ${isValidDate}`);
 </code></pre></div>
 
@@ -462,7 +462,7 @@ import ballerina/time;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    string civilString = check time:civilToString(civil3);
-    io:println(string `Civil string representation: ${civilString}`);
+    io:println(`Civil string representation: ${civilString}`);
 }
 </code></pre></div>
 
@@ -499,25 +499,19 @@ import ballerina/time;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run time.bal
-Current system time in milliseconds: 1599865900176
-Created Time: 2017-03-28T23:42:45.554-05:00
-Parsed Time: 2017-06-26T09:46:22.444-05:00
-Current system time in custom format: 2020-09-11-Fri
-Year: 2020
-Month: 9
-Day: 11
-Hour: 16
-Minute: 11
-Second: 40
-Millisecond: 176
-Weekday: FRIDAY
-Date: 2020:9:11
-Time: 16:11:40:176
-After adding a duration: 2021-10-11T16:11:41.176-07:00
-After subtracting a duration: 2019-08-11T16:11:39.176-07:00
-Before converting the time zone: 2017-03-28T23:42:45.554-05:00
-After converting the time zone: 2017-03-29T10:12:45.554+05:30
-Difference between the two time values: {&quot;years&quot;:1,&quot;months&quot;:2,&quot;days&quot;:1,&quot;hours&quot;:1,&quot;minutes&quot;:0,&quot;seconds&quot;:0,&quot;milliSeconds&quot;:0}
+Current timestamp seconds: 1616668384s
+Current timestamp nanoseconds as a
+    fraction: 0.460415000s
+Seconds from an unspecified epoch: 28082.664869815s
+UTC value: 1196676930 0
+UTC string representation: 2007-12-03T10:15:30Z
+UTC diff: 419991454.460415
+Is valid date: true
+Day of week: 1
+Civil record: {&quot;timeAbbrev&quot;:&quot;Z&quot;,&quot;dayOfWeek&quot;:1,&quot;year&quot;:2007,&quot;month&quot;:12,&quot;day&quot;:3,&quot;hour&quot;:10,&quot;minute&quot;:15,&quot;second&quot;:30}
+UTC value of the civil record: 1618269650 0.52
+Converted civil value: {&quot;utcOffset&quot;:{&quot;hours&quot;:5,&quot;minutes&quot;:30},&quot;timeAbbrev&quot;:&quot;Asia/Colombo&quot;,&quot;dayOfWeek&quot;:1,&quot;year&quot;:2021,&quot;month&quot;:4,&quot;day&quot;:12,&quot;hour&quot;:23,&quot;minute&quot;:20,&quot;second&quot;:50.52}
+Civil string representation: 2021-04-12T17:50:50.520Z
 </code></pre></div>
 
                                 </td>

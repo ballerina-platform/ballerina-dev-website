@@ -17,15 +17,15 @@ redirect_from:
 
 ## Using MIME Entities
 
-As used in the HTTP [client API](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client), similarly, multipart messages can be created in service resources by using the Multipurpose Internet Mail Extensions (MIME) standard. You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response) object. 
+As used in the HTTP [client API](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client), similarly, multipart messages can be created in service resources by using the Multipurpose Internet Mail Extensions (MIME) standard. You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response) object. 
 
-A MIME entity in Ballerina is represented using the [`mime:Entity`](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity) object. 
+A MIME entity in Ballerina is represented using the [`mime:Entity`](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity) object. 
 
 ## Example
 
 The example below shows how to set a text payload in the response using a MIME entity.
 
->**Info:** The code below explicitly creates the MIME entity and sets it in the HTTP response. The same operation happens if you use the [`setTextPayload`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#setTextPayload) method in the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response) object. These functions are effectively helper functions to set the MIME entities in the HTTP response for often-used content types. 
+>**Info:** The code below explicitly creates the MIME entity and sets it in the HTTP response. The same operation happens if you use the [`setTextPayload`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#setTextPayload) method in the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response) object. These functions are effectively helper functions to set the MIME entities in the HTTP response for often-used content types. 
 
 ```ballerina
 import ballerina/mime;

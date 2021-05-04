@@ -19,7 +19,7 @@ redirect_from:
 
 ## Configuring Secure Communication
 
-The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientConfiguration) instance when creating the [`http:Client`](/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client).
+The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](/learn/api-docs/ballerina/#/ballerina/http/latest/clients/Client).
 
 ### Communicating with an HTTPS Endpoint
 
@@ -131,7 +131,7 @@ Payload: {
 
 In [Communicating with an HTTPS Endpoint](#communicating-with-an-https-endpoint), the server is authenticated using the certificate provided to the client, and the secure communication is started based on this information. In the Mutual TLS (mTLS) scenario, the client gets the chance to authenticate itself with the remote server as well. 
 
-This is done by additionally providing a keystore or public cert and private key of the client. This is done via the `key` property of `secureSocket` property in the [HTTP client configuration]((/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientConfiguration). The keystore will also contain your private key and the certificates that will be used in the authentication done by the remote server. 
+This is done by additionally providing a keystore or public cert and private key of the client. This is done via the `key` property of `secureSocket` property in the [HTTP client configuration]((/learn/api-docs/ballerina/#/ballerina/http/latest/records/ClientConfiguration). The keystore will also contain your private key and the certificates that will be used in the authentication done by the remote server. 
 
 The `mutual_tls_demo.bal` example below shows an HTTP client configured for mutual authentication. 
 

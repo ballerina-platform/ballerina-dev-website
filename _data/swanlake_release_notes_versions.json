@@ -214,9 +214,31 @@
       "rpm-installer-size": "219mb",
       "other-artefacts": [
          "ballerina-swan-lake-alpha4.zip",
+         "ballerina-swan-lake-alpha4.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "api-docs": "ballerina-api-docs-swan-lake-alpha4.zip",
       "release-notes": "ballerina-release-notes-swan-lake-alpha4.md"
+   },
+   {
+      "version": "swan-lake-alpha5",
+      "short-version": "slalpha5",
+      "display-version": "Swan Lake Alpha5",
+      "release-date": "2021-04-24",
+      "windows-installer": "ballerina-windows-installer-x64-swan-lake-alpha5.msi",
+      "windows-installer-size": "142mb",
+      "linux-installer": "ballerina-linux-installer-x64-swan-lake-alpha5.deb",
+      "linux-installer-size": "206mb",
+      "macos-installer": "ballerina-macos-installer-x64-swan-lake-alpha5.pkg",
+      "macos-installer-size": "237mb",
+      "rpm-installer": "ballerina-linux-installer-x64-swan-lake-alpha5.rpm",
+      "rpm-installer-size": "217mb",
+      "other-artefacts": [
+         "ballerina-swan-lake-alpha5.zip",
+         "ballerina-swan-lake-alpha5.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "api-docs": "ballerina-api-docs-swan-lake-alpha5.zip",
+      "release-notes": "ballerina-release-notes-swan-lake-alpha5.md"
    }
 ]

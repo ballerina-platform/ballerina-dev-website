@@ -22,7 +22,7 @@ redirect_from:
     <span class="c1">// which HTTP methods are allowed.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
-        <span class="c1">// When [forward()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#forward) is called on the backend client endpoint, it forwards the request that the passthrough</span>
+        <span class="c1">// When [forward()](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#forward) is called on the backend client endpoint, it forwards the request that the passthrough</span>
         <span class="c1">// resource received to the backend. When forwarding, the request is made using the same HTTP method that was</span>
         <span class="c1">// used to invoke the passthrough resource. The `forward()` function returns the response from the backend if</span>
         <span class="c1">// there are no errors.</span>
@@ -46,7 +46,7 @@ redirect_from:
 
     <span class="c1">// The `helloResource` accepts any HTTP methods as the accessor is defined as `&#39;default`.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Send the response](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#respond) back to the caller.</span>
+        <span class="c1">// [Send the response](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#respond) back to the caller.</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -65,7 +65,7 @@ redirect_from:
                             <h2>Passthrough</h2>
                             <p><p>The passthrough sample exhibits the process of an HTTP client connector. The &lsquo;Echo Service&rsquo; is used as a sample backend.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/">HTTP module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -223,7 +223,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>When <a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#forward">forward()</a> is called on the backend client endpoint, it forwards the request that the passthrough
+                                            <p>When <a href="https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#forward">forward()</a> is called on the backend client endpoint, it forwards the request that the passthrough
  resource received to the backend. When forwarding, the request is made using the same HTTP method that was
  used to invoke the passthrough resource. The <code>forward()</code> function returns the response from the backend if
  there are no errors.</p>
@@ -366,7 +366,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#respond">Send the response</a> back to the caller.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#respond">Send the response</a> back to the caller.</p>
 
                                         </div>
                                     </div>

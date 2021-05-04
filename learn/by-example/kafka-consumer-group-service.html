@@ -15,9 +15,6 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="c1">// The `bootstrapServers` is the list of remote server endpoints of the</span>
-    <span class="c1">// Kafka brokers.</span>
-    <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
     <span class="c1">// Using two concurrent consumers to work as a group.</span>
     <span class="nx">concurrentConsumers</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 
@@ -25,11 +22,12 @@ redirect_from:
     <span class="c1">// Subscribes to the topic `test-kafka-topic`.</span>
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">],</span>
 
-    <span class="nx">pollingInterval</span><span class="p">:</span> <span class="mi">1000</span>
+    <span class="nx">pollingInterval</span><span class="p">:</span> <span class="mi">1</span>
 
 <span class="p">};</span>
 
-<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">consumerConfigs</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span>
+            <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">consumerConfigs</span><span class="p">);</span>
 
 <span class="kd">service</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">kafkaListener</span> <span class="p">{</span>
     <span class="c1">// This remote function executes when a message or a set of messages are published</span>
@@ -50,7 +48,7 @@ redirect_from:
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="kt">message</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Prints the retrieved message.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot; Received Message: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot; Received Message: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
 
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving message data;&quot;</span> <span class="o">+</span>
@@ -72,7 +70,7 @@ redirect_from:
  values. For this example to work properly, an active Kafka broker should be
  present.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/*">Kafka module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -158,8 +156,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -186,26 +182,6 @@ import ballerina/log;
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>bootstrapServers</code> is the list of remote server endpoints of the
- Kafka brokers.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -263,7 +239,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    pollingInterval: 1000
+                                    <div class="highlight"><pre><code class=language-ballerina>    pollingInterval: 1
 </code></pre></div>
 
                                 </td>
@@ -287,7 +263,8 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener = new (consumerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener =
+            new (kafka:DEFAULT_URL, consumerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -382,7 +359,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:print(&quot; Received Message: &quot; + message);
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot; Received Message: &quot; + message);
 </code></pre></div>
 
                                 </td>

@@ -17,9 +17,9 @@ redirect_from:
   - /learn/network-communication/http/data-binding
 ---
 
-In the [HTTP GET scenarios](/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote method of the [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/HttpClient), which is the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 
+In the [HTTP GET scenarios](/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method of the [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient), which is the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 
 
-In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote method will return the error value of the [`http:ClientError`](https://docs.central.ballerina.io/ballerina/http/latest/http/errors#ClientError) type. 
+In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method will return the error value of the [`http:ClientError`](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientError) type. 
 
 ## Using JSON and XML in Data Binding
 

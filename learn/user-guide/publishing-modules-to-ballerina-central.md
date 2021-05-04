@@ -28,8 +28,14 @@ $ bal push
 
 ## Setting Up
 
-Before you push your package, you must enter your Ballerina Central access token in `Settings.toml` in your home repository (`<USER_HOME>/.ballerina/`).
+Before you push your package, the following has to be done.
 
+1. You must generate the Ballerina archive of the package.
+   
+For steps to build a Ballerina archive, see [Creating a library package](/learn/structuring-ballerina-code/#creating-a-library-package/).
+
+2. You must enter your Ballerina Central access token in `Settings.toml` in your home repository (`<USER_HOME>/.ballerina/`). 
+   
 To get your token, register on Ballerina Central and visit the user dashboard at [https://central.ballerina.io/dashboard](https://central.ballerina.io/dashboard).
 
 If you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.

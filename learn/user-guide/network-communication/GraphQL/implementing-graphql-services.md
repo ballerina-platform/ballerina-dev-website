@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-pages-swanlake
 title: Implementing GraphQL Services
 description: In Ballerina, the GraphQL object structure is modeled using services. A Ballerina GraphQL service contains resource methods that map to the fields of the GraphQL objects and work as resolver functions to provide its data. The GraphQL schema is automatically derived from this service structure and its resources. 
-keywords: ballerina, cli, command line interface, programming language
+keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/graphql/implementing-graphql-services/
 active: implementing-graphql-services
 intro:  In Ballerina, the GraphQL object structure is modeled using services. A Ballerina GraphQL service contains resource methods that map to the fields of the GraphQL objects and work as resolver functions to provide its data. The GraphQL schema is automatically derived from this service structure and its resources. 
@@ -10,7 +10,7 @@ redirect_from:
   - /learn/user-guide/network-communication/graphql/implementing-graphql-services
 ---
 
-The topics below demonstrates how to implement an [order information query scenario](/learn/user-guide/network-communication/graphql#introducing-the-usecase) using a Ballerina service. 
+The topics below demonstrates how to implement an [order information query scenario](/learn/user-guide/network-communication/graphql#introducing-the-use-case) using a Ballerina service. 
 
 ## Writing the GraphQL Service
 
@@ -245,7 +245,7 @@ function loadShipper(int id) returns Shipper|error {
 
 Follow the steps below to do a test run using the full Ballerina service implementation. 
 
-1. Navigate to the `ordersvc` directory, which contains the Ballerina package and the database script and execute the command below to create and populate the database.
+1. Navigate to the `ordersvc` directory, which contains the Ballerina package and the database script, and execute the command below to create and populate the database.
 
    >**Tip:** This example uses a MySQL database to provide the data.
 

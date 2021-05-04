@@ -226,7 +226,7 @@ body {font-family: Arial;}
 </style>
 
 
-<h2>Participate in Ballerina Events</h2>
+<h2>Join Ballerina Events</h2>
 <p>Click to see information about the Ballerina past and upcoming events.</p>
 
 <div class="tab">

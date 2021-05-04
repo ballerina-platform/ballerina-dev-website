@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2021-04-29</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2021-05-04</h1>
 <p>
 Primary contributors:
 </p>
@@ -12531,8 +12531,7 @@ public isolated function cloneReadOnly(CloneableType v) returns CloneableType &a
 # - the read-only bit of values and fields comes from the specified type descriptor
 # - the graph structure of `v` is not preserved; the result will always be a tree;
 #   an error will be returned if `v` has cycles
-# - immutable structural values are copied rather being returned as is; all
-#   structural values in the result will be mutable.
+# - immutable structural values are copied rather than being returned as is
 # - numeric values can be converted using the NumericConvert abstract operation
 # - if a record type descriptor specifies default values, these will be used
 #   to supply any missing members

@@ -202,6 +202,8 @@ body {font-family: Arial;}
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
+  font-weight: bold;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
 /* Change background color of buttons on hover */
@@ -228,11 +230,11 @@ body {font-family: Arial;}
 <p>Click to see information about the Ballerina past and upcoming events.</p>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')">Past Events</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Upcoming Events</button>
+  <button class="tablinks" onclick="openCity(event, 'upcoming-events')" id="defaultOpen">Upcoming Events</button>
+  <button class="tablinks" onclick="openCity(event, 'past-events')">Past Events</button>
 </div>
 
-<div id="Paris" class="tabcontent">
+<div id="upcoming-events" class="tabcontent">
   <!--<h3>Upcoming Events</h3>
   <p>The below are the upcoming Ballerina events.</p>-->
   <script src="/js/events.js"></script>
@@ -284,7 +286,7 @@ body {font-family: Arial;}
 </table>
 </div>
 
-<div id="London" class="tabcontent">
+<div id="past-events" class="tabcontent">
   <!--<h3>Past Events</h3>
   <p>The below are the past Ballerina events.</p>-->
   <table class="cEventTable cConferencesList" style="width:100%;">
@@ -723,10 +725,10 @@ body {font-family: Arial;}
    <h5>An Introduction to the Ballerina Programming Language </h5>
     <b>Anjana Fernando,</b>  Director of Developer Relations - CTO Office, WSO2
   
-   </td>
+   <!--</td>
    <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">Register Now</a></td>
    </tr>
-   </table> 
+   </table>--> 
 </div>
 
 <script>
@@ -743,6 +745,8 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
 </script>
 <style>
    .navbar-nav > li.cActive > a {

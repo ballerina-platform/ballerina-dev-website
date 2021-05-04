@@ -1,6 +1,9 @@
 ---
-layout: ballerina-blank-page
+layout: ballerina-left-nav-release-notes
 title: Release Note
+permalink: /downloads/swan-lake-release-notes/swan-lake-alpha5/RELEASE_NOTE/
+redirect_from: 
+    - /release-notes/
 ---
 ### Overview of Ballerina Swan Lake Alpha5
 

@@ -1,0 +1,66 @@
+- title: Swan Lake 
+  url: '#'
+  sublinks:
+    - title: Swan Lake Alpha 5 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha5/RELEASE_NOTE/
+      active: setting-up-ballerina
+    - title: Swan Lake Alpha 4 
+      url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
+      active: writing-your-first-ballerina-program
+
+- title: 1.2 
+  url: '#'
+  sublinks:
+    - title: Structuring Ballerina Code
+      url: /learn/user-guide/structuring-ballerina-code/
+      active: structuring-ballerina-code
+    - title: Documenting Ballerina Code
+      url: /learn/user-guide/documenting-ballerina-code/
+      active: documenting-ballerina-code
+    - title: Coding Conventions
+      url: /learn/user-guide/coding-conventions/
+      active: coding-conventions
+    - title: Running Ballerina Code
+      url: /learn/user-guide/running-ballerina-code/
+      active: running-ballerina-code
+    - title: Publishing Packages to Ballerina Central
+      url: /learn/user-guide/publishing-packages-to-ballerina-central
+      active: publishing-packages-to-ballerina-central
+
+- title: 1.1
+  url: '#' 
+  sublinks:
+    - title: HTTP
+      url: /learn/user-guide/network-communication/http/
+      active: http
+    - title: gRPC
+      url: /learn/user-guide/network-communication/grpc/
+      active: grpc
+    - title: WebSocket
+      url: /learn/user-guide/network-communication/websocket/
+      active: websocket
+    - title: GraphQL
+      url: /learn/user-guide/network-communication/graphql/
+      active: graphql
+
+- title: 1.0 
+  url: '#' 
+  sublinks:
+    - title: Using Language-Integrated Queries
+      url: /learn/user-guide/data-and-events-processing/using-language-integrated-queries/
+      active: using-language-integrated-queries
+
+
+      
+ 
+
+
+   
+
+      
+
+
+
+
+
+

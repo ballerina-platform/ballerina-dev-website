@@ -25,9 +25,9 @@ The diagram below depicts an example implementation of a gRPC client and bi-dire
 ![Streaming Calc RPC Service](/learn/images/grpc-streaming-service.png)
 
 
-## Creating the ProtoBuf Definition of the Service
+## Creating the Protobuf Definition of the Service
 
-The ProtoBuf definition of the above service is shown below.
+The Protobuf definition of the above service is shown below.
 
 ```proto
 syntax = "proto3";
@@ -75,71 +75,61 @@ Successfully generated ballerina file.
 
 5. Update the service skeleton with the code below to add the implementation. 
 
-```bal
+```ballerina
 import ballerina/grpc;
- 
+
 listener grpc:Listener ep = new (9090);
- 
+
 @grpc:ServiceDescriptor {
-   descriptor: ROOT_DESCRIPTOR,
-   descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
 }
-service /StreamingCalcService on ep {
- 
-   remote function sum(grpc:Caller caller,
-                       stream<int,error> clientStream) returns error? {
+service "StreamingCalcService" on ep {
+    
+    remote function sum(stream<int, grpc:Error?> clientStream) returns int|error {
        int sum = 0;
        error? e = clientStream.forEach(function (int value) {
            sum += value;
        });
-       check caller->send(sum);
-       check caller->complete();
-   }
-   remote function incrementalSum(grpc:Caller caller,
-                                  stream<int,error> clientStream)
-                                  returns error? {
+       return sum;
+    }
+    remote function incrementalSum(StreamingCalcServiceIntCaller caller, stream<int, grpc:Error?> clientStream) returns error? {
        int sum = 0;
        error? e = clientStream.forEach(function (int value) {
            sum += value;
-           checkpanic caller->send(sum);
+           checkpanic caller->sendInt(sum);
        });
        check caller->complete();
-   }
+    }
 }
 ```
 
->**Info:** In the code above, the gRPC stream type has been mapped to the stream type in Ballerina. Using the Ballerina stream type, you can iterate through all the values in the stream sent to the service by the client. The only difference between the `sum` and `incrementalSum` methods is the use of multiple `send` operations in the `incrementalSum` to stream out multiple values to the client.
+>**Info:** In the code above, the gRPC stream type has been mapped to the stream type in Ballerina. Using the Ballerina stream type, you can iterate through all the values in the stream sent to the service by the client. The only difference between the `sum` and `incrementalSum` methods is the use of caller object to stream out multiple values to the client.
 
 6. Add the implementation of the generated client as shown below in order to invoke the `add` operation. 
 
 ```ballerina
 import ballerina/grpc;
 import ballerina/io;
- 
-public function main (string... args) returns error? {
-   StreamingCalcServiceClient ep = new("http://localhost:9090");
-   grpc:StreamingClient calcClient = check ep->sum(
-                                     StreamingCalcServiceMessageListener);
-   foreach var i in 1...10 {
-       check calcClient->send(i);
-   }
-   check calcClient->complete();
+
+StreamingCalcServiceClient ep = check new("http://localhost:9090");
+
+public function main () returns error? {
+    SumStreamingClient calcClient = check ep->sum();
+    foreach var i in 1...10 {
+       check calcClient->sendInt(i);
+    }
+    check calcClient->complete();
+    
+    int|grpc:Error? result = check calcClient->receiveInt();
+    if (result is int) {
+        io:println("Value: ", result);
+    } else if (result is grpc:Error) {
+        io:println("Error: ", result);
+    } else {
+        io:println("Complete.");
+    }
 }
- 
-service object {} StreamingCalcServiceMessageListener = service object {
- 
-   function onMessage(int value) {
-       io:println("Value: ", value);
-   }
- 
-   function onError(error err) {
-       io:println("Error: ", err);
-   }
- 
-   function onComplete() {
-       io:println("Complete.");
-   }
-};
 ```
 
 >**Info:** In the above implementation, the `StreamingCalcServiceMessageListener` service is created along with the client code. This service is used as a callback for processing a streaming result from the remote service. A `grpc:StreamingClient` object is also provided when invoking the remote method of the service. This client is used to send streaming values to the active service request.
@@ -166,7 +156,6 @@ Running executable
 
 ```bash
 Value: 55
-Complete.
 ```
 
 3. Update the client code to use the `incrementalSum` operation, which implements bi-directional streaming as shown below. 
@@ -174,15 +163,32 @@ Complete.
 ```ballerina
 import ballerina/grpc;
 import ballerina/io;
- 
-public function main (string... args) returns error? {
-   StreamingCalcServiceClient ep = new("http://localhost:9090");
-   grpc:StreamingClient calcClient = check ep->incrementalSum(
-                                     StreamingCalcServiceMessageListener);
-   foreach var i in 1...10 {
-       check calcClient->send(i);
-   }
-   check calcClient->complete();
+
+StreamingCalcServiceClient ep = check new("http://localhost:9090");
+
+public function main () returns error? {
+    IncrementalSumStreamingClient streamingClient = check ep->incrementalSum();
+    _ = start readResponse(streamingClient);
+    
+    foreach var i in 1...10 {
+       check streamingClient->sendInt(i);
+    }
+    check streamingClient->complete();
+}
+
+function readResponse(IncrementalSumStreamingClient streamingClient) returns error? {
+    while(true) {
+        int|grpc:Error? result = check streamingClient->receiveInt();
+        if (result is int) {
+            io:println("Value: ", result);
+        } else if (result is grpc:Error) {
+            io:println("Error: ", result);
+            break;
+        } else {
+            io:println("Complete.");
+            break;
+        }
+    }
 }
 ```
 

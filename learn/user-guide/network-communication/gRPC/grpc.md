@@ -17,7 +17,7 @@ redirect_from:
 
 ## Defining the Interface of the Service
 
-In an RPC service, the first step is to define the interface of the service. This is done using an IDL (Interface Definition Language) file. The IDL file of a gRPC service is provided using Protocol Buffers. ProtoBuf is a standard for serializing structured data. It provides the structures required for defining services, operations, and messages used in the service communication. 
+In an RPC service, the first step is to define the interface of the service. This is done using an IDL (Interface Definition Language) file. The IDL file of a gRPC service is provided using Protocol Buffers. Protobuf is a standard for serializing structured data. It provides the structures required for defining services, operations, and messages used in the service communication. 
 
 For example, the diagram below shows a sample RPC service, which contains the actions to do some computational operations, store them, and return a custom type. 
 
@@ -25,7 +25,7 @@ For example, the diagram below shows a sample RPC service, which contains the ac
 
 ### Creating the Proto File
 
-A proto file starts by mentioning the protobuf syntax version. The latest version is `proto3`. This is mentioned as follows.
+A proto file starts by mentioning the Protobuf syntax version. The latest version is `proto3`. This is mentioned as follows.
 
 ```proto
 syntax = "proto3";
@@ -41,9 +41,9 @@ message Person {
 }
 ```
 
-A `Person` entity is represented with the above protobuf message definition. The fields are defined by stating the type first followed by the name of the field and then the field number. In this way, the first field `id` has a scalar type of `int64`, and a field number `1`. 
+A `Person` entity is represented with the above Protobuf message definition. The fields are defined by stating the type first followed by the name of the field and then the field number. In this way, the first field `id` has a scalar type of `int64`, and a field number `1`. 
 
-The type can be a composite type as well (such as enumerations and other message types). A field number is a unique number that is used to identify the field in the encoded binary format. This makes sure that the messages will be backward compatible as long as the same field numbers are retained. This is how ProtoBuf manages to support schema evolution. 
+The type can be a composite type as well (such as enumerations and other message types). A field number is a unique number that is used to identify the field in the encoded binary format. This makes sure that the messages will be backward compatible as long as the same field numbers are retained. This is how Protobuf manages to support schema evolution. 
 
 A field can also be qualified as `singular` or `repeated`. This states that the message can have zero or one of these fields, or else, it can have zero or many of these fields respectively. The default is `singular`. An example of this is shown below. 
 
@@ -59,7 +59,7 @@ message AddResponse {
 
 The `AddRequest` message contains a structure for an additional operation, which has an array of numbers to be added together. The `AddResponse` message contains a `singular result` field of the type `int64`.
 
-Commonly-used ProtoBuf types and the respective  Ballerina types that can be mapped to them are shown below. 
+Commonly-used Protobuf types and the respective  Ballerina types that can be mapped to them are shown below. 
 
 - `int32` - `int`
 - `int64` - `int`
@@ -72,7 +72,7 @@ Commonly-used ProtoBuf types and the respective  Ballerina types that can be map
 
 ### Defining the Service
 
-A service is defined in ProtoBuf as follows. 
+A service is defined in Protobuf as follows. 
 
 ```proto
 service AdminService {
@@ -80,7 +80,7 @@ service AdminService {
 }
 ```
 
-The snippet above defines the `AdminService` RPC service with a method `Add`, which takes in the `AddRequest` message and returns an `AddResponse` message. In this manner, multiple methods can be added to a single service. The following ProtoBuf definition contains the complete service definition for the service shown in the above diagram. 
+The snippet above defines the `AdminService` RPC service with a method `Add`, which takes in the `AddRequest` message and returns an `AddResponse` message. In this manner, multiple methods can be added to a single service. The following Protobuf definition contains the complete service definition for the service shown in the above diagram. 
 
 ```proto
 syntax = "proto3";
@@ -124,7 +124,7 @@ service AdminService {
 }
 ```
 
-The above is the full ProtoBuf definition for the service. 
+The above is the full Protobuf definition for the service. 
 
 ## Implementing gRPC Services and Clients
 

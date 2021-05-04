@@ -35,33 +35,24 @@ The `AdminService_sample_service.bal` file, which contains the service skeleton 
 You can simply fill in the implementation of the service functions that are defined in it. For example, the following is the remote function generated for the `add` gRPC method. 
 
 ```ballerina
-remote function add(grpc:Caller caller, AddRequest value) {
+remote function add(AddRequest value) returns AddResponse|error {
     // Implementation goes here.
-    // You should return a AddResponse
 }
 ```
 
 The implementation of the `add` service function can be completed as follows.
 
 ```ballerina
-remote function add(grpc:Caller caller,
-                    AddRequest value) returns error? {
-    check caller->send(value.numbers.reduce(
-                    function (int n, int i)
-                    returns int => n + i, 0));
-    check caller->complete();
+remote function add(AddRequest value) returns AddResponse|error {
+    int result = value.numbers.reduce(function(int n, int i) returns int => n + i, 0);
+    return {result: result};
 }
 ```
-
-The implementation uses the two `send` and `complete` remote function calls from the `caller` object. The `caller` represents the actual client that is sending requests to the service. Therefore, this object will be used to respond to the client. 
-
-The `send` remote function can be called more than once because of the streaming functionality available with gRPC. After sending multiple calls, the completion of this session is notified by calling the `complete` remote function. In this situation, the `add` invocation only consists of a single return value to the client, and thereby, after a single `send` invocation, the call gets completed immediately.
-
 The below is the full implementation of the service.
 
 ```ballerina
 import ballerina/grpc;
-import ballerina/system;
+import ballerina/uuid;
  
 listener grpc:Listener ep = new (9090);
  
@@ -71,32 +62,28 @@ map<Person> personMap = {};
    descriptor: ROOT_DESCRIPTOR,
    descMap: getDescriptorMap()
 }
-service /AdminService on ep {
+service "AdminService" on ep {
  
-   remote function add(grpc:Caller caller,
-                       AddRequest value) returns error? {
-       check caller->send(value.numbers.reduce(
-                       function (int n, int i)
-                       returns int => n + i, 0));
-       check caller->complete();
-   }
-   remote function multiply(grpc:Caller caller,
-                            MultiplyRequest value) returns error? {
-       check caller->send(value.v1 + value.v2);
-       check caller->complete();
-   }
-   remote function addPerson(grpc:Caller caller,
-                             Person value) returns error? {
-       value.id = system:uuid();
-       personMap[value.id] = <@untainted> value;
-       check caller->send(value.id);
-       check caller->complete();
-   }
-   remote function getPerson(grpc:Caller caller,
-                             GetPersonRequest value) returns error? {
-       check caller->send(personMap[value.id]);
-       check caller->complete();
-   }
+    remote function add(AddRequest value) returns AddResponse|error {
+        int result = value.numbers.reduce(function(int n, int i) returns int => n + i, 0);
+        return {result: result};
+    }
+    remote function multiply(MultiplyRequest value) returns MultiplyResponse|error {
+        return {result: value.v1 * value.v2};
+    }
+    remote function addPerson(Person value) returns AddPersonResponse|error {
+        value.id = uuid:createType1AsString();
+        personMap[value.id] = <@untainted> value;
+        return {id: value.id};
+    }
+    remote function getPerson(GetPersonRequest value) returns Person|error {
+        Person? person = personMap[value.id];
+        if (person is Person) {
+            return person;
+        } else {
+            return error grpc:NotFoundError(string `Person value for id: ${value.id} doesn't exist.`);
+        }
+    }
 }
 ```
 
@@ -120,36 +107,36 @@ Successfully generated ballerina file.
 The service stub/client is generated in the client default module directory. The `AdminService_sample_client.bal` file contains sample code instantiating the gRPC client to access the remote service as follows.
 
 ```ballerina
-public function main (string... args) {
-    AdminServiceBlockingClient blockingEp = new("http://localhost:9090");
+AdminServiceClient ep = check new("http://localhost:9090");
+
+public function main () {
+
 }
 ```
 
-The `blockingEp` object contains the remote functions that correspond to the gRPC service methods. The diagram below shows the VS Code code assist in listing the methods. 
+The `ep` object contains the remote functions that correspond to the gRPC service methods. The diagram below shows the VS Code code assist in listing the methods. 
 
 ![Admin Service Client Remote Functions List](/learn/images/grpc-service-functions-list.png)
 
-Complet automatically-generated code in the `client` module of the `AdminService_sample_client.bal` file. The completed gRPC client code, which invokes all the methods defined in the service is as follows. 
+Complete automatically-generated code in the `client` module of the `AdminService_sample_client.bal` file. The completed gRPC client code, which invokes all the methods defined in the service is as follows. 
 
 ```ballerina
 import ballerina/io;
-import ballerina/grpc;
- 
-public function main (string... args) returns error? {
-   AdminServiceBlockingClient blockingEp = new("http://localhost:9090");
-   [AddResponse, grpc:Headers] addResult = check blockingEp->add({ numbers: [1, 2, 3, 4] });
-   io:println("Add Result: ", addResult[0].result);
-   [MultiplyResponse, grpc:Headers] mulResult = check blockingEp->multiply({ v1: 5, v2: 7 });
-   io:println("Multiply Result: ", mulResult[0].result);
+
+AdminServiceClient adminServiceClient = check new("http://localhost:9090");
+
+public function main () returns error? {
+   AddResponse addResult = check adminServiceClient->add({ numbers: [1, 2, 3, 4] });
+   io:println("Add Result: ", addResult.result);
+   MultiplyResponse mulResult = check adminServiceClient->multiply({ v1: 5, v2: 7 });
+   io:println("Multiply Result: ", mulResult.result);
    Person person = { name: "Jack Dawson", birthYear: 1990 };
-   [AddPersonResponse, grpc:Headers] addPersonResult = check blockingEp->addPerson(person);
-   io:println("Add Person Result: ", addPersonResult[0].id);
-   [Person, grpc:Headers] getPersonResult = check blockingEp->getPerson({ id: addPersonResult[0].id });
-   io:println("Get Person Result: ", getPersonResult[0]);
+   AddPersonResponse addPersonResult = check adminServiceClient->addPerson(person);
+   io:println("Add Person Result: ", addPersonResult.id);
+   Person getPersonResult = check adminServiceClient->getPerson({ id: addPersonResult.id });
+   io:println("Get Person Result: ", getPersonResult);
 }
 ```
-
->**Info:** In the code above, the remote function calls return a tuple value, which contains the service response value and the gRPC header values. The header values are ignored and it simply accesses the response value of the tuple value. 
 
 ## Executing the Implementations
 
@@ -183,7 +170,7 @@ After completing the full code for both the client and the service, you can exec
    Running executable
 
    Add Result: 10
-   Multiply Result: 12
+   Multiply Result: 35
    Add Person Result: eb8d852a-7988-4404-8f7e-173544f2af79
    Get Person Result: {"id":"eb8d852a-7988-4404-8f7e-173544f2af79","name":"Jack Dawson","birthYear":1990}
    ```

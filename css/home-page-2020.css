@@ -51,6 +51,7 @@ display: inline-block;
 float: left;
 
 margin-right: 30px;
+width: 240px;
 }
 
 .cTopLayer , .cBottomLayer {
@@ -76,29 +77,25 @@ color: #fff;
 
 a.cIconLink {
     color: #fff;
-
-padding: 10px 0;
-
+    padding: 10px 0;
     padding-right: 0px;
-
-padding-right: 40px;
-
-background-image: url("/img/go-bg-home.svg");
-
-background-repeat: no-repeat;
-
-background-position: right center;
-
-font-size: 20px;
-
-font-weight: 500;
+    padding-right: 40px;
+    background-image: url("/img/go-bg-home.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
    
 }
+
+
 a.cIconLink:hover {
     color: #20b6b0;
     background-image: url("/img/go-bg-home-hover.svg");
     color: #20b6b0 !important;
 }
+
 
 .cBallerina-io p.cQuotes {
     padding: 30px 0;

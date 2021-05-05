@@ -4,6 +4,7 @@ title: The Network in the Language
 description: See how the Ballerina programming language makes networking concepts like client objects, services, resource functions, and listeners a part of the syntax.
 keywords: ballerina, networking, microservices, programming language, distributed computing, services
 permalink: /learn/user-guide/why-ballerina/the-network-in-the-language/
+intro: See how the Ballerina programming language makes networking concepts like client objects, services, resource functions, and listeners a part of the syntax.
 redirect_from:
   - /why/the-network-in-the-language/
   - /why/the-network-in-the-language

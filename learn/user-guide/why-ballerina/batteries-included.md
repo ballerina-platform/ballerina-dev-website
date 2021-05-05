@@ -4,11 +4,16 @@ title: Batteries Included
 description: Explore the Ballerina platform, which includes a standard library (API docs), Ballerina Central, a documentation and testing framework, and popular IDE plugins.
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
 permalink: /learn/user-guide/why-ballerina/batteries-included/
+intro: Explore the Ballerina platform, which includes a standard library (API docs), Ballerina Central, a documentation and testing framework, and popular IDE plugins.
 redirct_from:
   - /why/batteries-included/
   - /why/batteries-included
   - /learn/user-guide/why-ballerina/batteries-included
 ---
+
+
+
+
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
       <div class="row">

@@ -11,10 +11,45 @@ redirct_from:
   - /learn/user-guide/why-ballerina/batteries-included
 ---
 
+Ballerina includes not only the programming language but also a full platform, which consists of various components of the surrounding ecosystem. The Ballerina platform consists of the following components.
 
+>"Ballerina will enable fast, quality, 12-factor ready deployments out of the box. The strong annotation set is a great ‘batteries included’ approach that will have Devs and Ops collaborating from the start of development." --- Jim Kittle, an application architect at a leading university in the United States.
 
+<img align="center" src="/img/why-pages/batteries-included.svg"/>
 
-<div class="row cBallerina-io-Gray-row cContentRows">
+## Standard Library
+
+This contains a list of modules that help developers rapidly build applications. From HTTP and HTTP/2 to WebSockets, WebSub, AMQP, JSON, XML, ProtoBuf, gRPC, and OpenAPI.
+
+><a class="cGreenLinkArrow" href="/learn/api-docs/ballerina/">Check out the standard library.</a>
+
+## Ballerina Central
+
+This is a centralized module repository where you can discover modules of reusable code and assemble them in powerful ways.
+
+><a class="cGreenLinkArrow" href="https://central.ballerina.io/">Browse the modules</a>
+
+## Documentation
+
+Ballerina has a built-in documentation framework based on markdown named Docerina. Docerina allows you to write unstructured documents with a bit of structure to enable HTML content generation as API documentation.
+
+><a class="cGreenLinkArrow"  href="/learn/how-to-document-ballerina-code/">How to document Ballerina code </a>
+
+## Testing
+
+Ballerina has a built-in test framework named Testerina. Testerina enables you to write testable code and provides a set of building blocks to help you write and execute tests.
+
+><a class="cGreenLinkArrow"  href="/learn/how-to-test-ballerina-code/">How to test Ballerina code</a>
+
+## IDE Plugins
+
+Ballerina provides plugins for popular IDEs so you can code in your preferred platform.
+
+><a class="cGreenLinkArrow" href="/learn/vscode-plugin/">VS Code  </a>
+
+><a class="cGreenLinkArrow" href="/learn/intellij-plugin/">IntelliJ Idea </a>
+
+<!--<div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
@@ -179,7 +214,7 @@ and assemble them in powerful ways.
          </div>
       </div>
    </div>
-</div>
+</div>-->
 
 
 <style>

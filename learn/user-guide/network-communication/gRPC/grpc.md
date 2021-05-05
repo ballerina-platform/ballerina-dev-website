@@ -41,7 +41,7 @@ message Person {
 }
 ```
 
-A `Person` entity is represented with the above Protobuf message definition. The fields are defined by stating the type first followed by the name of the field and then the field number. In this way, the first field `id` has a scalar type of `int64`, and a field number `1`. 
+A `Person` entity is represented with the above Protobuf message definition. The fields are defined by stating the type first followed by the name of the field and then the field number. In this way, the first field `id` has a scalar type of `int64` and a field number `1`. 
 
 The type can be a composite type as well (such as enumerations and other message types). A field number is a unique number that is used to identify the field in the encoded binary format. This makes sure that the messages will be backward compatible as long as the same field numbers are retained. This is how Protobuf manages to support schema evolution. 
 
@@ -134,7 +134,6 @@ For instructions on implementing the above service and writing a client to invok
 ## Performing gRPC Streaming
 
 For instructions on this, see [Performing gRPC Streaming](/learn/network-communication/grpc/performing-grpc-streaming/).
-
 
 
 

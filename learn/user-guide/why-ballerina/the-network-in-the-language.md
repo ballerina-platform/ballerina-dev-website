@@ -1,12 +1,13 @@
 ---
-layout: ballerina-layer-page
+layout: ballerina-left-nav-pages-swanlake
 title: The Network in the Language
 description: See how the Ballerina programming language makes networking concepts like client objects, services, resource functions, and listeners a part of the syntax.
 keywords: ballerina, networking, microservices, programming language, distributed computing, services
-permalink: /why-ballerina/the-network-in-the-language/
+permalink: /learn/user-guide/why-ballerina/the-network-in-the-language/
 redirect_from:
   - /why/the-network-in-the-language/
   - /why/the-network-in-the-language
+  - /learn/user-guide/why-ballerina/the-network-in-the-language
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
@@ -18,7 +19,6 @@ redirect_from:
                      <div class="rst-content">
                         <div role="main">
                            <div class="section">
-                             <h1 id="the-network-in-the-language">The Network in the Language</h1>
                               <p>In a microservice architecture, smaller services are built, deployed and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">Fallacies of Distributed Computing</a> as a part of their application logic.</p>
                               <p>For decades, programming languages have treated networks simply as I/O sources. Ballerina treats the network differently by making networking concepts like client objects, services, resource functions, and listeners a part of the syntax. So you can use the language-provided constructs to write network programs that just work.</p>
                               <h2 id="services">Services</h2>

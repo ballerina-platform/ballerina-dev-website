@@ -1,12 +1,13 @@
 ---
-layout: ballerina-layer-page
+layout: ballerina-left-nav-pages-swanlake
 title: From Code to Cloud
 description: See how the Ballerina programming language has built-in cloud support, which helps developers deploy to cloud platforms like Docker and Kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker
-permalink: /why-ballerina/from-code-to-cloud/
+permalink: /learn/user-guide/why-ballerina/from-code-to-cloud/
 redirct_from:
   - /why/from-code-to-cloud/
   - /why/from-code-to-cloud
+  - /learn/user-guide/why-ballerina/from-code-to-cloud
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
@@ -18,7 +19,6 @@ redirct_from:
                      <div class="rst-content">
                         <div role="main">
                            <div class="section">
-                               <h1>From Code to Cloud</h1>
                               <p>In the past, developers simply wrote their program, built it and ran it. Today, developers also need to think of the various deployment options such as Docker, Kubernetes, serverless environments and service meshes. But this deployment process is not part of the programming experience for developers. They have to write code in a certain way to work well in a given execution environment, and removing this from the programming problem isn’t good.</p>
                               <p>
                                  Ballerina specializes in moving from code to cloud while providing a unique developer experience. Its compiler can be extended to read annotations defined in the source code and generate artifacts to deploy your code into different clouds. These artifacts can be Dockerfiles, Docker images, Kubernetes YAML files or serverless functions.

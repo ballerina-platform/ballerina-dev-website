@@ -1,12 +1,13 @@
 ---
-layout: ballerina-layer-page
+layout: ballerina-left-nav-pages-swanlake
 title: Sequence Diagrams for Programming
 description: See why the sequence diagram is the foundation for designing the syntax and semantics of the Ballerina programming language.
 keywords: ballerina, programming lanaguage, sequence diagram, concurrency
-permalink: /why-ballerina/sequence-diagrams-for-programming/
+permalink: /learn/user-guide/why-ballerina/sequence-diagrams-for-programming/
 redirect_from:
   - /why/sequence-diagrams-for-programming/
   - /why/sequence-diagrams-for-programming
+  - /learn/user-guide/why-ballerina/sequence-diagrams-for-programming
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
@@ -18,7 +19,6 @@ redirect_from:
                      <div class="rst-content">
                         <div role="main">
                            <div class="section">
-                            <h1>Sequence Diagrams for Programming</h1>
                               <p>In today’s cloud-era, we need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case we need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.</p>
                               <p>That’s why it is the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model solutions based on higher-level abstractions.</p>
                               <h2 id="sequence-diagrams-in-ballerina">Sequence Diagrams in Ballerina</h2>

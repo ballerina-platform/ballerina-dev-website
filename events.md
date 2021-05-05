@@ -499,7 +499,7 @@ redirect_from:
    </td>
    <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">Register Now</a></td>
    </tr>
-   </table> -->
+   </table> 
 <style>
    .navbar-nav > li.cActive > a {
    color: rgb(87, 89, 93) !important;

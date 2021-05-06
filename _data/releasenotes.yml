@@ -7,6 +7,39 @@
     - title: Swan Lake Alpha 4 
       url: /downloads/swan-lake-release-notes/swan-lake-alpha4
       active: swan-lake-alpha4
+    - title: Swan Lake Alpha 3 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha3
+      active: swan-lake-alpha3
+    - title: Swan Lake Alpha 2 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha2
+      active: swan-lake-alpha2
+    - title: Swan Lake Alpha 1 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha1
+      active: swan-lake-alpha1
+    - title: Swan Lake Preview 8
+      url: /downloads/swan-lake-release-notes/swan-lake-preview8
+      active: swan-lake-preview8
+    - title: Swan Lake Preview 7
+      url: /downloads/swan-lake-release-notes/swan-lake-preview7
+      active: swan-lake-preview7
+    - title: Swan Lake Preview 6
+      url: /downloads/swan-lake-release-notes/swan-lake-preview6
+      active: swan-lake-preview6
+    - title: Swan Lake Preview 5
+      url: /downloads/swan-lake-release-notes/swan-lake-preview5
+      active: swan-lake-preview5
+    - title: Swan Lake Preview 4
+      url: /downloads/swan-lake-release-notes/swan-lake-preview4
+      active: swan-lake-preview4
+    - title: Swan Lake Preview 3
+      url: /downloads/swan-lake-release-notes/swan-lake-preview3
+      active: swan-lake-preview3
+    - title: Swan Lake Preview 2
+      url: /downloads/swan-lake-release-notes/swan-lake-preview2
+      active: swan-lake-preview2
+    - title: Swan Lake Preview 1
+      url: /downloads/swan-lake-release-notes/swan-lake-preview1
+      active: swan-lake-preview1
 
 - title: 1.2 
   url: '#'

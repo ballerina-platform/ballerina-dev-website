@@ -3,6 +3,25 @@
   #url: /learn/user-guide/getting-started/
   #active: getting-started
 
+- title: Why Ballerina 
+  url: '#'
+  sublinks:
+    - title: The Network in the Language 
+      url: /learn/user-guide/why-ballerina/the-network-in-the-language/
+      active: the-network-in-the-language
+    - title: Network-Aware Type System 
+      url: /learn/user-guide/why-ballerina/network-aware-type-system/
+      active: network-aware-type-system
+    - title: From Code to Cloud 
+      url: /learn/user-guide/why-ballerina/from-code-to-cloud/
+      active: from-code-to-cloud
+    - title: Batteries Included
+      url: /learn/user-guide/why-ballerina/batteries-included/
+      active: batteries-included
+    #- title: Sequence Diagrams for Programming
+      #url: /learn/user-guide/why-ballerina/sequence-diagrams-for-programming/
+      #active: sequence-diagrams-for-programming
+
 - title: Getting Started 
   url: '#'
   sublinks:
@@ -44,6 +63,9 @@
     - title: WebSocket
       url: /learn/user-guide/network-communication/websocket/
       active: websocket
+    - title: GraphQL
+      url: /learn/user-guide/network-communication/graphql/
+      active: graphql
 
 - title: Data and Events Processing 
   url: '#' 

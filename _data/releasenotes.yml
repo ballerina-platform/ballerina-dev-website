@@ -44,44 +44,62 @@
 - title: 1.2 
   url: '#'
   sublinks:
-    - title: Structuring Ballerina Code
-      url: /learn/user-guide/structuring-ballerina-code/
-      active: structuring-ballerina-code
-    - title: Documenting Ballerina Code
-      url: /learn/user-guide/documenting-ballerina-code/
-      active: documenting-ballerina-code
-    - title: Coding Conventions
-      url: /learn/user-guide/coding-conventions/
-      active: coding-conventions
-    - title: Running Ballerina Code
-      url: /learn/user-guide/running-ballerina-code/
-      active: running-ballerina-code
-    - title: Publishing Packages to Ballerina Central
-      url: /learn/user-guide/publishing-packages-to-ballerina-central
-      active: publishing-packages-to-ballerina-central
+    - title: 1.2.13
+      url: /downloads/swan-lake-release-notes/1.2.13
+      active: 1.2.13
+    - title: 1.2.12
+      url: /downloads/swan-lake-release-notes/1.2.12
+      active: 1.2.12
+    - title: 1.2.11
+      url: /downloads/swan-lake-release-notes/1.2.11
+      active: 1.2.11
+    - title: 1.2.10
+      url: /downloads/swan-lake-release-notes/1.2.10
+      active: 1.2.10
+    - title: 1.2.9
+      url: /downloads/swan-lake-release-notes/1.2.9
+      active: 1.2.9
+    - title: 1.2.8
+      url: /downloads/swan-lake-release-notes/1.2.8
+      active: 1.2.8
+    - title: 1.2.7
+      url: /downloads/swan-lake-release-notes/1.2.7
+      active: 1.2.7
+    - title: 1.2.6
+      url: /downloads/swan-lake-release-notes/1.2.6
+      active: 1.2.6
+    - title: 1.2.5
+      url: /downloads/swan-lake-release-notes/1.2.5
+      active: 1.2.5
+    - title: 1.2.4
+      url: /downloads/swan-lake-release-notes/1.2.4
+      active: 1.2.4
+    - title: 1.2.3
+      url: /downloads/swan-lake-release-notes/1.2.3
+      active: 1.2.3
+    - title: 1.2.2
+      url: /downloads/swan-lake-release-notes/1.2.2
+      active: 1.2.2
+    - title: 1.2.1
+      url: /downloads/swan-lake-release-notes/1.2.1
+      active: 1.2.1
+    - title: 1.2.0
+      url: /downloads/swan-lake-release-notes/1.2.0
+      active: 1.2.0
 
-- title: 1.1
-  url: '#' 
-  sublinks:
-    - title: HTTP
-      url: /learn/user-guide/network-communication/http/
-      active: http
-    - title: gRPC
-      url: /learn/user-guide/network-communication/grpc/
-      active: grpc
-    - title: WebSocket
-      url: /learn/user-guide/network-communication/websocket/
-      active: websocket
-    - title: GraphQL
-      url: /learn/user-guide/network-communication/graphql/
-      active: graphql
+#- title: 1.1
+  #url: '#' 
+  #sublinks:
+    #- title: 1.1.4
+      #url: /downloads/swan-lake-release-notes/1.1.4
+      #active: 1.1.4
 
-- title: 1.0 
-  url: '#' 
-  sublinks:
-    - title: Using Language-Integrated Queries
-      url: /learn/user-guide/data-and-events-processing/using-language-integrated-queries/
-      active: using-language-integrated-queries
+#- title: 1.0 
+  #url: '#' 
+  #sublinks:
+    #- title: 1.0.5
+      #url: /downloads/swan-lake-release-notes/1.0.5
+      #active: 1.0.5
 
 
       

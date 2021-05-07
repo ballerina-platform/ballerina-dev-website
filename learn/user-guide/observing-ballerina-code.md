@@ -112,7 +112,7 @@ $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included h
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-ballerina: started publishing traces to Jaeger on localhost:6831
+ballerina: started publishing traces to Jaeger on localhost:55680
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
@@ -321,7 +321,7 @@ tracingProvider="jaeger"
 
 [ballerinax.jaeger]
 agentHostname="localhost"
-agentPort=6831
+agentPort=55680
 samplerType="const"
 samplerParam=1.0
 reporterFlushInterval=2000
@@ -333,7 +333,7 @@ The table below provides the descriptions of each configuration option and possi
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
 ballerina.observe. agentHostname | Hostname of the Jaeger agent | localhost | IP or hostname of the Jaeger agent. If it is running on the same node as Ballerina, it can be localhost. 
-ballerina.observe. agentPort | Port of the Jaeger agent | 6831 | The port on which the Jaeger agent is listening.
+ballerina.observe. agentPort | Port of the Jaeger agent | 55680 | The port on which the Jaeger agent is listening.
 ballerina.observe. samplerType | Type of the sampling methods used in the Jaeger tracer. | const | `const`, `probabilistic`, or `ratelimiting`.
 ballerina.observe. samplerParam | It is a floating value. Based on the sampler type, the effect of the sampler param varies | 1.0 | For `const` `0` (no sampling) or `1` (sample all spans), for `probabilistic` `0.0` to `1.0`, for `ratelimiting` any positive integer (rate per second).
 ballerina.observe. reporterFlushInterval | The Jaeger client will be sending the spans to the agent at this interval. | 2000 | Any positive integer value.

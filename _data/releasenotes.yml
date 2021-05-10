@@ -44,48 +44,50 @@
 - title: 1.2 Release Notes
   url: '#'
   sublinks:
-    - title: 1.2.13 Release Note
+    - title: 1.2.13 
       url: /downloads/1.2.x-release-notes/release-note-1-2-13
       active: release-note-1-2-13
-    - title: 1.2.12 Release Note
+    - title: 1.2.12 
       url: /downloads/1.2.x-release-notes/release-note-1-2-12
       active: release-note-1-2-12
-    #- title: 1.2.11
-      #url: /downloads/release-notes/1.2.11
-      #active: 1.2.11
-    #- title: 1.2.10
-      #url: /downloads/release-notes/1.2.10
-      #active: 1.2.10
-    #- title: 1.2.9
-      #url: /downloads/release-notes/1.2.9
-      #active: 1.2.9
-    #- title: 1.2.8
-      #url: /downloads/release-notes/1.2.8
-      #active: 1.2.8
-    #- title: 1.2.7
-      #url: /downloads/release-notes/1.2.7
-      #active: 1.2.7
-    #- title: 1.2.6
-      #url: /downloads/release-notes/1.2.6
-      #active: 1.2.6
-    #- title: 1.2.5
-      #url: /downloads/release-notes/1.2.5
-      #active: 1.2.5
-    #- title: 1.2.4
-      #url: /downloads/release-notes/1.2.4
-      #active: 1.2.4
-    #- title: 1.2.3
-      #url: /downloads/release-notes/1.2.3
-      #active: 1.2.3
-    #- title: 1.2.2
-      #url: /downloads/release-notes/1.2.2
-      #active: 1.2.2
-    #- #title: 1.2.1
-      #url: /downloads/release-notes/1.2.1
-      #active: 1.2.1
-    #- title: 1.2.0
-      #url: /downloads/release-notes/1.2.0
-      #active: 1.2.0
+    - title: 1.2.11 
+      url: /downloads/1.2.x-release-notes/release-note-1-2-11
+      active: release-note-1-2-11
+    - title: 1.2.10
+      url: /downloads/1.2.x-release-notes/release-note-1-2-10
+      active: release-note-1-2-10
+    - title: 1.2.9 
+      url: /downloads/1.2.x-release-notes/release-note-1-2-9
+      active: release-note-1-2-9
+    - title: 1.2.8
+      url: /downloads/1.2.x-release-notes/release-note-1-2-8
+      active: release-note-1-2-8
+    - title: 1.2.7
+      url: /downloads/1.2.x-release-notes/release-note-1-2-7
+      active: release-note-1-2-7
+    - title: 1.2.6
+      url: /downloads/1.2.x-release-notes/release-note-1-2-6
+      active: release-note-1-2-6
+    - title: 1.2.5
+      url: /downloads/1.2.x-release-notes/release-note-1-2-5
+      active: release-note-1-2-5
+    - title: 1.2.4
+      url: /downloads/1.2.x-release-notes/release-note-1-2-4
+      active: release-note-1-2-4
+    - title: 1.2.3
+      url: /downloads/1.2.x-release-notes/release-note-1-2-3
+      active: release-note-1-2-3
+    - title: 1.2.2
+      url: /downloads/1.2.x-release-notes/release-note-1-2-2
+      active: release-note-1-2-2
+    - title: 1.2.1
+      url: /downloads/1.2.x-release-notes/release-note-1-2-1
+      active: release-note-1-2-1
+    - title: 1.2.0
+      url: /downloads/1.2.x-release-notes/release-note-1-2-0
+      active: release-note-1-2-0
+
+
 
 #- title: 1.1
   #url: '#' 

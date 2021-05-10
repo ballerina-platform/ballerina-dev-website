@@ -1,11 +1,8 @@
 ---
-layout: ballerina-left-nav-release-notes
-title: 1.2.12 Release Note
-permalink: /downloads/1.2.x-release-notes/1.2.12-release-note/
-active: 1.2.12-release-note
-redirect_from: 
-    - /downloads/1.2.x-release-notes/1.2.12-release-note
+layout: ballerina-blank-page
+title: Release Note
 ---
+
 ### Overview of jBallerina 1.2.12
 
 The jBallerina 1.2.12 patch release improves upon the 1.2.11 release by addressing a number of [issues](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.12%22+is%3Aclosed).

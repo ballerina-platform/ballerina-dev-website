@@ -1,7 +1,12 @@
 ---
-layout: ballerina-blank-page
-title: Release Note
+layout: ballerina-left-nav-release-notes
+title: 1.2.10 
+permalink: /downloads/1.2.x-release-notes/release-note-1-2-10/
+active: release-note-1-2-10
+redirect_from: 
+    - /downloads/1.2.x-release-notes/release-note-1-2-10
 ---
+
 ### Overview of jBallerina 1.2.10
 
 The jBallerina 1.2.10 patch release improves upon the 1.2.9 release by addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.10%22+label%3AType%2FBug+is%3Aclosed).

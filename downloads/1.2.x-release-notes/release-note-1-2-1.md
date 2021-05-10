@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release Note
+layout: ballerina-left-nav-release-notes
+title: 1.2.1
+permalink: /downloads/1.2.x-release-notes/release-note-1-2-1/
+active: release-note-1-2-1
+redirect_from: 
+    - /downloads/1.2.x-release-notes/release-note-1-2-1
 ---
 
 ### Overview of jBallerina 1.2.1

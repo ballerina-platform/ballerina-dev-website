@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 1.2.12 Release Note
+title: 1.2.12 
 permalink: /downloads/1.2.x-release-notes/release-note-1-2-12/
 active: release-note-1-2-12
 redirect_from: 

@@ -755,23 +755,23 @@ RabbitMQ, and JMS) support observability.
 
 ### Organization name changes of connectors
 
-  **Connector/Module**   **Old Org**              **New Org**
-  ---------------------- ------------------------ -------------------------------
-  JIRA                   wso2/jira7               ballerina/jira7
-  GoogleSpreadSheet      wso2/gsheets4            ballerinax/googleapis.sheets4
-  Twilio                 wso2/twilio              ballerinax/twilio
-  FTP                    wso2/ftp                 ballerina/ftp
-  Redis                  wso2/redis               ballerina/redis
-  JMS                    wso2/jms                 ballerina/java.jms
-  MongoDB                wso2/mongodb             ballerina/mongodb
-  GitHub                 wso2/github4             ballerinax/github4
-  Salesforce             wso2/sfdc46              ballerinax/sfdc46
-  SOAP                   wso2/soap                ballerina/soap
-  Gmail                  wso2/gmail               ballerinax/googleapis.gmail
-  AmazonSQS              wso2/amazonsqs           ballerinax/aws.sqs
-  AmazonS3               wso2/amazons3            ballerinax/aws.s3
-  Java                   ballerinax/java          ballerina/java
-  Java Arrays            ballerinax/java.arrays   ballerina/java.arrays
+**Connector/Module**|**Old Org**|**New Org**
+:-----:|:-----:|:-----:
+JIRA|wso2/jira7|ballerina/jira7
+GoogleSpreadSheet|wso2/gsheets4|ballerinax/googleapis.sheets4
+Twilio|wso2/twilio|ballerinax/twilio
+FTP|wso2/ftp|ballerina/ftp
+Redis|wso2/redis|ballerina/redis
+JMS|wso2/jms|ballerina/java.jms
+MongoDB|wso2/mongodb|ballerina/mongodb
+GitHub|wso2/github4|ballerinax/github4
+Salesforce|wso2/sfdc46|ballerinax/sfdc46
+SOAP|wso2/soap|ballerina/soap
+Gmail|wso2/gmail|ballerinax/googleapis.gmail
+AmazonSQS|wso2/amazonsqs|ballerinax/aws.sqs
+AmazonS3|wso2/amazons3|ballerinax/aws.s3
+Java|ballerinax/java|ballerina/java
+Java Arrays|ballerinax/java.arrays|ballerina/java.arrays
 
 ### Added new connectors
 

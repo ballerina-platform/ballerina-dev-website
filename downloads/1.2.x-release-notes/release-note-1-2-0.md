@@ -63,7 +63,7 @@ query syntax allowing easy and safe manipulation of XML data.
 XML step expressions allow to query the children of an XML element or
 children of members of an XML sequence.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 xml x = xml `<root>
                  <person>
                      <name>
@@ -103,7 +103,7 @@ xml allChildren = x/*;
 XML filter expression allows filtering an XML sequence by an element
 name.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 xml x = xml `<root>
                 <rectangle length="5" width="10"/>
                 <rectangle length="5" width="5"/>
@@ -116,7 +116,7 @@ xml rectangles = x/*.<rectangle>;
 
 #### XML attribute access
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 xmlns "www.ballerina.io/ns" as ns;
 xml val = xml `<element type="fixed" ns:count="2></element>`;
 string|error 'type = val.'type;
@@ -132,7 +132,7 @@ not available. Attributes with namespace prefix are accessed using the
 `value.prefix:attrName` syntax where the XML prefix must be declared in
 the scope.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 xml val = xml `<element type="fixed"></element>`;
 string|error nonEx = val.nonExsistent; // result in error
 string|error? nonExOptional = val?.nonExsistent; // result in nil
@@ -160,7 +160,7 @@ clauses. The `let` clause binds variables. The `select` clause is
 evaluated for each iteration; the result of the query expression is a
 list whose members are the result of the `select` clause.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 Person[] outputPersonList =
        from var person in personList
        let string depName = "WSO2", string replaceName = "Alexander"
@@ -181,7 +181,7 @@ same way as the clauses in the query pipeline of a query expression. The
 query action is executed as follows. For each input frame `f` emitted by
 the query pipeline, execute the block-statement with `f` in the scope.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
     error? result = from var student in studentList
                     where student.score > 1.0
                     do {
@@ -223,7 +223,7 @@ Iterable basic types would have a `toStream()` method to convert to a
 stream; these should handle mutation similarly to iterators; as of now,
 it supports only for arrays.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 stream<Person, error> personStream = getPersonStream();
 stream<Person, error> filteredPersonStream = personStream.filter(function (Person person) returns boolean {
    return person.age > 100 && person.name != "James";
@@ -239,7 +239,7 @@ body, `{ return E; }`. The following is an example where a `Person`
 record is mapped to an `Employee` record using an expression-bodied
 function.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 function toEmployee(Person p, string pos) returns Employee => {
     name: p.fname + " " + p.lname,
     designation: pos
@@ -255,7 +255,7 @@ to the variables occurring in `B`. Then `E2` is evaluated with those
 variables in scope; the resulting value is the result of the let
 expression.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 const int globalVar = 2;
 public function main() {
     int b = let int x = 4, int y = 3 in x * y * globalVar; // b = 4 * 3 * 2 = 24
@@ -270,7 +270,7 @@ A mapping constructor expression can now have a spread field. A spread
 field can be used with another mapping value `V` to include all of the
 fields in `V` when creating the new mapping value.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 type Foo record {|
     string s;
     decimal d;
@@ -300,7 +300,7 @@ A mapping constructor expression can also contain just a variable name
 `foo: foo`. The name of the variable is considered the key while the
 variable reference is considered the expression.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 type Employee record {|
     string name;
     string department;
@@ -328,7 +328,7 @@ additional bit of documentation called `Deprecated` documentation. The
 construct was deprecated and suitable alternate options, which should be
 used instead.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 # Creates and returns a `Baz` object.
 #
 # # Deprecated
@@ -345,7 +345,7 @@ public function foo() returns Baz {
 Metadata (documentation and annotations) are now allowed on record and
 object fields.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 // An annotation allowed on record fields.
 annotation foo on record field;
 
@@ -401,7 +401,7 @@ lang library modules.
     -   `Comment`
     -   `Text`
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 import ballerina/lang.'int;
 import ballerina/lang.'string;  
 
@@ -423,7 +423,7 @@ these functions are statically type checked and only allowed on the
 built-in sub type `Element`. The same applies to other built-in sub
 types and functions.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 import ballerina/lang.'xml as xmllib;
 
 public function main() {
@@ -436,7 +436,7 @@ The functions `isElement()`, `isProcessingInstruction()`, `isComment()`
 and `isText()` have been removed. The same functionality can be achieved
 using type testing as follows.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 import ballerina/lang.'xml;
 public function main() {
     xml cmnt = xml `<!-- hello from comment -->`;
@@ -455,7 +455,7 @@ accepts `”true”` or `”false”` in any combination of lower/upper case as
 well as `”1”` and `”0”`, which evaluates to `true` and `false`
 respectively. An error is returned for any other `string` value.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 import ballerina/lang.'boolean;
 
 public function main() {
@@ -559,7 +559,7 @@ means by default, those functions apply to leading headers. In order to
 apply trailer headers, you need to set the position as trailing as shown
 below.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 string trailerHeader = response.getHeader("foo", position = "trailing");
 ```
 
@@ -591,7 +591,7 @@ setting more than one of those fields and a valid function.
 
 For example,
 
-``` {.language-plaintext .line-numbers .basic}
+```ballerina
 message Person {
   oneof identity {
      string passportId = 1;
@@ -600,7 +600,7 @@ message Person {
 }
 ```
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 public type Person record {|
    string passportId?;
    string nic?;
@@ -630,13 +630,13 @@ records in Ballerina.
 
 For example,
 
-``` {.language-plaintext .line-numbers .basic}
+```ballerina
 message HelloRequest {
     map<int32, string> tags = 4;
 }
 ```
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 public type HelloRequest record {|
     record {| int key; string value; |}[] tags = [];
 |};
@@ -648,7 +648,7 @@ Client retry is only supported in unary blocking calls. This will be
 supported in other messaging patterns in the future. Retry functionality
 can be enabled using the following retry configuration.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 grpc:ClientConfiguration clientConfiguration = {
    retryConfiguration: {
        retryCount: 5,
@@ -716,7 +716,7 @@ The Ballerina Task module is enhanced with multiple attachment support.
 Named arguments for task attachments will not work now. For example, the
 following code will no longer compile.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
     task:Scheduler timer = new({ intervalInMillis: 1000 });
     Person person = { name: "Sam", age: 29 };
     var attachResult = timer.attach(TimerService, attachment = p); 
@@ -724,7 +724,7 @@ following code will no longer compile.
 
 To make it work, change it as follows.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
     task:Scheduler timer = new({ intervalInMillis: 1000 });
     Person person = { name: "Sam", age: 29 };
     var attachResult = timer.attach(TimerService, person);
@@ -735,7 +735,7 @@ To make it work, change it as follows.
 Now, you can pass any number of attachments to the `attach()` function.
 For example,
 
-``` {.line-numbers .language-ballerina}
+```ballerina
     task:Scheduler timer = new({ intervalInMillis: 1000 });
     Person person = { name: "Sam", age: 29 };
     Account account = { number: 188008, balance: 1233.02 };
@@ -798,7 +798,7 @@ Deployment
 
 Support for setting environment variables to the Docker image.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 @docker:Config {
     env:{
         testVar1: "value1",
@@ -811,7 +811,7 @@ The default base image for the generated Docker images have changed to
 `ballerina/jre8:v1`. Also, now, Docker images can be generated for
 `main()` functions.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 @docker:Config {}
 public function main() {
     io:println("Hello, World!");
@@ -822,7 +822,7 @@ Ability to generate Docker images by only adding the import as
 `import ballerina/docker as _`. This will generate the Docker images
 with minimum configurations for services, listeners, and main functions.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 import ballerina/http;
 import ballerina/docker as _;
 
@@ -843,7 +843,7 @@ service helloWorld on helloWorldEP {
 -   Support for setting a port for Kubernetes NodePort Service types is
     provided.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 @kubernetes:Service {
     nodePort: 31100,
     serviceType: "NodePort"
@@ -853,7 +853,7 @@ service helloWorld on helloWorldEP {
 -   Support for mounting the `ballerina.conf` file as a Kubernetes
     Secret is provided.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 @kubernetes:Secret {
     conf: "./conf/ballerina.conf"
 }
@@ -862,7 +862,7 @@ service helloWorld on helloWorldEP {
 -   Support for enabling Rolling Updates for Kubernetes Deployments is
     provided.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 @kubernetes:Deployment {
     updateStrategy: {
             strategyType: kubernetes:STRATEGY_ROLLING_UPDATE,
@@ -877,7 +877,7 @@ service helloWorld on helloWorldEP {
     the Kubernetes artifacts with minimum configurations for services,
     listeners, and main functions.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 import ballerina/http;
 import ballerina/kubernetes as _;
 
@@ -898,7 +898,7 @@ service helloWorld on helloWorldEP {
 A new `@knative:Service` annotation is introduced. It allows you to
 generate Knative Service artifacts for Knative.
 
-``` {.line-numbers .language-ballerina}
+```ballerina
 import ballerina/http;
 import ballerina/knative;
 
@@ -932,7 +932,7 @@ to be provided) or for standard Java classes.
 
 **Command:**
 
-``` {.highlight .line-numbers .language-bash}
+```bash
 ballerina bindgen [(-cp|--classpath) <classpath>...]
                   [(-o|--output) <output>]
                   (<class-name>...)

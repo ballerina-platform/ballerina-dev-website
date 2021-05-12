@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release note
+layout: ballerina-left-nav-release-notes
+title: Swan Lake Preview 3
+permalink: /downloads/swan-lake-release-notes/swan-lake-preview3/
+active: swan-lake-preview3
+redirect_from: 
+    - /downloads/swan-lake-release-notes/swan-lake-preview3
 ---
 ### Overview of Ballerina Swan Lake Preview 3
 

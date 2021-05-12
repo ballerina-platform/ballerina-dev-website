@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release Note
+layout: ballerina-left-nav-release-notes
+title: Swan Lake Alpha3
+permalink: /downloads/swan-lake-release-notes/swan-lake-alpha3/
+active: swan-lake-alpha3
+redirect_from: 
+    - /downloads/swan-lake-release-notes/swan-lake-alpha3
 ---
 ### Overview of Ballerina Swan Lake Alpha3
 

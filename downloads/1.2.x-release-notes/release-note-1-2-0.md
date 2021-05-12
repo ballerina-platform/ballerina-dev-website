@@ -1,0 +1,1010 @@
+---
+layout: ballerina-left-nav-release-notes
+title: 1.2.0
+permalink: /downloads/1.2.x-release-notes/release-note-1-2-0/
+active: release-note-1-2-0
+redirect_from: 
+    - /downloads/1.2.x-release-notes/release-note-1-2-0
+---
+
+Overview of jBallerina 1.2.0
+============================
+
+jBallerina 1.2.0 is the first major release of 2020 and it includes a
+new set of features and significant improvements to the compiler,
+runtime, standard library, and developer tooling. It is based on the
+2020R1 version of the Language Specification.
+
+Highlights
+==========
+
+-   Redesigned XML, Stream and Query support
+-   Based on a stable language specification: 2020R1
+-   Significant reduction in overall compilation time
+-   Added cookies and trailer support in HTTP
+-   Revamped Cache module
+-   Redesigned oneof field and map field support in gRPC and added
+    client retry support for gRPC blocking unary calls
+-   Added custom serializer/deserializer and Avro support in the Kafka
+    connector
+-   Introduced new Database connectors
+-   Introduced new client connectors (email, Slack, and Azure
+    time-series)
+-   Support to mock functions when writing tests
+-   Test and code coverage report
+-   New tool to generate Ballerina bindings for Java APIs
+-   Several critical bug fixes
+
+What’s new in jBallerina 1.2.0?
+===============================
+
+Language
+--------
+
+The language implementation is based on the stable language
+specification version 2020R1. This implementation introduces a new set
+of features aimed at making integration further easier for the user. In
+addition to that, the XML and Lock implementations are out of their
+preview/experimental status.
+
+In addition to new features, this release also includes critical bug
+fixes and fixes done to align the implementation with the language
+specification. Some of these changes are backward incompatible. For a
+complete list of changes done since 1.1.0, see the
+`Language changes since jBallerina 1.1.0` section.
+
+### New XML design
+
+This release introduces a revamped XML support along with XPath-like
+query syntax allowing easy and safe manipulation of XML data.
+
+#### XML navigation expression
+
+XML step expressions allow to query the children of an XML element or
+children of members of an XML sequence.
+
+```ballerina
+xml x = xml `<root>
+                 <person>
+                     <name>
+                         <fname>William</fname>
+                         <lname>Martin</lname>
+                     </name>
+                 </person>
+                 <person>
+                     <name>
+                         <fname>David</fname>
+                         <lname>Taylor</lname>
+                     </name>
+                 </person>
+                 <person>
+                     <name>
+                         <fname>Daniel</fname>
+                         <lname>Wilson</lname>
+                     </name>
+                 </person>
+             </root>`;
+
+// Select all children items, which are XML elements.
+xml allElementChildren = x/<*>;
+
+// Match first-level children with element name `person`.
+// Then, match the second level with element name `name`
+// and the third level with element name `fname`.
+xml fnameItems = x/<person>/<name>/<fname>;
+
+// Select all descendants, which match element name `fname`.
+xml fnameDescendents = x/**/<fname>;
+
+// Select all children items of `x`.
+xml allChildren = x/*;
+```
+
+XML filter expression allows filtering an XML sequence by an element
+name.
+
+```ballerina
+xml x = xml `<root>
+                <rectangle length="5" width="10"/>
+                <rectangle length="5" width="5"/>
+                <circle radius="2"/>
+                <square side="6"/>
+            </root>`;
+
+xml rectangles = x/*.<rectangle>;
+```
+
+#### XML attribute access
+
+```ballerina
+xmlns "www.ballerina.io/ns" as ns;
+xml val = xml `<element type="fixed" ns:count="2></element>`;
+string|error 'type = val.'type;
+string|error count = val.ns:count;
+```
+
+XML attribute access is now lax typed. This means that compile-time type
+checking is relaxed and moved to runtime. Accessing a non-existent
+attribute or using field access expression on a non-XML element item
+will result in an error being returned. If optional field access syntax
+is used, then nil will be returned instead of an error when the field is
+not available. Attributes with namespace prefix are accessed using the
+`value.prefix:attrName` syntax where the XML prefix must be declared in
+the scope.
+
+```ballerina
+xml val = xml `<element type="fixed"></element>`;
+string|error nonEx = val.nonExsistent; // result in error
+string|error? nonExOptional = val?.nonExsistent; // result in nil
+```
+
+### New language-integrated query design
+
+#### Query expression
+
+A query expression provides a language-integrated query feature using
+SQL-like syntax.
+
+In its most basic form, a query expression consists of four kinds of
+clauses: `from`, `let`, `where`, and `select`. The first clause must be
+a `from` clause and the last clause must be a `select` clause. The
+result of the query expression is a list. In this basic form, a query
+expression is just a list comprehension.
+
+The `from` clause works similarly to a foreach statement. It creates an
+iterator from an iterable value and then binds variables to each value
+returned by the iterator. The `where` clause is a `boolean` expression,
+which can refer to variables bound by the `from` clause; when the
+`where` expression evaluates to `false`, the iteration skips following
+clauses. The `let` clause binds variables. The `select` clause is
+evaluated for each iteration; the result of the query expression is a
+list whose members are the result of the `select` clause.
+
+```ballerina
+Person[] outputPersonList =
+       from var person in personList
+       let string depName = "WSO2", string replaceName = "Alexander"
+       where person.deptAccess == "A" && person.firstName == "Alex"
+       select {
+              firstName: replaceName,
+              lastName: person.lastName,
+              deptAccess: depName
+       };
+```
+
+As of now, query expressions are supported by lists and streams.
+
+#### Query action
+
+The clauses in the query pipeline of a query action are executed in the
+same way as the clauses in the query pipeline of a query expression. The
+query action is executed as follows. For each input frame `f` emitted by
+the query pipeline, execute the block-statement with `f` in the scope.
+
+```ballerina
+    error? result = from var student in studentList
+                    where student.score > 1.0
+                    do {
+                        FullName fullName = {
+                            firstName: student.firstName, 
+                            lastName: student.lastName
+                        };
+                        nameList.push(fullName);
+                    };
+```
+
+### New streams design
+
+A stream is an object-like value that can generate a sequence of values.
+There is also a value associated with the completion of the generation
+of the sequence, which is either nil, indication of the generation of
+the sequence being completed successfully, or an error.
+
+A stream supports two primitive operations: a next operation and a close
+operation. The next operation has the same semantics as the next method
+on the `Iterator` abstract object type. The close operation informs the
+stream that there will be no more next operations and thus allows the
+stream to release resources used by the stream.
+
+A stream is iterable. A stream of type `stream<T, C>` has value type `T`
+and completion type `C`. Calling the next method on the iterator created
+for an iteration has the same effect as performing the next operation on
+the stream. The stream does not keep a copy of the sequence of values
+returned by the next operation. Any subsequent iteration operation on
+the same stream will not generate further values so the iteration
+sequence for iterations other than the first will be the empty sequence.
+
+The stream type provides methods (more precisely functions in the
+`lang.stream` library) similar to list: - map - foreach - filter -
+reduce - iterator
+
+The `map()` and `filter()` methods return streams and work lazily.
+Iterable basic types would have a `toStream()` method to convert to a
+stream; these should handle mutation similarly to iterators; as of now,
+it supports only for arrays.
+
+```ballerina
+stream<Person, error> personStream = getPersonStream();
+stream<Person, error> filteredPersonStream = personStream.filter(function (Person person) returns boolean {
+   return person.age > 100 && person.name != "James";
+});
+```
+
+### Expression-bodied functions
+
+This release introduces expression-bodied functions whose body is a
+single expression. The expression function body takes the form `=> E;`,
+where `E` is any expression. It is equivalent to the block function
+body, `{ return E; }`. The following is an example where a `Person`
+record is mapped to an `Employee` record using an expression-bodied
+function.
+
+```ballerina
+function toEmployee(Person p, string pos) returns Employee => {
+    name: p.fname + " " + p.lname,
+    designation: pos
+};
+```
+
+### Let expressions
+
+This release introduces let expression. It takes the form
+`let T B = E1 in E2`, where `E1` is evaluated resulting in a value `v`.
+The typed binding pattern `T B` is matched to `v`, causing assignments
+to the variables occurring in `B`. Then `E2` is evaluated with those
+variables in scope; the resulting value is the result of the let
+expression.
+
+```ballerina
+const int globalVar = 2;
+public function main() {
+    int b = let int x = 4, int y = 3 in x * y * globalVar; // b = 4 * 3 * 2 = 24
+}
+```
+
+### Improved mapping constructor syntax
+
+#### Spread operator
+
+A mapping constructor expression can now have a spread field. A spread
+field can be used with another mapping value `V` to include all of the
+fields in `V` when creating the new mapping value.
+
+```ballerina
+type Foo record {|
+    string s;
+    decimal d;
+|};
+
+type Bar record {|
+    string s;
+    int i;
+    decimal...;
+|};
+
+public function main() {
+    Foo f = {s: "test str", d: 1.0};
+
+    // Spread field `...f` spreads the fields of `f` 
+    // when creating the `Bar` value `b`. The required 
+    // field `s` is provided via `f`. 
+    // `b` will contain 3 fields; `s`, `i`, and `d`.
+    Bar b = {i: 1, ...f};
+}
+```
+
+#### Variable names as fields of mapping constructors
+
+A mapping constructor expression can also contain just a variable name
+(`foo`) as a field. This is equivalent to the key-value pair field
+`foo: foo`. The name of the variable is considered the key while the
+variable reference is considered the expression.
+
+```ballerina
+type Employee record {|
+    string name;
+    string department;
+|};
+
+public function main() {
+    string department = "Finance";
+
+    // The variable-name `department` is 
+    // used as a field here.
+    Employee e = {name: "Jo", department};
+}
+```
+
+### Improvements to metadata
+
+#### Deprecation syntax
+
+You can now mark type definitions, functions, object methods, and
+constants as deprecated using the `@deprecated` annotation. The compiler
+will generate warnings if a you use a deprecated construct. If the
+deprecated construct contains documentation, you need to add some
+additional bit of documentation called `Deprecated` documentation. The
+`Deprecated` documentation should ideally include details on why the
+construct was deprecated and suitable alternate options, which should be
+used instead.
+
+```ballerina
+# Creates and returns a `Baz` object.
+#
+# # Deprecated
+# This function is deprecated due to undesired side effects since it relies on module level
+# variables. Use the new and improved `newFoo()` function instead.
+@deprecated
+public function foo() returns Baz {
+    // some logic which has side effects
+}
+```
+
+#### Metadata on record and object fields
+
+Metadata (documentation and annotations) are now allowed on record and
+object fields.
+
+```ballerina
+// An annotation allowed on record fields.
+annotation foo on record field;
+
+// An annotation allowed on object fields.
+annotation bar on object field;
+
+// An annotation allowed on record and object fields.
+annotation baz on field;
+
+# Docs for this record.
+public type Rec record {
+
+    # Docs for this field.
+    @foo
+    @baz
+    string s;
+};
+
+# Docs for this object.
+public type Obj object {
+
+    # Docs for this field.
+    @bar
+    @baz
+    int i = 0;
+};
+```
+
+### Lang Library
+
+#### Builtin sub types of basic types
+
+Lang Library modules provide a new set of built-in types. Each such
+built-in type that is a sub type of a basic type `B` is provided by the
+`lang.B` module. The following are the built-in types provided by the
+lang library modules.
+
+-   Module `ballerina/lang.int`
+
+    -   `Unsigned8`
+    -   `Signed8`
+    -   `Unsigned16`
+    -   `Signed16`
+    -   `Unsigned32`
+    -   `Signed32`
+-   Module `ballerina/lang.string`
+
+    -   `Char`
+-   Module `ballerina/lang.xml`
+
+    -   `Element`
+    -   `ProcessingInstruction`
+    -   `Comment`
+    -   `Text`
+
+```ballerina
+import ballerina/lang.'int;
+import ballerina/lang.'string;  
+
+public function main() {
+    'int:Unsigned8 number = 200;
+    'string:Char char = "A";
+}
+```
+
+#### Redesigned `lang.xml` module
+
+The XML lang module has been revamped to work with the `Element`,
+`Comment`, `ProcessingInstructions` and `Text` XML built-in types.
+Previously, functions such as `getChildren()` and `getElementName()`,
+which are specific to an XML element type were allowed to be called on
+the `xml` type and if they were called on non-element items, it used to
+result in runtime errors. With `xml` built-in sub type improvements,
+these functions are statically type checked and only allowed on the
+built-in sub type `Element`. The same applies to other built-in sub
+types and functions.
+
+```ballerina
+import ballerina/lang.'xml as xmllib;
+
+public function main() {
+     xmllib:Element element = <xmllib:Element> xml `<elem> hello </elem>`;
+     xml children = element.getChildren();
+}
+```
+
+The functions `isElement()`, `isProcessingInstruction()`, `isComment()`
+and `isText()` have been removed. The same functionality can be achieved
+using type testing as follows.
+
+```ballerina
+import ballerina/lang.'xml;
+public function main() {
+    xml cmnt = xml `<!-- hello from comment -->`;
+    boolean isComment = cmnt is 'xml:Comment;
+}
+```
+
+The functions `appendChildren()` and `removeChildren()` have been
+removed.
+
+#### The `lang.boolean` module
+
+The newly-added lang library module for the `boolean` basic type
+contains a function for parsing `string` values to `boolean` values. It
+accepts `”true”` or `”false”` in any combination of lower/upper case as
+well as `”1”` and `”0”`, which evaluates to `true` and `false`
+respectively. An error is returned for any other `string` value.
+
+```ballerina
+import ballerina/lang.'boolean;
+
+public function main() {
+    boolean|error b = 'boolean:fromString("true");
+}
+```
+
+#### Enhanced `lang.int`, `lang.string`, `lang.array`, and `lang.map` modules
+
+The above-mentioned lang library modules have been enhanced by adding
+new API elements (e.g., constants and functions).
+
+-   `lang.int` module - Constants added: for max/min values of the `int`
+    type
+-   `lang.string` module - New functions added: `lastIndexOf()`,
+    `equalsIgnoreCaseAscii()`, `toCodePointInt()`, `fromCodePointInt()`
+-   `lang.array` module - New functions added: `lastIndexOf()`,
+    `toStream()`
+-   `lang.map` module - New functions added: `toArray()`,
+    `removeIfHasKey()`
+
+### Backward incompatible improvements and bug fixes
+
+-   Listener variables are now final.
+-   The syntax for Unicode escapes in strings has changed from
+    `\u[CodePoint]` to `\u{CodePoint}` so as to align with ECMAScript.
+    Although this is an incompatible change, the previous syntax was not
+    implemented.
+-   The semantics of the `lock` statement has been changed. Now, it
+    acquires a single, program-wide, recursive mutex before executing a
+    lock statement and releases the mutex after completing the execution
+    of the lock statement.
+-   When a list constructor or a mapping constructor is used without a
+    contextually-expected type, now a tuple or a record type is inferred
+    rather than an array or a map type.
+-   The `x@` syntax for accessing the attributes of an XML element has
+    been removed.
+-   Now, member value assignment for a dynamic list adds filler values
+    if the required members are not already filled and the relevant
+    member type has a filler value.
+-   Functions with the same name were previously allowed in both the
+    module and the module’s tests. This is now disallowed and results in
+    a compilation error.
+-   Now, out of range index access of `xml` sequences result in empty
+    sequences rather than a panic. Using the `xml:get()` langlib method
+    with an out of range index results in a panic.
+
+Runtime
+-------
+
+### Compilation time improvement
+
+The compiler backend, which generates the Java bytecode for Ballerina
+programs was rewritten to reduce the time taken for Java bytecode
+generation. This resulted in a significant reduction in overall
+compilation time.
+
+### The `@strand` annotation
+
+As per the Ballerina language specification, new strands should belong
+to the same thread as the currently executing strand. Strands, which
+belong to the same thread share the following characteristics.
+
+-   Only one strand can run simultaneously.
+-   The currently-running strand should yield to switch its thread to
+    execute another strand.
+-   Strands belonging to a particular thread are cooperatively
+    multitasked.
+-   All the strands created in a particular execution of a Ballerina
+    program will be executed sequentially by a single thread.
+
+In some situations, it would be desirable to assign strands to different
+threads. You can change this behavior with an annotation but such an
+annotation was not available in Ballerina releases prior to 1.2.0. This
+has been a major spec deviation.
+
+A major revamp of our strand scheduler was done in this release to
+address the spec deviation.
+
+Standard Library
+----------------
+
+### Enhanced HTTP module
+
+#### Cookie support
+
+A new cookie API has been introduced for easily handling HTTP cookies.
+It provides the following features: - Enable the server to read cookies
+from the request and write cookies to the response (in “Set-Cookie”
+header). - Enable configuring the client to enable/disable cookies,
+enable/disable persistent cookies, and whether to block/unblock
+third-party cookies. - Add persistent cookies support and add support to
+plug custom persistent storages.
+
+#### Trailer support
+
+Add support to create, read, update, and delete trailing headers in the
+response message. All existing header functions are changed to accept a
+finite-typed variable. The default value is set as `leading`, which
+means by default, those functions apply to leading headers. In order to
+apply trailer headers, you need to set the position as trailing as shown
+below.
+
+```ballerina
+string trailerHeader = response.getHeader("foo", position = "trailing");
+```
+
+#### Other changes
+
+-   In the previous versions, HTTP caching was enabled by default in the
+    HTTP client. With 1.2.0, HTTP caching is now disabled by default.
+
+### Revamped Cache module
+
+-   Introduced the Cache API v2.0.0, which introduces a `AbstractCache`
+    object, which can be used to implement custom caches and the
+    `AbstractEvictionPolicy` object, which can be used to implement
+    custom eviction algorithms. By default, this provides a `Cache`
+    object and `LruEvictionPolicy` object, which is an implementation of
+    the LRU eviction algorithm.
+-   Prevented concurrent modifications and improved the runtime
+    complexity to gain a better performance improvement compared to
+    v1.0.0.
+
+### Enhanced gRPC module
+
+#### Redesigned `Oneof` field support
+
+The `Oneof` fields in the protobuf definition are now mapped to optional
+fields in Ballerina. When you generate the code, the Ballerina record is
+generated with a new setter function for each field to restrict you from
+setting more than one of those fields and a valid function.
+
+For example,
+
+```ballerina
+message Person {
+  oneof identity {
+     string passportId = 1;
+     string nic = 2;
+  }
+}
+```
+
+```ballerina
+public type Person record {|
+   string passportId?;
+   string nic?;
+|};
+
+function isValidPerson(Person a) returns boolean {
+   ...
+}
+
+function setPerson_PassportId(Person a, string passportId) {
+   ...
+}
+
+function setPerson_Nic(Person a, string nic) {
+   ...
+}
+```
+
+> **Note:** The previous `Oneof` design will not work from this release.
+> If you are currently using it, you need to regenerate the code from
+> the proto definition and change your code accordingly.
+
+#### Redesigned Map field support
+
+The map fields in the protobuf definition are now mapped to nested
+records in Ballerina.
+
+For example,
+
+```ballerina
+message HelloRequest {
+    map<int32, string> tags = 4;
+}
+```
+
+```ballerina
+public type HelloRequest record {|
+    record {| int key; string value; |}[] tags = [];
+|};
+```
+
+#### Added client retry support for unary blocking calls
+
+Client retry is only supported in unary blocking calls. This will be
+supported in other messaging patterns in the future. Retry functionality
+can be enabled using the following retry configuration.
+
+```ballerina
+grpc:ClientConfiguration clientConfiguration = {
+   retryConfiguration: {
+       retryCount: 5,
+       intervalInMillis: 2000,
+       maxIntervalInMillis: 10000,
+       backoffFactor: 2,
+       errorTypes: [grpc:INTERNAL_ERROR, grpc:UNAVAILABLE_ERROR]
+   }
+};
+```
+
+#### Other improvements
+
+-   Added Gzip compression support
+-   Improved the gRPC command to only create essentials in client and
+    service modes
+-   The `name` field in the `ServiceConfig` annotation is now used to
+    set the Service name. This is to support dynamic service
+    registration.
+
+### Enhanced Kafka module
+
+Ballerina Kafka is redesigned and version 2.0.0 is released. This has
+breaking changes hence older code may not work.
+
+#### Breaking changes
+
+-   `kafka:ConsumerConfig` and `kafka:ProducerConfig` records are
+    renamed to `kafka:ConsumerConfiguration` and
+    `kafka:ProducerConfiguration` respectively to comply with the
+    Ballerina naming conventions.
+-   `send()` function of the `kafka:Producer` now accepts `anydata?` as
+    the `key` and `anydata` as the `value` types as opposed to the
+    existing `byte[]?` and `byte[]` respectively.
+-   `bootstrapServers` configuration is now a required parameter for
+    both the `kafka:ConsumerConfiguration` and
+    `kafka:ProducerConfiguration` records.
+
+#### Custom Serializer/Deserializer support
+
+The Kafka module now supports a set of serializers and deserializers in
+contrast to the existing `byte[]` data. The introduced serializers /
+deserializers are:
+
+-   `byte[]`
+-   `string`
+-   `int`
+-   `float`
+-   `avro`
+-   `custom`
+
+#### Avro Serializer/Deserializer
+
+The Kafka module now supports Avro serialization/deserialization. This
+only supports Kafka values yet. Key serialization support will be added
+later. For more information, go to [The Standard
+Library](https://ballerina.io/v1-2/learn/api-docs/ballerina/).
+
+### Enhanced Task module
+
+The Ballerina Task module is enhanced with multiple attachment support.
+
+#### Breaking changes
+
+Named arguments for task attachments will not work now. For example, the
+following code will no longer compile.
+
+```ballerina
+    task:Scheduler timer = new({ intervalInMillis: 1000 });
+    Person person = { name: "Sam", age: 29 };
+    var attachResult = timer.attach(TimerService, attachment = p); 
+```
+
+To make it work, change it as follows.
+
+```ballerina
+    task:Scheduler timer = new({ intervalInMillis: 1000 });
+    Person person = { name: "Sam", age: 29 };
+    var attachResult = timer.attach(TimerService, person);
+```
+
+#### Multiple attachment support
+
+Now, you can pass any number of attachments to the `attach()` function.
+For example,
+
+```ballerina
+    task:Scheduler timer = new({ intervalInMillis: 1000 });
+    Person person = { name: "Sam", age: 29 };
+    Account account = { number: 188008, balance: 1233.02 };
+    var attachResult = timer.attach(TimerService, person, account);
+```
+
+### Deprecated JDBC Module
+
+A new experimental JDBC2 module is introduced in the Ballerina 1.2
+release and it will be fully supported by the 1.3 release. The existing
+JDBC module will be removed later in the 1.3 release.
+
+### Added observability support
+
+Now, Publishers and Subscribers of all messaging connectors(Kafka,
+RabbitMQ, and JMS) support observability.
+
+### Organization name changes of connectors
+
+**Connector/Module**|**Old Org**|**New Org**
+:-----:|:-----:|:-----:
+JIRA|wso2/jira7|ballerina/jira7
+GoogleSpreadSheet|wso2/gsheets4|ballerinax/googleapis.sheets4
+Twilio|wso2/twilio|ballerinax/twilio
+FTP|wso2/ftp|ballerina/ftp
+Redis|wso2/redis|ballerina/redis
+JMS|wso2/jms|ballerina/java.jms
+MongoDB|wso2/mongodb|ballerina/mongodb
+GitHub|wso2/github4|ballerinax/github4
+Salesforce|wso2/sfdc46|ballerinax/sfdc46
+SOAP|wso2/soap|ballerina/soap
+Gmail|wso2/gmail|ballerinax/googleapis.gmail
+AmazonSQS|wso2/amazonsqs|ballerinax/aws.sqs
+AmazonS3|wso2/amazons3|ballerinax/aws.s3
+Java|ballerinax/java|ballerina/java
+Java Arrays|ballerinax/java.arrays|ballerina/java.arrays
+
+### Added new connectors
+
+The following connectors are newly added in this release.
+
+-   Slack client connector
+-   Azure time-series client connector
+-   Email client connector
+-   Preview of new database connectors
+    -   JDBC connector
+    -   MySQL connector
+
+### Revamped connectors
+
+The following connectors are revamped in this release.
+
+-   Google sheets connector
+-   Salesforce connector
+
+Deployment
+----------
+
+### Docker Annotations
+
+Support for setting environment variables to the Docker image.
+
+```ballerina
+@docker:Config {
+    env:{
+        testVar1: "value1",
+        testVar2: "value2"
+    }
+}
+```
+
+The default base image for the generated Docker images have changed to
+`ballerina/jre8:v1`. Also, now, Docker images can be generated for
+`main()` functions.
+
+```ballerina
+@docker:Config {}
+public function main() {
+    io:println("Hello, World!");
+}
+```
+
+Ability to generate Docker images by only adding the import as
+`import ballerina/docker as _`. This will generate the Docker images
+with minimum configurations for services, listeners, and main functions.
+
+```ballerina
+import ballerina/http;
+import ballerina/docker as _;
+
+listener http:Listener helloWorldEP = new(9090);
+
+@http:ServiceConfig {
+    basePath: "/helloWorld"
+}
+service helloWorld on helloWorldEP {
+    resource function sayHello (http:Caller outboundEP, http:Request request) {
+        …
+        }
+}
+```
+
+### Kubernetes Annotations
+
+-   Support for setting a port for Kubernetes NodePort Service types is
+    provided.
+
+```ballerina
+@kubernetes:Service {
+    nodePort: 31100,
+    serviceType: "NodePort"
+}
+```
+
+-   Support for mounting the `ballerina.conf` file as a Kubernetes
+    Secret is provided.
+
+```ballerina
+@kubernetes:Secret {
+    conf: "./conf/ballerina.conf"
+}
+```
+
+-   Support for enabling Rolling Updates for Kubernetes Deployments is
+    provided.
+
+```ballerina
+@kubernetes:Deployment {
+    updateStrategy: {
+            strategyType: kubernetes:STRATEGY_ROLLING_UPDATE,
+            maxUnavailable: 3,
+            maxSurge: "45%"
+    }
+}
+```
+
+-   Ability to generate Kubernetes artifacts by only adding the import
+    as `import ballerina/docker as _` is provided. This will generate
+    the Kubernetes artifacts with minimum configurations for services,
+    listeners, and main functions.
+
+```ballerina
+import ballerina/http;
+import ballerina/kubernetes as _;
+
+listener http:Listener helloWorldEP = new(9090);
+
+@http:ServiceConfig {
+    basePath: "/helloWorld"
+}
+service helloWorld on helloWorldEP {
+    resource function sayHello (http:Caller outboundEP, http:Request request) {
+        ...
+    }
+}
+```
+
+### Knative Annotations
+
+A new `@knative:Service` annotation is introduced. It allows you to
+generate Knative Service artifacts for Knative.
+
+```ballerina
+import ballerina/http;
+import ballerina/knative;
+
+@knative:Service {}
+@http:ServiceConfig {
+    basePath: "/helloWorld"
+}
+service helloWorld on new http:Listener(8080) {
+    resource function sayHello(http:Caller outboundEP, http:Request request) {
+        ...
+    }
+}
+```
+
+Dev tools
+---------
+
+### Ballerina Bindgen tool
+
+A CLI tool for generating Ballerina bridge code for Java APIs.
+
+> **Note:** The bindgen tool is still experimental.
+
+This CLI tool could be used to generate Ballerina bridge code for Java
+APIs. Here, Ballerina objects and the relevant Java interoperability
+mappings for specified Java classes will be auto-generated with the aim
+of providing a seamless coding experience to call existing Java code
+from Ballerina. These Ballerina bindings could be generated for Java
+classes residing inside Java libraries (for which the classpaths needs
+to be provided) or for standard Java classes.
+
+**Command:**
+
+```bash
+ballerina bindgen [(-cp|--classpath) <classpath>...]
+                  [(-o|--output) <output>]
+                  (<class-name>...)
+```
+
+**Options:** 1. `(-cp|--classpath) <classpath>...`: One or more
+comma-delimited classpaths for obtaining the JAR files required for
+generating the Ballerina bindings. This is not needed if the Ballerina
+bridge code is to be generated for standard Java classes. 2.
+`(-o|--output) <output>`: Location for the generated Ballerina bridge
+code. If this path is not specified, the output will be written to the
+same directory from where the command is run. 3, `<class-name>...`: One
+or more space-separated fully-qualified Java class names for which the
+bridge code is to be generated.
+
+### Testerina
+
+#### Function Mocking support
+
+The Ballerina test framework provides the capability to mock a function.
+By using the mocking feature, you can easily mock a function in a module
+that you are testing or a function of an imported module. This feature
+will help you to test your Ballerina code independently from other
+modules and functions. Function mocking is only supported for
+project-based execution in v1.2.0.
+
+The function specified with the `@test:Mock {}` annotation will be
+considered as a mock function, which gets triggered every time the
+original function is called. The original function that will be mocked
+should be defined using the annotation parameters.
+
+#### Test report
+
+The `ballerina build` and `ballerina test` commands now generate an HTML
+report at the end of test execution. This would contain the total test
+cases executed, passes, failures, and skipped tests with project-level,
+module-level, and individual test details. The link to the test report
+can be found at the end of the test execution.
+
+#### Code coverage
+
+Introduced the `--code-coverage` flag for `ballerina build` and
+`ballerina test` commands. When the flag is provided, an additional
+section with code coverage details will be displayed in the test report.
+This would contain coverage details at project-level, module-level, and
+of individual files.
+
+> **Note:** This is only supported with project-based execution in
+> v1.2.0.
+
+IDE Plugins & Language Server
+-----------------------------
+
+### Go to Definition support for Standard Library content
+
+You can go to [The Standard
+library](https://ballerina.io/v1-2/learn/api-docs/ballerina/) content
+such as functions, action invocations, types, etc. by executing the
+`Go to Definition` action.
+
+### New code actions
+
+-   All imports are optimized
+-   Abstract functions are implemented
+
+### Dynamic configuration updates support
+
+Now, you do not need to restart the IDE make the user configurations
+effective.
+
+List of issues fixed for 1.2.0
+------------------------------
+
+A complete list of issues fixed for 1.2.0 can be found
+[here](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.0%22+is%3Aclosed).

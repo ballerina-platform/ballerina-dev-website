@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release Note
+layout: ballerina-left-nav-release-notes
+title: Swan Lake Preview 8
+permalink: /downloads/swan-lake-release-notes/swan-lake-preview8/
+active: swan-lake-preview8
+redirect_from: 
+    - /downloads/swan-lake-release-notes/swan-lake-preview8
 ---
 
 ### Overview of Ballerina Swan Lake Preview 8 

@@ -7555,10 +7555,12 @@ a variable-reference can refer to an an identifier declared by a
 module-var-decl or listener-decl only if:
 <ul>
 <li>the identifier is declared by a module-var-decl that includes
-<code>final</code> but does not include <code>isolated</code>, or is declared by
-a listener-decl or a service-decl, and</li>
-<li>the static type of the variable is a subtype of <code>readonly</code> or of
-<code>isolated object {}</code>.</li>
+<code>final</code> or <code>configurable</code> but does not include
+<code>isolated</code>, or is declared by a listener-decl or a service-decl,
+and</li>
+<li>the static type of the variable is a subtype of <code>isolated object
+{}</code> or of <code>readonly</code> (which will always be the case if the
+identifier is declared as <code>configurable</code>).</li>
 </ul>
 </li>
 <li>Non-isolated module-level state cannot be mutated: an identifier in a
@@ -9983,7 +9985,7 @@ variable after it is initialized.
 </p>
 <pre class="grammar">
 <span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#module-init-var-quals"><span class="ntref">module-init-var-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#module-var-init"><span class="ntref">module-var-init</span></a> <code>;</code>
-<span class="ntdfn" id="module-init-var-quals">module-init-var-quals</span> := (<code>final</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> | <code>configurable</code>)*
+<span class="ntdfn" id="module-init-var-quals">module-init-var-quals</span> := (<code>final</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)* | <code>configurable</code>
 <span class="ntdfn" id="module-var-init">module-var-init</span> := <a href="#expression"><span class="ntref">expression</span></a> | <code>?</code>
 </pre>
 <p>
@@ -9991,9 +9993,10 @@ A module-init-var-decl declares and initializes a variable. It is an error for a
 keyword to appear more than once in <code>module-init-var-quals</code>. If the
 typed-binding-pattern uses <code>var</code>, then the type of the variables is
 inferred from the static type of <code>expression</code>; if the module-var-decl
-includes <code>final</code>, the precise type is used, and otherwise the broad
-type is used. If the typed-binding-pattern specifies a type-descriptor, then
-that type-descriptor provides the contextually expected type for action-or-expr.
+includes <code>final</code> or <code>configurable</code>, the precise type is
+used, and otherwise the broad type is used. If the typed-binding-pattern
+specifies a type-descriptor, then that type-descriptor provides the contextually
+expected type for action-or-expr.
 </p>
 <p>
 If the module-init-var-decl includes <code>public</code>, then the
@@ -10019,7 +10022,12 @@ configurable value must be supplied for this variable. If
 <code>configurable</code> is specified, then the typed-binding-pattern must use
 an explicit type-descriptor rather than <code>var</code> and the binding-pattern
 must be just a variable-name. The type specified by the type-descriptor must be
-a subtype of <code>anydata</code>.
+a subtype of <code>anydata</code>. A variable declared as
+<code>configurable</code> is implicitly final, and cannot be assigned to outside
+the declaration. The static type of a variable declared as
+<code>configurable</code> is implicitly <code>readonly</code>: the type
+specified in the type-descriptor is intersected with <code>readonly</code>. A
+configurable variable can thus always be referenced within an isolated function.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="module-no-init-var-decl">module-no-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] [<code>final</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>;</code>

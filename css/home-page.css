@@ -106,28 +106,23 @@ width: 230px;
 
 a.cIconLink {
     color: #fff;
-
-padding: 10px 0;
-
+    padding: 10px 0;
     padding-right: 0px;
-
-padding-right: 40px;
-
-background-image: url("/img/go-bg-home.svg");
-
-background-repeat: no-repeat;
-
-background-position: right center;
-
-font-size: 20px;
-
-font-weight: 500;
-   
+    padding-right: 40px;
+    background-image: url("/img/go-bg-home.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    font-size: 20px;
+    font-weight: 500;
 }
+
+
 a.cIconLink:hover {
     color: #20b6b0;
     background-image: url("/img/go-bg-home-hover.svg");
 }
+
+
 
 .cBallerina-io p.cQuotes {
     padding: 30px 0;

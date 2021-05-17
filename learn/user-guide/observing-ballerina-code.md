@@ -27,7 +27,7 @@ perform distributed tracing.
 HTTP/HTTPS based Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client
 connectors use semantic tags to make tracing and metrics monitoring more informative.
 
-This guide focuses on enabling Ballerina service observability with some of its default supported systems.
+This guide focuses on enabling Ballerina service observability with some of its supported systems.
 [Prometheus] and [Grafana] are used for metrics monitoring, and [Jaeger] is used for distributed tracing. 
 Ballerina logs can be fed to any external log monitoring system like [Elastic Stack] to perform log monitoring and analysis.
 
@@ -88,20 +88,15 @@ import ballerinax/prometheus as _;
 import ballerinax/jaeger as _;
 ```
 
-Observability is disabled by default at runtime as well and it can be enabled by adding
+Observability is disabled by default at runtime as well and it can be selectively enabled for metrics and tracing by adding
 the following runtime configurations to the `Config.toml` file.
 
 ```toml
 [ballerina.observe]
-enabled=true
-```
-
-Alternatively, you can enable metrics and tracing selectively using the following configurations as well.
-
-```toml
-[ballerina.observe]
 metricsEnabled=true
+metricsReporter="prometheus"
 tracingEnabled=true
+tracingProvider="jaeger"
 ```
 
 The created configuration file can be passed to the Ballerina program with the `BAL_CONFIG_FILES` environment variable along with
@@ -116,7 +111,7 @@ ballerina: started publishing traces to Jaeger on localhost:55680
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
-By default, when Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint for
+When Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint for
 metrics monitoring and traces will be published to Jaeger. Prometheus should be configured to scrape metrics from
 the metrics HTTP endpoint in Ballerina.
 
@@ -163,7 +158,7 @@ something like per-request billing. Metrics are used to measure what Ballerina s
 better decisions using the numbers. The code generates business value when it continuously runs in production.
 Therefore, it is imperative to continuously measure the code in production.
 
-Metrics, by default, supports Prometheus. In order to support Prometheus, an HTTP endpoint starts with the context
+In order to support Prometheus as the metrics reporter, an HTTP endpoint starts with the context
 of `/metrics` in default port 9797 when starting the Ballerina service.
 
 ### Configuring Advanced Metrics for Ballerina
@@ -185,7 +180,7 @@ The descriptions of each configuration above are provided below with possible al
 Configuration Key | Description | Default Value | Possible Values 
 --- | --- | --- | --- 
 ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
-ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | prometheus | prometheus or if any custom implementation, the name of the reporter.
+ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | choreo | prometheus or if any custom implementation, the name of the reporter.
 ballerinax.prometheus. port | The value of the port in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
 ballerinax.prometheus. host | The name of the host in which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
 
@@ -286,8 +281,7 @@ The user can easily identify where the error occurred and information of the err
 span as metadata.
 
 Ballerina supports [OpenTelemetry](https://opentelemetry.io/) standards by default. This means that Ballerina services
-can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/). Jaeger is the default
-tracer of Ballerina.
+can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/).
 
 ### Configuring Advanced Tracing for Ballerina
 
@@ -308,11 +302,10 @@ The table below provides the descriptions of each configuration option and possi
 Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
 ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
-ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | jaeger | jaeger or the name of the tracer of any custom implementation.
+ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | choreo | jaeger or the name of the tracer of any custom implementation.
 
 #### Using the Jaeger Client
-Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
-the Jaeger.
+Below is the sample configuration options that are available to support Jaeger as the tracer provider in Ballerina.
 
 ```toml
 [ballerina.observe]
@@ -340,11 +333,11 @@ ballerina.observe. reporterFlushInterval | The Jaeger client will be sending the
 ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
 ### Setting Up the External Systems for Tracing
-By default, Ballerina supports Jaeger for distributed tracing. This section focuses on configuring the
+We could configure Ballerina to support distributed tracing with Jaeger. This section focuses on configuring the
 Jaeger with Docker as a quick installation.
 
 #### Setting Up the Jaeger Server
-Jaeger is the default distributed tracing system that is supported. There are many possible ways to deploy Jaeger and you can find more information on this [link](https://www.jaegertracing.io/docs/deployment/). Here we focus on all in one deployment with Docker.
+There are many possible ways to deploy Jaeger and you can find more information on this [link](https://www.jaegertracing.io/docs/deployment/). Here we focus on all in one deployment with Docker.
 
 1. Install Jaeger via Docker and start the Docker container by executing command below.
 

@@ -281,7 +281,7 @@ The user can easily identify where the error occurred and information of the err
 span as metadata.
 
 Ballerina supports [OpenTelemetry](https://opentelemetry.io/) standards by default. This means that Ballerina services
-can be traced using OpenTracing implementations like [Jaeger](http://www.jaegertracing.io/).
+can be traced using OpenTelemetry implementations like [Jaeger](http://www.jaegertracing.io/).
 
 ### Configuring Advanced Tracing for Ballerina
 

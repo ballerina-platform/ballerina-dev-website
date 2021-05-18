@@ -305,7 +305,7 @@ ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled
 ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | choreo | jaeger or the name of the tracer of any custom implementation.
 
 #### Using the Jaeger Client
-Below is the sample configuration options that are available to support Jaeger as the tracer provider in Ballerina.
+The below are the sample configuration options that are available to support Jaeger as the tracer provider in Ballerina.
 
 ```toml
 [ballerina.observe]
@@ -333,11 +333,11 @@ ballerina.observe. reporterFlushInterval | The Jaeger client will be sending the
 ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
 ### Setting Up the External Systems for Tracing
-We could configure Ballerina to support distributed tracing with Jaeger. This section focuses on configuring the
+You can configure Ballerina to support distributed tracing with Jaeger. This section focuses on configuring
 Jaeger with Docker as a quick installation.
 
 #### Setting Up the Jaeger Server
-There are many possible ways to deploy Jaeger and you can find more information on this [link](https://www.jaegertracing.io/docs/deployment/). Here we focus on all in one deployment with Docker.
+There are many possible ways to deploy Jaeger. For more information, see [Deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
 
 1. Install Jaeger via Docker and start the Docker container by executing command below.
 

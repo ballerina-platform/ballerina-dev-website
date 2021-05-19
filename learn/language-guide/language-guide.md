@@ -1,22 +1,33 @@
 ---
 layout: ballerina-inner-page
-title: Language Guide
-description: The sections below describe the Swan Lake version of the Ballerina language by exploring how Ballerina provides the basic functionalities common to most programming languages, what makes Ballerina distinctive, and a deep-dive into its significant features.
-keywords: ballerina, language guide, programming language
-permalink: /learn/language-guide/
-active: quick-tour
-intro: The sections below describe the Swan Lake version of the Ballerina language by exploring how Ballerina provides the basic functionalities common to most programming languages, what makes Ballerina distinctive, and a deep-dive into its significant features.
+title: Language Concepts
+permalink: /learn/language-concepts/
 redirect_from:
   - /learn/language-guide
+  - /learn/language-guide/
+  - /learn/language-concepts
 ---
 
-## Language Introduction Videos
+<style>
+.cBallerinaTocContainer {
+display:none;
+
+}
+</style>
+
+The video series below explores the language concepts of Ballerina Swan Lake. The series covers how Ballerina provides basic functionalities common to most programming languages and what makes Ballerina distinctive, and also deep-dives into the significant features of the language. 
+
+<br/>
 
 <iframe width="1150" height="515" src="https://www.youtube.com/embed/videoseries?list=PL7JOecNWBb0KEYJU9TmFiVmQlbPxSR4Hq" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-## Language Introduction Slides
+<br/>
 
-> For the slides, see [The Ballerina Programming Language presentation](/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf) below.
+<br/>
+
+You can also find the [slide deck](/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf) used for these presentations below.
+
+<br/>
 
 <div class="clearfix">
 
@@ -25,5 +36,55 @@ redirect_from:
 <iframe width="1150" height="515" src="/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
 </iframe>
 
-<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+<!--<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+.cFormSection {
+   background:#f3f3f3;
+   padding:30px;
+}
+label {
+	display: inline-block;
+	max-width: 95%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-check-input {
+   float:left;
+   margin-right:10px !important;
+}
+.cSignUp, button#subscribeUserButton {
+	background: #56b3af;
+	border: none;
+	color: #fff;
+	/* padding: 10px 20px; */
+	margin-top: 15px;
+	display: inline-block;
+	width: auto;
+	padding: 18px;
+	line-height: 0px;
+	font-family: "roboto";
+	letter-spacing: 1px;
+	font-weight: 400;
+}
 
+.cSignUp:hover , button#subscribeUserButton:hover {
+background:#464646;
+}
+
+#form-status , #form-error {
+display:none;
+}
+
+#form-status.cShowBlock , #form-error.cShowBlock  {
+display:block;
+}
+a.cBookmark {
+display: inline-block;
+position: absolute;
+margin: -150px 0px 0px;
+}
+
+
+</style>-->

@@ -88,7 +88,7 @@ import ballerinax/prometheus as _;
 import ballerinax/jaeger as _;
 ```
 
-Observability is disabled by default at runtime as well and it can be selectively enabled for metrics and tracing by adding
+Observability is disabled by default at runtime as well and it can be enabled selectively for metrics and tracing by adding
 the following runtime configurations to the `Config.toml` file.
 
 ```toml

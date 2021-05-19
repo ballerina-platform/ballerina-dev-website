@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release Note
+layout: ballerina-left-nav-release-notes
+title: 1.2.13 
+permalink: /downloads/1.2.x-release-notes/release-note-1-2-13/
+active: release-note-1-2-13
+redirect_from: 
+    - /downloads/1.2.x-release-notes/release-note-1-2-13
 ---
 ### Overview of jBallerina 1.2.13
 The jBallerina 1.2.13 patch release improves upon the 1.2.12 release by addressing a few [issues](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.13%22+is%3Aclosed).

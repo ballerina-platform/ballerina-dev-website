@@ -3,12 +3,8 @@ layout: ballerina-layer-page
 title: Network-Aware Type System
 description: See how the Ballerina programming language's network-aware type system helps developers work with networked resources in their code.
 keywords: ballerina, programming lanaguage, type system, data binding
-permalink: /why-ballerina/network-aware-type-system/
+permalink: /why-ballerina/network-aware-type-system-old/
 redirect_from:
-- /why/the-network-in-the-language/
-- /why/the-network-in-the-language
-- /why-ballerina
-- /why-ballerina/
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">

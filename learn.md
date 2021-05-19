@@ -67,10 +67,10 @@ redirect_from:
 </div>
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-<a class="cBoxLink" href="/learn/language-guide/">
+<a class="cBoxLink" href="/learn/language-concepts/">
 
 <img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
-<h2>Language Guide</h2>
+<h2>Language Concepts</h2>
 <p>Learn about all the details of the Ballerina language.</p>
 </a>
 

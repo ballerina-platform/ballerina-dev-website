@@ -3,10 +3,7 @@ layout: ballerina-layer-page
 title: From Code to Cloud
 description: See how the Ballerina programming language has built-in cloud support, which helps developers deploy to cloud platforms like Docker and Kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker
-permalink: /why-ballerina/from-code-to-cloud/
-redirct_from:
-  - /why/from-code-to-cloud/
-  - /why/from-code-to-cloud
+permalink: /why-ballerina/from-code-to-cloud-old/
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">

@@ -20,9 +20,9 @@ With more services being available in the cloud, the network-distributed program
 
 ## Statically Typed and Structural
 
-Ballerina is a statically typed language, which means all the variables are checked at compile-time and only compatible values are assigned. Statically typed languages are generally more robust, easier to debug, and aids in creating better language tooling.
+Ballerina is a statically typed language, which means type compatibility between constructs are checked at compile-time. Statically typed languages are generally more robust to changes and refactorings, easier to debug, and aids in creating better language tooling.
 
-Ballerina’s type system is also structural as opposed to nominal. This means that the type compatibility is identified by considering the structure of the value. This is different from languages like Java, C++, and C# that have nominal type systems where it is bound by the name of the actual type.
+ The type system of Ballerina language is primarily structural with added support for nominal typing. This means that the type compatibility is identified by considering the structure of the value, rather than just relying on the name of the type. This is different from languages like Java, C++, and C# that have nominal type systems where it is bound by the name of the actual type.
 
 ### Shapes in Ballerina
 
@@ -63,7 +63,7 @@ A type in Ballerina represents a set of the possible shapes it can have. So any 
 
 ### Subtypes in Ballerina
 
-Subtyping in Ballerina is semantic. It is defined by means of shapes, where S is a subtype of T, if the shapes representing S are a subset of the shapes representing T. Let’s demonstrate this behavior with a few examples.
+Subtyping in Ballerina is semantic. It is defined by means of shapes, where S is a subtype of T, if the set of shapes denoted by S are a subset of the shapes denoted by T. Let’s demonstrate this behavior with a few examples.
 
 The type `boolean` is a simple basic type in Ballerina without a storage identity, so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes true and false.
 
@@ -83,7 +83,7 @@ The new type `boolean_false` can be defined in Ballerina code in the following m
 type boolean_false false;
 ```
 
-Here, we are using the value false in defining the new type `boolean_false`. In a more practical scenario, we can provide multiple values as a union when defining new types using the syntax `T1|T2`. A type created with a single value is called a singleton type. This new type can be used in the code in the following way.
+Here, we are using the value false in defining the new type `boolean_false`. In a more practical scenario, we can provide multiple values as a union when defining new types using the syntax `T1|T2`. A type that only denotes a single shape is called a singleton type. This new type can be used in the code in the following way.
 
 ```ballerina
 boolean_false bv1 = false;
@@ -130,13 +130,14 @@ type Result record {|
 |};
 ...
 Result[] results = from var person in persons
-                       let int lgrade = (grades[person.name] ?: 0),
-                       where lgrade > 75
-                           string targetCollege = "Stanford"
-                           select {
-                               name: person.name,
-                               college: targetCollege,
-                               grade: lgrade };
+                  let int lgrade = (grades[person.name] ?: 0), string targetCollege = "Stanford"
+                  where lgrade > 75
+                  select {
+                      name: person.name,
+                      college: targetCollege,
+                      grade: lgrade
+                  };
+
 ```
 
 In the example above, we filter records from a list and create a new value using the `select` clause. Its structure is defined dynamically at that time and the values are created. These values are assigned to an array of `Result` records, which is possible because the generated values are structurally compatible with the `Result` record type.
@@ -145,7 +146,7 @@ In situations such as above, a separate system from our core application may be 
 
 ## Open-by-Default
 
-Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">Robustness Principle</a>. This means that we should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. But when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure we have the best chance of interacting with different systems in a reliable manner.
+Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">Robustness Principle</a>. This means that we should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. And when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure we have the best chance of interacting with different systems in a reliable manner.
 
 The main facilitator of this in the type system is the open record concept in Ballerina. So far we have looked at closed records. Let’s take a look at a record type to represent the details of a person.
 
@@ -164,7 +165,7 @@ type Person record {
 };
 ```
 
-Here, the type `Person` is an open record type defined with an `inclusive-record-type-descriptor` by using the `"{"` and `"}"` delimiters. This is the default behavior when defining record types in Ballerina. An open record is not limited to the fields that are declared in the record type, so we can set additional fields that are not explicitly mentioned in the type definition.
+Here, the type `Person` is an open record type defined with an `inclusive-record-type-descriptor` by using the `"{"` and `"}"` delimiters. An open record is not limited to the fields that are declared in the record type, so we can set additional fields that are not explicitly mentioned in the type descriptor.
 
 The earlier `DoorState` record type was defined explicitly as a closed record type with an exclusive-record-type-descriptor by using the `"{|"` and `"|}"` delimiters. Therefore, we were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, we would have an infinite number of shapes since `DoorState` values can have any arbitrary field set in the code.
 
@@ -230,16 +231,15 @@ http:Client asianRecordsDB = check new ("http://example.com/");
 
 service / on new http:Listener(8080) {
 
-    resource function get 'record(@http:Payload {} Person entry) returns error? {
+    resource function post 'record(@http:Payload {} Person entry) returns error? {
         if entry?.ethnicity == "Asian" {
             io:println("Asian Record: ", entry);
             json jsonPayload = check entry.cloneWithType(json);
-            _ = check asianRecordsDB->post("/store", <@untainted>jsonPayload);
+            _ = check asianRecordsDB->post("/store", jsonPayload);
         } else {
             io:println("Non-Asian Record: ", entry);
         }
     }
-
 }
 ```
 

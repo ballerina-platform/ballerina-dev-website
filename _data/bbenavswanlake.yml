@@ -1,0 +1,51 @@
+- title: Language Concepts
+- title: Hello World
+  url: '#'
+  sublinks:
+    - title: Hello World Service
+      url: /learn/by-example/hello-world-service/
+      active: hello-world-service
+  
+    - title: Hello World Main
+      url: /learn/by-example/hello-world
+      active: hello-world
+    - title: Hello World Parallel 
+      url: /learn/by-example/hello-world-parallel
+      active: hello-world-parallel
+    - title: Hello World Client
+      url: /learn/by-example/hello-world-client
+      active: hello-world-client
+
+- title: Ballerina Basics 
+  url: '#'
+  sublinks:
+    - title: Modules
+      url: /learn/by-example/modules
+      active: modules
+    - title: Variables
+      url: /learn/by-example/variables
+      active: variables
+    - title: Var
+      url: /learn/by-example/var
+      active: writing-your-first-ballerina-program
+    - title: Funcitons
+      url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
+      active: writing-your-first-ballerina-program
+
+
+
+
+
+      
+ 
+
+
+   
+
+      
+
+
+
+
+
+

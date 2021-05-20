@@ -35,7 +35,7 @@ redirect_from:
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span>
             <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
 
         <span class="c1">// If `backendResponse` is an `http:Response`, it is sent back to the</span>
         <span class="c1">// client. If `backendResponse` is an `http:ClientError`, an internal</span>
@@ -276,7 +276,7 @@ import ballerina/lang.runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .()
             returns http:Response|http:InternalServerError {
-        var backendResponse = foBackendEP-&gt;get(&quot;/&quot;);
+        http:Response|error backendResponse = foBackendEP-&gt;get(&quot;/&quot;);
 </code></pre></div>
 
                                 </td>

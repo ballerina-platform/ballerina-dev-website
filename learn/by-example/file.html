@@ -1,8 +1,8 @@
 ---
 layout: ballerina-example-page
 title: File
-description: 
-keywords: 
+description: This BBE shows how to perform file-system operations in Ballerina.
+keywords: ballerina, ballerina by examples, bbe, file, directory, path
 permalink: /learn/by-example/file
 redirect_from:
   - /swan-lake/learn/by-example/file
@@ -15,30 +15,21 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Get the path of the current directory.</span>
+    <span class="c1">// Gets the path of the current directory.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Current directory: &quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getCurrentDir</span><span class="p">());</span>
 
-    <span class="c1">// Create a new directory.</span>
-    <span class="nx">error</span><span class="p">? createDirResults = file:createDir(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">createDirResults</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">createDirResults</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="c1">// Creates a new directory.</span>
+    <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createDir</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Create a new directory with any non-existent parents.</span>
+    <span class="c1">// Creates a new directory with any non-existent parents.</span>
     <span class="kt">string</span> <span class="nx">dirPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
-    <span class="nx">createDirResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createDir</span><span class="p">(</span><span class="nx">dirPath</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">RECURSIVE</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">createDirResults</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">createDirResults</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createDir</span><span class="p">(</span><span class="nx">dirPath</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">RECURSIVE</span><span class="p">);</span>
 
-    <span class="c1">// Create a file in the given file path.</span>
-    <span class="nx">error</span><span class="p">? createFileResults = file:create(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">createFileResults</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">createFileResults</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="c1">// Creates a file in the given file path.</span>
+    <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">create</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Get metadata information of the file.</span>
-    <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span><span class="p">|</span><span class="nx">error</span> <span class="nx">fileMetadata</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getMetaData</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
+    <span class="c1">// Gets metadata information of the file.</span>
+    <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span> <span class="nx">fileMetadata</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getMetaData</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">fileMetadata</span> <span class="nx">is</span> <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File path: &quot;</span><span class="p">,</span> <span class="nx">fileMetadata</span><span class="p">.</span><span class="nx">absPath</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File size: &quot;</span><span class="p">,</span> <span class="nx">fileMetadata</span><span class="p">.</span><span class="nx">size</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -47,44 +38,32 @@ redirect_from:
             <span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="c1">// Check whether the file or directory of the provided path exists.</span>
+    <span class="c1">// Checks whether the file or directory of the provided path exists.</span>
     <span class="kt">boolean</span> <span class="nx">fileExists</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">test</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">EXISTS</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file exists: &quot;</span><span class="p">,</span> <span class="nx">fileExists</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
-    <span class="c1">// Copy the file or directory to the new path.</span>
+    <span class="c1">// Copies the file or directory to the new path.</span>
     <span class="kt">string</span> <span class="nx">file</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
-    <span class="nx">error</span><span class="p">? copyDirResults = file:copy(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">REPLACE_EXISTING</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">copyDirResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is copied to new path &quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">copy</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">REPLACE_EXISTING</span><span class="p">);</span>
 
-    <span class="c1">// Rename (Move) the file or directory to the new path.</span>
+    <span class="c1">// Renames (Moves) the file or directory to the new path.</span>
     <span class="kt">string</span> <span class="nx">newfile</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar1.txt&quot;</span><span class="p">);</span>
-    <span class="nx">error</span><span class="p">? renameResults = file:rename(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">newfile</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">renameResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is moved to new path &quot;</span><span class="p">,</span> <span class="nx">newfile</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">rename</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">newfile</span><span class="p">);</span>
 
-    <span class="c1">// Get the list of files in the directory.</span>
-    <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span><span class="p">[]|</span><span class="nx">error</span> <span class="nx">readDirResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">readDir</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+    <span class="c1">// Gets the list of files in the directory.</span>
+    <span class="nx">file</span><span class="p">:</span><span class="nx">MetaData</span><span class="p">[]</span> <span class="nx">readDirResults</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">readDir</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Remove the file or directory in the specified file path.</span>
-    <span class="nx">error</span><span class="p">? removeResults = file:remove(</span><span class="nx">newfile</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">removeResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Removed file at &quot;</span><span class="p">,</span> <span class="nx">newfile</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="c1">// Removes the file or directory in the specified file path.</span>
+    <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">remove</span><span class="p">(</span><span class="nx">newfile</span><span class="p">);</span>
 
-    <span class="c1">// Remove the directory in the specified file path with all its children.</span>
-    <span class="nx">removeResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">remove</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">RECURSIVE</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">removeResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Removed &#39;foo&#39; directory with all the children.&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="c1">// Removes the directory in the specified file path with all its children.</span>
+    <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">remove</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">RECURSIVE</span><span class="p">);</span>
 
-    <span class="c1">// Create a temporary file in the default tmp directory of the OS</span>
+    <span class="c1">// Creates a temporary file in the default `tmp` directory of the OS.</span>
     <span class="kt">string</span> <span class="nx">tmpResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createTemp</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Absolute path of the tmp file: &quot;</span><span class="p">,</span> <span class="nx">tmpResult</span><span class="p">);</span>
 
-    <span class="c1">// Create a temporary file in a specific directory</span>
+    <span class="c1">// Creates a temporary file in a specific directory.</span>
     <span class="kt">string</span> <span class="nx">tmp2Result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createTemp</span><span class="p">(</span><span class="nx">dir</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getCurrentDir</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Absolute path of the tmp file: &quot;</span><span class="p">,</span> <span class="nx">tmp2Result</span><span class="p">);</span>
 <span class="p">}</span>
@@ -114,9 +93,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="random.html">
+                                    <a class="next" href="os.html">
                                         <span>NEXT ></span>
-                                        <p>Random</p>
+                                        <p>OS</p>
                                     </a>
                                 </div>
                                 
@@ -140,7 +119,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=449b813714480ff7fa1782df45860d75&file=file.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a98faff7045c25032ae95c697f86b856&file=file.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -230,7 +209,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the path of the current directory.</p>
+                                            <p>Gets the path of the current directory.</p>
 
                                         </div>
                                     </div>
@@ -241,10 +220,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? createDirResults = file:createDir(&quot;foo&quot;);
-    if (createDirResults is error) {
-        io:println(createDirResults.message());
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check file:createDir(&quot;foo&quot;);
 </code></pre></div>
 
                                 </td>
@@ -252,7 +228,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new directory.</p>
+                                            <p>Creates a new directory.</p>
 
                                         </div>
                                     </div>
@@ -264,10 +240,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string dirPath = check file:joinPath(&quot;foo&quot;, &quot;bar&quot;);
-    createDirResults = file:createDir(dirPath, file:RECURSIVE);
-    if (createDirResults is error) {
-        io:println(createDirResults.message());
-    }
+    check file:createDir(dirPath, file:RECURSIVE);
 </code></pre></div>
 
                                 </td>
@@ -275,7 +248,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new directory with any non-existent parents.</p>
+                                            <p>Creates a new directory with any non-existent parents.</p>
 
                                         </div>
                                     </div>
@@ -286,10 +259,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? createFileResults = file:create(&quot;bar.txt&quot;);
-    if (createFileResults is error) {
-        io:println(createFileResults.message());
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check file:create(&quot;bar.txt&quot;);
 </code></pre></div>
 
                                 </td>
@@ -297,7 +267,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a file in the given file path.</p>
+                                            <p>Creates a file in the given file path.</p>
 
                                         </div>
                                     </div>
@@ -308,7 +278,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    file:MetaData|error fileMetadata = file:getMetaData(&quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    file:MetaData fileMetadata = check file:getMetaData(&quot;bar.txt&quot;);
     if (fileMetadata is file:MetaData) {
         io:println(&quot;File path: &quot;, fileMetadata.absPath);
         io:println(&quot;File size: &quot;, fileMetadata.size.toString());
@@ -323,7 +293,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get metadata information of the file.</p>
+                                            <p>Gets metadata information of the file.</p>
 
                                         </div>
                                     </div>
@@ -343,7 +313,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Check whether the file or directory of the provided path exists.</p>
+                                            <p>Checks whether the file or directory of the provided path exists.</p>
 
                                         </div>
                                     </div>
@@ -355,10 +325,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string file = check file:joinPath(&quot;foo&quot;, &quot;bar&quot;, &quot;bar.txt&quot;);
-    error? copyDirResults = file:copy(&quot;bar.txt&quot;, file, file:REPLACE_EXISTING);
-    if (copyDirResults is ()) {
-        io:println(&quot;bar.txt file is copied to new path &quot;, file);
-    }
+    check file:copy(&quot;bar.txt&quot;, file, file:REPLACE_EXISTING);
 </code></pre></div>
 
                                 </td>
@@ -366,7 +333,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Copy the file or directory to the new path.</p>
+                                            <p>Copies the file or directory to the new path.</p>
 
                                         </div>
                                     </div>
@@ -378,10 +345,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string newfile = check file:joinPath(&quot;foo&quot;, &quot;bar1.txt&quot;);
-    error? renameResults = file:rename(&quot;bar.txt&quot;, newfile);
-    if (renameResults is ()) {
-        io:println(&quot;bar.txt file is moved to new path &quot;, newfile);
-    }
+    check file:rename(&quot;bar.txt&quot;, newfile);
 </code></pre></div>
 
                                 </td>
@@ -389,7 +353,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Rename (Move) the file or directory to the new path.</p>
+                                            <p>Renames (Moves) the file or directory to the new path.</p>
 
                                         </div>
                                     </div>
@@ -400,7 +364,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    file:MetaData[]|error readDirResults = file:readDir(&quot;foo&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    file:MetaData[] readDirResults = check file:readDir(&quot;foo&quot;);
 </code></pre></div>
 
                                 </td>
@@ -408,7 +372,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the list of files in the directory.</p>
+                                            <p>Gets the list of files in the directory.</p>
 
                                         </div>
                                     </div>
@@ -419,10 +383,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? removeResults = file:remove(newfile);
-    if (removeResults is ()) {
-        io:println(&quot;Removed file at &quot;, newfile);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check file:remove(newfile);
 </code></pre></div>
 
                                 </td>
@@ -430,7 +391,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Remove the file or directory in the specified file path.</p>
+                                            <p>Removes the file or directory in the specified file path.</p>
 
                                         </div>
                                     </div>
@@ -441,10 +402,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    removeResults = file:remove(&quot;foo&quot;, file:RECURSIVE);
-    if (removeResults is ()) {
-        io:println(&quot;Removed &#39;foo&#39; directory with all the children.&quot;);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check file:remove(&quot;foo&quot;, file:RECURSIVE);
 </code></pre></div>
 
                                 </td>
@@ -452,7 +410,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Remove the directory in the specified file path with all its children.</p>
+                                            <p>Removes the directory in the specified file path with all its children.</p>
 
                                         </div>
                                     </div>
@@ -472,7 +430,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a temporary file in the default tmp directory of the OS</p>
+                                            <p>Creates a temporary file in the default <code>tmp</code> directory of the OS.</p>
 
                                         </div>
                                     </div>
@@ -493,7 +451,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a temporary file in a specific directory</p>
+                                            <p>Creates a temporary file in a specific directory.</p>
 
                                         </div>
                                     </div>

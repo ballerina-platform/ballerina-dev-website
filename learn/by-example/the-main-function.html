@@ -19,8 +19,8 @@ redirect_from:
 <span class="c1">// The rest parameter `modules` represents the additional arguments.</span>
 <span class="c1">// The `main` function may return an `error` or `()`.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
-                     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="kt">string</span> <span class="nx">year</span> <span class="p">=</span> <span class="s">&quot;Freshman&quot;</span><span class="p">,</span>
+                     <span class="kt">int</span> <span class="nx">age</span><span class="p">,</span>
+                     <span class="kt">string</span> <span class="nx">year</span><span class="p">,</span>
                      <span class="kt">string</span><span class="o">...</span> <span class="nx">modules</span><span class="p">)</span>
                   <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
 
@@ -96,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=da5e9e96ba7236c648666fdf4ac9c796&file=the_main_function.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e135f7583bf1347cffaa6713fc85acd2&file=the_main_function.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -146,8 +146,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main(string name,
-                     int age = 18,
-                     string year = &quot;Freshman&quot;,
+                     int age,
+                     string year,
                      string... modules)
                   returns error? {
 </code></pre></div>
@@ -239,14 +239,6 @@ redirect_from:
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -257,38 +249,6 @@ redirect_from:
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
-# as the string argument for `name`. `18` would be set as the value for
-# `age` and `Freshman` would be set as the value for `year`.
-bal run the_main_function.bal -- Alice
-Name: Alice, Age: 18, Year: Freshman
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
-# as the string argument for `name` and `20` as the integer value for
-# `age`. Both arguments are specified as operands.
-bal run the_main_function.bal -- Alice 20
-Name: Alice, Age: 20, Year: Freshman
 </code></pre></div>
 
                                 </td>
@@ -334,7 +294,7 @@ Name: Alice, Age: 20, Year: Sophomore, Module(s): [&quot;math&quot;,&quot;physic
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying an invalid 
 # string as the argument for `name`. The `error` returned would be printed.
-bal run the_main_function.bal -- Ali
+ bal run the_main_function.bal -- Ali 30 Freshman
 error: InvalidName {&quot;message&quot;:&quot;invalid length&quot;}
 </code></pre></div>
 

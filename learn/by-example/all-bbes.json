@@ -672,12 +672,20 @@
                 "url": "strings"
             },
             {
+                "name": "Regex",
+                "url": "regex"
+            },
+            {
                 "name": "File Path",
                 "url": "filepath"
             },
             {
                 "name": "File",
                 "url": "file"
+            },
+            {
+                "name": "OS",
+                "url": "os"
             },
             {
                 "name": "Random",
@@ -871,8 +879,23 @@
                 "disablePlayground": true
             },
             {
-                "name": "Query Path Matrix Param",
-                "url": "query-path-matrix-param",
+                "name": "Default Resource",
+                "url": "http-default-resource",
+                "disablePlayground": true
+            },
+            {
+                "name": "Query Parameter",
+                "url": "http-query-parameter",
+                "disablePlayground": true
+            },
+            {
+                "name": "Path Matrix Param",
+                "url": "http-path-matrix-param",
+                "disablePlayground": true
+            },
+            {
+                "name": "Resource return types",
+                "url": "http-resource-returns",
                 "disablePlayground": true
             },
             {
@@ -891,13 +914,13 @@
                 "disablePlayground": true
             },
             {
-                "name": "Basic HTTPS Listener Client",
-                "url": "basic-https-listener-client",
+                "name": "HTTPS Client",
+                "url": "https-client",
                 "disablePlayground": true
             },
             {
                 "name": "Mutual SSL",
-                "url": "mutual-ssl",
+                "url": "https-mutual-ssl",
                 "disablePlayground": true
             },
             {
@@ -974,13 +997,23 @@
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Record Values",
-                "url": "graphql-resources-with-record-values",
+                "name": "Returning Record Values",
+                "url": "graphql-returning-record-values",
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Hierarchical Resource Paths",
+                "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
+                "disablePlayground": true
+            },
+            {
+                "name":"Returning Service Objects",
+                "url": "graphql-returning-service-objects",
+                "disablePlayground": true
+            },
+            {
+                "name":"Input Types",
+                "url": "graphql-input-types",
                 "disablePlayground": true
             }
         ]
@@ -1175,28 +1208,33 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Unary Blocking",
-                "url": "grpc-unary-blocking",
+                "name": "Simple RPC",
+                "url": "grpc-simple",
                 "disablePlayground": true
             },
             {
-                "name": "Server Streaming",
+                "name": "Simple RPC with Headers",
+                "url": "grpc-simple-with-headers",
+                "disablePlayground": true
+            },
+            {
+                "name": "Secured Simple RPC",
+                "url": "grpc-secured-simple",
+                "disablePlayground": true
+            },
+            {
+                "name": "Server Streaming RPC",
                 "url": "grpc-server-streaming",
                 "disablePlayground": true
             },
             {
-                "name": "Client Streaming",
+                "name": "Client Streaming RPC",
                 "url": "grpc-client-streaming",
                 "disablePlayground": true
             },
             {
-                "name": "Bidirectional Streaming",
+                "name": "Bidirectional Streaming RPC",
                 "url": "grpc-bidirectional-streaming",
-                "disablePlayground": true
-            },
-            {
-                "name": "Secured Unary",
-                "url": "grpc-secured-unary",
                 "disablePlayground": true
             },
             {

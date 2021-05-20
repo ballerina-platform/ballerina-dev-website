@@ -23,7 +23,7 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">float</span> <span class="nx">r</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
     <span class="c1">// If a field is an instance field, the receiver instance has to be provided as the first parameter.</span>
-    <span class="kt">float</span> <span class="nx">l</span> <span class="p">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nx">r</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">l</span> <span class="p">=</span> <span class="p">(&lt;</span><span class="kt">float</span><span class="p">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nx">r</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">l</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -81,7 +81,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=dcf6b2a212b1bbceb07a4be5cb734844&file=access_mutate_java_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c4e590034ea8fd55619201d291be80c8&file=access_mutate_java_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -164,7 +164,7 @@ import ballerina/jballerina.java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    float l = 2 * pi() * r;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float l = (&lt;float&gt; 2) * pi() * r;
     io:println(l);
 }
 </code></pre></div>

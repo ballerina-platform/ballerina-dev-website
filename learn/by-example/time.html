@@ -15,10 +15,10 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Get the current instant of the system clock(seconds from the epoch of</span>
+    <span class="c1">// Gets the current instant of the system clock (seconds from the epoch of</span>
     <span class="c1">// 1970-01-01T00:00:00). The returned `time:Utc` value represents seconds</span>
     <span class="c1">// from the epoch with nanoseconds precision.</span>
-    <span class="c1">// The `time:Utc` is a tuple with [int, decimal]. The first member of the</span>
+    <span class="c1">// The `time:Utc` is a tuple with `[int, decimal]`. The first member of the</span>
     <span class="c1">// tuple represents the number of seconds from the epoch. The second</span>
     <span class="c1">// member represents the rest of the nanoseconds from the epoch as a</span>
     <span class="c1">// fraction.</span>
@@ -27,8 +27,8 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Current timestamp nanoseconds as a</span>
 <span class="s">    fraction: ${currentUtc[1]}s`</span><span class="p">);</span>
 
-    <span class="c1">// Return seconds from some unspecified epoch. The returned `seconds` has</span>
-    <span class="c1">// the nanoseconds precision which represents using the fractional part.</span>
+    <span class="c1">// Returns seconds from some unspecified epoch. The returned `seconds` have</span>
+    <span class="c1">// the nanoseconds precision, which represents using the fractional part.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Seconds</span> <span class="nx">seconds</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">monotonicNow</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Seconds from an unspecified epoch: ${seconds}s`</span><span class="p">);</span>
 
@@ -47,12 +47,12 @@ redirect_from:
     <span class="nx">time</span><span class="p">:</span><span class="nx">Seconds</span> <span class="nx">utcDiff</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcDiffSeconds</span><span class="p">(</span><span class="nx">currentUtc</span><span class="p">,</span> <span class="nx">utc1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`UTC diff: ${utcDiff}`</span><span class="p">);</span>
 
-    <span class="c1">// Check the given `time:Date` value is valid or not.</span>
+    <span class="c1">// Checks if the given `time:Date` value is valid or not.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Date</span> <span class="nx">date</span> <span class="p">=</span> <span class="p">{</span><span class="nx">year</span><span class="p">:</span> <span class="mi">1994</span><span class="p">,</span> <span class="nx">month</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="nx">day</span><span class="p">:</span> <span class="mi">7</span><span class="p">};</span>
     <span class="kt">boolean</span> <span class="nx">isValidDate</span> <span class="p">=</span> <span class="p">(</span><span class="nx">time</span><span class="p">:</span><span class="nx">dateValidate</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="nx">is</span> <span class="p">())</span> <span class="err">?</span> <span class="kc">true</span> <span class="p">:</span> <span class="kc">false</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Is valid date: ${isValidDate}`</span><span class="p">);</span>
 
-    <span class="c1">// Return the day of week as a number starting from 0 to 6 inclusive.</span>
+    <span class="c1">// Returns the day of the week as a number starting from 0 to 6 inclusive.</span>
     <span class="c1">// 0 - SUNDAY, 1 - MONDAY, 2 - TUESDAY, 3 - WEDNESDAY, 4 - THURSDAY,</span>
     <span class="c1">// 5 - FRIDAY, 6 - SATURDAY</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">DayOfWeek</span> <span class="nx">dayOfWeek</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">dayOfWeek</span><span class="p">(</span><span class="nx">date</span><span class="p">);</span>
@@ -148,7 +148,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d9ad403f50a7261b943e685da4f9ecca&file=time.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=907d7483a0b9ea4c1bd4941b7b49323f&file=time.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -237,10 +237,10 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the current instant of the system clock(seconds from the epoch of
+                                            <p>Gets the current instant of the system clock (seconds from the epoch of
  1970-01-01T00:00:00). The returned <code>time:Utc</code> value represents seconds
  from the epoch with nanoseconds precision.
- The <code>time:Utc</code> is a tuple with [int, decimal]. The first member of the
+ The <code>time:Utc</code> is a tuple with <code>[int, decimal]</code>. The first member of the
  tuple represents the number of seconds from the epoch. The second
  member represents the rest of the nanoseconds from the epoch as a
  fraction.</p>
@@ -263,8 +263,8 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Return seconds from some unspecified epoch. The returned <code>seconds</code> has
- the nanoseconds precision which represents using the fractional part.</p>
+                                            <p>Returns seconds from some unspecified epoch. The returned <code>seconds</code> have
+ the nanoseconds precision, which represents using the fractional part.</p>
 
                                         </div>
                                     </div>
@@ -348,7 +348,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Check the given <code>time:Date</code> value is valid or not.</p>
+                                            <p>Checks if the given <code>time:Date</code> value is valid or not.</p>
 
                                         </div>
                                     </div>
@@ -368,7 +368,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Return the day of week as a number starting from 0 to 6 inclusive.
+                                            <p>Returns the day of the week as a number starting from 0 to 6 inclusive.
  0 - SUNDAY, 1 - MONDAY, 2 - TUESDAY, 3 - WEDNESDAY, 4 - THURSDAY,
  5 - FRIDAY, 6 - SATURDAY</p>
 

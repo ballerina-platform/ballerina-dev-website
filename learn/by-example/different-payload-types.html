@@ -25,7 +25,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">messageUsage</span><span class="p">()</span>
             <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
         <span class="c1">//[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function without any payload.</span>
-        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
         <span class="c1">//[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function with</span>
@@ -462,7 +462,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var response = clientEP-&gt;get(&quot;/greeting&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error response = clientEP-&gt;get(&quot;/greeting&quot;);
         handleResponse(response);
 </code></pre></div>
 

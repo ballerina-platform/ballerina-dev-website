@@ -14,13 +14,13 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-    <span class="c1">// Initialize the XML file path and content.</span>
+    <span class="c1">// Initializes the XML file path and content.</span>
     <span class="kt">string</span> <span class="nx">xmlFilePath</span> <span class="p">=</span> <span class="s">&quot;./files/xmlFile.xml&quot;</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">xmlContent</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
 
-    <span class="c1">// Write the given XML to a file.</span>
+    <span class="c1">// Writes the given XML to a file.</span>
     <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteXml</span><span class="p">(</span><span class="nx">xmlFilePath</span><span class="p">,</span> <span class="nx">xmlContent</span><span class="p">);</span>
-    <span class="c1">// If the write operation was successful, then, perform a read operation to read the XML content.</span>
+    <span class="c1">// If the write operation was successful, then, performs a read operation to read the XML content.</span>
     <span class="kt">xml</span> <span class="nx">readXml</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadXml</span><span class="p">(</span><span class="nx">xmlFilePath</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">readXml</span><span class="p">);</span>
 <span class="p">}</span>
@@ -143,7 +143,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the XML file path and content.</p>
+                                            <p>Initializes the XML file path and content.</p>
 
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write the given XML to a file.</p>
+                                            <p>Writes the given XML to a file.</p>
 
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the write operation was successful, then, perform a read operation to read the XML content.</p>
+                                            <p>If the write operation was successful, then, performs a read operation to read the XML content.</p>
 
                                         </div>
                                     </div>

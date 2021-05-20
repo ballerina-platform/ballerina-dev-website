@@ -14,27 +14,27 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Call the &#39;calculate&#39; function asynchronously.</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;365*24&quot;</span><span class="p">);</span>
     <span class="c1">// Do some other processing.</span>
     <span class="kt">int</span> <span class="nx">secondsInHour</span> <span class="p">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">;</span>
     <span class="c1">// Wait for the future to finish and extract the result</span>
-    <span class="kt">int</span> <span class="nx">hoursInYear</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">hoursInYear</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">secondsInYear</span> <span class="p">=</span> <span class="nx">hoursInYear</span> <span class="o">*</span> <span class="nx">secondsInHour</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Seconds in an year = &quot;</span><span class="p">,</span> <span class="nx">secondsInYear</span><span class="p">);</span>
 
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;125*34&quot;</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f3</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">125</span><span class="p">,</span> <span class="mi">34</span><span class="p">);</span>
     <span class="c1">// Wait for any of the given futures to complete. The first future that is completed will return the result.</span>
-    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f2</span><span class="p">|</span><span class="nx">f3</span><span class="p">;</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f2</span><span class="p">|</span><span class="nx">f3</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;125*34 = &quot;</span><span class="p">,</span> <span class="nx">result1</span><span class="p">);</span>
 
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f4</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;9*8*7*6&quot;</span><span class="p">);</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f5</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;5*4*3*2*1&quot;</span><span class="p">);</span>
     <span class="c1">// Wait for all the given futures to complete. The result of the `wait` action can be assigned to a map or a record. </span>
-    <span class="nx">record</span> <span class="p">{</span> <span class="kt">int</span> <span class="nx">r1</span><span class="p">;</span> <span class="kt">int</span> <span class="nx">r2</span><span class="p">;</span> <span class="p">}</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">r1</span><span class="p">:</span> <span class="nx">f4</span><span class="p">,</span> <span class="nx">r2</span><span class="p">:</span> <span class="nx">f5</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;9! = &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">r1</span> <span class="o">*</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">r2</span><span class="p">);</span>
+    <span class="nx">record</span> <span class="p">{</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r1</span><span class="p">;</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r2</span><span class="p">;</span> <span class="p">}</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">r1</span><span class="p">:</span> <span class="nx">f4</span><span class="p">,</span> <span class="nx">r2</span><span class="p">:</span> <span class="nx">f5</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;9! = &quot;</span><span class="p">,</span> <span class="nx">check</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">r1</span> <span class="o">*</span> <span class="nx">check</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">r2</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">string</span> <span class="nx">expr</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
@@ -104,7 +104,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=957bef12512413f90ab6fcb792b56bd7&file=async.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bb83b45afbc7382a96cd7c6558e68016&file=async.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -166,7 +166,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -216,7 +216,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int hoursInYear = wait f1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int hoursInYear = check wait f1;
     int secondsInYear = hoursInYear * secondsInHour;
     io:println(&quot;Seconds in an year = &quot;, secondsInYear);
 </code></pre></div>
@@ -250,7 +250,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int result1 = wait f2|f3;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error result1 = wait f2|f3;
     io:println(&quot;125*34 = &quot;, result1);
 </code></pre></div>
 
@@ -283,8 +283,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    record { int r1; int r2; } result2 = wait {r1: f4, r2: f5};
-    io:println(&quot;9! = &quot;, result2.r1 * result2.r2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    record { int|error r1; int|error r2; } result2 = wait {r1: f4, r2: f5};
+    io:println(&quot;9! = &quot;, check result2.r1 * check result2.r2);
 }
 </code></pre></div>
 

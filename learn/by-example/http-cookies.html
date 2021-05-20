@@ -107,7 +107,7 @@ redirect_from:
     <span class="nx">request</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonPart</span><span class="p">);</span>
 
     <span class="c1">// Send an outbound request to the `login` backend resource.</span>
-    <span class="k">var</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">loginResp</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">);</span>
@@ -816,7 +816,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var loginResp = httpClient-&gt;post(&quot;/login&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response|error loginResp = httpClient-&gt;post(&quot;/login&quot;, request);
 </code></pre></div>
 
                                 </td>

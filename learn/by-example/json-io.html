@@ -14,7 +14,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-    <span class="c1">// Initialize the JSON file path and content.</span>
+    <span class="c1">// Initializes the JSON file path and content.</span>
     <span class="kt">string</span> <span class="nx">jsonFilePath</span> <span class="p">=</span> <span class="s">&quot;./files/jsonFile.json&quot;</span><span class="p">;</span>
     <span class="kt">json</span> <span class="nx">jsonContent</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;Store&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s">&quot;@id&quot;</span><span class="p">:</span> <span class="s">&quot;AST&quot;</span><span class="p">,</span>
@@ -26,9 +26,9 @@ redirect_from:
             <span class="s">&quot;codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;8&quot;</span><span class="p">]</span>
         <span class="p">}};</span>
 
-    <span class="c1">// Write the given JSON to a file.</span>
+    <span class="c1">// Writes the given JSON to a file.</span>
     <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteJson</span><span class="p">(</span><span class="nx">jsonFilePath</span><span class="p">,</span> <span class="nx">jsonContent</span><span class="p">);</span>
-    <span class="c1">// If the write operation was successful, then, perform a read operation to read the JSON content.</span>
+    <span class="c1">// If the write operation was successful, then, performs a read operation to read the JSON content.</span>
     <span class="kt">json</span> <span class="nx">readJson</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadJson</span><span class="p">(</span><span class="nx">jsonFilePath</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">readJson</span><span class="p">);</span>
 <span class="p">}</span>
@@ -159,7 +159,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the JSON file path and content.</p>
+                                            <p>Initializes the JSON file path and content.</p>
 
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write the given JSON to a file.</p>
+                                            <p>Writes the given JSON to a file.</p>
 
                                         </div>
                                     </div>
@@ -199,7 +199,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the write operation was successful, then, perform a read operation to read the JSON content.</p>
+                                            <p>If the write operation was successful, then, performs a read operation to read the JSON content.</p>
 
                                         </div>
                                     </div>

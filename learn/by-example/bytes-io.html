@@ -14,18 +14,18 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
-    <span class="c1">// Initialize the image paths.</span>
+    <span class="c1">// Initializes the image paths.</span>
     <span class="kt">string</span> <span class="nx">imagePath</span> <span class="p">=</span> <span class="s">&quot;./files/ballerina.jpg&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">imageCopyPath1</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy1.jpg&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">imageCopyPath2</span> <span class="p">=</span> <span class="s">&quot;./files/ballerinaCopy2.jpg&quot;</span><span class="p">;</span>
 
-    <span class="c1">// Read the file content as a byte array using the given file path.</span>
+    <span class="c1">// Reads the file content as a byte array using the given file path.</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">bytes</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBytes</span><span class="p">(</span><span class="nx">imagePath</span><span class="p">);</span>
-    <span class="c1">// Write the already-read content to the given destination file.</span>
+    <span class="c1">// Writes the already-read content to the given destination file.</span>
     <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteBytes</span><span class="p">(</span><span class="nx">imageCopyPath1</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Successfully copied the image as a byte array.&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Read the file as a stream of blocks. The default block size is 4KB.</span>
+    <span class="c1">// Reads the file as a stream of blocks. The default block size is 4KB.</span>
     <span class="c1">// Here, the default size is overridden by the value 2KB.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">io</span><span class="p">:</span><span class="nx">Block</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">blockStream</span> <span class="p">=</span> <span class="nx">check</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="nx">imagePath</span><span class="p">,</span> <span class="mi">2048</span><span class="p">);</span>
@@ -157,7 +157,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the image paths.</p>
+                                            <p>Initializes the image paths.</p>
 
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read the file content as a byte array using the given file path.</p>
+                                            <p>Reads the file content as a byte array using the given file path.</p>
 
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write the already-read content to the given destination file.</p>
+                                            <p>Writes the already-read content to the given destination file.</p>
 
                                         </div>
                                     </div>
@@ -216,7 +216,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read the file as a stream of blocks. The default block size is 4KB.
+                                            <p>Reads the file as a stream of blocks. The default block size is 4KB.
  Here, the default size is overridden by the value 2KB.</p>
 
                                         </div>

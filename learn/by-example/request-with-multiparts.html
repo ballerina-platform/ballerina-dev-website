@@ -63,7 +63,8 @@ redirect_from:
         <span class="c1">// eg:- `multipart/mixed`, `multipart/related` etc.</span>
         <span class="c1">// You need to pass the content type that suit your requirement.</span>
         <span class="nx">request</span><span class="p">.</span><span class="nx">setBodyParts</span><span class="p">(</span><span class="nx">bodyParts</span><span class="p">,</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">returnResponse</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/multiparts/decode&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returnResponse</span> <span class="p">=</span>
+            <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/multiparts/decode&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">returnResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -134,7 +135,7 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="mutual-ssl.html">
+                                    <a class="prev" href="https-mutual-ssl.html">
                                         <span>< PREVIOUS</span>
                                         <p>Mutual SSL</p>
                                     </a>
@@ -425,7 +426,8 @@ import ballerina/mime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-        var returnResponse = clientEP-&gt;post(&quot;/multiparts/decode&quot;, request);
+        http:Response|error returnResponse =
+            clientEP-&gt;post(&quot;/multiparts/decode&quot;, request);
         if (returnResponse is http:Response) {
             return returnResponse;
         } else {

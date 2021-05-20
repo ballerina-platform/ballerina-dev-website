@@ -14,13 +14,13 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">random</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Generate a random decimal number between 0.0 and 1.0.</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Generates a random decimal number between 0.0 and 1.0.</span>
     <span class="kt">float</span> <span class="nx">randomDecimal</span> <span class="p">=</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createDecimal</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Random decimal number: &quot;</span><span class="p">,</span> <span class="nx">randomDecimal</span><span class="p">);</span>
 
-    <span class="c1">// Generate a random number between the given start(inclusive) and end(exclusive) values.</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">randomInteger</span> <span class="p">=</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+    <span class="c1">// Generates a random number between the given start(inclusive) and end(exclusive) values.</span>
+    <span class="kt">int</span> <span class="nx">randomInteger</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Random integer number in range: &quot;</span><span class="p">,</span> <span class="nx">randomInteger</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -42,9 +42,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="file.html">
+                                    <a class="prev" href="os.html">
                                         <span>< PREVIOUS</span>
-                                        <p>File</p>
+                                        <p>OS</p>
                                     </a>
                                 </div>
                                  
@@ -75,7 +75,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee99b8cfed26a9320759506d673b4c90&file=random.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=94a0d57c636c42bab2f0f72bce2701b3&file=random.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -123,7 +123,7 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -144,7 +144,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Generate a random decimal number between 0.0 and 1.0.</p>
+                                            <p>Generates a random decimal number between 0.0 and 1.0.</p>
 
                                         </div>
                                     </div>
@@ -155,7 +155,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int|error randomInteger = random:createIntInRange(1, 100);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int randomInteger = check random:createIntInRange(1, 100);
     io:println(&quot;Random integer number in range: &quot;, randomInteger);
 }
 </code></pre></div>
@@ -165,7 +165,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Generate a random number between the given start(inclusive) and end(exclusive) values.</p>
+                                            <p>Generates a random number between the given start(inclusive) and end(exclusive) values.</p>
 
                                         </div>
                                     </div>

@@ -15,30 +15,30 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Get the absolute representation of the path.</span>
+    <span class="c1">// Gets the absolute representation of the path.</span>
     <span class="kt">string</span> <span class="nx">absValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getAbsolutePath</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Check whether the path is absolute.</span>
+    <span class="c1">// Checks whether the path is absolute.</span>
     <span class="kt">boolean</span> <span class="nx">isAbs</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">isAbsolutePath</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;/A/B/C is absolute: &quot;</span><span class="p">,</span> <span class="nx">isAbs</span><span class="p">);</span>
 
-    <span class="c1">// Get the base name of the path.</span>
+    <span class="c1">// Gets the base name of the path.</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">basename</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Filename of /A/B/C: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
 
-    <span class="c1">// Get the enclosing parent directory.</span>
+    <span class="c1">// Gets the enclosing parent directory.</span>
     <span class="kt">string</span> <span class="nx">parentPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">parentPath</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Parent of /A/B/C: &quot;</span><span class="p">,</span> <span class="nx">parentPath</span><span class="p">);</span>
 
-    <span class="c1">// Get the shortest path name equivalent to path by purely lexical processing.</span>
+    <span class="c1">// Gets the shortest path name equivalent to path by purely lexical processing.</span>
     <span class="kt">string</span> <span class="nx">normalizedPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">normalizePath</span><span class="p">(</span><span class="s">&quot;foo/../bar&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">CLEAN</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Normalized path of foo/../bar: &quot;</span><span class="p">,</span> <span class="nx">normalizedPath</span><span class="p">);</span>
 
-    <span class="c1">// Get the list of path elements joined by the OS-specific path separator.</span>
+    <span class="c1">// Gets the list of path elements joined by the OS-specific path separator.</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">parts</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">splitPath</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Path elements of /A/B/C: ${parts.toString()}`</span><span class="p">);</span>
 
-    <span class="c1">// Join any number of path elements into a single path.</span>
+    <span class="c1">// Joins any number of path elements into a single path.</span>
     <span class="kt">string</span> <span class="nx">path</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">joinPath</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: &quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
 
@@ -66,9 +66,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="strings.html">
+                                    <a class="prev" href="regex.html">
                                         <span>< PREVIOUS</span>
-                                        <p>String</p>
+                                        <p>Regex</p>
                                     </a>
                                 </div>
                                  
@@ -99,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e3405a5de7d5613ce51fc7868359191b&file=filepath.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bc0f38db37d406890cc0163dee7d9716&file=filepath.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -179,7 +179,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the absolute representation of the path.</p>
+                                            <p>Gets the absolute representation of the path.</p>
 
                                         </div>
                                     </div>
@@ -199,7 +199,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Check whether the path is absolute.</p>
+                                            <p>Checks whether the path is absolute.</p>
 
                                         </div>
                                     </div>
@@ -219,7 +219,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the base name of the path.</p>
+                                            <p>Gets the base name of the path.</p>
 
                                         </div>
                                     </div>
@@ -239,7 +239,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the enclosing parent directory.</p>
+                                            <p>Gets the enclosing parent directory.</p>
 
                                         </div>
                                     </div>
@@ -259,7 +259,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the shortest path name equivalent to path by purely lexical processing.</p>
+                                            <p>Gets the shortest path name equivalent to path by purely lexical processing.</p>
 
                                         </div>
                                     </div>
@@ -279,7 +279,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the list of path elements joined by the OS-specific path separator.</p>
+                                            <p>Gets the list of path elements joined by the OS-specific path separator.</p>
 
                                         </div>
                                     </div>
@@ -299,7 +299,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Join any number of path elements into a single path.</p>
+                                            <p>Joins any number of path elements into a single path.</p>
 
                                         </div>
                                     </div>

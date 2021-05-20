@@ -1,8 +1,8 @@
 ---
 layout: ballerina-example-page
 title: Cache
-description: 
-keywords: 
+description: This BBE shows how to perform an in-memory caching with the "Least Recently Used" algorithm in Ballerina.
+keywords: ballerina, ballerina by examples, bbe, cache
 permalink: /learn/by-example/cache
 redirect_from:
   - /swan-lake/learn/by-example/cache
@@ -47,20 +47,20 @@ redirect_from:
     <span class="c1">// entry with the key &#39;key2&#39; should exist in the cache.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
 
-    <span class="c1">// Get the keys of the cache entries.</span>
+    <span class="c1">// Gets the keys of the cache entries.</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">keys</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: &quot;</span> <span class="o">+</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
-    <span class="c1">// Get the size of the cache.</span>
+    <span class="c1">// Gets the size of the cache.</span>
     <span class="kt">int</span> <span class="nx">size</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">size</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;size: &quot;</span><span class="p">,</span> <span class="nx">size</span><span class="p">);</span>
 
-    <span class="c1">// Discard the given cache entry.</span>
+    <span class="c1">// Discards the given cache entry.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidate</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: &quot;</span><span class="p">,</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
 
-    <span class="c1">// Discard all the cache entries of the cache.</span>
+    <span class="c1">// Discards all the cache entries of the cache.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidateAll</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -72,8 +72,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Cache</h2>
-                            <p><p>The Ballerina Cache API by-default provides an in-memory cache implementation with an
- LRU algorithm based eviction policy. The caching implementation can be customized by providing different
+                            <p><p>The Ballerina Cache API provides an in-memory cache implementation by default  with a
+ <code>Least Recently Used</code> algorithm-based eviction policy. The caching implementation can be customized by providing different
  storage mechanisms and eviction policies. <br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/cache/latest/">Cache module</a>.</p>
@@ -117,7 +117,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4458f85108397fb0fd272efe799bb63a&file=cache.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=05e655b043558a07371a536096379e51&file=cache.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -334,7 +334,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the keys of the cache entries.</p>
+                                            <p>Gets the keys of the cache entries.</p>
 
                                         </div>
                                     </div>
@@ -354,7 +354,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the size of the cache.</p>
+                                            <p>Gets the size of the cache.</p>
 
                                         </div>
                                     </div>
@@ -373,7 +373,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Discard the given cache entry.</p>
+                                            <p>Discards the given cache entry.</p>
 
                                         </div>
                                     </div>
@@ -405,7 +405,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Discard all the cache entries of the cache.</p>
+                                            <p>Discards all the cache entries of the cache.</p>
 
                                         </div>
                                     </div>

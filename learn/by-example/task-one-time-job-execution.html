@@ -22,7 +22,7 @@ redirect_from:
     <span class="o">*</span><span class="nx">task</span><span class="p">:</span><span class="nx">Job</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
 
-    <span class="c1">// Get executed by the scheduler when the scheduled trigger fires.</span>
+    <span class="c1">// Executes this function when the scheduled trigger fires.</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">execute</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MyCounter: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">i</span><span class="p">);</span>
@@ -34,17 +34,17 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Get the current time.</span>
+    <span class="c1">// Gets the current time.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">currentUtc</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcNow</span><span class="p">();</span>
-    <span class="c1">// Increase the time by three seconds to get the specified time for scheduling the job.</span>
+    <span class="c1">// Increases the time by three seconds to get the specified time for scheduling the job.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">newTime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcAddSeconds</span><span class="p">(</span><span class="nx">currentUtc</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="c1">// Get the `time:Civil` for the given time.</span>
+    <span class="c1">// Gets the `time:Civil` for the given time.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Civil</span> <span class="nx">time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToCivil</span><span class="p">(</span><span class="nx">newTime</span><span class="p">);</span>
 
-    <span class="c1">// Schedule the one-time job at the specified time.</span>
+    <span class="c1">// Schedules the one-time job at the specified time.</span>
     <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleOneTimeJob</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nx">time</span><span class="p">);</span>
 
-    <span class="c1">// Wait for five seconds.</span>
+    <span class="c1">// Waits for five seconds.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -203,7 +203,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get executed by the scheduler when the scheduled trigger fires.</p>
+                                            <p>Executes this function when the scheduled trigger fires.</p>
 
                                         </div>
                                     </div>
@@ -249,7 +249,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the current time.</p>
+                                            <p>Gets the current time.</p>
 
                                         </div>
                                     </div>
@@ -268,7 +268,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Increase the time by three seconds to get the specified time for scheduling the job.</p>
+                                            <p>Increases the time by three seconds to get the specified time for scheduling the job.</p>
 
                                         </div>
                                     </div>
@@ -287,7 +287,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <code>time:Civil</code> for the given time.</p>
+                                            <p>Gets the <code>time:Civil</code> for the given time.</p>
 
                                         </div>
                                     </div>
@@ -306,7 +306,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Schedule the one-time job at the specified time.</p>
+                                            <p>Schedules the one-time job at the specified time.</p>
 
                                         </div>
                                     </div>
@@ -326,7 +326,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Wait for five seconds.</p>
+                                            <p>Waits for five seconds.</p>
 
                                         </div>
                                     </div>

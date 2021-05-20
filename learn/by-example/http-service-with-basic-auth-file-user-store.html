@@ -13,14 +13,14 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span>
+    <span class="nx">secureSocket</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
             <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span>
+<span class="p">);</span>
 
 <span class="c1">// The service can be secured with Basic auth and can be authorized optionally.</span>
 <span class="c1">// Using Basic auth with the file user store can be enabled by setting the</span>
@@ -32,7 +32,7 @@ redirect_from:
     <span class="nx">auth</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nx">fileUserStoreConfig</span><span class="p">:</span> <span class="p">{},</span>
-            <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
+            <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;admin&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -151,14 +151,14 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: &quot;../resource/path/to/public.crt&quot;,
             keyFile: &quot;../resource/path/to/private.key&quot;
         }
     }
-});
+);
 </code></pre></div>
 
                                 </td>
@@ -174,7 +174,7 @@ redirect_from:
     auth: [
         {
             fileUserStoreConfig: {},
-            scopes: [&quot;hello&quot;]
+            scopes: [&quot;admin&quot;]
         }
     ]
 }
@@ -259,8 +259,8 @@ service /foo on securedEP {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>[[ballerina.auth.users]]
 username=&quot;alice&quot;
-password=&quot;password1&quot;
-scopes=[&quot;scope1&quot;]
+password=&quot;alice@123&quot;
+scopes=[&quot;developer&quot;]
 </code></pre></div>
 
                                 </td>
@@ -273,9 +273,9 @@ scopes=[&quot;scope1&quot;]
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>[[ballerina.auth.users]]
-username=&quot;bob&quot;
-password=&quot;password2&quot;
-scopes=[&quot;scope2&quot;, &quot;scope3&quot;]
+username=&quot;ldclakmal&quot;
+password=&quot;ldclakmal@123&quot;
+scopes=[&quot;developer&quot;, &quot;admin&quot;]
 </code></pre></div>
 
                                 </td>
@@ -289,7 +289,7 @@ scopes=[&quot;scope2&quot;, &quot;scope3&quot;]
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>[[ballerina.auth.users]]
 username=&quot;eve&quot;
-password=&quot;password3&quot;
+password=&quot;eve@123&quot;
 </code></pre></div>
 
                                 </td>

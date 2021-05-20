@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page
 title: HTTPS Listener
-description: BBE on how to use the Ballerina HTTPS Listener to connect or interact with an HTTPS client.
+description: BBE on how to use the Ballerina HTTPS listener to connect or interact with an HTTPS client.
 keywords: ballerina, ballerina by example, bbe, ssl, https, https listener
 permalink: /learn/by-example/https-listener
 redirect_from:
@@ -13,27 +13,23 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="c1">// An HTTP endpoint can be configured to communicate through HTTPS as well.</span>
-<span class="c1">// To secure an endpoint using HTTPS, the endpoint needs to be configured with</span>
-<span class="c1">// a certificate file and a private key file for the endpoint.</span>
-<span class="c1">// The [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">ListenerConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+<span class="c1">// An HTTP listener can be configured to communicate through HTTPS as well.</span>
+<span class="c1">// To secure an listener using HTTPS, the listener needs to be configured with</span>
+<span class="c1">// a certificate file and a private key file for the listener.</span>
+<span class="c1">// The [http:ListenerSecureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record</span>
+<span class="c1">// provides the SSL-related listener configurations of the listener.</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span>
+    <span class="nx">secureSocket</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
             <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">);</span>
 
-<span class="c1">// Create a listener endpoint.</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9095</span><span class="p">,</span> <span class="nx">helloWorldEPConfig</span><span class="p">);</span>
-
-<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="c1">// Send the response with a string payload back to the caller.</span>
-        <span class="k">return</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">securedEP</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">bar</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -45,8 +41,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>HTTPS Listener</h2>
-                            <p><p>You can use the HTTPS Listener to connect or interact with an HTTPS client.
- Provide the Secure Socket configuration to the server to expose an HTTPS connection.<br/><br/>
+                            <p><p>You can use the HTTPS listener to connect to or interact with an HTTPS client.
+ Provide the <code>http:ListenerSecureSocket</code> configurations to the server to
+ expose an HTTPS connection.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
@@ -63,9 +60,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="basic-https-listener-client.html">
+                                    <a class="next" href="https-client.html">
                                         <span>NEXT ></span>
-                                        <p>Basic HTTPS Listener Client</p>
+                                        <p>HTTPS Client</p>
                                     </a>
                                 </div>
                                 
@@ -110,12 +107,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -136,14 +127,14 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:ListenerConfiguration helloWorldEPConfig = {
-    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: &quot;../resource/path/to/public.crt&quot;,
             keyFile: &quot;../resource/path/to/private.key&quot;
         }
     }
-};
+);
 </code></pre></div>
 
                                 </td>
@@ -151,29 +142,11 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An HTTP endpoint can be configured to communicate through HTTPS as well.
- To secure an endpoint using HTTPS, the endpoint needs to be configured with
- a certificate file and a private key file for the endpoint.
- The <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">secureSocket</a> record provides the SSL-related listener configurations.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a listener endpoint.</p>
+                                            <p>An HTTP listener can be configured to communicate through HTTPS as well.
+ To secure an listener using HTTPS, the listener needs to be configured with
+ a certificate file and a private key file for the listener.
+ The <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">http:ListenerSecureSocket</a> record
+ provides the SSL-related listener configurations of the listener.</p>
 
                                         </div>
                                     </div>
@@ -182,46 +155,17 @@ redirect_from:
                             </tr>
                             
                             <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on helloWorldEP {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .() returns string {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;Hello World!&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>service /foo on securedEP {
+    resource function get bar() returns string {
+        return &quot;Hello, World!&quot;;
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send the response with a string payload back to the caller.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -242,11 +186,11 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command along with the Ballerina home path as a config.
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
 # (You may need to change the certificate file path and private key file path.)
 bal run https_listener.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
+[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -272,8 +216,8 @@ bal run https_listener.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the service, execute the cURL command below with the `-k` option.
-curl -k https://localhost:9095/hello
-Hello World!
+curl -k https://localhost:9090/foo/bar
+Hello, World!
 </code></pre></div>
 
                                 </td>

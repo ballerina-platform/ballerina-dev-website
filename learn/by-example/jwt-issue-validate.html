@@ -14,7 +14,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">IssuerConfig</span> <span class="nx">issuerConfig</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
@@ -29,15 +29,10 @@ redirect_from:
     <span class="p">};</span>
 
     <span class="c1">// Issues a JWT based on the provided header, payload, and private key.</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jwt</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">issue</span><span class="p">(</span><span class="nx">issuerConfig</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">jwt</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span><span class="p">,</span> <span class="nx">jwt</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while issuing the JWT: &quot;</span><span class="p">,</span>
-            <span class="nx">jwt</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="kt">string</span> <span class="nx">jwt</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">issue</span><span class="p">(</span><span class="nx">issuerConfig</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span><span class="p">,</span> <span class="nx">jwt</span><span class="p">);</span>
 
-    <span class="c1">// Defines the JWT validator configurations with certificate file configurations.</span>
+    <span class="c1">// Defines the JWT validator configurations with the certificate file configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">ValidatorConfig</span> <span class="nx">validatorConfig1</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
@@ -47,17 +42,11 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">};</span>
 
-    <span class="c1">// Validates the created JWT. Signature is validated using the public certificate.</span>
-    <span class="nx">jwt</span><span class="p">:</span><span class="nx">Payload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validate</span><span class="p">(</span><span class="nx">checkpanic</span> <span class="nx">jwt</span><span class="p">,</span>
-                                                <span class="nx">validatorConfig1</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">Payload</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
-            <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="c1">// Validates the created JWT. The signature is validated using the public certificate.</span>
+    <span class="nx">jwt</span><span class="p">:</span><span class="nx">Payload</span> <span class="nx">payload1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validate</span><span class="p">(</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig1</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">payload1</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
-    <span class="c1">// Defines the JWT validator configurations with JWKs configurations.</span>
+    <span class="c1">// Defines the JWT validator configurations with the JWKs configurations.</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">ValidatorConfig</span> <span class="nx">validatorConfig2</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
@@ -74,26 +63,21 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">};</span>
 
-    <span class="c1">// Validates the created JWT. Signature is validated using the JWKs endpoint.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validate</span><span class="p">(</span><span class="nx">checkpanic</span> <span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig2</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">Payload</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
-            <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="c1">// Validates the created JWT. The signature is validated using the JWKs endpoint.</span>
+    <span class="nx">jwt</span><span class="p">:</span><span class="nx">Payload</span> <span class="nx">payload2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validate</span><span class="p">(</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig2</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">payload2</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 <span class="p">}</span>
-<span class="c1">// This is a mock JWK server, which is to expose the JWK components for testing purpose.</span>
+<span class="c1">// This is a mock JWK server, which exposes the JWK components for testing purposes.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">20000</span><span class="p">,</span>
+    <span class="nx">secureSocket</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
             <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span>
+<span class="p">);</span>
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">jwks</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
@@ -129,7 +113,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>JWT Issue/Validate</h2>
-                            <p><p>This example demonstrates how to issue and validate a JWT.
+                            <p><p>This example demonstrates how to issue a self-signed JWT and
+ validate a JWT.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/jwt/latest/">JWT module</a>.</p>
 </p>
@@ -222,7 +207,7 @@ import ballerina/jwt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     jwt:IssuerConfig issuerConfig = {
         username: &quot;ballerina&quot;,
         issuer: &quot;wso2&quot;,
@@ -246,13 +231,8 @@ import ballerina/jwt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string|jwt:Error jwt = jwt:issue(issuerConfig);
-    if (jwt is string) {
-        io:println(&quot;Issued JWT: &quot;, jwt);
-    } else {
-        io:println(&quot;An error occurred while issuing the JWT: &quot;,
-            jwt.message());
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    string jwt = check jwt:issue(issuerConfig);
+    io:println(&quot;Issued JWT: &quot;, jwt);
 </code></pre></div>
 
                                 </td>
@@ -286,7 +266,7 @@ import ballerina/jwt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the JWT validator configurations with certificate file configurations.</p>
+                                            <p>Defines the JWT validator configurations with the certificate file configurations.</p>
 
                                         </div>
                                     </div>
@@ -297,14 +277,8 @@ import ballerina/jwt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    jwt:Payload|jwt:Error result = jwt:validate(checkpanic jwt,
-                                                validatorConfig1);
-    if (result is jwt:Payload) {
-        io:println(&quot;Validated JWT Payload: &quot;, result.toString());
-    } else {
-        io:println(&quot;An error occurred while validating the JWT: &quot;,
-            result.message());
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    jwt:Payload payload1 = check jwt:validate(jwt, validatorConfig1);
+    io:println(&quot;Validated JWT Payload: &quot;, payload1.toString());
 </code></pre></div>
 
                                 </td>
@@ -312,7 +286,7 @@ import ballerina/jwt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Validates the created JWT. Signature is validated using the public certificate.</p>
+                                            <p>Validates the created JWT. The signature is validated using the public certificate.</p>
 
                                         </div>
                                     </div>
@@ -345,7 +319,7 @@ import ballerina/jwt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the JWT validator configurations with JWKs configurations.</p>
+                                            <p>Defines the JWT validator configurations with the JWKs configurations.</p>
 
                                         </div>
                                     </div>
@@ -356,13 +330,8 @@ import ballerina/jwt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = jwt:validate(checkpanic jwt, validatorConfig2);
-    if (result is jwt:Payload) {
-        io:println(&quot;Validated JWT Payload: &quot;, result.toString());
-    } else {
-        io:println(&quot;An error occurred while validating the JWT: &quot;,
-            result.message());
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    jwt:Payload payload2 = check jwt:validate(jwt, validatorConfig2);
+    io:println(&quot;Validated JWT Payload: &quot;, payload2.toString());
 }
 </code></pre></div>
 
@@ -371,7 +340,7 @@ import ballerina/jwt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Validates the created JWT. Signature is validated using the JWKs endpoint.</p>
+                                            <p>Validates the created JWT. The signature is validated using the JWKs endpoint.</p>
 
                                         </div>
                                     </div>
@@ -421,7 +390,7 @@ import ballerina/jwt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is a mock JWK server, which is to expose the JWK components for testing purpose.</p>
+                                            <p>This is a mock JWK server, which exposes the JWK components for testing purposes.</p>
 
                                         </div>
                                     </div>
@@ -432,14 +401,14 @@ import ballerina/jwt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener oauth2Server = new (20000, {
-    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener oauth2Server = new (20000,
+    secureSocket = {
         key: {
             certFile: &quot;../resource/path/to/public.crt&quot;,
             keyFile: &quot;../resource/path/to/private.key&quot;
         }
     }
-});
+);
 </code></pre></div>
 
                                 </td>

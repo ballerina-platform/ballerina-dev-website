@@ -1,9 +1,11 @@
+- title: Language Concepts
 - title: Hello World
   url: '#'
   sublinks:
     - title: Hello World Service
       url: /learn/by-example/hello-world-service/
       active: hello-world-service
+  
     - title: Hello World Main
       url: /learn/by-example/hello-world
       active: hello-world
@@ -25,10 +27,10 @@
       active: variables
     - title: Var
       url: /learn/by-example/var
-      active: var
+      active: writing-your-first-ballerina-program
     - title: Funcitons
-      url: /learn/by-example/functions
-      active: functions
+      url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
+      active: writing-your-first-ballerina-program
 
 
 

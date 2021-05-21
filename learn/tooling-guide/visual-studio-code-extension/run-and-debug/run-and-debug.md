@@ -102,25 +102,30 @@ Follow the steps below to start a remote debug session.
 
 2. Open the Terminal and execute the Ballerina command, which you want to debug, out of the supported remote debugging commands below. 
 
-    - Debugging a Ballerina package/ single file: 
+    - Debugging a Ballerina package or a single file: 
 
     ```bash
     bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>
     ```
 
-    - Debugging ballerina tests: 
+   - Debugging Ballerina executable jar:  
+
+    ```bash 
+    bal run --debug <DEBUGGEE_PORT> <JAR_FILE_PATH>
+    ```
+
+    - Debugging Ballerina tests: 
 
     ```bash
     bal test --debug <DEBUGGEE_PORT> <PACKAGE_PATH>
     ```
 
-    - Debugging ballerina tests during the build:  
+    - Debugging Ballerina tests during the build:  
 
     ```bash 
     bal build --debug <DEBUGGEE_PORT> <PACKAGE_PATH>
     ```
     
-
     The terminal will show the following log:
 
     ```bash
@@ -177,6 +182,7 @@ The features below are currently not supported.
 - Anonymous function, query, let, and constructor expressions
 - Qualified identifiers (Hence, cannot evaluate imported module entities.)
 - Function invocations with rest arguments
+- Action invocations
 
 
 

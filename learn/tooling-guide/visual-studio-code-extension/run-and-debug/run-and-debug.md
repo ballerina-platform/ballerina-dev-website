@@ -108,10 +108,10 @@ Follow the steps below to start a remote debug session.
     bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>
     ```
 
-   - Debugging Ballerina executable jar:  
+   - Debugging Ballerina executable JAR:  
 
     ```bash 
-    bal run --debug <DEBUGGEE_PORT> <JAR_FILE_PATH>
+    bal run --debug <DEBUGGEE_PORT> <EXECUTABLE_JAR_FILE_PATH>
     ```
 
     - Debugging Ballerina tests: 

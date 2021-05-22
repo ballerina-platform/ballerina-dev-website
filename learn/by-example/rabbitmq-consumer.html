@@ -1,8 +1,8 @@
 ---
 layout: ballerina-example-page
 title: Consumer
-description: 
-keywords: 
+description: BBE on consuming messages from a RabbitMQ queue in an asynchronous manner using Ballerina.
+keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, service, asynchronous
 permalink: /learn/by-example/rabbitmq-consumer
 redirect_from:
   - /swan-lake/learn/by-example/rabbitmq-consumer
@@ -27,11 +27,8 @@ redirect_from:
 <span class="kd">service</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
-                        <span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -175,11 +172,8 @@ import ballerinax/rabbitmq;
                                     <div class="highlight"><pre><code class=language-ballerina>service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message) {
         string|error messageContent = string:fromBytes(message.content);
-        if (messageContent is string) {
-            log:printInfo(&quot;The message received: &quot; + messageContent);
-        } else {
-            log:printError(
-                        &quot;Error occurred while retrieving the message content.&quot;);
+        if messageContent is string {
+            log:printInfo(&quot;Received message: &quot; + messageContent);
         }
     }
 }
@@ -266,7 +260,7 @@ import ballerinax/rabbitmq;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>[ballerinax/rabbitmq] Consumer service started for queue MyQueue
-time = 2021-01-18 14:49:16,472 level = INFO  module = &quot;&quot; message = &quot;The message received: Hello from Ballerina&quot;
+time = 2021-05-20T14:49:11.011+05:30 level = INFO module = &quot;&quot; message = &quot;Received message: Hello from Ballerina&quot;
 </code></pre></div>
 
                                 </td>

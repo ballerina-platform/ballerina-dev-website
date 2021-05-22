@@ -1,64 +1,71 @@
 ---
 layout: ballerina-example-page
-title: Basic HTTPS Listener Client
-description: BBE on how the Ballerina HTTPS client can be configured to connect to an HTTPS listener through 1-way SSL connection (i.e. the server is verified by the client)
-keywords: ballerina, ballerina by example, bbe, ssl, tls, https client, https listener
-permalink: /learn/by-example/basic-https-listener-client
+title: Mutual SSL
+description: BBE on how the Ballerina listener and client support mutual SSL.
+keywords: ballerina, ballerina by example, bbe, mutual ssl, ssl protocols, ciphers
+permalink: /learn/by-example/https-mutual-ssl
 redirect_from:
-  - /swan-lake/learn/by-example/basic-https-listener-client
-  - /swan-lake/learn/by-example/basic-https-listener-client.html
+  - /swan-lake/learn/by-example/https-mutual-ssl
+  - /swan-lake/learn/by-example/https-mutual-ssl.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// `helloWorldEP` listener endpoint is configured to communicate through HTTPS.</span>
-<span class="c1">// It is configured to listen on port 9095. As this is an HTTPS Listener,</span>
-<span class="c1">// it is required to configure certificate file and private key file.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">ListenerConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+<span class="c1">// An HTTP client can be configured to initiate new connections that are</span>
+<span class="c1">// secured via mutual SSL.</span>
+<span class="c1">// The [http:ClientSecureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations.</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span>
+    <span class="nx">secureSocket</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
             <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
-        <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">mutualSsl</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">cert</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span>
+        <span class="p">},</span>
+        <span class="nx">protocol</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">TLS</span>
+        <span class="p">},</span>
+        <span class="nx">ciphers</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;</span><span class="p">]</span>
     <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">);</span>
 
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9095</span><span class="p">,</span> <span class="nx">helloWorldEPConfig</span><span class="p">);</span>
-
-<span class="kd">service</span> <span class="o">/</span><span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">hello</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="c1">// Send the response with the string payload back to the `caller`.</span>
-        <span class="k">return</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/foo/bar&quot;</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="c1">// This is a client endpoint configured to connect to the HTTPS service.</span>
-<span class="c1">// As this is a 1-way SSL connection, the client needs to provide</span>
-<span class="c1">// `cert` file.</span>
-<span class="c1">// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL related configurations.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">cert</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span>
+<span class="c1">// An HTTP listener can be configured to accept new connections that are</span>
+<span class="c1">// secured via mutual SSL.</span>
+<span class="c1">// The [http:ListenerSecureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span>
+    <span class="nx">secureSocket</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
+            <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
+        <span class="p">},</span>
+        <span class="c1">// Enables mutual SSL.</span>
+        <span class="nx">mutualSsl</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">verifyClient</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">REQUIRE</span><span class="p">,</span>
+            <span class="nx">cert</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span>
+        <span class="p">},</span>
+        <span class="c1">// Enables the preferred SSL protocol and its versions.</span>
+        <span class="nx">protocol</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">TLS</span><span class="p">,</span>
+            <span class="nx">versions</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;TLSv1.2&quot;</span><span class="p">,</span> <span class="s">&quot;TLSv1.1&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="c1">// Configures the preferred ciphers.</span>
+        <span class="nx">ciphers</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;</span><span class="p">]</span>
     <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">);</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Create an HTTP client to interact with the created listener endpoint.</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9095&quot;</span><span class="p">,</span>
-                                          <span class="nx">clientEPConfig</span><span class="p">);</span>
-    <span class="c1">// Sends an outbound request and bind the payload to a string value.</span>
-    <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/helloWorld/hello&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Log the retrieved text payload.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="c1">// If an error occurs when getting the response or binding payload, log the error.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">securedEP</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">bar</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -69,9 +76,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Basic HTTPS Listener Client</h2>
-                            <p><p>This example demonstrates how the Ballerina https client can be configured to connect to an https listener through 1-way SSL connection (i.e., the server is verified by the client).
- This example uses the Ballerina https listener to host a service and the https client sends requests for that listener.<br/><br/>
+                            <h2>Mutual SSL</h2>
+                            <p><p>Ballerina supports mutual SSL, which is a certificate-based authentication
+ process in which two parties (the client and server) authenticate each other by
+ verifying the digital certificates. It ensures that both parties are assured
+ of each other&rsquo;s identity.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
@@ -81,16 +90,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="https-listener.html">
+                                    <a class="prev" href="https-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>HTTPS Listener</p>
+                                        <p>HTTPS Client</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="mutual-ssl.html">
+                                    <a class="next" href="request-with-multiparts.html">
                                         <span>NEXT ></span>
-                                        <p>Mutual SSL</p>
+                                        <p>Request With Multiparts</p>
                                     </a>
                                 </div>
                                 
@@ -99,7 +108,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="basic-https-listener-client">
+            <div class="example" id="https-mutual-ssl">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -110,7 +119,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/basic-https-listener-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/https-mutual-ssl/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -135,12 +144,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -150,6 +153,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -161,14 +165,21 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:ListenerConfiguration helloWorldEPConfig = {
-    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client securedEP = check new(&quot;https://localhost:9090&quot;,
+    secureSocket = {
         key: {
             certFile: &quot;../resource/path/to/public.crt&quot;,
             keyFile: &quot;../resource/path/to/private.key&quot;
-        }
+        },
+        mutualSsl: {
+            cert: &quot;../resource/path/to/public.crt&quot;
+        },
+        protocol: {
+            name: http:TLS
+        },
+        ciphers: [&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;]
     }
-};
+);
 </code></pre></div>
 
                                 </td>
@@ -176,9 +187,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>helloWorldEP</code> listener endpoint is configured to communicate through HTTPS.
- It is configured to listen on port 9095. As this is an HTTPS Listener,
- it is required to configure certificate file and private key file.</p>
+                                            <p>An HTTP client can be configured to initiate new connections that are
+ secured via mutual SSL.
+ The <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">http:ClientSecureSocket</a> record provides the SSL-related configurations.</p>
 
                                         </div>
                                     </div>
@@ -188,57 +199,15 @@ redirect_from:
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /helloWorld on helloWorldEP {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get hello() returns string {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;Hello World!&quot;;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+    http:Response response = check securedEP-&gt;get(&quot;/foo/bar&quot;);
+    log:printInfo(response.statusCode.toString());
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send the response with the string payload back to the <code>caller</code>.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -259,11 +228,12 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service and run the main function, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command  below along with the Ballerina home path as a config.
-# (You may need to change the certificate file path and private key file path.)
-bal run basic_https_listener.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the certificate file path, private key file path and
+# trusted certificate file path.)
+bal run https_mutual_ssl_client.bal
+time = 2021-01-20 20:04:13,261 level = INFO  module = &quot;&quot; message = &quot;200&quot;
 </code></pre></div>
 
                                 </td>
@@ -275,10 +245,6 @@ bal run basic_https_listener.bal
                         </table>
                     </div>
                     
-                        
-                            
-                                
-                            
                         
                             
                                 
@@ -323,7 +289,6 @@ bal run basic_https_listener.bal
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -335,11 +300,12 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration clientEPConfig = {
-    secureSocket: {
-        cert: &quot;../resource/path/to/public.crt&quot;
-    }
-};
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090,
+    secureSocket = {
+        key: {
+            certFile: &quot;../resource/path/to/public.crt&quot;,
+            keyFile: &quot;../resource/path/to/private.key&quot;
+        },
 </code></pre></div>
 
                                 </td>
@@ -347,10 +313,74 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is a client endpoint configured to connect to the HTTPS service.
- As this is a 1-way SSL connection, the client needs to provide
- <code>cert</code> file.
- <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">secureSocket</a> record provides the SSL related configurations.</p>
+                                            <p>An HTTP listener can be configured to accept new connections that are
+ secured via mutual SSL.
+ The <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">http:ListenerSecureSocket</a> record provides the SSL-related listener configurations.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        mutualSsl: {
+            verifyClient: http:REQUIRE,
+            cert: &quot;../resource/path/to/public.crt&quot;
+        },
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Enables mutual SSL.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        protocol: {
+            name: http:TLS,
+            versions: [&quot;TLSv1.2&quot;, &quot;TLSv1.1&quot;]
+        },
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Enables the preferred SSL protocol and its versions.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        ciphers: [&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;]
+    }
+);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Configures the preferred ciphers.</p>
 
                                         </div>
                                     </div>
@@ -360,93 +390,16 @@ import ballerina/log;
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client clientEP = checkpanic new(&quot;https://localhost:9095&quot;,
-                                          clientEPConfig);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create an HTTP client to interact with the created listener endpoint.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var payload = clientEP-&gt;get(&quot;/helloWorld/hello&quot;, targetType = string);
-    if (payload is string) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Sends an outbound request and bind the payload to a string value.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(payload);
-    } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Log the retrieved text payload.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:printError(payload.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>service /foo on securedEP {
+    resource function get bar() returns string {
+        return &quot;Hello, World!&quot;;
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If an error occurs when getting the response or binding payload, log the error.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -467,11 +420,12 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service and run the main function, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command  below along with the Ballerina home path as a config.
-# (You may need to change the trusted certificate file path.)
-bal run https_client.bal
-time = 2021-01-21 21:41:54,225 level = INFO  module = &quot;&quot; message = &quot;Hello World!&quot;
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the certificate file path, private key file path, and
+# trusted certificate file path.)
+bal run https_mutual_ssl_listener.bal
+[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>

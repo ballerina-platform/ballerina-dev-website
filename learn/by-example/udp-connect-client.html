@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
   
-    <span class="c1">// Create a new connection-oriented UDP client by providing the </span>
+    <span class="c1">// Creates a new connection-oriented UDP client by providing the</span>
     <span class="c1">// `remoteHost` and the `remotePort`.</span>
     <span class="c1">// Optionally, you can provide the interface that the socket needs to bind </span>
     <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
@@ -27,16 +27,16 @@ redirect_from:
 
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
 
-    <span class="c1">// Send data to the connected remote host.</span>
+    <span class="c1">// Sends the data to the connected remote host.</span>
     <span class="c1">// The parameter is a byte[], which contains the data to be sent.</span>
     <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data was sent to the remote host.&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Wait until data is received from the connected host.</span>
+    <span class="c1">// Waits until the data is received from the connected host.</span>
     <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">readBytes</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">result</span><span class="p">));</span>
 
-    <span class="c1">// Close the client and release the bound port.</span>
+    <span class="c1">// Closes the client and releases the bound port.</span>
     <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -173,7 +173,7 @@ import ballerina/udp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new connection-oriented UDP client by providing the
+                                            <p>Creates a new connection-oriented UDP client by providing the
  <code>remoteHost</code> and the <code>remotePort</code>.
  Optionally, you can provide the interface that the socket needs to bind
  and the timeout in milliseconds, which specifies the read timeout value.
@@ -210,7 +210,7 @@ import ballerina/udp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send data to the connected remote host.
+                                            <p>Sends the data to the connected remote host.
  The parameter is a byte[], which contains the data to be sent.</p>
 
                                         </div>
@@ -231,7 +231,7 @@ import ballerina/udp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Wait until data is received from the connected host.</p>
+                                            <p>Waits until the data is received from the connected host.</p>
 
                                         </div>
                                     </div>
@@ -251,7 +251,7 @@ import ballerina/udp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Close the client and release the bound port.</p>
+                                            <p>Closes the client and releases the bound port.</p>
 
                                         </div>
                                     </div>

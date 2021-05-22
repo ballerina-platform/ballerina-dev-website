@@ -15,15 +15,14 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="c1">// Using two concurrent consumers to work as a group.</span>
+    <span class="c1">// Uses two concurrent consumers to work as a group.</span>
     <span class="nx">concurrentConsumers</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 
     <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;group-id&quot;</span><span class="p">,</span>
-    <span class="c1">// Subscribes to the topic `test-kafka-topic`.</span>
+    <span class="c1">// Subscribes to the `test-kafka-topic`.</span>
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">],</span>
 
     <span class="nx">pollingInterval</span><span class="p">:</span> <span class="mi">1</span>
-
 <span class="p">};</span>
 
 <span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span>
@@ -34,26 +33,21 @@ redirect_from:
     <span class="c1">// to the subscribed topic/topics.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConsumerRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                         <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// The set of Kafka records dispatched to the service are processed one</span>
+        <span class="c1">// The set of Kafka records received by the service are processed one</span>
         <span class="c1">// by one.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
             <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafkaRecord</span><span class="p">);</span>
         <span class="p">}</span>
-
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="kt">message</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Prints the retrieved message.</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot; Received Message: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
+    <span class="c1">// Converts the `byte[]` to a `string`.</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
 
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving message data;&quot;</span> <span class="o">+</span>
-            <span class="s">&quot;Unexpected type&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="c1">// Prints the retrieved message.</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received Message: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -64,7 +58,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Consumer Groups</h2>
-                            <p><p>Here, is an example of a kafka consumer used as a listener to listen to a
+                            <p><p>This is an example of a Kafka consumer used as a listener to listen to a
  given topic/topics. The listener uses a group of concurrent consumers within
  the service. This consumer uses the builtin <code>string</code> deserializer for the
  values. For this example to work properly, an active Kafka broker should be
@@ -152,10 +146,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -197,7 +187,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Using two concurrent consumers to work as a group.</p>
+                                            <p>Uses two concurrent consumers to work as a group.</p>
 
                                         </div>
                                     </div>
@@ -228,7 +218,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Subscribes to the topic <code>test-kafka-topic</code>.</p>
+                                            <p>Subscribes to the <code>test-kafka-topic</code>.</p>
 
                                         </div>
                                     </div>
@@ -240,18 +230,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    pollingInterval: 1
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
+};
 </code></pre></div>
 
                                 </td>
@@ -312,6 +291,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>        foreach var kafkaRecord in records {
             processKafkaRecord(kafkaRecord);
         }
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -319,7 +300,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The set of Kafka records dispatched to the service are processed one
+                                            <p>The set of Kafka records received by the service are processed one
  by one.</p>
 
                                         </div>
@@ -331,23 +312,8 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     byte[] messageContent = kafkaRecord.value;
-    string|error message = string:fromBytes(messageContent);
-    if (message is string) {
 </code></pre></div>
 
                                 </td>
@@ -359,7 +325,27 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot; Received Message: &quot; + message);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string message = check string:fromBytes(messageContent);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Converts the <code>byte[]</code> to a <code>string</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printInfo(&quot;Received Message: &quot; + message);
+}
 </code></pre></div>
 
                                 </td>
@@ -371,22 +357,6 @@ import ballerina/log;
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
-        log:printError(&quot;Error occurred while retrieving message data;&quot; +
-            &quot;Unexpected type&quot;);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

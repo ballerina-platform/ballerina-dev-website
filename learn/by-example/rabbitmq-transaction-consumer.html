@@ -1,8 +1,8 @@
 ---
 layout: ballerina-example-page
 title: Transactional Consumer
-description: 
-keywords: 
+description: BBE on transactionally acknowledging messages consumed from a RabbitMQ queue using Ballerina.
+keywords: ballerina, ballerina by example, rabbitmq, bbe, consumer, transaction
 permalink: /learn/by-example/rabbitmq-transaction-consumer
 redirect_from:
   - /swan-lake/learn/by-example/rabbitmq-transaction-consumer
@@ -27,13 +27,11 @@ redirect_from:
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span>
                                 <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="k">var</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
-                       <span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
+
         <span class="c1">// Acknowledges a single message positively.</span>
         <span class="c1">// The acknowledgement gets committed upon successful execution of the transaction,</span>
         <span class="c1">// or will rollback otherwise.</span>
@@ -215,12 +213,9 @@ import ballerinax/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var messageContent = &#39;string:fromBytes(message.content);
-        if (messageContent is string) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageContent = &#39;string:fromBytes(message.content);
+        if messageContent is string {
             log:printInfo(&quot;The message received: &quot; + messageContent);
-        } else {
-            log:printError(
-                       &quot;Error occurred while retrieving the message content.&quot;);
         }
 </code></pre></div>
 

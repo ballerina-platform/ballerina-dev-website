@@ -201,6 +201,7 @@ $(document).ready(function() {
         '<li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>' +
         '<li><a class="cBioFooterLink" href="https://twitter.com/ballerinaplat" target="_blank"><img src="/img/twitter.svg"/></a></li>' +
         '<li><a class="cBioFooterLink" href="/open-source/slack/"><img src="/img/slack.svg"/></a></li>' +
+        '<li><a class="cBioFooterLink" href="https://www.youtube.com/c/Ballerinalang"><img src="/img/youtube.svg"/></a></li>' +
         '</ul>' +
         '<div class="pdframe"></div>' +
         '</div>' +

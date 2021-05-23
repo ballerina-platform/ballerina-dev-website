@@ -47,7 +47,7 @@ import ballerina/http;
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
 
-    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:ClientError {
+    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response| http:PayloadType | http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
@@ -84,47 +84,45 @@ import ballerina/io;
 import ballerina/http;
 import ballerina/regex;
 
-http:Client clientEndpoint = check new("https://api.chucknorris.io/jokes/");
+http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.
 function getRandomJoke(string name, string category = "food") returns @tainted string|error {
     string replacedText = "";
-    var response = clientEndpoint->get("/categories");
+    http:Response response = check clientEndpoint->get("/categories");
 
     // Check if the provided category is available
-    if (response is http:Response) {
-        if (response.statusCode == http:STATUS_OK) {
-            var categories = response.getJsonPayload();
 
-            if (categories is json[]) {
-                if (!isCategoryAvailable(categories, category)) {
-                    error err = error("'" + category + "' is not a valid category.");
-                    io:println(err.message());
-                    return err;
-                }
+    if (response.statusCode == http:STATUS_OK) {
+        var categories = response.getJsonPayload();
+
+        if (categories is json[]) {
+            if (!isCategoryAvailable(categories, category)) {
+                error err = error("'" + category + "' is not a valid category.");
+                io:println(err.message());
+                return err;
             }
-        
-        } else {
-            return createError(response);
         }
+
+    } else {
+        return createError(response);
     }
 
     // Get a random joke from the provided category
     response = check clientEndpoint->get("/random?category=" + category);
-    if (response is http:Response) {
-        if (response.statusCode == http:STATUS_OK) {
-            var payload = response.getJsonPayload();
 
-            if (payload is json) {
-                json joke = check payload.value;
-                replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
-                return replacedText;
-            }
-            
-        } else {
-            return createError(response);
+    if (response.statusCode == http:STATUS_OK) {
+        var payload = response.getJsonPayload();
+
+        if (payload is json) {
+            json joke = check payload.value;
+            replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
+            return replacedText;
         }
+
+    } else {
+        return createError(response);
     }
 
     return replacedText;

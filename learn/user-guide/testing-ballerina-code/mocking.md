@@ -95,7 +95,7 @@ function getRandomJoke(string name, string category = "food") returns @tainted s
     // Check if the provided category is available
 
     if (response.statusCode == http:STATUS_OK) {
-        var categories = response.getJsonPayload();
+        json categories = check response.getJsonPayload();
 
         if (categories is json[]) {
             if (!isCategoryAvailable(categories, category)) {
@@ -113,19 +113,16 @@ function getRandomJoke(string name, string category = "food") returns @tainted s
     response = check clientEndpoint->get("/random?category=" + category);
 
     if (response.statusCode == http:STATUS_OK) {
-        var payload = response.getJsonPayload();
+        json payload = check response.getJsonPayload();
+        json joke = check payload.value;
 
-        if (payload is json) {
-            json joke = check payload.value;
-            replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
-            return replacedText;
-        }
+        replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
+        return replacedText;
 
     } else {
         return createError(response);
     }
 
-    return replacedText;
 }
 ```
 
@@ -268,7 +265,6 @@ If a function has an optional or no return type specified, this function can be 
 
 ```ballerina
 import ballerina/email;
-import ballerina/io;
 
 email:SmtpClient smtpClient = check new ("localhost", "admin","admin");
 
@@ -280,11 +276,7 @@ function sendNotification(string[] emailIds) returns error? {
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient->sendMessage(msg);
-    if (response is error) {
-	io:println("error while sending the email: " + response.message());
-  	return response;
-    }
+    return check smtpClient->sendMessage(msg);
 }
 ```
 ***main_test.bal***

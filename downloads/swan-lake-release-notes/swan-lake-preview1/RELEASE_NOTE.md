@@ -791,7 +791,7 @@ The new mocking API simplifies function and object mocking in unit tests via the
 The mocking features can be used to control the behavior of functions and objects by defining return values or
  replacing the entire object or function with a user-defined equivalent. This feature will help you to test your Ballerina code independently 
 from other modules and external endpoints. For the complete list of available mocking features, see 
-[API Documentation of the test module](https://ballerina.io/learn/api-docs/ballerina/test/index.html).
+[API Documentation of the test module](https://docs.central.ballerina.io/ballerina/test/latest/).
 
 ###### Function mocking
 

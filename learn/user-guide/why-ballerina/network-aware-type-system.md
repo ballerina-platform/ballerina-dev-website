@@ -20,9 +20,9 @@ With more services being available in the cloud, the network-distributed program
 
 ## Statically Typed and Structural
 
-Ballerina is a statically typed language, which means type compatibility between constructs are checked at compile-time. Statically typed languages are generally more robust to changes and refactorings, easier to debug, and aids in creating better language tooling.
+Ballerina is a statically-typed language, which means type compatibility between the constructs is checked at compile-time. Statically-typed languages are generally more robust to changes and refactorings, easier to debug, and aids in creating better language tooling.
 
- The type system of Ballerina language is primarily structural with added support for nominal typing. This means that the type compatibility is identified by considering the structure of the value, rather than just relying on the name of the type. This is different from languages like Java, C++, and C# that have nominal type systems where it is bound by the name of the actual type.
+ The type system of the Ballerina language is primarily structural with added support for nominal typing. This means that the type compatibility is identified by considering the structure of the value rather than just relying on the name of the type. This is different from languages like Java, C++, and C# that have nominal type systems in which it is bound by the name of the actual type.
 
 ### Shapes in Ballerina
 
@@ -63,7 +63,7 @@ A type in Ballerina represents a set of the possible shapes it can have. So any 
 
 ### Subtypes in Ballerina
 
-Subtyping in Ballerina is semantic. It is defined by means of shapes, where S is a subtype of T, if the set of shapes denoted by S are a subset of the shapes denoted by T. Let’s demonstrate this behavior with a few examples.
+Subtyping in Ballerina is semantic. It is defined by means of shapes, where `S` is a subtype of `T` if the set of shapes denoted by `S` are a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
 
 The type `boolean` is a simple basic type in Ballerina without a storage identity, so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes true and false.
 
@@ -83,7 +83,7 @@ The new type `boolean_false` can be defined in Ballerina code in the following m
 type boolean_false false;
 ```
 
-Here, we are using the value false in defining the new type `boolean_false`. In a more practical scenario, we can provide multiple values as a union when defining new types using the syntax `T1|T2`. A type that only denotes a single shape is called a singleton type. This new type can be used in the code in the following way.
+This example uses the value `false` in defining the new `boolean_false` type. In a more practical scenario, you can provide multiple values as a union when defining new types using the `T1|T2` syntax. A type that only denotes a single shape is called a singleton type. This new type can be used in the code in the following way.
 
 ```ballerina
 boolean_false bv1 = false;
@@ -148,7 +148,7 @@ In situations such as above, a separate system from our core application may be 
 
 Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">Robustness Principle</a>. This means that we should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. And when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure we have the best chance of interacting with different systems in a reliable manner.
 
-The main facilitator of this in the type system is the open record concept in Ballerina. So far we have looked at closed records. Let’s take a look at a record type to represent the details of a person.
+The main facilitator of this in the type system is the open record concept in Ballerina. The sections above demonstrated closed records and the sections below demonstrate a record type to represent the details of a person.
 
 ### Get Started
 
@@ -165,7 +165,7 @@ type Person record {
 };
 ```
 
-Here, the type `Person` is an open record type defined with an `inclusive-record-type-descriptor` by using the `"{"` and `"}"` delimiters. An open record is not limited to the fields that are declared in the record type, so we can set additional fields that are not explicitly mentioned in the type descriptor.
+Here, the type `Person` is an open record type defined with an `inclusive-record-type-descriptor` by using the `"{"` and `"}"` delimiters. An open record is not limited to the fields that are declared in the record type. Therefore, you can set additional fields that are not explicitly mentioned in the type descriptor.
 
 The earlier `DoorState` record type was defined explicitly as a closed record type with an exclusive-record-type-descriptor by using the `"{|"` and `"|}"` delimiters. Therefore, we were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, we would have an infinite number of shapes since `DoorState` values can have any arbitrary field set in the code.
 

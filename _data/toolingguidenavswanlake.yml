@@ -4,7 +4,7 @@
   sublinks:
     - title: Installing the VS Code Extension
       url: /learn/tooling-guide/visual-studio-code-extension/installing-the-vs-code-extension/ 
-      active: installing-vs-code
+      active: installing-the-vs-code-extension
     - title: Language Intelligence
       url: /learn/tooling-guide/visual-studio-code-extension/language-intelligence/ 
       active: language-intelligence

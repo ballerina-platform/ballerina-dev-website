@@ -47,7 +47,7 @@ import ballerina/http;
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
 
-    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:ClientError {
+    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response| http:PayloadType | http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
@@ -84,50 +84,43 @@ import ballerina/io;
 import ballerina/http;
 import ballerina/regex;
 
-http:Client clientEndpoint = check new("https://api.chucknorris.io/jokes/");
+http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.
 function getRandomJoke(string name, string category = "food") returns @tainted string|error {
     string replacedText = "";
-    var response = clientEndpoint->get("/categories");
+    http:Response response = check clientEndpoint->get("/categories");
 
     // Check if the provided category is available
-    if (response is http:Response) {
-        if (response.statusCode == http:STATUS_OK) {
-            var categories = response.getJsonPayload();
 
-            if (categories is json[]) {
-                if (!isCategoryAvailable(categories, category)) {
-                    error err = error("'" + category + "' is not a valid category.");
-                    io:println(err.message());
-                    return err;
-                }
-            }
-        
-        } else {
-            return createError(response);
+    if (response.statusCode == http:STATUS_OK) {
+        json[] categories = <json[]>check response.getJsonPayload();
+
+        if (!isCategoryAvailable(categories, category)) {
+            error err = error("'" + category + "' is not a valid category.");
+            io:println(err.message());
+            return err;
         }
+
+    } else {
+        return createError(response);
     }
 
     // Get a random joke from the provided category
     response = check clientEndpoint->get("/random?category=" + category);
-    if (response is http:Response) {
-        if (response.statusCode == http:STATUS_OK) {
-            var payload = response.getJsonPayload();
 
-            if (payload is json) {
-                json joke = check payload.value;
-                replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
-                return replacedText;
-            }
-            
-        } else {
-            return createError(response);
-        }
+    if (response.statusCode == http:STATUS_OK) {
+        json payload = check response.getJsonPayload();
+        json joke = check payload.value;
+
+        replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
+        return replacedText;
+
+    } else {
+        return createError(response);
     }
 
-    return replacedText;
 }
 ```
 
@@ -185,10 +178,7 @@ function getCategoriesResponse() returns http:Response {
 
 ***main_test.bal***
  
-This test stubs the behavior of the `get` function to return a specific value in 2 ways:
-    
-1. Stubbing to return a specific value in general
-2. Stubbing to return a specific value based on the input
+This test stubs the behavior of the `get` function to return a specific value.
 
 ```ballerina
 import ballerina/test;
@@ -201,10 +191,6 @@ public function testGetRandomJoke() {
 
     // Stub to return the specified mock response when the `get` function is called.
     test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
-
-    // Stub to return the specified mock response when the specified argument is passed.
-    test:prepare(clientEndpoint).when("get").withArguments("/categories")
-        .thenReturn(getCategoriesResponse());
 
     // Invoke the function to test.
     string result = checkpanic getRandomJoke("Sheldon");
@@ -277,7 +263,6 @@ If a function has an optional or no return type specified, this function can be 
 
 ```ballerina
 import ballerina/email;
-import ballerina/io;
 
 email:SmtpClient smtpClient = check new ("localhost", "admin","admin");
 
@@ -289,11 +274,7 @@ function sendNotification(string[] emailIds) returns error? {
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient->sendMessage(msg);
-    if (response is error) {
-	io:println("error while sending the email: " + response.message());
-  	return response;
-    }
+    return check smtpClient->sendMessage(msg);
 }
 ```
 ***main_test.bal***

@@ -140,13 +140,13 @@ Result[] results = from var person in persons
 
 ```
 
-In the example above, we filter records from a list and create a new value using the `select` clause. Its structure is defined dynamically at that time and the values are created. These values are assigned to an array of `Result` records, which is possible because the generated values are structurally compatible with the `Result` record type.
+In the example above, you filter records from a list and create a new value using the `select` clause. Its structure is defined dynamically at that time and the values are created. These values are assigned to an array of `Result` records, which is possible because the generated values are structurally compatible with the `Result` record type.
 
 In situations such as above, a separate system from our core application may be generating values to be consumed by us. In these cases, instead of worrying about sharing the code for the data type definitions, you can simply concentrate on the compatibility of the data in order to ensure interoperability.
 
 ## Open-by-Default
 
-Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">Robustness Principle</a>. This means that we should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. And when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure we have the best chance of interacting with different systems in a reliable manner.
+Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>. This means that you should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. Also, when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure you have the best chance of interacting with different systems in a reliable manner.
 
 The main facilitator of this in the type system is the open record concept in Ballerina. The sections above demonstrated closed records and the sections below demonstrate a record type to represent the details of a person.
 
@@ -167,7 +167,7 @@ type Person record {
 
 Here, the type `Person` is an open record type defined with an `inclusive-record-type-descriptor` by using the `"{"` and `"}"` delimiters. An open record is not limited to the fields that are declared in the record type. Therefore, you can set additional fields that are not explicitly mentioned in the type descriptor.
 
-The earlier `DoorState` record type was defined explicitly as a closed record type with an exclusive-record-type-descriptor by using the `"{|"` and `"|}"` delimiters. Therefore, we were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, we would have an infinite number of shapes since `DoorState` values can have any arbitrary field set in the code.
+The earlier `DoorState` record type was defined explicitly as a closed record type with an exclusive-record-type-descriptor by using the `"{|"` and `"|}"` delimiters. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary field set in the code.
 
 The `Person` record type above has an <a href="/learn/by-example/record-optional-fields.html">optional field</a> `ethnicity` (denoted by the suffix `"?"`). This means the field value of `ethnicity` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `Ethnicity?`, which is equivalent to the union type `Ethnicity|()`. In Ballerina, the nil value and the type is represented by `()`.
 

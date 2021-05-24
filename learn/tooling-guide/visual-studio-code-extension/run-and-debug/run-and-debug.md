@@ -1,7 +1,7 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: Run and Debug
-description: Describes the existing Ballerina run and debugging support in vscode 
+description: Describes the existing run and debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
 permalink: /learn/tooling-guide/visual-studio-code-extension/run-and-debug/
 active: run-and-debug

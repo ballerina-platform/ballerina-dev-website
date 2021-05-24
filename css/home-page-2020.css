@@ -229,8 +229,13 @@ button.navbar-toggle {
 .cHomeWhyBallerinaBox {
 	display: inline-block;
 	padding-right: 60px;
-	min-height: 270px;
+	min-height: 400px;
 }
+
+.cHomeWhyBallerinaBox img {
+	height: 100px;
+}
+
 a.cGreenLinkArrow {
     color: #20b6b0 !important;
 }

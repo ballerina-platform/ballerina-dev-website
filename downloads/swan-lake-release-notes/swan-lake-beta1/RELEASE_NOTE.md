@@ -38,5 +38,9 @@ If you have not installed jBallerina, then download the [installers](/downloads/
 - 
 
 #### Developer Tools
-- 
+
+##### Debugger
+
+- Added remote debug support with the executable JAR.
+- Added support to debug a single test case with Visual Studio Code.
 

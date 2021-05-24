@@ -26,7 +26,7 @@ Ballerina is a statically-typed language, which means type compatibility between
 
 ### Shapes in Ballerina
 
-Types in Ballerina deal with an abstraction of values that don’t consider storage identity. This abstraction is called a shape. For simple types like int and boolean, there is no difference between a shape and a value because they don’t have a storage identity. To understand the concept of a shape, let’s look at the [`record` type](/learn/by-example/records/) in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
+Types in Ballerina deal with an abstraction of values that don’t consider storage identity. This abstraction is called a shape. For simple types like int and boolean, there is no difference between a shape and a value because they don’t have a storage identity. To understand the concept of a shape, let’s look at the [`record` type](/learn/by-example/records.html) in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
 
 Here’s an example of a record that stores the state of a door:
 

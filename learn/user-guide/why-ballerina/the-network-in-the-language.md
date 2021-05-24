@@ -66,7 +66,7 @@ Some protocols supported out-of-the-box include:
 <li><a class="cGreenLinkArrow" href="/learn/by-example/https-listener.html">HTTP</a></li>
 <!--<li><a class="cGreenLinkArrow" href="/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a></li>-->
 <li><a class="cGreenLinkArrow" href="/learn/by-example/http-1-1-to-2-0-protocol-switch.html">HTTP 2.0</a></li>
-<li><a class="cGreenLinkArrow" href="/learn/by-example/grpc-unary-blocking.html">gRPC</a></li>
+<li><a class="cGreenLinkArrow" href="/learn/by-example/proto-to-ballerina.html">gRPC</a></li>
 <li><a class="cGreenLinkArrow" href="/learn/by-example/nats-basic-client.html">NATS</a></li>
 </ul>
 

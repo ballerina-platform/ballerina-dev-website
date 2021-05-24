@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 70 56" style="enable-background:new 0 0 70 56;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#41C4BF;}
+	.st1{fill:#FFFFFF;stroke:#41C4BF;stroke-width:1.25;stroke-miterlimit:10;}
+	.st2{fill:#FFFFFF;stroke:#41C4BF;stroke-width:1.25;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<polygon class="st0" points="20.3,17.9 59.3,17.9 59.3,13 70,22.1 59.3,31 59.3,26.1 20.3,26.1 	"/>
+	<polygon class="st0" points="47.6,31.4 10.7,31.4 10.7,26.5 0,35.6 10.7,44.5 10.7,39.6 47.6,39.6 	"/>
+	<g>
+		<rect x="16.2" y="4" class="st1" width="37.1" height="48"/>
+		<g>
+			<line class="st1" x1="22.3" y1="10.3" x2="47.2" y2="10.3"/>
+			<line class="st1" x1="22.3" y1="16.1" x2="47.2" y2="16.1"/>
+			<line class="st1" x1="22.3" y1="22" x2="47.2" y2="22"/>
+			<line class="st1" x1="22.3" y1="27.9" x2="47.2" y2="27.9"/>
+			<line class="st1" x1="22.3" y1="33.7" x2="47.2" y2="33.7"/>
+			<line class="st1" x1="22.3" y1="39.6" x2="47.2" y2="39.6"/>
+			<line class="st1" x1="22.3" y1="45.5" x2="47.2" y2="45.5"/>
+			<line class="st1" x1="22.3" y1="10.3" x2="22.3" y2="45.5"/>
+			<line class="st1" x1="47.2" y1="9.7" x2="47.2" y2="44.9"/>
+			<line class="st1" x1="30.8" y1="10.2" x2="30.8" y2="45.3"/>
+			<line class="st1" x1="39.3" y1="9.7" x2="39.3" y2="44.9"/>
+		</g>
+		<polygon class="st2" points="43.8,4 52.4,15 43.8,15 		"/>
+	</g>
+</g>
+</svg>

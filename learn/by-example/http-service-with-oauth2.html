@@ -13,14 +13,14 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span>
+    <span class="nx">secureSocket</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">certFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">,</span>
             <span class="nx">keyFile</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span>
+<span class="p">);</span>
 
 <span class="c1">// The service can be secured with OAuth2 authentication and can be authorized</span>
 <span class="c1">// optionally. OAuth2 authentication can be enabled by setting the</span>
@@ -32,16 +32,17 @@ redirect_from:
     <span class="nx">auth</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nx">oauth2IntrospectionConfig</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9443/oauth2/introspect&quot;</span><span class="p">,</span>
+                <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9445/oauth2/introspect&quot;</span><span class="p">,</span>
                 <span class="nx">tokenTypeHint</span><span class="p">:</span> <span class="s">&quot;access_token&quot;</span><span class="p">,</span>
                 <span class="nx">scopeKey</span><span class="p">:</span> <span class="s">&quot;scp&quot;</span><span class="p">,</span>
                 <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">customHeaders</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s">&quot;Basic YWRtaW46YWRtaW4=&quot;</span><span class="p">},</span>
                     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                         <span class="nx">cert</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
+            <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;admin&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -159,14 +160,14 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: &quot;../resource/path/to/public.crt&quot;,
             keyFile: &quot;../resource/path/to/private.key&quot;
         }
     }
-});
+);
 </code></pre></div>
 
                                 </td>
@@ -182,16 +183,17 @@ redirect_from:
     auth: [
         {
             oauth2IntrospectionConfig: {
-                url: &quot;https://localhost:9443/oauth2/introspect&quot;,
+                url: &quot;https://localhost:9445/oauth2/introspect&quot;,
                 tokenTypeHint: &quot;access_token&quot;,
                 scopeKey: &quot;scp&quot;,
                 clientConfig: {
+                    customHeaders: {&quot;Authorization&quot;: &quot;Basic YWRtaW46YWRtaW4=&quot;},
                     secureSocket: {
                         cert: &quot;../resource/path/to/public.crt&quot;
                     }
                 }
             },
-            scopes: [&quot;hello&quot;]
+            scopes: [&quot;admin&quot;]
         }
     ]
 }

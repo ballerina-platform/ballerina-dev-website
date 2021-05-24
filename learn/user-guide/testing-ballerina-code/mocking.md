@@ -95,14 +95,12 @@ function getRandomJoke(string name, string category = "food") returns @tainted s
     // Check if the provided category is available
 
     if (response.statusCode == http:STATUS_OK) {
-        json categories = check response.getJsonPayload();
+        json[] categories = <json[]>check response.getJsonPayload();
 
-        if (categories is json[]) {
-            if (!isCategoryAvailable(categories, category)) {
-                error err = error("'" + category + "' is not a valid category.");
-                io:println(err.message());
-                return err;
-            }
+        if (!isCategoryAvailable(categories, category)) {
+            error err = error("'" + category + "' is not a valid category.");
+            io:println(err.message());
+            return err;
         }
 
     } else {

@@ -1,10 +1,10 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Network-Aware Type System
+title: Flexibly Typed
 description: See how the Ballerina programming language's network-aware type system helps developers work with networked resources in their code.
 keywords: ballerina, programming lanaguage, type system, data binding
-permalink: /learn/user-guide/why-ballerina/network-aware-type-system/
-active: network-aware-type-system
+permalink: /learn/user-guide/why-ballerina/flexibly-typed/
+active: flexibly-typed
 intro: See how the Ballerina programming language's network-aware type system helps developers work with networked resources in their code.
 redirect_from:
 - /why/the-network-in-the-language/
@@ -12,6 +12,8 @@ redirect_from:
 - /why-ballerina
 - /why-ballerina/
 - /learn/user-guide/why-ballerina/network-aware-type-system
+- /learn/user-guide/why-ballerina/network-aware-type-system/
+- /learn/user-guide/why-ballerina/flexibly-typed
 ---
 
 In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.

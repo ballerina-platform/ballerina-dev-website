@@ -32,14 +32,14 @@ The example below represents how a service can be secured. The `http:ServiceConf
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 @http:ServiceConfig {
     auth: [
@@ -60,14 +60,14 @@ These concepts are applied to the `http:ResourceConfig` annotation as well. The 
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 service /foo on securedEP {
 
@@ -114,14 +114,14 @@ password="password3"
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 @http:ServiceConfig {
     auth: [
@@ -199,14 +199,14 @@ There is an imperative method to handle authentication and authorization as foll
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 ListenerFileUserStoreBasicAuthHandler handler = new;
 
@@ -256,14 +256,14 @@ The `http:LdapUserStoreConfig` configurations include:
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 @http:ServiceConfig {
     auth: [
@@ -361,14 +361,14 @@ There is an imperative method to handle authentication and authorization as foll
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 ListenerFileUserStoreBasicAuthHandler handler = new({
     domainName: "ballerina.io",
@@ -430,14 +430,14 @@ The `http:JwtValidatorConfig` configurations include:
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 @http:ServiceConfig {
     auth: [
@@ -515,21 +515,21 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 Hello, World!
 ```
 
-##### Imperative Method
+#### Imperative Method
 
 There is an imperative method to handle authentication and authorization as follows:
 
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 ListenerFileUserStoreBasicAuthHandler handler = new({
     issuer: "wso2",
@@ -579,14 +579,14 @@ The `http:OAuth2IntrospectionConfig` configurations include:
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 @http:ServiceConfig {
     auth: [
@@ -666,21 +666,21 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 Hello, World!
 ```
 
-##### Imperative Method
+#### Imperative Method
 
 There is an imperative method to handle authorization as follows:
 
 ```ballerina
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "/path/to/public.crt",
             keyFile: "/path/to/private.key"
         }
     }
-});
+);
 
 ListenerFileUserStoreBasicAuthHandler handler = new({
     url: "https://localhost:9999/oauth2/token/introspect",
@@ -720,14 +720,14 @@ The following example represents how an HTTP client can be configured to call a 
 import ballerina/http;
 import ballerina/log;
 
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
         // ...
     },
-    secureSocket: {
+    secureSocket = {
         cert: "/path/to/public.crt"
     }
-});
+);
 ```
 
 ### Basic Auth
@@ -743,15 +743,15 @@ The `http:CredentialsConfig` configurations include:
 import ballerina/http;
 import ballerina/log;
 
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
         username: "alice",
         password: "123"
     },
-    secureSocket: {
+    secureSocket = {
         cert: "/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
@@ -795,8 +795,8 @@ The `http:JwtIssuerConfig` configurations include:
 import ballerina/http;
 import ballerina/log;
 
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
         username: "ballerina",
         issuer: "wso2",
         audience: ["ballerina", "ballerina.org", "ballerina.io"],
@@ -811,10 +811,10 @@ http:Client securedEP = check new("https://localhost:9090", {
             }
         }
     },
-    secureSocket: {
+    secureSocket = {
         cert: "/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
@@ -839,14 +839,14 @@ The `http:BearerTokenConfig` configurations include:
 import ballerina/http;
 import ballerina/log;
 
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
         token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
     },
-    secureSocket: {
+    secureSocket = {
         cert: "/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
@@ -892,8 +892,8 @@ The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 import ballerina/http;
 import ballerina/log;
 
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
         tokenUrl: "https://localhost:9090/oauth2/token",
         clientId: "s6BhdRkqt3",
         clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
@@ -904,10 +904,10 @@ http:Client securedEP = check new("https://localhost:9090", {
             }
         }
     },
-    secureSocket: {
+    secureSocket = {
         cert: "/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
@@ -959,8 +959,8 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
 import ballerina/http;
 import ballerina/log;
 
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
         tokenUrl: "https://localhost:9090/oauth2/token",
         username: "admin",
         password: "123",
@@ -982,10 +982,10 @@ http:Client securedEP = check new("https://localhost:9090", {
             }
         }
     },
-    secureSocket: {
+    secureSocket = {
         cert: "/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
@@ -1028,8 +1028,8 @@ The `http:OAuth2RefreshTokenGrantConfig` configurations include:
 import ballerina/http;
 import ballerina/log;
 
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
         refreshUrl: "https://localhost:9090/oauth2/token/refresh",
         refreshToken: "tGzv3JOkF0XG5Qx2TlKWIA",
         clientId: "s6BhdRkqt3",
@@ -1041,10 +1041,10 @@ http:Client securedEP = check new("https://localhost:9090", {
             }
         }
     },
-    secureSocket: {
+    secureSocket = {
         cert: "/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.

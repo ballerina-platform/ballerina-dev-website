@@ -58,7 +58,7 @@ $ bal test --tests PackageName:<test_function>
 Run all the functions in the given module.
 
 ```
-$ bal test --tests PackageName.ModuleName:*
+$ bal test --tests PackageName.<module_name>:*
 ```
 
 Run only the previously-failed test cases in the current package.
@@ -67,16 +67,38 @@ Run only the previously-failed test cases in the current package.
 $ bal test --rerun-failed
 ```
 
-Generate an HTML test report.
+Generate an HTML test report without code coverage information.
+Also, dump test results in JSON format.
 
 ```
 $ bal test --test-report
 ```
 
-Generate the HTML test report with code coverage information.
+Dump only the test results in JSON format.
 
 ```
 $ bal test --code-coverage
+```
+
+Generate an HTML test report with code coverage information.
+Also, dump test results in JSON format.
+
+```
+$ bal test --test-report --code-coverage
+```
+
+Generate a JaCoCo XML test report with code coverage information.
+Also, dump test results in JSON format.
+
+```
+$ bal test --code-coverage --coverage-format=xml
+```
+
+Generate an HTML test report and a JaCoCo XML test report with code coverage information.
+Also, dump test results in JSON format.
+
+```
+$ bal test --test-report --code-coverage --coverage-format=xml
 ```
 
 For more options of the test command, run the following.
@@ -104,7 +126,9 @@ A sample view of the test report is shown below.
 The Ballerina test framework provides an option to analyze the code coverage of a standard Ballerina package.
 This feature provides details about the coverage of the program source code by the tests executed.
 
-You can pass the `--code-coverage`  flag in the test execution command and generate the code coverage report at the end of the test execution. The generated file is an extended version of the test report.
+You can pass the `--code-coverage`  flag along with the `--test-report` flag, in the test execution command and
+ generate the code coverage report at the end of the test execution. The generated file is an extended version of the
+  test report.
 In addition to the test results, this file would contain details about the source code coverage at different levels.
 
 *   Package-level coverage as an average
@@ -116,9 +140,16 @@ The code coverage only includes the Ballerina source files being tested and not 
 ***Example:***
 
 ```
-$ bal test --code-coverage
+$ bal test --test-report --code-coverage
 ```
 
 A sample view of the code coverage report is shown below.
 
 ![Sample Code Coverage](/learn/images/code-cov.gif)
+
+## JaCoCo XML Report
+
+You can pass the `--coverage-format=xml`  flag along with the `--code-coverage` flag, in the test execution command and
+ generate the JaCoCo XML report at the end of the test execution.
+ This file can be uploaded to CI/CD tools(e.g. CodeCov) to display the coverage information for both Ballerina and
+  native Java sources used within a Ballerina package.

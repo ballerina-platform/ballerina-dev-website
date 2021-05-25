@@ -65,7 +65,7 @@ The function specified after the annotation is a test function. This annotation 
 *   ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
 *   ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
 *   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions, with one function depending on the other.
-*   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the value.
+*   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the data sets for the test.
 *   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
  belongs.
 
@@ -162,7 +162,7 @@ function testAssertFalse() {
 }
 ```
 
-### assertEquals(Anydata actual, Anydata expected, string message)
+### assertEquals(anydata|error actual, anydata expected, string message)
 
 Asserts that the actual value is equal to the expected value with an optional message.
 
@@ -185,7 +185,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### assertNotEquals(Anydata actual, Anydata expected, string message)
+### assertNotEquals(anydata actual, anydata expected, string message)
 
 Asserts that the actual value is not equal to the expected value with an optional message.
 
@@ -209,7 +209,7 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### assertExactEquals(Any actual, Any expected, string message)
+### assertExactEquals(any|error actual, any|error expected, string message)
 
 Asserts that the actual entity is exactly equal to the expected entity with an optional message.
 
@@ -233,7 +233,7 @@ function testAssertExactEqualsObject() {
 }
 ```
 
-### assertNotExactEquals(Any actual, Any expected, string message)
+### assertNotExactEquals(any|error actual, any|error expected, string message)
 
 Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
 
@@ -284,7 +284,10 @@ function bar() {
 
 ### Difference between expected and actual values when using 'assertEquals'
 
-* When the type of the compared values are different.
+
+#### Values with different types
+
+The `diff` shows expected and actual values, preceded by the type within angle brackets.
 
 ***Example:***
 
@@ -301,13 +304,17 @@ function testAssertStringAndInt() {
 
 ```bash
 [fail] testAssertStringAndInt:
+
     Assertion Failed!
 
         expected: <string> '1'
         actual  : <int> '1'
 ```
 
-* For string-typed values.
+##### Values of the `string` type
+
+The `diff` is displayed in the GNU format, using `+` and `-` to show the
+ line differences.
 
 ***Example:***
 
@@ -316,7 +323,7 @@ import ballerina/test;
 
 @test:Config {}
 function testAssertString() {
-    test:assertEquals("hello ballerina user\nWelcome to Ballerina", "hello user\nWelcome to Ballerina");
+    test:assertEquals("hello Ballerina user\nWelcome to Ballerina", "hello user\nWelcome to Ballerina");
 }
 ```
 
@@ -328,7 +335,7 @@ function testAssertString() {
 
         expected: 'hello user
         Welcome to Ballerina'
-        actual  : 'hello ballerina user
+        actual  : 'hello Ballerina user
         Welcome to Ballerina'
 
          Diff    :
@@ -339,12 +346,15 @@ function testAssertString() {
          @@ -1,2 +1,2 @@
 
          -hello user
-         +hello ballerina user
+         +hello Ballerina user
          Welcome to Ballerina
 
 ```
 
-* For JSON/record/map typed values.
+#### Values of the `JSON/record/map` type
+
+The `diff` lists JSON key mismatch using `expected keys` and `actual keys`.
+JSON value mismatch is listed per key showing the `expected` and `actual` values.
 
 ***Example:***
 
@@ -403,7 +413,9 @@ function testAssertJson() {
 
 ```
 
-* For other anydata-typed values.
+#### Values of other `anydata` type
+
+The `diff` is displayed showing the `expected` and `actual` values.
 
 ***Example:***
 
@@ -431,11 +443,12 @@ function testAssertTuples() {
 
 ## Setup and Teardown
 
-The following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions at different levels.
+The following test annotations can be used to setup and teardown instructions. These annotations enable executing instructions at different levels.
 
 ### @test:BeforeSuite {}
 
-The function specified after the annotation will be run once before any of the tests in the test suite is run. This can be used for initializing the test suite level aspects.
+The function annotated with the `BeforeSuite` annotation, will be run once before any of the tests in the test suite.
+This can be used for initializing the test suite level pre-requisites.
 
 ***Example:***
 
@@ -466,8 +479,8 @@ function testFunction2() {
 
 ### @test:BeforeGroups {}
 
-For each group specified in this annotation, the function that follows the annotation will be executed once before
- all the tests belonging to the group are executed.
+For each group specified in this annotation, the `BeforeGroups` annotated function will be executed once before
+ any of the tests belonging to the group.
 
 ***Example:***
 
@@ -504,8 +517,8 @@ function testFunction2() {
 
 ### @test:BeforeEach
 
-The function specified after this annotation will be run before each test within the test suite is run. This can be
- used for initializing test-level aspects repeatedly before every test function.
+The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize
+ test-level prerequisites repeatedly before every test function.
 
 ***Example:***
 
@@ -543,8 +556,8 @@ function testFunction3() {
 
 ### @test:AfterEach
 
-The function specified after this annotation will be run after each test within the test suite is run. This can be
- used for cleaning up the test-level aspects  repeatedly before every test function.
+The `AfterEach` annotated function, will be run after each test within the test suite.
+This can be used to clean up the test-level aspects repeatedly after every test function.
 
 ***Example:***
 
@@ -584,8 +597,8 @@ function testFunction3() {
 
 ***Example:***
 
-For each group specified in this annotation, the function that follows the annotation will be executed once after
- all the tests belonging to the group is executed.
+For each group specified in this annotation, the `AfterGroups` annotated function will be executed once after all the
+ tests belonging to the group is executed.
 
 ```ballerina
 import ballerina/io;
@@ -620,7 +633,8 @@ function afterGroupsFunc2() {
 
 ### @test:AfterSuite {}
 
-The function specified after the annotation will be run once after all of the tests in the test suite are run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
+The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. 
+This can be used for cleaning up the test suite level aspects. A test suite covers tests related to a module.
 
 ***Example:***
 
@@ -653,8 +667,9 @@ For information on using configurable variables, see
 
 ## What's Next?
 
- As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock backends for these external endpoints will be a tedious task (e.g., email client, SalesForce client).
- The mocking support in Ballerina will allow you to unit test your code without needing to set up mock backends by
- allowing you to control what the client objects return without actually sending requests to backends.
+ As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock backends
+  for these external endpoints will be a tedious task (e.g., email client, SalesForce client). The mocking support in
+   Ballerina will allow you to unit test your code without needing to set up mock backends by allowing you to control
+    what the client objects return without actually sending requests to backends.
 
 To learn about the mocking API, see [Mocking](/learn/testing-ballerina-code/mocking).

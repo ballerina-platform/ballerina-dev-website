@@ -43,7 +43,7 @@ Download the Visual Studio Code Ballerina Extension from below.
 <div class="container">
   <div class=" ">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-        <h3 class="cVSCode">Visual Studio Code</h3>
+        <p class="cVSCode" style="font-weight:bold">Visual Studio Code</p>
         <a id="packWindows" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix" class="cGTMDownload cDownload cDownloadNew" data-download="downloads">
               <div class="cSize">Extension  vsix <span id="packWindowsName">2.7mb</span></div>
         </a>
@@ -57,8 +57,6 @@ Download the Visual Studio Code Ballerina Extension from below.
 ## Installing the Extension
 
 Follow either of the below approaches to install the extension.
-  - [Using the VS Code editor](#using-the-vs-code-editor)
-  - [Using the Command Line](#using-the-command-line)
 
 ### Installing via the VS Code Editor
 

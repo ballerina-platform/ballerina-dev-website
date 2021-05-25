@@ -57,8 +57,6 @@ Download the Visual Studio Code Ballerina Extension from below.
 ## Installing the Extension
 
 Follow either of the below approaches to install the extension.
-  - [Using the VS Code editor](#using-the-vs-code-editor)
-  - [Using the Command Line](#using-the-command-line)
 
 ### Installing via the VS Code Editor
 

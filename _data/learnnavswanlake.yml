@@ -18,9 +18,9 @@
     - title: Batteries Included
       url: /learn/user-guide/why-ballerina/batteries-included/
       active: batteries-included
-    #- title: Sequence Diagrams for Programming
-      #url: /learn/user-guide/why-ballerina/sequence-diagrams-for-programming/
-      #active: sequence-diagrams-for-programming
+    - title: Sequence Diagrams for Programming
+      url: /learn/user-guide/why-ballerina/sequence-diagrams-for-programming/
+      active: sequence-diagrams-for-programming
 
 - title: Getting Started 
   url: '#'

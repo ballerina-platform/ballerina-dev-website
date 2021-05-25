@@ -1,5 +1,5 @@
 ---
-layout: ballerina-landing-page
+layout: ballerina-no-git-inner-page
 title: 1.2.x Archived Versions
 permalink: /downloads/1.2.x-archived/
 redirect_from:

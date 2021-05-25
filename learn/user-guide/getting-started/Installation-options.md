@@ -83,13 +83,9 @@ Alternatively, follow the instructions below to build Ballerina from the source.
 
 ### Setting Up the Prerequisites
 
-You need to download and install the below to build the Ballerina modules.
-1. OpenJDK 11 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution) 
+You need to download and install OpenJDK 11 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution) to build the Ballerina modules. 
     
-    >**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html). Set the JAVA_HOME environment variable to the pathname of the directory into which you installed JDK.
-
-2. [Node.js (version 8.9.x)](https://nodejs.org/en/download/)
-3. [npm (version 5.6.0 or later)](https://www.npmjs.com/get-npm)
+>**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html). Set the JAVA_HOME environment variable to the pathname of the directory into which you installed JDK.
 
 ### Obtaining the Source Code
 Follow the steps below to obtain the Ballerina source code.
@@ -117,8 +113,8 @@ Follow the steps below to build the project of the obtained source.
 
 1. Navigate to the root directory of the Ballerina repo (i.e., `<BALLERINA_PROJECT_ROOT>`) and execute one of the Gradle commands below to build the project using Gradle.
 
-    - **On Unix/macOS:** ```./gradlew build ```
-    - **Windows:** ```gradlew build ```
+    - **On Unix/macOS:** ```./gradlew clean build ```
+    - **Windows:** ```gradlew clean build ```
 
 2. Extract the built Ballerina distributions created in the locations below: 
 

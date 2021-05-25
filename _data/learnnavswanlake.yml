@@ -6,21 +6,25 @@
 - title: Why Ballerina 
   url: '#'
   sublinks:
-    - title: The Network in the Language 
-      url: /learn/user-guide/why-ballerina/the-network-in-the-language/
-      active: the-network-in-the-language
-    - title: Network-Aware Type System 
-      url: /learn/user-guide/why-ballerina/network-aware-type-system/
-      active: network-aware-type-system
-    - title: From Code to Cloud 
-      url: /learn/user-guide/why-ballerina/from-code-to-cloud/
-      active: from-code-to-cloud
-    - title: Batteries Included
-      url: /learn/user-guide/why-ballerina/batteries-included/
-      active: batteries-included
+    - title: Cloud Native
+      url: /learn/user-guide/why-ballerina/cloud-native/
+      active: cloud-native
+    - title: Flexibly Typed
+      url: /learn/user-guide/why-ballerina/flexibly-typed/
+      active: flexibly-typed
+    - title: Data Oriented
+      url: /learn/user-guide/why-ballerina/data-oriented/
+      active: data-oriented
     - title: Graphical
       url: /learn/user-guide/why-ballerina/graphical/
       active: graphical
+    - title: Concurrent
+      url: /learn/user-guide/why-ballerina/concurrent/
+      active: concurrent
+    - title: Reliable and Maintainable
+      url: /learn/user-guide/why-ballerina/reliable-and-maintainable/
+      active: reliable-and-maintainable
+
 
 - title: Getting Started 
   url: '#'

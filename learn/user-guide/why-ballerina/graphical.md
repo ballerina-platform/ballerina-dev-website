@@ -18,6 +18,8 @@ In today’s cloud-era,technologies that can model distributed systems in a more
 
 That is why it is the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model solutions based on higher-level abstractions.
 
+> ***"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful." -- Christian Posta, field CTO, solo.io***
+
 ## Sequence Diagrams in Ballerina
 
 In Ballerina, there is a bidirectional mapping between the textual representation of code in the Ballerina syntax and the visual representation as a sequence diagram.
@@ -87,12 +89,7 @@ The diagram below shows how the HTTP resource definition is visualized and how i
 <img src="/img/why-pages/sequence-diagrams-for-programming-4.png" alt="Ballerina sequence diagram of HTTP resource definition" width="700">
 
 The result of the above diagram represents the response retrieved back from the caller in which for example, if there was an error communicated back to the caller, you can perform further actions in the resource method rather than ignoring it. This pattern encourages a more robust approach to handling errors.
-
-<div class="cQUOTE">
-<p>"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful,"</p>
-<p class="cName">Christian Posta, field CTO, solo.io</p>
-</div>
-              
+           
 
 <style>
 .nav > li.cVersionItem {

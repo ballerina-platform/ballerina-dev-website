@@ -18,9 +18,10 @@ redirect_from:
 <span class="c1">// Bind the service to the port. </span>
 <span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// This remote method is invoked when the new client joins the server.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connected to echoServer: &quot;</span><span class="p">,</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
+    <span class="c1">// This remote method is invoked when the new client connects to the server.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span>
+                              <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connected to echo server: &quot;</span><span class="p">,</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">new</span> <span class="nx">EchoService</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -31,12 +32,12 @@ redirect_from:
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> 
         <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Echo: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
-        <span class="c1">// Echo back the data to the same client which the data received from.</span>
+        <span class="c1">// Echoes back the data to the client from which the data is received.</span>
         <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="c1">// This remote method is invoked in an error situation</span>
-    <span class="c1">// if it happens during the `onConnect` and `onBytes` methods.</span>
+    <span class="c1">// This remote method is invoked in an erroneous situation,</span>
+    <span class="c1">// which occurs during the execution of the `onConnect` or `onBytes` method.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
@@ -171,8 +172,9 @@ import ballerina/tcp;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
-        io:println(&quot;Client connected to echoServer: &quot;, caller.remotePort);
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onConnect(tcp:Caller caller)
+                              returns tcp:ConnectionService {
+        io:println(&quot;Client connected to echo server: &quot;, caller.remotePort);
         return new EchoService();
     }
 }
@@ -183,7 +185,7 @@ import ballerina/tcp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This remote method is invoked when the new client joins the server.</p>
+                                            <p>This remote method is invoked when the new client connects to the server.</p>
 
                                         </div>
                                     </div>
@@ -236,7 +238,7 @@ import ballerina/tcp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Echo back the data to the same client which the data received from.</p>
+                                            <p>Echoes back the data to the client from which the data is received.</p>
 
                                         </div>
                                     </div>
@@ -257,8 +259,8 @@ import ballerina/tcp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This remote method is invoked in an error situation
- if it happens during the <code>onConnect</code> and <code>onBytes</code> methods.</p>
+                                            <p>This remote method is invoked in an erroneous situation,
+ which occurs during the execution of the <code>onConnect</code> or <code>onBytes</code> method.</p>
 
                                         </div>
                                     </div>

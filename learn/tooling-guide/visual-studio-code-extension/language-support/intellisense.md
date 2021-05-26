@@ -1,8 +1,8 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
-title: Language Intelligence
-permalink: /learn/tooling-guide/visual-studio-code-extension/language-support/language-intelligence/
-active: language-intelligence
+title: IntelliSense
+permalink: /learn/tooling-guide/visual-studio-code-extension/language-support/intellisense/
+active: intellisense
 intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency. Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 redirect_from:
   - /learn/tools-ides/vscode-plugin/language-intelligence
@@ -20,6 +20,8 @@ redirect_from:
   - /learn/tooling-guide/vs-code-extension/language-support/language-intelligence
   - /learn/tooling-guide/vs-code-extension/language-support/language-intelligence/
   - /learn/tooling-guide/visual-studio-code-extension/language-support/language-intelligence
+  - /learn/tooling-guide/visual-studio-code-extension/language-support/language-intelligence/
+  - /learn/tooling-guide/visual-studio-code-extension/language-support/intellisense
 ---
 
 ## Semantic and Syntactic Diagnostics

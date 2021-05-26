@@ -71,7 +71,7 @@ redirect_from:
     <span class="c1">// Send the request to the backend service.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">req</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">bizReq</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">participantEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">participantEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Got response from bizservice&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
@@ -417,7 +417,7 @@ import ballerina/lang.&#39;transaction as transactions;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    http:Request req = new;
     req.setJsonPayload(bizReq);
-    var result = participantEP-&gt;post(&quot;&quot;, req);
+    http:Response|error result = participantEP-&gt;post(&quot;&quot;, req);
     log:printInfo(&quot;Got response from bizservice&quot;);
     if (result is http:Response) {
         return result.statusCode == http:STATUS_OK;

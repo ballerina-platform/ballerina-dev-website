@@ -26,7 +26,7 @@ redirect_from:
         <span class="c1">// resource received to the backend. When forwarding, the request is made using the same HTTP method that was</span>
         <span class="c1">// used to invoke the passthrough resource. The `forward()` function returns the response from the backend if</span>
         <span class="c1">// there are no errors.</span>
-        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
 
         <span class="c1">// `forward()` can return an HTTP response or an error.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -215,7 +215,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEP-&gt;forward(&quot;/&quot;, req);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error clientResponse = clientEP-&gt;forward(&quot;/&quot;, req);
 </code></pre></div>
 
                                 </td>

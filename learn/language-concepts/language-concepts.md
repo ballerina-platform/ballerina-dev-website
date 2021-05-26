@@ -33,7 +33,7 @@ You can also find the [slide deck](/learn/language-guide/Ballerina_Language_Pres
 
 <!--<embed width="191" height="207" name="lang-guide-slides" src="/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf" type="application/pdf">-->
 
-<iframe width="1150" height="515" src="/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
+<iframe width="1150" height="515" src="/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
 </iframe>
 
 <!--<style>

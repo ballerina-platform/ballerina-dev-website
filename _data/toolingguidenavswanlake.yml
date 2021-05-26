@@ -5,9 +5,9 @@
     - title: Installing the VS Code Extension
       url: /learn/tooling-guide/visual-studio-code-extension/installing-the-vs-code-extension/ 
       active: installing-vs-code
-    - title: Language Intelligence
-      url: /learn/tooling-guide/visual-studio-code-extension/language-intelligence/ 
-      active: language-intelligence
+    - title: IntelliSense
+      url: /learn/tooling-guide/visual-studio-code-extension/intellisense/ 
+      active: intellisense
     #- title: VS Code Commands
       #url: /learn/tooling-guide/vs-code-extension/vs-code-commands/ 
       #active: vs-code-commands

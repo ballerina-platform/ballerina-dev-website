@@ -19,10 +19,10 @@ redirect_from:
     <span class="nx">subProtocols</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;xml&quot;</span><span class="p">,</span> <span class="s">&quot;json&quot;</span><span class="p">],</span>
     <span class="nx">idleTimeout</span><span class="p">:</span> <span class="mi">120</span>
 <span class="p">}</span>
-
 <span class="kd">service</span> <span class="o">/</span><span class="nx">basic</span><span class="o">/</span><span class="nx">ws</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
    <span class="kd">resource</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span>
                      <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">|</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">UpgradeError</span> <span class="p">{</span>
+       <span class="c1">// Accept the WebSocket upgrade by returning a `websocket:Service`.</span>
        <span class="k">return</span> <span class="nx">new</span> <span class="nx">WsService</span><span class="p">();</span>
    <span class="p">}</span>
 <span class="p">}</span>
@@ -31,10 +31,11 @@ redirect_from:
     <span class="o">*</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">;</span>
     <span class="c1">// This `remote function` is triggered when a new text message is received</span>
     <span class="c1">// from a client.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onTextMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onTextMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                                 <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\ntext message: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;You said: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;You said: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -142,6 +143,9 @@ import ballerina/websocket;
     subProtocols: [&quot;xml&quot;, &quot;json&quot;],
     idleTimeout: 120
 }
+service /basic/ws on new websocket:Listener(9090) {
+   resource isolated function get .()
+                     returns websocket:Service|websocket:UpgradeError {
 </code></pre></div>
 
                                 </td>
@@ -150,19 +154,23 @@ import ballerina/websocket;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /basic/ws on new websocket:Listener(9090) {
-   resource isolated function get .()
-                     returns websocket:Service|websocket:UpgradeError {
-       return new WsService();
+                                    <div class="highlight"><pre><code class=language-ballerina>       return new WsService();
    }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Accept the WebSocket upgrade by returning a <code>websocket:Service</code>.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -183,10 +191,11 @@ import ballerina/websocket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onTextMessage(websocket:Caller caller, string text) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote isolated function onTextMessage(websocket:Caller caller,
+                                 string text) {
         io:println(&quot;\ntext message: &quot; + text);
-        var err = caller-&gt;writeTextMessage(&quot;You said: &quot; + text);
-        if (err is websocket:Error) {
+        websocket:Error? err = caller-&gt;writeTextMessage(&quot;You said: &quot; + text);
+        if err is websocket:Error {
             log:printError(&quot;Error occurred when sending text&quot;, &#39;error = err);
         }
     }

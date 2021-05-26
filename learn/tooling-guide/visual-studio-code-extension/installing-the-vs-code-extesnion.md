@@ -43,15 +43,15 @@ Download the Visual Studio Code Ballerina Extension from below.
 <div class="container">
   <div class=" ">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-        <p class="cVSCode" style="font-weight:bold">Visual Studio Code</p>
+        <!--<p class="cVSCode" style="font-weight:bold">Visual Studio Code</p>-->
         <a id="packWindows" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix" class="cGTMDownload cDownload cDownloadNew" data-download="downloads">
-              <div class="cSize">Extension  vsix <span id="packWindowsName">2.7mb</span></div>
+              <div class="cSize">Installer Ballerina Extension<span id="packWindowsName"></span></div>
         </a>
-        <ul class="cDiwnloadSubLinks">
+        <!--<ul class="cDiwnloadSubLinks">
             <li><a id="packWindowsMd5" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.md5">md5</a></li>
             <li><a id="packWindowsSha1" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.sha1">SHA-1</a></li>
             <li><a id="packWindowsAsc" href="{{ site.plugin_vscode_repo }}/releases/download/v{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.asc">asc</a></li>
-        </ul>
+        </ul>--><br/>
 </div></div></div></div>
 
 ## Installing the Extension

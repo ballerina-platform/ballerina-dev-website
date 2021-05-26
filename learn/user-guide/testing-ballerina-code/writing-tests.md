@@ -64,7 +64,7 @@ The function specified after the annotation is a test function. This annotation 
 *   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
 *   ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
 *   ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
-*   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions, with one function depending on the other.
+*   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions with one function depending on the other.
 *   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the data sets for the test.
 *   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
  belongs.
@@ -287,7 +287,7 @@ function bar() {
 
 #### Values with different types
 
-The `diff` shows expected and actual values, preceded by the type within angle brackets.
+The `diff` shows expected and actual values preceded by the type within angle brackets.
 
 ***Example:***
 
@@ -313,7 +313,7 @@ function testAssertStringAndInt() {
 
 ##### Values of the `string` type
 
-The `diff` is displayed in the GNU format, using `+` and `-` to show the
+The `diff` is displayed in the GNU format using `+` and `-` to show the
  line differences.
 
 ***Example:***
@@ -354,7 +354,7 @@ function testAssertString() {
 #### Values of the `JSON/record/map` type
 
 The `diff` lists JSON key mismatch using `expected keys` and `actual keys`.
-JSON value mismatch is listed per key showing the `expected` and `actual` values.
+The JSON value mismatch is listed per key showing the `expected` and `actual` values.
 
 ***Example:***
 
@@ -443,11 +443,11 @@ function testAssertTuples() {
 
 ## Setup and Teardown
 
-The following test annotations can be used to setup and teardown instructions. These annotations enable executing instructions at different levels.
+The following test annotations can be used to set up and tear down instructions. These annotations enable executing instructions at different levels.
 
 ### @test:BeforeSuite {}
 
-The function annotated with the `BeforeSuite` annotation, will be run once before any of the tests in the test suite.
+The function annotated with the `BeforeSuite` annotation will be run once before any of the tests in the test suite.
 This can be used for initializing the test suite level pre-requisites.
 
 ***Example:***
@@ -518,7 +518,7 @@ function testFunction2() {
 ### @test:BeforeEach
 
 The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize
- test-level prerequisites repeatedly before every test function.
+ the test-level prerequisites repeatedly before every test function.
 
 ***Example:***
 
@@ -556,7 +556,7 @@ function testFunction3() {
 
 ### @test:AfterEach
 
-The `AfterEach` annotated function, will be run after each test within the test suite.
+The `AfterEach` annotated function will be run after each test within the test suite.
 This can be used to clean up the test-level aspects repeatedly after every test function.
 
 ***Example:***
@@ -668,7 +668,7 @@ For information on using configurable variables, see
 ## What's Next?
 
  As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock backends
-  for these external endpoints will be a tedious task (e.g., email client, SalesForce client). The mocking support in
+  for these external endpoints will be a tedious task (e.g., email client and SalesForce client). The mocking support in
    Ballerina will allow you to unit test your code without needing to set up mock backends by allowing you to control
     what the client objects return without actually sending requests to backends.
 

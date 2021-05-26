@@ -12,7 +12,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="c1">// An HTTP client can be configured to communicate through HTTPS as well.</span>
 <span class="c1">// To secure a client using HTTPS, the client needs to be configured with</span>
@@ -27,7 +27,7 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/foo/bar&quot;</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">check</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -113,7 +113,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/log;
+import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -154,7 +154,7 @@ import ballerina/log;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     http:Response response = check securedEP-&gt;get(&quot;/foo/bar&quot;);
-    log:printInfo(response.statusCode.toString());
+    io:println(check response.getTextPayload());
 }
 </code></pre></div>
 
@@ -204,7 +204,7 @@ bal run https_listener.bal
 # and execute the `bal run` command below.
 # (You may need to change the trusted certificate file path.)
 bal run https_client.bal
-time = 2021-01-20 20:04:13,261 level = INFO  module = &quot;&quot; message = &quot;200&quot;
+Hello, World!
 </code></pre></div>
 
                                 </td>

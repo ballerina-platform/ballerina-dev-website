@@ -11,8 +11,8 @@ redirect_from:
 
 As of now, language-integrated queries are supported for iterator implementations such as an array, map, stream, and table. There are two kinds of integrated queries that can be written in Ballerina:
 
-- Query expression: allows generating a list, table, string or XML
-- Query action: executes a set of statements for each element of the iterator
+- [**Query expression:**](#query-expressions) allows generating a list, table, string or XML
+- [**Query action:**](#query-actions) executes a set of statements for each element of the iterator
 
 ## Query Expressions
 
@@ -54,11 +54,11 @@ The `select` clause is a mandatory clause in query expressions that is used for 
 
 An `on conflict` clause is only allowed for a query expression that constructs a table with a key sequence. The expression is evaluated when the `select` clause emits a value that conflicts with a previous value, in the sense, that both values have the same key value in the table. The `on conflict` clause gets executed when the `select` clause emits a row that has the same key as a row that it emitted earlier. It gives an `onConflictError` error if there is a key conflict.
 
-### Query Actions
+## Query Actions
 
 Query actions are executed in the same way as the clauses in the query expression. However, it doesn't generate an output such as a list. Rather, it executes a set of statements defined by you. The block inside the `do` clause is executed in each iteration.
 
-#### Query Action Example
+### Query Action Example
 
 ```ballerina
 var x = from var person in personList
@@ -72,7 +72,7 @@ var x = from var person in personList
         };
 ```
 
-### Writing Integrated Queries
+## Writing Integrated Queries
 
 The example below provides in-depth knowledge on how to utilize the capabilities of the Ballerina query expressions. This example explains the use case of finding popular books in a store.
 

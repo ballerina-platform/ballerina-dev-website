@@ -13,94 +13,122 @@ redirct_from:
   - /learn/user-guide/why-ballerina/from-code-to-cloud/
 ---
 
-In the past, developers simply wrote their program, built it and ran it. Today, developers also need to think of the various deployment options such as Docker, Kubernetes, serverless environments and service meshes. But this deployment process is not part of the programming experience for developers. They have to write code in a certain way to work well in a given execution environment, and removing this from the programming problem isn’t good.
+In a microservice architecture, smaller services are built, deployed and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) as a part of their application logic.
+For decades, programming languages have treated networks simply as I/O sources. Ballerina treats the network differently by making networking concepts like client objects, services, resource functions, and listeners a part of the syntax. So you can use the language-provided constructs to write network programs that just work.
 
-Ballerina specializes in moving from code to cloud while providing a unique developer experience. Its compiler can be extended to read annotations defined in the source code and generate artifacts to deploy your code into different clouds. These artifacts can be Dockerfiles, Docker images, Kubernetes YAML files or serverless functions.
+## Services
 
-## From Code to Kubernetes
-
-<a href="https://kubernetes.io/">Kubernetes</a> is the preferred platform for running applications with multiple microservices in production. It can be used for automating deployment and scaling, and management of containerized applications. Kubernetes defines a set of unique building blocks that need to be defined as YAML files and deployed into the Kubernetes cluster.
-
-However, in many cases, creating these YAML files is out of a developer’s comfort zone. The Ballerina compiler can create these YAML files while compiling the source code, so you don’t have to! The code below shows the build option you need to use to do this:
+Ballerina introduces service typing where services, which work in conjunction with a listener object, can have one or more resource methods in which the application logic is implemented. The listener object provides an interface between the network and the service. It receives network messages from a remote process according to the defined protocol and translates it into calls on the resource methods of the service that has been attached to the listener object.
 
 ### Get Started
 
-The following code snippet shows how Ballerina compiler can generate YAML files to deploy your code to Kubernetes.
+The below is a simple Hello World service to get you started.
 
 ```ballerina
 import ballerina/http;
-import ballerina/http;
-service /hello on new http:Listener(9090) {
-    resource function get sayHello(http:Caller caller, http:Request req)
-            returns error? {
-        check caller->respond("Hello, World!");
+
+service / on new http:Listener(9090) {
+
+    resource function get greeting() returns string {
+        return "Hello World!";
     }
-}
-service hello on helloWorldEP {
- 
-resource function sayHello(http:Caller caller,
-http:Request request) {
-      var result = caller->respond("Hello World!");
-      if (result is error) {
-          log:printError("Error in responding ", err = result);
-      }
-  }
+
 }
 ```
 
-Building the source with `bal build --cloud=k8s` will generate the Kubernetes Deployment and Service YAML files that is required to deploy our hello application into Kubernetes.
+The Ballerina source file is compiled and executed in the following manner.
 
-## From Code to AWS Lambda
+```bash
+bal run hello.bal
+```
 
-<a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`, which should have the function signature `function (awslambda:Context, json) returns json|error`.
+You view the output below.
 
-><a class="cGreenLinkArrow" href="/learn/by-example/aws-lambda-deployment.html">AWS Lambda Deployment BBE </a>
+```bash
+Compiling source
+        hello.bal
 
-## CI/CD with GitHub Actions
+Running executable
 
-In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment for incorporating incremental changes to your system. There are different technologies that provide this CI / CD functionality and very recently GitHub has introduced <a href="https://github.com/features/actions">GitHub Actions</a>, which is now available for general usage. GitHub Actions provides a convenient mechanism for implementing CI/CD pipelines using their workflows concept, right from our GitHub repositories.
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 
-With <a href="https://github.com/marketplace/actions/ballerina-action">Ballerina GitHub Actions</a> we can create a Ballerina development environment with built-in CI/CD. The following article has a comprehensive guideline:
-                              
-><a class="cGreenLinkArrow" href="https://dzone.com/articles/effective-microservices-cicd-with-github-actions-a">Effective Microservices CI/CD With GitHub Actions and Ballerina</a>
+$ curl http://localhost:9090/greeting
+Hello, World!
+```
 
-## Support for SaaS Connectors
+Ballerina services come with built-in concurrency. Every request to a resource method is handled in a separate strand (Ballerina concurrency unit), which gives implicit concurrent behavior to a service.
 
-We have discussed how Ballerina supports different technologies to automate cloud deployments. To obtain the full strength of the cloud, applications should be able to integrate with Software-as-a-Service (SaaS) provided by different cloud vendors.
+Some protocols supported out-of-the-box include the below.
 
-Ballerina provides a simple workflow to connect and integrate with these SaaS services. For example, the following code snippet shows how to initialize and send out a tweet with the Twitter SaaS service:
+- [HTTP](/learn/by-example/https-listener.html)
+- [HTTP 2.0](/learn/by-example/http-1-1-to-2-0-protocol-switch.html)
+- [gRPC](/learn/by-example/proto-to-ballerina.html)
+- [NATS](/learn/by-example/nats-basic-client.html)
+
+## Async Network Protocol
+
+In the request-response paradigm, network communication is done by blocking calls. However, blocking a thread to a network call is very expensive. That’s why other languages supported async I/O and you have to implement async/await by using callback-based code techniques.
+On the other hand, Ballerina’s request-response protocols are implicitly non-blocking and will take care of asynchronous invocations.
+
+### Get Started
+
+The code snippet below shows a call to a simple HTTP GET request endpoint.
 
 ```ballerina
-import ballerina/config;
-import ballerina/log;
-import wso2/twitter;
+import ballerina/http;
+import ballerina/io;
+
+public function main() returns @tainted error? {
+    http:Client clientEP = check new ("http://www.mocky.io");
+    string payload = check clientEP->get("/v2/5ae082123200006b00510c3d/", targetType = string);
+    io:println(payload);
+}
+```
+
+Although the above `get` operation is seemingly a blocking operation, internally, it does an asynchronous execution using the non-blocking I/O, where the current execution thread is released to the operating system to be used by others. After the I/O operation is done, the program execution automatically resumes from where it was suspended. This pattern gives you a much more convenient programming model than handling non-blocking I/O manually while providing maximum performance efficiency.
+
+## Client Objects
+
+Client objects allow workers to send network messages that follow a certain protocol to a remote process. The remote methods of the client object correspond to distinct network messages defined by the protocol for the role played by the client object.
+
+### Get Started
+
+The sample below illustrates sending out a tweet by invoking tweet remote method in the twitter client object.
+
+```ballerina
+import ballerina/io;
+import ballerinax/twitter;
+
+configurable string clientId = ?;
+configurable string clientSecret = ?;
+configurable string accessToken = ?;
+configurable string accessTokenSecret = ?;
+
 // Twitter package defines this type of endpoint
 // that incorporates the twitter API.
 // We need to initialize it with OAuth data from apps.twitter.com.
 // Instead of providing this confidential data in the code
-// we read it from a toml file.
+// we read it from a configuration file.
 twitter:Client twitterClient = new ({
-  clientId: config:getAsString("clientId"),
-  clientSecret: config:getAsString("clientSecret"),
-  accessToken: config:getAsString("accessToken"),
-  accessTokenSecret: config:getAsString("accessTokenSecret"),
-  clientConfig: {}
+    clientId: clientId,
+    clientSecret: clientSecret,
+    accessToken: accessToken,
+    accessTokenSecret: accessTokenSecret,
+    clientConfig: {}
 });
- 
-public function main() {
- 
-  twitter:Status|error status = twitterClient->tweet("Hello World!");
-  if (status is error) {
-      log:printError("Tweet Failed", status);
-  } else {
-      log:printInfo("Tweeted: " + <@untainted>status.id.toString());
-  }
+public function main() returns error? {
+    twitter:Status status = check twitterClient->tweet("Hello World!");
+    io:println("Tweeted: ", <@untainted>status.id);
 }
 ```
 
-Ballerina has many out-of-the-box SaaS connectors, which you can find in <a href="https://central.ballerina.io/">Ballerina Central</a>.
+## Code to Cloud
 
->"We were attracted by Ballerina’s cloud native features, such as the automatic generation of Docker, Kubernetes, and Helm artifacts, as well as its small footprint and faster boot times. It is also capable of running as a Lambda function (serverless) in AWS. Together, these capabilities have enabled us to easily run microservices in containers at scale and integrate with CI/CD tools with less effort." -- Harsha Pulleti, integration architect and senior manager, Motorola
+Although in the past, you simply wrote their program, built it, and ran it, today, you also need to think of various deployment options such as Docker, Kubernetes, serverless environments, and service meshes. However, this deployment process is not part of the programming experience. You have to write code in a certain way to work well in a given execution environment and removing this from the programming problem isn’t good.
+
+Ballerina specializes in moving from code to cloud while providing a unique developer experience. The Ballerina compiler can be extended to read the source code and generate artifacts to deploy your code into different clouds. These artifacts can be Dockerfiles, Docker images, Kubernetes YAML files, or serverless functions.
+
+
 
 <style>
 .nav > li.cVersionItem {

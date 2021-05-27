@@ -47,7 +47,6 @@ When typing a function/method call expression, the signature help will show info
 
 ![Signature Help](/learn/images/signature-help.gif)
 
-
 ## Code Navigation
 
 The below are the features related to code navigation.
@@ -116,7 +115,7 @@ Run and debug code lenses are shown for the entry points of the Ballerina projec
 
 ## Language Support Commands
 
-For more information, see 
+For more information, see (VSCode Commands)[/learn/tooling-guide/visual-studio-code-extension/vscode-commands/].
 
 
 

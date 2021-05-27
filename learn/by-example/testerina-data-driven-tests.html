@@ -14,20 +14,15 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 
-<span class="c1">// The `dataProvider` attribute allows you to add a data-provider function to the test-case.</span>
+<span class="c1">// The `dataProvider` attribute is used to specify a data-provider function for the test.</span>
 <span class="nd">@test:Config {</span> 
     <span class="nx">dataProvider</span><span class="p">:</span> <span class="nx">stringDataProvider</span>
 <span class="p">}</span>
-<span class="c1">// The `stringDataProvider` function provides the dataset to this function.</span>
 <span class="c1">// Data is passed to the function as function parameters.</span>
-<span class="kd">function</span> <span class="nx">testAddingValues</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">fValue</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">value1</span> <span class="p">=</span> <span class="nx">val1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">val1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val2</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">sValue</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">value2</span> <span class="p">=</span> <span class="nx">val2</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">val2</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">res1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-
+<span class="kd">function</span> <span class="nx">testAddingValues</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">result</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">value1</span> <span class="p">=</span> <span class="nx">check</span> <span class="p">&#39;int:fromString(</span><span class="nx">fValue</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">value2</span> <span class="p">=</span> <span class="nx">check</span> <span class="p">&#39;int:fromString(</span><span class="nx">sValue</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">check</span> <span class="p">&#39;int:fromString(</span><span class="nx">result</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Input : [&quot;</span> <span class="o">+</span> <span class="nx">fValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">sValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">,</span> <span class="nx">result1</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Incorrect Sum&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -35,24 +30,6 @@ redirect_from:
 <span class="c1">// The data provider function, which returns a `string` value-set.</span>
 <span class="kd">function</span> <span class="nx">stringDataProvider</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">[][])</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[[</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;10&quot;</span><span class="p">,</span> <span class="s">&quot;20&quot;</span><span class="p">,</span> <span class="s">&quot;30&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;6&quot;</span><span class="p">,</span> <span class="s">&quot;11&quot;</span><span class="p">]];</span>
-<span class="p">}</span>
-
-<span class="nd">@test:Config {</span> 
-    <span class="nx">dataProvider</span><span class="p">:</span> <span class="nx">jsonDataProvider</span>
-<span class="p">}</span>
-<span class="c1">// The `jsonDataProvider` function provides the dataset to this function.</span>
-<span class="kd">function</span> <span class="nx">testJsonObjects</span><span class="p">(</span><span class="kt">json</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">json</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span> <span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span> <span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">c</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span> <span class="p">};</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">fValue</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">sValue</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// The data-provider function, which returns a `json` value-set.</span>
-<span class="kd">function</span> <span class="nx">jsonDataProvider</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">json</span><span class="p">[][])</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">[[{</span> <span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span> <span class="p">}]];</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -63,9 +40,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Data Driven Tests</h2>
-                            <p><p>Testerina provides in-built support for data-driven tests.
- You can provide a function as a data-provider. The function returns a
- set of data values and the system will iterate the same test over the returned dataset.<br/><br/>
+                            <p><p>The Ballerina Test framework provides in-built support for data-driven tests.<br/><br/>
+ You can specify a function that returns a set of data values as a data-provider to a test function.
+ The test execution will iterate the same test function over the provided dataset.<br/><br/>
  For more information, see <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
  and the <a href="https://docs.central.ballerina.io/ballerina/test/latest/">Test Module</a>.</p>
 </p>
@@ -131,14 +108,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -170,7 +139,7 @@ import ballerina/test;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>dataProvider</code> attribute allows you to add a data-provider function to the test-case.</p>
+                                            <p>The <code>dataProvider</code> attribute is used to specify a data-provider function for the test.</p>
 
                                         </div>
                                     </div>
@@ -181,33 +150,11 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function testAddingValues(string fValue, string sValue, string result) {
-    int|error val1 = &#39;int:fromString(fValue);
-    int value1 = val1 is int ? val1 : 0;
-    int|error val2 = &#39;int:fromString(sValue);
-    int value2 = val2 is int ? val2 : 0;
-    int|error res1 = &#39;int:fromString(result);
-    int result1 = res1 is int ? res1 : 0;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>stringDataProvider</code> function provides the dataset to this function.
- Data is passed to the function as function parameters.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Input : [&quot; + fValue + &quot;,&quot; + sValue + &quot;,&quot; + result + &quot;]&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>function testAddingValues(string fValue, string sValue, string result) returns error? {
+    int value1 = check &#39;int:fromString(fValue);
+    int value2 = check &#39;int:fromString(sValue);
+    int result1 = check &#39;int:fromString(result);
+    io:println(&quot;Input : [&quot; + fValue + &quot;,&quot; + sValue + &quot;,&quot; + result + &quot;]&quot;);
     test:assertEquals(value1 + value2, result1, msg = &quot;Incorrect Sum&quot;);
 }
 </code></pre></div>
@@ -215,12 +162,19 @@ import ballerina/test;
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Data is passed to the function as function parameters.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function stringDataProvider() returns (string[][]) {
     return [[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;], [&quot;10&quot;, &quot;20&quot;, &quot;30&quot;], [&quot;5&quot;, &quot;6&quot;, &quot;11&quot;]];
 }
@@ -232,67 +186,6 @@ import ballerina/test;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The data provider function, which returns a <code>string</code> value-set.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { 
-    dataProvider: jsonDataProvider
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function testJsonObjects(json fValue, json sValue, json result) {
-    json a = { &quot;a&quot;: &quot;a&quot; };
-    json b = { &quot;b&quot;: &quot;b&quot; };
-    json c = { &quot;c&quot;: &quot;c&quot; };
-    test:assertEquals(fValue, a, msg = &quot;json data provider failed&quot;);
-    test:assertEquals(sValue, b, msg = &quot;json data provider failed&quot;);
-    test:assertEquals(result, c, msg = &quot;json data provider failed&quot;);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>jsonDataProvider</code> function provides the dataset to this function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function jsonDataProvider() returns (json[][]) {
-    return [[{ &quot;a&quot;: &quot;a&quot; }, { &quot;b&quot;: &quot;b&quot; }, { &quot;c&quot;: &quot;c&quot; }]];
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The data-provider function, which returns a <code>json</code> value-set.</p>
 
                                         </div>
                                     </div>
@@ -361,7 +254,6 @@ Input : [5,6,11]
                                     <div class="highlight"><pre><code class=shell-session>        [pass] testAddingValues
         [pass] testAddingValues
         [pass] testAddingValues
-        [pass] testJsonObjects
 </code></pre></div>
 
                                 </td>
@@ -373,7 +265,7 @@ Input : [5,6,11]
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        4 passing
+                                    <div class="highlight"><pre><code class=shell-session>        3 passing
         0 failing
         0 skipped
 </code></pre></div>

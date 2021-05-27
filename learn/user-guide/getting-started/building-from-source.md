@@ -38,7 +38,7 @@ Follow the steps below to set up the prerequisites.
 
 Follow the steps below to build the Ballerina runtime with the corresponding tools.
 
-1. Execute the command below to fork the [`ballerina-lang` repository](https://github.com/ballerina-platform/ballerina-lang) to your GitHub account and clone it.
+1. Fork the [`ballerina-lang` repository](https://github.com/ballerina-platform/ballerina-lang) to your GitHub account and execute following command to clone it.
 
     ```bash
     git clone --recursive https://github.com/<GITHUB_USERNAME>/ballerina-lang.git

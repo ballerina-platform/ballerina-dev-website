@@ -32,13 +32,11 @@ redirect_from:
                 <span class="c1">// Check the password value.</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">password</span> <span class="o">==</span> <span class="s">&quot;p@ssw0rd&quot;</span><span class="p">)</span> <span class="p">{</span>
 
-                    <span class="c1">// [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie) by setting `name` as the `username`</span>
-                    <span class="c1">// and `value` as the logged-in user&#39;s name.</span>
-                    <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-
-                    <span class="c1">// Set the cookies path as `/` to apply it to all the</span>
-                    <span class="c1">// resources in the service.</span>
-                    <span class="nx">cookie</span><span class="p">.</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
+                    <span class="c1">// [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie)</span>
+                    <span class="c1">// by setting `name` as the `username` and `value` as the logged-in user&#39;s name. Set the cookies</span>
+                    <span class="c1">// path as `/` to apply it to all the resources in the service.</span>
+                    <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+                                                <span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/&quot;</span><span class="p">);</span>
 
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
@@ -117,13 +115,10 @@ redirect_from:
         <span class="c1">// As cookies are enabled in the HTTP client, it automatically handles cookies</span>
         <span class="c1">// received with the login response and sends the relevant cookies</span>
         <span class="c1">// to the `welcome` service resource.</span>
-        <span class="k">var</span> <span class="nx">welcomeResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/welcome&quot;</span><span class="p">,</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="kt">string</span><span class="p">);</span>
+        <span class="kt">string</span> <span class="nx">welcomeResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/welcome&quot;</span><span class="p">);</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nx">welcomeResp</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// A welcome message with the sent username</span>
-            <span class="c1">// will get printed.</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">welcomeResp</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="c1">// A welcome message with the sent username will get printed.</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">welcomeResp</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -192,8 +187,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -377,7 +370,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                    http:Cookie cookie = new(&quot;username&quot;, name.toString());
+                                    <div class="highlight"><pre><code class=language-ballerina>                    http:Cookie cookie = new(&quot;username&quot;, name.toString(),
+                                                path = &quot;/&quot;);
 </code></pre></div>
 
                                 </td>
@@ -385,28 +379,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie">Create a new cookie</a> by setting <code>name</code> as the <code>username</code>
- and <code>value</code> as the logged-in user&rsquo;s name.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                    cookie.path = &quot;/&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Set the cookies path as <code>/</code> to apply it to all the
- resources in the service.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie">Create a new cookie</a>
+ by setting <code>name</code> as the <code>username</code> and <code>value</code> as the logged-in user&rsquo;s name. Set the cookies
+ path as <code>/</code> to apply it to all the resources in the service.</p>
 
                                         </div>
                                     </div>
@@ -682,10 +657,6 @@ bal run cookie_server.bal
                         
                             
                                 
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -849,7 +820,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var welcomeResp = httpClient-&gt;get(&quot;/welcome&quot;, targetType = string);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string welcomeResp = check httpClient-&gt;get(&quot;/welcome&quot;);
 </code></pre></div>
 
                                 </td>
@@ -869,23 +840,10 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (welcomeResp is string) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(welcomeResp);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(welcomeResp);
     }
 }
 </code></pre></div>
@@ -895,8 +853,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A welcome message with the sent username
- will get printed.</p>
+                                            <p>A welcome message with the sent username will get printed.</p>
 
                                         </div>
                                     </div>

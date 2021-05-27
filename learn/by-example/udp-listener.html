@@ -18,7 +18,8 @@ redirect_from:
 <span class="c1">// Optionally, you can provide the `remoteHost` and `remotePort` to</span>
 <span class="c1">// configure the listener as a connected listener, which only</span>
 <span class="c1">// reads and writes to the configured remote host.</span>
-<span class="c1">// udp:Listener(8080, remoteHost = &quot;www.remote-clinet.com&quot;, remotePort = 9090)</span>
+<span class="c1">// E.g.: `udp:Listener(8080, remoteHost</span>
+<span class="c1">// = &quot;www.remote-clinet.com&quot;, remotePort = 9090)`</span>
 <span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// This remote method is invoked once the content is received from the</span>
@@ -42,7 +43,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>UDP Listener</h2>
                             <p><p>The UDP Listener is used to expose a UDP service over the UDP protocol.
- The UDP Client/ConnectClient is used to send data to a remote UDP server.
+ The UDP <code>Client</code>/<code>ConnectClient</code> is used to send data to a remote UDP server.
  This sample demonstrates the UDP socket listener.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/udp/latest">UDP module</a>.</p>
@@ -142,7 +143,8 @@ import ballerina/udp;
  Optionally, you can provide the <code>remoteHost</code> and <code>remotePort</code> to
  configure the listener as a connected listener, which only
  reads and writes to the configured remote host.
- udp:Listener(8080, remoteHost = &ldquo;www.remote-clinet.com&rdquo;, remotePort = 9090)</p>
+ E.g.: <code>udp:Listener(8080, remoteHost
+ = &quot;www.remote-clinet.com&quot;, remotePort = 9090)</code></p>
 
                                         </div>
                                     </div>

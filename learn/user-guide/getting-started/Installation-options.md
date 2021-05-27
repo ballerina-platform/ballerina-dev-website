@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Installation Options
 description: Get started with the Ballerina programming language by following these instructions on installing and setting up Ballerina.
 keywords: ballerina, installing ballerina, programming language, ballerina installation
-permalink: /learn/user-guide/getting-started/setting-up-ballerina/installation-options/
+permalink: /learn/user-guide/getting-started/installation-options/
 active: installation-options
 intro: The sections below include information about installing Ballerina.
 redirect_from:
@@ -15,9 +15,9 @@ redirect_from:
   - /swan-lake/learn/getting-started/installing-ballerina
   - /learn/getting-started/installing-ballerina/
   - /learn/getting-started/installing-ballerina
-  - /learn/user-guide/getting-started/installation-options/
-  - /learn/user-guide/getting-started/installation-options
   - /learn/user-guide/getting-started/setting-up-ballerina/installation-options
+  - /learn/user-guide/getting-started/setting-up-ballerina/installation-options/
+  - /learn/user-guide/getting-started/installation-options
 ---
 
 ## Installing Ballerina via Installers
@@ -79,49 +79,7 @@ For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cl
   
 ## Building from Source
 
-Alternatively, follow the instructions below to build Ballerina from the source.
-
-### Setting Up the Prerequisites
-
-You need to download and install OpenJDK 11 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution) to build the Ballerina modules. 
-    
->**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html). Set the JAVA_HOME environment variable to the pathname of the directory into which you installed JDK.
-
-### Obtaining the Source Code
-Follow the steps below to obtain the Ballerina source code.
-
-1. Execute the command below to clone the [`ballerina-lang`](https://github.com/ballerina-platform/ballerina-lang) source repository.
-
-    ```
-    git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
-    ```
-    >**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing `<YOUR-GITHUB-USERNAME>` with your GitHub username.
-
-    ```
-    git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
-    ```
-
-2. Execute the command below to update the Git submodules.
-
-    ```
-    git submodule update --init
-    ```
-
-### Building the Source
-
-Follow the steps below to build the project of the obtained source.
-
-1. Navigate to the root directory of the Ballerina repo (i.e., `<BALLERINA_PROJECT_ROOT>`) and execute one of the Gradle commands below to build the project using Gradle.
-
-    - **On Unix/macOS:** ```./gradlew clean build ```
-    - **Windows:** ```gradlew clean build ```
-
-2. Extract the built Ballerina distributions created in the locations below: 
-
-    - **Runtime only:** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip`
-    - **Runtime and tools (e.g., Ballerina Language Server):** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip`
-
->**Note:** If you face an IOException error stating “Too many open files”, this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
+For instructions, see [Building from Source](/learn/user-guide/getting-started/building-from-source/).
 
 ## Uninstalling Ballerina
 

@@ -68,7 +68,7 @@ Follow the steps below to build the Ballerina runtime with the corresponding too
     
 5. Configure the environment variables below.
 
-    **For Linux/Unix/macOS:**
+    **For Unix/macOS:**
 
     ```bash
     # Set up the `BALLERINA_HOME` environment variable.

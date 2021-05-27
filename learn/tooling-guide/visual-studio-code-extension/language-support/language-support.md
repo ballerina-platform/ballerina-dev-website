@@ -113,9 +113,6 @@ Run and debug code lenses are shown for the entry points of the Ballerina projec
 
 ![Run and Debug Code Lenses](/learn/images/run-and-debug-code-lenses.gif)
 
-## Language Support Commands
-
-For more information, see (VSCode Commands)[/learn/tooling-guide/visual-studio-code-extension/vscode-commands/].
 
 
 

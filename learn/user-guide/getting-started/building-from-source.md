@@ -52,7 +52,7 @@ Follow the steps below to build the Ballerina runtime with the corresponding too
 
 3. Execute one of the commands below to start the build process.
 
-    **For Linux/Unix/macOS:**
+    **For Unix/macOS:**
 
     ```bash
     ./gradlew clean build

@@ -20,7 +20,7 @@ Follow the steps below to set up the prerequisites.
 
 2. Set up a Personal Access Token for your GitHub account and configure the following environment variables (the access token should have the `read` package permission).
 
-    **For Linux/Unix/macOS:**
+    **For Unix/macOS:**
 
     ```bash
     export packageUser="<YOUR_GITHUB_USERNAME>";

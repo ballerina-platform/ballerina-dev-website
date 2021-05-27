@@ -144,7 +144,7 @@ Therefore, follow the steps below to build the [`ballerina-distribution` reposit
 
 2. Navigate to the `<BALLERINA_DISTRIBUTION_PROJECT>` directory, and execute the command below to start the build (here, the tests are excluded to speed up the build).
 
-    **For Linux/Unix/macOS:**
+    **For Unix/macOS:**
 
     ```bash
     ./gradlew clean build -x test

@@ -27,8 +27,6 @@ redirect_from:
 
 ## IntelliSense
 
-The below are the features related to IntelliSense.
-
 ### Code Completion
 
 The extension provides you with suggestions on variables, keywords, and code snippets of language constructs (such as functions, type definitions, services, iterable constructs, etc.)
@@ -49,8 +47,6 @@ When typing a function/method call expression, the signature help will show info
 
 ## Code Navigation
 
-The below are the features related to code navigation.
-
 ### Go to Definition 
 
 For a symbol, this feature will navigate you to the definition of the particular symbol. For example, when invoking the go to definition from a function call expression, you will be navigated to the definition of the function. Apart from jumping to the definition, the peek definition will also be supported. The behaviour will be the same not only for the constructs within the sources in the current package but also for external modules and standard libraries as well.
@@ -70,8 +66,6 @@ The diagnostics show you the syntax and semantic errors in the source code. Vari
 ![Diagnostics](/learn/images/diagnostics.gif)
 
 ## Refactoring and Code Fixes
-
-The below are the features related to refactoring and code fixes.
 
 ### Code Formatting
 
@@ -98,8 +92,6 @@ There are two types of code actions suggested based on the node at a given curso
 For more information, see [Code Actions](/learn/tooling-guide/visual-studio-code-extension/code-actions).
 
 ### Code Lenses
-
-The below are the features related to code lenses.
 
 #### Documentation Code Lens
 

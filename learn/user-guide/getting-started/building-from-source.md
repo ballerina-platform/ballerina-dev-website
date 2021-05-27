@@ -18,7 +18,7 @@ Follow the steps below to set up the prerequisites.
 
     >**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html).
 
-2. Set up a Personal Access Token for your GitHub account and configure the following environment variables (the access token should have the `read` package permission).
+2. Set up a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for your GitHub account and configure the following environment variables (the access token should have the `read` package permission).
 
     **For Unix/macOS:**
 

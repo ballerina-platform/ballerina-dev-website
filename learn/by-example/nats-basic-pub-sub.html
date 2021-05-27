@@ -1,53 +1,48 @@
 ---
 layout: ballerina-example-page
-title: Basic Streaming Publisher and Subscriber
-description: 
-keywords: 
-permalink: /learn/by-example/nats-streaming-client
+title: Publish/Subscribe
+description: BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.
+keywords: ballerina, ballerina by example, bbe, nats, basic, server, publish, subscribe
+permalink: /learn/by-example/nats-basic-pub-sub
 redirect_from:
-  - /swan-lake/learn/by-example/nats-streaming-client
-  - /swan-lake/learn/by-example/nats-streaming-client.html
+  - /swan-lake/learn/by-example/nats-basic-pub-sub
+  - /swan-lake/learn/by-example/nats-basic-pub-sub.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">stan</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
 
-<span class="c1">// Produces a message to a subject in the NATS sever.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
-    <span class="nx">stan</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">stanClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
+    <span class="c1">// Initializes a NATS client.</span>
+    <span class="nx">nats</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">natsClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
+
     <span class="c1">// Produces a message to the specified subject.</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">stan</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
-                    <span class="nx">stanClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span>
-                                    <span class="nx">content</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
-                                    <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while producing the message.&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">stan</span><span class="p">;</span>
+    <span class="nx">check</span> <span class="nx">natsClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span>
+                             <span class="nx">content</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
+                             <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo.bbe&quot;</span><span class="p">});</span>
 
-<span class="c1">// Initializes the NATS Streaming listener.</span>
-<span class="nx">listener</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
-
-<span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
-<span class="nd">@stan:ServiceConfig {</span>
-    <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span>
+    <span class="c1">// Closes the client connection.</span>
+    <span class="nx">check</span> <span class="nx">natsClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-       <span class="c1">// Prints the incoming message in the console.</span>
-       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
-       <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
-       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
-       <span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
+
+<span class="c1">// Initializes a NATS listener.</span>
+<span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">subscription</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
+
+<span class="c1">// Binds the consumer to listen to the messages published</span>
+<span class="c1">// to the &#39;demo.bbe&#39; subject.</span>
+<span class="kd">service</span> <span class="s">&quot;demo.bbe&quot;</span> <span class="nx">on</span> <span class="nx">subscription</span> <span class="p">{</span>
+
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
+        <span class="c1">// Logs the incoming message.</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -58,13 +53,14 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Basic Streaming Publisher and Subscriber</h2>
-                            <p><p>This sample demonstrates the basic usage of the NATS Streaming client
- to publish data to a subject and consume data from that subject.
- In order to run this sample, a NATS Streaming server should be
- running on the corresponding port used in the sample.<br/><br/>
+                            <h2>Publish/Subscribe</h2>
+                            <p><p>The NATS client is used either to produce a message to a subject or consume a message from a subject.
+ In order to execute this example, it is required that a NATS server is up and running on its default host, port, and cluster.
+ For instructions on installing the NATS server,
+ go to <a href="https://docs.nats.io/nats-server/installation">NATS Server Installation</a>.<br/><br/>
+ This is a simple publish/subscribe messaging pattern example.
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/nats/latest">NATS module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/nats/latest"><code>nats</code> module</a>.</p>
 </p>
 
                         </td>
@@ -72,16 +68,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="nats-basic-client.html">
+                                    <a class="prev" href="openapi-to-ballerina.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Basic Publisher and Subscriber</p>
+                                        <p>OpenAPI To Ballerina</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="nats-streaming-durable-subscriptions.html">
+                                    <a class="next" href="nats-basic-request-reply.html">
                                         <span>NEXT ></span>
-                                        <p>Durable Subscriptions</p>
+                                        <p>Request/Reply</p>
                                     </a>
                                 </div>
                                 
@@ -90,7 +86,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="nats-streaming-client">
+            <div class="example" id="nats-basic-pub-sub">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -101,7 +97,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/nats-streaming-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/nats-basic-pub-sub/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -126,6 +122,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -134,8 +134,20 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerinax/stan;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/nats;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+    string message = &quot;Hello from Ballerina&quot;;
 </code></pre></div>
 
                                 </td>
@@ -147,9 +159,7 @@ import ballerinax/stan;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-    string message = &quot;Hello from Ballerina&quot;;
-    stan:Client stanClient = check new(stan:DEFAULT_URL);
+                                    <div class="highlight"><pre><code class=language-ballerina>    nats:Client natsClient = check new(nats:DEFAULT_URL);
 </code></pre></div>
 
                                 </td>
@@ -157,7 +167,28 @@ import ballerinax/stan;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Produces a message to a subject in the NATS sever.</p>
+                                            <p>Initializes a NATS client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check natsClient-&gt;publishMessage({
+                             content: &lt;@untainted&gt;message.toBytes(),
+                             subject: &quot;demo.bbe&quot;});
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Produces a message to the specified subject.</p>
 
                                         </div>
                                     </div>
@@ -168,15 +199,7 @@ import ballerinax/stan;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string|stan:Error result =
-                    stanClient-&gt;publishMessage({
-                                    content: &lt;@untainted&gt;message.toBytes(),
-                                    subject: &quot;demo&quot;});
-    if (result is stan:Error) {
-        io:println(&quot;Error occurred while producing the message.&quot;);
-    } else {
-        io:println(&quot;GUID &quot; + result + &quot; received for the produced message.&quot;);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check natsClient.close();
 }
 </code></pre></div>
 
@@ -185,7 +208,7 @@ import ballerinax/stan;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Produces a message to the specified subject.</p>
+                                            <p>Closes the client connection.</p>
 
                                         </div>
                                     </div>
@@ -212,7 +235,6 @@ import ballerinax/stan;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run publisher.bal
-GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
 </code></pre></div>
 
                                 </td>
@@ -224,6 +246,10 @@ GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -259,8 +285,8 @@ GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerinax/stan;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
+import ballerinax/nats;
 </code></pre></div>
 
                                 </td>
@@ -272,7 +298,7 @@ import ballerinax/stan;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener stan:Listener lis = new(stan:DEFAULT_URL);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener nats:Listener subscription = new(nats:DEFAULT_URL);
 </code></pre></div>
 
                                 </td>
@@ -280,7 +306,7 @@ import ballerinax/stan;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the NATS Streaming listener.</p>
+                                            <p>Initializes a NATS listener.</p>
 
                                         </div>
                                     </div>
@@ -291,11 +317,7 @@ import ballerinax/stan;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@stan:ServiceConfig {
-    subject: &quot;demo&quot;
-}
-service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service &quot;demo.bbe&quot; on subscription {
 </code></pre></div>
 
                                 </td>
@@ -303,10 +325,23 @@ service stan:Service on lis {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Binds the consumer to listen to the messages published to the &lsquo;demo&rsquo; subject.</p>
+                                            <p>Binds the consumer to listen to the messages published
+ to the &lsquo;demo.bbe&rsquo; subject.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onMessage(nats:Message message) returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -314,12 +349,10 @@ service stan:Service on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = string:fromBytes(message.content);
-       if (messageData is string) {
-            io:println(&quot;Received message: &quot; + messageData);
-       } else {
-            io:println(&quot;Error occurred while obtaining message data.&quot;);
-       }
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageContent = string:fromBytes(message.content);
+        if messageContent is string {
+            log:printInfo(&quot;Received message: &quot; + messageContent);
+        }
     }
 }
 </code></pre></div>
@@ -329,7 +362,7 @@ service stan:Service on lis {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Prints the incoming message in the console.</p>
+                                            <p>Logs the incoming message.</p>
 
                                         </div>
                                     </div>
@@ -371,8 +404,8 @@ bal run subscriber.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>[ballerinax/nats] Client subscribed for subject demo
-Received message: Hello from Ballerina
+                                    <div class="highlight"><pre><code class=shell-session>[ballerinax/nats] Client subscribed for subject demo.bbe
+time = 2021-05-19T10:15:49.269+05:30 level = INFO module = &quot;&quot; message = &quot;Received message: Hello from Ballerina&quot;
 </code></pre></div>
 
                                 </td>

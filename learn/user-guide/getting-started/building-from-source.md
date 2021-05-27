@@ -136,7 +136,7 @@ With the [basic language distribution](#building-the-ballerina-runtime-with-the-
 
 Therefore, follow the steps below to build the [`ballerina-distribution` repository](https://github.com/ballerina-platform/ballerina-distribution) as well (to get full access to the complete Ballerina distribution).
 
-1. Execute the command below to fork the `ballerina-distribution` repository to your GitHub account and clone it.
+1. Fork `ballerina-distribution` repository to your GitHub account and execute following command to clone it.
 
     ```bash
     git clone --recursive https://github.com/<GITHUB_USERNAME>/ballerina-distribution.git

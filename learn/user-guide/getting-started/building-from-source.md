@@ -194,7 +194,7 @@ Therefore, follow the steps below to write a simple program using the Ballerina 
 
     // ballerina hello world program
     public function main() {
-    io:println("Hello, World with IO!");
+          io:println("Hello, World with IO!");
     }
     ```
 

@@ -95,7 +95,7 @@ This feature allows you to rename symbols by renaming all the references of the 
 
 There are two types of code actions suggested based on the node at a given cursor position and based on the diagnostic at a given cursor position.
 
-For more information, see [Code Actions](/learn/tooling-guide/visual-studio-code-extension/language-support/code-actions).
+For more information, see [Code Actions](/learn/tooling-guide/visual-studio-code-extension/code-actions).
 
 ### Code Lenses
 

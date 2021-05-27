@@ -160,7 +160,7 @@ Therefore, follow the steps below to build the [`ballerina-distribution` reposit
     
 4. Configure the environment variables below.
 
-    **For Linux/Unix/macOS:**
+    **For Unix/macOS:**
 
     ```bash
     # Set up the `BALLERINA_HOME` environment variable.

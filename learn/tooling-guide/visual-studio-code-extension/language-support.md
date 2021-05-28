@@ -33,13 +33,13 @@ The extension provides you with suggestions on variables, keywords, and code sni
 
 ![Code Completion](/learn/images/code-completion.gif)
 
-#### Symbol Information on Hover
+### Symbol Information on Hover
 
 When hovering over a symbol name, you will be provided with quick information about the particular symbol. For example, when hovering over a function name, you will be prompted with the associated documentation.
 
 ![Symbol Information on Hover](/learn/images/symbol-information-on-hover.gif)
 
-#### Signature Help
+### Signature Help
 
 When typing a function/method call expression, the signature help will show information such as the function/method call’s description and parameter information. Signature help will be triggered when typing the open parenthesis and comma.
 

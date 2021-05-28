@@ -1,8 +1,8 @@
 - title: Language Concepts
 - sublinks:
-    active: hello-world-service
-    title: Hello world service
-    url: /learn/by-example/hello-world-service/
+  - active: hello-world-service
+  - title: Hello world service
+  - url: /learn/by-example/hello-world-service/
   title: Hello World
   url: '#'
 - sublinks:

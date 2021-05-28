@@ -287,7 +287,7 @@ function bar() {
 
 #### Values with different types
 
-The `diff` shows expected and actual values preceded by the type within angle brackets.
+The `diff` shows the expected and actual values preceded by the type within the angle brackets.
 
 ***Example:***
 
@@ -353,7 +353,7 @@ function testAssertString() {
 
 #### Values of the `JSON/record/map` type
 
-The `diff` lists JSON key mismatch using `expected keys` and `actual keys`.
+The `diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
 The JSON value mismatch is listed per key showing the `expected` and `actual` values.
 
 ***Example:***
@@ -443,7 +443,8 @@ function testAssertTuples() {
 
 ## Setup and Teardown
 
-The following test annotations can be used to set up and tear down instructions. These annotations enable executing instructions at different levels.
+The following test annotations can be used to set up and tear down the instructions. These annotations enable executing the 
+instructions at different levels.
 
 ### @test:BeforeSuite {}
 

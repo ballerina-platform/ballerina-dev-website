@@ -14,21 +14,21 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 
-<span class="c1">// The test function, which belongs to the group `g1`.</span>
+<span class="c1">// Belongs to the test group `g1`.</span>
 <span class="nd">@test:Config {</span> <span class="nx">groups</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;g1&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test belonging to group g1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// The test function, which belongs to the groups `g1` and `g2`</span>
+<span class="c1">// Belongs to the test groups `g1` and `g2`.</span>
 <span class="nd">@test:Config {</span> <span class="nx">groups</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;g1&quot;</span><span class="p">,</span> <span class="s">&quot;g2&quot;</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test belonging to groups g1 and g2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// This test doesn&#39;t belong to any group.</span>
+<span class="c1">// Does not belong to any test group.</span>
 <span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the ungrouped test&quot;</span><span class="p">);</span>
@@ -44,10 +44,10 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Group Tests</h2>
                             <p><p>You can tag your test cases with a single group name or multiple group names (one or more).
- This allows you to control the execution of selected tests.
+ This allows you to control the execution of selected tests.<br/><br/>
  In order to execute tests belonging to a selected test group, you can name the
- test groups that are to be executed when you run tests.
- Likewise, you can exclude executing selected tests as well.<br/><br/>
+ test groups that are to be executed when you run the tests.
+ Likewise, you can exclude executing the selected test groups as well.<br/><br/>
  For more information, see <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
  and the <a href="https://docs.central.ballerina.io/ballerina/test/latest/">Test Module</a>.</p>
 </p>
@@ -146,7 +146,7 @@ function testFunction1() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The test function, which belongs to the group <code>g1</code>.</p>
+                                            <p>Belongs to the test group <code>g1</code>.</p>
 
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@ function testFunction2() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The test function, which belongs to the groups <code>g1</code> and <code>g2</code></p>
+                                            <p>Belongs to the test groups <code>g1</code> and <code>g2</code>.</p>
 
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@ function testFunction3() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This test doesn&rsquo;t belong to any group.</p>
+                                            <p>Does not belong to any test group.</p>
 
                                         </div>
                                     </div>
@@ -252,6 +252,34 @@ function testFunction3() {
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -262,10 +290,31 @@ function testFunction3() {
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina test` command below.
-# You need to have the ballerina-tools distribution
-# installed to execute this command.
-bal test --groups g1 --groups g2 testerina_group_tests.bal
-Compiling tests
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Run the tests belonging to the `g1` and `g2` groups
+bal test --groups g1,g2 testerina_group_tests.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Compiling source
     testerina_group_tests.bal
 </code></pre></div>
 
@@ -279,7 +328,18 @@ Compiling tests
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
-    testerina_group_tests.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>    testerina_group_tests.bal
 I&#39;m in test belonging to group g1!
 I&#39;m in test belonging to groups g1 and g2!
 </code></pre></div>
@@ -320,8 +380,20 @@ I&#39;m in test belonging to groups g1 and g2!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina test --groups g1 testerina_group_tests.bal 
-Compiling tests
+                                    <div class="highlight"><pre><code class=shell-session># Run the tests belonging to the `g1` group
+bal test --groups g1 testerina_group_tests.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Compiling source
     testerina_group_tests.bal
 </code></pre></div>
 
@@ -335,7 +407,18 @@ Compiling tests
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
-    testerina_group_tests.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>    testerina_group_tests.bal
 I&#39;m in test belonging to group g1!
 I&#39;m in test belonging to groups g1 and g2!
 </code></pre></div>
@@ -376,8 +459,20 @@ I&#39;m in test belonging to groups g1 and g2!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina test --disable-groups g2 testerina_group_tests.bal 
-Compiling tests
+                                    <div class="highlight"><pre><code class=shell-session># Run all tests other than the tests belonging to the `g2` group
+bal test --disable-groups g2 testerina_group_tests.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Compiling source
     testerina_group_tests.bal
 </code></pre></div>
 
@@ -391,7 +486,18 @@ Compiling tests
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
-    testerina_group_tests.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>    testerina_group_tests.bal
 I&#39;m in test belonging to group g1!
 I&#39;m the ungrouped test
 </code></pre></div>

@@ -16,7 +16,6 @@ redirect_from:
 
 <span class="c1">// This test function depends on the `testFunction3`.</span>
 <span class="nd">@test:Config {</span> 
-    <span class="c1">// You can provide a list of the dependent functions here.</span>
     <span class="nx">dependsOn</span><span class="p">:</span> <span class="p">[</span><span class="nx">testFunction3</span><span class="p">]</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 1!&quot;</span><span class="p">);</span>
@@ -47,7 +46,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Guarantee Test Execution Order</h2>
                             <p><p>The <code>dependsOn</code> attribute can be used to define a list of functions that the test
- function depends on. These functions will be executed before the test execution.
+ function depends on. These functions will be executed before the execution of that test.<br/><br/>
  This allows you to ensure that the tests are being executed in the expected order.<br/><br/>
  For more information, see <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
  and the <a href="https://docs.central.ballerina.io/ballerina/test/latest/">Test Module</a>.</p>
@@ -114,8 +113,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -138,25 +135,7 @@ import ballerina/test;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config { 
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This test function depends on the <code>testFunction3</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    dependsOn: [testFunction3] }
+    dependsOn: [testFunction3] }
 function testFunction1() {
     io:println(&quot;I&#39;m in test function 1!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -168,7 +147,7 @@ function testFunction1() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can provide a list of the dependent functions here.</p>
+                                            <p>This test function depends on the <code>testFunction3</code>.</p>
 
                                         </div>
                                     </div>
@@ -243,6 +222,10 @@ function testFunction3() {
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -252,7 +235,18 @@ function testFunction3() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal test test_module
-Compiling source
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>
 
@@ -267,9 +261,9 @@ Compiling source
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
     ballerinatest/test_module:0.1.0
+I&#39;m in test function 3!
 I&#39;m in test function 1!
 I&#39;m in test function 2!
-I&#39;m in test function 3!
 </code></pre></div>
 
                                 </td>
@@ -281,9 +275,9 @@ I&#39;m in test function 3!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>                [pass] testFunction1
+                                    <div class="highlight"><pre><code class=shell-session>                [pass] testFunction3
+                [pass] testFunction1
                 [pass] testFunction2
-                [pass] testFunction3
 </code></pre></div>
 
                                 </td>

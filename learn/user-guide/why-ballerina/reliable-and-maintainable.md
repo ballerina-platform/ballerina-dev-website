@@ -16,7 +16,7 @@ Error handling refers to the act of reacting to and recovering from errors. Erro
 
 Errors are expected in network handling. In fact, “The network is reliable” is one of the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing). Therefore, explicit error handling is a must when dealing with network services because it forces you to check for errors and handle or pass them to the caller. 
 
-In Ballerina, errors are reported by functions returning values of the `error` type. The error values are part of their own basic type. 
+In Ballerina, errors are reported by functions returning values of the `error` type. The error values are part of their basic type. 
 
 ### Error Reporting
 
@@ -86,7 +86,7 @@ This `is` operator-based error checking pattern is very common and you would end
    }
 ```
 
-Ballerina provides a much more lightweight, shorthand for this pattern. The behavior of the function below is the same as the previous version but it is much more elegant. The `check expr` `check` expression performs an explicit error check, and the control flow also remains explicit.
+Ballerina provides a much more lightweight, shorthand for this pattern. The behavior of the function below is the same as the previous version but it is much more elegant. The `check expr` check expression performs an explicit error check, and the control flow also remains explicit.
 
 ```ballerina
 function whois(string domain, tcp:Client whoisClient) returns string|error {

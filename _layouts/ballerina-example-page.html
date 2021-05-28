@@ -6,7 +6,21 @@
     {% include ballerina-example-head.html %}
 </head>
 <body class="cBallerina-io">
+    <link rel="stylesheet" href=/css/ballerina-io-learn-v2.css>
+
     <header data-plugin-header="line-numbers"></header>
+    <style>
+       .container.cBallerinaBySampleContainer {
+          width: 100% !important;
+       }
+       .highlight {
+          min-width: 20px !important;
+       }
+       .cButtonInfoContainer {
+	
+	margin-left: 7px !important;
+}
+    </style>
 {% include nav.html %}
 <div class="row cBallerina-io-Gray-row">
     <div class="container">
@@ -24,7 +38,12 @@
                             </li> -->
                         </ul>
                     </div>
+                    
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
+                    {% include bbe-nav-swanlake.html %}
+                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                 <div class="cBlallerina-io-docs-content-container">
                     <div class="wy-nav-content">
                         <div class="rst-content">
@@ -35,6 +54,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

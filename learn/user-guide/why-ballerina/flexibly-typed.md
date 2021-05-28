@@ -157,32 +157,38 @@ The main facilitator of this in the type system is the open record concept in Ba
 The code snippet below shows a call to a simple HTTP GET request endpoint:
 
 ```ballerina
-type Ethnicity "Asian"|"White"|"African American"|"Native American/Alaskan Native"|"Pacific Islander"|"Native Hawaiian";
- 
-type Person record {
+enum CreditScore {
+    POOR,
+    FAIR,
+    GOOD,
+    EXCELLENT
+}
+
+type Person record {|
     string name;
-    int birthYear;  
+    int birthYear;
     boolean married = false;
-    Ethnicity ethnicity?;
-};
+    CreditScore creditScore?;
+    json...;
+|};
 ```
 
-Here, the type `Person` is an open record type defined with an `inclusive-record-type-descriptor` by using the `"{"` and `"}"` delimiters. An open record is not limited to the fields that are declared in the record type. Therefore, you can set additional fields that are not explicitly mentioned in the type descriptor.
+Here, the type `Person` is an open record type, the notation `json...;` denotes that this record type can contain additional fields that are not mentioned in the record type descriptor, as long as these additional fields belong to type `json`.
 
-The earlier `DoorState` record type was defined explicitly as a closed record type with an exclusive-record-type-descriptor by using the `"{|"` and `"|}"` delimiters. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary field set in the code.
+The earlier `DoorState` record type was defined explicitly as a closed record type. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary field set in the code.
 
-The `Person` record type above has an <a href="/learn/by-example/record-optional-fields.html">optional field</a> `ethnicity` (denoted by the suffix `"?"`). This means the field value of `ethnicity` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `Ethnicity?`, which is equivalent to the union type `Ethnicity|()`. In Ballerina, the nil value and the type is represented by `()`.
+The `Person` record type above has an <a href="/learn/by-example/record-optional-fields.html">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the field value of `creditScore` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `CreditScore?`, which is equivalent to the union type `CreditScore|()`. In Ballerina, the nil value and the type is represented by `()`.
 
 Let’s create a new type `Student`, which will be a subtype of the `Person` type.
 
 ```ballerina
-type Student record {
+type Student record {|
     string name;
-    int birthYear;  
+    int birthYear;
     boolean married;
-    Ethnicity ethnicity?;
+    CreditScore creditScore?;
     string college;
-};
+|};
 ```
 
 The `Student` type defined above has an extra field college of type `string` compared to the `Person` type. All the possible shapes in the `Student` type are included in the set of shapes in `Person` as well. This is possible because the `Person` type is an open record. If we make the `Person` type a closed record, `Student` will no longer be a subtype of `Person`.
@@ -191,37 +197,48 @@ Sample usage of the above types is shown below:
 
 ```balleirna
 public function main() {
-   Student s1 = { name: "Tom", birthYear: 1990, married: false,
-                  college: "Yale" };
-   Student s2 = { name: "Anne", birthYear: 1988, married: true,
-                  ethnicity: "White", college: "Harvard" };
-   Person p1 = s1;
-   Ethnicity? eth = p1?.ethnicity;
- 
-   if eth != () {
-       io:println("P1's ethnicity: ", eth);
-   } else {
-       io:println("P1's ethnicity: N/A");
-   }
- 
-   Person p2 = s2;
-   eth = p2?.ethnicity;
- 
-   if eth != () {
-       io:println("P2's ethnicity: ", eth);
-   } else {
-       io:println("P2's ethnicity: N/A");
-   }
- 
-   io:println(p2);
+    Student s1 = {
+        name: "Tom",
+        birthYear: 1990,
+        married: false,
+        college: "Yale"
+    };
+    
+    Student s2 = {
+        name: "Anne",
+        birthYear: 1988,
+        married: true,
+        creditScore: GOOD,
+        college: "Harvard"
+    };
+    
+    Person p1 = s1;
+    CreditScore? cScore = p1?.creditScore;
+
+    if cScore != () {
+        io:println("P1's credit score: ", cScore);
+    } else {
+        io:println("P1's credit score: N/A");
+    }
+
+    Person p2 = s2;
+    cScore = p2?.creditScore;
+
+    if cScore != () {
+        io:println("P2's credit score: ", cScore);
+    } else {
+        io:println("P2's credit score: N/A");
+    }
+
+    io:println(p2);
 }
 ```
 
 ```bash
 $ bal run sample.bal 
-P1's ethnicity: N/A
-P2's ethnicity: White
-name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
+P1's credit score: N/A
+P2's credit score: GOOD
+{"name":"Anne","birthYear":1988,"married":true,"creditScore":"GOOD","college":"Harvard"}
 ```
 
 ## Network Communication with Data Binding
@@ -229,18 +246,18 @@ name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
 The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina:
 
 ```ballerina
-http:Client asianRecordsDB = check new ("http://example.com/");
+http:Client highCreditStoreCustomersDb = check new ("http://example.com/");
 
 service / on new http:Listener(8080) {
 
     resource function post 'record(@http:Payload {} Person entry) returns error? {
-        if entry?.ethnicity == "Asian" {
-            io:println("Asian Record: ", entry);
-            json jsonPayload = check entry.cloneWithType(json);
-            _ = check asianRecordsDB->post("/store", jsonPayload);
+        if entry?.creditScore == GOOD || entry?.creditScore == EXCELLENT {
+            io:println("High credit score ", entry);
+            http:Response r = check highCreditStoreCustomersDb->post("/store", entry);
         } else {
-            io:println("Non-Asian Record: ", entry);
+            io:println("Low credit score ", entry);
         }
+        return string `Record processed for: ${entry.name}`;
     }
 }
 ```
@@ -266,7 +283,7 @@ $ bal run sample.bal
                                        <span class="cTableCode">curl -d '{ "name": "John Little",  "birthYear": 1855 }' http://localhost:8080/record</span>
                                     </td>
                                     <td>
-                                        <span class="cTableCode">Non-Asian Record: name=John Little birthYear=1855 married=false</span>
+                                        <span class="cTableCode">Low credit score {"name":"John Little","birthYear":1855,"married":false}</span>
                                     </td>
                                  </tr> 
                                  <tr>
@@ -281,17 +298,17 @@ $ bal run sample.bal
                               <tr>
                                     <td>A request is sent with the optional <code>ethnicity</code> field also set. </td>
                                     <td>
-                                       <span class="cTableCode">curl -d '{ "name": "Sunil Perera",  "birthYear": 1950, "married": true, "ethnicity": "Asian" }' http://localhost:8080/record</span>
+                                       <span class="cTableCode">curl -d '{ "name": "Sunil Perera",  "birthYear": 1950, "married": true, "creditScore": "GOOD" }' http://localhost:8080/record</span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode">Asian Record: name=Sunil Perera birthYear=1950 married=true ethnicity=Asian
+                                       <span class="cTableCode">High credit score {"name":"Sunil Perera","birthYear":1950,"married":true,"creditScore":"GOOD"}
 </span>
                                     </td>
                                  </tr>
                                    <tr>
                                     <td>A request is sent with a non-existing value of the <code>Ethnicity</code> union type. This is validated by the service and the request fails.</td>
                                     <td>
-                                       <span class="cTableCode">curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "ethnicity": "Japanese", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</span>
+                                       <span class="cTableCode">curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "HIGH", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</span>
                                     </td>
                                     <td>
                                        <span class="cTableCode">data binding failed: error {ballerina/lang.typedesc}ConversionError message='map< json >' value cannot be converted to 'Person'</span>
@@ -300,10 +317,10 @@ $ bal run sample.bal
                                   <tr>
                                     <td>A request is sent with additional fields not explicitly mentioned in the <code>Person</code> type. Since <code>Person</code> is an open record type, the service accepts and makes these extra fields available to be passed through to other systems, e.g. a forwarding service.</td>
                                     <td>
-                                       <span class="cTableCode">curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "ethnicity": "Asian", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</span>
+                                       <span class="cTableCode">curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "EXCELLENT", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode">Asian Record: name=Tim Kern birthYear=1995 married=false ethnicity=Asian country=Japan zipcode=98101</span>
+                                       <span class="cTableCode">High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","country":"Japan","zipcode":"98101"}</span>
                                     </td>
                                  </tr> 
                               </table>

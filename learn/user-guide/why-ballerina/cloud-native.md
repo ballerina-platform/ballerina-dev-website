@@ -130,7 +130,7 @@ Ballerina specializes in moving from code to cloud while providing a unique deve
 
 
 ### From Code to Kubernetes
-Kubernetes is the preferred platform for running applications with multiple microservices in production. It can be used for automating deployment and scaling, and management of containerized applications. Kubernetes defines a set of unique building blocks that need to be defined as YAML files and deployed into the Kubernetes cluster.
+Kubernetes is the preferred platform for running applications with multiple microservices in production. It can be used for automating deployment and scaling, and the management of containerized applications. Kubernetes defines a set of unique building blocks that need to be defined as YAML files and deployed into the Kubernetes cluster.
 
 However, in many cases, creating these YAML files is out of a developer’s comfort zone. The Ballerina compiler can create these YAML files while compiling the source code, so you don’t have to! The code below shows the build option you need to use to do this:
 

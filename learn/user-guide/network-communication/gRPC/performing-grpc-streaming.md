@@ -121,15 +121,15 @@ Follow the steps below to create separate service and client packages, and gener
         check calcClient->complete();
         
         int|grpc:Error? result = check calcClient->receiveInt();
-        if (result is int) {
+        if result is int {
             io:println("Value: ", result);
-        } else if (result is grpc:Error) {
+        } else if result is grpc:Error {
             io:println("Error: ", result);
         } else {
             io:println("Complete.");
         }
     }
-```
+    ```
 
     >**Info:** In the above implementation, the `StreamingCalcServiceMessageListener` service is created along with the client code. This service is used as a callback for processing a streaming result from the remote service. A `grpc:StreamingClient` object is also provided when invoking the remote method of the service. This client is used to send streaming values to the active service request.
 
@@ -178,9 +178,9 @@ Follow the steps below to perform a sample run of the above implementation.
     function readResponse(IncrementalSumStreamingClient streamingClient) returns error? {
         while(true) {
             int|grpc:Error? result = check streamingClient->receiveInt();
-            if (result is int) {
+            if result is int {
                 io:println("Value: ", result);
-            } else if (result is grpc:Error) {
+            } else if result is grpc:Error {
                 io:println("Error: ", result);
                 break;
             } else {

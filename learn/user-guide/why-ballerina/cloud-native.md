@@ -13,8 +13,8 @@ redirct_from:
   - /learn/user-guide/why-ballerina/from-code-to-cloud/
 ---
 
-In a microservice architecture, smaller services are developed, deployed and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) as a part of their application logic.
-For decades, programming languages have treated networks simply as I/O sources. Ballerina language introduce language constructs that seamlessly map to network programming concepts such as services and network resources. Rest of the article demonstrate few of these language constructs and how they help develop distributed services.
+In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) as a part of their application logic.
+For decades, programming languages have treated networks simply as I/O sources. Ballerina language introduces language constructs that seamlessly map to network programming concepts such as services and network resources. The sections below demonstrate a few of these language constructs and how they help to develop distributed services.
 ## Services
 
 Ballerina introduces service typing where services, which work in conjunction with a listener object, can have one or more resource methods in which the application logic is implemented. The listener object provides an interface between the network and the service. It receives network messages from a remote process according to the defined protocol and translates it into calls on the resource methods of the service that has been attached to the listener object.
@@ -66,7 +66,7 @@ Some protocols supported out-of-the-box include the below.
 
 ## Async Network Protocol
 
-In the request-response paradigm, network communication is done by blocking calls. However, blocking a OS thread to perform a network interaction is very expensive. That’s why many other languages supported async I/O and with that you have to implement complicated logic to handle asynchronous evens using techniques such as callbacks and promises.
+In the request-response paradigm, network communication is done by blocking calls. However, blocking an OS thread to perform a network interaction is very expensive. That’s why many other languages supported async I/O and with that, you have to implement complicated logic to handle asynchronous events using techniques such as callbacks and promises.
 On the other hand, Ballerina’s request-response protocols are implicitly non-blocking and will take care of asynchronous invocations.
 
 ### Get Started
@@ -84,7 +84,7 @@ public function main() returns @tainted error? {
 }
 ```
 
-Although the above `get` operation is seemingly a blocking operation, internally, it does an asynchronous execution using the non-blocking I/O, where the current execution thread is released to the Ballerina runtime scheduler to be used by others Ballerina strands. After the I/O operation is done, the program execution automatically resumes from where it was suspended. This pattern gives you a much more convenient programming model than handling non-blocking I/O manually while providing maximum performance efficiency.
+Although the above `get` operation is seemingly a blocking operation, internally, it does an asynchronous execution using the non-blocking I/O, where the current execution thread is released to the Ballerina runtime scheduler to be used by other Ballerina strands. After the I/O operation is done, the program execution automatically resumes from where it was suspended. This pattern gives you a much more convenient programming model than handling the non-blocking I/O manually while providing maximum performance efficiency.
 
 ## Client Objects
 

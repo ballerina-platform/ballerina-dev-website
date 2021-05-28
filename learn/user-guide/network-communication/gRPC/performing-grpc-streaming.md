@@ -103,7 +103,7 @@ Follow the steps below to create separate service and client packages, and gener
     }
     ```
 
-    >**Info:** In the code above, the gRPC stream type has been mapped to the stream type in Ballerina. Using the Ballerina stream type, you can iterate through all the values in the stream sent to the service by the client. The only difference between the `sum` and `incrementalSum` methods is the use of caller object to stream out multiple values to the client.
+    >**Info:** In the code above, the gRPC stream type has been mapped to the stream type in Ballerina. Using the Ballerina stream type, you can iterate through all the values in the stream sent to the service by the client. The only difference between the `sum` and `incrementalSum` methods is the use of the caller object to stream out multiple values to the client.
 
 6. Add the implementation of the generated client as shown below in order to invoke the `add` operation. 
 

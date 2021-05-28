@@ -1288,23 +1288,35 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Basic Publisher and Subscriber",
-                "url": "nats-basic-client",
+                "name": "Publish/Subscribe",
+                "url": "nats-basic-pub-sub",
                 "disablePlayground": true
             },
             {
-                "name": "Basic Streaming Publisher and Subscriber",
-                "url": "nats-streaming-client",
+                "name": "Request/Reply",
+                "url": "nats-basic-request-reply",
                 "disablePlayground": true
-            },
+            }
+        ]
+    },
+    {
+        "title": "NATS Streaming",
+        "column": 3,
+        "category": "Working over the network",
+        "samples": [
             {
-                "name": "Durable Subscriptions",
-                "url": "nats-streaming-durable-subscriptions",
+                "name": "Publish/Subscribe",
+                "url": "nats-streaming-pub-sub",
                 "disablePlayground": true
             },
             {
                 "name": "Queue Groups",
                 "url": "nats-streaming-queue-group",
+                "disablePlayground": true
+            },
+            {
+                "name": "Durable Subscriptions",
+                "url": "nats-streaming-durable-subscriptions",
                 "disablePlayground": true
             },
             {

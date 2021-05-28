@@ -132,9 +132,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Client Data Binding</h2>
-                            <p><p>Client data binding helps to access the response payload directly as a return value. The <code>targetType</code> dafaultable
- parameter in the client remote function signature expects a <code>typedesc</code> of a possible payload type out of
- <code>string</code>|<code>xml</code>|<code>json</code>|<code>map&lt;json&gt;</code>|<code>byte[]</code>|<code>record</code>|<code>record[]</code> and <code>http:Response</code>.
+                            <p><p>Client data binding helps to access the response payload directly as a return value. The contextually expected
+ <code>targetType</code> is inferred from the LHS variable type. A possible payload type out of <code>string</code>|<code>xml</code>|<code>json</code>|
+ <code>map&lt;json&gt;</code>|<code>byte[]</code>|<code>record</code>|<code>record[]</code> and <code>http:Response</code> is expected as return value type or as the <code>targetType</code>
+ parameter in the client remote function signature.
  A successful data binding process will return the payload in the given <code>targetType</code>. When the user expects client
  data binding to happen, the HTTP error responses (4XX, 5XX)  will be categorized as an <code>http:ClientError</code> of the
  client remote operation. Since the default <code>targetType</code> is <code>http:Response</code>, the user still has the option to access

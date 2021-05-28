@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Object Mocking
 description: This Ballerina sample demonstrates how to mock objects for unit testing.
-keywords: ballerina, ballerina by example, bbe, testing, mock
+keywords: ballerina, programming language, testing, mocking
 permalink: /learn/by-example/testerina-mocking-objects
 redirect_from:
   - /swan-lake/learn/by-example/testerina-mocking-objects
@@ -11,16 +11,15 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="c1">// This demonstrates different ways to mock a client object.</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
 
-<span class="c1">// Clients objects are defined globally to be able to replace in test files.</span>
+<span class="c1">// Clients objects are defined globally to be able to replace them in tests.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
 <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">);</span>
 
-<span class="c1">// This function performs two `GET` requests to the specified</span>
+<span class="c1">// Performs two `GET` requests to the specified</span>
 <span class="c1">// endpoint and returns the response.</span>
 <span class="kd">function</span> <span class="nx">performGet</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted http:Response {</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Executing the 1st GET request&quot;</span><span class="p">);</span>
@@ -38,7 +37,7 @@ redirect_from:
     <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// This function sends out an email to the specified email addresses</span>
+<span class="c1">// Sends an email to the specified email addresses</span>
 <span class="c1">// and returns an error if found.</span>
 <span class="kd">function</span> <span class="nx">sendNotification</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">emailIds</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span>
@@ -47,24 +46,20 @@ redirect_from:
         <span class="nx">to</span><span class="p">:</span> <span class="nx">emailIds</span><span class="p">,</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
     <span class="p">};</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">smtpClient</span> <span class="o">-&gt;</span> <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error while sending the email: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">smtpClient</span> <span class="o">-&gt;</span> <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="c1">// This demonstrates different ways to mock a client object.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
 
-<span class="c1">// This is the test double of the `http:Client` object with the</span>
+<span class="c1">// The test double of the `http:Client` object with the</span>
 <span class="c1">// implementation of the required functions.</span>
 <span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">MockHttpClient</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">,</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span><span class="err">?</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">(),</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">TargetType</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="nx">returns</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">PayloadType</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
@@ -73,7 +68,7 @@ redirect_from:
 
 <span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testTestDouble</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// This creates and assigns the defined test-double.</span>
+    <span class="c1">// Creates and assigns the defined test-double.</span>
     <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">new</span> <span class="nx">MockHttpClient</span><span class="p">());</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
@@ -81,29 +76,13 @@ redirect_from:
 
 <span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testReturn</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// This creates and assigns a default mock object which subsequently needs to stubbed.</span>
+    <span class="c1">// Creates and assigns a default mock object,</span>
+    <span class="c1">// which subsequently needs to be stubbed.</span>
     <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="c1">// This stubs the `get` function to return the specified HTTP response.</span>
+    <span class="c1">// Stubs the `get` function to return the specified HTTP response.</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">());</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nd">@test:Config {</span> <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testReturnWithArgs</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">mockResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
-
-    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="c1">// This stubs the `get` function to return the specified HTTP response</span>
-    <span class="c1">// when the specified argument is passed.</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span>
-    <span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/headers&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
-    <span class="c1">// The object and record types should be denoted by the `test:ANY` constant.</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">404</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nd">@test:Config {</span> <span class="p">}</span>
@@ -112,9 +91,9 @@ redirect_from:
     <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
 
     <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="c1">// This stubs the `get` function to return the specified HTTP response</span>
-    <span class="c1">// for each call. i.e., The first call will return the status code `200`</span>
-    <span class="c1">// and the second call will return the status code `404`.</span>
+    <span class="c1">// Stubs the `get` function to return the specified HTTP response</span>
+    <span class="c1">// for each call (i.e., The first call will return the status code `200`</span>
+    <span class="c1">// and the second call will return the status code `404`).</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">thenReturnSequence</span><span class="p">(</span>
         <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">(),</span> <span class="nx">mockResponse</span><span class="p">);</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
@@ -124,7 +103,7 @@ redirect_from:
 <span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testSendNotification</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span><span class="p">);</span>
-    <span class="c1">// This stubs the `send` method of the `mockSmtpClient` to do nothing.</span>
+    <span class="c1">// Stubs the `send` method of the `mockSmtpClient` to do nothing.</span>
     <span class="c1">// This is used for functions with an optional or no return type.</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">smtpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;sendMessage&quot;</span><span class="p">).</span><span class="nx">doNothing</span><span class="p">();</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">emailIds</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;user1@test.com&quot;</span><span class="p">,</span> <span class="s">&quot;user2@test.com&quot;</span><span class="p">];</span>
@@ -136,7 +115,7 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">testMemberVariable</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">mockClientUrl</span> <span class="p">=</span> <span class="s">&quot;http://foo&quot;</span><span class="p">;</span>
     <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="c1">// This stubs the value of `url` to return the specified string.</span>
+    <span class="c1">// Stubs the value of the `url` to return the specified string.</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">getMember</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockClientUrl</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">mockClientUrl</span><span class="p">);</span>
 <span class="p">}</span>
@@ -229,7 +208,7 @@ redirect_from:
 
                         <table class="cBBE-body">
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
@@ -239,13 +218,6 @@ import ballerina/email;
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This demonstrates different ways to mock a client object.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -262,7 +234,7 @@ email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Clients objects are defined globally to be able to replace in test files.</p>
+                                            <p>Clients objects are defined globally to be able to replace them in tests.</p>
 
                                         </div>
                                     </div>
@@ -285,7 +257,7 @@ email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function performs two <code>GET</code> requests to the specified
+                                            <p>Performs two <code>GET</code> requests to the specified
  endpoint and returns the response.</p>
 
                                         </div>
@@ -324,11 +296,7 @@ email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;
         to: emailIds,
         body: &quot;&quot;
     };
-    email:Error? response = smtpClient -&gt; sendMessage(msg);
-    if (response is error) {
-        io:println(&quot;error while sending the email: &quot;, response.message());
-        return response;
-    }
+    return smtpClient -&gt; sendMessage(msg);
 }
 </code></pre></div>
 
@@ -337,7 +305,7 @@ email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function sends out an email to the specified email addresses
+                                            <p>Sends an email to the specified email addresses
  and returns an error if found.</p>
 
                                         </div>
@@ -349,22 +317,6 @@ email:SmtpClient smtpClient = check new(&quot;localhost&quot;, &quot;admin&quot;
                         </table>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
                         
                             
                                 
@@ -465,7 +417,7 @@ import ballerina/email;
     remote isolated function get(@untainted string path,
     map&lt;string|string[]&gt;? headers = (),
     http:TargetType targetType = http:Response) returns
-    http:Response | http:ClientError {
+    http:Response | http:PayloadType | http:ClientError {
         http:Response response = new;
         response.statusCode = 500;
         return response;
@@ -478,7 +430,7 @@ import ballerina/email;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the test double of the <code>http:Client</code> object with the
+                                            <p>The test double of the <code>http:Client</code> object with the
  implementation of the required functions.</p>
 
                                         </div>
@@ -514,7 +466,7 @@ function testTestDouble() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates and assigns the defined test-double.</p>
+                                            <p>Creates and assigns the defined test-double.</p>
 
                                         </div>
                                     </div>
@@ -546,7 +498,8 @@ function testReturn() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates and assigns a default mock object which subsequently needs to stubbed.</p>
+                                            <p>Creates and assigns a default mock object,
+ which subsequently needs to be stubbed.</p>
 
                                         </div>
                                     </div>
@@ -568,78 +521,7 @@ function testReturn() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the <code>get</code> function to return the specified HTTP response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
-function testReturnWithArgs() {
-    http:Response mockResponse = new;
-    mockResponse.statusCode = 404;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    clientEndpoint = test:mock(http:Client);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;).
-    withArguments(&quot;/headers&quot;).thenReturn(mockResponse);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>get</code> function to return the specified HTTP response
- when the specified argument is passed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;).withArguments(&quot;/get?test=123&quot;)
-        .thenReturn(mockResponse);
-    http:Response res = performGet();
-    test:assertEquals(res.statusCode, 404);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The object and record types should be denoted by the <code>test:ANY</code> constant.</p>
+                                            <p>Stubs the <code>get</code> function to return the specified HTTP response.</p>
 
                                         </div>
                                     </div>
@@ -689,9 +571,9 @@ function testReturnSequence() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the <code>get</code> function to return the specified HTTP response
- for each call. i.e., The first call will return the status code <code>200</code>
- and the second call will return the status code <code>404</code>.</p>
+                                            <p>Stubs the <code>get</code> function to return the specified HTTP response
+ for each call (i.e., The first call will return the status code <code>200</code>
+ and the second call will return the status code <code>404</code>).</p>
 
                                         </div>
                                     </div>
@@ -728,7 +610,7 @@ function testSendNotification() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the <code>send</code> method of the <code>mockSmtpClient</code> to do nothing.
+                                            <p>Stubs the <code>send</code> method of the <code>mockSmtpClient</code> to do nothing.
  This is used for functions with an optional or no return type.</p>
 
                                         </div>
@@ -765,7 +647,7 @@ function testMemberVariable() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the value of <code>url</code> to return the specified string.</p>
+                                            <p>Stubs the value of the <code>url</code> to return the specified string.</p>
 
                                         </div>
                                     </div>
@@ -834,7 +716,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        ballerinatest/bbe_mocking:0.1.0
+                                    <div class="highlight"><pre><code class=shell-session>        bbe_mocking
 Executing the 1st GET request
 Status code: 200
 Executing the 2nd GET request
@@ -842,8 +724,6 @@ Status code: 200
 Executing the 1st GET request
 Status code: 200
 Executing the 2nd GET request
-Status code: 404
-Executing the 1st GET request
 Status code: 404
 Executing the 1st GET request
 Status code: 500
@@ -861,7 +741,6 @@ Status code: 500
                                     <div class="highlight"><pre><code class=shell-session>                [pass] testMemberVariable
                 [pass] testReturn
                 [pass] testReturnSequence
-                [pass] testReturnWithArgs
                 [pass] testSendNotification
                 [pass] testTestDouble
 </code></pre></div>
@@ -875,7 +754,7 @@ Status code: 500
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>                6 passing
+                                    <div class="highlight"><pre><code class=shell-session>                5 passing
                 0 failing
                 0 skipped
 </code></pre></div>

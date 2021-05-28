@@ -21,14 +21,14 @@ redirect_from:
     <span class="c1">// `remoteHost` and the `remotePort`.</span>
     <span class="c1">// Optionally, you can provide the interface that the socket needs to bind </span>
     <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
-    <span class="c1">// udp:Client client = new (&quot;www.ballerina.com&quot;, 80,</span>
-    <span class="c1">//                         localHost = &quot;localhost&quot;, timeout = 5);</span>
+    <span class="c1">// E.g.: `udp:Client client = new (&quot;www.ballerina.com&quot;, 80,</span>
+    <span class="c1">// localHost = &quot;localhost&quot;, timeout = 5);`</span>
     <span class="nx">udp</span><span class="p">:</span><span class="nx">ConnectClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">);</span>
 
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina echo&quot;</span><span class="p">;</span>
 
     <span class="c1">// Sends the data to the connected remote host.</span>
-    <span class="c1">// The parameter is a byte[], which contains the data to be sent.</span>
+    <span class="c1">// The parameter is a `byte[]`, which contains the data to be sent.</span>
     <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data was sent to the remote host.&quot;</span><span class="p">);</span>
 
@@ -177,8 +177,8 @@ import ballerina/udp;
  <code>remoteHost</code> and the <code>remotePort</code>.
  Optionally, you can provide the interface that the socket needs to bind
  and the timeout in milliseconds, which specifies the read timeout value.
- udp:Client client = new (&ldquo;www.ballerina.com&rdquo;, 80,
-                         localHost = &ldquo;localhost&rdquo;, timeout = 5);</p>
+ E.g.: <code>udp:Client client = new (&quot;www.ballerina.com&quot;, 80,
+ localHost = &quot;localhost&quot;, timeout = 5);</code></p>
 
                                         </div>
                                     </div>
@@ -211,7 +211,7 @@ import ballerina/udp;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Sends the data to the connected remote host.
- The parameter is a byte[], which contains the data to be sent.</p>
+ The parameter is a <code>byte[]</code>, which contains the data to be sent.</p>
 
                                         </div>
                                     </div>

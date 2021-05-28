@@ -3,12 +3,41 @@
   #url: /learn/user-guide/getting-started/
   #active: getting-started
 
+- title: Why Ballerina 
+  url: '#'
+  sublinks:
+    - title: Cloud Native
+      url: /learn/user-guide/why-ballerina/cloud-native/
+      active: cloud-native
+    - title: Flexibly Typed
+      url: /learn/user-guide/why-ballerina/flexibly-typed/
+      active: flexibly-typed
+    - title: Data Oriented
+      url: /learn/user-guide/why-ballerina/data-oriented/
+      active: data-oriented
+    - title: Graphical
+      url: /learn/user-guide/why-ballerina/graphical/
+      active: graphical
+    - title: Concurrent
+      url: /learn/user-guide/why-ballerina/concurrent/
+      active: concurrent
+    - title: Reliable and Maintainable
+      url: /learn/user-guide/why-ballerina/reliable-and-maintainable/
+      active: reliable-and-maintainable
+
+
 - title: Getting Started 
   url: '#'
   sublinks:
     - title: Setting up Ballerina 
       url: /learn/user-guide/getting-started/setting-up-ballerina/
       active: setting-up-ballerina
+    - title: Installation Options
+      url: /learn/user-guide/getting-started/installation-options/
+      active: installation-options
+    - title: Building from Source
+      url: /learn/user-guide/getting-started/building-from-source/
+      active: building-from-source
     - title: Writing Your First Ballerina Program 
       url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
       active: writing-your-first-ballerina-program

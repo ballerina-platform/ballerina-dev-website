@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release note
+layout: ballerina-left-nav-release-notes
+title: Swan Lake Preview 1
+permalink: /downloads/swan-lake-release-notes/swan-lake-preview1/
+active: swan-lake-preview1
+redirect_from: 
+    - /downloads/swan-lake-release-notes/swan-lake-preview1
 ---
 ### Overview of Ballerina Swan Lake - Preview 1
 Ballerina Swan Lake will be a major new version of Ballerina that we plan to release in January 2021. We will be doing major releases every 6 months from then on. We also plan to use popular ballet names as the codename for each release - so the 2021-07 release will be the Nutcracker release. We will announce details on maintenance of released versions and will also have an LTS release model similar to Ubuntu or Java.
@@ -787,7 +791,7 @@ The new mocking API simplifies function and object mocking in unit tests via the
 The mocking features can be used to control the behavior of functions and objects by defining return values or
  replacing the entire object or function with a user-defined equivalent. This feature will help you to test your Ballerina code independently 
 from other modules and external endpoints. For the complete list of available mocking features, see 
-[API Documentation of the test module](https://ballerina.io/learn/api-docs/ballerina/test/index.html).
+[API Documentation of the test module](https://docs.central.ballerina.io/ballerina/test/latest/).
 
 ###### Function mocking
 

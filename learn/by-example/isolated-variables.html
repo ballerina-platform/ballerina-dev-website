@@ -1,8 +1,8 @@
 ---
 layout: ballerina-example-page
-title: Isolated Variables
-description: An isolated variable in Ballerina is an isolated root.
-keywords: ballerina, ballerina by example, bbe, isolated variables, concurrency safety
+title: Isolated variables
+description: This BBE introduces isolated variables in Ballerina.
+keywords: ballerina, ballerina by example, bbe, isolated variables
 permalink: /learn/by-example/isolated-variables
 redirect_from:
   - /swan-lake/learn/by-example/isolated-variables
@@ -13,72 +13,28 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">type</span> <span class="nx">Coordinates</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="nx">decimal</span> <span class="nx">latitude</span><span class="p">;</span>
-    <span class="nx">decimal</span> <span class="nx">longitude</span><span class="p">;</span>
-<span class="p">|};</span>
+<span class="c1">// Initializes an `isolated` variable using</span>
+<span class="c1">// an `isolated` expression.</span>
+<span class="nx">isolated</span> <span class="kt">int</span><span class="p">[]</span> <span class="nx">stack</span> <span class="p">=</span> <span class="p">[];</span>
 
-<span class="c1">// The initialization expression of an `isolated` variable</span>
-<span class="c1">// has to be an isolated expression, which itself will be</span>
-<span class="c1">// an isolated root.</span>
-<span class="c1">// E.g., expressions with an immutable static type,</span>
-<span class="c1">// simple literals, constructor expressions</span>
-<span class="c1">// in which all the subexpressions are isolated expressions, etc.</span>
-<span class="nx">isolated</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">cities</span> <span class="p">=</span> <span class="p">{};</span>
-
-<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">Coordinates</span> <span class="nx">coordinates</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">push</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Accesses `isolated` variable within a</span>
+    <span class="c1">// `lock` statement.</span>
     <span class="nx">lock</span> <span class="p">{</span>
-        <span class="c1">// An `isolated` variable can be accessed within a `lock` statement.</span>
-        <span class="k">if</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="nx">city</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An entry already exists for &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">);</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="c1">// Any values transferred into the `lock` statement also need to be</span>
-        <span class="c1">// isolated expressions ensuring that the variable will continue</span>
-        <span class="c1">// to be an isolated root.</span>
-        <span class="nx">cities</span><span class="p">[</span><span class="nx">city</span><span class="p">]</span> <span class="p">=</span> <span class="nx">coordinates</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Added coordinates for &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">getCoordinates</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Coordinates</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">lock</span> <span class="p">{</span>
-        <span class="c1">// Similarly, transferring values out of the `lock` statement</span>
-        <span class="c1">// either using a `return` statement or by assigning to a variable</span>
-        <span class="c1">// defined outside the `lock` statement is also</span>
-        <span class="c1">// constrained. The expressions that transfer values out need to be</span>
-        <span class="c1">// isolated expressions.</span>
-        <span class="k">return</span> <span class="nx">cities</span><span class="p">[</span><span class="nx">city</span><span class="p">].</span><span class="nx">clone</span><span class="p">();</span>
+        <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">getAllCoordinates</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
+<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">pop</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="nx">lock</span> <span class="p">{</span>
-        <span class="c1">// A function/method call within a `lock` statement that accesses an</span>
-        <span class="c1">// `isolated` variable should call a function/method that is</span>
-        <span class="c1">// `isolated`.</span>
-        <span class="k">return</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="nx">cities</span><span class="p">).</span><span class="nx">clone</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">formatCoordinates</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">Coordinates</span><span class="p">&gt;</span> <span class="nx">cities</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">formattedCoordinates</span> <span class="p">=</span> <span class="p">[];</span>
-
-    <span class="nx">foreach</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Coordinates</span><span class="p">]</span> <span class="p">[</span><span class="nx">city</span><span class="p">,</span> <span class="nx">coords</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">cities</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">formattedCoordinates</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-            <span class="kt">string</span> <span class="s">`${city} - ${coords.latitude}° N, ${coords.longitude}° E`</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nx">formattedCoordinates</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">add</span><span class="p">(</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">latitude</span><span class="p">:</span> <span class="mf">6.9271</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">:</span> <span class="mf">79.8612</span><span class="p">});</span>
-    <span class="nx">add</span><span class="p">(</span><span class="s">&quot;Kandy&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">latitude</span><span class="p">:</span> <span class="mf">7.2906</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">:</span> <span class="mf">80.6337</span><span class="p">});</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">getAllCoordinates</span><span class="p">());</span>
+    <span class="nx">push</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="nx">push</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">pop</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -88,17 +44,16 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Isolated Variables</h2>
-                            <p><p>An <code>isolated</code> variable&rsquo;s mutable state is isolated from the rest of the program. The
- mutable state reachable from such a variable is only reachable from the variable itself,
- making an <code>isolated</code> variable an &ldquo;isolated root&rdquo; similar to <code>isolated</code> objects.
- Such a variable can only be accessed within a <code>lock</code> statement ensuring that there
- will be no data race when accessing the mutable state reachable from the variable.
- If a <code>lock</code> statement in a function accesses such a field, additional rules apply to how values are
- transferred in and out of the <code>lock</code> statement similar to <code>isolated</code> objects.
- The initial value expression of the variable also needs to be an isolated expression.
- A function/method call within a <code>lock</code> statement that accesses an <code>isolated</code> variable should call a
- function/method that is <code>isolated</code>.</p>
+                            <h2>Isolated variables</h2>
+                            <p><p>When a variable is declared as <code>isolated</code>, compiler guarantees that it is an <code>isolated</code> root and
+ accessed only within a <code>lock</code> statement. An <code>isolated</code> variable declaration must be at module-level,
+ not public, and initialized with an <code>isolated</code> expression. A <code>lock</code> statement that accesses an
+ <code>isolated</code> variable must maintain <code>isolated</code> root invariant: <br></br>
+ - access only one <code>isolated</code> variable. <br></br>
+ - call only <code>isolated</code> functions. <br></br>
+ - transfers of values in and out must use <code>isolated</code> expressions. <br></br>
+ The <code>isolated</code> functions are allowed to access <code>isolated</code> module-level variables,
+ provided they follow the above rules.</p>
 </p>
 
                         </td>
@@ -106,16 +61,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="isolated-objects.html">
+                                    <a class="prev" href="readonly-and-isolated.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Isolated Objects</p>
+                                        <p>readonly and isolated</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="isolated-functions.html">
+                                    <a class="next" href="isolated-methods.html">
                                         <span>NEXT ></span>
-                                        <p>Isolated Functions</p>
+                                        <p>Isolated methods</p>
                                     </a>
                                 </div>
                                 
@@ -139,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=17a8078fa4be006f0b0b14f363d7c006&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ce8fdd06baec33ffdfdbc98c63def456&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -170,26 +125,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -207,13 +142,30 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated int[] stack = [];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initializes an <code>isolated</code> variable using
+ an <code>isolated</code> expression.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Coordinates record {|
-    decimal latitude;
-    decimal longitude;
-|};
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated function push(int n) {
 </code></pre></div>
 
                                 </td>
@@ -225,7 +177,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>isolated map&lt;Coordinates&gt; cities = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>    lock {
+        stack.push(n);
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -233,12 +188,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The initialization expression of an <code>isolated</code> variable
- has to be an isolated expression, which itself will be
- an isolated root.
- E.g., expressions with an immutable static type,
- simple literals, constructor expressions
- in which all the subexpressions are isolated expressions, etc.</p>
+                                            <p>Accesses <code>isolated</code> variable within a
+ <code>lock</code> statement.</p>
 
                                         </div>
                                     </div>
@@ -249,194 +200,11 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function add(string city, Coordinates coordinates) {
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated function pop() returns int {
     lock {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if cities.hasKey(city) {
-            io:println(&quot;An entry already exists for &quot;, city);
-            return;
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>An <code>isolated</code> variable can be accessed within a <code>lock</code> statement.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        cities[city] = coordinates.clone();
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Any values transferred into the <code>lock</code> statement also need to be
- isolated expressions ensuring that the variable will continue
- to be an isolated root.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Added coordinates for &quot;, city);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function getCoordinates(string city) returns Coordinates? {
-    lock {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return cities[city].clone();
+        return stack.pop();
     }
 }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Similarly, transferring values out of the <code>lock</code> statement
- either using a <code>return</code> statement or by assigning to a variable
- defined outside the <code>lock</code> statement is also
- constrained. The expressions that transfer values out need to be
- isolated expressions.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function getAllCoordinates() returns string[] {
-    lock {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return formatCoordinates(cities).clone();
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A function/method call within a <code>lock</code> statement that accesses an
- <code>isolated</code> variable should call a function/method that is
- <code>isolated</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>isolated function formatCoordinates(map&lt;Coordinates&gt; cities) returns string[] {
-    string[] formattedCoordinates = [];
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    foreach [string, Coordinates] [city, coords] in cities.entries() {
-        formattedCoordinates.push(
-            string `${city} - ${coords.latitude}° N, ${coords.longitude}° E`);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return formattedCoordinates;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    add(&quot;Colombo&quot;, {latitude: 6.9271, longitude: 79.8612});
-    add(&quot;Kandy&quot;, {latitude: 7.2906, longitude: 80.6337});
 </code></pre></div>
 
                                 </td>
@@ -448,7 +216,10 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(getAllCoordinates());
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    push(10);
+    push(20);
+    io:println(pop());
 }
 </code></pre></div>
 
@@ -474,12 +245,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run isolated_variables.bal
-Added coordinates for Colombo
-Added coordinates for Kandy
-[&quot;Colombo - 6.9271° N, 79.8612° E&quot;,&quot;Kandy - 7.2906° N, 80.6337° E&quot;]
+                                    <div class="highlight"><pre><code class=shell-session>bal run isolated_variables.bal
+20
 </code></pre></div>
 
                                 </td>

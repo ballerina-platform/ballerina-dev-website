@@ -1,7 +1,7 @@
 ---
 layout: ballerina-release-notes
-title:  1.2.x Release Notes
-permalink: /downloads/1.2.x-release-notes/
+title:  1.2.x Release Notes Old
+permalink: /downloads/1.2.x-release-notes-old/
 redirect_from:
   - /downloads/release-notes/
   - /downloads/release-notes

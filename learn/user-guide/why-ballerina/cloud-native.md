@@ -154,7 +154,7 @@ Building the source with `bal build --cloud=docker` will generate the Docker ima
 ### From Code to AWS Lambda
 AWS Lambda is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`, which should have the `function (awslambda:Context, json) returns json|error` function signature.
 
-The sample below illustrates a simple echo function with AWS Lambda annotations. Compiling the sample will generate 
+The sample below illustrates a simple echo function with AWS Lambda annotations. 
 
 ```ballerina
 import ballerinax/awslambda;

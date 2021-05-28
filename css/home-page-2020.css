@@ -11,6 +11,10 @@ padding: 80px 0 130px 0;
     background-color: #494949;
 }
 
+a.cMobileLogo {
+    display: none;
+}
+
 .row.cBallerinaFeatureSection {
     /* padding: 80px 0; */
 }
@@ -230,6 +234,12 @@ button.navbar-toggle {
 	display: inline-block;
 	padding-right: 60px;
 	min-height: 400px;
+}
+
+.cHomeWhyBallerinaRow > .col-md-4:last-child > .cHomeWhyBallerinaBox {
+
+	padding-right: 0;
+
 }
 
 .cHomeWhyBallerinaBox img {

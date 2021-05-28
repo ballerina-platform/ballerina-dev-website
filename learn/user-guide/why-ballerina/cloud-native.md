@@ -134,7 +134,7 @@ Kubernetes is the preferred platform for running applications with multiple micr
 
 However, in many cases, creating these YAML files is out of a developer’s comfort zone. The Ballerina compiler can create these YAML files while compiling the source code, so you don’t have to! The code below shows the build option you need to use to do this:
 
-The following code snippet shows how Ballerina compiler can generate YAML files to deploy your code to Kubernetes.
+The following code snippet shows how the Ballerina compiler can generate YAML files to deploy your code to Kubernetes.
 
 ```ballerina
 import ballerina/http;

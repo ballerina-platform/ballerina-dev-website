@@ -352,7 +352,7 @@ td.cDescTD {
     }
     table.cTopBorder-table .cCodeTD,
     table.cBottomBorder-table .cCodeTD {
-        /* width: 73%; */
+        width: 73%;
     }
 }
 
